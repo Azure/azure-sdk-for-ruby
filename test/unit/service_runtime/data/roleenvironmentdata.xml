@@ -1,0 +1,29 @@
+<?xml version="0.0" encoding="utf-8"?>
+<RoleEnvironment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Deployment id="deployment16(130)" emulated="true" />
+  <CurrentInstance id="deployment16(130).RubyRole.WorkerRole2_IN_0" roleName="WorkerRole2" faultDomain="0" updateDomain="0">
+    <ConfigurationSettings>
+      <ConfigurationSetting name="test" value="8" />
+      <ConfigurationSetting name="test2" value="string" />
+    </ConfigurationSettings>
+    <LocalResources>
+      <LocalResource name="DiagnosticStore" path="C:\Users\Administrator\AppData\Local\dftmp\Resources\7dbcfc02-ad16-40d3-a943-f407d20bd898\directory\DiagnosticStore\" sizeInMB="4096" />
+      <LocalResource name="ruby" path="C:\Users\Administrator\AppData\Local\dftmp\Resources\7dbcfc02-ad16-40d3-a943-f407d20bd898\directory\ruby\" sizeInMB="1000" />
+    </LocalResources>
+    <Endpoints>
+      <Endpoint name="HttpIn" address="127.255.0.1" port="9002" protocol="tcp" />
+      <Endpoint name="Internal2" address="127.255.0.1" port="9101" protocol="http" />
+    </Endpoints>
+  </CurrentInstance>
+  <Roles>
+    <Role name="WorkerRole">
+      <Instances>
+        <Instance id="deployment16(130).RubyRole.WorkerRole_IN_0" faultDomain="0" updateDomain="0">
+          <Endpoints>
+            <Endpoint name="Internal" address="127.255.0.0" port="9100" protocol="http" />
+          </Endpoints>
+        </Instance>
+      </Instances>
+    </Role>
+  </Roles>
+</RoleEnvironment>

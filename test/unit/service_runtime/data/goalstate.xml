@@ -1,0 +1,9 @@
+21c
+<?xml version="1.0" encoding="utf-8"?>
+<GoalState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Incarnation>1</Incarnation>
+  <ExpectedState>Started</ExpectedState>
+  <RoleEnvironmentPath>test/unit/service_runtime/data/roleenvironmentdata.xml</RoleEnvironmentPath>
+  <CurrentStateEndpoint>test/unit/service_runtime/data/output.xml</CurrentStateEndpoint>
+  <Deadline>9999-12-31T23:59:59.9999999</Deadline>
+</GoalState>
