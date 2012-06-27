@@ -2,10 +2,10 @@ require "date"
 
 Gem::Specification.new do |s|
   s.name    = "azure"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
   s.date    = Date.today.iso8601
 
-  s.authors     = ["Microsoft"]
+  s.authors     = ["AppFog","Microsoft"]
   s.email       = "azure@microsoft.com"
   s.description = "Services and ruby SDKs to access the Windows Azure platform."
   s.summary     = "Implementation of several Windows Azure SDKs in ruby."
