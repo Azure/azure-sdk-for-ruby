@@ -44,6 +44,8 @@ module Azure
           Integer(serialized)
         when "Edm.Boolean"
           /true/i === serialized
+        when "Edm.Guid"
+          GUID.new(serialized.to_s)
         else
           serialized.to_s
         end

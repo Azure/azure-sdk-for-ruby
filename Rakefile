@@ -1,6 +1,10 @@
 require "rake/testtask"
 require "rubygems/package_task"
 
+task :doc do
+  system "yard --plugin yard-tomdoc -o doc/ -"
+end
+
 gem_spec = eval(File.read("./azure.gemspec"))
 Gem::PackageTask.new(gem_spec) do |pkg|
   pkg.need_zip = false
@@ -8,6 +12,21 @@ Gem::PackageTask.new(gem_spec) do |pkg|
 end
 
 namespace :test do
+  task :require_environment do
+    unset_environment = [
+      ENV.fetch("AZURE_ACCOUNT_NAME",  nil),
+      ENV.fetch("AZURE_ACCESS_KEY",    nil),
+      ENV.fetch("AZURE_TABLE_HOST",    nil),
+      ENV.fetch("AZURE_BLOB_HOST",     nil),
+      ENV.fetch("AZURE_QUEUE_HOST",    nil),
+      ENV.fetch("AZURE_ACS_NAMESPACE", nil),
+      ENV.fetch("AZURE_SB_ACCESS_KEY", nil),
+      ENV.fetch("AZURE_SB_ISSUER",     nil)
+    ].include?(nil)
+
+    abort "[ABORTING] Configure your environment to run the integration tests" if unset_environment
+  end
+
   Rake::TestTask.new :unit do |t|
     t.pattern = "test/unit/**/*_test.rb"
     t.verbose = true
@@ -20,6 +39,8 @@ namespace :test do
     t.libs = ["lib", "test"]
   end
 
+  task :integration => :require_environment
+
   namespace :integration do
     def component_task(component)
       Rake::TestTask.new component do |t|
@@ -27,32 +48,17 @@ namespace :test do
         t.verbose = true
         t.libs = ["lib", "test"]
       end
+
+      task component => "test:require_environment"
     end
 
     component_task :tables
     component_task :blobs
     component_task :queues
     component_task :service_bus
-
-    task :conditionally do
-      name          = ENV.fetch("AZURE_ACCOUNT_NAME",  nil)
-      key           = ENV.fetch("AZURE_ACCESS_KEY",    nil)
-      t_host        = ENV.fetch("AZURE_TABLE_HOST",    nil)
-      b_host        = ENV.fetch("AZURE_BLOB_HOST",     nil)
-      q_host        = ENV.fetch("AZURE_QUEUE_HOST",    nil)
-      acs_namespace = ENV.fetch("AZURE_ACS_NAMESPACE", nil)
-      sb_access_key = ENV.fetch("AZURE_SB_ACCESS_KEY", nil)
-      sb_issuer     = ENV.fetch("AZURE_SB_ISSUER",     nil)
-
-      if name && key && t_host && b_host && q_host && acs_namespace && sb_access_key && sb_issuer
-        Rake::Task["test:integration"].invoke
-      else
-        warn "[WARNING] Configure your environment to run the integration tests"
-      end
-    end
   end
 
-  Rake::TestTask.new :cleanup do |t|
+  task :cleanup => :require_environment do
     $:.unshift "lib"
     require 'azure'
 
@@ -76,6 +82,6 @@ namespace :test do
   end
 end
 
-task :test => ["test:unit", "test:integration:conditionally"]
+task :test => ["test:unit", "test:integration"]
 
 task default: :test

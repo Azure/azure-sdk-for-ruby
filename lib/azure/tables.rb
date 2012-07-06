@@ -3,7 +3,7 @@ require "azure/tables/table"
 require "azure/tables/entity"
 require "azure/tables/entities_collection"
 require "azure/tables/tables_collection"
-require "azure/atom"
+require "azure/tables/atom"
 
 module Azure
   module Tables
@@ -15,7 +15,7 @@ module Azure
     # Returns an Array of Table elements.
     def self.all(query = {}, service=Azure::Tables::Services::QueryTables.new)
       response = service.call(query)
-      feed = Atom::Feed.load_feed(response.body)
+      feed = Atom::Feed.parse(response.body)
       collection = Azure::Tables::TablesCollection.from_entries(feed.entries, query)
 
       collection.continuation_token(
@@ -36,7 +36,7 @@ module Azure
       response = service.call(name)
 
       if response.success?
-        Table.from_entry(Atom::Entry.load_entry(response.body))
+        Table.from_entry(Atom::Entry.parse(response.body))
       else
         Table.from_error(response.error)
       end
@@ -54,7 +54,7 @@ module Azure
       response = service.call(name)
 
       if response.success?
-        Table.from_entry(Atom::Entry.load_entry(response.body))
+        Table.from_entry(Atom::Entry.parse(response.body))
       else
         Table.from_error(response.error)
       end
@@ -85,7 +85,7 @@ module Azure
 
       if response.success?
         entity.reset(
-          Entity.from_entry(Azure::Atom::Entry.load_entry(response.body))
+          Entity.from_entry(Atom::Entry.parse(response.body))
         )
         entity.etag = response.headers["etag"]
       else
@@ -181,7 +181,7 @@ module Azure
       response = service.call(table.name, query)
 
       if response.success?
-        Entity.from_entry(Azure::Atom::Entry.load_entry(response.body))
+        Entity.from_entry(Atom::Entry.parse(response.body))
       else
         nil
       end
@@ -199,7 +199,7 @@ module Azure
       response = service.call(table.name, query)
 
       if response.success?
-        feed = Atom::Feed.load_feed(response.body)
+        feed = Atom::Feed.parse(response.body)
         collection = Azure::Tables::EntitiesCollection.from_entries(table, feed.entries, query)
         collection.continuation_token(
           response.headers["x-ms-continuation-nextpartitionkey"],

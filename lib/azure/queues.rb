@@ -181,6 +181,8 @@ module Azure
     def self.get_messages(queue, options = {}, service = Azure::Queues::Services::GetMessages.new)
       response = service.call(queue.name, options)
 
+      options[:visibility_timeout] = options.fetch(:visibility_timeout, 1)
+
       # FIXME: need error handling
       document = Nokogiri::XML(response.body)
       (document / "//QueueMessagesList/QueueMessage").map do |node|

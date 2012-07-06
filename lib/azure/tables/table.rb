@@ -25,7 +25,7 @@ module Azure
       #
       # Returns a Table.
       def self.from_entry(entry)
-        name = entry.content.m_properties.children.first.content
+        name = entry.properties["TableName"]
         new(name, ::URI.parse(entry.id))
       end
 

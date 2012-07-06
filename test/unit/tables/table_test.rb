@@ -3,7 +3,7 @@ require "azure/tables/table"
 
 describe Azure::Tables::Table do
   def entry
-    Atom::Entry.load_entry(Fixtures[:create_table_response_entry])
+    Azure::Tables::Atom::Entry.parse(Fixtures[:create_table_response_entry])
   end
 
   it "can be instantiated from an entry" do

@@ -11,7 +11,7 @@ describe Azure::Tables::EntitiesCollection do
 
   before do
     @table = Azure::Tables::Table.new("table_name")
-    entries = Azure::Atom::Feed.load_feed(Fixtures[:query_entities_response]).entries
+    entries = Azure::Tables::Atom::Feed.parse(Fixtures[:query_entities_response]).entries
     @collection = Azure::Tables::EntitiesCollection.from_entries(@table, entries, {}, service)
   end
 

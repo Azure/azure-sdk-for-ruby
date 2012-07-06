@@ -1,170 +1,173 @@
-require "atom"
+require "time"
+require "delegate"
+require "nokogiri"
 require "azure/tables/types"
 
 module Azure
-  # Collection of XML::Node extensions for generating Atom feeds.
+  # Public: The Atom module includes functionality to generate and parse Atom
+  # feeds and entries.
   module Atom
-    Entry = ::Atom::Entry
-    Feed  = ::Atom::Feed
-
-    # Generates a Data Property, making sure that it's in the correct namespace
-    # (dataservices).
-    class Property < XML::Node
-
-      # Public: Set up the property.
+    # Convenience module so abstract the logic of generating XML. The objects
+    # that include this module must implement #as_xml, such that it returns a
+    # Nokogiri::XML::Node.
+    module Serializable
+      # Public: Convert this object into XML.
       #
-      # name  - The property name, without the namespace qualification.
-      # value - The property's value.
-      def initialize(name, value)
-        super("d:#{name}")
-        self << value
-      end
-
-      # Public: Set the property's value, and sets the content type based on the
-      # value's type.
-      #
-      # value - The value of the property.
-      #
-      # Returns self.
-      def <<(value)
-        self["m:type"] = Azure::Tables::Types.type_of(value)
-        super(value)
-      end
-
-      def to_xml(*)
-        self
+      # Returns a String.
+      def to_xml
+        as_xml.to_xml
       end
     end
 
-    # Represent a list of properties in the proper namespace
-    # (dataservices/metadata).
-    class PropertyList < XML::Node
-      include ::Atom::Xml::Parseable
+    # Public: An Atom Entry corresponds to a representation of a single object.
+    #
+    # In order to parse an entry's XML into a more manageable object, call
+    # Entry.parse.
+    #
+    # In order to generate an XML string from an entry, call #to_xml (included
+    # from Serializable).
+    class Entry
+      include Serializable
 
-      add_extension_namespace "d", "http://schemas.microsoft.com/ado/2007/08/dataservices"
-
-      # Public: Initialize the property list.
+      # Public: Parses a string of XML, returning a new Entry.
       #
-      # Yields the PropertyList.
-      def initialize(o=nil)
-        super("m:properties")
+      # xml - A String of XML data.
+      #
+      # Returns an Atom::Entry.
+      def self.parse(xml)
+        doc = Nokogiri::XML(xml)
+        new do |entry|
+          entry.id = (doc % "id").text
+          entry.updated = Time.parse((doc % "updated").text)
+          entry.content = (doc % "content").inner_html
+          yield entry, doc if block_given?
+        end
+      end
 
-        if o && o.is_a?(LibXML::XML::Reader)
-          o.node.children.each do |node|
-            self << node.copy(true) unless node.blank?
+      # Public: Initializes the Entry.
+      #
+      # Yields the new Entry.
+      def initialize
+        yield self if block_given?
+      end
+
+      # Public: Get/Set the Entry's id.
+      attr_accessor :id
+
+      # Public: Get/Set the Entry's content.
+      attr_accessor :content
+
+      # Public: Get the Entry's updated-at Time (defaults to now).
+      def updated
+        @updated || Time.now
+      end
+
+      # Public: Set the Entry's updated-at Time.
+      attr_writer :updated
+
+      # Convert this object into an XML node that can be serialized.
+      #
+      # xml - A Nokogiri::XML::Builder to use as the parent node (optional).
+      #
+      # Returns a Nokogiri::XML::Node.
+      def as_xml(xml=Nokogiri::XML::Builder.new)
+        as_xml = ->(obj, parent) do
+          if obj.respond_to?(:as_xml)
+            obj.as_xml(parent)
+          else
+            obj.to_s
           end
         end
 
-        yield self if block_given?
-      end
+        xml.entry("xmlns"   => "http://www.w3.org/2005/Atom",
+                  "xmlns:m" => "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata",
+                  "xmlns:d" => "http://schemas.microsoft.com/ado/2007/08/dataservices") do |xml|
+          xml.id(self.id)
+          xml.updated(self.updated.xmlschema)
+          xml.title
+          xml.author do |xml|
+            xml.name
+          end
 
-      # Public: Add several properties at the same time.
-      #
-      # properties - A Hash of property name => property value pairs.
-      #
-      # Returns the passed properties.
-      def merge(properties)
-        properties.each do |name, value|
-          self[name] = value
+          if content.respond_to?(:as_xml)
+            xml.content("type" => "application/xml") do |xml|
+              content.as_xml(xml)
+            end
+          else
+            xml.content(content, "type" => "application/xml")
+          end
         end
-      end
 
-      # Public: Add a property to this list. This will internally store a
-      # Atom::Nodes::Property object.
-      #
-      # property - The name of the property to be included.
-      # value    - The value of the property.
-      #
-      # Returns nothing.
-      def []=(property, value)
-        self << Property.new(property, value)
-      end
-
-      def to_xml(*)
-        self
+        xml
       end
     end
 
-    # Represent an entry's <content/> tag, ensuring it has the correct content
-    # type and that it conforms to the Atom::Content interface so it can be used
-    # seamlessly with Atom::Entry objects.
-    class Content < XML::Node
-      include ::Atom::Xml::Parseable
+    # Public: An Atom Feed is a list of Entries.
+    #
+    # In order to parse a feed's XML into a more manageable object, call
+    # Feed.parse.
+    #
+    # In order to generate an XML string from a feed, call #to_xml (included
+    # from Serializable).
+    class Feed
+      include Serializable
 
-      add_extension_namespace "m", "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+      # Get the Array of entries in this feed.
+      attr :entries
 
-      element "m:properties", class: Azure::Atom::PropertyList
-
-      # Public: Initialize the content node.
+      # Public: Parses a string of XML, returning a new Feed.
       #
-      # Yields self.
-      def initialize(o=nil)
-        super("content")
-        self["type"] = "application/xml"
-
-        if o && o.is_a?(LibXML::XML::Reader)
-          o.read_inner_xml
-          o.read
-          parse o
+      # xml - A String of XML data.
+      #
+      # Returns an Atom::Feed.
+      def self.parse(xml, entry_parser=Entry)
+        doc = Nokogiri::XML(xml)
+        new do |feed|
+          feed.id = (doc % "id").text
+          feed.updated = Time.parse((doc % "updated").text)
+          (doc / "entry").each do |entry|
+            feed.entries << entry_parser.parse(entry.to_xml)
+          end
         end
+      end
 
+      # Public: Initialize the Feed.
+      #
+      # Yields the Feed.
+      def initialize
+        @entries = []
         yield self if block_given?
       end
 
-      # Public: Cast this object into something Atom::Entry can understand as
-      # content. By returning itself (as a Node) the Entry won't try to escape
-      # this as CDATA.
+      # Public: Get/Set the Feed's id.
+      attr_accessor :id
+
+      # Public: Get the Feed's updated-at Time (defaults to now).
+      def updated
+        @updated || Time.now
+      end
+
+      # Public: Set the Feed's updated-at Time.
+      attr_writer :updated
+
+      # Convert this object into an XML node that can be serialized.
       #
-      # Returns self.
-      def to_xml(*)
-        self
+      # xml - A Nokogiri::XML::Builder to use as the parent node (optional).
+      #
+      # Returns a Nokogiri::XML::Node.
+      def as_xml(xml=Nokogiri::XML::Builder.new)
+        xml.entry("xmlns"   => "http://www.w3.org/2005/Atom",
+                  "xmlns:m" => "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata",
+                  "xmlns:d" => "http://schemas.microsoft.com/ado/2007/08/dataservices") do |xml|
+          xml.id(self.id)
+          xml.updated(self.updated.xmlschema)
+          xml.title
+          entries.each do |entry|
+            entry.as_xml(xml)
+          end
+        end
+        xml
       end
-    end
-  end
-end
-
-# FIXME: The rAtom gem doesn't play well when you extend your classes, raising
-# weird errors, so we're monkeypatching their classes. This *sucks*.
-module Atom
-  # Public: An Atom feed, that understands the Microsoft ADO namespaces for Data
-  # services.
-  class Feed
-    add_extension_namespace "d", "http://schemas.microsoft.com/ado/2007/08/dataservices"
-    add_extension_namespace "m", "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
-  end
-
-  # Public: An Atom entry, that understands the Microsoft ADO namespaces for Data
-  # services.
-  class Entry
-    add_extension_namespace "d", "http://schemas.microsoft.com/ado/2007/08/dataservices"
-    add_extension_namespace "m", "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
-
-    element "content", class: Azure::Atom::Content
-
-    # Public: Generate a list of data properties to include in this Entry's
-    # content.
-    # FIXME: This method isn't very confident as getter, use content.m_properties instead.
-    #
-    # Yields a Nodes::PropertyList.
-    #
-    # Example:
-    #
-    #   entry.properties do |props|
-    #     props["one"] = 1
-    #     props["two"] = 2
-    #   end
-    #
-    # Returns the XML node for entry's <m_properties/>.
-    def properties(&block)
-      if !@content
-        @content = Azure::Atom::Content.new
-        @m_properties = Azure::Atom::PropertyList.new
-        @content << @m_properties
-      end
-
-      yield @m_properties if block_given?
-
-      @m_properties
     end
   end
 end

@@ -3,7 +3,7 @@ require 'azure/tables/entity'
 
 describe Azure::Tables::Entity do
   before do
-    @entry = Azure::Atom::Entry.load_entry(Fixtures[:insert_entity_response_entry])
+    @entry = Azure::Tables::Atom::Entry.parse(Fixtures[:insert_entity_response_entry])
   end
 
   it "should be able to instantiate an entity from an xml entry" do

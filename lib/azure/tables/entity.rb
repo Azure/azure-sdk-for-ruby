@@ -1,4 +1,3 @@
-require "azure/tables/types"
 require "azure/tables"
 require "azure/error"
 
@@ -13,7 +12,7 @@ module Azure
 
       # Public: Returns an Entity from an Atom::Entry object.
       #
-      # entry - Atom::Entry object representing the Entity.
+      # entry - Tables::Atom::Entry object representing the Entity.
       #
       # Returns Azure::Entity
       def self.from_entry(entry)
@@ -21,13 +20,8 @@ module Azure
 
         entity.url = URI(entry.id)
 
-        entry.content.m_properties.each do |property_node|
-          value = Types.cast(
-            property_node.content,
-            property_node.attributes["type"]
-          )
-
-          entity[property_node.name] = value
+        entry.properties.each do |name, value|
+          entity[name] = value
         end
 
         entity

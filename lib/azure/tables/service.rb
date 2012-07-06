@@ -3,7 +3,7 @@ require "azure/core/utils/queryable"
 require "azure/tables/auth/shared_key"
 require "azure/tables/auth/shared_key_lite"
 require "azure/tables/uri"
-require "azure/atom"
+require "azure/tables/atom"
 
 module Azure
   module Tables
@@ -59,7 +59,7 @@ module Azure
         #
         # Returns a Response.
         def call(table_name)
-          body = Atom::Entry.new do |entry|
+          body = Tables::Atom::Entry.new do |entry|
             entry.properties["TableName"] = table_name
           end
 
@@ -89,7 +89,7 @@ module Azure
         #
         # Returns a Response.
         def call(table_name, attributes)
-          body = Atom::Entry.new do |entry|
+          body = Tables::Atom::Entry.new do |entry|
             entry.updated = Time.now.utc
             entry.properties.merge(attributes)
           end
@@ -116,7 +116,7 @@ module Azure
             attributes.fetch("RowKey")
           )
 
-          body = Atom::Entry.new do |entry|
+          body = Tables::Atom::Entry.new do |entry|
             entry.id = uri
             entry.updated = Time.now.utc
             entry.properties.merge(attributes)
@@ -139,7 +139,7 @@ module Azure
         #
         # Returns a Response.
         def call(uri, attributes, etag)
-          body = Atom::Entry.new do |entry|
+          body = Tables::Atom::Entry.new do |entry|
             entry.id = uri
             entry.updated = Time.now.utc
             entry.properties.merge(attributes)

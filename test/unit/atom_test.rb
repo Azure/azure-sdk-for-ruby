@@ -1,58 +1,112 @@
 require "test_helper"
 require "azure/atom"
 
-describe "Generating Atom entries with property lists" do
-  it "lists the properties in the node" do
-    entry = Atom::Entry.new do |entry|
-      entry.properties do |props|
-        props["Prop1Name"] = "Prop1Value"
-        props["Prop2Name"] = "Prop2Value"
-      end
+describe "Parsing Atom" do
+  let :entry_xml do
+    <<-XML
+      <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+      <entry xml:base="http://myaccount.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+        <id>http://myaccount.table.core.windows.net/Tables('mytable')</id>
+        <title type="text"></title>
+        <updated>2009-01-04T17:18:54.7062347Z</updated>
+        <author>
+          <name />
+        </author>
+        <link rel="edit" title="Tables" href="Tables('mytable')" />
+        <category term="myaccount.Tables" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+        <content type="application/xml">
+          <m:properties>
+            <d:TableName>mytable</d:TableName>
+          </m:properties>
+        </content>
+      </entry>
+    XML
+  end
+
+  let :feed_xml do
+    <<-XML
+      <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+      <feed xml:base="http://myaccount.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+        <id>http://myaccount.table.core.windows.net/Tables</id>
+        <title type="text">Tables</title>
+        <updated>2009-01-04T17:18:54.7062347Z</updated>
+        <link rel="self" title="Tables" href="Tables" />
+        <entry>
+          <id>http://myaccount.table.core.windows.net/Tables('mytable')</id>
+          <title type="text"></title>
+          <updated>2009-01-04T17:18:54.7062347Z</updated>
+          <author>
+            <name />
+          </author>
+          <link rel="edit" title="Tables" href="Tables('mytable')" />
+          <category term="myaccount.Tables" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+          <content type="application/xml">
+            <m:properties>
+              <d:TableName>mytable</d:TableName>
+            </m:properties>
+          </content>
+        </entry>
+      </feed>
+    XML
+  end
+
+  let :feeds_entry_xml do
+    (Nokogiri::XML(feed_xml) % "entry").to_xml
+  end
+
+  it "parses an entry correctly" do
+    entry = Azure::Atom::Entry.parse(entry_xml)
+    entry.id.must_equal "http://myaccount.table.core.windows.net/Tables('mytable')"
+    entry.updated.must_equal Time.parse("2009-01-04T17:18:54.7062347Z")
+    entry.content.must_match /d:TableName/
+  end
+
+  it "parses a feed correctly" do
+    feed = Azure::Atom::Feed.parse(feed_xml)
+    feed.id.must_equal "http://myaccount.table.core.windows.net/Tables"
+    feed.updated.must_equal Time.parse("2009-01-04T17:18:54.7062347Z")
+    feed.entries.size.must_equal 1
+
+    entry = feed.entries.first
+    entry.id.must_equal "http://myaccount.table.core.windows.net/Tables('mytable')"
+  end
+
+  it "chooses the entry parser when parsing feeds" do
+    entry = double()
+    parser = MiniTest::Mock.new
+    parser.expect(:parse, entry, [feeds_entry_xml])
+
+    feed = Azure::Atom::Feed.parse(feed_xml, parser)
+
+    parser.verify
+  end
+end
+
+describe "Generating Atom" do
+  class ComplexContent
+    def as_xml(xml)
+      xml.foo("bar")
+      xml
+    end
+  end
+
+  it "includes the content of the entry when it's a string" do
+    entry = Azure::Atom::Entry.new do |entry|
+      entry.content = "FooBar"
     end
 
-    entry.properties.first.name.must_equal "d:Prop1Name"
-    entry.properties.first.content.must_equal "Prop1Value"
-
-    entry.properties.last.name.must_equal "d:Prop2Name"
-    entry.properties.last.content.must_equal "Prop2Value"
+    doc = Nokogiri::XML(entry.to_xml)
+    content = doc % "content"
+    content.text.must_equal "FooBar"
   end
 
-  it "can bulk-update a property list" do
-    entry = Atom::Entry.new do |entry|
-      entry.properties.merge(a: 1, b: 2, c: 3)
+  it "includes the content of the entry when it's an XML structure" do
+    entry = Azure::Atom::Entry.new do |entry|
+      entry.content = ComplexContent.new
     end
 
-    doc = XML::Parser.string(entry.to_xml).parse
-    doc.find("//d:a[text() = '1']").wont_be_empty
-    doc.find("//d:b[text() = '2']").wont_be_empty
-    doc.find("//d:c[text() = '3']").wont_be_empty
-  end
-
-  it "can set properties in several ways" do
-    entry = Atom::Entry.new do |entry|
-      entry.properties["a"] = 1
-      entry.properties.merge(b: 2, c: 3)
-      entry.properties do |props|
-        props["d"] = 4
-      end
-    end
-
-    doc = XML::Parser.string(entry.to_xml).parse
-    doc.find("//d:a[text() = '1']").wont_be_empty
-    doc.find("//d:b[text() = '2']").wont_be_empty
-    doc.find("//d:c[text() = '3']").wont_be_empty
-    doc.find("//d:d[text() = '4']").wont_be_empty
-  end
-
-  it "generates properties with the given data type" do
-    node = Azure::Atom::Property.new("name", "value")
-    node["m:type"].must_equal "Edm.String"
-  end
-
-  it "generates properties with the given data name" do
-    node = Azure::Atom::Property.new("firstName", "value")
-    node.name.must_equal "d:firstName"
-    node = Azure::Atom::Property.new(:firstName, "value")
-    node.name.must_equal "d:firstName"
+    doc = Nokogiri::XML(entry.to_xml)
+    foo_in_content = doc % "content > foo"
+    foo_in_content.text.must_equal "bar"
   end
 end
