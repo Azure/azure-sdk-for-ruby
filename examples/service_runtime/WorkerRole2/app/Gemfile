@@ -1,9 +1,0 @@
-source "http://rubygems.org"
-gem 'sinatra'
-gem 'sinatra-contrib'
-gem 'webrick'
-gem 'nokogiri'
-gem 'mime-types'
-gem 'uuid'
-gem 'ratom'
-gem 'windows-pr'
