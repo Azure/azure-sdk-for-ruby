@@ -17,9 +17,9 @@ which need a real azure server running.
 
 In order for the integration tests to run, you need the following ENV variables:
 
-* `AZURE_ACCOUNT_NAME`: The name of the storage account you're using.
+* `AZURE_STORAGE_ACCOUNT`: The name of the storage account you're using.
   - If testing against the emulator, this must be `devstoreaccount1`
-* `AZURE_ACCESS_KEY`: The Base64-encoded Access Key for your storage account.
+* `AZURE_STORAGE_ACCESS_KEY`: The Base64-encoded Access Key for your storage account.
   - If testing against the emulator, this must be
   `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 * `AZURE_BLOB_HOST`: Pointing to the server running the Azure platform.
@@ -31,7 +31,7 @@ In order for the integration tests to run, you need the following ENV variables:
 * `AZURE_TABLE_HOST`: Pointing to the server running the Azure platform.
   - If testing against the real thing: `http://<account-name>.table.core.windows.net`
   - If testing against the emulator: `http://localhost:10002/<account-name>`
-* `AZURE_ACS_NAMESPACE`: a ServiceBus management namespace.
-* `AZURE_SB_ACCESS_KEY`: The Base64-encoded Access Key for your ServiceBus
+* `AZURE_SERVICEBUS_NAMESPACE`: a ServiceBus management namespace.
+* `AZURE_SERVICEBUS_ACCESS_KEY`: The Base64-encoded Access Key for your ServiceBus
   namespace.
-* `AZURE_SB_ISSUER`: The name of the issuer for the ServiceBus. This should be `owner`
+* `AZURE_SERVICEBUS_ISSUER`: The name of the issuer for the ServiceBus. This should be `owner`

@@ -8,7 +8,7 @@ module Azure
   # Example:
   #
   #   Azure.configure do |config|
-  #     config.account_name = ENV["AZURE_ACCOUNT_NAME"]
+  #     config.account_name = ENV["AZURE_STORAGE_ACCOUNT"]
   #   end
   #
   # Returns nothing.
