@@ -110,7 +110,7 @@ module Azure
         def call(container_name, blob_name, filename, metadata={}, file_class=File)
 
           if filename
-            raise ArgumentError, "File exceeded 64Mb limit." if file_class.size(filename) > 65536
+            raise ArgumentError, "File exceeded 64Mb limit." if file_class.size(filename) > (64 * 1024 * 1024)
             file_read = file_class.open(filename) {|f| f.read}
             types = MIME::Types.type_for(filename)
           else
