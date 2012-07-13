@@ -1,7 +1,7 @@
 require "test_helper"
 require "azure"
 
-Azure.configure do |config|
+Azure::Core.configure do |config|
   config.access_key     = ENV.fetch("AZURE_STORAGE_ACCESS_KEY")
   config.account_name   = ENV.fetch("AZURE_STORAGE_ACCOUNT")
   config.table_host     = ENV.fetch("AZURE_TABLE_HOST")

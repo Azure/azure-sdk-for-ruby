@@ -1,4 +1,5 @@
 require "azure/core/service"
+require "azure/core/auth/authorizer"
 require "azure/core/auth/shared_key"
 require "azure/queues/uri"
 require "nokogiri"
@@ -7,7 +8,7 @@ module Azure
   module Queues
 
     class Service < Core::Service
-      def initialize(signer=Azure::Core::Auth::SharedKey.new)
+      def initialize(signer=Azure::Core::Auth::Strategies::SharedKey.new)
         super(signer)
       end
     end

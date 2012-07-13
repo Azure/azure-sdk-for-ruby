@@ -1,15 +1,15 @@
-require "azure/core/service"
-require "azure/configuration"
-require "azure/core/auth/shared_key"
-require "azure/blobs/uri"
-require "mime/types"
 require "uri"
 require "nokogiri"
+require "mime/types"
+require "azure/core/service"
+require "azure/core/auth/shared_key"
+require "azure/core/configuration"
+require "azure/blobs/uri"
 
 module Azure
   module Blobs
     class Service < Core::Service
-      def initialize(signer=Azure::Core::Auth::SharedKey.new)
+      def initialize(signer=Azure::Core::Auth::Strategies::SharedKey.new)
         super(signer)
       end
     end

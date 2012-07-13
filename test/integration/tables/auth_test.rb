@@ -6,10 +6,10 @@ describe "Authorizing against the server" do
   end
 
   it "can make a simple request using SharedKey" do
-    auth = Azure::Auth.new
+    auth = Azure::Core::Auth::Authorizer.new
     signer = Azure::Tables::Auth::SharedKey.new
 
-    request = Azure::Request.new(:get, uri)
+    request = Azure::Core::Request.new(:get, uri)
     auth.sign(request, signer)
     response = request.request!
 
@@ -17,10 +17,10 @@ describe "Authorizing against the server" do
   end
 
   it "can make a simple request using SharedKeyLite" do
-    auth = Azure::Auth.new
+    auth = Azure::Core::Auth::Authorizer.new
     signer = Azure::Tables::Auth::SharedKeyLite.new
 
-    request = Azure::Request.new(:get, uri)
+    request = Azure::Core::Request.new(:get, uri)
     auth.sign(request, signer)
     response = request.request!
 

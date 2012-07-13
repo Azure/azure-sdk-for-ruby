@@ -23,6 +23,6 @@ describe "Fetching a Subscription by name" do
 
   it "can handle errors in a different way" do
     error = @topic.subscriptions.fetch("nonexistant") { |err| err }
-    error.must_be_kind_of Azure::Error
+    error.must_be_kind_of Azure::Core::Error
   end
 end

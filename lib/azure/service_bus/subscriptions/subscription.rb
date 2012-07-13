@@ -1,7 +1,7 @@
-require "azure/error"
+require "azure/core/error"
+require "azure/core/utils/interval"
 require "azure/service_bus/subscriptions"
 require "azure/service_bus/rules"
-require "azure/core/utils/interval"
 
 module Azure
   module ServiceBus
@@ -10,7 +10,7 @@ module Azure
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/hh780763
       class Subscription
-        include Azure::ErrorHandler
+        include Azure::Core::ErrorHandler
 
         # Public: Get the String name of this subscription.
         attr :name

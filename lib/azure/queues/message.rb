@@ -1,6 +1,6 @@
 require "azure/queues"
 require "azure/queues/uri"
-require "azure/error"
+require "azure/core/error"
 require "uri"
 require "time"
 
@@ -8,7 +8,7 @@ module Azure
   module Queues
     # Public: Representation of a Message in a message queue.
     class Message
-      include Azure::ErrorHandler
+      include Azure::Core::ErrorHandler
 
       # The message queue for this message
       #

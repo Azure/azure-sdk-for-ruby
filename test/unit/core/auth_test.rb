@@ -1,7 +1,7 @@
 require "test_helper"
-require "azure/auth"
+require "azure/core/auth/authorizer"
 
-describe Azure::Auth do
+describe Azure::Core::Auth do
   before do
     uri = double(path: "/path")
 
@@ -16,7 +16,7 @@ describe Azure::Auth do
   end
 
   it "generates a proper Authorization header" do
-    auth = Azure::Auth.new("account-name")
+    auth = Azure::Core::Auth::Authorizer.new("account-name")
     auth.sign(@request, @signer)
 
     @request.headers["Authorization"].must_equal "SharedKey account-name:Base64String=="

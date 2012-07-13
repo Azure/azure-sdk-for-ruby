@@ -1,15 +1,15 @@
 require 'test_helper'
-require "azure/response"
+require "azure/core/response"
 
-describe Azure::Response do
+describe Azure::Core::Response do
   it "can act as an error" do
     http_response = MiniTest::Mock.new
     http_response.stub(:body, Fixtures[:error])
     http_response.stub(:code, "409")
 
-    response = Azure::Response.new(http_response)
+    response = Azure::Core::Response.new(http_response)
 
-    assert_raises(Azure::HTTPError) do
+    assert_raises(Azure::Core::HTTPError) do
       raise response
     end
   end
@@ -18,13 +18,13 @@ describe Azure::Response do
     http_response = MiniTest::Mock.new
     http_response.stub(:to_hash, { "Content-Type" => ["text/xml"] })
 
-    response = Azure::Response.new(http_response)
+    response = Azure::Core::Response.new(http_response)
     response.headers["Content-Type"].must_equal "text/xml"
   end
 
-  describe Azure::Response::HeaderHash do
+  describe Azure::Core::Response::HeaderHash do
     subject do
-      Azure::Response::HeaderHash.new(
+      Azure::Core::Response::HeaderHash.new(
         "FooBar" => ["1"], "bazqux" => ["2"], "QUXFOO" => ["3"]
       )
     end

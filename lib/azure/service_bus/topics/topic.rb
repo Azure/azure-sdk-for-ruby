@@ -1,4 +1,4 @@
-require "azure/error"
+require "azure/core/error"
 require "azure/service_bus/topics"
 require "azure/service_bus/subscriptions"
 require "azure/service_bus/subscriptions/subscription"
@@ -8,7 +8,7 @@ module Azure
   module ServiceBus
     module Topics
       class Topic
-        include Azure::ErrorHandler
+        include Azure::Core::ErrorHandler
         # Get the Topic's ID.
         #
         # Returns a URI.

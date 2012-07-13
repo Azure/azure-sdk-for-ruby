@@ -1,5 +1,5 @@
+require "azure/core/error"
 require "azure/tables"
-require "azure/error"
 
 module Azure
   module Tables
@@ -8,7 +8,7 @@ module Azure
       # ETag to force updates/deletes.
       FORCE_UPDATE = "*".freeze
 
-      include Azure::ErrorHandler
+      include Azure::Core::ErrorHandler
 
       # Public: Returns an Entity from an Atom::Entry object.
       #

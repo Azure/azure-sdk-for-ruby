@@ -3,14 +3,14 @@ require "azure/core/auth/shared_key"
 
 describe "Authorizing against the server" do
   let :uri do
-    URI(Azure.config.blob_host + "/?comp=list")
+    URI(Azure::Core.config.blob_host + "/?comp=list")
   end
 
   it "can make a simple request using SharedKey" do
-    auth = Azure::Auth.new
-    signer = Azure::Core::Auth::SharedKey.new
+    auth = Azure::Core::Auth::Authorizer.new
+    signer = Azure::Core::Auth::Strategies::SharedKey.new
 
-    request = Azure::Request.new(:get, uri)
+    request = Azure::Core::Request.new(:get, uri)
     auth.sign(request, signer)
     response = request.request!
 

@@ -1,9 +1,9 @@
-require "azure/error"
+require "azure/core/error"
 
 module Azure
   module ServiceBus
     class BrokeredMessage
-      include Azure::ErrorHandler
+      include Azure::Core::ErrorHandler
 
       # Please read http://msdn.microsoft.com/en-us/library/windowsazure/hh780742
       # for more information on brokered message properties

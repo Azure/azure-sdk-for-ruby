@@ -1,13 +1,13 @@
+require "azure/core/error"
 require "azure/tables"
 require "azure/tables/uri"
-require "azure/error"
 require "uri"
 
 module Azure
   module Tables
     # Public: Representation of a Table in the storage system.
     class Table
-      include Azure::ErrorHandler
+      include Azure::Core::ErrorHandler
 
       # Get the Table's URI.
       #

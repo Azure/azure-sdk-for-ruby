@@ -1,6 +1,6 @@
 require "nokogiri"
 require "uri"
-require "azure/error"
+require "azure/core/error"
 require "azure/blobs"
 require "azure/blobs/uri"
 require "digest/sha1"
@@ -8,7 +8,7 @@ require "digest/sha1"
 module Azure
   module Blobs
     class Blob
-      include ErrorHandler
+      include Core::ErrorHandler
 
       # List of valid property names.
       PROPERTIES = [

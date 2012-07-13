@@ -1,5 +1,5 @@
 require "test_helper"
-require "azure/atom"
+require "azure/core/atom"
 
 describe "Parsing Atom" do
   let :entry_xml do
@@ -55,14 +55,14 @@ describe "Parsing Atom" do
   end
 
   it "parses an entry correctly" do
-    entry = Azure::Atom::Entry.parse(entry_xml)
+    entry = Azure::Core::Atom::Entry.parse(entry_xml)
     entry.id.must_equal "http://myaccount.table.core.windows.net/Tables('mytable')"
     entry.updated.must_equal Time.parse("2009-01-04T17:18:54.7062347Z")
     entry.content.must_match /d:TableName/
   end
 
   it "parses a feed correctly" do
-    feed = Azure::Atom::Feed.parse(feed_xml)
+    feed = Azure::Core::Atom::Feed.parse(feed_xml)
     feed.id.must_equal "http://myaccount.table.core.windows.net/Tables"
     feed.updated.must_equal Time.parse("2009-01-04T17:18:54.7062347Z")
     feed.entries.size.must_equal 1
@@ -76,7 +76,7 @@ describe "Parsing Atom" do
     parser = MiniTest::Mock.new
     parser.expect(:parse, entry, [feeds_entry_xml])
 
-    feed = Azure::Atom::Feed.parse(feed_xml, parser)
+    feed = Azure::Core::Atom::Feed.parse(feed_xml, parser)
 
     parser.verify
   end
@@ -91,7 +91,7 @@ describe "Generating Atom" do
   end
 
   it "includes the content of the entry when it's a string" do
-    entry = Azure::Atom::Entry.new do |entry|
+    entry = Azure::Core::Atom::Entry.new do |entry|
       entry.content = "FooBar"
     end
 
@@ -101,7 +101,7 @@ describe "Generating Atom" do
   end
 
   it "includes the content of the entry when it's an XML structure" do
-    entry = Azure::Atom::Entry.new do |entry|
+    entry = Azure::Core::Atom::Entry.new do |entry|
       entry.content = ComplexContent.new
     end
 

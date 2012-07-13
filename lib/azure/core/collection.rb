@@ -23,7 +23,7 @@ module Azure
     #   # Work with the messages
     #   queue.messages.each { |msg| ... }
     class Collection < DelegateClass(Array)
-      include Azure::ErrorHandler
+      include Azure::Core::ErrorHandler
 
       # Public: Initialize the collection.
       #

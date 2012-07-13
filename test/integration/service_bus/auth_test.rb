@@ -9,7 +9,7 @@ describe "Authorizing against the server" do
     auth = Azure::ServiceBus::Auth::Authorizer.new
     signer = Azure::ServiceBus::Auth::Wrap.new
 
-    request = Azure::Request.new(:get, uri)
+    request = Azure::Core::Request.new(:get, uri)
     auth.sign(request, signer)
     response = request.request!
 

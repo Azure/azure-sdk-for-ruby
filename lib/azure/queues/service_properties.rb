@@ -1,6 +1,6 @@
 require "azure/queues"
 require "azure/queues/uri"
-require "azure/error"
+require "azure/core/error"
 require "uri"
 require "nokogiri"
 
@@ -8,7 +8,7 @@ module Azure
   module Queues
     # Public: Representation of the Service Properties in a message queue.
     class ServiceProperties
-      include Azure::ErrorHandler
+      include Azure::Core::ErrorHandler
 
       # Public: Instantiate a ServiceProperties from an XML entry.
       #

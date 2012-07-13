@@ -1,13 +1,13 @@
 require "azure/queues"
 require "azure/queues/uri"
-require "azure/error"
+require "azure/core/error"
 require "uri"
 
 module Azure
   module Queues
     # Public: Representation of a Queue in the storage system.
     class Queue
-      include Azure::ErrorHandler
+      include Azure::Core::ErrorHandler
 
       # Get the Queue's URI.
       #

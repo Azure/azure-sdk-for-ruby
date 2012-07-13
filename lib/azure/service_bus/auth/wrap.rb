@@ -1,4 +1,4 @@
-require "azure/configuration"
+require "azure/core/configuration"
 require "azure/service_bus/auth/wrap_token_manager"
 
 module Azure

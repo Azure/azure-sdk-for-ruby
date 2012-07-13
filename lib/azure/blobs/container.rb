@@ -1,6 +1,6 @@
 require "nokogiri"
 require "uri"
-require "azure/error"
+require "azure/core/error"
 require "azure/blobs"
 require "azure/blobs/uri"
 require "azure/blobs/shared_access_signature"
@@ -8,7 +8,7 @@ require "azure/blobs/shared_access_signature"
 module Azure
   module Blobs
     class Container
-      include ErrorHandler
+      include Core::ErrorHandler
 
       # Public: Indicates the both the information of the container and of its
       # blobs is accessible by an anonymous request.

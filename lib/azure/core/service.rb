@@ -1,5 +1,5 @@
-require "azure/request"
-require "azure/auth"
+require "azure/core/request"
+require "azure/core/auth/authorizer"
 
 module Azure
   module Core
@@ -7,8 +7,8 @@ module Azure
       # Initialize the service.
       #
       # signer - The strategy to use to sign requests.
-      # auth   - Authorizer object. Defaults to Azure::Auth.new
-      def initialize(signer, auth=Azure::Auth.new)
+      # auth   - Authorizer object. Defaults to Azure::Core::Auth::Authorizer.new
+      def initialize(signer, auth=Azure::Core::Auth::Authorizer.new)
         @signer = signer
         @auth = auth
       end

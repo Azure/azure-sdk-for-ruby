@@ -1,5 +1,5 @@
 require "test_helper"
-require "azure/atom"
+require "azure/core/atom"
 require "azure/tables"
 require "azure/tables/entities_collection"
 

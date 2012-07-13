@@ -1,5 +1,5 @@
 require "cgi"
-require "azure/configuration"
+require "azure/core/configuration"
 require "azure/core/signer"
 
 module Azure

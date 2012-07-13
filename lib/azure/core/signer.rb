@@ -1,6 +1,6 @@
 require "openssl"
 require "base64"
-require "azure/configuration"
+require "azure/core/configuration"
 
 module Azure
   module Core

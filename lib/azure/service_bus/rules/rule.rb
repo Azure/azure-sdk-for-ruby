@@ -1,11 +1,11 @@
-require "azure/error"
+require "azure/core/error"
 require "nokogiri"
 
 module Azure
   module ServiceBus
     module Rules
       class Rule
-        include Azure::ErrorHandler
+        include Azure::Core::ErrorHandler
 
         # Get the Rule's name.
         attr :name

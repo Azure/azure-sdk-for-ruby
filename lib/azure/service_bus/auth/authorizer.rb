@@ -1,4 +1,4 @@
-require "azure/configuration"
+require "azure/core/configuration"
 
 module Azure
   module ServiceBus

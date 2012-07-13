@@ -1,17 +1,17 @@
 require "test_helper"
-require "azure/error"
+require "azure/core/error"
 
-describe Azure::HTTPError do
+describe Azure::Core::HTTPError do
   let :http_response do
     double(body: Fixtures[:error], code: 409)
   end
 
   subject do
-    Azure::HTTPError.new(http_response)
+    Azure::Core::HTTPError.new(http_response)
   end
 
-  it "is an Azure::Error" do
-    subject.must_be_kind_of Azure::Error
+  it "is an Azure::Core::Error" do
+    subject.must_be_kind_of Azure::Core::Error
   end
 
   it "lets us see the errors'status code" do

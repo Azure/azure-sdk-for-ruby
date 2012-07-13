@@ -105,7 +105,7 @@ module Azure
           BrokeredMessageSerializer.get_from_http_response(response)
         elsif response.code == 204
           msg = "No messages available within the specified timeout period."
-          BrokeredMessage.from_error(Azure::Error.new(msg))
+          BrokeredMessage.from_error(Azure::Core::Error.new(msg))
         else
           BrokeredMessage.from_error(response.error)
         end
@@ -145,7 +145,7 @@ module Azure
           BrokeredMessageSerializer.get_from_http_response(response)
         elsif response.code == 204
           msg = "No messages available within the specified timeout period."
-          BrokeredMessage.from_error(Azure::Error.new(msg))
+          BrokeredMessage.from_error(Azure::Core::Error.new(msg))
         else
           BrokeredMessage.from_error(response.error)
         end

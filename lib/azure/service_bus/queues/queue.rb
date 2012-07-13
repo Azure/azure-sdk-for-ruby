@@ -1,10 +1,10 @@
-require "azure/error"
+require "azure/core/error"
 
 module Azure
   module ServiceBus
     module Queues
       class Queue
-        include Azure::ErrorHandler
+        include Azure::Core::ErrorHandler
         # Get the Queue's ID.
         #
         # Returns a URI.

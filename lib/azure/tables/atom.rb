@@ -1,13 +1,13 @@
-require "azure/atom"
+require "azure/core/atom"
 
 module Azure
   module Tables
     # Specific group of extensions to simplify working with entries as used in
-    # the Table Service. See Azure::Atom for more information.
+    # the Table Service. See Azure::Core::Atom for more information.
     module Atom
       # A table's or entity's entry has a list of properties that represent the
       # object in question.
-      class Entry < Azure::Atom::Entry
+      class Entry < Azure::Core::Atom::Entry
         def self.parse(xml) # :nodoc:
           super(xml) do |entry, doc|
             doc.remove_namespaces!
@@ -37,7 +37,7 @@ module Azure
         end
       end
 
-      class Feed < Azure::Atom::Feed # :nodoc:
+      class Feed < Azure::Core::Atom::Feed # :nodoc:
         def self.parse(xml, entry_parser=Tables::Atom::Entry)
           super(xml, entry_parser)
         end
@@ -48,7 +48,7 @@ module Azure
       #
       # It represents an <m:properties/> tag.
       class PropertyList
-        include Azure::Atom::Serializable
+        include Azure::Core::Atom::Serializable
         include Enumerable
 
         # Public: Parses a string of XML, returning a new PropertyList.
@@ -145,7 +145,7 @@ module Azure
       # A Property represents a single field of information. It has a name, a
       # value, and a type (inferred from the value using Azure::Tables::Types).
       class Property
-        include Azure::Atom::Serializable
+        include Azure::Core::Atom::Serializable
 
         # Public: Parses a string of XML, returning a new PropertyList.
         #
