@@ -4,8 +4,8 @@ module Azure
   module Core
     module Utils
       # Public: Helper class to decorate a numeric duration so it can be output
-      # as an ISO8601-compliant Duration. (This class only implements a subset
-      # of the ISO8601 standard, since it's what Microsoft appears to be using.)
+      # as an ISO8601-compliant Duration. (This class only implements the subset
+      # of the ISO8601 standard that the Azure REST API uses.)
       #
       # Examples
       #
