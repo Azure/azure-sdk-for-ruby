@@ -138,9 +138,17 @@ module Azure
       # Update a Block Blob
       class UpdateBlockBlob < CreateBlockBlob; end
 
-      # TODO: Describe PutBlock
+      # Create or update a Block
       class PutBlock < Service
-        # TODO: Describe call method
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        # blob_name      - String. The Blob name
+        # blockid        - String. The id of the Block
+        # block_string   - String. The content of the Block. 4 MB max
+        # headers        - Hash. Custom headers (optional)
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, blockid, block_string, headers={})
 
           if block_string.bytesize > 4 * 1024
@@ -186,7 +194,13 @@ module Azure
 
       # Get Blob Properties
       class GetBlobProperties < Service
-         # TODO: Describe call method
+        # Public: Invoke the service 
+        #
+        # container_name    - String. The Container name
+        # blob_name         - String. The Blob name
+        # headers           - Hash. Custom headers
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, headers)
 
           uri = Blobs::URI.blob(container_name, blob_name)
@@ -217,7 +231,7 @@ module Azure
         # container_name    - String. The Container name
         # blob_name         - String. The Blob name
         # snapshot_datetime - String. Datetime representing a Snapshot
-        # headers           - Custom headers (optional)
+        # headers           - Hash. Custom headers (optional)
         #
         # http://msdn.microsoft.com/en-us/library/windowsazure/dd179413
         #
