@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency("nokogiri",   "~> 1.5")
   s.add_runtime_dependency("mime-types", "~> 1.0")
+  s.add_runtime_dependency "libxml-ruby" 
 
   s.add_development_dependency("rake")
   s.add_development_dependency("minitest", "~> 3.0")
