@@ -57,7 +57,7 @@ module Azure
       # Public: Indicates if the collection is a paginated result.
       # http://msdn.microsoft.com/en-us/library/windowsazure/dd135718
       #
-      # Returs boolean.
+      # Returns boolean
       def paginated?
         @next_partition_key ? true : false
       end

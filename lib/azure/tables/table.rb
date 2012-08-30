@@ -45,7 +45,7 @@ module Azure
 
       # Public: Instantiate a table from an error object.
       #
-      # error - An Azure::Error.
+      # error - An Azure::Core::Error.
       #
       # Returns a Table.
       def self.from_error(error)

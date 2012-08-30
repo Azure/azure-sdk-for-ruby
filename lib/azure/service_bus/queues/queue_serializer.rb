@@ -20,7 +20,7 @@ module Azure
       class QueueSerializer
         attr_accessor :properties
 
-        # Please note that order IS important
+        # NOTE: The order of these values is significant 
         PROPERTIES = [
           'DefaultMessageTimeToLive',
           'DuplicateDetectionHistoryTimeWindow',

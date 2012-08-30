@@ -96,7 +96,7 @@ module Azure
         raise
       end
 
-      # Utility class to generate timestamps in a format the Azure platform likes.
+      # Utility class to generate RFC 2616 compatible timestamps
       class Clock
         # Initialize the clock.
         #
@@ -105,10 +105,9 @@ module Azure
           @source = source
         end
 
-        # Calculate the time of "now", converted into something the Azure backend
-        # likes.
+        # Calculate the time of "now" in a RFC 2616 compatible format
         #
-        # Returns a String with the time formatted in accordance to RFC 2616.
+        # Returns a String with the RFC 2616 formatted time
         def now
           @source.now.httpdate
         end

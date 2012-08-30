@@ -26,9 +26,9 @@ module Azure
 
           # Public: Initialize the Signer.
           #
-          # account_name - The Azure account name. Defaults to the one in the
+          # account_name - The account name. Defaults to the one in the
           #                global configuration.
-          # access_key   - The Azure access_key encoded in Base64. Defaults to the
+          # access_key   - The access_key encoded in Base64. Defaults to the
           #                one in the global configuration.
           def initialize(account_name=Azure.config.account_name, access_key=Azure.config.access_key)
             @account_name = account_name

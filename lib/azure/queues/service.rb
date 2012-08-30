@@ -254,7 +254,7 @@ module Azure
         # queue_name  - The name of the message queue.
         # message_id  - The message's id.
         # text        - The message's new text.
-        # timeout     - A New visibilitytimeout for the message.
+        # timeout     - A new visibilitytimeout for the message.
         # pop_receipt - The receipt of a previous pop operation on this message.
         #
         # Returns a Response.

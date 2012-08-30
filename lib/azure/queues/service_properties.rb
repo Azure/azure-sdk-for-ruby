@@ -38,7 +38,7 @@ module Azure
 
       # Public: Instantiate a message from an error object.
       #
-      # error - An Azure::Error.
+      # error - An Azure::Core::Error.
       #
       # Returns a Message.
       def self.from_error(error)

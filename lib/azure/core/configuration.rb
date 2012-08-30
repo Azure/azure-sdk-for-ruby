@@ -83,7 +83,7 @@ module Azure
       attr_writer :table_host
 
       # Public: Get the host for this service. If you set something using #host=,
-      # then we use that. Else we default to Windows Azure's default hosts, based
+      # then we use that. Else we default to Azure's default hosts, based
       # on your account name.
       def table_host
         @table_host || default_host(:table)
@@ -101,7 +101,7 @@ module Azure
       attr_writer :blob_host
 
       # Public: Get the host for this service. If you set something using #host=,
-      # then we use that. Else we default to Windows Azure's default hosts, based
+      # then we use that. Else we default to Azure's default hosts, based
       # on your account name.
       def blob_host
         @blob_host || default_host(:blob)
@@ -119,7 +119,7 @@ module Azure
       attr_writer :queue_host
 
       # Public: Get the host for this service. If you set something using #host=,
-      # then we use that. Else we default to Windows Azure's default hosts, based
+      # then we use that. Else we default to Azure's default hosts, based
       # on your account name.
       def queue_host
         @queue_host || default_host(:queue)

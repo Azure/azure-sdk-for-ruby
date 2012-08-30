@@ -48,7 +48,7 @@ module Azure
 
         # Public: Initialize a Subscription from an Error.
         #
-        # error - An Azure::Error.
+        # error - An Azure::Core::Error.
         #
         # Returns an invalid Subscription.
         def self.from_error(error)
@@ -68,7 +68,7 @@ module Azure
           yield self if block_given?
         end
 
-        # Public: Set the time to live of a message in the subscription.
+        # Public: Set the Time To Live (TTL) of a message in the subscription.
         #
         # interval - An Interval, or anything that can be converted into one.
         #
@@ -77,7 +77,7 @@ module Azure
           @default_ttl = Core::Utils::Interval.try_convert(interval)
         end
 
-        # Public: Get the time to live of a message in the subscription in
+        # Public: Get the Time To Live (TTL) of a message in the subscription in
         # seconds.
         #
         # Returns an Interval or nil.
@@ -92,8 +92,8 @@ module Azure
           Core::Utils::Interval.try_convert(@lock_duration)
         end
 
-        # Public: Set the duration of the lock in seconds. Can go from 0
-        # (unlocked) to 5 minutes.
+        # Public: Set the duration of the lock in seconds. Allowed range is
+        # 0 (unlocked) to 5 minutes.
         #
         # interval - An Interval, or anything that can be converted into one.
         #
@@ -152,7 +152,7 @@ module Azure
         #                 <SqlExpression>set MyProperty2 = 'ABC'</SqlExpression>
         #               </Action>
         #
-        # Returns an instance of ServiceBus::Rules::Rule.
+        # Returns an instance of Azure::ServiceBus::Rules::Rule
         def create_rule(name, filter=nil, action=nil, service=Azure::ServiceBus::Rules)
           service.create(self, name, filter, action)
         end
@@ -168,7 +168,7 @@ module Azure
         #
         # name - String representing the name of the Rule.
         #
-        # Returns an instance of Rules::Rule.
+        # Returns an instance of Azure::ServiceBus::Rules::Rule
         def get_rule(name, service=Azure::ServiceBus::Rules)
           service.get(self, name)
         end

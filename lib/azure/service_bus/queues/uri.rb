@@ -29,7 +29,7 @@ module Azure
           generate(host, name)
         end
 
-        # Public: generate the URI for the queues collection.
+        # Public: Generate the URI for the queues collection.
         #
         # options - Options for this query (default: {}):
         #           :skip - Integer: number of entries to skip
@@ -41,7 +41,7 @@ module Azure
           generate(host, "$Resources/Queues", options)
         end
 
-        # Public: generate the URI for the given queues's messages
+        # Public: Generate the URI for the given queues's messages
         #
         # queue_name  - The queue name
         # host        - The host of the API.
@@ -51,7 +51,7 @@ module Azure
           generate(host, "#{queue_name}/messages")
         end
 
-        # Public: generate the URI for the given queues's head
+        # Public: Generate the URI for the given queues's head
         #
         # queue_name  - The queue name
         # options     - Options for this query (optional, default: {})
@@ -62,7 +62,7 @@ module Azure
           generate(host, "#{queue_name}/messages/head", options)
         end
 
-        # Public: generate the URI to operate on the given message in the given queue
+        # Public: Generate the URI to operate on the given message in the given queue
         #
         # queue_name  - The queue name
         # seq_number  - The message's sequence_number
@@ -76,7 +76,7 @@ module Azure
 
         #TODO: we need to move this method to other module to be mixedin here
         #
-        # Utility method to generate the URI.
+        # Public: Utility method to generate the URI.
         #
         # host  - A String with the URI's host.
         # path  - A String with the URI's path.

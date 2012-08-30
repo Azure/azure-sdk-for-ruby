@@ -66,10 +66,10 @@ module Azure
       end
       alias_method :error, :exception
 
-      # HTTP Headers are case insensitive, and the Azure APIs seem to like this a
-      # lot (documenting headers in one case and sending them in another). Also
-      # this wraps Net::HTTPResponse headers by returning their values as strings,
-      # not arrays.
+      # Since HTTP Headers are case insensitive, this class will 
+      # normalize them to lowercase. This also wraps Net::HTTPResponse 
+      # headers by returning their values as strings, not arrays, by selecting
+      # the first value from the array.
       class HeaderHash < Hash
         # Public: Initialize the header hash.
         #

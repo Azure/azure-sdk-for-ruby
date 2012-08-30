@@ -29,27 +29,30 @@ module Azure
     end
 
     module Services
-      # Get a list of all containers.
+      # Get a list of all containers
       class ListContainers < Service
         # Public: Invoke the service. For now, we force-include the metadata,
-        # since it doesn't seem to affect blobs.
+        # since it doesn't seem to affect Blobs.
         #
-        # Returns a Response
+        # Returns a Azure::Core::Response
         def call
           uri = Blobs::URI.containers("include" => "metadata")
           super(:get, uri)
         end
       end
 
-      # Create a new container.
+      # Create a new container
       class CreateContainer < Service
-        # Public: Invoke the service.
+        # Public: Invoke the service
         #
-        # name       - The name of the new container.
-        # metadata   - User defined metadata for this container.
-        # visibility - Set the container visibility.
+        # name       - The name of the new Container
+        # metadata   - User defined metadata for the Container
+        # visibility - Set the visibility for the Container. One of 
+        #              Azure::Blobs::Container::CONTAINER, 
+        #              Azure::Blobs::Container::BLOB or 
+        #              Azure::Blobs::Container::PRIVATE
         #
-        # Returns a Response
+        # Returns a Azure::Core::Response
         def call(name, metadata, visibility)
           uri = Blobs::URI.container(name)
 
@@ -65,40 +68,40 @@ module Azure
         end
       end
 
-      # Delete a new container.
+      # Delete a Container
       class DeleteContainer < Service
-        # Public: Invoke the service.
+        # Public: Invoke the service
         #
-        # name - The name of the container we're deleting.
+        # name - The name of the Container to delete
         #
-        # Returns a Response.
+        # Returns a Azure::Core::Response
         def call(name)
           uri = Blobs::URI.container(name)
           super(:delete, uri)
         end
       end
 
-      # Get the metadata of a container.
+      # Get the metadata for a Container
       class GetContainerMetadata < Service
-        # Public: Invoke the service.
+        # Public: Invoke the service
         #
-        # name - The name of the container.
+        # name - The name of the Container
         #
-        # Returns a Response.
+        # Returns a Azure::Core::Response
         def call(name)
           uri = Blobs::URI.container(name, "comp" => "metadata")
           super(:head, uri)
         end
       end
 
-      # Set the metadata of a container.
+      # Set the metadata for a Container
       class SetContainerMetadata < Service
-        # Public: Invoke the service.
+        # Public: Invoke the service
         #
-        # name     - The name of the container.
-        # metadata - User defined metadata for this container.
+        # name     - The name of the Container
+        # metadata - User defined metadata for the Container
         #
-        # Returns a Response.
+        # Returns a Azure::Core::Response
         def call(name, metadata)
           uri = Blobs::URI.container(name, "comp" => "metadata")
 
@@ -110,17 +113,20 @@ module Azure
         end
       end
 
-      # Creates a new Block Blob, or updates an existent one.
-      #
-      # container_name - String representing the container name.
-      # blob_name      - String representing the blob name.
-      # filename       - String representing a file in the file system.
-      # metadata       - A Hash representing blob metadata as :name => value.
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/dd179451
-      #
-      # Returns a Response instance.
+      # Create a new Block Blob, or update an existing one
       class CreateBlockBlob < Service
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        # blob_name      - String. The Blob name
+        # filename       - String. A file in the file system
+        # metadata       - Hash. The Blob metadata as :name => value (optional)
+        # file_class     - A Class that implements .size and .open. 
+        #                  Defaults to File but may be injected (optional)
+        #
+        # http://msdn.microsoft.com/en-us/library/windowsazure/dd179451
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, filename, metadata={}, file_class=File)
 
           if filename
@@ -143,10 +149,20 @@ module Azure
         end
       end
 
-      # Public: Update a Block Blob.
+      # Update a Block Blob
       class UpdateBlockBlob < CreateBlockBlob; end
 
+      # Create or update a Block
       class PutBlock < Service
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        # blob_name      - String. The Blob name
+        # blockid        - String. The id of the Block
+        # block_string   - String. The content of the Block. 4 MB max
+        # headers        - Hash. Custom headers (optional)
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, blockid, block_string, headers={})
 
           if block_string.bytesize > 4 * 1024
@@ -161,15 +177,18 @@ module Azure
           end
         end
       end
-
-      # Creates a new Page Blob, or updates an existent one.
-      #
-      # container_name - String representing the container name.
-      # blob_name      - String representing the blob name.
-      # size           - Size must be aligned to a 512-byte boundary. 1 TB max. (optional)
-      # metadata       - A Hash representing blob metadata as :name => value. (optional)
-      # headers        - A Hash to be passed as headers. (optional)
+      
+      # Create a new Page Blob, or update an existing one
       class CreatePageBlob < Service
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        # blob_name      - String. The Blob name
+        # size           - Integer. Size must be aligned to a 512-byte boundary. 1 TB max (optional)
+        # metadata       - Hash. The Blob metadata as :name => value (optional)
+        # headers        - Hash. Custom headers (optional)
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, size=1024, metadata={}, headers={})
 
           size = 1024 if size.nil?
@@ -189,6 +208,13 @@ module Azure
 
       # Get Blob Properties
       class GetBlobProperties < Service
+        # Public: Invoke the service 
+        #
+        # container_name    - String. The Container name
+        # blob_name         - String. The Blob name
+        # headers           - Hash. Custom headers
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, headers)
 
           uri = Blobs::URI.blob(container_name, blob_name)
@@ -199,10 +225,13 @@ module Azure
         end
       end
 
-      # List Blobs.
-      #
-      # container_name - String representing conainer name.
+      # List Blobs
       class ListBlobs < Service
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        #
+        # Returns a Azure::Core::Response
         def call(container_name)
           uri = Blobs::URI.container(container_name, comp: "list", include: "metadata")
           super(:get, uri)
@@ -210,14 +239,17 @@ module Azure
       end
 
       # Delete a Blob.
-      #
-      # container_name    - String representing container name.
-      # blob_name         - String representing blob name.
-      # snapshot_datetime - String datetime representing a snapshot.
-      # headers           - Custom headers to be used with the request. (optional)
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/dd179413
       class DeleteBlob < Service
+        # Public: Invoke the service 
+        #
+        # container_name    - String. The Container name
+        # blob_name         - String. The Blob name
+        # snapshot_datetime - String. Datetime representing a Snapshot
+        # headers           - Hash. Custom headers (optional)
+        #
+        # http://msdn.microsoft.com/en-us/library/windowsazure/dd179413
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, snapshot_datetime, headers={})
 
           uri = Blobs::URI.blob(container_name, blob_name)
@@ -229,11 +261,14 @@ module Azure
         end
       end
 
-      # Get a Blob.
-      #
-      # container_name - String representing container name.
-      # blob_name      - String representing blob name.
+      # Get a Blob
       class GetBlob < Service
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        # blob_name      - String. The Blob name
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, snapshot=nil)
           uri = Blobs::URI.blob(container_name, blob_name)
           uri.query = URI.encode("snapshot=#{snapshot}") if snapshot
@@ -241,14 +276,17 @@ module Azure
         end
       end
 
-      # Set Blob properties.
-      #
-      # container_name - String representing name of the blob container.
-      # blob_name      - String representing name of teh blob.
-      # headers        - A Hash with the following Optional values
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/ee691966
+      # Set Blob properties
       class SetBlobProperties < Service
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        # blob_name      - String. The Blob name
+        # headers        - Hash. The properties for the Blob.
+        #
+        # http://msdn.microsoft.com/en-us/library/windowsazure/ee691966
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, headers)
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "properties")
           super(:put, uri) do |request|
@@ -259,6 +297,11 @@ module Azure
 
       # Set Blob Service Properties
       class SetBlobServiceProperties < Service
+        # Public: Invoke the service 
+        #
+        # body - The body
+        #
+        # Returns a Azure::Core::Response
         def call(body)
           uri = Blobs::URI.blob("", "", "restype" => "service", "comp" => "properties")
           super(:put, uri, body)
@@ -267,6 +310,9 @@ module Azure
 
       # Get Blob Service Properties
       class GetBlobServiceProperties < Service
+        # Public: Invoke the service 
+        #
+        # Returns a Azure::Core::Response
         def call
           uri = Blobs::URI.blob("", "", "restype" => "service", "comp" => "properties")
           super(:get, uri)
@@ -274,9 +320,16 @@ module Azure
       end
 
       # Get Blob Metadata
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/dd179350
       class GetBlobMetadata < Service
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        # blob_name      - String. The Blob name
+        # lease_id       - String. The Lease ID value (optional)
+        #
+        # http://msdn.microsoft.com/en-us/library/windowsazure/dd179350
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, lease_id=nil)
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "metadata")
           super(:head, uri) do |request|
@@ -286,9 +339,17 @@ module Azure
       end
 
       # Set Blob Metadata
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/dd179414
       class SetBlobMetadata < Service
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        # blob_name      - String. The Blob name
+        # metadata       - Hash. The metadata for the Blob
+        # headers        - Hash. Custom headers (optional)
+        #
+        # http://msdn.microsoft.com/en-us/library/windowsazure/dd179414
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, metadata, headers={})
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "metadata")
 
@@ -302,10 +363,18 @@ module Azure
         end
       end
 
-      # Put Block List.
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/dd179467
+      # Put Block List
       class PutBlockList < Service
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        # blob_name      - String. The Blob name
+        # block_ids      - The Block ids
+        # headers        - Hash. Custom headers (optional)
+        #
+        # http://msdn.microsoft.com/en-us/library/windowsazure/dd179467
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, block_ids, headers={})
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "blocklist")
 
@@ -323,10 +392,20 @@ module Azure
         end
       end
 
-      # Put Page.
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/ee691975
+      # Put Page
       class PutPage < Service
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        # blob_name      - String. The Blob name
+        # start_byte     - Integer. The starting position
+        # end_byte       - Integer. The ending position
+        # stream         - IO or String. The page content (optional)
+        # headers        - Hash. Custom headers (optional)
+        #
+        # http://msdn.microsoft.com/en-us/library/windowsazure/ee691975
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, start_byte, end_byte, stream=nil, headers={})
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "page")
 
@@ -340,10 +419,19 @@ module Azure
         end
       end
 
-      # Get Page.
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/ee691973
+      # Get Page
       class GetPage < Service
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        # blob_name      - String. The Blob name
+        # start_byte     - Integer. The starting position (optional)
+        # end_byte       - Integer. The ending position (optional)
+        # headers        - Hash. Custom headers (optional)
+        #
+        # http://msdn.microsoft.com/en-us/library/windowsazure/ee691973
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, start_byte=nil, end_byte=nil, headers={})
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "pagelist")
 
@@ -357,10 +445,18 @@ module Azure
         end
       end
 
-      # Create Snapshot.
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/ee691971
+      # Create Snapshot
       class CreateSnapshot < Service
+        # Public: Invoke the service 
+        #
+        # container_name - String. The Container name
+        # blob_name      - String. The Blob name
+        # metadata       - Hash. The metadata for the Snapshot (optional)
+        # headers        - Hash. Custom headers (optional)
+        #
+        # http://msdn.microsoft.com/en-us/library/windowsazure/ee691971
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, metadata={}, headers={})
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "snapshot")
 
@@ -374,10 +470,21 @@ module Azure
         end
       end
 
-      # Copy a Blob.
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/dd894037
+      # Copy a Blob
       class CopyBlob < Service
+        # Public: Invoke the service 
+        #
+        # source_container_name   - String. The source Container name
+        # source_name             - String. The source Blob name
+        # dest_container_name     - String. The destination Container name
+        # dest_name               - String. The destination Blob name
+        # snapshot_id             - A Snapshot id (optional)
+        # metadata                - Hash. The metadata for the Blob (optional)
+        # headers                 - Hash. Custom headers (optional)
+        #
+        # http://msdn.microsoft.com/en-us/library/windowsazure/dd894037
+        #
+        # Returns a Azure::Core::Response
         def call(source_container_name, source_name, dest_container_name, dest_name, snapshot_id=nil, metadata={}, headers={})
           destination_uri = Blobs::URI.blob(dest_container_name, dest_name)
           source_uri      = Blobs::URI.blob(source_container_name, source_name)
@@ -396,7 +503,18 @@ module Azure
         end
       end
 
+      # Perform an action on a Lease
       class Lease < Service
+        # Public: Invoke the service 
+        #
+        # container_name  - String. The source Container name
+        # blob_name       - String. The source Blob name
+        # action          - The lease action
+        # lease_id        - String. The Lease ID
+        #
+        # http://msdn.microsoft.com/en-us/library/windowsazure/dd894037
+        #
+        # Returns a Azure::Core::Response
         def call(container_name, blob_name, action, lease_id)
           uri = Blobs::URI.blob(container_name, blob_name, :comp => "lease")
           super(:put, uri) do |request|

@@ -4,7 +4,7 @@ require "uri"
 module Azure
   module Queues
     module URI
-      # Public: generate the URI for the service properties
+      # Public: Generate the URI for the service properties
       #
       # query - see Azure::Services::GetServiceProperties#call documentation.
       # host  - The host of the API.
@@ -15,7 +15,7 @@ module Azure
         generate(host, "", query)
       end
 
-      # Public: generate the URI for the collection of queues.
+      # Public: Generate the URI for the collection of queues.
       #
       # query - see Azure::Services::ListQueues#call documentation.
       # host  - The host of the API.
@@ -49,7 +49,7 @@ module Azure
         generate(host, "#{queue_name}/messages", query)
       end
 
-      # Public: generate the URI for a given message
+      # Public: Generate the URI for a given message
       #
       # queue_name - The name of the queue.
       # message_id - The id of the message.
@@ -61,7 +61,7 @@ module Azure
         generate(host, "#{queue_name}/messages/#{message_id}", query)
       end
 
-      # Utility method to generate the URI.
+      # Public: Utility method to generate the URI.
       #
       # host  - A String with the URI's host.
       # path  - A String with the URI's path.
