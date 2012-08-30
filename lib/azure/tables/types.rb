@@ -52,7 +52,7 @@ module Azure
       end
     end
 
-    # Public: Wrapper around strings to represent GUIDs in the Azure Platform.
+    # Public: Wrapper around a string to represent a GUID
     #
     # Example
     #

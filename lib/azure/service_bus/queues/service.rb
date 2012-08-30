@@ -20,7 +20,7 @@ module Azure
           # Public: Invoke the service.
           #
           # name  - A String with the queue name.
-          # xml   - An xml String according to the Azure docs
+          # xml   - An xml string 
           #
           # Returns a Response.
           def call(name, xml)

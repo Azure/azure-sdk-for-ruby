@@ -8,7 +8,7 @@ module Azure
     # Public: The Atom module includes functionality to generate and parse Atom
     # feeds and entries.
     module Atom
-      # Convenience module so abstract the logic of generating XML. The objects
+      # Convenience module to abstract the logic of generating XML. The objects
       # that include this module must implement #as_xml, such that it returns a
       # Nokogiri::XML::Node.
       module Serializable

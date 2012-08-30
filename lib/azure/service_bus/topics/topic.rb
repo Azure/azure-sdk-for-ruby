@@ -65,7 +65,7 @@ module Azure
 
         # Public: Instantiate a topic from an error object.
         #
-        # error - An Azure::Error.
+        # error - An Azure::Core::Error.
         #
         # Returns a Topic.
         def self.from_error(error)

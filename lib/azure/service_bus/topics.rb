@@ -64,7 +64,7 @@ module Azure
           if (node % 'entry')
             Topic.from_node(node)
           else
-            #FIXME: If the topic is not found, Azure returns an atom feed containing links to immediate child nodes
+            #FIXME: If the topic is not found, the REST API returns an atom feed containing links to immediate child nodes
             # What to do with this?
           end
         else

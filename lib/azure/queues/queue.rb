@@ -42,7 +42,7 @@ module Azure
 
       # Public: Instantiate a queue from an error object.
       #
-      # error - An Azure::Error.
+      # error - An Azure::Core::Error.
       #
       # Returns a Queue.
       def self.from_error(error)

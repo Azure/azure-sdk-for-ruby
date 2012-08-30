@@ -64,7 +64,7 @@ module Azure
           if (node % 'entry')
             Queue.from_node(node)
           else
-            #FIXME: If the queue is not found, Azure returns an atom feed containing links to immediate child nodes
+            #FIXME: If the queue is not found, the REST API returns an atom feed containing links to immediate child nodes
             # What to do with this?
           end
         else
@@ -164,7 +164,8 @@ module Azure
       def self.read_delete_message_from_queue(queue, options={}, service=Azure::ServiceBus::Queues::Services::ReadDeleteMessageFromQueue.new)
         response = service.call(queue.name, options)
 
-        # Azure documentation says this should be 201
+        # Documentation says this should be 201
+        # TODO: link for documentation
         if response.code == 200
           BrokeredMessageSerializer.get_from_http_response(response)
         elsif response.code == 204

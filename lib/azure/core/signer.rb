@@ -7,12 +7,12 @@ module Azure
     # Public: Utility class to sign strings with HMAC-256 and then encode the
     # signed string using Base64.
     class Signer
-      # The Azure account's access key.
+      # The access key for the account
       attr :access_key
 
       # Public: Initialize the Signer.
       #
-      # access_key - The Azure access_key encoded in Base64. Defaults to the one
+      # access_key - The access_key encoded in Base64. Defaults to the one
       #              in the global configuration.
       def initialize(access_key=Azure.config.access_key)
         @access_key = Base64.strict_decode64(access_key)

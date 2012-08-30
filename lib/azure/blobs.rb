@@ -26,10 +26,10 @@ module Azure
     #
     # name       - The name of the container.
     # metadata   - User defined metadata for this container (optional).
-    # visibility - One of Container::PRIVATE, Container::CONTAINER, or
-    #              Container::BLOB, specifying the level of visibility for
-    #              anonymouse requests to this container. (optional, defaults to
-    #              Container::PRIVATE).
+    # visibility - One of Azure::Blobs::Container::PRIVATE, Azure::Blobs::Container::CONTAINER, or
+    #              Azure::Blobs::Container::BLOB, specifying the level of visibility for
+    #              anonymous requests to the container. (optional, defaults to
+    #              Azure::Blobs::Container::PRIVATE).
     # service    - The backend service to implement this (optional).
     #
     # Returns a Container.
@@ -528,7 +528,7 @@ module Azure
     #
     # blob           - An Azure::Blobs::Blob instance.
     # io             - IO. String representing the resource on the filesystem.
-    # byte_partition - Optional. Integer representing the size of the chunks to be uploaded.
+    # byte_partition - Integer representing the size of the chunks to be uploaded. (optional)
     #
     # Returns an array with the ids of the uploaded blocks.
     def self.update_block_blob_content(blob, io, byte_partition=nil)

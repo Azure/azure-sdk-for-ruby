@@ -18,15 +18,14 @@ module Azure
 
         # Constructor
         #
-        # issuer        -
-        # access_key    -
-        # host          -
+        # issuer        - The issuer
+        # access_key    - The access key
         def initialize(issuer, access_key)
           @active_tokens = {}
           @wrap_service = WrapService.new(issuer, access_key)
         end
 
-        # Gets a valid (not expired) access token for the given uri
+        # Gets a valid access token for the given URI
         #
         # uri - URI for the resource target
         #

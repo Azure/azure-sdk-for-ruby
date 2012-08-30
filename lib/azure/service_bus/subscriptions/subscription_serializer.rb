@@ -4,7 +4,7 @@ require "azure/service_bus/subscriptions/subscription"
 module Azure
   module ServiceBus
     module Subscriptions
-      # Public: Serialize a Subscription to/from XML.
+      # Public: Serialize a Subscription to/from XML
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/hh780763
       class SubscriptionSerializer
@@ -16,11 +16,11 @@ module Azure
           DeadLetteringOnFilterEvaluationExceptions: :keep_on_errors
         }.freeze
 
-        # Public: Parse an AtomPub fragment and return a Subscription from it.
+        # Public: Parse an AtomPub fragment and return a Subscription
         #
-        # xml - A String.
+        # xml - A String
         #
-        # Returns a Subscription.
+        # Returns a Subscription
         def self.parse(xml)
           body = Nokogiri::XML(xml)
           body.remove_namespaces!
@@ -44,16 +44,16 @@ module Azure
 
         # Public: Initialize the serializer
         #
-        # subscription - A Subscription.
+        # subscription - A Subscription
         def initialize(subscription)
           @subscription = subscription
         end
 
-        # Public: Generate an XML that represents the subscription.
+        # Public: Generate and XML representation of the Subscription
         #
-        # xml - A Nokogiri::XML::Builder.
+        # xml - A Nokogiri::XML::Builder
         #
-        # Returns a String.
+        # Returns a String
         def to_xml(xml=Nokogiri::XML::Builder.new)
           xml.entry(xmlns: "http://www.w3.org/2005/Atom") do |xml|
             xml.content(type: "application/xml") do |xml|

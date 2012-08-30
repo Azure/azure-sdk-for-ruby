@@ -89,9 +89,8 @@ module Azure
         hash.to_json
       end
 
-      # Build a hash based on message properties and make it
-      # compliant with Azure policy for Message Property values
-      # in HTTP headers
+      # Build a hash based on message properties and ensure
+      # the values are in a valid format for HTTP headers
       #
       # Returns a Hash
       def get_property_headers

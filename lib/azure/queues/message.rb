@@ -89,7 +89,7 @@ module Azure
 
       # Public: Instantiate a message from an error object.
       #
-      # error - An Azure::Error.
+      # error - An Azure::Core::Error.
       #
       # Returns a Message.
       def self.from_error(error)
@@ -99,7 +99,7 @@ module Azure
       end
 
       # Public: Attempt to convert an object into a Message. If the object can't
-      # be converted, we return nil.
+      # be converted, return nil.
       #
       # object - An object that might be converted into a Message.
       #
