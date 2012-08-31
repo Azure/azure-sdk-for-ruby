@@ -13,7 +13,7 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'test_helper'
-require "azure/core/response"
+require "azure/core/http_response"
 
 describe Azure::Core::HttpResponse do
   it "can act as an error" do

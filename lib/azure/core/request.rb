@@ -16,7 +16,7 @@ require "digest/md5"
 require "base64"
 require "net/http"
 require "time"
-require "azure/core/response"
+require "azure/core/http_response"
 
 module Azure
   module Core
