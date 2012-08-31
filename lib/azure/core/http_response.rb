@@ -38,7 +38,7 @@ module Azure
       #
       # Returns a Fixnum.
       def status_code
-        @http_response.status_code.to_i
+        @http_response.code.to_i
       end
 
       # Public: Check if this response was successful. A request is considered
@@ -62,7 +62,7 @@ module Azure
       #
       # Returns an Azure::Core::HTTPError.
       def exception
-        Azure::Core::HTTPError.new(self)
+        Azure::Core::HTTPError.new(self) unless success?
       end
       alias_method :error, :exception
 

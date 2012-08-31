@@ -43,7 +43,7 @@ module Azure
           body = get_body(resource_uri)
           response = do_request(:post, uri, body)
 
-          if response.status_code == "200"
+          if response.code == "200"
             WrapToken.parse(response.body)
           else
             #FIXME: handle errors
@@ -65,8 +65,7 @@ module Azure
           http.use_ssl = true
           http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-          response = http.request(request)
-          response
+          http.request(request)
         end
 
         # Private: Generate the wrap ACS body for the given uri as a String
