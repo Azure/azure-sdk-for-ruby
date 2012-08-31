@@ -26,6 +26,6 @@ describe "Managing a container's permissions" do
     url = blob.shared_access_signature("r", 10 * 60) # read permissions, 10 minutes
 
     response = Net::HTTP.get_response(url)
-    response.code.must_equal "200"
+    response.status_code.must_equal "200"
   end
 end

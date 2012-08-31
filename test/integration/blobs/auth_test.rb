@@ -28,6 +28,6 @@ describe "Authorizing against the server" do
     auth.sign(request, signer)
     response = request.request!
 
-    response.code.must_equal 200
+    response.status_code.must_equal 200
   end
 end

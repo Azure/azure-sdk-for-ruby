@@ -37,8 +37,8 @@ module Azure
       # Public: Get the response status code.
       #
       # Returns a Fixnum.
-      def code
-        @http_response.code.to_i
+      def status_code
+        @http_response.status_code.to_i
       end
 
       # Public: Check if this response was successful. A request is considered
@@ -46,7 +46,7 @@ module Azure
       #
       # Returns true|false.
       def success?
-        (200..399).include? code
+        (200..399).include? status_code
       end
 
       # Public: Get all the response headers as a Hash.

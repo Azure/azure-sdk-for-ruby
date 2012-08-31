@@ -43,7 +43,7 @@ module Azure
           body = get_body(resource_uri)
           response = do_request(:post, uri, body)
 
-          if response.code == "200"
+          if response.status_code == "200"
             WrapToken.parse(response.body)
           else
             #FIXME: handle errors

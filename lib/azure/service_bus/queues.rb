@@ -138,9 +138,9 @@ module Azure
       def self.peek_lock_message_from_queue(queue, options={}, service=Azure::ServiceBus::Queues::Services::PeekLockMessageFromQueue.new)
         response = service.call(queue.name, options)
 
-        if response.code == 201
+        if response.status_code == 201
           BrokeredMessageSerializer.get_from_http_response(response)
-        elsif response.code == 204
+        elsif response.status_code == 204
           msg = "No messages available within the specified timeout period."
           BrokeredMessage.from_error(Azure::Core::Error.new(msg))
         else
@@ -180,9 +180,9 @@ module Azure
 
         # Documentation says this should be 201
         # TODO: link for documentation
-        if response.code == 200
+        if response.status_code == 200
           BrokeredMessageSerializer.get_from_http_response(response)
-        elsif response.code == 204
+        elsif response.status_code == 204
           msg = "No messages available within the specified timeout period."
           BrokeredMessage.from_error(Azure::Core::Error.new(msg))
         else

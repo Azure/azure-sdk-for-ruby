@@ -19,7 +19,7 @@ describe Azure::Core::Response do
   it "can act as an error" do
     http_response = MiniTest::Mock.new
     http_response.stub(:body, Fixtures[:error])
-    http_response.stub(:code, "409")
+    http_response.stub(:status_code, "409")
 
     response = Azure::Core::Response.new(http_response)
 
