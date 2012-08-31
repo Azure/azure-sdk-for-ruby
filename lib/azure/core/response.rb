@@ -18,7 +18,7 @@ module Azure
   module Core
 
     # A small proxy to clean up the API of Net::HTTPResponse.
-    class Response
+    class HttpResponse
 
       # Public: Initialize a new response.
       #

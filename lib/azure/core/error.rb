@@ -44,7 +44,7 @@ module Azure
 
       # Public: Initialize an error
       #
-      # http_response - An Azure::Core::Response
+      # http_response - An Azure::Core::HttpResponse
       def initialize(http_response)
         @http_response = http_response
         @status_code = http_response.status_code

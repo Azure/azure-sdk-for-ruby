@@ -45,7 +45,7 @@ module Azure
       #
       # Yields the request before signing it.
       #
-      # Returns the Response object.
+      # Returns the Azure::Core::HttpResponse object.
       def call(method, uri, body=nil, request_factory=Request)
         request = request_factory.new(method, uri, body)
         yield request if block_given?

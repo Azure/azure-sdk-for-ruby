@@ -53,7 +53,7 @@ module Azure
       #
       # ssl - Use SSL (default: false)
       #
-      # Returns an Azure::Response.
+      # Returns an Azure::Core::HttpResponse.
       def request!(ssl=false)
         req = http_requester.new(uri.request_uri, headers)
         req.body = body if body
@@ -65,7 +65,7 @@ module Azure
           http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         end
 
-        Response.new(http.request(req))
+        HttpResponse.new(http.request(req))
       end
 
       # Build the headers Hash.
