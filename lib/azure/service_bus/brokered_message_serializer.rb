@@ -12,15 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/core/utils/string"
 require "json"
 require "time"
 require "uri"
+require "extlib_lite"
 
 module Azure
   module ServiceBus
     class BrokeredMessageSerializer
-      include Azure::Core::Utils::String
 
       PROPERTIES = [
         'ContentType',
@@ -96,7 +95,7 @@ module Azure
       def to_json
         hash = {}
         PROPERTIES.each do |p|
-          attr_name = underscore(p)
+          attr_name = p.underscore
           value = @message.send(attr_name)
           hash[p] = value unless value.nil?
         end
