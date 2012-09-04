@@ -68,6 +68,41 @@ module Azure
         Response.new(http.request(req))
       end
 
+      # Public: Applies a HttpFilter to the HTTP Pipeline
+      #
+      # filter - Any object that responds to .call(req, _next) and 
+      #          returns a HttpResponse eg. HttpFilter, Proc, 
+      #          lambda, etc. (optional)
+      #
+      # &block - An inline block may be used instead of a filter
+      #
+      #          example:
+      #
+      #             request.with_filter do |req, _next| 
+      #               _next.call
+      #             end
+      #
+      # NOTE:
+      #
+      # The code block provided must call _next or the filter pipeline
+      # will not complete and the HTTP request will never execute
+      # 
+      def with_filter(filter=nil, &block)
+        filter = filter || block
+        if filter
+          old_impl = self.method(:call)
+          
+          # support 1.8.7 (define_singleton_method doesn't exist until 1.9.1)
+          new_impl = Proc.new do filter.call(self, old_impl) end
+          k = class << self; self; end
+          if k.method_defined? :define_singleton_method
+              self.define_singleton_method(:call, new_impl) 
+          else
+              k.send(:define_method, :call, new_impl)
+          end
+        end
+      end
+      
       # Build the headers Hash.
       #
       # Returns nothing.
