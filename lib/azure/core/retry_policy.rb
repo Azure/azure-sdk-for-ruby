@@ -30,6 +30,9 @@ module Azure
     # Overrides the base class implementation of call to implement 
     # a retry loop that uses should_retry? to determine when to 
     # break the loop
+    # 
+    # req   - HttpRequest. The HTTP request
+    # _next - HttpFilter. The next filter in the pipeline
     def call(req, _next)
       retry_data = {}
       response = nil
@@ -41,17 +44,20 @@ module Azure
 
     # Determines if the HTTP request should continue retrying
     # 
-    # If an inline block was passed to the constructor, that block 
-    # will be used here and should return true to retry the job, or
-    # false to stop exit.
-    # 
-    # The retry_data parameter is a Hash which can be used to store 
+    # response - HttpResponse. The response from the active request
+    # retry_data - Hash. Stores stateful retry data
+    #
+    # The retry_data is a Hash which can be used to store 
     # stateful data about the request execution context (such as an 
     # incrementing counter, timestamp, etc). The retry_data object 
     # will be the same instance throughout the lifetime of the request.
     #
-    # If an inline block was not passed to the constructor 
-    # the method returns false
+    # If an inline block was passed to the constructor, that block 
+    # will be used here and should return true to retry the job, or
+    # false to stop exit. If an inline block was not passed to the 
+    # constructor the method returns false.
+    #
+    # Alternatively, a subclass could override this method.
     def should_try?(response, retry_data)
       @block ? @block.call(response, retry_data) : false
     end
