@@ -22,7 +22,7 @@ describe Azure::Core::Service do
 
   let :request do
     req = MiniTest::Mock.new
-    req.stub(:request!, response)
+    req.stub(:call, response)
     req
   end
 

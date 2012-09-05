@@ -65,8 +65,7 @@ module Azure
           http.use_ssl = true
           http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-          response = http.request(request)
-          response
+          http.request(request)
         end
 
         # Private: Generate the wrap ACS body for the given uri as a String

@@ -37,7 +37,7 @@ module Azure
         # options - Options for this query:
         #           :timeout  - (optional) timeout for the request in seconds
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(options = {})
           uri = Queues::URI.service_properties(options)
 
@@ -54,7 +54,7 @@ module Azure
         # options     - Options for this query:
         #               :timeout  - (optional) timeout for the request in seconds
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(properties, options = {})
           uri = Queues::URI.service_properties(options)
 
@@ -78,7 +78,7 @@ module Azure
         #           :maxresults       - Specifies the maximum number of queues
         #                               to return.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(options)
           uri = Queues::URI.collection(options)
           super(:get, uri)
@@ -93,7 +93,7 @@ module Azure
         # name     - The name of the new container.
         # metadata - User defined metadata for this queue (default: {}).
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(name, metadata = {})
           uri = Queues::URI.queue(name)
 
@@ -112,7 +112,7 @@ module Azure
         #
         # name     - The name of the queue.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(name)
           uri = Queues::URI.queue(name)
           super(:delete, uri)
@@ -125,7 +125,7 @@ module Azure
         #
         # name - The queue name.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(name)
           uri = Queues::URI.queue(name, comp: "metadata")
           super(:head, uri)
@@ -139,7 +139,7 @@ module Azure
         # name     - The queue name.
         # metadata - User defined metadata for this queue.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(name, metadata)
           uri = Queues::URI.queue(name, comp: "metadata")
 
@@ -167,7 +167,7 @@ module Azure
         #                                   unreacable, between 1 second and 7
         #                                   days (default: 7 days).
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(queue_name, text, options = {})
           uri = Queues::URI.messages(queue_name, options)
 
@@ -193,7 +193,7 @@ module Azure
         #              :numofmessages     - A number between 1 and 32 of messages
         #                                   to return (default: 1).
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(queue_name, options={})
           uri = Queues::URI.messages(queue_name, options)
           super(:get, uri)
@@ -209,7 +209,7 @@ module Azure
         #              :numofmessages     - A number between 1 and 32 of messages
         #                                   to return (default: 1).
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(queue_name, options={})
           options.update(peekonly: 'true')
           uri = Queues::URI.messages(queue_name, options)
@@ -225,7 +225,7 @@ module Azure
         # message_id  - The message id.
         # pop_receipt - The receipt of a previous pop operation on this message.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(queue_name, message_id, pop_receipt)
           uri = Queues::URI.message(
             queue_name, message_id, popreceipt: pop_receipt
@@ -240,7 +240,7 @@ module Azure
         #
         # queue_name - The name of the queue.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(queue_name)
           uri = Queues::URI.messages(queue_name)
           super(:delete, uri)
@@ -257,7 +257,7 @@ module Azure
         # timeout     - A new visibilitytimeout for the message.
         # pop_receipt - The receipt of a previous pop operation on this message.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(queue_name, message_id, text, timeout, pop_receipt)
           uri = Queues::URI.message(queue_name, message_id, {
             popreceipt: pop_receipt, visibilitytimeout: timeout

@@ -36,7 +36,7 @@ module Azure
           # name  - A String with the queue name.
           # xml   - An xml string 
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(name, xml)
             super(:put, URI.queue(name), xml)
           end
@@ -48,7 +48,7 @@ module Azure
           #
           # name - A String with the queue name.
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(name)
             super(:delete, URI.queue(name))
           end
@@ -60,7 +60,7 @@ module Azure
           #
           # name - A String with the queue name.
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(name)
             super(:get, URI.queue(name))
           end
@@ -76,7 +76,7 @@ module Azure
           #           :skip - Integer: number of entries to skip
           #           :top  - Integer: number of entries to retrieve
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(options={})
             options = translate_options_hash(options)
             super(:get, URI.collection(options))
@@ -95,7 +95,7 @@ module Azure
           # content_type            - A String with the desired Content-Type for the message body
           # message_properties      - A Hash with the user-defined message's properties.
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(queue_name, body, content_type, broker_properties_json, message_properties)
             super(:post, URI.messages(queue_name), body) do |request|
               request.headers['BrokerProperties'] = broker_properties_json
@@ -115,7 +115,7 @@ module Azure
           # options     - Options for this query (default: {}):
           #               :timeout - Integer: request's timeout in seconds
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(queue_name, options={})
             super(:post, URI.messages_head(queue_name, options))
           end
@@ -129,7 +129,7 @@ module Azure
           # seq_number  - A String with the message's sequence_number
           # lock_token  - A String with the message's lock_token
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(queue_name, seq_number, lock_token)
             super(:put, URI.message(queue_name, seq_number, lock_token))
           end
@@ -143,7 +143,7 @@ module Azure
           # options     - Options for this query (default: {}):
           #               :timeout - Integer: request's timeout in seconds
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(queue_name, options={})
             super(:delete, URI.messages_head(queue_name, options))
           end
@@ -157,7 +157,7 @@ module Azure
           # seq_number  - A String with the message's sequence_number
           # lock_token  - A String with the message's lock_token
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(queue_name, seq_number, lock_token)
             super(:delete, URI.message(queue_name, seq_number, lock_token))
           end

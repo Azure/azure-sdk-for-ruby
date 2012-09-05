@@ -115,9 +115,9 @@ module Azure
                                                    service=Azure::ServiceBus::Subscriptions::Services::PeekLockMessageFromSubscription.new)
         response = service.call(subscription.topic.name, subscription.name, options)
 
-        if response.code == 201
+        if response.status_code == 201
           BrokeredMessageSerializer.get_from_http_response(response)
-        elsif response.code == 204
+        elsif response.status_code == 204
           msg = "No messages available within the specified timeout period."
           BrokeredMessage.from_error(Azure::Core::Error.new(msg))
         else
@@ -155,9 +155,9 @@ module Azure
       def self.read_delete_message_from_subscription(subscription, options={}, service=Azure::ServiceBus::Subscriptions::Services::ReadDeleteMessageFromSubscription.new)
         response = service.call(subscription.topic.name, subscription.name, options)
 
-        if response.code == 200
+        if response.status_code == 200
           BrokeredMessageSerializer.get_from_http_response(response)
-        elsif response.code == 204
+        elsif response.status_code == 204
           msg = "No messages available within the specified timeout period."
           BrokeredMessage.from_error(Azure::Core::Error.new(msg))
         else

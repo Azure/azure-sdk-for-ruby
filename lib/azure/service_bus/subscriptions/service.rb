@@ -35,7 +35,7 @@ module Azure
           # name       - The name of the subscription name.
           # body       - The SubscriptionDescription XML serialization.
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(topic_name, name, body)
             uri = Subscriptions::URI.subscription(topic_name, name)
             super(:put, uri, body)
@@ -47,7 +47,7 @@ module Azure
           #
           # topic_name - The name of the subscriptions' topic.
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(topic_name)
             uri = Subscriptions::URI.collection(topic_name)
             super(:get, uri)
@@ -60,7 +60,7 @@ module Azure
           # topic_name - The name of the subscription's topic.
           # name       - The name of the subscription name.
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(topic_name, name)
             uri = Subscriptions::URI.subscription(topic_name, name)
             super(:get, uri)
@@ -73,7 +73,7 @@ module Azure
           # topic_name - The name of the subscription's topic.
           # name       - The name of the subscription name.
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(topic_name, name)
             uri = Subscriptions::URI.subscription(topic_name, name)
             super(:delete, uri)
@@ -91,7 +91,7 @@ module Azure
           # options           - Options for this query (default: {}):
           #                     :timeout - Integer: request's timeout in seconds
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(topic_name, subscription_name, options={})
             super(:post, URI.messages_head(topic_name, subscription_name, options))
           end
@@ -106,7 +106,7 @@ module Azure
           # seq_number        - A String with the message's sequence_number
           # lock_token        - A String with the message's lock_token
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(topic_name, subscription_name, seq_number, lock_token)
             super(:put, URI.message(topic_name, subscription_name, seq_number, lock_token))
           end
@@ -121,7 +121,7 @@ module Azure
           # options           - Options for this query (default: {}):
           #                     :timeout - Integer: request's timeout in seconds
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(topic_name, subscription_name, options={})
             super(:delete, URI.messages_head(topic_name, subscription_name, options))
           end
@@ -136,7 +136,7 @@ module Azure
           # seq_number        - A String with the message's sequence_number
           # lock_token        - A String with the message's lock_token
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(topic_name, subscription_name, seq_number, lock_token)
             super(:delete, URI.message(topic_name, subscription_name, seq_number, lock_token))
           end

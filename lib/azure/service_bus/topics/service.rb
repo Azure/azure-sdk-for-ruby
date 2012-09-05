@@ -36,7 +36,7 @@ module Azure
           # name  - A String with the topic name.
           # xml   - An xml string 
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(name, xml)
             super(:put, URI.topic(name), xml)
           end
@@ -48,7 +48,7 @@ module Azure
           #
           # name - A String with the topic name.
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(name)
             super(:delete, URI.topic(name))
           end
@@ -60,7 +60,7 @@ module Azure
           #
           # name - A String with the topic name.
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(name)
             super(:get, URI.topic(name))
           end
@@ -76,7 +76,7 @@ module Azure
           #           :skip - Integer: number of entries to skip
           #           :top  - Integer: number of entries to retrieve
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(options={})
             options = translate_options_hash(options)
             super(:get, URI.collection(options))
@@ -95,7 +95,7 @@ module Azure
           # content_type            - A String with the desired Content-Type for the message body
           # message_properties      - A Hash with the user-defined message's properties.
           #
-          # Returns a Response.
+          # Returns a Azure::Core::HttpResponse.
           def call(topic_name, body, content_type, broker_properties_json, message_properties)
             super(:post, URI.messages(topic_name), body) do |request|
               request.headers['BrokerProperties'] = broker_properties_json

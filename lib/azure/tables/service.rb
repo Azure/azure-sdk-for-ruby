@@ -41,7 +41,7 @@ module Azure
         # To read more about supported query filters check this link.
         # http://msdn.microsoft.com/en-us/library/windowsazure/dd894031
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(query)
           uri = Tables::URI.collection
           query.delete(:select)
@@ -58,7 +58,7 @@ module Azure
         #
         # name - The name of the table.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(name)
           uri = Tables::URI.table(name)
           super(:get, uri)
@@ -71,7 +71,7 @@ module Azure
         #
         # table_name - A String with the table name.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(table_name)
           body = Tables::Atom::Entry.new do |entry|
             entry.properties["TableName"] = table_name
@@ -87,7 +87,7 @@ module Azure
         #
         # table_name - A String with the table name.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(table_name)
           super(:delete, Tables::URI.table(table_name))
         end
@@ -101,7 +101,7 @@ module Azure
         # attributes - A Hash of entity attributes. The hash *must* contain the
         #              keys: "PartitionKey" and "RowKey".
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(table_name, attributes)
           body = Tables::Atom::Entry.new do |entry|
             entry.updated = Time.now.utc
@@ -122,7 +122,7 @@ module Azure
         # etag       - The condition to perform the update. "*" will force an
         #              unconditional update.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(table_name, attributes, etag)
           uri = Tables::URI.entities(
             table_name,
@@ -151,7 +151,7 @@ module Azure
         # etag       - The condition to perform the update. "*" will force an
         #              unconditional update.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(uri, attributes, etag)
           body = Tables::Atom::Entry.new do |entry|
             entry.id = uri
@@ -174,7 +174,7 @@ module Azure
         # etag - The condition to perform the update. "*" will force an
         #        unconditional update.
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(uri, etag)
           super(:delete, uri) do |request|
             request.headers["If-Match"] = etag
@@ -205,7 +205,7 @@ module Azure
         # To read more about supported query filters check this link.
         # http://msdn.microsoft.com/en-us/library/windowsazure/dd894031
         #
-        # Returns a Response.
+        # Returns a Azure::Core::HttpResponse.
         def call(table_name, query)
           uri = Tables::URI.entities(
             table_name,

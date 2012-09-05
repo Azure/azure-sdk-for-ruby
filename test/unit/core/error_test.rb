@@ -17,7 +17,7 @@ require "azure/core/error"
 
 describe Azure::Core::HTTPError do
   let :http_response do
-    double(body: Fixtures[:error], code: 409)
+    double(body: Fixtures[:error], status_code: 409)
   end
 
   subject do
@@ -29,7 +29,7 @@ describe Azure::Core::HTTPError do
   end
 
   it "lets us see the errors'status code" do
-    subject.code.must_equal 409
+    subject.status_code.must_equal 409
   end
 
   it "lets us see the error's type" do

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/core/request"
+require "azure/core/http_request"
 require "azure/core/auth/authorizer"
 
 module Azure
@@ -29,7 +29,7 @@ module Azure
 
       # Sign a request to include the necessary authorization header.
       #
-      # request - An Azure::Request.
+      # request - An Azure::HttpRequest.
       # signer  - A signer strategy (defaults to Azure::Tables::Auth::SharedKey)
       #
       # Returns the signed request.
@@ -45,12 +45,12 @@ module Azure
       #
       # Yields the request before signing it.
       #
-      # Returns the Response object.
-      def call(method, uri, body=nil, request_factory=Request)
+      # Returns the Azure::Core::HttpResponse object.
+      def call(method, uri, body=nil, request_factory=HttpRequest)
         request = request_factory.new(method, uri, body)
         yield request if block_given?
         sign_request(request)
-        request.request!
+        request.call
       end
     end
   end
