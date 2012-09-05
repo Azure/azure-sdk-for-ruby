@@ -28,7 +28,7 @@ module Azure
       # Public: The HTTP status code of this error
       #
       # Returns a Fixnum
-      attr :code
+      attr :status_code
 
       # Public: The type of error
       #
@@ -44,12 +44,12 @@ module Azure
 
       # Public: Initialize an error
       #
-      # http_response - An Azure::Core::Response
+      # http_response - An Azure::Core::HttpResponse
       def initialize(http_response)
         @http_response = http_response
-        @code = http_response.code
+        @status_code = http_response.status_code
         parse_response
-        super("#{type} (#{code}): #{description}")
+        super("#{type} (#{status_code}): #{description}")
       end
 
       # Extract the relevant information from the response's body. If the response

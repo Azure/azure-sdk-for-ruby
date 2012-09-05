@@ -23,21 +23,21 @@ describe "Authorizing against the server" do
     auth = Azure::Core::Auth::Authorizer.new
     signer = Azure::Tables::Auth::SharedKey.new
 
-    request = Azure::Core::Request.new(:get, uri)
+    request = Azure::Core::HttpRequest.new(:get, uri)
     auth.sign(request, signer)
-    response = request.request!
+    response = request.call
 
-    response.code.must_equal 200
+    response.status_code.must_equal 200
   end
 
   it "can make a simple request using SharedKeyLite" do
     auth = Azure::Core::Auth::Authorizer.new
     signer = Azure::Tables::Auth::SharedKeyLite.new
 
-    request = Azure::Core::Request.new(:get, uri)
+    request = Azure::Core::HttpRequest.new(:get, uri)
     auth.sign(request, signer)
-    response = request.request!
+    response = request.call
 
-    response.code.must_equal 200
+    response.status_code.must_equal 200
   end
 end

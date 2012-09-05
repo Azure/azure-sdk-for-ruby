@@ -34,7 +34,7 @@ module Azure
         # Public: Invoke the service. For now, we force-include the metadata,
         # since it doesn't seem to affect Blobs.
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call
           uri = Blobs::URI.containers("include" => "metadata")
           super(:get, uri)
@@ -52,7 +52,7 @@ module Azure
         #              Azure::Blobs::Container::BLOB or 
         #              Azure::Blobs::Container::PRIVATE
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(name, metadata, visibility)
           uri = Blobs::URI.container(name)
 
@@ -74,7 +74,7 @@ module Azure
         #
         # name - The name of the Container to delete
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(name)
           uri = Blobs::URI.container(name)
           super(:delete, uri)
@@ -87,7 +87,7 @@ module Azure
         #
         # name - The name of the Container
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(name)
           uri = Blobs::URI.container(name, "comp" => "metadata")
           super(:head, uri)
@@ -101,7 +101,7 @@ module Azure
         # name     - The name of the Container
         # metadata - User defined metadata for the Container
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(name, metadata)
           uri = Blobs::URI.container(name, "comp" => "metadata")
 
@@ -126,7 +126,7 @@ module Azure
         #
         # http://msdn.microsoft.com/en-us/library/windowsazure/dd179451
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, filename, metadata={}, file_class=File)
 
           if filename
@@ -162,7 +162,7 @@ module Azure
         # block_string   - String. The content of the Block. 4 MB max
         # headers        - Hash. Custom headers (optional)
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, blockid, block_string, headers={})
 
           if block_string.bytesize > 4 * 1024
@@ -188,7 +188,7 @@ module Azure
         # metadata       - Hash. The Blob metadata as :name => value (optional)
         # headers        - Hash. Custom headers (optional)
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, size=1024, metadata={}, headers={})
 
           size = 1024 if size.nil?
@@ -214,7 +214,7 @@ module Azure
         # blob_name         - String. The Blob name
         # headers           - Hash. Custom headers
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, headers)
 
           uri = Blobs::URI.blob(container_name, blob_name)
@@ -231,7 +231,7 @@ module Azure
         #
         # container_name - String. The Container name
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name)
           uri = Blobs::URI.container(container_name, comp: "list", include: "metadata")
           super(:get, uri)
@@ -249,7 +249,7 @@ module Azure
         #
         # http://msdn.microsoft.com/en-us/library/windowsazure/dd179413
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, snapshot_datetime, headers={})
 
           uri = Blobs::URI.blob(container_name, blob_name)
@@ -268,7 +268,7 @@ module Azure
         # container_name - String. The Container name
         # blob_name      - String. The Blob name
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, snapshot=nil)
           uri = Blobs::URI.blob(container_name, blob_name)
           uri.query = URI.encode("snapshot=#{snapshot}") if snapshot
@@ -286,7 +286,7 @@ module Azure
         #
         # http://msdn.microsoft.com/en-us/library/windowsazure/ee691966
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, headers)
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "properties")
           super(:put, uri) do |request|
@@ -301,7 +301,7 @@ module Azure
         #
         # body - The body
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(body)
           uri = Blobs::URI.blob("", "", "restype" => "service", "comp" => "properties")
           super(:put, uri, body)
@@ -312,7 +312,7 @@ module Azure
       class GetBlobServiceProperties < Service
         # Public: Invoke the service 
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call
           uri = Blobs::URI.blob("", "", "restype" => "service", "comp" => "properties")
           super(:get, uri)
@@ -329,7 +329,7 @@ module Azure
         #
         # http://msdn.microsoft.com/en-us/library/windowsazure/dd179350
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, lease_id=nil)
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "metadata")
           super(:head, uri) do |request|
@@ -349,7 +349,7 @@ module Azure
         #
         # http://msdn.microsoft.com/en-us/library/windowsazure/dd179414
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, metadata, headers={})
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "metadata")
 
@@ -374,7 +374,7 @@ module Azure
         #
         # http://msdn.microsoft.com/en-us/library/windowsazure/dd179467
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, block_ids, headers={})
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "blocklist")
 
@@ -405,7 +405,7 @@ module Azure
         #
         # http://msdn.microsoft.com/en-us/library/windowsazure/ee691975
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, start_byte, end_byte, stream=nil, headers={})
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "page")
 
@@ -431,7 +431,7 @@ module Azure
         #
         # http://msdn.microsoft.com/en-us/library/windowsazure/ee691973
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, start_byte=nil, end_byte=nil, headers={})
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "pagelist")
 
@@ -456,7 +456,7 @@ module Azure
         #
         # http://msdn.microsoft.com/en-us/library/windowsazure/ee691971
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, metadata={}, headers={})
           uri = Blobs::URI.blob(container_name, blob_name, "comp" => "snapshot")
 
@@ -484,7 +484,7 @@ module Azure
         #
         # http://msdn.microsoft.com/en-us/library/windowsazure/dd894037
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(source_container_name, source_name, dest_container_name, dest_name, snapshot_id=nil, metadata={}, headers={})
           destination_uri = Blobs::URI.blob(dest_container_name, dest_name)
           source_uri      = Blobs::URI.blob(source_container_name, source_name)
@@ -514,7 +514,7 @@ module Azure
         #
         # http://msdn.microsoft.com/en-us/library/windowsazure/dd894037
         #
-        # Returns a Azure::Core::Response
+        # Returns a Azure::Core::HttpResponse
         def call(container_name, blob_name, action, lease_id)
           uri = Blobs::URI.blob(container_name, blob_name, :comp => "lease")
           super(:put, uri) do |request|

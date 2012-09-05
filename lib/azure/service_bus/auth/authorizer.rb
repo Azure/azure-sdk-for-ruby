@@ -21,7 +21,7 @@ module Azure
         # Public: Signs an HTTP request before it's made, by adding the
         # Authorization header.
         #
-        # request - An Azure::Request that hasn't been signed.
+        # request - An Azure::HttpRequest that hasn't been signed.
         # signer  - A signing strategy, such as Azure::ServiceBus::Auth::Wrap.
         #
         # Returns the modified request.

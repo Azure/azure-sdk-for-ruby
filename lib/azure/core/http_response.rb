@@ -18,7 +18,7 @@ module Azure
   module Core
 
     # A small proxy to clean up the API of Net::HTTPResponse.
-    class Response
+    class HttpResponse
 
       # Public: Initialize a new response.
       #
@@ -37,7 +37,7 @@ module Azure
       # Public: Get the response status code.
       #
       # Returns a Fixnum.
-      def code
+      def status_code
         @http_response.code.to_i
       end
 
@@ -46,7 +46,7 @@ module Azure
       #
       # Returns true|false.
       def success?
-        (200..399).include? code
+        (200..399).include? status_code
       end
 
       # Public: Get all the response headers as a Hash.
@@ -62,7 +62,7 @@ module Azure
       #
       # Returns an Azure::Core::HTTPError.
       def exception
-        Azure::Core::HTTPError.new(self)
+        Azure::Core::HTTPError.new(self) unless success?
       end
       alias_method :error, :exception
 

@@ -63,6 +63,6 @@ describe "Updating Entities" do
     result.must_equal false
 
     refute stale_entity.valid?
-    stale_entity.error.code.must_equal 412
+    stale_entity.error.status_code.must_equal 412
   end
 end
