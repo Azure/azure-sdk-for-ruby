@@ -37,6 +37,21 @@ module Azure
         properties
       end
 
+      # Public: Set Blob Service properties
+      #
+      # service_properties - An instance of Azure::Entity::Service::StorageServiceProperties
+      #
+      # http://msdn.microsoft.com/en-us/library/windowsazure/hh452235
+      #
+      # Returns boolean indicating success.
+      def set_service_properties(service_properties)
+        body = Azure::Entity::Service::StorageServiceProperties.to_xml
+
+        uri = blob_uri("", "", {"restype" => "service", "comp" => "properties"})
+        response = call(:put, uri, body)
+        response.success?
+      end
+      
       # Public: Generate the URI for the collection of containers.
       #
       # query - A Hash of key => value query parameters.
