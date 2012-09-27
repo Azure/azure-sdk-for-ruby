@@ -47,8 +47,8 @@ describe "Query Entities" do
     @table.insert(@entity)
 
     entity = @table.entities(
-      partition_key: @entity["PartitionKey"],
-      row_key:       @entity["RowKey"]
+      :partition_key=> @entity["PartitionKey"],
+      :row_key=>       @entity["RowKey"]
     )
 
     entity.must_equal @entity
@@ -56,8 +56,8 @@ describe "Query Entities" do
 
   it "returns nil if a specific entity is not in the table" do
     entity = @table.entities(
-      partition_key: "not_there",
-      row_key:       "not_there"
+      :partition_key=> "not_there",
+      :row_key=>       "not_there"
     )
 
     entity.must_be_nil
@@ -69,9 +69,9 @@ describe "Query Entities" do
     @table.insert(@entity)
 
     entity = @table.entities(
-      partition_key: "part1",
-      row_key:       "row1",
-      select:        ["FirstName", "Email"]
+      :partition_key=> "part1",
+      :row_key=>       "row1",
+      :select=>        ["FirstName", "Email"]
     )
 
     entity.wont_be_nil

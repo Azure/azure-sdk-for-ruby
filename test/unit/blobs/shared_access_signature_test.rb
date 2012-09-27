@@ -23,11 +23,11 @@ describe Azure::Blobs::SharedAccessSignature do
   end
 
   let :from do
-    double(iso8601: "from")
+    double(:iso8601=> "from")
   end
 
   let :to do
-    double(iso8601: "to")
+    double(:iso8601=> "to")
   end
 
   let :resource do

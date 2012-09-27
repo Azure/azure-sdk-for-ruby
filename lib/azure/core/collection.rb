@@ -96,7 +96,7 @@ module Azure
       # Returns an instance of the model.
       # Raises ArgumentError if the model isn't found and no block is given.
       def fetch(*ids, &block)
-        block ||= -> { raise ArgumentError, "can't find #{@model_class} identified by #{id.inspect}" }
+        block ||= lambda { raise ArgumentError, "can't find #{@model_class} identified by #{id.inspect}" }
         model = @service.fetch(@parent, *ids)
         model.valid? ? model : block.call(model.error)
       end

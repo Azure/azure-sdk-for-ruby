@@ -169,7 +169,7 @@ module Azure
       # TODO: Refactor this (DRY)
       def extract_metadata(hash)
         new_metadata = hash.each_with_object({}) do |(k,v), hash|
-          if key = k[/^x-ms-meta-(?<key>.*)?/, :key]
+          if key = k[/^x-ms-meta-(.*)/, 1]
             hash[key] = v
           end
         end

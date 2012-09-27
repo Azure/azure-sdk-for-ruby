@@ -43,7 +43,7 @@ describe "Get Messages" do
   it "can reset the visibilitytimeout option for retrieved messages" do
     @queue << "message 1"
 
-    message = @queue.pop(visibilitytimeout: 10)
+    message = @queue.pop(:visibilitytimeout=> 10)
 
     next_visible_at = message.time_next_visible.to_i
     inserted_at     = message.insertion_time.to_i

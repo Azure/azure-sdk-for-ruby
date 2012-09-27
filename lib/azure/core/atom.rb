@@ -86,7 +86,7 @@ module Azure
         #
         # Returns a Nokogiri::XML::Node.
         def as_xml(xml=Nokogiri::XML::Builder.new)
-          as_xml = ->(obj, parent) do
+          as_xml = lambda do |obj, parent|
             if obj.respond_to?(:as_xml)
               obj.as_xml(parent)
             else

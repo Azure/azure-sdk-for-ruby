@@ -191,7 +191,7 @@ module Azure
     #
     # Returns an Entity, or nil if none is found.
     def self.query_entity(table, partition_key, row_key, query={}, service=Azure::Tables::Services::QueryEntities.new)
-      query.update(partition_key: partition_key, row_key: row_key)
+      query.update(:partition_key=> partition_key, :row_key=> row_key)
       response = service.call(table.name, query)
 
       if response.success?
