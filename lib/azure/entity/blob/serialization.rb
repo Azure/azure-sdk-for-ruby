@@ -54,6 +54,15 @@ module Azure
           container
         end
 
+        def self.container_from_headers(headers)
+          container = Container.new
+          container.properties = container_properties_from_headers(headers)
+          container.visibility = visibility_from_headers(headers)
+          container.metadata = metadata_from_headers(headers)
+
+          container
+        end
+
         def self.container_properties_from_xml(xml)
           xml = slopify(xml)
           expect_node("Properties", xml)
@@ -66,6 +75,21 @@ module Azure
           properties.lease_duration = xml.LeaseDuration.text if (xml > "LeaseDuration").any?
 
           properties
+        end
+
+        def self.container_properties_from_headers(headers)
+          properties = ContainerProperties.new
+          properties.last_modified = headers["Last-Modified"] 
+          properties.etag = headers["Etag"]
+          properties.lease_status = headers["x-ms-lease-status"]
+          properties.lease_state = headers["x-ms-lease-state"]
+          properties.lease_duration = headers["x-ms-lease-duration"]
+
+          properties
+        end
+
+        def self.visibility_from_headers(headers)
+          headers["x-ms-blob-public-access"]
         end
 
         def self.enumeration_results_from_xml(xml, results)
@@ -90,12 +114,29 @@ module Azure
 
           xml.children.each { |meta_node|
             if metadata.has_key? meta_node.name 
-              metadata[meta_node.name] = [metadata[meta_node.name]] unless metadata[meta_node].respond_to? :push
+              metadata[meta_node.name] = [metadata[meta_node.name]] unless metadata[meta_node.name].respond_to? :push
               metadata[meta_node.name].push(meta_node.text)
             else
               metadata[meta_node.name] = meta_node.text
             end
           }
+          metadata
+        end
+
+        def self.metadata_from_headers(headers)
+          metadata = {}
+
+          headers.each { |k, v| 
+            if key = k[/^x-ms-meta-(.*)/, 1]
+              if metadata.has_key? key 
+                metadata[key] = [metadata[key]] unless metadata[key].respond_to? :push
+                metadata[key].push(v)
+              else
+                metadata[key] = v
+              end
+            end
+          }
+
           metadata
         end
 

@@ -105,6 +105,40 @@ module Azure
         Azure::Entity::Blob::Serialization.container_enumeration_results_from_xml(response.body)
       end
 
+      # Public: Create a new container 
+      #
+      # name       - String. The name of the container
+      # metadata   - Hash. User defined metadata for the container (optional)
+      # visibility - String. One of "container" or "blob" (optional)
+      #
+      # Returns a Container
+      def create_container(name, metadata={}, visibility=nil)
+        uri = container_uri(name)
+
+        headers = {}
+        
+        add_metadata_to_headers(metadata, headers) if metadata
+        
+        headers["x-ms-blob-public-access"] = visibility.to_s if visibility
+
+        response = call(:put, uri, nil, headers)
+
+        container = Azure::Entity::Blob::Serialization.container_from_headers(response.headers)
+        container.name = name
+        container.metadata = metadata
+        container
+      end
+
+      # Adds metadata properties to header hash with required prefix
+      # 
+      # metadata  - A Hash of metadata name/value pairs
+      # headers   - A Hash of HTTP headers 
+      def add_metadata_to_headers(metadata, headers)
+        metadata.each do |key, value|
+          headers["x-ms-meta-#{key}"] = value
+        end
+      end
+
       # Public: Generate the URI for the collection of containers.
       #
       # query - A Hash of key => value query parameters.
