@@ -25,6 +25,9 @@ module Azure
 
     # Public: Class for handling all HTTP response errors
     class HTTPError < ::Azure::Core::Error
+      
+      attr :uri
+
       # Public: The HTTP status code of this error
       #
       # Returns a Fixnum
@@ -47,6 +50,7 @@ module Azure
       # http_response - An Azure::Core::HttpResponse
       def initialize(http_response)
         @http_response = http_response
+        @uri = http_response.uri
         @status_code = http_response.status_code
         parse_response
         super("#{type} (#{status_code}): #{description}")
