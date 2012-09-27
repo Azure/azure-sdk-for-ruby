@@ -13,6 +13,7 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'azure/service/storage_service'
+require 'azure/entity/service/storage_service_properties'
 
 module Azure
   module Service
@@ -51,7 +52,7 @@ module Azure
         response = call(:put, uri, body)
         response.success?
       end
-      
+
       # Public: Generate the URI for the collection of containers.
       #
       # query - A Hash of key => value query parameters.
