@@ -25,6 +25,18 @@ module Azure
 
       attr_accessor :default_timeout
 
+      # Public: Get Blob Service properties
+      #
+      # http://msdn.microsoft.com/en-us/library/windowsazure/hh452239
+      #
+      # Returns a Hash with the service properties or nil if the operation failed
+      def get_service_properties
+        uri = blob_uri("", "", {"restype" => "service", "comp" => "properties"})
+        response = call(:get, uri)
+        properties = Azure::Entity::Service::StorageServiceProperties.parse(response.body)
+        properties
+      end
+
       # Public: Generate the URI for the collection of containers.
       #
       # query - A Hash of key => value query parameters.
