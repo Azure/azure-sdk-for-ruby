@@ -1,0 +1,112 @@
+#-------------------------------------------------------------------------
+# Copyright 2012 Microsoft Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#--------------------------------------------------------------------------
+require 'nokogiri'
+
+require 'azure/entity/blob/enumeration_results'
+
+require 'azure/entity/blob/container_enumeration_results'
+require 'azure/entity/blob/container'
+require 'azure/entity/blob/container_properties'
+
+module Azure
+  module Entity
+    module Blob
+      module Serialization
+
+        def self.container_enumeration_results_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("EnumerationResults", xml)
+
+          results = enumeration_results_from_xml(xml, ContainerEnumerationResults.new)
+          results.account_name = xml["AccountName"]
+          
+          return results unless (xml > "Containers").any? && ((xml > "Containers") > "Container").any?
+
+          xml.Containers.Container.each { |container_node|
+              results.containers.push(container_from_xml(container_node))
+          }
+
+          results
+        end
+
+        def self.container_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("Container", xml)
+
+          container = Container.new
+          container.name = xml.Name.text if (xml > "Name").any?
+          container.url = xml.Url.text if (xml > "Url").any?
+          container.properties = container_properties_from_xml(xml.Properties) if (xml > "Properties").any?
+          container.metadata = metadata_from_xml(xml.Metadata) if (xml > "Metadata").any?
+
+          container
+        end
+
+        def self.container_properties_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("Properties", xml)
+
+          properties = ContainerProperties.new 
+          properties.last_modified = (xml > "Last-Modified").text if (xml > "Last-Modified").any?
+          properties.etag = xml.Etag.text if (xml > "Etag").any?
+          properties.lease_status = xml.LeaseStatus.text if (xml > "LeaseStatus").any?
+          properties.lease_state = xml.LeaseState.text if (xml > "LeaseState").any?
+          properties.lease_duration = xml.LeaseDuration.text if (xml > "LeaseDuration").any?
+
+          properties
+        end
+
+        def self.enumeration_results_from_xml(xml, results)
+          xml = slopify(xml)
+          expect_node("EnumerationResults", xml)
+
+          results = results || EnumerationResults.new; 
+
+          results.max_results = xml.MaxResults.text.to_i if (xml > "MaxResults").any?
+          results.next_marker = xml.NextMarker.text if (xml > "NextMarker").any?
+          results.marker = xml.Marker.text.to_i if (xml > "Marker").any?
+          results.prefix = xml.Prefix.text if (xml > "Prefix").any?
+          
+          results
+        end
+
+        def self.metadata_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("Metadata", xml)
+
+          metadata = {}
+
+          xml.children.each { |meta_node|
+            if metadata.has_key? meta_node.name 
+              metadata[meta_node.name] = [metadata[meta_node.name]] unless metadata[meta_node].respond_to? :push
+              metadata[meta_node.name].push(meta_node.text)
+            else
+              metadata[meta_node.name] = meta_node.text
+            end
+          }
+          metadata
+        end
+
+        def self.slopify(xml)
+          (xml.is_a? String) ? Nokogiri.Slop(xml).root : xml 
+        end
+
+        def self.expect_node(node_name, xml)
+          raise "Xml is not a #{node_name} node." unless xml.name == node_name
+        end
+      end
+    end
+  end
+end
