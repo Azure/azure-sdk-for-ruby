@@ -13,7 +13,6 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'azure/service/storage_service'
-require 'azure/entity/service/storage_service_properties'
 require 'azure/entity/blob/serialization'
 
 module Azure
@@ -23,35 +22,7 @@ module Azure
       def initialize
         super()
         @default_timeout = 90
-      end
-
-      attr_accessor :default_timeout
-
-      # Public: Get Blob Service properties
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/hh452239
-      #
-      # Returns a Hash with the service properties or nil if the operation failed
-      def get_service_properties
-        uri = blob_uri("", "", {"restype" => "service", "comp" => "properties"})
-        response = call(:get, uri)
-        properties = Azure::Entity::Service::StorageServiceProperties.parse(response.body)
-        properties
-      end
-
-      # Public: Set Blob Service properties
-      #
-      # service_properties - An instance of Azure::Entity::Service::StorageServiceProperties
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/hh452235
-      #
-      # Returns boolean indicating success.
-      def set_service_properties(service_properties)
-        body = Azure::Entity::Service::StorageServiceProperties.to_xml
-
-        uri = blob_uri("", "", {"restype" => "service", "comp" => "properties"})
-        response = call(:put, uri, body)
-        response.success?
+        @host = Azure.config.blob_host
       end
 
       # Public: Get a list of Containers from the server
@@ -1119,10 +1090,9 @@ module Azure
       # host  - The host of the API.
       #
       # Returns a URI.
-      def containers_uri(query={}, host=Azure.config.blob_host)
+      def containers_uri(query={})
         query = { "comp" => "list" }.merge(query)
-        uri = join(host, "/")
-        add_query(uri, query)
+        generate_uri("/", query)
       end
 
       # Public: Generate the URI for a specific container.
@@ -1132,11 +1102,10 @@ module Azure
       # host  - The host of the API.
       #
       # Returns a URI.
-      def container_uri(name, query={}, host=Azure.config.blob_host)
+      def container_uri(name, query={})
         return name if name.kind_of? ::URI
         query = { "restype" => "container" }.merge(query)
-        uri = join(host, name)
-        add_query(uri, query)
+        generate_uri(name, query)
       end
 
       # Public: Generate the URI for a specific Blob.
@@ -1147,32 +1116,8 @@ module Azure
       # host           - The host of the API.
       #
       # Returns a URI.
-      def blob_uri(container_name, blob_name, query={}, host=Azure.config.blob_host)
-        uri = join(host, File.join(container_name, blob_name))
-        add_query(uri, query)
-      end
-
-      # Public: Adds query to URI, setting default timeout unless it's already in query
-      #
-      # uri   - The URI.
-      # query - A Hash of key => value query paramters
-      #
-      # Returns as URI.
-      def add_query(uri, query={})
-        query["timeout"] = default_timeout.to_s unless query.has_key? "timeout"
-
-        uri.query = ::URI.encode_www_form(query)
-        uri
-      end
-
-      # Utility method to generate the URI.
-      #
-      # host - A String with the URI's host.
-      # path - A String with the URI's path.
-      #
-      # Returns a URI.
-      def join(host, path)
-        ::URI.parse(File.join(host, path))
+      def blob_uri(container_name, blob_name, query={})
+        generate_uri(File.join(container_name, blob_name), query)
       end
     end
   end
