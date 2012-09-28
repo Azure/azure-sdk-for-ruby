@@ -58,7 +58,7 @@ describe Azure::Tables::Table do
   it "can query for a specific entity" do
     table, service = table("mytable")
     service.expect(:query_entity, nil, [table, "Foo", "Bar", {}])
-    table.entities(partition_key: "Foo", row_key: "Bar").must_be_nil
+    table.entities(:partition_key=> "Foo", :row_key=> "Bar").must_be_nil
     service.verify
   end
 

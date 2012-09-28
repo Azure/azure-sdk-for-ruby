@@ -29,8 +29,8 @@ describe "Listing blobs" do
   end
 
   it "returns a list of blobs if one or more exist" do
-    blob_1 = create_block_blob(container: container, name: "blob_1.jpg")
-    blob_2 = create_block_blob(container: container, name: "blob_2.jpg")
+    blob_1 = create_block_blob(:container=> container, :name=> "blob_1.jpg")
+    blob_2 = create_block_blob(:container=> container, :name=> "blob_2.jpg")
 
     blobs = container.blobs
     blobs.must_include(blob_1)

@@ -98,4 +98,4 @@ end
 
 task :test => ["test:unit", "test:integration"]
 
-task default: :test
+task :default => :test

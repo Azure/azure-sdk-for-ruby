@@ -38,8 +38,8 @@ describe Azure::Tables::Types do
     returns_type_for "Edm.String",   "test"
 
     returns_type_for "Edm.DateTime", Time.now
-    returns_type_for "Edm.DateTime", Time.now.to_date
-    returns_type_for "Edm.DateTime", Time.now.to_datetime
+    returns_type_for "Edm.DateTime", Date.new
+    returns_type_for "Edm.DateTime", DateTime.now #Time.now.to_datetime
 
     returns_type_for "Edm.Boolean",  true
     returns_type_for "Edm.Boolean",  false

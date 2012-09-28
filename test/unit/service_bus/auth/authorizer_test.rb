@@ -18,7 +18,7 @@ require "azure/service_bus/auth/wrap"
 
 describe Azure::ServiceBus::Auth::Authorizer do
   before do
-    uri = double(path: "/path")
+    uri = double(:path=> "/path")
 
     @access_token = "THEACCESSTOKEN"
 

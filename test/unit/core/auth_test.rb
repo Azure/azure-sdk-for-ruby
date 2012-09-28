@@ -17,7 +17,7 @@ require "azure/core/auth/authorizer"
 
 describe Azure::Core::Auth do
   before do
-    uri = double(path: "/path")
+    uri = double(:path=> "/path")
 
     @signer = MiniTest::Mock.new
     @signer.stub(:name, "SharedKey")

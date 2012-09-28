@@ -28,11 +28,13 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 1.8.7'
 
+  s.add_runtime_dependency "backports"
   s.add_runtime_dependency("nokogiri",   "~> 1.5")
   s.add_runtime_dependency("mime-types", "~> 1.0")
   s.add_runtime_dependency "libxml-ruby" 
   s.add_runtime_dependency "extlib_lite"
-
+  s.add_runtime_dependency "json"
+  
   s.add_development_dependency("rake")
   s.add_development_dependency("minitest", "~> 3.0")
   s.add_development_dependency("yard")

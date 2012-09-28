@@ -38,7 +38,7 @@ describe Azure::Tables do
 
   describe ".all" do
     let :successful_response do
-      StubResponse.new(success: true, body: Fixtures[:all_tables])
+      StubResponse.new(:success => true, :body=> Fixtures[:all_tables])
     end
 
     it "returns a list of Tables on a successful call" do
@@ -51,11 +51,11 @@ describe Azure::Tables do
 
   describe ".create" do
     let :successful_response do
-      double(success?: true, body: Fixtures[:create_table_response_entry])
+      double(:success? => true, :body=> Fixtures[:create_table_response_entry])
     end
 
     let :failed_response do
-      double(success?: false, body: Fixtures[:error], error: Object.new)
+      double(:success? => false, :body=> Fixtures[:error], :error=> Object.new)
     end
 
     it "returns a valid table when successful" do
@@ -76,11 +76,11 @@ describe Azure::Tables do
 
   describe ".delete" do
     let :successful_response do
-      double(success?: true)
+      double(:success? => true)
     end
 
     let :failed_response do
-      double(success?: false, error: Object.new)
+      double(:success? => false, :error=> Object.new)
     end
 
     it "returns true when successful" do
@@ -104,11 +104,11 @@ describe Azure::Tables do
 
   describe ".insert_entity" do
     let :successful_response do
-      StubResponse.new(success: true, body: Fixtures[:insert_entity_response_entry], etag: "Foo")
+      StubResponse.new(:success => true, :body=> Fixtures[:insert_entity_response_entry], :etag=> "Foo")
     end
 
     let :failed_response do
-      double(success?: false, error: Object.new)
+      double(:success? => false, :error=> Object.new)
     end
 
     it "returns the entity when successful" do
@@ -136,11 +136,11 @@ describe Azure::Tables do
 
   describe ".update_entity" do
     let :successful_response do
-      StubResponse.new(success: true, body: Fixtures[:insert_entity_response_entry], etag: "Foo")
+      StubResponse.new(:success => true, :body=> Fixtures[:insert_entity_response_entry], :etag=> "Foo")
     end
 
     let :failed_response do
-      double(success?: false, error: Object.new)
+      double(:success? => false, :error=> Object.new)
     end
 
     it "replaces the entity's attributes if successful" do
@@ -171,11 +171,11 @@ describe Azure::Tables do
 
   describe ".merge_entity" do
     let :successful_response do
-      StubResponse.new(success: true, body: Fixtures[:insert_entity_response_entry], etag: "Foo")
+      StubResponse.new(:success => true, :body=> Fixtures[:insert_entity_response_entry], :etag=> "Foo")
     end
 
     let :failed_response do
-      double(success?: false, error: Object.new)
+      double(:success? => false, :error=> Object.new)
     end
 
     it "updates the entity's attributes if successful" do
@@ -208,11 +208,11 @@ describe Azure::Tables do
 
   describe ".delete_entity" do
     let :successful_response do
-      StubResponse.new(success: true, etag: "Foo")
+      StubResponse.new(:success => true, :etag=> "Foo")
     end
 
     let :failed_response do
-      double(success?: false, error: Object.new)
+      double(:success? => false, :error=> Object.new)
     end
 
     it "freezes the entity if successful" do
@@ -241,15 +241,15 @@ describe Azure::Tables do
 
   describe ".query_entities" do
     let :successful_response do
-      StubResponse.new(success: true, body: Fixtures[:query_entities_response])
+      StubResponse.new(:success => true, :body=> Fixtures[:query_entities_response])
     end
 
     let :empty_response do
-      StubResponse.new(success: true, body: Fixtures[:query_entities_empty_response])
+      StubResponse.new(:success => true, :body=> Fixtures[:query_entities_empty_response])
     end
 
     let :failed_response do
-      double(success?: false, error: Object.new)
+      double(:success? => false, :error=> Object.new)
     end
 
     it "returns a list of entities when successful" do
@@ -286,11 +286,11 @@ describe Azure::Tables do
 
   describe ".query_entity" do
     let :successful_response do
-      StubResponse.new(success: true, body: Fixtures[:insert_entity_response_entry])
+      StubResponse.new(:success => true, :body=> Fixtures[:insert_entity_response_entry])
     end
 
     let :failed_response do
-      double(success?: false, error: Object.new)
+      double(:success? => false, :error=> Object.new)
     end
 
     it "returns the matching entity when it's successful" do
