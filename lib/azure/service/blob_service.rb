@@ -1042,6 +1042,28 @@ module Azure
         response = call(:put, uri, nil, headers)
         response.headers["x-ms-lease-id"] if response.success?
       end
+
+      # Public: Releases the lease. The lease may be released if the lease ID specified on the request matches that 
+      # associated with the blob. Releasing the lease allows another client to immediately acquire the lease for 
+      # the blob as soon as the release is complete.
+      #
+      # container         - String. The container name.
+      # blob              - String. The blob name.
+      # lease             - String. The lease id
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
+      #
+      # Returns true on sucess
+      def release_lease(container, blob, lease)
+        uri = blob_uri(container, blob, "comp"=>"lease")
+       
+        headers = {}
+        headers["x-ms-lease-action"] = "release"
+        headers["x-ms-lease-id"] = lease
+
+        response = call(:put, uri, nil, headers)
+        response.success?
+      end
       
       # Adds metadata properties to header hash with required prefix
       # 
