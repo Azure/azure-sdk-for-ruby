@@ -543,6 +543,57 @@ module Azure
         response.headers["Content-MD5"]
       end
 
+      # Public: Commits existing blob blocks to a blob.
+      #  
+      # This method writes a blob by specifying the list of block IDs that make up the
+      # blob. In order to be written as part of a blob, a block must have been 
+      # successfully written to the server in a prior create_blob_block method.
+      # 
+      # You can call Put Block List to update a blob by uploading only those blocks 
+      # that have changed, then committing the new and existing blocks together. 
+      # You can do this by specifying whether to commit a block from the committed 
+      # block list or from the uncommitted block list, or to commit the most recently
+      # uploaded version of the block, whichever list it may belong to.
+      # 
+      # container   - String. The container name.
+      # blob        - String. The blob name.
+      # block_list  - Array. A ordered list of Hashs in the following format: 
+      #               [ ["block_id1", :committed], ["block_id2", :uncommitted], ["block_id3"], ["block_id4", :committed]... ]
+      #               The first element of the inner list is the block_id, the second is optional 
+      #               and can be either :committed or :uncommitted to indicate in which group of blocks 
+      #               the id should be looked for. If it is omitted, the latest of either group will be used.
+      #                
+      # options     - Hash. The optional parameters.
+      #   :content_md5           - String. Content MD5 for the request contents (not the blob contents!)
+      #   :blob_content_type     - String. Content type for the blob. Will be saved with blob.
+      #   :blob_content_encoding - String. Content encoding for the blob. Will be saved with blob.
+      #   :blob_content_language - String. Content langauge for the blob. Will be saved with blob.
+      #   :blob_content_md5      - String. Content MD5 for the blob. Will be saved with blob.
+      #   :blob_cache_control    - String. Cache control for the blob. Will be saved with blob.
+      #   :metadata              - Hash. Custom metadata values to store with the blob.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179467.aspx 
+      # 
+      # Returns true on success
+      def commit_blob_blocks(container, blob, block_list, options={})
+        uri = blob_uri(container, blob, {"comp"=> "blocklist" })
+
+        headers = {}
+        headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
+        headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
+        headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
+        headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
+        headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
+        headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
+
+        add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
+
+        body = Azure::Entity::Blob::Serialization.block_list_to_xml(block_list)
+        response = call(:put, uri, body, headers)
+
+        response.success?
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs

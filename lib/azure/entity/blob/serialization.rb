@@ -27,6 +27,7 @@ require 'azure/entity/blob/blob_enumeration_results'
 require 'azure/entity/blob/blob'
 require 'azure/entity/blob/blob_properties'
 
+require "base64"
 
 module Azure
   module Entity
@@ -267,6 +268,25 @@ module Azure
           properties.accept_ranges = headers["Accept-Ranges"].to_i if headers["Accept-Ranges"]
 
           properties
+        end
+
+        def self.block_list_to_xml(block_list)
+          builder = Nokogiri::XML::Builder.new do |xml|
+            xml.BlockList {
+              block_list.each { |block|
+                encoded_id = Base64.strict_encode64(block[0])
+                case block[1]
+                when :uncommitted
+                  xml.Uncommitted encoded_id
+                when :committed
+                  xml.Committed encoded_id
+                else
+                  xml.Latest encoded_id
+                end
+              }
+            }
+          end
+          builder.to_xml
         end
 
         def self.enumeration_results_from_xml(xml, results)
