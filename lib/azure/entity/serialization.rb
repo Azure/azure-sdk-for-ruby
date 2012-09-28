@@ -39,6 +39,13 @@ module Azure
 
       # queue service
 
+      def self.message_to_xml(message_text)
+        builder = Nokogiri::XML::Builder.new do |xml|
+          xml.QueueMessage { xml.MessageText message_text }
+        end
+        builder.to_xml
+      end
+
       def self.queue_enumeration_results_from_xml(xml)
         xml = slopify(xml)
         expect_node("EnumerationResults", xml)

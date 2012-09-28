@@ -195,6 +195,38 @@ module Azure
         response.success?
       end
 
+      # Public: Adds a message to the queue and optionally sets a visibility timeout for the message.
+      # 
+      # queue_name    - String. The queue name.
+      # message_text  - String. The message contents. Note that the message content must be in a format that may be encoded with UTF-8.
+      # options       - Hash. Optional parameters:
+      #   :visibility_timeout   - Integer. Specifies the new visibility timeout value, in seconds, relative to server 
+      #                           time. The new value must be larger than or equal to 0, and cannot be larger than 7 
+      #                           days. The visibility timeout of a message cannot be set to a value later than the 
+      #                           expiry time. :visibility_timeout should be set to a value smaller than the 
+      #                           time-to-live value. If not specified, the default value is 0.
+      # 
+      #   :message_ttl          - Integer. Specifies the time-to-live interval for the message, in seconds. The maximum 
+      #                           time-to-live allowed is 7 days. If not specified, the default time-to-live is 7 days.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179346
+      #
+      # Returns true on success
+      def create_message(queue_name, message_text, options=nil)
+        query = {}
+
+        if options
+          query["visibilitytimeout"] = options[:visibility_timeout] if options[:visibility_timeout]
+          query["messagettl"] = options[:message_ttl] if options[:message_ttl]
+        end
+
+        uri = messages_uri(queue_name, query)
+        body = Azure::Entity::Serialization.message_to_xml(message_text)
+        
+        response = call(:post, uri, body, {})
+        response.success?
+      end
+
       # Public: Generate the URI for the collection of queues.
       #
       # query      - A Hash of query parameters (default: {}).
