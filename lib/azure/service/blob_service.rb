@@ -226,6 +226,23 @@ module Azure
 
       end
 
+      # Public: Sets custom metadata for the container.
+      #
+      # name      - String. The name of the container
+      # metadata  - Hash. A Hash of the metadata values
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179362.aspx
+      #
+      # Returns true on success
+      def set_container_metadata(name, metadata)
+        headers = {}
+        
+        add_metadata_to_headers(metadata, headers) if metadata
+
+        response = call(:put, container_uri(name, {"comp"=>"metadata"}), nil, headers)
+        response.success?
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
