@@ -323,6 +323,21 @@ module Azure
 
           block_list
         end
+        
+        def self.page_list_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("PageList", xml)
+
+          page_list = []
+
+          return page_list unless (xml > "PageRange").any?
+
+          xml.PageRange.each { |page_range|
+            page_list.push [page_range.Start.text.to_i, page_range.End.text.to_i]
+          }
+
+          page_list
+        end
 
         def self.enumeration_results_from_xml(xml, results)
           xml = slopify(xml)
