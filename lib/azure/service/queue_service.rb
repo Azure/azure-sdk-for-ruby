@@ -13,6 +13,7 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'azure/service/storage_service'
+require 'azure/entity/serialization'
 
 module Azure
   module Service
@@ -21,6 +22,57 @@ module Azure
         super()
         @host = Azure.config.queue_host
         @default_timeout = 30
+      end
+
+      # Public: Get a list of Queues from the server
+      # options           - Hash. Optional parameters. 
+      #
+      # Accepted key/value pairs in options parameter are:
+      # :prefix           - String. Filters the results to return only containers 
+      #                     whose name begins with the specified prefix. (optional)
+      #
+      # :marker           - String. An identifier the specifies the portion of the 
+      #                     list to be returned. This value comes from the property
+      #                     Azure::Entity::Blob::EnumerationResults.marker when there 
+      #                     are more containers available than were returned. The 
+      #                     marker value may then be used here to request the next set
+      #                     of list items. (optional)
+      #
+      # :max_results      - Integer. Specifies the maximum number of containers to return. 
+      #                     If max_results is not specified, or is a value greater than 
+      #                     5,000, the server will return up to 5,000 items. If it is set 
+      #                     to a value less than or equal to zero, the server will return 
+      #                     status code 400 (Bad Request). (optional)
+      #
+      # :timeout          - Integer. A timeout in seconds. (optional)
+      #
+      # :metadata         - Boolean. Specifies wether or not to return the container metadata.
+      #                     (optional, Default=false)
+      #
+      # NOTE: Metadata requested with the :metadata parameter must have been stored in
+      # accordance with the naming restrictions imposed by the 2009-09-19 version of the Blob 
+      # service. Beginning with that version, all metadata names must adhere to the naming 
+      # conventions for C# identifiers.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179466 
+      #
+      # Any metadata with invalid names which were previously stored, will be returned with the 
+      # key "x-ms-invalid-name" in the metadata hash. This may contain multiple values and be an
+      # Array (vs a String if it only contains a single value).
+      # 
+      # Returns an Azure::Entity::Blob::QueueEnumerationResults
+      def list_queues(options={})
+        query = {}
+        query["prefix"] = options[:prefix] if options[:prefix]
+        query["marker"] = options[:marker] if options[:marker]
+        query["maxresults"] = options[:max_results].to_s if options[:max_results]
+        query["include"] = "metadata" if options[:metadata] == true
+        query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+        uri = containers_uri(query)
+        response = call(:get, uri)
+
+        Azure::Entity::Serialization.queue_enumeration_results_from_xml(response.body)
       end
 
       # Public: Generate the URI for the collection of queues.

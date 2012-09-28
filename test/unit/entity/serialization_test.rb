@@ -14,8 +14,8 @@
 #--------------------------------------------------------------------------
 require "test_helper"
 
-require "azure/entity/blob/enumeration_results"
-require "azure/entity/blob/serialization"
+require "azure/entity/enumeration_results"
+require "azure/entity/serialization"
 
 require "azure/entity/blob/container_enumeration_results"
 require "azure/entity/blob/container"
@@ -25,15 +25,15 @@ require "azure/entity/blob/blob_enumeration_results"
 require "azure/entity/blob/blob"
 require "azure/entity/blob/blob_properties"
 
-describe Azure::Entity::Blob::Serialization do
+describe Azure::Entity::Serialization do
   describe ".enumeration_results_from_xml parses the xml and " do
 
     subject do
-      Azure::Entity::Blob::Serialization.enumeration_results_from_xml(Fixtures[:list_containers], Azure::Entity::Blob::EnumerationResults.new)
+      Azure::Entity::Serialization.enumeration_results_from_xml(Fixtures[:list_containers], Azure::Entity::EnumerationResults.new)
     end
 
-    it "parses EnumerationResults XML element as Azure::Entity::Blob::EnumerationResults" do
-        subject.must_be :kind_of?, Azure::Entity::Blob::EnumerationResults
+    it "parses EnumerationResults XML element as Azure::Entity::EnumerationResults" do
+        subject.must_be :kind_of?, Azure::Entity::EnumerationResults
     end
 
     it "parses EnumerationResults XML child elements into object properties" do
@@ -46,7 +46,7 @@ describe Azure::Entity::Blob::Serialization do
   describe ".container_enumeration_results_from_xml parses the xml and " do
 
     subject do
-      Azure::Entity::Blob::Serialization.container_enumeration_results_from_xml(Fixtures[:list_containers])
+      Azure::Entity::Serialization.container_enumeration_results_from_xml(Fixtures[:list_containers])
     end
 
     it "parses EnumerationResults XML element as Azure::Entity::Blob::ContainerEnumerationResults" do
@@ -132,7 +132,7 @@ describe Azure::Entity::Blob::Serialization do
 
   describe ".blob_enumeration_results_from_xml parses the xml and " do
     subject do
-      Azure::Entity::Blob::Serialization.blob_enumeration_results_from_xml(Fixtures[:list_blobs])
+      Azure::Entity::Serialization.blob_enumeration_results_from_xml(Fixtures[:list_blobs])
     end
 
     it "parses EnumerationResults XML element as Azure::Entity::Blob::BlobEnumerationResults" do

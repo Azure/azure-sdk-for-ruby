@@ -12,14 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'azure/entity/enumeration_results'
+
 module Azure
   module Entity
-    module Blob
-      class EnumerationResults
-        attr_accessor :prefix
-        attr_accessor :marker
-        attr_accessor :max_results
-        attr_accessor :next_marker
+    module Queue
+      class QueueEnumerationResults < EnumerationResults
+
+        def initialize
+          @queues = []
+        end
+
+        attr_accessor :account_name
+        attr_accessor :queues
       end
     end
   end

@@ -23,8 +23,8 @@ module Azure
 
       # Create a new instance of the StorageService
       #
-      # auth_filter - HttpFilter. An implementation of HttpFilter used for 
-      # signing requests.  
+      # signer        - Azure::Core::Signer. An implementation of Signer used for signing requests. (optional, Default=Azure::Core::Auth::Strategies::SharedKey.new)
+      # account_name  - String. The account name (optional, Default=Azure.config.account_name)  
       def initialize(signer=Azure::Core::Auth::Strategies::SharedKey.new, account_name=Azure.config.account_name)
         @account_name = account_name
         @signer = signer
