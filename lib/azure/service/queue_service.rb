@@ -298,6 +298,23 @@ module Azure
         messages
       end
 
+      # Public: Retrieves one or more messages from the front of the queue.
+      #
+      # queue_name            - String. The name of the queue.
+      # visibility_timeout    - Integer. The new visibility timeout value, in seconds, relative to server time.
+      # number_of_messages    - Integer. How many messages to return. (optional, Default: 1)
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179474
+      #
+      # Returns a list of Azure::Entity::Queue::Message instances
+      def list_messages(queue_name, visibility_timeout, number_of_messages=1)
+        uri = messages_uri(queue_name, { "visibilitytimeout" => visibility_timeout.to_s, "numofmessages"=> number_of_messages.to_s})
+        response = call(:get, uri)
+
+        messages = Azure::Entity::Serialization.messages_from_xml(response.body)
+        messages
+      end
+
       # Public: Generate the URI for the collection of queues.
       #
       # query      - A Hash of query parameters (default: {}).
