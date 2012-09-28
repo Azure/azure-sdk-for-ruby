@@ -430,6 +430,34 @@ module Azure
         blob
       end
 
+      # Public: Clears a range of pages from the blob.
+      #
+      # container    - String. Name of container
+      # blob         - String. Name of blob
+      # start_range  - Integer. Position of first byte of first page
+      # end_range    - Integer. Position of last byte of of last page
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691975.aspx
+      #
+      # Returns Blob
+      def clear_blob_pages(container, blob, start_range, end_range)
+        uri = blob_uri(container, blob, {"comp"=> "page"})
+        headers = {}
+        headers["x-ms-range"] = "#{start_range}-#{end_range}"
+        headers["x-ms-page-write"] = "clear"
+
+        # clear default content type
+        headers["Content-Type"] = ""
+
+        response = call(:put, uri, nil, headers)
+
+        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+        blob.name = blob
+        blob.url = uri
+
+        blob
+      end
+      
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
