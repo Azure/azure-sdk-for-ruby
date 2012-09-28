@@ -848,6 +848,33 @@ module Azure
         return blob, response.body
       end
 
+      # Public: Deletes a blob or blob snapshot.
+      #
+      # container         - String. The container name.
+      # blob              - String. The blob name.
+      # snapshot          - String. An opaque DateTime value that specifies the blob snapshot to 
+      #                     retrieve information from. (optional)
+      # delete_snapshots  - Symbol. Used to specify the scope of the delete operation for snapshots.
+      #                     This parameter is ignored if a blob does not have snapshots, or if a 
+      #                     snapshot is specified in the snapshot parameter. (optional)
+      # 
+      #                     Possible values include:  
+      #                       :only     - Deletes only the snapshots for the blob, but leaves the blob
+      #                       :include  - Deletes the blob and all of the snapshots for the blob
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179440.aspx
+      #
+      # Returns true on success
+      def delete_blob(container, blob, snapshot=nil, delete_snapshots=:include)
+        uri = blob_uri(container, blob, snapshot ? {"snapshot" => snapshot} : {})
+
+        headers = {}
+        headers["x-ms-delete-snapshots"] = delete_snapshots.to_s if delete_snapshots && snapshot == nil
+
+        response = call(:del, uri, nil, headers)
+        response.success?
+      end
+      
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
