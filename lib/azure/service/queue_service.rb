@@ -222,8 +222,63 @@ module Azure
 
         uri = messages_uri(queue_name, query)
         body = Azure::Entity::Serialization.message_to_xml(message_text)
-        
+
         response = call(:post, uri, body, {})
+        response.success?
+      end
+
+      # Public: Deletes a specified message from the queue.
+      # 
+      # queue_name    - String. The name of the queue.
+      # message_id    - String. The id of the message.
+      # pop_receipt   - String. The valid pop receipt value returned from an earlier call to the Get Messages or 
+      #                 Update Message operation.
+      # 
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179347
+      #
+      # Returns true on success
+      #
+      # Remarks:
+      #
+      # When a message is successfully deleted, it is immediately marked for deletion and is no longer accessible to 
+      # clients. The message is later removed from the queue during garbage collection.
+      # 
+      # After a client retrieves a message with the Get Messages operation, the client is expected to process and 
+      # delete the message. To delete the message, you must have two items of data returned in the response body of 
+      # the Get Messages operation:
+      # 
+      #   - The message ID, an opaque GUID value that identifies the message in the queue.
+      # 
+      #   - A valid pop receipt, an opaque value that indicates that the message has been retrieved.
+      # 
+      # The message ID is returned from the previous Get Messages operation. The pop receipt is returned from the most 
+      # recent Get Messages or Update Message operation. In order for the Delete Message operation to succeed, the pop 
+      # receipt specified on the request must match the pop receipt returned from the Get Messages or Update Message 
+      # operation.
+      # 
+      # Pop receipts remain valid until one of the following events occurs:
+      #
+      #   - The message has expired.
+      #
+      #   - The message has been deleted using the last pop receipt received either from Get Messages or Update Message. 
+      # 
+      #   - The invisibility time has elapsed and the message has been dequeued by a Get Messages request. When the 
+      #     invisibility time elapses, the message becomes visible again. If it is retrieved by another Get Messages 
+      #     request, the returned pop receipt can be used to delete or update the message.
+      # 
+      #   - The message has been updated with a new visibility timeout. When the message is updated, a new pop receipt 
+      #     will be returned.
+      # 
+      # If the message has already been deleted when Delete Message is called, the Queue service returns status code 
+      # 404 (Not Found).
+      # 
+      # If a message with a matching pop receipt is not found, the service returns status code 400 (Bad Request), with 
+      # additional error information indicating that the cause of the failure was a mismatched pop receipt.
+      #
+      def delete_message(queue_name, message_id, pop_receipt)
+        uri = message_uri(queue_name, message_id, { "popreceipt" => pop_receipt })
+
+        response = call(:delete, uri)
         response.success?
       end
 
