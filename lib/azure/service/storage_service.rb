@@ -64,6 +64,7 @@ module Azure
       # Public: Get Storage Service properties
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452239
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452243
       #
       # Returns a Hash with the service properties or nil if the operation failed
       def get_service_properties
@@ -78,6 +79,7 @@ module Azure
       # service_properties - An instance of Azure::Entity::Service::StorageServiceProperties
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452235
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452232
       #
       # Returns boolean indicating success.
       def set_service_properties(service_properties)
