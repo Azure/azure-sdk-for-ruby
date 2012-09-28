@@ -39,6 +39,35 @@ module Azure
 
       # queue service
 
+      def self.queue_messages_from_xml(xml)
+        xml = slopify(xml)
+        expect_node("QueueMessagesList", xml)
+        results = []
+        return results unless ((xml > "QueueMessagesList") > "QueueMessage").any?
+
+        xml.QueueMessagesList.QueueMessage.each { |message_node|
+          results.push(queue_message_from_xml(message_node))
+        }
+
+        results
+      end
+
+      def self.queue_message_from_xml(xml)
+        xml = slopify(xml)
+        expect_node("QueueMessage", xml)
+
+        message = Azure::Entity::Queue::Message.new
+        message.id = xml.MessageId.text if (xml > "MessageId").any?
+        message.insertion_time = xml.InsertionTime.text if (xml > "InsertionTime").any?
+        message.expiration_time = xml.ExpirationTime.text if (xml > "ExpirationTime").any?
+        message.dequeue_count = xml.DequeueCount.text.to_i if (xml > "DequeueCount").any?
+        message.message_text = xml.MessageText.text if (xml > "MessageText").any?
+        message.time_next_visible = xml.TimeNextVisible.text if (xml > "TimeNextVisible").any?
+        message.pop_receipt = xml.PopReceipt.text if (xml > "PopReceipt").any?
+
+        message
+      end
+
       def self.message_to_xml(message_text)
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.QueueMessage { xml.MessageText message_text }

@@ -282,6 +282,22 @@ module Azure
         response.success?
       end
 
+      # Public: Retrieves one or more messages from the front of the queue, without changing the message visibility.
+      #
+      # queue_name            - String. The name of the queue.
+      # number_of_messages    - Integer. How many messages to return. (optional, Default: 1)
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179472
+      #
+      # Returns a list of Azure::Entity::Queue::Message instances
+      def peek_messages(queue_name, number_of_messages=1)
+        uri = messages_uri(queue_name, { "peekonly" => "true", "numofmessages"=> number_of_messages.to_s})
+        response = call(:get, uri)
+
+        messages = Azure::Entity::Serialization.messages_from_xml(response.body)
+        messages
+      end
+
       # Public: Generate the URI for the collection of queues.
       #
       # query      - A Hash of query parameters (default: {}).
