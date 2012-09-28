@@ -75,6 +75,26 @@ module Azure
         Azure::Entity::Serialization.queue_enumeration_results_from_xml(response.body)
       end
 
+      # Public: Clears all messages from the queue.
+      # 
+      # If a queue contains a large number of messages, Clear Messages may time out 
+      # before all messages have been deleted. In this case the Queue service will 
+      # return status code 500 (Internal Server Error), with the additional error 
+      # code OperationTimedOut. If the operation times out, the client should 
+      # continue to retry Clear Messages until it succeeds, to ensure that all 
+      # messages have been deleted.
+      # 
+      # queue_name   - String. The name of the queue.
+      # 
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179454.aspx
+      # 
+      # Returns true on success
+      def clear_messages(queue_name)
+        uri = messages_uri(queue_name)
+        response = call(:delete, uri)
+        response.success?
+      end
+
       # Public: Generate the URI for the collection of queues.
       #
       # query      - A Hash of query parameters (default: {}).
