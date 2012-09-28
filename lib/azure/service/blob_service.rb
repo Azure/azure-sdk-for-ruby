@@ -625,6 +625,28 @@ module Azure
 
       end
 
+      # Public: Returns all properties and metadata on the blob.
+      #
+      # container      - String. The container name.
+      # blob           - String. The blob name.
+      # snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
+      #                  retrieve information from. (optional)
+      #
+      # Returns a Blob
+      def get_blob_properties(container, blob, snapshot=nil)
+        uri = blob_uri(container, blob, snapshot ? { "snapshot" => snapshot } : {})
+
+        response = call(:get, uri)
+
+        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+
+        blob.name = blob
+        blob.url = uri
+        blob.snapshot = snapshot
+
+        blob
+      end
+      
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
