@@ -874,7 +874,50 @@ module Azure
         response = call(:del, uri, nil, headers)
         response.success?
       end
-      
+
+      # Public: Creates a snapshot of a blob.
+      #
+      # container       - String. The container name.
+      # blob            - String. The blob name.
+      # options         - Hash. The optional parameters.
+      #   :metadata               - Hash. Custom metadata values to store with the blob snapshot.
+      #
+      #   :if_modified_since      - A DateTime value. Specify this option to write the page only if the blob has been 
+      #                             modified since the specified date/time. If the blob has not been modified, the 
+      #                             Blob service returns status code 412 (Precondition Failed).
+      #
+      #   :if_unmodified_since    - A DateTime value. Specify this option to write the page only if the blob has not 
+      #                             been modified since the specified date/time. If the blob has been modified, the 
+      #                             Blob service returns status code 412 (Precondition Failed).
+      #
+      #   :if_match               - An ETag value. Specify an ETag value to write the page only if the blob's ETag 
+      #                             value matches the value specified. If the values do not match, the Blob service 
+      #                             returns status code 412 (Precondition Failed).
+      #
+      #   :if_none_match          - An ETag value. Specify an ETag value to write the page only if the blob's ETag 
+      #                             value does not match the value specified. If the values are identical, the Blob 
+      #                             service returns status code 412 (Precondition Failed).
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691971.aspx
+      # 
+      # Returns the snapshot DateTime value
+      def create_blob_snapshot(container, blob)
+        uri = blob_uri(container, blob, "comp"=>"snapshot")
+
+        headers = {}
+
+        add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
+
+        headers["If-Modified-Since"] = options[:if_modified_since] if options[:if_modified_since]
+        headers["If-Unmodified-Since"] = options[:if_unmodified_since] if options[:if_unmodified_since]
+        headers["If-Match"] = options[:if_match] if options[:if_match]
+        headers["If-None-Match"] = options[:if_none_match] if options[:if_none_match]
+
+        response = call(:put, uri, nil, headers)
+
+        response.headers["x-ms-snapshot"]
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
