@@ -243,7 +243,7 @@ module Azure
         response.success?
       end
 
-      # Public: Get a list of Containers from the server
+      # Public: Get a list of Blobs from the server
       #
       # name              - String. The name of the container to list blobs for. 
       # options           - Hash. Optional parameters. 
@@ -319,6 +319,69 @@ module Azure
         response = call(:get, uri)
 
         Azure::Entity::Blob::Serialization.blob_enumeration_results_from_xml(response.body)
+      end
+
+      # Public: Creates a new page blob. Note that calling create_page_blob to create a page
+      # blob only initializes the blob. To add content to a page blob, call create_blob_pages method.
+      # 
+      # container - String. The container name.
+      # blob - String. The blob name.
+      # length - Integer. Specifies the maximum size for the page blob, up to 1 TB. The page blob size must be aligned to a 512-byte boundary.
+      # options - Hash. The optional parameters. Understood hash values listed below:
+      #   :content_type          - String. Content type for the request. Will be saved with blob unless alternate value is provided in blob_content_type.
+      #   :content_encoding      - String. Content encoding for the request. Will be saved with blob unless alternate value is provided in blob_content_encoding.
+      #   :content_language      - String. Content langauge for the request. Will be saved with blob unless alternate value is provided in blob_content_language.
+      #   :content_md5           - String. Content MD5 for the request. Will be saved with blob unless alternate value is provided in blob_content_md5.
+      #   :cache_control         - String. Cache control for the request. Will be saved with blob unless alternate value is provided in blob_cache_control.
+      #   :blob_content_type     - String. Content type for the blob. Will be saved with blob.
+      #   :blob_content_encoding - String. Content encoding for the blob. Will be saved with blob.
+      #   :blob_content_language - String. Content langauge for the blob. Will be saved with blob.
+      #   :blob_content_md5      - String. Content MD5 for the blob. Will be saved with blob.
+      #   :blob_cache_control    - String. Cache control for the blob. Will be saved with blob.
+      #   :metadata              - Hash. Custom metadata values to store with the blob.
+      #   :sequence_number       - Integer. The sequence number is a user-controlled value that you can use to track requests. The value of the sequence number must be between 0 and 2^63 - 1.The default value is 0.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179451.aspx
+      #
+      # Returns a Blob
+      def create_page_blob(container, blob, length, options={})
+        uri = blob_uri(container, blob)
+        
+        headers = {}
+
+        # set x-ms-blob-type to PageBlob
+        headers["x-ms-blob-type"] = "PageBlob"
+
+        # ensure content-length is 0 and x-ms-blob-content-length is the blob length
+        headers["Content-Length"] = 0
+        headers["x-ms-blob-content-length"] = length
+        
+        # set x-ms-sequence-number from options (or default to 0)
+        headers["x-ms-sequence-number"] = options[:sequence_number] || 0
+
+        # set the rest of the optional headers
+        headers["Content-Type"] = options[:content_type] if options[:content_type]
+        headers["Content-Encoding"] = options[:content_encoding] if options[:content_encoding]
+        headers["Content-Language"] = options[:content_language] if options[:content_language]
+        headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
+        headers["Cache-Control"] = options[:cache_control] if options[:cache_control]
+
+        headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
+        headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
+        headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
+        headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
+        headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
+
+        add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
+
+        # call PutBlob with empty body
+        response = call(:put, uri, nil, headers)
+
+        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+        blob.name = blob
+        blob.url = uri
+
+        blob
       end
 
       # Adds metadata properties to header hash with required prefix

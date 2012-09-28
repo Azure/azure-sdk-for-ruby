@@ -203,6 +203,13 @@ module Azure
           blob
         end
 
+        def self.blob_from_headers(headers)
+          blob = Blob.new
+          blob.properties = blob_properties_from_headers(headers)
+          blob.metadata = metadata_from_headers(headers)
+          blob
+        end
+
         def self.blob_properties_from_xml(xml)
           xml = slopify(xml)
           expect_node("Properties", xml)
@@ -228,6 +235,36 @@ module Azure
           properties.copy_progress = xml.CopyProgress.text if (xml > "CopyProgress").any?
           properties.copy_completion_time = xml.CopyCompletionTime.text if (xml > "CopyCompletionTime").any?
           properties.copy_status_description = xml.CopyStatusDescription.text if (xml > "CopyStatusDescription").any?
+
+          properties
+        end
+
+        def self.blob_properties_from_headers(headers)
+          properties = BlobProperties.new
+          properties.last_modified = headers["Last-Modified"] 
+          properties.etag = headers["Etag"]
+          properties.lease_status = headers["x-ms-lease-status"]
+          properties.lease_state = headers["x-ms-lease-state"]
+          properties.lease_duration = headers["x-ms-lease-duration"]
+
+          properties.content_length = headers["x-ms-blob-content-length"] || headers["Content-Length"]
+          properties.content_type =  headers["x-ms-blob-content-type"] || headers["Content-Type"]
+          properties.content_encoding = headers["x-ms-blob-content-encoding"] || headers["Content-Encoding"]
+          properties.content_language = headers["x-ms-blob-content-language"] || headers["Content-Language"]
+          properties.content_md5 = headers["x-ms-blob-content-md5"] || headers["Content-MD5"]
+
+          properties.cache_control = headers["x-ms-blob-cache-control"] || headers["Cache-Control"]
+          properties.sequence_number = headers["x-ms-blob-sequence-number"].to_i if headers["x-ms-blob-sequence-number"] 
+          properties.blob_type = headers["x-ms-blob-type"]
+
+          properties.copy_id = headers["x-ms-copy-id"]
+          properties.copy_status = headers["x-ms-copy-status"]
+          properties.copy_source = headers["x-ms-copy-source"]
+          properties.copy_progress = headers["x-ms-copy-progress"]
+          properties.copy_completion_time = headers["x-ms-copy-completion-time"]
+          properties.copy_status_description = headers["x-ms-copy-status-description"]
+
+          properties.accept_ranges = headers["Accept-Ranges"].to_i if headers["Accept-Ranges"]
 
           properties
         end
