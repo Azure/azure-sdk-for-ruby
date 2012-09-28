@@ -23,6 +23,10 @@ require 'azure/entity/blob/container_properties'
 require 'azure/entity/blob/signed_identifier'
 require 'azure/entity/blob/access_policy'
 
+require 'azure/entity/blob/blob_enumeration_results'
+require 'azure/entity/blob/blob'
+require 'azure/entity/blob/blob_properties'
+
 
 module Azure
   module Entity
@@ -150,6 +154,83 @@ module Azure
           access_policy
         end
 
+        def self.blob_enumeration_results_from_xml(xml)
+        
+          xml = slopify(xml)
+          expect_node("EnumerationResults", xml)
+
+          results = enumeration_results_from_xml(xml, BlobEnumerationResults.new)
+          results.container_name = xml["ContainerName"]
+
+          return results unless (xml > "Blobs").any?
+
+          if ((xml > "Blobs") > "BlobPrefix").any?
+            if xml.Blobs.BlobPrefix.count == 0
+              results.blob_prefixes.push(xml.Blobs.BlobPrefix.Name.text) #if (xml.Blobs.BlobPrefix > "Name").any?
+            else
+              xml.Blobs.BlobPrefix.each { |blob_prefix_node|
+                results.blob_prefixes.push(blob_prefix_node.Name.text) if (blob_prefix_node > "Name").any?
+              }
+            end
+          end
+
+          if ((xml > "Blobs") > "Blob").any?
+            if xml.Blobs.Blob.count == 0
+              results.blobs.push(blob_from_xml(xml.Blobs.Blob))
+            else
+              xml.Blobs.Blob.each { |blob_node|
+                results.blobs.push(blob_from_xml(blob_node))
+              }
+            end
+          end
+
+          results
+        end
+        
+        def self.blob_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("Blob", xml)
+
+          blob = Blob.new
+
+          blob.name = xml.Name.text if (xml > "Name").any?
+          blob.url = xml.Url.text if (xml > "Url").any?
+          blob.snapshot = xml.Snapshot.text if (xml > "Snapshot").any?
+
+          blob.properties = blob_properties_from_xml(xml.Properties) if (xml > "Properties").any?
+          blob.metadata = metadata_from_xml(xml.Metadata) if (xml > "Metadata").any?
+
+          blob
+        end
+
+        def self.blob_properties_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("Properties", xml)
+
+          properties = BlobProperties.new 
+          properties.last_modified = (xml > "Last-Modified").text if (xml > "Last-Modified").any?
+          properties.etag = xml.Etag.text if (xml > "Etag").any?
+          properties.lease_status = xml.LeaseStatus.text if (xml > "LeaseStatus").any?
+          properties.lease_state = xml.LeaseState.text if (xml > "LeaseState").any?
+          properties.lease_duration = xml.LeaseDuration.text if (xml > "LeaseDuration").any?
+          properties.content_length = (xml > "Content-Length").text.to_i if (xml > "Content-Length").any?
+          properties.content_type = (xml > "Content-Type").text if (xml > "Content-Type").any?
+          properties.content_encoding = (xml > "Content-Encoding").text if (xml > "Content-Encoding").any?
+          properties.content_language = (xml > "Content-Language").text if (xml > "Content-Language").any?
+          properties.content_md5 = (xml > "Content-MD5").text if (xml > "Content-MD5").any?
+
+          properties.cache_control = (xml > "Cache-Control").text if (xml > "Cache-Control").any?
+          properties.sequence_number = (xml > "x-ms-blob-sequence-number").text.to_i if (xml > "x-ms-blob-sequence-number").any?
+          properties.blob_type = xml.BlobType.text if (xml > "BlobType").any?
+          properties.copy_id = xml.CopyId.text if (xml > "CopyId").any?
+          properties.copy_status = xml.CopyStatus.text if (xml > "CopyStatus").any?
+          properties.copy_source = xml.CopySource.text if (xml > "CopySource").any?
+          properties.copy_progress = xml.CopyProgress.text if (xml > "CopyProgress").any?
+          properties.copy_completion_time = xml.CopyCompletionTime.text if (xml > "CopyCompletionTime").any?
+          properties.copy_status_description = xml.CopyStatusDescription.text if (xml > "CopyStatusDescription").any?
+
+          properties
+        end
 
         def self.enumeration_results_from_xml(xml, results)
           xml = slopify(xml)

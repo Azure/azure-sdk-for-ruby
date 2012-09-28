@@ -243,6 +243,84 @@ module Azure
         response.success?
       end
 
+      # Public: Get a list of Containers from the server
+      #
+      # name              - String. The name of the container to list blobs for. 
+      # options           - Hash. Optional parameters. 
+      #
+      # Accepted key/value pairs in options parameter are:
+      # :prefix           - String. Filters the results to return only blobs 
+      #                     whose name begins with the specified prefix. (optional)
+      #
+      # :delimiter        - String. When the request includes this parameter, the operation 
+      #                     returns a BlobPrefix element in the response body that acts as a 
+      #                     placeholder for all blobs whose names begin with the same substring 
+      #                     up to the appearance of the delimiter character. The delimiter may 
+      #                     be a single character or a string.
+      #
+      # :marker           - String. An identifier that specifies the portion of the 
+      #                     list to be returned. This value comes from the property
+      #                     Azure::Entity::Blob::BlobEnumerationResults.marker when 
+      #                     there are more blobs available than were returned. The 
+      #                     marker value may then be used here to request the next set
+      #                     of list items. (optional)
+      #
+      # :max_results      - Integer. Specifies the maximum number of blobs to return. 
+      #                     If max_results is not specified, or is a value greater than 
+      #                     5,000, the server will return up to 5,000 items. If it is set 
+      #                     to a value less than or equal to zero, the server will return 
+      #                     status code 400 (Bad Request). (optional)
+      #
+      # :timeout          - Integer. A timeout in seconds. (optional)
+      #
+      # :metadata         - Boolean. Specifies wether or not to return the blob metadata.
+      #                     (optional, Default=false)
+      # :snapshots        - Boolean. Specifies that snapshots should be included in the 
+      #                     enumeration. Snapshots are listed from oldest to newest in the 
+      #                     response. (optional, Default=false)
+      # :uncomittedblobs  - Boolean. Specifies that blobs for which blocks have been uploaded, 
+      #                     but which have not been committed using put_block_list, be included
+      #                     in the response. (optional, Default=false)
+      # :copy             - Boolean. Specifies that metadata related to any current or previous 
+      #                     copy_blob operation should be included in the response. 
+      #                     (optional, Default=false)
+      #
+      # NOTE: Metadata requested with the :metadata parameter must have been stored in
+      # accordance with the naming restrictions imposed by the 2009-09-19 version of the Blob 
+      # service. Beginning with that version, all metadata names must adhere to the naming 
+      # conventions for C# identifiers.
+      #
+      # See: http://msdn.microsoft.com/en-us/library/windowsazure/dd135734.aspx
+      #
+      # Any metadata with invalid names which were previously stored, will be returned with the 
+      # key "x-ms-invalid-name" in the metadata hash. This may contain multiple values and be an
+      # Array (vs a String if it only contains a single value).
+      # 
+      # Returns an Azure::Entity::Blob::BlobEnumerationResults
+      def list_blobs(name, options={})
+        query = {}
+
+        query["comp"] = "list"
+        query["prefix"] = options[:prefix] if options[:prefix]
+        query["delimiter"] = options[:delimiter] if options[:delimiter]
+        query["marker"] = options[:marker] if options[:marker]
+        query["maxresults"] = options[:max_results].to_s if options[:max_results]
+        query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+        included_datasets = []
+        included_datasets.push("metadata") if options[:metadata] == true
+        included_datasets.push("snapshots") if options[:snapshots] == true
+        included_datasets.push("uncommittedblobs") if options[:uncommittedblobs] == true
+        included_datasets.push("copy") if options[:copy] == true
+
+        query["include"] = included_datasets.join ',' if included_datasets.length > 0
+
+        uri = container_uri(name, query)
+        response = call(:get, uri)
+
+        Azure::Entity::Blob::Serialization.blob_enumeration_results_from_xml(response.body)
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
