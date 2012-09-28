@@ -373,7 +373,7 @@ module Azure
       #
       # Returns a URI.
       def collection_uri(query={})
-        query.update(comp: 'list', include: 'metadata')
+        query.update({:comp => 'list', :include => 'metadata'})
         generate_uri(host, "", query)
       end
 
