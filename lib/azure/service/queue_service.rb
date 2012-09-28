@@ -145,6 +145,24 @@ module Azure
         return approximate_messages_count, metadata
       end
 
+      # Public: Sets user-defined metadata on the queue. To delete queue metadata, call 
+      # this API with an empty hash in the metadata parameter.
+      # 
+      # queue_name    - String. The queue name.
+      # metadata      - Hash. A hash of user defined metadata
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179348
+      #
+      # Returns true on success
+      def set_queue_metadata(queue_name, metadata)
+        uri = queue_uri(queue_name, { "comp" => "metadata" })
+        headers ={}
+        add_metadata_to_headers(metadata || {}, headers)
+
+        response = call(:put, uri, nil, headers)
+        response.success?
+      end
+
       # Public: Generate the URI for the collection of queues.
       #
       # query      - A Hash of query parameters (default: {}).
