@@ -163,6 +163,38 @@ module Azure
         response.success?
       end
 
+      # Public: Gets the access control list (ACL) for the queue.
+      #
+      # queue_name    - String. The queue name.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159101
+      #
+      # Returns a list of Azure::Entity::SignedIdentifier instances
+      def get_queue_acl(queue_name)
+        response = call(:get, queue_uri(queue_name, {"comp"=>"acl"}))
+
+        signed_identifiers = []
+        signed_identifiers = Azure::Entity::Serialization.signed_identifiers_from_xml(response.body) unless response.body == nil or response.body.length < 1
+        signed_identifiers
+      end
+
+      # Public: Sets the access control list (ACL) for the queue.
+      #
+      # queue_name          - String. The queue name.
+      # signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
+      # 
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159099
+      #
+      # Returns true on success
+      def set_queue_acl(queue_name, signed_identifiers=[])
+        uri =queue_uri(queue_name, {"comp"=>"acl"})
+        body = nil
+        body = Azure::Entity::Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && signed_identifiers.length > 0
+
+        response = call(:put, uri, body, {})
+        response.success?
+      end
+
       # Public: Generate the URI for the collection of queues.
       #
       # query      - A Hash of query parameters (default: {}).

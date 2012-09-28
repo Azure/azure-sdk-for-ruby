@@ -20,8 +20,8 @@ require 'azure/entity/blob/container_enumeration_results'
 require 'azure/entity/blob/container'
 require 'azure/entity/blob/container_properties'
 
-require 'azure/entity/blob/signed_identifier'
-require 'azure/entity/blob/access_policy'
+require 'azure/entity/signed_identifier'
+require 'azure/entity/access_policy'
 
 require 'azure/entity/blob/blob_enumeration_results'
 require 'azure/entity/blob/blob'
@@ -171,7 +171,7 @@ module Azure
         xml = slopify(xml)
         expect_node("SignedIdentifier", xml)
 
-        signed_identifier = Azure::Entity::Blob::SignedIdentifier.new
+        signed_identifier = Azure::Entity::SignedIdentifier.new
         signed_identifier.id = xml.Id.text if (xml > "Id").any?
         signed_identifier.access_policy = access_policy_from_xml(xml) if (xml > "AccessPolicy").any?
 
@@ -182,7 +182,7 @@ module Azure
         xml = slopify(xml)
         expect_node("AccessPolicy", xml)
 
-        access_policy = Azure::Entity::Blob::AccessPolicy.new
+        access_policy = Azure::Entity::AccessPolicy.new
         access_policy.start = xml.Start.text if (xml > "Start").any?
         access_policy.expiry = xml.Expiry.text if (xml > "Expiry").any?
         access_policy.permissions = xml.Permissions.text if (xml > "Permissions").any?

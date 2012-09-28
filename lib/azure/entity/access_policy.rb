@@ -12,20 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'azure/entity/blob/access_policy'
 
 module Azure
   module Entity
-    module Blob
-      class SignedIdentifier
-
-        def initialize 
-          @access_policy = AccessPolicy.new
-        end
-
-        attr_accessor :id
-        attr_accessor :access_policy
-      end
+    class AccessPolicy
+      attr_accessor :start
+      attr_accessor :expiry
+      attr_accessor :permission
     end
   end
 end

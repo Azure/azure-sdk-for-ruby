@@ -153,7 +153,7 @@ module Azure
       #
       # Returns a tuple of (container, signed_identifiers)
       #   container           - A Azure::Entity::Blob::Container instance
-      #   signed_identifiers  - A list of Azure::Entity::Blob::SignedIdentifier instances
+      #   signed_identifiers  - A list of Azure::Entity::SignedIdentifier instances
       #
       def get_container_acl(name)
         response = call(:get, container_uri(name, {"comp"=>"acl"}))
@@ -170,13 +170,13 @@ module Azure
       #
       # name                - String. The name of the container
       # visibility          - String. The container visibility
-      # signed_identifiers  - Array. A list of Azure::Entity::Blob::SignedIdentifier instances 
+      # signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
       # 
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179391.aspx
       #
       # Returns a tuple of (container, signed_identifiers)
       #   container           - A Azure::Entity::Blob::Container instance
-      #   signed_identifiers  - A list of Azure::Entity::Blob::SignedIdentifier instances
+      #   signed_identifiers  - A list of Azure::Entity::SignedIdentifier instances
       #
       def set_container_acl(name, visibility, signed_identifiers=[])
         uri =container_uri(name, {"comp"=>"acl"})
