@@ -708,6 +708,97 @@ module Azure
         pagelist
       end
 
+      # Public: Sets system properties defined for a blob.
+      #
+      # container      - String. The container name.
+      # blob           - String. The blob name.
+      # options        - Hash. The optional parameters.
+      #   :content_type           - String. Content type for the blob. Will be saved with blob.
+      #   :content_encoding       - String. Content encoding for the blob. Will be saved with blob.
+      #   :content_language       - String. Content langauge for the blob. Will be saved with blob.
+      #   :content_md5            - String. Content MD5 for the blob. Will be saved with blob.
+      #   :cache_control          - String. Cache control for the blob. Will be saved with blob.
+      #
+      #   :content_length         - Integer. Resizes a page blob to the specified size. If the specified 
+      #                             value is less than the current size of the blob, then all pages above 
+      #                             the specified value are cleared. This property cannot be used to change 
+      #                             the size of a block blob. Setting this property for a block blob returns 
+      #                             status code 400 (Bad Request).
+      #
+      #   :sequence_number_action - Symbol. This property indicates how the service should modify the sequence 
+      #                             number for the blob. Required if :sequence_number is used. This property 
+      #                             applies to page blobs only.
+      #
+      #                             Specify one of the following options for this property:
+      #
+      #                             :max        - Sets the sequence number to be the higher of the value included with 
+      #                                           the request and the value currently stored for the blob.
+      #                             :update     - Sets the sequence number to the value included with the request.
+      #                             :increment  - Increments the value of the sequence number by 1. If specifying this 
+      #                                           option, do not include the sequence_number option; doing so will return
+      #                                           status code 400 (Bad Request).
+      #
+      #   :sequence_number        - Integer. This property sets the blob's sequence number. The sequence number is a 
+      #                             user-controlled property that you can use to track requests and manage concurrency 
+      #                             issues. Required if the :sequence_number_action option is set to :max or :update. 
+      #                             This property applies to page blobs only.
+      #
+      #                             Use this together with the :sequence_number_action to update the blob's sequence 
+      #                             number, either to the specified value or to the higher of the values specified with 
+      #                             the request or currently stored with the blob.
+      #
+      #                             This header should not be specified if :sequence_number_action is set to :increment; 
+      #                             in this case the service automatically increments the sequence number by one.
+      #
+      #                             To set the sequence number to a value of your choosing, this property must be specified
+      #                             together with :sequence_number_action
+      #
+      # Remarks:
+      #
+      # The semantics for updating a blob's properties are as follows:
+      #
+      # * A page blob's sequence number is updated only if the request meets either of the following conditions:
+      # 
+      #     * The :sequence_number_action property is set to :max or :update, and a value for :sequence_number is also set.
+      #     * The :sequence_number_action property is set to :increment, indicating that the service should increment
+      #       the sequence number by one.
+      # 
+      # * The size of the page blob is modified only if a value for :content_length is specified.
+      #
+      # * If :sequence_number and/or :content_length are the only properties specified, then the other properties of the blob
+      #   will NOT be modified.
+      # 
+      # * If any one or more of the following properties are set, then all of these properties are set together. If a value is
+      #   not provided for a given property when at least one of the properties listed below is set, then that property will be
+      #   cleared for the blob.
+      # 
+      #     * :cache_control
+      #     * :content_type
+      #     * :content_md5
+      #     * :content_encoding
+      #     * :content_language
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691966.aspx
+      #
+      # Returns true on success.
+      def set_blob_properties(container, blob, options={})
+        uri = blob_uri(container, blob, {"comp"=>"properties"})
+
+        headers = {}
+
+        headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
+        headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
+        headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
+        headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
+        headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
+        headers["x-ms-blob-content-length"] = options[:blob_content_length].to_s if options[:blob_content_length]
+        headers["x-ms-blob-sequence-number-action"] = options[:sequence_number_action].to_s if options[:sequence_number_action]
+        headers["x-ms-blob-sequence-number"] = options[:sequence_number].to_s if options[:sequence_number]
+
+        response = call(:put, uri, nil, headers)
+        response.success?
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
