@@ -520,6 +520,29 @@ module Azure
         blob
       end
 
+      # Public: Creates a new block to be committed as part of a block blob.
+      #
+      # container   - String. The container name.
+      # blob        - String. The blob name.
+      # block_id    - String. The block id.
+      # content     - IO or String. The content of the blob.
+      # options     - Hash. The optional parameters. Understood hash values listed below:
+      #   :content_md5           - String. Content MD5 for the request contents.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135726.aspx
+      #
+      # Returns the MD5 of the uploaded block (as calculated by the server)
+      def create_blob_block(container, blob, block_id, content, options={})
+        uri = blob_uri(container, blob, {"comp"=> "block", "blockid" => block_id })
+
+        headers = {}
+        headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
+
+        response = call(:put, uri, content, headers)
+
+        response.headers["Content-MD5"]
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
