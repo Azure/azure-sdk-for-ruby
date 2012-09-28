@@ -992,6 +992,34 @@ module Azure
         return response.headers["x-ms-copy-id"], response.headers["x-ms-copy-status"]
       end
 
+      # Public: Establishes an exclusive one-minute write lock on a blob. To write to a locked
+      # blob, a client must provide a lease ID.
+      #
+      # container         - String. The container name.
+      # blob              - String. The blob name.      
+      # duration          - Integer. Default -1. Specifies the duration of the lease, in seconds, or negative one (-1) 
+      #                     for a lease that never expires. A non-infinite lease can be between 15 and 60 seconds. (optional)
+      # proposed_lease_id - String. Proposed lease ID, in a GUID string format. The Blob service returns 400 (Invalid request)
+      #                     if the proposed lease ID is not in the correct format. (optional)
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
+      #
+      # Returns a String of the new unique lease id. While the lease is active, you must include the lease ID with any request 
+      # to write to the blob, or to renew, change, or release the lease. A successful renew operation also returns the lease id
+      # for the active lease.
+      #
+      def acquire_lease(container, blob, duration=-1, proposed_lease_id=nil)
+        uri = blob_uri(container, blob, "comp"=>"lease")
+       
+        headers = {}
+        headers["x-ms-lease-action"] = "acquire"
+        headers["x-ms-lease-duration"] = duration.to_s if duration
+        headers["x-ms-proposed-lease-id"] = propose_lease_id if proposed_lease_id
+
+        response = call(:put, uri, nil, headers)
+        response.headers["x-ms-lease-id"] if response.success?
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
