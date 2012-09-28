@@ -111,6 +111,8 @@ module Azure
       # metadata   - Hash. User defined metadata for the container (optional)
       # visibility - String. One of "container" or "blob" (optional)
       #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179468.aspx
+      #
       # Returns a Container
       def create_container(name, metadata={}, visibility=nil)
         uri = container_uri(name)
@@ -127,6 +129,18 @@ module Azure
         container.name = name
         container.metadata = metadata
         container
+      end
+
+      # Public: Deletes a container
+      #
+      # name - Container name.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179408.aspx
+      #
+      # Returns true on success
+      def delete_container(name)
+        response = call(:delete, container_uri(name))
+        response.success?
       end
 
       # Adds metadata properties to header hash with required prefix
