@@ -86,12 +86,25 @@ module Azure
       # 
       # queue_name   - String. The name of the queue.
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179454.aspx
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179454
       # 
       # Returns true on success
       def clear_messages(queue_name)
         uri = messages_uri(queue_name)
         response = call(:delete, uri)
+        response.success?
+      end
+    
+      # Public: Creates a new queue under the storage account.
+      # 
+      # queue_name    - String. The queue name.
+      # 
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179342
+      #
+      # Returns true on success
+      def create_queue(queue_name)
+        uri = queue_uri(queue_name)
+        response = call(:put, uri)
         response.success?
       end
 
