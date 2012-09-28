@@ -158,6 +158,21 @@ module Azure
         container
       end
 
+      # Public: Returns only user-defined metadata for the specified container.
+      #
+      # name       - String. The name of the container
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691976.aspx
+      #
+      # Returns a Container
+      def get_container_metadata(name)
+        response = call(:get, container_uri(name, {"comp"=>"metadata"}))
+
+        container = Azure::Entity::Blob::Serialization.container_from_headers(response.headers)
+        container.name = name
+        container
+      end
+      
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
