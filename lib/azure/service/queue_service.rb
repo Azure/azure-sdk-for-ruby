@@ -315,6 +315,58 @@ module Azure
         messages
       end
 
+      # Public: Adds a message to the queue and optionally sets a visibility timeout for the message.
+      # 
+      # queue_name    - String. The name of the queue.
+      # message_id    - String. The id of the message.
+      # pop_receipt   - String. The valid pop receipt value returned from an earlier call to the Get Messages or 
+      #                 Update Message operation.
+      # message_text  - String. The message contents. Note that the message content must be in a format that may 
+      #                 be encoded with UTF-8.
+      # visibility_timeout    - Integer. The new visibility timeout value, in seconds, relative to server time.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452234
+      #
+      # Returns a tuple of (pop_receipt, time_next_visible)
+      #  pop_receipt        - String. The pop receipt of the queue message.
+      #  time_next_visible  - String. A UTC date/time value that represents when the message will be visible on the queue.
+      #
+      # Remarks:
+      #
+      # An Update Message operation will fail if the specified message does not exist in the queue, or if the 
+      # specified pop receipt does not match the message.
+      # 
+      # A pop receipt is returned by the Get Messages operation or the Update Message operation. Pop receipts 
+      # remain valid until one of the following events occurs:
+      # 
+      #   - The message has expired.
+      # 
+      #   - The message has been deleted using the last pop receipt received either from Get Messages or 
+      #     Update Message. 
+      # 
+      #   - The invisibility time has elapsed and the message has been dequeued by a Get Messages request. When 
+      #     the invisibility time elapses, the message becomes visible again. If it is retrieved by another 
+      #     Get Messages request, the returned pop receipt can be used to delete or update the message.
+      # 
+      #   - The message has been updated with a new visibility timeout. When the message is updated, a new pop 
+      #     receipt will be returned.
+      # 
+      # The Update Message operation can be used to continually extend the invisibility of a queue message. This 
+      # functionality can be useful if you want a worker role to “lease” a queue message. For example, if a worker 
+      # role calls Get Messages and recognizes that it needs more time to process a message, it can continually 
+      # extend the message’s invisibility until it is processed. If the worker role were to fail during processing, 
+      # eventually the message would become visible again and another worker role could process it.
+      #
+      def update_message(queue_name, message_id, pop_receipt, message_text, visibility_timeout)
+        uri = message_uri(queue_name, message_id, { "visibilitytimeout" => visibility_timeout.to_s, "popreceipt" => pop_receipt})
+        body = Azure::Entity::Serialization.message_to_xml(message_text)
+
+        response = call(:put, uri, body, {})
+        new_pop_receipt = response.headers["x-ms-popreceipt"]
+        time_next_visible = response.headers["x-ms-time-next-visible"]
+        return new_pop_receipt, time_next_visible
+      end
+
       # Public: Generate the URI for the collection of queues.
       #
       # query      - A Hash of query parameters (default: {}).
