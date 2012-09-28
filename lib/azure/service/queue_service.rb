@@ -111,6 +111,19 @@ module Azure
         response.success?
       end
 
+      # Public: Deletes a queue.
+      # 
+      # queue_name    - String. The queue name.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179436
+      #
+      # Returns true on success
+      def delete_queue(queue_name)
+        uri = queue_uri(queue_name)
+        response = call(:delete, uri)
+        response.success?
+      end
+
       # Public: Generate the URI for the collection of queues.
       #
       # query      - A Hash of query parameters (default: {}).
