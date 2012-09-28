@@ -133,7 +133,7 @@ module Azure
 
       # Public: Deletes a container
       #
-      # name - Container name.
+      # name       - String. The name of the container
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179408.aspx
       #
@@ -141,6 +141,21 @@ module Azure
       def delete_container(name)
         response = call(:delete, container_uri(name))
         response.success?
+      end
+
+      # Public: Returns all properties and metadata on the container.
+      #
+      # name       - String. The name of the container
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179370.aspx
+      #
+      # Returns a Container
+      def get_container_properties(name)
+        response = call(:get, container_uri(name))
+
+        container = Azure::Entity::Blob::Serialization.container_from_headers(response.headers)
+        container.name = name
+        container
       end
 
       # Adds metadata properties to header hash with required prefix
