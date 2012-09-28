@@ -124,6 +124,27 @@ module Azure
         response.success?
       end
 
+      # Public: Returns queue properties, including user-defined metadata.
+      # 
+      # queue_name    - String. The queue name.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179384
+      #
+      # Returns a tuple of (approximate_message_count, metadata)
+      #   approximate_messages_count  - Integer. The approximate number of messages in the queue. This number is not
+      #                                 lower than the actual number of messages in the queue, but could be higher.
+      #   metadata                    - Hash. The queue metadata (Default: {})
+      #
+      def get_queue_metadata(queue_name)
+        uri = queue_uri(queue_name, { "comp" => "metadata" })
+        response = call(:get, uri)
+
+        approximate_messages_count = response.headers["x-ms-approximate-messages-count"]
+        metadata = Azure::Entity::Serialization.metadata_from_headers(response.headers)
+
+        return approximate_messages_count, metadata
+      end
+
       # Public: Generate the URI for the collection of queues.
       #
       # query      - A Hash of query parameters (default: {}).
