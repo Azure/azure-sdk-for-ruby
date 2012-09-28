@@ -26,6 +26,7 @@ require 'azure/entity/blob/access_policy'
 require 'azure/entity/blob/blob_enumeration_results'
 require 'azure/entity/blob/blob'
 require 'azure/entity/blob/blob_properties'
+require 'azure/entity/blob/block'
 
 require "base64"
 
@@ -287,6 +288,40 @@ module Azure
             }
           end
           builder.to_xml
+        end
+
+        def self.block_list_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("BlockList", xml)
+
+          block_list =  {
+            :committed => [],
+            :uncommitted => []
+          }
+
+          if ((xml > "CommittedBlocks") > "Block").any?
+            xml.CommittedBlocks.Block.each { |block_node|
+              block = Block.new
+              block.name = block_node.Name.text if (xml > "Name").any?
+              block.size = block_node.Size.text.to_i if (xml > "Size").any?
+              block.type = :committed
+              block_list[:committed].push block
+            }
+          end
+
+          return block_list unless (xml > "UncommittedBlocks")
+
+          if ((xml > "UncommittedBlocks") > "Block").any?
+            xml.UncommittedBlocks.Block.each { |block_node|
+              block = Block.new
+              block.name = block_node.Name.text if (xml > "Name").any?
+              block.size = block_node.Size.text.to_i if (xml > "Size").any?
+              block.type = :uncommitted
+              block_list[:uncommitted].push block
+            }
+          end
+
+          block_list
         end
 
         def self.enumeration_results_from_xml(xml, results)

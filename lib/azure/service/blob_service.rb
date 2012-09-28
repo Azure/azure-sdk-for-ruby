@@ -594,6 +594,37 @@ module Azure
         response.success?
       end
 
+      # Public: Retrieves the list of blocks that have been uploaded as part of a block blob.
+      # 
+      # There are two block lists maintained for a blob:
+      # 1) Committed Block List: The list of blocks that have been successfully 
+      #    committed to a given blob with commitBlobBlocks.
+      # 2) Uncommitted Block List: The list of blocks that have been uploaded for a 
+      #    blob using Put Block (REST API), but that have not yet been committed. 
+      #    These blocks are stored in Windows Azure in association with a blob, but do
+      #    not yet form part of the blob.
+      #
+      # container      - String. The container name.
+      # blob           - String. The blob name.
+      # blocklist_type - Symbol. One of :all, :committed, :uncommitted. Defaults to :all (optional)
+      # snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
+      #                  retrieve information from. (optional)
+      #
+      # Returns a list of Azure::Entity::Blob::Block instances
+      def list_blob_blocks(container, blob, blocklist_type=:all, snapshot=nil)
+        query = {"comp"=>"blocklist"}
+        query.merge "snapshot" => snapshot if snapshot
+        query.merge({ "blocklisttype" => blocklist_type.to_s }) if blocklist_type != :committed
+        
+        uri = blob_uri(container, blob, query)
+
+        response = call(:get, uri)
+
+        blocklist = Azure::Entity::Blob::Serialization.block_list_from_xml(response.body)
+        blocklist
+
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
