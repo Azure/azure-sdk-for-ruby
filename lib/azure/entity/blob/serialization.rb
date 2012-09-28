@@ -20,6 +20,10 @@ require 'azure/entity/blob/container_enumeration_results'
 require 'azure/entity/blob/container'
 require 'azure/entity/blob/container_properties'
 
+require 'azure/entity/blob/signed_identifier'
+require 'azure/entity/blob/access_policy'
+
+
 module Azure
   module Entity
     module Blob
@@ -91,6 +95,43 @@ module Azure
         def self.visibility_from_headers(headers)
           headers["x-ms-blob-public-access"]
         end
+
+        def self.signed_identifiers_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("SignedIdentifiers", xml)
+
+          identifiers = []
+          return identifiers unless (xml > "SignedIdentifier").any?
+
+          xml.SignedIdentifier.each { |identifier_node| 
+            identifiers.push(signed_identifier_from_xml(identifier_node))
+          }
+          identifiers
+        end
+
+        def self.signed_identifier_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("SignedIdentifier", xml)
+
+          signed_identifier = SignedIdentifier.new
+          signed_identifier.id = xml.Id.text if (xml > "Id").any?
+          signed_identifier.access_policy = access_policy_from_xml(xml) if (xml > "AccessPolicy").any?
+
+          signed_identifier
+        end
+
+        def self.access_policy_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("AccessPolicy", xml)
+
+          access_policy = AccessPolicy.new
+          access_policy.start = xml.Start.text if (xml > "Start").any?
+          access_policy.expiry = xml.Expiry.text if (xml > "Expiry").any?
+          access_policy.permissions = xml.Permissions.text if (xml > "Permissions").any?
+
+          access_policy
+        end
+
 
         def self.enumeration_results_from_xml(xml, results)
           xml = slopify(xml)

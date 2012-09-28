@@ -172,7 +172,29 @@ module Azure
         container.name = name
         container
       end
-      
+
+      # Public: Gets the access control list (ACL) and any container-level access policies 
+      # for the container.
+      #
+      # name       - String. The name of the container
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179469.aspx
+      #
+      # Returns a tuple of (container, signed_identifiers)
+      #   container           - A Azure::Entity::Blob::Container instance
+      #   signed_identifiers  - A list of Azure::Entity::Blob::SignedIdentifier instances
+      #
+      def get_container_acl(name)
+        response = call(:get, container_uri(name, {"comp"=>"acl"}))
+
+        container = Azure::Entity::Blob::Serialization.container_from_headers(response.headers)
+
+        signed_identifiers = nil
+        signed_identifiers = Azure::Entity::Blob::Serialization.signed_identifiers_from_xml(response.body) if response.body != nil && response.body.length > 0
+
+        return container, signed_identifiers
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
