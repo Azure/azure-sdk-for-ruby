@@ -23,9 +23,12 @@ module Azure
       # Public: Initialize a new response.
       #
       # http_response - A Net::HTTPResponse.
-      def initialize(http_response)
+      def initialize(http_response, uri="")
         @http_response = http_response
+        @uri = uri
       end
+
+      attr_accessor :uri
 
       # Public: Get the response body.
       #
@@ -57,7 +60,7 @@ module Azure
       end
 
       # Public: Get an error that wraps this HTTP response, as long as this
-      # response was unsuccessful. This method _should not_ be called if the
+      # response was unsuccessful. This method will return nil if the
       # response was successful.
       #
       # Returns an Azure::Core::HTTPError.

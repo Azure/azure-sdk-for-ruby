@@ -85,7 +85,7 @@ module Azure
           end
         end
       end
-      
+
       # Build a default headers Hash
       def default_headers
         headers["x-ms-date"] = Azure::Core::HttpTime.now
@@ -126,7 +126,10 @@ module Azure
           http.use_ssl = true
           http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         end
-        HttpResponse.new(http.request(request))
+        response = HttpResponse.new(http.request(request))
+        response.uri = uri
+        raise response.error unless response.success?
+        response
       end
     end
 
