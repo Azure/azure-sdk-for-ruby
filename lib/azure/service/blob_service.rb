@@ -1020,6 +1020,29 @@ module Azure
         response.headers["x-ms-lease-id"] if response.success?
       end
 
+      # Public: Renews the lease. The lease can be renewed if the lease ID specified on the request matches that 
+      # associated with the blob. Note that the lease may be renewed even if it has expired as long as the blob 
+      # has not been modified or leased again since the expiration of that lease. When you renew a lease, the 
+      # lease duration clock resets.
+      #
+      # container         - String. The container name.
+      # blob              - String. The blob name.
+      # lease             - String. The lease id
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
+      #
+      # Returns the renewed lease id
+      def renew_lease(container, blob, lease)
+        uri = blob_uri(container, blob, "comp"=>"lease")
+       
+        headers = {}
+        headers["x-ms-lease-action"] = "renew"
+        headers["x-ms-lease-id"] = lease
+
+        response = call(:put, uri, nil, headers)
+        response.headers["x-ms-lease-id"] if response.success?
+      end
+      
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
