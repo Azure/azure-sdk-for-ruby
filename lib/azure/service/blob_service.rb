@@ -195,6 +195,37 @@ module Azure
         return container, signed_identifiers
       end
 
+      # Public: Sets the ACL and any container-level access policies for the container.
+      #
+      # name                - String. The name of the container
+      # visibility          - String. The container visibility
+      # signed_identifiers  - Array. A list of Azure::Entity::Blob::SignedIdentifier instances 
+      # 
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179391.aspx
+      #
+      # Returns a tuple of (container, signed_identifiers)
+      #   container           - A Azure::Entity::Blob::Container instance
+      #   signed_identifiers  - A list of Azure::Entity::Blob::SignedIdentifier instances
+      #
+      def set_container_acl(name, visibility, signed_identifiers=[])
+        uri =container_uri(name, {"comp"=>"acl"})
+
+        headers = nil
+        headers = {"x-ms-blob-public-access" => visibility} if visibility != nil && visibility.length > 0
+
+        body = nil
+        body = Azure::Entity::Blob::Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && headers && signed_identifiers.length > 0  && headers["x-ms-blob-public-access"] == "container"
+
+        response = call(:put, uri, body, headers)
+
+        container = Azure::Entity::Blob::Serialization.container_from_headers(response.headers)
+        container.name = name
+        container.visibility = visibility
+
+        return container, signed_identifiers
+
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs

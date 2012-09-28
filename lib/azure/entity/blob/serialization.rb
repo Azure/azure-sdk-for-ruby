@@ -109,6 +109,24 @@ module Azure
           identifiers
         end
 
+        def self.signed_identifiers_to_xml(signed_identifiers)
+          builder = Nokogiri::XML::Builder.new do |xml|
+            xml.SignedIdentifiers {
+              signed_identifiers.each do |identifier|
+                xml.SignedIdentifier {
+                  xml.Id identifier.id
+                  xml.AccessPolicy {
+                    xml.Start identifier.access_policy.start
+                    xml.Expiry identifier.access_policy.expiry
+                    xml.Permissions identifier.access_policy.permissions
+                  }
+                }
+              end
+            }
+          end
+          builder.to_xml
+        end
+
         def self.signed_identifier_from_xml(xml)
           xml = slopify(xml)
           expect_node("SignedIdentifier", xml)
