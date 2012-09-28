@@ -69,7 +69,7 @@ module Azure
         query["include"] = "metadata" if options[:metadata] == true
         query["timeout"] = options[:timeout].to_s if options[:timeout]
 
-        uri = containers_uri(query)
+        uri = collection_uri(query)
         response = call(:get, uri)
 
         Azure::Entity::Serialization.queue_enumeration_results_from_xml(response.body)
