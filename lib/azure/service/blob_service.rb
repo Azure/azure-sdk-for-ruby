@@ -384,6 +384,52 @@ module Azure
         blob
       end
 
+      # Public: Creates a range of pages in a page blob.
+      #
+      # container    - String. Name of container
+      # blob         - String. Name of blob
+      # start_range  - Integer. Position of first byte of first page
+      # end_range    - Integer. Position of last byte of of last page
+      # content      - IO or String. Content to write. Length in bytes should equal end_range - start_range
+      # options      - Hash. A collection of options. Possible keys/values are:
+      #   :if_sequence_number_lte - If the blob’s sequence number is less than or equal to the specified value, the request proceeds; otherwise it fails with the SequenceNumberConditionNotMet error (HTTP status code 412 – Precondition Failed).
+      #   :if_sequence_number_lt  - If the blob’s sequence number is less than the specified value, the request proceeds; otherwise it fails with SequenceNumberConditionNotMet error (HTTP status code 412 – Precondition Failed).
+      #   :if_sequence_number_eq  - If the blob’s sequence number is equal to the specified value, the request proceeds; otherwise it fails with SequenceNumberConditionNotMet error (HTTP status code 412 – Precondition Failed).
+      #   :if_modified_since      - A DateTime value. Specify this conditional header to write the page only if the blob has been modified since the specified date/time. If the blob has not been modified, the Blob service returns status code 412 (Precondition Failed).
+      #   :if_unmodified_since    - A DateTime value. Specify this conditional header to write the page only if the blob has not been modified since the specified date/time. If the blob has been modified, the Blob service returns status code 412 (Precondition Failed).
+      #   :if_match               - An ETag value. Specify an ETag value for this conditional header to write the page only if the blob's ETag value matches the value specified. If the values do not match, the Blob service returns status code 412 (Precondition Failed).
+      #   :if_none_match          - An ETag value. Specify an ETag value for this conditional header to write the page only if the blob's ETag value does not match the value specified. If the values are identical, the Blob service returns status code 412 (Precondition Failed).
+      # 
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691975.aspx
+      #
+      # Returns Blob
+      def create_blob_pages(container, blob, start_range, end_range, content, options={})
+        uri = blob_uri(container, blob, {"comp"=> "page"})
+        headers = {}
+        headers["x-ms-range"] = "#{start_range}-#{end_range}"
+        headers["x-ms-page-write"] = "update"
+
+        # clear default content type
+        headers["Content-Type"] = ""
+
+        # set optional headers
+        headers["x-ms-if-sequence-number-lte"] = options[:if_sequence_number_lte] if options[:if_sequence_number_lte]
+        headers["x-ms-if-sequence-number-lt"] = options[:if_sequence_number_lt] if options[:if_sequence_number_lt]
+        headers["x-ms-if-sequence-number-eq"] = options[:if_sequence_number_eq] if options[:if_sequence_number_eq]
+        headers["If-Modified-Since"] = options[:if_modified_since] if options[:if_modified_since]
+        headers["If-Unmodified-Since"] = options[:if_unmodified_since] if options[:if_unmodified_since]
+        headers["If-Match"] = options[:if_match] if options[:if_match]
+        headers["If-None-Match"] = options[:if_none_match] if options[:if_none_match]
+
+        response = call(:put, uri, content, headers)
+
+        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+        blob.name = blob
+        blob.url = uri
+
+        blob
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
