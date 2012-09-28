@@ -610,6 +610,8 @@ module Azure
       # snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
       #                  retrieve information from. (optional)
       #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179400.aspx
+      #
       # Returns a list of Azure::Entity::Blob::Block instances
       def list_blob_blocks(container, blob, blocklist_type=:all, snapshot=nil)
         query = {"comp"=>"blocklist"}
@@ -632,6 +634,8 @@ module Azure
       # snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
       #                  retrieve information from. (optional)
       #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179394.aspx
+      #
       # Returns a Blob
       def get_blob_properties(container, blob, snapshot=nil)
         uri = blob_uri(container, blob, snapshot ? { "snapshot" => snapshot } : {})
@@ -646,7 +650,34 @@ module Azure
 
         blob
       end
-      
+
+      # Public: Returns metadata on the blob.
+      #
+      # container      - String. The container name.
+      # blob           - String. The blob name.
+      # snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
+      #                  retrieve information from. (optional)
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179350.aspx
+      #
+      # Returns a Blob
+      def get_blob_metadata(container, blob, snapshot=nil)
+        query = {"comp"=>"metadata"}
+        query.merge "snapshot" => snapshot if snapshot
+        
+        uri = blob_uri(container, blob, query)
+
+        response = call(:get, uri)
+
+        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+
+        blob.name = blob
+        blob.url = uri
+        blob.snapshot = snapshot
+
+        blob
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
