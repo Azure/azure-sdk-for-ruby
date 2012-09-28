@@ -457,7 +457,69 @@ module Azure
 
         blob
       end
-      
+
+      # Public: Creates a new block blob or updates the content of an existing block blob.
+      # 
+      # Updating an existing block blob overwrites any existing metadata on the blob
+      # Partial updates are not supported with create_block_blob the content of the
+      # existing blob is overwritten with the content of the new blob. To perform a
+      # partial update of the content of a block blob, use the create_block_list
+      # method.
+      #
+      # Note that the default content type is application/octet-stream.
+      #
+      # container   - String. The container name.
+      # blob        - String. The blob name.
+      # content     - IO or String. The content of the blob.
+      # options     - Hash. The optional parameters. Understood hash values listed below:
+      #   :content_type          - String. Content type for the request. Will be saved with blob unless alternate value is provided in blob_content_type.
+      #   :content_encoding      - String. Content encoding for the request. Will be saved with blob unless alternate value is provided in blob_content_encoding.
+      #   :content_language      - String. Content langauge for the request. Will be saved with blob unless alternate value is provided in blob_content_language.
+      #   :content_md5           - String. Content MD5 for the request. Will be saved with blob unless alternate value is provided in blob_content_md5.
+      #   :cache_control         - String. Cache control for the request. Will be saved with blob unless alternate value is provided in blob_cache_control.
+      #   :blob_content_type     - String. Content type for the blob. Will be saved with blob.
+      #   :blob_content_encoding - String. Content encoding for the blob. Will be saved with blob.
+      #   :blob_content_language - String. Content langauge for the blob. Will be saved with blob.
+      #   :blob_content_md5      - String. Content MD5 for the blob. Will be saved with blob.
+      #   :blob_cache_control    - String. Cache control for the blob. Will be saved with blob.
+      #   :metadata              - Hash. Custom metadata values to store with the blob.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179451.aspx
+      #
+      # Returns a Blob
+      def create_block_blob(container, blob, content, options={})
+        uri = blob_uri(container, blob)
+        
+        headers = {}
+
+        # set x-ms-blob-type to BlockBlob
+        headers["x-ms-blob-type"] = "BlockBlob"
+
+        # set the rest of the optional headers
+        headers["Content-Type"] = options[:content_type] || "application/octet-stream"
+        headers["Content-Encoding"] = options[:content_encoding] if options[:content_encoding]
+        headers["Content-Language"] = options[:content_language] if options[:content_language]
+        headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
+        headers["Cache-Control"] = options[:cache_control] if options[:cache_control]
+
+        headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
+        headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
+        headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
+        headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
+        headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
+
+        add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
+
+        # call PutBlob with empty body
+        response = call(:put, uri, content, headers)
+
+        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+        blob.name = blob
+        blob.url = uri
+
+        blob
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
