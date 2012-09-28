@@ -1074,16 +1074,6 @@ module Azure
         response.headers["x-ms-lease-time"].to_i
       end
 
-      # Adds metadata properties to header hash with required prefix
-      # 
-      # metadata  - A Hash of metadata name/value pairs
-      # headers   - A Hash of HTTP headers 
-      def add_metadata_to_headers(metadata, headers)
-        metadata.each do |key, value|
-          headers["x-ms-meta-#{key}"] = value
-        end
-      end
-
       # Public: Generate the URI for the collection of containers.
       #
       # query - A Hash of key => value query parameters.

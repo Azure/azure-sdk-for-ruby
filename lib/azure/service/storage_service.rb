@@ -100,6 +100,16 @@ module Azure
         generate_uri("", query)
       end
 
+      # Adds metadata properties to header hash with required prefix
+      # 
+      # metadata  - A Hash of metadata name/value pairs
+      # headers   - A Hash of HTTP headers 
+      def add_metadata_to_headers(metadata, headers)
+        metadata.each do |key, value|
+          headers["x-ms-meta-#{key}"] = value
+        end
+      end
+      
       def generate_uri(path='', query={})
         uri = ::URI.parse(File.join(host, path))
         query["timeout"] = default_timeout.to_s unless query == nil or query.has_key? "timeout"

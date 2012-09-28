@@ -98,13 +98,16 @@ module Azure
       # Public: Creates a new queue under the storage account.
       # 
       # queue_name    - String. The queue name.
-      # 
+      # metadata      - Hash. A hash of user defined metadata (optional)
+      #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179342
       #
       # Returns true on success
-      def create_queue(queue_name)
+      def create_queue(queue_name, metadata=nil)
         uri = queue_uri(queue_name)
-        response = call(:put, uri)
+        headers = {}
+        add_metadata_to_headers(metadata || {}, headers)
+        response = call(:put, uri, nil, headers)
         response.success?
       end
 
