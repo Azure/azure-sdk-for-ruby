@@ -799,6 +799,26 @@ module Azure
         response.success?
       end
 
+      # Public: Sets metadata headers on the blob.
+      #
+      # container      - String. The container name.
+      # blob           - String. The blob name.
+      # metadata       - Hash. The custom metadata.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179414.aspx
+      #
+      # Returns true on success.
+      def set_blob_metadata(container, blob, metadata)
+        uri = blob_uri(container, blob, {"comp"=>"metadata"})
+
+        headers = {}
+
+        add_metadata_to_headers(metadata, headers) if metadata
+
+        response = call(:put, uri, nil, headers)
+        response.success?
+      end
+      
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
