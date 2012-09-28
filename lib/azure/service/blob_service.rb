@@ -818,7 +818,36 @@ module Azure
         response = call(:put, uri, nil, headers)
         response.success?
       end
-      
+
+      # Public: Reads or downloads a blob from the system, including its metadata and properties.
+      #
+      # container       - String. The container name.
+      # blob            - String. The blob name.
+      # start_range     - Integer. Position of first byte of first page. (optional)
+      # end_range       - Integer. Position of last byte of of last page. (optional)
+      # snapshot        - String. An opaque DateTime value that specifies the blob snapshot to 
+      #                   retrieve information from. (optional)
+      # get_content_md5 - Boolean. Return the MD5 hash for the range. This option only valid if
+      #                   start_range and end_range are specified. (optional)
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179440.aspx
+      #
+      # Returns a blob and the blob body
+      def get_blob(container, blob, start_range=nil, end_range=nil, snapshot=nil, get_content_md5 = false)
+        uri = blob_uri(container, blob, snapshot ? {"snapshot" => snapshot} : {})
+
+        headers = {}
+        if start_range && end_range
+          headers["x-ms-range"] = "#{start_range}-#{end_range}"
+          headers["x-ms-range-get-content-md5"] = true if get_content_md5
+        end
+
+        response = call(:get, uri, nil, headers)
+        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+
+        return blob, response.body
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
