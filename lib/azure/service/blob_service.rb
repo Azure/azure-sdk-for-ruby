@@ -1064,7 +1064,45 @@ module Azure
         response = call(:put, uri, nil, headers)
         response.success?
       end
-      
+
+      # Public: Breaks the lease, if the blob has an active lease. Once a lease is broken, it cannot be renewed. Any 
+      # authorized request can break the lease; the request is not required to specify a matching lease ID. When a 
+      # lease is broken, the lease break period is allowed to elapse, during which time no lease operation except 
+      # break and release can be performed on the blob. When a lease is successfully broken, the response indicates 
+      # the interval in seconds until a new lease can be acquired.
+      #
+      # A lease that has been broken can also be released, in which case another client may immediately acquire the 
+      # lease on the blob.
+      #
+      # container         - String. The container name.
+      # blob              - String. The blob name.
+      # lease             - String. The lease id
+      # break_period      - Integer. The proposed duration of seconds that the lease should continue before it is 
+      #                     broken, between 0 and 60 seconds. This break period is only used if it is shorter than 
+      #                     the time remaining on the lease. If longer, the time remaining on the lease is used. A 
+      #                     new lease will not be available before the break period has expired, but the lease may 
+      #                     be held for longer than the break period.
+      #
+      #                     If this option is not used, a fixed-duration lease breaks after the remaining lease 
+      #                     period elapses, and an infinite lease breaks immediately.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
+      #
+      # Returns an Integer of the remaning lease time. This value is the approximate time remaining in the lease 
+      # period, in seconds. This header is returned only for a successful request to break the lease. If the break 
+      # is immediate, 0 is returned.
+      def break_lease(container, blob, lease, break_period=nil)
+        uri = blob_uri(container, blob, "comp"=>"lease")
+       
+        headers = {}
+        headers["x-ms-lease-action"] = "break"
+        headers["x-ms-lease-id"] = lease
+        headers["x-ms-lease-break-period"] = break_period.to_s if break_period
+
+        response = call(:put, uri, nil, headers)
+        response.headers["x-ms-lease-time"].to_i
+      end
+
       # Adds metadata properties to header hash with required prefix
       # 
       # metadata  - A Hash of metadata name/value pairs
