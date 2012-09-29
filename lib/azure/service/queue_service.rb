@@ -294,7 +294,7 @@ module Azure
         uri = messages_uri(queue_name, { "peekonly" => "true", "numofmessages"=> number_of_messages.to_s})
         response = call(:get, uri)
 
-        messages = Azure::Entity::Serialization.messages_from_xml(response.body)
+        messages = Azure::Entity::Serialization.queue_messages_from_xml(response.body)
         messages
       end
 
@@ -311,7 +311,7 @@ module Azure
         uri = messages_uri(queue_name, { "visibilitytimeout" => visibility_timeout.to_s, "numofmessages"=> number_of_messages.to_s})
         response = call(:get, uri)
 
-        messages = Azure::Entity::Serialization.messages_from_xml(response.body)
+        messages = Azure::Entity::Serialization.queue_messages_from_xml(response.body)
         messages
       end
 
@@ -374,7 +374,7 @@ module Azure
       # Returns a URI.
       def collection_uri(query={})
         query.update({:comp => 'list', :include => 'metadata'})
-        generate_uri(host, "", query)
+        generate_uri("", query)
       end
 
       # Public: Generate the URI for a given queue.
@@ -384,8 +384,8 @@ module Azure
       #
       # Returns a URI.
       def queue_uri(queue_name, query={})
-        return queue_name if name.kind_of? ::URI
-        generate_uri(host, queue_name, query)
+        return queue_name if queue_name.kind_of? ::URI
+        generate_uri(queue_name, query)
       end
 
       # Public: Generate the messages URI for the given queue.
@@ -395,7 +395,7 @@ module Azure
       #
       # Returns a URI.
       def messages_uri(queue_name, query={})
-        generate_uri(host, "#{queue_name}/messages", query)
+        generate_uri("#{queue_name}/messages", query)
       end
 
       # Public: Generate the URI for a given message

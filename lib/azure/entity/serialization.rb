@@ -30,6 +30,7 @@ require 'azure/entity/blob/block'
 
 require 'azure/entity/queue/queue_enumeration_results'
 require 'azure/entity/queue/queue'
+require 'azure/entity/queue/message'
 
 require "base64"
 
@@ -43,11 +44,15 @@ module Azure
         xml = slopify(xml)
         expect_node("QueueMessagesList", xml)
         results = []
-        return results unless ((xml > "QueueMessagesList") > "QueueMessage").any?
-
-        xml.QueueMessagesList.QueueMessage.each { |message_node|
-          results.push(queue_message_from_xml(message_node))
-        }
+        return results unless (xml > "QueueMessage").any?
+  
+        if xml.QueueMessage.count == 0
+          results.push(queue_message_from_xml(xml.QueueMessage))
+        else
+          xml.QueueMessage.each { |message_node|
+            results.push(queue_message_from_xml(message_node))
+          }
+        end
 
         results
       end
@@ -84,9 +89,13 @@ module Azure
         
         return results unless (xml > "Queues").any? && ((xml > "Queues") > "Queue").any?
 
-        xml.Queues.Queue.each { |queue_node|
+        if xml.Queues.Queue.count == 0
+          results.queues.push(queue_from_xml(xml.Queues.Queue))
+        else
+          xml.Queues.Queue.each { |queue_node|
             results.queues.push(queue_from_xml(queue_node))
-        }
+          }
+        end
 
         results
       end
@@ -114,9 +123,13 @@ module Azure
         
         return results unless (xml > "Containers").any? && ((xml > "Containers") > "Container").any?
 
-        xml.Containers.Container.each { |container_node|
+        if xml.Containers.Container.count == 0
+          results.containers.push(container_from_xml(xml.Containers.Container))
+        else
+          xml.Containers.Container.each { |container_node|
             results.containers.push(container_from_xml(container_node))
-        }
+          }
+        end
 
         results
       end
@@ -179,9 +192,14 @@ module Azure
         identifiers = []
         return identifiers unless (xml > "SignedIdentifier").any?
 
-        xml.SignedIdentifier.each { |identifier_node| 
-          identifiers.push(signed_identifier_from_xml(identifier_node))
-        }
+        if xml.SignedIdentifier.count == 0
+          identifiers.push(signed_identifier_from_xml(xml.SignedIdentifier))
+        else
+          xml.SignedIdentifier.each { |identifier_node| 
+            identifiers.push(signed_identifier_from_xml(identifier_node))
+          }
+        end
+
         identifiers
       end
 
@@ -370,28 +388,36 @@ module Azure
         }
 
         if ((xml > "CommittedBlocks") > "Block").any?
-          xml.CommittedBlocks.Block.each { |block_node|
-            block = Azure::Entity::Blob::Block.new
-            block.name = block_node.Name.text if (xml > "Name").any?
-            block.size = block_node.Size.text.to_i if (xml > "Size").any?
-            block.type = :committed
-            block_list[:committed].push block
-          }
+          if xml.CommittedBlocks.Block.count == 0
+            add_block(:committed, xml.CommittedBlocks.Block, block_list)
+          else
+            xml.CommittedBlocks.Block.each { |block_node|
+              add_block(:committed, block_node, block_list)
+            }
+          end
         end
 
         return block_list unless (xml > "UncommittedBlocks")
 
         if ((xml > "UncommittedBlocks") > "Block").any?
-          xml.UncommittedBlocks.Block.each { |block_node|
-            block = Azure::Entity::Blob::Block.new
-            block.name = block_node.Name.text if (xml > "Name").any?
-            block.size = block_node.Size.text.to_i if (xml > "Size").any?
-            block.type = :uncommitted
-            block_list[:uncommitted].push block
-          }
+          if xml.UncommittedBlocks.Block.count == 0
+            add_block(:uncommitted, xml.UncommittedBlocks.Block, block_list)
+          else
+            xml.UncommittedBlocks.Block.each { |block_node|
+              add_block(:uncommitted, block_node, block_list)
+            }
+          end
         end
 
         block_list
+      end
+
+      def self.add_block(type, block_node, block_list)
+        block = Azure::Entity::Blob::Block.new
+        block.name = block_node.Name.text if (block_node > "Name").any?
+        block.size = block_node.Size.text.to_i if (block_node > "Size").any?
+        block.type = type
+        block_list[type].push block
       end
       
       def self.page_list_from_xml(xml)
@@ -402,9 +428,13 @@ module Azure
 
         return page_list unless (xml > "PageRange").any?
 
-        xml.PageRange.each { |page_range|
-          page_list.push [page_range.Start.text.to_i, page_range.End.text.to_i]
-        }
+        if xml.PageRange.count == 0
+          page_list.push [xml.PageRange.Start.text.to_i, xml.PageRange.End.text.to_i]
+        else
+          xml.PageRange.each { |page_range|
+            page_list.push [page_range.Start.text.to_i, page_range.End.text.to_i]
+          }
+        end
 
         page_list
       end
