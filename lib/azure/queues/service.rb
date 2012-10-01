@@ -127,7 +127,7 @@ module Azure
         #
         # Returns a Azure::Core::HttpResponse.
         def call(name)
-          uri = Queues::URI.queue(name, comp: "metadata")
+          uri = Queues::URI.queue(name, :comp=> "metadata")
           super(:head, uri)
         end
       end
@@ -141,7 +141,7 @@ module Azure
         #
         # Returns a Azure::Core::HttpResponse.
         def call(name, metadata)
-          uri = Queues::URI.queue(name, comp: "metadata")
+          uri = Queues::URI.queue(name, :comp=> "metadata")
 
           super(:put, uri) do |request|
             metadata.each do |name, value|
@@ -211,7 +211,7 @@ module Azure
         #
         # Returns a Azure::Core::HttpResponse.
         def call(queue_name, options={})
-          options.update(peekonly: 'true')
+          options.update(:peekonly => 'true')
           uri = Queues::URI.messages(queue_name, options)
           super(:get, uri)
         end
@@ -228,7 +228,7 @@ module Azure
         # Returns a Azure::Core::HttpResponse.
         def call(queue_name, message_id, pop_receipt)
           uri = Queues::URI.message(
-            queue_name, message_id, popreceipt: pop_receipt
+            queue_name, message_id, :popreceipt => pop_receipt
           )
           super(:delete, uri)
         end
@@ -260,7 +260,7 @@ module Azure
         # Returns a Azure::Core::HttpResponse.
         def call(queue_name, message_id, text, timeout, pop_receipt)
           uri = Queues::URI.message(queue_name, message_id, {
-            popreceipt: pop_receipt, visibilitytimeout: timeout
+            :popreceipt=> pop_receipt, :visibilitytimeout=> timeout
           })
 
           body = Nokogiri::XML::Builder.new do |xml|

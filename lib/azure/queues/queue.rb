@@ -87,8 +87,8 @@ module Azure
         message = Message(message)
 
         @service.put_message(self, message, {
-          visibilitytimeout: message.visibility_timeout,
-          messagettl:        message.ttl
+          :visibilitytimeout => message.visibility_timeout,
+          :messagettl =>        message.ttl
         })
 
         self
@@ -140,7 +140,7 @@ module Azure
       #
       # Returns an Array of Messages.
       def look_at(num)
-        @service.peek_messages(self, numofmessages: num)
+        @service.peek_messages(self, :numofmessages => num)
       end
 
       # Public: Remove all messages from the queue.
@@ -182,7 +182,7 @@ module Azure
       # Returns a Hash with the extracted metadata.
       def extract_metadata(hash)
         new_metadata = hash.each_with_object({}) do |(k,v), hash|
-          if key = k[/^x-ms-meta-(?<key>.*)?/, :key]
+          if key = k[/^x-ms-meta-(.*)/, 1]
             hash[key] = v
           end
         end

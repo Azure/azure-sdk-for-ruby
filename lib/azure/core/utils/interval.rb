@@ -55,23 +55,18 @@ module Azure
         #
         # Returns an Interval.
         def self.parse(string)
-          re = /
-                P (?<d>[\d]+D)?     # match days
-                (?:
-                 T (?<h>[\d]+H)?    # match hours
-                   (?<m>[\d]+M)?    # match minutes
-                   (?<s>[\d\.]+S)?  # match seconds
-                )?
-               /x
+          re = /P([\d\.\,]+Y)?([\d\.\,]+M)?([\d\.\,]+D)?(?:T([\d\.\,]+H)?([\d\.\,]+M)?([\d\.\,]+S)?)?/
 
           match = re.match(string)
 
           return nil if match.nil?
 
-          days    = match[:d].to_i
-          hours   = match[:h].to_i
-          minutes = match[:m].to_i
-          seconds = match[:s].to_f
+          #years   = match[1].to_f
+          #months  = match[2].to_f         
+          days    = match[3].to_f
+          hours   = match[4].to_f
+          minutes = match[5].to_f
+          seconds = match[6].to_f 
 
           new(seconds + minutes * 60 + hours * 3600 + days * 86400)
         end
@@ -86,13 +81,13 @@ module Azure
           seconds = (self % 60)
 
           days = "%<d>s" % {
-            d: days.zero? ? nil : "#{days}D"
+            :d => days.zero? ? nil : "#{days}D"
           }
 
           time = "%<h>s%<m>s%<s>s" % {
-            h: hours.zero?               ? nil : "#{hours}H",
-            m: minutes.zero?             ? nil : "#{minutes}M",
-            s: nonzero? && seconds.zero? ? nil : "#{seconds}S"
+            :h => hours.zero?               ? nil : "#{hours}H",
+            :m => minutes.zero?             ? nil : "#{minutes}M",
+            :s => nonzero? && seconds.zero? ? nil : "#{seconds}S"
           }
 
           "P#{days}" + (time.empty? ? "" : "T#{time}")

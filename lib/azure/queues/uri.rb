@@ -11,7 +11,7 @@ module Azure
       #
       # Returns a URI.
       def self.service_properties(query={}, host=Azure.config.queue_host)
-        query.update(restype: 'service', comp: 'properties')
+        query.update(:restype=> 'service', :comp=> 'properties')
         generate(host, "", query)
       end
 
@@ -22,7 +22,7 @@ module Azure
       #
       # Returns a URI.
       def self.collection(query={}, host=Azure.config.queue_host)
-        query.update(comp: 'list', include: 'metadata')
+        query.update(:comp=> 'list', :include=> 'metadata')
         generate(host, "", query)
       end
 

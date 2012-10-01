@@ -25,6 +25,8 @@ module Azure
     # HTTP server, returning a HttpResponse 
     class HttpRequest
 
+      alias_method :_method, :method
+
       # The HTTP method to use (:get, :post, :put, :del, etc...)
       attr_accessor :method
 
@@ -73,7 +75,7 @@ module Azure
       def with_filter(filter=nil, &block)
         filter = filter || block
         if filter
-          old_impl = self.method(:call)
+          old_impl = self._method(:call)
           
           # support 1.8.7 (define_singleton_method doesn't exist until 1.9.1)
           new_impl = Proc.new do filter.call(self, old_impl) end
@@ -85,7 +87,7 @@ module Azure
           end
         end
       end
-      
+
       # Build a default headers Hash
       def default_headers
         headers["x-ms-date"] = Azure::Core::HttpTime.now
@@ -126,7 +128,10 @@ module Azure
           http.use_ssl = true
           http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         end
-        HttpResponse.new(http.request(request))
+        response = HttpResponse.new(http.request(request))
+        response.uri = uri
+        raise response.error unless response.success?
+        response
       end
     end
 

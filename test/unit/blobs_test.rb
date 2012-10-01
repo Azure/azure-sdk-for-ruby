@@ -22,7 +22,7 @@ describe Azure::Blobs do
 
   describe ".containers" do
     let :successful_response do
-      double(success?: true, body: Fixtures[:all_containers])
+      double(:success? => true, :body=> Fixtures[:all_containers])
     end
 
     it "returns a list of Containers on a successful call" do
@@ -35,11 +35,11 @@ describe Azure::Blobs do
 
   describe ".create_container" do
     let :successful_response do
-      double(success?: true)
+      double(:success? => true)
     end
 
     let :failed_response do
-      double(success?: false, error: Object.new)
+      double(:success? => false, :error=> Object.new)
     end
 
     it "returns a valid container when successful" do
@@ -62,11 +62,11 @@ describe Azure::Blobs do
 
   describe ".delete_container" do
     let :successful_response do
-      double(success?: true)
+      double(:success? => true)
     end
 
     let :failed_response do
-      double(success?: false, error: Object.new)
+      double(:success? => false, :error=> Object.new)
     end
 
     let :container do
@@ -94,11 +94,11 @@ describe Azure::Blobs do
 
   describe ".load_container_metadata" do
     let :successful_response do
-      double(success?: true, headers: headers)
+      double(:success? => true, :headers=> headers)
     end
 
     let :failed_response do
-      double(success?: false, headers: headers, error: Object.new)
+      double(:success? => false, :headers=> headers, :error=> Object.new)
     end
 
     let :headers do
@@ -140,11 +140,11 @@ describe Azure::Blobs do
 
   describe ".save_container_metadata" do
     let :successful_response do
-      double(success?: true)
+      double(:success? => true)
     end
 
     let :failed_response do
-      double(success?: false, error: Object.new)
+      double(:success? => false, :error=> Object.new)
     end
 
     let :container do

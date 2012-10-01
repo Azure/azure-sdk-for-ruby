@@ -86,7 +86,7 @@ module Azure
       # Returns a Table.
       # Raises ArgumentError if the table isn't found and no block is given.
       def self.fetch(name, service=Azure::Tables, &block)
-        block ||= -> { raise ArgumentError, "Can't find Table named '#{name}'" }
+        block ||= lambda { raise ArgumentError, "Can't find Table named '#{name}'" }
         table = service.fetch(name)
         table.valid? ? table : block.call(table.error)
       end
