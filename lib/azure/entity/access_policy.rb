@@ -12,15 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+
 module Azure
   module Entity
-    module Blob
-      class EnumerationResults
-        attr_accessor :prefix
-        attr_accessor :marker
-        attr_accessor :max_results
-        attr_accessor :next_marker
-      end
+    class AccessPolicy
+      attr_accessor :start
+      attr_accessor :expiry
+      attr_accessor :permission
     end
   end
 end

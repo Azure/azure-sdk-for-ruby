@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'azure/entity/blob/enumeration_results'
+require 'azure/entity/enumeration_results'
 
 module Azure
   module Entity

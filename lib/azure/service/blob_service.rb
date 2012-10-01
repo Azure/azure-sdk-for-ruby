@@ -13,8 +13,7 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'azure/service/storage_service'
-require 'azure/entity/service/storage_service_properties'
-require 'azure/entity/blob/serialization'
+require 'azure/entity/serialization'
 
 module Azure
   module Service
@@ -23,35 +22,7 @@ module Azure
       def initialize
         super()
         @default_timeout = 90
-      end
-
-      attr_accessor :default_timeout
-
-      # Public: Get Blob Service properties
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/hh452239
-      #
-      # Returns a Hash with the service properties or nil if the operation failed
-      def get_service_properties
-        uri = blob_uri("", "", {"restype" => "service", "comp" => "properties"})
-        response = call(:get, uri)
-        properties = Azure::Entity::Service::StorageServiceProperties.parse(response.body)
-        properties
-      end
-
-      # Public: Set Blob Service properties
-      #
-      # service_properties - An instance of Azure::Entity::Service::StorageServiceProperties
-      #
-      # http://msdn.microsoft.com/en-us/library/windowsazure/hh452235
-      #
-      # Returns boolean indicating success.
-      def set_service_properties(service_properties)
-        body = Azure::Entity::Service::StorageServiceProperties.to_xml
-
-        uri = blob_uri("", "", {"restype" => "service", "comp" => "properties"})
-        response = call(:put, uri, body)
-        response.success?
+        @host = Azure.config.blob_host
       end
 
       # Public: Get a list of Containers from the server
@@ -102,7 +73,7 @@ module Azure
         uri = containers_uri(query)
         response = call(:get, uri)
 
-        Azure::Entity::Blob::Serialization.container_enumeration_results_from_xml(response.body)
+        Azure::Entity::Serialization.container_enumeration_results_from_xml(response.body)
       end
 
       # Public: Create a new container 
@@ -125,7 +96,7 @@ module Azure
 
         response = call(:put, uri, nil, headers)
 
-        container = Azure::Entity::Blob::Serialization.container_from_headers(response.headers)
+        container = Azure::Entity::Serialization.container_from_headers(response.headers)
         container.name = name
         container.metadata = metadata
         container
@@ -153,7 +124,7 @@ module Azure
       def get_container_properties(name)
         response = call(:get, container_uri(name))
 
-        container = Azure::Entity::Blob::Serialization.container_from_headers(response.headers)
+        container = Azure::Entity::Serialization.container_from_headers(response.headers)
         container.name = name
         container
       end
@@ -168,7 +139,7 @@ module Azure
       def get_container_metadata(name)
         response = call(:get, container_uri(name, {"comp"=>"metadata"}))
 
-        container = Azure::Entity::Blob::Serialization.container_from_headers(response.headers)
+        container = Azure::Entity::Serialization.container_from_headers(response.headers)
         container.name = name
         container
       end
@@ -182,15 +153,15 @@ module Azure
       #
       # Returns a tuple of (container, signed_identifiers)
       #   container           - A Azure::Entity::Blob::Container instance
-      #   signed_identifiers  - A list of Azure::Entity::Blob::SignedIdentifier instances
+      #   signed_identifiers  - A list of Azure::Entity::SignedIdentifier instances
       #
       def get_container_acl(name)
         response = call(:get, container_uri(name, {"comp"=>"acl"}))
 
-        container = Azure::Entity::Blob::Serialization.container_from_headers(response.headers)
+        container = Azure::Entity::Serialization.container_from_headers(response.headers)
 
         signed_identifiers = nil
-        signed_identifiers = Azure::Entity::Blob::Serialization.signed_identifiers_from_xml(response.body) if response.body != nil && response.body.length > 0
+        signed_identifiers = Azure::Entity::Serialization.signed_identifiers_from_xml(response.body) if response.body != nil && response.body.length > 0
 
         return container, signed_identifiers
       end
@@ -199,13 +170,13 @@ module Azure
       #
       # name                - String. The name of the container
       # visibility          - String. The container visibility
-      # signed_identifiers  - Array. A list of Azure::Entity::Blob::SignedIdentifier instances 
+      # signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
       # 
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179391.aspx
       #
       # Returns a tuple of (container, signed_identifiers)
       #   container           - A Azure::Entity::Blob::Container instance
-      #   signed_identifiers  - A list of Azure::Entity::Blob::SignedIdentifier instances
+      #   signed_identifiers  - A list of Azure::Entity::SignedIdentifier instances
       #
       def set_container_acl(name, visibility, signed_identifiers=[])
         uri =container_uri(name, {"comp"=>"acl"})
@@ -214,11 +185,11 @@ module Azure
         headers = {"x-ms-blob-public-access" => visibility} if visibility != nil && visibility.length > 0
 
         body = nil
-        body = Azure::Entity::Blob::Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && headers && signed_identifiers.length > 0  && headers["x-ms-blob-public-access"] == "container"
+        body = Azure::Entity::Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && headers && signed_identifiers.length > 0  && headers["x-ms-blob-public-access"] == "container"
 
         response = call(:put, uri, body, headers)
 
-        container = Azure::Entity::Blob::Serialization.container_from_headers(response.headers)
+        container = Azure::Entity::Serialization.container_from_headers(response.headers)
         container.name = name
         container.visibility = visibility
 
@@ -318,7 +289,7 @@ module Azure
         uri = container_uri(name, query)
         response = call(:get, uri)
 
-        Azure::Entity::Blob::Serialization.blob_enumeration_results_from_xml(response.body)
+        Azure::Entity::Serialization.blob_enumeration_results_from_xml(response.body)
       end
 
       # Public: Creates a new page blob. Note that calling create_page_blob to create a page
@@ -377,7 +348,7 @@ module Azure
         # call PutBlob with empty body
         response = call(:put, uri, nil, headers)
 
-        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+        blob = Azure::Entity::Serialization.blob_from_headers(response.headers)
         blob.name = blob
         blob.url = uri
 
@@ -423,7 +394,7 @@ module Azure
 
         response = call(:put, uri, content, headers)
 
-        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+        blob = Azure::Entity::Serialization.blob_from_headers(response.headers)
         blob.name = blob
         blob.url = uri
 
@@ -451,7 +422,7 @@ module Azure
 
         response = call(:put, uri, nil, headers)
 
-        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+        blob = Azure::Entity::Serialization.blob_from_headers(response.headers)
         blob.name = blob
         blob.url = uri
 
@@ -513,7 +484,7 @@ module Azure
         # call PutBlob with empty body
         response = call(:put, uri, content, headers)
 
-        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+        blob = Azure::Entity::Serialization.blob_from_headers(response.headers)
         blob.name = blob
         blob.url = uri
 
@@ -588,7 +559,7 @@ module Azure
 
         add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
 
-        body = Azure::Entity::Blob::Serialization.block_list_to_xml(block_list)
+        body = Azure::Entity::Serialization.block_list_to_xml(block_list)
         response = call(:put, uri, body, headers)
 
         response.success?
@@ -622,7 +593,7 @@ module Azure
 
         response = call(:get, uri)
 
-        blocklist = Azure::Entity::Blob::Serialization.block_list_from_xml(response.body)
+        blocklist = Azure::Entity::Serialization.block_list_from_xml(response.body)
         blocklist
 
       end
@@ -642,7 +613,7 @@ module Azure
 
         response = call(:get, uri)
 
-        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+        blob = Azure::Entity::Serialization.blob_from_headers(response.headers)
 
         blob.name = blob
         blob.url = uri
@@ -669,7 +640,7 @@ module Azure
 
         response = call(:get, uri)
 
-        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+        blob = Azure::Entity::Serialization.blob_from_headers(response.headers)
 
         blob.name = blob
         blob.url = uri
@@ -704,7 +675,7 @@ module Azure
 
         response = call(:get, uri, nil, headers)
 
-        pagelist = Azure::Entity::Blob::Serialization.page_list_from_xml(response.body)
+        pagelist = Azure::Entity::Serialization.page_list_from_xml(response.body)
         pagelist
       end
 
@@ -843,7 +814,7 @@ module Azure
         end
 
         response = call(:get, uri, nil, headers)
-        blob = Azure::Entity::Blob::Serialization.blob_from_headers(response.headers)
+        blob = Azure::Entity::Serialization.blob_from_headers(response.headers)
 
         return blob, response.body
       end
@@ -1103,26 +1074,15 @@ module Azure
         response.headers["x-ms-lease-time"].to_i
       end
 
-      # Adds metadata properties to header hash with required prefix
-      # 
-      # metadata  - A Hash of metadata name/value pairs
-      # headers   - A Hash of HTTP headers 
-      def add_metadata_to_headers(metadata, headers)
-        metadata.each do |key, value|
-          headers["x-ms-meta-#{key}"] = value
-        end
-      end
-
       # Public: Generate the URI for the collection of containers.
       #
       # query - A Hash of key => value query parameters.
       # host  - The host of the API.
       #
       # Returns a URI.
-      def containers_uri(query={}, host=Azure.config.blob_host)
+      def containers_uri(query={})
         query = { "comp" => "list" }.merge(query)
-        uri = join(host, "/")
-        add_query(uri, query)
+        generate_uri("/", query)
       end
 
       # Public: Generate the URI for a specific container.
@@ -1132,11 +1092,10 @@ module Azure
       # host  - The host of the API.
       #
       # Returns a URI.
-      def container_uri(name, query={}, host=Azure.config.blob_host)
+      def container_uri(name, query={})
         return name if name.kind_of? ::URI
         query = { "restype" => "container" }.merge(query)
-        uri = join(host, name)
-        add_query(uri, query)
+        generate_uri(name, query)
       end
 
       # Public: Generate the URI for a specific Blob.
@@ -1147,32 +1106,8 @@ module Azure
       # host           - The host of the API.
       #
       # Returns a URI.
-      def blob_uri(container_name, blob_name, query={}, host=Azure.config.blob_host)
-        uri = join(host, File.join(container_name, blob_name))
-        add_query(uri, query)
-      end
-
-      # Public: Adds query to URI, setting default timeout unless it's already in query
-      #
-      # uri   - The URI.
-      # query - A Hash of key => value query paramters
-      #
-      # Returns as URI.
-      def add_query(uri, query={})
-        query["timeout"] = default_timeout.to_s unless query.has_key? "timeout"
-
-        uri.query = ::URI.encode_www_form(query)
-        uri
-      end
-
-      # Utility method to generate the URI.
-      #
-      # host - A String with the URI's host.
-      # path - A String with the URI's path.
-      #
-      # Returns a URI.
-      def join(host, path)
-        ::URI.parse(File.join(host, path))
+      def blob_uri(container_name, blob_name, query={})
+        generate_uri(File.join(container_name, blob_name), query)
       end
     end
   end

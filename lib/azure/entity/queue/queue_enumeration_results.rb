@@ -12,19 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'azure/entity/blob/access_policy'
+require 'azure/entity/enumeration_results'
 
 module Azure
   module Entity
-    module Blob
-      class SignedIdentifier
+    module Queue
+      class QueueEnumerationResults < EnumerationResults
 
-        def initialize 
-          @access_policy = AccessPolicy.new
+        def initialize
+          @queues = []
         end
 
-        attr_accessor :id
-        attr_accessor :access_policy
+        attr_accessor :account_name
+        attr_accessor :queues
       end
     end
   end

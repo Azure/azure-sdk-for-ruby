@@ -12,23 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'azure/entity/blob/container_properties'
-
 module Azure
   module Entity
-    module Blob
-      class Container
-
-        def initialize
-          @properties = ContainerProperties.new
-          @metadata = {}
-        end
-
-        attr_accessor :name
-        attr_accessor :url
-        attr_accessor :properties
-        attr_accessor :metadata
-        attr_accessor :visibility
+    module Queue
+      class Message
+        attr_accessor :id
+        attr_accessor :insertion_time
+        attr_accessor :expiration_time
+        attr_accessor :dequeue_count
+        attr_accessor :message_text
+        attr_accessor :time_next_visible
+        attr_accessor :pop_receipt
       end
     end
   end

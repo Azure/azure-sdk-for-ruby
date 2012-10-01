@@ -20,8 +20,8 @@ module Azure
       class Blob
         
         def initialize
-          properties = BlobProperties.new
-          metadata = {}
+          @properties = BlobProperties.new
+          @metadata = {}
         end
 
         attr_accessor :name
