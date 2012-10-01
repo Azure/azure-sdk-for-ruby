@@ -25,7 +25,7 @@ describe Azure::Tables::Auth::SharedKey do
   end
 
   it "#signable_string includes the relevant bits" do
-    string = subject.signable_string(:get, double(path: "/path"), {
+    string = subject.signable_string(:get, double(:path => "/path"), {
       "Content-MD5"  => "Foo",
       "Content-Type" => "text/plain",
       "Date"         => "Time"
@@ -35,12 +35,13 @@ describe Azure::Tables::Auth::SharedKey do
   end
 
   it "#signable_string requires a Date or x-ms-date header" do
+    error_type = RUBY_VERSION > "1.9" ? KeyError : IndexError
     proc {
-      subject.signable_string(:get, double(path: "/path"), {
+      subject.signable_string(:get, double(:path=> "/path"), {
         "Content-MD5"  => "Foo",
         "Content-Type" => "text/plain"
       })
-    }.must_raise KeyError, "Headers must include Date"
+    }.must_raise error_type, "Headers must include Date"
   end
 
   it "#sign will return a Base64-encoded, HMAC/SHA256-encrypted version of the signable string" do

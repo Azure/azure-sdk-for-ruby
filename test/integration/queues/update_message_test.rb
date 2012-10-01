@@ -47,11 +47,11 @@ describe "Update Messages" do
   end
 
   it "can't update an invisible message" do
-    message = @queue.pop(visibilitytimeout: 1)
+    message = @queue.pop(:visibilitytimeout=> 1)
 
     # Pop the message again, and this time make it invisible for a long period
     sleep 1
-    @queue.pop(visibilitytimeout: 100)
+    @queue.pop(:visibilitytimeout=> 100)
 
     message.visibility_timeout = 10
     response = message.update!

@@ -37,7 +37,7 @@ module Azure
             method.to_s.upcase,
             headers.fetch("Content-MD5", ""),
             headers.fetch("Content-Type", ""),
-            headers.fetch("Date") { raise KeyError, "Headers must include Date" },
+            headers.fetch("Date") { raise IndexError, "Headers must include Date" },
             canonicalized_headers(uri).join("\n"),
             canonicalized_resource(uri).join("\n")
           ].join("\n")

@@ -233,7 +233,7 @@ module Azure
         #
         # Returns a Azure::Core::HttpResponse
         def call(container_name)
-          uri = Blobs::URI.container(container_name, comp: "list", include: "metadata")
+          uri = Blobs::URI.container(container_name, :comp => "list", :include => "metadata")
           super(:get, uri)
         end
       end
