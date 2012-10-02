@@ -94,7 +94,7 @@ module Azure
       end
 
       def self.hash_from_entry_xml(xml)
-        xml = slopify(xml)e
+        xml = slopify(xml)
         expect_node("entry", xml)
         result = {}
         result['url'] = (xml > "id").text if (xml > "id").any?
@@ -102,7 +102,7 @@ module Azure
         content = {} 
         if (xml > "content").any?
           (xml > "content").first.first_element_child.element_children.each do |prop|
-            content[prop.name] = Azure::Tables::Types.cast(prop.text, prop["type"])
+            content[prop.name] = prop.text? ? Azure::Tables::Types.cast(prop.text, prop["type"]) : prop['null'] ? nil : ""
           end
         end
         result['content'] = content

@@ -67,20 +67,20 @@ module Azure
 
       # Public: Gets a list of all tables on the account.
       #
-      # next_table_token      - String. A token used to enumerate the next page of results, when the list of tables is
+      # continuation_token    - String. A token used to enumerate the next page of results, when the list of tables is
       #                         larger than a single operation can return at once. (optional)
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179405
       #
       # Returns a tuple of (tables, next_table_token) of the table list and possibly a continuation token
       #  tables             - Array. A list of tuples of table_name (String), url (String), and updated time (DateTime)
-      #  next_table_token   - DateTime. A 
+      #  continuation_token - String. A token used to retrieve subsequent pages, if the result set is too large for a single operation to return 
       #
       def query_tables(next_table_token=nil)
         uri = collection_uri(next_table_token ? { "NextTable" => next_table_token } : {})
 
         response = call(:get, uri)
-        entries = Azure::Entity::Serialization.entries_from_feed_xml(response.body)
+        entries = Azure::Entity::Serialization.entries_from_feed_xml response.body
 
         results = []
         entries.each do |entry|
@@ -103,7 +103,7 @@ module Azure
         response = call(:get, table_uri(table_name, {"comp"=>"acl"}))
 
         signed_identifiers = []
-        signed_identifiers = Azure::Entity::Serialization.signed_identifiers_from_xml(response.body) unless response.body == nil or response.body.length < 1
+        signed_identifiers = Azure::Entity::Serialization.signed_identifiers_from_xml response.body unless response.body == nil or response.body.length < 1
         signed_identifiers
       end
 
@@ -118,7 +118,7 @@ module Azure
       def set_queue_acl(table_name, signed_identifiers=[])
         uri = table_uri(table_name, {"comp"=>"acl"})
         body = nil
-        body = Azure::Entity::Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && signed_identifiers.length > 0
+        body = Azure::Entity::Serialization.signed_identifiers_to_xml signed_identifiers if signed_identifiers && signed_identifiers.length > 0
 
         response = call(:put, uri, body, {})
         response.success?
@@ -142,6 +142,41 @@ module Azure
 
         response = call(:post, entities_uri(table_name), body)
         response.success?
+      end
+
+      # Public: Queries entities for the given table name
+      #
+      # table_name    - String. The table name
+      # partition_key - String. The partition key (optional)
+      # row_key       - String. The row key (optional)
+      # select        - Array. An array of property names to return (optional)
+      # filter        - String. A filter expression (optional)
+      # top           - Integer. A limit for the number of results returned (optional)
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179421
+      #
+      # Returns a tuple of (results, continuation_token) on success
+      #   results             - List. A list of entities, where each entity is a Hash with the format { :url=>"...", :update=>"...", :properties=> { ... } }
+      #   continuation_token  - Hash. A token used to retrieve subsequent pages, if the result set is too large for a single operation to return 
+      def query_entities(table_name, partition_key=nil, row_key=nil, select=nil, filter=nil, top=nil, continuation_token=nil)
+        query ={}
+        query["$select"] = select.join ',' if select
+        query["$filter"] = filter if filter
+        query["$top"] = top.to_s if top unless partition_key and row_key
+        query["NextPartitionKey"] = continuation_token[:next_partition_key] if continuation_token and continuation_token[:next_partition_key]
+        query["NextRowKey"] = continuation_token[:next_row_key] if continuation_token and continuation_token[:next_row_key]
+
+        uri = entities_uri(table_name, partition_key, row_key, query)
+
+        response = call(:get, uri, nil, { "DataServiceVersion" => "2.0;NetFx"})
+        
+        if partition_key and row_key
+          results = [Azure::Entity::Serialization.hash_from_entry_xml(response.body)]
+        else
+          results = Azure::Entity::Serialization.entries_from_feed_xml(response.body)
+        end
+
+        return results, response.headers["x-ms-continuation-NextPartitionKey"] ? { :next_partition_key=> response.headers["x-ms-continuation-NextPartitionKey"], :next_row_key => response.headers["x-ms-continuation-NextRowKey"]} : nil
       end
 
       # Public: Generate the URI for the collection of tables.
@@ -170,7 +205,7 @@ module Azure
       # row_key       - The desired row key (optional)
       #
       # Returns a URI
-      def entities_uri(table_name, partition_key=nil, row_key=nil)
+      def entities_uri(table_name, partition_key=nil, row_key=nil, query={})
         return table_name if table_name.kind_of? ::URI
 
         path = if partition_key && row_key
@@ -181,7 +216,19 @@ module Azure
           "%s()" % table_name
         end
 
-        generate_uri(path)
+        uri = generate_uri(path)
+        qs = []
+        if query
+          query.each do | key, val |
+            if key[0] == "$"
+              qs.push "#{key}#{::URI.encode_www_form(""=>val)}"
+            else
+              qs.push ::URI.encode_www_form(key=>val)
+            end
+          end
+        end
+        uri.query = qs.join '&'
+        uri
       end
     end
   end
