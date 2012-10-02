@@ -13,7 +13,8 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'azure/service/storage_service'
-require "azure/tables/auth/shared_key"
+require 'azure/tables/auth/shared_key'
+require 'azure/tables/atom'
 
 module Azure
   module Service
@@ -22,6 +23,22 @@ module Azure
         super(Azure::Tables::Auth::SharedKey.new)
         @host = Azure.config.table_host
         @default_timeout = 30
+      end
+
+      # Public: Creates new table in the storage account
+      #
+      # table_name    - String. The table name
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135729
+      #
+      # Returns true on success
+      def create_table(table_name)
+        body = Azure::Tables::Atom::Entry.new do |entry|
+          entry.properties["TableName"] = table_name
+        end
+
+        response = call(:post, collection_uri, body.to_xml)
+        response.success?
       end
 
       # Public: Generate the URI for the collection of tables.

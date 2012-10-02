@@ -32,11 +32,47 @@ require 'azure/entity/queue/queue_enumeration_results'
 require 'azure/entity/queue/queue'
 require 'azure/entity/queue/message'
 
+require 'azure/tables/types'
+
 require "base64"
+require "time"
 
 module Azure
   module Entity
     module Serialization
+
+      # table service
+      def self.hash_to_entry_xml(hash, id=nil, xml=Nokogiri::XML::Builder.new)
+        entry_namespaces = {
+          "xmlns"   => "http://www.w3.org/2005/Atom",
+          "xmlns:m" => "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata",
+          "xmlns:d" => "http://schemas.microsoft.com/ado/2007/08/dataservices"
+        }
+
+        xml.entry entry_namespaces do |entry|
+            entry.id id
+            entry.updated Time.now.xmlschema 
+            entry.title
+            entry.author do |author|
+              author.name
+            end
+          hash_to_content_xml(hash, entry)
+        end
+        
+        xml
+      end
+
+      def self.hash_to_content_xml(hash, xml=Nokogiri::XML::Builder.new)
+        xml.send("content", :type => "application/xml") do |content|
+          content.send("m:properties") do |properties|
+            hash.each do |key, val|
+              properties.send("d:#{key}", val, "m:type" => Azure::Tables::Types.type_of(val))
+            end
+          end
+        end
+        
+        xml
+      end
 
       # queue service
 
