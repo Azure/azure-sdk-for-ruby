@@ -50,7 +50,7 @@ module Azure
         }
 
         xml.entry entry_namespaces do |entry|
-            entry.id id
+            id ? entry.id(id): entry.id
             entry.updated Time.now.xmlschema 
             entry.title
             entry.author do |author|
@@ -89,23 +89,23 @@ module Azure
             results.push hash_from_entry_xml(entry)
           end
         end
-        
+
         results
       end
 
       def self.hash_from_entry_xml(xml)
-        xml = slopify(xml)
+        xml = slopify(xml)e
         expect_node("entry", xml)
         result = {}
         result['url'] = (xml > "id").text if (xml > "id").any?
         result['updated'] = Time.parse((xml > "updated").text) if (xml > "updated").any?
-        if (xml > "content").any? and ((xml > "content") > "properties").any?
-          content = {} 
-          (xml > "content").first.properties.element_children.each do |prop|
+        content = {} 
+        if (xml > "content").any?
+          (xml > "content").first.first_element_child.element_children.each do |prop|
             content[prop.name] = Azure::Tables::Types.cast(prop.text, prop["type"])
           end
-          result['content'] = content
         end
+        result['content'] = content
         result
       end
 

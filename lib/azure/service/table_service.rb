@@ -84,6 +84,7 @@ module Azure
 
         results = []
         entries.each do |entry|
+          puts entry
           result = [entry['content']['TableName'], entry['url'], entry['updated']]
           results.push result
         end
@@ -120,6 +121,26 @@ module Azure
         body = Azure::Entity::Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && signed_identifiers.length > 0
 
         response = call(:put, uri, body, {})
+        response.success?
+      end
+
+      # Public: Inserts new entity to the table.
+      #
+      # table_name    - String. The table name
+      # partition_key - String. The partition key
+      # row_key       - String. The row key
+      # entity_values - Hash. A hash of the name/value pairs for the entity. 
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179433
+      #
+      # Returns true on success
+      def insert_entity(table_name, partition_key, row_key, entity_values)
+        body = Azure::Entity::Serialization.hash_to_entry_xml({ 
+            "PartitionKey" => partition_key, 
+            "RowKey" => row_key
+          }.merge(entity_values) ).to_xml
+
+        response = call(:post, entities_uri(table_name), body)
         response.success?
       end
 
