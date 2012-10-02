@@ -74,13 +74,23 @@ module Azure
         xml
       end
 
-      def self.hash_from_feed_xml(xml)
+      def self.entries_from_feed_xml(xml)
         xml = slopify(xml)
         expect_node("feed", xml)
 
         return nil unless (xml > "entry").any?
-
-        hash_from_entry_xml((xml > "entry"))
+        
+        results = []
+        
+        if (xml > "entry").count == 0
+          results.push hash_from_entry_xml((xml > "entry"))
+        else
+          (xml > "entry").each do |entry|
+            results.push hash_from_entry_xml(entry)
+          end
+        end
+        
+        results
       end
 
       def self.hash_from_entry_xml(xml)

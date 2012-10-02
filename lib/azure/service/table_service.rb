@@ -54,23 +54,42 @@ module Azure
       #
       # table_name    - String. The table name
       #
-      # Returns a Hash of table properties on success
-      #
-      # eg: 
-      #     {
-      #       "name" => "mytable",
-      #       "url" => "http://myaccount.table.core.windows.net/Tables('mytable')",
-      #       "updated" => "2008-10-01 15:26:13 UTC"
-      #     }
+      # Returns a tuple of (url, updated) on success:
+      #  url      - Uri. The url of the table resource
+      #  updated  - DateTime. The last time the table was updated.
       #
       def get_table(table_name)
         response = call(:get, table_uri(table_name))
         results = Azure::Entity::Serialization.hash_from_entry_xml(response.body)
-        {
-          "name" => table_name,
-          "url" => results['url'],
-          "updated" => results['updated']
-        }
+
+        return results['url'], results['updated']
+      end
+
+      # Public: Gets a list of all tables on the account.
+      #
+      # next_table_token      - String. A token used to enumerate the next page of results, when the list of tables is
+      #                         larger than a single operation can return at once. (optional)
+      #
+      # See 
+      #
+      # Returns a tuple of (tables, next_table_token) of the table list and possibly a continuation token
+      #  tables             - Array. A list of tuples of table_name (String), url (String), and updated time (DateTime)
+      #  next_table_token   - DateTime. A 
+      #
+      def query_tables(next_table_token=nil)
+        uri = collection_uri
+        uri.query = ::URI.encode_www_form( { "NextTable" => next_table_token }) if next_table_token
+
+        response = call(:get, uri)
+        entries = Azure::Entity::Serialization.entries_from_feed_xml(response.body)
+
+        results = []
+        entries.each do |entry|
+          result = [entry['content']['TableName'], entry['url'], entry['updated']]
+          results.push result
+        end
+
+        return results, response.headers["x-ms-continuation-NextTableName"]
       end
 
       # Public: Generate the URI for the collection of tables.
