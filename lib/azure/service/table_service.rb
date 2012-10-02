@@ -41,6 +41,18 @@ module Azure
         response.success?
       end
 
+      # Public: Deletes the specified table and any data it contains.
+      #
+      # table_name    - String. The table name
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179387
+      #
+      # Returns true on success
+      def delete_table(table_name)
+        response = call(:delete, table_uri(table_name))
+        response.success?
+      end
+
       # Public: Generate the URI for the collection of tables.
       #
       # Returns a URI
