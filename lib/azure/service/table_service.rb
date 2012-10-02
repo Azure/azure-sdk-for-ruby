@@ -70,15 +70,14 @@ module Azure
       # next_table_token      - String. A token used to enumerate the next page of results, when the list of tables is
       #                         larger than a single operation can return at once. (optional)
       #
-      # See 
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179405
       #
       # Returns a tuple of (tables, next_table_token) of the table list and possibly a continuation token
       #  tables             - Array. A list of tuples of table_name (String), url (String), and updated time (DateTime)
       #  next_table_token   - DateTime. A 
       #
       def query_tables(next_table_token=nil)
-        uri = collection_uri
-        uri.query = ::URI.encode_www_form( { "NextTable" => next_table_token }) if next_table_token
+        uri = collection_uri(next_table_token ? { "NextTable" => next_table_token } : {})
 
         response = call(:get, uri)
         entries = Azure::Entity::Serialization.entries_from_feed_xml(response.body)
@@ -92,11 +91,43 @@ module Azure
         return results, response.headers["x-ms-continuation-NextTableName"]
       end
 
+      # Public: Gets the access control list (ACL) for the table.
+      #
+      # table_name    - String. The table name.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159100
+      #
+      # Returns a list of Azure::Entity::SignedIdentifier instances
+      def get_table_acl(table_name)
+        response = call(:get, table_uri(table_name, {"comp"=>"acl"}))
+
+        signed_identifiers = []
+        signed_identifiers = Azure::Entity::Serialization.signed_identifiers_from_xml(response.body) unless response.body == nil or response.body.length < 1
+        signed_identifiers
+      end
+
+      # Public: Sets the access control list (ACL) for the table.
+      #
+      # table_name          - String. The table name.
+      # signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
+      # 
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159102
+      #
+      # Returns true on success
+      def set_queue_acl(table_name, signed_identifiers=[])
+        uri = table_uri(table_name, {"comp"=>"acl"})
+        body = nil
+        body = Azure::Entity::Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && signed_identifiers.length > 0
+
+        response = call(:put, uri, body, {})
+        response.success?
+      end
+
       # Public: Generate the URI for the collection of tables.
       #
       # Returns a URI
-      def collection_uri()
-        generate_uri("Tables")
+      def collection_uri(query={})
+        generate_uri("Tables", query)
       end
 
       # Public: Generate the URI for a specific table.
