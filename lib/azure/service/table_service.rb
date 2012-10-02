@@ -33,11 +33,8 @@ module Azure
       #
       # Returns true on success
       def create_table(table_name)
-        body = Azure::Tables::Atom::Entry.new do |entry|
-          entry.properties["TableName"] = table_name
-        end
-
-        response = call(:post, collection_uri, body.to_xml)
+        body = Azure::Entity::Serialization.hash_to_entry_xml({"TableName" => table_name}).to_xml
+        response = call(:post, collection_uri, body)
         response.success?
       end
 
@@ -51,6 +48,29 @@ module Azure
       def delete_table(table_name)
         response = call(:delete, table_uri(table_name))
         response.success?
+      end
+
+      # Public: Gets the table.
+      #
+      # table_name    - String. The table name
+      #
+      # Returns a Hash of table properties on success
+      #
+      # eg: 
+      #     {
+      #       "name" => "mytable",
+      #       "url" => "http://myaccount.table.core.windows.net/Tables('mytable')",
+      #       "updated" => "2008-10-01 15:26:13 UTC"
+      #     }
+      #
+      def get_table(table_name)
+        response = call(:get, table_uri(table_name))
+        results = Azure::Entity::Serialization.hash_from_entry_xml(response.body)
+        {
+          "name" => table_name,
+          "url" => results['url'],
+          "updated" => results['updated']
+        }
       end
 
       # Public: Generate the URI for the collection of tables.

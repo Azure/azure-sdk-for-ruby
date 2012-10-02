@@ -74,6 +74,31 @@ module Azure
         xml
       end
 
+      def self.hash_from_feed_xml(xml)
+        xml = slopify(xml)
+        expect_node("feed", xml)
+
+        return nil unless (xml > "entry").any?
+
+        hash_from_entry_xml((xml > "entry"))
+      end
+
+      def self.hash_from_entry_xml(xml)
+        xml = slopify(xml)
+        expect_node("entry", xml)
+        result = {}
+        result['url'] = (xml > "id").text if (xml > "id").any?
+        result['updated'] = Time.parse((xml > "updated").text) if (xml > "updated").any?
+        if (xml > "content").any? and ((xml > "content") > "properties").any?
+          content = {} 
+          (xml > "content").first.properties.element_children.each do |prop|
+            content[prop.name] = Azure::Tables::Types.cast(prop.text, prop["type"])
+          end
+          result['content'] = content
+        end
+        result
+      end
+
       # queue service
 
       def self.queue_messages_from_xml(xml)
