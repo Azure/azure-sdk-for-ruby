@@ -13,12 +13,13 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'azure/service/storage_service'
+require "azure/tables/auth/shared_key"
 
 module Azure
   module Service
     class TableService < StorageService
       def initialize
-        super()
+        super(Azure::Tables::Auth::SharedKey.new)
         @host = Azure.config.table_host
         @default_timeout = 30
       end
