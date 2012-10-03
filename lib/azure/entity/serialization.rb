@@ -61,12 +61,13 @@ module Azure
         
         xml
       end
-
+      
       def self.hash_to_content_xml(hash, xml=Nokogiri::XML::Builder.new)
         xml.send("content", :type => "application/xml") do |content|
           content.send("m:properties") do |properties|
             hash.each do |key, val|
-              properties.send("d:#{key}", val, "m:type" => Azure::Tables::Types.type_of(val))
+              type = Azure::Tables::Types.type_of(val)
+              properties.send("d:#{key}", type == "Edm.DateTime" ? val.xmlschema : val, "m:type"=>type)
             end
           end
         end
@@ -102,7 +103,7 @@ module Azure
         content = {} 
         if (xml > "content").any?
           (xml > "content").first.first_element_child.element_children.each do |prop|
-            content[prop.name] = prop.text? ? Azure::Tables::Types.cast(prop.text, prop["type"]) : prop['null'] ? nil : ""
+            content[prop.name] = prop.text != "" ? Azure::Tables::Types.cast(prop.text, prop["type"]) : prop['null'] ? nil : ""
           end
         end
         result['content'] = content

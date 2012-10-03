@@ -169,7 +169,7 @@ module Azure
         uri = entities_uri(table_name, partition_key, row_key, query)
 
         response = call(:get, uri, nil, { "DataServiceVersion" => "2.0;NetFx"})
-        
+
         if partition_key and row_key
           results = [Azure::Entity::Serialization.hash_from_entry_xml(response.body)]
         else
@@ -177,6 +177,23 @@ module Azure
         end
 
         return results, response.headers["x-ms-continuation-NextPartitionKey"] ? { :next_partition_key=> response.headers["x-ms-continuation-NextPartitionKey"], :next_row_key => response.headers["x-ms-continuation-NextRowKey"]} : nil
+      end
+
+      # Public: Updates and existing entity in the table.
+      #
+      # table_name    - String. The table name
+      # partition_key - String. The partition key
+      # row_key       - String. The row key
+      # entity_values - Hash. A hash of the name/value pairs for the entity. 
+      # if_match      - String. A matching condition which is required for update (optional, Default="*")
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179427
+      #
+      # Returns true on success
+      def update_entity(table_name, partition_key, row_key, entity_values, if_match=nil)
+        body = Azure::Entity::Serialization.hash_to_entry_xml(entity_values).to_xml
+        response = call(:put, entities_uri(table_name, partition_key, row_key), body, {"If-Match"=> if_match || "*"})
+        response.success?
       end
 
       # Public: Generate the URI for the collection of tables.
