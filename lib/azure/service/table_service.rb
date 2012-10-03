@@ -179,7 +179,7 @@ module Azure
         return results, response.headers["x-ms-continuation-NextPartitionKey"] ? { :next_partition_key=> response.headers["x-ms-continuation-NextPartitionKey"], :next_row_key => response.headers["x-ms-continuation-NextRowKey"]} : nil
       end
 
-      # Public: Updates and existing entity in the table.
+      # Public: Updates an existing entity in the table.
       #
       # table_name    - String. The table name
       # partition_key - String. The partition key
@@ -193,6 +193,21 @@ module Azure
       def update_entity(table_name, partition_key, row_key, entity_values, if_match=nil)
         body = Azure::Entity::Serialization.hash_to_entry_xml(entity_values).to_xml
         response = call(:put, entities_uri(table_name, partition_key, row_key), body, {"If-Match"=> if_match || "*"})
+        response.success?
+      end
+
+      # Public: Deletes an existing entity in the table.
+      #
+      # table_name    - String. The table name
+      # partition_key - String. The partition key
+      # row_key       - String. The row key
+      # if_match      - String. A matching condition which is required for update (optional, Default="*")
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135727
+      #
+      # Returns true on success
+      def delete_entity(table_name, partition_key, row_key, if_match=nil)
+        response = call(:delete, entities_uri(table_name, partition_key, row_key), nil, {"If-Match"=> if_match || "*"})
         response.success?
       end
 
