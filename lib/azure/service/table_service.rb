@@ -14,7 +14,8 @@
 #--------------------------------------------------------------------------
 require 'azure/service/storage_service'
 require 'azure/tables/auth/shared_key'
-require 'azure/tables/atom'
+require 'azure/entity/serialization'
+require 'azure/entity/table/table_entity'
 
 module Azure
   module Service
@@ -54,15 +55,11 @@ module Azure
       #
       # table_name    - String. The table name
       #
-      # Returns a tuple of (url, updated) on success:
-      #  url      - Uri. The url of the table resource
-      #  updated  - DateTime. The last time the table was updated.
-      #
+      # Returns the last updated time for the table
       def get_table(table_name)
         response = call(:get, table_uri(table_name))
         results = Azure::Entity::Serialization.hash_from_entry_xml(response.body)
-
-        return results['url'], results['updated']
+        results[:updated] 
       end
 
       # Public: Gets a list of all tables on the account.
@@ -72,9 +69,13 @@ module Azure
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179405
       #
-      # Returns a tuple of (tables, next_table_token) of the table list and possibly a continuation token
-      #  tables             - Array. A list of tuples of table_name (String), url (String), and updated time (DateTime)
-      #  continuation_token - String. A token used to retrieve subsequent pages, if the result set is too large for a single operation to return 
+      # Returns a tuple of (tables, continuation_token) of the table list and possibly a continuation token
+      #  tables             - Hash. A hash of tables and the time they were last updated: 
+      #                        {
+      #                           "TableName"=> "2012-10-03T09:35:31Z"
+      #                        }
+      #  continuation_token - String. A token used to retrieve subsequent pages, if the result set is too large for a 
+      #                       single operation to return 
       #
       def query_tables(next_table_token=nil)
         uri = collection_uri(next_table_token ? { "NextTable" => next_table_token } : {})
@@ -82,11 +83,9 @@ module Azure
         response = call(:get, uri)
         entries = Azure::Entity::Serialization.entries_from_feed_xml response.body
 
-        results = []
+        results = {}
         entries.each do |entry|
-          puts entry
-          result = [entry['content']['TableName'], entry['url'], entry['updated']]
-          results.push result
+          results[entry[:properties]['TableName']] = entry[:updated]
         end
 
         return results, response.headers["x-ms-continuation-NextTableName"]
@@ -133,7 +132,7 @@ module Azure
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179433
       #
-      # Returns true on success
+      # Returns a Azure::Entity::Table::TableEntity
       def insert_entity(table_name, partition_key, row_key, entity_values)
         body = Azure::Entity::Serialization.hash_to_entry_xml({ 
             "PartitionKey" => partition_key, 
@@ -141,7 +140,18 @@ module Azure
           }.merge(entity_values) ).to_xml
 
         response = call(:post, entities_uri(table_name), body)
-        response.success?
+        
+        result = Azure::Entity::Serialization.hash_from_entry_xml(response.body)
+
+        entity = Azure::Entity::Table::TableEntity.new
+        entity.table = table_name
+        entity.partition_key = partition_key
+        entity.row_key = row_key
+        entity.updated = result[:updated]
+        entity.etag = response.headers["etag"] || result[:etag]
+        entity.properties result[:properties]
+
+        entity
       end
 
       # Public: Queries entities for the given table name
@@ -156,7 +166,7 @@ module Azure
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179421
       #
       # Returns a tuple of (results, continuation_token) on success
-      #   results             - List. A list of entities, where each entity is a Hash with the format { :url=>"...", :update=>"...", :properties=> { ... } }
+      #   results             - List. A list of Azure::Entity::Table::TableEntity instances
       #   continuation_token  - Hash. A token used to retrieve subsequent pages, if the result set is too large for a single operation to return 
       def query_entities(table_name, partition_key=nil, row_key=nil, select=nil, filter=nil, top=nil, continuation_token=nil)
         query ={}
@@ -170,30 +180,123 @@ module Azure
 
         response = call(:get, uri, nil, { "DataServiceVersion" => "2.0;NetFx"})
 
+        entities = []
+
         if partition_key and row_key
-          results = [Azure::Entity::Serialization.hash_from_entry_xml(response.body)]
+          result = Azure::Entity::Serialization.hash_from_entry_xml(response.body)
+          
+          entity = Azure::Entity::Table::TableEntity.new
+          entity.table = table_name
+          entity.partition_key = partition_key
+          entity.row_key = row_key
+          entity.updated = result[:updated]
+          entity.etag = response.headers["etag"] || result[:etag]
+          entity.properties result[:properties]
+
+          entities = [entity]
         else
           results = Azure::Entity::Serialization.entries_from_feed_xml(response.body)
+          results.each do |result|
+            entity = Azure::Entity::Table::TableEntity.new
+            entity.table = table_name
+            entity.partition_key = partition_key
+            entity.row_key = row_key
+            entity.updated = result[:updated]
+            entity.etag = result[:etag]
+            entity.properties = result[:properties]
+            entities.push entity
+          end
         end
 
-        return results, response.headers["x-ms-continuation-NextPartitionKey"] ? { :next_partition_key=> response.headers["x-ms-continuation-NextPartitionKey"], :next_row_key => response.headers["x-ms-continuation-NextRowKey"]} : nil
+        continuation_token = nil
+        continuation_token = { 
+          :next_partition_key=> response.headers["x-ms-continuation-NextPartitionKey"], 
+          :next_row_key => response.headers["x-ms-continuation-NextRowKey"]
+          } if response.headers["x-ms-continuation-NextPartitionKey"]
+
+        return results, continuation_token 
       end
 
-      # Public: Updates an existing entity in the table.
+      # Public: Updates an existing entity in a table. The Update Entity operation replaces 
+      # the entire entity and can be used to remove properties.
       #
-      # table_name    - String. The table name
-      # partition_key - String. The partition key
-      # row_key       - String. The row key
-      # entity_values - Hash. A hash of the name/value pairs for the entity. 
-      # if_match      - String. A matching condition which is required for update (optional, Default="*")
+      # table_name            - String. The table name
+      # partition_key         - String. The partition key
+      # row_key               - String. The row key
+      # entity_values         - Hash. A hash of the name/value pairs for the entity. 
+      # if_match              - String. A matching condition which is required for update (optional, Default="*")
+      # create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
+      #                         that entity will be inserted. If false, the operation will fail. (optional, Default=false)
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179427
       #
-      # Returns true on success
-      def update_entity(table_name, partition_key, row_key, entity_values, if_match=nil)
+      # Returns the ETag for the entity on success 
+      def update_entity(table_name, partition_key, row_key, entity_values, if_match="*", create_if_not_exists=false)
+        uri = entities_uri(table_name, partition_key, row_key)
+
+        headers = {}
+        headers["If-Match"] = if_match || "*" unless create_if_not_exists
+
         body = Azure::Entity::Serialization.hash_to_entry_xml(entity_values).to_xml
-        response = call(:put, entities_uri(table_name, partition_key, row_key), body, {"If-Match"=> if_match || "*"})
-        response.success?
+
+        response = call(:put, uri, body, headers)
+        response.headers["etag"]
+      end
+
+      # Public: Updates an existing entity by updating the entity's properties. This operation
+      # does not replace the existing entity, as the update_entity operation does.
+      #
+      # table_name            - String. The table name
+      # partition_key         - String. The partition key
+      # row_key               - String. The row key
+      # entity_values         - Hash. A hash of the name/value pairs for the entity. 
+      # if_match              - String. A matching condition which is required for update (optional, Default="*")
+      # create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
+      #                         that entity will be inserted. If false, the operation will fail. (optional, Default=false)
+      # 
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179392
+      # 
+      # Returns the ETag for the entity on success 
+      def merge_entity(table_name, partition_key, row_key, entity_values, if_match="*", create_if_not_exists=false)
+        uri = entities_uri(table_name, partition_key, row_key)
+
+        headers = { "X-HTTP-Method"=> "MERGE" }
+        headers["If-Match"] = if_match || "*" unless create_if_not_exists
+
+        body = Azure::Entity::Serialization.hash_to_entry_xml(entity_values).to_xml
+
+        response = call(:post, uri, body, headers)
+        response.headers["etag"]
+      end
+
+      # Public: Inserts or updates an existing entity within a table by merging new property values into the entity.
+      #
+      # table_name            - String. The table name
+      # partition_key         - String. The partition key
+      # row_key               - String. The row key
+      # entity_values         - Hash. A hash of the name/value pairs for the entity. 
+      # if_match              - String. A matching condition which is required for update (optional, Default="*")
+      # create_if_not_exists  - Boolean. A matching condition which is required for update (optional, Default=false)
+      # 
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452241
+      # 
+      # Returns the ETag for the entity on success 
+      def insert_or_merge_entity(table_name, partition_key, row_key, entity_values)
+        merge_entity(table_name, partition_key, row_key, entity_values, nil, true)
+      end
+
+      # Public: Inserts or updates a new entity into a table.
+      #
+      # table_name            - String. The table name
+      # partition_key         - String. The partition key
+      # row_key               - String. The row key
+      # entity_values         - Hash. A hash of the name/value pairs for the entity. 
+      # 
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452242
+      #
+      # Returns the ETag for the entity on success 
+      def insert_or_replace_entity(table_name, partition_key, row_key, entity_values)
+        update_entity(table_name, partition_key, row_key, entity_values, nil, true)
       end
 
       # Public: Deletes an existing entity in the table.
@@ -209,6 +312,25 @@ module Azure
       def delete_entity(table_name, partition_key, row_key, if_match=nil)
         response = call(:delete, entities_uri(table_name, partition_key, row_key), nil, {"If-Match"=> if_match || "*"})
         response.success?
+      end
+
+      # Public: Gets an existing entity in the table.
+      #
+      # table_name    - String. The table name
+      # partition_key - String. The partition key
+      # row_key       - String. The row key
+      #
+      # Returns an entity hash on success:
+      #   {
+      #     :url        - String. The URL for the entity.
+      #     :updated    - DateTime. Last updated time
+      #     :etag       - String. The ETag for the entity
+      #     :properties - Hash. The property names and values for the entity
+      #  }
+      #
+      def get_entity(table_name, partition_key, row_key)
+        results = query_entities(table_name, partition_key, row_key)
+        results.length > 0 ? results[0] : {}
       end
 
       # Public: Generate the URI for the collection of tables.

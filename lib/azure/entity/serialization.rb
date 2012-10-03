@@ -61,7 +61,7 @@ module Azure
         
         xml
       end
-      
+
       def self.hash_to_content_xml(hash, xml=Nokogiri::XML::Builder.new)
         xml.send("content", :type => "application/xml") do |content|
           content.send("m:properties") do |properties|
@@ -98,15 +98,16 @@ module Azure
         xml = slopify(xml)
         expect_node("entry", xml)
         result = {}
-        result['url'] = (xml > "id").text if (xml > "id").any?
-        result['updated'] = Time.parse((xml > "updated").text) if (xml > "updated").any?
-        content = {} 
+        result[:etag] = xml["etag"]
+        result[:url] = (xml > "id").text if (xml > "id").any?
+        result[:updated] = Time.parse((xml > "updated").text) if (xml > "updated").any?
+        properties = {} 
         if (xml > "content").any?
           (xml > "content").first.first_element_child.element_children.each do |prop|
-            content[prop.name] = prop.text != "" ? Azure::Tables::Types.cast(prop.text, prop["type"]) : prop['null'] ? nil : ""
+            properties[prop.name] = prop.text != "" ? Azure::Tables::Types.cast(prop.text, prop["type"]) : prop['null'] ? nil : ""
           end
         end
-        result['content'] = content
+        result[:properties] = properties
         result
       end
 
