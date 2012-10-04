@@ -12,22 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'happymapper'
 require 'azure/storage/service/retention_policy'
 
 module Azure
   module Storage
     module Service
       class Metrics
-        include HappyMapper
-
-        tag "Metrics"
+        def initialize
+          @retention_policy = RetentionPolicy.new
+        end
         
-        element :version, String, :tag => "Version"
-        element :enabled, Boolean, :tag => "Enabled"
-        element :include_apis, Boolean, :tag =>"IncludeAPIs"
-
-        has_one :retention_policy, RetentionPolicy, :tag => "RetentionPolicy"
+        attr_accessor :version
+        attr_accessor :enabled
+        attr_accessor :include_apis
+        attr_accessor :retention_policy
       end
     end
   end

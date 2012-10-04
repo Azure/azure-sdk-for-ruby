@@ -33,7 +33,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("mime-types", "~> 1.0")
   s.add_runtime_dependency "libxml-ruby" 
   s.add_runtime_dependency "extlib_lite"
-  s.add_runtime_dependency "nokogiri-happymapper"
   s.add_runtime_dependency "json"
 
   s.add_development_dependency("rake")

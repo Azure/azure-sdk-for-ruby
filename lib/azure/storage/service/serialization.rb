@@ -18,11 +18,17 @@ require 'azure/storage/service/enumeration_results'
 require 'azure/storage/service/signed_identifier'
 require 'azure/storage/service/access_policy'
 
+require 'azure/storage/service/storage_service_properties'
+require 'azure/storage/service/logging'
+require 'azure/storage/service/metrics'
+require 'azure/storage/service/retention_policy'
+
 module Azure
   module Storage
     module Service
       module Serialization
         module ClassMethods
+
           def signed_identifiers_from_xml(xml)
             xml = slopify(xml)
             expect_node("SignedIdentifiers", xml)
@@ -128,6 +134,121 @@ module Azure
             }
 
             metadata
+          end
+
+# <?xml version="1.0" encoding="utf-8"?>
+# <StorageServiceProperties>
+#     <Logging>
+#         <Version>1.0</Version>
+#         <Delete>true</Delete>
+#         <Read>false</Read>
+#         <Write>true</Write>
+#         <RetentionPolicy>
+#             <Enabled>true</Enabled>
+#             <Days>7</Days>
+#         </RetentionPolicy>
+#     </Logging>
+#     <Metrics>
+#         <Version>1.0</Version>
+#         <Enabled>true</Enabled>
+#         <IncludeAPIs>false</IncludeAPIs>
+#         <RetentionPolicy>
+#             <Enabled>true</Enabled>
+#             <Days>7</Days>
+#         </RetentionPolicy>
+#     </Metrics>
+#     <DefaultServiceVersion>2011-08-18</DefaultServiceVersion>
+# </StorageServiceProperties>
+
+          def retention_policy_to_xml(retention_policy, xml)
+            xml.RetentionPolicy {
+                xml.Enabled retention_policy.enabled unless retention_policy.enabled == nil
+                xml.Days retention_policy.days if retention_policy.days
+              }
+          end
+
+          def retention_policy_from_xml(xml)
+            xml = slopify(xml)
+            expect_node("RetentionPolicy", xml)
+
+            retention_policy = RetentionPolicy.new
+            retention_policy.enabled = to_bool(xml.Enabled.text) if (xml > "Enabled").any?
+            retention_policy.days = xml.Days.text.to_i if (xml > "Days").any?
+
+            retention_policy
+          end
+
+          def metrics_to_xml(metrics, xml)
+            xml.Metrics { 
+              xml.Version metrics.version if metrics.version
+              xml.Enabled metrics.enabled unless metrics.enabled == nil
+              xml.IncludeAPIs metrics.include_apis unless metrics.include_apis == nil
+              retention_policy_to_xml(metrics.retention_policy, xml) if metrics.retention_policy
+            }
+          end
+
+          def metrics_from_xml(xml)
+            xml = slopify(xml)
+            expect_node("Metrics", xml)
+
+            metrics = Metrics.new
+            metrics.version = xml.Version.text if (xml > "Version").any?
+            metrics.enabled = to_bool(xml.Enabled.text) if (xml > "Enabled").any?
+            metrics.include_apis = to_bool(xml.IncludeAPIs.text) if (xml > "IncludeAPIs").any?
+            metrics.retention_policy = retention_policy_from_xml(xml.RetentionPolicy)
+
+            metrics
+          end
+
+          def logging_to_xml(logging, xml)
+            xml.Logging { 
+              xml.Version logging.version if logging.version
+              xml.Delete logging.delete unless logging.delete == nil
+              xml.Read logging.read unless logging.read == nil
+              xml.Write logging.write unless logging.write == nil
+              retention_policy_to_xml(logging.retention_policy, xml) if logging.retention_policy
+            }
+          end
+
+          def logging_from_xml(xml)
+            xml = slopify(xml)
+            expect_node("Logging", xml)
+
+            logging = Logging.new
+            logging.version = xml.Version.text if (xml > "Version").any?
+            logging.delete = to_bool(xml.Delete.text) if (xml > "Delete").any?
+            logging.read = to_bool(xml.Read.text) if (xml > "Read").any?
+            logging.write = to_bool(xml.Write.text) if (xml > "Write").any?
+            logging.retention_policy = retention_policy_from_xml(xml.RetentionPolicy)
+
+            logging
+          end
+          
+          def storage_service_properties_to_xml(properties)
+            builder = Nokogiri::XML::Builder.new(:encoding => 'utf-8') do |xml|
+              xml.StorageServiceProperties {
+                logging_to_xml(properties.logging, xml) if properties.logging
+                metrics_to_xml(properties.metrics, xml) if properties.metrics
+                xml.DefaultServiceVersion properties.default_service_version if properties.default_service_version
+              }
+            end
+            builder.to_xml
+          end
+
+          def storage_service_properties_from_xml(xml)
+            xml = slopify(xml)
+            expect_node("StorageServiceProperties", xml)
+
+            properties = StorageServiceProperties.new
+            properties.default_service_version = xml.DefaultServiceVersion.text if (xml > "DefaultServiceVersion").any?
+            properties.logging = logging_from_xml(xml.Logging)
+            properties.metrics = metrics_from_xml(xml.Metrics)
+
+            properties
+          end
+
+          def to_bool(s)
+            s.downcase == 'true'
           end
 
           def slopify(xml)
