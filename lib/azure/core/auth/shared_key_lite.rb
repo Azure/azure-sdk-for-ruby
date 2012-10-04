@@ -38,8 +38,8 @@ module Azure
             headers.fetch("Content-MD5", ""),
             headers.fetch("Content-Type", ""),
             headers.fetch("Date") { raise IndexError, "Headers must include Date" },
-            canonicalized_headers(uri).join("\n"),
-            canonicalized_resource(uri).join("\n")
+            canonicalized_headers(headers),
+            canonicalized_resource(uri)
           ].join("\n")
         end
       end

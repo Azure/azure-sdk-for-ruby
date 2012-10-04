@@ -45,13 +45,14 @@ module Azure
         # method - Symbol. The HTTP method to use (:get, :post, :put, :del, etc...)
         # uri    - URI. The URI of the HTTP endpoint to query
         # body   - IO or String. The request body (optional)
-        def initialize(method, uri, body=nil)
+        # current_time - String. The current time as a HTTP date string
+        def initialize(method, uri, body=nil, current_time=Time.now.httpdate)
           @method  = method
           @uri     = uri
           @body    = body
           @headers = {}
 
-          default_headers
+          default_headers current_time
         end
 
         # Public: Applies a HttpFilter to the HTTP Pipeline
@@ -90,8 +91,8 @@ module Azure
         end
 
         # Build a default headers Hash
-        def default_headers
-          headers["x-ms-date"] = Time.now.httpdate
+        def default_headers(current_time)
+          headers["x-ms-date"] = current_time
           headers["x-ms-version"] = "2011-08-18"
           headers["DataServiceVersion"] = "1.0;NetFx"
           headers["MaxDataServiceVersion"] = "2.0;NetFx"

@@ -13,32 +13,20 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'test_helper'
-require "azure/core/http_response"
+require "azure/core/http/http_response"
 
-describe Azure::Core::HttpResponse do
-  it "can act as an error" do
-    http_response = MiniTest::Mock.new
-    http_response.stub(:body, Fixtures[:error])
-    http_response.stub(:code, "409")
-
-    response = Azure::Core::HttpResponse.new(http_response)
-
-    assert_raises(Azure::Core::HTTPError) do
-      raise response
-    end
-  end
-
+describe Azure::Core::Http::HttpResponse do
   it "converts net/http headers into strings" do
     http_response = MiniTest::Mock.new
     http_response.stub(:to_hash, { "Content-Type" => ["text/xml"] })
 
-    response = Azure::Core::HttpResponse.new(http_response)
+    response = Azure::Core::Http::HttpResponse.new(http_response)
     response.headers["Content-Type"].must_equal "text/xml"
   end
 
-  describe Azure::Core::HttpResponse::HeaderHash do
+  describe Azure::Core::Http::HttpResponse::HeaderHash do
     subject do
-      Azure::Core::HttpResponse::HeaderHash.new(
+      Azure::Core::Http::HttpResponse::HeaderHash.new(
         "FooBar" => ["1"], "bazqux" => ["2"], "QUXFOO" => ["3"]
       )
     end

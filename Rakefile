@@ -46,6 +46,22 @@ namespace :test do
     t.verbose = true
     t.libs = ["lib", "test"]
   end
+  
+  namespace :unit do
+    def component_task(component)
+      Rake::TestTask.new component do |t|
+        t.pattern = "test/unit/#{component}/**/*_test.rb"
+        t.verbose = true
+        t.libs = ["lib", "test"]
+      end
+      
+      task component => "test:require_environment"
+    end
+
+    component_task :core
+    component_task :storage
+    component_task :service_bus
+  end
 
   Rake::TestTask.new :integration do |t|
     t.pattern = "test/integration/**/*_test.rb"

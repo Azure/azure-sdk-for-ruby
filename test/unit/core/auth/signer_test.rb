@@ -13,26 +13,18 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "test_helper"
-require "azure/core/auth/authorizer"
+require "azure/core/auth/signer"
 
-describe Azure::Core::Auth do
-  before do
-    uri = double(:path=> "/path")
+describe Azure::Core::Signer do
+  subject { Azure::Core::Signer.new "YWNjZXNzLWtleQ==" }
 
-    @signer = MiniTest::Mock.new
-    @signer.stub(:name, "SharedKey")
-    @signer.stub(:sign, "Base64String==")
-
-    @request = MiniTest::Mock.new
-    @request.stub(:method, :get)
-    @request.stub(:uri, uri)
-    @request.stub(:headers, {})
+  it "decodes the base64 encoded access_key" do
+    subject.access_key.must_equal "access-key"
   end
 
-  it "generates a proper Authorization header" do
-    auth = Azure::Core::Auth::Authorizer.new("account-name")
-    auth.sign(@request, @signer)
-
-    @request.headers["Authorization"].must_equal "SharedKey account-name:Base64String=="
+  describe "sign" do
+    it "creates a signature for the body, as a base64 encoded string, which represents a HMAC hash using the access_key" do
+      subject.sign("body").must_equal "iuUxVhs1E7PeSNx/90ViyJNO24160qYpoWeCcOsnMoM="
+    end
   end
 end

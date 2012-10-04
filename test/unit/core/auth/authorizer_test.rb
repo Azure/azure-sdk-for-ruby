@@ -12,15 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "backports"
-require "minitest/autorun"
+require "test_helper"
+require "azure/core/auth/authorizer"
 
-# Attempt to load turn to show formatted test results
-begin
-  require "turn"
-  Turn.config.format = :pretty
-  Turn.config.natural = true
-rescue LoadError
+describe Azure::Core::Auth::Authorizer do
+  before do
+    uri = double(:path=> "/path")
+
+    @signer = MiniTest::Mock.new
+    @signer.stub(:name, "SharedKey")
+    @signer.stub(:sign, "Base64String==")
+
+    @request = MiniTest::Mock.new
+    @request.stub(:method, :get)
+    @request.stub(:uri, uri)
+    @request.stub(:headers, {})
+  end
+  subject { Azure::Core::Auth::Authorizer.new("account-name") }
+
+  it "generates a proper Authorization header" do
+    subject.sign(@request, @signer)
+
+    @request.headers["Authorization"].must_equal "SharedKey account-name:Base64String=="
+  end
 end
-
-Dir["./test/support/**/*.rb"].each { |dep| require dep }
