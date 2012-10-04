@@ -12,24 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/service_bus/core/service"
+require 'happymapper'
+require 'azure/storage/service/logging'
+require 'azure/storage/service/metrics'
 
 module Azure
-  module ServiceBus
-    class ServiceBusService < Core::Service
-      def initialize(signer=Auth::Wrap.new)
-        super(signer, Auth::Authorizer.new)
-      end
+  module Storage
+    module Service
+      class StorageServiceProperties
+        include HappyMapper
+        
+        tag "StorageServiceProperties"
 
-      def call(method, uri, body=nil)
-        super(method, uri, body) do |request|
-          request.headers.delete("x-ms-date")
-          request.headers.delete("x-ms-version")
-          request.headers.delete("DataServiceVersion")
-          request.headers.delete("MaxDataServiceVersion")
+        has_one :logging, Logging, :tag => "Logging"
+        has_one :metrics, Metrics, :tag => "Metrics"
 
-          yield request if block_given?
-        end
+        element :default_service_version, String, :tag => "DefaultServiceVersion"
       end
     end
   end

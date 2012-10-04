@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/core/service"
-require "azure/core/utils/queryable"
+require "azure/service_bus/core/service"
+require "azure/service_bus/core/queryable"
 require "azure/service_bus/service_bus_service"
 require "azure/service_bus/auth/wrap"
 require "azure/service_bus/auth/authorizer"
@@ -23,8 +23,8 @@ module Azure
   module ServiceBus
     module Topics
       class Service < Core::Service
-        def initialize(signer=Azure::ServiceBus::Auth::Wrap.new)
-          super(signer, Azure::ServiceBus::Auth::Authorizer.new)
+        def initialize(signer=Auth::Wrap.new)
+          super(signer, Auth::Authorizer.new)
         end
       end
 
@@ -68,7 +68,7 @@ module Azure
 
         # Public: List topics
         class List < Service
-          include Core::Utils::Queryable
+          include Core::Queryable
 
           # Public: Invoke the service.
           #

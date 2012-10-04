@@ -12,24 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/service_bus/core/service"
+require 'happymapper'
 
 module Azure
-  module ServiceBus
-    class ServiceBusService < Core::Service
-      def initialize(signer=Auth::Wrap.new)
-        super(signer, Auth::Authorizer.new)
-      end
+  module Storage
+    module Service
+      class RetentionPolicy
+        include HappyMapper
 
-      def call(method, uri, body=nil)
-        super(method, uri, body) do |request|
-          request.headers.delete("x-ms-date")
-          request.headers.delete("x-ms-version")
-          request.headers.delete("DataServiceVersion")
-          request.headers.delete("MaxDataServiceVersion")
+        tag "RetentionPolicy"
 
-          yield request if block_given?
-        end
+        element :enabled, Boolean, :tag => "Enabled"
+        element :days, Integer, :tag => "Days"
       end
     end
   end

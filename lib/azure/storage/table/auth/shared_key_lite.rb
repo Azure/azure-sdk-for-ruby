@@ -12,23 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/service_bus/core/service"
+require "azure/storage/table/auth/shared_key"
 
 module Azure
-  module ServiceBus
-    class ServiceBusService < Core::Service
-      def initialize(signer=Auth::Wrap.new)
-        super(signer, Auth::Authorizer.new)
-      end
+  module Storage
+    module Table
+      module Auth
+        class SharedKeyLite < SharedKey
+          # Public: The name of the strategy.
+          #
+          # Returns a String.
+          def name
+            "SharedKeyLite"
+          end
 
-      def call(method, uri, body=nil)
-        super(method, uri, body) do |request|
-          request.headers.delete("x-ms-date")
-          request.headers.delete("x-ms-version")
-          request.headers.delete("DataServiceVersion")
-          request.headers.delete("MaxDataServiceVersion")
-
-          yield request if block_given?
+          # Generate the string to sign.
+          #
+          # verb       - The HTTP request method.
+          # uri        - The URI of the request we're signing.
+          # headers    - A Hash of HTTP request headers.
+          #
+          # Returns a plain text string.
+          def signable_string(method, uri, headers)
+            [
+              headers.fetch("Date") { headers.fetch("x-ms-date") },
+              canonicalized_resource(uri)
+            ].join("\n")
+          end
         end
       end
     end

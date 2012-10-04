@@ -12,24 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/service_bus/core/service"
-
 module Azure
-  module ServiceBus
-    class ServiceBusService < Core::Service
-      def initialize(signer=Auth::Wrap.new)
-        super(signer, Auth::Authorizer.new)
-      end
-
-      def call(method, uri, body=nil)
-        super(method, uri, body) do |request|
-          request.headers.delete("x-ms-date")
-          request.headers.delete("x-ms-version")
-          request.headers.delete("DataServiceVersion")
-          request.headers.delete("MaxDataServiceVersion")
-
-          yield request if block_given?
-        end
+  module Storage
+    module Blob
+      class ContainerProperties
+        attr_accessor :last_modified
+        attr_accessor :etag
+        attr_accessor :lease_status
+        attr_accessor :lease_state
+        attr_accessor :lease_duration
       end
     end
   end

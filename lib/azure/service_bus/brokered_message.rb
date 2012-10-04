@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/core/error"
+require "azure/service_bus/core/error_handler"
 
 module Azure
   module ServiceBus
     class BrokeredMessage
-      include Azure::Core::ErrorHandler
+      include Core::ErrorHandler
 
       # Please read http://msdn.microsoft.com/en-us/library/windowsazure/hh780742
       # for more information on brokered message properties
