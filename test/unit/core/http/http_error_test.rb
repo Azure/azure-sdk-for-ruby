@@ -13,19 +13,23 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "test_helper"
-require "azure/core/error"
+require "azure/core/http/http_error"
 
-describe Azure::Core::HTTPError do
+describe Azure::Core::Http::HTTPError do
   let :http_response do
-    double(:body=> Fixtures[:error], :status_code=> 409)
+    double(:body=> Fixtures[:http_error], :status_code=> 409, :uri=>'http://dummy.uri')
   end
 
   subject do
-    Azure::Core::HTTPError.new(http_response)
+    Azure::Core::Http::HTTPError.new(http_response)
   end
 
-  it "is an Azure::Core::Error" do
+  it "is an instance of Azure::Core::Error" do
     subject.must_be_kind_of Azure::Core::Error
+  end
+
+  it "lets us see the original uri" do
+    subject.uri.must_equal 'http://dummy.uri'
   end
 
   it "lets us see the errors'status code" do
