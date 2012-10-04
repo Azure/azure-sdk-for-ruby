@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/core/error"
-require "azure/core/utils/interval"
+require "azure/service_bus/core/error_handler"
+require "azure/service_bus/core/interval"
 require "azure/service_bus/subscriptions"
 require "azure/service_bus/rules"
 
@@ -24,7 +24,7 @@ module Azure
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/hh780763
       class Subscription
-        include Azure::Core::ErrorHandler
+        include Core::ErrorHandler
 
         # Public: Get the String name of this subscription.
         attr :name
@@ -74,7 +74,7 @@ module Azure
         #
         # Returns an Interval or nil.
         def default_ttl=(interval)
-          @default_ttl = Core::Utils::Interval.try_convert(interval)
+          @default_ttl = Core::Interval.try_convert(interval)
         end
 
         # Public: Get the Time To Live (TTL) of a message in the subscription in
@@ -82,14 +82,14 @@ module Azure
         #
         # Returns an Interval or nil.
         def default_ttl
-          Core::Utils::Interval.try_convert(@default_ttl)
+          Core::Interval.try_convert(@default_ttl)
         end
 
         # Public: Duration of the lock in seconds.
         #
         # Returns an Interval or nil.
         def lock_duration
-          Core::Utils::Interval.try_convert(@lock_duration)
+          Core::Interval.try_convert(@lock_duration)
         end
 
         # Public: Set the duration of the lock in seconds. Allowed range is
@@ -99,7 +99,7 @@ module Azure
         #
         # Returns an Interval or nil.
         def lock_duration=(interval)
-          @lock_duration = Core::Utils::Interval.try_convert(interval)
+          @lock_duration = Core::Interval.try_convert(interval)
         end
 
         # Public: Two subscriptions are the same if they belong to the same

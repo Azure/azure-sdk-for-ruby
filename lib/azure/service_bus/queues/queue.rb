@@ -12,13 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/core/error"
+require "azure/service_bus/core/error_handler"
 
 module Azure
   module ServiceBus
     module Queues
       class Queue
-        include Azure::Core::ErrorHandler
+        include Core::ErrorHandler
         # Get the Queue's ID.
         #
         # Returns a URI.

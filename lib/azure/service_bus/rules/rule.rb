@@ -12,14 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/core/error"
+require "azure/service_bus/core/error_handler"
 require "nokogiri"
 
 module Azure
   module ServiceBus
     module Rules
       class Rule
-        include Azure::Core::ErrorHandler
+        include Core::ErrorHandler
 
         # Get the Rule's name.
         attr :name

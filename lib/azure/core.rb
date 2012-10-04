@@ -12,25 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/service_bus/core/service"
 
-module Azure
-  module ServiceBus
-    class ServiceBusService < Core::Service
-      def initialize(signer=Auth::Wrap.new)
-        super(signer, Auth::Authorizer.new)
-      end
+module Azure::Core; end
 
-      def call(method, uri, body=nil)
-        super(method, uri, body) do |request|
-          request.headers.delete("x-ms-date")
-          request.headers.delete("x-ms-version")
-          request.headers.delete("DataServiceVersion")
-          request.headers.delete("MaxDataServiceVersion")
+require "azure/core/error"
+require "azure/core/configuration"
 
-          yield request if block_given?
-        end
-      end
-    end
-  end
+# load default configuration from environment variables (user can always override this later)
+Azure.configure do |config|
+  config.access_key     = ENV["AZURE_STORAGE_ACCESS_KEY"]
+  config.account_name   = ENV["AZURE_STORAGE_ACCOUNT"]
+  config.table_host     = ENV["AZURE_TABLE_HOST"]
+  config.blob_host      = ENV["AZURE_BLOB_HOST"]
+  config.queue_host     = ENV["AZURE_QUEUE_HOST"]
+
+  config.acs_namespace  = ENV["AZURE_SERVICEBUS_NAMESPACE"]
+  config.sb_access_key  = ENV["AZURE_SERVICEBUS_ACCESS_KEY"]
+  config.sb_issuer      = ENV["AZURE_SERVICEBUS_ISSUER"]
 end

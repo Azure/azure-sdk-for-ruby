@@ -15,18 +15,19 @@
 require "singleton"
 
 module Azure
+  
+  # Proxy config method.
+  def self.config
+    Core.config
+  end
 
-    # Proxy config method.
-    def self.config
-      Core.config
-    end
+  # Proxy configure method.
+  def self.configure
+    yield Core.config
+  end
 
-    # Proxy configure method.
-    def self.configure
-      yield Core.config
-    end
+  module Core
 
-    module Core
     # Public: Sugar to configure the services in a neatly wrapped DSL.
     #
     # Yields the Azure::Configuration instance.

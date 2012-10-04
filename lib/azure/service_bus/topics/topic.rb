@@ -12,17 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/core/error"
+require "azure/service_bus/core/error_handler"
 require "azure/service_bus/topics"
 require "azure/service_bus/subscriptions"
 require "azure/service_bus/subscriptions/subscription"
-require "azure/core/collection"
+require "azure/service_bus/core/collection"
 
 module Azure
   module ServiceBus
     module Topics
       class Topic
-        include Azure::Core::ErrorHandler
+        include Core::ErrorHandler
         # Get the Topic's ID.
         #
         # Returns a URI.

@@ -13,7 +13,9 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "backports"
-require "azure/tables"
-require "azure/blobs"
-require "azure/queues"
+
+module Azure; end
+
+require "azure/core"
+require "azure/storage"
 require "azure/service_bus"
