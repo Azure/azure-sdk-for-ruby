@@ -15,8 +15,8 @@
 require "test_helper"
 require "azure/core/auth/signer"
 
-describe Azure::Core::Signer do
-  subject { Azure::Core::Signer.new "YWNjZXNzLWtleQ==" }
+describe Azure::Core::Auth::Signer do
+  subject { Azure::Core::Auth::Signer.new "YWNjZXNzLWtleQ==" }
 
   it "decodes the base64 encoded access_key" do
     subject.access_key.must_equal "access-key"

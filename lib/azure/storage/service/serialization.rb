@@ -224,7 +224,7 @@ module Azure
             logging
           end
           
-          def storage_service_properties_to_xml(properties)
+          def service_properties_to_xml(properties)
             builder = Nokogiri::XML::Builder.new(:encoding => 'utf-8') do |xml|
               xml.StorageServiceProperties {
                 logging_to_xml(properties.logging, xml) if properties.logging
@@ -235,7 +235,7 @@ module Azure
             builder.to_xml
           end
 
-          def storage_service_properties_from_xml(xml)
+          def service_properties_from_xml(xml)
             xml = slopify(xml)
             expect_node("StorageServiceProperties", xml)
 

@@ -21,7 +21,7 @@ module Azure
   module Storage
     module Table
       module Auth
-        class SharedKey < Azure::Core::Signer
+        class SharedKey < Azure::Core::Auth::Signer
           # The account name
           attr :account_name
 
