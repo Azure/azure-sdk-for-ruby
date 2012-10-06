@@ -48,7 +48,7 @@ module Azure
           end
 
           def signed_identifiers_to_xml(signed_identifiers)
-            builder = Nokogiri::XML::Builder.new do |xml|
+            builder = Nokogiri::XML::Builder.new(:encoding=>"utf-8") do |xml|
               xml.SignedIdentifiers {
                 signed_identifiers.each do |identifier|
                   xml.SignedIdentifier {
@@ -56,7 +56,7 @@ module Azure
                     xml.AccessPolicy {
                       xml.Start identifier.access_policy.start
                       xml.Expiry identifier.access_policy.expiry
-                      xml.Permissions identifier.access_policy.permissions
+                      xml.Permission identifier.access_policy.permission
                     }
                   }
                 end
@@ -71,7 +71,7 @@ module Azure
 
             signed_identifier = SignedIdentifier.new
             signed_identifier.id = xml.Id.text if (xml > "Id").any?
-            signed_identifier.access_policy = access_policy_from_xml(xml) if (xml > "AccessPolicy").any?
+            signed_identifier.access_policy = access_policy_from_xml(xml.AccessPolicy) if (xml > "AccessPolicy").any?
 
             signed_identifier
           end
@@ -83,7 +83,7 @@ module Azure
             access_policy = AccessPolicy.new
             access_policy.start = xml.Start.text if (xml > "Start").any?
             access_policy.expiry = xml.Expiry.text if (xml > "Expiry").any?
-            access_policy.permissions = xml.Permissions.text if (xml > "Permissions").any?
+            access_policy.permission = xml.Permission.text if (xml > "Permission").any?
 
             access_policy
           end
@@ -135,30 +135,6 @@ module Azure
 
             metadata
           end
-
-# <?xml version="1.0" encoding="utf-8"?>
-# <StorageServiceProperties>
-#     <Logging>
-#         <Version>1.0</Version>
-#         <Delete>true</Delete>
-#         <Read>false</Read>
-#         <Write>true</Write>
-#         <RetentionPolicy>
-#             <Enabled>true</Enabled>
-#             <Days>7</Days>
-#         </RetentionPolicy>
-#     </Logging>
-#     <Metrics>
-#         <Version>1.0</Version>
-#         <Enabled>true</Enabled>
-#         <IncludeAPIs>false</IncludeAPIs>
-#         <RetentionPolicy>
-#             <Enabled>true</Enabled>
-#             <Days>7</Days>
-#         </RetentionPolicy>
-#     </Metrics>
-#     <DefaultServiceVersion>2011-08-18</DefaultServiceVersion>
-# </StorageServiceProperties>
 
           def retention_policy_to_xml(retention_policy, xml)
             xml.RetentionPolicy {
@@ -248,11 +224,14 @@ module Azure
           end
 
           def to_bool(s)
-            s.downcase == 'true'
+            (s || "").downcase == 'true'
           end
 
           def slopify(xml)
-            (xml.is_a? String) ? Nokogiri.Slop(xml).root : xml 
+            node = (xml.is_a? String) ? Nokogiri.Slop(xml).root : xml
+            node.slop! if node.is_a? Nokogiri::XML::Document unless node.respond_to? :method_missing
+            node = node.root if node.is_a? Nokogiri::XML::Document
+            node
           end
 
           def expect_node(node_name, xml)
