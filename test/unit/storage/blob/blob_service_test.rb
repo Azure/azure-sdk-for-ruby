@@ -13,8 +13,7 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "test_helper"
-require 'azure/storage/service/storage_service'
-require 'azure/storage/blob/serialization'
+require 'azure/storage/blob/blob_service'
 require 'azure/storage/blob/serialization'
 
 describe Azure::Storage::Blob::BlobService do
