@@ -17,6 +17,8 @@ require 'azure/storage/blob/blob_service'
 require 'azure/storage/blob/serialization'
 
 describe Azure::Storage::Blob::BlobService do
+  subject { Azure::Storage::Blob::BlobService.new }
+  
   need_tests_for "list_containers"
   need_tests_for "create_container"
   need_tests_for "delete_container"
