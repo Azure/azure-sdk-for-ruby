@@ -20,11 +20,6 @@ require "azure/storage/service/storage_service_properties"
 
 describe Azure::Storage::Service::StorageService do
 
-  before do
-    Azure.config.account_name = "account_name"
-    Azure.config.access_key = "YWNjZXNzLWtleQ=="
-  end
-
   let(:uri){ URI.parse "http://dummy.uri/resource" }
   let(:method){ :get }
 
