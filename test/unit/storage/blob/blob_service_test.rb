@@ -16,6 +16,7 @@ require "test_helper"
 require 'azure/storage/blob/blob_service'
 require 'azure/storage/blob/serialization'
 require 'azure/storage/blob/container'
+require 'azure/storage/blob/blob'
 require 'azure/storage/service/signed_identifier'
 
 describe Azure::Storage::Blob::BlobService do
@@ -358,7 +359,105 @@ describe Azure::Storage::Blob::BlobService do
       need_tests_for "list_page_blob_ranges"
       need_tests_for "set_blob_properties"
       need_tests_for "set_blob_metadata"
-      need_tests_for "get_blob"
+
+      describe "#get_blob" do
+        let(:method) { :get }
+        let(:blob) { Azure::Storage::Blob::Blob.new }
+
+        before {
+          response.stubs(:success?).returns(true)
+          response_body = "body-contents"
+
+          subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
+          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          serialization.stubs(:blob_from_headers).with(response_headers).returns(blob)
+        }
+      
+        it "assembles a URI for the request" do
+          subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
+          subject.get_blob container_name, blob_name
+        end
+
+        it "calls StorageService#call with the prepared request" do
+          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.get_blob container_name, blob_name
+        end
+
+        it "returns the copy id and copy status on success" do
+          returned_blob, returned_blob_contents = subject.get_blob container_name, blob_name
+          
+          returned_blob.must_be_kind_of Azure::Storage::Blob::Blob
+          returned_blob.must_equal blob
+
+          returned_blob_contents.must_equal response_body
+        end
+
+        describe "when snapshot is provided" do
+          let(:source_snapshot){ "source-snapshot" }
+          before { query["snapshot"]=source_snapshot }
+
+          it "modifies the blob uri query string with the snapshot" do
+            subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
+            subject.get_blob container_name, blob_name, nil, nil, source_snapshot
+          end
+        end
+
+        describe "when start_range is provided" do
+          let(:start_range){ 255 }
+          before { request_headers["x-ms-range"]="#{start_range}-" }
+
+          it "modifies the request headers with the desired range" do
+            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.get_blob container_name, blob_name, start_range
+          end
+        end
+
+        describe "when end_range is provided" do
+          let(:end_range){ 512 }
+          before { request_headers["x-ms-range"]="0-#{end_range}" }
+
+          it "modifies the request headers with the desired range" do
+            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.get_blob container_name, blob_name, nil, end_range
+          end
+        end
+
+        describe "when both start_range and end_range are provided" do
+          let(:start_range){ 255 }
+          let(:end_range){ 512 }
+          before { request_headers["x-ms-range"]="#{start_range}-#{end_range}" }
+
+          it "modifies the request headers with the desired range" do
+            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.get_blob container_name, blob_name, start_range, end_range
+          end
+        end
+
+        describe "when get_content_md5 is true" do
+          let(:get_content_md5) { true }
+
+          describe "and a range is specified" do
+            let(:start_range){ 255 }
+            let(:end_range){ 512 }
+            before { 
+              request_headers["x-ms-range"]="#{start_range}-#{end_range}"
+              request_headers["x-ms-range-get-content-md5"]= true
+            }
+
+            it "modifies the request headers to include the x-ms-range-get-content-md5 header" do
+              subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+              subject.get_blob container_name, blob_name, start_range, end_range, nil, true
+            end
+          end
+
+          describe "and a range is NOT specified" do
+            it "does not modify the request headers" do
+              subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+              subject.get_blob container_name, blob_name, nil, nil, nil, true
+            end
+          end
+        end
+      end
 
       describe "#delete_blob" do
         let(:method) { :delete }

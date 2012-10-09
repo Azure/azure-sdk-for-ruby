@@ -804,7 +804,8 @@ module Azure
           uri = blob_uri(container, blob, snapshot ? {"snapshot" => snapshot} : {})
 
           headers = {}
-          if start_range && end_range
+          start_range = 0 if end_range and not start_range
+          if start_range
             headers["x-ms-range"] = "#{start_range}-#{end_range}"
             headers["x-ms-range-get-content-md5"] = true if get_content_md5
           end
