@@ -22,7 +22,7 @@ module Azure
 
         def initialize
           super()
-          @default_timeout = 90
+          @default_timeout = 90 
           @host = Azure.config.blob_host
         end
 
@@ -160,6 +160,7 @@ module Azure
           response = call(:get, container_uri(name, {"comp"=>"acl"}))
 
           container = Serialization.container_from_headers(response.headers)
+          container.name = name
 
           signed_identifiers = nil
           signed_identifiers = Serialization.signed_identifiers_from_xml(response.body) if response.body != nil && response.body.length > 0
@@ -837,7 +838,7 @@ module Azure
           headers = {}
           headers["x-ms-delete-snapshots"] = delete_snapshots.to_s if delete_snapshots && snapshot == nil
 
-          response = call(:del, uri, nil, headers)
+          response = call(:delete, uri, nil, headers)
           response.success?
         end
 
@@ -867,17 +868,18 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691971.aspx
         # 
         # Returns the snapshot DateTime value
-        def create_blob_snapshot(container, blob)
+        def create_blob_snapshot(container, blob, options=nil)
           uri = blob_uri(container, blob, "comp"=>"snapshot")
 
           headers = {}
+          unless options == nil
+            add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
 
-          add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
-
-          headers["If-Modified-Since"] = options[:if_modified_since] if options[:if_modified_since]
-          headers["If-Unmodified-Since"] = options[:if_unmodified_since] if options[:if_unmodified_since]
-          headers["If-Match"] = options[:if_match] if options[:if_match]
-          headers["If-None-Match"] = options[:if_none_match] if options[:if_none_match]
+            headers["If-Modified-Since"] = options[:if_modified_since] if options[:if_modified_since]
+            headers["If-Unmodified-Since"] = options[:if_unmodified_since] if options[:if_unmodified_since]
+            headers["If-Match"] = options[:if_match] if options[:if_match]
+            headers["If-None-Match"] = options[:if_none_match] if options[:if_none_match]
+          end
 
           response = call(:put, uri, nil, headers)
 
@@ -890,6 +892,7 @@ module Azure
         # source_blob           - String. The destination blob name to copy to.
         # destination_container - String. The source container name to copy from.
         # destination_blob      - String. The source blob name to copy from.
+        # source_snapshot       - String. A snapshot id for the source blob (optional)
         # options               - Hash. The optional parameters.
         #   :metadata                   - Hash. Custom metadata values to store with the copy. If this parameter is not 
         #                                 specified, the operation will copy the source blob metadata to the destination 
@@ -942,17 +945,19 @@ module Azure
           uri = blob_uri(destination_container, destination_blob)
           headers = {}
           headers["x-ms-copy-source"] = blob_uri(source_container, source_blob, source_snapshot ? { "snapshot" => source_snapshot } : {})
+          
+          unless options == nil
+            headers["If-Modified-Since"] = options[:dest_if_modified_since] if options[:dest_if_modified_since]
+            headers["If-Unmodified-Since"] = options[:dest_if_unmodified_since] if options[:dest_if_unmodified_since]
+            headers["If-Match"] = options[:dest_if_match] if options[:dest_if_match]
+            headers["If-None-Match"] = options[:dest_if_none_match] if options[:dest_if_none_match]
+            headers["x-ms-source-if-modified-since"] = options[:source_if_modified_since] if options[:source_if_modified_since]
+            headers["x-ms-source-if-unmodified-since"] = options[:source_if_unmodified_since] if options[:source_if_unmodified_since]
+            headers["x-ms-source-if-match"] = options[:source_if_match] if options[:source_if_match]
+            headers["x-ms-source-if-none-match"] = options[:source_if_none_match] if options[:source_if_none_match]
 
-          headers["If-Modified-Since"] = options[:dest_if_modified_since] if options[:dest_if_modified_since]
-          headers["If-Unmodified-Since"] = options[:dest_if_unmodified_since] if options[:dest_if_unmodified_since]
-          headers["If-Match"] = options[:dest_if_match] if options[:dest_if_match]
-          headers["If-None-Match"] = options[:dest_if_none_match] if options[:dest_if_none_match]
-          headers["x-ms-source-if-modified-since"] = options[:source_if_modified_since] if options[:source_if_modified_since]
-          headers["x-ms-source-if-unmodified-since"] = options[:source_if_unmodified_since] if options[:source_if_unmodified_since]
-          headers["x-ms-source-if-match"] = options[:source_if_match] if options[:source_if_match]
-          headers["x-ms-source-if-none-match"] = options[:source_if_none_match] if options[:source_if_none_match]
-
-          add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
+            add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
+          end
 
           response = call(:put, uri, nil, headers)
           return response.headers["x-ms-copy-id"], response.headers["x-ms-copy-status"]
@@ -980,7 +985,7 @@ module Azure
           headers = {}
           headers["x-ms-lease-action"] = "acquire"
           headers["x-ms-lease-duration"] = duration.to_s if duration
-          headers["x-ms-proposed-lease-id"] = propose_lease_id if proposed_lease_id
+          headers["x-ms-proposed-lease-id"] = proposed_lease_id if proposed_lease_id
 
           response = call(:put, uri, nil, headers)
           response.headers["x-ms-lease-id"] if response.success?
