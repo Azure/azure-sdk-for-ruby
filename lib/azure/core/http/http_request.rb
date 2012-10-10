@@ -28,7 +28,7 @@ module Azure
 
         alias_method :_method, :method
 
-        # The HTTP method to use (:get, :post, :put, :del, etc...)
+        # The HTTP method to use (:get, :post, :put, :delete, etc...)
         attr_accessor :method
 
         # The URI of the HTTP endpoint to query

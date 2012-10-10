@@ -172,7 +172,7 @@ module Azure
         #
         # name                - String. The name of the container
         # visibility          - String. The container visibility
-        # signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
+        # signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances (optional) 
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179391.aspx
         #
@@ -180,14 +180,14 @@ module Azure
         #   container           - A Azure::Entity::Blob::Container instance
         #   signed_identifiers  - A list of Azure::Entity::SignedIdentifier instances
         #
-        def set_container_acl(name, visibility, signed_identifiers=[])
+        def set_container_acl(name, visibility, signed_identifiers=nil)
           uri =container_uri(name, {"comp"=>"acl"})
 
-          headers = nil
-          headers = {"x-ms-blob-public-access" => visibility} if visibility != nil && visibility.length > 0
+          headers = {}
+          headers["x-ms-blob-public-access"] = visibility if visibility && visibility.length > 0
 
           body = nil
-          body = Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && headers && signed_identifiers.length > 0  && headers["x-ms-blob-public-access"] == "container"
+          body = Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && headers["x-ms-blob-public-access"] == "container"
 
           response = call(:put, uri, body, headers)
 
@@ -195,7 +195,7 @@ module Azure
           container.name = name
           container.visibility = visibility
 
-          return container, signed_identifiers
+          return container, signed_identifiers || []
 
         end
 
@@ -350,10 +350,10 @@ module Azure
           # call PutBlob with empty body
           response = call(:put, uri, nil, headers)
 
-          blob = Serialization.blob_from_headers(response.headers)
-          blob.name = blob
+          result = Serialization.blob_from_headers(response.headers)
+          result.name = blob
 
-          blob
+          result
         end
 
         # Public: Creates a range of pages in a page blob.
@@ -395,26 +395,29 @@ module Azure
 
           response = call(:put, uri, content, headers)
 
-          blob = Serialization.blob_from_headers(response.headers)
-          blob.name = blob
+          result = Serialization.blob_from_headers(response.headers)
+          result.name = blob
 
-          blob
+          result
         end
 
         # Public: Clears a range of pages from the blob.
         #
         # container    - String. Name of container
         # blob         - String. Name of blob
-        # start_range  - Integer. Position of first byte of first page
-        # end_range    - Integer. Position of last byte of of last page
+        # start_range  - Integer. Position of first byte of first page (optional)
+        # end_range    - Integer. Position of last byte of of last page (optional)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691975.aspx
         #
         # Returns Blob
-        def clear_blob_pages(container, blob, start_range, end_range)
+        def clear_blob_pages(container, blob, start_range=nil, end_range=nil)
           uri = blob_uri(container, blob, {"comp"=> "page"})
+
+          start_range = 0 if end_range and not start_range
+
           headers = {}
-          headers["x-ms-range"] = "#{start_range}-#{end_range}"
+          headers["x-ms-range"] = "#{start_range}-#{end_range}" if start_range
           headers["x-ms-page-write"] = "clear"
 
           # clear default content type
@@ -422,10 +425,10 @@ module Azure
 
           response = call(:put, uri, nil, headers)
 
-          blob = Serialization.blob_from_headers(response.headers)
-          blob.name = blob
+          result = Serialization.blob_from_headers(response.headers)
+          result.name = blob
 
-          blob
+          result
         end
 
         # Public: Creates a new block blob or updates the content of an existing block blob.
@@ -483,10 +486,10 @@ module Azure
           # call PutBlob with empty body
           response = call(:put, uri, content, headers)
 
-          blob = Serialization.blob_from_headers(response.headers)
-          blob.name = blob
+          result = Serialization.blob_from_headers(response.headers)
+          result.name = blob
 
-          blob
+          result
         end
 
         # Public: Creates a new block to be committed as part of a block blob.
@@ -548,15 +551,17 @@ module Azure
           uri = blob_uri(container, blob, {"comp"=> "blocklist" })
 
           headers = {}
-          headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
-          headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
-          headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
-          headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
-          headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
-          headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
+          unless options == nil
+            headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
+            headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
+            headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
+            headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
+            headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
+            headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
 
-          add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
-
+            add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
+          end
+          
           body = Serialization.block_list_to_xml(block_list)
           response = call(:put, uri, body, headers)
 
@@ -584,8 +589,8 @@ module Azure
         # Returns a list of Azure::Entity::Blob::Block instances
         def list_blob_blocks(container, blob, blocklist_type=:all, snapshot=nil)
           query = {"comp"=>"blocklist"}
-          query.merge "snapshot" => snapshot if snapshot
-          query.merge({ "blocklisttype" => blocklist_type.to_s }) if blocklist_type != :committed
+          query.update({ "snapshot" => snapshot }) if snapshot
+          query.update({ "blocklisttype" => blocklist_type.to_s }) if blocklist_type != :committed
           
           uri = blob_uri(container, blob, query)
 
@@ -611,12 +616,12 @@ module Azure
 
           response = call(:get, uri)
 
-          blob = Serialization.blob_from_headers(response.headers)
+          result = Serialization.blob_from_headers(response.headers)
 
-          blob.name = blob
-          blob.snapshot = snapshot
+          result.name = blob
+          result.snapshot = snapshot
 
-          blob
+          result
         end
 
         # Public: Returns metadata on the blob.
@@ -631,18 +636,18 @@ module Azure
         # Returns a Blob
         def get_blob_metadata(container, blob, snapshot=nil)
           query = {"comp"=>"metadata"}
-          query.merge "snapshot" => snapshot if snapshot
+          query.update({"snapshot" => snapshot}) if snapshot
           
           uri = blob_uri(container, blob, query)
 
           response = call(:get, uri)
 
-          blob = Serialization.blob_from_headers(response.headers)
+          result = Serialization.blob_from_headers(response.headers)
 
-          blob.name = blob
-          blob.snapshot = snapshot
+          result.name = blob
+          result.snapshot = snapshot
 
-          blob
+          result
         end
 
         # Public: Returns a list of active page ranges for a page blob. Active page ranges are 
@@ -663,7 +668,7 @@ module Azure
         #
         def list_page_blob_ranges(container, blob, start_range=nil, end_range=nil, snapshot=nil)
           query = {"comp"=>"pagelist"}
-          query.merge "snapshot" => snapshot if snapshot
+          query.update({"snapshot" => snapshot}) if snapshot
           
           uri = blob_uri(container, blob, query)
 
