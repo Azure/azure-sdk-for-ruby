@@ -18,7 +18,6 @@ module Azure; end
 
 require "azure/core"
 require "azure/storage"
-require "azure/service_bus"
 
 # add some aliases for convenience 
 Azure::BlobService = Azure::Storage::Blob::BlobService
