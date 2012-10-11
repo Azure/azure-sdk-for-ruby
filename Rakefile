@@ -103,12 +103,6 @@ namespace :test do
       config.sb_access_key  = ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY")
       config.sb_issuer      = ENV.fetch("AZURE_SERVICEBUS_ISSUER")
     end
-
-    Azure::Tables.all.map(&:delete)
-    Azure::Blobs.containers.map(&:delete)
-    Azure::Queues.all.map(&:delete)
-    Azure::ServiceBus::Queues.list.map(&:delete)
-    Azure::ServiceBus::Topics.list.map(&:delete)
   end
 end
 
