@@ -22,7 +22,7 @@ module Azure
 
         def initialize
           super()
-          @default_timeout = 90
+          @default_timeout = 90 
           @host = Azure.config.blob_host
         end
 
@@ -160,6 +160,7 @@ module Azure
           response = call(:get, container_uri(name, {"comp"=>"acl"}))
 
           container = Serialization.container_from_headers(response.headers)
+          container.name = name
 
           signed_identifiers = nil
           signed_identifiers = Serialization.signed_identifiers_from_xml(response.body) if response.body != nil && response.body.length > 0
@@ -171,7 +172,7 @@ module Azure
         #
         # name                - String. The name of the container
         # visibility          - String. The container visibility
-        # signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
+        # signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances (optional) 
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179391.aspx
         #
@@ -179,14 +180,14 @@ module Azure
         #   container           - A Azure::Entity::Blob::Container instance
         #   signed_identifiers  - A list of Azure::Entity::SignedIdentifier instances
         #
-        def set_container_acl(name, visibility, signed_identifiers=[])
+        def set_container_acl(name, visibility, signed_identifiers=nil)
           uri =container_uri(name, {"comp"=>"acl"})
 
-          headers = nil
-          headers = {"x-ms-blob-public-access" => visibility} if visibility != nil && visibility.length > 0
+          headers = {}
+          headers["x-ms-blob-public-access"] = visibility if visibility && visibility.length > 0
 
           body = nil
-          body = Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && headers && signed_identifiers.length > 0  && headers["x-ms-blob-public-access"] == "container"
+          body = Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && headers["x-ms-blob-public-access"] == "container"
 
           response = call(:put, uri, body, headers)
 
@@ -194,7 +195,7 @@ module Azure
           container.name = name
           container.visibility = visibility
 
-          return container, signed_identifiers
+          return container, signed_identifiers || []
 
         end
 
@@ -349,10 +350,10 @@ module Azure
           # call PutBlob with empty body
           response = call(:put, uri, nil, headers)
 
-          blob = Serialization.blob_from_headers(response.headers)
-          blob.name = blob
+          result = Serialization.blob_from_headers(response.headers)
+          result.name = blob
 
-          blob
+          result
         end
 
         # Public: Creates a range of pages in a page blob.
@@ -394,26 +395,29 @@ module Azure
 
           response = call(:put, uri, content, headers)
 
-          blob = Serialization.blob_from_headers(response.headers)
-          blob.name = blob
+          result = Serialization.blob_from_headers(response.headers)
+          result.name = blob
 
-          blob
+          result
         end
 
         # Public: Clears a range of pages from the blob.
         #
         # container    - String. Name of container
         # blob         - String. Name of blob
-        # start_range  - Integer. Position of first byte of first page
-        # end_range    - Integer. Position of last byte of of last page
+        # start_range  - Integer. Position of first byte of first page (optional)
+        # end_range    - Integer. Position of last byte of of last page (optional)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691975.aspx
         #
         # Returns Blob
-        def clear_blob_pages(container, blob, start_range, end_range)
+        def clear_blob_pages(container, blob, start_range=nil, end_range=nil)
           uri = blob_uri(container, blob, {"comp"=> "page"})
+
+          start_range = 0 if end_range and not start_range
+
           headers = {}
-          headers["x-ms-range"] = "#{start_range}-#{end_range}"
+          headers["x-ms-range"] = "#{start_range}-#{end_range}" if start_range
           headers["x-ms-page-write"] = "clear"
 
           # clear default content type
@@ -421,10 +425,10 @@ module Azure
 
           response = call(:put, uri, nil, headers)
 
-          blob = Serialization.blob_from_headers(response.headers)
-          blob.name = blob
+          result = Serialization.blob_from_headers(response.headers)
+          result.name = blob
 
-          blob
+          result
         end
 
         # Public: Creates a new block blob or updates the content of an existing block blob.
@@ -482,10 +486,10 @@ module Azure
           # call PutBlob with empty body
           response = call(:put, uri, content, headers)
 
-          blob = Serialization.blob_from_headers(response.headers)
-          blob.name = blob
+          result = Serialization.blob_from_headers(response.headers)
+          result.name = blob
 
-          blob
+          result
         end
 
         # Public: Creates a new block to be committed as part of a block blob.
@@ -547,14 +551,16 @@ module Azure
           uri = blob_uri(container, blob, {"comp"=> "blocklist" })
 
           headers = {}
-          headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
-          headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
-          headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
-          headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
-          headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
-          headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
+          unless options == nil
+            headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
+            headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
+            headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
+            headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
+            headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
+            headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
 
-          add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
+            add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
+          end
 
           body = Serialization.block_list_to_xml(block_list)
           response = call(:put, uri, body, headers)
@@ -581,10 +587,13 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179400.aspx
         #
         # Returns a list of Azure::Entity::Blob::Block instances
-        def list_blob_blocks(container, blob, blocklist_type=:all, snapshot=nil)
+        def list_blob_blocks(container, blob, blocklist_type=nil, snapshot=nil)
+          
+          blocklist_type = blocklist_type || :all
+          
           query = {"comp"=>"blocklist"}
-          query.merge "snapshot" => snapshot if snapshot
-          query.merge({ "blocklisttype" => blocklist_type.to_s }) if blocklist_type != :committed
+          query["snapshot"] = snapshot if snapshot
+          query["blocklisttype"] = blocklist_type.to_s unless blocklist_type == :committed
           
           uri = blob_uri(container, blob, query)
 
@@ -610,12 +619,12 @@ module Azure
 
           response = call(:get, uri)
 
-          blob = Serialization.blob_from_headers(response.headers)
+          result = Serialization.blob_from_headers(response.headers)
 
-          blob.name = blob
-          blob.snapshot = snapshot
+          result.name = blob
+          result.snapshot = snapshot
 
-          blob
+          result
         end
 
         # Public: Returns metadata on the blob.
@@ -630,18 +639,18 @@ module Azure
         # Returns a Blob
         def get_blob_metadata(container, blob, snapshot=nil)
           query = {"comp"=>"metadata"}
-          query.merge "snapshot" => snapshot if snapshot
+          query.update({"snapshot" => snapshot}) if snapshot
           
           uri = blob_uri(container, blob, query)
 
           response = call(:get, uri)
 
-          blob = Serialization.blob_from_headers(response.headers)
+          result = Serialization.blob_from_headers(response.headers)
 
-          blob.name = blob
-          blob.snapshot = snapshot
+          result.name = blob
+          result.snapshot = snapshot
 
-          blob
+          result
         end
 
         # Public: Returns a list of active page ranges for a page blob. Active page ranges are 
@@ -662,11 +671,14 @@ module Azure
         #
         def list_page_blob_ranges(container, blob, start_range=nil, end_range=nil, snapshot=nil)
           query = {"comp"=>"pagelist"}
-          query.merge "snapshot" => snapshot if snapshot
+          query.update({"snapshot" => snapshot}) if snapshot
           
           uri = blob_uri(container, blob, query)
 
-          headers = { "x-ms-range" =>  "#{start_range}-#{end_range}" } if start_range && end_range
+          start_range = 0 if end_range and not start_range
+
+          headers = {}
+          headers = { "x-ms-range" =>  "#{start_range}-#{end_range}" } if start_range
 
           response = call(:get, uri, nil, headers)
 
@@ -803,7 +815,8 @@ module Azure
           uri = blob_uri(container, blob, snapshot ? {"snapshot" => snapshot} : {})
 
           headers = {}
-          if start_range && end_range
+          start_range = 0 if end_range and not start_range
+          if start_range
             headers["x-ms-range"] = "#{start_range}-#{end_range}"
             headers["x-ms-range-get-content-md5"] = true if get_content_md5
           end
@@ -837,7 +850,7 @@ module Azure
           headers = {}
           headers["x-ms-delete-snapshots"] = delete_snapshots.to_s if delete_snapshots && snapshot == nil
 
-          response = call(:del, uri, nil, headers)
+          response = call(:delete, uri, nil, headers)
           response.success?
         end
 
@@ -867,17 +880,18 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691971.aspx
         # 
         # Returns the snapshot DateTime value
-        def create_blob_snapshot(container, blob)
+        def create_blob_snapshot(container, blob, options=nil)
           uri = blob_uri(container, blob, "comp"=>"snapshot")
 
           headers = {}
+          unless options == nil
+            add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
 
-          add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
-
-          headers["If-Modified-Since"] = options[:if_modified_since] if options[:if_modified_since]
-          headers["If-Unmodified-Since"] = options[:if_unmodified_since] if options[:if_unmodified_since]
-          headers["If-Match"] = options[:if_match] if options[:if_match]
-          headers["If-None-Match"] = options[:if_none_match] if options[:if_none_match]
+            headers["If-Modified-Since"] = options[:if_modified_since] if options[:if_modified_since]
+            headers["If-Unmodified-Since"] = options[:if_unmodified_since] if options[:if_unmodified_since]
+            headers["If-Match"] = options[:if_match] if options[:if_match]
+            headers["If-None-Match"] = options[:if_none_match] if options[:if_none_match]
+          end
 
           response = call(:put, uri, nil, headers)
 
@@ -890,6 +904,7 @@ module Azure
         # source_blob           - String. The destination blob name to copy to.
         # destination_container - String. The source container name to copy from.
         # destination_blob      - String. The source blob name to copy from.
+        # source_snapshot       - String. A snapshot id for the source blob (optional)
         # options               - Hash. The optional parameters.
         #   :metadata                   - Hash. Custom metadata values to store with the copy. If this parameter is not 
         #                                 specified, the operation will copy the source blob metadata to the destination 
@@ -942,17 +957,19 @@ module Azure
           uri = blob_uri(destination_container, destination_blob)
           headers = {}
           headers["x-ms-copy-source"] = blob_uri(source_container, source_blob, source_snapshot ? { "snapshot" => source_snapshot } : {})
+          
+          unless options == nil
+            headers["If-Modified-Since"] = options[:dest_if_modified_since] if options[:dest_if_modified_since]
+            headers["If-Unmodified-Since"] = options[:dest_if_unmodified_since] if options[:dest_if_unmodified_since]
+            headers["If-Match"] = options[:dest_if_match] if options[:dest_if_match]
+            headers["If-None-Match"] = options[:dest_if_none_match] if options[:dest_if_none_match]
+            headers["x-ms-source-if-modified-since"] = options[:source_if_modified_since] if options[:source_if_modified_since]
+            headers["x-ms-source-if-unmodified-since"] = options[:source_if_unmodified_since] if options[:source_if_unmodified_since]
+            headers["x-ms-source-if-match"] = options[:source_if_match] if options[:source_if_match]
+            headers["x-ms-source-if-none-match"] = options[:source_if_none_match] if options[:source_if_none_match]
 
-          headers["If-Modified-Since"] = options[:dest_if_modified_since] if options[:dest_if_modified_since]
-          headers["If-Unmodified-Since"] = options[:dest_if_unmodified_since] if options[:dest_if_unmodified_since]
-          headers["If-Match"] = options[:dest_if_match] if options[:dest_if_match]
-          headers["If-None-Match"] = options[:dest_if_none_match] if options[:dest_if_none_match]
-          headers["x-ms-source-if-modified-since"] = options[:source_if_modified_since] if options[:source_if_modified_since]
-          headers["x-ms-source-if-unmodified-since"] = options[:source_if_unmodified_since] if options[:source_if_unmodified_since]
-          headers["x-ms-source-if-match"] = options[:source_if_match] if options[:source_if_match]
-          headers["x-ms-source-if-none-match"] = options[:source_if_none_match] if options[:source_if_none_match]
-
-          add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
+            add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
+          end
 
           response = call(:put, uri, nil, headers)
           return response.headers["x-ms-copy-id"], response.headers["x-ms-copy-status"]
@@ -980,7 +997,7 @@ module Azure
           headers = {}
           headers["x-ms-lease-action"] = "acquire"
           headers["x-ms-lease-duration"] = duration.to_s if duration
-          headers["x-ms-proposed-lease-id"] = propose_lease_id if proposed_lease_id
+          headers["x-ms-proposed-lease-id"] = proposed_lease_id if proposed_lease_id
 
           response = call(:put, uri, nil, headers)
           response.headers["x-ms-lease-id"] if response.success?
