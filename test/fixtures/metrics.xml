@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Metrics>
+  <Version>1.0</Version>
+  <Enabled>true</Enabled>
+  <IncludeAPIs>false</IncludeAPIs>
+  <RetentionPolicy>
+    <Enabled>true</Enabled>
+    <Days>7</Days>
+  </RetentionPolicy>
+</Metrics>

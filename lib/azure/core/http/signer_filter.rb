@@ -12,28 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "backports"
-require "minitest/autorun"
-require "mocha"
+require "azure/core/http/http_filter"
 
-# Attempt to load turn to show formatted test results
-begin
-  require "turn"
-  Turn.config.format = :pretty
-  Turn.config.natural = true
-rescue LoadError
-end
+module Azure
+  module Core
+    module Http 
+      # A HttpFilter implementation that creates a authorization signature which is added to the request headers
+      class SignerFilter < HttpFilter
+        def initialize(signer, account_name)
+          @signer = signer
+          @account_name = account_name
+        end
 
-# add to the MiniTest DSL
-module Kernel
-  def need_tests_for(name)
-    describe "##{name}" do
-      it "needs unit tests" do
-        skip ""
+        def call(req, _next)
+          signature = @signer.sign(req.method, req.uri, req.headers)
+          req.headers["Authorization"] = "#{@signer.name} #{@account_name}:#{signature}"
+          _next.call
+        end
       end
     end
   end
 end
-
-
-Dir["./test/support/**/*.rb"].each { |dep| require dep }

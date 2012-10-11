@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'happymapper'
 require 'azure/storage/service/logging'
 require 'azure/storage/service/metrics'
 
@@ -20,14 +19,14 @@ module Azure
   module Storage
     module Service
       class StorageServiceProperties
-        include HappyMapper
-        
-        tag "StorageServiceProperties"
+        def initialize
+          @logging = Logging.new
+          @metrics = Metrics.new
+        end
 
-        has_one :logging, Logging, :tag => "Logging"
-        has_one :metrics, Metrics, :tag => "Metrics"
-
-        element :default_service_version, String, :tag => "DefaultServiceVersion"
+        attr_accessor :logging
+        attr_accessor :metrics
+        attr_accessor :default_service_version
       end
     end
   end

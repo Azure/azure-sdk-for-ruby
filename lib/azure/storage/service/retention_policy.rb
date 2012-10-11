@@ -12,18 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'happymapper'
-
 module Azure
   module Storage
     module Service
       class RetentionPolicy
-        include HappyMapper
-
-        tag "RetentionPolicy"
-
-        element :enabled, Boolean, :tag => "Enabled"
-        element :days, Integer, :tag => "Days"
+        attr_accessor :enabled
+        attr_accessor :days
       end
     end
   end

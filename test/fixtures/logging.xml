@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Logging>
+  <Version>1.0</Version>
+  <Delete>true</Delete>
+  <Read>false</Read>
+  <Write>true</Write>
+  <RetentionPolicy>
+    <Enabled>true</Enabled>
+    <Days>7</Days>
+  </RetentionPolicy>
+</Logging>

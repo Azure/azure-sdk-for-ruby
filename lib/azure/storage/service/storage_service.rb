@@ -13,8 +13,9 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'azure/core/http/http_request'
+require 'azure/core/http/signer_filter'
 require 'azure/core/auth/shared_key'
-require 'azure/storage/service/storage_service_properties'
+require 'azure/storage/service/serialization'
 
 module Azure
   module Storage
@@ -24,7 +25,7 @@ module Azure
 
         # Create a new instance of the StorageService
         #
-        # signer        - Azure::Core::Signer. An implementation of Signer used for signing requests. (optional, Default=Azure::Core::Auth::SharedKey.new)
+        # signer        - Azure::Core::Auth::Signer. An implementation of Signer used for signing requests. (optional, Default=Azure::Core::Auth::SharedKey.new)
         # account_name  - String. The account name (optional, Default=Azure.config.account_name)  
         def initialize(signer=Core::Auth::SharedKey.new, account_name=Azure.config.account_name)
           @account_name = account_name
@@ -45,11 +46,7 @@ module Azure
           request.headers.merge!(headers) if headers
           
           if signer
-            request.with_filter do |req, _next|
-              signature = signer.sign(req.method, req.uri, req.headers)
-              req.headers["Authorization"] = "#{signer.name} #{account_name}:#{signature}"
-              _next.call
-            end
+            request.with_filter Core::Http::SignerFilter.new(signer, account_name)
           end
 
           filters.each { |filter| request.with_filter filter } if filters
@@ -71,8 +68,7 @@ module Azure
         def get_service_properties
           uri = service_properties_uri
           response = call(:get, uri)
-          properties = StorageServiceProperties.parse(response.body)
-          properties
+          Serialization.service_properties_from_xml response.body
         end
 
         # Public: Set Storage Service properties
@@ -84,7 +80,7 @@ module Azure
         #
         # Returns boolean indicating success.
         def set_service_properties(service_properties)
-          body = StorageServiceProperties.to_xml
+          body = Serialization.service_properties_to_xml service_properties
 
           uri = service_properties_uri
           response = call(:put, uri, body)
