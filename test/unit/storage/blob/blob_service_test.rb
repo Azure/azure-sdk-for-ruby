@@ -36,98 +36,94 @@ describe Azure::Storage::Blob::BlobService do
     response.stubs(:body).returns(response_body)
     response.stubs(:headers).returns(response_headers)
   }
-  
+
+  describe "#list_containers" do
+    let(:method) { :get }
+    let(:container_enumeration_result) { Azure::Storage::Blob::ContainerEnumerationResults.new }
+
+    before { 
+      subject.stubs(:containers_uri).with({}).returns(uri)
+      subject.stubs(:call).with(method, uri).returns(response)
+      serialization.stubs(:container_enumeration_results_from_xml).with(response_body).returns(container_enumeration_result)
+    }
+
+    it "assembles a URI for the request" do
+      subject.expects(:containers_uri).with({}).returns(uri)
+      subject.list_containers
+    end
+
+    it "calls StorageService#call with the prepared request" do
+      subject.expects(:call).with(method, uri).returns(response)
+      subject.list_containers
+    end
+
+    it "deserializes the response" do
+      serialization.expects(:container_enumeration_results_from_xml).with(response_body).returns(container_enumeration_result)
+      subject.list_containers
+    end
+
+    it "returns a list of containers for the account" do
+      result = subject.list_containers
+      result.must_be_kind_of Azure::Storage::Blob::ContainerEnumerationResults
+    end
+
+    describe "when the options Hash is used" do
+      before {
+        subject.expects(:call).with(:get, uri).returns(response)
+        serialization.expects(:container_enumeration_results_from_xml).with(response_body).returns(container_enumeration_result)
+      }
+
+      it "modifies the URI query parameters when provided a :prefix value" do
+        query = { "prefix" => "pre" }
+        subject.expects(:containers_uri).with(query).returns(uri)
+
+        options = { :prefix => "pre" }
+        subject.list_containers options
+      end
+      
+      it "modifies the URI query parameters when provided a :marker value" do
+        query = { "marker" => "mark" }
+        subject.expects(:containers_uri).with(query).returns(uri)
+
+        options = { :marker => "mark" }
+        subject.list_containers options
+      end
+      
+      it "modifies the URI query parameters when provided a :max_results value" do
+        query = { "maxresults" => "5" }
+        subject.expects(:containers_uri).with(query).returns(uri)
+
+        options = { :max_results => 5 }
+        subject.list_containers options
+      end
+      
+      it "modifies the URI query parameters when provided a :metadata value" do
+        query = { "include" => "metadata" }
+        subject.expects(:containers_uri).with(query).returns(uri)
+
+        options = { :metadata => true }
+        subject.list_containers options
+      end
+
+      it "modifies the URI query parameters when provided a :timeout value" do
+        query = { "timeout" => "37" }
+        subject.expects(:containers_uri).with(query).returns(uri)
+
+        options = { :timeout => 37 }
+        subject.list_containers options
+      end
+      it "does not modify the URI query parameters when provided an unknown value" do
+        subject.expects(:containers_uri).with({}).returns(uri)
+
+        options = { :unknown_key => "some_value" }
+        subject.list_containers options
+      end
+    end
+  end
+
   describe "container functions" do
     let(:container_name) { "container-name" }
     let(:container) { Azure::Storage::Blob::Container.new }
-
-    describe "#list_containers" do
-      let(:method) { :get }
-      let(:container1) { Azure::Storage::Blob::Container.new }
-      let(:container_list) { [container, container1]}
-
-      before { 
-        subject.stubs(:containers_uri).with({}).returns(uri)
-        subject.stubs(:call).with(method, uri).returns(response)
-        serialization.stubs(:container_enumeration_results_from_xml).with(response_body).returns(container_list)
-      }
-
-      it "assembles a URI for the request" do
-        subject.expects(:containers_uri).with({}).returns(uri)
-        subject.list_containers
-      end
-
-      it "calls StorageService#call with the prepared request" do
-        subject.expects(:call).with(method, uri).returns(response)
-        subject.list_containers
-      end
-
-      it "deserializes the response" do
-        serialization.expects(:container_enumeration_results_from_xml).with(response_body).returns(container_list)
-        subject.list_containers
-      end
-
-      it "returns a list of containers for the account" do
-        result = subject.list_containers
-
-        result.must_be_kind_of Array
-        result[0].must_be_kind_of Azure::Storage::Blob::Container
-        result[1].must_be_kind_of Azure::Storage::Blob::Container
-      end
-
-      describe "when the options Hash is used" do
-        before {
-          subject.expects(:call).with(:get, uri).returns(response)
-          serialization.expects(:container_enumeration_results_from_xml).with(response_body).returns(container_list)
-        }
-
-        it "modifies the URI query parameters when provided a :prefix value" do
-          query = { "prefix" => "pre" }
-          subject.expects(:containers_uri).with(query).returns(uri)
-
-          options = { :prefix => "pre" }
-          subject.list_containers options
-        end
-        
-        it "modifies the URI query parameters when provided a :marker value" do
-          query = { "marker" => "mark" }
-          subject.expects(:containers_uri).with(query).returns(uri)
-
-          options = { :marker => "mark" }
-          subject.list_containers options
-        end
-        
-        it "modifies the URI query parameters when provided a :max_results value" do
-          query = { "maxresults" => "5" }
-          subject.expects(:containers_uri).with(query).returns(uri)
-
-          options = { :max_results => 5 }
-          subject.list_containers options
-        end
-        
-        it "modifies the URI query parameters when provided a :metadata value" do
-          query = { "include" => "metadata" }
-          subject.expects(:containers_uri).with(query).returns(uri)
-
-          options = { :metadata => true }
-          subject.list_containers options
-        end
-
-        it "modifies the URI query parameters when provided a :timeout value" do
-          query = { "timeout" => "37" }
-          subject.expects(:containers_uri).with(query).returns(uri)
-
-          options = { :timeout => 37 }
-          subject.list_containers options
-        end
-        it "does not modify the URI query parameters when provided an unknown value" do
-          subject.expects(:containers_uri).with({}).returns(uri)
-
-          options = { :unknown_key => "some_value" }
-          subject.list_containers options
-        end
-      end
-    end
 
     describe "#create_container" do
 
@@ -470,8 +466,118 @@ describe Azure::Storage::Blob::BlobService do
         result.must_equal true
       end
     end
-    
-    need_tests_for "list_blobs"
+
+    describe "#list_blobs" do
+      let(:method) { :get }
+      let(:query) {{"comp"=>"list"}}
+      let(:blob_enumeration_results) { Azure::Storage::Blob::BlobEnumerationResults.new}
+
+      before { 
+        subject.stubs(:container_uri).with(container_name, query).returns(uri)
+        subject.stubs(:call).with(method, uri).returns(response)
+        serialization.stubs(:blob_enumeration_results_from_xml).with(response_body).returns(blob_enumeration_results)
+      }
+
+      it "assembles a URI for the request" do
+        subject.expects(:container_uri).with(container_name, query).returns(uri)
+        subject.list_blobs container_name
+      end
+
+      it "calls StorageService#call with the prepared request" do
+        subject.expects(:call).with(method, uri).returns(response)
+        subject.list_blobs container_name
+      end
+
+      it "deserializes the response" do
+        serialization.expects(:blob_enumeration_results_from_xml).with(response_body).returns(blob_enumeration_results)
+        subject.list_blobs container_name
+      end
+
+      it "returns a list of containers for the account" do
+        result = subject.list_blobs container_name
+        result.must_be_kind_of Azure::Storage::Blob::BlobEnumerationResults
+      end
+
+      describe "when the options Hash is used" do
+        before {
+          subject.expects(:call).with(:get, uri).returns(response)
+          serialization.expects(:blob_enumeration_results_from_xml).with(response_body).returns(blob_enumeration_results)
+          subject.expects(:container_uri).with(container_name, query).returns(uri)
+        }
+
+        it "modifies the URI query parameters when provided a :prefix value" do
+          query["prefix"]= "pre"
+          options = { :prefix => "pre" }
+          subject.list_blobs container_name, options
+        end
+
+        it "modifies the URI query parameters when provided a :prefix value" do
+          query["delimiter"] = "delim"
+          options = { :delimiter => "delim" }
+          subject.list_blobs container_name, options
+        end
+        
+        it "modifies the URI query parameters when provided a :marker value" do
+          query["marker"] = "mark"
+          options = { :marker => "mark" }
+          subject.list_blobs container_name, options
+        end
+        
+        it "modifies the URI query parameters when provided a :max_results value" do
+          query["maxresults"] = "5"
+          options = { :max_results => 5 }
+          subject.list_blobs container_name, options
+        end
+        
+        it "modifies the URI query parameters when provided a :metadata value" do
+          query["include"] = "metadata"
+          options = { :metadata => true }
+          subject.list_blobs container_name, options
+        end
+
+        it "modifies the URI query parameters when provided a :snapshots value" do
+          query["include"] = "snapshots"
+          options = { :snapshots => true }
+          subject.list_blobs container_name, options
+        end
+
+        it "modifies the URI query parameters when provided a :uncommittedblobs value" do
+          query["include"] = "uncommittedblobs"
+          options = { :uncommittedblobs => true }
+          subject.list_blobs container_name, options
+        end
+
+        it "modifies the URI query parameters when provided a :copy value" do
+          query["include"] = "copy"
+          options = { :copy => true }
+          subject.list_blobs container_name, options
+        end
+        
+        it "modifies the URI query parameters when provided more than one of :metadata, :snapshots, :uncommittedblobs or :copy values" do
+          query["include"] = "metadata,snapshots,uncommittedblobs,copy"
+
+          options = { 
+            :copy => true,
+            :metadata => true, 
+            :snapshots => true,
+            :uncommittedblobs => true
+          }
+
+          subject.list_blobs container_name, options
+        end
+
+        it "modifies the URI query parameters when provided a :timeout value" do
+          query["timeout"] = "37" 
+          options = { :timeout => 37 }
+          subject.list_blobs container_name, options
+        end
+
+        it "does not modify the URI query parameters when provided an unknown value" do
+          options = { :unknown_key => "some_value" }
+          subject.list_blobs container_name, options
+        end
+      end
+    end
 
     describe "blob functions" do
       let(:blob_name){ "blob-name" }
@@ -942,9 +1048,166 @@ describe Azure::Storage::Blob::BlobService do
         end
       end
 
-      need_tests_for "list_blob_blocks"
-      need_tests_for "list_page_blob_ranges"
+      describe "#list_blob_blocks" do
+        let(:method) { :get }
+        let(:query) {{"comp"=>"blocklist", "blocklisttype"=>"all"}}
+        let(:blob_block_list) { [Azure::Storage::Blob::Block.new] }
 
+        before { 
+          subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
+          subject.stubs(:call).with(method, uri).returns(response)
+          serialization.stubs(:block_list_from_xml).with(response_body).returns(blob_block_list)
+        }
+
+        it "assembles a URI for the request" do
+          subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
+          subject.list_blob_blocks container_name, blob_name
+        end
+
+        it "calls StorageService#call with the prepared request" do
+          subject.expects(:call).with(method, uri).returns(response)
+          subject.list_blob_blocks container_name, blob_name
+        end
+
+        it "deserializes the response" do
+          serialization.expects(:block_list_from_xml).with(response_body).returns(blob_block_list)
+          subject.list_blob_blocks container_name, blob_name
+        end
+
+        it "returns a list of containers for the account" do
+          result = subject.list_blob_blocks container_name, blob_name
+          result.must_be_kind_of Array
+          result.first.must_be_kind_of Azure::Storage::Blob::Block
+        end
+
+        describe "when blocklist_type is provided" do
+          it "modifies the request query when the value is :all" do
+            query["blocklisttype"] = "all"
+            subject.list_blob_blocks container_name, blob_name, :all
+          end
+
+          it "modifies the request query when the value is :uncommitted" do
+            query["blocklisttype"] = "uncommitted"
+            subject.list_blob_blocks container_name, blob_name, :uncommitted
+          end
+
+          it "does not modify the request query when the value is :committed" do
+            query.delete "blocklisttype"
+            subject.list_blob_blocks container_name, blob_name, :committed
+          end
+        end
+
+        describe "when snapshot is provided" do
+          it "modifies the request query with the provided value" do
+            query["snapshot"] = "snapshot-id"
+            subject.list_blob_blocks container_name, blob_name, nil, "snapshot-id"
+          end
+        end
+      end
+        # Public: Returns a list of active page ranges for a page blob. Active page ranges are 
+        # those that have been populated with data.
+        #
+        # container      - String. The container name.
+        # blob           - String. The blob name.
+        # start_range    - Integer. Position of first byte of first page. (optional)
+        # end_range      - Integer. Position of last byte of of last page. (optional)
+        # snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
+        #                  retrieve information from. (optional)
+        #
+        # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691973.aspx
+        #
+        # Returns a list of page ranges in the format [ [start, end], [start, end], ... ]
+        #
+        #   eg. [ [0, 511], [512, 1024], ... ]
+        #
+        def list_page_blob_ranges(container, blob, start_range=nil, end_range=nil, snapshot=nil)
+          query = {"comp"=>"pagelist"}
+          query.update({"snapshot" => snapshot}) if snapshot
+          
+          uri = blob_uri(container, blob, query)
+
+          start_range = 0 if end_range and not start_range
+
+          headers = { "x-ms-range" =>  "#{start_range}-#{end_range}" } if start_range 
+
+          response = call(:get, uri, nil, headers)
+
+          pagelist = Serialization.page_list_from_xml(response.body)
+          pagelist
+        end
+
+      describe "#list_page_blob_ranges" do
+        let(:method) { :get }
+        let(:query) { {"comp"=>"pagelist"} }
+        let(:page_list) { [[0, 511], [512, 1023]] }
+
+        before { 
+          subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
+          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          serialization.stubs(:page_list_from_xml).with(response_body).returns(page_list)
+        }
+
+        it "assembles a URI for the request" do
+          subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
+          subject.list_page_blob_ranges container_name, blob_name
+        end
+
+        it "calls StorageService#call with the prepared request" do
+          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.list_page_blob_ranges container_name, blob_name
+        end
+
+        it "deserializes the response" do
+          serialization.expects(:page_list_from_xml).with(response_body).returns(page_list)
+          subject.list_page_blob_ranges container_name, blob_name
+        end
+
+        it "returns a list of containers for the account" do
+          result = subject.list_page_blob_ranges container_name, blob_name
+          result.must_be_kind_of Array
+          result.first.must_be_kind_of Array
+          result.first.first.must_be_kind_of Integer
+          result.first.first.next.must_be_kind_of Integer
+        end
+
+        describe "when start_range is provided" do
+          let(:start_range){ 255 }
+          before { request_headers["x-ms-range"]="#{start_range}-" }
+
+          it "modifies the request headers with the desired range" do
+            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.list_page_blob_ranges container_name, blob_name, start_range
+          end
+        end
+
+        describe "when end_range is provided" do
+          let(:end_range){ 512 }
+          before { request_headers["x-ms-range"]="0-#{end_range}" }
+
+          it "modifies the request headers with the desired range" do
+            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.list_page_blob_ranges container_name, blob_name, nil, end_range
+          end
+        end
+
+        describe "when both start_range and end_range are provided" do
+          let(:start_range){ 255 }
+          let(:end_range){ 512 }
+          before { request_headers["x-ms-range"]="#{start_range}-#{end_range}" }
+
+          it "modifies the request headers with the desired range" do
+            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.list_page_blob_ranges container_name, blob_name, start_range, end_range
+          end
+        end
+
+        describe "when snapshot is provided" do
+          it "modifies the request query with the provided value" do
+            query["snapshot"] = "snapshot-id"
+            subject.list_page_blob_ranges container_name, blob_name, nil, nil, "snapshot-id"
+          end
+        end
+      end
 
       describe "#set_blob_properties" do
         let(:method) { :put }

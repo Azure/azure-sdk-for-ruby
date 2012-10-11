@@ -561,7 +561,7 @@ module Azure
 
             add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
           end
-          
+
           body = Serialization.block_list_to_xml(block_list)
           response = call(:put, uri, body, headers)
 
@@ -587,10 +587,13 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179400.aspx
         #
         # Returns a list of Azure::Entity::Blob::Block instances
-        def list_blob_blocks(container, blob, blocklist_type=:all, snapshot=nil)
+        def list_blob_blocks(container, blob, blocklist_type=nil, snapshot=nil)
+          
+          blocklist_type = blocklist_type || :all
+          
           query = {"comp"=>"blocklist"}
-          query.update({ "snapshot" => snapshot }) if snapshot
-          query.update({ "blocklisttype" => blocklist_type.to_s }) if blocklist_type != :committed
+          query["snapshot"] = snapshot if snapshot
+          query["blocklisttype"] = blocklist_type.to_s unless blocklist_type == :committed
           
           uri = blob_uri(container, blob, query)
 
@@ -672,7 +675,10 @@ module Azure
           
           uri = blob_uri(container, blob, query)
 
-          headers = { "x-ms-range" =>  "#{start_range}-#{end_range}" } if start_range && end_range
+          start_range = 0 if end_range and not start_range
+
+          headers = {}
+          headers = { "x-ms-range" =>  "#{start_range}-#{end_range}" } if start_range
 
           response = call(:get, uri, nil, headers)
 
