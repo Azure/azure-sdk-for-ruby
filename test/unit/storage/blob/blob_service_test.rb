@@ -1104,37 +1104,6 @@ describe Azure::Storage::Blob::BlobService do
           end
         end
       end
-        # Public: Returns a list of active page ranges for a page blob. Active page ranges are 
-        # those that have been populated with data.
-        #
-        # container      - String. The container name.
-        # blob           - String. The blob name.
-        # start_range    - Integer. Position of first byte of first page. (optional)
-        # end_range      - Integer. Position of last byte of of last page. (optional)
-        # snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
-        #                  retrieve information from. (optional)
-        #
-        # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691973.aspx
-        #
-        # Returns a list of page ranges in the format [ [start, end], [start, end], ... ]
-        #
-        #   eg. [ [0, 511], [512, 1024], ... ]
-        #
-        def list_page_blob_ranges(container, blob, start_range=nil, end_range=nil, snapshot=nil)
-          query = {"comp"=>"pagelist"}
-          query.update({"snapshot" => snapshot}) if snapshot
-          
-          uri = blob_uri(container, blob, query)
-
-          start_range = 0 if end_range and not start_range
-
-          headers = { "x-ms-range" =>  "#{start_range}-#{end_range}" } if start_range 
-
-          response = call(:get, uri, nil, headers)
-
-          pagelist = Serialization.page_list_from_xml(response.body)
-          pagelist
-        end
 
       describe "#list_page_blob_ranges" do
         let(:method) { :get }
