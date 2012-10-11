@@ -82,9 +82,7 @@ namespace :test do
       task component => "test:require_environment"
     end
 
-    component_task :tables
-    component_task :blobs
-    component_task :queues
+    component_task :storage
     component_task :service_bus
   end
 
