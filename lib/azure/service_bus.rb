@@ -12,16 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "backports"
 
-module Azure; end
+module Azure::ServiceBus; end
 
-require "azure/core"
-require "azure/storage"
-require "azure/service_bus"
-
-# add some aliases for convenience 
-Azure::BlobService = Azure::Storage::Blob::BlobService
-Azure::QueueService = Azure::Storage::Queue::QueueService
-Azure::TableService = Azure::Storage::Table::TableService
-Azure::ServiceBusService = Azure::ServiceBus::ServiceBusService
+require "azure/service_bus/service_bus_service"
