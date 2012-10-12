@@ -40,7 +40,6 @@ module Azure
             }
 
             response = call(:post, uri, body, headers)
-
             parse_token(response.body)
         end
 
@@ -77,7 +76,7 @@ module Azure
           begin
             decoded = URI.decode_www_form(body.strip)
             token = decoded.assoc("wrap_access_token").last
-            expiration = decoded.assoc("wrap_access_token_expires_in").last
+            expiration =/ExpiresOn=(\d*)&/.match(token)[1].to_i #decoded.assoc("wrap_access_token_expires_in").last
             return { :token => token, :expiration => expiration }
           rescue => e
             raise "Cannot get the access token from returned string: %s" % body

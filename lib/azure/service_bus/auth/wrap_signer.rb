@@ -22,7 +22,7 @@ module Azure
 
       	def initialize
       		@tokens = {}
-      		@wrap_service = Azure::Servicebus::Auth::WrapService.new
+      		@wrap_service = Azure::ServiceBus::Auth::WrapService.new
       	end
 
       	attr_accessor :tokens
@@ -32,18 +32,18 @@ module Azure
         end
 
         def sign(method, uri, headers)
-          access_token = get_access_token(request.uri.to_s)
-          'WRAP access_token="%s"' % access_token
+          access_token = get_access_token(uri)
+          'access_token="%s"' % access_token
         end
 
         def get_access_token(uri)
-        	token = tokens[uri]
-      		token = tokens[uri] = @wrap_service.get_access_token(uri) unless valid_token?(token)
+        	token = tokens[uri.to_s]
+      		token = tokens[uri.to_s] = @wrap_service.get_access_token(uri) unless valid_token?(token)
         	token[:token]
         end
 
         def valid_token?(token)
-        	token and token[:expiration] > Time.now.utc
+        	token and token[:expiration] > Time.now.to_i
         end
     	end
     end

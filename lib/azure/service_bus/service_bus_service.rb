@@ -14,6 +14,7 @@
 #--------------------------------------------------------------------------
 require 'azure/core/signed_service'
 require 'azure/service_bus/auth/wrap_signer'
+require 'azure/service_bus/serialization'
 
 module Azure
   module ServiceBus
@@ -53,7 +54,11 @@ module Azure
       #
       # Enumerates the queues in the service namespace.
       #
-      def list_queues() end
+      def list_queues() 
+        uri = generate_uri("$Resources/Queues")
+        response = call(:get, uri)
+        Serialization.queues_from_xml(response.body)
+      end
       
       #
       # Creates a new topic. Once created, this topic resource manifest is immutable. 

@@ -42,7 +42,7 @@ module Azure
 
       def generate_uri(path='', query={})
         uri = URI.parse(File.join(host, path))
-        query["timeout"] = default_timeout.to_s unless query == nil or query.has_key? "timeout"
+        #query["timeout"] = default_timeout.to_s unless query == nil or query.has_key? "timeout"
         uri.query = URI.encode_www_form(query) unless query == nil or query.empty?
         uri
       end
