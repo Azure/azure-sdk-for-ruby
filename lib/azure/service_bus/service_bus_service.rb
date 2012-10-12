@@ -22,7 +22,8 @@ module Azure
       # queue_name: the name of the queue.
       # fail_on_exist: specify whether to throw an exception when the queue exists.
       #
-      def create_queue(queue_name, queue=nil) end
+      def create_queue(queue_name, queue=nil)
+      end
 
       #
       # Deletes an existing queue. This operation will also remove all associated state 
@@ -238,7 +239,7 @@ module Azure
       # 
       # queue_name: name of the queue
       #
-      def peek_lock_queue_message(queue_name, timeout='60') end
+      def peek_lock_queue_message(queue_name, timeout=60) end
 
       #
       # Unlocks a message for processing by other receivers on a given subscription. 
@@ -262,7 +263,7 @@ module Azure
       # 
       # queue_name: name of the queue
       #
-      def read_delete_queue_message(queue_name, timeout='60') end
+      def read_delete_queue_message(queue_name, timeout=60) end
 
       #
       # Completes processing on a locked message and delete it from the queue. This 
