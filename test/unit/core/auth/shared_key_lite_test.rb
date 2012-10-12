@@ -35,11 +35,11 @@ describe Azure::Core::Auth::SharedKeyLite do
   
   describe "sign" do
     it "creates a signature from the provided HTTP method, uri, and reduced set of standard headers" do
-      subject.sign(method, uri, headers).must_equal "vVFnj/+27JFABZgpt5H8g/JVU2HuWFnjv5aeUIxQvBE="
+      subject.sign(method, uri, headers).must_equal "account-name:vVFnj/+27JFABZgpt5H8g/JVU2HuWFnjv5aeUIxQvBE="
     end
 
     it "ignores standard headers other than Content-MD5, Content-Type, and Date" do
-      subject.sign(method, uri, headers.merge({"Content-Encoding"=> "foo"})).must_equal "vVFnj/+27JFABZgpt5H8g/JVU2HuWFnjv5aeUIxQvBE="
+      subject.sign(method, uri, headers.merge({"Content-Encoding"=> "foo"})).must_equal "account-name:vVFnj/+27JFABZgpt5H8g/JVU2HuWFnjv5aeUIxQvBE="
     end
 
     it "throws IndexError when there is no Date header" do

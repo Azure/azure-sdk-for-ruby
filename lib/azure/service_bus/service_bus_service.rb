@@ -12,9 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'azure/core/signed_service'
+require 'azure/service_bus/auth/wrap_signer'
+
 module Azure
   module ServiceBus
-    class ServiceBusService
+    class ServiceBusService < Azure::Core::SignedService
+      
+      def initialize(host=Azure.config.service_bus_host)
+        super(Azure::ServiceBus::Auth::WrapSigner.new)
+          @default_timeout = 90 
+          @host = host
+      end
+
       #
       # Creates a new queue. Once created, this queue's resource manifest is immutable. 
       # 

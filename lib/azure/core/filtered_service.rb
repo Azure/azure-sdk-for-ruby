@@ -12,24 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/core/configuration"
+require 'azure/core/service'
 
 module Azure
   module Core
-    module Auth
-      class Authorizer
-        # Public: Signs an HTTP request before it's made, by adding the
-        # Authorization header
-        #
-        # request - An Azure::Core::HttpRequest that hasn't been signed
-        # signer  - A signing strategy, such as Azure::Table::Auth::SharedKey
-        #
-        # Returns the modified request
-        def sign(request, signer)
-          signature = signer.sign(request.method, request.uri, request.headers)
-          request.headers["Authorization"] = "#{signer.name} #{signature}"
-          request
+    # A base class for Service implementations
+    class FilteredService < Service
+
+      # Create a new instance of the FilteredService
+      # 
+      # host            - String. The hostname. (optional, Default empty)
+      # default_timeout - Integer. The default timeout in seconds (optional, Default 30)
+      def initialize(host='', default_timeout=30)
+        super(host, default_timeout)
+        @filters = []
+      end
+
+      attr_accessor :filters
+
+      def call(method, uri, body=nil, headers=nil)
+        super(method, uri, body, headers) do |request|
+          filters.each { |filter| request.with_filter filter } if filters
         end
+      end
+
+      def with_filter(filter=nil, &block)
+        filter = filter || block
+        filters.push filter if filter
       end
     end
   end

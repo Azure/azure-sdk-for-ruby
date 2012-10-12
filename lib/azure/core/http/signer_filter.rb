@@ -19,14 +19,13 @@ module Azure
     module Http 
       # A HttpFilter implementation that creates a authorization signature which is added to the request headers
       class SignerFilter < HttpFilter
-        def initialize(signer, account_name)
+        def initialize(signer)
           @signer = signer
-          @account_name = account_name
         end
 
         def call(req, _next)
           signature = @signer.sign(req.method, req.uri, req.headers)
-          req.headers["Authorization"] = "#{@signer.name} #{@account_name}:#{signature}"
+          req.headers["Authorization"] = "#{@signer.name} #{signature}"
           _next.call
         end
       end

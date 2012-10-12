@@ -21,14 +21,14 @@ describe Azure::Core::Auth::Authorizer do
 
     @signer = MiniTest::Mock.new
     @signer.stub(:name, "SharedKey")
-    @signer.stub(:sign, "Base64String==")
+    @signer.stub(:sign, "account-name:Base64String==")
 
     @request = MiniTest::Mock.new
     @request.stub(:method, :get)
     @request.stub(:uri, uri)
     @request.stub(:headers, {})
   end
-  subject { Azure::Core::Auth::Authorizer.new("account-name") }
+  subject { Azure::Core::Auth::Authorizer.new }
 
   it "generates a proper Authorization header" do
     subject.sign(@request, @signer)

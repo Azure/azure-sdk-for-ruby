@@ -40,7 +40,7 @@ describe Azure::Core::Auth::SharedKey do
 
   describe "sign" do
     it "creates a signature from the provided HTTP method, uri, and a specific set of standard headers" do
-      subject.sign(method, uri, headers).must_equal "vcdxlDVoE1QvJerkg0ci3Wlnj2Qq8yzlsrkRf5dEU/I="
+      subject.sign(method, uri, headers).must_equal "account-name:vcdxlDVoE1QvJerkg0ci3Wlnj2Qq8yzlsrkRf5dEU/I="
     end
   end
   

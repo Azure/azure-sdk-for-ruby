@@ -13,12 +13,12 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "test_helper"
-require 'azure/service_bus/wrap_service'
+require 'azure/service_bus/auth/wrap_service'
 
-describe Azure::ServiceBus::WrapService do
-  subject { Azure::ServiceBus::WrapService.new }
+describe Azure::ServiceBus::Auth::WrapService do
+  subject { Azure::ServiceBus::Auth::WrapService.new }
   
-  describe '#wrap_access_token' do
+  describe '#get_access_token' do
     it '' do
       
     end

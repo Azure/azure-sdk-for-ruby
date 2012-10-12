@@ -49,7 +49,8 @@ module Azure
         #
         # Returns a Base64 String signed with HMAC.
         def sign(method, uri, headers)
-          super(signable_string(method, uri, headers))
+          signature = super(signable_string(method, uri, headers))
+          return "#{account_name}:#{signature}"
         end
 
         # Generate the string to sign.
