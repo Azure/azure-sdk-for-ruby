@@ -16,6 +16,8 @@ require 'azure/core/signed_service'
 require 'azure/service_bus/auth/wrap_signer'
 require 'azure/service_bus/serialization'
 
+require 'azure/service_bus/brokered_message_serializer'
+
 module Azure
   module ServiceBus
     class ServiceBus < Azure::Core::SignedService
@@ -24,6 +26,14 @@ module Azure
         super(Azure::ServiceBus::Auth::WrapSigner.new)
           @default_timeout = 90 
           @host = host
+          
+          with_filter do |req, res| 
+            req.headers.delete "x-ms-date"
+            req.headers.delete "x-ms-version"
+            req.headers.delete "DataServiceVersion"
+            req.headers.delete "MaxDataServiceVersion"
+            res.call
+          end
       end
 
       # Creates a new queue. Once created, this queue's resource manifest is immutable. 
@@ -188,18 +198,36 @@ module Azure
         resource_list(:subscription, topic).each { |s| s.topic = topic }
       end
       
-      def send_topic_message(topic_name, message=nil) end
-      #
       # Enqueues a message into the specified topic. The limit to the number of messages 
       # which may be present in the topic is governed by the message size in MaxTopicSizeInBytes. 
       # If this message causes the topic to exceed its quota, a quota exceeded error is 
       # returned and the message will be rejected.
       # 
-      # topic_name: name of the topic.
-      # message: the Message object containing message body and properties.
-      #
+      # topic: Either a Azure::ServiceBus::Topic instance or a string of the topic name
+      # message: An Azure::ServiceBus::BrokeredMessage object containing message body and properties.
+      def send_topic_message(topic, message)
+        topic = _name_for(topic)
 
-      def peek_lock_subscription_message(topic_name, subscription_name, timeout='60') end
+        serializer = BrokeredMessageSerializer.new(message)
+        broker_properties = serializer.to_json
+        message_properties = serializer.get_property_headers
+
+        content_type = message.content_type || 'text/plain'
+
+        headers = {
+          'BrokerProperties'=> broker_properties
+        }
+
+        message_properties.each do |k,v|
+          headers[k.to_s] = v
+        end
+        
+        headers["Content-Type"] = content_type
+
+        response = call(:post, messages_uri(topic), message.body, headers)
+        response.success?
+      end
+
       #
       # This operation is used to atomically retrieve and lock a message for processing. 
       # The message is guaranteed not to be delivered to other receivers during the lock 
@@ -215,8 +243,8 @@ module Azure
       # topic_name: the name of the topic
       # subscription_name: the name of the subscription
       #
+      def peek_lock_subscription_message(topic_name, subscription_name, timeout='60') end
 
-      def unlock_subscription_message(topic_name, subscription_name, sequence_number, lock_token) end
       #
       # Unlock a message for processing by other receivers on a given subscription. 
       # This operation deletes the lock object, causing the message to be unlocked. 
@@ -230,8 +258,7 @@ module Azure
       # lock_token: The ID of the lock as returned by the Peek Message operation in 
       #     BrokerProperties['LockToken']
       #
-
-      def read_delete_subscription_message(topic_name, subscription_name, timeout='60') end
+      def unlock_subscription_message(topic_name, subscription_name, sequence_number, lock_token) end
       # 
       # Read and delete a message from a subscription as an atomic operation. This 
       # operation should be used when a best-effort guarantee is sufficient for an 
@@ -241,6 +268,7 @@ module Azure
       # topic_name: the name of the topic
       # subscription_name: the name of the subscription
       #
+      def read_delete_subscription_message(topic_name, subscription_name, timeout='60') end
 
       #
       # Completes processing on a locked message and delete it from the subscription. 
@@ -262,10 +290,11 @@ module Azure
       # MaxTopicSizeInMegaBytes. If this message will cause the queue to exceed its 
       # quota, a quota exceeded error is returned and the message will be rejected.
       # 
-      # queue_name: name of the queue
-      # message: the Message object containing message body and properties.
-      #
-      def send_queue_message(queue_name, message=nil) end
+      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      # message: An Azure::ServiceBus::BrokeredMessage object containing message body and properties.
+      def send_queue_message(queue, message)
+        send_topic_message(queue, message)
+      end
 
       #
       # Automically retrieves and locks a message from a queue for processing. The 
@@ -302,9 +331,14 @@ module Azure
       # that is, using this operation it is possible for messages to be lost if 
       # processing fails.
       # 
-      # queue_name: name of the queue
+      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
       #
-      def read_delete_queue_message(queue_name, timeout=60) end
+      def read_delete_queue_message(queue, timeout=60)
+        uri = messages_head_uri(_name_for(queue), { "timeout"=> timeout.to_s })
+
+        response = call(:delete, uri)
+        (response.status_code == 204) ? nil : BrokeredMessageSerializer.get_from_http_response(response)
+      end
 
       #
       # Completes processing on a locked message and delete it from the queue. This 
@@ -424,6 +458,16 @@ module Azure
       def resource_list(resource, *p)
         response = call(:get, self.send("#{resource.to_s}_list_uri", *p))
         Serialization.resources_from_xml(resource, response.body)
+      end
+
+      # messages uris
+
+      def messages_head_uri(topic_or_queue, query={})
+        generate_uri("#{topic_or_queue}/messages/head", query)
+      end
+
+      def messages_uri(topic_or_queue, query={})
+        generate_uri("#{topic_or_queue}/messages", query)
       end
 
       # entry uris
