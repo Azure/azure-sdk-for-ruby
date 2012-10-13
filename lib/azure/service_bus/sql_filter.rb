@@ -12,16 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "backports"
+require 'azure/service_bus/filter'
 
-module Azure; end
+module Azure
+  module ServiceBus
+    class SqlFilter < Filter
+      def initialize(hash=nil)
+        hash = {} unless hash
+        @sql_expression = hash["SqlExpression"]
+        @compatibility_level = (hash["CompatibilityLevel"] || 20).to_i
+        super()
+      end
 
-require "azure/core"
-require "azure/storage"
-require "azure/service_bus"
-
-# add some aliases for convenience 
-Azure::BlobService = Azure::Storage::Blob::BlobService
-Azure::QueueService = Azure::Storage::Queue::QueueService
-Azure::TableService = Azure::Storage::Table::TableService
-#Azure::ServiceBus = Azure::ServiceBus::ServiceBus
+      attr_accessor :sql_expression
+      attr_accessor :compatibility_level
+      
+      def to_hash(hash={})
+        hash["SqlExpression"]=sql_expression if sql_expression
+        hash["CompatibilityLevel"]=compatibility_level.to_s if compatibility_level
+        super(hash)
+      end
+    end
+  end
+end

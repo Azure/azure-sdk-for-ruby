@@ -23,13 +23,11 @@ module Azure
       # 
       # host            - String. The hostname. (optional, Default empty)
       # default_timeout - Integer. The default timeout in seconds (optional, Default 30)
-      def initialize(host='', default_timeout=30)
+      def initialize(host='')
         @host = host
-        @default_timeout = default_timeout
       end
 
       attr_accessor :host
-      attr_accessor :default_timeout
 
       def call(method, uri, body=nil, headers=nil)
         request = Core::Http::HttpRequest.new(method, uri, body)
@@ -42,7 +40,6 @@ module Azure
 
       def generate_uri(path='', query={})
         uri = URI.parse(File.join(host, path))
-        #query["timeout"] = default_timeout.to_s unless query == nil or query.has_key? "timeout"
         uri.query = URI.encode_www_form(query) unless query == nil or query.empty?
         uri
       end

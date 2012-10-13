@@ -12,16 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "backports"
+require 'azure/service_bus/filter'
 
-module Azure; end
+module Azure
+  module ServiceBus
+    class CorrelationFilter < Filter
+      def initialize(hash=nil)
+        hash = {} unless hash
+        @correlation_id = hash["CorrelationId"]
+        super()
+      end
 
-require "azure/core"
-require "azure/storage"
-require "azure/service_bus"
+      attr_accessor :correlation_id #CorrelationId
 
-# add some aliases for convenience 
-Azure::BlobService = Azure::Storage::Blob::BlobService
-Azure::QueueService = Azure::Storage::Queue::QueueService
-Azure::TableService = Azure::Storage::Table::TableService
-#Azure::ServiceBus = Azure::ServiceBus::ServiceBus
+      def to_hash(hash={})
+        hash["CorrelationId"]=correlation_id if correlation_id
+        super(hash)
+      end
+    end
+  end
+end

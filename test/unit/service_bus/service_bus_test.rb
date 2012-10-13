@@ -13,10 +13,10 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "test_helper"
-require 'azure/service_bus/service_bus_service'
+require 'azure/service_bus/service_bus'
 
-describe Azure::ServiceBus::ServiceBusService do
-  subject { Azure::ServiceBus::ServiceBusService.new }
+describe Azure::ServiceBus::ServiceBus do
+  subject { Azure::ServiceBus::ServiceBus.new }
   
   describe '#create_queue' do
     it '' do

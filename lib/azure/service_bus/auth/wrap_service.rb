@@ -20,8 +20,8 @@ module Azure
     module Auth
       class WrapService < Azure::Core::FilteredService
 
-        def initialize(host=Azure.config.acs_host, default_timeout=30, issuer=Azure.config.sb_issuer, access_key=Azure.config.sb_access_key)
-          super(host, default_timeout)
+        def initialize(host=Azure.config.acs_host, issuer=Azure.config.sb_issuer, access_key=Azure.config.sb_access_key)
+          super(host)
           @issuer = issuer
           @access_key = access_key
         end

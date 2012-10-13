@@ -23,8 +23,8 @@ module Azure
       # 
       # host            - String. The hostname. (optional, Default empty)
       # default_timeout - Integer. The default timeout in seconds (optional, Default 30)
-      def initialize(host='', default_timeout=30)
-        super(host, default_timeout)
+      def initialize(host='')
+        super(host)
         @filters = []
       end
 

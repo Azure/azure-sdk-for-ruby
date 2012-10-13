@@ -19,14 +19,22 @@ module Azure
     module Service
       # A base class for StorageService implementations
       class StorageService < Azure::Core::SignedService
-
         # Create a new instance of the StorageService
         #
         # signer        - Azure::Core::Auth::Signer. An implementation of Signer used for signing requests. (optional, Default=Azure::Core::Auth::SharedKey.new)
         # account_name  - String. The account name (optional, Default=Azure.config.account_name)  
         def initialize(signer=Core::Auth::SharedKey.new, account_name=Azure.config.account_name)
           super(signer, account_name)
+          @default_timeout = default_timeout
         end
+
+        attr_accessor :default_timeout
+
+        def generate_uri(path='', query={})
+          query["timeout"] = default_timeout.to_s unless query == nil or query.has_key? "timeout"
+          super(path, query)
+        end
+
 
         # Public: Get Storage Service properties
         #

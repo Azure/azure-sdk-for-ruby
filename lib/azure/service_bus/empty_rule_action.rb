@@ -12,16 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "backports"
+require 'azure/service_bus/action'
 
-module Azure; end
-
-require "azure/core"
-require "azure/storage"
-require "azure/service_bus"
-
-# add some aliases for convenience 
-Azure::BlobService = Azure::Storage::Blob::BlobService
-Azure::QueueService = Azure::Storage::Queue::QueueService
-Azure::TableService = Azure::Storage::Table::TableService
-#Azure::ServiceBus = Azure::ServiceBus::ServiceBus
+module Azure
+  module ServiceBus
+    class EmptyRuleAction < Action
+      def initialize(hash=nil)
+        super()
+      end
+    end
+  end
+end
