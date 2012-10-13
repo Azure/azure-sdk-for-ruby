@@ -32,27 +32,27 @@ class NameGenerator
   end
 end
 
-TableNameHelper = NameGenerator.new do |name|
-  table = Azure::Tables::Table.new(name)
-  Azure::Tables.delete(table)
-end
+# TableNameHelper = NameGenerator.new do |name|
+#   table = Azure::Tables::Table.new(name)
+#   Azure::Tables.delete(table)
+# end
 
-ContainerNameHelper = NameGenerator.new do |name|
-  container = Azure::Blobs::Container.new(name)
-  container.delete
-end
+# ContainerNameHelper = NameGenerator.new do |name|
+#   container = Azure::Blobs::Container.new(name)
+#   container.delete
+# end
 
-QueueNameHelper = NameGenerator.new do |name|
-  queue = Azure::Queues::Queue.new(name)
-  queue.delete
-end
+# QueueNameHelper = NameGenerator.new do |name|
+#   queue = Azure::Queues::Queue.new(name)
+#   queue.delete
+# end
 
 ServiceBusQueueNameHelper = NameGenerator.new do |name|
-  queue = Azure::ServiceBus::Queues::Queue.new(name)
-  queue.delete
+  svc = Azure::ServiceBus::ServiceBus.new
+  svc.delete_queue name
 end
 
 ServiceBusTopicNameHelper = NameGenerator.new do |name|
-  topic = Azure::ServiceBus::Topics::Topic.new(name)
-  topic.delete
+  svc = Azure::ServiceBus::ServiceBus.new
+  svc.delete_topic name
 end
