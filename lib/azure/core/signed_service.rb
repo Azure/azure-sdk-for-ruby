@@ -29,13 +29,13 @@ module Azure
         super()
         @account_name = account_name
         @signer = signer
+        filters.unshift Core::Http::SignerFilter.new(signer) if signer
       end
 
       attr_accessor :account_name
       attr_accessor :signer
 
       def call(method, uri, body=nil, headers=nil)
-        filters.unshift Core::Http::SignerFilter.new(signer) if signer
         super(method, uri, body, headers)
       end
     end

@@ -204,9 +204,181 @@ module Azure
       # returned and the message will be rejected.
       # 
       # topic: Either a Azure::ServiceBus::Topic instance or a string of the topic name
-      # message: An Azure::ServiceBus::BrokeredMessage object containing message body and properties.
+      # message: An Azure::ServiceBus::BrokeredMessage object containing message body and properties, 
+      # or a string of the message body (a default BrokeredMessage will be created from the string).
       def send_topic_message(topic, message)
+        _send_message(_name_for(topic), message)
+      end
+
+      # This operation is used to atomically retrieve and lock a message for processing. 
+      # The message is guaranteed not to be delivered to other receivers during the lock 
+      # duration period specified in buffer description. Once the lock expires, the 
+      # message will be available to other receivers (on the same subscription only) 
+      # during the lock duration period specified in the topic description. Once the lock
+      # expires, the message will be available to other receivers. In order to complete 
+      # processing of the message, the receiver should issue a delete command with the 
+      # lock ID received from this operation. To abandon processing of the message and 
+      # unlock it for other receivers, an Unlock Message command should be issued, or 
+      # the lock duration period can expire. 
+      # 
+      # topic: the name of the topic or a Topic instance
+      # subscription: the name of the subscription or a Subscription instance
+      #
+      def peek_lock_subscription_message(topic, subscription, timeout='60')
         topic = _name_for(topic)
+        subscription = _name_for(subscription)
+
+        _peek_lock_message(subscriptions_path(topic, subscription), timeout)
+      end
+
+      #
+      # Unlock a message for processing by other receivers on a given subscription. 
+      # This operation deletes the lock object, causing the message to be unlocked. 
+      # A message must have first been locked by a receiver before this operation 
+      # is called.
+      # 
+      # topic: the name of the topic or a Topic instance
+      # subscription: the name of the subscription or a Subscription instance
+      # sequence_number: The sequence number of the message to be unlocked as returned 
+      #     in BrokeredMessage.sequence_number by the Peek Message operation.
+      # lock_token: The ID of the lock as returned by the Peek Message operation in 
+      #     BrokeredMessage.lock_token
+      #
+      def unlock_subscription_message(topic, subscription, sequence_number, lock_token)
+        topic = _name_for(topic)
+        subscription = _name_for(subscription)
+
+        _unlock_message(subscriptions_path(topic, subscription), sequence_number, lock_token)
+      end
+
+      # Read and delete a message from a subscription as an atomic operation. This 
+      # operation should be used when a best-effort guarantee is sufficient for an 
+      # application; that is, using this operation it is possible for messages to 
+      # be lost if processing fails.
+      # 
+      # topic: the name of the topic or a Topic instance
+      # subscription: the name of the subscription or a Subscription instance
+      #
+      def read_delete_subscription_message(topic, subscription, timeout='60')
+        topic = _name_for(topic)
+        subscription = _name_for(subscription)
+
+        _read_delete_message(subscriptions_path(topic, subscription), timeout)
+      end
+
+      # Completes processing on a locked message and delete it from the subscription. 
+      # This operation should only be called after processing a previously locked 
+      # message is successful to maintain At-Least-Once delivery assurances.
+      # 
+      # topic: the name of the topic or a Topic instance
+      # subscription: the name of the subscription or a Subscription instance
+      # sequence_number: The sequence number of the message to be deleted as returned 
+      #     in BrokeredMessage.sequence_number by the Peek Message operation.
+      # lock_token: The ID of the lock as returned by the Peek Message operation in 
+      #     BrokeredMessage.lock_token
+      #
+      def delete_subscription_message(topic, subscription, sequence_number, lock_token)
+        topic = _name_for(topic)
+        subscription = _name_for(subscription)
+
+        _delete_message(subscriptions_path(topic, subscription), sequence_number, lock_token)
+      end
+
+      # Sends a message into the specified queue. The limit to the number of messages 
+      # which may be present in the topic is governed by the message size the 
+      # MaxTopicSizeInMegaBytes. If this message will cause the queue to exceed its 
+      # quota, a quota exceeded error is returned and the message will be rejected.
+      # 
+      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      # message: An Azure::ServiceBus::BrokeredMessage object containing message body and properties, 
+      # or a string of the message body (a default BrokeredMessage will be created from the string).
+      def send_queue_message(queue, message)
+        _send_message(_name_for(queue), message)
+      end
+
+      #
+      # Automically retrieves and locks a message from a queue for processing. The 
+      # message is guaranteed not to be delivered to other receivers (on the same 
+      # subscription only) during the lock duration period specified in the queue 
+      # description. Once the lock expires, the message will be available to other 
+      # receivers. In order to complete processing of the message, the receiver 
+      # should issue a delete command with the lock ID received from this operation. 
+      # To abandon processing of the message and unlock it for other receivers, 
+      # an Unlock Message command should be issued, or the lock duration period 
+      # can expire.
+      # 
+      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      #
+      def peek_lock_queue_message(queue, timeout=60)
+        _peek_lock_message(_name_for(queue), timeout)
+      end
+
+      # Unlocks a message for processing by other receivers on a given subscription. 
+      # This operation deletes the lock object, causing the message to be unlocked. 
+      # A message must have first been locked by a receiver before this operation is 
+      # called.
+      # 
+      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      # sequence_number: The sequence number of the message to be unlocked as returned 
+      #     in BrokeredMessage.sequence_number by the Peek Message operation.
+      # lock_token: The ID of the lock as returned by the Peek Message operation in 
+      #     BrokeredMessage.lock_token
+      #
+      def unlock_queue_message(queue, sequence_number, lock_token)
+        _unlock_message(_name_for(queue), sequence_number, lock_token)
+      end
+
+      # Reads and deletes a message from a queue as an atomic operation. This operation 
+      # should be used when a best-effort guarantee is sufficient for an application; 
+      # that is, using this operation it is possible for messages to be lost if 
+      # processing fails.
+      # 
+      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      #
+      def read_delete_queue_message(queue, timeout=60)
+        _read_delete_message(_name_for(queue), timeout)
+      end
+
+      # Completes processing on a locked message and delete it from the queue. This 
+      # operation should only be called after processing a previously locked message 
+      # is successful to maintain At-Least-Once delivery assurances.
+      # 
+      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      # sequence_number: The sequence number of the message to be deleted as returned 
+      #     in BrokeredMessage.sequence_number by the Peek Message operation.
+      # lock_token: The ID of the lock as returned by the Peek Message operation in 
+      #     BrokeredMessage.lock_token
+      #
+      def delete_queue_message(queue, sequence_number, lock_token)
+        _delete_message(_name_for(queue), sequence_number, lock_token)
+      end
+
+      def receive_queue_message(queue, peek_lock=true, timeout=60)
+        peek_lock ? peek_lock_queue_message(queue, timeout) : read_delete_queue_message(queue, timeout)
+      end
+
+      def receive_subscription_message(topic, subscription, peek_lock=true, timeout=60)
+        peek_lock ? peek_lock_subscription_message(topic, subscription, timeout) : read_delete_subscription_message(topic, subscription, timeout)
+      end
+
+      private
+
+      def _unlock_message(path, sequence_number, lock_token)
+        _modify_message(:put, path, sequence_number, lock_token)
+      end
+
+      def _delete_message(path, sequence_number, lock_token)
+        _modify_message(:delete, path, sequence_number, lock_token)
+      end
+
+      def _modify_message(method, path, sequence_number, lock_token)
+        uri = message_uri(path, sequence_number, lock_token)
+        response = call(method, uri)
+        response.success?
+      end
+      
+      def _send_message(path, message)
+        message = Azure::ServiceBus::BrokeredMessage.new(message.to_s) unless message.kind_of?(Azure::ServiceBus::BrokeredMessage)
 
         serializer = BrokeredMessageSerializer.new(message)
         broker_properties = serializer.to_json
@@ -224,144 +396,24 @@ module Azure
         
         headers["Content-Type"] = content_type
 
-        response = call(:post, messages_uri(topic), message.body, headers)
-        response.success?
+        response = call(:post, messages_uri(path), message.body, headers)
+        response.success?        
       end
 
-      #
-      # This operation is used to atomically retrieve and lock a message for processing. 
-      # The message is guaranteed not to be delivered to other receivers during the lock 
-      # duration period specified in buffer description. Once the lock expires, the 
-      # message will be available to other receivers (on the same subscription only) 
-      # during the lock duration period specified in the topic description. Once the lock
-      # expires, the message will be available to other receivers. In order to complete 
-      # processing of the message, the receiver should issue a delete command with the 
-      # lock ID received from this operation. To abandon processing of the message and 
-      # unlock it for other receivers, an Unlock Message command should be issued, or 
-      # the lock duration period can expire. 
-      # 
-      # topic_name: the name of the topic
-      # subscription_name: the name of the subscription
-      #
-      def peek_lock_subscription_message(topic_name, subscription_name, timeout='60') end
-
-      #
-      # Unlock a message for processing by other receivers on a given subscription. 
-      # This operation deletes the lock object, causing the message to be unlocked. 
-      # A message must have first been locked by a receiver before this operation 
-      # is called.
-      # 
-      # topic_name: the name of the topic
-      # subscription_name: the name of the subscription
-      # sequence_name: The sequence number of the message to be unlocked as returned 
-      #     in BrokerProperties['SequenceNumber'] by the Peek Message operation.
-      # lock_token: The ID of the lock as returned by the Peek Message operation in 
-      #     BrokerProperties['LockToken']
-      #
-      def unlock_subscription_message(topic_name, subscription_name, sequence_number, lock_token) end
-      # 
-      # Read and delete a message from a subscription as an atomic operation. This 
-      # operation should be used when a best-effort guarantee is sufficient for an 
-      # application; that is, using this operation it is possible for messages to 
-      # be lost if processing fails.
-      # 
-      # topic_name: the name of the topic
-      # subscription_name: the name of the subscription
-      #
-      def read_delete_subscription_message(topic_name, subscription_name, timeout='60') end
-
-      #
-      # Completes processing on a locked message and delete it from the subscription. 
-      # This operation should only be called after processing a previously locked 
-      # message is successful to maintain At-Least-Once delivery assurances.
-      # 
-      # topic_name: the name of the topic
-      # subscription_name: the name of the subscription
-      # sequence_name: The sequence number of the message to be deleted as returned 
-      #     in BrokerProperties['SequenceNumber'] by the Peek Message operation.
-      # lock_token: The ID of the lock as returned by the Peek Message operation in 
-      #     BrokerProperties['LockToken']
-      #
-      def delete_subscription_message(topic_name, subscription_name, sequence_number, lock_token) end
-
-      #
-      # Sends a message into the specified queue. The limit to the number of messages 
-      # which may be present in the topic is governed by the message size the 
-      # MaxTopicSizeInMegaBytes. If this message will cause the queue to exceed its 
-      # quota, a quota exceeded error is returned and the message will be rejected.
-      # 
-      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
-      # message: An Azure::ServiceBus::BrokeredMessage object containing message body and properties.
-      def send_queue_message(queue, message)
-        send_topic_message(queue, message)
+      def _read_delete_message(path, timeout=60)
+        _retrieve_message(:delete, path, timeout)
       end
 
-      #
-      # Automically retrieves and locks a message from a queue for processing. The 
-      # message is guaranteed not to be delivered to other receivers (on the same 
-      # subscription only) during the lock duration period specified in the queue 
-      # description. Once the lock expires, the message will be available to other 
-      # receivers. In order to complete processing of the message, the receiver 
-      # should issue a delete command with the lock ID received from this operation. 
-      # To abandon processing of the message and unlock it for other receivers, 
-      # an Unlock Message command should be issued, or the lock duration period 
-      # can expire.
-      # 
-      # queue_name: name of the queue
-      #
-      def peek_lock_queue_message(queue_name, timeout=60) end
+      def _peek_lock_message(path, timeout=60)
+        _retrieve_message(:post, path, timeout)
+      end
 
-      #
-      # Unlocks a message for processing by other receivers on a given subscription. 
-      # This operation deletes the lock object, causing the message to be unlocked. 
-      # A message must have first been locked by a receiver before this operation is 
-      # called.
-      # 
-      # queue_name: name of the queue
-      # sequence_name: The sequence number of the message to be unlocked as returned 
-      #     in BrokerProperties['SequenceNumber'] by the Peek Message operation.
-      # lock_token: The ID of the lock as returned by the Peek Message operation in 
-      #     BrokerProperties['LockToken']
-      #
-      def unlock_queue_message(queue_name, sequence_number, lock_token) end
+      def _retrieve_message(method, path, timeout=60)
+        uri = messages_head_uri(path, { "timeout"=> timeout.to_s })
 
-      #
-      # Reads and deletes a message from a queue as an atomic operation. This operation 
-      # should be used when a best-effort guarantee is sufficient for an application; 
-      # that is, using this operation it is possible for messages to be lost if 
-      # processing fails.
-      # 
-      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
-      #
-      def read_delete_queue_message(queue, timeout=60)
-        uri = messages_head_uri(_name_for(queue), { "timeout"=> timeout.to_s })
-
-        response = call(:delete, uri)
+        response = call(method, uri)
         (response.status_code == 204) ? nil : BrokeredMessageSerializer.get_from_http_response(response)
       end
-
-      #
-      # Completes processing on a locked message and delete it from the queue. This 
-      # operation should only be called after processing a previously locked message 
-      # is successful to maintain At-Least-Once delivery assurances.
-      # 
-      # queue_name: name of the queue
-      # sequence_name: The sequence number of the message to be deleted as returned 
-      #     in BrokerProperties['SequenceNumber'] by the Peek Message operation.
-      # lock_token: The ID of the lock as returned by the Peek Message operation in 
-      #     BrokerProperties['LockToken']
-      #
-      def delete_queue_message(queue_name, sequence_number, lock_token) end
-
-      def receive_queue_message(queue_name, peek_lock=true, timeout=60)
-        peek_lock ? peek_lock_queue_message(queue_name, timeout) : read_delete_queue_message(queue_name, timeout)
-      end
-
-      def receive_subscription_message(topic_name, subscription_name, peek_lock=true, timeout=60)
-        peek_lock ? peek_lock_subscription_message(topic_name, subscription_name, timeout) : read_delete_subscription_message(topic_name, subscription_name, timeout)
-      end
-
-      private
 
       def _rule_from(*p)
         rule = nil
@@ -416,8 +468,8 @@ module Azure
 
       def _subscription_args(*p)
         if p.length == 2
-          topic_name = p[0]
-          subscription_name = p[1]
+          topic_name = _name_for(p[0])
+          subscription_name = _name_for(p[1])
         elsif p.length == 1 and p[0].respond_to? :name and p[0].respond_to? :topic
           topic_name = p[0].topic
           subscription_name = p[0].name
@@ -460,23 +512,49 @@ module Azure
         Serialization.resources_from_xml(resource, response.body)
       end
 
-      # messages uris
+      # paths
 
-      def messages_head_uri(topic_or_queue, query={})
-        generate_uri("#{topic_or_queue}/messages/head", query)
+      def message_path(path, sequence_number, lock_token)
+        "#{messages_path(path)}/#{sequence_number}/#{lock_token}"
       end
 
-      def messages_uri(topic_or_queue, query={})
-        generate_uri("#{topic_or_queue}/messages", query)
+      def messages_head_path(path)
+        "#{messages_path(path)}/head"
+      end
+
+      def messages_path(path)
+        "#{path}/messages"
+      end
+
+      def rule_path(topic, subscription, rule)
+        "#{subscriptions_path(topic, subscription)}/rules/#{rule}"
+      end
+
+      def subscriptions_path(topic, subscription)
+        "#{topic}/subscriptions/#{subscription}"
+      end
+
+      # messages uris
+
+      def message_uri(path, sequence_number, lock_token, query={})
+        generate_uri(message_path(path, sequence_number, lock_token), query)
+      end
+
+      def messages_head_uri(path, query={})
+        generate_uri(messages_head_path(path), query)
+      end
+
+      def messages_uri(path, query={})
+        generate_uri(messages_path(path), query)
       end
 
       # entry uris
       def rule_uri(topic, subscription, rule, query={})
-        generate_uri("#{topic}/Subscriptions/#{subscription}/Rules/#{rule}", query)
+        generate_uri(rule_path(topic, subscription, rule), query)
       end
 
       def subscription_uri(topic, subscription, query={})
-        generate_uri("#{topic}/Subscriptions/#{subscription}", query)
+        generate_uri(subscriptions_path(topic, subscription), query)
       end
 
       def queue_uri(topic, query={})
@@ -490,7 +568,7 @@ module Azure
       # list uris
 
       def rule_list_uri(topic, subscription, query={})
-        resource_list_uri(:rule, query, "#{topic}/subscriptions/#{subscription}")
+        resource_list_uri(:rule, query, subscriptions_path(topic, subscription))
       end
 
       def subscription_list_uri(topic, query={})
