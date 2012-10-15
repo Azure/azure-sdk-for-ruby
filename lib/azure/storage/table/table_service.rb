@@ -153,7 +153,7 @@ module Azure
           entity.row_key = row_key
           entity.updated = result[:updated]
           entity.etag = response.headers["etag"] || result[:etag]
-          entity.properties result[:properties]
+          entity.properties = result[:properties]
 
           entity
         end
@@ -189,15 +189,17 @@ module Azure
           if partition_key and row_key
             result = Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)
             
-            entity = Azure::Storage::Table::Entity.new
-            entity.table = table_name
-            entity.partition_key = partition_key
-            entity.row_key = row_key
-            entity.updated = result[:updated]
-            entity.etag = response.headers["etag"] || result[:etag]
-            entity.properties result[:properties]
-
-            entities = [entity]
+            if result
+              entity = Azure::Storage::Table::Entity.new
+              entity.table = table_name
+              entity.partition_key = partition_key
+              entity.row_key = row_key
+              entity.updated = result[:updated]
+              entity.etag = response.headers["etag"] || result[:etag]
+              entity.properties result[:properties]
+              
+              entities = [entity]
+            end
           else
             results = Azure::Storage::Table::Serialization.entries_from_feed_xml(response.body)
             results.each do |result|
@@ -209,7 +211,7 @@ module Azure
               entity.etag = result[:etag]
               entity.properties = result[:properties]
               entities.push entity
-            end
+            end if results
           end
 
           continuation_token = nil
@@ -316,6 +318,20 @@ module Azure
         def delete_entity(table_name, partition_key, row_key, if_match=nil)
           response = call(:delete, entities_uri(table_name, partition_key, row_key), nil, {"If-Match"=> if_match || "*"})
           response.success?
+        end
+
+        # Public: Deletes an existing entity in the table.
+        #
+        # batch         - String. A Batch instance
+        #
+        # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135727
+        #
+        # Returns an array of results, one for each operation in the batch
+        def execute_batch(batch)
+          headers = {"Content-Type"=>"multipart/mixed; boundary=batch_a1e9d677-b28b-435e-a89e-87e6a768a431"}
+          body = batch.to_body
+          response = call(:post, generate_uri("/batch$"), body, headers)
+          batch.parse_response(response)
         end
 
         # Public: Gets an existing entity in the table.
