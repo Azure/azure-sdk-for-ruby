@@ -32,10 +32,10 @@ class NameGenerator
   end
 end
 
-# TableNameHelper = NameGenerator.new do |name|
-#   table = Azure::Tables::Table.new(name)
-#   Azure::Tables.delete(table)
-# end
+TableNameHelper = NameGenerator.new do |name|
+  svc = Azure::Storage::Table::TableService.new
+  svc.delete_table name
+end
 
 # ContainerNameHelper = NameGenerator.new do |name|
 #   container = Azure::Blobs::Container.new(name)
