@@ -320,17 +320,21 @@ module Azure
           response.success?
         end
 
-        # Public: Deletes an existing entity in the table.
+        # Public: Executes a batch of operations.
         #
-        # batch         - String. A Batch instance
+        # batch         - The Azure::Storage::Table::Batch instance to execute.
         #
-        # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135727
+        # See http://msdn.microsoft.com/en-us/library/windowsazure/dd894038
         #
         # Returns an array of results, one for each operation in the batch
         def execute_batch(batch)
-          headers = {"Content-Type"=>"multipart/mixed; boundary=batch_a1e9d677-b28b-435e-a89e-87e6a768a431"}
+          headers = {
+            "Content-Type"=> "multipart/mixed; boundary=#{batch.batch_id}",
+            "Accept"=> 'application/atom+xml,application/xml',
+            'Accept-Charset'=> 'UTF-8'
+          }
           body = batch.to_body
-          response = call(:post, generate_uri("/batch$"), body, headers)
+          response = call(:post, generate_uri("/$batch"), body, headers)
           batch.parse_response(response)
         end
 
@@ -394,7 +398,7 @@ module Azure
               end
             end
           end
-          uri.query = qs.join '&'
+          uri.query = qs.join '&' if qs.length > 0
           uri
         end
       end
