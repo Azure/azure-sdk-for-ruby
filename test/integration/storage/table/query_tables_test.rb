@@ -17,21 +17,23 @@ require "azure/storage/table/table_service"
 require "azure/core/http/http_error"
 
 describe Azure::Storage::Table::TableService do 
-  describe "#get_table" do
+  describe "#query_tables" do
     subject { Azure::Storage::Table::TableService.new }
-    let(:table_name){ TableNameHelper.name }
-    before { subject.create_table table_name }
+    let(:tables){ [TableNameHelper.name, TableNameHelper.name] }
+    before { tables.each { |t| subject.create_table t } }
     after { TableNameHelper.clean }
 
-    it "gets the last updated time of a valid table" do
-      result = subject.get_table table_name
-      result.must_be_kind_of Time
-    end
+    it "gets a list of tables for the account" do
+      result, token = subject.query_tables
+      result.must_be_kind_of Hash
 
-    it "errors on an invalid table" do
-    	assert_raises(Azure::Core::Http::HTTPError) do
-   	  	subject.get_table "this_table.cannot-exist!"
-   		end
+      tables.each { |t| 
+        result.must_include t
+        updated = subject.get_table(t)
+
+        # this is a weird, but sometimes it's off by a second
+        assert (result[t] == updated or result[t] == (updated - 1))
+      }
     end
   end
 end

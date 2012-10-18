@@ -34,7 +34,10 @@ end
 
 TableNameHelper = NameGenerator.new do |name|
   svc = Azure::Storage::Table::TableService.new
-  svc.delete_table name
+  begin
+    svc.delete_table name
+  rescue
+  end
 end
 
 # ContainerNameHelper = NameGenerator.new do |name|

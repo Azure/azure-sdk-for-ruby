@@ -16,22 +16,23 @@ require "integration/test_helper"
 require "azure/storage/table/table_service"
 require "azure/core/http/http_error"
 
-describe Azure::Storage::Table::TableService do 
-  describe "#get_table" do
+describe Azure::Storage::Table::TableService do
+  describe "#delete_table" do
     subject { Azure::Storage::Table::TableService.new }
     let(:table_name){ TableNameHelper.name }
     before { subject.create_table table_name }
     after { TableNameHelper.clean }
 
-    it "gets the last updated time of a valid table" do
-      result = subject.get_table table_name
-      result.must_be_kind_of Time
+    it "deletes a table and returns true on success" do
+      assert subject.delete_table(table_name)
+      tables = subject.query_tables
+      tables.wont_include table_name
     end
 
     it "errors on an invalid table" do
-    	assert_raises(Azure::Core::Http::HTTPError) do
-   	  	subject.get_table "this_table.cannot-exist!"
-   		end
+      assert_raises(Azure::Core::Http::HTTPError) do
+        subject.delete_table "this_table.cannot-exist!"
+      end
     end
   end
 end
