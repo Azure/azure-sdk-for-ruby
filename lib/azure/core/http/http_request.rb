@@ -93,7 +93,7 @@ module Azure
         # Build a default headers Hash
         def default_headers(current_time)
           headers["x-ms-date"] = current_time
-          headers["x-ms-version"] = "2011-08-18"
+          headers["x-ms-version"] = "2012-02-12"
           headers["DataServiceVersion"] = "1.0;NetFx"
           headers["MaxDataServiceVersion"] = "2.0;NetFx"
 
