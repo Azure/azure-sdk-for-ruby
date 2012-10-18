@@ -24,4 +24,3 @@ require "azure/service_bus"
 Azure::BlobService = Azure::Storage::Blob::BlobService
 Azure::QueueService = Azure::Storage::Queue::QueueService
 Azure::TableService = Azure::Storage::Table::TableService
-#Azure::ServiceBus = Azure::ServiceBus::ServiceBus

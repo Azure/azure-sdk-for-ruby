@@ -18,3 +18,4 @@ module Azure::Storage; end
 require "azure/storage/blob/blob_service"
 require "azure/storage/queue/queue_service"
 require "azure/storage/table/table_service"
+require "azure/storage/table/batch"

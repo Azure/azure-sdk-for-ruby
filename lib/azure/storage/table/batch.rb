@@ -14,110 +14,39 @@
 #--------------------------------------------------------------------------
 require 'azure/storage/table/serialization'
 require 'azure/storage/table/table_service'
+require 'azure/storage/table/batch_response'
+require 'azure/core/http/http_error'
 
 module Azure
   module Storage
     module Table
-      module BatchResponse
-        def self.parse(data)
-          context = { 
-            :lines => data.lines.to_a,
-            :index=> 0,
-            :responses => []
-          }
-
-          find(context) { |c| batch_boundary c }
-          find(context) { |c| batch_headers c }
-          
-          while(find(context){ |c| changeset_boundary_or_end c } == :boundary)
-            find(context) { |c| changeset_headers c }
-            find(context) { |c| response c }
-            find(context) { |c| response_headers c }
-            find(context) { |c| response_body c }
-          end
-
-          context[:responses]
-        end
-
-        def self.find(context, &block)
-          while(context[:index] < context[:lines].length)
-            result = block.call(context)
-            return result if result
-            context[:index] +=1
-          end
-        end
-
-        def self.response_body(context)
-          end_of_body = nil
-          end_of_body = changeset_boundary_or_end(context.dup.merge!({:index=>context[:index] + 1})) if context[:index] < (context[:lines].length - 1)
-
-          if end_of_body
-            return context[:responses].last[:body] || ""
-          else 
-            context[:responses].last[:body] ||= ""
-            context[:responses].last[:body] << current_line(context) + "\n"
-            return nil
-          end
-        end
-
-        def self.response_headers(context)
-          match = /(.*): (.*)/.match(current_line(context))
-
-          if context[:responses].last[:headers] and not match
-            return context[:responses].last[:headers]
-          elsif match
-            context[:responses].last[:headers] ||= {}
-            context[:responses].last[:headers][match[1].downcase] = match[2]
-            return nil
-          else
-            return nil
-          end
-        end
-
-        def self.response(context)
-          match = /HTTP\/1.1 (\d*) (.*)/.match(current_line(context))
-          return nil unless match
-          response = {:status => match[1], :message => match[2] }
-          context[:responses].push response
-        end
-        
-        def self.changeset_headers(context)
-          current_line(context).strip ==  ''
-        end
-
-        def self.changeset_boundary_or_end(context)
-          match_boundary = /--changesetresponse_(.*)/.match(current_line(context))
-          match_end = /--changesetresponse_(.*)--/.match(current_line(context))
-
-          (match_boundary and not match_end) ? :boundary : (match_end ? :end : nil)
-        end
-
-        def self.batch_headers(context)
-          match = /(.*): (.*)/.match(current_line(context))
-
-          if context[:batch_headers] and not match
-            return context[:batch_headers]
-          elsif match
-            context[:batch_headers] ||= {}
-            context[:batch_headers][match[1].downcase] = match[2]
-            return nil
-          else
-            return nil
-          end
-        end
-
-        def self.batch_boundary(context)
-          match = /--batchresponse_(.*)/.match(current_line(context))
-          match ? match[1] : nil
-        end
-        
-        def self.current_line(context)
-          context[:lines][context[:index]]
-        end
-      end
-
+      # Represents a batch of table operations.
+      # 
+      # Example usage (block syntax):
+      #
+      # results = Batch.new "table", "partition" do
+      #      insert "row1", {"meta"=>"data"}
+      #      insert "row2", {"meta"=>"data"}
+      #    end.execute
+      #
+      # which is equivalent to (fluent syntax):
+      #
+      # results = Batch.new("table", "partition")
+      #           .insert("row1", {"meta"=>"data"})
+      #           .insert("row2", {"meta"=>"data"})
+      #           .execute
+      #
+      # which is equivalent to (as class): 
+      # 
+      # svc = TableSerice.new 
+      #
+      # batch = Batch.new "table", "partition"
+      # batch.insert "row1", {"meta"=>"data"}
+      # batch.insert "row2", {"meta"=>"data"}
+      #
+      # results = svc.execute_batch batch
+      #
       class Batch
-        
         def initialize(table, partition, &block)
           @table = table
           @partition = partition
@@ -145,7 +74,64 @@ module Azure
         end
         
         def parse_response(response)
-          BatchResponse.parse response.body
+          responses = BatchResponse.parse response.body
+          new_responses = []
+
+          (0..responses.length-1).each { |index|
+            operation = operations[index]
+            response = responses[index]
+
+            if response[:status_code].to_i > 299
+              # failed
+              error = Azure::Core::Http::HTTPError.new(ResponseWrapper.new(response.merge({:uri=>operation[:uri]})))
+              error.description = response[:message] if (error.description || '').strip == ''
+              raise error
+            else
+              # success
+              case operation[:method]
+              when :post
+                # entity from body
+                result = Azure::Storage::Table::Serialization.hash_from_entry_xml(response[:body])
+
+                entity = Azure::Storage::Table::Entity.new
+                entity.table = table
+                entity.partition_key = result[:properties]["PartitionKey"]
+                entity.row_key = result[:properties]["RowKey"]
+                entity.updated = result[:updated]
+                entity.etag = response[:headers]["etag"] || result[:etag]
+                entity.properties = result[:properties]
+
+                new_responses.push entity
+              when :put
+              when :merge
+                # etag from headers
+                new_responses.push response[:headers]["etag"]
+              when :delete
+                # true 
+                new_responses.push true
+              end
+            end
+          }
+
+          new_responses
+        end
+
+        class ResponseWrapper
+          def initialize(hash)
+            @hash = hash
+          end
+
+          def uri 
+            @hash[:uri]
+          end
+          
+          def status_code
+            @hash[:status_code].to_i
+          end
+
+          def body
+            @hash[:body]
+          end
         end
 
         def add_operation(method, uri, body=nil, headers=nil)
@@ -195,10 +181,9 @@ module Azure
               body.add_line ""
             end 
 
-            body.add_line "--#{changeset_id}--"
-
             content_id += 1
           }
+          body.add_line "--#{changeset_id}--"
           body.add_line "--#{batch_id}--"
         end
 
