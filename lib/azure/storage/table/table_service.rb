@@ -118,8 +118,8 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159102
         #
         # Returns true on success
-        def set_queue_acl(table_name, signed_identifiers=[])
-          uri = table_uri(table_name, {"comp"=>"acl"})
+        def set_table_acl(table_name, signed_identifiers=[])
+          uri = generate_uri(table_name, {"comp"=>"acl"})
           body = nil
           body = Azure::Storage::Table::Serialization.signed_identifiers_to_xml signed_identifiers if signed_identifiers && signed_identifiers.length > 0
 
@@ -186,33 +186,18 @@ module Azure
 
           entities = []
 
-          if partition_key and row_key
-            result = Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)
-            
-            if result
-              entity = Azure::Storage::Table::Entity.new
-              entity.table = table_name
-              entity.partition_key = partition_key
-              entity.row_key = row_key
-              entity.updated = result[:updated]
-              entity.etag = response.headers["etag"] || result[:etag]
-              entity.properties result[:properties]
-              
-              entities = [entity]
-            end
-          else
-            results = Azure::Storage::Table::Serialization.entries_from_feed_xml(response.body)
-            results.each do |result|
-              entity = Azure::Storage::Table::Entity.new
-              entity.table = table_name
-              entity.partition_key = partition_key
-              entity.row_key = row_key
-              entity.updated = result[:updated]
-              entity.etag = result[:etag]
-              entity.properties = result[:properties]
-              entities.push entity
-            end if results
-          end
+          results = (partition_key and row_key) ? [Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)] : Azure::Storage::Table::Serialization.entries_from_feed_xml(response.body)
+          
+          results.each do |result|
+            entity = Azure::Storage::Table::Entity.new
+            entity.table = table_name
+            entity.partition_key = result[:properties]["PartitionKey"]
+            entity.row_key = result[:properties]["RowKey"]
+            entity.updated = result[:updated]
+            entity.etag = response.headers["etag"] || result[:etag]
+            entity.properties = result[:properties].reject { |k,v| ["PartitionKey", "RowKey"].include? k }
+            entities.push entity
+          end if results
 
           continuation_token = nil
           continuation_token = { 
@@ -220,7 +205,7 @@ module Azure
             :next_row_key => response.headers["x-ms-continuation-NextRowKey"]
             } if response.headers["x-ms-continuation-NextPartitionKey"]
 
-          return results, continuation_token 
+          return entities, continuation_token 
         end
 
         # Public: Updates an existing entity in a table. The Update Entity operation replaces 
@@ -346,8 +331,8 @@ module Azure
         #
         # Returns an Azure::Storage::Table::Entity instance on success
         def get_entity(table_name, partition_key, row_key)
-          results = query_entities(table_name, partition_key, row_key)
-          results.length > 0 ? results[0] : {}
+          results, _ = query_entities(table_name, partition_key, row_key)
+          results.length > 0 ? results[0] : nil
         end
 
         # Public: Generate the URI for the collection of tables.
@@ -362,9 +347,9 @@ module Azure
         # name - The table name. If this is a URI, we just return this
         #
         # Returns a URI
-        def table_uri(name)
+        def table_uri(name, query={})
           return name if name.kind_of? ::URI
-          generate_uri("Tables('#{name}')")
+          generate_uri("Tables('#{name}')", query)
         end
 
         # Public: Generate the URI for an entity or group of entities in a table.
