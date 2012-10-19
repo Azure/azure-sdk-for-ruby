@@ -45,10 +45,13 @@ end
 #   container.delete
 # end
 
-# QueueNameHelper = NameGenerator.new do |name|
-#   queue = Azure::Queues::Queue.new(name)
-#   queue.delete
-# end
+QueueNameHelper = NameGenerator.new do |name|
+  svc = Azure::Storage::Queue::QueueService.new
+  begin
+    svc.delete_queue name
+  rescue
+  end
+end
 
 ServiceBusQueueNameHelper = NameGenerator.new do |name|
   svc = Azure::ServiceBus::ServiceBus.new
