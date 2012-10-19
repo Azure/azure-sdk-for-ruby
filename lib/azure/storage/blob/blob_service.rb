@@ -65,12 +65,14 @@ module Azure
         # Returns an Azure::Entity::Blob::ContainerEnumerationResults
         def list_containers(options={})
           query = {}
-          query["prefix"] = options[:prefix] if options[:prefix]
-          query["marker"] = options[:marker] if options[:marker]
-          query["maxresults"] = options[:max_results].to_s if options[:max_results]
-          query["include"] = "metadata" if options[:metadata] == true
-          query["timeout"] = options[:timeout].to_s if options[:timeout]
-
+          if options
+            query["prefix"] = options[:prefix] if options[:prefix]
+            query["marker"] = options[:marker] if options[:marker]
+            query["maxresults"] = options[:max_results].to_s if options[:max_results]
+            query["include"] = "metadata" if options[:metadata] == true
+            query["timeout"] = options[:timeout].to_s if options[:timeout]
+          end
+          
           uri = containers_uri(query)
           response = call(:get, uri)
 
@@ -184,7 +186,7 @@ module Azure
           uri =container_uri(name, {"comp"=>"acl"})
 
           headers = {}
-          headers["x-ms-blob-public-access"] = visibility if visibility && visibility.length > 0
+          headers["x-ms-blob-public-access"] = visibility if visibility && visibility.to_s.length > 0
 
           body = nil
           body = Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && headers["x-ms-blob-public-access"] == "container"
@@ -326,11 +328,11 @@ module Azure
           headers["x-ms-blob-type"] = "PageBlob"
 
           # ensure content-length is 0 and x-ms-blob-content-length is the blob length
-          headers["Content-Length"] = 0
-          headers["x-ms-blob-content-length"] = length
+          headers["Content-Length"] = 0.to_s
+          headers["x-ms-blob-content-length"] = length.to_s
           
           # set x-ms-sequence-number from options (or default to 0)
-          headers["x-ms-sequence-number"] = options[:sequence_number] || 0
+          headers["x-ms-sequence-number"] = (options[:sequence_number] || 0).to_s
 
           # set the rest of the optional headers
           headers["Content-Type"] = options[:content_type] if options[:content_type]
