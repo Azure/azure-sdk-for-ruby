@@ -82,7 +82,22 @@ namespace :test do
       task component => "test:require_environment"
     end
 
-    component_task :storage
+    namespace :storage do 
+      def component_task(component)
+        Rake::TestTask.new component do |t|
+          t.pattern = "test/integration/storage/#{component}/**/*_test.rb"
+          t.verbose = true
+          t.libs = ["lib", "test"]
+        end
+
+        task component => "test:require_environment"
+      end
+
+      component_task :blob
+      component_task :queue
+      component_task :table
+    end
+
     component_task :service_bus
   end
 
