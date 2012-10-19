@@ -40,10 +40,13 @@ TableNameHelper = NameGenerator.new do |name|
   end
 end
 
-# ContainerNameHelper = NameGenerator.new do |name|
-#   container = Azure::Blobs::Container.new(name)
-#   container.delete
-# end
+ContainerNameHelper = NameGenerator.new do |name|
+  svc = Azure::Storage::Blob::BlobService.new
+  begin
+    svc.delete_container name
+  rescue
+  end
+end
 
 QueueNameHelper = NameGenerator.new do |name|
   svc = Azure::Storage::Queue::QueueService.new
