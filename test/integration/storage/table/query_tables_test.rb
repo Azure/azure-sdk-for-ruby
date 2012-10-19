@@ -31,8 +31,8 @@ describe Azure::Storage::Table::TableService do
         result.must_include t
         updated = subject.get_table(t)
 
-        # this is a weird, but sometimes it's off by a second
-        assert (result[t] == updated or result[t] == (updated - 1))
+        # this is a weird, but sometimes it's off by a second or two
+        assert ((result[t] - updated).abs < 3), "time stamps don't match"
       }
     end
   end
