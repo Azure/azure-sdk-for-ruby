@@ -147,15 +147,15 @@ describe Azure::Storage::Service::Serialization do
 
     it "uses the child element names as keys" do
       hash = subject.metadata_from_xml(metadata_xml_node)
-      hash.has_key?("MyMetadata1").must_equal true
-      hash.has_key?("MyMetadata2").must_equal true
+      hash.has_key?("mymetadata1").must_equal true
+      hash.has_key?("mymetadata2").must_equal true
       hash.has_key?("x-ms-invalid-name").must_equal true
     end
 
     it "uses the child element text contents as values" do
       hash = subject.metadata_from_xml(metadata_xml_node)
-      hash["MyMetadata1"].must_equal "first value"
-      hash["MyMetadata2"].must_equal "second value"
+      hash["mymetadata1"].must_equal "first value"
+      hash["mymetadata2"].must_equal "second value"
     end
 
     describe "when it encounters more than one of the same element name" do

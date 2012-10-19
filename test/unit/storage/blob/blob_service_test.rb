@@ -589,9 +589,9 @@ describe Azure::Storage::Blob::BlobService do
         let(:request_headers) { 
           {
             "x-ms-blob-type" => "PageBlob", 
-            "Content-Length" => 0,
-            "x-ms-blob-content-length" => blob_length, 
-            "x-ms-sequence-number" => 0
+            "Content-Length" => 0.to_s,
+            "x-ms-blob-content-length" => blob_length.to_s, 
+            "x-ms-sequence-number" => 0.to_s
           }
         }
 
@@ -620,8 +620,8 @@ describe Azure::Storage::Blob::BlobService do
 
         describe "when the options Hash is used" do
           it "modifies the request headers when provided a :sequence_number value" do
-            request_headers["x-ms-sequence-number"] = 37
-            subject.create_page_blob container_name, blob_name, blob_length, { :sequence_number => 37 }
+            request_headers["x-ms-sequence-number"] = 37.to_s
+            subject.create_page_blob container_name, blob_name, blob_length, { :sequence_number => 37.to_s }
           end
 
           it "modifies the request headers when provided a :blob_content_type value" do
@@ -1232,7 +1232,7 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the request headers when provided a :blob_content_length value" do
             request_headers["x-ms-blob-content-length"] = "37"
-            subject.set_blob_properties container_name, blob_name, { :blob_content_length => 37 }
+            subject.set_blob_properties container_name, blob_name, { :blob_content_length => 37.to_s }
           end
 
           it "modifies the request headers when provided a :sequence_number_action value" do
@@ -1242,7 +1242,7 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the request headers when provided a :sequence_number value" do
             request_headers["x-ms-blob-sequence-number"] = "37"
-            subject.set_blob_properties container_name, blob_name, { :sequence_number => 37 }
+            subject.set_blob_properties container_name, blob_name, { :sequence_number => 37.to_s }
           end
 
           it "does not modify the request headers when provided an unknown value" do
