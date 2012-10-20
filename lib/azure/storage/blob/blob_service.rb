@@ -415,13 +415,11 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691975.aspx
         #
         # Returns Blob
-        def clear_blob_pages(container, blob, start_range=nil, end_range=nil)
+        def clear_blob_pages(container, blob, start_range, end_range)
           uri = blob_uri(container, blob, {"comp"=> "page"})
 
-          start_range = 0 if end_range and not start_range
-
           headers = {}
-          headers["x-ms-range"] = "bytes=#{start_range}-#{end_range}" if start_range
+          headers["x-ms-range"] = "bytes=#{start_range}-#{end_range}"
           headers["x-ms-page-write"] = "clear"
 
           # clear default content type
