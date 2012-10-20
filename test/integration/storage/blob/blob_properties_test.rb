@@ -14,13 +14,63 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 require "azure/storage/blob/blob_service"
+require "azure/storage/blob/blob_properties"
 
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
   
-  describe '#get_blob_properties' do
-    it '' do
+  describe '#set/get_blob_properties' do
+    let(:container_name) { ContainerNameHelper.name }
+    let(:blob_name) { "blobname" }
+    let(:length) { 1024 }
+    before { 
+      subject.create_container container_name
+      subject.create_page_blob container_name, blob_name, length
+    }
+    let(:options){{
+        :blob_content_type=>"application/my-special-format",
+        :blob_content_encoding=>"utf-16",
+        :blob_content_language=>"klingon",
+        :blob_cache_control=>"max-age=1296000",
+      }}
+
+    it 'sets and gets properties for a blob' do
+      assert subject.set_blob_properties container_name, blob_name, options
+      blob = subject.get_blob_properties container_name, blob_name
+      blob.properties.content_type.must_equal options[:blob_content_type]
+      blob.properties.content_encoding.must_equal options[:blob_content_encoding]
+      blob.properties.cache_control.must_equal options[:blob_cache_control]
+    end
+
+    describe 'when a blob has a snapshot' do
+      before {
+        subject.set_blob_properties container_name, blob_name, options
+      }
       
+      it 'gets properties for a blob snapshot' do
+        snapshot = subject.create_blob_snapshot container_name, blob_name
+        blob = subject.get_blob_properties container_name, blob_name, snapshot
+
+        blob.snapshot.must_equal snapshot
+        blob.properties.content_type.must_equal options[:blob_content_type]
+        blob.properties.content_encoding.must_equal options[:blob_content_encoding]
+        blob.properties.cache_control.must_equal options[:blob_cache_control]
+      end
+
+      it 'errors if the snapshot does not exist' do
+        assert_raises(Azure::Core::Http::HTTPError) do
+          subject.get_blob_properties container_name, blob_name, "invalidsnapshot"
+        end
+      end
+    end
+    
+    it 'errors if the blob name does not exist' do
+      assert_raises(Azure::Core::Http::HTTPError) do
+        subject.get_blob_properties container_name, "thisblobdoesnotexist"
+      end
+      assert_raises(Azure::Core::Http::HTTPError) do
+        subject.get_blob_properties container_name, "thisblobdoesnotexist", options
+      end
     end
   end
 end

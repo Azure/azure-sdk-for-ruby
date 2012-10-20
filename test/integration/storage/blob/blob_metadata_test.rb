@@ -18,9 +18,56 @@ require "azure/storage/blob/blob_service"
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
   
-  describe '#get_blob_metadata' do
-    it '' do
-      
+  describe '#set/get_blob_metadata' do
+    let(:container_name) { ContainerNameHelper.name }
+    let(:blob_name) { "blobname" }
+    let(:length) { 1024 }
+    before { 
+      subject.create_container container_name
+      subject.create_page_blob container_name, blob_name, length
+    }
+    let(:metadata){ {"custommetadata" => "CustomMetadataValue"} }
+
+    it 'sets and gets metadata for a blob' do
+      assert subject.set_blob_metadata container_name, blob_name, metadata
+      blob = subject.get_blob_metadata container_name, blob_name
+
+      metadata.each { |k,v|
+        blob.metadata.must_include k
+        blob.metadata[k].must_equal v
+      }
+    end
+
+    describe 'when a blob has a snapshot' do 
+      let(:snapshot) { subject.create_blob_snapshot container_name, blob_name, {:metadata => metadata }}
+      before { s = snapshot }
+
+      it 'gets metadata for a blob snapshot (when set during create)' do
+
+        blob = subject.get_blob_metadata container_name, blob_name, snapshot
+
+        blob.snapshot.must_equal snapshot
+        metadata.each { |k,v|
+          blob.metadata.must_include k
+          blob.metadata[k].must_equal v
+        }
+          
+      end
+
+      it 'errors if the snapshot does not exist' do
+        assert_raises(Azure::Core::Http::HTTPError) do
+          subject.get_blob_metadata container_name, blob_name, "invalidsnapshot"
+        end
+      end
+    end
+    
+    it 'errors if the blob name does not exist' do
+      assert_raises(Azure::Core::Http::HTTPError) do
+        subject.get_blob_metadata container_name, "thisblobdoesnotexist"
+      end
+      assert_raises(Azure::Core::Http::HTTPError) do
+        subject.set_blob_metadata container_name, "thisblobdoesnotexist", metadata
+      end
     end
   end
 end

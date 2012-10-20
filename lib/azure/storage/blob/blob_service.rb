@@ -380,20 +380,22 @@ module Azure
         def create_blob_pages(container, blob, start_range, end_range, content, options={})
           uri = blob_uri(container, blob, {"comp"=> "page"})
           headers = {}
-          headers["x-ms-range"] = "#{start_range}-#{end_range}"
+          headers["x-ms-range"] = "bytes=#{start_range}-#{end_range}"
           headers["x-ms-page-write"] = "update"
 
           # clear default content type
           headers["Content-Type"] = ""
 
           # set optional headers
-          headers["x-ms-if-sequence-number-lte"] = options[:if_sequence_number_lte] if options[:if_sequence_number_lte]
-          headers["x-ms-if-sequence-number-lt"] = options[:if_sequence_number_lt] if options[:if_sequence_number_lt]
-          headers["x-ms-if-sequence-number-eq"] = options[:if_sequence_number_eq] if options[:if_sequence_number_eq]
-          headers["If-Modified-Since"] = options[:if_modified_since] if options[:if_modified_since]
-          headers["If-Unmodified-Since"] = options[:if_unmodified_since] if options[:if_unmodified_since]
-          headers["If-Match"] = options[:if_match] if options[:if_match]
-          headers["If-None-Match"] = options[:if_none_match] if options[:if_none_match]
+          unless options == nil
+            headers["x-ms-if-sequence-number-lte"] = options[:if_sequence_number_lte] if options[:if_sequence_number_lte]
+            headers["x-ms-if-sequence-number-lt"] = options[:if_sequence_number_lt] if options[:if_sequence_number_lt]
+            headers["x-ms-if-sequence-number-eq"] = options[:if_sequence_number_eq] if options[:if_sequence_number_eq]
+            headers["If-Modified-Since"] = options[:if_modified_since] if options[:if_modified_since]
+            headers["If-Unmodified-Since"] = options[:if_unmodified_since] if options[:if_unmodified_since]
+            headers["If-Match"] = options[:if_match] if options[:if_match]
+            headers["If-None-Match"] = options[:if_none_match] if options[:if_none_match]
+          end
 
           response = call(:put, uri, content, headers)
 
@@ -419,7 +421,7 @@ module Azure
           start_range = 0 if end_range and not start_range
 
           headers = {}
-          headers["x-ms-range"] = "#{start_range}-#{end_range}" if start_range
+          headers["x-ms-range"] = "bytes=#{start_range}-#{end_range}" if start_range
           headers["x-ms-page-write"] = "clear"
 
           # clear default content type
@@ -641,7 +643,7 @@ module Azure
         # Returns a Blob
         def get_blob_metadata(container, blob, snapshot=nil)
           query = {"comp"=>"metadata"}
-          query.update({"snapshot" => snapshot}) if snapshot
+          query["snapshot"] = snapshot if snapshot
           
           uri = blob_uri(container, blob, query)
 
@@ -680,7 +682,7 @@ module Azure
           start_range = 0 if end_range and not start_range
 
           headers = {}
-          headers = { "x-ms-range" =>  "#{start_range}-#{end_range}" } if start_range
+          headers = { "x-ms-range" =>  "bytes=#{start_range}-#{end_range}" } if start_range
 
           response = call(:get, uri, nil, headers)
 
@@ -766,14 +768,16 @@ module Azure
 
           headers = {}
 
-          headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
-          headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
-          headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
-          headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
-          headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
-          headers["x-ms-blob-content-length"] = options[:blob_content_length].to_s if options[:blob_content_length]
-          headers["x-ms-blob-sequence-number-action"] = options[:sequence_number_action].to_s if options[:sequence_number_action]
-          headers["x-ms-blob-sequence-number"] = options[:sequence_number].to_s if options[:sequence_number]
+          unless options == nil
+            headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
+            headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
+            headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
+            headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
+            headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
+            headers["x-ms-blob-content-length"] = options[:blob_content_length].to_s if options[:blob_content_length]
+            headers["x-ms-blob-sequence-number-action"] = options[:sequence_number_action].to_s if options[:sequence_number_action]
+            headers["x-ms-blob-sequence-number"] = options[:sequence_number].to_s if options[:sequence_number]
+          end
 
           response = call(:put, uri, nil, headers)
           response.success?
@@ -819,7 +823,7 @@ module Azure
           headers = {}
           start_range = 0 if end_range and not start_range
           if start_range
-            headers["x-ms-range"] = "#{start_range}-#{end_range}"
+            headers["x-ms-range"] = "bytes=#{start_range}-#{end_range}"
             headers["x-ms-range-get-content-md5"] = true if get_content_md5
           end
 
