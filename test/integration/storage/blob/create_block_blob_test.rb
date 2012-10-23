@@ -17,16 +17,15 @@ require "azure/storage/blob/blob_service"
 
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
+  let(:container_name) { ContainerNameHelper.name }
+  let(:blob_name) { "blobname" }
+  let(:content) { content = ""; 512.times.each{|i| content << "@" }; content }
+  before { 
+    subject.create_container container_name
+  }
+  after { TableNameHelper.clean }
   
   describe '#create_block_blob' do
-    let(:container_name) { ContainerNameHelper.name }
-    let(:blob_name) { "blobname" }
-    let(:content) { content = ""; 512.times.each{|i| content << "@" }; content }
-    before { 
-      subject.create_container container_name
-    }
-    after { TableNameHelper.clean }
-
     it 'creates a page blob' do
       blob = subject.create_block_blob container_name, blob_name, content
       blob.name.must_equal blob_name
@@ -57,6 +56,23 @@ describe Azure::Storage::Blob::BlobService do
       assert_raises(Azure::Core::Http::HTTPError) do
         subject.create_block_blob ContainerNameHelper.name, blob_name, content
       end
+    end
+  end
+
+  describe '#create_blob_block' do
+    require 'base64'
+    let(:blockid) { Base64.strict_encode64("anyblockid") }
+    #before { subject.create_block_blob container_name, blob_name, content }
+
+    it 'creates a block as part of a block blob' do
+      subject.create_blob_block container_name, blob_name, blockid, content
+
+      # verify
+      block_list = subject.list_blob_blocks container_name, blob_name
+      block = block_list[:uncommitted][0]
+      block.type.must_equal :uncommitted
+      block.size.must_equal 512
+      block.name.must_equal blockid
     end
   end
 end
