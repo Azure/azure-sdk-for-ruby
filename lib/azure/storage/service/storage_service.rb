@@ -12,52 +12,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'azure/core/http/http_request'
-require 'azure/core/http/signer_filter'
-require 'azure/core/auth/shared_key'
-require 'azure/storage/service/serialization'
+require 'azure/core/signed_service'
 
 module Azure
   module Storage
     module Service
       # A base class for StorageService implementations
-      class StorageService
-
+      class StorageService < Azure::Core::SignedService
         # Create a new instance of the StorageService
         #
         # signer        - Azure::Core::Auth::Signer. An implementation of Signer used for signing requests. (optional, Default=Azure::Core::Auth::SharedKey.new)
         # account_name  - String. The account name (optional, Default=Azure.config.account_name)  
         def initialize(signer=Core::Auth::SharedKey.new, account_name=Azure.config.account_name)
-          @account_name = account_name
-          @signer = signer
-          @filters = []
-          @host = ""
-          @default_timeout = 30
+          super(signer, account_name)
+          @default_timeout = default_timeout
         end
 
-        attr_accessor :account_name
-        attr_accessor :signer
-        attr_accessor :filters
-        attr_accessor :host
         attr_accessor :default_timeout
 
-        def call(method, uri, body=nil, headers=nil)
-          request = Core::Http::HttpRequest.new(method, uri, body)
-          request.headers.merge!(headers) if headers
+        def generate_uri(path='', query={}, no_timeout=false)
+          query["timeout"] = default_timeout.to_s unless query == nil or query.has_key? "timeout"
+          query.delete "timeout" if no_timeout unless query == nil or not query.has_key? "timeout"
           
-          if signer
-            request.with_filter Core::Http::SignerFilter.new(signer, account_name)
-          end
-
-          filters.each { |filter| request.with_filter filter } if filters
-
-          request.call
+          super(path, query)
         end
 
-        def with_filter(filter=nil, &block)
-          filter = filter || block
-          filters.push filter if filter
-        end
 
         # Public: Get Storage Service properties
         #
@@ -105,13 +84,6 @@ module Azure
           metadata.each do |key, value|
             headers["x-ms-meta-#{key}"] = value
           end
-        end
-        
-        def generate_uri(path='', query={})
-          uri = URI.parse(File.join(host, path))
-          query["timeout"] = default_timeout.to_s unless query == nil or query.has_key? "timeout"
-          uri.query = URI.encode_www_form(query) unless query == nil or query.empty?
-          uri
         end
       end
     end

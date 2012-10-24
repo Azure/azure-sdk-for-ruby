@@ -144,7 +144,7 @@ module Azure
           approximate_messages_count = response.headers["x-ms-approximate-messages-count"]
           metadata = Serialization.metadata_from_headers(response.headers)
 
-          return approximate_messages_count, metadata
+          return approximate_messages_count.to_i, metadata
         end
 
         # Public: Sets user-defined metadata on the queue. To delete queue metadata, call 

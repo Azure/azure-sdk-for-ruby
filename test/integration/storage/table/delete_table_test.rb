@@ -12,15 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-def create_block_blob(options={})
-  metadata  = options.fetch(:metadata, {})
-  filename  = options.fetch(:filename, Fixtures["32px-fulls-black.jpg"].to_path)
-  name      = options.fetch(:name, "myblob")
-  container = options.fetch(:container, @container)
+require "integration/test_helper"
+require "azure/storage/table/table_service"
+require "azure/core/http/http_error"
 
-  Azure::Blobs.create_block_blob(container, name, filename, metadata)
-end
+describe Azure::Storage::Table::TableService do
+  describe "#delete_table" do
+    subject { Azure::Storage::Table::TableService.new }
+    let(:table_name){ TableNameHelper.name }
+    before { subject.create_table table_name }
+    after { TableNameHelper.clean }
 
-def create_page_blob(container)
-  Azure::Blobs.create_page_blob(container, "myblob", {:size => 8192})
+    it "deletes a table and returns true on success" do
+      assert subject.delete_table(table_name)
+      tables = subject.query_tables
+      tables.wont_include table_name
+    end
+
+    it "errors on an invalid table" do
+      assert_raises(Azure::Core::Http::HTTPError) do
+        subject.delete_table "this_table.cannot-exist!"
+      end
+    end
+  end
 end

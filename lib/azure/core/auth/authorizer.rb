@@ -18,17 +18,6 @@ module Azure
   module Core
     module Auth
       class Authorizer
-        # The account name.
-        attr :account_name
-
-        # Public: Initialize the Auth object
-        #
-        # account_name - String. The account name. Defaults to the one
-        #                in the global configuration
-        def initialize(account_name=Azure.config.account_name)
-          @account_name = account_name
-        end
-
         # Public: Signs an HTTP request before it's made, by adding the
         # Authorization header
         #
@@ -38,7 +27,7 @@ module Azure
         # Returns the modified request
         def sign(request, signer)
           signature = signer.sign(request.method, request.uri, request.headers)
-          request.headers["Authorization"] = "#{signer.name} #{account_name}:#{signature}"
+          request.headers["Authorization"] = "#{signer.name} #{signature}"
           request
         end
       end

@@ -109,11 +109,13 @@ module Azure
             metadata = {}
 
             xml.children.each { |meta_node|
-              if metadata.has_key? meta_node.name 
-                metadata[meta_node.name] = [metadata[meta_node.name]] unless metadata[meta_node.name].respond_to? :push
-                metadata[meta_node.name].push(meta_node.text)
+
+              key = meta_node.name.downcase
+              if metadata.has_key? key 
+                metadata[key] = [metadata[key]] unless metadata[key].respond_to? :push
+                metadata[key].push(meta_node.text)
               else
-                metadata[meta_node.name] = meta_node.text
+                metadata[key] = meta_node.text
               end
             }
             metadata
