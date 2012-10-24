@@ -93,8 +93,8 @@ module Azure
         # Returns true on success
         def clear_messages(queue_name)
           uri = messages_uri(queue_name)
-          response = call(:delete, uri)
-          response.success?
+          call(:delete, uri)
+          nil
         end
       
         # Public: Creates a new queue under the storage account.
@@ -109,8 +109,8 @@ module Azure
           uri = queue_uri(queue_name)
           headers = {}
           add_metadata_to_headers(metadata || {}, headers)
-          response = call(:put, uri, nil, headers)
-          response.success?
+          call(:put, uri, nil, headers)
+          nil
         end
 
         # Public: Deletes a queue.
@@ -122,8 +122,8 @@ module Azure
         # Returns true on success
         def delete_queue(queue_name)
           uri = queue_uri(queue_name)
-          response = call(:delete, uri)
-          response.success?
+          call(:delete, uri)
+          nil
         end
 
         # Public: Returns queue properties, including user-defined metadata.
@@ -161,8 +161,8 @@ module Azure
           headers ={}
           add_metadata_to_headers(metadata || {}, headers)
 
-          response = call(:put, uri, nil, headers)
-          response.success?
+          call(:put, uri, nil, headers)
+          nil
         end
 
         # Public: Gets the access control list (ACL) for the queue.
@@ -193,8 +193,8 @@ module Azure
           body = nil
           body = Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && signed_identifiers.length > 0
 
-          response = call(:put, uri, body, {})
-          response.success?
+          call(:put, uri, body, {})
+          nil
         end
 
         # Public: Adds a message to the queue and optionally sets a visibility timeout for the message.
@@ -225,8 +225,8 @@ module Azure
           uri = messages_uri(queue_name, query)
           body = Serialization.message_to_xml(message_text)
 
-          response = call(:post, uri, body, {})
-          response.success?
+          call(:post, uri, body, {})
+          nil
         end
 
         # Public: Deletes a specified message from the queue.
@@ -280,8 +280,8 @@ module Azure
         def delete_message(queue_name, message_id, pop_receipt)
           uri = message_uri(queue_name, message_id, { "popreceipt" => pop_receipt })
 
-          response = call(:delete, uri)
-          response.success?
+          call(:delete, uri)
+          nil
         end
 
         # Public: Retrieves one or more messages from the front of the queue, without changing the message visibility.

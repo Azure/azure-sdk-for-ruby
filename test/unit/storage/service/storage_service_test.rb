@@ -200,9 +200,9 @@ describe Azure::Storage::Service::StorageService do
       subject.set_service_properties service_properties
     end
 
-    it "returns true on success" do
+    it "returns nil on success" do
       result = subject.set_service_properties service_properties
-      result.must_equal true
+      result.must_equal nil
     end
   end
 

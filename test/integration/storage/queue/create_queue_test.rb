@@ -24,7 +24,8 @@ describe Azure::Storage::Queue::QueueService do
     after { QueueNameHelper.clean }
 
     it "creates a queue with a valid name" do
-      assert subject.create_queue(queue_name)
+      result = subject.create_queue(queue_name)
+      result.must_be_nil
     end
 
     it "errors on an invalid queue name" do

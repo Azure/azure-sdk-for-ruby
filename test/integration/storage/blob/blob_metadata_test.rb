@@ -30,7 +30,8 @@ describe Azure::Storage::Blob::BlobService do
     }
 
     it 'sets and gets metadata for a blob' do
-      assert subject.set_blob_metadata container_name, blob_name, metadata
+      result = subject.set_blob_metadata container_name, blob_name, metadata
+      result.must_be_nil
       blob = subject.get_blob_metadata container_name, blob_name
 
       metadata.each { |k,v|

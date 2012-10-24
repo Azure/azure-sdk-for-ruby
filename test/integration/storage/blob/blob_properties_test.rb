@@ -36,7 +36,8 @@ describe Azure::Storage::Blob::BlobService do
       }}
 
     it 'sets and gets properties for a blob' do
-      assert subject.set_blob_properties container_name, blob_name, options
+      result = subject.set_blob_properties container_name, blob_name, options
+      result.must_be_nil
       blob = subject.get_blob_properties container_name, blob_name
       blob.properties.content_type.must_equal options[:blob_content_type]
       blob.properties.content_encoding.must_equal options[:blob_content_encoding]

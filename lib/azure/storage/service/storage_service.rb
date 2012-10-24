@@ -62,8 +62,8 @@ module Azure
           body = Serialization.service_properties_to_xml service_properties
 
           uri = service_properties_uri
-          response = call(:put, uri, body)
-          response.success?
+          call(:put, uri, body)
+          nil
         end
 
         # Public: Generate the URI for the service properties

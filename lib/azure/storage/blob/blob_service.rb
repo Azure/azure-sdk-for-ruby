@@ -114,8 +114,8 @@ module Azure
         #
         # Returns true on success
         def delete_container(name)
-          response = call(:delete, container_uri(name))
-          response.success?
+          call(:delete, container_uri(name))
+          nil
         end
 
         # Public: Returns all properties and metadata on the container.
@@ -215,8 +215,8 @@ module Azure
           
           add_metadata_to_headers(metadata, headers) if metadata
 
-          response = call(:put, container_uri(name, {"comp"=>"metadata"}), nil, headers)
-          response.success?
+          call(:put, container_uri(name, {"comp"=>"metadata"}), nil, headers)
+          nil
         end
 
         # Public: Get a list of Blobs from the server
@@ -566,9 +566,8 @@ module Azure
           end
 
           body = Serialization.block_list_to_xml(block_list)
-          response = call(:put, uri, body, headers)
-
-          response.success?
+          call(:put, uri, body, headers)
+          nil
         end
 
         # Public: Retrieves the list of blocks that have been uploaded as part of a block blob.
@@ -778,8 +777,8 @@ module Azure
             headers["x-ms-blob-sequence-number"] = options[:sequence_number].to_s if options[:sequence_number]
           end
 
-          response = call(:put, uri, nil, headers)
-          response.success?
+          call(:put, uri, nil, headers)
+          nil
         end
 
         # Public: Sets metadata headers on the blob.
@@ -798,8 +797,8 @@ module Azure
 
           add_metadata_to_headers(metadata, headers) if metadata
 
-          response = call(:put, uri, nil, headers)
-          response.success?
+          call(:put, uri, nil, headers)
+          nil
         end
 
         # Public: Reads or downloads a blob from the system, including its metadata and properties.
@@ -855,8 +854,8 @@ module Azure
           headers = {}
           headers["x-ms-delete-snapshots"] = delete_snapshots.to_s if delete_snapshots && snapshot == nil
 
-          response = call(:delete, uri, nil, headers)
-          response.success?
+          call(:delete, uri, nil, headers)
+          nil
         end
 
         # Public: Creates a snapshot of a blob.
@@ -1005,7 +1004,7 @@ module Azure
           headers["x-ms-proposed-lease-id"] = proposed_lease_id if proposed_lease_id
 
           response = call(:put, uri, nil, headers)
-          response.headers["x-ms-lease-id"] if response.success?
+          response.headers["x-ms-lease-id"]
         end
 
         # Public: Renews the lease. The lease can be renewed if the lease ID specified on the request matches that 
@@ -1028,7 +1027,7 @@ module Azure
           headers["x-ms-lease-id"] = lease
 
           response = call(:put, uri, nil, headers)
-          response.headers["x-ms-lease-id"] if response.success?
+          response.headers["x-ms-lease-id"]
         end
 
         # Public: Releases the lease. The lease may be released if the lease ID specified on the request matches that 
@@ -1049,8 +1048,8 @@ module Azure
           headers["x-ms-lease-action"] = "release"
           headers["x-ms-lease-id"] = lease
 
-          response = call(:put, uri, nil, headers)
-          response.success?
+          call(:put, uri, nil, headers)
+          nil
         end
 
         # Public: Breaks the lease, if the blob has an active lease. Once a lease is broken, it cannot be renewed. Any 
