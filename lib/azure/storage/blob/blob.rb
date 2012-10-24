@@ -22,6 +22,7 @@ module Azure
         def initialize
           @properties = BlobProperties.new
           @metadata = {}
+          yield self if block_given?
         end
 
         attr_accessor :name

@@ -45,16 +45,15 @@ module Azure
           xml = slopify(xml)
           expect_node("QueueMessage", xml)
 
-          message = Message.new
-          message.id = xml.MessageId.text if (xml > "MessageId").any?
-          message.insertion_time = xml.InsertionTime.text if (xml > "InsertionTime").any?
-          message.expiration_time = xml.ExpirationTime.text if (xml > "ExpirationTime").any?
-          message.dequeue_count = xml.DequeueCount.text.to_i if (xml > "DequeueCount").any?
-          message.message_text = xml.MessageText.text if (xml > "MessageText").any?
-          message.time_next_visible = xml.TimeNextVisible.text if (xml > "TimeNextVisible").any?
-          message.pop_receipt = xml.PopReceipt.text if (xml > "PopReceipt").any?
-
-          message
+          Message.new do |msg|
+            msg.id = xml.MessageId.text if (xml > "MessageId").any?
+            msg.insertion_time = xml.InsertionTime.text if (xml > "InsertionTime").any?
+            msg.expiration_time = xml.ExpirationTime.text if (xml > "ExpirationTime").any?
+            msg.dequeue_count = xml.DequeueCount.text.to_i if (xml > "DequeueCount").any?
+            msg.message_text = xml.MessageText.text if (xml > "MessageText").any?
+            msg.time_next_visible = xml.TimeNextVisible.text if (xml > "TimeNextVisible").any?
+            msg.pop_receipt = xml.PopReceipt.text if (xml > "PopReceipt").any?
+          end
         end
 
         def self.message_to_xml(message_text)

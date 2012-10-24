@@ -16,6 +16,9 @@ module Azure
   module Storage
     module Service
       class EnumerationResults
+        def initialize
+          yield self if block_given?
+        end
         attr_accessor :prefix
         attr_accessor :marker
         attr_accessor :max_results

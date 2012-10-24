@@ -22,6 +22,7 @@ module Azure
         def initialize
           @logging = Logging.new
           @metrics = Metrics.new
+          yield self if block_given?
         end
 
         attr_accessor :logging

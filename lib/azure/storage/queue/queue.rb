@@ -19,6 +19,7 @@ module Azure
 
         def initialize
           @metadata = {}
+          yield self if block_given?
         end
 
         attr_accessor :name

@@ -20,6 +20,7 @@ module Azure
         
         def initialize 
           @properties = {}
+          yield self if block_given?
         end
 
         attr_accessor :table

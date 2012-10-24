@@ -601,9 +601,7 @@ module Azure
 
           response = call(:get, uri)
 
-          blocklist = Serialization.block_list_from_xml(response.body)
-          blocklist
-
+          Serialization.block_list_from_xml(response.body)
         end
 
         # Public: Returns all properties and metadata on the blob.

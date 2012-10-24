@@ -147,15 +147,14 @@ module Azure
           
           result = Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)
 
-          entity = Azure::Storage::Table::Entity.new
-          entity.table = table_name
-          entity.partition_key = partition_key
-          entity.row_key = row_key
-          entity.updated = result[:updated]
-          entity.etag = response.headers["etag"] || result[:etag]
-          entity.properties = result[:properties]
-
-          entity
+          Entity.new do |entity|
+            entity.table = table_name
+            entity.partition_key = partition_key
+            entity.row_key = row_key
+            entity.updated = result[:updated]
+            entity.etag = response.headers["etag"] || result[:etag]
+            entity.properties = result[:properties]
+          end
         end
 
         # Public: Queries entities for the given table name
@@ -189,13 +188,14 @@ module Azure
           results = (partition_key and row_key) ? [Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)] : Azure::Storage::Table::Serialization.entries_from_feed_xml(response.body)
           
           results.each do |result|
-            entity = Azure::Storage::Table::Entity.new
-            entity.table = table_name
-            entity.partition_key = result[:properties]["PartitionKey"]
-            entity.row_key = result[:properties]["RowKey"]
-            entity.updated = result[:updated]
-            entity.etag = response.headers["etag"] || result[:etag]
-            entity.properties = result[:properties].reject { |k,v| ["PartitionKey", "RowKey"].include? k }
+            entity = Entity.new do |e|
+              e.table = table_name
+              e.partition_key = result[:properties]["PartitionKey"]
+              e.row_key = result[:properties]["RowKey"]
+              e.updated = result[:updated]
+              e.etag = response.headers["etag"] || result[:etag]
+              e.properties = result[:properties].reject { |k,v| ["PartitionKey", "RowKey"].include? k }
+            end
             entities.push entity
           end if results
 

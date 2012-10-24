@@ -16,6 +16,9 @@ module Azure
   module Storage
     module Queue
       class Message
+        def initialize
+          yield self if block_given?
+        end
         attr_accessor :id
         attr_accessor :insertion_time
         attr_accessor :expiration_time

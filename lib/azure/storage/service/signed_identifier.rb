@@ -21,6 +21,7 @@ module Azure
 
         def initialize 
           @access_policy = AccessPolicy.new
+          yield self if block_given?
         end
 
         attr_accessor :id

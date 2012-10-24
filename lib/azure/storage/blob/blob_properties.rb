@@ -16,6 +16,10 @@ module Azure
   module Storage
     module Blob
       class BlobProperties
+        def initialize
+            yield self if block_given?
+        end
+        
         attr_accessor :last_modified
         attr_accessor :etag
         attr_accessor :content_length
