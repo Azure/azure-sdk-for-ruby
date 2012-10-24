@@ -18,7 +18,8 @@ require "azure/storage/blob/blob_properties"
 
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
-  
+  after { TableNameHelper.clean }
+
   describe '#set/get_blob_properties' do
     let(:container_name) { ContainerNameHelper.name }
     let(:blob_name) { "blobname" }

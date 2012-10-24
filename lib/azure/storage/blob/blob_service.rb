@@ -14,6 +14,7 @@
 #--------------------------------------------------------------------------
 require 'azure/storage/service/storage_service'
 require 'azure/storage/blob/serialization'
+require 'base64'
 
 module Azure
   module Storage
@@ -498,7 +499,7 @@ module Azure
         #
         # container   - String. The container name.
         # blob        - String. The blob name.
-        # block_id    - String. The block id.
+        # block_id    - String. The block id. Note: this should be the raw block id, not Base64 encoded.
         # content     - IO or String. The content of the blob.
         # options     - Hash. The optional parameters. Understood hash values listed below:
         #   :content_md5           - String. Content MD5 for the request contents.
@@ -507,7 +508,7 @@ module Azure
         #
         # Returns the MD5 of the uploaded block (as calculated by the server)
         def create_blob_block(container, blob, block_id, content, options={})
-          uri = blob_uri(container, blob, {"comp"=> "block", "blockid" => block_id })
+          uri = blob_uri(container, blob, {"comp"=> "block", "blockid" => Base64.strict_encode64(block_id) })
 
           headers = {}
           headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
@@ -531,7 +532,7 @@ module Azure
         # 
         # container   - String. The container name.
         # blob        - String. The blob name.
-        # block_list  - Array. A ordered list of Hashs in the following format: 
+        # block_list  - Array. A ordered list of lists in the following format: 
         #               [ ["block_id1", :committed], ["block_id2", :uncommitted], ["block_id3"], ["block_id4", :committed]... ]
         #               The first element of the inner list is the block_id, the second is optional 
         #               and can be either :committed or :uncommitted to indicate in which group of blocks 
@@ -595,7 +596,7 @@ module Azure
           
           query = {"comp"=>"blocklist"}
           query["snapshot"] = snapshot if snapshot
-          query["blocklisttype"] = blocklist_type.to_s unless blocklist_type == :committed
+          query["blocklisttype"] = blocklist_type.to_s
           
           uri = blob_uri(container, blob, query)
 
@@ -826,9 +827,9 @@ module Azure
           end
 
           response = call(:get, uri, nil, headers)
-          blob = Serialization.blob_from_headers(response.headers)
-
-          return blob, response.body
+          result = Serialization.blob_from_headers(response.headers)
+          result.name = blob if not result.name
+          return result, response.body
         end
 
         # Public: Deletes a blob or blob snapshot.
@@ -960,7 +961,7 @@ module Azure
         def copy_blob(destination_container, destination_blob, source_container, source_blob, source_snapshot=nil, options=nil)
           uri = blob_uri(destination_container, destination_blob)
           headers = {}
-          headers["x-ms-copy-source"] = blob_uri(source_container, source_blob, source_snapshot ? { "snapshot" => source_snapshot } : {})
+          headers["x-ms-copy-source"] = blob_uri(source_container, source_blob, source_snapshot ? { "snapshot" => source_snapshot } : {}, true).to_s
           
           unless options == nil
             headers["If-Modified-Since"] = options[:dest_if_modified_since] if options[:dest_if_modified_since]
@@ -1122,8 +1123,8 @@ module Azure
         # host           - The host of the API.
         #
         # Returns a URI.
-        def blob_uri(container_name, blob_name, query={})
-          generate_uri(File.join(container_name, blob_name), query)
+        def blob_uri(container_name, blob_name, query={}, no_timeout=false)
+          generate_uri(File.join(container_name, blob_name), query, no_timeout)
         end
       end
     end

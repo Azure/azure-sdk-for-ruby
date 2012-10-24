@@ -18,6 +18,7 @@ require "azure/storage/service/signed_identifier"
 
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
+  after { TableNameHelper.clean }
   
   describe '#set/get_container_acl' do
     let(:container_name) { ContainerNameHelper.name }
@@ -33,7 +34,6 @@ describe Azure::Storage::Blob::BlobService do
     before { 
       subject.create_container container_name
     }
-    after { TableNameHelper.clean }
 
     it 'sets and gets the ACL for the container' do
       container, acl = subject.set_container_acl container_name, visibility, identifiers

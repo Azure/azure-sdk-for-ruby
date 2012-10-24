@@ -17,17 +17,16 @@ require "azure/storage/blob/blob_service"
 
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
+  after { TableNameHelper.clean }
   
   describe '#get_container_properties' do
     let(:container_name) { ContainerNameHelper.name }
     let(:metadata) { { "CustomMetadataProperty"=>"CustomMetadataValue" } }
-    after { TableNameHelper.clean }
 
     it 'gets properties and custom metadata for the container' do
       container = subject.create_container container_name, metadata
       properties = container.properties
       
-
       container = subject.get_container_properties container_name
       container.wont_be_nil
       container.name.must_equal container_name

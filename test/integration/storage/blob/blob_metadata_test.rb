@@ -17,16 +17,17 @@ require "azure/storage/blob/blob_service"
 
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
+  after { TableNameHelper.clean }
   
   describe '#set/get_blob_metadata' do
     let(:container_name) { ContainerNameHelper.name }
     let(:blob_name) { "blobname" }
     let(:length) { 1024 }
+    let(:metadata){ {"custommetadata" => "CustomMetadataValue"} }
     before { 
       subject.create_container container_name
       subject.create_page_blob container_name, blob_name, length
     }
-    let(:metadata){ {"custommetadata" => "CustomMetadataValue"} }
 
     it 'sets and gets metadata for a blob' do
       assert subject.set_blob_metadata container_name, blob_name, metadata

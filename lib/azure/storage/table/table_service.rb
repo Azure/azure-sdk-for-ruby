@@ -85,7 +85,7 @@ module Azure
           uri = collection_uri(next_table_token ? { "NextTable" => next_table_token } : {})
 
           response = call(:get, uri)
-          entries = Azure::Storage::Table::Serialization.entries_from_feed_xml response.body
+          entries = Azure::Storage::Table::Serialization.entries_from_feed_xml(response.body) || []
 
           results = {}
           entries.each do |entry|

@@ -17,6 +17,7 @@ require "azure/storage/blob/blob_service"
 
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
+  after { TableNameHelper.clean }
   
   describe '#create_blob_snapshot' do
     let(:container_name) { ContainerNameHelper.name }
@@ -24,11 +25,11 @@ describe Azure::Storage::Blob::BlobService do
     let(:content) { content = ""; 1024.times.each{|i| content << "@" }; content }
     let(:metadata) { { "CustomMetadataProperty"=>"CustomMetadataValue" } }
     let(:options) { { :blob_content_type=>"application/foo", :metadata => metadata } }
+
     before { 
       subject.create_container container_name
       subject.create_block_blob container_name, blob_name, content, options
     }
-    after { TableNameHelper.clean }
 
     it 'errors if the container does not exist' do
       assert_raises(Azure::Core::Http::HTTPError) do

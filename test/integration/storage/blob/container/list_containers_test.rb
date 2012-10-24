@@ -17,6 +17,7 @@ require "azure/storage/blob/blob_service"
 
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
+  after { TableNameHelper.clean }
   
   describe '#list_containers' do
     let(:container_names) { [ContainerNameHelper.name, ContainerNameHelper.name] }
@@ -26,7 +27,6 @@ describe Azure::Storage::Blob::BlobService do
         subject.create_container c, metadata
       }
     }
-    after { TableNameHelper.clean }
 
     it 'lists the containers for the account' do
       result =  subject.list_containers

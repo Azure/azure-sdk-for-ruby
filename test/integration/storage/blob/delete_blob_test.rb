@@ -17,7 +17,8 @@ require "azure/storage/blob/blob_service"
 
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
-  
+  after { TableNameHelper.clean }
+
   describe '#delete_blob' do
     let(:container_name) { ContainerNameHelper.name }
     let(:blob_name) { "blobname" }
@@ -26,7 +27,6 @@ describe Azure::Storage::Blob::BlobService do
       subject.create_container container_name
       subject.create_page_blob container_name, blob_name, length
     }
-    after { TableNameHelper.clean }
 
     it 'deletes a blob' do
       subject.delete_blob container_name, blob_name

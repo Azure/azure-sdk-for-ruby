@@ -17,10 +17,85 @@ require "azure/storage/blob/blob_service"
 
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
-  
+  after { TableNameHelper.clean }
+
   describe '#list_blobs' do
-    it '' do
-      
+    let(:container_name) { ContainerNameHelper.name }
+    let(:blob_names) { ["blobname0","blobname1","blobname2","blobname3"] }
+    let(:content) { content = ""; 1024.times.each{|i| content << "@" }; content }
+    let(:metadata) { { "CustomMetadataProperty"=>"CustomMetadataValue" } }
+    let(:options) { { :blob_content_type=>"application/foo", :metadata => metadata } }
+
+    before { 
+      subject.create_container container_name
+      blob_names.each { |blob_name|
+        subject.create_block_blob container_name, blob_name, content, options
+      }
+    }
+
+    it 'lists the available blobs' do
+      result = subject.list_blobs container_name
+      result.blobs.length.must_equal blob_names.length
+      expected_blob_names = blob_names.each
+      result.blobs.each { |blob|
+        blob.name.must_equal expected_blob_names.next
+        blob.properties.content_length.must_equal content.length
+      }
+    end
+
+    describe 'when options hash is used' do
+      it 'if :metadata is set true, also returns custom metadata for the blobs' do
+        result = subject.list_blobs container_name, { :metadata => true }
+        result.blobs.length.must_equal blob_names.length
+        expected_blob_names = blob_names.each
+
+        result.blobs.each { |blob|
+          blob.name.must_equal expected_blob_names.next
+          blob.properties.content_length.must_equal content.length
+
+          metadata.each { |k,v|
+            blob.metadata.must_include k.downcase
+            blob.metadata[k.downcase].must_equal v
+          }
+        }
+      end
+
+      it 'if :snapshots is set true, also returns snapshots' do
+        snapshot = subject.create_blob_snapshot container_name, blob_names[0]
+
+        # verify snapshots aren't returned on a normal call
+        result = subject.list_blobs container_name
+        result.blobs.length.must_equal blob_names.length
+
+        result = subject.list_blobs container_name, { :snapshots => true }
+        result.blobs.length.must_equal blob_names.length + 1
+        found_snapshot = false
+        result.blobs.each { |blob|
+          found_snapshot = true if blob.name == blob_names[0] and blob.snapshot == snapshot
+        }
+        found_snapshot.must_equal true
+      end
+
+      it 'if :uncommittedblobs is set true, also returns blobs with uploaded, uncommitted blocks' do
+        # uncommited blob/block
+        subject.create_blob_block container_name, "blockblobname", "blockid", content
+
+        # verify uncommitted blobs aren't returned on a normal call
+        result = subject.list_blobs container_name
+        result.blobs.length.must_equal blob_names.length
+
+        result = subject.list_blobs container_name, { :uncommittedblobs => true }
+        result.blobs.length.must_equal blob_names.length + 1
+        found_uncommitted = true
+        result.blobs.each { |blob|
+          found_uncommitted = true if blob.name == "blockblobname"
+        }
+        found_uncommitted.must_equal true
+      end
+
+      it 'if :copy is set true, also returns metadata about active copy operations' do
+        skip "TODO"
+      end
     end
   end
 end

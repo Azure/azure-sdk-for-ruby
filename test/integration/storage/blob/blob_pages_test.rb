@@ -17,6 +17,8 @@ require "azure/storage/blob/blob_service"
 
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
+  after { TableNameHelper.clean }
+  
   let(:container_name) { ContainerNameHelper.name }
   let(:blob_name) { "blobname" }
   let(:length) { 2560 }
@@ -26,8 +28,6 @@ describe Azure::Storage::Blob::BlobService do
   }
   
   describe '#create_blob_pages' do
-    after { TableNameHelper.clean }
-
     it 'creates pages in a page blob' do
       content = ""
       512.times.each{|i| content << "@" }

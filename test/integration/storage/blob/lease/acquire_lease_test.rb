@@ -20,7 +20,7 @@ describe Azure::Storage::Blob::BlobService do
   
   describe '#acquire_lease' do
     it '' do
-      
+      skip "TODO"
     end
   end
 end

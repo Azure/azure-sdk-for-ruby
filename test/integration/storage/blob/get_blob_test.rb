@@ -17,7 +17,8 @@ require "azure/storage/blob/blob_service"
 
 describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
-  
+  after { TableNameHelper.clean }
+
   describe '#get_blob' do
     let(:container_name) { ContainerNameHelper.name }
     let(:blob_name) { "blobname" }
@@ -29,7 +30,7 @@ describe Azure::Storage::Blob::BlobService do
       subject.create_container container_name
       subject.create_block_blob container_name, blob_name, content, options
     }
-#    start_range=nil, end_range=nil, snapshot=nil, get_content_md5 = false
+
   	it 'retrieves the blob properties, metadata, and contents' do
       blob, returned_content = subject.get_blob container_name, blob_name
       returned_content.must_equal content

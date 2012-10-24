@@ -195,6 +195,8 @@ module Azure
           properties.lease_duration = headers["x-ms-lease-duration"]
 
           properties.content_length = headers["x-ms-blob-content-length"] || headers["Content-Length"]
+          properties.content_length = properties.content_length.to_i if properties.content_length
+          
           properties.content_type =  headers["x-ms-blob-content-type"] || headers["Content-Type"]
           properties.content_encoding = headers["x-ms-blob-content-encoding"] || headers["Content-Encoding"]
           properties.content_language = headers["x-ms-blob-content-language"] || headers["Content-Language"]
@@ -271,7 +273,7 @@ module Azure
 
         def self.add_block(type, block_node, block_list)
           block = Azure::Storage::Blob::Block.new
-          block.name = block_node.Name.text if (block_node > "Name").any?
+          block.name = Base64.strict_decode64(block_node.Name.text) if (block_node > "Name").any?
           block.size = block_node.Size.text.to_i if (block_node > "Size").any?
           block.type = type
           block_list[type].push block
