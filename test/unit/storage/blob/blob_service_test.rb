@@ -214,9 +214,9 @@ describe Azure::Storage::Blob::BlobService do
         subject.delete_container container_name
       end
 
-      it "returns true on success" do
+      it "returns nil on success" do
         result = subject.delete_container container_name
-        result.must_equal true
+        result.must_equal nil
       end
     end
 
@@ -461,9 +461,9 @@ describe Azure::Storage::Blob::BlobService do
         subject.set_container_metadata container_name, container_metadata
       end
 
-      it "returns true on success" do
+      it "returns nil on success" do
         result = subject.set_container_metadata container_name, container_metadata
-        result.must_equal true
+        result.must_equal nil
       end
     end
 
@@ -1002,9 +1002,9 @@ describe Azure::Storage::Blob::BlobService do
           subject.commit_blob_blocks container_name, blob_name, block_list
         end
 
-        it "returns true on success" do
+        it "returns nil on success" do
           result = subject.commit_blob_blocks container_name, blob_name, block_list
-          result.must_equal true
+          result.must_equal nil
         end
 
         describe "when the options Hash is used" do
@@ -1202,9 +1202,9 @@ describe Azure::Storage::Blob::BlobService do
           subject.set_blob_properties container_name, blob_name
         end
 
-        it "returns true on success" do
+        it "returns nil on success" do
           result = subject.set_blob_properties container_name, blob_name
-          result.must_equal true
+          result.must_equal nil
         end
 
         describe "when the options Hash is used" do
@@ -1276,9 +1276,9 @@ describe Azure::Storage::Blob::BlobService do
           subject.set_blob_metadata container_name, blob_name, blob_metadata
         end
 
-        it "returns true on success" do
+        it "returns nil on success" do
           result = subject.set_blob_metadata container_name, blob_name, blob_metadata
-          result.must_equal true
+          result.must_equal nil
         end
       end
 
@@ -1492,9 +1492,9 @@ describe Azure::Storage::Blob::BlobService do
           subject.delete_blob container_name, blob_name
         end
 
-        it "returns true on success" do
+        it "returns nil on success" do
           result = subject.delete_blob container_name, blob_name
-          result.must_equal true
+          result.must_equal nil
         end
         
         describe "when snapshot is provided" do
@@ -1822,9 +1822,9 @@ describe Azure::Storage::Blob::BlobService do
             subject.release_lease container_name, blob_name, lease_id
           end
 
-          it "returns true on success" do
+          it "returns nil on success" do
             result = subject.release_lease container_name, blob_name, lease_id
-            result.must_equal true
+            result.must_equal nil
           end
         end
 
@@ -1848,7 +1848,7 @@ describe Azure::Storage::Blob::BlobService do
             subject.break_lease container_name, blob_name, lease_id
           end
 
-          it "returns true on success" do
+          it "returns lease time on success" do
             result = subject.break_lease container_name, blob_name, lease_id
             result.must_equal lease_time
           end

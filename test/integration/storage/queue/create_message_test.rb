@@ -25,7 +25,9 @@ describe Azure::Storage::Queue::QueueService do
     after { QueueNameHelper.clean }
 
     it "creates a message in the specified queue and returns true on success" do
-      assert subject.create_message(queue_name, message_text), "create_message failed"
+      result = subject.create_message(queue_name, message_text)
+      result.must_be_nil
+      
       result = subject.peek_messages queue_name
       result.wont_be_nil
       result.wont_be_empty
@@ -38,8 +40,9 @@ describe Azure::Storage::Queue::QueueService do
       let(:message_ttl) { 600 }
 
       it "the :visibility_timeout option causes the message to be invisible for a period of time" do
-        assert subject.create_message(queue_name, message_text, { :visibility_timeout=> visibility_timeout }), "create_message failed"
-
+        result = subject.create_message(queue_name, message_text, { :visibility_timeout=> visibility_timeout })
+        result.must_be_nil
+        
         result = subject.peek_messages queue_name
         result.length.must_equal 0
         sleep(visibility_timeout)
@@ -51,7 +54,9 @@ describe Azure::Storage::Queue::QueueService do
       end
 
       it "the :message_ttl option modifies the expiration_date of the message" do
-        assert subject.create_message(queue_name, message_text, { :message_ttl=> message_ttl }), "create_message failed"
+        result = subject.create_message(queue_name, message_text, { :message_ttl=> message_ttl })
+        result.must_be_nil
+        
         result = subject.peek_messages queue_name
         result.wont_be_nil
         result.wont_be_empty

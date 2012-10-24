@@ -39,7 +39,8 @@ describe Azure::Storage::Table::TableService do
     after { TableNameHelper.clean }
 
     it "deletes an entity" do 
-      assert subject.delete_entity table_name, partition, row_key
+      result = subject.delete_entity table_name, partition, row_key
+      result.must_be_nil
     end
 
     it "errors on an invalid table name" do

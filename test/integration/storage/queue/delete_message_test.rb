@@ -31,8 +31,9 @@ describe Azure::Storage::Queue::QueueService do
       messages.length.must_equal 1
       message = messages.first
 
-      assert subject.delete_message queue_name, message.id, message.pop_receipt
-
+      result = subject.delete_message queue_name, message.id, message.pop_receipt
+      result.must_be_nil
+      
       result = subject.peek_messages queue_name
       result.must_be_empty
     end

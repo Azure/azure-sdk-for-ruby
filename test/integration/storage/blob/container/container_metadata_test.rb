@@ -27,7 +27,8 @@ describe Azure::Storage::Blob::BlobService do
     }
 
     it 'sets and gets custom metadata for the container' do
-      assert subject.set_container_metadata container_name, metadata
+      result = subject.set_container_metadata container_name, metadata
+      result.must_be_nil
       container = subject.get_container_metadata container_name
       container.wont_be_nil
       container.name.must_equal container_name

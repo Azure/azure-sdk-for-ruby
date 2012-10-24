@@ -27,7 +27,8 @@ describe Azure::Storage::Queue::QueueService do
     after { QueueNameHelper.clean }
 
     it "clears the queue" do
-      assert subject.clear_messages queue_name
+      result = subject.clear_messages queue_name
+      result.must_be_nil
       result = subject.peek_messages queue_name
       result.must_be_empty
     end

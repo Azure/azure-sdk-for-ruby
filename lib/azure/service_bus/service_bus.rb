@@ -373,8 +373,8 @@ module Azure
 
       def _modify_message(method, path, sequence_number, lock_token)
         uri = message_uri(path, sequence_number, lock_token)
-        response = call(method, uri)
-        response.success?
+        call(method, uri)
+        nil
       end
       
       def _send_message(path, message)
@@ -396,8 +396,8 @@ module Azure
         
         headers["Content-Type"] = content_type
 
-        response = call(:post, messages_uri(path), message.body, headers)
-        response.success?        
+        call(:post, messages_uri(path), message.body, headers)
+        nil
       end
 
       def _read_delete_message(path, timeout=60)
@@ -497,8 +497,8 @@ module Azure
       end
 
       def delete_resource_entry(resource, *p)
-        response = call(:delete, self.send("#{resource.to_s}_uri", *p))
-        response.success?
+        call(:delete, self.send("#{resource.to_s}_uri", *p))
+        nil
       end
 
       def resource_entry(resource, *p)

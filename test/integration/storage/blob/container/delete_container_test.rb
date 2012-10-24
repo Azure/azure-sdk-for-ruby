@@ -26,7 +26,8 @@ describe Azure::Storage::Blob::BlobService do
     }
 
     it 'deletes the container' do
-      assert subject.delete_container container_name
+      result = subject.delete_container container_name
+      result.must_be_nil
     end
 
     it 'errors if the container does not exist' do

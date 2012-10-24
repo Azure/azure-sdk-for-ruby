@@ -39,8 +39,8 @@ module Azure
         # Returns true on success
         def create_table(table_name)
           body = Azure::Storage::Table::Serialization.hash_to_entry_xml({"TableName" => table_name}).to_xml
-          response = call(:post, collection_uri, body)
-          response.success?
+          call(:post, collection_uri, body)
+          nil
         end
 
         # Public: Deletes the specified table and any data it contains.
@@ -51,8 +51,8 @@ module Azure
         #
         # Returns true on success
         def delete_table(table_name)
-          response = call(:delete, table_uri(table_name))
-          response.success?
+          call(:delete, table_uri(table_name))
+          nil
         end
 
         # Public: Gets the table.
@@ -123,8 +123,8 @@ module Azure
           body = nil
           body = Azure::Storage::Table::Serialization.signed_identifiers_to_xml signed_identifiers if signed_identifiers && signed_identifiers.length > 0
 
-          response = call(:put, uri, body, {})
-          response.success?
+          call(:put, uri, body, {})
+          nil
         end
 
         # Public: Inserts new entity to the table.
@@ -301,8 +301,8 @@ module Azure
         #
         # Returns true on success
         def delete_entity(table_name, partition_key, row_key, if_match=nil)
-          response = call(:delete, entities_uri(table_name, partition_key, row_key), nil, {"If-Match"=> if_match || "*"})
-          response.success?
+          call(:delete, entities_uri(table_name, partition_key, row_key), nil, {"If-Match"=> if_match || "*"})
+          nil
         end
 
         # Public: Executes a batch of operations.

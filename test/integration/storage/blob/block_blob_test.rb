@@ -100,7 +100,8 @@ describe Azure::Storage::Blob::BlobService do
       end
 
       # commit blocks
-      assert subject.commit_blob_blocks container_name, blob_name, blocklist
+      result = subject.commit_blob_blocks container_name, blob_name, blocklist
+      result.must_be_nil
 
       blob, returned_content = subject.get_blob container_name, blob_name
       blob.properties.content_length.must_equal (content.length * 2)
@@ -116,7 +117,8 @@ describe Azure::Storage::Blob::BlobService do
       subject.create_blob_block container_name, blob_name, blocklist[1][0], content
 
       # two committed blocks, two uncommitted blocks
-      assert subject.commit_blob_blocks container_name, blob_name, blocklist.slice(0..1)
+      result = subject.commit_blob_blocks container_name, blob_name, blocklist.slice(0..1)
+      result.must_be_nil
 
       subject.create_blob_block container_name, blob_name, blocklist[2][0], content
       subject.create_blob_block container_name, blob_name, blocklist[3][0], content
@@ -216,7 +218,8 @@ describe Azure::Storage::Blob::BlobService do
       it 'lists blocks for the blob snapshot' do
         snapshot = subject.create_blob_snapshot container_name, blob_name
 
-        assert subject.commit_blob_blocks container_name, blob_name, blocklist
+        result = subject.commit_blob_blocks container_name, blob_name, blocklist
+        result.must_be_nil
         result = subject.list_blob_blocks container_name, blob_name
 
         committed = result[:committed]

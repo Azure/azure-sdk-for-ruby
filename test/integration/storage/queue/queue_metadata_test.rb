@@ -26,7 +26,8 @@ describe Azure::Storage::Queue::QueueService do
     after { QueueNameHelper.clean }  
 
     it 'can set and retrieve queue metadata' do
-      assert subject.set_queue_metadata queue_name, {"CustomMetadataProperty" => "Custom Metadata Value"}
+      result = subject.set_queue_metadata queue_name, {"CustomMetadataProperty" => "Custom Metadata Value"}
+      result.must_be_nil
       
       message_count, metadata = subject.get_queue_metadata queue_name
       message_count.must_equal 1

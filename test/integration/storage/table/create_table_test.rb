@@ -23,7 +23,8 @@ describe Azure::Storage::Table::TableService do
     after { TableNameHelper.clean }
 
     it "creates a table with a valid name" do
-      assert subject.create_table(table_name)
+      result = subject.create_table(table_name)
+      result.must_be_nil
     end
 
     it "errors on an invalid table name" do

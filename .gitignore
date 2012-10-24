@@ -3,3 +3,4 @@ tags
 /pkg
 /doc
 Gemfile.lock
+.DS_Store

@@ -24,7 +24,9 @@ describe Azure::Storage::Table::TableService do
     after { TableNameHelper.clean }
 
     it "deletes a table and returns true on success" do
-      assert subject.delete_table(table_name)
+      result = subject.delete_table(table_name)
+      result.must_be_nil
+      
       tables = subject.query_tables
       tables.wont_include table_name
     end
