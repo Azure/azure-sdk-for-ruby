@@ -66,8 +66,14 @@ module Azure
       # Public: Get/Set the Service Bus Access Key (Issuer Secret) for this service.
       attr_accessor :sb_access_key
 
-      # Public: Get/Set the Service Bus Issuer for this service.
-      attr_accessor :sb_issuer
+      # Public: Set the Service Bus Issuer for this service.
+      attr_writer :sb_issuer
+
+      # Public: Get the issuer for the service bus. If you set something using #sb_issuer=,
+      # then we use that. Otherwise, we default to the default issuer: "owner"
+      def sb_issuer
+        @sb_issuer || "owner"
+      end
 
       # Public: Get/Set the ACS namespace for this service.
       attr_accessor :acs_namespace
@@ -83,7 +89,7 @@ module Azure
       #   config.table_host = "http://127.0.0.1:10002/devstoreaccount1"
       attr_writer :table_host
 
-      # Public: Get the host for this service. If you set something using #host=,
+      # Public: Get the host for this service. If you set something using #table_host=,
       # then we use that. Else we default to Azure's default hosts, based
       # on your account name.
       def table_host
@@ -101,7 +107,7 @@ module Azure
       #   config.blob_host = "http://127.0.0.1:10000/devstoreaccount1"
       attr_writer :blob_host
 
-      # Public: Get the host for this service. If you set something using #host=,
+      # Public: Get the host for this service. If you set something using #blob_host=,
       # then we use that. Else we default to Azure's default hosts, based
       # on your account name.
       def blob_host
@@ -119,7 +125,7 @@ module Azure
       #   config.queue_host = "http://127.0.0.1:10001/devstoreaccount1"
       attr_writer :queue_host
 
-      # Public: Get the host for this service. If you set something using #host=,
+      # Public: Get the host for this service. If you set something using #queue_host=,
       # then we use that. Else we default to Azure's default hosts, based
       # on your account name.
       def queue_host
