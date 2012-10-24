@@ -21,6 +21,7 @@ module Azure
 
         def initialize
           @queues = []
+          yield self if block_given?
         end
 
         attr_accessor :account_name

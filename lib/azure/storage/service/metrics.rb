@@ -20,6 +20,7 @@ module Azure
       class Metrics
         def initialize
           @retention_policy = RetentionPolicy.new
+          yield self if block_given?
         end
         
         attr_accessor :version

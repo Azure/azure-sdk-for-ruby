@@ -21,6 +21,7 @@ module Azure
 
         def initialize
           @containers = []
+          yield self if block_given?
         end
 
         attr_accessor :account_name

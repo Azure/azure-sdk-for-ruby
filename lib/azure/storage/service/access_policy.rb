@@ -16,6 +16,9 @@ module Azure
   module Storage
     module Service
       class AccessPolicy
+        def initialize
+          yield self if block_given?
+        end
         attr_accessor :start
         attr_accessor :expiry
         attr_accessor :permission

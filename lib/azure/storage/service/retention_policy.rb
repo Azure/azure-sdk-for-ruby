@@ -16,6 +16,9 @@ module Azure
   module Storage
     module Service
       class RetentionPolicy
+        def initialize
+          yield self if block_given?
+        end
         attr_accessor :enabled
         attr_accessor :days
       end

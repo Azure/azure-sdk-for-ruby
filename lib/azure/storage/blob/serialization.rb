@@ -56,46 +56,42 @@ module Azure
           xml = slopify(xml)
           expect_node("Container", xml)
 
-          container = Azure::Storage::Blob::Container.new
-          container.name = xml.Name.text if (xml > "Name").any?
-          container.properties = container_properties_from_xml(xml.Properties) if (xml > "Properties").any?
-          container.metadata = metadata_from_xml(xml.Metadata) if (xml > "Metadata").any?
-
-          container
+          Container.new do |container|
+            container.name = xml.Name.text if (xml > "Name").any?
+            container.properties = container_properties_from_xml(xml.Properties) if (xml > "Properties").any?
+            container.metadata = metadata_from_xml(xml.Metadata) if (xml > "Metadata").any?
+          end
         end
 
         def self.container_from_headers(headers)
-          container = Azure::Storage::Blob::Container.new
-          container.properties = container_properties_from_headers(headers)
-          container.visibility = visibility_from_headers(headers)
-          container.metadata = metadata_from_headers(headers)
-
-          container
+          Container.new do |container|
+            container.properties = container_properties_from_headers(headers)
+            container.visibility = visibility_from_headers(headers)
+            container.metadata = metadata_from_headers(headers)
+          end
         end
 
         def self.container_properties_from_xml(xml)
           xml = slopify(xml)
           expect_node("Properties", xml)
 
-          properties = Azure::Storage::Blob::ContainerProperties.new 
-          properties.last_modified = (xml > "Last-Modified").text if (xml > "Last-Modified").any?
-          properties.etag = xml.Etag.text if (xml > "Etag").any?
-          properties.lease_status = xml.LeaseStatus.text if (xml > "LeaseStatus").any?
-          properties.lease_state = xml.LeaseState.text if (xml > "LeaseState").any?
-          properties.lease_duration = xml.LeaseDuration.text if (xml > "LeaseDuration").any?
-
-          properties
+          ContainerProperties.new do |props|
+            props.last_modified = (xml > "Last-Modified").text if (xml > "Last-Modified").any?
+            props.etag = xml.Etag.text if (xml > "Etag").any?
+            props.lease_status = xml.LeaseStatus.text if (xml > "LeaseStatus").any?
+            props.lease_state = xml.LeaseState.text if (xml > "LeaseState").any?
+            props.lease_duration = xml.LeaseDuration.text if (xml > "LeaseDuration").any?
+          end
         end
 
         def self.container_properties_from_headers(headers)
-          properties = Azure::Storage::Blob::ContainerProperties.new
-          properties.last_modified = headers["Last-Modified"] 
-          properties.etag = headers["Etag"]
-          properties.lease_status = headers["x-ms-lease-status"]
-          properties.lease_state = headers["x-ms-lease-state"]
-          properties.lease_duration = headers["x-ms-lease-duration"]
-
-          properties
+          ContainerProperties.new do |props|
+            props.last_modified = headers["Last-Modified"] 
+            props.etag = headers["Etag"]
+            props.lease_status = headers["x-ms-lease-status"]
+            props.lease_state = headers["x-ms-lease-state"]
+            props.lease_duration = headers["x-ms-lease-duration"]
+          end
         end
 
         def self.visibility_from_headers(headers)
@@ -139,83 +135,79 @@ module Azure
           xml = slopify(xml)
           expect_node("Blob", xml)
 
-          blob = Azure::Storage::Blob::Blob.new
+          Blob.new do |blob|
+            blob.name = xml.Name.text if (xml > "Name").any?
+            blob.snapshot = xml.Snapshot.text if (xml > "Snapshot").any?
 
-          blob.name = xml.Name.text if (xml > "Name").any?
-          blob.snapshot = xml.Snapshot.text if (xml > "Snapshot").any?
-
-          blob.properties = blob_properties_from_xml(xml.Properties) if (xml > "Properties").any?
-          blob.metadata = metadata_from_xml(xml.Metadata) if (xml > "Metadata").any?
-
-          blob
+            blob.properties = blob_properties_from_xml(xml.Properties) if (xml > "Properties").any?
+            blob.metadata = metadata_from_xml(xml.Metadata) if (xml > "Metadata").any?
+          end
         end
 
         def self.blob_from_headers(headers)
-          blob = Azure::Storage::Blob::Blob.new
-          blob.properties = blob_properties_from_headers(headers)
-          blob.metadata = metadata_from_headers(headers)
-          blob
+          Blob.new do |blob|
+            blob.properties = blob_properties_from_headers(headers)
+            blob.metadata = metadata_from_headers(headers)
+          end
         end
 
         def self.blob_properties_from_xml(xml)
           xml = slopify(xml)
           expect_node("Properties", xml)
 
-          properties = Azure::Storage::Blob::BlobProperties.new 
-          properties.last_modified = (xml > "Last-Modified").text if (xml > "Last-Modified").any?
-          properties.etag = xml.Etag.text if (xml > "Etag").any?
-          properties.lease_status = xml.LeaseStatus.text if (xml > "LeaseStatus").any?
-          properties.lease_state = xml.LeaseState.text if (xml > "LeaseState").any?
-          properties.lease_duration = xml.LeaseDuration.text if (xml > "LeaseDuration").any?
-          properties.content_length = (xml > "Content-Length").text.to_i if (xml > "Content-Length").any?
-          properties.content_type = (xml > "Content-Type").text if (xml > "Content-Type").any?
-          properties.content_encoding = (xml > "Content-Encoding").text if (xml > "Content-Encoding").any?
-          properties.content_language = (xml > "Content-Language").text if (xml > "Content-Language").any?
-          properties.content_md5 = (xml > "Content-MD5").text if (xml > "Content-MD5").any?
+          BlobProperties.new do |props|
+            props.last_modified = (xml > "Last-Modified").text if (xml > "Last-Modified").any?
+            props.etag = xml.Etag.text if (xml > "Etag").any?
+            props.lease_status = xml.LeaseStatus.text if (xml > "LeaseStatus").any?
+            props.lease_state = xml.LeaseState.text if (xml > "LeaseState").any?
+            props.lease_duration = xml.LeaseDuration.text if (xml > "LeaseDuration").any?
+            props.content_length = (xml > "Content-Length").text.to_i if (xml > "Content-Length").any?
+            props.content_type = (xml > "Content-Type").text if (xml > "Content-Type").any?
+            props.content_encoding = (xml > "Content-Encoding").text if (xml > "Content-Encoding").any?
+            props.content_language = (xml > "Content-Language").text if (xml > "Content-Language").any?
+            props.content_md5 = (xml > "Content-MD5").text if (xml > "Content-MD5").any?
 
-          properties.cache_control = (xml > "Cache-Control").text if (xml > "Cache-Control").any?
-          properties.sequence_number = (xml > "x-ms-blob-sequence-number").text.to_i if (xml > "x-ms-blob-sequence-number").any?
-          properties.blob_type = xml.BlobType.text if (xml > "BlobType").any?
-          properties.copy_id = xml.CopyId.text if (xml > "CopyId").any?
-          properties.copy_status = xml.CopyStatus.text if (xml > "CopyStatus").any?
-          properties.copy_source = xml.CopySource.text if (xml > "CopySource").any?
-          properties.copy_progress = xml.CopyProgress.text if (xml > "CopyProgress").any?
-          properties.copy_completion_time = xml.CopyCompletionTime.text if (xml > "CopyCompletionTime").any?
-          properties.copy_status_description = xml.CopyStatusDescription.text if (xml > "CopyStatusDescription").any?
-
-          properties
+            props.cache_control = (xml > "Cache-Control").text if (xml > "Cache-Control").any?
+            props.sequence_number = (xml > "x-ms-blob-sequence-number").text.to_i if (xml > "x-ms-blob-sequence-number").any?
+            props.blob_type = xml.BlobType.text if (xml > "BlobType").any?
+            props.copy_id = xml.CopyId.text if (xml > "CopyId").any?
+            props.copy_status = xml.CopyStatus.text if (xml > "CopyStatus").any?
+            props.copy_source = xml.CopySource.text if (xml > "CopySource").any?
+            props.copy_progress = xml.CopyProgress.text if (xml > "CopyProgress").any?
+            props.copy_completion_time = xml.CopyCompletionTime.text if (xml > "CopyCompletionTime").any?
+            props.copy_status_description = xml.CopyStatusDescription.text if (xml > "CopyStatusDescription").any?
+          end
         end
 
         def self.blob_properties_from_headers(headers)
-          properties = Azure::Storage::Blob::BlobProperties.new
-          properties.last_modified = headers["Last-Modified"] 
-          properties.etag = headers["Etag"]
-          properties.lease_status = headers["x-ms-lease-status"]
-          properties.lease_state = headers["x-ms-lease-state"]
-          properties.lease_duration = headers["x-ms-lease-duration"]
+          BlobProperties.new do |props|
+            props.last_modified = headers["Last-Modified"] 
+            props.etag = headers["Etag"]
+            props.lease_status = headers["x-ms-lease-status"]
+            props.lease_state = headers["x-ms-lease-state"]
+            props.lease_duration = headers["x-ms-lease-duration"]
 
-          properties.content_length = headers["x-ms-blob-content-length"] || headers["Content-Length"]
-          properties.content_length = properties.content_length.to_i if properties.content_length
+            props.content_length = headers["x-ms-blob-content-length"] || headers["Content-Length"]
+            props.content_length = props.content_length.to_i if props.content_length
           
-          properties.content_type =  headers["x-ms-blob-content-type"] || headers["Content-Type"]
-          properties.content_encoding = headers["x-ms-blob-content-encoding"] || headers["Content-Encoding"]
-          properties.content_language = headers["x-ms-blob-content-language"] || headers["Content-Language"]
-          properties.content_md5 = headers["x-ms-blob-content-md5"] || headers["Content-MD5"]
+            props.content_type =  headers["x-ms-blob-content-type"] || headers["Content-Type"]
+            props.content_encoding = headers["x-ms-blob-content-encoding"] || headers["Content-Encoding"]
+            props.content_language = headers["x-ms-blob-content-language"] || headers["Content-Language"]
+            props.content_md5 = headers["x-ms-blob-content-md5"] || headers["Content-MD5"]
 
-          properties.cache_control = headers["x-ms-blob-cache-control"] || headers["Cache-Control"]
-          properties.sequence_number = headers["x-ms-blob-sequence-number"].to_i if headers["x-ms-blob-sequence-number"] 
-          properties.blob_type = headers["x-ms-blob-type"]
+            props.cache_control = headers["x-ms-blob-cache-control"] || headers["Cache-Control"]
+            props.sequence_number = headers["x-ms-blob-sequence-number"].to_i if headers["x-ms-blob-sequence-number"] 
+            props.blob_type = headers["x-ms-blob-type"]
 
-          properties.copy_id = headers["x-ms-copy-id"]
-          properties.copy_status = headers["x-ms-copy-status"]
-          properties.copy_source = headers["x-ms-copy-source"]
-          properties.copy_progress = headers["x-ms-copy-progress"]
-          properties.copy_completion_time = headers["x-ms-copy-completion-time"]
-          properties.copy_status_description = headers["x-ms-copy-status-description"]
+            props.copy_id = headers["x-ms-copy-id"]
+            props.copy_status = headers["x-ms-copy-status"]
+            props.copy_source = headers["x-ms-copy-source"]
+            props.copy_progress = headers["x-ms-copy-progress"]
+            props.copy_completion_time = headers["x-ms-copy-completion-time"]
+            props.copy_status_description = headers["x-ms-copy-status-description"]
 
-          properties.accept_ranges = headers["Accept-Ranges"].to_i if headers["Accept-Ranges"]
-
-          properties
+            props.accept_ranges = headers["Accept-Ranges"].to_i if headers["Accept-Ranges"]
+          end
         end
 
         def self.block_list_to_xml(block_list)
@@ -272,10 +264,11 @@ module Azure
         end
 
         def self.add_block(type, block_node, block_list)
-          block = Azure::Storage::Blob::Block.new
-          block.name = Base64.strict_decode64(block_node.Name.text) if (block_node > "Name").any?
-          block.size = block_node.Size.text.to_i if (block_node > "Size").any?
-          block.type = type
+          block = Block.new do |b|
+            b.name = Base64.strict_decode64(block_node.Name.text) if (block_node > "Name").any?
+            b.size = block_node.Size.text.to_i if (block_node > "Size").any?
+            b.type = type
+          end
           block_list[type].push block
         end
         

@@ -69,23 +69,21 @@ module Azure
             xml = slopify(xml)
             expect_node("SignedIdentifier", xml)
 
-            signed_identifier = SignedIdentifier.new
-            signed_identifier.id = xml.Id.text if (xml > "Id").any?
-            signed_identifier.access_policy = access_policy_from_xml(xml.AccessPolicy) if (xml > "AccessPolicy").any?
-
-            signed_identifier
+            SignedIdentifier.new do |identifier|
+              identifier.id = xml.Id.text if (xml > "Id").any?
+              identifier.access_policy = access_policy_from_xml(xml.AccessPolicy) if (xml > "AccessPolicy").any?
+            end
           end
 
           def access_policy_from_xml(xml)
             xml = slopify(xml)
             expect_node("AccessPolicy", xml)
 
-            access_policy = AccessPolicy.new
-            access_policy.start = xml.Start.text if (xml > "Start").any?
-            access_policy.expiry = xml.Expiry.text if (xml > "Expiry").any?
-            access_policy.permission = xml.Permission.text if (xml > "Permission").any?
-
-            access_policy
+            AccessPolicy.new do |policy|
+              policy.start = xml.Start.text if (xml > "Start").any?
+              policy.expiry = xml.Expiry.text if (xml > "Expiry").any?
+              policy.permission = xml.Permission.text if (xml > "Permission").any?
+            end
           end
 
           def enumeration_results_from_xml(xml, results)
@@ -149,11 +147,10 @@ module Azure
             xml = slopify(xml)
             expect_node("RetentionPolicy", xml)
 
-            retention_policy = RetentionPolicy.new
-            retention_policy.enabled = to_bool(xml.Enabled.text) if (xml > "Enabled").any?
-            retention_policy.days = xml.Days.text.to_i if (xml > "Days").any?
-
-            retention_policy
+            RetentionPolicy.new do |policy|
+              policy.enabled = to_bool(xml.Enabled.text) if (xml > "Enabled").any?
+              policy.days = xml.Days.text.to_i if (xml > "Days").any?
+            end
           end
 
           def metrics_to_xml(metrics, xml)
@@ -169,13 +166,12 @@ module Azure
             xml = slopify(xml)
             expect_node("Metrics", xml)
 
-            metrics = Metrics.new
-            metrics.version = xml.Version.text if (xml > "Version").any?
-            metrics.enabled = to_bool(xml.Enabled.text) if (xml > "Enabled").any?
-            metrics.include_apis = to_bool(xml.IncludeAPIs.text) if (xml > "IncludeAPIs").any?
-            metrics.retention_policy = retention_policy_from_xml(xml.RetentionPolicy)
-
-            metrics
+            Metrics.new do |metrics|
+              metrics.version = xml.Version.text if (xml > "Version").any?
+              metrics.enabled = to_bool(xml.Enabled.text) if (xml > "Enabled").any?
+              metrics.include_apis = to_bool(xml.IncludeAPIs.text) if (xml > "IncludeAPIs").any?
+              metrics.retention_policy = retention_policy_from_xml(xml.RetentionPolicy)
+            end
           end
 
           def logging_to_xml(logging, xml)
@@ -192,14 +188,13 @@ module Azure
             xml = slopify(xml)
             expect_node("Logging", xml)
 
-            logging = Logging.new
-            logging.version = xml.Version.text if (xml > "Version").any?
-            logging.delete = to_bool(xml.Delete.text) if (xml > "Delete").any?
-            logging.read = to_bool(xml.Read.text) if (xml > "Read").any?
-            logging.write = to_bool(xml.Write.text) if (xml > "Write").any?
-            logging.retention_policy = retention_policy_from_xml(xml.RetentionPolicy)
-
-            logging
+            Logging.new do |logging|
+              logging.version = xml.Version.text if (xml > "Version").any?
+              logging.delete = to_bool(xml.Delete.text) if (xml > "Delete").any?
+              logging.read = to_bool(xml.Read.text) if (xml > "Read").any?
+              logging.write = to_bool(xml.Write.text) if (xml > "Write").any?
+              logging.retention_policy = retention_policy_from_xml(xml.RetentionPolicy)
+            end
           end
           
           def service_properties_to_xml(properties)
@@ -217,12 +212,11 @@ module Azure
             xml = slopify(xml)
             expect_node("StorageServiceProperties", xml)
 
-            properties = StorageServiceProperties.new
-            properties.default_service_version = xml.DefaultServiceVersion.text if (xml > "DefaultServiceVersion").any?
-            properties.logging = logging_from_xml(xml.Logging)
-            properties.metrics = metrics_from_xml(xml.Metrics)
-
-            properties
+            StorageServiceProperties.new do |props|
+              props.default_service_version = xml.DefaultServiceVersion.text if (xml > "DefaultServiceVersion").any?
+              props.logging = logging_from_xml(xml.Logging)
+              props.metrics = metrics_from_xml(xml.Metrics)
+            end
           end
 
           def to_bool(s)
