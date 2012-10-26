@@ -109,6 +109,24 @@ module Azure
             super(header.downcase, *default, &block)
           end
         end
+        
+        class MockResponse
+          def initialize(code, body, headers)
+            @code = code.to_s 
+            @body = body
+            @headers = headers
+            @headers.each { |k,v|
+              @headers[k] = [v] unless v.respond_to? first 
+            } 
+          end
+          attr_accessor :code
+          attr_accessor :body
+          attr_accessor :headers
+
+          def to_hash
+            @headers
+          end
+        end
       end
     end
   end
