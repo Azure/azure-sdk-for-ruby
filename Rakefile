@@ -30,12 +30,12 @@ namespace :test do
     unset_environment = [
       ENV.fetch("AZURE_STORAGE_ACCOUNT",  nil),
       ENV.fetch("AZURE_STORAGE_ACCESS_KEY",    nil),
-      ENV.fetch("AZURE_TABLE_HOST",    nil),
-      ENV.fetch("AZURE_BLOB_HOST",     nil),
-      ENV.fetch("AZURE_QUEUE_HOST",    nil),
+      # ENV.fetch("AZURE_TABLE_HOST",    nil),
+      # ENV.fetch("AZURE_BLOB_HOST",     nil),
+      # ENV.fetch("AZURE_QUEUE_HOST",    nil),
       ENV.fetch("AZURE_SERVICEBUS_NAMESPACE", nil),
       ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY", nil),
-      ENV.fetch("AZURE_SERVICEBUS_ISSUER",     nil)
+      # ENV.fetch("AZURE_SERVICEBUS_ISSUER",     nil)
     ].include?(nil)
 
     abort "[ABORTING] Configure your environment to run the integration tests" if unset_environment
@@ -82,6 +82,9 @@ namespace :test do
       task component => "test:require_environment"
     end
 
+    component_task :service_bus
+    component_task :storage
+
     namespace :storage do 
       def component_task(component)
         Rake::TestTask.new component do |t|
@@ -97,8 +100,6 @@ namespace :test do
       component_task :queue
       component_task :table
     end
-
-    component_task :service_bus
   end
 
   task :cleanup => :require_environment do
@@ -108,13 +109,13 @@ namespace :test do
     Azure.configure do |config|
       config.access_key     = ENV.fetch("AZURE_STORAGE_ACCESS_KEY")
       config.account_name   = ENV.fetch("AZURE_STORAGE_ACCOUNT")
-      config.table_host     = ENV.fetch("AZURE_TABLE_HOST")
-      config.blob_host      = ENV.fetch("AZURE_BLOB_HOST")
-      config.queue_host     = ENV.fetch("AZURE_QUEUE_HOST")
+      # config.table_host     = ENV.fetch("AZURE_TABLE_HOST")
+      # config.blob_host      = ENV.fetch("AZURE_BLOB_HOST")
+      # config.queue_host     = ENV.fetch("AZURE_QUEUE_HOST")
 
       config.acs_namespace  = ENV.fetch("AZURE_SERVICEBUS_NAMESPACE")
       config.sb_access_key  = ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY")
-      config.sb_issuer      = ENV.fetch("AZURE_SERVICEBUS_ISSUER")
+      # config.sb_issuer      = ENV.fetch("AZURE_SERVICEBUS_ISSUER")
     end
   end
 end

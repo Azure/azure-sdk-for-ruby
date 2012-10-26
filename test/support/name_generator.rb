@@ -58,10 +58,16 @@ end
 
 ServiceBusQueueNameHelper = NameGenerator.new do |name|
   svc = Azure::ServiceBus::ServiceBus.new
-  svc.delete_queue name
+  begin
+    svc.delete_queue name
+  rescue
+  end
 end
 
 ServiceBusTopicNameHelper = NameGenerator.new do |name|
   svc = Azure::ServiceBus::ServiceBus.new
-  svc.delete_topic name
+  begin
+    svc.delete_topic name
+  rescue
+  end
 end

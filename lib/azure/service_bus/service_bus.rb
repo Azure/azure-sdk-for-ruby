@@ -17,6 +17,7 @@ require 'azure/service_bus/auth/wrap_signer'
 require 'azure/service_bus/serialization'
 
 require 'azure/service_bus/brokered_message_serializer'
+require 'azure/core/http/http_response'
 
 module Azure
   module ServiceBus
@@ -502,9 +503,12 @@ module Azure
       end
 
       def resource_entry(resource, *p)
-        response = call(:get, self.send("#{resource.to_s}_uri", *p))
+        uri = self.send("#{resource.to_s}_uri", *p)
+        response = call(:get, uri)
         results = Serialization.resources_from_xml(resource, response.body)
-        results ? results.first : results
+        result = results ? results.first : results
+        raise Azure::Core::Http::HTTPError.new(Azure::Core::Http::HttpResponse.new(Azure::Core::Http::HttpResponse::MockResponse.new(404, '<?xml version="1.0"?><error><code>ResourceNotFound</code><message xml:lang="en-US">The specified resource does not exist.</message></error>', {}), uri)) unless result
+        result
       end
 
       def resource_list(resource, *p)
