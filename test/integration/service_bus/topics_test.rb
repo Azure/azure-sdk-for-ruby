@@ -78,13 +78,27 @@ describe "ServiceBus Topics" do
 		  	assert (topic_found and topic1_found and topic2_found), "list_topics didn't include the expected topic"
 		  end
 
-		  it "should be able to use $skip token with list_topics" do
-		  	skip "TODO"
-		  end
-		  
-		  it "should be able to use $top token with list_topics" do
-		  	skip "TODO"
-		  end
+      it "should be able to use $skip token with list_topics" do
+        result = subject.list_topics
+        result2 = subject.list_topics 1
+        result2.length.must_equal result.length - 1
+        result2[0].id.must_equal result[1].id
+      end
+      
+      it "should be able to use $top token with list_topics" do
+        result = subject.list_topics
+        result.length.wont_equal 1
+
+        result2 = subject.list_topics nil, 1
+        result2.length.must_equal 1
+      end
+
+      it "should be able to use $skip and $top token together with list_topics" do
+        result = subject.list_topics
+        result2 = subject.list_topics 1, 1
+        result2.length.must_equal 1
+        result2[0].id.must_equal result[1].id
+      end
 		end
 	end
 end

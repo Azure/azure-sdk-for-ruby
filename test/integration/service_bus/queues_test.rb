@@ -113,11 +113,25 @@ describe "ServiceBus Queues" do
       end
 
       it "should be able to use $skip token with list_queues" do
-        skip "TODO"
+        result = subject.list_queues
+        result2 = subject.list_queues 1
+        result2.length.must_equal result.length - 1
+        result2[0].id.must_equal result[1].id
       end
       
       it "should be able to use $top token with list_queues" do
-        skip "TODO"
+        result = subject.list_queues
+        result.length.wont_equal 1
+
+        result2 = subject.list_queues nil, 1
+        result2.length.must_equal 1
+      end
+
+      it "should be able to use $skip and $top token together with list_queues" do
+        result = subject.list_queues
+        result2 = subject.list_queues 1, 1
+        result2.length.must_equal 1
+        result2[0].id.must_equal result[1].id
       end
     end
 

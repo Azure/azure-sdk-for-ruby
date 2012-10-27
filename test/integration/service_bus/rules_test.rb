@@ -15,11 +15,11 @@
 require "integration/test_helper"
 
 describe "ServiceBus Rules" do
-	subject { Azure::ServiceBus::ServiceBus.new }
-	after { ServiceBusTopicNameHelper.clean }
-	let(:topic){ ServiceBusTopicNameHelper.name }
-	let(:subscription){ "mySubscription" }
-	let(:rule){ "myRule" }
+  subject { Azure::ServiceBus::ServiceBus.new }
+  after { ServiceBusTopicNameHelper.clean }
+  let(:topic){ ServiceBusTopicNameHelper.name }
+  let(:subscription){ "mySubscription" }
+  let(:rule){ "myRule" }
 
   before {
     subject.create_topic topic
@@ -35,27 +35,58 @@ describe "ServiceBus Rules" do
   end
 
   describe "when a rule exists" do
-  	before { subject.create_rule topic, subscription, rule }
+    before { subject.create_rule topic, subscription, rule }
 
-	  it "should be able to delete rules" do
-	    subject.delete_rule topic, subscription, rule
-	  end
+    it "should be able to delete rules" do
+      subject.delete_rule topic, subscription, rule
+    end
 
-	  it "should be able to get rules" do
-		  result = subject.get_rule topic, subscription, rule
-	    result.must_be :kind_of?, Azure::ServiceBus::Rule
-	    result.filter.must_be_kind_of Azure::ServiceBus::TrueFilter
-	    result.filter.sql_expression.must_equal "1=1"
-	    result.filter.compatibility_level.must_equal 20	    
-	  end
+    it "should be able to get rules" do
+      result = subject.get_rule topic, subscription, rule
+      result.must_be :kind_of?, Azure::ServiceBus::Rule
+      result.filter.must_be_kind_of Azure::ServiceBus::TrueFilter
+      result.filter.sql_expression.must_equal "1=1"
+      result.filter.compatibility_level.must_equal 20
+    end
 
-	  it "should be able to list rules" do
-	  	result = subject.list_rules topic, subscription
-	  	rule_found = false
-	  	result.each { |r|
-	  		rule_found = true if r.name == rule
-	  	}
-	  	assert rule_found, "list_rules didn't include the expected rule"
-	  end
-	end
+    it "should be able to list rules" do
+      result = subject.list_rules topic, subscription
+      rule_found = false
+      result.each { |r|
+        rule_found = true if r.name == rule
+      }
+      assert rule_found, "list_rules didn't include the expected rule"
+    end
+
+    describe 'when multiple rules exist' do
+      let(:rule1) { "myRule1" }
+      let(:rule2) { "myRule2" }
+      before { 
+        subject.create_rule topic, subscription, rule1
+        subject.create_rule topic, subscription, rule2
+      }
+
+      it "should be able to use $skip token" do
+        result = subject.list_rules topic, subscription
+        result2 = subject.list_rules topic, subscription, 1
+        result2.length.must_equal result.length - 1
+        result2[0].id.must_equal result[1].id
+      end
+      
+      it "should be able to use $top token" do
+        result = subject.list_rules topic, subscription
+        result.length.wont_equal 1
+
+        result2 = subject.list_rules topic, subscription, nil, 1
+        result2.length.must_equal 1
+      end
+
+      it "should be able to use $skip and $top token together" do
+        result = subject.list_rules topic, subscription
+        result2 = subject.list_rules topic, subscription, 1, 1
+        result2.length.must_equal 1
+        result2[0].id.must_equal result[1].id
+      end
+    end
+  end
 end
