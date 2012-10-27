@@ -126,13 +126,27 @@ describe "ServiceBus Subscriptions" do
 		  	assert (subscription_found and subscription1_found and subscription2_found), "list_subscriptions didn't include the expected subscriptions"
 		  end
 
-		  it "should be able to use $skip token with list_subscriptions" do
-		  	skip "TODO"
-		  end
-		  
-		  it "should be able to use $top token with list_subscriptions" do
-		  	skip "TODO"
-		  end
+      it "should be able to use $skip token" do
+        result = subject.list_subscriptions topic
+        result2 = subject.list_subscriptions topic, 1
+        result2.length.must_equal result.length - 1
+        result2[0].id.must_equal result[1].id
+      end
+      
+      it "should be able to use $top token" do
+        result = subject.list_subscriptions topic
+        result.length.wont_equal 1
+
+        result2 = subject.list_subscriptions topic, nil, 1
+        result2.length.must_equal 1
+      end
+
+      it "should be able to use $skip and $top token together" do
+        result = subject.list_subscriptions topic
+        result2 = subject.list_subscriptions topic, 1, 1
+        result2.length.must_equal 1
+        result2[0].id.must_equal result[1].id
+      end
 		end
 	end
 end

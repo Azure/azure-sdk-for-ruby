@@ -64,8 +64,12 @@ module Azure
       end
       
       # Enumerates the queues in the service namespace.
-      def list_queues
-        resource_list(:queue)
+      def list_queues(skip=nil, top=nil)
+        query = {}
+        query["$skip"] = skip.to_i.to_s if skip
+        query["$top"] = top.to_i.to_s if top
+
+        resource_list(:queue, query)
       end
       
       # Creates a new topic. Once created, this topic resource manifest is immutable. 
@@ -95,8 +99,12 @@ module Azure
       end
 
       # Retrieves the topics in the service namespace.
-      def list_topics
-        resource_list(:topic)
+      def list_topics(skip=nil, top=nil)
+        query = {}
+        query["$skip"] = skip.to_i.to_s if skip
+        query["$top"] = top.to_i.to_s if top
+
+        resource_list(:topic, query)
       end
 
       # Creates a new rule. Once created, this rule's resource manifest is immutable.
@@ -147,9 +155,13 @@ module Azure
       # Pass either (topic_name, subscription_name) as strings, or (subscription) a object with .name and .topic methods
       # such as Azure::ServiceBus::Subscription instance.
       def list_rules(*p)
-        topic_name, subscription_name = _subscription_args(*p)
+        topic_name, subscription_name, skip, top = _subscription_args(*p)
 
-        resource_list(:rule, topic_name, subscription_name).each{|r| r.topic = topic_name; r.subscription=subscription_name}
+        query = {}
+        query["$skip"] = skip.to_i.to_s if skip
+        query["$top"] = top.to_i.to_s if top
+
+        resource_list(:rule, topic_name, subscription_name, query).each{|r| r.topic = topic_name; r.subscription=subscription_name}
       end
 
       # Creates a new subscription. Once created, this subscription resource manifest is 
@@ -194,9 +206,13 @@ module Azure
       # Retrieves the subscriptions in the specified topic. 
       # 
       # topic: Either a Azure::ServiceBus::Topic instance or a string of the topic name
-      def list_subscriptions(topic)
+      def list_subscriptions(topic, skip=nil, top=nil)
         topic = _name_for(topic)
-        resource_list(:subscription, topic).each { |s| s.topic = topic }
+        query = {}
+        query["$skip"] = skip.to_i.to_s if skip
+        query["$top"] = top.to_i.to_s if top
+
+        resource_list(:subscription, topic, query).each { |s| s.topic = topic }
       end
       
       # Enqueues a message into the specified topic. The limit to the number of messages 
@@ -468,9 +484,41 @@ module Azure
       end
 
       def _subscription_args(*p)
-        if p.length == 2
+
+        raise ArgumentError, "Not enough args" if p.length < 1
+        topic_name = nil
+        subscription_name = nil
+        skip = nil
+        top = nil
+
+        if p.length == 4
+          # topic/sub/skip/top 
           topic_name = _name_for(p[0])
           subscription_name = _name_for(p[1])
+          skip = p[2]
+          top = p[3]
+        elsif p.length == 3
+          # either subscription/skip/top or topic/sub/skip 
+          if p[0].respond_to? :name and p[0].respond_to? :topic
+            topic_name = p[0].topic
+            subscription_name = p[0].name
+            skip =p[1]
+            top =p[2]
+          else
+            topic_name = _name_for(p[0])
+            subscription_name = _name_for(p[1])
+            skip =p[2]
+          end
+        elsif p.length == 2
+          # either subscription/skip or topic/sub
+          if p[0].respond_to? :name and p[0].respond_to? :topic
+            topic_name = p[0].topic
+            subscription_name = p[0].name
+            skip =p[1]
+          else
+            topic_name = _name_for(p[0])
+            subscription_name = _name_for(p[1])
+          end
         elsif p.length == 1 and p[0].respond_to? :name and p[0].respond_to? :topic
           topic_name = p[0].topic
           subscription_name = p[0].name
@@ -478,7 +526,7 @@ module Azure
           raise ArgumentError, "Must provide either (topic_name, subscription_name) as strings, or (subscription) a object with .name and .topic methods such as Azure::ServiceBus::Subscription instance."
         end
 
-        return topic_name, subscription_name
+        return topic_name, subscription_name, skip, top
       end
 
       def _name_for(val)
@@ -588,7 +636,12 @@ module Azure
       end
 
       def resource_list_uri(resource, query={}, subpath='$Resources')
-        generate_uri("#{subpath}/#{resource.to_s.capitalize}s", query)
+        skip = query.delete ["$skip"]
+        top = query.delete ["$top"]
+
+        uri = generate_uri("#{subpath}/#{resource.to_s.capitalize}s", query)
+        uri.query = [uri.query, (skip ? "$skip=" + skip : nil), (top ? "$top=" + top : "")].join('&')
+        uri
       end
     end
   end
