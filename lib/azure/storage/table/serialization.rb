@@ -114,8 +114,12 @@ module Azure
             "Edm.Boolean"
           when GUID
             "Edm.Guid"
+          when IO, File
+            "Edm.Binary"
+          when String
+            value.encoding.names.include?("BINARY") ? "Edm.Binary" : ""
           else
-            "Edm.String"
+            value.kind_of?(IO) ? "Edm.Binary" : ""
           end
         end
 
@@ -137,6 +141,8 @@ module Azure
             /true/i === value
           when "Edm.Guid"
             GUID.new(value.to_s)
+          when "Edm.Binary"
+            value.to_s.force_encoding("BINARY")
           else
             value.to_s
           end
