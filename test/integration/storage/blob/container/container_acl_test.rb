@@ -36,7 +36,7 @@ describe Azure::Storage::Blob::BlobService do
     }
 
     it 'sets and gets the ACL for the container' do
-      container, acl = subject.set_container_acl container_name, visibility, identifiers
+      container, acl = subject.set_container_acl container_name, visibility, { :signed_identifiers => identifiers }
       container.wont_be_nil
       container.name.must_equal container_name
       container.visibility.must_equal visibility.to_s
@@ -62,7 +62,7 @@ describe Azure::Storage::Blob::BlobService do
         subject.get_container_acl ContainerNameHelper.name
       end
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.set_container_acl ContainerNameHelper.name, visibility, identifiers
+        subject.set_container_acl ContainerNameHelper.name, visibility, { :identifiers => identifiers }
       end
     end
   end

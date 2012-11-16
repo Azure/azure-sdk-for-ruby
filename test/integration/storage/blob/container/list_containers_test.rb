@@ -24,7 +24,7 @@ describe Azure::Storage::Blob::BlobService do
     let(:metadata) { { "CustomMetadataProperty"=>"CustomMetadataValue" } }
     before { 
       container_names.each { |c|
-        subject.create_container c, metadata
+        subject.create_container c, { :metadata => metadata }
       }
     }
 

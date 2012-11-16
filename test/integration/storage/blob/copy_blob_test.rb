@@ -74,7 +74,7 @@ describe Azure::Storage::Blob::BlobService do
         returned_content.must_equal content + "more content"
 
         # do copy against, snapshot
-        subject.copy_blob dest_container_name, dest_blob_name, source_container_name, source_blob_name, snapshot
+        subject.copy_blob dest_container_name, dest_blob_name, source_container_name, source_blob_name, { :source_snapshot => snapshot }
         
         blob, returned_content = subject.get_blob dest_container_name, dest_blob_name
 

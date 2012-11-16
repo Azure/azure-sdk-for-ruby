@@ -84,7 +84,7 @@ describe Azure::Storage::Blob::BlobService do
         }
         snapshots.must_equal 2
 
-        subject.delete_blob container_name, blob_name, snapshot
+        subject.delete_blob container_name, blob_name, { :snapshot => snapshot }
 
         # verify first snapshot is gone and blob remains
         result = subject.list_blobs(container_name, { :snapshots=> true })
@@ -101,7 +101,7 @@ describe Azure::Storage::Blob::BlobService do
 
       it 'errors if the snapshot id provided does not exist' do
         assert_raises(Azure::Core::Http::HTTPError) do
-          subject.delete_blob container_name, blob_name, "thissnapshotidisinvalid"
+          subject.delete_blob container_name, blob_name, { :snapshot => "thissnapshotidisinvalid" }
         end
       end
 
@@ -118,7 +118,7 @@ describe Azure::Storage::Blob::BlobService do
           snapshot_exists.must_equal true
 
           # delete snapshots
-          subject.delete_blob container_name, blob_name, nil, :only
+          subject.delete_blob container_name, blob_name, { :snapshot => nil, :delete_snapshots => :only }
 
           # verify snapshot is gone and blob remains
           result = subject.list_blobs(container_name, { :snapshots=> true })
@@ -147,7 +147,7 @@ describe Azure::Storage::Blob::BlobService do
           snapshot_exists.must_equal true
 
           # delete snapshots
-          subject.delete_blob container_name, blob_name, nil, :include
+          subject.delete_blob container_name, blob_name, { :snapshot => nil, :delete_snapshots => :include }
 
           # verify snapshot is gone and blob remains
           result = subject.list_blobs(container_name, { :snapshots=> true })

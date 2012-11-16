@@ -35,7 +35,7 @@ describe Azure::Storage::Blob::BlobService do
       subject.create_blob_pages container_name, blob_name, 0, 511, content
       subject.create_blob_pages container_name, blob_name, 1024, 1535, content
 
-      ranges = subject.list_page_blob_ranges container_name, blob_name, 0, 1536
+      ranges = subject.list_page_blob_ranges container_name, blob_name, { :start_range => 0, :end_range => 1536 }
       ranges[0][0].must_equal 0
       ranges[0][1].must_equal 511
       ranges[1][0].must_equal 1024
@@ -58,7 +58,7 @@ describe Azure::Storage::Blob::BlobService do
       subject.create_blob_pages container_name, blob_name, 1024, 1535, content
       subject.create_blob_pages container_name, blob_name, 2048, 2559, content
 
-      ranges = subject.list_page_blob_ranges container_name, blob_name, 0, 2560
+      ranges = subject.list_page_blob_ranges container_name, blob_name, { :start_range => 0, :end_range => 2560 }
       ranges.length.must_equal 3
       ranges[0][0].must_equal 0
       ranges[0][1].must_equal 511
@@ -72,7 +72,7 @@ describe Azure::Storage::Blob::BlobService do
       it 'clears the data in page blobs within the provided range' do
         subject.clear_blob_pages container_name, blob_name, 512, 1535
 
-        ranges = subject.list_page_blob_ranges container_name, blob_name, 0, 2560
+        ranges = subject.list_page_blob_ranges container_name, blob_name, { :start_range => 0, :end_range => 2560 }
         ranges.length.must_equal 2
         ranges[0][0].must_equal 0
         ranges[0][1].must_equal 511
@@ -123,7 +123,7 @@ describe Azure::Storage::Blob::BlobService do
     }
 
     it 'lists the active blob pages' do
-      ranges = subject.list_page_blob_ranges container_name, blob_name, 0, 1536
+      ranges = subject.list_page_blob_ranges container_name, blob_name, { :start_range => 0, :end_range => 1536 }
       ranges[0][0].must_equal 0
       ranges[0][1].must_equal 511
       ranges[1][0].must_equal 1024

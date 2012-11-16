@@ -24,7 +24,7 @@ describe Azure::Storage::Blob::BlobService do
     let(:metadata) { { "CustomMetadataProperty"=>"CustomMetadataValue" } }
 
     it 'gets properties and custom metadata for the container' do
-      container = subject.create_container container_name, metadata
+      container = subject.create_container container_name, { :metadata => metadata }
       properties = container.properties
       
       container = subject.get_container_properties container_name
