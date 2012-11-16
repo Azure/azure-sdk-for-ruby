@@ -19,8 +19,22 @@ describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
   
   describe '#release_lease' do
-    it '' do
-      skip "TODO"
+    let(:container_name) { ContainerNameHelper.name }
+    let(:blob_name) { "blobname" }
+    let(:length) { 1024 }
+    before { 
+      subject.create_container container_name
+    }
+
+    it 'should be possible to release a lease' do
+      subject.create_page_blob container_name, blob_name, length
+
+      lease_id = subject.acquire_lease container_name, blob_name
+      lease_id.wont_be_nil
+
+      lease_released = subject.release_lease container_name, blob_name, lease_id
+      # lease should be possible to release
+      lease_released.must_be_nil
     end
   end
 end

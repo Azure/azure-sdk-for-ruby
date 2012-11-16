@@ -19,8 +19,24 @@ describe Azure::Storage::Blob::BlobService do
   subject { Azure::Storage::Blob::BlobService.new }
   
   describe '#renew_lease' do
-    it '' do
-      skip "TODO"
+    let(:container_name) { ContainerNameHelper.name }
+    let(:blob_name) { "blobname" }
+    let(:length) { 1024 }
+    before { 
+      subject.create_container container_name
+    }
+
+    it 'should be possible to renew a lease' do
+      subject.create_page_blob container_name, blob_name, length
+
+      lease_id = subject.acquire_lease container_name, blob_name
+      lease_id.wont_be_nil
+
+      new_lease_id = subject.renew_lease container_name, blob_name, lease_id
+      new_lease_id.wont_be_nil
+
+      # renewing a lease returns the same lease id
+      new_lease_id.must_equal lease_id
     end
   end
 end
