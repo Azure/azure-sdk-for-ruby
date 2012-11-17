@@ -92,10 +92,6 @@ describe Azure::Storage::Blob::BlobService do
         }
         found_uncommitted.must_equal true
       end
-
-      it 'if :copy is set true, also returns metadata about active copy operations' do
-        skip "TODO"
-      end
     end
   end
 end

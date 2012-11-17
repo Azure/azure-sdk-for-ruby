@@ -21,10 +21,12 @@ describe Azure::Storage::Blob::BlobService do
   
   let(:container_name) { ContainerNameHelper.name }
   let(:blob_name) { "blobname" }
+  let(:blob_name2) { "blobname2" }
   let(:length) { 2560 }
   before { 
     subject.create_container container_name
     subject.create_page_blob container_name, blob_name, length
+    subject.create_page_blob container_name, blob_name2, length
   }
   
   describe '#create_blob_pages' do
@@ -41,11 +43,26 @@ describe Azure::Storage::Blob::BlobService do
       ranges[1][0].must_equal 1024
       ranges[1][1].must_equal 1535
     end
-    
-    describe 'when the options hash is used' do
-      it '' do
-        skip "TODO"
+  end
+
+  describe 'when the options hash is used' do
+    it 'if none match is specified' do
+      content = ""
+      512.times.each{|i| content << "@" }
+
+      blob = subject.create_blob_pages container_name, blob_name2, 0, 511, content
+
+      assert_raises(Azure::Core::Http::HTTPError) do
+        subject.create_blob_pages container_name, blob_name2, 1024, 1535, content, { :if_none_match => blob.properties.etag }
       end
+    end
+
+    it 'if match is specified' do
+      content = ""
+      512.times.each{|i| content << "@" }
+
+      blob = subject.create_blob_pages container_name, blob_name, 0, 511, content
+      subject.create_blob_pages container_name, blob_name, 1024, 1535, content, { :if_match => blob.properties.etag }
     end
   end
 
@@ -80,37 +97,6 @@ describe Azure::Storage::Blob::BlobService do
         ranges[1][1].must_equal 2559
       end
     end
-
-    # describe "when only start_range is specified" do
-    #   it 'clears data from the specified offset to the end of the blob' do
-    #     subject.clear_blob_pages container_name, blob_name, 512
-
-    #     ranges = subject.list_page_blob_ranges container_name, blob_name, 0, 2560
-    #     ranges.length.must_equal 1
-    #     ranges[0][0].must_equal 0
-    #     ranges[0][1].must_equal 511
-    #   end
-    # end
-    
-    # describe "when only end_range is specified" do
-    #   it 'clears data from the start of the blog to the specified offset' do
-    #     subject.clear_blob_pages container_name, blob_name, nil, 2047
-
-    #     ranges = subject.list_page_blob_ranges container_name, blob_name, 0, 2560
-    #     ranges.length.must_equal 1
-    #     ranges[0][0].must_equal 2048
-    #     ranges[0][1].must_equal 2559
-    #   end
-    # end
-    
-    # describe "when neither start_range or end_range is specified" do
-    #   it 'clears the entire blob' do
-    #     subject.clear_blob_pages container_name, blob_name
-
-    #     ranges = subject.list_page_blob_ranges container_name, blob_name, 0, 2560
-    #     ranges.length.must_equal 0
-    #   end
-    # end
   end
 
   describe '#list_page_blob_ranges' do
