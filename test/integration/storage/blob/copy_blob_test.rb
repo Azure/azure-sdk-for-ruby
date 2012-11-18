@@ -22,6 +22,7 @@ describe Azure::Storage::Blob::BlobService do
     let(:source_container_name) { ContainerNameHelper.name }
     let(:source_blob_name) { "sourceblobname" }
     let(:content) { content = ""; 512.times.each{|i| content << "@" }; content }
+    let(:metadata){ {"custommetadata" => "CustomMetadataValue"} }
 
     let(:dest_container_name) { ContainerNameHelper.name }
     let(:dest_blob_name) { "destblobname" }
@@ -74,7 +75,7 @@ describe Azure::Storage::Blob::BlobService do
         returned_content.must_equal content + "more content"
 
         # do copy against, snapshot
-        subject.copy_blob dest_container_name, dest_blob_name, source_container_name, source_blob_name, snapshot
+        subject.copy_blob dest_container_name, dest_blob_name, source_container_name, source_blob_name, { :source_snapshot => snapshot }
         
         blob, returned_content = subject.get_blob dest_container_name, dest_blob_name
 
@@ -85,11 +86,27 @@ describe Azure::Storage::Blob::BlobService do
    
     describe 'when a options hash is used' do
       it 'replaces source metadata on the copy with provided Hash in :metadata property' do
-        skip "TODO"
+        copy_id, copy_status = subject.copy_blob dest_container_name, dest_blob_name, source_container_name, source_blob_name, { :metadata => metadata }
+        copy_id.wont_be_nil
+
+        blob, returned_content = subject.get_blob dest_container_name, dest_blob_name
+
+        blob.name.must_equal dest_blob_name
+        returned_content.must_equal content
+
+        blob = subject.get_blob_metadata dest_container_name, dest_blob_name
+
+        metadata.each { |k,v|
+          blob.metadata.must_include k
+          blob.metadata[k].must_equal v
+        }
       end
 
       it 'can specify ETag matching behaviours' do
-        skip "TODO"
+        # invalid if match
+        assert_raises(Azure::Core::Http::HTTPError) do
+          subject.copy_blob dest_container_name, dest_blob_name, source_container_name, source_blob_name, { :source_if_match => "fake" }
+        end
       end
     end
   end

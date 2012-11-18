@@ -31,7 +31,7 @@ describe Azure::Storage::Blob::BlobService do
     it 'creates the container with custom metadata' do
       metadata = { "CustomMetadataProperty"=>"CustomMetadataValue" }
 
-      container = subject.create_container container_name, metadata
+      container = subject.create_container container_name, { :metadata => metadata }
       
       container.name.must_equal container_name
       container.metadata.must_equal metadata

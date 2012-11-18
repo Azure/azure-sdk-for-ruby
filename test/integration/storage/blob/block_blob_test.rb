@@ -152,7 +152,7 @@ describe Azure::Storage::Blob::BlobService do
 
     describe 'when blocklist_type parameter is used' do
       it 'lists uncommitted blocks only if :uncommitted is passed' do
-        result = subject.list_blob_blocks container_name, blob_name, :uncommitted
+        result = subject.list_blob_blocks container_name, blob_name, { :blocklist_type => :uncommitted }
 
         committed = result[:committed]
         committed.length.must_equal 0
@@ -170,7 +170,7 @@ describe Azure::Storage::Blob::BlobService do
       end
       
       it 'lists committed blocks only if :committed is passed' do
-        result = subject.list_blob_blocks container_name, blob_name, :committed
+        result = subject.list_blob_blocks container_name, blob_name, { :blocklist_type => :committed }
 
         committed = result[:committed]
         committed.length.must_equal 2
@@ -188,7 +188,7 @@ describe Azure::Storage::Blob::BlobService do
       end
 
       it 'lists committed and uncommitted blocks if :all is passed' do
-        result = subject.list_blob_blocks container_name, blob_name, :all
+        result = subject.list_blob_blocks container_name, blob_name, { :blocklist_type => :all }
 
         committed = result[:committed]
         committed.length.must_equal 2
@@ -232,7 +232,7 @@ describe Azure::Storage::Blob::BlobService do
           block.size.must_equal 512
         }
 
-        result = subject.list_blob_blocks container_name, blob_name, :all, snapshot
+        result = subject.list_blob_blocks container_name, blob_name, { :blocklist_type => :all, :snapshot => snapshot }
 
         committed = result[:committed]
         committed.length.must_equal 2
