@@ -44,7 +44,7 @@ describe Azure::Storage::Queue::QueueService do
       msg_text2 = "some random text " + QueueNameHelper.name
       subject.create_message queue_name, msg_text2
 
-      result = subject.list_messages queue_name, 3, 2
+      result = subject.list_messages queue_name, 3, { :number_of_messages => 2 }
       result.wont_be_nil
       result.wont_be_empty
       result.length.must_equal 2
