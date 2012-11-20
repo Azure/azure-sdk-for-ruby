@@ -47,7 +47,7 @@ module Azure
         #                     to a value less than or equal to zero, the server will return 
         #                     status code 400 (Bad Request). (optional)
         #
-        # :timeout          - Integer. A timeout in seconds. (optional)
+        # :timeout          - Integer. A timeout in seconds.
         #
         # :metadata         - Boolean. Specifies wether or not to return the container metadata.
         #                     (optional, Default=false)
@@ -65,7 +65,7 @@ module Azure
         # 
         # Returns an Azure::Entity::Blob::ContainerEnumerationResults
         def list_containers(options={})
-          query = {}
+          query = { }
           if options
             query["prefix"] = options[:prefix] if options[:prefix]
             query["marker"] = options[:marker] if options[:marker]
@@ -88,14 +88,18 @@ module Azure
         # Accepted key/value pairs in options parameter are:
         # :metadata         - Hash. User defined metadata for the container (optional)
         # :visibility       - String. One of "container" or "blob" (optional)
+        # :timeout          - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179468.aspx
         #
         # Returns a Container
         def create_container(name, options={})
-          uri = container_uri(name)
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
 
-          headers = {}
+          uri = container_uri(name, query)
+
+          headers = { }
 
           add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
 
@@ -112,24 +116,38 @@ module Azure
         # Public: Deletes a container
         #
         # name       - String. The name of the container
+        # options    - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout   - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179408.aspx
         #
         # Returns true on success
-        def delete_container(name)
-          call(:delete, container_uri(name))
+        def delete_container(name, options={})
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          call(:delete, container_uri(name, query))
           nil
         end
 
         # Public: Returns all properties and metadata on the container.
         #
         # name       - String. The name of the container
+        # options    - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout   - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179370.aspx
         #
         # Returns a Container
-        def get_container_properties(name)
-          response = call(:get, container_uri(name))
+        def get_container_properties(name, options={})
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          response = call(:get, container_uri(name, query))
 
           container = Serialization.container_from_headers(response.headers)
           container.name = name
@@ -139,12 +157,19 @@ module Azure
         # Public: Returns only user-defined metadata for the specified container.
         #
         # name       - String. The name of the container
+        # options    - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout   - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691976.aspx
         #
         # Returns a Container
-        def get_container_metadata(name)
-          response = call(:get, container_uri(name, {"comp"=>"metadata"}))
+        def get_container_metadata(name, options={})
+          query = { "comp" => "metadata" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          response = call(:get, container_uri(name, query))
 
           container = Serialization.container_from_headers(response.headers)
           container.name = name
@@ -155,6 +180,10 @@ module Azure
         # for the container.
         #
         # name       - String. The name of the container
+        # options    - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout   - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179469.aspx
         #
@@ -162,8 +191,10 @@ module Azure
         #   container           - A Azure::Entity::Blob::Container instance
         #   signed_identifiers  - A list of Azure::Entity::SignedIdentifier instances
         #
-        def get_container_acl(name)
-          response = call(:get, container_uri(name, {"comp"=>"acl"}))
+        def get_container_acl(name, options={})
+          query = { "comp" => "acl" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+          response = call(:get, container_uri(name, query))
 
           container = Serialization.container_from_headers(response.headers)
           container.name = name
@@ -181,7 +212,8 @@ module Azure
         # options             - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are:
-        # :signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances (optional) 
+        # :signed_identifiers - Array. A list of Azure::Entity::SignedIdentifier instances (optional) 
+        # :timeout            - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179391.aspx
         #
@@ -190,9 +222,11 @@ module Azure
         #   signed_identifiers  - A list of Azure::Entity::SignedIdentifier instances
         #
         def set_container_acl(name, visibility, options={})
-          uri =container_uri(name, {"comp"=>"acl"})
+          query = { "comp" => "acl" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+          uri =container_uri(name, query)
 
-          headers = {}
+          headers = { }
           headers["x-ms-blob-public-access"] = visibility if visibility && visibility.to_s.length > 0
 
           signed_identifiers = nil
@@ -213,18 +247,24 @@ module Azure
 
         # Public: Sets custom metadata for the container.
         #
-        # name      - String. The name of the container
-        # metadata  - Hash. A Hash of the metadata values
+        # name       - String. The name of the container
+        # metadata   - Hash. A Hash of the metadata values
+        # options    - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout   - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179362.aspx
         #
         # Returns true on success
-        def set_container_metadata(name, metadata)
-          headers = {}
-          
+        def set_container_metadata(name, metadata, options={})
+          query = { "comp" => "metadata" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          headers = { }
           add_metadata_to_headers(metadata, headers) if metadata
 
-          call(:put, container_uri(name, {"comp"=>"metadata"}), nil, headers)
+          call(:put, container_uri(name, query), nil, headers)
           nil
         end
 
@@ -236,28 +276,22 @@ module Azure
         # Accepted key/value pairs in options parameter are:
         # :prefix           - String. Filters the results to return only blobs 
         #                     whose name begins with the specified prefix. (optional)
-        #
         # :delimiter        - String. When the request includes this parameter, the operation 
         #                     returns a BlobPrefix element in the response body that acts as a 
         #                     placeholder for all blobs whose names begin with the same substring 
         #                     up to the appearance of the delimiter character. The delimiter may 
         #                     be a single character or a string.
-        #
         # :marker           - String. An identifier that specifies the portion of the 
         #                     list to be returned. This value comes from the property
         #                     Azure::Entity::Blob::BlobEnumerationResults.marker when 
         #                     there are more blobs available than were returned. The 
         #                     marker value may then be used here to request the next set
         #                     of list items. (optional)
-        #
         # :max_results      - Integer. Specifies the maximum number of blobs to return. 
         #                     If max_results is not specified, or is a value greater than 
         #                     5,000, the server will return up to 5,000 items. If it is set 
         #                     to a value less than or equal to zero, the server will return 
         #                     status code 400 (Bad Request). (optional)
-        #
-        # :timeout          - Integer. A timeout in seconds. (optional)
-        #
         # :metadata         - Boolean. Specifies wether or not to return the blob metadata.
         #                     (optional, Default=false)
         # :snapshots        - Boolean. Specifies that snapshots should be included in the 
@@ -269,6 +303,7 @@ module Azure
         # :copy             - Boolean. Specifies that metadata related to any current or previous 
         #                     copy_blob operation should be included in the response. 
         #                     (optional, Default=false)
+        # :timeout          - Integer. A timeout in seconds.
         #
         # NOTE: Metadata requested with the :metadata parameter must have been stored in
         # accordance with the naming restrictions imposed by the 2009-09-19 version of the Blob 
@@ -283,9 +318,7 @@ module Azure
         # 
         # Returns an Azure::Entity::Blob::BlobEnumerationResults
         def list_blobs(name, options={})
-          query = {}
-
-          query["comp"] = "list"
+          query = { "comp" => "list" }
           query["prefix"] = options[:prefix] if options[:prefix]
           query["delimiter"] = options[:delimiter] if options[:delimiter]
           query["marker"] = options[:marker] if options[:marker]
@@ -312,27 +345,33 @@ module Azure
         # container - String. The container name.
         # blob - String. The blob name.
         # length - Integer. Specifies the maximum size for the page blob, up to 1 TB. The page blob size must be aligned to a 512-byte boundary.
-        # options - Hash. The optional parameters. Understood hash values listed below:
-        #   :content_type          - String. Content type for the request. Will be saved with blob unless alternate value is provided in blob_content_type.
-        #   :content_encoding      - String. Content encoding for the request. Will be saved with blob unless alternate value is provided in blob_content_encoding.
-        #   :content_language      - String. Content langauge for the request. Will be saved with blob unless alternate value is provided in blob_content_language.
-        #   :content_md5           - String. Content MD5 for the request. Will be saved with blob unless alternate value is provided in blob_content_md5.
-        #   :cache_control         - String. Cache control for the request. Will be saved with blob unless alternate value is provided in blob_cache_control.
-        #   :blob_content_type     - String. Content type for the blob. Will be saved with blob.
-        #   :blob_content_encoding - String. Content encoding for the blob. Will be saved with blob.
-        #   :blob_content_language - String. Content langauge for the blob. Will be saved with blob.
-        #   :blob_content_md5      - String. Content MD5 for the blob. Will be saved with blob.
-        #   :blob_cache_control    - String. Cache control for the blob. Will be saved with blob.
-        #   :metadata              - Hash. Custom metadata values to store with the blob.
-        #   :sequence_number       - Integer. The sequence number is a user-controlled value that you can use to track requests. The value of the sequence number must be between 0 and 2^63 - 1.The default value is 0.
+        # options - Hash. The optional parameters.
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :content_type          - String. Content type for the request. Will be saved with blob unless alternate value is provided in blob_content_type.
+        # :content_encoding      - String. Content encoding for the request. Will be saved with blob unless alternate value is provided in blob_content_encoding.
+        # :content_language      - String. Content langauge for the request. Will be saved with blob unless alternate value is provided in blob_content_language.
+        # :content_md5           - String. Content MD5 for the request. Will be saved with blob unless alternate value is provided in blob_content_md5.
+        # :cache_control         - String. Cache control for the request. Will be saved with blob unless alternate value is provided in blob_cache_control.
+        # :blob_content_type     - String. Content type for the blob. Will be saved with blob.
+        # :blob_content_encoding - String. Content encoding for the blob. Will be saved with blob.
+        # :blob_content_language - String. Content langauge for the blob. Will be saved with blob.
+        # :blob_content_md5      - String. Content MD5 for the blob. Will be saved with blob.
+        # :blob_cache_control    - String. Cache control for the blob. Will be saved with blob.
+        # :metadata              - Hash. Custom metadata values to store with the blob.
+        # :sequence_number       - Integer. The sequence number is a user-controlled value that you can use to track requests. The value of the sequence number must be between 0 and 2^63 - 1.The default value is 0.
+        # :timeout               - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179451.aspx
         #
         # Returns a Blob
         def create_page_blob(container, blob, length, options={})
-          uri = blob_uri(container, blob)
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = blob_uri(container, blob, query)
           
-          headers = {}
+          headers = { }
 
           # set x-ms-blob-type to PageBlob
           headers["x-ms-blob-type"] = "PageBlob"
@@ -375,21 +414,27 @@ module Azure
         # start_range  - Integer. Position of first byte of first page
         # end_range    - Integer. Position of last byte of of last page
         # content      - IO or String. Content to write. Length in bytes should equal end_range - start_range
-        # options      - Hash. A collection of options. Possible keys/values are:
-        #   :if_sequence_number_lte - If the blob’s sequence number is less than or equal to the specified value, the request proceeds; otherwise it fails with the SequenceNumberConditionNotMet error (HTTP status code 412 – Precondition Failed).
-        #   :if_sequence_number_lt  - If the blob’s sequence number is less than the specified value, the request proceeds; otherwise it fails with SequenceNumberConditionNotMet error (HTTP status code 412 – Precondition Failed).
-        #   :if_sequence_number_eq  - If the blob’s sequence number is equal to the specified value, the request proceeds; otherwise it fails with SequenceNumberConditionNotMet error (HTTP status code 412 – Precondition Failed).
-        #   :if_modified_since      - A DateTime value. Specify this conditional header to write the page only if the blob has been modified since the specified date/time. If the blob has not been modified, the Blob service returns status code 412 (Precondition Failed).
-        #   :if_unmodified_since    - A DateTime value. Specify this conditional header to write the page only if the blob has not been modified since the specified date/time. If the blob has been modified, the Blob service returns status code 412 (Precondition Failed).
-        #   :if_match               - An ETag value. Specify an ETag value for this conditional header to write the page only if the blob's ETag value matches the value specified. If the values do not match, the Blob service returns status code 412 (Precondition Failed).
-        #   :if_none_match          - An ETag value. Specify an ETag value for this conditional header to write the page only if the blob's ETag value does not match the value specified. If the values are identical, the Blob service returns status code 412 (Precondition Failed).
+        # options      - Hash. A collection of options.
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :if_sequence_number_lte - If the blob’s sequence number is less than or equal to the specified value, the request proceeds; otherwise it fails with the SequenceNumberConditionNotMet error (HTTP status code 412 – Precondition Failed).
+        # :if_sequence_number_lt  - If the blob’s sequence number is less than the specified value, the request proceeds; otherwise it fails with SequenceNumberConditionNotMet error (HTTP status code 412 – Precondition Failed).
+        # :if_sequence_number_eq  - If the blob’s sequence number is equal to the specified value, the request proceeds; otherwise it fails with SequenceNumberConditionNotMet error (HTTP status code 412 – Precondition Failed).
+        # :if_modified_since      - A DateTime value. Specify this conditional header to write the page only if the blob has been modified since the specified date/time. If the blob has not been modified, the Blob service returns status code 412 (Precondition Failed).
+        # :if_unmodified_since    - A DateTime value. Specify this conditional header to write the page only if the blob has not been modified since the specified date/time. If the blob has been modified, the Blob service returns status code 412 (Precondition Failed).
+        # :if_match               - An ETag value. Specify an ETag value for this conditional header to write the page only if the blob's ETag value matches the value specified. If the values do not match, the Blob service returns status code 412 (Precondition Failed).
+        # :if_none_match          - An ETag value. Specify an ETag value for this conditional header to write the page only if the blob's ETag value does not match the value specified. If the values are identical, the Blob service returns status code 412 (Precondition Failed).
+        # :timeout                - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691975.aspx
         #
         # Returns Blob
         def create_blob_pages(container, blob, start_range, end_range, content, options={})
-          uri = blob_uri(container, blob, {"comp"=> "page"})
-          headers = {}
+          query = { "comp" => "page" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = blob_uri(container, blob, query)
+          headers = { }
           headers["x-ms-range"] = "bytes=#{start_range}-#{end_range}"
           headers["x-ms-page-write"] = "update"
 
@@ -417,18 +462,25 @@ module Azure
 
         # Public: Clears a range of pages from the blob.
         #
-        # container    - String. Name of container
-        # blob         - String. Name of blob
-        # start_range  - Integer. Position of first byte of first page (optional)
-        # end_range    - Integer. Position of last byte of of last page (optional)
+        # container    - String. Name of container.
+        # blob         - String. Name of blob.
+        # start_range  - Integer. Position of first byte of first page.
+        # end_range    - Integer. Position of last byte of of last page.
+        # options      - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout     - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691975.aspx
         #
         # Returns Blob
-        def clear_blob_pages(container, blob, start_range, end_range)
-          uri = blob_uri(container, blob, {"comp"=> "page"})
+        def clear_blob_pages(container, blob, start_range, end_range, options={})
+          query = { "comp" => "page" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
 
-          headers = {}
+          uri = blob_uri(container, blob, query)
+
+          headers = { }
           headers["x-ms-range"] = "bytes=#{start_range}-#{end_range}"
           headers["x-ms-page-write"] = "clear"
 
@@ -456,26 +508,32 @@ module Azure
         # container   - String. The container name.
         # blob        - String. The blob name.
         # content     - IO or String. The content of the blob.
-        # options     - Hash. The optional parameters. Understood hash values listed below:
-        #   :content_type          - String. Content type for the request. Will be saved with blob unless alternate value is provided in blob_content_type.
-        #   :content_encoding      - String. Content encoding for the request. Will be saved with blob unless alternate value is provided in blob_content_encoding.
-        #   :content_language      - String. Content langauge for the request. Will be saved with blob unless alternate value is provided in blob_content_language.
-        #   :content_md5           - String. Content MD5 for the request. Will be saved with blob unless alternate value is provided in blob_content_md5.
-        #   :cache_control         - String. Cache control for the request. Will be saved with blob unless alternate value is provided in blob_cache_control.
-        #   :blob_content_type     - String. Content type for the blob. Will be saved with blob.
-        #   :blob_content_encoding - String. Content encoding for the blob. Will be saved with blob.
-        #   :blob_content_language - String. Content langauge for the blob. Will be saved with blob.
-        #   :blob_content_md5      - String. Content MD5 for the blob. Will be saved with blob.
-        #   :blob_cache_control    - String. Cache control for the blob. Will be saved with blob.
-        #   :metadata              - Hash. Custom metadata values to store with the blob.
+        # options      - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :content_type          - String. Content type for the request. Will be saved with blob unless alternate value is provided in blob_content_type.
+        # :content_encoding      - String. Content encoding for the request. Will be saved with blob unless alternate value is provided in blob_content_encoding.
+        # :content_language      - String. Content langauge for the request. Will be saved with blob unless alternate value is provided in blob_content_language.
+        # :content_md5           - String. Content MD5 for the request. Will be saved with blob unless alternate value is provided in blob_content_md5.
+        # :cache_control         - String. Cache control for the request. Will be saved with blob unless alternate value is provided in blob_cache_control.
+        # :blob_content_type     - String. Content type for the blob. Will be saved with blob.
+        # :blob_content_encoding - String. Content encoding for the blob. Will be saved with blob.
+        # :blob_content_language - String. Content langauge for the blob. Will be saved with blob.
+        # :blob_content_md5      - String. Content MD5 for the blob. Will be saved with blob.
+        # :blob_cache_control    - String. Cache control for the blob. Will be saved with blob.
+        # :metadata              - Hash. Custom metadata values to store with the blob.
+        # :timeout               - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179451.aspx
         #
         # Returns a Blob
         def create_block_blob(container, blob, content, options={})
-          uri = blob_uri(container, blob)
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = blob_uri(container, blob, query)
           
-          headers = {}
+          headers = { }
 
           # set x-ms-blob-type to BlockBlob
           headers["x-ms-blob-type"] = "BlockBlob"
@@ -510,16 +568,23 @@ module Azure
         # blob        - String. The blob name.
         # block_id    - String. The block id. Note: this should be the raw block id, not Base64 encoded.
         # content     - IO or String. The content of the blob.
-        # options     - Hash. The optional parameters. Understood hash values listed below:
-        #   :content_md5           - String. Content MD5 for the request contents.
+        # options      - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :content_md5           - String. Content MD5 for the request contents.
+        # :timeout               - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135726.aspx
         #
         # Returns the MD5 of the uploaded block (as calculated by the server)
         def create_blob_block(container, blob, block_id, content, options={})
-          uri = blob_uri(container, blob, {"comp"=> "block", "blockid" => Base64.strict_encode64(block_id) })
+          query = { "comp" => "block" }
+          query["blockid"] = Base64.strict_encode64(block_id)
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
 
-          headers = {}
+          uri = blob_uri(container, blob, query)
+
+          headers = { }
           headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
 
           response = call(:put, uri, content, headers)
@@ -547,22 +612,28 @@ module Azure
         #               and can be either :committed or :uncommitted to indicate in which group of blocks 
         #               the id should be looked for. If it is omitted, the latest of either group will be used.
         #                
-        # options     - Hash. The optional parameters.
-        #   :content_md5           - String. Content MD5 for the request contents (not the blob contents!)
-        #   :blob_content_type     - String. Content type for the blob. Will be saved with blob.
-        #   :blob_content_encoding - String. Content encoding for the blob. Will be saved with blob.
-        #   :blob_content_language - String. Content langauge for the blob. Will be saved with blob.
-        #   :blob_content_md5      - String. Content MD5 for the blob. Will be saved with blob.
-        #   :blob_cache_control    - String. Cache control for the blob. Will be saved with blob.
-        #   :metadata              - Hash. Custom metadata values to store with the blob.
+        # options      - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :content_md5           - String. Content MD5 for the request contents (not the blob contents!)
+        # :blob_content_type     - String. Content type for the blob. Will be saved with blob.
+        # :blob_content_encoding - String. Content encoding for the blob. Will be saved with blob.
+        # :blob_content_language - String. Content langauge for the blob. Will be saved with blob.
+        # :blob_content_md5      - String. Content MD5 for the blob. Will be saved with blob.
+        # :blob_cache_control    - String. Cache control for the blob. Will be saved with blob.
+        # :metadata              - Hash. Custom metadata values to store with the blob.
+        # :timeout               - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179467.aspx 
         # 
         # Returns true on success
         def commit_blob_blocks(container, blob, block_list, options={})
-          uri = blob_uri(container, blob, {"comp"=> "blocklist" })
+          query = { "comp" => "blocklist" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
 
-          headers = {}
+          uri = blob_uri(container, blob, query)
+
+          headers = { }
           unless options.empty?
             headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
             headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
@@ -596,7 +667,8 @@ module Azure
         # Accepted key/value pairs in options parameter are:
         # :blocklist_type - Symbol. One of :all, :committed, :uncommitted. Defaults to :all (optional)
         # :snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
-        #                  retrieve information from. (optional)
+        #                   retrieve information from. (optional)
+        # :timeout        - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179400.aspx
         #
@@ -605,10 +677,11 @@ module Azure
 
           options[:blocklist_type] = options[:blocklist_type] || :all
 
-          query = {"comp" => "blocklist"}
+          query = { "comp" => "blocklist" }
           query["snapshot"] = options[:snapshot] if options[:snapshot]
           query["blocklisttype"] = options[:blocklist_type].to_s if options[:blocklist_type]
-          
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
           uri = blob_uri(container, blob, query)
 
           response = call(:get, uri)
@@ -624,13 +697,18 @@ module Azure
         #
         # Accepted key/value pairs in options parameter are:
         # :snapshot      - String. An opaque DateTime value that specifies the blob snapshot to 
-        #                  retrieve information from. (optional)
+        #                  retrieve information from.
+        # :timeout       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179394.aspx
         #
         # Returns a Blob
         def get_blob_properties(container, blob, options={})
-          uri = blob_uri(container, blob, options[:snapshot] ? { "snapshot" => options[:snapshot] } : {})
+          query = { }
+          query["snapshot"] = options[:snapshot] if options[:snapshot]
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = blob_uri(container, blob, query)
 
           response = call(:get, uri)
 
@@ -650,7 +728,8 @@ module Azure
         #
         # Accepted key/value pairs in options parameter are:
         # :snapshot      - String. An opaque DateTime value that specifies the blob snapshot to 
-        #                  retrieve information from. (optional)
+        #                  retrieve information from.
+        # :timeout       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179350.aspx
         #
@@ -658,7 +737,8 @@ module Azure
         def get_blob_metadata(container, blob, options={})
           query = {"comp"=>"metadata"}
           query["snapshot"] = options[:snapshot] if options[:snapshot]
-          
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
           uri = blob_uri(container, blob, query)
 
           response = call(:get, uri)
@@ -682,7 +762,8 @@ module Azure
         # :start_range    - Integer. Position of first byte of first page. (optional)
         # :end_range      - Integer. Position of last byte of of last page. (optional)
         # :snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
-        #                  retrieve information from. (optional)
+        #                   retrieve information from. (optional)
+        # :timeout        - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691973.aspx
         #
@@ -693,12 +774,13 @@ module Azure
         def list_page_blob_ranges(container, blob, options={})
           query = {"comp"=>"pagelist"}
           query.update({"snapshot" => options[:snapshot]}) if options[:snapshot]
-          
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
           uri = blob_uri(container, blob, query)
 
           options[:start_range] = 0 if options[:end_range] and not options[:start_range]
 
-          headers = {}
+          headers = { }
           headers = { "x-ms-range" =>  "bytes=#{options[:start_range]}-#{options[:end_range]}" } if options[:start_range]
 
           response = call(:get, uri, nil, headers)
@@ -711,20 +793,20 @@ module Azure
         #
         # container      - String. The container name.
         # blob           - String. The blob name.
-        # options        - Hash. The optional parameters.
-        #   :content_type           - String. Content type for the blob. Will be saved with blob.
-        #   :content_encoding       - String. Content encoding for the blob. Will be saved with blob.
-        #   :content_language       - String. Content langauge for the blob. Will be saved with blob.
-        #   :content_md5            - String. Content MD5 for the blob. Will be saved with blob.
-        #   :cache_control          - String. Cache control for the blob. Will be saved with blob.
+        # options         - Hash. Optional parameters. 
         #
-        #   :content_length         - Integer. Resizes a page blob to the specified size. If the specified 
+        # Accepted key/value pairs in options parameter are:
+        # :content_type             - String. Content type for the blob. Will be saved with blob.
+        # :content_encoding         - String. Content encoding for the blob. Will be saved with blob.
+        # :content_language         - String. Content langauge for the blob. Will be saved with blob.
+        # :content_md5              - String. Content MD5 for the blob. Will be saved with blob.
+        # :cache_control            - String. Cache control for the blob. Will be saved with blob.
+        # :content_length           - Integer. Resizes a page blob to the specified size. If the specified 
         #                             value is less than the current size of the blob, then all pages above 
         #                             the specified value are cleared. This property cannot be used to change 
         #                             the size of a block blob. Setting this property for a block blob returns 
         #                             status code 400 (Bad Request).
-        #
-        #   :sequence_number_action - Symbol. This property indicates how the service should modify the sequence 
+        # :sequence_number_action   - Symbol. This property indicates how the service should modify the sequence 
         #                             number for the blob. Required if :sequence_number is used. This property 
         #                             applies to page blobs only.
         #
@@ -736,8 +818,7 @@ module Azure
         #                             :increment  - Increments the value of the sequence number by 1. If specifying this 
         #                                           option, do not include the sequence_number option; doing so will return
         #                                           status code 400 (Bad Request).
-        #
-        #   :sequence_number        - Integer. This property sets the blob's sequence number. The sequence number is a 
+        # :sequence_number          - Integer. This property sets the blob's sequence number. The sequence number is a 
         #                             user-controlled property that you can use to track requests and manage concurrency 
         #                             issues. Required if the :sequence_number_action option is set to :max or :update. 
         #                             This property applies to page blobs only.
@@ -751,6 +832,7 @@ module Azure
         #
         #                             To set the sequence number to a value of your choosing, this property must be specified
         #                             together with :sequence_number_action
+        # :timeout                  - Integer. A timeout in seconds.
         #
         # Remarks:
         #
@@ -781,9 +863,11 @@ module Azure
         #
         # Returns true on success.
         def set_blob_properties(container, blob, options={})
-          uri = blob_uri(container, blob, {"comp"=>"properties"})
+          query = { "comp" => "properties" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+          uri = blob_uri(container, blob, query)
 
-          headers = {}
+          headers = { }
 
           unless options.empty?
             headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
@@ -805,14 +889,20 @@ module Azure
         # container      - String. The container name.
         # blob           - String. The blob name.
         # metadata       - Hash. The custom metadata.
+        # options        - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179414.aspx
         #
         # Returns true on success.
-        def set_blob_metadata(container, blob, metadata)
-          uri = blob_uri(container, blob, {"comp"=>"metadata"})
+        def set_blob_metadata(container, blob, metadata, options={})
+          query = { "comp" => "metadata" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+          uri = blob_uri(container, blob, query)
 
-          headers = {}
+          headers = { }
 
           add_metadata_to_headers(metadata, headers) if metadata
 
@@ -833,14 +923,18 @@ module Azure
         #                    retrieve information from. (optional)
         # :get_content_md5 - Boolean. Return the MD5 hash for the range. This option only valid if
         #                    start_range and end_range are specified. (optional)
+        # :timeout         - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179440.aspx
         #
         # Returns a blob and the blob body
         def get_blob(container, blob, options={})
-          uri = blob_uri(container, blob, options[:snapshot] ? {"snapshot" => options[:snapshot]} : {})
+          query = { }
+          query["snapshot"] = options[:snapshot] if options[:snapshot]
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+          uri = blob_uri(container, blob, query)
 
-          headers = {}
+          headers = { }
           options[:start_range] = 0 if options[:end_range] and not options[:start_range]
           if options[:start_range]
             headers["x-ms-range"] = "bytes=#{options[:start_range]}-#{options[:end_range]}"
@@ -869,16 +963,21 @@ module Azure
         #                      Possible values include:  
         #                        :only     - Deletes only the snapshots for the blob, but leaves the blob
         #                        :include  - Deletes the blob and all of the snapshots for the blob
+        # :timeout           - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179440.aspx
         #
         # Returns true on success
         def delete_blob(container, blob, options={})
-          uri = blob_uri(container, blob, options[:snapshot] ? { "snapshot" => options[:snapshot] } : {})
+          query = { }
+          query["snapshot"] = options[:snapshot] if options[:snapshot]
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = blob_uri(container, blob, query)
 
           options[:delete_snapshots] = :include if !options[:delete_snapshots]
 
-          headers = {}
+          headers = { }
           headers["x-ms-delete-snapshots"] = options[:delete_snapshots].to_s if options[:delete_snapshots] && options[:snapshot] == nil
 
           call(:delete, uri, nil, headers)
@@ -892,31 +991,31 @@ module Azure
         # options         - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are:
-        #   :metadata               - Hash. Custom metadata values to store with the blob snapshot.
-        #
-        #   :if_modified_since      - A DateTime value. Specify this option to write the page only if the blob has been 
+        # :metadata                 - Hash. Custom metadata values to store with the blob snapshot.
+        # :if_modified_since        - A DateTime value. Specify this option to write the page only if the blob has been 
         #                             modified since the specified date/time. If the blob has not been modified, the 
         #                             Blob service returns status code 412 (Precondition Failed).
-        #
-        #   :if_unmodified_since    - A DateTime value. Specify this option to write the page only if the blob has not 
+        # :if_unmodified_since      - A DateTime value. Specify this option to write the page only if the blob has not 
         #                             been modified since the specified date/time. If the blob has been modified, the 
         #                             Blob service returns status code 412 (Precondition Failed).
-        #
-        #   :if_match               - An ETag value. Specify an ETag value to write the page only if the blob's ETag 
+        # :if_match                 - An ETag value. Specify an ETag value to write the page only if the blob's ETag 
         #                             value matches the value specified. If the values do not match, the Blob service 
         #                             returns status code 412 (Precondition Failed).
-        #
-        #   :if_none_match          - An ETag value. Specify an ETag value to write the page only if the blob's ETag 
+        # :if_none_match            - An ETag value. Specify an ETag value to write the page only if the blob's ETag 
         #                             value does not match the value specified. If the values are identical, the Blob 
         #                             service returns status code 412 (Precondition Failed).
+        # :timeout                  - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691971.aspx
         # 
         # Returns the snapshot DateTime value
         def create_blob_snapshot(container, blob, options={})
-          uri = blob_uri(container, blob, "comp"=>"snapshot")
+          query = { "comp" => "snapshot" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
 
-          headers = {}
+          uri = blob_uri(container, blob, query)
+
+          headers = { }
           unless options.empty?
             add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
 
@@ -940,43 +1039,36 @@ module Azure
         # options               - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are:
-        #   :source_snapshot            - String. A snapshot id for the source blob
-        #   :metadata                   - Hash. Custom metadata values to store with the copy. If this parameter is not 
+        # :source_snapshot              - String. A snapshot id for the source blob
+        # :metadata                     - Hash. Custom metadata values to store with the copy. If this parameter is not 
         #                                 specified, the operation will copy the source blob metadata to the destination 
         #                                 blob. If this parameter is specified, the destination blob is created with the 
         #                                 specified metadata, and metadata is not copied from the source blob.
-        #
-        #   :source_if_modified_since   - A DateTime value. Specify this option to write the page only if the source blob 
+        # :source_if_modified_since     - A DateTime value. Specify this option to write the page only if the source blob 
         #                                 has been modified since the specified date/time. If the blob has not been 
         #                                 modified, the Blob service returns status code 412 (Precondition Failed).
-        #
-        #   :source_if_unmodified_since - A DateTime value. Specify this option to write the page only if the source blob
+        # :source_if_unmodified_since   - A DateTime value. Specify this option to write the page only if the source blob
         #                                 has not been modified since the specified date/time. If the blob has been 
         #                                 modified, the Blob service returns status code 412 (Precondition Failed).
-        #
-        #   :source_if_match            - An ETag value. Specify an ETag value to write the page only if the source blob's 
+        # :source_if_match              - An ETag value. Specify an ETag value to write the page only if the source blob's 
         #                                 ETag value matches the value specified. If the values do not match, the Blob 
         #                                 service returns status code 412 (Precondition Failed).
-        #
-        #   :source_if_none_match       - An ETag value. Specify an ETag value to write the page only if the source blob's 
+        # :source_if_none_match         - An ETag value. Specify an ETag value to write the page only if the source blob's 
         #                                 ETag value does not match the value specified. If the values are identical, the 
         #                                 Blob service returns status code 412 (Precondition Failed).
-        #
-        #   :dest_if_modified_since     - A DateTime value. Specify this option to write the page only if the destination 
+        # :dest_if_modified_since       - A DateTime value. Specify this option to write the page only if the destination 
         #                                 blob has been modified since the specified date/time. If the blob has not been 
         #                                 modified, the Blob service returns status code 412 (Precondition Failed).
-        #
-        #   :dest_if_unmodified_since   - A DateTime value. Specify this option to write the page only if the destination 
+        # :dest_if_unmodified_since     - A DateTime value. Specify this option to write the page only if the destination 
         #                                 blob has not been modified since the specified date/time. If the blob has been 
         #                                 modified, the Blob service returns status code 412 (Precondition Failed).
-        #
-        #   :dest_if_match              - An ETag value. Specify an ETag value to write the page only if the destination 
+        # :dest_if_match                - An ETag value. Specify an ETag value to write the page only if the destination 
         #                                 blob's ETag value matches the value specified. If the values do not match, the 
         #                                 Blob service returns status code 412 (Precondition Failed).
-        #
-        #   :dest_if_none_match         - An ETag value. Specify an ETag value to write the page only if the desintation 
+        # :dest_if_none_match           - An ETag value. Specify an ETag value to write the page only if the desintation 
         #                                 blob's ETag value does not match the value specified. If the values are 
         #                                 identical, the Blob service returns status code 412 (Precondition Failed).
+        # :timeout                      - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd894037.aspx
         #
@@ -989,10 +1081,13 @@ module Azure
         #                 "pending" - The copy is in progress. 
         #
         def copy_blob(destination_container, destination_blob, source_container, source_blob, options={})
-          uri = blob_uri(destination_container, destination_blob)
-          headers = {}
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = blob_uri(destination_container, destination_blob, query)
+          headers = { }
           headers["x-ms-copy-source"] = blob_uri(source_container, source_blob, options[:source_snapshot] ? { "snapshot" => options[:source_snapshot] } : {}, true).to_s
-          
+
           unless options.empty?
             headers["If-Modified-Since"] = options[:dest_if_modified_since] if options[:dest_if_modified_since]
             headers["If-Unmodified-Since"] = options[:dest_if_unmodified_since] if options[:dest_if_unmodified_since]
@@ -1022,6 +1117,7 @@ module Azure
         #                      for a lease that never expires. A non-infinite lease can be between 15 and 60 seconds. (optional)
         # :proposed_lease_id - String. Proposed lease ID, in a GUID string format. The Blob service returns 400 (Invalid request)
         #                      if the proposed lease ID is not in the correct format. (optional)
+        # :timeout           - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
         #
@@ -1030,12 +1126,15 @@ module Azure
         # for the active lease.
         #
         def acquire_lease(container, blob, options={})
-          uri = blob_uri(container, blob, "comp"=>"lease")
-         
+          query = { "comp" => "lease" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = blob_uri(container, blob, query)
+
           duration = -1
           duration = options[:duration] if options[:duration]
 
-          headers = {}
+          headers = { }
           headers["x-ms-lease-action"] = "acquire"
           headers["x-ms-lease-duration"] = duration.to_s if duration
           headers["x-ms-proposed-lease-id"] = options[:proposed_lease_id] if options[:proposed_lease_id]
@@ -1052,14 +1151,21 @@ module Azure
         # container         - String. The container name.
         # blob              - String. The blob name.
         # lease             - String. The lease id
+        # options           - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are: 
+        # :timeout          - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
         #
         # Returns the renewed lease id
-        def renew_lease(container, blob, lease)
-          uri = blob_uri(container, blob, "comp"=>"lease")
-         
-          headers = {}
+        def renew_lease(container, blob, lease, options={})
+          query = { "comp" => "lease" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = blob_uri(container, blob, query)
+
+          headers = { }
           headers["x-ms-lease-action"] = "renew"
           headers["x-ms-lease-id"] = lease
 
@@ -1073,15 +1179,22 @@ module Azure
         #
         # container         - String. The container name.
         # blob              - String. The blob name.
-        # lease             - String. The lease id
+        # lease             - String. The lease id.
+        # options           - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are: 
+        # :timeout          - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
         #
         # Returns true on sucess
-        def release_lease(container, blob, lease)
-          uri = blob_uri(container, blob, "comp"=>"lease")
-         
-          headers = {}
+        def release_lease(container, blob, lease, options={})
+          query = { "comp" => "lease" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = blob_uri(container, blob, query)
+
+          headers = { }
           headers["x-ms-lease-action"] = "release"
           headers["x-ms-lease-id"] = lease
 
@@ -1104,7 +1217,7 @@ module Azure
         # options           - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are: 
-        # break_period      - Integer. The proposed duration of seconds that the lease should continue before it is 
+        # :break_period     - Integer. The proposed duration of seconds that the lease should continue before it is 
         #                     broken, between 0 and 60 seconds. This break period is only used if it is shorter than 
         #                     the time remaining on the lease. If longer, the time remaining on the lease is used. A 
         #                     new lease will not be available before the break period has expired, but the lease may 
@@ -1112,6 +1225,7 @@ module Azure
         #
         #                     If this option is not used, a fixed-duration lease breaks after the remaining lease 
         #                     period elapses, and an infinite lease breaks immediately.
+        # :timeout          - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
         #
@@ -1119,9 +1233,12 @@ module Azure
         # period, in seconds. This header is returned only for a successful request to break the lease. If the break 
         # is immediate, 0 is returned.
         def break_lease(container, blob, lease, options={})
-          uri = blob_uri(container, blob, "comp"=>"lease")
-         
-          headers = {}
+          query = { "comp" => "lease" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = blob_uri(container, blob, query)
+
+          headers = { }
           headers["x-ms-lease-action"] = "break"
           headers["x-ms-lease-id"] = lease
           headers["x-ms-lease-break-period"] = options[:break_period].to_s if options[:break_period]

@@ -33,35 +33,56 @@ module Azure
         # Public: Creates new table in the storage account
         #
         # table_name    - String. The table name
+        # options       - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout      - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135729
         #
         # Returns true on success
-        def create_table(table_name)
+        def create_table(table_name, options={})
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
           body = Azure::Storage::Table::Serialization.hash_to_entry_xml({"TableName" => table_name}).to_xml
-          call(:post, collection_uri, body)
+          call(:post, collection_uri(query), body)
           nil
         end
 
         # Public: Deletes the specified table and any data it contains.
         #
         # table_name    - String. The table name
+        # options       - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout      - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179387
         #
         # Returns true on success
-        def delete_table(table_name)
-          call(:delete, table_uri(table_name))
+        def delete_table(table_name, options={})
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          call(:delete, table_uri(table_name, query))
           nil
         end
 
         # Public: Gets the table.
         #
         # table_name    - String. The table name
+        # options       - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout      - Integer. A timeout in seconds.
         #
         # Returns the last updated time for the table
-        def get_table(table_name)
-          response = call(:get, table_uri(table_name))
+        def get_table(table_name, options={})
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          response = call(:get, table_uri(table_name, query))
           results = Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)
           results[:updated] 
         end
@@ -72,7 +93,8 @@ module Azure
         #
         # Accepted key/value pairs in options parameter are:
         # :next_table_token   - String. A token used to enumerate the next page of results, when the list of tables is
-        #                         larger than a single operation can return at once. (optional)
+        #                       larger than a single operation can return at once. (optional)
+        # :timeout            - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179405
         #
@@ -85,7 +107,11 @@ module Azure
         #                       single operation to return 
         #
         def query_tables(options={})
-          uri = collection_uri(options[:next_table_token] ? { "NextTable" => options[:next_table_token] } : {})
+          query = { }
+          query["NextTable"] = options[:next_table_token] if options[:next_table_token]
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = collection_uri(query)
 
           response = call(:get, uri)
           entries = Azure::Storage::Table::Serialization.entries_from_feed_xml(response.body) || []
@@ -101,12 +127,19 @@ module Azure
         # Public: Gets the access control list (ACL) for the table.
         #
         # table_name    - String. The table name.
+        # options       - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout      - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159100
         #
         # Returns a list of Azure::Entity::SignedIdentifier instances
-        def get_table_acl(table_name)
-          response = call(:get, table_uri(table_name, {"comp"=>"acl"}))
+        def get_table_acl(table_name, options={})
+          query = { "comp" => "acl" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          response = call(:get, table_uri(table_name, query))
 
           signed_identifiers = []
           signed_identifiers = Azure::Storage::Table::Serialization.signed_identifiers_from_xml response.body unless response.body == nil or response.body.length < 1
@@ -115,17 +148,21 @@ module Azure
 
         # Public: Sets the access control list (ACL) for the table.
         #
-        # table_name          - String. The table name.
-        # options           - Hash. Optional parameters. 
+        # table_name           - String. The table name.
+        # options              - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are:
-        # :signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
+        # :signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances
+        # :timeout             - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159102
         #
         # Returns true on success
         def set_table_acl(table_name, options={})
-          uri = generate_uri(table_name, {"comp"=>"acl"})
+          query = { "comp" => "acl" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = generate_uri(table_name, query)
           body = nil
           body = Azure::Storage::Table::Serialization.signed_identifiers_to_xml options[:signed_identifiers] if options[:signed_identifiers] && options[:signed_identifiers].length > 0
 
@@ -135,21 +172,28 @@ module Azure
 
         # Public: Inserts new entity to the table.
         #
-        # table_name    - String. The table name
-        # partition_key - String. The partition key
-        # row_key       - String. The row key
-        # entity_values - Hash. A hash of the name/value pairs for the entity. 
+        # table_name           - String. The table name
+        # partition_key        - String. The partition key
+        # row_key              - String. The row key
+        # entity_values        - Hash. A hash of the name/value pairs for the entity. 
+        # options              - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout             - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179433
         #
         # Returns a Azure::Entity::Table::TableEntity
-        def insert_entity(table_name, partition_key, row_key, entity_values)
+        def insert_entity(table_name, partition_key, row_key, entity_values, options={})
           body = Azure::Storage::Table::Serialization.hash_to_entry_xml({ 
               "PartitionKey" => partition_key, 
               "RowKey" => row_key
             }.merge(entity_values) ).to_xml
 
-          response = call(:post, entities_uri(table_name), body)
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          response = call(:post, entities_uri(table_name, nil, nil, query), body)
           
           result = Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)
 
@@ -175,6 +219,7 @@ module Azure
         # :filter             - String. A filter expression (optional)
         # :top                - Integer. A limit for the number of results returned (optional)
         # :continuation_token - Hash. The continuation token.
+        # :timeout            - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179421
         #
@@ -188,8 +233,9 @@ module Azure
           query["$top"] = options[:top].to_s if options[:top] unless options[:partition_key] and options[:row_key]
           query["NextPartitionKey"] = options[:continuation_token][:next_partition_key] if options[:continuation_token] and options[:continuation_token][:next_partition_key]
           query["NextRowKey"] = options[:continuation_token][:next_row_key] if options[:continuation_token] and options[:continuation_token][:next_row_key]
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
 
-          uri = entities_uri(table_name, options[:partition_key], options[:row_key], options[:query])
+          uri = entities_uri(table_name, options[:partition_key], options[:row_key], query)
 
           response = call(:get, uri, nil, { "DataServiceVersion" => "2.0;NetFx"})
 
@@ -231,6 +277,7 @@ module Azure
         # :if_match              - String. A matching condition which is required for update (optional, Default="*")
         # :create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
         #                          that entity will be inserted. If false, the operation will fail. (optional, Default=false)
+        # :timeout               - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179427
         #
@@ -239,7 +286,10 @@ module Azure
           if_match = "*"
           if_match = options[:if_match] if options[:if_match]
 
-          uri = entities_uri(table_name, partition_key, row_key)
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = entities_uri(table_name, partition_key, row_key, query)
 
           headers = {}
           headers["If-Match"] = if_match || "*" unless options[:create_if_not_exists]
@@ -263,6 +313,7 @@ module Azure
         # :if_match              - String. A matching condition which is required for update (optional, Default="*")
         # :create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
         #                          that entity will be inserted. If false, the operation will fail. (optional, Default=false)
+        # :timeout               - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179392
         # 
@@ -271,7 +322,10 @@ module Azure
           if_match = "*"
           if_match = options[:if_match] if options[:if_match]
 
-          uri = entities_uri(table_name, partition_key, row_key)
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = entities_uri(table_name, partition_key, row_key, query)
 
           headers = { "X-HTTP-Method"=> "MERGE" }
           headers["If-Match"] = if_match || "*" unless options[:create_if_not_exists]
@@ -287,13 +341,18 @@ module Azure
         # table_name            - String. The table name
         # partition_key         - String. The partition key
         # row_key               - String. The row key
-        # entity_values         - Hash. A hash of the name/value pairs for the entity. 
+        # entity_values         - Hash. A hash of the name/value pairs for the entity.
+        # options               - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout              - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452241
         # 
         # Returns the ETag for the entity on success 
-        def insert_or_merge_entity(table_name, partition_key, row_key, entity_values)
-          merge_entity(table_name, partition_key, row_key, entity_values, { :create_if_not_exists => true})
+        def insert_or_merge_entity(table_name, partition_key, row_key, entity_values, options={})
+          options[:create_if_not_exists] = true
+          merge_entity(table_name, partition_key, row_key, entity_values, options)
         end
 
         # Public: Inserts or updates a new entity into a table.
@@ -301,13 +360,18 @@ module Azure
         # table_name            - String. The table name
         # partition_key         - String. The partition key
         # row_key               - String. The row key
-        # entity_values         - Hash. A hash of the name/value pairs for the entity. 
+        # entity_values         - Hash. A hash of the name/value pairs for the entity.
+        # options               - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout              - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452242
         #
         # Returns the ETag for the entity on success 
-        def insert_or_replace_entity(table_name, partition_key, row_key, entity_values)
-          update_entity(table_name, partition_key, row_key, entity_values, { :create_if_not_exists => true})
+        def insert_or_replace_entity(table_name, partition_key, row_key, entity_values, options={})
+          options[:create_if_not_exists] = true
+          update_entity(table_name, partition_key, row_key, entity_values, options)
         end
 
         # Public: Deletes an existing entity in the table.
@@ -319,6 +383,7 @@ module Azure
         #
         # Accepted key/value pairs in options parameter are:
         # :if_match      - String. A matching condition which is required for update (optional, Default="*")
+        # :timeout       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135727
         #
@@ -327,25 +392,36 @@ module Azure
           if_match = "*"
           if_match = options[:if_match] if options[:if_match]
 
-          call(:delete, entities_uri(table_name, partition_key, row_key), nil, { "If-Match"=> if_match })
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          call(:delete, entities_uri(table_name, partition_key, row_key, query), nil, { "If-Match"=> if_match })
           nil
         end
 
         # Public: Executes a batch of operations.
         #
         # batch         - The Azure::Storage::Table::Batch instance to execute.
+        # options       - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout      - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd894038
         #
         # Returns an array of results, one for each operation in the batch
-        def execute_batch(batch)
+        def execute_batch(batch, options={})
           headers = {
             "Content-Type"=> "multipart/mixed; boundary=#{batch.batch_id}",
             "Accept"=> 'application/atom+xml,application/xml',
             'Accept-Charset'=> 'UTF-8'
           }
+
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
           body = batch.to_body
-          response = call(:post, generate_uri("/$batch"), body, headers)
+          response = call(:post, generate_uri("/$batch", query), body, headers)
           batch.parse_response(response)
         end
 
@@ -354,10 +430,16 @@ module Azure
         # table_name    - String. The table name
         # partition_key - String. The partition key
         # row_key       - String. The row key
+        # options       - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout      - Integer. A timeout in seconds.
         #
         # Returns an Azure::Storage::Table::Entity instance on success
-        def get_entity(table_name, partition_key, row_key)
-          results, _ = query_entities(table_name, { :partition_key => partition_key, :row_key => row_key })
+        def get_entity(table_name, partition_key, row_key, options={})
+          options[:partition_key] = partition_key
+          options[:row_key] = row_key
+          results, _ = query_entities(table_name, options)
           results.length > 0 ? results[0] : nil
         end
 
