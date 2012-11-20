@@ -13,30 +13,27 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "integration/test_helper"
-require "azure/storage/blob/blob_service"
+require "azure/storage/table/table_service"
+require "azure/core/http/http_error"
 
-describe Azure::Storage::Blob::BlobService do
-  subject { Azure::Storage::Blob::BlobService.new }
-  
-  describe '#renew_lease' do
-    let(:container_name) { ContainerNameHelper.name }
-    let(:blob_name) { "blobname" }
-    let(:length) { 1024 }
-    before { 
-      subject.create_container container_name
-    }
+describe Azure::Storage::Table::TableService do
+  describe "#informative_errors_table" do
+    subject { Azure::Storage::Table::TableService.new }
+    let(:table_name){ TableNameHelper.name }
+    after { TableNameHelper.clean }
 
-    it 'should be possible to renew a lease' do
-      subject.create_page_blob container_name, blob_name, length
-
-      lease_id = subject.acquire_lease container_name, blob_name
-      lease_id.wont_be_nil
-
-      new_lease_id = subject.renew_lease container_name, blob_name, lease_id
-      new_lease_id.wont_be_nil
-
-      # renewing a lease returns the same lease id
-      new_lease_id.must_equal lease_id
+    it "exception message should be valid" do
+      subject.create_table(table_name)
+      
+      # creating the same table again should throw
+      begin 
+        subject.create_table(table_name)
+        flunk "No exception"
+      rescue Azure::Core::Http::HTTPError => error
+        error.status_code.must_equal 409
+        error.type.must_equal "TableAlreadyExists"
+        error.description.start_with?("The table specified already exists.").must_equal true
+      end
     end
   end
 end

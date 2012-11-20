@@ -46,7 +46,7 @@ describe Azure::Storage::Blob::BlobService do
 
       it 'gets metadata for a blob snapshot (when set during create)' do
 
-        blob = subject.get_blob_metadata container_name, blob_name, snapshot
+        blob = subject.get_blob_metadata container_name, blob_name, { :snapshot => snapshot }
 
         blob.snapshot.must_equal snapshot
         metadata.each { |k,v|
@@ -58,7 +58,7 @@ describe Azure::Storage::Blob::BlobService do
 
       it 'errors if the snapshot does not exist' do
         assert_raises(Azure::Core::Http::HTTPError) do
-          subject.get_blob_metadata container_name, blob_name, "invalidsnapshot"
+          subject.get_blob_metadata container_name, blob_name, { :snapshot => "invalidsnapshot" }
         end
       end
     end

@@ -99,16 +99,20 @@ module Azure
       
         # Public: Creates a new queue under the storage account.
         # 
-        # queue_name    - String. The queue name.
-        # metadata      - Hash. A hash of user defined metadata (optional)
+        # queue_name     - String. The queue name.
+        # options        - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :metadata      - Hash. A hash of user defined metadata (optional)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179342
         #
         # Returns true on success
-        def create_queue(queue_name, metadata=nil)
+        def create_queue(queue_name, options={})
           uri = queue_uri(queue_name)
           headers = {}
-          add_metadata_to_headers(metadata || {}, headers)
+          add_metadata_to_headers(options[:metadata] || {}, headers) if options[:metadata]
+
           call(:put, uri, nil, headers)
           nil
         end
@@ -182,16 +186,19 @@ module Azure
 
         # Public: Sets the access control list (ACL) for the queue.
         #
-        # queue_name          - String. The queue name.
-        # signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
+        # queue_name           - String. The queue name.
+        # options              - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159099
         #
         # Returns true on success
-        def set_queue_acl(queue_name, signed_identifiers=[])
+        def set_queue_acl(queue_name, options={})
           uri =queue_uri(queue_name, {"comp"=>"acl"})
           body = nil
-          body = Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && signed_identifiers.length > 0
+          body = Serialization.signed_identifiers_to_xml(options[:signed_identifiers]) if options[:signed_identifiers] && options[:signed_identifiers].length > 0
 
           call(:put, uri, body, {})
           nil
@@ -201,7 +208,9 @@ module Azure
         # 
         # queue_name    - String. The queue name.
         # message_text  - String. The message contents. Note that the message content must be in a format that may be encoded with UTF-8.
-        # options       - Hash. Optional parameters:
+        # options       - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
         #   :visibility_timeout   - Integer. Specifies the new visibility timeout value, in seconds, relative to server 
         #                           time. The new value must be larger than or equal to 0, and cannot be larger than 7 
         #                           days. The visibility timeout of a message cannot be set to a value later than the 
@@ -214,10 +223,10 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179346
         #
         # Returns true on success
-        def create_message(queue_name, message_text, options=nil)
+        def create_message(queue_name, message_text, options={})
           query = {}
 
-          if options
+          unless options.empty?
             query["visibilitytimeout"] = options[:visibility_timeout] if options[:visibility_timeout]
             query["messagettl"] = options[:message_ttl] if options[:message_ttl]
           end
@@ -287,12 +296,18 @@ module Azure
         # Public: Retrieves one or more messages from the front of the queue, without changing the message visibility.
         #
         # queue_name            - String. The name of the queue.
-        # number_of_messages    - Integer. How many messages to return. (optional, Default: 1)
+        # options               - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :number_of_messages    - Integer. How many messages to return. (optional, Default: 1)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179472
         #
         # Returns a list of Azure::Entity::Queue::Message instances
-        def peek_messages(queue_name, number_of_messages=1)
+        def peek_messages(queue_name, options={})
+          number_of_messages=1
+          number_of_messages = options[:number_of_messages] if options[:number_of_messages]
+
           uri = messages_uri(queue_name, { "peekonly" => "true", "numofmessages"=> number_of_messages.to_s})
           response = call(:get, uri)
 
@@ -304,12 +319,18 @@ module Azure
         #
         # queue_name            - String. The name of the queue.
         # visibility_timeout    - Integer. The new visibility timeout value, in seconds, relative to server time.
-        # number_of_messages    - Integer. How many messages to return. (optional, Default: 1)
+        # options               - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :number_of_messages    - Integer. How many messages to return. (optional, Default: 1)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179474
         #
         # Returns a list of Azure::Entity::Queue::Message instances
-        def list_messages(queue_name, visibility_timeout, number_of_messages=1)
+        def list_messages(queue_name, visibility_timeout, options={})
+          number_of_messages=1
+          number_of_messages = options[:number_of_messages] if options[:number_of_messages]
+
           uri = messages_uri(queue_name, { "visibilitytimeout" => visibility_timeout.to_s, "numofmessages"=> number_of_messages.to_s})
           response = call(:get, uri)
 

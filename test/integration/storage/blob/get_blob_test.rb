@@ -40,7 +40,7 @@ describe Azure::Storage::Blob::BlobService do
     end
 
   	it 'retrieves a range of data from the blob' do
-      blob, returned_content = subject.get_blob container_name, blob_name, 0, 511
+      blob, returned_content = subject.get_blob container_name, blob_name, { :start_range => 0, :end_range => 511 }
       returned_content.length.must_equal 512
       returned_content.must_equal content[0..511]
   	end
@@ -52,11 +52,11 @@ describe Azure::Storage::Blob::BlobService do
 	    1024.times.each{|i| content2 << "!" }
       subject.create_block_blob container_name, blob_name, content2, options
 
-      blob, returned_content = subject.get_blob container_name, blob_name, 0, 511
+      blob, returned_content = subject.get_blob container_name, blob_name, { :start_range => 0, :end_range => 511 }
       returned_content.length.must_equal 512
       returned_content.must_equal content2[0..511]
 
-      blob, returned_content = subject.get_blob container_name, blob_name, 0, 511, snapshot
+      blob, returned_content = subject.get_blob container_name, blob_name, { :start_range => 0, :end_range => 511, :snapshot => snapshot }
 
       returned_content.length.must_equal 512
       returned_content.must_equal content[0..511]

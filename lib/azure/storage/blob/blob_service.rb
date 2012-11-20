@@ -82,27 +82,30 @@ module Azure
 
         # Public: Create a new container 
         #
-        # name       - String. The name of the container
-        # metadata   - Hash. User defined metadata for the container (optional)
-        # visibility - String. One of "container" or "blob" (optional)
+        # name              - String. The name of the container
+        # options           - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :metadata         - Hash. User defined metadata for the container (optional)
+        # :visibility       - String. One of "container" or "blob" (optional)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179468.aspx
         #
         # Returns a Container
-        def create_container(name, metadata={}, visibility=nil)
+        def create_container(name, options={})
           uri = container_uri(name)
 
           headers = {}
-          
-          add_metadata_to_headers(metadata, headers) if metadata
-          
-          headers["x-ms-blob-public-access"] = visibility.to_s if visibility
+
+          add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
+
+          headers["x-ms-blob-public-access"] = options[:visibility].to_s if options[:visibility]
 
           response = call(:put, uri, nil, headers)
 
           container = Serialization.container_from_headers(response.headers)
           container.name = name
-          container.metadata = metadata
+          container.metadata = options[:metadata]
           container
         end
 
@@ -175,7 +178,10 @@ module Azure
         #
         # name                - String. The name of the container
         # visibility          - String. The container visibility
-        # signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances (optional) 
+        # options             - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances (optional) 
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179391.aspx
         #
@@ -183,11 +189,14 @@ module Azure
         #   container           - A Azure::Entity::Blob::Container instance
         #   signed_identifiers  - A list of Azure::Entity::SignedIdentifier instances
         #
-        def set_container_acl(name, visibility, signed_identifiers=nil)
+        def set_container_acl(name, visibility, options={})
           uri =container_uri(name, {"comp"=>"acl"})
 
           headers = {}
           headers["x-ms-blob-public-access"] = visibility if visibility && visibility.to_s.length > 0
+
+          signed_identifiers = nil
+          signed_identifiers = options[:signed_identifiers] if options[:signed_identifiers]
 
           body = nil
           body = Serialization.signed_identifiers_to_xml(signed_identifiers) if signed_identifiers && headers["x-ms-blob-public-access"] == "container"
@@ -388,7 +397,7 @@ module Azure
           headers["Content-Type"] = ""
 
           # set optional headers
-          unless options == nil
+          unless options.empty?
             headers["x-ms-if-sequence-number-lte"] = options[:if_sequence_number_lte] if options[:if_sequence_number_lte]
             headers["x-ms-if-sequence-number-lt"] = options[:if_sequence_number_lt] if options[:if_sequence_number_lt]
             headers["x-ms-if-sequence-number-eq"] = options[:if_sequence_number_eq] if options[:if_sequence_number_eq]
@@ -554,7 +563,7 @@ module Azure
           uri = blob_uri(container, blob, {"comp"=> "blocklist" })
 
           headers = {}
-          unless options == nil
+          unless options.empty?
             headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
             headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
             headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
@@ -580,22 +589,25 @@ module Azure
         #    These blocks are stored in Windows Azure in association with a blob, but do
         #    not yet form part of the blob.
         #
-        # container      - String. The container name.
-        # blob           - String. The blob name.
-        # blocklist_type - Symbol. One of :all, :committed, :uncommitted. Defaults to :all (optional)
-        # snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
+        # container       - String. The container name.
+        # blob            - String. The blob name.
+        # options         - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :blocklist_type - Symbol. One of :all, :committed, :uncommitted. Defaults to :all (optional)
+        # :snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
         #                  retrieve information from. (optional)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179400.aspx
         #
         # Returns a list of Azure::Entity::Blob::Block instances
-        def list_blob_blocks(container, blob, blocklist_type=nil, snapshot=nil)
-          
-          blocklist_type = blocklist_type || :all
-          
-          query = {"comp"=>"blocklist"}
-          query["snapshot"] = snapshot if snapshot
-          query["blocklisttype"] = blocklist_type.to_s
+        def list_blob_blocks(container, blob, options={})
+
+          options[:blocklist_type] = options[:blocklist_type] || :all
+
+          query = {"comp" => "blocklist"}
+          query["snapshot"] = options[:snapshot] if options[:snapshot]
+          query["blocklisttype"] = options[:blocklist_type].to_s if options[:blocklist_type]
           
           uri = blob_uri(container, blob, query)
 
@@ -608,21 +620,24 @@ module Azure
         #
         # container      - String. The container name.
         # blob           - String. The blob name.
-        # snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
+        # options        - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :snapshot      - String. An opaque DateTime value that specifies the blob snapshot to 
         #                  retrieve information from. (optional)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179394.aspx
         #
         # Returns a Blob
-        def get_blob_properties(container, blob, snapshot=nil)
-          uri = blob_uri(container, blob, snapshot ? { "snapshot" => snapshot } : {})
+        def get_blob_properties(container, blob, options={})
+          uri = blob_uri(container, blob, options[:snapshot] ? { "snapshot" => options[:snapshot] } : {})
 
           response = call(:get, uri)
 
           result = Serialization.blob_from_headers(response.headers)
 
           result.name = blob
-          result.snapshot = snapshot
+          result.snapshot = options[:snapshot]
 
           result
         end
@@ -631,15 +646,18 @@ module Azure
         #
         # container      - String. The container name.
         # blob           - String. The blob name.
-        # snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
+        # options        - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :snapshot      - String. An opaque DateTime value that specifies the blob snapshot to 
         #                  retrieve information from. (optional)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179350.aspx
         #
         # Returns a Blob
-        def get_blob_metadata(container, blob, snapshot=nil)
+        def get_blob_metadata(container, blob, options={})
           query = {"comp"=>"metadata"}
-          query["snapshot"] = snapshot if snapshot
+          query["snapshot"] = options[:snapshot] if options[:snapshot]
           
           uri = blob_uri(container, blob, query)
 
@@ -648,7 +666,7 @@ module Azure
           result = Serialization.blob_from_headers(response.headers)
 
           result.name = blob
-          result.snapshot = snapshot
+          result.snapshot = options[:snapshot]
 
           result
         end
@@ -656,11 +674,14 @@ module Azure
         # Public: Returns a list of active page ranges for a page blob. Active page ranges are 
         # those that have been populated with data.
         #
-        # container      - String. The container name.
-        # blob           - String. The blob name.
-        # start_range    - Integer. Position of first byte of first page. (optional)
-        # end_range      - Integer. Position of last byte of of last page. (optional)
-        # snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
+        # container       - String. The container name.
+        # blob            - String. The blob name.
+        # options         - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :start_range    - Integer. Position of first byte of first page. (optional)
+        # :end_range      - Integer. Position of last byte of of last page. (optional)
+        # :snapshot       - String. An opaque DateTime value that specifies the blob snapshot to 
         #                  retrieve information from. (optional)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691973.aspx
@@ -669,16 +690,16 @@ module Azure
         #
         #   eg. [ [0, 511], [512, 1024], ... ]
         #
-        def list_page_blob_ranges(container, blob, start_range=nil, end_range=nil, snapshot=nil)
+        def list_page_blob_ranges(container, blob, options={})
           query = {"comp"=>"pagelist"}
-          query.update({"snapshot" => snapshot}) if snapshot
+          query.update({"snapshot" => options[:snapshot]}) if options[:snapshot]
           
           uri = blob_uri(container, blob, query)
 
-          start_range = 0 if end_range and not start_range
+          options[:start_range] = 0 if options[:end_range] and not options[:start_range]
 
           headers = {}
-          headers = { "x-ms-range" =>  "bytes=#{start_range}-#{end_range}" } if start_range
+          headers = { "x-ms-range" =>  "bytes=#{options[:start_range]}-#{options[:end_range]}" } if options[:start_range]
 
           response = call(:get, uri, nil, headers)
 
@@ -764,7 +785,7 @@ module Azure
 
           headers = {}
 
-          unless options == nil
+          unless options.empty?
             headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
             headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
             headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
@@ -801,26 +822,29 @@ module Azure
 
         # Public: Reads or downloads a blob from the system, including its metadata and properties.
         #
-        # container       - String. The container name.
-        # blob            - String. The blob name.
-        # start_range     - Integer. Position of first byte of first page. (optional)
-        # end_range       - Integer. Position of last byte of of last page. (optional)
-        # snapshot        - String. An opaque DateTime value that specifies the blob snapshot to 
-        #                   retrieve information from. (optional)
-        # get_content_md5 - Boolean. Return the MD5 hash for the range. This option only valid if
-        #                   start_range and end_range are specified. (optional)
+        # container        - String. The container name.
+        # blob             - String. The blob name.
+        # options          - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :start_range     - Integer. Position of first byte of first page. (optional)
+        # :end_range       - Integer. Position of last byte of of last page. (optional)
+        # :snapshot        - String. An opaque DateTime value that specifies the blob snapshot to 
+        #                    retrieve information from. (optional)
+        # :get_content_md5 - Boolean. Return the MD5 hash for the range. This option only valid if
+        #                    start_range and end_range are specified. (optional)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179440.aspx
         #
         # Returns a blob and the blob body
-        def get_blob(container, blob, start_range=nil, end_range=nil, snapshot=nil, get_content_md5 = false)
-          uri = blob_uri(container, blob, snapshot ? {"snapshot" => snapshot} : {})
+        def get_blob(container, blob, options={})
+          uri = blob_uri(container, blob, options[:snapshot] ? {"snapshot" => options[:snapshot]} : {})
 
           headers = {}
-          start_range = 0 if end_range and not start_range
-          if start_range
-            headers["x-ms-range"] = "bytes=#{start_range}-#{end_range}"
-            headers["x-ms-range-get-content-md5"] = true if get_content_md5
+          options[:start_range] = 0 if options[:end_range] and not options[:start_range]
+          if options[:start_range]
+            headers["x-ms-range"] = "bytes=#{options[:start_range]}-#{options[:end_range]}"
+            headers["x-ms-range-get-content-md5"] = true if options[:get_content_md5]
           end
 
           response = call(:get, uri, nil, headers)
@@ -831,26 +855,31 @@ module Azure
 
         # Public: Deletes a blob or blob snapshot.
         #
-        # container         - String. The container name.
-        # blob              - String. The blob name.
-        # snapshot          - String. An opaque DateTime value that specifies the blob snapshot to 
-        #                     retrieve information from. (optional)
-        # delete_snapshots  - Symbol. Used to specify the scope of the delete operation for snapshots.
-        #                     This parameter is ignored if a blob does not have snapshots, or if a 
-        #                     snapshot is specified in the snapshot parameter. (optional)
+        # container          - String. The container name.
+        # blob               - String. The blob name.
+        # options            - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :snapshot          - String. An opaque DateTime value that specifies the blob snapshot to 
+        #                      retrieve information from. (optional)
+        # :delete_snapshots  - Symbol. Used to specify the scope of the delete operation for snapshots.
+        #                      This parameter is ignored if a blob does not have snapshots, or if a 
+        #                      snapshot is specified in the snapshot parameter. (optional)
         # 
-        #                     Possible values include:  
-        #                       :only     - Deletes only the snapshots for the blob, but leaves the blob
-        #                       :include  - Deletes the blob and all of the snapshots for the blob
+        #                      Possible values include:  
+        #                        :only     - Deletes only the snapshots for the blob, but leaves the blob
+        #                        :include  - Deletes the blob and all of the snapshots for the blob
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179440.aspx
         #
         # Returns true on success
-        def delete_blob(container, blob, snapshot=nil, delete_snapshots=:include)
-          uri = blob_uri(container, blob, snapshot ? {"snapshot" => snapshot} : {})
+        def delete_blob(container, blob, options={})
+          uri = blob_uri(container, blob, options[:snapshot] ? { "snapshot" => options[:snapshot] } : {})
+
+          options[:delete_snapshots] = :include if !options[:delete_snapshots]
 
           headers = {}
-          headers["x-ms-delete-snapshots"] = delete_snapshots.to_s if delete_snapshots && snapshot == nil
+          headers["x-ms-delete-snapshots"] = options[:delete_snapshots].to_s if options[:delete_snapshots] && options[:snapshot] == nil
 
           call(:delete, uri, nil, headers)
           nil
@@ -860,7 +889,9 @@ module Azure
         #
         # container       - String. The container name.
         # blob            - String. The blob name.
-        # options         - Hash. The optional parameters.
+        # options         - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
         #   :metadata               - Hash. Custom metadata values to store with the blob snapshot.
         #
         #   :if_modified_since      - A DateTime value. Specify this option to write the page only if the blob has been 
@@ -882,11 +913,11 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691971.aspx
         # 
         # Returns the snapshot DateTime value
-        def create_blob_snapshot(container, blob, options=nil)
+        def create_blob_snapshot(container, blob, options={})
           uri = blob_uri(container, blob, "comp"=>"snapshot")
 
           headers = {}
-          unless options == nil
+          unless options.empty?
             add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
 
             headers["If-Modified-Since"] = options[:if_modified_since] if options[:if_modified_since]
@@ -906,8 +937,10 @@ module Azure
         # source_blob           - String. The destination blob name to copy to.
         # destination_container - String. The source container name to copy from.
         # destination_blob      - String. The source blob name to copy from.
-        # source_snapshot       - String. A snapshot id for the source blob (optional)
-        # options               - Hash. The optional parameters.
+        # options               - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        #   :source_snapshot            - String. A snapshot id for the source blob
         #   :metadata                   - Hash. Custom metadata values to store with the copy. If this parameter is not 
         #                                 specified, the operation will copy the source blob metadata to the destination 
         #                                 blob. If this parameter is specified, the destination blob is created with the 
@@ -955,12 +988,12 @@ module Azure
         #                 "success" - The copy completed successfully.
         #                 "pending" - The copy is in progress. 
         #
-        def copy_blob(destination_container, destination_blob, source_container, source_blob, source_snapshot=nil, options=nil)
+        def copy_blob(destination_container, destination_blob, source_container, source_blob, options={})
           uri = blob_uri(destination_container, destination_blob)
           headers = {}
-          headers["x-ms-copy-source"] = blob_uri(source_container, source_blob, source_snapshot ? { "snapshot" => source_snapshot } : {}, true).to_s
+          headers["x-ms-copy-source"] = blob_uri(source_container, source_blob, options[:source_snapshot] ? { "snapshot" => options[:source_snapshot] } : {}, true).to_s
           
-          unless options == nil
+          unless options.empty?
             headers["If-Modified-Since"] = options[:dest_if_modified_since] if options[:dest_if_modified_since]
             headers["If-Unmodified-Since"] = options[:dest_if_unmodified_since] if options[:dest_if_unmodified_since]
             headers["If-Match"] = options[:dest_if_match] if options[:dest_if_match]
@@ -980,12 +1013,15 @@ module Azure
         # Public: Establishes an exclusive one-minute write lock on a blob. To write to a locked
         # blob, a client must provide a lease ID.
         #
-        # container         - String. The container name.
-        # blob              - String. The blob name.      
-        # duration          - Integer. Default -1. Specifies the duration of the lease, in seconds, or negative one (-1) 
-        #                     for a lease that never expires. A non-infinite lease can be between 15 and 60 seconds. (optional)
-        # proposed_lease_id - String. Proposed lease ID, in a GUID string format. The Blob service returns 400 (Invalid request)
-        #                     if the proposed lease ID is not in the correct format. (optional)
+        # container          - String. The container name.
+        # blob               - String. The blob name.     
+        # options            - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are: 
+        # :duration          - Integer. Default -1. Specifies the duration of the lease, in seconds, or negative one (-1) 
+        #                      for a lease that never expires. A non-infinite lease can be between 15 and 60 seconds. (optional)
+        # :proposed_lease_id - String. Proposed lease ID, in a GUID string format. The Blob service returns 400 (Invalid request)
+        #                      if the proposed lease ID is not in the correct format. (optional)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
         #
@@ -993,13 +1029,16 @@ module Azure
         # to write to the blob, or to renew, change, or release the lease. A successful renew operation also returns the lease id
         # for the active lease.
         #
-        def acquire_lease(container, blob, duration=-1, proposed_lease_id=nil)
+        def acquire_lease(container, blob, options={})
           uri = blob_uri(container, blob, "comp"=>"lease")
          
+          duration = -1
+          duration = options[:duration] if options[:duration]
+
           headers = {}
           headers["x-ms-lease-action"] = "acquire"
           headers["x-ms-lease-duration"] = duration.to_s if duration
-          headers["x-ms-proposed-lease-id"] = proposed_lease_id if proposed_lease_id
+          headers["x-ms-proposed-lease-id"] = options[:proposed_lease_id] if options[:proposed_lease_id]
 
           response = call(:put, uri, nil, headers)
           response.headers["x-ms-lease-id"]
@@ -1062,6 +1101,9 @@ module Azure
         # container         - String. The container name.
         # blob              - String. The blob name.
         # lease             - String. The lease id
+        # options           - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are: 
         # break_period      - Integer. The proposed duration of seconds that the lease should continue before it is 
         #                     broken, between 0 and 60 seconds. This break period is only used if it is shorter than 
         #                     the time remaining on the lease. If longer, the time remaining on the lease is used. A 
@@ -1076,13 +1118,13 @@ module Azure
         # Returns an Integer of the remaning lease time. This value is the approximate time remaining in the lease 
         # period, in seconds. This header is returned only for a successful request to break the lease. If the break 
         # is immediate, 0 is returned.
-        def break_lease(container, blob, lease, break_period=nil)
+        def break_lease(container, blob, lease, options={})
           uri = blob_uri(container, blob, "comp"=>"lease")
          
           headers = {}
           headers["x-ms-lease-action"] = "break"
           headers["x-ms-lease-id"] = lease
-          headers["x-ms-lease-break-period"] = break_period.to_s if break_period
+          headers["x-ms-lease-break-period"] = options[:break_period].to_s if options[:break_period]
 
           response = call(:put, uri, nil, headers)
           response.headers["x-ms-lease-time"].to_i

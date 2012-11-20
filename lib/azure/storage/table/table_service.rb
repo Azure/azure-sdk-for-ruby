@@ -68,7 +68,10 @@ module Azure
 
         # Public: Gets a list of all tables on the account.
         #
-        # continuation_token    - String. A token used to enumerate the next page of results, when the list of tables is
+        # options             - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :next_table_token   - String. A token used to enumerate the next page of results, when the list of tables is
         #                         larger than a single operation can return at once. (optional)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179405
@@ -81,8 +84,8 @@ module Azure
         #  continuation_token - String. A token used to retrieve subsequent pages, if the result set is too large for a 
         #                       single operation to return 
         #
-        def query_tables(next_table_token=nil)
-          uri = collection_uri(next_table_token ? { "NextTable" => next_table_token } : {})
+        def query_tables(options={})
+          uri = collection_uri(options[:next_table_token] ? { "NextTable" => options[:next_table_token] } : {})
 
           response = call(:get, uri)
           entries = Azure::Storage::Table::Serialization.entries_from_feed_xml(response.body) || []
@@ -113,15 +116,18 @@ module Azure
         # Public: Sets the access control list (ACL) for the table.
         #
         # table_name          - String. The table name.
-        # signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
+        # options           - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159102
         #
         # Returns true on success
-        def set_table_acl(table_name, signed_identifiers=[])
+        def set_table_acl(table_name, options={})
           uri = generate_uri(table_name, {"comp"=>"acl"})
           body = nil
-          body = Azure::Storage::Table::Serialization.signed_identifiers_to_xml signed_identifiers if signed_identifiers && signed_identifiers.length > 0
+          body = Azure::Storage::Table::Serialization.signed_identifiers_to_xml options[:signed_identifiers] if options[:signed_identifiers] && options[:signed_identifiers].length > 0
 
           call(:put, uri, body, {})
           nil
@@ -159,33 +165,37 @@ module Azure
 
         # Public: Queries entities for the given table name
         #
-        # table_name    - String. The table name
-        # partition_key - String. The partition key (optional)
-        # row_key       - String. The row key (optional)
-        # select        - Array. An array of property names to return (optional)
-        # filter        - String. A filter expression (optional)
-        # top           - Integer. A limit for the number of results returned (optional)
+        # table_name          - String. The table name
+        # options             - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :partition_key      - String. The partition key (optional)
+        # :row_key            - String. The row key (optional)
+        # :select             - Array. An array of property names to return (optional)
+        # :filter             - String. A filter expression (optional)
+        # :top                - Integer. A limit for the number of results returned (optional)
+        # :continuation_token - Hash. The continuation token.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179421
         #
         # Returns a tuple of (results, continuation_token) on success
         #   results             - List. A list of Azure::Entity::Table::TableEntity instances
         #   continuation_token  - Hash. A token used to retrieve subsequent pages, if the result set is too large for a single operation to return 
-        def query_entities(table_name, partition_key=nil, row_key=nil, select=nil, filter=nil, top=nil, continuation_token=nil)
+        def query_entities(table_name, options={})
           query ={}
-          query["$select"] = select.join ',' if select
-          query["$filter"] = filter if filter
-          query["$top"] = top.to_s if top unless partition_key and row_key
-          query["NextPartitionKey"] = continuation_token[:next_partition_key] if continuation_token and continuation_token[:next_partition_key]
-          query["NextRowKey"] = continuation_token[:next_row_key] if continuation_token and continuation_token[:next_row_key]
+          query["$select"] = options[:select].join ',' if options[:select]
+          query["$filter"] = options[:filter] if options[:filter]
+          query["$top"] = options[:top].to_s if options[:top] unless options[:partition_key] and options[:row_key]
+          query["NextPartitionKey"] = options[:continuation_token][:next_partition_key] if options[:continuation_token] and options[:continuation_token][:next_partition_key]
+          query["NextRowKey"] = options[:continuation_token][:next_row_key] if options[:continuation_token] and options[:continuation_token][:next_row_key]
 
-          uri = entities_uri(table_name, partition_key, row_key, query)
+          uri = entities_uri(table_name, options[:partition_key], options[:row_key], options[:query])
 
           response = call(:get, uri, nil, { "DataServiceVersion" => "2.0;NetFx"})
 
           entities = []
 
-          results = (partition_key and row_key) ? [Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)] : Azure::Storage::Table::Serialization.entries_from_feed_xml(response.body)
+          results = (options[:partition_key] and options[:row_key]) ? [Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)] : Azure::Storage::Table::Serialization.entries_from_feed_xml(response.body)
           
           results.each do |result|
             entity = Entity.new do |e|
@@ -211,22 +221,28 @@ module Azure
         # Public: Updates an existing entity in a table. The Update Entity operation replaces 
         # the entire entity and can be used to remove properties.
         #
-        # table_name            - String. The table name
-        # partition_key         - String. The partition key
-        # row_key               - String. The row key
-        # entity_values         - Hash. A hash of the name/value pairs for the entity. 
-        # if_match              - String. A matching condition which is required for update (optional, Default="*")
-        # create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
-        #                         that entity will be inserted. If false, the operation will fail. (optional, Default=false)
+        # table_name             - String. The table name
+        # partition_key          - String. The partition key
+        # row_key                - String. The row key
+        # entity_values          - Hash. A hash of the name/value pairs for the entity.
+        # options                - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :if_match              - String. A matching condition which is required for update (optional, Default="*")
+        # :create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
+        #                          that entity will be inserted. If false, the operation will fail. (optional, Default=false)
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179427
         #
         # Returns the ETag for the entity on success 
-        def update_entity(table_name, partition_key, row_key, entity_values, if_match="*", create_if_not_exists=false)
+        def update_entity(table_name, partition_key, row_key, entity_values, options={})
+          if_match = "*"
+          if_match = options[:if_match] if options[:if_match]
+
           uri = entities_uri(table_name, partition_key, row_key)
 
           headers = {}
-          headers["If-Match"] = if_match || "*" unless create_if_not_exists
+          headers["If-Match"] = if_match || "*" unless options[:create_if_not_exists]
 
           body = Azure::Storage::Table::Serialization.hash_to_entry_xml(entity_values).to_xml
 
@@ -237,22 +253,28 @@ module Azure
         # Public: Updates an existing entity by updating the entity's properties. This operation
         # does not replace the existing entity, as the update_entity operation does.
         #
-        # table_name            - String. The table name
-        # partition_key         - String. The partition key
-        # row_key               - String. The row key
-        # entity_values         - Hash. A hash of the name/value pairs for the entity. 
-        # if_match              - String. A matching condition which is required for update (optional, Default="*")
-        # create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
-        #                         that entity will be inserted. If false, the operation will fail. (optional, Default=false)
+        # table_name             - String. The table name
+        # partition_key          - String. The partition key
+        # row_key                - String. The row key
+        # entity_values          - Hash. A hash of the name/value pairs for the entity.
+        # options                - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :if_match              - String. A matching condition which is required for update (optional, Default="*")
+        # :create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
+        #                          that entity will be inserted. If false, the operation will fail. (optional, Default=false)
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179392
         # 
         # Returns the ETag for the entity on success 
-        def merge_entity(table_name, partition_key, row_key, entity_values, if_match="*", create_if_not_exists=false)
+        def merge_entity(table_name, partition_key, row_key, entity_values, options={})
+          if_match = "*"
+          if_match = options[:if_match] if options[:if_match]
+
           uri = entities_uri(table_name, partition_key, row_key)
 
           headers = { "X-HTTP-Method"=> "MERGE" }
-          headers["If-Match"] = if_match || "*" unless create_if_not_exists
+          headers["If-Match"] = if_match || "*" unless options[:create_if_not_exists]
 
           body = Azure::Storage::Table::Serialization.hash_to_entry_xml(entity_values).to_xml
 
@@ -266,14 +288,12 @@ module Azure
         # partition_key         - String. The partition key
         # row_key               - String. The row key
         # entity_values         - Hash. A hash of the name/value pairs for the entity. 
-        # if_match              - String. A matching condition which is required for update (optional, Default="*")
-        # create_if_not_exists  - Boolean. A matching condition which is required for update (optional, Default=false)
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452241
         # 
         # Returns the ETag for the entity on success 
         def insert_or_merge_entity(table_name, partition_key, row_key, entity_values)
-          merge_entity(table_name, partition_key, row_key, entity_values, nil, true)
+          merge_entity(table_name, partition_key, row_key, entity_values, { :create_if_not_exists => true})
         end
 
         # Public: Inserts or updates a new entity into a table.
@@ -287,21 +307,27 @@ module Azure
         #
         # Returns the ETag for the entity on success 
         def insert_or_replace_entity(table_name, partition_key, row_key, entity_values)
-          update_entity(table_name, partition_key, row_key, entity_values, nil, true)
+          update_entity(table_name, partition_key, row_key, entity_values, { :create_if_not_exists => true})
         end
 
         # Public: Deletes an existing entity in the table.
         #
-        # table_name    - String. The table name
-        # partition_key - String. The partition key
-        # row_key       - String. The row key
-        # if_match      - String. A matching condition which is required for update (optional, Default="*")
+        # table_name     - String. The table name
+        # partition_key  - String. The partition key
+        # row_key        - String. The row key
+        # options        - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :if_match      - String. A matching condition which is required for update (optional, Default="*")
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135727
         #
         # Returns true on success
-        def delete_entity(table_name, partition_key, row_key, if_match=nil)
-          call(:delete, entities_uri(table_name, partition_key, row_key), nil, {"If-Match"=> if_match || "*"})
+        def delete_entity(table_name, partition_key, row_key, options={})
+          if_match = "*"
+          if_match = options[:if_match] if options[:if_match]
+
+          call(:delete, entities_uri(table_name, partition_key, row_key), nil, { "If-Match"=> if_match })
           nil
         end
 
@@ -331,7 +357,7 @@ module Azure
         #
         # Returns an Azure::Storage::Table::Entity instance on success
         def get_entity(table_name, partition_key, row_key)
-          results, _ = query_entities(table_name, partition_key, row_key)
+          results, _ = query_entities(table_name, { :partition_key => partition_key, :row_key => row_key })
           results.length > 0 ? results[0] : nil
         end
 

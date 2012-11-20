@@ -51,7 +51,7 @@ describe Azure::Storage::Blob::BlobService do
       
       it 'gets properties for a blob snapshot' do
         snapshot = subject.create_blob_snapshot container_name, blob_name
-        blob = subject.get_blob_properties container_name, blob_name, snapshot
+        blob = subject.get_blob_properties container_name, blob_name, { :snapshot => snapshot }
 
         blob.snapshot.must_equal snapshot
         blob.properties.content_type.must_equal options[:blob_content_type]
@@ -61,7 +61,7 @@ describe Azure::Storage::Blob::BlobService do
 
       it 'errors if the snapshot does not exist' do
         assert_raises(Azure::Core::Http::HTTPError) do
-          subject.get_blob_properties container_name, blob_name, "invalidsnapshot"
+          subject.get_blob_properties container_name, blob_name, { :snapshot => "invalidsnapshot" }
         end
       end
     end

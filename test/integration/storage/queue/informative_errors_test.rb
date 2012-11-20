@@ -14,29 +14,29 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 require "azure/storage/blob/blob_service"
+require "azure/core/http/http_error"
 
-describe Azure::Storage::Blob::BlobService do
-  subject { Azure::Storage::Blob::BlobService.new }
+require "integration/test_helper"
+require "azure/storage/queue/queue_service"
+require "azure/core/http/http_error"
+
+describe Azure::Storage::Queue::QueueService do
+  subject { Azure::Storage::Queue::QueueService.new }
   
-  describe '#renew_lease' do
-    let(:container_name) { ContainerNameHelper.name }
-    let(:blob_name) { "blobname" }
-    let(:length) { 1024 }
-    before { 
-      subject.create_container container_name
-    }
+  describe '#informative_errors_queue' do
+    let(:queue_name){ QueueNameHelper.name }
+    after { QueueNameHelper.clean }
 
-    it 'should be possible to renew a lease' do
-      subject.create_page_blob container_name, blob_name, length
-
-      lease_id = subject.acquire_lease container_name, blob_name
-      lease_id.wont_be_nil
-
-      new_lease_id = subject.renew_lease container_name, blob_name, lease_id
-      new_lease_id.wont_be_nil
-
-      # renewing a lease returns the same lease id
-      new_lease_id.must_equal lease_id
+    it "exception message should be valid" do
+      # getting metadata from a non existent should throw
+      begin 
+        subject.get_queue_metadata queue_name
+        flunk "No exception"
+      rescue Azure::Core::Http::HTTPError => error
+        error.status_code.must_equal 404
+        error.type.must_equal "QueueNotFound"
+        error.description.start_with?("The specified queue does not exist.").must_equal true
+      end
     end
   end
 end
