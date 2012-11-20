@@ -1086,24 +1086,24 @@ describe Azure::Storage::Blob::BlobService do
         describe "when blocklist_type is provided" do
           it "modifies the request query when the value is :all" do
             query["blocklisttype"] = "all"
-            subject.list_blob_blocks container_name, blob_name, :all
+            subject.list_blob_blocks container_name, blob_name, { :blocklist_type => :all }
           end
 
           it "modifies the request query when the value is :uncommitted" do
             query["blocklisttype"] = "uncommitted"
-            subject.list_blob_blocks container_name, blob_name, :uncommitted
+            subject.list_blob_blocks container_name, blob_name, { :blocklist_type => :uncommitted }
           end
 
           it "modifies the request query when the value is :committed" do
             query["blocklisttype"] = "committed"
-            subject.list_blob_blocks container_name, blob_name, :committed
+            subject.list_blob_blocks container_name, blob_name, { :blocklist_type => :committed }
           end
         end
 
         describe "when snapshot is provided" do
           it "modifies the request query with the provided value" do
             query["snapshot"] = "snapshot-id"
-            subject.list_blob_blocks container_name, blob_name, nil, "snapshot-id"
+            subject.list_blob_blocks container_name, blob_name, { :snapshot => "snapshot-id" }
           end
         end
       end
@@ -1169,14 +1169,14 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the request headers with the desired range" do
             subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-            subject.list_page_blob_ranges container_name, blob_name, start_range, end_range
+            subject.list_page_blob_ranges container_name, blob_name, { :start_range => start_range, :end_range => end_range }
           end
         end
 
         describe "when snapshot is provided" do
           it "modifies the request query with the provided value" do
             query["snapshot"] = "snapshot-id"
-            subject.list_page_blob_ranges container_name, blob_name, nil, nil, "snapshot-id"
+            subject.list_page_blob_ranges container_name, blob_name, { :snapshot => "snapshot-id" }
           end
         end
       end
@@ -1315,11 +1315,11 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the blob uri query string with the snapshot" do
             subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
-            subject.get_blob_properties container_name, blob_name, snapshot
+            subject.get_blob_properties container_name, blob_name, { :snapshot => snapshot }
           end
 
           it "sets the snapshot value on the returned blob" do
-            result = subject.get_blob_properties container_name, blob_name, snapshot
+            result = subject.get_blob_properties container_name, blob_name, { :snapshot => snapshot }
             result.snapshot.must_equal snapshot
           end
         end
@@ -1363,11 +1363,11 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the blob uri query string with the snapshot" do
             subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
-            subject.get_blob_metadata container_name, blob_name, snapshot
+            subject.get_blob_metadata container_name, blob_name, { :snapshot => snapshot }
           end
 
           it "sets the snapshot value on the returned blob" do
-            result = subject.get_blob_metadata container_name, blob_name, snapshot
+            result = subject.get_blob_metadata container_name, blob_name, { :snapshot => snapshot }
             result.snapshot.must_equal snapshot
           end
         end
@@ -1774,7 +1774,7 @@ describe Azure::Storage::Blob::BlobService do
 
             it "modifies the headers to include the proposed lease id" do
               subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-              subject.acquire_lease container_name, blob_name, default_duration, proposed_lease_id
+              subject.acquire_lease container_name, blob_name, { :duration => default_duration, :proposed_lease_id => proposed_lease_id }
             end
           end
         end
@@ -1859,7 +1859,7 @@ describe Azure::Storage::Blob::BlobService do
 
             it "modifies the request headers to include a break period" do
               subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-              subject.break_lease container_name, blob_name, lease_id, break_period
+              subject.break_lease container_name, blob_name, lease_id, { :break_period => break_period }
             end
           end
         end
