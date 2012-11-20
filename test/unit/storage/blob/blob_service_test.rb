@@ -186,12 +186,12 @@ describe Azure::Storage::Blob::BlobService do
           request_headers = { "x-ms-blob-public-access" => visibility }
 
           subject.stubs(:container_uri).with(container_name).returns(uri)
-          serialization.stubs(:container_from_headers).with(response_headers).returns(container)        
+          serialization.stubs(:container_from_headers).with(response_headers).returns(container)
           subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
         }
 
         it "adds visibility to the request headers" do
-          subject.create_container container_name, nil, visibility
+          subject.create_container container_name, { :visibility => visibility }
         end
       end
     end
