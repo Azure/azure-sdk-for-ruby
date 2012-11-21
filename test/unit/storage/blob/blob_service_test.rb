@@ -1441,7 +1441,7 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the request headers with the desired range" do
             subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-            subject.get_blob container_name, blob_name, start_range, end_range
+            subject.get_blob container_name, blob_name, { :start_range => start_range, :end_range => end_range }
           end
         end
 
@@ -1535,12 +1535,12 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the blob uri query string with the snapshot" do
             subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
-            subject.delete_blob container_name, blob_name, source_snapshot, { :delete_snapshots => delete_snapshots }
+            subject.delete_blob container_name, blob_name, { :snapshot => source_snapshot, :delete_snapshots => delete_snapshots }
           end
 
           it "does not include a x-ms-delete-snapshots header" do
             subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-            subject.delete_blob container_name, blob_name, source_snapshot, { :delete_snapshots => delete_snapshots }
+            subject.delete_blob container_name, blob_name, { :snapshot => source_snapshot, :delete_snapshots => delete_snapshots }
           end
         end
       end
@@ -1763,7 +1763,7 @@ describe Azure::Storage::Blob::BlobService do
 
             it "modifies the headers to include the provided duration value" do
               subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-              subject.acquire_lease container_name, blob_name, duration
+              subject.acquire_lease container_name, blob_name, { :duration => duration }
             end
           end
 
