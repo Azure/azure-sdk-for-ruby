@@ -191,7 +191,7 @@ describe Azure::Storage::Blob::BlobService do
         }
 
         it "adds visibility to the request headers" do
-          subject.create_container container_name, nil, visibility
+          subject.create_container container_name, { :visibility => visibility }
         end
       end
     end
@@ -398,11 +398,11 @@ describe Azure::Storage::Blob::BlobService do
           
           it "serializes the request contents" do
             serialization.expects(:signed_identifiers_to_xml).with(signed_identifiers).returns(request_body)
-            subject.set_container_acl container_name, visibility, signed_identifiers
+            subject.set_container_acl container_name, visibility, { :signed_identifiers => signed_identifiers }
           end
 
           it "returns a container and an ACL" do
-            returned_container, returned_acl = subject.set_container_acl container_name, visibility, signed_identifiers
+            returned_container, returned_acl = subject.set_container_acl container_name, visibility, { :signed_identifier => signed_identifiers }
             
             returned_container.must_be_kind_of Azure::Storage::Blob::Container
             returned_container.name.must_equal container_name
