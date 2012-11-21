@@ -330,7 +330,7 @@ module Azure
         # additional error information indicating that the cause of the failure was a mismatched pop receipt.
         #
         def delete_message(queue_name, message_id, pop_receipt, options={})
-          query = { "popreceipt" => "popreceipt" } # TODO: check if this is correct
+          query = { "popreceipt" => pop_receipt }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
           uri = message_uri(queue_name, message_id, query)
