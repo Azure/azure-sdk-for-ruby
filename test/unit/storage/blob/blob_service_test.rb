@@ -129,13 +129,13 @@ describe Azure::Storage::Blob::BlobService do
 
       let(:method) { :put }
       before { 
-        subject.stubs(:container_uri).with(container_name).returns(uri)
+        subject.stubs(:container_uri).with(container_name, {}).returns(uri)
         subject.stubs(:call).with(method, uri, nil, {}).returns(response)
         serialization.stubs(:container_from_headers).with(response_headers).returns(container)
       }
 
       it "assembles a URI for the request" do
-        subject.expects(:container_uri).with(container_name).returns(uri)
+        subject.expects(:container_uri).with(container_name, {}).returns(uri)
         subject.create_container container_name
       end
 
@@ -169,8 +169,8 @@ describe Azure::Storage::Blob::BlobService do
             "x-ms-meta-MetadataKey1" => "MetaDataValue1"
           }
 
-          subject.stubs(:container_uri).with(container_name).returns(uri)
-          serialization.stubs(:container_from_headers).with(response_headers).returns(container)        
+          subject.stubs(:container_uri).with(container_name, {}).returns(uri)
+          serialization.stubs(:container_from_headers).with(response_headers).returns(container)
           subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
         }
 
@@ -185,7 +185,7 @@ describe Azure::Storage::Blob::BlobService do
         before { 
           request_headers = { "x-ms-blob-public-access" => visibility }
 
-          subject.stubs(:container_uri).with(container_name).returns(uri)
+          subject.stubs(:container_uri).with(container_name, {}).returns(uri)
           serialization.stubs(:container_from_headers).with(response_headers).returns(container)
           subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
         }
@@ -200,12 +200,12 @@ describe Azure::Storage::Blob::BlobService do
       let(:method) { :delete }
       before {
         response.stubs(:success?).returns(true)
-        subject.stubs(:container_uri).with(container_name).returns(uri)
+        subject.stubs(:container_uri).with(container_name, {}).returns(uri)
         subject.stubs(:call).with(method, uri).returns(response)
       }
       
       it "assembles a URI for the request" do
-        subject.expects(:container_uri).with(container_name).returns(uri)
+        subject.expects(:container_uri).with(container_name, {}).returns(uri)
         subject.delete_container container_name
       end
 
@@ -227,13 +227,13 @@ describe Azure::Storage::Blob::BlobService do
       before {
         container.properties = container_properties
         response_headers = {}
-        subject.stubs(:container_uri).with(container_name).returns(uri)
+        subject.stubs(:container_uri).with(container_name, {}).returns(uri)
         subject.stubs(:call).with(method, uri).returns(response)
         serialization.stubs(:container_from_headers).with(response_headers).returns(container)
       }
 
       it "assembles a URI for the request" do
-        subject.expects(:container_uri).with(container_name).returns(uri)
+        subject.expects(:container_uri).with(container_name, {}).returns(uri)
         subject.get_container_properties container_name
       end
 
@@ -596,13 +596,13 @@ describe Azure::Storage::Blob::BlobService do
         }
 
         before {
-          subject.stubs(:blob_uri).with(container_name, blob_name).returns(uri)
+          subject.stubs(:blob_uri).with(container_name, blob_name, {}).returns(uri)
           subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
           serialization.stubs(:blob_from_headers).with(response_headers).returns(blob)
         }
 
         it "assembles a URI for the request" do
-          subject.expects(:blob_uri).with(container_name, blob_name).returns(uri)
+          subject.expects(:blob_uri).with(container_name, blob_name, {}).returns(uri)
           subject.create_page_blob container_name, blob_name, blob_length
         end
 
@@ -887,13 +887,13 @@ describe Azure::Storage::Blob::BlobService do
         }
 
         before {
-          subject.stubs(:blob_uri).with(container_name, blob_name).returns(uri)
+          subject.stubs(:blob_uri).with(container_name, blob_name, {}).returns(uri)
           subject.stubs(:call).with(method, uri, content, request_headers).returns(response)
           serialization.stubs(:blob_from_headers).with(response_headers).returns(blob)
         }
 
         it "assembles a URI for the request" do
-          subject.expects(:blob_uri).with(container_name, blob_name).returns(uri)
+          subject.expects(:blob_uri).with(container_name, blob_name, {}).returns(uri)
           subject.create_block_blob container_name, blob_name, content
         end
 
@@ -1627,13 +1627,13 @@ describe Azure::Storage::Blob::BlobService do
           response_headers["x-ms-copy-id"] = copy_id
           response_headers["x-ms-copy-status"] = copy_status
 
-          subject.stubs(:blob_uri).with(container_name, blob_name).returns(uri)
+          subject.stubs(:blob_uri).with(container_name, blob_name, {}).returns(uri)
           subject.stubs(:blob_uri).with(source_container_name, source_blob_name, query, true).returns(source_uri)
           subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
         }
       
         it "assembles a URI for the request" do
-          subject.expects(:blob_uri).with(container_name, blob_name).returns(uri)
+          subject.expects(:blob_uri).with(container_name, blob_name, {}).returns(uri)
           subject.copy_blob container_name, blob_name, source_container_name, source_blob_name
         end
 
