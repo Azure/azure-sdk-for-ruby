@@ -186,12 +186,12 @@ describe Azure::Storage::Blob::BlobService do
           request_headers = { "x-ms-blob-public-access" => visibility }
 
           subject.stubs(:container_uri).with(container_name).returns(uri)
-          serialization.stubs(:container_from_headers).with(response_headers).returns(container)        
+          serialization.stubs(:container_from_headers).with(response_headers).returns(container)
           subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
         }
 
         it "adds visibility to the request headers" do
-          subject.create_container container_name, nil, visibility
+          subject.create_container container_name, { :visibility => visibility }
         end
       end
     end
@@ -398,12 +398,12 @@ describe Azure::Storage::Blob::BlobService do
           
           it "serializes the request contents" do
             serialization.expects(:signed_identifiers_to_xml).with(signed_identifiers).returns(request_body)
-            subject.set_container_acl container_name, visibility, signed_identifiers
+            subject.set_container_acl container_name, visibility, { :signed_identifiers => signed_identifiers }
           end
 
           it "returns a container and an ACL" do
-            returned_container, returned_acl = subject.set_container_acl container_name, visibility, signed_identifiers
-            
+            returned_container, returned_acl = subject.set_container_acl container_name, visibility, { :signed_identifiers => signed_identifiers }
+
             returned_container.must_be_kind_of Azure::Storage::Blob::Container
             returned_container.name.must_equal container_name
             returned_container.visibility.must_equal visibility
@@ -1086,24 +1086,24 @@ describe Azure::Storage::Blob::BlobService do
         describe "when blocklist_type is provided" do
           it "modifies the request query when the value is :all" do
             query["blocklisttype"] = "all"
-            subject.list_blob_blocks container_name, blob_name, :all
+            subject.list_blob_blocks container_name, blob_name, { :blocklist_type => :all }
           end
 
           it "modifies the request query when the value is :uncommitted" do
             query["blocklisttype"] = "uncommitted"
-            subject.list_blob_blocks container_name, blob_name, :uncommitted
+            subject.list_blob_blocks container_name, blob_name, { :blocklist_type => :uncommitted }
           end
 
           it "modifies the request query when the value is :committed" do
             query["blocklisttype"] = "committed"
-            subject.list_blob_blocks container_name, blob_name, :committed
+            subject.list_blob_blocks container_name, blob_name, { :blocklist_type => :committed }
           end
         end
 
         describe "when snapshot is provided" do
           it "modifies the request query with the provided value" do
             query["snapshot"] = "snapshot-id"
-            subject.list_blob_blocks container_name, blob_name, nil, "snapshot-id"
+            subject.list_blob_blocks container_name, blob_name, { :snapshot => "snapshot-id" }
           end
         end
       end
@@ -1169,14 +1169,14 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the request headers with the desired range" do
             subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-            subject.list_page_blob_ranges container_name, blob_name, start_range, end_range
+            subject.list_page_blob_ranges container_name, blob_name, { :start_range => start_range, :end_range => end_range }
           end
         end
 
         describe "when snapshot is provided" do
           it "modifies the request query with the provided value" do
             query["snapshot"] = "snapshot-id"
-            subject.list_page_blob_ranges container_name, blob_name, nil, nil, "snapshot-id"
+            subject.list_page_blob_ranges container_name, blob_name, { :snapshot => "snapshot-id" }
           end
         end
       end
@@ -1315,11 +1315,11 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the blob uri query string with the snapshot" do
             subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
-            subject.get_blob_properties container_name, blob_name, snapshot
+            subject.get_blob_properties container_name, blob_name, { :snapshot => snapshot }
           end
 
           it "sets the snapshot value on the returned blob" do
-            result = subject.get_blob_properties container_name, blob_name, snapshot
+            result = subject.get_blob_properties container_name, blob_name, { :snapshot => snapshot }
             result.snapshot.must_equal snapshot
           end
         end
@@ -1363,11 +1363,11 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the blob uri query string with the snapshot" do
             subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
-            subject.get_blob_metadata container_name, blob_name, snapshot
+            subject.get_blob_metadata container_name, blob_name, { :snapshot => snapshot }
           end
 
           it "sets the snapshot value on the returned blob" do
-            result = subject.get_blob_metadata container_name, blob_name, snapshot
+            result = subject.get_blob_metadata container_name, blob_name, { :snapshot => snapshot }
             result.snapshot.must_equal snapshot
           end
         end
@@ -1410,7 +1410,7 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the blob uri query string with the snapshot" do
             subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
-            subject.get_blob container_name, blob_name, nil, nil, source_snapshot
+            subject.get_blob container_name, blob_name, { :snapshot => source_snapshot }
           end
         end
 
@@ -1441,7 +1441,7 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the request headers with the desired range" do
             subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-            subject.get_blob container_name, blob_name, start_range, end_range
+            subject.get_blob container_name, blob_name, { :start_range => start_range, :end_range => end_range }
           end
         end
 
@@ -1458,14 +1458,14 @@ describe Azure::Storage::Blob::BlobService do
 
             it "modifies the request headers to include the x-ms-range-get-content-md5 header" do
               subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-              subject.get_blob container_name, blob_name, start_range, end_range, nil, true
+              subject.get_blob container_name, blob_name, { :start_range => start_range, :end_range => end_range, :get_content_md5 => true }
             end
           end
 
           describe "and a range is NOT specified" do
             it "does not modify the request headers" do
               subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-              subject.get_blob container_name, blob_name, nil, nil, nil, true
+              subject.get_blob container_name, blob_name, { :get_content_md5 => true }
             end
           end
         end
@@ -1501,17 +1501,17 @@ describe Azure::Storage::Blob::BlobService do
           let(:source_snapshot){ "source-snapshot" }
           before {
             request_headers.delete "x-ms-delete-snapshots"
-            query["snapshot"]=source_snapshot 
+            query["snapshot"] = source_snapshot 
           }
 
           it "modifies the blob uri query string with the snapshot" do
             subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
-            subject.delete_blob container_name, blob_name, source_snapshot
+            subject.delete_blob container_name, blob_name, { :snapshot => source_snapshot }
           end
 
           it "does not include a x-ms-delete-snapshots header" do
             subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-            subject.delete_blob container_name, blob_name, source_snapshot
+            subject.delete_blob container_name, blob_name, { :snapshot => source_snapshot }
           end
         end
 
@@ -1521,7 +1521,7 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the request headers with the provided value" do
             subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-            subject.delete_blob container_name, blob_name, nil, delete_snapshots
+            subject.delete_blob container_name, blob_name, { :delete_snapshots => delete_snapshots }
           end
         end
 
@@ -1535,12 +1535,12 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the blob uri query string with the snapshot" do
             subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
-            subject.delete_blob container_name, blob_name, source_snapshot, delete_snapshots
+            subject.delete_blob container_name, blob_name, { :snapshot => source_snapshot, :delete_snapshots => delete_snapshots }
           end
 
           it "does not include a x-ms-delete-snapshots header" do
             subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-            subject.delete_blob container_name, blob_name, source_snapshot, delete_snapshots
+            subject.delete_blob container_name, blob_name, { :snapshot => source_snapshot, :delete_snapshots => delete_snapshots }
           end
         end
       end
@@ -1661,7 +1661,7 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the source blob uri query string with the snapshot" do
             subject.expects(:blob_uri).with(source_container_name, source_blob_name, query, true).returns(source_uri)
-            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, source_snapshot
+            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, { :source_snapshot => source_snapshot }
           end
         end
 
@@ -1672,53 +1672,53 @@ describe Azure::Storage::Blob::BlobService do
 
           it "modifies the request headers when provided a :dest_if_modified_since value" do
             request_headers["If-Modified-Since"] = "ims-value"
-            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, nil, { :dest_if_modified_since => "ims-value" }
+            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, { :dest_if_modified_since => "ims-value" }
           end
           
           it "modifies the request headers when provided a :dest_if_unmodified_since value" do
             request_headers["If-Unmodified-Since"] = "iums-value"
-            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, nil, { :dest_if_unmodified_since => "iums-value" }
+            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, { :dest_if_unmodified_since => "iums-value" }
           end
 
           it "modifies the request headers when provided a :dest_if_match value" do
             request_headers["If-Match"] = "im-value"
-            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, nil, { :dest_if_match => "im-value" }
+            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, { :dest_if_match => "im-value" }
           end
 
           it "modifies the request headers when provided a :dest_if_none_match value" do
             request_headers["If-None-Match"] = "inm-value"
-            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, nil, { :dest_if_none_match => "inm-value" }
+            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, { :dest_if_none_match => "inm-value" }
           end
 
           it "modifies the request headers when provided a :source_if_modified_since value" do
             request_headers["x-ms-source-if-modified-since"] = "ims-value"
-            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, nil, { :source_if_modified_since => "ims-value" }
+            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, { :source_if_modified_since => "ims-value" }
           end
           
           it "modifies the request headers when provided a :source_if_unmodified_since value" do
             request_headers["x-ms-source-if-unmodified-since"] = "iums-value"
-            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, nil, { :source_if_unmodified_since => "iums-value" }
+            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, { :source_if_unmodified_since => "iums-value" }
           end
 
           it "modifies the request headers when provided a :source_if_match value" do
             request_headers["x-ms-source-if-match"] = "im-value"
-            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, nil, { :source_if_match => "im-value" }
+            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, { :source_if_match => "im-value" }
           end
 
           it "modifies the request headers when provided a :source_if_none_match value" do
             request_headers["x-ms-source-if-none-match"] = "inm-value"
-            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, nil, { :source_if_none_match => "inm-value" }
+            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, { :source_if_none_match => "inm-value" }
           end
 
           it "modifies the request headers when provided a :metadata value" do
             request_headers["x-ms-meta-MetadataKey"] = "MetaDataValue"
             request_headers["x-ms-meta-MetadataKey1"] = "MetaDataValue1"
             options = { :metadata => { "MetadataKey" => "MetaDataValue", "MetadataKey1" => "MetaDataValue1"} }
-            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, nil, options
+            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, options
           end
 
           it "does not modify the request headers when provided an unknown value" do
-            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, nil, { :unknown_key => "some_value" }
+            subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, { :unknown_key => "some_value" }
           end
         end
       end
@@ -1763,7 +1763,7 @@ describe Azure::Storage::Blob::BlobService do
 
             it "modifies the headers to include the provided duration value" do
               subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-              subject.acquire_lease container_name, blob_name, duration
+              subject.acquire_lease container_name, blob_name, { :duration => duration }
             end
           end
 
@@ -1774,7 +1774,7 @@ describe Azure::Storage::Blob::BlobService do
 
             it "modifies the headers to include the proposed lease id" do
               subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-              subject.acquire_lease container_name, blob_name, default_duration, proposed_lease_id
+              subject.acquire_lease container_name, blob_name, { :duration => default_duration, :proposed_lease_id => proposed_lease_id }
             end
           end
         end
@@ -1859,7 +1859,7 @@ describe Azure::Storage::Blob::BlobService do
 
             it "modifies the request headers to include a break period" do
               subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-              subject.break_lease container_name, blob_name, lease_id, break_period
+              subject.break_lease container_name, blob_name, lease_id, { :break_period => break_period }
             end
           end
         end
