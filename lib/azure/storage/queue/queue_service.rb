@@ -32,24 +32,20 @@ module Azure
         # Accepted key/value pairs in options parameter are:
         # :prefix           - String. Filters the results to return only containers 
         #                     whose name begins with the specified prefix. (optional)
-        #
         # :marker           - String. An identifier the specifies the portion of the 
         #                     list to be returned. This value comes from the property
         #                     Azure::Entity::Blob::EnumerationResults.marker when there 
         #                     are more containers available than were returned. The 
         #                     marker value may then be used here to request the next set
         #                     of list items. (optional)
-        #
         # :max_results      - Integer. Specifies the maximum number of containers to return. 
         #                     If max_results is not specified, or is a value greater than 
         #                     5,000, the server will return up to 5,000 items. If it is set 
         #                     to a value less than or equal to zero, the server will return 
         #                     status code 400 (Bad Request). (optional)
-        #
-        # :timeout          - Integer. A timeout in seconds. (optional)
-        #
         # :metadata         - Boolean. Specifies wether or not to return the container metadata.
         #                     (optional, Default=false)
+        # :timeout          - Integer. A timeout in seconds.
         #
         # NOTE: Metadata requested with the :metadata parameter must have been stored in
         # accordance with the naming restrictions imposed by the 2009-09-19 version of the Blob 
@@ -64,7 +60,7 @@ module Azure
         # 
         # Returns an Azure::Entity::Blob::QueueEnumerationResults
         def list_queues(options={})
-          query = {}
+          query = { }
           query["prefix"] = options[:prefix] if options[:prefix]
           query["marker"] = options[:marker] if options[:marker]
           query["maxresults"] = options[:max_results].to_s if options[:max_results]
@@ -87,12 +83,18 @@ module Azure
         # messages have been deleted.
         # 
         # queue_name   - String. The name of the queue.
+        # options           - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout          - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179454
         # 
         # Returns true on success
-        def clear_messages(queue_name)
-          uri = messages_uri(queue_name)
+        def clear_messages(queue_name, options={})
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+          uri = messages_uri(queue_name, query)
           call(:delete, uri)
           nil
         end
@@ -103,14 +105,19 @@ module Azure
         # options        - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are:
-        # :metadata      - Hash. A hash of user defined metadata (optional)
+        # :metadata      - Hash. A hash of user defined metadata.
+        # :timeout       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179342
         #
         # Returns true on success
         def create_queue(queue_name, options={})
-          uri = queue_uri(queue_name)
-          headers = {}
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = queue_uri(queue_name, query)
+
+          headers = { }
           add_metadata_to_headers(options[:metadata] || {}, headers) if options[:metadata]
 
           call(:put, uri, nil, headers)
@@ -119,13 +126,21 @@ module Azure
 
         # Public: Deletes a queue.
         # 
-        # queue_name    - String. The queue name.
+        # queue_name     - String. The queue name.
+        # options        - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179436
         #
         # Returns true on success
-        def delete_queue(queue_name)
-          uri = queue_uri(queue_name)
+        def delete_queue(queue_name, options={})
+          query = { }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = queue_uri(queue_name, query)
+
           call(:delete, uri)
           nil
         end
@@ -133,6 +148,10 @@ module Azure
         # Public: Returns queue properties, including user-defined metadata.
         # 
         # queue_name    - String. The queue name.
+        # options        - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179384
         #
@@ -141,8 +160,12 @@ module Azure
         #                                 lower than the actual number of messages in the queue, but could be higher.
         #   metadata                    - Hash. The queue metadata (Default: {})
         #
-        def get_queue_metadata(queue_name)
-          uri = queue_uri(queue_name, { "comp" => "metadata" })
+        def get_queue_metadata(queue_name, options={})
+          query = { "comp" => "metadata" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = queue_uri(queue_name, query)
+
           response = call(:get, uri)
 
           approximate_messages_count = response.headers["x-ms-approximate-messages-count"]
@@ -160,8 +183,12 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179348
         #
         # Returns true on success
-        def set_queue_metadata(queue_name, metadata)
-          uri = queue_uri(queue_name, { "comp" => "metadata" })
+        def set_queue_metadata(queue_name, metadata, options={})
+          query = { "comp" => "metadata" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = queue_uri(queue_name, query)
+
           headers ={}
           add_metadata_to_headers(metadata || {}, headers)
 
@@ -171,13 +198,20 @@ module Azure
 
         # Public: Gets the access control list (ACL) for the queue.
         #
-        # queue_name    - String. The queue name.
+        # queue_name     - String. The queue name.
+        # options        - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159101
         #
         # Returns a list of Azure::Entity::SignedIdentifier instances
-        def get_queue_acl(queue_name)
-          response = call(:get, queue_uri(queue_name, {"comp"=>"acl"}))
+        def get_queue_acl(queue_name, options={})
+          query = { "comp" => "acl" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          response = call(:get, queue_uri(queue_name, query))
 
           signed_identifiers = []
           signed_identifiers = Serialization.signed_identifiers_from_xml(response.body) unless response.body == nil or response.body.length < 1
@@ -191,12 +225,16 @@ module Azure
         #
         # Accepted key/value pairs in options parameter are:
         # :signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
+        # :timeout             - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159099
         #
         # Returns true on success
         def set_queue_acl(queue_name, options={})
-          uri =queue_uri(queue_name, {"comp"=>"acl"})
+          query = { "comp" => "acl" }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri =queue_uri(queue_name, query)
           body = nil
           body = Serialization.signed_identifiers_to_xml(options[:signed_identifiers]) if options[:signed_identifiers] && options[:signed_identifiers].length > 0
 
@@ -211,24 +249,25 @@ module Azure
         # options       - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are:
-        #   :visibility_timeout   - Integer. Specifies the new visibility timeout value, in seconds, relative to server 
+        # :visibility_timeout     - Integer. Specifies the new visibility timeout value, in seconds, relative to server 
         #                           time. The new value must be larger than or equal to 0, and cannot be larger than 7 
         #                           days. The visibility timeout of a message cannot be set to a value later than the 
         #                           expiry time. :visibility_timeout should be set to a value smaller than the 
         #                           time-to-live value. If not specified, the default value is 0.
-        # 
-        #   :message_ttl          - Integer. Specifies the time-to-live interval for the message, in seconds. The maximum 
+        # :message_ttl            - Integer. Specifies the time-to-live interval for the message, in seconds. The maximum 
         #                           time-to-live allowed is 7 days. If not specified, the default time-to-live is 7 days.
+        # :timeout                - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179346
         #
         # Returns true on success
         def create_message(queue_name, message_text, options={})
-          query = {}
+          query = { }
 
           unless options.empty?
             query["visibilitytimeout"] = options[:visibility_timeout] if options[:visibility_timeout]
             query["messagettl"] = options[:message_ttl] if options[:message_ttl]
+            query["timeout"] = options[:timeout].to_s if options[:timeout]
           end
 
           uri = messages_uri(queue_name, query)
@@ -244,6 +283,10 @@ module Azure
         # message_id    - String. The id of the message.
         # pop_receipt   - String. The valid pop receipt value returned from an earlier call to the Get Messages or 
         #                 Update Message operation.
+        # options       - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout      - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179347
         #
@@ -286,8 +329,11 @@ module Azure
         # If a message with a matching pop receipt is not found, the service returns status code 400 (Bad Request), with 
         # additional error information indicating that the cause of the failure was a mismatched pop receipt.
         #
-        def delete_message(queue_name, message_id, pop_receipt)
-          uri = message_uri(queue_name, message_id, { "popreceipt" => pop_receipt })
+        def delete_message(queue_name, message_id, pop_receipt, options={})
+          query = { "popreceipt" => "popreceipt" } # TODO: check if this is correct
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = message_uri(queue_name, message_id, query)
 
           call(:delete, uri)
           nil
@@ -299,7 +345,8 @@ module Azure
         # options               - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are:
-        # :number_of_messages    - Integer. How many messages to return. (optional, Default: 1)
+        # :number_of_messages   - Integer. How many messages to return. (optional, Default: 1)
+        # :timeout              - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179472
         #
@@ -308,7 +355,10 @@ module Azure
           number_of_messages=1
           number_of_messages = options[:number_of_messages] if options[:number_of_messages]
 
-          uri = messages_uri(queue_name, { "peekonly" => "true", "numofmessages"=> number_of_messages.to_s})
+          query = { "peekonly" => "true", "numofmessages"=> number_of_messages.to_s }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = messages_uri(queue_name, query)
           response = call(:get, uri)
 
           messages = Serialization.queue_messages_from_xml(response.body)
@@ -322,7 +372,8 @@ module Azure
         # options               - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are:
-        # :number_of_messages    - Integer. How many messages to return. (optional, Default: 1)
+        # :number_of_messages   - Integer. How many messages to return. (optional, Default: 1)
+        # :timeout              - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179474
         #
@@ -331,7 +382,10 @@ module Azure
           number_of_messages=1
           number_of_messages = options[:number_of_messages] if options[:number_of_messages]
 
-          uri = messages_uri(queue_name, { "visibilitytimeout" => visibility_timeout.to_s, "numofmessages"=> number_of_messages.to_s})
+          query = { "visibilitytimeout" => visibility_timeout.to_s, "numofmessages"=> number_of_messages.to_s }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = messages_uri(queue_name, query)
           response = call(:get, uri)
 
           messages = Serialization.queue_messages_from_xml(response.body)
@@ -340,13 +394,17 @@ module Azure
 
         # Public: Adds a message to the queue and optionally sets a visibility timeout for the message.
         # 
-        # queue_name    - String. The name of the queue.
-        # message_id    - String. The id of the message.
-        # pop_receipt   - String. The valid pop receipt value returned from an earlier call to the Get Messages or 
-        #                 Update Message operation.
-        # message_text  - String. The message contents. Note that the message content must be in a format that may 
-        #                 be encoded with UTF-8.
-        # visibility_timeout    - Integer. The new visibility timeout value, in seconds, relative to server time.
+        # queue_name         - String. The name of the queue.
+        # message_id         - String. The id of the message.
+        # pop_receipt        - String. The valid pop receipt value returned from an earlier call to the Get Messages or 
+        #                      Update Message operation.
+        # message_text       - String. The message contents. Note that the message content must be in a format that may 
+        #                      be encoded with UTF-8.
+        # visibility_timeout - Integer. The new visibility timeout value, in seconds, relative to server time.
+        # options            - Hash. Optional parameters. 
+        #
+        # Accepted key/value pairs in options parameter are:
+        # :timeout           - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452234
         #
@@ -380,8 +438,11 @@ module Azure
         # extend the message’s invisibility until it is processed. If the worker role were to fail during processing, 
         # eventually the message would become visible again and another worker role could process it.
         #
-        def update_message(queue_name, message_id, pop_receipt, message_text, visibility_timeout)
-          uri = message_uri(queue_name, message_id, { "visibilitytimeout" => visibility_timeout.to_s, "popreceipt" => pop_receipt})
+        def update_message(queue_name, message_id, pop_receipt, message_text, visibility_timeout, options={})
+          query = { "visibilitytimeout" => visibility_timeout.to_s, "popreceipt" => pop_receipt }
+          query["timeout"] = options[:timeout].to_s if options[:timeout]
+
+          uri = message_uri(queue_name, message_id, query)
           body = Serialization.message_to_xml(message_text)
 
           response = call(:put, uri, body, {})
