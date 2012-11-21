@@ -40,6 +40,11 @@ module Azure
         # Returns a String
         attr :description
 
+        # Public: Detail of the error
+        #
+        # Returns a String
+        attr :detail
+
         # Public: Initialize an error
         #
         # http_response - An Azure::Core::HttpResponse
@@ -63,8 +68,11 @@ module Azure
             # FIXME: For some reason document.find_first("code") (or "//code", etc.)
             # and document.find_first("message") return nil, while this works.
             document.root.children.each do |child|
-              @type = child.content if child.name == "code"
-              @description = child.content if child.name == "message"
+              @type = child.content if child.name.casecmp("code") == 0
+              @description = child.content if child.name.casecmp("message") == 0
+
+              # service bus uses detail instead of message
+              @detail = child.content if child.name.casecmp("detail") == 0
             end
           else
             @type = "Unknown"
