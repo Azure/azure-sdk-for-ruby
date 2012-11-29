@@ -82,13 +82,13 @@ module Azure
 
         # Public: Create a new container 
         #
-        # name              - String. The name of the container
-        # options           - Hash. Optional parameters. 
+        # name                       - String. The name of the container
+        # options                    - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are:
-        # :metadata         - Hash. User defined metadata for the container (optional)
-        # :visibility       - String. One of "container" or "blob" (optional)
-        # :timeout          - Integer. A timeout in seconds.
+        # :metadata                  - Hash. User defined metadata for the container (optional)
+        # :public_access_level       - String. One of "container" or "blob" (optional)
+        # :timeout                   - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179468.aspx
         #
@@ -103,7 +103,7 @@ module Azure
 
           add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
 
-          headers["x-ms-blob-public-access"] = options[:visibility].to_s if options[:visibility]
+          headers["x-ms-blob-public-access"] = options[:public_access_level].to_s if options[:public_access_level]
 
           response = call(:put, uri, nil, headers)
 
@@ -207,13 +207,13 @@ module Azure
 
         # Public: Sets the ACL and any container-level access policies for the container.
         #
-        # name                - String. The name of the container
-        # visibility          - String. The container visibility
-        # options             - Hash. Optional parameters. 
+        # name                         - String. The name of the container
+        # public_access_level          - String. The container public access level
+        # options                      - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are:
-        # :signed_identifiers - Array. A list of Azure::Entity::SignedIdentifier instances (optional) 
-        # :timeout            - Integer. A timeout in seconds.
+        # :signed_identifiers          - Array. A list of Azure::Entity::SignedIdentifier instances (optional) 
+        # :timeout                     - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179391.aspx
         #
@@ -221,13 +221,13 @@ module Azure
         #   container           - A Azure::Entity::Blob::Container instance
         #   signed_identifiers  - A list of Azure::Entity::SignedIdentifier instances
         #
-        def set_container_acl(name, visibility, options={})
+        def set_container_acl(name, public_access_level, options={})
           query = { "comp" => "acl" }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
           uri =container_uri(name, query)
 
           headers = { }
-          headers["x-ms-blob-public-access"] = visibility if visibility && visibility.to_s.length > 0
+          headers["x-ms-blob-public-access"] = public_access_level if public_access_level && public_access_level.to_s.length > 0
 
           signed_identifiers = nil
           signed_identifiers = options[:signed_identifiers] if options[:signed_identifiers]
@@ -239,7 +239,7 @@ module Azure
 
           container = Serialization.container_from_headers(response.headers)
           container.name = name
-          container.visibility = visibility
+          container.public_access_level = public_access_level
 
           return container, signed_identifiers || []
 

@@ -66,7 +66,7 @@ module Azure
         def self.container_from_headers(headers)
           Container.new do |container|
             container.properties = container_properties_from_headers(headers)
-            container.visibility = visibility_from_headers(headers)
+            container.public_access_level = public_access_level_from_headers(headers)
             container.metadata = metadata_from_headers(headers)
           end
         end
@@ -94,7 +94,7 @@ module Azure
           end
         end
 
-        def self.visibility_from_headers(headers)
+        def self.public_access_level_from_headers(headers)
           headers["x-ms-blob-public-access"]
         end
 

@@ -12,5 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-source "https://rubygems.org"
-gemspec
+source :rubygems
+# gemspec
+
+gem "backports"
+gem "nokogiri",   "~> 1.5"
+gem "mime-types", "~> 1.0"
+gem "libxml-ruby" 
+gem "extlib_lite"
+gem "json"
+
+gem "rake"
+gem "minitest", "~> 3.0"
+gem "mocha"
+gem "yard"
+gem "yard-tomdoc"
+gem "redcarpet"
+gem "turn"

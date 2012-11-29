@@ -23,7 +23,7 @@ describe Azure::Storage::Blob::Serialization do
   need_tests_for "container_from_headers"
   need_tests_for "container_properties_from_xml"
   need_tests_for "container_properties_from_headers"
-  need_tests_for "visibility_from_headers"
+  need_tests_for "public_access_level_from_headers"
   need_tests_for "blob_enumeration_results_from_xml"
   need_tests_for "blob_from_xml"
   need_tests_for "blob_from_headers"

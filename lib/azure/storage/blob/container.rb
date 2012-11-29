@@ -28,7 +28,7 @@ module Azure
         attr_accessor :name
         attr_accessor :properties
         attr_accessor :metadata
-        attr_accessor :visibility
+        attr_accessor :public_access_level
       end
     end
   end

@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.license     = 'Apache License, Version 2.0'
   s.files       = `git ls-files`.split("\n")
 
-  s.required_ruby_version = '>= 1.8.7'
+  s.required_ruby_version = '>= 1.9.3'
 
   s.add_runtime_dependency "backports"
   s.add_runtime_dependency("nokogiri",   "~> 1.5")
