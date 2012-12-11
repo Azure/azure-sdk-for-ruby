@@ -370,7 +370,7 @@ module Azure
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
           uri = blob_uri(container, blob, query)
-          
+
           headers = { }
 
           # set x-ms-blob-type to PageBlob
@@ -1280,6 +1280,7 @@ module Azure
         #
         # Returns a URI.
         def blob_uri(container_name, blob_name, query={}, no_timeout=false)
+          blob_name = URI.escape(blob_name, Regexp.new("[^#/\\-_.!~a-zA-Z\\d]"))
           generate_uri(File.join(container_name, blob_name), query, no_timeout)
         end
       end
