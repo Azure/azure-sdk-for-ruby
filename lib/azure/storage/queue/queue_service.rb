@@ -451,44 +451,48 @@ module Azure
           return new_pop_receipt, time_next_visible
         end
 
-        # Public: Generate the URI for the collection of queues.
+        # Protected: Generate the URI for the collection of queues.
         #
         # query      - A Hash of query parameters (default: {}).
         #
         # Returns a URI.
+        protected
         def collection_uri(query={})
           query.update({:comp => 'list', :include => 'metadata'})
           generate_uri("", query)
         end
 
-        # Public: Generate the URI for a given queue.
+        # Protected: Generate the URI for a given queue.
         #
         # queue_name - The name of the queue.
         # query      - A Hash of query parameters (default: {}).
         #
         # Returns a URI.
+        protected
         def queue_uri(queue_name, query={})
           return queue_name if queue_name.kind_of? ::URI
           generate_uri(queue_name, query)
         end
 
-        # Public: Generate the messages URI for the given queue.
+        # Protected: Generate the messages URI for the given queue.
         #
         # queue_name - The name of the queue.
         # query      - A Hash of query parameters (default: {}).
         #
         # Returns a URI.
+        protected
         def messages_uri(queue_name, query={})
           generate_uri("#{queue_name}/messages", query)
         end
 
-        # Public: Generate the URI for a given message
+        # Protected: Generate the URI for a given message
         #
         # queue_name - The name of the queue.
         # message_id - The id of the message.
         # query      - A Hash of query parameters (default: {}).
         #
         # Returns a URI.
+        protected
         def message_uri(queue_name, message_id, query={})
           generate_uri("#{queue_name}/messages/#{message_id}", query)
         end

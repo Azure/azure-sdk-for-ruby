@@ -1247,31 +1247,33 @@ module Azure
           response.headers["x-ms-lease-time"].to_i
         end
 
-        # Public: Generate the URI for the collection of containers.
+        # Protected: Generate the URI for the collection of containers.
         #
         # query - A Hash of key => value query parameters.
         # host  - The host of the API.
         #
         # Returns a URI.
+        protected
         def containers_uri(query={})
           query = { "comp" => "list" }.merge(query)
           generate_uri("/", query)
         end
 
-        # Public: Generate the URI for a specific container.
+        # Protected: Generate the URI for a specific container.
         #
         # name  - The container name. If this is a URI, we just return this.
         # query - A Hash of key => value query parameters.
         # host  - The host of the API.
         #
         # Returns a URI.
+        protected
         def container_uri(name, query={})
           return name if name.kind_of? ::URI
           query = { "restype" => "container" }.merge(query)
           generate_uri(name, query)
         end
 
-        # Public: Generate the URI for a specific Blob.
+        # Protected: Generate the URI for a specific Blob.
         #
         # container_name - String representing the name of the container.
         # blob_name      - String representing the name of the blob.
@@ -1279,6 +1281,7 @@ module Azure
         # host           - The host of the API.
         #
         # Returns a URI.
+        protected
         def blob_uri(container_name, blob_name, query={}, no_timeout=false)
           blob_name = URI.escape(blob_name, Regexp.new("[^#/\\-_.!~a-zA-Z\\d]"))
           generate_uri(File.join(container_name, blob_name), query, no_timeout)

@@ -443,24 +443,26 @@ module Azure
           results.length > 0 ? results[0] : nil
         end
 
-        # Public: Generate the URI for the collection of tables.
+        # Protected: Generate the URI for the collection of tables.
         #
         # Returns a URI
+        protected
         def collection_uri(query={})
           generate_uri("Tables", query)
         end
 
-        # Public: Generate the URI for a specific table.
+        # Protected: Generate the URI for a specific table.
         #
         # name - The table name. If this is a URI, we just return this
         #
         # Returns a URI
+        protected
         def table_uri(name, query={})
           return name if name.kind_of? ::URI
           generate_uri("Tables('#{name}')", query)
         end
 
-        # Public: Generate the URI for an entity or group of entities in a table.
+        # Protected: Generate the URI for an entity or group of entities in a table.
         # If both the 'partition_key' and 'row_key' are specified, then the URI
         # will match the entity under those specific keys.
         #
@@ -469,6 +471,7 @@ module Azure
         # row_key       - The desired row key (optional)
         #
         # Returns a URI
+        protected
         def entities_uri(table_name, partition_key=nil, row_key=nil, query={})
           return table_name if table_name.kind_of? ::URI
 
