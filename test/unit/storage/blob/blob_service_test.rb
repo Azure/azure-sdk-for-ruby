@@ -179,19 +179,19 @@ describe Azure::Storage::Blob::BlobService do
         end
       end
 
-      describe "when optional visiblity parameter is used" do
-        let(:visibility) { "visibility-value" }
+      describe "when optional public_access_level parameter is used" do
+        let(:public_access_level) { "public-access-level-value" }
 
         before { 
-          request_headers = { "x-ms-blob-public-access" => visibility }
+          request_headers = { "x-ms-blob-public-access" => public_access_level }
 
           subject.stubs(:container_uri).with(container_name, {}).returns(uri)
           serialization.stubs(:container_from_headers).with(response_headers).returns(container)
           subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
         }
 
-        it "adds visibility to the request headers" do
-          subject.create_container container_name, { :visibility => visibility }
+        it "adds public_access_level to the request headers" do
+          subject.create_container container_name, { :public_access_level => public_access_level }
         end
       end
     end
@@ -339,11 +339,11 @@ describe Azure::Storage::Blob::BlobService do
 
     describe "#set_container_acl" do
       let(:method) { :put }
-      let(:visibility) { "any-visibility" }
+      let(:public_access_level) { "any-public-access-level" }
 
       before {
         query.update({"comp"=>"acl"})
-        request_headers["x-ms-blob-public-access"] = visibility
+        request_headers["x-ms-blob-public-access"] = public_access_level
 
         response.stubs(:headers).returns({}) 
         subject.stubs(:container_uri).with(container_name, query).returns(uri)
@@ -353,39 +353,39 @@ describe Azure::Storage::Blob::BlobService do
 
       it "assembles a URI for the request" do
         subject.expects(:container_uri).with(container_name, query).returns(uri)
-        subject.set_container_acl container_name, visibility
+        subject.set_container_acl container_name, public_access_level
       end
 
       it "calls StorageService#call with the prepared request" do
         subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-        subject.set_container_acl container_name, visibility
+        subject.set_container_acl container_name, public_access_level
       end
 
 
       it "deserializes the response" do
         serialization.expects(:container_from_headers).with(response_headers).returns(container)
-        subject.set_container_acl container_name, visibility
+        subject.set_container_acl container_name, public_access_level
       end
 
       it "returns a container and an ACL" do
-        returned_container, returned_acl = subject.set_container_acl container_name, visibility
+        returned_container, returned_acl = subject.set_container_acl container_name, public_access_level
         
         returned_container.must_be_kind_of Azure::Storage::Blob::Container
         returned_container.name.must_equal container_name
-        returned_container.visibility.must_equal visibility
+        returned_container.public_access_level.must_equal public_access_level
 
         returned_acl.must_be_kind_of Array
       end
       
-      describe "when the visiblity parameter is set to 'container'" do
-        let(:visibility) { "container"}
+      describe "when the public_access_level parameter is set to 'container'" do
+        let(:public_access_level) { "container"}
         before { 
-          request_headers["x-ms-blob-public-access"] = visibility
+          request_headers["x-ms-blob-public-access"] = public_access_level
         }
 
         it "sets the x-ms-blob-public-access header" do
           subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-          subject.set_container_acl container_name, visibility
+          subject.set_container_acl container_name, public_access_level
         end
 
         describe "when a signed_identifiers value is provided" do
@@ -398,15 +398,15 @@ describe Azure::Storage::Blob::BlobService do
           
           it "serializes the request contents" do
             serialization.expects(:signed_identifiers_to_xml).with(signed_identifiers).returns(request_body)
-            subject.set_container_acl container_name, visibility, { :signed_identifiers => signed_identifiers }
+            subject.set_container_acl container_name, public_access_level, { :signed_identifiers => signed_identifiers }
           end
 
           it "returns a container and an ACL" do
-            returned_container, returned_acl = subject.set_container_acl container_name, visibility, { :signed_identifiers => signed_identifiers }
+            returned_container, returned_acl = subject.set_container_acl container_name, public_access_level, { :signed_identifiers => signed_identifiers }
 
             returned_container.must_be_kind_of Azure::Storage::Blob::Container
             returned_container.name.must_equal container_name
-            returned_container.visibility.must_equal visibility
+            returned_container.public_access_level.must_equal public_access_level
 
             returned_acl.must_be_kind_of Array
             returned_acl[0].must_be_kind_of Azure::Storage::Service::SignedIdentifier
@@ -414,27 +414,27 @@ describe Azure::Storage::Blob::BlobService do
         end
       end
 
-      describe "when the visiblity parameter is set to nil" do
-        let(:visibility) { nil }
+      describe "when the public_access_level parameter is set to nil" do
+        let(:public_access_level) { nil }
         before { 
           request_headers.delete "x-ms-blob-public-access"
         }
 
         it "sets the x-ms-blob-public-access header" do
           subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-          subject.set_container_acl container_name, visibility
+          subject.set_container_acl container_name, public_access_level
         end
       end
 
-      describe "when the visiblity parameter is set to empty string" do
-        let(:visibility) { "" }
+      describe "when the public_access_level parameter is set to empty string" do
+        let(:public_access_level) { "" }
         before { 
           request_headers.delete "x-ms-blob-public-access"
         }
 
         it "sets the x-ms-blob-public-access header" do
           subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-          subject.set_container_acl container_name, visibility
+          subject.set_container_acl container_name, public_access_level
         end
       end
     end

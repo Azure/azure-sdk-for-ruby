@@ -14,7 +14,7 @@
 #--------------------------------------------------------------------------
 require "backports"
 require "minitest/autorun"
-require "mocha"
+require "mocha/setup"
 
 # Attempt to load turn to show formatted test results
 begin

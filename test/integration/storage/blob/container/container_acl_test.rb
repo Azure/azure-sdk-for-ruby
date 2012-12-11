@@ -22,7 +22,7 @@ describe Azure::Storage::Blob::BlobService do
   
   describe '#set/get_container_acl' do
     let(:container_name) { ContainerNameHelper.name }
-    let(:visibility) { :container.to_s }
+    let(:public_access_level) { :container.to_s }
     let(:identifiers) {
       identifier = Azure::Storage::Service::SignedIdentifier.new
       identifier.id = "MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI="
@@ -36,10 +36,10 @@ describe Azure::Storage::Blob::BlobService do
     }
 
     it 'sets and gets the ACL for the container' do
-      container, acl = subject.set_container_acl container_name, visibility, { :signed_identifiers => identifiers }
+      container, acl = subject.set_container_acl container_name, public_access_level, { :signed_identifiers => identifiers }
       container.wont_be_nil
       container.name.must_equal container_name
-      container.visibility.must_equal visibility.to_s
+      container.public_access_level.must_equal public_access_level.to_s
       acl.length.must_equal identifiers.length
       acl.first.id.must_equal identifiers.first.id
       acl.first.access_policy.start.must_equal identifiers.first.access_policy.start
@@ -49,7 +49,7 @@ describe Azure::Storage::Blob::BlobService do
       container, acl = subject.get_container_acl container_name
       container.wont_be_nil
       container.name.must_equal container_name
-      container.visibility.must_equal visibility.to_s
+      container.public_access_level.must_equal public_access_level.to_s
       acl.length.must_equal identifiers.length
       acl.first.id.must_equal identifiers.first.id
       acl.first.access_policy.start.must_equal identifiers.first.access_policy.start
@@ -62,7 +62,7 @@ describe Azure::Storage::Blob::BlobService do
         subject.get_container_acl ContainerNameHelper.name
       end
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.set_container_acl ContainerNameHelper.name, visibility, { :identifiers => identifiers }
+        subject.set_container_acl ContainerNameHelper.name, public_access_level, { :identifiers => identifiers }
       end
     end
   end
