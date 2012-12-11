@@ -319,7 +319,7 @@ module Azure
         # Returns an Azure::Entity::Blob::BlobEnumerationResults
         def list_blobs(name, options={})
           query = { "comp" => "list" }
-          query["prefix"] = options[:prefix] if options[:prefix]
+          query["prefix"] = options[:prefix].gsub(/\\/, "/") if options[:prefix]
           query["delimiter"] = options[:delimiter] if options[:delimiter]
           query["marker"] = options[:marker] if options[:marker]
           query["maxresults"] = options[:max_results].to_s if options[:max_results]
