@@ -138,7 +138,7 @@ describe Azure::Storage::Table::TableService do
       result2.length.must_equal 3
       token1.wont_be_nil
 
-      result3, token2 = subject.query_entities table_name, { :top => 3, :continuation_token => token }
+      result3, token2 = subject.query_entities table_name, { :top => 3, :continuation_token => token1 }
       result3.must_be_kind_of Array 
       result3.length.must_equal 3
       token2.wont_be_nil
