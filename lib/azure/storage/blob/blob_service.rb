@@ -1283,7 +1283,15 @@ module Azure
         # Returns a URI.
         protected
         def blob_uri(container_name, blob_name, query={}, no_timeout=false)
-          blob_name = URI.escape(blob_name, Regexp.new("[^#/\\-_.!~a-zA-Z\\d]"))
+          blob_name = CGI.escape(blob_name)
+
+          # Unencode the forward slashes to match what the server expects.
+          blob_name = blob_name.gsub(/%2F/, '/')
+          # Unencode the backward slashes to match what the server expects.
+          blob_name = blob_name.gsub(/%5C/, '/')
+          # Re-encode the spaces (encoded as space) to the % encoding.
+          blob_name = blob_name.gsub(/\+/, '%20')
+
           generate_uri(File.join(container_name, blob_name), query, no_timeout)
         end
       end
