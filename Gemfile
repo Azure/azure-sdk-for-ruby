@@ -13,19 +13,4 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 source :rubygems
-# gemspec
-
-gem "backports"
-gem "nokogiri",   "~> 1.5"
-gem "mime-types", "~> 1.0"
-gem "libxml-ruby" 
-gem "extlib_lite"
-gem "json"
-
-gem "rake"
-gem "minitest", "~> 3.0"
-gem "mocha"
-gem "yard"
-gem "yard-tomdoc"
-gem "redcarpet"
-gem "turn"
+gemspec

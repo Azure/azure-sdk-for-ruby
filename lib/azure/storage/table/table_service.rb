@@ -183,7 +183,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179433
         #
-        # Returns a Azure::Entity::Table::TableEntity
+        # Returns a Azure::Entity::Table::Entity
         def insert_entity(table_name, partition_key, row_key, entity_values, options={})
           body = Azure::Storage::Table::Serialization.hash_to_entry_xml({ 
               "PartitionKey" => partition_key, 
@@ -224,7 +224,7 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179421
         #
         # Returns a tuple of (results, continuation_token) on success
-        #   results             - List. A list of Azure::Entity::Table::TableEntity instances
+        #   results             - List. A list of Azure::Entity::Table::Entity instances
         #   continuation_token  - Hash. A token used to retrieve subsequent pages, if the result set is too large for a single operation to return 
         def query_entities(table_name, options={})
           query ={}
