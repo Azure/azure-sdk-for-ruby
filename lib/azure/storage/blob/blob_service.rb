@@ -319,7 +319,7 @@ module Azure
         # Returns an Azure::Entity::Blob::BlobEnumerationResults
         def list_blobs(name, options={})
           query = { "comp" => "list" }
-          query["prefix"] = options[:prefix] if options[:prefix]
+          query["prefix"] = options[:prefix].gsub(/\\/, "/") if options[:prefix]
           query["delimiter"] = options[:delimiter] if options[:delimiter]
           query["marker"] = options[:marker] if options[:marker]
           query["maxresults"] = options[:max_results].to_s if options[:max_results]
@@ -370,7 +370,7 @@ module Azure
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
           uri = blob_uri(container, blob, query)
-          
+
           headers = { }
 
           # set x-ms-blob-type to PageBlob
@@ -1247,31 +1247,33 @@ module Azure
           response.headers["x-ms-lease-time"].to_i
         end
 
-        # Public: Generate the URI for the collection of containers.
+        # Protected: Generate the URI for the collection of containers.
         #
         # query - A Hash of key => value query parameters.
         # host  - The host of the API.
         #
         # Returns a URI.
+        protected
         def containers_uri(query={})
           query = { "comp" => "list" }.merge(query)
           generate_uri("/", query)
         end
 
-        # Public: Generate the URI for a specific container.
+        # Protected: Generate the URI for a specific container.
         #
         # name  - The container name. If this is a URI, we just return this.
         # query - A Hash of key => value query parameters.
         # host  - The host of the API.
         #
         # Returns a URI.
+        protected
         def container_uri(name, query={})
           return name if name.kind_of? ::URI
           query = { "restype" => "container" }.merge(query)
           generate_uri(name, query)
         end
 
-        # Public: Generate the URI for a specific Blob.
+        # Protected: Generate the URI for a specific Blob.
         #
         # container_name - String representing the name of the container.
         # blob_name      - String representing the name of the blob.
@@ -1279,7 +1281,17 @@ module Azure
         # host           - The host of the API.
         #
         # Returns a URI.
+        protected
         def blob_uri(container_name, blob_name, query={}, no_timeout=false)
+          blob_name = CGI.escape(blob_name)
+
+          # Unencode the forward slashes to match what the server expects.
+          blob_name = blob_name.gsub(/%2F/, '/')
+          # Unencode the backward slashes to match what the server expects.
+          blob_name = blob_name.gsub(/%5C/, '/')
+          # Re-encode the spaces (encoded as space) to the % encoding.
+          blob_name = blob_name.gsub(/\+/, '%20')
+
           generate_uri(File.join(container_name, blob_name), query, no_timeout)
         end
       end

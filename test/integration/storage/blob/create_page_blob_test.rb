@@ -22,6 +22,7 @@ describe Azure::Storage::Blob::BlobService do
   describe '#create_page_blob' do
     let(:container_name) { ContainerNameHelper.name }
     let(:blob_name) { "blobname" }
+    let(:complex_blob_name) { 'qa-872053-/*"\'&.({[<+ ' + 0x7D.chr +  0xEB.chr + 0x8B.chr + 0xA4.chr + '_' + "0" }
     let(:length) { 1024 }
     before { 
       subject.create_container container_name
@@ -30,6 +31,20 @@ describe Azure::Storage::Blob::BlobService do
     it 'creates a page blob' do
       blob = subject.create_page_blob container_name, blob_name, length
       blob.name.must_equal blob_name
+    end
+
+    it 'creates a page blob with complex name' do
+      blob = subject.create_page_blob container_name, complex_blob_name, length
+      blob.name.must_equal complex_blob_name
+
+      complex_blob_name.force_encoding("UTF-8")
+      found_complex_name = false
+      result = subject.list_blobs container_name
+      result.blobs.each { |blob|
+        found_complex_name = true if blob.name == complex_blob_name
+      }
+
+      found_complex_name.must_equal true
     end
 
     it 'sets additional properties when the options hash is used' do

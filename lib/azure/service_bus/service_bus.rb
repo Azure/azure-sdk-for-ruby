@@ -566,75 +566,92 @@ module Azure
 
       # paths
 
+      protected
       def message_path(path, sequence_number, lock_token)
         "#{messages_path(path)}/#{sequence_number}/#{lock_token}"
       end
 
+      protected
       def messages_head_path(path)
         "#{messages_path(path)}/head"
       end
 
+      protected
       def messages_path(path)
         "#{path}/messages"
       end
 
+      protected
       def rule_path(topic, subscription, rule)
         "#{subscriptions_path(topic, subscription)}/rules/#{rule}"
       end
 
+      protected
       def subscriptions_path(topic, subscription)
         "#{topic}/subscriptions/#{subscription}"
       end
 
       # messages uris
 
+      protected
       def message_uri(path, sequence_number, lock_token, query={})
         generate_uri(message_path(path, sequence_number, lock_token), query)
       end
 
+      protected
       def messages_head_uri(path, query={})
         generate_uri(messages_head_path(path), query)
       end
 
+      protected
       def messages_uri(path, query={})
         generate_uri(messages_path(path), query)
       end
 
       # entry uris
+      protected
       def rule_uri(topic, subscription, rule, query={})
         generate_uri(rule_path(topic, subscription, rule), query)
       end
 
+      protected
       def subscription_uri(topic, subscription, query={})
         generate_uri(subscriptions_path(topic, subscription), query)
       end
 
+      protected
       def queue_uri(topic, query={})
         generate_uri(topic, query)
       end
 
+      protected
       def topic_uri(topic, query={})
         generate_uri(topic, query)
       end
 
       # list uris
 
+      protected
       def rule_list_uri(topic, subscription, query={})
         resource_list_uri(:rule, query, subscriptions_path(topic, subscription))
       end
 
+      protected
       def subscription_list_uri(topic, query={})
         resource_list_uri(:subscription, query, topic)
       end
 
+      protected
       def queue_list_uri(query={})
         resource_list_uri(:queue, query)
       end
 
+      protected
       def topic_list_uri(query={})
         resource_list_uri(:topic, query)
       end
 
+      protected
       def resource_list_uri(resource, query={}, subpath='$Resources')
         skip = query.delete ["$skip"]
         top = query.delete ["$top"]

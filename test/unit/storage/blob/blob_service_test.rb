@@ -1867,7 +1867,23 @@ describe Azure::Storage::Blob::BlobService do
     end
   end
 
+  class MockBlobService < Azure::Storage::Blob::BlobService
+    def containers_uri(query={})
+      super
+    end
+
+    def container_uri(name, query={})
+      super
+    end
+
+    def blob_uri(container_name, blob_name, query={}, no_timeout=false)
+      super
+    end
+  end
+
   describe "uri functions" do
+    subject { MockBlobService.new }
+
     let(:container_name) { "container" }
     let(:blob_name) { "blob" }
     let(:query) { { "param" => "value", "param 1" => "value 1" } }
