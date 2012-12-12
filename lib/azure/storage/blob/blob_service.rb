@@ -1292,7 +1292,13 @@ module Azure
           # Re-encode the spaces (encoded as space) to the % encoding.
           blob_name = blob_name.gsub(/\+/, '%20')
 
-          generate_uri(File.join(container_name, blob_name), query, no_timeout)
+          if container_name.nil? || container_name.empty?
+            path = blob_name
+          else
+            path = File.join(container_name, blob_name)
+          end
+
+          generate_uri(path, query, no_timeout)
         end
       end
     end
