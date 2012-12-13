@@ -46,7 +46,10 @@ describe Azure::Storage::Table::TableService do
       subject.create_table table_name
       partitions.each { |p|
         entities[p].each { |e| 
-          subject.insert_entity table_name, p, e, entity_properties
+          entity = entity_properties.dup
+          entity[:PartitionKey] = p
+          entity[:RowKey] = e
+          subject.insert_entity table_name, entity
         }
       }
     }
@@ -59,7 +62,7 @@ describe Azure::Storage::Table::TableService do
       result.length.must_equal ((partitions.length + 1) * entities_per_partition)
 
       result.each { |e|
-        entities[e.partition_key].must_include e.row_key
+        entities[e.properties["PartitionKey"]].must_include e.properties["RowKey"]
         entity_properties.each { |k,v|
           unless v.class == Time
             e.properties[k].must_equal v
@@ -74,12 +77,12 @@ describe Azure::Storage::Table::TableService do
       partition = partitions[0]
       row_key = entities[partition][0]
 
-      result, token = subject.query_entities table_name, { :partition_key => partition, :row_key => row_key }
+      result, token = subject.query_entities table_name, { :PartitionKey => partition, :RowKey => row_key }
       result.must_be_kind_of Array 
       result.length.must_equal 1
 
       result.each { |e|
-        e.row_key.must_equal row_key
+        e.properties["RowKey"].must_equal row_key
         entity_properties.each { |k,v|
           unless v.class == Time
             e.properties[k].must_equal v
@@ -105,14 +108,18 @@ describe Azure::Storage::Table::TableService do
     end
 
     it "can filter by one or more properties, returning a matching set of entities" do
-      subject.insert_entity table_name, "filter-test-partition", "filter-test-key", entity_properties.merge({ "CustomIntegerProperty" => entity_properties["CustomIntegerProperty"] + 1, "CustomBooleanProperty"=> false})
+      subject.insert_entity table_name, entity_properties.merge({ 
+        "PartitionKey" => "filter-test-partition",
+        "RowKey" => "filter-test-key",
+        "CustomIntegerProperty" => entity_properties["CustomIntegerProperty"] + 1,
+        "CustomBooleanProperty"=> false
+      })
 
       filter = "CustomIntegerProperty gt #{entity_properties["CustomIntegerProperty"]} and CustomBooleanProperty eq false"
       result, token = subject.query_entities table_name, { :filter => filter }
       result.must_be_kind_of Array 
       result.length.must_equal 1
-
-      result.first.partition_key.must_equal "filter-test-partition"
+      result.first.properties["PartitionKey"].must_equal "filter-test-partition"
 
       filter = "CustomIntegerProperty gt #{entity_properties["CustomIntegerProperty"]} and CustomBooleanProperty eq true"
       result, token = subject.query_entities table_name, { :filter => filter }
@@ -150,7 +157,12 @@ describe Azure::Storage::Table::TableService do
     end
 
     it "can combine projection, filtering, and paging in the same query" do
-      subject.insert_entity table_name, "filter-test-partition", "filter-test-key", entity_properties.merge({ "CustomIntegerProperty" => entity_properties["CustomIntegerProperty"] + 1, "CustomBooleanProperty"=> false})
+      subject.insert_entity table_name, entity_properties.merge({
+        "PartitionKey" => "filter-test-partition",
+        "RowKey" => "filter-test-key",
+        "CustomIntegerProperty" => entity_properties["CustomIntegerProperty"] + 1,
+        "CustomBooleanProperty"=> false
+      })
 
       filter = "CustomIntegerProperty eq #{entity_properties["CustomIntegerProperty"]}"
       projection = ["PartitionKey", "CustomIntegerProperty"]
@@ -160,7 +172,8 @@ describe Azure::Storage::Table::TableService do
       token.wont_be_nil
 
       result.first.properties["CustomIntegerProperty"].must_equal entity_properties["CustomIntegerProperty"]
-      result.first.properties.length.must_equal 1
+      result.first.properties["PartitionKey"].wont_be_nil
+      result.first.properties.length.must_equal 2
 
       result2, token1 = subject.query_entities table_name, { :select => projection, :filter => filter, :top => 3, :continuation_token => token }
       result2.must_be_kind_of Array 

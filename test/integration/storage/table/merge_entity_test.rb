@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+
 require "integration/test_helper"
 require "azure/storage/table/table_service"
 require "azure/core/http/http_error"
@@ -21,10 +22,10 @@ describe Azure::Storage::Table::TableService do
     subject { Azure::Storage::Table::TableService.new }
     let(:table_name){ TableNameHelper.name }
 
-    let(:partition){ "testingpartition" }
-    let(:row_key){ "abcd1234_existing" }
-    let(:entity_properties){ 
-      { 
+    let(:entity_properties){
+      {
+        "PartitionKey" => "testingpartition",
+        "RowKey" => "abcd1234_existing",
         "CustomStringProperty" => "CustomPropertyValue",
         "CustomIntegerProperty" => 37,
         "CustomBooleanProperty" => true,
@@ -34,12 +35,12 @@ describe Azure::Storage::Table::TableService do
 
     before {
       subject.create_table table_name
-      subject.insert_entity table_name, partition, row_key, entity_properties
+      subject.insert_entity table_name, entity_properties
       @existing_etag = ""
 
       exists = false
       begin
-        existing = subject.get_entity table_name, partition, row_key
+        existing = subject.get_entity table_name, entity_properties["PartitionKey"], entity_properties["RowKey"]
         @existing_etag = existing.etag
         exists = true
       rescue
@@ -51,17 +52,21 @@ describe Azure::Storage::Table::TableService do
     after { TableNameHelper.clean }
 
     it "updates an existing entity, merging the properties" do
-      etag = subject.merge_entity table_name, partition, row_key, { "NewCustomProperty" => "NewCustomValue" }
+      etag = subject.merge_entity table_name, { 
+        "PartitionKey" => entity_properties["PartitionKey"],
+        "RowKey" => entity_properties["RowKey"],
+        "NewCustomProperty" => "NewCustomValue"
+      }
       etag.must_be_kind_of String
       etag.wont_equal @existing_etag
 
-      result = subject.get_entity table_name, partition, row_key
-      
+      result = subject.get_entity table_name, entity_properties["PartitionKey"], entity_properties["RowKey"]
+
       result.must_be_kind_of Azure::Storage::Table::Entity
       result.table.must_equal table_name
-      result.partition_key.must_equal partition
-      result.row_key.must_equal row_key
-      
+      result.properties["PartitionKey"].must_equal entity_properties["PartitionKey"]
+      result.properties["RowKey"].must_equal entity_properties["RowKey"]
+
       # retained all existing props
       entity_properties.each { |k,v|
         unless entity_properties[k].class == Time
@@ -77,25 +82,31 @@ describe Azure::Storage::Table::TableService do
 
     it "errors on a non-existing row key" do
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.merge_entity table_name, partition, "this-row-key-does-not-exist", entity_properties
+        entity = entity_properties.dup
+        entity["RowKey"] = "this-row-key-does-not-exist"
+        subject.merge_entity table_name, entity
       end
     end
 
     it "errors on an invalid table name" do
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.merge_entity "this_table.cannot-exist!", partition, row_key, entity_properties
+        subject.merge_entity "this_table.cannot-exist!", entity_properties
       end
     end
 
     it "errors on an invalid partition key" do
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.merge_entity table_name, "this/partition_key#is?invalid", row_key, entity_properties
+        entity = entity_properties.dup
+        entity["PartitionKey"] = "this/partition_key#is?invalid"
+        subject.merge_entity table_name, entity
       end
     end
 
     it "errors on an invalid row key" do
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.merge_entity table_name, partition, "this/row_key#is?invalid", entity_properties
+        entity = entity_properties.dup
+        entity["RowKey"] = "this/row_key#is?invalid"
+        subject.merge_entity table_name, entity
       end
     end
   end

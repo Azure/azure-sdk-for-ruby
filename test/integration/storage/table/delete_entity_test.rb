@@ -21,10 +21,10 @@ describe Azure::Storage::Table::TableService do
     subject { Azure::Storage::Table::TableService.new }
     let(:table_name){ TableNameHelper.name }
 
-    let(:partition){ "testingpartition" }
-    let(:row_key){ "abcd123" }
     let(:entity_properties){ 
-      { 
+      {
+        "PartitionKey" => "testingpartition",
+        "RowKey" => "abcd123",
         "CustomStringProperty" => "CustomPropertyValue",
         "CustomIntegerProperty" => 37,
         "CustomBooleanProperty" => true,
@@ -34,30 +34,30 @@ describe Azure::Storage::Table::TableService do
 
     before { 
       subject.create_table table_name
-      subject.insert_entity table_name, partition, row_key, entity_properties
+      subject.insert_entity table_name, entity_properties
     }
     after { TableNameHelper.clean }
 
     it "deletes an entity" do 
-      result = subject.delete_entity table_name, partition, row_key
+      result = subject.delete_entity table_name, entity_properties["PartitionKey"], entity_properties["RowKey"]
       result.must_be_nil
     end
 
     it "errors on an invalid table name" do
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.delete_entity "this_table.cannot-exist!", partition, row_key
+        subject.delete_entity "this_table.cannot-exist!", entity_properties["PartitionKey"], entity_properties["RowKey"]
       end
     end
 
     it "errors on an invalid partition key" do
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.delete_entity table_name, "this_partition/key#is_invalid", row_key
+        subject.delete_entity table_name, "this_partition/key#is_invalid", entity_properties["RowKey"]
       end
     end
 
     it "errors on an invalid row key" do
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.delete_entity table_name, partition, "thisrow/key#is_invalid"
+        subject.delete_entity table_name, entity_properties["PartitionKey"], "thisrow/key#is_invalid"
       end
     end
   end

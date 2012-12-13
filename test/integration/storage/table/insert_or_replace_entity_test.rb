@@ -21,9 +21,9 @@ describe Azure::Storage::Table::TableService do
     subject { Azure::Storage::Table::TableService.new }
     let(:table_name){ TableNameHelper.name }
 
-    let(:partition){ "testingpartition" }
-    let(:entity_properties){ 
+    let(:entity_properties) {
       { 
+        "PartitionKey" => "testingpartition",
         "CustomStringProperty" => "CustomPropertyValue",
         "CustomIntegerProperty" => 37,
         "CustomBooleanProperty" => true,
@@ -38,47 +38,47 @@ describe Azure::Storage::Table::TableService do
     after { TableNameHelper.clean }
 
     it "creates an entity if it does not already exist" do 
-      row_key = "abcd1234"
+      entity = entity_properties.dup
+      entity["RowKey"] = "abcd1234"
 
       does_not_exist = true
       begin
-        subject.get_entity table_name, partition, row_key
+        subject.get_entity table_name, entity["PartitionKey"], entity["RowKey"]
         does_not_exist = false
       rescue
       end
 
       assert does_not_exist
 
-      etag = subject.insert_or_replace_entity table_name, partition, row_key, entity_properties
+      etag = subject.insert_or_replace_entity table_name, entity
       etag.must_be_kind_of String
 
-      result = subject.get_entity table_name, partition, row_key
+      result = subject.get_entity table_name, entity["PartitionKey"], entity["RowKey"]
 
       result.must_be_kind_of Azure::Storage::Table::Entity
       result.table.must_equal table_name
-      result.partition_key.must_equal partition
-      result.row_key.must_equal row_key
       result.etag.must_equal etag
       
-      entity_properties.each { |k,v|
-        unless entity_properties[k].class == Time
-          result.properties[k].must_equal entity_properties[k]
+      entity.each { |k,v|
+        unless entity[k].class == Time
+          result.properties[k].must_equal entity[k]
         else
-          result.properties[k].to_i.must_equal entity_properties[k].to_i
+          result.properties[k].to_i.must_equal entity[k].to_i
         end
       }
     end
 
     it "updates an existing entity, removing any properties not included in the update operation" do 
-      row_key = "abcd1234_existing"
+      entity = entity_properties.dup
+      entity["RowKey"] = "abcd1234_existing"
 
-      result = subject.insert_entity table_name, partition, row_key, entity_properties
+      result = subject.insert_entity table_name, entity
 
       existing_etag = ""
 
       exists = false
       begin
-        existing = subject.get_entity table_name, partition, row_key
+        existing = subject.get_entity table_name, entity["PartitionKey"], entity["RowKey"]
         existing_etag = existing.etag
         exists = true
       rescue
@@ -86,20 +86,23 @@ describe Azure::Storage::Table::TableService do
 
       assert exists, "cannot verify existing record"
 
-      etag = subject.insert_or_replace_entity table_name, partition, row_key, { "NewCustomProperty" => "NewCustomValue" }
+      etag = subject.insert_or_replace_entity table_name, { 
+        "PartitionKey" => entity["PartitionKey"],
+        "RowKey" => entity["RowKey"],
+        "NewCustomProperty" => "NewCustomValue"
+      }
+
       etag.must_be_kind_of String
       etag.wont_equal existing_etag
 
-      result = subject.get_entity table_name, partition, row_key
+      result = subject.get_entity table_name, entity["PartitionKey"], entity["RowKey"]
       
       result.must_be_kind_of Azure::Storage::Table::Entity
       result.table.must_equal table_name
-      result.partition_key.must_equal partition
-      result.row_key.must_equal row_key
 
       # removed all existing props
-      entity_properties.each { |k,v|
-        result.properties.wont_include k
+      entity.each { |k,v|
+        result.properties.wont_include k unless k == "PartitionKey" || k == "RowKey"
       }
 
       # and has the new one
@@ -108,19 +111,26 @@ describe Azure::Storage::Table::TableService do
 
     it "errors on an invalid table name" do
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.insert_or_replace_entity "this_table.cannot-exist!", partition, "row_key", entity_properties
+        entity = entity_properties.dup
+        entity["RowKey"] = "row_key"
+        subject.insert_or_replace_entity "this_table.cannot-exist!", entity
       end
     end
 
     it "errors on an invalid partition key" do
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.insert_or_replace_entity table_name, "this/partition_key#is?invalid", "row_key", entity_properties
+        entity = entity_properties.dup
+        entity["PartitionKey"] = "this/partition_key#is?invalid"
+        entity["RowKey"] = "row_key"
+        subject.insert_or_replace_entity table_name, entity
       end
     end
 
     it "errors on an invalid row key" do
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.insert_or_replace_entity table_name, partition, "this/partition_key#is?invalid", entity_properties
+        entity = entity_properties.dup
+        entity["RowKey"] = "this/partition_key#is?invalid"
+        subject.insert_or_replace_entity table_name, entity
       end
     end
   end

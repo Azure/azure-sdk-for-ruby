@@ -24,8 +24,6 @@ module Azure
         end
 
         attr_accessor :table
-        attr_accessor :partition_key
-        attr_accessor :row_key
         attr_accessor :updated
         attr_accessor :etag
         attr_accessor :properties
