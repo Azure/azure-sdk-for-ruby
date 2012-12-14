@@ -173,8 +173,6 @@ module Azure
         # Public: Inserts new entity to the table.
         #
         # table_name           - String. The table name
-        # partition_key        - String. The partition key
-        # row_key              - String. The row key
         # entity_values        - Hash. A hash of the name/value pairs for the entity. 
         # options              - Hash. Optional parameters. 
         #
@@ -184,11 +182,8 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179433
         #
         # Returns a Azure::Entity::Table::Entity
-        def insert_entity(table_name, partition_key, row_key, entity_values, options={})
-          body = Azure::Storage::Table::Serialization.hash_to_entry_xml({ 
-              "PartitionKey" => partition_key, 
-              "RowKey" => row_key
-            }.merge(entity_values) ).to_xml
+        def insert_entity(table_name, entity_values, options={})
+          body = Azure::Storage::Table::Serialization.hash_to_entry_xml(entity_values).to_xml
 
           query = { }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -199,8 +194,6 @@ module Azure
 
           Entity.new do |entity|
             entity.table = table_name
-            entity.partition_key = partition_key
-            entity.row_key = row_key
             entity.updated = result[:updated]
             entity.etag = response.headers["etag"] || result[:etag]
             entity.properties = result[:properties]
@@ -213,8 +206,8 @@ module Azure
         # options             - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are:
-        # :partition_key      - String. The partition key (optional)
-        # :row_key            - String. The row key (optional)
+        # :PartitionKey       - String. The partition key (optional)
+        # :RowKey             - String. The row key (optional)
         # :select             - Array. An array of property names to return (optional)
         # :filter             - String. A filter expression (optional)
         # :top                - Integer. A limit for the number of results returned (optional)
@@ -230,27 +223,25 @@ module Azure
           query ={}
           query["$select"] = options[:select].join ',' if options[:select]
           query["$filter"] = options[:filter] if options[:filter]
-          query["$top"] = options[:top].to_s if options[:top] unless options[:partition_key] and options[:row_key]
+          query["$top"] = options[:top].to_s if options[:top] unless options[:PartitionKey] and options[:RowKey]
           query["NextPartitionKey"] = options[:continuation_token][:next_partition_key] if options[:continuation_token] and options[:continuation_token][:next_partition_key]
           query["NextRowKey"] = options[:continuation_token][:next_row_key] if options[:continuation_token] and options[:continuation_token][:next_row_key]
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
-          uri = entities_uri(table_name, options[:partition_key], options[:row_key], query)
+          uri = entities_uri(table_name, options[:PartitionKey], options[:RowKey], query)
 
           response = call(:get, uri, nil, { "DataServiceVersion" => "2.0;NetFx"})
 
           entities = []
 
-          results = (options[:partition_key] and options[:row_key]) ? [Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)] : Azure::Storage::Table::Serialization.entries_from_feed_xml(response.body)
+          results = (options[:PartitionKey] and options[:RowKey]) ? [Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)] : Azure::Storage::Table::Serialization.entries_from_feed_xml(response.body)
           
           results.each do |result|
             entity = Entity.new do |e|
               e.table = table_name
-              e.partition_key = result[:properties]["PartitionKey"]
-              e.row_key = result[:properties]["RowKey"]
               e.updated = result[:updated]
               e.etag = response.headers["etag"] || result[:etag]
-              e.properties = result[:properties].reject { |k,v| ["PartitionKey", "RowKey"].include? k }
+              e.properties = result[:properties]
             end
             entities.push entity
           end if results
@@ -268,8 +259,6 @@ module Azure
         # the entire entity and can be used to remove properties.
         #
         # table_name             - String. The table name
-        # partition_key          - String. The partition key
-        # row_key                - String. The row key
         # entity_values          - Hash. A hash of the name/value pairs for the entity.
         # options                - Hash. Optional parameters. 
         #
@@ -282,14 +271,14 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179427
         #
         # Returns the ETag for the entity on success 
-        def update_entity(table_name, partition_key, row_key, entity_values, options={})
+        def update_entity(table_name, entity_values, options={})
           if_match = "*"
           if_match = options[:if_match] if options[:if_match]
 
           query = { }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
-          uri = entities_uri(table_name, partition_key, row_key, query)
+          uri = entities_uri(table_name, entity_values["PartitionKey"], entity_values["RowKey"], query)
 
           headers = {}
           headers["If-Match"] = if_match || "*" unless options[:create_if_not_exists]
@@ -304,8 +293,6 @@ module Azure
         # does not replace the existing entity, as the update_entity operation does.
         #
         # table_name             - String. The table name
-        # partition_key          - String. The partition key
-        # row_key                - String. The row key
         # entity_values          - Hash. A hash of the name/value pairs for the entity.
         # options                - Hash. Optional parameters. 
         #
@@ -318,14 +305,14 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179392
         # 
         # Returns the ETag for the entity on success 
-        def merge_entity(table_name, partition_key, row_key, entity_values, options={})
+        def merge_entity(table_name, entity_values, options={})
           if_match = "*"
           if_match = options[:if_match] if options[:if_match]
 
           query = { }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
-          uri = entities_uri(table_name, partition_key, row_key, query)
+          uri = entities_uri(table_name, entity_values["PartitionKey"], entity_values["RowKey"], query)
 
           headers = { "X-HTTP-Method"=> "MERGE" }
           headers["If-Match"] = if_match || "*" unless options[:create_if_not_exists]
@@ -339,8 +326,6 @@ module Azure
         # Public: Inserts or updates an existing entity within a table by merging new property values into the entity.
         #
         # table_name            - String. The table name
-        # partition_key         - String. The partition key
-        # row_key               - String. The row key
         # entity_values         - Hash. A hash of the name/value pairs for the entity.
         # options               - Hash. Optional parameters. 
         #
@@ -350,16 +335,14 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452241
         # 
         # Returns the ETag for the entity on success 
-        def insert_or_merge_entity(table_name, partition_key, row_key, entity_values, options={})
+        def insert_or_merge_entity(table_name, entity_values, options={})
           options[:create_if_not_exists] = true
-          merge_entity(table_name, partition_key, row_key, entity_values, options)
+          merge_entity(table_name, entity_values, options)
         end
 
         # Public: Inserts or updates a new entity into a table.
         #
         # table_name            - String. The table name
-        # partition_key         - String. The partition key
-        # row_key               - String. The row key
         # entity_values         - Hash. A hash of the name/value pairs for the entity.
         # options               - Hash. Optional parameters. 
         #
@@ -369,9 +352,9 @@ module Azure
         # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452242
         #
         # Returns the ETag for the entity on success 
-        def insert_or_replace_entity(table_name, partition_key, row_key, entity_values, options={})
+        def insert_or_replace_entity(table_name, entity_values, options={})
           options[:create_if_not_exists] = true
-          update_entity(table_name, partition_key, row_key, entity_values, options)
+          update_entity(table_name, entity_values, options)
         end
 
         # Public: Deletes an existing entity in the table.
@@ -437,8 +420,8 @@ module Azure
         #
         # Returns an Azure::Storage::Table::Entity instance on success
         def get_entity(table_name, partition_key, row_key, options={})
-          options[:partition_key] = partition_key
-          options[:row_key] = row_key
+          options[:PartitionKey] = partition_key
+          options[:RowKey] = row_key
           results, _ = query_entities(table_name, options)
           results.length > 0 ? results[0] : nil
         end
