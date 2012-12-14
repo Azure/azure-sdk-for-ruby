@@ -74,6 +74,30 @@ describe Azure::Storage::Table::TableService do
       result.properties["NewCustomProperty"].must_equal "NewCustomValue"
     end
 
+    it "updates an existing entity, removing any properties not included in the update operation and adding nil one" do 
+      etag = subject.update_entity table_name, { 
+        "PartitionKey" => entity_properties["PartitionKey"],
+        "RowKey" => entity_properties["RowKey"],
+        "NewCustomProperty" => nil
+      }
+
+      etag.must_be_kind_of String
+      etag.wont_equal @existing_etag
+
+      result = subject.get_entity table_name, entity_properties["PartitionKey"], entity_properties["RowKey"]
+      
+      result.must_be_kind_of Azure::Storage::Table::Entity
+      result.table.must_equal table_name
+
+      # removed all existing props
+      entity_properties.each { |k,v|
+        result.properties.wont_include k unless k == "PartitionKey" || k == "RowKey"
+      }
+
+      # and has the new one
+      result.properties["NewCustomProperty"].must_equal nil
+    end
+
     it "errors on a non-existing row key" do
       assert_raises(Azure::Core::Http::HTTPError) do
         entity = entity_properties.dup

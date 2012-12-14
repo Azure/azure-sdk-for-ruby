@@ -45,7 +45,7 @@ module Azure
               end
             hash_to_content_xml(hash, entry)
           end
-          
+
           xml
         end
 
@@ -53,12 +53,19 @@ module Azure
           xml.send("content", :type => "application/xml") do |content|
             content.send("m:properties") do |properties|
               hash.each do |key, val|
-                type = property_type(val)
-                properties.send("d:#{key}", type == "Edm.DateTime" ? val.xmlschema : val, "m:type"=>type)
+                if !val.nil?
+                  type = property_type(val)
+                  attributes = {}
+                  attributes["m:type"] = type unless type.nil? || type.empty?
+
+                  properties.send("d:#{key}", type == "Edm.DateTime" ? val.xmlschema : val, attributes)
+                else
+                  properties.send("d:#{key}", "m:null" => "true")
+                end
               end
             end
           end
-          
+
           xml
         end
 
@@ -90,7 +97,7 @@ module Azure
           properties = {} 
           if (xml > "content").any?
             (xml > "content").first.first_element_child.element_children.each do |prop|
-              properties[prop.name] = prop.text != "" ? cast_property(prop.text, prop["type"]) : prop['null'] ? nil : ""
+              properties[prop.name] = prop.text != "" ? cast_property(prop.text, prop["type"]) : prop["null"] ? nil : ""
             end
           end
           result[:properties] = properties
