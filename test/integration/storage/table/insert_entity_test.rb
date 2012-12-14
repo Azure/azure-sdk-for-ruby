@@ -25,10 +25,18 @@ describe Azure::Storage::Table::TableService do
       { 
         "PartitionKey" => "testingpartition",
         "RowKey" => "abcd123",
+        "CustomDoubleProperty" => 3.141592,
+        "CustomInt32Property" => 37,
+        "CustomInt64Property" => 2**32,
+        "CustomInt64NegProperty" => -(2**32),
+        "CustomGUIDProperty" => Azure::Storage::Table::GUID.new("81425519-6394-43e4-ac6e-28d91f5c3921"),
         "CustomStringProperty" => "CustomPropertyValue",
+        "CustomBinaryProperty" => "\x01\x02\x03".force_encoding("BINARY"),
+        "CustomDateProperty" => Time.now,
         "CustomIntegerProperty" => 37,
-        "CustomBooleanProperty" => true,
-        "CustomDateProperty" => Time.now
+        "CustomTrueProperty" => true,
+        "CustomFalseProperty" => false,
+        "CustomNilProperty" => nil
       }
     }
 
