@@ -89,6 +89,7 @@ module Azure
 
           queue = Queue.new
           queue.name = xml.Name.text if (xml > "Name").any?
+          queue.url = xml.Url.text if (xml > "Url").any?
           queue.metadata = metadata_from_xml(xml.Metadata) if (xml > "Metadata").any?
 
           queue
