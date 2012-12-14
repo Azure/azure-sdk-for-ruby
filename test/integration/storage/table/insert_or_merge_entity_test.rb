@@ -89,7 +89,8 @@ describe Azure::Storage::Table::TableService do
       etag = subject.insert_or_merge_entity table_name, {
         "PartitionKey" => entity["PartitionKey"],
         "RowKey" => entity["RowKey"],
-        "NewCustomProperty" => "NewCustomValue"
+        "NewCustomProperty" => "NewCustomValue",
+        "NewNilProperty" => nil
       }
 
       etag.must_be_kind_of String
@@ -102,15 +103,16 @@ describe Azure::Storage::Table::TableService do
       
       # retained all existing props
       entity.each { |k,v|
-        unless entity[k].class == Time
-          result.properties[k].must_equal entity[k]
-        else
+        if entity[k].class == Time
           result.properties[k].to_i.must_equal entity[k].to_i
+        else
+          result.properties[k].must_equal entity[k]
         end
       }
 
       # and has the new one
       result.properties["NewCustomProperty"].must_equal "NewCustomValue"
+      result.properties["NewNilProperty"].must_equal nil
     end
 
     it "errors on an invalid table name" do
