@@ -41,6 +41,11 @@ describe Azure::Storage::Table::TableService do
     it "deletes an entity" do 
       result = subject.delete_entity table_name, entity_properties["PartitionKey"], entity_properties["RowKey"]
       result.must_be_nil
+
+      # query entity to make sure it was deleted
+      assert_raises(Azure::Core::Http::HTTPError, "ResourceNotFound (404): The specified resource does not exist.") do
+        subject.get_entity table_name, entity_properties["PartitionKey"], entity_properties["RowKey"]
+      end
     end
 
     it "errors on an invalid table name" do
