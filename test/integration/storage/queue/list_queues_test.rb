@@ -28,8 +28,12 @@ describe Azure::Storage::Queue::QueueService do
 
       expected_queues = 0
       result.queues.each { |q|
+        q.name.wont_be_nil
+        q.url.wont_be_nil
+
         expected_queues += 1 if queue_names.include? q.name
       }
+
       expected_queues.must_equal queue_names.length
     end
   end

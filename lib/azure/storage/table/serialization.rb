@@ -53,14 +53,15 @@ module Azure
           xml.send("content", :type => "application/xml") do |content|
             content.send("m:properties") do |properties|
               hash.each do |key, val|
-                if !val.nil?
-                  type = property_type(val)
-                  attributes = {}
-                  attributes["m:type"] = type unless type.nil? || type.empty?
+                type = property_type(val)
+                attributes = {}
+                attributes["m:type"] = type unless type.nil? || type.empty?
 
-                  properties.send("d:#{key}", type == "Edm.DateTime" ? val.xmlschema : val, attributes)
+                if val.nil?
+                  attributes["m:null"] = "true"
+                  properties.send("d:#{key}", attributes)
                 else
-                  properties.send("d:#{key}", "m:null" => "true")
+                  properties.send("d:#{key}", property_value(type, val), attributes)
                 end
               end
             end
@@ -130,6 +131,30 @@ module Azure
           end
         end
 
+        # Public: Get the value of a property in a serialized way
+        #
+        # value - Object. An typed instance
+        #
+        # Returns the Edm type as a String
+        def self.property_value(type, value)
+          case type
+          when "Edm.Double", "Edm.Int32", "Edm.Int64", "Edm.Guid", "Edm.String", nil
+            value.to_s
+          when "Edm.Binary"
+            Base64.encode64(value).chomp("\n")
+          when "Edm.DateTime"
+            value.xmlschema
+          when "Edm.Boolean"
+            if value.nil?
+              ''
+            else
+              value == true ? '1' : '0'
+            end
+          else
+            value.to_s
+          end
+        end
+
         # Public: Convert a serialized value into an typed object
         #
         # value - String. A serialization of an object
@@ -149,7 +174,7 @@ module Azure
           when "Edm.Guid"
             GUID.new(value.to_s)
           when "Edm.Binary"
-            value.to_s.force_encoding("BINARY")
+            Base64.decode64(value.to_s).force_encoding("BINARY")
           else
             value.to_s
           end
