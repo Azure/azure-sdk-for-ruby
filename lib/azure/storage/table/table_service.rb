@@ -221,11 +221,11 @@ module Azure
         #   continuation_token  - Hash. A token used to retrieve subsequent pages, if the result set is too large for a single operation to return 
         def query_entities(table_name, options={})
           query ={}
-          query["$select"] = options[:select].join ',' if options[:select]
+          query["$select"] = encodeODataUriValues(options[:select]).join ',' if options[:select]
           query["$filter"] = options[:filter] if options[:filter]
-          query["$top"] = options[:top].to_s if options[:top] unless options[:PartitionKey] and options[:RowKey]
-          query["NextPartitionKey"] = options[:continuation_token][:next_partition_key] if options[:continuation_token] and options[:continuation_token][:next_partition_key]
-          query["NextRowKey"] = options[:continuation_token][:next_row_key] if options[:continuation_token] and options[:continuation_token][:next_row_key]
+          query["$top"] = encodeODataUriValue(options[:top].to_s) if options[:top] unless options[:PartitionKey] and options[:RowKey]
+          query["NextPartitionKey"] = encodeODataUriValue(options[:continuation_token][:next_partition_key]) if options[:continuation_token] and options[:continuation_token][:next_partition_key]
+          query["NextRowKey"] = encodeODataUriValue(options[:continuation_token][:next_row_key]) if options[:continuation_token] and options[:continuation_token][:next_row_key]
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
           uri = entities_uri(table_name, options[:PartitionKey], options[:RowKey], query)
@@ -460,7 +460,7 @@ module Azure
 
           path = if partition_key && row_key
             "%s(PartitionKey='%s',RowKey='%s')" % [
-              table_name, partition_key, row_key
+              table_name, encodeODataUriValue(partition_key), encodeODataUriValue(row_key)
             ]
           else
             "%s()" % table_name
@@ -479,6 +479,24 @@ module Azure
           end
           uri.query = qs.join '&' if qs.length > 0
           uri
+        end
+
+        protected
+        def encodeODataUriValues(values)
+          values.each{|key, value| values[key] = encodeODataUriValue(value) }
+          values
+        end
+
+        protected
+        def encodeODataUriValue(value)
+          # Replace each single quote (') with double single quotes ('') not double
+          # quotes (")
+          value = value.gsub("'", "''")
+
+          # Encode the special URL characters
+          value = URI.escape(value)
+
+          value
         end
       end
     end

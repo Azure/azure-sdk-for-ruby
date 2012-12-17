@@ -48,6 +48,31 @@ describe Azure::Storage::Table::TableService do
       end
     end
 
+    it "deletes complex keys" do
+      entity = entity_properties.dup
+
+      entity["RowKey"] = "key with spaces"
+      subject.insert_entity table_name, entity
+      result = subject.delete_entity table_name, entity["PartitionKey"], entity["RowKey"]
+      result.must_be_nil
+
+      entity["RowKey"] = "key'with'quotes"
+      subject.insert_entity table_name, entity
+      result = subject.delete_entity table_name, entity["PartitionKey"], entity["RowKey"]
+      result.must_be_nil
+
+      # Uncomment when issue 145 (Cannot use GB-18030 characters in strings) is fixed
+      #entity["RowKey"] = "keyWithUnicode" + 0xE.chr + 0x8B.chr + 0xA4.chr
+      #subject.insert_entity table_name, entity
+      #result = subject.delete_entity table_name, entity["PartitionKey"], entity["RowKey"]
+      #result.must_be_nil
+
+      entity["RowKey"] = "Qbert_Says=.!@%^&"
+      subject.insert_entity table_name, entity
+      result = subject.delete_entity table_name, entity["PartitionKey"], entity["RowKey"]
+      result.must_be_nil
+    end
+
     it "errors on an invalid table name" do
       assert_raises(Azure::Core::Http::HTTPError) do
         subject.delete_entity "this_table.cannot-exist!", entity_properties["PartitionKey"], entity_properties["RowKey"]
