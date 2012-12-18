@@ -143,7 +143,7 @@ module Azure
           when "Edm.Binary"
             Base64.encode64(value).chomp("\n")
           when "Edm.DateTime"
-            value.xmlschema
+            value.xmlschema(7)
           when "Edm.Boolean"
             if value.nil?
               ''
