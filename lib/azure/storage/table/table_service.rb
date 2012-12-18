@@ -27,7 +27,6 @@ module Azure
         def initialize
           super(Azure::Storage::Table::Auth::SharedKey.new)
           @host = Azure.config.table_host
-          @default_timeout = 30
         end
 
         # Public: Creates new table in the storage account

@@ -25,7 +25,6 @@ module Azure
       
       def initialize(host=Azure.config.service_bus_host)
         super(Azure::ServiceBus::Auth::WrapSigner.new)
-          @default_timeout = 90 
           @host = host
           
           with_filter do |req, res| 

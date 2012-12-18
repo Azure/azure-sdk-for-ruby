@@ -238,17 +238,13 @@ describe Azure::Storage::Service::StorageService do
   end
 
   describe "#generate_uri" do
-    before do
-      subject.default_timeout = 37
-    end
-
     it "returns a URI instance" do
       subject.generate_uri().must_be_kind_of ::URI
     end
 
     describe "when called with no arguments" do
       it "returns the StorageService host URL, with the default_timeout in the query string" do
-        subject.generate_uri().to_s.must_equal "http://dumyhost.uri/?timeout=37"
+        subject.generate_uri().to_s.must_equal "http://dumyhost.uri/"
       end
     end
 
@@ -274,7 +270,7 @@ describe Azure::Storage::Service::StorageService do
       end
 
       it "sets the query string to the encoded result" do
-        subject.generate_uri('',{ "key" => "value !", "key !"=>"value"}).query.must_equal "key=value+%21&key+%21=value&timeout=37"
+        subject.generate_uri('',{ "key" => "value !", "key !"=>"value"}).query.must_equal "key=value+%21&key+%21=value"
       end
 
       describe "when the query parameters include a timeout key" do

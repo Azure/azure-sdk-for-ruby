@@ -23,7 +23,6 @@ module Azure
 
         def initialize
           super()
-          @default_timeout = 90 
           @host = Azure.config.blob_host
         end
 
@@ -1086,7 +1085,7 @@ module Azure
 
           uri = blob_uri(destination_container, destination_blob, query)
           headers = { }
-          headers["x-ms-copy-source"] = blob_uri(source_container, source_blob, options[:source_snapshot] ? { "snapshot" => options[:source_snapshot] } : {}, true).to_s
+          headers["x-ms-copy-source"] = blob_uri(source_container, source_blob, options[:source_snapshot] ? { "snapshot" => options[:source_snapshot] } : {}).to_s
 
           unless options.empty?
             headers["If-Modified-Since"] = options[:dest_if_modified_since] if options[:dest_if_modified_since]
@@ -1282,7 +1281,7 @@ module Azure
         #
         # Returns a URI.
         protected
-        def blob_uri(container_name, blob_name, query={}, no_timeout=false)
+        def blob_uri(container_name, blob_name, query={})
           blob_name = CGI.escape(blob_name)
 
           # Unencode the forward slashes to match what the server expects.
@@ -1298,7 +1297,7 @@ module Azure
             path = File.join(container_name, blob_name)
           end
 
-          generate_uri(path, query, no_timeout)
+          generate_uri(path, query)
         end
       end
     end

@@ -23,7 +23,6 @@ module Azure
         def initialize
           super()
           @host = Azure.config.queue_host
-          @default_timeout = 30
         end
 
         # Public: Get a list of Queues from the server
