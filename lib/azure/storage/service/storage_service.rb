@@ -25,16 +25,6 @@ module Azure
         # account_name  - String. The account name (optional, Default=Azure.config.account_name)  
         def initialize(signer=Core::Auth::SharedKey.new, account_name=Azure.config.account_name)
           super(signer, account_name)
-          @default_timeout = default_timeout
-        end
-
-        attr_accessor :default_timeout
-
-        def generate_uri(path='', query={}, no_timeout=false)
-          query["timeout"] = default_timeout.to_s unless query == nil or query.has_key? "timeout"
-          query.delete "timeout" if no_timeout unless query == nil or not query.has_key? "timeout"
-          
-          super(path, query)
         end
 
 

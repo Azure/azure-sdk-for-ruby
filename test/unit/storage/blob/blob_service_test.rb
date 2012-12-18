@@ -1628,7 +1628,7 @@ describe Azure::Storage::Blob::BlobService do
           response_headers["x-ms-copy-status"] = copy_status
 
           subject.stubs(:blob_uri).with(container_name, blob_name, {}).returns(uri)
-          subject.stubs(:blob_uri).with(source_container_name, source_blob_name, query, true).returns(source_uri)
+          subject.stubs(:blob_uri).with(source_container_name, source_blob_name, query).returns(source_uri)
           subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
         }
       
@@ -1638,7 +1638,7 @@ describe Azure::Storage::Blob::BlobService do
         end
 
         it "assembles the source URI and places it in the header" do
-          subject.expects(:blob_uri).with(source_container_name, source_blob_name, query, true).returns(source_uri)
+          subject.expects(:blob_uri).with(source_container_name, source_blob_name, query).returns(source_uri)
           subject.copy_blob container_name, blob_name, source_container_name, source_blob_name
         end
 
@@ -1660,7 +1660,7 @@ describe Azure::Storage::Blob::BlobService do
           }
 
           it "modifies the source blob uri query string with the snapshot" do
-            subject.expects(:blob_uri).with(source_container_name, source_blob_name, query, true).returns(source_uri)
+            subject.expects(:blob_uri).with(source_container_name, source_blob_name, query).returns(source_uri)
             subject.copy_blob container_name, blob_name, source_container_name, source_blob_name, { :source_snapshot => source_snapshot }
           end
         end
@@ -1876,7 +1876,7 @@ describe Azure::Storage::Blob::BlobService do
       super
     end
 
-    def blob_uri(container_name, blob_name, query={}, no_timeout=false)
+    def blob_uri(container_name, blob_name, query={})
       super
     end
   end
@@ -1890,8 +1890,7 @@ describe Azure::Storage::Blob::BlobService do
     let(:host_uri) { "http://dummy.uri" }
 
     before { 
-      subject.host = host_uri 
-      subject.default_timeout = 37
+      subject.host = host_uri
     }
 
     describe "#containers_uri" do
@@ -1901,12 +1900,12 @@ describe Azure::Storage::Blob::BlobService do
         result.scheme.must_equal "http"
         result.host.must_equal "dummy.uri"
         result.path.must_equal "/"
-        result.query.must_equal "comp=list&timeout=37"
+        result.query.must_equal "comp=list"
       end
 
       it "encodes optional query has as uri parameters" do
         result = subject.containers_uri query
-        result.query.must_equal "comp=list&param=value&param+1=value+1&timeout=37"
+        result.query.must_equal "comp=list&param=value&param+1=value+1"
       end
     end
 
@@ -1917,12 +1916,12 @@ describe Azure::Storage::Blob::BlobService do
         result.scheme.must_equal "http"
         result.host.must_equal "dummy.uri"
         result.path.must_equal "/container"
-        result.query.must_equal "restype=container&timeout=37"
+        result.query.must_equal "restype=container"
       end
 
       it "encodes optional query has as uri parameters" do
         result = subject.container_uri container_name, query
-        result.query.must_equal "restype=container&param=value&param+1=value+1&timeout=37"
+        result.query.must_equal "restype=container&param=value&param+1=value+1"
       end
 
       it "returns the same URI instance when the first parameter is a URI" do
@@ -1939,12 +1938,11 @@ describe Azure::Storage::Blob::BlobService do
         result.scheme.must_equal "http"
         result.host.must_equal "dummy.uri"
         result.path.must_equal "/container/blob"
-        result.query.must_equal "timeout=37"
       end
 
       it "encodes optional query has as uri parameters" do
         result = subject.blob_uri container_name, blob_name, query
-        result.query.must_equal "param=value&param+1=value+1&timeout=37"
+        result.query.must_equal "param=value&param+1=value+1"
       end
     end
   end

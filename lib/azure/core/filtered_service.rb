@@ -22,7 +22,6 @@ module Azure
       # Create a new instance of the FilteredService
       # 
       # host            - String. The hostname. (optional, Default empty)
-      # default_timeout - Integer. The default timeout in seconds (optional, Default 30)
       def initialize(host='')
         super(host)
         @filters = []

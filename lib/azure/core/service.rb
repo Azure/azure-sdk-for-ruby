@@ -22,7 +22,6 @@ module Azure
       # Create a new instance of the Service
       # 
       # host            - String. The hostname. (optional, Default empty)
-      # default_timeout - Integer. The default timeout in seconds (optional, Default 30)
       def initialize(host='')
         @host = host
       end
