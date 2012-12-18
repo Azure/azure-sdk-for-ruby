@@ -37,6 +37,9 @@ module Azure
         attr_reader :filters
         attr_reader :top_n
 
+        attr_reader :next_partition_key
+        attr_reader :next_row_key
+
         attr_reader :table_service
 
         def from(table_name)
@@ -69,8 +72,28 @@ module Azure
           self
         end
 
+        def next_partition(next_partition_key)
+          @next_partition_key = next_partition_key
+          self
+        end
+
+        def next_row(next_row_key)
+          @next_row_key = next_row_key
+          self
+        end
+
         def execute
-          @table_service.query_entities(table, @partition_key, @row_key, fields.map{ |f| f.to_s }, _build_filter_string, (top_n ? top_n.to_i : top_n))
+          @table_service.query_entities(@table, {
+            :PartitionKey => @partition_key,
+            :RowKey => @row_key, 
+            :select => @fields.map{ |f| f.to_s },
+            :filter => _build_filter_string,
+            :top => (@top_n ? @top_n.to_i : @top_n),
+            :continuation_token => { 
+              :next_partition_key => @next_partition_key,
+              :next_row_key => @next_row_key
+            }
+          })
         end
 
         def _build_filter_string

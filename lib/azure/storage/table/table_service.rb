@@ -221,15 +221,14 @@ module Azure
         #   continuation_token  - Hash. A token used to retrieve subsequent pages, if the result set is too large for a single operation to return 
         def query_entities(table_name, options={})
           query ={}
-          query["$select"] = encodeODataUriValues(options[:select]).join ',' if options[:select]
+          query["$select"] = options[:select].join ',' if options[:select]
           query["$filter"] = options[:filter] if options[:filter]
-          query["$top"] = encodeODataUriValue(options[:top].to_s) if options[:top] unless options[:PartitionKey] and options[:RowKey]
-          query["NextPartitionKey"] = encodeODataUriValue(options[:continuation_token][:next_partition_key]) if options[:continuation_token] and options[:continuation_token][:next_partition_key]
-          query["NextRowKey"] = encodeODataUriValue(options[:continuation_token][:next_row_key]) if options[:continuation_token] and options[:continuation_token][:next_row_key]
+          query["$top"] = options[:top].to_s if options[:top] unless options[:PartitionKey] and options[:RowKey]
+          query["NextPartitionKey"] = options[:continuation_token][:next_partition_key] if options[:continuation_token] and options[:continuation_token][:next_partition_key]
+          query["NextRowKey"] = options[:continuation_token][:next_row_key] if options[:continuation_token] and options[:continuation_token][:next_row_key]
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
           uri = entities_uri(table_name, options[:PartitionKey], options[:RowKey], query)
-
           response = call(:get, uri, nil, { "DataServiceVersion" => "2.0;NetFx"})
 
           entities = []
@@ -483,8 +482,11 @@ module Azure
 
         protected
         def encodeODataUriValues(values)
-          values.each{|key, value| values[key] = encodeODataUriValue(value) }
-          values
+          new_values = []
+          values.each do |value|
+            new_values.push encodeODataUriValue(value)
+          end
+          new_values
         end
 
         protected
