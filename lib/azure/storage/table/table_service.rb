@@ -229,7 +229,6 @@ module Azure
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
           uri = entities_uri(table_name, options[:PartitionKey], options[:RowKey], query)
-
           response = call(:get, uri, nil, { "DataServiceVersion" => "2.0;NetFx"})
 
           entities = []
@@ -460,7 +459,7 @@ module Azure
 
           path = if partition_key && row_key
             "%s(PartitionKey='%s',RowKey='%s')" % [
-              table_name, partition_key, row_key
+              table_name, encodeODataUriValue(partition_key), encodeODataUriValue(row_key)
             ]
           else
             "%s()" % table_name
@@ -479,6 +478,27 @@ module Azure
           end
           uri.query = qs.join '&' if qs.length > 0
           uri
+        end
+
+        protected
+        def encodeODataUriValues(values)
+          new_values = []
+          values.each do |value|
+            new_values.push encodeODataUriValue(value)
+          end
+          new_values
+        end
+
+        protected
+        def encodeODataUriValue(value)
+          # Replace each single quote (') with double single quotes ('') not double
+          # quotes (")
+          value = value.gsub("'", "''")
+
+          # Encode the special URL characters
+          value = URI.escape(value)
+
+          value
         end
       end
     end
