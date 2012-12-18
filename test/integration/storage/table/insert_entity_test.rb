@@ -33,6 +33,7 @@ describe Azure::Storage::Table::TableService do
         "CustomStringProperty" => "CustomPropertyValue",
         "CustomBinaryProperty" => "\x01\x02\x03".force_encoding("BINARY"),
         "CustomDateProperty" => Time.now,
+        "CustomDatePrecisionProperty" => Time.at(946684800, 123456.7),
         "CustomIntegerProperty" => 37,
         "CustomTrueProperty" => true,
         "CustomFalseProperty" => false,
@@ -50,10 +51,10 @@ describe Azure::Storage::Table::TableService do
       result.must_be_kind_of Azure::Storage::Table::Entity
       result.table.must_equal table_name
       entity_properties.each { |k,v|
-        unless entity_properties[k].class == Time
-          result.properties[k].must_equal entity_properties[k]
+        if entity_properties[k].class == Time
+          result.properties[k].to_f.must_equal entity_properties[k].to_f
         else
-          result.properties[k].to_i.must_equal entity_properties[k].to_i
+          result.properties[k].must_equal entity_properties[k]
         end
       }
     end
