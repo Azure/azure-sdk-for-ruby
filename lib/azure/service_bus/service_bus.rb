@@ -265,7 +265,7 @@ module Azure
       # options      - Hash. Optional parameters. 
       #
       # Accepted key/value pairs in options parameter are:
-      # :timeout      - Integer. Number of queues to skip.
+      # :timeout     - Integer. Timeout for the REST call.
       def peek_lock_subscription_message(topic, subscription, options={})
         topic = _name_for(topic)
         subscription = _name_for(subscription)
@@ -303,7 +303,7 @@ module Azure
       # options      - Hash. Optional parameters. 
       #
       # Accepted key/value pairs in options parameter are:
-      # :timeout      - Integer. Number of queues to skip.
+      # :timeout     - Integer. Timeout for the REST call.
       #
       def read_delete_subscription_message(topic, subscription, options={})
         topic = _name_for(topic)
@@ -357,7 +357,7 @@ module Azure
       # options      - Hash. Optional parameters. 
       #
       # Accepted key/value pairs in options parameter are:
-      # :timeout      - Integer. Number of queues to skip.
+      # :timeout     - Integer. Timeout for the REST call.
       #
       def peek_lock_queue_message(queue, options={})
         _peek_lock_message(_name_for(queue), options[:timeout] ? options[:timeout] : 60)
@@ -387,7 +387,7 @@ module Azure
       # options      - Hash. Optional parameters. 
       #
       # Accepted key/value pairs in options parameter are:
-      # :timeout      - Integer. Number of queues to skip.
+      # :timeout     - Integer. Timeout for the REST call.
       #
       def read_delete_queue_message(queue, options={})
         _read_delete_message(_name_for(queue), options[:timeout] ? options[:timeout] : 60)
@@ -411,8 +411,8 @@ module Azure
       # options      - Hash. Optional parameters. 
       #
       # Accepted key/value pairs in options parameter are:
-      # :peek_lock    - Boolean. Lock when peeking.
-      # :timeout      - Integer. Number of queues to skip.
+      # :peek_lock   - Boolean. Lock when peeking.
+      # :timeout     - Integer. Timeout for the REST call.
       #
       def receive_queue_message(queue, options={})
         peek_lock = true
@@ -426,8 +426,8 @@ module Azure
       # options      - Hash. Optional parameters. 
       #
       # Accepted key/value pairs in options parameter are:
-      # :peek_lock    - Boolean. Lock when peeking.
-      # :timeout      - Integer. Number of queues to skip.
+      # :peek_lock   - Boolean. Lock when peeking.
+      # :timeout     - Integer. Timeout for the REST call.
       #
       def receive_subscription_message(topic, subscription, options={})
         peek_lock = true
