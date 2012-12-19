@@ -67,7 +67,7 @@ describe "ServiceBus Subscriptions" do
         retrieved.body.must_equal msg.body
         retrieved.label.must_equal msg.label
 
-        retrieved = subject.read_delete_subscription_message topic, subscription, 1
+        retrieved = subject.read_delete_subscription_message topic, subscription, { :timeout => 1 }
         retrieved.must_be_nil
       end
       
@@ -79,16 +79,16 @@ describe "ServiceBus Subscriptions" do
         retrieved.to.must_equal msg.to
 
         # it should be deleted
-        retrieved = subject.read_delete_subscription_message topic, subscription, 1
+        retrieved = subject.read_delete_subscription_message topic, subscription, { :timeout => 1 }
         retrieved.must_be_nil
       end
 
       it "should be able to unlock a message" do
-        retrieved = subject.peek_lock_subscription_message topic, subscription, 1
+        retrieved = subject.peek_lock_subscription_message topic, subscription, { :timeout => 1 }
         retrieved.body.must_equal msg.body
 
         # There shouldn't be an available message in the queue
-        retrieved2 = subject.peek_lock_subscription_message topic, subscription, 1
+        retrieved2 = subject.peek_lock_subscription_message topic, subscription, { :timeout => 1 }
         retrieved2.must_be_nil
 
         # Unlock the message
@@ -96,7 +96,7 @@ describe "ServiceBus Subscriptions" do
         res.must_be_nil
 
         # The message should be available once again
-        retrieved = subject.peek_lock_subscription_message topic, subscription, 1
+        retrieved = subject.peek_lock_subscription_message topic, subscription, { :timeout => 1 }
         retrieved.body.must_equal msg.body
       end
     end
