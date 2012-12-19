@@ -68,7 +68,7 @@ describe "ServiceBus Rules" do
 
       it "should be able to use $skip token" do
         result = subject.list_rules topic, subscription
-        result2 = subject.list_rules topic, subscription, 1
+        result2 = subject.list_rules topic, subscription, { :skip => 1 }
         result2.length.must_equal result.length - 1
         result2[0].id.must_equal result[1].id
       end
@@ -77,13 +77,13 @@ describe "ServiceBus Rules" do
         result = subject.list_rules topic, subscription
         result.length.wont_equal 1
 
-        result2 = subject.list_rules topic, subscription, nil, 1
+        result2 = subject.list_rules topic, subscription, { :top => 1 }
         result2.length.must_equal 1
       end
 
       it "should be able to use $skip and $top token together" do
         result = subject.list_rules topic, subscription
-        result2 = subject.list_rules topic, subscription, 1, 1
+        result2 = subject.list_rules topic, subscription, { :skip => 1, :top => 1 }
         result2.length.must_equal 1
         result2[0].id.must_equal result[1].id
       end

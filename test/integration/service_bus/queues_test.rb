@@ -37,7 +37,7 @@ describe "ServiceBus Queues" do
   end
 
   it "should be able to create a new queue from a string and description Hash" do
-    queue = subject.create_queue name, description
+    queue = subject.create_queue name, { :description => description }
     queue.must_be_kind_of Azure::ServiceBus::Queue
     queue.name.must_equal name
     queue.max_size_in_mb.must_equal 1
@@ -59,7 +59,7 @@ describe "ServiceBus Queues" do
   end
 
   describe 'when a queue exists' do
-    before { subject.create_queue name, description }
+    before { subject.create_queue name, { :description => description } }
 
     describe '#delete_queue' do
       it "should raise exception if the queue cannot be deleted" do
@@ -114,7 +114,7 @@ describe "ServiceBus Queues" do
 
       it "should be able to use $skip token with list_queues" do
         result = subject.list_queues
-        result2 = subject.list_queues 1
+        result2 = subject.list_queues({ :skip => 1 })
         result2.length.must_equal result.length - 1
         result2[0].id.must_equal result[1].id
       end
@@ -123,13 +123,13 @@ describe "ServiceBus Queues" do
         result = subject.list_queues
         result.length.wont_equal 1
 
-        result2 = subject.list_queues nil, 1
+        result2 = subject.list_queues({ :top => 1 })
         result2.length.must_equal 1
       end
 
       it "should be able to use $skip and $top token together with list_queues" do
         result = subject.list_queues
-        result2 = subject.list_queues 1, 1
+        result2 = subject.list_queues({ :skip => 1, :top => 1 })
         result2.length.must_equal 1
         result2[0].id.must_equal result[1].id
       end
@@ -173,15 +173,15 @@ describe "ServiceBus Queues" do
         retrieved.to.must_equal msg.to
 
         # it should be deleted
-        retrieved = subject.read_delete_queue_message name, 2
+        retrieved = subject.read_delete_queue_message name, { :timeout => 2 }
         retrieved.must_be_nil
       end
 
       it "should be able to unlock a message from a queue" do
-        retrieved = subject.peek_lock_queue_message name, 2
+        retrieved = subject.peek_lock_queue_message name, { :timeout => 2 }
 
         # There shouldn't be an available message in the queue
-        retrieved2 = subject.peek_lock_queue_message name, 2
+        retrieved2 = subject.peek_lock_queue_message name, { :timeout => 2 }
         retrieved2.must_be_nil
 
         # Unlock the message
@@ -189,7 +189,7 @@ describe "ServiceBus Queues" do
         res.must_be_nil
 
         # The message should be available once again
-        retrieved = subject.peek_lock_queue_message name, 2
+        retrieved = subject.peek_lock_queue_message name, { :timeout => 2 }
         retrieved.body.must_equal msg.body
       end
     
@@ -201,7 +201,7 @@ describe "ServiceBus Queues" do
         subject.delete_queue_message name, retrieved.sequence_number, retrieved.lock_token
 
         # it should be deleted
-        retrieved = subject.peek_lock_queue_message name, 2
+        retrieved = subject.peek_lock_queue_message name, { :timeout => 2 }
         assert_nil retrieved
       end
     end

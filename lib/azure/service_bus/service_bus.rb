@@ -38,11 +38,14 @@ module Azure
 
       # Creates a new queue. Once created, this queue's resource manifest is immutable. 
       # 
-      # queue       - Azure::ServiceBus::Queue instance to create on server, or a string of the queue name
-      # description - Hash. Options for the queue. (optional)
+      # queue        - Azure::ServiceBus::Queue instance to create on server, or a string of the queue name
+      # options      - Hash. Optional parameters. 
       #
-      def create_queue(queue, description={})
-        queue = _new_or_existing(Azure::ServiceBus::Queue, queue, description)
+      # Accepted key/value pairs in options parameter are:
+      # :description - String. Description for the queue.
+      #
+      def create_queue(queue, options={})
+        queue = _new_or_existing(Azure::ServiceBus::Queue, queue, options[:description] ? options[:description] : {})
         create_resource_entry(:queue, queue, queue.name)
       end
 
@@ -63,21 +66,30 @@ module Azure
       end
       
       # Enumerates the queues in the service namespace.
-      def list_queues(skip=nil, top=nil)
+      #
+      # options    - Hash. Optional parameters. 
+      #
+      # Accepted key/value pairs in options parameter are:
+      # :skip      - Integer. Number of queues to skip.
+      # :top       - Integer. Number of queues to list.
+      def list_queues(options={})
         query = {}
-        query["$skip"] = skip.to_i.to_s if skip
-        query["$top"] = top.to_i.to_s if top
+        query["$skip"] = options[:skip].to_i.to_s if options[:skip]
+        query["$top"] = options[:top].to_i.to_s if options[:top]
 
         resource_list(:queue, query)
       end
       
       # Creates a new topic. Once created, this topic resource manifest is immutable. 
       # 
-      # topic       - Azure::ServiceBus::Topic instance to create on server, or a string of the topic name
-      # description - Hash. Options for the topic. (optional)
+      # topic        - Azure::ServiceBus::Topic instance to create on server, or a string of the topic name
+      # options      - Hash. Optional parameters. 
       #
-      def create_topic(topic, description={})
-        topic = _new_or_existing(Azure::ServiceBus::Topic, topic, description)
+      # Accepted key/value pairs in options parameter are:
+      # :description - String. Description for the topic.
+      #
+      def create_topic(topic, options={})
+        topic = _new_or_existing(Azure::ServiceBus::Topic, topic, options[:description] ? options[:description] : {})
         create_resource_entry(:topic, topic, topic.name)
       end
       
@@ -98,10 +110,16 @@ module Azure
       end
 
       # Retrieves the topics in the service namespace.
-      def list_topics(skip=nil, top=nil)
+      #
+      # options      - Hash. Optional parameters. 
+      #
+      # Accepted key/value pairs in options parameter are:
+      # :skip      - Integer. Number of topics to skip.
+      # :top       - Integer. Number of topics to list.
+      def list_topics(options={})
         query = {}
-        query["$skip"] = skip.to_i.to_s if skip
-        query["$top"] = top.to_i.to_s if top
+        query["$skip"] = options[:skip].to_i.to_s if options[:skip]
+        query["$top"] = options[:top].to_i.to_s if options[:top]
 
         resource_list(:topic, query)
       end
@@ -154,11 +172,11 @@ module Azure
       # Pass either (topic_name, subscription_name) as strings, or (subscription) a object with .name and .topic methods
       # such as Azure::ServiceBus::Subscription instance.
       def list_rules(*p)
-        topic_name, subscription_name, skip, top = _subscription_args(*p)
+        topic_name, subscription_name, options = _subscription_args(*p)
 
         query = {}
-        query["$skip"] = skip.to_i.to_s if skip
-        query["$top"] = top.to_i.to_s if top
+        query["$skip"] = options[:skip].to_i.to_s if options[:skip]
+        query["$top"] = options[:top].to_i.to_s if options[:top]
 
         resource_list(:rule, topic_name, subscription_name, query).each{|r| r.topic = topic_name; r.subscription=subscription_name}
       end
@@ -204,12 +222,17 @@ module Azure
 
       # Retrieves the subscriptions in the specified topic. 
       # 
-      # topic: Either a Azure::ServiceBus::Topic instance or a string of the topic name
-      def list_subscriptions(topic, skip=nil, top=nil)
+      # topic    - Either a Azure::ServiceBus::Topic instance or a string of the topic name
+      # options  - Hash. Optional parameters. 
+      #
+      # Accepted key/value pairs in options parameter are:
+      # :skip      - Integer. Number of subscriptions to skip.
+      # :top       - Integer. Number of subscriptions to list.
+      def list_subscriptions(topic, options={})
         topic = _name_for(topic)
         query = {}
-        query["$skip"] = skip.to_i.to_s if skip
-        query["$top"] = top.to_i.to_s if top
+        query["$skip"] = options[:skip].to_i.to_s if options[:skip]
+        query["$top"] = options[:top].to_i.to_s if options[:top]
 
         resource_list(:subscription, topic, query).each { |s| s.topic = topic }
       end
@@ -237,14 +260,17 @@ module Azure
       # unlock it for other receivers, an Unlock Message command should be issued, or 
       # the lock duration period can expire. 
       # 
-      # topic: the name of the topic or a Topic instance
-      # subscription: the name of the subscription or a Subscription instance
+      # topic        - String. The name of the topic or a Topic instance
+      # subscription - String. The name of the subscription or a Subscription instance
+      # options      - Hash. Optional parameters. 
       #
-      def peek_lock_subscription_message(topic, subscription, timeout='60')
+      # Accepted key/value pairs in options parameter are:
+      # :timeout      - Integer. Number of queues to skip.
+      def peek_lock_subscription_message(topic, subscription, options={})
         topic = _name_for(topic)
         subscription = _name_for(subscription)
 
-        _peek_lock_message(subscriptions_path(topic, subscription), timeout)
+        _peek_lock_message(subscriptions_path(topic, subscription), options[:timeout] ? options[:timeout] : 60)
       end
 
       #
@@ -274,12 +300,16 @@ module Azure
       # 
       # topic: the name of the topic or a Topic instance
       # subscription: the name of the subscription or a Subscription instance
+      # options      - Hash. Optional parameters. 
       #
-      def read_delete_subscription_message(topic, subscription, timeout='60')
+      # Accepted key/value pairs in options parameter are:
+      # :timeout      - Integer. Number of queues to skip.
+      #
+      def read_delete_subscription_message(topic, subscription, options={})
         topic = _name_for(topic)
         subscription = _name_for(subscription)
 
-        _read_delete_message(subscriptions_path(topic, subscription), timeout)
+        _read_delete_message(subscriptions_path(topic, subscription), options[:timeout] ? options[:timeout] : 60)
       end
 
       # Completes processing on a locked message and delete it from the subscription. 
@@ -323,10 +353,14 @@ module Azure
       # an Unlock Message command should be issued, or the lock duration period 
       # can expire.
       # 
-      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      # queue        - String. Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      # options      - Hash. Optional parameters. 
       #
-      def peek_lock_queue_message(queue, timeout=60)
-        _peek_lock_message(_name_for(queue), timeout)
+      # Accepted key/value pairs in options parameter are:
+      # :timeout      - Integer. Number of queues to skip.
+      #
+      def peek_lock_queue_message(queue, options={})
+        _peek_lock_message(_name_for(queue), options[:timeout] ? options[:timeout] : 60)
       end
 
       # Unlocks a message for processing by other receivers on a given subscription. 
@@ -350,9 +384,13 @@ module Azure
       # processing fails.
       # 
       # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      # options      - Hash. Optional parameters. 
       #
-      def read_delete_queue_message(queue, timeout=60)
-        _read_delete_message(_name_for(queue), timeout)
+      # Accepted key/value pairs in options parameter are:
+      # :timeout      - Integer. Number of queues to skip.
+      #
+      def read_delete_queue_message(queue, options={})
+        _read_delete_message(_name_for(queue), options[:timeout] ? options[:timeout] : 60)
       end
 
       # Completes processing on a locked message and delete it from the queue. This 
@@ -369,11 +407,32 @@ module Azure
         _delete_message(_name_for(queue), sequence_number, lock_token)
       end
 
-      def receive_queue_message(queue, peek_lock=true, timeout=60)
-        peek_lock ? peek_lock_queue_message(queue, timeout) : read_delete_queue_message(queue, timeout)
+      # queue        - String. The queue name.
+      # options      - Hash. Optional parameters. 
+      #
+      # Accepted key/value pairs in options parameter are:
+      # :peek_lock    - Boolean. Lock when peeking.
+      # :timeout      - Integer. Number of queues to skip.
+      #
+      def receive_queue_message(queue, options={})
+        peek_lock = true
+        peek_lock = options[:peek_lock] if options[:peek_lock]
+
+        peek_lock ? peek_lock_queue_message(queue, options[:timeout]) : read_delete_queue_message(queue, options[:timeout] ? options[:timeout] : 60)
       end
 
-      def receive_subscription_message(topic, subscription, peek_lock=true, timeout=60)
+
+      # topic        - String. The topic name.
+      # options      - Hash. Optional parameters. 
+      #
+      # Accepted key/value pairs in options parameter are:
+      # :peek_lock    - Boolean. Lock when peeking.
+      # :timeout      - Integer. Number of queues to skip.
+      #
+      def receive_subscription_message(topic, subscription, options={})
+        peek_lock = true
+        peek_lock = options[:peek_lock] if options[:peek_lock]
+
         peek_lock ? peek_lock_subscription_message(topic, subscription, timeout) : read_delete_subscription_message(topic, subscription, timeout)
       end
 
@@ -487,33 +546,30 @@ module Azure
         raise ArgumentError, "Not enough args" if p.length < 1
         topic_name = nil
         subscription_name = nil
-        skip = nil
-        top = nil
+        options = {}
 
         if p.length == 4
-          # topic/sub/skip/top 
+          # topic/sub/options
           topic_name = _name_for(p[0])
           subscription_name = _name_for(p[1])
-          skip = p[2]
-          top = p[3]
+          options = p[2]
         elsif p.length == 3
-          # either subscription/skip/top or topic/sub/skip 
+          # either subscription/skip/options or topic/sub/options 
           if p[0].respond_to? :name and p[0].respond_to? :topic
             topic_name = p[0].topic
             subscription_name = p[0].name
-            skip =p[1]
-            top =p[2]
+            options =p[1]
           else
             topic_name = _name_for(p[0])
             subscription_name = _name_for(p[1])
-            skip =p[2]
+            options =p[2]
           end
         elsif p.length == 2
-          # either subscription/skip or topic/sub
+          # either subscription/options or topic/sub
           if p[0].respond_to? :name and p[0].respond_to? :topic
             topic_name = p[0].topic
             subscription_name = p[0].name
-            skip =p[1]
+            options =p[1]
           else
             topic_name = _name_for(p[0])
             subscription_name = _name_for(p[1])
@@ -525,7 +581,7 @@ module Azure
           raise ArgumentError, "Must provide either (topic_name, subscription_name) as strings, or (subscription) a object with .name and .topic methods such as Azure::ServiceBus::Subscription instance."
         end
 
-        return topic_name, subscription_name, skip, top
+        return topic_name, subscription_name, options
       end
 
       def _name_for(val)
