@@ -42,7 +42,7 @@ module Azure
         #                     5,000, the server will return up to 5,000 items. If it is set 
         #                     to a value less than or equal to zero, the server will return 
         #                     status code 400 (Bad Request). (optional)
-        # :metadata         - Boolean. Specifies wether or not to return the container metadata.
+        # :metadata         - Boolean. Specifies whether or not to return the container metadata.
         #                     (optional, Default=false)
         # :timeout          - Integer. A timeout in seconds.
         #

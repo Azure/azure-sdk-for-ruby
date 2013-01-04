@@ -48,7 +48,7 @@ module Azure
         #
         # :timeout          - Integer. A timeout in seconds.
         #
-        # :metadata         - Boolean. Specifies wether or not to return the container metadata.
+        # :metadata         - Boolean. Specifies whether or not to return the container metadata.
         #                     (optional, Default=false)
         #
         # NOTE: Metadata requested with the :metadata parameter must have been stored in
@@ -291,7 +291,7 @@ module Azure
         #                     5,000, the server will return up to 5,000 items. If it is set 
         #                     to a value less than or equal to zero, the server will return 
         #                     status code 400 (Bad Request). (optional)
-        # :metadata         - Boolean. Specifies wether or not to return the blob metadata.
+        # :metadata         - Boolean. Specifies whether or not to return the blob metadata.
         #                     (optional, Default=false)
         # :snapshots        - Boolean. Specifies that snapshots should be included in the 
         #                     enumeration. Snapshots are listed from oldest to newest in the 
@@ -349,12 +349,12 @@ module Azure
         # Accepted key/value pairs in options parameter are:
         # :content_type          - String. Content type for the request. Will be saved with blob unless alternate value is provided in blob_content_type.
         # :content_encoding      - String. Content encoding for the request. Will be saved with blob unless alternate value is provided in blob_content_encoding.
-        # :content_language      - String. Content langauge for the request. Will be saved with blob unless alternate value is provided in blob_content_language.
+        # :content_language      - String. Content language for the request. Will be saved with blob unless alternate value is provided in blob_content_language.
         # :content_md5           - String. Content MD5 for the request. Will be saved with blob unless alternate value is provided in blob_content_md5.
         # :cache_control         - String. Cache control for the request. Will be saved with blob unless alternate value is provided in blob_cache_control.
         # :blob_content_type     - String. Content type for the blob. Will be saved with blob.
         # :blob_content_encoding - String. Content encoding for the blob. Will be saved with blob.
-        # :blob_content_language - String. Content langauge for the blob. Will be saved with blob.
+        # :blob_content_language - String. Content language for the blob. Will be saved with blob.
         # :blob_content_md5      - String. Content MD5 for the blob. Will be saved with blob.
         # :blob_cache_control    - String. Cache control for the blob. Will be saved with blob.
         # :metadata              - Hash. Custom metadata values to store with the blob.
@@ -512,12 +512,12 @@ module Azure
         # Accepted key/value pairs in options parameter are:
         # :content_type          - String. Content type for the request. Will be saved with blob unless alternate value is provided in blob_content_type.
         # :content_encoding      - String. Content encoding for the request. Will be saved with blob unless alternate value is provided in blob_content_encoding.
-        # :content_language      - String. Content langauge for the request. Will be saved with blob unless alternate value is provided in blob_content_language.
+        # :content_language      - String. Content language for the request. Will be saved with blob unless alternate value is provided in blob_content_language.
         # :content_md5           - String. Content MD5 for the request. Will be saved with blob unless alternate value is provided in blob_content_md5.
         # :cache_control         - String. Cache control for the request. Will be saved with blob unless alternate value is provided in blob_cache_control.
         # :blob_content_type     - String. Content type for the blob. Will be saved with blob.
         # :blob_content_encoding - String. Content encoding for the blob. Will be saved with blob.
-        # :blob_content_language - String. Content langauge for the blob. Will be saved with blob.
+        # :blob_content_language - String. Content language for the blob. Will be saved with blob.
         # :blob_content_md5      - String. Content MD5 for the blob. Will be saved with blob.
         # :blob_cache_control    - String. Cache control for the blob. Will be saved with blob.
         # :metadata              - Hash. Custom metadata values to store with the blob.
@@ -617,7 +617,7 @@ module Azure
         # :content_md5           - String. Content MD5 for the request contents (not the blob contents!)
         # :blob_content_type     - String. Content type for the blob. Will be saved with blob.
         # :blob_content_encoding - String. Content encoding for the blob. Will be saved with blob.
-        # :blob_content_language - String. Content langauge for the blob. Will be saved with blob.
+        # :blob_content_language - String. Content language for the blob. Will be saved with blob.
         # :blob_content_md5      - String. Content MD5 for the blob. Will be saved with blob.
         # :blob_cache_control    - String. Cache control for the blob. Will be saved with blob.
         # :metadata              - Hash. Custom metadata values to store with the blob.
@@ -797,7 +797,7 @@ module Azure
         # Accepted key/value pairs in options parameter are:
         # :content_type             - String. Content type for the blob. Will be saved with blob.
         # :content_encoding         - String. Content encoding for the blob. Will be saved with blob.
-        # :content_language         - String. Content langauge for the blob. Will be saved with blob.
+        # :content_language         - String. Content language for the blob. Will be saved with blob.
         # :content_md5              - String. Content MD5 for the blob. Will be saved with blob.
         # :cache_control            - String. Cache control for the blob. Will be saved with blob.
         # :content_length           - Integer. Resizes a page blob to the specified size. If the specified 
@@ -1064,7 +1064,7 @@ module Azure
         # :dest_if_match                - An ETag value. Specify an ETag value to write the page only if the destination 
         #                                 blob's ETag value matches the value specified. If the values do not match, the 
         #                                 Blob service returns status code 412 (Precondition Failed).
-        # :dest_if_none_match           - An ETag value. Specify an ETag value to write the page only if the desintation 
+        # :dest_if_none_match           - An ETag value. Specify an ETag value to write the page only if the destination 
         #                                 blob's ETag value does not match the value specified. If the values are 
         #                                 identical, the Blob service returns status code 412 (Precondition Failed).
         # :timeout                      - Integer. A timeout in seconds.
@@ -1228,7 +1228,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
         #
-        # Returns an Integer of the remaning lease time. This value is the approximate time remaining in the lease 
+        # Returns an Integer of the remaining lease time. This value is the approximate time remaining in the lease 
         # period, in seconds. This header is returned only for a successful request to break the lease. If the break 
         # is immediate, 0 is returned.
         def break_lease(container, blob, lease, options={})
