@@ -23,7 +23,7 @@ describe Azure::Storage::Table::TableService do
     before { subject.create_table table_name }
     after { TableNameHelper.clean }
 
-    it "deletes a table and returns true on success" do
+    it "deletes a table and returns nil on success" do
       result = subject.delete_table(table_name)
       result.must_be_nil
       

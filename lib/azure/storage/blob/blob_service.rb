@@ -122,7 +122,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179408.aspx
         #
-        # Returns true on success
+        # Returns nil on success
         def delete_container(name, options={})
           query = { }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -255,7 +255,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179362.aspx
         #
-        # Returns true on success
+        # Returns nil on success
         def set_container_metadata(name, metadata, options={})
           query = { "comp" => "metadata" }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -625,7 +625,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179467.aspx 
         # 
-        # Returns true on success
+        # Returns nil on success
         def commit_blob_blocks(container, blob, block_list, options={})
           query = { "comp" => "blocklist" }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -860,7 +860,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691966.aspx
         #
-        # Returns true on success.
+        # Returns nil on success.
         def set_blob_properties(container, blob, options={})
           query = { "comp" => "properties" }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -895,7 +895,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179414.aspx
         #
-        # Returns true on success.
+        # Returns nil on success.
         def set_blob_metadata(container, blob, metadata, options={})
           query = { "comp" => "metadata" }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -966,7 +966,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179440.aspx
         #
-        # Returns true on success
+        # Returns nil on success
         def delete_blob(container, blob, options={})
           query = { }
           query["snapshot"] = options[:snapshot] if options[:snapshot]
@@ -1186,7 +1186,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
         #
-        # Returns true on sucess
+        # Returns nil on success
         def release_lease(container, blob, lease, options={})
           query = { "comp" => "lease" }
           query["timeout"] = options[:timeout].to_s if options[:timeout]

@@ -47,7 +47,7 @@ module Azure
         # Public: Check if this response was successful. A request is considered
         # successful if the response is in the 200 - 399 range.
         #
-        # Returns true|false.
+        # Returns nil|false.
         def success?
           (200..399).include? status_code
         end

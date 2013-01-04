@@ -89,7 +89,7 @@ module Azure
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179454
         # 
-        # Returns true on success
+        # Returns nil on success
         def clear_messages(queue_name, options={})
           query = { }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -109,7 +109,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179342
         #
-        # Returns true on success
+        # Returns nil on success
         def create_queue(queue_name, options={})
           query = { }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -133,7 +133,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179436
         #
-        # Returns true on success
+        # Returns nil on success
         def delete_queue(queue_name, options={})
           query = { }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -181,7 +181,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179348
         #
-        # Returns true on success
+        # Returns nil on success
         def set_queue_metadata(queue_name, metadata, options={})
           query = { "comp" => "metadata" }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -228,7 +228,7 @@ module Azure
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159099
         #
-        # Returns true on success
+        # Returns nil on success
         def set_queue_acl(queue_name, options={})
           query = { "comp" => "acl" }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -259,7 +259,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179346
         #
-        # Returns true on success
+        # Returns nil on success
         def create_message(queue_name, message_text, options={})
           query = { }
 
@@ -289,7 +289,7 @@ module Azure
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179347
         #
-        # Returns true on success
+        # Returns nil on success
         #
         # Remarks:
         #

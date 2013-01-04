@@ -39,7 +39,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135729
         #
-        # Returns true on success
+        # Returns nil on success
         def create_table(table_name, options={})
           query = { }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -59,7 +59,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179387
         #
-        # Returns true on success
+        # Returns nil on success
         def delete_table(table_name, options={})
           query = { }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -156,7 +156,7 @@ module Azure
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159102
         #
-        # Returns true on success
+        # Returns nil on success
         def set_table_acl(table_name, options={})
           query = { "comp" => "acl" }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
@@ -368,7 +368,7 @@ module Azure
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135727
         #
-        # Returns true on success
+        # Returns nil on success
         def delete_entity(table_name, partition_key, row_key, options={})
           if_match = "*"
           if_match = options[:if_match] if options[:if_match]
