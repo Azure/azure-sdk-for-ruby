@@ -138,7 +138,7 @@ module Azure
           query = { "comp" => "acl" }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
-          response = call(:get, table_uri(table_name, query))
+          response = call(:get, generate_uri(table_name, query))
 
           signed_identifiers = []
           signed_identifiers = Azure::Storage::Table::Serialization.signed_identifiers_from_xml response.body unless response.body == nil or response.body.length < 1

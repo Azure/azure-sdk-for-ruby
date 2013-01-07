@@ -18,39 +18,35 @@ require "azure/core/http/http_error"
 
 describe Azure::Storage::Table::TableService do 
   describe "#get/set_acl" do
-    # TODO: These aren't working...
-    # subject { Azure::Storage::Table::TableService.new }
-    # let(:table_name){ TableNameHelper.name }
-    # let(:signed_identifier) { 
-    #   identifier = Azure::Storage::Service::SignedIdentifier.new 
-    #   identifier.id = "MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI="
-    #   identifier.access_policy = Azure::Storage::Service::AccessPolicy.new
-    #   identifier.access_policy.start = "2009-09-28T08:49:37.0000000Z"
-    #   identifier.access_policy.expiry = "2009-09-29T08:49:37.0000000Z"
-    #   identifier.access_policy.permission = "raud"
-    #   identifier
-    # }
+    subject { Azure::Storage::Table::TableService.new }
+    let(:table_name){ TableNameHelper.name }
+    let(:signed_identifier) { 
+      identifier = Azure::Storage::Service::SignedIdentifier.new 
+      identifier.id = "MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI="
+      identifier.access_policy = Azure::Storage::Service::AccessPolicy.new
+      identifier.access_policy.start = "2009-09-28T08:49:37.0000000Z"
+      identifier.access_policy.expiry = "2009-09-29T08:49:37.0000000Z"
+      identifier.access_policy.permission = "raud"
+      identifier
+    }
 
-    # before { 
-    #   subject.create_table table_name
-    # }
-    # after { TableNameHelper.clean }
+    before { 
+      subject.create_table table_name
+    }
+    after { TableNameHelper.clean }
 
-    # it "sets and gets the ACL for a table" do
-    #   require 'azure/core/http/debug_filter'
-    #   subject.with_filter Azure::Core::Http::DebugFilter.new
-    #   subject.filters.rotate!
-    #   assert subject.set_table_acl(table_name, [signed_identifier])
+    it "sets and gets the ACL for a table" do
+      subject.set_table_acl(table_name, { :signed_identifiers => [ signed_identifier ] })
 
-    #   result = subject.get_table_acl table_name
-    #   result.must_be_kind_of Array
+      result = subject.get_table_acl table_name
+      result.must_be_kind_of Array
 
-    #   result.length.wont_be_empty
-    #   result.last.must_be_kind_of Azure::Storage::Service::SignedIdentifier
-    #   result.last.id.must_equal signed_identifier.id
-    #   result.last.access_policy.start.must_equal signed_identifier.access_policy.start
-    #   result.last.access_policy.expiry.must_equal signed_identifier.access_policy.expiry
-    #   result.last.access_policy.permission.must_equal signed_identifier.access_policy.permission
-    # end
+      result.wont_be_empty
+      result.last.must_be_kind_of Azure::Storage::Service::SignedIdentifier
+      result.last.id.must_equal signed_identifier.id
+      result.last.access_policy.start.must_equal signed_identifier.access_policy.start
+      result.last.access_policy.expiry.must_equal signed_identifier.access_policy.expiry
+      result.last.access_policy.permission.must_equal signed_identifier.access_policy.permission
+    end
   end
 end

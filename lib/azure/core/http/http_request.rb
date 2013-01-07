@@ -17,6 +17,7 @@ require "base64"
 require "net/http"
 require "time"
 
+require "azure/version"
 require "azure/core/http/http_response"
 
 module Azure
@@ -92,6 +93,7 @@ module Azure
 
         # Build a default headers Hash
         def default_headers(current_time)
+          headers["User-Agent"] = "Microsoft Windows Azure SDK for Ruby/" + Azure::Version.to_s
           headers["x-ms-date"] = current_time
           headers["x-ms-version"] = "2012-02-12"
           headers["DataServiceVersion"] = "1.0;NetFx"
@@ -124,12 +126,20 @@ module Azure
           request = http_request_class.new(uri.request_uri, headers)
           request.body = body if body
 
-          http = Net::HTTP.new(uri.host, uri.port)
-          if uri.scheme.downcase == 'https'
-            # require 'net/https'
-            http.use_ssl = true
-            http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+          http = nil
+          if ENV['HTTP_PROXY']
+            proxy_uri = URI::parse(ENV['HTTP_PROXY'])
+            http = Net::HTTP::Proxy(proxy_uri.host, proxy_uri.port).new(uri.host, uri.port)
+          else
+            http = Net::HTTP.new(uri.host, uri.port)
+
+            if uri.scheme.downcase == 'https'
+              # require 'net/https'
+              http.use_ssl = true
+              http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+            end
           end
+
           response = HttpResponse.new(http.request(request))
           response.uri = uri
           raise response.error unless response.success?

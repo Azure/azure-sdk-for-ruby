@@ -1212,7 +1212,6 @@ module Azure
         #
         # container         - String. The container name.
         # blob              - String. The blob name.
-        # lease             - String. The lease id
         # options           - Hash. Optional parameters. 
         #
         # Accepted key/value pairs in options parameter are: 
@@ -1231,7 +1230,7 @@ module Azure
         # Returns an Integer of the remaining lease time. This value is the approximate time remaining in the lease 
         # period, in seconds. This header is returned only for a successful request to break the lease. If the break 
         # is immediate, 0 is returned.
-        def break_lease(container, blob, lease, options={})
+        def break_lease(container, blob, options={})
           query = { "comp" => "lease" }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
@@ -1239,7 +1238,6 @@ module Azure
 
           headers = { }
           headers["x-ms-lease-action"] = "break"
-          headers["x-ms-lease-id"] = lease
           headers["x-ms-lease-break-period"] = options[:break_period].to_s if options[:break_period]
 
           response = call(:put, uri, nil, headers)
