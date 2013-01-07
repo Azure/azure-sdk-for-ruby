@@ -78,9 +78,14 @@ module Azure
           #
           # Returns a String with the canonicalized resource.
           def canonicalized_resource(uri)
-            path = "/%s%s" % [account_name, uri.path]
-            query = CGI.parse(uri.query.to_s).fetch("comp", nil)
-            [path, query].compact.join("?")
+            resource = "/%s%s" % [account_name, uri.path]
+
+            comp = CGI.parse(uri.query.to_s).fetch("comp", nil)
+            if (comp)
+              resource = [resource, "comp=" + comp[0]].join("?")
+            end
+
+            resource
           end
         end
       end
