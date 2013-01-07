@@ -14,9 +14,11 @@
 #--------------------------------------------------------------------------
 require "date"
 
+require File.expand_path('../lib/azure/version', __FILE__)
+
 Gem::Specification.new do |s|
   s.name    = "azure"
-  s.version = "0.1.0"
+  s.version = Azure::Version
 
   s.authors     = ["Microsoft"]
   s.email       = "azure@microsoft.com"

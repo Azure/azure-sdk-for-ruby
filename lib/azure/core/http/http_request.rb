@@ -17,6 +17,7 @@ require "base64"
 require "net/http"
 require "time"
 
+require "azure/version"
 require "azure/core/http/http_response"
 
 module Azure
@@ -92,7 +93,7 @@ module Azure
 
         # Build a default headers Hash
         def default_headers(current_time)
-          headers["User-Agent"] = "Microsoft Windows Azure SDK for Ruby/0.1.0"
+          headers["User-Agent"] = "Microsoft Windows Azure SDK for Ruby/" + Azure::Version.to_s
           headers["x-ms-date"] = current_time
           headers["x-ms-version"] = "2012-02-12"
           headers["DataServiceVersion"] = "1.0;NetFx"
