@@ -12,29 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
-require "azure/storage/blob/blob_service"
+require "azure/core/configuration"
 
-describe Azure::Storage::Blob::BlobService do
-  subject { Azure::Storage::Blob::BlobService.new }
-  
-  describe '#break_lease' do
-    let(:container_name) { ContainerNameHelper.name }
-    let(:blob_name) { "blobname" }
-    let(:length) { 1024 }
-    before { 
-      subject.create_container container_name
-    }
-
-    it 'should be possible to break a lease' do
-      subject.create_page_blob container_name, blob_name, length
-
-      lease_id = subject.acquire_lease container_name, blob_name
-      lease_id.wont_be_nil
-
-      broken_lease = subject.break_lease container_name, blob_name
-      # lease should be possible to break immediately
-      broken_lease.must_equal 0
+module Azure
+  module Core
+    module Auth
+      class Authorizer
+        # Public: Signs an HTTP request before it's made, by adding the
+        # Authorization header
+        #
+        # request - An Azure::Core::HttpRequest that hasn't been signed
+        # signer  - A signing strategy, such as Azure::Table::Auth::SharedKey
+        #
+        # Returns the modified request
+        def sign(request, signer)
+          signature = signer.sign(request.method, request.uri, request.headers)
+          request.headers["Authorization"] = "#{signer.name} #{signature}"
+          request
+        end
+      end
     end
   end
 end
