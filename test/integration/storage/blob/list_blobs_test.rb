@@ -43,6 +43,22 @@ describe Azure::Storage::Blob::BlobService do
       }
     end
 
+    it 'lists the available blobs with prefix' do
+      result = subject.list_blobs container_name, { :prefix => "blobname0" }
+      result.blobs.length.must_equal 1
+    end
+
+    it 'lists the available blobs with max results and marker ' do
+      result = subject.list_blobs container_name, { :max_results => 2 }
+      result.blobs.length.must_equal 2
+      first_blob = result.blobs[0]
+      result.next_marker.wont_equal("")
+
+      result = subject.list_blobs container_name, { :max_results => 2, :marker => result.next_marker }
+      result.blobs.length.must_equal 2
+      result.blobs[0].name.wont_equal first_blob.name
+    end
+
     describe 'when options hash is used' do
       it 'if :metadata is set true, also returns custom metadata for the blobs' do
         result = subject.list_blobs container_name, { :metadata => true }
