@@ -343,7 +343,7 @@ module Azure
       end
 
       #
-      # Automically retrieves and locks a message from a queue for processing. The 
+      # Automatically retrieves and locks a message from a queue for processing. The 
       # message is guaranteed not to be delivered to other receivers (on the same 
       # subscription only) during the lock duration period specified in the queue 
       # description. Once the lock expires, the message will be available to other 

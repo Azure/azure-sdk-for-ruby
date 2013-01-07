@@ -23,7 +23,7 @@ describe Azure::Storage::Queue::QueueService do
     before { subject.create_queue queue_name }
     after { QueueNameHelper.clean }
 
-    it "deletes a queue and returns true on success" do
+    it "deletes a queue and returns nil on success" do
       result = subject.delete_queue(queue_name)
       result.must_be_nil
       result = subject.list_queues

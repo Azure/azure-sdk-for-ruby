@@ -24,7 +24,7 @@ describe Azure::Storage::Queue::QueueService do
     before { subject.create_queue queue_name }
     after { QueueNameHelper.clean }
 
-    it "creates a message in the specified queue and returns true on success" do
+    it "creates a message in the specified queue and returns nil on success" do
       result = subject.create_message(queue_name, message_text)
       result.must_be_nil
       
