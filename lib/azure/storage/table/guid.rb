@@ -19,13 +19,6 @@ module Azure
     module Table
       # Public: Wrapper around a string to represent a GUID
       #
-      # Example
-      #
-      #   entity = Azure::Tables::Entity.new(
-      #     "PartitionKey" => "part1",
-      #     "RowKey"       => "row1",
-      #     "Id"           => Azure::Storage::Table::GUID.new("81425519-6394-43e4-ac6e-28d91f5c3921")
-      #   )
       class GUID < SimpleDelegator
       end
     end

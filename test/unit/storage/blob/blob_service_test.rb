@@ -1832,7 +1832,6 @@ describe Azure::Storage::Blob::BlobService do
           let(:lease_time) { 38 }
           before {
             request_headers["x-ms-lease-action"] = "break"
-            request_headers["x-ms-lease-id"] = lease_id
 
             response.stubs(:success?).returns(true)
             response_headers["x-ms-lease-time"] = lease_time.to_s
@@ -1840,16 +1839,16 @@ describe Azure::Storage::Blob::BlobService do
           
           it "assembles a URI for the request" do
             subject.expects(:blob_uri).with(container_name, blob_name, query).returns(uri)
-            subject.break_lease container_name, blob_name, lease_id
+            subject.break_lease container_name, blob_name
           end
 
           it "calls StorageService#call with the prepared request" do
             subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-            subject.break_lease container_name, blob_name, lease_id
+            subject.break_lease container_name, blob_name
           end
 
           it "returns lease time on success" do
-            result = subject.break_lease container_name, blob_name, lease_id
+            result = subject.break_lease container_name, blob_name
             result.must_equal lease_time
           end
 
@@ -1859,7 +1858,7 @@ describe Azure::Storage::Blob::BlobService do
 
             it "modifies the request headers to include a break period" do
               subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
-              subject.break_lease container_name, blob_name, lease_id, { :break_period => break_period }
+              subject.break_lease container_name, blob_name, { :break_period => break_period }
             end
           end
         end

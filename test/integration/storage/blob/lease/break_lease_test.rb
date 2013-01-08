@@ -32,7 +32,7 @@ describe Azure::Storage::Blob::BlobService do
       lease_id = subject.acquire_lease container_name, blob_name
       lease_id.wont_be_nil
 
-      broken_lease = subject.break_lease container_name, blob_name, lease_id
+      broken_lease = subject.break_lease container_name, blob_name
       # lease should be possible to break immediately
       broken_lease.must_equal 0
     end
