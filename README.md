@@ -126,10 +126,10 @@ You can use the following commands to run:
 ### Blob
 
 ```ruby
-# Require the azure rubygem.
+# Require the azure rubygem
 require "azure"
 
-# Create an azure storage blob service object.
+# Create an azure storage blob service object
 azure_blob_service = Azure::BlobService.new
 
 # Create a container
@@ -156,10 +156,10 @@ azure_blob_service.delete_blob(container.name, "image-blob")
 ### Table
 
 ```ruby
-# Require the azure rubygem.
+# Require the azure rubygem
 require "azure"
 
-# Create an azure storage table service object.
+# Create an azure storage table service object
 azure_table_service = Azure::TableService.new
 
 # Create a table
@@ -189,10 +189,10 @@ azure_table_service.delete_table("testtable")
 
 ### Queue
 ```ruby
-# Require the azure rubygem.
+# Require the azure rubygem
 require "azure"
 
-# Create an azure storage queue service object.
+# Create an azure storage queue service object
 azure_queue_service = Azure::QueueService.new
 
 # Create a queue
@@ -224,7 +224,38 @@ azure_queue_service.delete_queue("test-queue")
 ### Subscription
 
 ### Queue
+```ruby
+# Require the azure rubygem
+require "azure"
 
+# Create an azure service bus object
+azure_service_bus = Azure::ServiceBus::ServiceBus.new
+
+# Create a queue with just the queue name
+queue1 = azure_service_bus.create_queue("test-queue-1")
+
+# Create a queue with a queue object
+queue2 = Azure::ServiceBus::Queue.new("test-queue-2")
+queue2.max_size_in_mb = 2048
+queue2 = azure_service_bus.create_queue(queue2)
+
+# Send a queue message with just the message body
+azure_service_bus.send_queue_message("test-queue-1", "test queue message")
+
+# Send a queue message with a brokered message object
+message = Azure::ServiceBus::BrokeredMessage.new("another test queue message")
+message.correlation_id = "test-correlation-id-1"
+azure_service_bus.send_queue_message("test-queue-1", message)
+
+# Receive a queue message
+message = azure_service_bus.receive_queue_message("test-queue-1")
+
+# Delete a queue message
+azure_service_bus.delete_queue_message("test-queue-1", message.sequence_number, message.lock_token)
+
+# Delete a queue
+azure_service_bus.delete_queue("test-queue-1")
+```
 ### Topic
 
 ### Rule
