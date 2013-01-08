@@ -38,11 +38,7 @@ cd ./azure-sdk-for-ruby
 
 ## Generate Documentation
 
-To generate the API documentation, run the following command:
-
-``rake doc``
-
-This will generate the API documentation in the `./doc` directory.
+Running the this command ``rake doc`` will generate the API documentation in the `./doc` directory. Make sure you have the following **yard** and **yard-tomdoc** rubygem installed before you generate the documentation.
 
 ## Setup Connection
 
@@ -84,7 +80,7 @@ There are two ways you can set up the connections:
   end
   ```
 
-### Via environment variables
+### Via Environment Variables
 
 * Against Windows Azure Services in the cloud
 
@@ -117,11 +113,13 @@ There are two ways you can set up the connections:
 ## Run Test
 
 You can use the following commands to run:
-* all the tests: ``rake``
-* a specific suite of tests: ``rake``
-* one particular test file: ``ruby -I "lib:test" "<path of the test file>"``
+* all the tests: ``rake test  ``
+* a specific suite of tests: ``rake test:integration:storage:blob``
+* one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
 
 # Usage
+
+**For more examples, please see the [Windows Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby)**
 
 ## Storage
 
@@ -131,7 +129,7 @@ You can use the following commands to run:
 # Require the azure rubygem.
 require "azure"
 
-# Create an azure blob service object.
+# Create an azure storage blob service object.
 azure_blob_service = Azure::BlobService.new
 
 # Create a container
@@ -157,14 +155,79 @@ azure_blob_service.delete_blob(container.name, "image-blob")
 
 ### Table
 
-### Queue
-## Service Bus
-### Subscription
-### Queue
-### Topic
-### Rule
+```ruby
+# Require the azure rubygem.
+require "azure"
 
-**For more examples please see the [Windows Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby)**
+# Create an azure storage table service object.
+azure_table_service = Azure::TableService.new
+
+# Create a table
+azure_table_service.create_table('testtable')
+
+# Insert an entity
+entity = { content => "test entity", :PartitionKey => "test-partition-key", :RowKey => "1" }
+azure_table_service.insert_entity('testtable', entity)
+
+# Get an entity
+result = azure_table_service.get_entity("testtable", "test-partition-key", "1")
+
+# Update an entity
+result.properties["content"] = "test entity with updated content"
+azure_table_service.update_entity(result.table, result.properties)
+
+# Query entities
+query = { :filter => "content eq 'test entity'" }
+result, token = azure_table_service.query_entities("testtable", query)
+
+# Delete an entity
+azure_table_service.delete_entity("testtable, "test-partition-key", "1")
+
+# delete a table
+azure_table_service.delete_table("testtable")
+```
+
+### Queue
+```ruby
+# Require the azure rubygem.
+require "azure"
+
+# Create an azure storage queue service object.
+azure_queue_service = Azure::QueueService.new
+
+# Create a queue
+azure_queue_service.create_queue("test-queue")
+
+# Create a message
+azure_queue_service.create_message("test-queue", "test message")
+
+# Get one or more messages with setting the visibility timeout
+result = azure_queue_service.list_messages("test-queue", 30, {:number_of_messages => 10})
+
+# Get one or more messages without setting the visibility timeout
+result = azure_queue_service.peek_messages("test-queue", {:number_of_messages => 10})
+
+# Update a message
+result = azure_queue_service.list_messages("test-queue", 30, {:number_of_messages => 1})
+pop_receipt, time_next_visible = azure_queue_service.update_message("test-queue", result[0].id, result[0].pop_receipt, "updated test message", 30)
+
+# Delete a message
+result = azure_queue_service.list_messages("test-queue", 30, {:number_of_messages => 1})
+pop_receipt, time_next_visible = azure_queue_service.delete_message("test-queue", result[0].id, result[0].pop_receipt)
+
+# Delete a queue
+azure_queue_service.delete_queue("test-queue")
+```
+
+## Service Bus
+
+### Subscription
+
+### Queue
+
+### Topic
+
+### Rule
 
 # Need Help?
 
