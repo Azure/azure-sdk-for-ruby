@@ -49,6 +49,7 @@ This will generate the API documentation in the `./doc` directory.
 You can use this SDK against the Windows Azure Services in the cloud, or against the local Storage Emulator if you are on Windows. Service Bus emulator is not supported. Of course, to use the Windows Azure Services in the cloud, you need to first [create a Windows Azure account](http://www.windowsazure.com/en-us/pricing/free-trial/). After that, you can get the information you need to configure Storage and Service Bus from the [Windows Azure Portal](https://manage.windowsazure.com).
 
 There are two ways you can set up the connections:
+
 1. [via code](#via-code)
 2. [via environment variables](#via-environment-variables)
 
@@ -56,32 +57,32 @@ There are two ways you can set up the connections:
 
 * Against Windows Azure Services in the cloud
 
-```ruby
-require "azure"
+  ```ruby
+  require "azure"
 
-Azure.configure do |config|
-  # Configure these 2 properties to use Storage
-  config.account_name   = "<your azure storage account name>"
-  config.access_key     = "<your azure storage access key>"
-  # Configure these 3 properties to use Service Bus
-  config.sb_namespace   = "<your azure service bus namespace>"
-  config.sb_access_key  = "<your azure service bus access key>"
-  config.sb_issuer      = "<your azure service bus issuer>"
-end
-```
+  Azure.configure do |config|
+    # Configure these 2 properties to use Storage
+    config.account_name   = "<your azure storage account name>"
+    config.access_key     = "<your azure storage access key>"
+    # Configure these 3 properties to use Service Bus
+    config.sb_namespace   = "<your azure service bus namespace>"
+    config.sb_access_key  = "<your azure service bus access key>"
+    config.sb_issuer      = "<your azure service bus issuer>"
+  end
+  ```
 
 * Against local Emulator (Windows Only)
 
-```ruby
-require "azure"
+  ```ruby
+  require "azure"
 
-Azure.configure do |config|
-  # Configure these 2 properties to use local Storage Emulator
-  config.account_name   = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="
-  config.access_key     = "devstoreaccount1"
-  # Local Service Bus Emulator is not supported
-end
-```
+  Azure.configure do |config|
+    # Configure these 2 properties to use local Storage Emulator
+    config.account_name   = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="
+    config.access_key     = "devstoreaccount1"
+    # Local Service Bus Emulator is not supported
+  end
+  ```
 
 ### Via environment variables
 
