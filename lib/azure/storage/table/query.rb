@@ -13,6 +13,7 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'azure/storage/table/table_service'
+require 'azure/storage/table/edmtype'
 
 module Azure
   module Storage
@@ -100,27 +101,12 @@ module Azure
           result = ""
           clauses = []
           filters.each { |f|
-            clauses.push "#{f[0].to_s} #{f[1].to_s} #{value_exp(f[2])}"
+            clauses.push "#{f[0].to_s} #{f[1].to_s} #{Azure::Storage::Table::EdmType.serialize_query_value(f[2])}"
           }
           return nil if clauses.length == 0 
           
           result << clauses.join(" and ")
           result
-        end
-
-        def value_exp(v)
-          case v
-          when Float, Integer
-            v.to_s
-          when Date, Time, DateTime
-            "datetime'#{v.iso8601}'"
-          when TrueClass, FalseClass
-            v ? "true" : "false"
-          when GUID
-            "guid'#{v.to_s}'"
-          else
-            v.to_s
-          end
         end
       end
     end
