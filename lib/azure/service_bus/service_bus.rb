@@ -420,10 +420,10 @@ module Azure
         peek_lock = true
         peek_lock = options[:peek_lock] if options[:peek_lock]
 
+        options[:timeout] = options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT
         if peek_lock
           peek_lock_queue_message(queue, options)
         else
-          options[:timeout] = options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT
           read_delete_queue_message(queue, options)
         end
       end
@@ -439,10 +439,10 @@ module Azure
         peek_lock = true
         peek_lock = options[:peek_lock] if options[:peek_lock]
 
+        options[:timeout] = options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT
         if peek_lock
-          peek_lock_subscription_message(topic, subscription, options[:timeout])
+          peek_lock_subscription_message(topic, subscription, options)
         else
-          options[:timeout] = options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT
           read_delete_subscription_message(topic, subscription, options)
         end
       end
