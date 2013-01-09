@@ -5,25 +5,25 @@ This project provides a Ruby package that makes it easy to access Windows Azure 
 # Library Features
 
 * Storage
-  * Blobs
-    * create, list, and delete containers, work with container metadata and permissions, list blobs in container
-    * create block and page blobs (from a stream, a file, or a string), work with blob blocks and pages, delete blobs
-    * work with blob properties, metadata, leases, snapshot a blob
-  * Tables
-    * create and delete tables
-    * create, query, insert, update, merge, and delete entities
-  * Queues
-    * create, list, and delete queues, and work with queue metadata
-    * create, get, peek, update, delete messages
+    * Blobs
+        * create, list, and delete containers, work with container metadata and permissions, list blobs in container
+        * create block and page blobs (from a stream, a file, or a string), work with blob blocks and pages, delete blobs
+        * work with blob properties, metadata, leases, snapshot a blob
+    * Tables
+        * create and delete tables
+        * create, query, insert, update, merge, and delete entities
+    * Queues
+        * create, list, and delete queues, and work with queue metadata
+        * create, get, peek, update, delete messages
 * Service Bus
-  * Queues
-    * create, list and delete queues
-    * send, receive, unlock and delete messages
-  * Topics
-    * create, list, and delete topics
-    * send, receive, unlock and delete messages
-    * create, list, and delete subscriptions
-    * create, list, and delete rules
+    * Queues
+        * create, list and delete queues
+        * send, receive, unlock and delete messages
+    * Topics
+        * create, list, and delete topics
+        * send, receive, unlock and delete messages
+        * create, list, and delete subscriptions
+        * create, list, and delete rules
 
 # Getting Started
 
@@ -135,7 +135,7 @@ You can use the following commands to run:
 
 ## Storage
 
-### Blob
+### Blobs
 
 ```ruby
 # Require the azure rubygem
@@ -165,7 +165,7 @@ File.open("download.png", "w") {|f| f.write(content)}
 azure_blob_service.delete_blob(container.name, "image-blob")
 ```
 
-### Table
+### Tables
 
 ```ruby
 # Require the azure rubygem
@@ -199,7 +199,7 @@ azure_table_service.delete_entity("testtable, "test-partition-key", "1")
 azure_table_service.delete_table("testtable")
 ```
 
-### Queue
+### Queues
 
 ```ruby
 # Require the azure rubygem
@@ -234,7 +234,7 @@ azure_queue_service.delete_queue("test-queue")
 
 ## Service Bus
 
-### Queue
+### Queues
 
 ```ruby
 # Require the azure rubygem
@@ -269,7 +269,7 @@ azure_service_bus.delete_queue_message("test-queue-1", message.sequence_number, 
 azure_service_bus.delete_queue("test-queue-1")
 ```
 
-### Topic and Subscription
+### Topics
 
 ```ruby
 # Require the azure rubygem
