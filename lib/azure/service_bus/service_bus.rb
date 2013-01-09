@@ -22,7 +22,9 @@ require 'azure/core/http/http_response'
 module Azure
   module ServiceBus
     class ServiceBus < Azure::Core::SignedService
-      
+
+      DEFAULT_TIMEOUT = 60
+
       def initialize(host=Azure.config.service_bus_host)
         super(Azure::ServiceBus::Auth::WrapSigner.new)
           @host = host
@@ -270,7 +272,7 @@ module Azure
         topic = _name_for(topic)
         subscription = _name_for(subscription)
 
-        _peek_lock_message(subscriptions_path(topic, subscription), options[:timeout] ? options[:timeout] : 60)
+        _peek_lock_message(subscriptions_path(topic, subscription), options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT)
       end
 
       #
@@ -309,7 +311,7 @@ module Azure
         topic = _name_for(topic)
         subscription = _name_for(subscription)
 
-        _read_delete_message(subscriptions_path(topic, subscription), options[:timeout] ? options[:timeout] : 60)
+        _read_delete_message(subscriptions_path(topic, subscription), options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT)
       end
 
       # Completes processing on a locked message and delete it from the subscription. 
@@ -360,7 +362,7 @@ module Azure
       # :timeout     - Integer. Timeout for the REST call.
       #
       def peek_lock_queue_message(queue, options={})
-        _peek_lock_message(_name_for(queue), options[:timeout] ? options[:timeout] : 60)
+        _peek_lock_message(_name_for(queue), options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT)
       end
 
       # Unlocks a message for processing by other receivers on a given subscription. 
@@ -390,7 +392,7 @@ module Azure
       # :timeout     - Integer. Timeout for the REST call.
       #
       def read_delete_queue_message(queue, options={})
-        _read_delete_message(_name_for(queue), options[:timeout] ? options[:timeout] : 60)
+        _read_delete_message(_name_for(queue), options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT)
       end
 
       # Completes processing on a locked message and delete it from the queue. This 
@@ -418,9 +420,13 @@ module Azure
         peek_lock = true
         peek_lock = options[:peek_lock] if options[:peek_lock]
 
-        peek_lock ? peek_lock_queue_message(queue, options[:timeout]) : read_delete_queue_message(queue, options[:timeout] ? options[:timeout] : 60)
+        options[:timeout] = options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT
+        if peek_lock
+          peek_lock_queue_message(queue, options)
+        else
+          read_delete_queue_message(queue, options)
+        end
       end
-
 
       # topic        - String. The topic name.
       # options      - Hash. Optional parameters. 
@@ -433,7 +439,12 @@ module Azure
         peek_lock = true
         peek_lock = options[:peek_lock] if options[:peek_lock]
 
-        peek_lock ? peek_lock_subscription_message(topic, subscription, timeout) : read_delete_subscription_message(topic, subscription, timeout)
+        options[:timeout] = options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT
+        if peek_lock
+          peek_lock_subscription_message(topic, subscription, options)
+        else
+          read_delete_subscription_message(topic, subscription, options)
+        end
       end
 
       private
@@ -475,15 +486,15 @@ module Azure
         nil
       end
 
-      def _read_delete_message(path, timeout=60)
+      def _read_delete_message(path, timeout=DEFAULT_TIMEOUT)
         _retrieve_message(:delete, path, timeout)
       end
 
-      def _peek_lock_message(path, timeout=60)
+      def _peek_lock_message(path, timeout=DEFAULT_TIMEOUT)
         _retrieve_message(:post, path, timeout)
       end
 
-      def _retrieve_message(method, path, timeout=60)
+      def _retrieve_message(method, path, timeout=DEFAULT_TIMEOUT)
         uri = messages_head_uri(path, { "timeout"=> timeout.to_s })
 
         response = call(method, uri)
