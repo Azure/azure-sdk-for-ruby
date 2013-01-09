@@ -5,19 +5,25 @@ This project provides a Ruby package that makes it easy to access Windows Azure 
 # Library Features
 
 * Storage
-    * Tables
-        * create and delete tables
-        * create, query, insert, update, merge, and delete entities
-    * Blobs
-        * create, list, and delete containers, work with container metadata and permissions, list blobs in container
-        * create block and page blobs (from a stream, a file, or a string), work with blob blocks and pages, delete blobs
-        * work with blob properties, metadata, leases, snapshot a blob
-    * Storage Queues
-        * create, list, and delete queues, and work with queue metadata
-        * create, get, peek, update, delete messages
+  * Blobs
+    * create, list, and delete containers, work with container metadata and permissions, list blobs in container
+    * create block and page blobs (from a stream, a file, or a string), work with blob blocks and pages, delete blobs
+    * work with blob properties, metadata, leases, snapshot a blob
+  * Tables
+    * create and delete tables
+    * create, query, insert, update, merge, and delete entities
+  * Queues
+    * create, list, and delete queues, and work with queue metadata
+    * create, get, peek, update, delete messages
 * Service Bus
-    * Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages
-    * Topics: create, list, and delete topics; create, list, and delete rules
+  * Queues
+    * create, list and delete queues
+    * send, receive, unlock and delete messages
+  * Topics
+    * create, list, and delete topics
+    * send, receive, unlock and delete messages
+    * create, list, and delete subscriptions
+    * create, list, and delete rules
 
 # Getting Started
 
@@ -74,8 +80,11 @@ There are two ways you can set up the connections:
 
   Azure.configure do |config|
     # Configure these 2 properties to use local Storage Emulator
-    config.account_name   = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="
-    config.access_key     = "devstoreaccount1"
+    config.account_name = "devstoreaccount1"
+    config.access_key   = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="
+    config.blob_host    = "http://127.0.0.1:10000/devstoreaccount1"
+    config.queue_host   = "http://127.0.0.1:10001/devstoreaccount1"
+    config.table_host   = "http://127.0.0.1:10002/devstoreaccount1"
     # Local Service Bus Emulator is not supported
   end
   ```
@@ -106,6 +115,9 @@ There are two ways you can set up the connections:
     ```
     AZURE_STORAGE_ACCOUNT = devstoreaccount1
     AZURE_STORAGE_ACCESS_KEY = Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+    AZURE_STORAGE_BLOB_HOST = http://127.0.0.1:10000/devstoreaccount1
+    AZURE_STORAGE_QUEUE_HOST = http://127.0.0.1:10001/devstoreaccount1
+    AZURE_STORAGE_TABLE_HOST = http://127.0.0.1:10002/devstoreaccount1
     ```
 
   * Service Bus: not supported
@@ -300,8 +312,6 @@ azure_service_bus.delete_subscription(subscription)
 azure_service_bus.delete_topic(topic1)
 ```
 
-### Rule
-
 # Need Help?
 
 Be sure to check out the Windows Azure [Developer Forums on Stack Overflow and MSDN](http://go.microsoft.com/fwlink/?LinkId=234489) if you have trouble with the provided code.
@@ -316,6 +326,6 @@ If you encounter any bugs with the library please file an issue in the [Issues](
 
 For documentation on how to host Ruby applications on Windows Azure, please see the [Windows Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby/).
 
-For documenation on Azure PowerShell CLI tool for Windows, please see our readme [here](http://github.com/windowsazure/azure-sdk-tools).
+For documentation on Azure PowerShell CLI tool for Windows, please see our readme [here](http://github.com/windowsazure/azure-sdk-tools).
 
 For documentation on the Azure cross platform CLI tool for Windows, Mac and Linux, please see our readme [here](http://github.com/windowsazure/azure-sdk-tools-xplat).
