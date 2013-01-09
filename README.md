@@ -188,6 +188,7 @@ azure_table_service.delete_table("testtable")
 ```
 
 ### Queue
+
 ```ruby
 # Require the azure rubygem
 require "azure"
@@ -221,9 +222,8 @@ azure_queue_service.delete_queue("test-queue")
 
 ## Service Bus
 
-### Subscription
-
 ### Queue
+
 ```ruby
 # Require the azure rubygem
 require "azure"
@@ -256,7 +256,49 @@ azure_service_bus.delete_queue_message("test-queue-1", message.sequence_number, 
 # Delete a queue
 azure_service_bus.delete_queue("test-queue-1")
 ```
-### Topic
+
+### Topic and Subscription
+
+```ruby
+# Require the azure rubygem
+require "azure"
+
+# Create an azure service bus object
+azure_service_bus = Azure::ServiceBus::ServiceBus.new
+
+# Create a topic with just the topic name
+topic1 = azure_service_bus.create_topic("test-topic-1")
+
+# Create a topic with a topic object
+topic2 = Azure::ServiceBus::Topic.new("test-topic-2")
+topic2.max_size_in_mb = 2048
+topic2 = azure_service_bus.create_topic(topic2)
+
+# Create a subscription
+subscription = Azure::ServiceBus::Subscription.new("test-subscription-1")
+subscription.topic = topic1.name
+subscription = azure_service_bus.create_subscription(subscription)
+
+# Send a topic message with just the message body
+azure_service_bus.send_topic_message(topic1, "test topic message")
+
+# Send a topic message with a brokered message object
+message = Azure::ServiceBus::BrokeredMessage.new("another test topic message")
+message.correlation_id = "test-correlation-id-1"
+azure_service_bus.send_topic_message(topic1, message)
+
+# Receive a subscription message
+message = azure_service_bus.receive_subscription_message(topic1.name, subscription.name)
+
+# Delete a subscription message
+azure_service_bus.delete_subscription_message(topic1.name, subscription.name, message.sequence_number, message.lock_token)
+
+# Delete a subscription
+azure_service_bus.delete_subscription(subscription)
+
+# Delete a topic
+azure_service_bus.delete_topic(topic1)
+```
 
 ### Rule
 
