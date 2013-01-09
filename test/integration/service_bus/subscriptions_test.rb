@@ -70,7 +70,7 @@ describe "ServiceBus Subscriptions" do
         retrieved = subject.read_delete_subscription_message topic, subscription, { :timeout => 1 }
         retrieved.must_be_nil
       end
-      
+
       it "should be able to read delete a message" do
         retrieved = subject.read_delete_subscription_message topic, subscription
 
@@ -98,6 +98,15 @@ describe "ServiceBus Subscriptions" do
         # The message should be available once again
         retrieved = subject.peek_lock_subscription_message topic, subscription, { :timeout => 1 }
         retrieved.body.must_equal msg.body
+      end
+
+      it "should be able to read a message from a subscription" do
+        subject.send_topic_message topic, msg
+        retrieved = subject.receive_subscription_message topic, subscription
+
+        retrieved.to.must_equal msg.to
+        retrieved.body.must_equal msg.body
+        retrieved.label.must_equal msg.label
       end
     end
 

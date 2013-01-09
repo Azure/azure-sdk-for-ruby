@@ -418,9 +418,13 @@ module Azure
         peek_lock = true
         peek_lock = options[:peek_lock] if options[:peek_lock]
 
-        peek_lock ? peek_lock_queue_message(queue, options[:timeout]) : read_delete_queue_message(queue, options[:timeout] ? options[:timeout] : 60)
+        if peek_lock
+          peek_lock_queue_message(queue, options)
+        else
+          options[:timeout] = options[:timeout] ? options[:timeout] : 60
+          read_delete_queue_message(queue, options)
+        end
       end
-
 
       # topic        - String. The topic name.
       # options      - Hash. Optional parameters. 
@@ -433,7 +437,12 @@ module Azure
         peek_lock = true
         peek_lock = options[:peek_lock] if options[:peek_lock]
 
-        peek_lock ? peek_lock_subscription_message(topic, subscription, timeout) : read_delete_subscription_message(topic, subscription, timeout)
+        if peek_lock
+          peek_lock_subscription_message(topic, subscription, options[:timeout])
+        else
+          options[:timeout] = options[:timeout] ? options[:timeout] : 60
+          read_delete_subscription_message(topic, subscription, options)
+        end
       end
 
       private

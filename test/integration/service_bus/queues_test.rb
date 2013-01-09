@@ -164,7 +164,7 @@ describe "ServiceBus Queues" do
         refute retrieved.lock_token.nil?
         refute retrieved.sequence_number.nil?
       end
-    
+
       it "should be able to read-delete a message from a queue" do
         retrieved = subject.read_delete_queue_message name
 
@@ -203,6 +203,15 @@ describe "ServiceBus Queues" do
         # it should be deleted
         retrieved = subject.peek_lock_queue_message name, { :timeout => 2 }
         assert_nil retrieved
+      end
+
+      it "should be able to read a message from a queue" do
+        subject.send_queue_message name, msg
+        retrieved = subject.receive_queue_message name
+
+        retrieved.must_be :kind_of?, Azure::ServiceBus::BrokeredMessage
+        retrieved.body.must_equal msg.body
+        retrieved.to.must_equal msg.to
       end
     end
   end
