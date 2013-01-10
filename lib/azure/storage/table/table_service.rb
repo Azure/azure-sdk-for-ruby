@@ -437,7 +437,7 @@ module Azure
         # name - The table name. If this is a URI, we just return this
         #
         # Returns a URI
-        protected
+        public
         def table_uri(name, query={})
           return name if name.kind_of? ::URI
           generate_uri("Tables('#{name}')", query)
@@ -452,7 +452,7 @@ module Azure
         # row_key       - The desired row key (optional)
         #
         # Returns a URI
-        protected
+        public
         def entities_uri(table_name, partition_key=nil, row_key=nil, query={})
           return table_name if table_name.kind_of? ::URI
 

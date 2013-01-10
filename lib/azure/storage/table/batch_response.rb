@@ -66,7 +66,7 @@ module Azure
             return context[:responses].last[:headers]
           elsif match
             context[:responses].last[:headers] ||= {}
-            context[:responses].last[:headers][match[1].downcase] = match[2]
+            context[:responses].last[:headers][match[1].downcase] = match[2].strip
             return nil
           else
             return nil

@@ -95,20 +95,17 @@ module Azure
 
                 entity = Azure::Storage::Table::Entity.new
                 entity.table = table
-                entity.partition_key = result[:properties]["PartitionKey"]
-                entity.row_key = result[:properties]["RowKey"]
                 entity.updated = result[:updated]
                 entity.etag = response[:headers]["etag"] || result[:etag]
                 entity.properties = result[:properties]
 
                 new_responses.push entity
-              when :put
-              when :merge
-                # etag from headers
+              when :put, :merge
+               # etag from headers
                 new_responses.push response[:headers]["etag"]
               when :delete
                 # true 
-                new_responses.push true
+                new_responses.push nil
               end
             end
           }
