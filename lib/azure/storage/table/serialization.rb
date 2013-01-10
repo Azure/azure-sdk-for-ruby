@@ -95,7 +95,7 @@ module Azure
           properties = {} 
           if (xml > "content").any?
             (xml > "content").first.first_element_child.element_children.each do |prop|
-              properties[prop.name] = prop.text != "" ? Azure::Storage::Table::EdmType.unserialize_query_value(prop.text, prop["type"]) : prop["null"] ? nil : ""
+              properties[prop.name] = prop.text != "" ? Azure::Storage::Table::EdmType.unserialize_query_value(prop.text, prop["m:type"]) : prop["null"] ? nil : ""
             end
           end
           result[:properties] = properties
