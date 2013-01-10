@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'SecureRandom'
+
 require 'azure/storage/table/serialization'
 require 'azure/storage/table/table_service'
 require 'azure/storage/table/batch_response'
@@ -53,8 +55,8 @@ module Azure
           @operations = []
           @entity_keys = []
           @table_service = Azure::Storage::Table::TableService.new
-          @batch_id = "batch_a1e9d677-b28b-435e-a89e-87e6a768a431"
-          @changeset_id = "changeset_8a28b620-b4bb-458c-a177-0959fb14c977"
+          @batch_id = "batch_" + SecureRandom.uuid
+          @changeset_id = "changeset_" + SecureRandom.uuid
 
           self.instance_eval(&block) if block_given?
         end
