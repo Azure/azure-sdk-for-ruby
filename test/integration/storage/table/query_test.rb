@@ -116,7 +116,7 @@ describe Azure::Storage::Table::TableService do
         e.properties.length.must_equal projection.length
         e.properties["CustomIntegerProperty"].must_equal entity_properties["CustomIntegerProperty"]
         e.properties.must_include "ThisPropertyDoesNotExist"
-        e.properties["ThisPropertyDoesNotExist"].must_equal nil
+        e.properties["ThisPropertyDoesNotExist"].must_equal ""
       }
     end
 
