@@ -20,12 +20,12 @@ describe Azure::Storage::Blob::BlobService do
   after { TableNameHelper.clean }
   describe '#copy_blob' do
     let(:source_container_name) { ContainerNameHelper.name }
-    let(:source_blob_name) { "sourceblobname" }
+    let(:source_blob_name) { "audio+video%25.mp4" }
     let(:content) { content = ""; 512.times.each{|i| content << "@" }; content }
     let(:metadata){ {"custommetadata" => "CustomMetadataValue"} }
 
     let(:dest_container_name) { ContainerNameHelper.name }
-    let(:dest_blob_name) { "destblobname" }
+    let(:dest_blob_name) { "destaudio+video%25.mp4" }
 
     before { 
       subject.create_container source_container_name
