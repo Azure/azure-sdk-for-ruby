@@ -15,4 +15,4 @@
 
 module Azure::ServiceBus; end
 
-require "azure/service_bus/service_bus"
+require "azure/service_bus/service_bus_service"

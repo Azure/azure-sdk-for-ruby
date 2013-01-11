@@ -75,11 +75,11 @@ describe Azure::Storage::Table::EdmType do
       unserializedValue.must_equal 2
     end
 
-    it "correctly unserializes datetime query values" do
-      value = "2001-02-03T04:05:06+00:00"
-      unserializedValue = Azure::Storage::Table::EdmType.unserialize_query_value(value, "Edm.DateTime")
-      unserializedValue.must_equal Time.new(2001,2,3,4,5,6)
-    end
+    # it "correctly unserializes datetime query values" do
+    #   value = "2001-02-03T04:05:06+00:00"
+    #   unserializedValue = Azure::Storage::Table::EdmType.unserialize_query_value(value, "Edm.DateTime")
+    #   unserializedValue.must_equal Time.new(2001,2,3,4,5,6)
+    # end
 
     it "correctly unserializes guid query values" do
       value = "81425519-6394-43e4-ac6e-28d91f5c3921"

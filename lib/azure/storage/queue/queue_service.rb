@@ -22,7 +22,7 @@ module Azure
 
         def initialize
           super()
-          @host = Azure.config.queue_host
+          @host = Azure.config.storage_queue_host
         end
 
         # Public: Get a list of Queues from the server

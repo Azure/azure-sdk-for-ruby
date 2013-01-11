@@ -16,7 +16,7 @@ require "integration/test_helper"
 
 describe "ServiceBus Queues" do
 
-  subject { Azure::ServiceBus::ServiceBus.new }
+  subject { Azure::ServiceBus::ServiceBusService.new }
   let(:name) { ServiceBusQueueNameHelper.name }
   let(:description) {{
     'LockDuration' => 'PT30S',

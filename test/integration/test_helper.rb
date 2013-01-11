@@ -16,13 +16,13 @@ require "test_helper"
 require "azure"
 
 Azure::Core.configure do |config|
-  config.access_key     = ENV.fetch("AZURE_STORAGE_ACCESS_KEY")
-  config.account_name   = ENV.fetch("AZURE_STORAGE_ACCOUNT")
-  # config.table_host     = ENV.fetch("AZURE_TABLE_HOST")
-  # config.blob_host      = ENV.fetch("AZURE_BLOB_HOST")
-  # config.queue_host     = ENV.fetch("AZURE_QUEUE_HOST")
+  config.storage_access_key     = ENV.fetch("AZURE_STORAGE_ACCESS_KEY")
+  config.storage_account_name   = ENV.fetch("AZURE_STORAGE_ACCOUNT")
+  # config.storage_table_host     = ENV.fetch("AZURE_STORAGE_TABLE_HOST")
+  # config.storage_blob_host      = ENV.fetch("AZURE_STORAGE_BLOB_HOST")
+  # config.storage_queue_host     = ENV.fetch("AZURE_STORAGE_QUEUE_HOST")
 
-  config.acs_namespace  = ENV.fetch("AZURE_SERVICEBUS_NAMESPACE")
+  config.sb_namespace  = ENV.fetch("AZURE_SERVICEBUS_NAMESPACE")
   config.sb_access_key  = ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY")
   # config.sb_issuer      = ENV.fetch("AZURE_SERVICEBUS_ISSUER")
 end

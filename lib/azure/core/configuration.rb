@@ -15,7 +15,7 @@
 require "singleton"
 
 module Azure
-  
+
   # Proxy config method.
   def self.config
     Core.config
@@ -35,7 +35,7 @@ module Azure
     # Example:
     #
     #   Azure.configure do |config|
-    #     config.account_name = ENV["AZURE_STORAGE_ACCOUNT"]
+    #     config.storage_account_name = ENV["AZURE_STORAGE_ACCOUNT"]
     #   end
     #
     # Returns nothing.
@@ -55,13 +55,10 @@ module Azure
       include Singleton
 
       # Public: Get/Set the Access Key for this service.
-      attr_accessor :access_key
+      attr_accessor :storage_access_key
 
       # Public: Get/Set the Account Name for this service.
-      attr_accessor :account_name
-
-      # # Public: Get/Set the Access Control Namespace for this service.
-      # attr_accessor :acs_namespace
+      attr_accessor :storage_account_name
 
       # Public: Get/Set the Service Bus Access Key (Issuer Secret) for this service.
       attr_accessor :sb_access_key
@@ -75,8 +72,8 @@ module Azure
         @sb_issuer || "owner"
       end
 
-      # Public: Get/Set the ACS namespace for this service.
-      attr_accessor :acs_namespace
+      # Public: Get/Set the Service Bus Namespace for this service.
+      attr_accessor :sb_namespace
 
       # Public: Set the host for the Table service. Only set this if you want
       # something custom (like, for example, to point this to a LocalStorage
@@ -86,14 +83,14 @@ module Azure
       #
       # Example:
       #
-      #   config.table_host = "http://127.0.0.1:10002/devstoreaccount1"
-      attr_writer :table_host
+      #   config.storage_table_host = "http://127.0.0.1:10002/devstoreaccount1"
+      attr_writer :storage_table_host
 
-      # Public: Get the host for this service. If you set something using #table_host=,
+      # Public: Get the host for this service. If you set something using #storage_table_host=,
       # then we use that. Else we default to Azure's default hosts, based
       # on your account name.
-      def table_host
-        @table_host || default_host(:table)
+      def storage_table_host
+        @storage_table_host || default_host(:table)
       end
 
       # Public: Set the host for the Blob service. Only set this if you want
@@ -104,14 +101,14 @@ module Azure
       #
       # Example:
       #
-      #   config.blob_host = "http://127.0.0.1:10000/devstoreaccount1"
-      attr_writer :blob_host
+      #   config.storage_blob_host = "http://127.0.0.1:10000/devstoreaccount1"
+      attr_writer :storage_blob_host
 
-      # Public: Get the host for this service. If you set something using #blob_host=,
+      # Public: Get the host for this service. If you set something using #storage_blob_host=,
       # then we use that. Else we default to Azure's default hosts, based
       # on your account name.
-      def blob_host
-        @blob_host || default_host(:blob)
+      def storage_blob_host
+        @storage_blob_host || default_host(:blob)
       end
 
       # Public: Set the host for the Queue service. Only set this if you want
@@ -122,24 +119,24 @@ module Azure
       #
       # Example:
       #
-      #   config.queue_host = "http://127.0.0.1:10001/devstoreaccount1"
-      attr_writer :queue_host
+      #   config.storage_queue_host = "http://127.0.0.1:10001/devstoreaccount1"
+      attr_writer :storage_queue_host
 
-      # Public: Get the host for this service. If you set something using #queue_host=,
+      # Public: Get the host for this service. If you set something using #storage_queue_host=,
       # then we use that. Else we default to Azure's default hosts, based
       # on your account name.
-      def queue_host
-        @queue_host || default_host(:queue)
+      def storage_queue_host
+        @storage_queue_host || default_host(:queue)
       end
 
       # Public: Get the host for the ACS service.
       def acs_host
-        "https://#{acs_namespace}-sb.accesscontrol.windows.net"
+        "https://#{sb_namespace}-sb.accesscontrol.windows.net"
       end
 
       # Public: Get the host for the Service Bus service.
       def service_bus_host
-        "https://#{acs_namespace}.servicebus.windows.net"
+        "https://#{sb_namespace}.servicebus.windows.net"
       end
 
       # Calculate the default host for a given service in the cloud.
@@ -148,7 +145,7 @@ module Azure
       #
       # Returns a String with the hostname, including your account name.
       def default_host(service)
-        "http://#{account_name}.#{service}.core.windows.net"
+        "http://#{storage_account_name}.#{service}.core.windows.net"
       end
     end
   end

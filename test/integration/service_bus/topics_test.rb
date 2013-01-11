@@ -15,7 +15,7 @@
 require "integration/test_helper"
 
 describe "ServiceBus Topics" do
-  subject { Azure::ServiceBus::ServiceBus.new }
+  subject { Azure::ServiceBus::ServiceBusService.new }
   after { ServiceBusTopicNameHelper.clean }
   let(:topic){ ServiceBusTopicNameHelper.name }
 

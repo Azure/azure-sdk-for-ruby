@@ -17,7 +17,7 @@ require "azure/storage/blob/blob_service"
 require "azure/core/http/http_error"
 
 describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBus.new }
+  subject { Azure::ServiceBus::ServiceBusService.new }
   after { ServiceBusTopicNameHelper.clean }
   let(:topic){ ServiceBusTopicNameHelper.name }
 
