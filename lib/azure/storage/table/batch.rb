@@ -55,6 +55,7 @@ module Azure
           @operations = []
           @entity_keys = []
           @table_service = Azure::Storage::Table::TableService.new
+          uuid = UUID.new
           @batch_id = "batch_" + uuid.generate
           @changeset_id = "changeset_" + uuid.generate
 
