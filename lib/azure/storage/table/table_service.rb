@@ -95,8 +95,8 @@ module Azure
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
           response = call(:get, table_uri(table_name, query))
-          results = Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)
-          results
+          table = Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)
+          table
         end
 
         # Public: Gets a list of all tables on the account.
