@@ -31,11 +31,16 @@ module Azure
 
         # Public: Creates new table in the storage account
         #
-        # table_name    - String. The table name
-        # options       - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +table_name+ - String. The table name
+        # * +options+    - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout      - Integer. A timeout in seconds.
+        #
+        # * +:timeout+   - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135729
         #
@@ -51,11 +56,15 @@ module Azure
 
         # Public: Deletes the specified table and any data it contains.
         #
-        # table_name    - String. The table name
-        # options       - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +table_name+ - String. The table name
+        # * +options+    - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout      - Integer. A timeout in seconds.
+        # * +:timeout+   - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179387
         #
@@ -70,11 +79,15 @@ module Azure
 
         # Public: Gets the table.
         #
-        # table_name    - String. The table name
-        # options       - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +table_name+ - String. The table name
+        # * +options+    - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout      - Integer. A timeout in seconds.
+        # * +:timeout+   - Integer. A timeout in seconds.
         #
         # Returns the last updated time for the table
         def get_table(table_name, options={})
@@ -88,22 +101,26 @@ module Azure
 
         # Public: Gets a list of all tables on the account.
         #
-        # options             - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +options+    - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :next_table_token   - String. A token used to enumerate the next page of results, when the list of tables is
-        #                       larger than a single operation can return at once. (optional)
-        # :timeout            - Integer. A timeout in seconds.
+        # * +:next_table_token+   - String. A token used to enumerate the next page of results, when the list of tables is
+        #   larger than a single operation can return at once. (optional)
+        # * +:timeout+            - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179405
         #
         # Returns a tuple of (tables, continuation_token) of the table list and possibly a continuation token
-        #  tables             - Hash. A hash of tables and the time they were last updated: 
+        # * +tables+             - Hash. A hash of tables and the time they were last updated: 
         #                        {
         #                           "TableName"=> "2012-10-03T09:35:31Z"
         #                        }
-        #  continuation_token - String. A token used to retrieve subsequent pages, if the result set is too large for a 
-        #                       single operation to return 
+        # * +continuation_token+ - String. A token used to retrieve subsequent pages, if the result set is too large for a 
+        #   single operation to return 
         #
         def query_tables(options={})
           query = { }
@@ -125,11 +142,15 @@ module Azure
 
         # Public: Gets the access control list (ACL) for the table.
         #
-        # table_name    - String. The table name.
-        # options       - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +table_name+ - String. The table name
+        # * +options+    - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout      - Integer. A timeout in seconds.
+        # * +:timeout+   - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159100
         #
@@ -147,12 +168,16 @@ module Azure
 
         # Public: Sets the access control list (ACL) for the table.
         #
-        # table_name           - String. The table name.
-        # options              - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +table_name+ - String. The table name
+        # * +options+    - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances
-        # :timeout             - Integer. A timeout in seconds.
+        # * +:signed_identifiers+  - Array. A list of Azure::Entity::SignedIdentifier instances
+        # * +:timeout+             - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159102
         #
@@ -171,12 +196,17 @@ module Azure
 
         # Public: Inserts new entity to the table.
         #
-        # table_name           - String. The table name
-        # entity_values        - Hash. A hash of the name/value pairs for the entity. 
-        # options              - Hash. Optional parameters. 
+        #
+        # ==== Attributes
+        #
+        # * +table_name+    - String. The table name
+        # * +entity_values+ - Hash. A hash of the name/value pairs for the entity. 
+        # * +options+       - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout             - Integer. A timeout in seconds.
+        # * +:timeout+      - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179433
         #
@@ -201,23 +231,27 @@ module Azure
 
         # Public: Queries entities for the given table name
         #
-        # table_name          - String. The table name
-        # options             - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +table_name+    - String. The table name
+        # * +options+       - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :PartitionKey       - String. The partition key (optional)
-        # :RowKey             - String. The row key (optional)
-        # :select             - Array. An array of property names to return (optional)
-        # :filter             - String. A filter expression (optional)
-        # :top                - Integer. A limit for the number of results returned (optional)
-        # :continuation_token - Hash. The continuation token.
-        # :timeout            - Integer. A timeout in seconds.
+        # * +:PartitionKey+       - String. The partition key (optional)
+        # * +:RowKey+             - String. The row key (optional)
+        # * +:select+             - Array. An array of property names to return (optional)
+        # * +:filter+             - String. A filter expression (optional)
+        # * +:top+                - Integer. A limit for the number of results returned (optional)
+        # * +:continuation_token+ - Hash. The continuation token.
+        # * +:timeout+            - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179421
         #
         # Returns a tuple of (results, continuation_token) on success
-        #   results             - List. A list of Azure::Entity::Table::Entity instances
-        #   continuation_token  - Hash. A token used to retrieve subsequent pages, if the result set is too large for a single operation to return 
+        # * +results+             - List. A list of Azure::Entity::Table::Entity instances
+        # * +continuation_token+  - Hash. A token used to retrieve subsequent pages, if the result set is too large for a single operation to return 
         def query_entities(table_name, options={})
           query ={}
           query["$select"] = options[:select].join ',' if options[:select]
@@ -256,15 +290,19 @@ module Azure
         # Public: Updates an existing entity in a table. The Update Entity operation replaces 
         # the entire entity and can be used to remove properties.
         #
-        # table_name             - String. The table name
-        # entity_values          - Hash. A hash of the name/value pairs for the entity.
-        # options                - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +table_name+    - String. The table name
+        # * +entity_values+ - Hash. A hash of the name/value pairs for the entity.
+        # * +options+       - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :if_match              - String. A matching condition which is required for update (optional, Default="*")
-        # :create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
-        #                          that entity will be inserted. If false, the operation will fail. (optional, Default=false)
-        # :timeout               - Integer. A timeout in seconds.
+        # * +:if_match+              - String. A matching condition which is required for update (optional, Default="*")
+        # * +:create_if_not_exists+  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
+        #   that entity will be inserted. If false, the operation will fail. (optional, Default=false)
+        # * +:timeout+               - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179427
         #
@@ -290,15 +328,19 @@ module Azure
         # Public: Updates an existing entity by updating the entity's properties. This operation
         # does not replace the existing entity, as the update_entity operation does.
         #
-        # table_name             - String. The table name
-        # entity_values          - Hash. A hash of the name/value pairs for the entity.
-        # options                - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +table_name+    - String. The table name
+        # * +entity_values+ - Hash. A hash of the name/value pairs for the entity.
+        # * +options+       - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :if_match              - String. A matching condition which is required for update (optional, Default="*")
-        # :create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
-        #                          that entity will be inserted. If false, the operation will fail. (optional, Default=false)
-        # :timeout               - Integer. A timeout in seconds.
+        # * +:if_match+              - String. A matching condition which is required for update (optional, Default="*")
+        # * +:create_if_not_exists+  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
+        #   that entity will be inserted. If false, the operation will fail. (optional, Default=false)
+        # * +:timeout+               - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179392
         # 
@@ -323,12 +365,16 @@ module Azure
 
         # Public: Inserts or updates an existing entity within a table by merging new property values into the entity.
         #
-        # table_name            - String. The table name
-        # entity_values         - Hash. A hash of the name/value pairs for the entity.
-        # options               - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +table_name+    - String. The table name
+        # * +entity_values+ - Hash. A hash of the name/value pairs for the entity.
+        # * +options+       - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout              - Integer. A timeout in seconds.
+        # * +:timeout+      - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452241
         # 
@@ -340,12 +386,16 @@ module Azure
 
         # Public: Inserts or updates a new entity into a table.
         #
-        # table_name            - String. The table name
-        # entity_values         - Hash. A hash of the name/value pairs for the entity.
-        # options               - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +table_name+    - String. The table name
+        # * +entity_values+ - Hash. A hash of the name/value pairs for the entity.
+        # * +options+       - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout              - Integer. A timeout in seconds.
+        # * +:timeout+      - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452242
         #
@@ -357,14 +407,18 @@ module Azure
 
         # Public: Deletes an existing entity in the table.
         #
-        # table_name     - String. The table name
-        # partition_key  - String. The partition key
-        # row_key        - String. The row key
-        # options        - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +table_name+    - String. The table name
+        # * +partition_key+ - String. The partition key
+        # * +row_key+       - String. The row key
+        # * +options+       - Hash. Optional parameters.
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :if_match      - String. A matching condition which is required for update (optional, Default="*")
-        # :timeout       - Integer. A timeout in seconds.
+        # * +:if_match+     - String. A matching condition which is required for update (optional, Default="*")
+        # * +:timeout+      - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135727
         #
@@ -382,11 +436,15 @@ module Azure
 
         # Public: Executes a batch of operations.
         #
-        # batch         - The Azure::Storage::Table::Batch instance to execute.
-        # options       - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +batch+         - The Azure::Storage::Table::Batch instance to execute.
+        # * +options+       - Hash. Optional parameters.
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout      - Integer. A timeout in seconds.
+        # * +:timeout+      - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd894038
         #
@@ -408,13 +466,17 @@ module Azure
 
         # Public: Gets an existing entity in the table.
         #
-        # table_name    - String. The table name
-        # partition_key - String. The partition key
-        # row_key       - String. The row key
-        # options       - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +table_name+    - String. The table name
+        # * +partition_key+ - String. The partition key
+        # * +row_key+       - String. The row key
+        # * +options+       - Hash. Optional parameters.
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout      - Integer. A timeout in seconds.
+        # * +:timeout+      - Integer. A timeout in seconds.
         #
         # Returns an Azure::Storage::Table::Entity instance on success
         def get_entity(table_name, partition_key, row_key, options={})
@@ -434,7 +496,9 @@ module Azure
 
         # Protected: Generate the URI for a specific table.
         #
-        # name - The table name. If this is a URI, we just return this
+        # ==== Attributes
+        #
+        # * +name+ - The table name. If this is a URI, we just return this
         #
         # Returns a URI
         public
@@ -447,9 +511,11 @@ module Azure
         # If both the 'partition_key' and 'row_key' are specified, then the URI
         # will match the entity under those specific keys.
         #
-        # table_name    - The table name
-        # partition_key - The desired partition key (optional)
-        # row_key       - The desired row key (optional)
+        # ==== Attributes
+        #
+        # * +table_name+    - The table name
+        # * +partition_key+ - The desired partition key (optional)
+        # * +row_key+       - The desired row key (optional)
         #
         # Returns a URI
         public
