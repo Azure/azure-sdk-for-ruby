@@ -55,7 +55,7 @@ describe Azure::Storage::Table::TableService do
       results[0].table.must_equal table_name
       entity_properties.each { |k,v|
         if entity_properties[k].class == Time
-          results[0].properties[k].to_f.must_equal entity_properties[k].to_f
+          results[0].properties[k].to_f.round(6).must_equal entity_properties[k].to_f.round(6)
         else
           results[0].properties[k].must_equal entity_properties[k]
         end
