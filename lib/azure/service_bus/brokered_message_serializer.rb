@@ -112,14 +112,8 @@ module Azure
       def get_property_headers
         hash = {}
         @message.properties.each do |name, value|
-          val = value
-          # Check for an RFC2626 Date
-          begin
-            val = '"' + Time.parse(value).httpdate + '"'
-          rescue ArgumentError
-            val = '"' + value + '"' if value.is_a? String
-          end
-          hash[name] = val
+          tmp = JSON.generate [ value ]
+          hash[name] = tmp[1..(tmp.length-2)]
         end
         hash
       end

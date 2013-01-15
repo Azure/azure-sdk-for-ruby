@@ -147,7 +147,17 @@ describe "ServiceBus Queues" do
       let(:messageContent) { 'messagecontent' }  
       let(:to) { 'yo' }
       let(:label) { 'my_label' }
-      let(:properties) { {"prop1"=> "val1"} }
+      let(:properties) {{
+        "CustomDoubleProperty" => 3.141592,
+        "CustomInt32Property" => 37,
+        "CustomInt64Property" => 2**32,
+        "CustomInt64NegProperty" => -(2**32),
+        "CustomStringProperty" => "CustomPropertyValue",
+        "CustomDateProperty" => Time.now,
+        "CustomTrueProperty" => true,
+        "CustomFalseProperty" => false,
+        "CustomNilProperty" => nil
+      }}
       let(:msg) { m = Azure::ServiceBus::BrokeredMessage.new(messageContent, properties); m.to = 'me'; m }
       
       before { subject.send_queue_message name, msg }
@@ -159,7 +169,10 @@ describe "ServiceBus Queues" do
         retrieved.body.must_equal msg.body
         retrieved.to.must_equal msg.to
         retrieved.label.must_equal msg.label
-        retrieved.properties['prop1'].must_equal 'val1'
+
+        properties.each { |k,v|
+          retrieved.properties[k.downcase].to_s.must_equal properties[k].to_s
+        }
 
         refute retrieved.lock_token.nil?
         refute retrieved.sequence_number.nil?
