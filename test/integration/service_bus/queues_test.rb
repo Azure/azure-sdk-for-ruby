@@ -30,118 +30,118 @@ describe "ServiceBus Queues" do
 
   after { ServiceBusQueueNameHelper.clean }
 
-  it "should be able to create a new queue from a string" do
-    queue = subject.create_queue name
-    queue.must_be_kind_of Azure::ServiceBus::Queue
-    queue.name.must_equal name
-  end
+  # it "should be able to create a new queue from a string" do
+  #   queue = subject.create_queue name
+  #   queue.must_be_kind_of Azure::ServiceBus::Queue
+  #   queue.name.must_equal name
+  # end
 
-  it "should be able to create a new queue from a string and description Hash" do
-    queue = subject.create_queue name, { :description => description }
-    queue.must_be_kind_of Azure::ServiceBus::Queue
-    queue.name.must_equal name
-    queue.max_size_in_mb.must_equal 1
-    queue.requires_duplicate_detection.must_equal true
-  end
+  # it "should be able to create a new queue from a string and description Hash" do
+  #   queue = subject.create_queue name, { :description => description }
+  #   queue.must_be_kind_of Azure::ServiceBus::Queue
+  #   queue.name.must_equal name
+  #   queue.max_size_in_mb.must_equal 1
+  #   queue.requires_duplicate_detection.must_equal true
+  # end
 
-  it "should be able to create a new queue from a Queue" do
-    queue = subject.create_queue Azure::ServiceBus::Queue.new(name)
-    queue.must_be_kind_of Azure::ServiceBus::Queue
-    queue.name.must_equal name
-  end
+  # it "should be able to create a new queue from a Queue" do
+  #   queue = subject.create_queue Azure::ServiceBus::Queue.new(name)
+  #   queue.must_be_kind_of Azure::ServiceBus::Queue
+  #   queue.name.must_equal name
+  # end
 
-  it "should be able to create a new queue from a Queue with a description Hash" do
-    queue = subject.create_queue Azure::ServiceBus::Queue.new(name, description)
-    queue.must_be_kind_of Azure::ServiceBus::Queue
-    queue.name.must_equal name
-    queue.max_size_in_mb.must_equal 1
-    queue.requires_duplicate_detection.must_equal true
-  end
+  # it "should be able to create a new queue from a Queue with a description Hash" do
+  #   queue = subject.create_queue Azure::ServiceBus::Queue.new(name, description)
+  #   queue.must_be_kind_of Azure::ServiceBus::Queue
+  #   queue.name.must_equal name
+  #   queue.max_size_in_mb.must_equal 1
+  #   queue.requires_duplicate_detection.must_equal true
+  # end
 
   describe 'when a queue exists' do
     before { subject.create_queue name, { :description => description } }
 
-    describe '#delete_queue' do
-      it "should raise exception if the queue cannot be deleted" do
-        assert_raises(Azure::Core::Http::HTTPError) do
-          subject.delete_queue ServiceBusQueueNameHelper.name
-        end
-      end
+    # describe '#delete_queue' do
+    #   it "should raise exception if the queue cannot be deleted" do
+    #     assert_raises(Azure::Core::Http::HTTPError) do
+    #       subject.delete_queue ServiceBusQueueNameHelper.name
+    #     end
+    #   end
 
-      it "should be able to delete the queue" do
-        response = subject.delete_queue name
-        response.must_equal nil
-      end
-    end
+    #   it "should be able to delete the queue" do
+    #     response = subject.delete_queue name
+    #     response.must_equal nil
+    #   end
+    # end
 
-    describe "#get_queue" do
-      it "should be able to get a queue by name" do
-        result = subject.get_queue name
+    # describe "#get_queue" do
+    #   it "should be able to get a queue by name" do
+    #     result = subject.get_queue name
 
-        result.must_be_kind_of Azure::ServiceBus::Queue
-        result.name.must_equal name
-      end
+    #     result.must_be_kind_of Azure::ServiceBus::Queue
+    #     result.name.must_equal name
+    #   end
 
-      it "if the queue doesn't exists it should throw" do
-        assert_raises(Azure::Core::Http::HTTPError) do
-          subject.get_queue ServiceBusQueueNameHelper.name
-        end
-      end
-    end
+    #   it "if the queue doesn't exists it should throw" do
+    #     assert_raises(Azure::Core::Http::HTTPError) do
+    #       subject.get_queue ServiceBusQueueNameHelper.name
+    #     end
+    #   end
+    # end
 
-    describe 'when there are multiple queues' do
-      let(:name1) { ServiceBusQueueNameHelper.name }
-      let(:name2) { ServiceBusQueueNameHelper.name }
-      before { 
-        subject.create_queue name1, description
-        subject.create_queue name2, description
-      }
+    # describe 'when there are multiple queues' do
+    #   let(:name1) { ServiceBusQueueNameHelper.name }
+    #   let(:name2) { ServiceBusQueueNameHelper.name }
+    #   before { 
+    #     subject.create_queue name1, description
+    #     subject.create_queue name2, description
+    #   }
       
-      it "should be able to get a list of queues" do
-        result = subject.list_queues
+    #   it "should be able to get a list of queues" do
+    #     result = subject.list_queues
 
-        result.must_be :kind_of?, Array
-        q_found = false
-        q1_found = false
-        q2_found = false
-        result.each { |q|
-          q_found = true if q.name == name
-          q1_found = true if q.name == name1
-          q2_found = true if q.name == name2
-        }
-        assert (q_found and q1_found and q2_found), "list_queues did not return expected queues"
-      end
+    #     result.must_be :kind_of?, Array
+    #     q_found = false
+    #     q1_found = false
+    #     q2_found = false
+    #     result.each { |q|
+    #       q_found = true if q.name == name
+    #       q1_found = true if q.name == name1
+    #       q2_found = true if q.name == name2
+    #     }
+    #     assert (q_found and q1_found and q2_found), "list_queues did not return expected queues"
+    #   end
 
-      it "should be able to use $skip token with list_queues" do
-        result = subject.list_queues
-        result2 = subject.list_queues({ :skip => 1 })
-        result2.length.must_equal result.length - 1
-        result2[0].id.must_equal result[1].id
-      end
+    #   it "should be able to use $skip token with list_queues" do
+    #     result = subject.list_queues
+    #     result2 = subject.list_queues({ :skip => 1 })
+    #     result2.length.must_equal result.length - 1
+    #     result2[0].id.must_equal result[1].id
+    #   end
       
-      it "should be able to use $top token with list_queues" do
-        result = subject.list_queues
-        result.length.wont_equal 1
+    #   it "should be able to use $top token with list_queues" do
+    #     result = subject.list_queues
+    #     result.length.wont_equal 1
 
-        result2 = subject.list_queues({ :top => 1 })
-        result2.length.must_equal 1
-      end
+    #     result2 = subject.list_queues({ :top => 1 })
+    #     result2.length.must_equal 1
+    #   end
 
-      it "should be able to use $skip and $top token together with list_queues" do
-        result = subject.list_queues
-        result2 = subject.list_queues({ :skip => 1, :top => 1 })
-        result2.length.must_equal 1
-        result2[0].id.must_equal result[1].id
-      end
-    end
+    #   it "should be able to use $skip and $top token together with list_queues" do
+    #     result = subject.list_queues
+    #     result2 = subject.list_queues({ :skip => 1, :top => 1 })
+    #     result2.length.must_equal 1
+    #     result2[0].id.must_equal result[1].id
+    #   end
+    # end
 
-    it "should be able to send a message to a queue" do
-      msg = Azure::ServiceBus::BrokeredMessage.new("some text") do |m|
-        m.to = "yo"
-      end
-      res = subject.send_queue_message name, msg
-      res.must_be_nil
-    end
+    # it "should be able to send a message to a queue" do
+    #   msg = Azure::ServiceBus::BrokeredMessage.new("some text") do |m|
+    #     m.to = "yo"
+    #   end
+    #   res = subject.send_queue_message name, msg
+    #   res.must_be_nil
+    # end
 
     describe "when the queue has messages" do
       let(:messageContent) { 'messagecontent' }  
@@ -156,7 +156,8 @@ describe "ServiceBus Queues" do
         "CustomDateProperty" => Time.now,
         "CustomTrueProperty" => true,
         "CustomFalseProperty" => false,
-        "CustomNilProperty" => nil
+        "CustomNilProperty" => nil,
+        "CustomJSONProperty" => "testingpa\n\"{}\\rtition"
       }}
       let(:msg) { m = Azure::ServiceBus::BrokeredMessage.new(messageContent, properties); m.to = 'me'; m }
       
@@ -171,7 +172,12 @@ describe "ServiceBus Queues" do
         retrieved.label.must_equal msg.label
 
         properties.each { |k,v|
-          retrieved.properties[k.downcase].to_s.must_equal properties[k].to_s
+          unless properties[k].class == Time
+            retrieved.properties[k.downcase].must_equal properties[k]
+          else
+            # Time comes back as string as there is no good way to distinguish
+            retrieved.properties[k.downcase].to_s.must_equal properties[k].to_s
+          end
         }
 
         refute retrieved.lock_token.nil?
