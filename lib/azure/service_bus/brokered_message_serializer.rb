@@ -87,7 +87,8 @@ module Azure
           ]
           props = response.headers.reject {|k,_| header_names_black_list.include?(k.downcase) }
           props.each do |prop_name, value|
-            m.properties[prop_name] = value.gsub(/"/, '')
+            parsed = JSON.parse("{ \"" + prop_name + "\" : " + value + "}")
+            m.properties[prop_name] = parsed[prop_name]
           end
         end
       end
@@ -112,14 +113,8 @@ module Azure
       def get_property_headers
         hash = {}
         @message.properties.each do |name, value|
-          val = value
-          # Check for an RFC2626 Date
-          begin
-            val = '"' + Time.parse(value).httpdate + '"'
-          rescue ArgumentError
-            val = '"' + value + '"' if value.is_a? String
-          end
-          hash[name] = val
+          tmp = JSON.generate [ value ]
+          hash[name] = tmp[1..(tmp.length-2)]
         end
         hash
       end
