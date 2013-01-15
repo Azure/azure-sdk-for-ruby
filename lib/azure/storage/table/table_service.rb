@@ -26,7 +26,7 @@ module Azure
 
         def initialize
           super(Azure::Storage::Table::Auth::SharedKey.new)
-          @host = Azure.config.table_host
+          @host = Azure.config.storage_table_host
         end
 
         # Public: Creates new table in the storage account

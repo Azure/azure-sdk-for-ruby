@@ -23,7 +23,7 @@ module Azure
 
         def initialize
           super()
-          @host = Azure.config.blob_host
+          @host = Azure.config.storage_blob_host
         end
 
         # Public: Get a list of Containers from the server

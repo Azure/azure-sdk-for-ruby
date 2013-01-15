@@ -21,7 +21,7 @@ require 'azure/core/http/http_response'
 
 module Azure
   module ServiceBus
-    class ServiceBus < Azure::Core::SignedService
+    class ServiceBusService < Azure::Core::SignedService
 
       DEFAULT_TIMEOUT = 60
 

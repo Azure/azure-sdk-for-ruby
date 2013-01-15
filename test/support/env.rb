@@ -13,7 +13,7 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 def skip_if_emulator
- if Azure.config.table_host =~ /localhost/
+ if Azure.config.storage_table_host =~ /localhost/
    skip "This test will only run in Live environment"
  end
 end

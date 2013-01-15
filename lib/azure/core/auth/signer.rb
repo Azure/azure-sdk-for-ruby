@@ -29,7 +29,7 @@ module Azure
         #
         # access_key - The access_key encoded in Base64. Defaults to the one
         #              in the global configuration.
-        def initialize(access_key=Azure.config.access_key)
+        def initialize(access_key=Azure.config.storage_access_key)
           @access_key = Base64.strict_decode64(access_key)
         end
 

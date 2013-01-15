@@ -63,13 +63,13 @@ There are two ways you can set up the connections:
   require "azure"
 
   Azure.configure do |config|
-    # Configure these 2 properties to use Storage
-    config.account_name   = "<your azure storage account name>"
-    config.access_key     = "<your azure storage access key>"
-    # Configure these 3 properties to use Service Bus
-    config.sb_namespace   = "<your azure service bus namespace>"
-    config.sb_access_key  = "<your azure service bus access key>"
-    config.sb_issuer      = "<your azure service bus issuer>"
+      # Configure these 2 properties to use Storage
+      config.storage_account_name = "<your azure storage account name>"
+      config.storage_access_key   = "<your azure storage access key>"
+      # Configure these 3 properties to use Service Bus
+      config.sb_namespace         = "<your azure service bus namespace>"
+      config.sb_access_key        = "<your azure service bus access key>"
+      config.sb_issuer            = "<your azure service bus issuer>"
   end
   ```
 
@@ -79,13 +79,13 @@ There are two ways you can set up the connections:
   require "azure"
 
   Azure.configure do |config|
-    # Configure these 2 properties to use local Storage Emulator
-    config.account_name = "devstoreaccount1"
-    config.access_key   = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="
-    config.blob_host    = "http://127.0.0.1:10000/devstoreaccount1"
-    config.queue_host   = "http://127.0.0.1:10001/devstoreaccount1"
-    config.table_host   = "http://127.0.0.1:10002/devstoreaccount1"
-    # Local Service Bus Emulator is not supported
+      # Configure these 2 properties to use local Storage Emulator
+      config.storage_account_name = "devstoreaccount1"
+      config.storage_access_key   = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="
+      config.storage_blob_host    = "http://127.0.0.1:10000/devstoreaccount1"
+      config.storage_queue_host   = "http://127.0.0.1:10001/devstoreaccount1"
+      config.storage_table_host   = "http://127.0.0.1:10002/devstoreaccount1"
+      # Local Service Bus Emulator is not supported
   end
   ```
 
@@ -148,7 +148,7 @@ azure_blob_service = Azure::BlobService.new
 container = azure_blob_service.create_container("test-container")
 
 # Upload a Blob
-content = File.read("test.png")
+content = File.open('test.jpg', 'rb') { |file| file.read }
 azure_blob_service.create_block_blob(container.name, "image-blob", content)
 
 # List containers
@@ -159,7 +159,7 @@ azure_blob_service.list_blobs(container.name)
 
 # Download a Blob
 blob, content = azure_blob_service.get_blob(container.name, "image-blob")
-File.open("download.png", "w") {|f| f.write(content)}
+File.open("download.png", "wb") {|f| f.write(content)}
 
 # Delete a Blob
 azure_blob_service.delete_blob(container.name, "image-blob")
@@ -175,11 +175,11 @@ require "azure"
 azure_table_service = Azure::TableService.new
 
 # Create a table
-azure_table_service.create_table('testtable')
+azure_table_service.create_table("testtable")
 
 # Insert an entity
-entity = { content => "test entity", :PartitionKey => "test-partition-key", :RowKey => "1" }
-azure_table_service.insert_entity('testtable', entity)
+entity = { "content" => "test entity", :PartitionKey => "test-partition-key", :RowKey => "1" }
+azure_table_service.insert_entity("testtable", entity)
 
 # Get an entity
 result = azure_table_service.get_entity("testtable", "test-partition-key", "1")
@@ -193,7 +193,7 @@ query = { :filter => "content eq 'test entity'" }
 result, token = azure_table_service.query_entities("testtable", query)
 
 # Delete an entity
-azure_table_service.delete_entity("testtable, "test-partition-key", "1")
+azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 
 # delete a table
 azure_table_service.delete_table("testtable")

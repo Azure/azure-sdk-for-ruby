@@ -20,13 +20,13 @@ require "azure/core/configuration"
 
 # load default configuration from environment variables (user can always override this later)
 Azure.configure do |config|
-  config.access_key     = ENV["AZURE_STORAGE_ACCESS_KEY"]
-  config.account_name   = ENV["AZURE_STORAGE_ACCOUNT"]
-  config.table_host     = ENV["AZURE_TABLE_HOST"]
-  config.blob_host      = ENV["AZURE_BLOB_HOST"]
-  config.queue_host     = ENV["AZURE_QUEUE_HOST"]
+  config.storage_access_key     = ENV["AZURE_STORAGE_ACCESS_KEY"]
+  config.storage_account_name   = ENV["AZURE_STORAGE_ACCOUNT"]
+  config.storage_table_host     = ENV["AZURE_STORAGE_TABLE_HOST"]
+  config.storage_blob_host      = ENV["AZURE_STORAGE_BLOB_HOST"]
+  config.storage_queue_host     = ENV["AZURE_STORAGE_QUEUE_HOST"]
 
-  config.acs_namespace  = ENV["AZURE_SERVICEBUS_NAMESPACE"]
+  config.sb_namespace  = ENV["AZURE_SERVICEBUS_NAMESPACE"]
   config.sb_access_key  = ENV["AZURE_SERVICEBUS_ACCESS_KEY"]
   config.sb_issuer      = ENV["AZURE_SERVICEBUS_ISSUER"]
 end

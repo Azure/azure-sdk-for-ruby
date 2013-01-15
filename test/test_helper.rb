@@ -41,11 +41,11 @@ Dir["./test/support/**/*.rb"].each { |dep| require dep }
 # mock configuration setup
 require 'azure'
 
-Azure.config.account_name     = "accountname"
-Azure.config.access_key       = "YWNjZXNzLWtleQ=="
-# Azure.config.table_host     = 
-# Azure.config.blob_host      = 
-# Azure.config.queue_host     = 
-# Azure.config.acs_namespace  = 
-# Azure.config.sb_access_key  = 
-# Azure.config.sb_issuer      = 
+Azure.config.storage_account_name     = "accountname"
+Azure.config.storage_access_key       = "YWNjZXNzLWtleQ=="
+# Azure.config.storage_table_host     = 
+# Azure.config.storage_blob_host      = 
+# Azure.config.storage_queue_host     = 
+# Azure.config.sb_namespace           = 
+# Azure.config.sb_access_key          = 
+# Azure.config.sb_issuer              = 
