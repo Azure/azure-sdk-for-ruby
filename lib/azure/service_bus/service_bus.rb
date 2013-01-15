@@ -40,11 +40,15 @@ module Azure
 
       # Creates a new queue. Once created, this queue's resource manifest is immutable. 
       # 
-      # queue        - Azure::ServiceBus::Queue instance to create on server, or a string of the queue name
-      # options      - Hash. Optional parameters. 
+      # ==== Attributes
+      #
+      # * +queue+        - Azure::ServiceBus::Queue instance to create on server, or a string of the queue name
+      # * +options+      - Hash. Optional parameters. 
+      #
+      # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # :description - String. Description for the queue.
+      # * +:description+ - String. Description for the queue.
       #
       def create_queue(queue, options={})
         queue = _new_or_existing(Azure::ServiceBus::Queue, queue, options[:description] ? options[:description] : {})
@@ -54,26 +58,33 @@ module Azure
       # Deletes an existing queue. This operation will also remove all associated state 
       # including messages in the queue.
       #
-      # queue - Azure::ServiceBus::Queue instance to delete or a string of the queue name
-      # 
+      # ==== Attributes
+      #
+      # * +queue+ - Azure::ServiceBus::Queue instance to delete or a string of the queue name
       def delete_queue(queue)
         delete_resource_entry(:queue, _name_for(queue))
       end
 
       # Retrieves an existing queue.
       # 
-      # queue - Azure::ServiceBus::Queue instance to retrieve or a string of the queue name
+      # ==== Attributes
+      #
+      # * +queue+ - Azure::ServiceBus::Queue instance to retrieve or a string of the queue name
       def get_queue(queue)
         resource_entry(:queue, _name_for(queue))
       end
       
       # Enumerates the queues in the service namespace.
       #
-      # options    - Hash. Optional parameters. 
+      # ==== Attributes
+      #
+      # * +options+    - Hash. Optional parameters.
+      #
+      # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # :skip      - Integer. Number of queues to skip.
-      # :top       - Integer. Number of queues to list.
+      # * +:skip+      - Integer. Number of queues to skip.
+      # * +:top+       - Integer. Number of queues to list.
       def list_queues(options={})
         query = {}
         query["$skip"] = options[:skip].to_i.to_s if options[:skip]
@@ -84,11 +95,15 @@ module Azure
       
       # Creates a new topic. Once created, this topic resource manifest is immutable. 
       # 
-      # topic        - Azure::ServiceBus::Topic instance to create on server, or a string of the topic name
-      # options      - Hash. Optional parameters. 
+      # ==== Attributes
+      #
+      # * +topic+        - Azure::ServiceBus::Topic instance to create on server, or a string of the topic name
+      # * +options+      - Hash. Optional parameters. 
+      #
+      # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # :description - String. Description for the topic.
+      # * +:description+ - String. Description for the topic.
       #
       def create_topic(topic, options={})
         topic = _new_or_existing(Azure::ServiceBus::Topic, topic, options[:description] ? options[:description] : {})
@@ -98,26 +113,33 @@ module Azure
       # Deletes an existing topic. This operation will also remove all associated state 
       # including associated subscriptions.
       # 
-      # topic - Azure::ServiceBus::Topic instance to delete or a string of the topic name
-      # 
+      # ==== Attributes
+      #
+      # * +topic+ - Azure::ServiceBus::Topic instance to delete or a string of the topic name
       def delete_topic(topic)
         delete_resource_entry(:topic, _name_for(topic))
       end
 
       # Retrieves the description for the specified topic.
       # 
-      # topic - Azure::ServiceBus::Topic instance to retrieve or a string of the topic name
+      # ==== Attributes
+      #
+      # * +topic+ - Azure::ServiceBus::Topic instance to retrieve or a string of the topic name
       def get_topic(topic)
         resource_entry(:topic, _name_for(topic))
       end
 
       # Retrieves the topics in the service namespace.
       #
-      # options      - Hash. Optional parameters. 
+      # ==== Attributes
+      #
+      # * +options+      - Hash. Optional parameters. 
+      #
+      # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # :skip      - Integer. Number of topics to skip.
-      # :top       - Integer. Number of topics to list.
+      # * +:skip+      - Integer. Number of topics to skip.
+      # * +:top+       - Integer. Number of topics to list.
       def list_topics(options={})
         query = {}
         query["$skip"] = options[:skip].to_i.to_s if options[:skip]
@@ -127,6 +149,8 @@ module Azure
       end
 
       # Creates a new rule. Once created, this rule's resource manifest is immutable.
+      #
+      # ==== Attributes
       #
       # Pass either (topic_name, subscription_name, rule_name) as strings, or (rule) a object with .name, .topic, and 
       # .subscription methods such as Azure::ServiceBus::Rule instance.
@@ -144,6 +168,8 @@ module Azure
 
       # Deletes an existing rule.
       # 
+      # ==== Attributes
+      #
       # Pass either (topic_name, subscription_name, rule_name) as strings, or (rule) a object with .name, .topic, and 
       # .subscription methods such as Azure::ServiceBus::Rule instance.
       #
@@ -156,6 +182,8 @@ module Azure
 
       # Retrieves the description for the specified rule. 
       # 
+      # ==== Attributes
+      #
       # Pass either (topic_name, subscription_name, rule_name) as strings, or (rule) a object with .name, .topic, and 
       # .subscription methods such as Azure::ServiceBus::Rule instance.
       #
@@ -171,6 +199,8 @@ module Azure
 
       # Retrieves the rules that exist under the specified subscription. 
       # 
+      # ==== Attributes
+      #
       # Pass either (topic_name, subscription_name) as strings, or (subscription) a object with .name and .topic methods
       # such as Azure::ServiceBus::Subscription instance.
       def list_rules(*p)
@@ -186,6 +216,8 @@ module Azure
       # Creates a new subscription. Once created, this subscription resource manifest is 
       # immutable. 
       # 
+      # ==== Attributes
+      #
       # Pass either (topic_name, subscription_name) as strings, or (subscription) a object with .name, .topic, and 
       # .description methods such as Azure::ServiceBus::Subscription instance. 
       #
@@ -202,6 +234,8 @@ module Azure
       #
       # Deletes an existing subscription.
       # 
+      # ==== Attributes
+      #
       # Pass either (topic_name, subscription_name) as strings, or (subscription) a object with .name and .topic methods
       # such as Azure::ServiceBus::Subscription instance.
       def delete_subscription(*p)
@@ -211,6 +245,8 @@ module Azure
       end
 
       # Gets an existing subscription.
+      #
+      # ==== Attributes
       #
       # Pass either (topic_name, subscription_name) as strings, or (subscription) a object with .name and .topic methods
       # such as Azure::ServiceBus::Subscription instance.
@@ -224,12 +260,16 @@ module Azure
 
       # Retrieves the subscriptions in the specified topic. 
       # 
-      # topic    - Either a Azure::ServiceBus::Topic instance or a string of the topic name
-      # options  - Hash. Optional parameters. 
+      # ==== Attributes
+      #
+      # * +topic+    - Either a Azure::ServiceBus::Topic instance or a string of the topic name
+      # * +options+  - Hash. Optional parameters. 
+      #
+      # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # :skip      - Integer. Number of subscriptions to skip.
-      # :top       - Integer. Number of subscriptions to list.
+      # * +:skip+    - Integer. Number of subscriptions to skip.
+      # * +:top+     - Integer. Number of subscriptions to list.
       def list_subscriptions(topic, options={})
         topic = _name_for(topic)
         query = {}
@@ -244,9 +284,11 @@ module Azure
       # If this message causes the topic to exceed its quota, a quota exceeded error is 
       # returned and the message will be rejected.
       # 
-      # topic: Either a Azure::ServiceBus::Topic instance or a string of the topic name
-      # message: An Azure::ServiceBus::BrokeredMessage object containing message body and properties, 
-      # or a string of the message body (a default BrokeredMessage will be created from the string).
+      # ==== Attributes
+      #
+      # * +topic+   - Either a Azure::ServiceBus::Topic instance or a string of the topic name
+      # * +message+ - An Azure::ServiceBus::BrokeredMessage object containing message body and properties, 
+      #   or a string of the message body (a default BrokeredMessage will be created from the string).
       def send_topic_message(topic, message)
         _send_message(_name_for(topic), message)
       end
@@ -261,13 +303,17 @@ module Azure
       # lock ID received from this operation. To abandon processing of the message and 
       # unlock it for other receivers, an Unlock Message command should be issued, or 
       # the lock duration period can expire. 
-      # 
-      # topic        - String. The name of the topic or a Topic instance
-      # subscription - String. The name of the subscription or a Subscription instance
-      # options      - Hash. Optional parameters. 
+      #
+      # ==== Attributes
+      #
+      # * +topic+        - String. The name of the topic or a Topic instance
+      # * +subscription+ - String. The name of the subscription or a Subscription instance
+      # * +options+      - Hash. Optional parameters. 
+      #
+      # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # :timeout     - Integer. Timeout for the REST call.
+      # * +:timeout+     - Integer. Timeout for the REST call.
       def peek_lock_subscription_message(topic, subscription, options={})
         topic = _name_for(topic)
         subscription = _name_for(subscription)
@@ -281,12 +327,14 @@ module Azure
       # A message must have first been locked by a receiver before this operation 
       # is called.
       # 
-      # topic: the name of the topic or a Topic instance
-      # subscription: the name of the subscription or a Subscription instance
-      # sequence_number: The sequence number of the message to be unlocked as returned 
-      #     in BrokeredMessage.sequence_number by the Peek Message operation.
-      # lock_token: The ID of the lock as returned by the Peek Message operation in 
-      #     BrokeredMessage.lock_token
+      # ==== Attributes
+      #
+      # * +topic+            - The name of the topic or a Topic instance
+      # * +subscription+     - The name of the subscription or a Subscription instance
+      # * +sequence_number+  - The sequence number of the message to be unlocked as returned 
+      #   in BrokeredMessage.sequence_number by the Peek Message operation.
+      # * +lock_token+       - The ID of the lock as returned by the Peek Message operation in 
+      #   BrokeredMessage.lock_token
       #
       def unlock_subscription_message(topic, subscription, sequence_number, lock_token)
         topic = _name_for(topic)
@@ -300,12 +348,16 @@ module Azure
       # application; that is, using this operation it is possible for messages to 
       # be lost if processing fails.
       # 
-      # topic: the name of the topic or a Topic instance
-      # subscription: the name of the subscription or a Subscription instance
-      # options      - Hash. Optional parameters. 
+      # ==== Attributes
+      #
+      # * +topic+        - The name of the topic or a Topic instance
+      # * +subscription+ - The name of the subscription or a Subscription instance
+      # * +options+      - Hash. Optional parameters. 
+      #
+      # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # :timeout     - Integer. Timeout for the REST call.
+      # * +:timeout+     - Integer. Timeout for the REST call.
       #
       def read_delete_subscription_message(topic, subscription, options={})
         topic = _name_for(topic)
@@ -318,12 +370,14 @@ module Azure
       # This operation should only be called after processing a previously locked 
       # message is successful to maintain At-Least-Once delivery assurances.
       # 
-      # topic: the name of the topic or a Topic instance
-      # subscription: the name of the subscription or a Subscription instance
-      # sequence_number: The sequence number of the message to be deleted as returned 
-      #     in BrokeredMessage.sequence_number by the Peek Message operation.
-      # lock_token: The ID of the lock as returned by the Peek Message operation in 
-      #     BrokeredMessage.lock_token
+      # ==== Attributes
+      #
+      # * +topic+           - The name of the topic or a Topic instance
+      # * +subscription+    - the name of the subscription or a Subscription instance
+      # * +sequence_number+ - The sequence number of the message to be deleted as returned 
+      #   in BrokeredMessage.sequence_number by the Peek Message operation.
+      # * +lock_token+      - The ID of the lock as returned by the Peek Message operation in 
+      #   BrokeredMessage.lock_token
       #
       def delete_subscription_message(topic, subscription, sequence_number, lock_token)
         topic = _name_for(topic)
@@ -337,9 +391,11 @@ module Azure
       # MaxTopicSizeInMegaBytes. If this message will cause the queue to exceed its 
       # quota, a quota exceeded error is returned and the message will be rejected.
       # 
-      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
-      # message: An Azure::ServiceBus::BrokeredMessage object containing message body and properties, 
-      # or a string of the message body (a default BrokeredMessage will be created from the string).
+      # ==== Attributes
+      #
+      # * +queue+   - Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      # * +message+ - An Azure::ServiceBus::BrokeredMessage object containing message body and properties, 
+      #   or a string of the message body (a default BrokeredMessage will be created from the string).
       def send_queue_message(queue, message)
         _send_message(_name_for(queue), message)
       end
@@ -355,11 +411,15 @@ module Azure
       # an Unlock Message command should be issued, or the lock duration period 
       # can expire.
       # 
-      # queue        - String. Either a Azure::ServiceBus::Queue instance or a string of the queue name
-      # options      - Hash. Optional parameters. 
+      # ==== Attributes
+      #
+      # * +queue+        - String. Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      # * +options+      - Hash. Optional parameters. 
+      #
+      # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # :timeout     - Integer. Timeout for the REST call.
+      # * +:timeout+     - Integer. Timeout for the REST call.
       #
       def peek_lock_queue_message(queue, options={})
         _peek_lock_message(_name_for(queue), options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT)
@@ -370,11 +430,13 @@ module Azure
       # A message must have first been locked by a receiver before this operation is 
       # called.
       # 
-      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
-      # sequence_number: The sequence number of the message to be unlocked as returned 
-      #     in BrokeredMessage.sequence_number by the Peek Message operation.
-      # lock_token: The ID of the lock as returned by the Peek Message operation in 
-      #     BrokeredMessage.lock_token
+      # ==== Attributes
+      #
+      # * +queue+           - Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      # * +sequence_number+ - The sequence number of the message to be unlocked as returned 
+      #   in BrokeredMessage.sequence_number by the Peek Message operation.
+      # * +lock_token+      - The ID of the lock as returned by the Peek Message operation in 
+      #   BrokeredMessage.lock_token
       #
       def unlock_queue_message(queue, sequence_number, lock_token)
         _unlock_message(_name_for(queue), sequence_number, lock_token)
@@ -385,11 +447,15 @@ module Azure
       # that is, using this operation it is possible for messages to be lost if 
       # processing fails.
       # 
-      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
-      # options      - Hash. Optional parameters. 
+      # ==== Attributes
+      #
+      # * +queue+    - Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      # * +options+  - Hash. Optional parameters. 
+      # 
+      # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # :timeout     - Integer. Timeout for the REST call.
+      # * +:timeout+ - Integer. Timeout for the REST call.
       #
       def read_delete_queue_message(queue, options={})
         _read_delete_message(_name_for(queue), options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT)
@@ -399,22 +465,30 @@ module Azure
       # operation should only be called after processing a previously locked message 
       # is successful to maintain At-Least-Once delivery assurances.
       # 
-      # queue: Either a Azure::ServiceBus::Queue instance or a string of the queue name
-      # sequence_number: The sequence number of the message to be deleted as returned 
-      #     in BrokeredMessage.sequence_number by the Peek Message operation.
-      # lock_token: The ID of the lock as returned by the Peek Message operation in 
-      #     BrokeredMessage.lock_token
+      # ==== Attributes
+      #
+      # * +queue+           - Either a Azure::ServiceBus::Queue instance or a string of the queue name
+      # * +sequence_number+ - The sequence number of the message to be deleted as returned 
+      #   in BrokeredMessage.sequence_number by the Peek Message operation.
+      # * +lock_token+      - The ID of the lock as returned by the Peek Message operation in 
+      #   BrokeredMessage.lock_token
       #
       def delete_queue_message(queue, sequence_number, lock_token)
         _delete_message(_name_for(queue), sequence_number, lock_token)
       end
 
-      # queue        - String. The queue name.
-      # options      - Hash. Optional parameters. 
+      # Public: Receives a queue message.
+      #
+      # ==== Attributes
+      #
+      # * +queue+        - String. The queue name.
+      # * +options+      - Hash. Optional parameters. 
+      #
+      # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # :peek_lock   - Boolean. Lock when peeking.
-      # :timeout     - Integer. Timeout for the REST call.
+      # * +:peek_lock+   - Boolean. Lock when peeking.
+      # * +:timeout+     - Integer. Timeout for the REST call.
       #
       def receive_queue_message(queue, options={})
         peek_lock = true
@@ -428,12 +502,18 @@ module Azure
         end
       end
 
-      # topic        - String. The topic name.
-      # options      - Hash. Optional parameters. 
+      # Public: Receives a subscription message.
+      #
+      # ==== Attributes
+      #
+      # * +topic+        - String. The topic name.
+      # * +options+      - Hash. Optional parameters. 
+      #
+      # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # :peek_lock   - Boolean. Lock when peeking.
-      # :timeout     - Integer. Timeout for the REST call.
+      # * +:peek_lock+   - Boolean. Lock when peeking.
+      # * +:timeout+     - Integer. Timeout for the REST call.
       #
       def receive_subscription_message(topic, subscription, options={})
         peek_lock = true
