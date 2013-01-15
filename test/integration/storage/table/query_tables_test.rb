@@ -31,7 +31,9 @@ describe Azure::Storage::Table::TableService do
         result.must_include t
         updated = subject.get_table(t)
         updated.wont_be_nil
-        updated[:properties]["TableName"].must_equal t
+
+        # this is a weird, but sometimes it's off by a few seconds
+        assert ((result[t] - updated).abs < 30), "time stamps don't match"
       }
     end
   end
