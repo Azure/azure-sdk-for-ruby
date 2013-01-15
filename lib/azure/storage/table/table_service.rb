@@ -89,14 +89,14 @@ module Azure
         # Accepted key/value pairs in options parameter are:
         # * +:timeout+   - Integer. A timeout in seconds.
         #
-        # Returns the table
+        # Returns the last updated time for the table
         def get_table(table_name, options={})
           query = { }
           query["timeout"] = options[:timeout].to_s if options[:timeout]
 
           response = call(:get, table_uri(table_name, query))
-          table = Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)
-          table
+          results = Azure::Storage::Table::Serialization.hash_from_entry_xml(response.body)
+          results[:updated]
         end
 
         # Public: Gets a list of all tables on the account.
