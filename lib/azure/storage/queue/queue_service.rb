@@ -26,25 +26,30 @@ module Azure
         end
 
         # Public: Get a list of Queues from the server
-        # options           - Hash. Optional parameters. 
+        #
+        # ==== Attributes
+        #
+        # * +options+    - Hash. Optional parameters.
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :prefix           - String. Filters the results to return only containers 
-        #                     whose name begins with the specified prefix. (optional)
-        # :marker           - String. An identifier the specifies the portion of the 
-        #                     list to be returned. This value comes from the property
-        #                     Azure::Entity::Blob::EnumerationResults.marker when there 
-        #                     are more containers available than were returned. The 
-        #                     marker value may then be used here to request the next set
-        #                     of list items. (optional)
-        # :max_results      - Integer. Specifies the maximum number of containers to return. 
-        #                     If max_results is not specified, or is a value greater than 
-        #                     5,000, the server will return up to 5,000 items. If it is set 
-        #                     to a value less than or equal to zero, the server will return 
-        #                     status code 400 (Bad Request). (optional)
-        # :metadata         - Boolean. Specifies whether or not to return the container metadata.
-        #                     (optional, Default=false)
-        # :timeout          - Integer. A timeout in seconds.
+        # * +:prefix+      - String. Filters the results to return only containers 
+        #   whose name begins with the specified prefix. (optional)
+        # * +:marker+      - String. An identifier the specifies the portion of the 
+        #   list to be returned. This value comes from the property
+        #   Azure::Entity::Blob::EnumerationResults.marker when there 
+        #   are more containers available than were returned. The 
+        #   marker value may then be used here to request the next set
+        #   of list items. (optional)
+        # * +:max_results+ - Integer. Specifies the maximum number of containers to return. 
+        #   If max_results is not specified, or is a value greater than 
+        #   5,000, the server will return up to 5,000 items. If it is set 
+        #   to a value less than or equal to zero, the server will return 
+        #   status code 400 (Bad Request). (optional)
+        # * +:metadata+    - Boolean. Specifies whether or not to return the container metadata.
+        #   (optional, Default=false)
+        # * +:timeout+     - Integer. A timeout in seconds.
         #
         # NOTE: Metadata requested with the :metadata parameter must have been stored in
         # accordance with the naming restrictions imposed by the 2009-09-19 version of the Blob 
@@ -81,11 +86,15 @@ module Azure
         # continue to retry Clear Messages until it succeeds, to ensure that all 
         # messages have been deleted.
         # 
-        # queue_name   - String. The name of the queue.
-        # options           - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +queue_name+ - String. The name of the queue.
+        # * +options+    - Hash. Optional parameters.
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout          - Integer. A timeout in seconds.
+        # * +:timeout+   - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179454
         # 
@@ -100,12 +109,16 @@ module Azure
       
         # Public: Creates a new queue under the storage account.
         # 
-        # queue_name     - String. The queue name.
-        # options        - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +queue_name+     - String. The queue name.
+        # * +options+        - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :metadata      - Hash. A hash of user defined metadata.
-        # :timeout       - Integer. A timeout in seconds.
+        # * +:metadata+      - Hash. A hash of user defined metadata.
+        # * +:timeout+       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179342
         #
@@ -125,11 +138,15 @@ module Azure
 
         # Public: Deletes a queue.
         # 
-        # queue_name     - String. The queue name.
-        # options        - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +queue_name+     - String. The queue name.
+        # * +options+        - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout       - Integer. A timeout in seconds.
+        # * +:timeout+       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179436
         #
@@ -146,18 +163,22 @@ module Azure
 
         # Public: Returns queue properties, including user-defined metadata.
         # 
-        # queue_name    - String. The queue name.
-        # options        - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +queue_name+     - String. The queue name.
+        # * +options+        - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout       - Integer. A timeout in seconds.
+        # * +:timeout+       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179384
         #
         # Returns a tuple of (approximate_message_count, metadata)
-        #   approximate_messages_count  - Integer. The approximate number of messages in the queue. This number is not
-        #                                 lower than the actual number of messages in the queue, but could be higher.
-        #   metadata                    - Hash. The queue metadata (Default: {})
+        # * approximate_messages_count  - Integer. The approximate number of messages in the queue. This number is not
+        #   lower than the actual number of messages in the queue, but could be higher.
+        # * metadata                    - Hash. The queue metadata (Default: {})
         #
         def get_queue_metadata(queue_name, options={})
           query = { "comp" => "metadata" }
@@ -176,8 +197,16 @@ module Azure
         # Public: Sets user-defined metadata on the queue. To delete queue metadata, call 
         # this API with an empty hash in the metadata parameter.
         # 
-        # queue_name    - String. The queue name.
-        # metadata      - Hash. A hash of user defined metadata
+        # ==== Attributes
+        #
+        # * +queue_name+ - String. The queue name.
+        # * +metadata+   - Hash. A hash of user defined metadata
+        # * +options+    - Hash. Optional parameters. 
+        #
+        # ==== Options
+        #
+        # Accepted key/value pairs in options parameter are:
+        # * +:timeout+       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179348
         #
@@ -197,11 +226,15 @@ module Azure
 
         # Public: Gets the access control list (ACL) for the queue.
         #
-        # queue_name     - String. The queue name.
-        # options        - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +queue_name+ - String. The queue name.
+        # * +options+    - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout       - Integer. A timeout in seconds.
+        # * +:timeout+       - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159101
         #
@@ -219,12 +252,16 @@ module Azure
 
         # Public: Sets the access control list (ACL) for the queue.
         #
-        # queue_name           - String. The queue name.
-        # options              - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +queue_name+ - String. The queue name.
+        # * +options+    - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :signed_identifiers  - Array. A list of Azure::Entity::SignedIdentifier instances 
-        # :timeout             - Integer. A timeout in seconds.
+        # * +:signed_identifiers+  - Array. A list of Azure::Entity::SignedIdentifier instances 
+        # * +:timeout+             - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159099
         #
@@ -243,19 +280,23 @@ module Azure
 
         # Public: Adds a message to the queue and optionally sets a visibility timeout for the message.
         # 
-        # queue_name    - String. The queue name.
-        # message_text  - String. The message contents. Note that the message content must be in a format that may be encoded with UTF-8.
-        # options       - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +queue_name+   - String. The queue name.
+        # * +message_text+ - String. The message contents. Note that the message content must be in a format that may be encoded with UTF-8.
+        # * +options+      - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :visibility_timeout     - Integer. Specifies the new visibility timeout value, in seconds, relative to server 
-        #                           time. The new value must be larger than or equal to 0, and cannot be larger than 7 
-        #                           days. The visibility timeout of a message cannot be set to a value later than the 
-        #                           expiry time. :visibility_timeout should be set to a value smaller than the 
-        #                           time-to-live value. If not specified, the default value is 0.
-        # :message_ttl            - Integer. Specifies the time-to-live interval for the message, in seconds. The maximum 
-        #                           time-to-live allowed is 7 days. If not specified, the default time-to-live is 7 days.
-        # :timeout                - Integer. A timeout in seconds.
+        # * +:visibility_timeout+     - Integer. Specifies the new visibility timeout value, in seconds, relative to server 
+        #   time. The new value must be larger than or equal to 0, and cannot be larger than 7 
+        #   days. The visibility timeout of a message cannot be set to a value later than the 
+        #   expiry time. :visibility_timeout should be set to a value smaller than the 
+        #   time-to-live value. If not specified, the default value is 0.
+        # * +:message_ttl+            - Integer. Specifies the time-to-live interval for the message, in seconds. The maximum 
+        #   time-to-live allowed is 7 days. If not specified, the default time-to-live is 7 days.
+        # * +:timeout+                - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179346
         #
@@ -278,14 +319,18 @@ module Azure
 
         # Public: Deletes a specified message from the queue.
         # 
-        # queue_name    - String. The name of the queue.
-        # message_id    - String. The id of the message.
-        # pop_receipt   - String. The valid pop receipt value returned from an earlier call to the Get Messages or 
-        #                 Update Message operation.
-        # options       - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +queue_name+   - String. The queue name.
+        # * +message_id+   - String. The id of the message.
+        # * +pop_receipt+  - String. The valid pop receipt value returned from an earlier call to the Get Messages or 
+        #   Update Message operation.
+        # * +options+      - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout      - Integer. A timeout in seconds.
+        # * +:timeout+     - Integer. A timeout in seconds.
         # 
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179347
         #
@@ -300,9 +345,9 @@ module Azure
         # delete the message. To delete the message, you must have two items of data returned in the response body of 
         # the Get Messages operation:
         # 
-        #   - The message ID, an opaque GUID value that identifies the message in the queue.
+        # * The message ID, an opaque GUID value that identifies the message in the queue.
         # 
-        #   - A valid pop receipt, an opaque value that indicates that the message has been retrieved.
+        # * A valid pop receipt, an opaque value that indicates that the message has been retrieved.
         # 
         # The message ID is returned from the previous Get Messages operation. The pop receipt is returned from the most 
         # recent Get Messages or Update Message operation. In order for the Delete Message operation to succeed, the pop 
@@ -311,16 +356,16 @@ module Azure
         # 
         # Pop receipts remain valid until one of the following events occurs:
         #
-        #   - The message has expired.
+        # * The message has expired.
         #
-        #   - The message has been deleted using the last pop receipt received either from Get Messages or Update Message. 
+        # * The message has been deleted using the last pop receipt received either from Get Messages or Update Message. 
         # 
-        #   - The invisibility time has elapsed and the message has been dequeued by a Get Messages request. When the 
-        #     invisibility time elapses, the message becomes visible again. If it is retrieved by another Get Messages 
-        #     request, the returned pop receipt can be used to delete or update the message.
+        # * The invisibility time has elapsed and the message has been dequeued by a Get Messages request. When the 
+        # invisibility time elapses, the message becomes visible again. If it is retrieved by another Get Messages 
+        # request, the returned pop receipt can be used to delete or update the message.
         # 
-        #   - The message has been updated with a new visibility timeout. When the message is updated, a new pop receipt 
-        #     will be returned.
+        # * The message has been updated with a new visibility timeout. When the message is updated, a new pop receipt 
+        # will be returned.
         # 
         # If the message has already been deleted when Delete Message is called, the Queue service returns status code 
         # 404 (Not Found).
@@ -340,12 +385,16 @@ module Azure
 
         # Public: Retrieves one or more messages from the front of the queue, without changing the message visibility.
         #
-        # queue_name            - String. The name of the queue.
-        # options               - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +queue_name+   - String. The queue name.
+        # * +options+      - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :number_of_messages   - Integer. How many messages to return. (optional, Default: 1)
-        # :timeout              - Integer. A timeout in seconds.
+        # * +:number_of_messages+ - Integer. How many messages to return. (optional, Default: 1)
+        # * +:timeout+            - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179472
         #
@@ -366,13 +415,17 @@ module Azure
 
         # Public: Retrieves one or more messages from the front of the queue.
         #
-        # queue_name            - String. The name of the queue.
-        # visibility_timeout    - Integer. The new visibility timeout value, in seconds, relative to server time.
-        # options               - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +queue_name+          - String. The queue name.
+        # * +visibility_timeout+  - Integer. The new visibility timeout value, in seconds, relative to server time.
+        # * +options+             - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :number_of_messages   - Integer. How many messages to return. (optional, Default: 1)
-        # :timeout              - Integer. A timeout in seconds.
+        # * +:number_of_messages+ - Integer. How many messages to return. (optional, Default: 1)
+        # * +:timeout+            - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179474
         #
@@ -393,23 +446,27 @@ module Azure
 
         # Public: Adds a message to the queue and optionally sets a visibility timeout for the message.
         # 
-        # queue_name         - String. The name of the queue.
-        # message_id         - String. The id of the message.
-        # pop_receipt        - String. The valid pop receipt value returned from an earlier call to the Get Messages or 
-        #                      Update Message operation.
-        # message_text       - String. The message contents. Note that the message content must be in a format that may 
-        #                      be encoded with UTF-8.
-        # visibility_timeout - Integer. The new visibility timeout value, in seconds, relative to server time.
-        # options            - Hash. Optional parameters. 
+        # ==== Attributes
+        #
+        # * +queue_name+         - String. The queue name.
+        # * +message_id+         - String. The id of the message.
+        # * +pop_receipt+        - String. The valid pop receipt value returned from an earlier call to the Get Messages or 
+        #   update Message operation.
+        # * +message_text+       - String. The message contents. Note that the message content must be in a format that may 
+        #   be encoded with UTF-8.
+        # * +visibility_timeout+ - Integer. The new visibility timeout value, in seconds, relative to server time.
+        # * +options+            - Hash. Optional parameters. 
+        #
+        # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # :timeout           - Integer. A timeout in seconds.
+        # * +:timeout+           - Integer. A timeout in seconds.
         #
         # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452234
         #
         # Returns a tuple of (pop_receipt, time_next_visible)
-        #  pop_receipt        - String. The pop receipt of the queue message.
-        #  time_next_visible  - String. A UTC date/time value that represents when the message will be visible on the queue.
+        # * pop_receipt        - String. The pop receipt of the queue message.
+        # * time_next_visible  - String. A UTC date/time value that represents when the message will be visible on the queue.
         #
         # Remarks:
         #
@@ -419,17 +476,17 @@ module Azure
         # A pop receipt is returned by the Get Messages operation or the Update Message operation. Pop receipts 
         # remain valid until one of the following events occurs:
         # 
-        #   - The message has expired.
+        # * The message has expired.
         # 
-        #   - The message has been deleted using the last pop receipt received either from Get Messages or 
-        #     Update Message. 
+        # * The message has been deleted using the last pop receipt received either from Get Messages or 
+        # Update Message. 
         # 
-        #   - The invisibility time has elapsed and the message has been dequeued by a Get Messages request. When 
-        #     the invisibility time elapses, the message becomes visible again. If it is retrieved by another 
-        #     Get Messages request, the returned pop receipt can be used to delete or update the message.
+        # * The invisibility time has elapsed and the message has been dequeued by a Get Messages request. When 
+        # the invisibility time elapses, the message becomes visible again. If it is retrieved by another 
+        # Get Messages request, the returned pop receipt can be used to delete or update the message.
         # 
-        #   - The message has been updated with a new visibility timeout. When the message is updated, a new pop 
-        #     receipt will be returned.
+        # * The message has been updated with a new visibility timeout. When the message is updated, a new pop 
+        # receipt will be returned.
         # 
         # The Update Message operation can be used to continually extend the invisibility of a queue message. This 
         # functionality can be useful if you want a worker role to “lease” a queue message. For example, if a worker 
@@ -452,7 +509,9 @@ module Azure
 
         # Protected: Generate the URI for the collection of queues.
         #
-        # query      - A Hash of query parameters (default: {}).
+        # ==== Attributes
+        #
+        # * +query+      - A Hash of query parameters (default: {}).
         #
         # Returns a URI.
         protected
@@ -463,8 +522,10 @@ module Azure
 
         # Protected: Generate the URI for a given queue.
         #
-        # queue_name - The name of the queue.
-        # query      - A Hash of query parameters (default: {}).
+        # ==== Attributes
+        #
+        # * +queue_name+ - The name of the queue.
+        # * +query+      - A Hash of query parameters (default: {}).
         #
         # Returns a URI.
         protected
@@ -475,8 +536,10 @@ module Azure
 
         # Protected: Generate the messages URI for the given queue.
         #
-        # queue_name - The name of the queue.
-        # query      - A Hash of query parameters (default: {}).
+        # ==== Attributes
+        #
+        # * +queue_name+ - The name of the queue.
+        # * +query+      - A Hash of query parameters (default: {}).
         #
         # Returns a URI.
         protected
@@ -486,9 +549,11 @@ module Azure
 
         # Protected: Generate the URI for a given message
         #
-        # queue_name - The name of the queue.
-        # message_id - The id of the message.
-        # query      - A Hash of query parameters (default: {}).
+        # ==== Attributes
+        #
+        # * +queue_name+ - The name of the queue.
+        # * +message_id+ - The id of the message.
+        # * +query+      - A Hash of query parameters (default: {}).
         #
         # Returns a URI.
         protected
