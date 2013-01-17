@@ -494,7 +494,7 @@ module Azure
           generate_uri("Tables", query)
         end
 
-        # Protected: Generate the URI for a specific table.
+        # Public: Generate the URI for a specific table.
         #
         # ==== Attributes
         #
