@@ -20,11 +20,11 @@ Gem::Specification.new do |s|
   s.name    = "azure"
   s.version = Azure::Version
 
-  s.authors     = ["Microsoft"]
-  s.email       = "azure@microsoft.com"
-  s.description = "Services and ruby SDKs to access the Windows Azure platform."
-  s.summary     = "Implementation of several Windows Azure SDKs in ruby."
-  s.homepage    = "http://azure.com"
+  s.authors     = ["Microsoft Corporation"]
+  s.email       = "azureruby@microsoft.com"
+  s.description = "Windows Azure Client Library for Ruby"
+  s.summary     = "Official ruby client library to consume Windows Azure services."
+  s.homepage    = "http://github.com/WindowsAzure/azure-sdk-for-ruby"
   s.license     = 'Apache License, Version 2.0'
   s.files       = `git ls-files`.split("\n")
 
@@ -41,7 +41,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rake")
   s.add_development_dependency("minitest", "~> 3.0")
   s.add_development_dependency("mocha")
-  s.add_development_dependency("yard")
-  s.add_development_dependency("yard-tomdoc")
   s.add_development_dependency("turn")
 end

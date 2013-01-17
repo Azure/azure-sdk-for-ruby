@@ -203,6 +203,14 @@ module Azure
       #
       # Pass either (topic_name, subscription_name) as strings, or (subscription) a object with .name and .topic methods
       # such as Azure::ServiceBus::Subscription instance.
+      #
+      # * +options+      - Hash. Optional parameters. 
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:skip+      - Integer. Number of topics to skip.
+      # * +:top+       - Integer. Number of topics to list.
       def list_rules(*p)
         topic_name, subscription_name, options = _subscription_args(*p)
 

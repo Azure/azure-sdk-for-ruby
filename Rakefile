@@ -15,10 +15,6 @@
 require "rake/testtask"
 require "rubygems/package_task"
 
-task :doc do
-  system "yard --plugin yard-tomdoc -o doc/ -"
-end
-
 gem_spec = eval(File.read("./azure.gemspec"))
 Gem::PackageTask.new(gem_spec) do |pkg|
   pkg.need_zip = false

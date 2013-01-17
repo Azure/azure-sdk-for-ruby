@@ -44,7 +44,7 @@ cd ./azure-sdk-for-ruby
 
 ## Generate Documentation
 
-Running the this command ``rake doc`` will generate the API documentation in the `./doc` directory. Make sure you have the following **yard** and **yard-tomdoc** rubygem installed before you generate the documentation.
+Running the this command ``rdoc`` will generate the API documentation in the `./doc` directory.
 
 ## Setup Connection
 
