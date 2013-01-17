@@ -38,7 +38,7 @@ module Azure
         #   whose name begins with the specified prefix. (optional)
         # * +:marker+      - String. An identifier the specifies the portion of the 
         #   list to be returned. This value comes from the property
-        #   Azure::Entity::Blob::EnumerationResults.marker when there 
+        #   Azure::Storage::Service::EnumerationResults.marker when there 
         #   are more containers available than were returned. The 
         #   marker value may then be used here to request the next set
         #   of list items. (optional)
@@ -52,7 +52,7 @@ module Azure
         # * +:timeout+     - Integer. A timeout in seconds.
         #
         # NOTE: Metadata requested with the :metadata parameter must have been stored in
-        # accordance with the naming restrictions imposed by the 2009-09-19 version of the Blob 
+        # accordance with the naming restrictions imposed by the 2009-09-19 version of the queue 
         # service. Beginning with that version, all metadata names must adhere to the naming 
         # conventions for C# identifiers.
         #
@@ -62,7 +62,7 @@ module Azure
         # key "x-ms-invalid-name" in the metadata hash. This may contain multiple values and be an
         # Array (vs a String if it only contains a single value).
         # 
-        # Returns an Azure::Entity::Blob::QueueEnumerationResults
+        # Returns an Azure::Storage::Queue::QueueEnumerationResults
         def list_queues(options={})
           query = { }
           query["prefix"] = options[:prefix] if options[:prefix]
