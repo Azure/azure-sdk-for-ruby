@@ -127,17 +127,22 @@ module Azure
           request.body = body if body
 
           http = nil
-          if ENV['HTTP_PROXY']
-            proxy_uri = URI::parse(ENV['HTTP_PROXY'])
+          if ENV['HTTP_PROXY'] || ENV['HTTPS_PROXY']
+            if ENV['HTTP_PROXY']
+              proxy_uri = URI::parse(ENV['HTTP_PROXY'])
+            else
+              proxy_uri = URI::parse(ENV['HTTPS_PROXY'])
+            end
+
             http = Net::HTTP::Proxy(proxy_uri.host, proxy_uri.port).new(uri.host, uri.port)
           else
             http = Net::HTTP.new(uri.host, uri.port)
+          end
 
-            if uri.scheme.downcase == 'https'
-              # require 'net/https'
-              http.use_ssl = true
-              http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-            end
+          if uri.scheme.downcase == 'https'
+            # require 'net/https'
+            http.use_ssl = true
+            http.verify_mode = OpenSSL::SSL::VERIFY_NONE
           end
 
           response = HttpResponse.new(http.request(request))
