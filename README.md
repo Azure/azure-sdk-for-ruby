@@ -221,12 +221,12 @@ result = azure_queue_service.list_messages("test-queue", 30, {:number_of_message
 result = azure_queue_service.peek_messages("test-queue", {:number_of_messages => 10})
 
 # Update a message
-result = azure_queue_service.list_messages("test-queue", 30, {:number_of_messages => 1})
-pop_receipt, time_next_visible = azure_queue_service.update_message("test-queue", result[0].id, result[0].pop_receipt, "updated test message", 30)
+message = azure_queue_service.list_messages("test-queue", 30)
+pop_receipt, time_next_visible = azure_queue_service.update_message("test-queue", message.id, message.pop_receipt, "updated test message", 30)
 
 # Delete a message
-result = azure_queue_service.list_messages("test-queue", 30, {:number_of_messages => 1})
-pop_receipt, time_next_visible = azure_queue_service.delete_message("test-queue", result[0].id, result[0].pop_receipt)
+message = azure_queue_service.list_messages("test-queue", 30)
+azure_queue_service.delete_message("test-queue", message.id, message.pop_receipt)
 
 # Delete a queue
 azure_queue_service.delete_queue("test-queue")
