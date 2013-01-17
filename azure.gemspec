@@ -41,7 +41,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rake")
   s.add_development_dependency("minitest", "~> 3.0")
   s.add_development_dependency("mocha")
-  s.add_development_dependency("yard")
-  s.add_development_dependency("yard-tomdoc")
   s.add_development_dependency("turn")
 end
