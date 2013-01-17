@@ -229,7 +229,7 @@ module Azure
       # Pass either (topic_name, subscription_name) as strings, or (subscription) a object with .name, .topic, and 
       # .description methods such as Azure::ServiceBus::Subscription instance. 
       #
-      # When using (topic_name, subscription_name) overload, you may also pass and optional description hash contianing
+      # When using (topic_name, subscription_name) overload, you may also pass and optional description hash containing
       # options for the Subscription.
       def create_subscription(*p)
         subscription = _subscription_from(*p)
