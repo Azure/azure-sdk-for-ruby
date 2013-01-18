@@ -243,7 +243,7 @@ describe Azure::Storage::Service::StorageService do
     end
 
     describe "when called with no arguments" do
-      it "returns the StorageService host URL, with the default_timeout in the query string" do
+      it "returns the StorageService host URL" do
         subject.generate_uri().to_s.must_equal "http://dumyhost.uri/"
       end
     end
