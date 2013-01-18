@@ -461,9 +461,9 @@ module Azure
         # ==== Options
         #
         # Accepted key/value pairs in options parameter are:
-        # * +:if_sequence_number_lte+ - If the blob’s sequence number is less than or equal to the specified value, the request proceeds; otherwise it fails with the SequenceNumberConditionNotMet error (HTTP status code 412 – Precondition Failed).
-        # * +:if_sequence_number_lt+  - If the blob’s sequence number is less than the specified value, the request proceeds; otherwise it fails with SequenceNumberConditionNotMet error (HTTP status code 412 – Precondition Failed).
-        # * +:if_sequence_number_eq+  - If the blob’s sequence number is equal to the specified value, the request proceeds; otherwise it fails with SequenceNumberConditionNotMet error (HTTP status code 412 – Precondition Failed).
+        # * +:if_sequence_number_lte+ - If the blob's sequence number is less than or equal to the specified value, the request proceeds; otherwise it fails with the SequenceNumberConditionNotMet error (HTTP status code 412 - Precondition Failed).
+        # * +:if_sequence_number_lt+  - If the blob's sequence number is less than the specified value, the request proceeds; otherwise it fails with SequenceNumberConditionNotMet error (HTTP status code 412 - Precondition Failed).
+        # * +:if_sequence_number_eq+  - If the blob's sequence number is equal to the specified value, the request proceeds; otherwise it fails with SequenceNumberConditionNotMet error (HTTP status code 412 - Precondition Failed).
         # * +:if_modified_since+      - A DateTime value. Specify this conditional header to write the page only if the blob has been modified since the specified date/time. If the blob has not been modified, the Blob service returns status code 412 (Precondition Failed).
         # * +:if_unmodified_since+    - A DateTime value. Specify this conditional header to write the page only if the blob has not been modified since the specified date/time. If the blob has been modified, the Blob service returns status code 412 (Precondition Failed).
         # * +:if_match+               - An ETag value. Specify an ETag value for this conditional header to write the page only if the blob's ETag value matches the value specified. If the values do not match, the Blob service returns status code 412 (Precondition Failed).

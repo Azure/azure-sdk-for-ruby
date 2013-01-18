@@ -25,7 +25,7 @@ module Azure
       # messages. For example, if message m exists once in subscription s1 and twice in subscription s2, m is counted 
       # as a single message. You can only set this parameter at topic creation time using the following values:
       #
-      #   Range: 1 – 5*1024 MB
+      #   Range: 1 - 5*1024 MB
       #   Default: 1*1024
       def max_size_in_mb
         to_i description['MaxSizeInMegabytes']
@@ -39,7 +39,7 @@ module Azure
       #
       # Reflects the actual bytes toward the topic quota that messages in the topic currently occupy. (read-only)
       #
-      # Range: 0 –MaxTopicSizeinMegaBytes
+      # Range: 0 - MaxTopicSizeinMegaBytes
       def size_in_bytes
         to_i description['SizeInBytes']
       end
@@ -52,10 +52,10 @@ module Azure
       #
       # Determines how long a message lives in the associated subscriptions. Subscriptions inherit the TTL from the 
       # topic unless they are created explicitly with a smaller TTL. Based on whether dead-lettering is enabled, a 
-      # message whose TTL has expired will either be moved to the subscription’s associated DeadLtterQueue or will 
+      # message whose TTL has expired will either be moved to the subscription's associated DeadLtterQueue or will 
       # be permanently deleted. The following values are settable at topic creation time:
       #
-      #   Range: 1 second – TimeSpan.MaxValue
+      #   Range: 1 second - TimeSpan.MaxValue
       #   Default: TimeSpan.MaxValue
       def default_message_ttl
         to_interval description['DefaultMessageTimeToLive']
@@ -83,7 +83,7 @@ module Azure
       #
       # Specifies the time span during which the Service Bus will detect message duplication.
       #
-      # Range: 1 second – 7 days
+      # Range: 1 second - 7 days
       # Default: 10 minutes
       def duplicate_detection_history_time_window
         to_interval description['DuplicateDetectionHistoryTimeWindow']
@@ -97,7 +97,7 @@ module Azure
       #
       # Specifies the maximum number of subscriptions that can be associated with the topic.
       #
-      # Range: 1– 2000
+      # Range: 1 - 2000
       # Default: 2000 subscriptions
       def max_subscriptions
         to_i description['MaximumNumberOfSubscriptions']

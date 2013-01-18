@@ -25,7 +25,7 @@ module Azure
       # The default lock duration is applied to subscriptions that do not define a lock duration. Settable only at
       # subscription creation time:
       #
-      # Range: 0 – 5 minutes. 0 means that the message is not locked
+      # Range: 0 - 5 minutes. 0 means that the message is not locked
       # Default: 30 seconds
       def lock_duration
         to_interval description['LockDuration']
@@ -52,10 +52,10 @@ module Azure
       # DefaultMessageTimeToLive: PTnHnMnS
       #
       # Determines how long a message lives in the subscription. Based on whether dead-lettering is enabled, a message
-      # whose TTL has expired will either be moved to the subscription’s associated DeadLtterQueue or permanently
+      # whose TTL has expired will either be moved to the subscription's associated DeadLtterQueue or permanently
       # deleted.
       #
-      # Range: 1 second – TimeSpan.MaxValue
+      # Range: 1 second - TimeSpan.MaxValue
       # Default: TimeSpan.MaxValue if the topic also does not specify a TTL. Otherwise the setting from topic is inherited.
       def default_message_ttl
         to_interval description['DefaultMessageTimeToLive']
@@ -68,8 +68,8 @@ module Azure
       # DeadLetteringOnMessageExpiration: True, False
       #
       # This field controls how the Service Bus handles a message whose TTL has expired. If it is enabled and a message
-      # expires, the Service Bus moves the message from the queue into the subscription’s dead-letter sub-queue. If
-      # disabled, message will be permanently deleted from the subscription’s main queue. Settable only at subscription
+      # expires, the Service Bus moves the message from the queue into the subscription's dead-letter sub-queue. If
+      # disabled, message will be permanently deleted from the subscription's main queue. Settable only at subscription
       # creation time.
       #
       # Default: false
@@ -83,9 +83,9 @@ module Azure
 
       # DeadLetteringOnFilterEvaluationExceptions: True, False
       #
-      # Determines how the Service Bus handles a message that causes an exception during a subscription’s filter
+      # Determines how the Service Bus handles a message that causes an exception during a subscription's filter
       # evaluation. If the value is set to true, the message that caused the exception will be moved to the
-      # subscription’s dead-letter queue. Otherwise, it will be discarded. By default this parameter is set to true,
+      # subscription's dead-letter queue. Otherwise, it will be discarded. By default this parameter is set to true,
       # allowing the user a chance to investigate the cause of the exception. It can occur from a malformed message or
       # some incorrect assumptions being made in the filter about the form of the message. Settable only at topic
       # creation time.
