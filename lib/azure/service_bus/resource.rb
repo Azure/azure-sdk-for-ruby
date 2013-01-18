@@ -18,24 +18,24 @@ require 'azure/service_bus/interval'
 module Azure
   module ServiceBus
     class Resource
-      # Public: Initialize the queue.
+      # Public: Initialize the resource (either queue, topic, rule or subscription).
       #
-      # name        - A String with the name of the queue.
-      # description - The queue description Hash
-      # service     - The Queue service to perform external calls.
+      # name        - A String with the name of the resource.
+      # description - The resource description Hash
+      # service     - The resource service to perform external calls.
       def initialize(name, description = {})
         @name = name
         @description = description
         yield self if block_given?
       end
 
-      # Get the Queue's ID.
+      # Get the Resource's ID.
       #
       # Returns a URI.
       attr_accessor :id
       alias_method :url, :id
 
-      # Get the Queue's name.
+      # Get the Resource's name.
       #
       # Returns a String.
       attr_accessor :name
@@ -56,7 +56,7 @@ module Azure
       # Returns a String
       attr_accessor :author_name
 
-      # Public: Queue description
+      # Public: Resource description
       #
       # Returns a Hash
       attr_accessor :description
