@@ -84,7 +84,7 @@ namespace :test do
     namespace :storage do 
       def component_task(component)
         Rake::TestTask.new component do |t|
-          t.pattern = "test/integration/storage/#{component}/**/*_test.rb"
+          t.pattern = "test/integration/#{component}/**/*_test.rb"
           t.verbose = true
           t.libs = ["lib", "test"]
         end

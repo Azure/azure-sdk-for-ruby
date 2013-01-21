@@ -14,7 +14,7 @@
 #--------------------------------------------------------------------------
 
 require "integration/test_helper"
-require "azure/storage/table/table_service"
+require "azure/table/table_service"
 require "azure/core/http/http_error"
 
 describe Azure::Table::TableService do

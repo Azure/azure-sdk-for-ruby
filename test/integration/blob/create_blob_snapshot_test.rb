@@ -13,7 +13,7 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "integration/test_helper"
-require "azure/storage/blob/blob_service"
+require "azure/blob/blob_service"
 
 describe Azure::Blob::BlobService do
   subject { Azure::Blob::BlobService.new }

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'azure/storage/service/retention_policy'
+require 'azure/service/retention_policy'
 
 module Azure
   module Service

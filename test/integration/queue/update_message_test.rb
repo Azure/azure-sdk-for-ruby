@@ -13,7 +13,7 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "integration/test_helper"
-require "azure/storage/queue/queue_service"
+require "azure/queue/queue_service"
 require 'azure/core/http/http_error'
 
 describe Azure::Queue::QueueService do

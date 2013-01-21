@@ -13,8 +13,8 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "integration/test_helper"
-require "azure/storage/blob/blob_service"
-require "azure/storage/service/signed_identifier"
+require "azure/blob/blob_service"
+require "azure/service/signed_identifier"
 
 describe Azure::Blob::BlobService do
   subject { Azure::Blob::BlobService.new }

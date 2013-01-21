@@ -13,7 +13,7 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "integration/test_helper"
-require "azure/storage/blob/blob_service"
+require "azure/blob/blob_service"
 require "azure/core/http/http_error"
 
 describe Azure::Blob::BlobService do
