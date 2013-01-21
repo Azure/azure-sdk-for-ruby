@@ -12,11 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require "integration/test_helper"
+require "azure/storage/blob/blob_service"
 
-module Azure::Storage; end
+describe Azure::Blob::BlobService do
+  subject { Azure::Blob::BlobService.new }
+  after { TableNameHelper.clean }
 
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+  describe '#delete_container' do
+    let(:container_name) { ContainerNameHelper.name }
+    before { 
+      subject.create_container container_name
+    }
+
+    it 'deletes the container' do
+      result = subject.delete_container container_name
+      result.must_be_nil
+    end
+
+    it 'errors if the container does not exist' do
+      assert_raises(Azure::Core::Http::HTTPError) do
+        subject.delete_container ContainerNameHelper.name
+      end
+    end
+  end
+end

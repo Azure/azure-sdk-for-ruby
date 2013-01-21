@@ -17,47 +17,47 @@ require "azure/storage/table/edmtype"
 
 require "azure/storage/table/guid"
 
-describe Azure::Storage::Table::EdmType do
+describe Azure::Table::EdmType do
   describe "#serialize_query_value" do
     it "correctly serializes int64 query values" do
       value = 2**128 + 1256231
-      serializedValue = Azure::Storage::Table::EdmType.serialize_query_value(value)
+      serializedValue = Azure::Table::EdmType.serialize_query_value(value)
       serializedValue.must_equal value.to_s + "L"
     end
 
     it "correctly serializes int32 query values" do
       value = 2
-      serializedValue = Azure::Storage::Table::EdmType.serialize_query_value(value)
+      serializedValue = Azure::Table::EdmType.serialize_query_value(value)
       serializedValue.must_equal "2"
     end
 
     it "correctly serializes datetime query values" do
       value = DateTime.new(2001,2,3,4,5,6)
-      serializedValue = Azure::Storage::Table::EdmType.serialize_query_value(value)
+      serializedValue = Azure::Table::EdmType.serialize_query_value(value)
       serializedValue.must_equal "datetime'2001-02-03T04:05:06+00:00'"
     end
 
     it "correctly serializes guid query values" do
-      value = Azure::Storage::Table::GUID.new("81425519-6394-43e4-ac6e-28d91f5c3921")
-      serializedValue = Azure::Storage::Table::EdmType.serialize_query_value(value)
+      value = Azure::Table::GUID.new("81425519-6394-43e4-ac6e-28d91f5c3921")
+      serializedValue = Azure::Table::EdmType.serialize_query_value(value)
       serializedValue.must_equal "guid'81425519-6394-43e4-ac6e-28d91f5c3921'"
     end
 
     it "correctly serializes float query values" do
       value = 1.2
-      serializedValue = Azure::Storage::Table::EdmType.serialize_query_value(value)
+      serializedValue = Azure::Table::EdmType.serialize_query_value(value)
       serializedValue.must_equal "1.2"
     end
 
     it "correctly serializes string query values" do
       value = "string"
-      serializedValue = Azure::Storage::Table::EdmType.serialize_query_value(value)
+      serializedValue = Azure::Table::EdmType.serialize_query_value(value)
       serializedValue.must_equal "string"
     end
 
     it "correctly serializes binary query values" do
       value = "1".force_encoding("BINARY")
-      serializedValue = Azure::Storage::Table::EdmType.serialize_query_value(value)
+      serializedValue = Azure::Table::EdmType.serialize_query_value(value)
       serializedValue.must_equal "X'31'"
     end
   end
@@ -65,43 +65,43 @@ describe Azure::Storage::Table::EdmType do
   describe "#unserialize_query_value" do
     it "correctly unserializes int64 query values" do
       value = "340282366920938463463374607431769467687"
-      unserializedValue = Azure::Storage::Table::EdmType.unserialize_query_value(value, "Edm.Int64")
+      unserializedValue = Azure::Table::EdmType.unserialize_query_value(value, "Edm.Int64")
       unserializedValue.must_equal (2**128 + 1256231)
     end
 
     it "correctly unserializes int32 query values" do
       value = "2"
-      unserializedValue = Azure::Storage::Table::EdmType.unserialize_query_value(value, "Edm.Int32")
+      unserializedValue = Azure::Table::EdmType.unserialize_query_value(value, "Edm.Int32")
       unserializedValue.must_equal 2
     end
 
     it "correctly unserializes datetime query values" do
       value = "2001-02-03T04:05:06+00:00"
-      unserializedValue = Azure::Storage::Table::EdmType.unserialize_query_value(value, "Edm.DateTime")
+      unserializedValue = Azure::Table::EdmType.unserialize_query_value(value, "Edm.DateTime")
       unserializedValue.must_equal Time.new(2001, 2, 3, 4, 5, 6, "+00:00")
     end
 
     it "correctly unserializes guid query values" do
       value = "81425519-6394-43e4-ac6e-28d91f5c3921"
-      unserializedValue = Azure::Storage::Table::EdmType.unserialize_query_value(value, "Edm.Guid")
-      unserializedValue.must_equal Azure::Storage::Table::GUID.new("81425519-6394-43e4-ac6e-28d91f5c3921")
+      unserializedValue = Azure::Table::EdmType.unserialize_query_value(value, "Edm.Guid")
+      unserializedValue.must_equal Azure::Table::GUID.new("81425519-6394-43e4-ac6e-28d91f5c3921")
     end
 
     it "correctly unserializes float query values" do
       value = "1.2"
-      unserializedValue = Azure::Storage::Table::EdmType.unserialize_query_value(value, "Edm.Double")
+      unserializedValue = Azure::Table::EdmType.unserialize_query_value(value, "Edm.Double")
       unserializedValue.must_equal 1.2
     end
 
     it "correctly unserializes string query values" do
       value = "string"
-      unserializedValue = Azure::Storage::Table::EdmType.unserialize_query_value(value, "Edm.String")
+      unserializedValue = Azure::Table::EdmType.unserialize_query_value(value, "Edm.String")
       unserializedValue.must_equal "string"
     end
 
     it "correctly unserializes binary query values" do
       value = "MTIzNDU=".force_encoding("BINARY")
-      unserializedValue = Azure::Storage::Table::EdmType.unserialize_query_value(value, "Edm.Binary")
+      unserializedValue = Azure::Table::EdmType.unserialize_query_value(value, "Edm.Binary")
       unserializedValue.must_equal "12345"
     end
   end

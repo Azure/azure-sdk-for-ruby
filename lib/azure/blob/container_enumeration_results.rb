@@ -12,11 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'azure/storage/service/enumeration_results'
 
-module Azure::Storage; end
+module Azure
+  module Blob
+    class ContainerEnumerationResults < Service::EnumerationResults
 
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+      def initialize
+        @containers = []
+        yield self if block_given?
+      end
+
+      attr_accessor :account_name
+      attr_accessor :containers
+    end
+  end
+end

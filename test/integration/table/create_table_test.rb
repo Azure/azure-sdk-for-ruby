@@ -12,11 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require "integration/test_helper"
+require "azure/storage/table/table_service"
+require "azure/core/http/http_error"
 
-module Azure::Storage; end
+describe Azure::Table::TableService do
+  describe "#create_table" do
+    subject { Azure::Table::TableService.new }
+    let(:table_name){ TableNameHelper.name }
+    after { TableNameHelper.clean }
 
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+    it "creates a table with a valid name" do
+      result = subject.create_table(table_name)
+      result.must_be_nil
+    end
+
+    it "errors on an invalid table name" do
+      assert_raises(Azure::Core::Http::HTTPError) do
+        subject.create_table "this_table.cannot-exist!"
+      end
+    end
+  end
+end

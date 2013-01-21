@@ -13,10 +13,19 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 
-module Azure::Storage; end
+module Azure
+  module Table
+    class Entity
+      
+      def initialize 
+        @properties = {}
+        yield self if block_given?
+      end
 
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+      attr_accessor :table
+      attr_accessor :updated
+      attr_accessor :etag
+      attr_accessor :properties
+    end
+  end
+end

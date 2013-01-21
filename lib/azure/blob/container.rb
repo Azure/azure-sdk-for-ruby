@@ -12,11 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'azure/blob/container_properties'
 
-module Azure::Storage; end
+module Azure
+  module Blob
+    class Container
 
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+      def initialize
+        @properties = ContainerProperties.new
+        @metadata = {}
+        yield self if block_given?
+      end
+
+      attr_accessor :name
+      attr_accessor :properties
+      attr_accessor :metadata
+      attr_accessor :public_access_level
+    end
+  end
+end

@@ -12,11 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-
-module Azure::Storage; end
-
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+module Azure
+  module Queue
+    class Message
+      def initialize
+        yield self if block_given?
+      end
+      attr_accessor :id
+      attr_accessor :insertion_time
+      attr_accessor :expiration_time
+      attr_accessor :dequeue_count
+      attr_accessor :message_text
+      attr_accessor :time_next_visible
+      attr_accessor :pop_receipt
+    end
+  end
+end

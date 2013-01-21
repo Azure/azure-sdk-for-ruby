@@ -12,11 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require "delegate"
 
-module Azure::Storage; end
-
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+module Azure
+  module Table
+    # Public: Wrapper around a string to represent a GUID
+    #
+    class GUID < SimpleDelegator
+    end
+  end
+end

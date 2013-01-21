@@ -12,11 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+module Azure
+  module Blob
+    # Represents a Block as part of a BlockList 
+    # The type should be one of :uncommitted, :committed or :latest
+    class Block
+      
+      def initialize
+        @type = :latest
+        yield self if block_given?
+      end
 
-module Azure::Storage; end
-
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+      attr_accessor :name
+      attr_accessor :size
+      attr_accessor :type
+    end
+  end
+end

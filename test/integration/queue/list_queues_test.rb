@@ -12,11 +12,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require "integration/test_helper"
+require "azure/storage/queue/queue_service"
 
-module Azure::Storage; end
+describe Azure::Queue::QueueService do
+  subject { Azure::Queue::QueueService.new }
 
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+  describe '#list_queues' do
+    let(:queue_names){ [QueueNameHelper.name, QueueNameHelper.name] }
+    before { queue_names.each { |q| subject.create_queue q } }
+    after { QueueNameHelper.clean }
+    
+    it 'lists the available queues' do
+      result = subject.list_queues
+
+      expected_queues = 0
+      result.queues.each { |q|
+        q.name.wont_be_nil
+        q.url.wont_be_nil
+
+        expected_queues += 1 if queue_names.include? q.name
+      }
+
+      expected_queues.must_equal queue_names.length
+    end
+  end
+end

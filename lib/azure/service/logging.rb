@@ -12,11 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'azure/storage/service/retention_policy'
 
-module Azure::Storage; end
+module Azure
+  module Service
+    class Logging 
+      def initialize
+        @retention_policy = RetentionPolicy.new
+        yield self if block_given?
+      end
 
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+      attr_accessor :version
+      attr_accessor :delete
+      attr_accessor :read
+      attr_accessor :write
+      attr_accessor :retention_policy
+    end
+  end
+end

@@ -12,11 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'azure/service/access_policy'
 
-module Azure::Storage; end
+module Azure
+  module Service
+    class SignedIdentifier
 
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+      def initialize 
+        @access_policy = AccessPolicy.new
+        yield self if block_given?
+      end
+
+      attr_accessor :id
+      attr_accessor :access_policy
+    end
+  end
+end

@@ -12,11 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require "integration/test_helper"
+require "azure/storage/blob/blob_service"
 
-module Azure::Storage; end
+describe Azure::Blob::BlobService do
+  subject { Azure::Blob::BlobService.new }
 
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+  describe '#acquire_lease' do
+    let(:container_name) { ContainerNameHelper.name }
+    let(:blob_name) { "blobname" }
+    let(:length) { 1024 }
+    before { 
+      subject.create_container container_name
+    }
+
+    it 'should be possible to acquire a lease' do
+      subject.create_page_blob container_name, blob_name, length
+
+      lease_id = subject.acquire_lease container_name, blob_name
+      lease_id.wont_be_nil
+    end
+  end
+end

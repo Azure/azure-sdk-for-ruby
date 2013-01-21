@@ -12,11 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'azure/service/logging'
+require 'azure/service/metrics'
 
-module Azure::Storage; end
+module Azure
+  module Service
+    class StorageServiceProperties
+      def initialize
+        @logging = Logging.new
+        @metrics = Metrics.new
+        yield self if block_given?
+      end
 
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+      attr_accessor :logging
+      attr_accessor :metrics
+      attr_accessor :default_service_version
+    end
+  end
+end

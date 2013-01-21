@@ -12,11 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-
-module Azure::Storage; end
-
-require "azure/blob/blob_service"
-require "azure/queue/queue_service"
-require "azure/table/table_service"
-require "azure/table/batch"
-require "azure/table/query"
+module Azure
+  module Blob
+    class ContainerProperties
+      def initialize
+        yield self if block_given?
+      end
+      
+      attr_accessor :last_modified
+      attr_accessor :etag
+      attr_accessor :lease_status
+      attr_accessor :lease_state
+      attr_accessor :lease_duration
+    end
+  end
+end

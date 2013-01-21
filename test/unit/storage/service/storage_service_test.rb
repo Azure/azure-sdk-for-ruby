@@ -18,13 +18,13 @@ require "azure/core/http/http_request"
 require "azure/core/http/signer_filter"
 require "azure/storage/service/storage_service_properties"
 
-describe Azure::Storage::Service::StorageService do
+describe Azure::Service::StorageService do
 
   let(:uri){ URI.parse "http://dummy.uri/resource" }
   let(:method){ :get }
 
   subject do
-    storage_service = Azure::Storage::Service::StorageService.new
+    storage_service = Azure::Service::StorageService.new
     storage_service.host = "http://dumyhost.uri"
     storage_service
   end
@@ -132,7 +132,7 @@ describe Azure::Storage::Service::StorageService do
 
   describe "#get_service_properties" do
     let(:service_properties_xml)  { Fixtures["storage_service_properties"] }
-    let(:service_properties) { Azure::Storage::Service::StorageServiceProperties.new }
+    let(:service_properties) { Azure::Service::StorageServiceProperties.new }
     let(:response) { 
       response = mock()
       response.stubs(:body).returns(service_properties_xml)
@@ -142,7 +142,7 @@ describe Azure::Storage::Service::StorageService do
     let(:service_properties_uri) { URI.parse 'http://dummy.uri/service/properties' }
 
     before do 
-      Azure::Storage::Service::Serialization.stubs(:service_properties_from_xml).with(service_properties_xml).returns(service_properties)
+      Azure::Service::Serialization.stubs(:service_properties_from_xml).with(service_properties_xml).returns(service_properties)
       subject.stubs(:service_properties_uri).returns(service_properties_uri)
       subject.stubs(:call).with(:get, service_properties_uri).returns(response)
     end
@@ -158,19 +158,19 @@ describe Azure::Storage::Service::StorageService do
     end
 
     it "deserializes the response from xml" do
-      Azure::Storage::Service::Serialization.expects(:service_properties_from_xml).with(service_properties_xml).returns(service_properties)
+      Azure::Service::Serialization.expects(:service_properties_from_xml).with(service_properties_xml).returns(service_properties)
       subject.get_service_properties
     end
 
     it "returns a StorageServiceProperties instance" do
       result = subject.get_service_properties
-      result.must_be_kind_of Azure::Storage::Service::StorageServiceProperties
+      result.must_be_kind_of Azure::Service::StorageServiceProperties
     end
   end
 
   describe "#set_service_properties" do
     let(:service_properties_xml)  { Fixtures["storage_service_properties"] }
-    let(:service_properties) { Azure::Storage::Service::StorageServiceProperties.new }
+    let(:service_properties) { Azure::Service::StorageServiceProperties.new }
     let(:response) { 
       response = mock()
       response.stubs(:success?).returns(true)
@@ -180,7 +180,7 @@ describe Azure::Storage::Service::StorageService do
     let(:service_properties_uri) { URI.parse 'http://dummy.uri/service/properties' }
 
     before do 
-      Azure::Storage::Service::Serialization.stubs(:service_properties_to_xml).with(service_properties).returns(service_properties_xml)
+      Azure::Service::Serialization.stubs(:service_properties_to_xml).with(service_properties).returns(service_properties_xml)
       subject.stubs(:service_properties_uri).returns(service_properties_uri)
       subject.stubs(:call).with(:put, service_properties_uri, service_properties_xml).returns(response)
     end
@@ -196,7 +196,7 @@ describe Azure::Storage::Service::StorageService do
     end
 
     it "serializes the StorageServiceProperties object to xml" do
-      Azure::Storage::Service::Serialization.expects(:service_properties_to_xml).with(service_properties).returns(service_properties_xml)
+      Azure::Service::Serialization.expects(:service_properties_to_xml).with(service_properties).returns(service_properties_xml)
       subject.set_service_properties service_properties
     end
 
