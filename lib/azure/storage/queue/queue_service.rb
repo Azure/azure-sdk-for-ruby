@@ -489,9 +489,9 @@ module Azure
         # receipt will be returned.
         # 
         # The Update Message operation can be used to continually extend the invisibility of a queue message. This 
-        # functionality can be useful if you want a worker role to “lease” a queue message. For example, if a worker 
+        # functionality can be useful if you want a worker role to "lease" a queue message. For example, if a worker 
         # role calls Get Messages and recognizes that it needs more time to process a message, it can continually 
-        # extend the message’s invisibility until it is processed. If the worker role were to fail during processing, 
+        # extend the message's invisibility until it is processed. If the worker role were to fail during processing, 
         # eventually the message would become visible again and another worker role could process it.
         #
         def update_message(queue_name, message_id, pop_receipt, message_text, visibility_timeout, options={})

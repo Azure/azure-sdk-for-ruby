@@ -34,7 +34,7 @@ module Azure
       # After this period, the message is unlocked and available for consumption by the next receiver. Settable 
       # only at queue creation time:
       #
-      # Range: 0 – 5 minutes. 0 means that the message is not locked 
+      # Range: 0 - 5 minutes. 0 means that the message is not locked 
       # Default: 30 seconds
       def lock_duration
         to_interval description['LockDuration']
@@ -42,7 +42,7 @@ module Azure
 
       def lock_duration=(val)
         _set 'LockDuration', val
-      end      
+      end
 
       # RequiresSession: True, False
       #
@@ -56,12 +56,12 @@ module Azure
 
       def requires_session=(val)
         _set 'RequiresSession', val
-      end      
-    
+      end
+
       # EnableDeadLetteringOnMessageExpiration: True, False
       #
       # This field controls how the Service Bus handles a message whose TTL has expired. If it is enabled and a message
-      # expires, the Service Bus moves the message from the queue into the queue’s dead-letter sub-queue. If disabled,
+      # expires, the Service Bus moves the message from the queue into the queue's dead-letter sub-queue. If disabled,
       # message will be permanently deleted from the queue. Settable only at queue creation time.
       #
       # Default: false
@@ -79,7 +79,7 @@ module Azure
       # Specifies the maximum queue size in megabytes. Any attempt to enqueue a message that will cause the queue to 
       # exceed this value will fail. You can only set this parameter at queue creation time using the following values:
       #
-      # Range: 1 – 1024 (valid values are 1024, 2048, 3072, 4096, 5120) 
+      # Range: 1 - 1024 (valid values are 1024, 2048, 3072, 4096, 5120) 
       # Default: 1*1024 (valid values are 1024, 2048, 3072, 4096, 5120)
       def max_size_in_mb
         to_i description['MaxSizeInMegabytes']
@@ -91,9 +91,9 @@ module Azure
  
       # SizeinBytes: Number
       #
-      # Reflects the actual bytes that messages in the queue currently occupy toward the queue’s quota.
+      # Reflects the actual bytes that messages in the queue currently occupy toward the queue's quota.
       #
-      # Range: 0 –MaxTopicSizeinMegaBytes
+      # Range: 0 - MaxTopicSizeinMegaBytes
       def size_in_bytes
         to_i description['SizeInBytes']
       end
@@ -110,7 +110,7 @@ module Azure
       # by a TTL specified on the message if and only if the message TTL is smaller than the TTL set on the queue.
       # This value is immutable after the Queue has been created:
       #
-      # Range: 1 second – TimeSpan.MaxValue 
+      # Range: 1 second - TimeSpan.MaxValue 
       # Default: TimeSpan.MaxValue
       def default_message_ttl
         to_interval description['DefaultMessageTimeToLive']
@@ -137,7 +137,7 @@ module Azure
       #
       # Specifies the time span during which the Service Bus will detect message duplication.
       #
-      # Range: 1 second – 7 days
+      # Range: 1 second - 7 days
       # Default: 10 minutes
       def duplicate_detection_history_time_window
         to_interval description['DuplicateDetectionHistoryTimeWindow']
