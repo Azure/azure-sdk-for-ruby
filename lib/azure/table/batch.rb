@@ -61,6 +61,7 @@ module Azure
         self.instance_eval(&block) if block_given?
       end
 
+      private
       attr_reader :table
       attr_reader :partition
       attr_reader :table_service
@@ -70,10 +71,12 @@ module Azure
       attr_accessor :batch_id
       attr_accessor :changeset_id
 
+      protected
       def execute
         @table_service.execute_batch(self)
       end
-      
+
+      protected
       def parse_response(response)
         responses = BatchResponse.parse response.body
         new_responses = []
@@ -114,6 +117,7 @@ module Azure
         new_responses
       end
 
+      protected
       class ResponseWrapper
         def initialize(hash)
           @hash = hash
@@ -132,6 +136,7 @@ module Azure
         end
       end
 
+      protected
       def add_operation(method, uri, body=nil, headers=nil)
         op = {
           :method => method, 
@@ -142,11 +147,13 @@ module Azure
         operations.push op
       end
 
+      protected
       def check_entity_key(key)
         raise ArgumentError, "Only allowed to perform a single operation per entity, and there is already a operation registered in this batch for the key: #{key}." if entity_keys.include? key
         entity_keys.push key
       end
 
+      protected
       def to_body
         body = ""
         body.define_singleton_method(:add_line) do |a| self << (a||nil) + "\n" end
@@ -187,10 +194,13 @@ module Azure
 
       # Public: Inserts new entity to the table.
       #
-      # row_key       - String. The row key
-      # entity_values - Hash. A hash of the name/value pairs for the entity. 
+      # ==== Attributes
+      #
+      # * +row_key+       - String. The row key
+      # * +entity_values+ - Hash. A hash of the name/value pairs for the entity. 
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179433
+      public
       def insert(row_key, entity_values)
         check_entity_key(row_key)
 
@@ -206,20 +216,28 @@ module Azure
       # Public: Updates an existing entity in a table. The Update Entity operation replaces 
       # the entire entity and can be used to remove properties.
       #
-      # row_key               - String. The row key
-      # entity_values         - Hash. A hash of the name/value pairs for the entity. 
-      # if_match              - String. A matching condition which is required for update (optional, Default="*")
-      # create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
-      #                         that entity will be inserted. If false, the operation will fail. (optional, Default=false)
+      # ==== Attributes
+      #
+      # * +row_key+       - String. The row key
+      # * +entity_values+ - Hash. A hash of the name/value pairs for the entity. 
+      # * +options+       - Hash. Optional parameters. 
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * :if_match              - String. A matching condition which is required for update (optional, Default="*")
+      # * :create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
+      #   that entity will be inserted. If false, the operation will fail. (optional, Default=false)
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179427
-      def update(row_key, entity_values, if_match="*", create_if_not_exists=false)
+      public
+      def update(row_key, entity_values, options={})
         check_entity_key(row_key)
 
         uri = @table_service.entities_uri(table, partition, row_key)
 
         headers = {}
-        headers["If-Match"] = if_match || "*" unless create_if_not_exists
+        headers["If-Match"] = options[:if_match] || "*" unless options[:create_if_not_exists]
 
         body = Azure::Table::Serialization.hash_to_entry_xml(entity_values).to_xml
 
@@ -230,20 +248,28 @@ module Azure
       # Public: Updates an existing entity by updating the entity's properties. This operation
       # does not replace the existing entity, as the update_entity operation does.
       #
-      # row_key               - String. The row key
-      # entity_values         - Hash. A hash of the name/value pairs for the entity. 
-      # if_match              - String. A matching condition which is required for update (optional, Default="*")
-      # create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
-      #                         that entity will be inserted. If false, the operation will fail. (optional, Default=false)
+      # ==== Attributes
+      #
+      # * +row_key+         - String. The row key
+      # * +entity_values+   - Hash. A hash of the name/value pairs for the entity. 
+      # * +options+         - Hash. Optional parameters. 
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +if_match+              - String. A matching condition which is required for update (optional, Default="*")
+      # * +create_if_not_exists+  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
+      #   that entity will be inserted. If false, the operation will fail. (optional, Default=false)
       # 
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179392
-      def merge(row_key, entity_values, if_match="*", create_if_not_exists=false)
+      public
+      def merge(row_key, entity_values, options={})
         check_entity_key(row_key)
 
         uri = @table_service.entities_uri(table, partition, row_key)
 
         headers = {}
-        headers["If-Match"] = if_match || "*" unless create_if_not_exists
+        headers["If-Match"] = options[:if_match] || "*" unless options[:create_if_not_exists]
 
         body = Azure::Table::Serialization.hash_to_entry_xml(entity_values).to_xml
 
@@ -253,12 +279,13 @@ module Azure
 
       # Public: Inserts or updates an existing entity within a table by merging new property values into the entity.
       #
-      # row_key               - String. The row key
-      # entity_values         - Hash. A hash of the name/value pairs for the entity. 
-      # if_match              - String. A matching condition which is required for update (optional, Default="*")
-      # create_if_not_exists  - Boolean. A matching condition which is required for update (optional, Default=false)
+      # ==== Attributes
+      #
+      # * +row_key+               - String. The row key
+      # * +entity_values+         - Hash. A hash of the name/value pairs for the entity.
       # 
       # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452241
+      public
       def insert_or_merge(row_key, entity_values)
         merge(row_key, entity_values, nil, true)
         self
@@ -266,10 +293,13 @@ module Azure
 
       # Public: Inserts or updates a new entity into a table.
       #
-      # row_key               - String. The row key
-      # entity_values         - Hash. A hash of the name/value pairs for the entity. 
+      # ==== Attributes
+      #
+      # * +row_key+               - String. The row key
+      # * +entity_values+         - Hash. A hash of the name/value pairs for the entity. 
       # 
       # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452242
+      public
       def insert_or_replace(row_key, entity_values)
         update(row_key, entity_values, nil, true)
         self
@@ -277,12 +307,20 @@ module Azure
 
       # Public: Deletes an existing entity in the table.
       #
-      # row_key       - String. The row key
-      # if_match      - String. A matching condition which is required for update (optional, Default="*")
+      # ==== Attributes
+      #
+      # * +row_key+       - String. The row key
+      # * +options+       - Hash. Optional parameters. 
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +if_match+      - String. A matching condition which is required for update (optional, Default="*")
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135727
-      def delete(row_key, if_match=nil)
-        add_operation(:delete, @table_service.entities_uri(table, partition, row_key), nil, {"If-Match"=> if_match || "*"})
+      public
+      def delete(row_key, options={})
+        add_operation(:delete, @table_service.entities_uri(table, partition, row_key), nil, {"If-Match"=> options[:if_match] || "*"})
         self
       end
     end
