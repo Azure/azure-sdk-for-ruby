@@ -12,26 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
-require "azure/blob/blob_service"
-require "azure/core/http/http_error"
-
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
-
-  it "exception message should be valid" do
-    subject.create_topic topic
-
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+module Azure
+  module Queue
+    class Message
+      def initialize
+        yield self if block_given?
+      end
+      attr_accessor :id
+      attr_accessor :insertion_time
+      attr_accessor :expiration_time
+      attr_accessor :dequeue_count
+      attr_accessor :message_text
+      attr_accessor :time_next_visible
+      attr_accessor :pop_receipt
     end
   end
 end

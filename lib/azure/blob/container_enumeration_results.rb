@@ -12,26 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
-require "azure/blob/blob_service"
-require "azure/core/http/http_error"
+require 'azure/service/enumeration_results'
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+module Azure
+  module Blob
+    class ContainerEnumerationResults < Service::EnumerationResults
 
-  it "exception message should be valid" do
-    subject.create_topic topic
+      def initialize
+        @containers = []
+        yield self if block_given?
+      end
 
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+      attr_accessor :account_name
+      attr_accessor :containers
     end
   end
 end

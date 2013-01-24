@@ -12,26 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
-require "azure/blob/blob_service"
-require "azure/core/http/http_error"
+module Azure
+  module Blob
+    # Represents a Block as part of a BlockList 
+    # The type should be one of :uncommitted, :committed or :latest
+    class Block
+      
+      def initialize
+        @type = :latest
+        yield self if block_given?
+      end
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
-
-  it "exception message should be valid" do
-    subject.create_topic topic
-
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+      attr_accessor :name
+      attr_accessor :size
+      attr_accessor :type
     end
   end
 end

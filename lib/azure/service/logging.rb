@@ -12,26 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
-require "azure/blob/blob_service"
-require "azure/core/http/http_error"
+require 'azure/service/retention_policy'
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+module Azure
+  module Service
+    class Logging 
+      def initialize
+        @retention_policy = RetentionPolicy.new
+        yield self if block_given?
+      end
 
-  it "exception message should be valid" do
-    subject.create_topic topic
-
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+      attr_accessor :version
+      attr_accessor :delete
+      attr_accessor :read
+      attr_accessor :write
+      attr_accessor :retention_policy
     end
   end
 end

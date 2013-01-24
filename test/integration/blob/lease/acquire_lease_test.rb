@@ -14,24 +14,23 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 require "azure/blob/blob_service"
-require "azure/core/http/http_error"
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+describe Azure::Blob::BlobService do
+  subject { Azure::Blob::BlobService.new }
 
-  it "exception message should be valid" do
-    subject.create_topic topic
+  describe '#acquire_lease' do
+    let(:container_name) { ContainerNameHelper.name }
+    let(:blob_name) { "blobname" }
+    let(:length) { 1024 }
+    before { 
+      subject.create_container container_name
+    }
 
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+    it 'should be possible to acquire a lease' do
+      subject.create_page_blob container_name, blob_name, length
+
+      lease_id = subject.acquire_lease container_name, blob_name
+      lease_id.wont_be_nil
     end
   end
 end

@@ -33,7 +33,7 @@ class NameGenerator
 end
 
 TableNameHelper = NameGenerator.new do |name|
-  svc = Azure::Storage::Table::TableService.new
+  svc = Azure::Table::TableService.new
   begin
     svc.delete_table name
   rescue
@@ -41,7 +41,7 @@ TableNameHelper = NameGenerator.new do |name|
 end
 
 ContainerNameHelper = NameGenerator.new do |name|
-  svc = Azure::Storage::Blob::BlobService.new
+  svc = Azure::Blob::BlobService.new
   begin
     svc.delete_container name
   rescue
@@ -49,7 +49,7 @@ ContainerNameHelper = NameGenerator.new do |name|
 end
 
 QueueNameHelper = NameGenerator.new do |name|
-  svc = Azure::Storage::Queue::QueueService.new
+  svc = Azure::Queue::QueueService.new
   begin
     svc.delete_queue name
   rescue

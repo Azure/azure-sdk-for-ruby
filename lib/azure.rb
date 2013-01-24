@@ -21,7 +21,7 @@ require "azure/storage"
 require "azure/service_bus"
 
 # add some aliases for convenience 
-Azure::BlobService = Azure::Storage::Blob::BlobService
-Azure::QueueService = Azure::Storage::Queue::QueueService
-Azure::TableService = Azure::Storage::Table::TableService
+Azure::BlobService = Azure::Blob::BlobService
+Azure::QueueService = Azure::Queue::QueueService
+Azure::TableService = Azure::Table::TableService
 Azure::ServiceBusService = Azure::ServiceBus::ServiceBusService

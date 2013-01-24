@@ -12,26 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
-require "azure/blob/blob_service"
-require "azure/core/http/http_error"
+require 'azure/blob/container_properties'
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+module Azure
+  module Blob
+    class Container
 
-  it "exception message should be valid" do
-    subject.create_topic topic
+      def initialize
+        @properties = ContainerProperties.new
+        @metadata = {}
+        yield self if block_given?
+      end
 
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+      attr_accessor :name
+      attr_accessor :properties
+      attr_accessor :metadata
+      attr_accessor :public_access_level
     end
   end
 end

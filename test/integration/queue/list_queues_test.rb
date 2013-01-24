@@ -13,25 +13,28 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "integration/test_helper"
-require "azure/blob/blob_service"
-require "azure/core/http/http_error"
+require "azure/queue/queue_service"
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+describe Azure::Queue::QueueService do
+  subject { Azure::Queue::QueueService.new }
 
-  it "exception message should be valid" do
-    subject.create_topic topic
+  describe '#list_queues' do
+    let(:queue_names){ [QueueNameHelper.name, QueueNameHelper.name] }
+    before { queue_names.each { |q| subject.create_queue q } }
+    after { QueueNameHelper.clean }
+    
+    it 'lists the available queues' do
+      result = subject.list_queues
 
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+      expected_queues = 0
+      result.queues.each { |q|
+        q.name.wont_be_nil
+        q.url.wont_be_nil
+
+        expected_queues += 1 if queue_names.include? q.name
+      }
+
+      expected_queues.must_equal queue_names.length
     end
   end
 end

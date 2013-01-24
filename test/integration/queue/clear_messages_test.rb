@@ -13,25 +13,30 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "integration/test_helper"
-require "azure/blob/blob_service"
-require "azure/core/http/http_error"
+require "azure/queue/queue_service"
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+describe Azure::Queue::QueueService do
+  subject { Azure::Queue::QueueService.new }
+  
+  describe '#clear_messages' do
+    let(:queue_name){ QueueNameHelper.name }
+    before { 
+      subject.create_queue queue_name 
+      subject.create_message queue_name, "some random text " + QueueNameHelper.name
+    }
+    after { QueueNameHelper.clean }
 
-  it "exception message should be valid" do
-    subject.create_topic topic
+    it "clears the queue" do
+      result = subject.clear_messages queue_name
+      result.must_be_nil
+      result = subject.peek_messages queue_name
+      result.must_be_empty
+    end
 
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+    it "errors on an non-existent queue" do
+      assert_raises(Azure::Core::Http::HTTPError) do
+        subject.clear_messages QueueNameHelper.name
+      end
     end
   end
 end

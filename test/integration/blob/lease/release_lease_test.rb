@@ -14,24 +14,27 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 require "azure/blob/blob_service"
-require "azure/core/http/http_error"
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+describe Azure::Blob::BlobService do
+  subject { Azure::Blob::BlobService.new }
+  
+  describe '#release_lease' do
+    let(:container_name) { ContainerNameHelper.name }
+    let(:blob_name) { "blobname" }
+    let(:length) { 1024 }
+    before { 
+      subject.create_container container_name
+    }
 
-  it "exception message should be valid" do
-    subject.create_topic topic
+    it 'should be possible to release a lease' do
+      subject.create_page_blob container_name, blob_name, length
 
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+      lease_id = subject.acquire_lease container_name, blob_name
+      lease_id.wont_be_nil
+
+      lease_released = subject.release_lease container_name, blob_name, lease_id
+      # lease should be possible to release
+      lease_released.must_be_nil
     end
   end
 end

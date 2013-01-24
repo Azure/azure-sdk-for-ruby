@@ -13,25 +13,28 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "integration/test_helper"
-require "azure/blob/blob_service"
+require "azure/table/table_service"
 require "azure/core/http/http_error"
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+describe Azure::Table::TableService do 
+  describe "#query_tables" do
+    subject { Azure::Table::TableService.new }
+    let(:tables){ [TableNameHelper.name, TableNameHelper.name] }
+    before { tables.each { |t| subject.create_table t } }
+    after { TableNameHelper.clean }
 
-  it "exception message should be valid" do
-    subject.create_topic topic
+    it "gets a list of tables for the account" do
+      result, token = subject.query_tables
+      result.must_be_kind_of Hash
 
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+      tables.each { |t| 
+        result.must_include t
+        updated = subject.get_table(t)
+        updated.wont_be_nil
+
+        # this is a weird, but sometimes it's off by a few seconds
+        assert ((result[t] - updated).abs < 30), "time stamps don't match"
+      }
     end
   end
 end

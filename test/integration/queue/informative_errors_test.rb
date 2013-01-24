@@ -16,22 +16,27 @@ require "integration/test_helper"
 require "azure/blob/blob_service"
 require "azure/core/http/http_error"
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+require "integration/test_helper"
+require "azure/queue/queue_service"
+require "azure/core/http/http_error"
 
-  it "exception message should be valid" do
-    subject.create_topic topic
+describe Azure::Queue::QueueService do
+  subject { Azure::Queue::QueueService.new }
+  
+  describe '#informative_errors_queue' do
+    let(:queue_name){ QueueNameHelper.name }
+    after { QueueNameHelper.clean }
 
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+    it "exception message should be valid" do
+      # getting metadata from a non existent should throw
+      begin 
+        subject.get_queue_metadata queue_name
+        flunk "No exception"
+      rescue Azure::Core::Http::HTTPError => error
+        error.status_code.must_equal 404
+        error.type.must_equal "QueueNotFound"
+        error.description.start_with?("The specified queue does not exist.").must_equal true
+      end
     end
   end
 end

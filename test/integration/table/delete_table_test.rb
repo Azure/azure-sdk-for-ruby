@@ -13,25 +13,28 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "integration/test_helper"
-require "azure/blob/blob_service"
+require "azure/table/table_service"
 require "azure/core/http/http_error"
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+describe Azure::Table::TableService do
+  describe "#delete_table" do
+    subject { Azure::Table::TableService.new }
+    let(:table_name){ TableNameHelper.name }
+    before { subject.create_table table_name }
+    after { TableNameHelper.clean }
 
-  it "exception message should be valid" do
-    subject.create_topic topic
+    it "deletes a table and returns nil on success" do
+      result = subject.delete_table(table_name)
+      result.must_be_nil
+      
+      tables = subject.query_tables
+      tables.wont_include table_name
+    end
 
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+    it "errors on an invalid table" do
+      assert_raises(Azure::Core::Http::HTTPError) do
+        subject.delete_table "this_table.cannot-exist!"
+      end
     end
   end
 end

@@ -12,26 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
-require "azure/blob/blob_service"
-require "azure/core/http/http_error"
+require "azure/table/auth/shared_key"
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+module Azure
+  module Table
+    module Auth
+      class SharedKeyLite < SharedKey
+        # Public: The name of the strategy.
+        #
+        # Returns a String.
+        def name
+          "SharedKeyLite"
+        end
 
-  it "exception message should be valid" do
-    subject.create_topic topic
-
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+        # Generate the string to sign.
+        #
+        # verb       - The HTTP request method.
+        # uri        - The URI of the request we're signing.
+        # headers    - A Hash of HTTP request headers.
+        #
+        # Returns a plain text string.
+        def signable_string(method, uri, headers)
+          [
+            headers.fetch("Date") { headers.fetch("x-ms-date") },
+            canonicalized_resource(uri)
+          ].join("\n")
+        end
+      end
     end
   end
 end

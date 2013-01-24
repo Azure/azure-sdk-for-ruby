@@ -14,24 +14,26 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 require "azure/blob/blob_service"
-require "azure/core/http/http_error"
 
-describe "ServiceBus errors" do
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+describe Azure::Blob::BlobService do
+  subject { Azure::Blob::BlobService.new }
+  after { TableNameHelper.clean }
 
-  it "exception message should be valid" do
-    subject.create_topic topic
+  describe '#delete_container' do
+    let(:container_name) { ContainerNameHelper.name }
+    before { 
+      subject.create_container container_name
+    }
 
-    # creating the same topic again should throw
-    begin 
-      subject.create_topic topic
-      flunk "No exception"
-    rescue Azure::Core::Http::HTTPError => error
-      error.status_code.must_equal 409
-      error.type.must_equal "409"
-      error.detail.wont_be_nil
+    it 'deletes the container' do
+      result = subject.delete_container container_name
+      result.must_be_nil
+    end
+
+    it 'errors if the container does not exist' do
+      assert_raises(Azure::Core::Http::HTTPError) do
+        subject.delete_container ContainerNameHelper.name
+      end
     end
   end
 end
