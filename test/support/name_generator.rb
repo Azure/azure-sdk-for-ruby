@@ -29,6 +29,7 @@ class NameGenerator
     @names.reject! do |name|
       @cleanup_proc.call(name)
     end
+    @names = []
   end
 end
 

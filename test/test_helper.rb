@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "backports"
 require "minitest/autorun"
 require "mocha/setup"
 
