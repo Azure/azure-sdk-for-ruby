@@ -24,16 +24,20 @@ describe Azure::Queue::QueueService do
     after { QueueNameHelper.clean }
     
     it 'lists the available queues' do
-      result = subject.list_queues
-
       expected_queues = 0
-      result.queues.each { |q|
-        q.name.wont_be_nil
-        q.url.wont_be_nil
 
-        expected_queues += 1 if queue_names.include? q.name
-      }
+      # An empty next marker means to start at the beginning
+      next_marker = ''
+      begin
+        result = subject.list_queues( { :marker => next_marker } )
+        result.queues.each { |q|
+          q.name.wont_be_nil
+          q.url.wont_be_nil
+          expected_queues += 1 if queue_names.include? q.name
+        }
 
+        next_marker = result.next_marker
+      end while next_marker != ''
       expected_queues.must_equal queue_names.length
     end
   end
