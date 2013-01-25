@@ -16,7 +16,6 @@ require "rubygems"
 require "json"
 require "time"
 require "uri"
-require "extlib_lite"
 
 require "azure/service_bus/brokered_message"
 
@@ -24,23 +23,23 @@ module Azure
   module ServiceBus
     class BrokeredMessageSerializer
 
-      PROPERTIES = [
-        'ContentType',
-        'CorrelationId',
-        'SessionID',
-        'DeliveryCount',
-        'LockedUntilUtc',
-        'LockToken',
-        'MessageId',
-        'Label',
-        'ReplyTo',
-        'EnqueuedTimeUtc',
-        'SequenceNumber',
-        'TimeToLive',
-        'To',
-        'ScheduledEnqueueTimeUtc',
-        'ReplyToSessionId'
-      ].freeze
+      PROPERTIES = {
+        'ContentType'             => 'content_type',
+        'CorrelationId'           => 'correlation_id',
+        'SessionID'               => 'session_id',
+        'DeliveryCount'           => 'delivery_count',
+        'LockedUntilUtc'          => 'locked_until_utc',
+        'LockToken'               => 'lock_token',
+        'MessageId'               => 'message_id',
+        'Label'                   => 'label',
+        'ReplyTo'                 => 'reply_to',
+        'EnqueuedTimeUtc'         => 'enqueued_time_utc',
+        'SequenceNumber'          => 'sequence_number',
+        'TimeToLive'              => 'time_to_live',
+        'To'                      => 'to',
+        'ScheduledEnqueueTimeUtc' => 'scheduled_enqueue_time_utc',
+        'ReplyToSessionId'        => 'reply_to_session_id'
+      }.freeze
 
       attr :message
 
@@ -98,8 +97,8 @@ module Azure
       # Returns a JSON String
       def to_json
         hash = {}
-        PROPERTIES.each do |p|
-          attr_name = p.underscore
+        PROPERTIES.each do |p, u|
+          attr_name = u
           value = @message.send(attr_name)
           hash[p] = value unless value.nil?
         end
