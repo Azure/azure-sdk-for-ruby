@@ -68,8 +68,10 @@ module Azure
 
       attr_accessor :operations
       attr_accessor :entity_keys
-      attr_accessor :batch_id
       attr_accessor :changeset_id
+
+      public
+      attr_accessor :batch_id
 
       protected
       def execute
@@ -77,6 +79,42 @@ module Azure
       end
 
       protected
+      class ResponseWrapper
+        def initialize(hash)
+          @hash = hash
+        end
+
+        def uri 
+          @hash[:uri]
+        end
+        
+        def status_code
+          @hash[:status_code].to_i
+        end
+
+        def body
+          @hash[:body]
+        end
+      end
+
+      protected
+      def add_operation(method, uri, body=nil, headers=nil)
+        op = {
+          :method => method, 
+          :uri => uri, 
+          :body => body, 
+          :headers => headers
+        }
+        operations.push op
+      end
+
+      protected
+      def check_entity_key(key)
+        raise ArgumentError, "Only allowed to perform a single operation per entity, and there is already a operation registered in this batch for the key: #{key}." if entity_keys.include? key
+        entity_keys.push key
+      end
+
+      public
       def parse_response(response)
         responses = BatchResponse.parse response.body
         new_responses = []
@@ -117,43 +155,7 @@ module Azure
         new_responses
       end
 
-      protected
-      class ResponseWrapper
-        def initialize(hash)
-          @hash = hash
-        end
-
-        def uri 
-          @hash[:uri]
-        end
-        
-        def status_code
-          @hash[:status_code].to_i
-        end
-
-        def body
-          @hash[:body]
-        end
-      end
-
-      protected
-      def add_operation(method, uri, body=nil, headers=nil)
-        op = {
-          :method => method, 
-          :uri => uri, 
-          :body => body, 
-          :headers => headers
-        }
-        operations.push op
-      end
-
-      protected
-      def check_entity_key(key)
-        raise ArgumentError, "Only allowed to perform a single operation per entity, and there is already a operation registered in this batch for the key: #{key}." if entity_keys.include? key
-        entity_keys.push key
-      end
-
-      protected
+      public
       def to_body
         body = ""
         body.define_singleton_method(:add_line) do |a| self << (a||nil) + "\n" end
@@ -287,7 +289,7 @@ module Azure
       # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452241
       public
       def insert_or_merge(row_key, entity_values)
-        merge(row_key, entity_values, nil, true)
+        merge(row_key, entity_values, { :create_if_not_exists => true })
         self
       end
 
@@ -301,7 +303,7 @@ module Azure
       # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452242
       public
       def insert_or_replace(row_key, entity_values)
-        update(row_key, entity_values, nil, true)
+        update(row_key, entity_values, { :create_if_not_exists => true })
         self
       end
 

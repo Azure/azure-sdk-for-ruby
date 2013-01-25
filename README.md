@@ -126,7 +126,7 @@ There are two ways you can set up the connections:
 
 You can use the following commands to run:
 * all the tests: ``rake test  ``
-* a specific suite of tests: ``rake test:integration:storage:blob``
+* a specific suite of tests: ``rake test:integration:blob``
 * one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
 
 # Usage
