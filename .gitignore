@@ -2,5 +2,6 @@
 tags
 /pkg
 /doc
+/nbproject
 Gemfile.lock
 .DS_Store
