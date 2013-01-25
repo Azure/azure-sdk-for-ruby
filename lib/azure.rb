@@ -16,8 +16,12 @@
 module Azure; end
 
 require "azure/core"
-require "azure/storage"
-require "azure/service_bus"
+require "azure/blob/blob_service"
+require "azure/queue/queue_service"
+require "azure/service_bus/service_bus_service"
+require "azure/table/table_service"
+require "azure/table/batch"
+require "azure/table/query"
 
 # add some aliases for convenience 
 Azure::BlobService = Azure::Blob::BlobService
