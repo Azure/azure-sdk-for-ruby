@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'uuid'
+
 require 'azure/table/serialization'
 require 'azure/table/table_service'
 require 'azure/table/batch_response'
@@ -52,9 +54,9 @@ module Azure
         @operations = []
         @entity_keys = []
         @table_service = Azure::Table::TableService.new
-        unique_id = Time.now.to_i.to_s + "_" + Random.rand(1000000).to_s.ljust(6,'0')
-        @batch_id = "batch_" + unique_id
-        @changeset_id = "changeset_" + unique_id
+        uuid = UUID.new
+        @batch_id = "batch_" + uuid.generate
+        @changeset_id = "changeset_" + uuid.generate
 
         self.instance_eval(&block) if block_given?
       end
