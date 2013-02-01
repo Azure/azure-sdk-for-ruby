@@ -91,12 +91,12 @@ module Azure
       # creation time.
       #
       # Default: true
-      def dead_lettering_on_message_expiration
-        to_bool description['DeadLetteringOnMessageExpiration']
+      def dead_lettering_on_filter_evaluation_exceptions
+        to_bool description['DeadLetteringOnFilterEvaluationExceptions']
       end
 
-      def dead_lettering_on_message_expiration=(val)
-        _set 'DeadLetteringOnMessageExpiration', val
+      def dead_lettering_on_filter_evaluation_exceptions=(val)
+        _set 'DeadLetteringOnFilterEvaluationExceptions', val
       end
 
       # EnableBatchedOperations
