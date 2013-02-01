@@ -13,7 +13,6 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "azure/core/error"
-require "xml"
 
 module Azure
   module Core
@@ -63,17 +62,17 @@ module Azure
         # Returns nothing
         def parse_response
           if @http_response.body.include?("<")
-            document = XML::Parser.string(@http_response.body).parse
 
-            # FIXME: For some reason document.find_first("code") (or "//code", etc.)
-            # and document.find_first("message") return nil, while this works.
-            document.root.children.each do |child|
-              @type = child.content if child.name.casecmp("code") == 0
-              @description = child.content if child.name.casecmp("message") == 0
+            document = Nokogiri.Slop(@http_response.body)
 
-              # service bus uses detail instead of message
-              @detail = child.content if child.name.casecmp("detail") == 0
-            end
+            @type = document.css("code").first.text if document.css("code").any?
+            @type = document.css("Code").first.text if document.css("Code").any?
+            @description = document.css("message").first.text if document.css("message").any?
+            @description = document.css("Message").first.text if document.css("Message").any?
+
+            # service bus uses detail instead of message
+            @detail = document.css("detail").first.text if document.css("detail").any?
+            @detail = document.css("Detail").first.text if document.css("Detail").any?
           else
             @type = "Unknown"
             @description = @http_response.body.strip

@@ -14,6 +14,7 @@
 #--------------------------------------------------------------------------
 
 require "integration/test_helper"
+require "azure/table/batch"
 require "azure/table/table_service"
 require "azure/core/http/http_error"
 

@@ -506,7 +506,7 @@ module Azure
         generate_uri("Tables('#{name}')", query)
       end
 
-      # Protected: Generate the URI for an entity or group of entities in a table.
+      # Public: Generate the URI for an entity or group of entities in a table.
       # If both the 'partition_key' and 'row_key' are specified, then the URI
       # will match the entity under those specific keys.
       #
