@@ -72,8 +72,18 @@ module Azure
       def enable_dead_lettering=(val)
         _set 'EnableDeadLetteringOnMessageExpiration', val
       end
-       
- 
+
+      # MaxDeliveryCount: Number
+      #
+      # A message is automatically deadlettered after this number of deliveries.
+      def max_delivery_count
+        to_i description['MaxDeliveryCount']
+      end
+
+      def max_delivery_count=(val)
+        _set 'MaxDeliveryCount', val
+      end
+
       # MaxSizeInMegaBytes: Number
       #
       # Specifies the maximum queue size in megabytes. Any attempt to enqueue a message that will cause the queue to 
@@ -88,7 +98,7 @@ module Azure
       def max_size_in_mb=(val)
         _set 'MaxSizeInMegabytes', val
       end
- 
+
       # SizeinBytes: Number
       #
       # Reflects the actual bytes that messages in the queue currently occupy toward the queue's quota.

@@ -19,13 +19,14 @@ describe "ServiceBus Queues" do
   subject { Azure::ServiceBus::ServiceBusService.new }
   let(:name) { ServiceBusQueueNameHelper.name }
   let(:description) {{
-    'LockDuration' => 'PT30S',
     'DefaultMessageTimeToLive' => 'P10675199DT2H48M5.4775807S',
     'DuplicateDetectionHistoryTimeWindow' => 'PT10M',
+    'EnableDeadLetteringOnMessageExpiration' => "false",
+    'LockDuration' => 'PT30S',
+    'MaxDeliveryCount' => 1,
     'MaxSizeInMegabytes' => "1",
     'RequiresDuplicateDetection' => "true",
-    'RequiresSession' => "false",
-    'DeadLetteringOnMessageExpiration' => "false"
+    'RequiresSession' => "false"
   }}
 
   after { ServiceBusQueueNameHelper.clean }
@@ -40,6 +41,7 @@ describe "ServiceBus Queues" do
     queue = subject.create_queue name, { :description => description }
     queue.must_be_kind_of Azure::ServiceBus::Queue
     queue.name.must_equal name
+    queue.max_delivery_count.must_equal 1
     queue.max_size_in_mb.must_equal 1
     queue.requires_duplicate_detection.must_equal true
   end
