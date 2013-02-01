@@ -18,7 +18,7 @@ require "azure/table/table_service"
 require "azure/core/http/http_error"
 
 describe Azure::Table::TableService do
-  describe "#delete_entity" do
+  describe "#delete_entity_batch" do
     subject { Azure::Table::TableService.new }
     let(:table_name){ TableNameHelper.name }
 
