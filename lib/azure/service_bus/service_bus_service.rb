@@ -647,22 +647,11 @@ module Azure
         subscription_name = nil
         options = {}
 
-        if p.length == 4
-          # topic/sub/options
+        if p.length == 3
+          # topic/sub/options 
           topic_name = _name_for(p[0])
           subscription_name = _name_for(p[1])
-          options = p[2]
-        elsif p.length == 3
-          # either subscription/skip/options or topic/sub/options 
-          if p[0].respond_to? :name and p[0].respond_to? :topic
-            topic_name = p[0].topic
-            subscription_name = p[0].name
-            options =p[1]
-          else
-            topic_name = _name_for(p[0])
-            subscription_name = _name_for(p[1])
-            options =p[2]
-          end
+          options =p[2]
         elsif p.length == 2
           # either subscription/options or topic/sub
           if p[0].respond_to? :name and p[0].respond_to? :topic
