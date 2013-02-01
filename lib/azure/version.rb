@@ -17,14 +17,14 @@ module Azure
   class Version
     MAJOR = 0 unless defined? MAJOR
     MINOR = 1 unless defined? MINOR
-    PATCH = 0 unless defined? PATCH
+    UPDATE = 0 unless defined? UPDATE
     PRE = nil unless defined? PRE
 
     class << self
 
       # @return [String]
       def to_s
-        [MAJOR, MINOR, PATCH, PRE].compact.join('.')
+        [MAJOR, MINOR, UPDATE, PRE].compact.join('.')
       end
 
     end

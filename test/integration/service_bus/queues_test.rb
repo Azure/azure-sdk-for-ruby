@@ -23,7 +23,7 @@ describe "ServiceBus Queues" do
     'DuplicateDetectionHistoryTimeWindow' => 'PT10M',
     'EnableDeadLetteringOnMessageExpiration' => "false",
     'LockDuration' => 'PT30S',
-    'MaxDeliveryCount' => 1,
+    'MaxDeliveryCount' => "1",
     'MaxSizeInMegabytes' => "1",
     'RequiresDuplicateDetection' => "true",
     'RequiresSession' => "false"

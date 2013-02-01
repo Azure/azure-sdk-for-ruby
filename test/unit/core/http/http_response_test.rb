@@ -27,18 +27,18 @@ describe Azure::Core::Http::HttpResponse do
   describe Azure::Core::Http::HttpResponse::HeaderHash do
     subject do
       Azure::Core::Http::HttpResponse::HeaderHash.new(
-        "FooBar" => ["1"], "bazqux" => ["2"], "QUXFOO" => ["3"]
+        "AsdAsd" => ["1"], "bazqux" => ["2"], "QUXFOO" => ["3"]
       )
     end
 
     it "returns the header values as strings, not arrays" do
-      subject["FooBar"].must_equal "1"
+      subject["AsdAsd"].must_equal "1"
       subject["bazqux"].must_equal "2"
       subject["QUXFOO"].must_equal "3"
     end
 
     it "obtains keys in a case-insensitive fashion" do
-      subject["foobar"].must_equal "1"
+      subject["asdasd"].must_equal "1"
       subject["BaZqUx"].must_equal "2"
     end
   end
