@@ -23,7 +23,7 @@ describe "ServiceBus Queues" do
     'DuplicateDetectionHistoryTimeWindow' => 'PT10M',
     'EnableDeadLetteringOnMessageExpiration' => "false",
     'LockDuration' => 'PT30S',
-    'MaxDeliveryCount' => "1",
+    'MaxDeliveryCount' => "10",
     'MaxSizeInMegabytes' => "1",
     'RequiresDuplicateDetection' => "true",
     'RequiresSession' => "false"
@@ -41,8 +41,8 @@ describe "ServiceBus Queues" do
     queue = subject.create_queue name, { :description => description }
     queue.must_be_kind_of Azure::ServiceBus::Queue
     queue.name.must_equal name
-    queue.max_delivery_count.must_equal 1
-    queue.max_size_in_mb.must_equal 1
+    queue.max_delivery_count.must_equal 10
+    queue.max_size_in_megabytes.must_equal 1
     queue.requires_duplicate_detection.must_equal true
   end
 
@@ -56,7 +56,7 @@ describe "ServiceBus Queues" do
     queue = subject.create_queue Azure::ServiceBus::Queue.new(name, description)
     queue.must_be_kind_of Azure::ServiceBus::Queue
     queue.name.must_equal name
-    queue.max_size_in_mb.must_equal 1
+    queue.max_size_in_megabytes.must_equal 1
     queue.requires_duplicate_detection.must_equal true
   end
 

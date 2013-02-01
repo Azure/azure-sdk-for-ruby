@@ -57,11 +57,11 @@ module Azure
       #
       # Range: 1 second - TimeSpan.MaxValue
       # Default: TimeSpan.MaxValue if the topic also does not specify a TTL. Otherwise the setting from topic is inherited.
-      def default_message_ttl
+      def default_message_time_to_live
         to_interval description['DefaultMessageTimeToLive']
       end
 
-      def default_message_ttl=(val)
+      def default_message_time_to_live=(val)
         _set 'DefaultMessageTimeToLive', val
       end
 

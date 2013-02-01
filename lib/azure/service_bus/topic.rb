@@ -27,11 +27,11 @@ module Azure
       #
       #   Range: 1 - 5*1024 MB
       #   Default: 1*1024
-      def max_size_in_mb
+      def max_size_in_megabytes
         to_i description['MaxSizeInMegabytes']
       end
 
-      def max_size_in_mb=(val)
+      def max_size_in_megabytes=(val)
         _set 'MaxSizeInMegabytes', val
       end
  
@@ -57,11 +57,11 @@ module Azure
       #
       #   Range: 1 second - TimeSpan.MaxValue
       #   Default: TimeSpan.MaxValue
-      def default_message_ttl
+      def default_message_time_to_live
         to_interval description['DefaultMessageTimeToLive']
       end
 
-      def default_message_ttl=(val)
+      def default_message_time_to_live=(val)
         _set 'DefaultMessageTimeToLive', val
       end
 

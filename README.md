@@ -248,7 +248,7 @@ queue1 = azure_service_bus.create_queue("test-queue-1")
 
 # Create a queue with a queue object
 queue2 = Azure::ServiceBus::Queue.new("test-queue-2")
-queue2.max_size_in_mb = 2048
+queue2.max_size_in_megabytes = 2048
 queue2 = azure_service_bus.create_queue(queue2)
 
 # Send a queue message with just the message body
@@ -283,7 +283,7 @@ topic1 = azure_service_bus.create_topic("test-topic-1")
 
 # Create a topic with a topic object
 topic2 = Azure::ServiceBus::Topic.new("test-topic-2")
-topic2.max_size_in_mb = 2048
+topic2.max_size_in_megabytes = 2048
 topic2 = azure_service_bus.create_topic(topic2)
 
 # Create a subscription
