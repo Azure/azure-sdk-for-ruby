@@ -65,15 +65,25 @@ module Azure
       # message will be permanently deleted from the queue. Settable only at queue creation time.
       #
       # Default: false
-      def enable_dead_lettering
+      def enable_dead_lettering_on_message_expiration
         to_bool description['EnableDeadLetteringOnMessageExpiration']
       end
 
-      def enable_dead_lettering=(val)
+      def enable_dead_lettering_on_message_expiration=(val)
         _set 'EnableDeadLetteringOnMessageExpiration', val
       end
-       
- 
+
+      # MaxDeliveryCount: Number
+      #
+      # A message is automatically deadlettered after this number of deliveries.
+      def max_delivery_count
+        to_i description['MaxDeliveryCount']
+      end
+
+      def max_delivery_count=(val)
+        _set 'MaxDeliveryCount', val
+      end
+
       # MaxSizeInMegaBytes: Number
       #
       # Specifies the maximum queue size in megabytes. Any attempt to enqueue a message that will cause the queue to 
@@ -81,14 +91,14 @@ module Azure
       #
       # Range: 1 - 1024 (valid values are 1024, 2048, 3072, 4096, 5120) 
       # Default: 1*1024 (valid values are 1024, 2048, 3072, 4096, 5120)
-      def max_size_in_mb
+      def max_size_in_megabytes
         to_i description['MaxSizeInMegabytes']
       end
 
-      def max_size_in_mb=(val)
+      def max_size_in_megabytes=(val)
         _set 'MaxSizeInMegabytes', val
       end
- 
+
       # SizeinBytes: Number
       #
       # Reflects the actual bytes that messages in the queue currently occupy toward the queue's quota.
@@ -112,11 +122,11 @@ module Azure
       #
       # Range: 1 second - TimeSpan.MaxValue 
       # Default: TimeSpan.MaxValue
-      def default_message_ttl
+      def default_message_time_to_live
         to_interval description['DefaultMessageTimeToLive']
       end
 
-      def default_message_ttl=(val)
+      def default_message_time_to_live=(val)
         _set 'DefaultMessageTimeToLive', val
       end
 

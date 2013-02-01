@@ -8,7 +8,7 @@
       <Name>queue-name</Name>
       <Url>http://myaccount.queue.core.windows.net/queue-name</Url>
       <Metadata>
-        <Color>red</Color>
+        <Color>purple</Color>
         <Shape>square</Shape>
       </Metadata>
     </Queue>
