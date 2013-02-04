@@ -177,7 +177,6 @@ module Azure
           'DuplicateDetectionHistoryTimeWindow',
           'EnableBatchedOperations',
           'EnableDeadLetteringOnMessageExpiration',
-          'ExtensionData',
           'IsReadOnly',
           'LockDuration',
           'MaxDeliveryCount',

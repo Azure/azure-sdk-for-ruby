@@ -99,11 +99,11 @@ module Azure
       #
       # Range: 1 - 2000
       # Default: 2000 subscriptions
-      def max_subscriptions
+      def maximum_number_of_subscriptions
         to_i description['MaximumNumberOfSubscriptions']
       end
 
-      def max_subscriptions=(val)
+      def maximum_number_of_subscriptions=(val)
         _set 'MaximumNumberOfSubscriptions', val
       end
 
@@ -119,6 +119,24 @@ module Azure
 
       def enable_batched_operations=(val)
         _set 'EnableBatchedOperations', val
+      end
+
+      # DeadLetteringOnFilterEvaluationExceptions: True, False
+      #
+      # Determines how the Service Bus handles a message that causes an exception during a subscription's filter
+      # evaluation. If the value is set to true, the message that caused the exception will be moved to the
+      # subscription's dead-letter queue. Otherwise, it will be discarded. By default this parameter is set to true,
+      # allowing the user a chance to investigate the cause of the exception. It can occur from a malformed message or
+      # some incorrect assumptions being made in the filter about the form of the message. Settable only at topic
+      # creation time.
+      #
+      # Default: true
+      def dead_lettering_on_filter_evaluation_exceptions
+        to_bool description['DeadLetteringOnFilterEvaluationExceptions']
+      end
+
+      def dead_lettering_on_filter_evaluation_exceptions=(val)
+        _set 'DeadLetteringOnFilterEvaluationExceptions', val
       end
 
       def ordered_props
