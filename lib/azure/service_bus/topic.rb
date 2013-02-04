@@ -17,6 +17,29 @@ require 'azure/service_bus/resource'
 module Azure
   module ServiceBus
     class Topic < Resource
+      # Public: Initialize the topic.
+      #
+      # ==== Attributes
+      #
+      # * +name+      - A String with the name of the topic.
+      # * +options+   - The resource options Hash
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:MaxSizeInMegabytes+                         - Number. Specifies the maximum topic size in megabytes
+      # * +:SizeInBytes+                                - Number. Reflects the actual bytes toward the topic quota that messages in the topic currently occupy.
+      # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
+      # * +:RequiresDuplicateDetection+                 - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
+      # * +:DuplicateDetectionHistoryTimeWindow+        - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
+      # * +:MaximumNumberOfSubscriptions+               - Number. Specifies the maximum number of subscriptions that can be associated with the topic.
+      # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
+      # * +:DeadLetteringOnFilterEvaluationExceptions+  - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
+      #
+      def initialize(name, options = {})
+        super(name, options)
+      end
+
       # MaxSizeInMegabytes: Number
       #
       # Specifies the maximum topic size in megabytes. Any attempt to enqueue a message that will cause the topic to 

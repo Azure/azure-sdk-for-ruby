@@ -20,6 +20,29 @@ module Azure
       
       attr_accessor :topic
 
+      # Public: Initialize the subscription.
+      #
+      # ==== Attributes
+      #
+      # * +name+      - A String with the name of the subscription.
+      # * +options+   - The resource options Hash
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:LockDuration+                               - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
+      # * +:RequiresSession+                            - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
+      # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
+      # * +:EnableDeadLetteringOnMessageExpiration:     - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
+      # * +:DeadLetteringOnFilterEvaluationExceptions+  - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
+      # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
+      # * +:MaxDeliveryCount+                           - Number. A message is automatically deadlettered after this number of deliveries.
+      # * +:MessageCount+                               - Number. Displays the number of messages currently in the queue.
+      #
+      def initialize(name, options = {})
+        super(name, options)
+      end
+
       # LockDuration: XML datetime
       #
       # The default lock duration is applied to subscriptions that do not define a lock duration. Settable only at

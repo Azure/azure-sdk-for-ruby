@@ -26,9 +26,26 @@ require 'azure/service_bus/empty_rule_action'
 module Azure
   module ServiceBus
     class Rule < Resource
-      
+
       attr_accessor :topic
       attr_accessor :subscription
+
+      # Public: Initialize the rule.
+      #
+      # ==== Attributes
+      #
+      # * +name+      - A String with the name of the rule.
+      # * +options+   - The resource options Hash
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:Filter+                               - String. The rule filter.
+      # * +:Action+                               - String. The rule action.
+      #
+      def initialize(name, options = {})
+        super(name, options)
+      end
 
       # Filter: SqlFilter, TrueFilter /FalseFiilter, CorrelationFilter
       #
