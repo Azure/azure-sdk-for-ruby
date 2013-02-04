@@ -34,6 +34,20 @@ describe "ServiceBus Rules" do
     result.filter.compatibility_level.must_equal 20
   end
 
+  it "should be able to create a new rule object" do
+    ruleObject = Azure::ServiceBus::Rule.new "my_other_rule"
+    ruleObject.subscription = subscription
+    ruleObject.topic = topic
+
+    result = subject.create_rule ruleObject
+    result.must_be :kind_of?, Azure::ServiceBus::Rule
+    result.filter.must_be_kind_of Azure::ServiceBus::TrueFilter
+    result.filter.sql_expression.must_equal "1=1"
+    result.filter.compatibility_level.must_equal 20
+
+    subject.delete_rule result
+  end
+
   describe "when a rule exists" do
     before { subject.create_rule topic, subscription, rule }
 

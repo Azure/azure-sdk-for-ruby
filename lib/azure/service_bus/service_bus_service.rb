@@ -43,15 +43,10 @@ module Azure
       # ==== Attributes
       #
       # * +queue+        - Azure::ServiceBus::Queue instance to create on server, or a string of the queue name
-      # * +options+      - Hash. Optional parameters. 
+      # * +description+  - String. The topic description. 
       #
-      # ==== Options
-      #
-      # Accepted key/value pairs in options parameter are:
-      # * +:description+ - String. Description for the queue.
-      #
-      def create_queue(queue, options={})
-        queue = _new_or_existing(Azure::ServiceBus::Queue, queue, options[:description] ? options[:description] : {})
+      def create_queue(queue, description=nil)
+        queue = _new_or_existing(Azure::ServiceBus::Queue, queue, description ? description : {})
         create_resource_entry(:queue, queue, queue.name)
       end
 
@@ -98,18 +93,13 @@ module Azure
       # ==== Attributes
       #
       # * +topic+        - Azure::ServiceBus::Topic instance to create on server, or a string of the topic name
-      # * +options+      - Hash. Optional parameters. 
+      # * +description+  - String. The topic description. 
       #
-      # ==== Options
-      #
-      # Accepted key/value pairs in options parameter are:
-      # * +:description+ - String. Description for the topic.
-      #
-      def create_topic(topic, options={})
-        topic = _new_or_existing(Azure::ServiceBus::Topic, topic, options[:description] ? options[:description] : {})
+      def create_topic(topic, description=nil)
+        topic = _new_or_existing(Azure::ServiceBus::Topic, topic, description ? description : {})
         create_resource_entry(:topic, topic, topic.name)
       end
-      
+
       # Deletes an existing topic. This operation will also remove all associated state 
       # including associated subscriptions.
       # 
@@ -159,7 +149,6 @@ module Azure
       # containing options for the Rule.
       def create_rule(*p)
         rule = _rule_from(*p)
-
         result = create_resource_entry(:rule, rule, rule.topic, rule.subscription, rule.name)
         result.topic = rule.topic
         result.subscription = rule.subscription
