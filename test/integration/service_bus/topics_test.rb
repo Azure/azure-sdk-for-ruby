@@ -20,9 +20,10 @@ describe "ServiceBus Topics" do
   let(:topic){ ServiceBusTopicNameHelper.name }
 
   it "should be able to create a new topic" do
-    result = subject.create_topic topic
+    result = subject.create_topic topic, { "MaxSizeInMegabytes" => 2048 }
     result.must_be :kind_of?, Azure::ServiceBus::Topic
     result.name.must_equal topic
+    result.max_size_in_megabytes.must_equal 2048
   end
 
   describe "when a topic exists" do

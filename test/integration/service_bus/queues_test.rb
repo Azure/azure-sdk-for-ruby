@@ -38,7 +38,7 @@ describe "ServiceBus Queues" do
   end
 
   it "should be able to create a new queue from a string and description Hash" do
-    queue = subject.create_queue name, { :description => description }
+    queue = subject.create_queue name, description
     queue.must_be_kind_of Azure::ServiceBus::Queue
     queue.name.must_equal name
     queue.max_delivery_count.must_equal 10
@@ -61,7 +61,7 @@ describe "ServiceBus Queues" do
   end
 
   describe 'when a queue exists' do
-    before { subject.create_queue name, { :description => description } }
+    before { subject.create_queue name, description }
 
     describe '#delete_queue' do
       it "should raise exception if the queue cannot be deleted" do

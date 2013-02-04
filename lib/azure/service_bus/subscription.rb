@@ -140,7 +140,10 @@ module Azure
           "RequiresSession",
           "DefaultMessageTimeToLive",
           "DeadLetteringOnMessageExpiration",
-          "DeadLetteringOnFilterEvaluationExceptions"
+          "DeadLetteringOnFilterEvaluationExceptions",
+          "EnableBatchedOperations",
+          "MaxDeliveryCount",
+          "MessageCount"
         ]
       end
     end

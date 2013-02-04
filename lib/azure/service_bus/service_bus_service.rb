@@ -43,15 +43,26 @@ module Azure
       # ==== Attributes
       #
       # * +queue+        - Azure::ServiceBus::Queue instance to create on server, or a string of the queue name
-      # * +options+      - Hash. Optional parameters. 
+      # * +options+      - Hash. The queue properties. 
       #
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:description+ - String. Description for the queue.
+      # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
+      # * +:DuplicateDetectionHistoryTimeWindow+        - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
+      # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
+      # * +:EnableDeadLetteringOnMessageExpiration:     - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
+      # * +:IsReadyOnly+                                - Boolean. Indicates if the queue is read only.
+      # * +:LockDuration+                               - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
+      # * +:MaxDeliveryCount+                           - Number. A message is automatically deadlettered after this number of deliveries.
+      # * +:MaxSizeInMegabytes+                         - Number. Specifies the maximum topic size in megabytes
+      # * +:MessageCount+                               - Number. Displays the number of messages currently in the queue.
+      # * +:RequiresDuplicateDetection+                 - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
+      # * +:RequiresSession+                            - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
+      # * +:SizeInBytes+                                - Number. Reflects the actual bytes toward the topic quota that messages in the topic currently occupy.
       #
       def create_queue(queue, options={})
-        queue = _new_or_existing(Azure::ServiceBus::Queue, queue, options[:description] ? options[:description] : {})
+        queue = _new_or_existing(Azure::ServiceBus::Queue, queue, options ? options : {})
         create_resource_entry(:queue, queue, queue.name)
       end
 
@@ -98,18 +109,25 @@ module Azure
       # ==== Attributes
       #
       # * +topic+        - Azure::ServiceBus::Topic instance to create on server, or a string of the topic name
-      # * +options+      - Hash. Optional parameters. 
+      # * +options+      - Hash. The topic properties. 
       #
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:description+ - String. Description for the topic.
+      # * +:MaxSizeInMegabytes+                         - Number. Specifies the maximum topic size in megabytes
+      # * +:SizeInBytes+                                - Number. Reflects the actual bytes toward the topic quota that messages in the topic currently occupy.
+      # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
+      # * +:RequiresDuplicateDetection+                 - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
+      # * +:DuplicateDetectionHistoryTimeWindow+        - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
+      # * +:MaximumNumberOfSubscriptions+               - Number. Specifies the maximum number of subscriptions that can be associated with the topic.
+      # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
+      # * +:DeadLetteringOnFilterEvaluationExceptions+  - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
       #
       def create_topic(topic, options={})
-        topic = _new_or_existing(Azure::ServiceBus::Topic, topic, options[:description] ? options[:description] : {})
+        topic = _new_or_existing(Azure::ServiceBus::Topic, topic, options ? options : {})
         create_resource_entry(:topic, topic, topic.name)
       end
-      
+
       # Deletes an existing topic. This operation will also remove all associated state 
       # including associated subscriptions.
       # 
@@ -152,14 +170,17 @@ module Azure
       #
       # ==== Attributes
       #
-      # Pass either (topic_name, subscription_name, rule_name) as strings, or (rule) a object with .name, .topic, and 
-      # .subscription methods such as Azure::ServiceBus::Rule instance.
+      # Pass either (topic_name, subscription_name, rule_name) as strings, or (rule) a rule object.
+      # When using (topic_name, subscription_name, rule_name, options) overload, you may also pass the properties for the rule.
       #
-      # When using (topic_name, subscription_name, rule_name) overload, you may also pass and optional description hash 
-      # containing options for the Rule.
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:Filter+                               - String. The rule filter.
+      # * +:Action+                               - String. The rule action.
+      #
       def create_rule(*p)
         rule = _rule_from(*p)
-
         result = create_resource_entry(:rule, rule, rule.topic, rule.subscription, rule.name)
         result.topic = rule.topic
         result.subscription = rule.subscription
@@ -226,11 +247,21 @@ module Azure
       # 
       # ==== Attributes
       #
-      # Pass either (topic_name, subscription_name) as strings, or (subscription) a object with .name, .topic, and 
-      # .description methods such as Azure::ServiceBus::Subscription instance. 
+      # Pass either (topic_name, subscription_name) as strings, or (subscription) a object.
+      # When using (topic_name, subscription_name) overload, you may also pass optional properties for the subscription.
       #
-      # When using (topic_name, subscription_name) overload, you may also pass and optional description hash containing
-      # options for the Subscription.
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:LockDuration+                               - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
+      # * +:RequiresSession+                            - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
+      # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
+      # * +:EnableDeadLetteringOnMessageExpiration:     - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
+      # * +:DeadLetteringOnFilterEvaluationExceptions+  - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
+      # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
+      # * +:MaxDeliveryCount+                           - Number. A message is automatically deadlettered after this number of deliveries.
+      # * +:MessageCount+                               - Number. Displays the number of messages currently in the queue.
+      #
       def create_subscription(*p)
         subscription = _subscription_from(*p)
 

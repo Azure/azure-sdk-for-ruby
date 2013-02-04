@@ -52,11 +52,15 @@ describe Azure::Table::TableService do
       result.table.must_equal table_name
       entity_properties.each { |k,v|
         if entity_properties[k].class == Time
-          result.properties[k].to_f.round(6).must_equal entity_properties[k].to_f.round(6)
+          floor_to(result.properties[k].to_f, 6).must_equal floor_to(entity_properties[k].to_f, 6)
         else
           result.properties[k].must_equal entity_properties[k]
         end
       }
+    end
+
+    def floor_to(num, x)
+      (num * 10**x).floor.to_f / 10**x
     end
 
     it "errors on an invalid table name" do

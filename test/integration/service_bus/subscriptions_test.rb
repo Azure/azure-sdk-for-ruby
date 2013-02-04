@@ -28,6 +28,19 @@ describe "ServiceBus Subscriptions" do
     result.name.must_equal subscription
   end
 
+  it "should be able to create a new subscription with objects" do
+    subscriptionObject = Azure::ServiceBus::Subscription.new "my_other_sub"
+    subscriptionObject.topic = topic
+    subscriptionObject.max_delivery_count = 3
+
+    result = subject.create_subscription subscriptionObject
+    result.must_be :kind_of?, Azure::ServiceBus::Subscription
+    result.name.must_equal subscriptionObject.name
+    result.max_delivery_count.must_equal subscriptionObject.max_delivery_count
+
+    subject.delete_subscription result
+  end
+
   describe "when a subscription exists" do
     before { subject.create_subscription topic, subscription }
     it "should be able to delete the subscription" do
