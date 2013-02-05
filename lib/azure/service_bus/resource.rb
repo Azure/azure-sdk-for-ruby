@@ -22,7 +22,6 @@ module Azure
       #
       # name        - A String with the name of the resource.
       # description - The resource description Hash
-      # service     - The resource service to perform external calls.
       def initialize(name, description = {})
         @name = name
         @description = description

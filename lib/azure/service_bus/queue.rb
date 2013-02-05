@@ -17,6 +17,33 @@ require 'azure/service_bus/resource'
 module Azure
   module ServiceBus
     class Queue < Resource
+      # Public: Initialize the queue.
+      #
+      # ==== Attributes
+      #
+      # * +name+      - A String with the name of the queue.
+      # * +options+   - The resource options Hash
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
+      # * +:DuplicateDetectionHistoryTimeWindow+        - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
+      # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
+      # * +:EnableDeadLetteringOnMessageExpiration:     - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
+      # * +:IsReadyOnly+                                - Boolean. Indicates if the queue is read only.
+      # * +:LockDuration+                               - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
+      # * +:MaxDeliveryCount+                           - Number. A message is automatically deadlettered after this number of deliveries.
+      # * +:MaxSizeInMegabytes+                         - Number. Specifies the maximum topic size in megabytes
+      # * +:MessageCount+                               - Number. Displays the number of messages currently in the queue.
+      # * +:RequiresDuplicateDetection+                 - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
+      # * +:RequiresSession+                            - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
+      # * +:SizeInBytes+                                - Number. Reflects the actual bytes toward the topic quota that messages in the topic currently occupy.
+      #
+      def initialize(name, options = {})
+        super(name, options)
+      end
+
       # MessageCount: Number
       #
       # Displays the number of messages currently in the queue.
