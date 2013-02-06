@@ -105,7 +105,7 @@ describe "ServiceBus Subscriptions" do
         retrieved2.must_be_nil
 
         # Unlock the message
-        res = subject.unlock_subscription_message topic, subscription, retrieved.sequence_number, retrieved.lock_token
+        res = subject.unlock_subscription_message retrieved
         res.must_be_nil
 
         # The message should be available once again

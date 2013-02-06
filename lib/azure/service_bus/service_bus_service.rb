@@ -368,18 +368,10 @@ module Azure
       # 
       # ==== Attributes
       #
-      # * +topic+            - The name of the topic or a Topic instance
-      # * +subscription+     - The name of the subscription or a Subscription instance
-      # * +sequence_number+  - The sequence number of the message to be unlocked as returned 
-      #   in BrokeredMessage.sequence_number by the Peek Message operation.
-      # * +lock_token+       - The ID of the lock as returned by the Peek Message operation in 
-      #   BrokeredMessage.lock_token
+      # * +message+     - String. Either the message location URL or a message object.
       #
-      def unlock_subscription_message(topic, subscription, sequence_number, lock_token)
-        topic = _name_for(topic)
-        subscription = _name_for(subscription)
-
-        _unlock_message(subscriptions_path(topic, subscription), sequence_number, lock_token)
+      def unlock_subscription_message(message)
+        _unlock_message(message)
       end
 
       # Read and delete a message from a subscription as an atomic operation. This 
@@ -411,18 +403,10 @@ module Azure
       # 
       # ==== Attributes
       #
-      # * +topic+           - The name of the topic or a Topic instance
-      # * +subscription+    - the name of the subscription or a Subscription instance
-      # * +sequence_number+ - The sequence number of the message to be deleted as returned 
-      #   in BrokeredMessage.sequence_number by the Peek Message operation.
-      # * +lock_token+      - The ID of the lock as returned by the Peek Message operation in 
-      #   BrokeredMessage.lock_token
+      # * +message+     - String. Either the message location URL or a message object.
       #
-      def delete_subscription_message(topic, subscription, sequence_number, lock_token)
-        topic = _name_for(topic)
-        subscription = _name_for(subscription)
-
-        _delete_message(subscriptions_path(topic, subscription), sequence_number, lock_token)
+      def delete_subscription_message(message)
+        _delete_message(message)
       end
 
       # Sends a message into the specified queue. The limit to the number of messages 
@@ -471,14 +455,10 @@ module Azure
       # 
       # ==== Attributes
       #
-      # * +queue+           - Either a Azure::ServiceBus::Queue instance or a string of the queue name
-      # * +sequence_number+ - The sequence number of the message to be unlocked as returned 
-      #   in BrokeredMessage.sequence_number by the Peek Message operation.
-      # * +lock_token+      - The ID of the lock as returned by the Peek Message operation in 
-      #   BrokeredMessage.lock_token
+      # * +message+     - String. Either the message location URL or a message object.
       #
-      def unlock_queue_message(queue, sequence_number, lock_token)
-        _unlock_message(_name_for(queue), sequence_number, lock_token)
+      def unlock_queue_message(message)
+        _unlock_message(message)
       end
 
       # Reads and deletes a message from a queue as an atomic operation. This operation 
@@ -506,14 +486,10 @@ module Azure
       # 
       # ==== Attributes
       #
-      # * +queue+           - Either a Azure::ServiceBus::Queue instance or a string of the queue name
-      # * +sequence_number+ - The sequence number of the message to be deleted as returned 
-      #   in BrokeredMessage.sequence_number by the Peek Message operation.
-      # * +lock_token+      - The ID of the lock as returned by the Peek Message operation in 
-      #   BrokeredMessage.lock_token
+      # * +message+     - String. Either the message location URL or a message object.
       #
-      def delete_queue_message(queue, sequence_number, lock_token)
-        _delete_message(_name_for(queue), sequence_number, lock_token)
+      def delete_queue_message(message)
+        _delete_message(message)
       end
 
       # Public: Receives a queue message.
@@ -568,20 +544,26 @@ module Azure
 
       private
 
-      def _unlock_message(path, sequence_number, lock_token)
-        _modify_message(:put, path, sequence_number, lock_token)
+      def _unlock_message(message)
+        _modify_message(:put, message)
       end
 
-      def _delete_message(path, sequence_number, lock_token)
-        _modify_message(:delete, path, sequence_number, lock_token)
+      def _delete_message(message)
+        _modify_message(:delete, message)
       end
 
-      def _modify_message(method, path, sequence_number, lock_token)
-        uri = message_uri(path, sequence_number, lock_token)
+      def _modify_message(method, message)
+        uri = nil
+        if (message.respond_to? :location)
+          uri = message.location
+        else
+          uri = message
+        end
+
         call(method, uri)
         nil
       end
-      
+
       def _send_message(path, message)
         message = Azure::ServiceBus::BrokeredMessage.new(message.to_s) unless message.kind_of?(Azure::ServiceBus::BrokeredMessage)
 

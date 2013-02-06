@@ -206,7 +206,7 @@ describe "ServiceBus Queues" do
         retrieved2.must_be_nil
 
         # Unlock the message
-        res = subject.unlock_queue_message name, retrieved.sequence_number, retrieved.lock_token
+        res = subject.unlock_queue_message retrieved
         res.must_be_nil
 
         # The message should be available once again
@@ -219,7 +219,7 @@ describe "ServiceBus Queues" do
         retrieved = subject.peek_lock_queue_message name
         retrieved.body.must_equal msg.body
 
-        subject.delete_queue_message name, retrieved.sequence_number, retrieved.lock_token
+        subject.delete_queue_message retrieved
 
         # it should be deleted
         retrieved = subject.peek_lock_queue_message name, { :timeout => 2 }
