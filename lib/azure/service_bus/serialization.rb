@@ -98,7 +98,21 @@ module Azure
         def resources_from_xml_with_next_link(resource, xml)
           feed = Nokogiri::XML(xml).remove_namespaces!
           values = (feed / 'entry').map {|node| resource_from_xml(resource, node) }
-          return values, feed.xpath("//link[@rel='next']/@href")
+
+          next_token = nil
+          next_uri = feed.xpath("//link[@rel='next']/@href")
+          if next_uri != nil && next_uri.length > 0
+            u = URI.parse(next_uri.to_s)
+            p = CGI.parse(u.query)
+
+            if p['skip'] || p['top']
+              next_token = { }
+              next_token[:top] = p['top'] if p['top']
+              next_token[:skip] = p['skip'] if p['skip']
+            end
+          end
+
+          return values, next_token
         end
 
         def to_bool(s)
