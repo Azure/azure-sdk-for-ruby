@@ -12,14 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'azure/blob/blob_properties'
 
 module Azure
   module Blob
     class Blob
       
       def initialize
-        @properties = BlobProperties.new
+        @properties = {}
         @metadata = {}
         yield self if block_given?
       end

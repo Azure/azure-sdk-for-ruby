@@ -53,7 +53,7 @@ describe Azure::Blob::BlobService do
       blob = subject.create_blob_pages container_name, blob_name2, 0, 511, content
 
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.create_blob_pages container_name, blob_name2, 1024, 1535, content, { :if_none_match => blob.properties.etag }
+        subject.create_blob_pages container_name, blob_name2, 1024, 1535, content, { :if_none_match => blob.properties[:etag] }
       end
     end
 
@@ -62,7 +62,7 @@ describe Azure::Blob::BlobService do
       512.times.each{|i| content << "@" }
 
       blob = subject.create_blob_pages container_name, blob_name, 0, 511, content
-      subject.create_blob_pages container_name, blob_name, 1024, 1535, content, { :if_match => blob.properties.etag }
+      subject.create_blob_pages container_name, blob_name, 1024, 1535, content, { :if_match => blob.properties[:etag] }
     end
   end
 

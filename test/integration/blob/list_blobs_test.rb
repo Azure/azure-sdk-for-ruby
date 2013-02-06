@@ -39,7 +39,7 @@ describe Azure::Blob::BlobService do
       expected_blob_names = blob_names.each
       result.blobs.each { |blob|
         blob.name.must_equal expected_blob_names.next
-        blob.properties.content_length.must_equal content.length
+        blob.properties[:content_length].must_equal content.length
       }
     end
 
@@ -67,7 +67,7 @@ describe Azure::Blob::BlobService do
 
         result.blobs.each { |blob|
           blob.name.must_equal expected_blob_names.next
-          blob.properties.content_length.must_equal content.length
+          blob.properties[:content_length].must_equal content.length
 
           metadata.each { |k,v|
             blob.metadata.must_include k.downcase

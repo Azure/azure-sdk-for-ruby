@@ -222,7 +222,7 @@ describe Azure::Blob::BlobService do
 
     describe "#get_container_properties" do
       let(:method) { :get }
-      let(:container_properties) { Azure::Blob::ContainerProperties.new }
+      let(:container_properties) { {} }
 
       before {
         container.properties = container_properties
@@ -251,7 +251,6 @@ describe Azure::Blob::BlobService do
         result = subject.get_container_properties container_name
         result.must_be_kind_of Azure::Blob::Container
         result.name.must_equal container_name
-        result.properties.must_be_kind_of Azure::Blob::ContainerProperties
         result.properties.must_equal container_properties
       end
     end

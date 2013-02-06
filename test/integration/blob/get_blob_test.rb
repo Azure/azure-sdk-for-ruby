@@ -36,7 +36,7 @@ describe Azure::Blob::BlobService do
       returned_content.must_equal content
       blob.metadata.must_include "custommetadataproperty"
       blob.metadata["custommetadataproperty"].must_equal "CustomMetadataValue"
-      blob.properties.content_type.must_equal "application/foo"
+      blob.properties[:content_type].must_equal "application/foo"
     end
 
   	it 'retrieves a range of data from the blob' do

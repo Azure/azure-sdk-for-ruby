@@ -58,7 +58,7 @@ describe Azure::Blob::BlobService do
       blob, returned_content = subject.get_blob container_name, blob_name, { :start_range => 0, :end_range => 511 }
       returned_content.length.must_equal 512
       returned_content.must_equal content2[0..511]
-      blob.properties.content_type.must_equal options2[:blob_content_type]
+      blob.properties[:content_type].must_equal options2[:blob_content_type]
       options2[:metadata].each { |k,v|
         blob.metadata.must_include k.downcase
         blob.metadata[k.downcase].must_equal v
@@ -69,7 +69,7 @@ describe Azure::Blob::BlobService do
 
       returned_content.length.must_equal 512
       returned_content.must_equal content[0..511]
-      blob.properties.content_type.must_equal options[:blob_content_type]
+      blob.properties[:content_type].must_equal options[:blob_content_type]
       options[:metadata].each { |k,v|
         blob.metadata.must_include k.downcase
         blob.metadata[k.downcase].must_equal v

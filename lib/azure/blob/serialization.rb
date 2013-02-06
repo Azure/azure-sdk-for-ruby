@@ -15,11 +15,9 @@
 require 'azure/service/serialization'
 
 require 'azure/blob/container'
-require 'azure/blob/container_properties'
 require 'azure/blob/container_enumeration_results'
 
 require 'azure/blob/blob'
-require 'azure/blob/blob_properties'
 require 'azure/blob/blob_enumeration_results'
 
 require 'azure/blob/block'
@@ -74,23 +72,27 @@ module Azure
         xml = slopify(xml)
         expect_node("Properties", xml)
 
-        ContainerProperties.new do |props|
-          props.last_modified = (xml > "Last-Modified").text if (xml > "Last-Modified").any?
-          props.etag = xml.Etag.text if (xml > "Etag").any?
-          props.lease_status = xml.LeaseStatus.text if (xml > "LeaseStatus").any?
-          props.lease_state = xml.LeaseState.text if (xml > "LeaseState").any?
-          props.lease_duration = xml.LeaseDuration.text if (xml > "LeaseDuration").any?
-        end
+        props = {}
+
+        props[:last_modified] = (xml > "Last-Modified").text if (xml > "Last-Modified").any?
+        props[:etag] = xml.Etag.text if (xml > "Etag").any?
+        props[:lease_status] = xml.LeaseStatus.text if (xml > "LeaseStatus").any?
+        props[:lease_state] = xml.LeaseState.text if (xml > "LeaseState").any?
+        props[:lease_duration] = xml.LeaseDuration.text if (xml > "LeaseDuration").any?
+
+        props
       end
 
       def self.container_properties_from_headers(headers)
-        ContainerProperties.new do |props|
-          props.last_modified = headers["Last-Modified"] 
-          props.etag = headers["Etag"]
-          props.lease_status = headers["x-ms-lease-status"]
-          props.lease_state = headers["x-ms-lease-state"]
-          props.lease_duration = headers["x-ms-lease-duration"]
-        end
+        props = {}
+
+        props[:last_modified] = headers["Last-Modified"] 
+        props[:etag] = headers["Etag"]
+        props[:lease_status] = headers["x-ms-lease-status"]
+        props[:lease_state] = headers["x-ms-lease-state"]
+        props[:lease_duration] = headers["x-ms-lease-duration"]
+
+        props
       end
 
       def self.public_access_level_from_headers(headers)
@@ -154,59 +156,63 @@ module Azure
         xml = slopify(xml)
         expect_node("Properties", xml)
 
-        BlobProperties.new do |props|
-          props.last_modified = (xml > "Last-Modified").text if (xml > "Last-Modified").any?
-          props.etag = xml.Etag.text if (xml > "Etag").any?
-          props.lease_status = xml.LeaseStatus.text if (xml > "LeaseStatus").any?
-          props.lease_state = xml.LeaseState.text if (xml > "LeaseState").any?
-          props.lease_duration = xml.LeaseDuration.text if (xml > "LeaseDuration").any?
-          props.content_length = (xml > "Content-Length").text.to_i if (xml > "Content-Length").any?
-          props.content_type = (xml > "Content-Type").text if (xml > "Content-Type").any?
-          props.content_encoding = (xml > "Content-Encoding").text if (xml > "Content-Encoding").any?
-          props.content_language = (xml > "Content-Language").text if (xml > "Content-Language").any?
-          props.content_md5 = (xml > "Content-MD5").text if (xml > "Content-MD5").any?
+        props = {}
 
-          props.cache_control = (xml > "Cache-Control").text if (xml > "Cache-Control").any?
-          props.sequence_number = (xml > "x-ms-blob-sequence-number").text.to_i if (xml > "x-ms-blob-sequence-number").any?
-          props.blob_type = xml.BlobType.text if (xml > "BlobType").any?
-          props.copy_id = xml.CopyId.text if (xml > "CopyId").any?
-          props.copy_status = xml.CopyStatus.text if (xml > "CopyStatus").any?
-          props.copy_source = xml.CopySource.text if (xml > "CopySource").any?
-          props.copy_progress = xml.CopyProgress.text if (xml > "CopyProgress").any?
-          props.copy_completion_time = xml.CopyCompletionTime.text if (xml > "CopyCompletionTime").any?
-          props.copy_status_description = xml.CopyStatusDescription.text if (xml > "CopyStatusDescription").any?
-        end
+        props[:last_modified] = (xml > "Last-Modified").text if (xml > "Last-Modified").any?
+        props[:etag] = xml.Etag.text if (xml > "Etag").any?
+        props[:lease_status] = xml.LeaseStatus.text if (xml > "LeaseStatus").any?
+        props[:lease_state] = xml.LeaseState.text if (xml > "LeaseState").any?
+        props[:lease_duration] = xml.LeaseDuration.text if (xml > "LeaseDuration").any?
+        props[:content_length] = (xml > "Content-Length").text.to_i if (xml > "Content-Length").any?
+        props[:content_type] = (xml > "Content-Type").text if (xml > "Content-Type").any?
+        props[:content_encoding] = (xml > "Content-Encoding").text if (xml > "Content-Encoding").any?
+        props[:content_language] = (xml > "Content-Language").text if (xml > "Content-Language").any?
+        props[:content_md5] = (xml > "Content-MD5").text if (xml > "Content-MD5").any?
+
+        props[:cache_control] = (xml > "Cache-Control").text if (xml > "Cache-Control").any?
+        props[:sequence_number] = (xml > "x-ms-blob-sequence-number").text.to_i if (xml > "x-ms-blob-sequence-number").any?
+        props[:blob_type] = xml.BlobType.text if (xml > "BlobType").any?
+        props[:copy_id] = xml.CopyId.text if (xml > "CopyId").any?
+        props[:copy_status] = xml.CopyStatus.text if (xml > "CopyStatus").any?
+        props[:copy_source] = xml.CopySource.text if (xml > "CopySource").any?
+        props[:copy_progress] = xml.CopyProgress.text if (xml > "CopyProgress").any?
+        props[:copy_completion_time] = xml.CopyCompletionTime.text if (xml > "CopyCompletionTime").any?
+        props[:copy_status_description] = xml.CopyStatusDescription.text if (xml > "CopyStatusDescription").any?
+
+        props
       end
 
       def self.blob_properties_from_headers(headers)
-        BlobProperties.new do |props|
-          props.last_modified = headers["Last-Modified"] 
-          props.etag = headers["Etag"]
-          props.lease_status = headers["x-ms-lease-status"]
-          props.lease_state = headers["x-ms-lease-state"]
-          props.lease_duration = headers["x-ms-lease-duration"]
+        props = {}
 
-          props.content_length = headers["x-ms-blob-content-length"] || headers["Content-Length"]
-          props.content_length = props.content_length.to_i if props.content_length
-        
-          props.content_type =  headers["x-ms-blob-content-type"] || headers["Content-Type"]
-          props.content_encoding = headers["x-ms-blob-content-encoding"] || headers["Content-Encoding"]
-          props.content_language = headers["x-ms-blob-content-language"] || headers["Content-Language"]
-          props.content_md5 = headers["x-ms-blob-content-md5"] || headers["Content-MD5"]
+        props[:last_modified] = headers["Last-Modified"]
+        props[:etag] = headers["Etag"]
+        props[:lease_status] = headers["x-ms-lease-status"]
+        props[:lease_state] = headers["x-ms-lease-state"]
+        props[:lease_duration] = headers["x-ms-lease-duration"]
 
-          props.cache_control = headers["x-ms-blob-cache-control"] || headers["Cache-Control"]
-          props.sequence_number = headers["x-ms-blob-sequence-number"].to_i if headers["x-ms-blob-sequence-number"] 
-          props.blob_type = headers["x-ms-blob-type"]
+        props[:content_length] = headers["x-ms-blob-content-length"] || headers["Content-Length"]
+        props[:content_length] = props[:content_length].to_i if props[:content_length]
+      
+        props[:content_type] =  headers["x-ms-blob-content-type"] || headers["Content-Type"]
+        props[:content_encoding] = headers["x-ms-blob-content-encoding"] || headers["Content-Encoding"]
+        props[:content_language] = headers["x-ms-blob-content-language"] || headers["Content-Language"]
+        props[:content_md5] = headers["x-ms-blob-content-md5"] || headers["Content-MD5"]
 
-          props.copy_id = headers["x-ms-copy-id"]
-          props.copy_status = headers["x-ms-copy-status"]
-          props.copy_source = headers["x-ms-copy-source"]
-          props.copy_progress = headers["x-ms-copy-progress"]
-          props.copy_completion_time = headers["x-ms-copy-completion-time"]
-          props.copy_status_description = headers["x-ms-copy-status-description"]
+        props[:cache_control] = headers["x-ms-blob-cache-control"] || headers["Cache-Control"]
+        props[:sequence_number] = headers["x-ms-blob-sequence-number"].to_i if headers["x-ms-blob-sequence-number"]
+        props[:blob_type] = headers["x-ms-blob-type"]
 
-          props.accept_ranges = headers["Accept-Ranges"].to_i if headers["Accept-Ranges"]
-        end
+        props[:copy_id] = headers["x-ms-copy-id"]
+        props[:copy_status] = headers["x-ms-copy-status"]
+        props[:copy_source] = headers["x-ms-copy-source"]
+        props[:copy_progress] = headers["x-ms-copy-progress"]
+        props[:copy_completion_time] = headers["x-ms-copy-completion-time"]
+        props[:copy_status_description] = headers["x-ms-copy-status-description"]
+
+        props[:accept_ranges] = headers["Accept-Ranges"].to_i if headers["Accept-Ranges"]
+
+        props
       end
 
       def self.block_list_to_xml(block_list)

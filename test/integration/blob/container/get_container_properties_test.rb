@@ -30,8 +30,8 @@ describe Azure::Blob::BlobService do
       container = subject.get_container_properties container_name
       container.wont_be_nil
       container.name.must_equal container_name
-      container.properties.etag.must_equal properties.etag
-      container.properties.last_modified.must_equal properties.last_modified
+      container.properties[:etag].must_equal properties[:etag]
+      container.properties[:last_modified].must_equal properties[:last_modified]
 
       metadata.each { |k,v|
         container.metadata.must_include k.downcase
