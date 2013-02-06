@@ -53,8 +53,8 @@ describe Azure::Blob::BlobService do
       while(counter < 10 and not finished)
         sleep(1)
         blob = subject.get_blob_properties dest_container_name, dest_blob_name
-        blob.properties.copy_id.must_equal copy_id
-        finished = blob.properties.copy_status == "success"
+        blob.properties[:copy_id].must_equal copy_id
+        finished = blob.properties[:copy_status] == "success"
         counter +=1
       end
       finished.must_equal true

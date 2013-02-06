@@ -82,7 +82,8 @@ module Azure
             'location',
             'server',
             'connection',
-            'content-type'
+            'content-type',
+            'content-length'
           ]
           props = response.headers.reject {|k,_| header_names_black_list.include?(k.downcase) }
           props.each do |prop_name, value|

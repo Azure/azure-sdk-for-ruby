@@ -14,7 +14,6 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 require "azure/blob/blob_service"
-require "azure/blob/blob_properties"
 
 describe Azure::Blob::BlobService do
   subject { Azure::Blob::BlobService.new }
@@ -39,9 +38,9 @@ describe Azure::Blob::BlobService do
       result = subject.set_blob_properties container_name, blob_name, options
       result.must_be_nil
       blob = subject.get_blob_properties container_name, blob_name
-      blob.properties.content_type.must_equal options[:blob_content_type]
-      blob.properties.content_encoding.must_equal options[:blob_content_encoding]
-      blob.properties.cache_control.must_equal options[:blob_cache_control]
+      blob.properties[:content_type].must_equal options[:blob_content_type]
+      blob.properties[:content_encoding].must_equal options[:blob_content_encoding]
+      blob.properties[:cache_control].must_equal options[:blob_cache_control]
     end
 
     describe 'when a blob has a snapshot' do
@@ -54,9 +53,9 @@ describe Azure::Blob::BlobService do
         blob = subject.get_blob_properties container_name, blob_name, { :snapshot => snapshot }
 
         blob.snapshot.must_equal snapshot
-        blob.properties.content_type.must_equal options[:blob_content_type]
-        blob.properties.content_encoding.must_equal options[:blob_content_encoding]
-        blob.properties.cache_control.must_equal options[:blob_cache_control]
+        blob.properties[:content_type].must_equal options[:blob_content_type]
+        blob.properties[:content_encoding].must_equal options[:blob_content_encoding]
+        blob.properties[:cache_control].must_equal options[:blob_cache_control]
       end
 
       it 'errors if the snapshot does not exist' do
