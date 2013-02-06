@@ -89,7 +89,16 @@ module Azure
 
         def resources_from_xml(resource, xml)
           feed = Nokogiri::XML(xml).remove_namespaces!
-          (feed / 'entry').map {|node| resource_from_xml(resource, node) }
+          values = (feed / 'entry').map {|node| resource_from_xml(resource, node) }
+          values.class.module_eval { attr_accessor :next_link}
+          values.next_link = feed.xpath("//link[@rel='next']/@href")
+          values
+        end
+
+        def resources_from_xml_with_next_link(resource, xml)
+          feed = Nokogiri::XML(xml).remove_namespaces!
+          values = (feed / 'entry').map {|node| resource_from_xml(resource, node) }
+          return values, feed.xpath("//link[@rel='next']/@href")
         end
 
         def to_bool(s)

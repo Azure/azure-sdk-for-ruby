@@ -54,7 +54,7 @@ describe "ServiceBus Subscriptions" do
     end
 
     it "should be able to list subscriptions" do
-      result = subject.list_subscriptions topic
+      result, next_link = subject.list_subscriptions topic
       subscription_found = false
       result.each { |s|
         subscription_found = true if s.name == subscription
@@ -133,7 +133,7 @@ describe "ServiceBus Subscriptions" do
       }
 
       it "should be able to list subscriptions" do
-        result = subject.list_subscriptions topic
+        result, next_link = subject.list_subscriptions topic
 
         subscription_found = false
         subscription1_found = false
@@ -149,24 +149,27 @@ describe "ServiceBus Subscriptions" do
       end
 
       it "should be able to use $skip token" do
-        result = subject.list_subscriptions topic
-        result2 = subject.list_subscriptions topic, { :skip => 1 }
+        result, next_link = subject.list_subscriptions topic
+        result2, next_link2 = subject.list_subscriptions topic, { :skip => 1 }
         result2.length.must_equal result.length - 1
         result2[0].id.must_equal result[1].id
       end
       
       it "should be able to use $top token" do
-        result = subject.list_subscriptions topic
+        result, next_link = subject.list_subscriptions topic
         result.length.wont_equal 1
+        next_link.must_be_nil
 
-        result2 = subject.list_subscriptions topic, { :top => 1 }
+        result2, next_link2 = subject.list_subscriptions topic, { :top => 1 }
+        next_link2.wont_be_nil
         result2.length.must_equal 1
       end
 
       it "should be able to use $skip and $top token together" do
-        result = subject.list_subscriptions topic
-        result2 = subject.list_subscriptions topic, { :skip => 1, :top => 1 }
+        result, next_link = subject.list_subscriptions topic
+        result2, next_link2 = subject.list_subscriptions topic, { :skip => 1, :top => 1 }
         result2.length.must_equal 1
+        next_link2.must_be_nil
         result2[0].id.must_equal result[1].id
       end
     end
