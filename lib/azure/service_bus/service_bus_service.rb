@@ -813,7 +813,8 @@ module Azure
         top = query.delete ["$top"]
 
         uri = generate_uri("#{subpath}/#{resource.to_s.capitalize}s", query)
-        uri.query = [uri.query, (skip ? "$skip=" + skip : nil), (top ? "$top=" + top : "")].join('&')
+        uri.query = [uri.query, "$skip=" + skip].join('&') if skip
+        uri.query = [uri.query, "$top=" + top].join('&') if top
         uri
       end
     end
