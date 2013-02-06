@@ -100,7 +100,7 @@ describe "ServiceBus Queues" do
       }
       
       it "should be able to get a list of queues" do
-        result = subject.list_queues
+        result, next_link = subject.list_queues
 
         result.must_be :kind_of?, Array
         q_found = false
@@ -115,23 +115,23 @@ describe "ServiceBus Queues" do
       end
 
       it "should be able to use $skip token with list_queues" do
-        result = subject.list_queues
-        result2 = subject.list_queues({ :skip => 1 })
+        result, next_link = subject.list_queues
+        result2, next_link2 = subject.list_queues({ :skip => 1 })
         result2.length.must_equal result.length - 1
         result2[0].id.must_equal result[1].id
       end
       
       it "should be able to use $top token with list_queues" do
-        result = subject.list_queues
+        result, next_link = subject.list_queues
         result.length.wont_equal 1
 
-        result2 = subject.list_queues({ :top => 1 })
+        result2, next_link2 = subject.list_queues({ :top => 1 })
         result2.length.must_equal 1
       end
 
       it "should be able to use $skip and $top token together with list_queues" do
-        result = subject.list_queues
-        result2 = subject.list_queues({ :skip => 1, :top => 1 })
+        result, next_link = subject.list_queues
+        result2, next_link2 = subject.list_queues({ :skip => 1, :top => 1 })
         result2.length.must_equal 1
         result2[0].id.must_equal result[1].id
       end
@@ -206,7 +206,7 @@ describe "ServiceBus Queues" do
         retrieved2.must_be_nil
 
         # Unlock the message
-        res = subject.unlock_queue_message name, retrieved.sequence_number, retrieved.lock_token
+        res = subject.unlock_queue_message retrieved
         res.must_be_nil
 
         # The message should be available once again
@@ -219,7 +219,7 @@ describe "ServiceBus Queues" do
         retrieved = subject.peek_lock_queue_message name
         retrieved.body.must_equal msg.body
 
-        subject.delete_queue_message name, retrieved.sequence_number, retrieved.lock_token
+        subject.delete_queue_message retrieved
 
         # it should be deleted
         retrieved = subject.peek_lock_queue_message name, { :timeout => 2 }

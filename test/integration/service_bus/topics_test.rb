@@ -40,7 +40,7 @@ describe "ServiceBus Topics" do
     end
 
     it "should be able to list topics" do
-      result = subject.list_topics
+      result, next_link = subject.list_topics
       topic_found = false
       result.each { |t|
         topic_found = true if t.name == topic
@@ -67,7 +67,7 @@ describe "ServiceBus Topics" do
       }
 
       it "should be able to list topics" do
-        result = subject.list_topics
+        result, next_link = subject.list_topics
         topic_found = false
         topic1_found = false
         topic2_found = false
@@ -80,23 +80,23 @@ describe "ServiceBus Topics" do
       end
 
       it "should be able to use $skip token with list_topics" do
-        result = subject.list_topics
-        result2 = subject.list_topics({ :skip => 1 })
+        result, next_link = subject.list_topics
+        result2, next_link2 = subject.list_topics({ :skip => 1 })
         result2.length.must_equal result.length - 1
         result2[0].id.must_equal result[1].id
       end
       
       it "should be able to use $top token with list_topics" do
-        result = subject.list_topics
+        result, next_link = subject.list_topics
         result.length.wont_equal 1
 
-        result2 = subject.list_topics({ :top => 1 })
+        result2, next_link2 = subject.list_topics({ :top => 1 })
         result2.length.must_equal 1
       end
 
       it "should be able to use $skip and $top token together with list_topics" do
-        result = subject.list_topics
-        result2 = subject.list_topics({ :skip => 1, :top => 1 })
+        result, next_link = subject.list_topics
+        result2, next_link2 = subject.list_topics({ :skip => 1, :top => 1 })
         result2.length.must_equal 1
         result2[0].id.must_equal result[1].id
       end

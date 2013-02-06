@@ -263,7 +263,7 @@ azure_service_bus.send_queue_message("test-queue-1", message)
 message = azure_service_bus.receive_queue_message("test-queue-1")
 
 # Delete a queue message
-azure_service_bus.delete_queue_message("test-queue-1", message.sequence_number, message.lock_token)
+azure_service_bus.delete_queue_message(message)
 
 # Delete a queue
 azure_service_bus.delete_queue("test-queue-1")
@@ -303,7 +303,7 @@ azure_service_bus.send_topic_message(topic1, message)
 message = azure_service_bus.receive_subscription_message(topic1.name, subscription.name)
 
 # Delete a subscription message
-azure_service_bus.delete_subscription_message(topic1.name, subscription.name, message.sequence_number, message.lock_token)
+azure_service_bus.delete_subscription_message(message)
 
 # Delete a subscription
 azure_service_bus.delete_subscription(subscription)
