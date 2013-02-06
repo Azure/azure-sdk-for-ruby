@@ -82,6 +82,13 @@ module Azure
       def action=(val)
         description['Action'] = val.to_hash
       end
+
+      def ordered_props
+        [
+          'Action',
+          'Filter'
+        ]
+      end
     end
   end
 end

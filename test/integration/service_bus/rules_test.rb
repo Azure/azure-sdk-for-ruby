@@ -48,6 +48,26 @@ describe "ServiceBus Rules" do
     subject.delete_rule result
   end
 
+  it "should be able to create a new rule with an action" do
+    ruleObject = Azure::ServiceBus::Rule.new "my_other_rule"
+    ruleObject.subscription = subscription
+    ruleObject.topic = topic
+    ruleObject.filter = Azure::ServiceBus::SqlFilter.new({ "SqlExpression" => "MyProperty='XYZ'" })
+    ruleObject.action = Azure::ServiceBus::SqlRuleAction.new({ "SqlExpression" => "set MyProperty2 = 'ABC'" })
+
+    result = subject.create_rule ruleObject
+    result.must_be :kind_of?, Azure::ServiceBus::Rule
+    result.filter.must_be_kind_of Azure::ServiceBus::SqlFilter
+    result.filter.sql_expression.must_equal "MyProperty='XYZ'"
+    result.filter.compatibility_level.must_equal 20
+
+    result.action.must_be_kind_of Azure::ServiceBus::SqlRuleAction
+    result.action.sql_expression.must_equal "set MyProperty2 = 'ABC'"
+    result.action.compatibility_level.must_equal 20
+
+    subject.delete_rule result
+  end
+
   describe "when a rule exists" do
     before { subject.create_rule topic, subscription, rule }
 
