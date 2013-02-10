@@ -27,21 +27,33 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
-      # * +:DuplicateDetectionHistoryTimeWindow+        - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
-      # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
-      # * +:EnableDeadLetteringOnMessageExpiration:+    - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
-      # * +:IsReadyOnly+                                - Boolean. Indicates if the queue is read only.
-      # * +:LockDuration+                               - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
-      # * +:MaxDeliveryCount+                           - Number. A message is automatically deadlettered after this number of deliveries.
-      # * +:MaxSizeInMegabytes+                         - Number. Specifies the maximum topic size in megabytes
-      # * +:MessageCount+                               - Number. Displays the number of messages currently in the queue.
-      # * +:RequiresDuplicateDetection+                 - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
-      # * +:RequiresSession+                            - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
-      # * +:SizeInBytes+                                - Number. Reflects the actual bytes toward the topic quota that messages in the topic currently occupy.
+      # * +:default_message_time_to_live+                - XML datetime. Determines how long a message lives in the associated subscriptions.
+      # * +:duplicate_detection_history_time_window+     - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
+      # * +:enable_batched_operations+                   - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
+      # * +:dead_lettering_on_message_expiration:+       - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
+      # * +:lock_duration+                               - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
+      # * +:max_delivery_count+                          - Number. A message is automatically deadlettered after this number of deliveries.
+      # * +:max_size_in_megabytes+                       - Number. Specifies the maximum topic size in megabytes
+      # * +:message_count+                               - Number. Displays the number of messages currently in the queue.
+      # * +:requires_duplicate_detection+                - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
+      # * +:requires_session+                            - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
+      # * +:size_in_bytes+                               - Number. Reflects the actual bytes toward the topic quota that messages in the topic currently occupy.
       #
       def initialize(name, options = {})
-        super(name, options)
+        normalized_options = {}
+        normalized_options["DefaultMessageTimeToLive"] = options[:default_message_time_to_live] if options[:default_message_time_to_live]
+        normalized_options["DuplicateDetectionHistoryTimeWindow"] = options[:duplicate_detection_history_time_window] if options[:duplicate_detection_history_time_window]
+        normalized_options["EnableBatchedOperations"] = options[:enable_batched_operations] if options[:enable_batched_operations]
+        normalized_options["DeadLetteringOnMessageExpiration"] = options[:dead_lettering_on_message_expiration] if options[:dead_lettering_on_message_expiration]
+        normalized_options["LockDuration"] = options[:lock_duration] if options[:lock_duration]
+        normalized_options["MaxDeliveryCount"] = options[:max_delivery_count] if options[:max_delivery_count]
+        normalized_options["MaxSizeInMegabytes"] = options[:max_size_in_megabytes] if options[:max_size_in_megabytes]
+        normalized_options["MessageCount"] = options[:message_count] if options[:message_count]
+        normalized_options["RequiresDuplicateDetection"] = options[:requires_duplicate_detection] if options[:requires_duplicate_detection]
+        normalized_options["RequiresSession"] = options[:requires_session] if options[:requires_session]
+        normalized_options["SizeInBytes"] = options[:size_in_bytes] if options[:size_in_bytes]
+
+        super(name, normalized_options)
       end
 
       # MessageCount: Number
@@ -85,19 +97,19 @@ module Azure
         _set 'RequiresSession', val
       end
 
-      # EnableDeadLetteringOnMessageExpiration: True, False
+      # DeadLetteringOnMessageExpiration: True, False
       #
       # This field controls how the Service Bus handles a message whose TTL has expired. If it is enabled and a message
       # expires, the Service Bus moves the message from the queue into the queue's dead-letter sub-queue. If disabled,
       # message will be permanently deleted from the queue. Settable only at queue creation time.
       #
       # Default: false
-      def enable_dead_lettering_on_message_expiration
-        to_bool description['EnableDeadLetteringOnMessageExpiration']
+      def dead_lettering_on_message_expiration
+        to_bool description['DeadLetteringOnMessageExpiration']
       end
 
       def enable_dead_lettering_on_message_expiration=(val)
-        _set 'EnableDeadLetteringOnMessageExpiration', val
+        _set 'DeadLetteringOnMessageExpiration', val
       end
 
       # MaxDeliveryCount: Number
@@ -203,13 +215,11 @@ module Azure
           'DefaultMessageTimeToLive',
           'DuplicateDetectionHistoryTimeWindow',
           'EnableBatchedOperations',
-          'EnableDeadLetteringOnMessageExpiration',
-          'IsReadOnly',
+          'DeadLetteringOnMessageExpiration',
           'LockDuration',
           'MaxDeliveryCount',
           'MaxSizeInMegabytes',
           'MessageCount',
-          'Path',
           'RequiresDuplicateDetection',
           'RequiresSession',
           'SizeInBytes'

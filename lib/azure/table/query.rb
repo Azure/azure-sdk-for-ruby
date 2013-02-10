@@ -84,8 +84,8 @@ module Azure
 
       def execute
         @table_service.query_entities(@table, {
-          :PartitionKey => @partition_key,
-          :RowKey => @row_key, 
+          :partition_key => @partition_key,
+          :row_key => @row_key, 
           :select => @fields.map{ |f| f.to_s },
           :filter => _build_filter_string,
           :top => (@top_n ? @top_n.to_i : @top_n),

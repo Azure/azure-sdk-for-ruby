@@ -238,8 +238,8 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:PartitionKey+       - String. The partition key (optional)
-      # * +:RowKey+             - String. The row key (optional)
+      # * +:partition_key+      - String. The partition key (optional)
+      # * +:row_key+            - String. The row key (optional)
       # * +:select+             - Array. An array of property names to return (optional)
       # * +:filter+             - String. A filter expression (optional)
       # * +:top+                - Integer. A limit for the number of results returned (optional)
@@ -255,17 +255,17 @@ module Azure
         query ={}
         query["$select"] = options[:select].join ',' if options[:select]
         query["$filter"] = options[:filter] if options[:filter]
-        query["$top"] = options[:top].to_s if options[:top] unless options[:PartitionKey] and options[:RowKey]
+        query["$top"] = options[:top].to_s if options[:top] unless options[:partition_key] and options[:row_key]
         query["NextPartitionKey"] = options[:continuation_token][:next_partition_key] if options[:continuation_token] and options[:continuation_token][:next_partition_key]
         query["NextRowKey"] = options[:continuation_token][:next_row_key] if options[:continuation_token] and options[:continuation_token][:next_row_key]
         query["timeout"] = options[:timeout].to_s if options[:timeout]
 
-        uri = entities_uri(table_name, options[:PartitionKey], options[:RowKey], query)
+        uri = entities_uri(table_name, options[:partition_key], options[:row_key], query)
         response = call(:get, uri, nil, { "DataServiceVersion" => "2.0;NetFx"})
 
         entities = []
 
-        results = (options[:PartitionKey] and options[:RowKey]) ? [Azure::Table::Serialization.hash_from_entry_xml(response.body)] : Azure::Table::Serialization.entries_from_feed_xml(response.body)
+        results = (options[:partition_key] and options[:row_key]) ? [Azure::Table::Serialization.hash_from_entry_xml(response.body)] : Azure::Table::Serialization.entries_from_feed_xml(response.body)
         
         results.each do |result|
           entity = Entity.new do |e|

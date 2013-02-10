@@ -21,7 +21,7 @@ describe "ServiceBus Queues" do
   let(:description) {{
     'DefaultMessageTimeToLive' => 'P10675199DT2H48M5.4775807S',
     'DuplicateDetectionHistoryTimeWindow' => 'PT10M',
-    'EnableDeadLetteringOnMessageExpiration' => "false",
+    'DeadLetteringOnMessageExpiration' => "false",
     'LockDuration' => 'PT30S',
     'MaxDeliveryCount' => "10",
     'MaxSizeInMegabytes' => "1",

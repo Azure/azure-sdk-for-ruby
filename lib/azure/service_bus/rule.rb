@@ -40,11 +40,15 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:Filter+                               - String. The rule filter.
-      # * +:Action+                               - String. The rule action.
+      # * +:filter+                               - String. The rule filter.
+      # * +:action+                               - String. The rule action.
       #
       def initialize(name, options = {})
-        super(name, options)
+        normalized_options = {}
+        normalized_options["Filter"] = options[:filter] if options[:filter]
+        normalized_options["Action"] = options[:action] if options[:action]
+
+        super(name, normalized_options)
       end
 
       # Filter: SqlFilter, TrueFilter /FalseFiilter, CorrelationFilter

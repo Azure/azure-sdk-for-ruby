@@ -30,17 +30,27 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:LockDuration+                               - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
-      # * +:RequiresSession+                            - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
-      # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
-      # * +:EnableDeadLetteringOnMessageExpiration:+    - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
-      # * +:DeadLetteringOnFilterEvaluationExceptions+  - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
-      # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
-      # * +:MaxDeliveryCount+                           - Number. A message is automatically deadlettered after this number of deliveries.
-      # * +:MessageCount+                               - Number. Displays the number of messages currently in the queue.
+      # * +:lock_duration+                                  - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
+      # * +:requires_session+                               - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
+      # * +:default_message_time_to_live+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
+      # * +:dead_lettering_on_message_expiration:+          - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
+      # * +:dead_lettering_on_filter_evaluation_exceptions+ - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
+      # * +:enable_batched_operations+                      - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
+      # * +:max_delivery_count+                             - Number. A message is automatically deadlettered after this number of deliveries.
+      # * +:message_count+                                  - Number. Displays the number of messages currently in the queue.
       #
       def initialize(name, options = {})
-        super(name, options)
+        normalized_options = {}
+        normalized_options["LockDuration"] = options[:lock_duration] if options[:lock_duration]
+        normalized_options["RequiresSession"] = options[:requires_session] if options[:requires_session]
+        normalized_options["DefaultMessageTimeToLive"] = options[:default_message_time_to_live] if options[:default_message_time_to_live]
+        normalized_options["DeadLetteringOnMessageExpiration"] = options[:dead_lettering_on_message_expiration] if options[:dead_lettering_on_message_expiration]
+        normalized_options["DeadLetteringOnFilterEvaluationExceptions"] = options[:dead_lettering_on_filter_evaluation_exceptions] if options[:dead_lettering_on_filter_evaluation_exceptions]
+        normalized_options["EnableBatchedOperations"] = options[:enable_batched_operations] if options[:enable_batched_operations]
+        normalized_options["MaxDeliveryCount"] = options[:max_delivery_count] if options[:max_delivery_count]
+        normalized_options["MessageCount"] = options[:message_count] if options[:message_count]
+
+        super(name, normalized_options)
       end
 
       # LockDuration: XML datetime
