@@ -30,7 +30,7 @@ module Azure
       # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
       # * +:DuplicateDetectionHistoryTimeWindow+        - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
       # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
-      # * +:EnableDeadLetteringOnMessageExpiration:     - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
+      # * +:EnableDeadLetteringOnMessageExpiration:+    - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
       # * +:IsReadyOnly+                                - Boolean. Indicates if the queue is read only.
       # * +:LockDuration+                               - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
       # * +:MaxDeliveryCount+                           - Number. A message is automatically deadlettered after this number of deliveries.

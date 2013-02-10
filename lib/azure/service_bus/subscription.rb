@@ -33,7 +33,7 @@ module Azure
       # * +:LockDuration+                               - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
       # * +:RequiresSession+                            - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
       # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
-      # * +:EnableDeadLetteringOnMessageExpiration:     - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
+      # * +:EnableDeadLetteringOnMessageExpiration:+    - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
       # * +:DeadLetteringOnFilterEvaluationExceptions+  - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
       # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
       # * +:MaxDeliveryCount+                           - Number. A message is automatically deadlettered after this number of deliveries.
