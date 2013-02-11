@@ -41,14 +41,14 @@ module Azure
       #
       def initialize(name, options = {})
         normalized_options = {}
-        normalized_options["LockDuration"] = options[:lock_duration] if options[:lock_duration]
-        normalized_options["RequiresSession"] = options[:requires_session] if options[:requires_session]
-        normalized_options["DefaultMessageTimeToLive"] = options[:default_message_time_to_live] if options[:default_message_time_to_live]
-        normalized_options["DeadLetteringOnMessageExpiration"] = options[:dead_lettering_on_message_expiration] if options[:dead_lettering_on_message_expiration]
-        normalized_options["DeadLetteringOnFilterEvaluationExceptions"] = options[:dead_lettering_on_filter_evaluation_exceptions] if options[:dead_lettering_on_filter_evaluation_exceptions]
-        normalized_options["EnableBatchedOperations"] = options[:enable_batched_operations] if options[:enable_batched_operations]
-        normalized_options["MaxDeliveryCount"] = options[:max_delivery_count] if options[:max_delivery_count]
-        normalized_options["MessageCount"] = options[:message_count] if options[:message_count]
+        normalized_options["LockDuration"] = options[:lock_duration].to_s if options.has_key?(:lock_duration)
+        normalized_options["RequiresSession"] = options[:requires_session].to_s if options.has_key?(:requires_session)
+        normalized_options["DefaultMessageTimeToLive"] = options[:default_message_time_to_live].to_s if options.has_key?(:default_message_time_to_live)
+        normalized_options["DeadLetteringOnMessageExpiration"] = options[:dead_lettering_on_message_expiration].to_s if options.has_key?(:dead_lettering_on_message_expiration)
+        normalized_options["DeadLetteringOnFilterEvaluationExceptions"] = options[:dead_lettering_on_filter_evaluation_exceptions].to_s if options.has_key?(:dead_lettering_on_filter_evaluation_exceptions)
+        normalized_options["EnableBatchedOperations"] = options[:enable_batched_operations].to_s if options.has_key?(:enable_batched_operations)
+        normalized_options["MaxDeliveryCount"] = options[:max_delivery_count].to_s if options.has_key?(:max_delivery_count)
+        normalized_options["MessageCount"] = options[:message_count].to_s if options.has_key?(:message_count)
 
         super(name, normalized_options)
       end

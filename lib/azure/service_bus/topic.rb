@@ -37,13 +37,13 @@ module Azure
       #
       def initialize(name, options = {})
         normalized_options = {}
-        normalized_options["DefaultMessageTimeToLive"] = options[:default_message_time_to_live] if options[:default_message_time_to_live]
-        normalized_options["MaximumNumberOfSubscriptions"] = options[:maximum_number_of_subscriptions] if options[:maximum_number_of_subscriptions]
-        normalized_options["MaxSizeInMegabytes"] = options[:max_size_in_megabytes] if options[:max_size_in_megabytes]
-        normalized_options["RequiresDuplicateDetection"] = options[:requires_duplicate_detection] if options[:requires_duplicate_detection]
-        normalized_options["DeadLetteringOnFilterEvaluationExceptions"] = options[:dead_lettering_on_filter_evaluation_exceptions] if options[:dead_lettering_on_filter_evaluation_exceptions]
-        normalized_options["DuplicateDetectionHistoryTimeWindow"] = options[:duplicate_detection_history_time_window] if options[:duplicate_detection_history_time_window]
-        normalized_options["EnableBatchedOperations"] = options[:enable_batched_operations] if options[:enable_batched_operations]
+        normalized_options["DefaultMessageTimeToLive"] = options[:default_message_time_to_live].to_s if options.has_key?(:default_message_time_to_live)
+        normalized_options["MaximumNumberOfSubscriptions"] = options[:maximum_number_of_subscriptions].to_s if options.has_key?(:maximum_number_of_subscriptions)
+        normalized_options["MaxSizeInMegabytes"] = options[:max_size_in_megabytes].to_s if options.has_key?(:max_size_in_megabytes)
+        normalized_options["RequiresDuplicateDetection"] = options[:requires_duplicate_detection].to_s if options.has_key?(:requires_duplicate_detection)
+        normalized_options["DeadLetteringOnFilterEvaluationExceptions"] = options[:dead_lettering_on_filter_evaluation_exceptions].to_s if options.has_key?(:dead_lettering_on_filter_evaluation_exceptions)
+        normalized_options["DuplicateDetectionHistoryTimeWindow"] = options[:duplicate_detection_history_time_window].to_s if options.has_key?(:duplicate_detection_history_time_window)
+        normalized_options["EnableBatchedOperations"] = options[:enable_batched_operations].to_s if options.has_key?(:enable_batched_operations)
 
         super(name, normalized_options)
       end

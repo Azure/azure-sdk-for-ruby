@@ -26,7 +26,7 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:correlation_id+                                  - The correlation identifier.
+      # * +:correlation_id+ - The correlation identifier.
       #
       def initialize(hash=nil)
         hash = {} unless hash
