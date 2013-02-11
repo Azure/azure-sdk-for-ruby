@@ -113,6 +113,10 @@ module Azure
       def get_property_headers
         hash = {}
         @message.properties.each do |name, value|
+          if value != nil && value.class == Time
+            value = value.httpdate
+          end
+
           tmp = JSON.generate [ value ]
           hash[name] = tmp[1..(tmp.length-2)]
         end
