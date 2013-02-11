@@ -32,11 +32,7 @@ module Azure
         request = Core::Http::HttpRequest.new(method, uri, body)
         request.headers.merge!(headers) if headers
 
-        if request.headers
-          request.headers['connection'] = 'keep-alive'
-        elsif 
-          request.headers = { 'connection' => 'keep-alive' }
-        end
+        request.headers['connection'] = 'keep-alive' if request.respond_to? :headers
 
         yield request if block_given?
 
