@@ -178,7 +178,7 @@ azure_table_service = Azure::TableService.new
 azure_table_service.create_table("testtable")
 
 # Insert an entity
-entity = { "content" => "test entity", :PartitionKey => "test-partition-key", :RowKey => "1" }
+entity = { "content" => "test entity", :partition_key => "test-partition-key", :row_key => "1" }
 azure_table_service.insert_entity("testtable", entity)
 
 # Get an entity

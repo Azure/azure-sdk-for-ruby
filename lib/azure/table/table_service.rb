@@ -479,8 +479,8 @@ module Azure
       #
       # Returns an Azure::Table::Entity instance on success
       def get_entity(table_name, partition_key, row_key, options={})
-        options[:PartitionKey] = partition_key
-        options[:RowKey] = row_key
+        options[:partition_key] = partition_key
+        options[:row_key] = row_key
         results, _ = query_entities(table_name, options)
         results.length > 0 ? results[0] : nil
       end
