@@ -45,8 +45,8 @@ module Azure
       #
       def initialize(name, options = {})
         normalized_options = {}
-        normalized_options["Filter"] = options[:filter] if options[:filter]
-        normalized_options["Action"] = options[:action] if options[:action]
+        normalized_options["Filter"] = options[:filter] if defined? options[:filter]
+        normalized_options["Action"] = options[:action] if defined? options[:action]
 
         super(name, normalized_options)
       end

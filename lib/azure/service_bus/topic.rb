@@ -37,13 +37,13 @@ module Azure
       #
       def initialize(name, options = {})
         normalized_options = {}
-        normalized_options["DefaultMessageTimeToLive"] = options[:default_message_time_to_live] if options[:default_message_time_to_live]
-        normalized_options["MaximumNumberOfSubscriptions"] = options[:maximum_number_of_subscriptions] if options[:maximum_number_of_subscriptions]
-        normalized_options["MaxSizeInMegabytes"] = options[:max_size_in_megabytes] if options[:max_size_in_megabytes]
-        normalized_options["RequiresDuplicateDetection"] = options[:requires_duplicate_detection] if options[:requires_duplicate_detection]
-        normalized_options["DeadLetteringOnFilterEvaluationExceptions"] = options[:dead_lettering_on_filter_evaluation_exceptions] if options[:dead_lettering_on_filter_evaluation_exceptions]
-        normalized_options["DuplicateDetectionHistoryTimeWindow"] = options[:duplicate_detection_history_time_window] if options[:duplicate_detection_history_time_window]
-        normalized_options["EnableBatchedOperations"] = options[:enable_batched_operations] if options[:enable_batched_operations]
+        normalized_options["DefaultMessageTimeToLive"] = options[:default_message_time_to_live] if defined? options[:default_message_time_to_live]
+        normalized_options["MaximumNumberOfSubscriptions"] = options[:maximum_number_of_subscriptions] if defined? options[:maximum_number_of_subscriptions]
+        normalized_options["MaxSizeInMegabytes"] = options[:max_size_in_megabytes] if defined? options[:max_size_in_megabytes]
+        normalized_options["RequiresDuplicateDetection"] = options[:requires_duplicate_detection] if defined? options[:requires_duplicate_detection]
+        normalized_options["DeadLetteringOnFilterEvaluationExceptions"] = options[:dead_lettering_on_filter_evaluation_exceptions] if defined? options[:dead_lettering_on_filter_evaluation_exceptions]
+        normalized_options["DuplicateDetectionHistoryTimeWindow"] = options[:duplicate_detection_history_time_window] if defined? options[:duplicate_detection_history_time_window]
+        normalized_options["EnableBatchedOperations"] = options[:enable_batched_operations] if defined? options[:enable_batched_operations]
 
         super(name, normalized_options)
       end
