@@ -643,10 +643,13 @@ module Azure
       def _subscription_from(*p)
         subscription = nil
 
-        if p.length == 2 or p.length == 3
+        if p.length == 3
+          subscription = Azure::ServiceBus::Subscription.new(p[1], p[2]) do |sub| 
+            sub.topic = p[0]
+          end
+        elsif p.length == 2
           subscription = Azure::ServiceBus::Subscription.new(p[1]) do |sub| 
             sub.topic = p[0]
-            sub.description = p[2] if p.length == 3
           end
         elsif p.length == 1 and p[0].respond_to? :name and p[0].respond_to? :topic and p[0].respond_to? :description
           subscription = p[0]
