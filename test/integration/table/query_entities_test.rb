@@ -77,7 +77,7 @@ describe Azure::Table::TableService do
       partition = partitions[0]
       row_key = entities[partition][0]
 
-      result, token = subject.query_entities table_name, { :PartitionKey => partition, :RowKey => row_key }
+      result, token = subject.query_entities table_name, { :partition_key => partition, :row_key => row_key }
       result.must_be_kind_of Array 
       result.length.must_equal 1
 
