@@ -18,12 +18,36 @@ describe "ServiceBus Topics" do
   subject { Azure::ServiceBus::ServiceBusService.new }
   after { ServiceBusTopicNameHelper.clean }
   let(:topic){ ServiceBusTopicNameHelper.name }
+  let(:topic_alternative){ ServiceBusTopicNameHelper.name }
+  let(:description_alternative) {{
+    :default_message_time_to_tive => 'PT30M',
+    :maximum_number_of_subscriptions => 3,
+    :max_size_in_megabytes => 2048,
+    :requires_duplicate_detection => true,
+    :dead_lettering_on_filter_evaluation_exceptions => true,
+    :duplicate_detection_history_time_window => 'PT20M',
+    :enable_batched_operations => true,
+  }}
 
   it "should be able to create a new topic" do
-    result = subject.create_topic topic, { "MaxSizeInMegabytes" => 2048 }
+    result = subject.create_topic topic, { :max_size_in_megabytes => 2048 }
     result.must_be :kind_of?, Azure::ServiceBus::Topic
     result.name.must_equal topic
     result.max_size_in_megabytes.must_equal 2048
+  end
+
+  it "should be able to create a new topic from a string and description Hash" do
+    result = subject.create_topic topic, description_alternative
+    result.must_be :kind_of?, Azure::ServiceBus::Topic
+    result.name.must_equal topic
+
+    result.default_message_time_to_live.must_equal 1800.0
+    result.maximum_number_of_subscriptions.must_equal description_alternative[:maximum_number_of_subscriptions]
+    result.max_size_in_megabytes.must_equal description_alternative[:max_size_in_megabytes]
+    result.requires_duplicate_detection.must_equal description_alternative[:requires_duplicate_detection]
+    result.dead_lettering_on_filter_evaluation_exceptions.must_equal description_alternative[:dead_lettering_on_filter_evaluation_exceptions]
+    result.duplicate_detection_history_time_window.must_equal 1200.0
+    result.enable_batched_operations.must_equal description_alternative[:enable_batched_operations]
   end
 
   describe "when a topic exists" do

@@ -18,6 +18,7 @@ describe "ServiceBus Queues" do
 
   subject { Azure::ServiceBus::ServiceBusService.new }
   let(:name) { ServiceBusQueueNameHelper.name }
+  let(:name_alternative) { ServiceBusQueueNameHelper.name }
   let(:description) {{
     :default_message_time_to_live => 'P10675199DT2H48M5.4775807S',
     :duplicate_detection_history_time_window => 'PT10M',
@@ -28,6 +29,17 @@ describe "ServiceBus Queues" do
     :requires_duplicate_detection => "true",
     :requires_session => "false"
   }}
+  let(:description_alternative) {{
+    :lock_duration => 'PT30S',
+    :max_size_in_megabytes => 2048,
+    :requires_duplicate_detection => true,
+    :requires_session => true,
+    :default_message_time_to_live => 'PT30M',
+    :dead_lettering_on_message_expiration => true,
+    :duplicate_detection_history_time_window => 'PT20M',
+    :max_delivery_count => 20,
+    :enable_batched_operations => true
+  }}
 
   after { ServiceBusQueueNameHelper.clean }
 
@@ -37,31 +49,46 @@ describe "ServiceBus Queues" do
     queue.name.must_equal name
   end
 
-  it "should be able to create a new queue from a string and description Hash" do
-    queue = subject.create_queue name, description
-    queue.must_be_kind_of Azure::ServiceBus::Queue
-    queue.name.must_equal name
-    queue.max_delivery_count.must_equal 10
-    queue.max_size_in_megabytes.must_equal 1
-    queue.requires_duplicate_detection.must_equal true
-  end
-
   it "should be able to create a new queue from a Queue" do
     queue = subject.create_queue Azure::ServiceBus::Queue.new(name)
     queue.must_be_kind_of Azure::ServiceBus::Queue
     queue.name.must_equal name
   end
 
-  it "should be able to create a new queue from a Queue with a description Hash" do
-    queue = subject.create_queue Azure::ServiceBus::Queue.new(name, description)
+  it "should be able to create a new queue from a string and description Hash" do
+    queue = subject.create_queue name_alternative, description_alternative
     queue.must_be_kind_of Azure::ServiceBus::Queue
-    queue.name.must_equal name
-    queue.max_size_in_megabytes.must_equal 1
-    queue.requires_duplicate_detection.must_equal true
+    queue.name.must_equal name_alternative
+
+    queue.lock_duration.must_equal 30.0
+    queue.max_size_in_megabytes.must_equal description_alternative[:max_size_in_megabytes]
+    queue.requires_duplicate_detection.must_equal description_alternative[:requires_duplicate_detection]
+    queue.requires_session.must_equal description_alternative[:requires_session]
+    queue.default_message_time_to_live.must_equal 1800.0
+    queue.dead_lettering_on_message_expiration.must_equal description_alternative[:dead_lettering_on_message_expiration]
+    queue.duplicate_detection_history_time_window.must_equal 1200.0
+    queue.max_delivery_count.must_equal description_alternative[:max_delivery_count]
+    queue.enable_batched_operations.must_equal description_alternative[:enable_batched_operations]
+  end
+
+  it "should be able to create a new queue from a Queue with a description Hash" do
+    queue = subject.create_queue Azure::ServiceBus::Queue.new(name_alternative, description_alternative)
+    queue.must_be_kind_of Azure::ServiceBus::Queue
+    queue.name.must_equal name_alternative
+
+    queue.lock_duration.must_equal 30.0
+    queue.max_size_in_megabytes.must_equal description_alternative[:max_size_in_megabytes]
+    queue.requires_duplicate_detection.must_equal description_alternative[:requires_duplicate_detection]
+    queue.requires_session.must_equal description_alternative[:requires_session]
+    queue.default_message_time_to_live.must_equal 1800.0
+    queue.dead_lettering_on_message_expiration.must_equal description_alternative[:dead_lettering_on_message_expiration]
+    queue.duplicate_detection_history_time_window.must_equal 1200.0
+    queue.max_delivery_count.must_equal description_alternative[:max_delivery_count]
+    queue.enable_batched_operations.must_equal description_alternative[:enable_batched_operations]
   end
 
   describe 'when a queue exists' do
-    before { subject.create_queue name, description }
+    before { subject.create_queue name }
 
     describe '#delete_queue' do
       it "should raise exception if the queue cannot be deleted" do
@@ -95,8 +122,8 @@ describe "ServiceBus Queues" do
       let(:name1) { ServiceBusQueueNameHelper.name }
       let(:name2) { ServiceBusQueueNameHelper.name }
       before { 
-        subject.create_queue name1, description
-        subject.create_queue name2, description
+        subject.create_queue name1
+        subject.create_queue name2
       }
       
       it "should be able to get a list of queues" do
