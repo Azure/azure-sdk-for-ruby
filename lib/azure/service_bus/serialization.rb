@@ -32,7 +32,17 @@ module Azure
         def rule_aspect_to_xml(xml, aspect_name, rule)
           aspect = rule.description[aspect_name].dup
           xml.send(aspect_name, "i:type" => aspect.delete(:type)) {
-            aspect.each { |k,v| xml.send(k, v) }
+            aspect.each { |k,v|
+              if k == :sql_expression
+                k = "SqlExpression"
+              elsif k == :compatibility_level
+                k = "CompatibilityLevel"
+              elsif k == :correlation_id
+                k = "CorrelationId"
+              end
+
+              xml.send(k, v)
+            }
           }
         end
 
@@ -81,7 +91,13 @@ module Azure
             value = {}
             value[:type] = element["type"]
             element.children.each do |child|
-              value[child.name] = child.content
+              if child.name == "SqlExpression"
+                value[:sql_expression] = child.content
+              elsif child.name == "CompatibilityLevel"
+                value[:compatibility_level] = child.content
+              elsif child.name == "CorrelationId"
+                value[:correlation_id] = child.content
+              end
             end
             description[element.name] = value
           end

@@ -21,7 +21,6 @@ module Azure
 
       def to_hash(hash={})
         hash[:type]=self.class.name.split('::').last
-        puts hash
         hash
       end
 

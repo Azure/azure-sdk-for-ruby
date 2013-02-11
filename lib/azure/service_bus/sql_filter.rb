@@ -32,8 +32,8 @@ module Azure
       #
       def initialize(hash=nil)
         hash = {} unless hash
-        @sql_expression = hash[:sql_expression]
-        @compatibility_level = (hash[:compatibility_level] || 20).to_i
+        @sql_expression = hash[:sql_expression] if hash[:sql_expression]
+        @compatibility_level = (hash[:compatibility_level] || 20).to_i if hash[:compatibility_level]
         super()
       end
 
