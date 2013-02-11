@@ -19,14 +19,14 @@ describe "ServiceBus Queues" do
   subject { Azure::ServiceBus::ServiceBusService.new }
   let(:name) { ServiceBusQueueNameHelper.name }
   let(:description) {{
-    'DefaultMessageTimeToLive' => 'P10675199DT2H48M5.4775807S',
-    'DuplicateDetectionHistoryTimeWindow' => 'PT10M',
-    'DeadLetteringOnMessageExpiration' => "false",
-    'LockDuration' => 'PT30S',
-    'MaxDeliveryCount' => "10",
-    'MaxSizeInMegabytes' => "1",
-    'RequiresDuplicateDetection' => "true",
-    'RequiresSession' => "false"
+    :default_message_time_to_live => 'P10675199DT2H48M5.4775807S',
+    :duplicate_detection_history_time_window => 'PT10M',
+    :dead_lettering_on_message_expiration => "false",
+    :lock_duration => 'PT30S',
+    :max_delivery_count => "10",
+    :max_size_in_megabytes => "1",
+    :requires_duplicate_detection => "true",
+    :requires_session => "false"
   }}
 
   after { ServiceBusQueueNameHelper.clean }

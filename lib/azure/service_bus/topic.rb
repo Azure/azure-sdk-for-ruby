@@ -174,14 +174,14 @@ module Azure
 
       def ordered_props
         [
-          'MaxSizeInMegabytes',
-          'SizeInBytes',
           'DefaultMessageTimeToLive',
-          'RequiresDuplicateDetection',
-          'DuplicateDetectionHistoryTimeWindow',
           'MaximumNumberOfSubscriptions',
+          'MaxSizeInMegabytes',
+          'RequiresDuplicateDetection',
+          'DeadLetteringOnFilterEvaluationExceptions',
+          'DuplicateDetectionHistoryTimeWindow',
           'EnableBatchedOperations',
-          'DeadLetteringOnFilterEvaluationExceptions'
+          'SizeInBytes'
         ]
       end
     end

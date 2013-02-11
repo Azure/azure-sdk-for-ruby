@@ -212,17 +212,17 @@ module Azure
 
       def ordered_props
         [
-          'DefaultMessageTimeToLive',
-          'DuplicateDetectionHistoryTimeWindow',
-          'EnableBatchedOperations',
-          'DeadLetteringOnMessageExpiration',
           'LockDuration',
-          'MaxDeliveryCount',
           'MaxSizeInMegabytes',
-          'MessageCount',
           'RequiresDuplicateDetection',
           'RequiresSession',
-          'SizeInBytes'
+          'DefaultMessageTimeToLive',
+          'DeadLetteringOnMessageExpiration',
+          'DuplicateDetectionHistoryTimeWindow',
+          'MaxDeliveryCount',
+          'EnableBatchedOperations',
+          'SizeInBytes',
+          'MessageCount'
         ]
       end
     end

@@ -174,9 +174,9 @@ module Azure
           "DefaultMessageTimeToLive",
           "DeadLetteringOnMessageExpiration",
           "DeadLetteringOnFilterEvaluationExceptions",
-          "EnableBatchedOperations",
+          "MessageCount",
           "MaxDeliveryCount",
-          "MessageCount"
+          "EnableBatchedOperations"
         ]
       end
     end
