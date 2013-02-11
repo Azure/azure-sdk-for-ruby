@@ -205,7 +205,7 @@ describe "ServiceBus Queues" do
             retrieved.properties[k.downcase].must_equal properties[k]
           else
             # Time comes back as string as there is no good way to distinguish
-            retrieved.properties[k.downcase].to_s.must_equal properties[k].to_s
+            retrieved.properties[k.downcase].to_s.must_equal properties[k].httpdate
           end
         }
 
