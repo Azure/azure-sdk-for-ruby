@@ -31,6 +31,7 @@ module Azure
       def call(method, uri, body=nil, headers=nil)
         request = Core::Http::HttpRequest.new(method, uri, body)
         request.headers.merge!(headers) if headers
+        request.headers['connection'] = 'keep-alive'
         
         yield request if block_given?
 
