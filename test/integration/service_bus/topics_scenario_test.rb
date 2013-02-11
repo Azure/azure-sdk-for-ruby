@@ -90,8 +90,6 @@ describe "ServiceBus Topics Scenario" do
     s.topic = topic_name
 
     s_prime = subject.create_subscription s
-    ScenarioHelper.out s.to_yaml
-    ScenarioHelper.out s_prime.to_yaml
     s_prime.dead_lettering_on_filter_evaluation_exceptions.must_equal s.dead_lettering_on_filter_evaluation_exceptions
     s_prime.dead_lettering_on_message_expiration.must_equal s.dead_lettering_on_message_expiration
     s_prime.enable_batched_operations.must_equal s.enable_batched_operations

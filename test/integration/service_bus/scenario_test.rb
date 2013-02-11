@@ -87,20 +87,6 @@ class ScenarioHelper
       custom_properties = get_custom_properties(index.to_i);
     end
 
-    ScenarioHelper.out "custom_properties: " + custom_properties.to_yaml
-    ScenarioHelper.out "actual.properties " + actual.properties.to_yaml
-    custom_properties.count.must_equal actual.properties.count
-
-    actual.properties.each { |key, value|
-      ScenarioHelper.out "xA:" + key + "(" + key.downcase + ")" ":" + value.to_s
-      ScenarioHelper.out " C:" + (custom_properties[key] == nil ? "<nil>" : custom_properties[key].to_s)
-      ScenarioHelper.out " 2:" + (custom_properties[key.downcase] == nil ? "<nil>" : custom_properties[key.downcase].to_s)
-    }
-    custom_properties.each { |key, value|
-      ScenarioHelper.out "xC:" + key + "(" + key.downcase + ")" ":" + value.to_s
-      ScenarioHelper.out " A:" + key + "(" + key.downcase + ")" ":" + value.to_s
-    }
-
     custom_properties.each { |key, value|
       ScenarioHelper.out key + ":" + value.to_s
       ScenarioHelper.out key.downcase + ":" + (actual.properties[key.downcase] == nil ? "<nil>" : actual.properties[key.downcase].to_s)
