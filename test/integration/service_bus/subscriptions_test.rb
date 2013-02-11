@@ -19,6 +19,16 @@ describe "ServiceBus Subscriptions" do
   after { ServiceBusTopicNameHelper.clean }
   let(:topic){ ServiceBusTopicNameHelper.name }
   let(:subscription) { "mySubscription" }
+  let(:subscription_alternative) { "mySubscription" }
+  let(:description_alternative) {{
+    :lock_duration => 'PT30S',
+    :requires_session => true,
+    :default_message_time_to_live => 'PT30M',
+    :dead_lettering_on_message_expiration => true,
+    :dead_lettering_on_filter_evaluation_exceptions => true,
+    :max_delivery_count => 20,
+    :enable_batched_operations => true
+  }}
 
   before { subject.create_topic topic }
 
@@ -26,6 +36,20 @@ describe "ServiceBus Subscriptions" do
     result = subject.create_subscription topic, subscription
     result.must_be :kind_of?, Azure::ServiceBus::Subscription
     result.name.must_equal subscription
+  end
+
+  it "should be able to create a new subscription from a string and description Hash" do
+    result = subject.create_subscription topic, subscription_alternative, description_alternative
+    result.must_be :kind_of?, Azure::ServiceBus::Subscription
+    result.name.must_equal subscription_alternative
+
+    result.lock_duration.must_equal 30.0
+    result.requires_session.must_equal description_alternative[:requires_session]
+    result.default_message_time_to_live.must_equal 1800.0
+    result.dead_lettering_on_message_expiration.must_equal description_alternative[:dead_lettering_on_message_expiration]
+    result.dead_lettering_on_filter_evaluation_exceptions.must_equal description_alternative[:dead_lettering_on_filter_evaluation_exceptions]
+    result.max_delivery_count.must_equal description_alternative[:max_delivery_count]
+    result.enable_batched_operations.must_equal description_alternative[:enable_batched_operations]
   end
 
   it "should be able to create a new subscription with objects" do

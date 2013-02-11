@@ -52,8 +52,8 @@ describe "ServiceBus Rules" do
     ruleObject = Azure::ServiceBus::Rule.new "my_other_rule"
     ruleObject.subscription = subscription
     ruleObject.topic = topic
-    ruleObject.filter = Azure::ServiceBus::SqlFilter.new({ "SqlExpression" => "MyProperty='XYZ'" })
-    ruleObject.action = Azure::ServiceBus::SqlRuleAction.new({ "SqlExpression" => "set MyProperty2 = 'ABC'" })
+    ruleObject.filter = Azure::ServiceBus::SqlFilter.new({ :sql_expression => "MyProperty='XYZ'" })
+    ruleObject.action = Azure::ServiceBus::SqlRuleAction.new({ :sql_expression => "set MyProperty2 = 'ABC'" })
 
     result = subject.create_rule ruleObject
     result.must_be :kind_of?, Azure::ServiceBus::Rule

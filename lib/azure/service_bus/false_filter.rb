@@ -17,9 +17,20 @@ require 'azure/service_bus/sql_filter'
 module Azure
   module ServiceBus
     class FalseFilter < SqlFilter
+      # Public: Initialize the SQL false Filter.
+      #
+      # ==== Attributes
+      #
+      # * +hash+   - The resource options Hash
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:sql_expression+                                  - The SQL expression.
+      #
       def initialize(hash=nil)
         hash = {} unless hash
-        hash["SqlExpression"] = "1 = 0" unless hash["SqlExpression"]
+        hash[:sql_expression] = "1 = 0" unless hash[:sql_expression]
         super(hash)
       end
     end

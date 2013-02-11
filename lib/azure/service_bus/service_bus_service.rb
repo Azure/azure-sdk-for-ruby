@@ -48,18 +48,17 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
-      # * +:DuplicateDetectionHistoryTimeWindow+        - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
-      # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
-      # * +:EnableDeadLetteringOnMessageExpiration:     - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
-      # * +:IsReadyOnly+                                - Boolean. Indicates if the queue is read only.
-      # * +:LockDuration+                               - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
-      # * +:MaxDeliveryCount+                           - Number. A message is automatically deadlettered after this number of deliveries.
-      # * +:MaxSizeInMegabytes+                         - Number. Specifies the maximum topic size in megabytes
-      # * +:MessageCount+                               - Number. Displays the number of messages currently in the queue.
-      # * +:RequiresDuplicateDetection+                 - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
-      # * +:RequiresSession+                            - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
-      # * +:SizeInBytes+                                - Number. Reflects the actual bytes toward the topic quota that messages in the topic currently occupy.
+      # * +:default_message_time_to_live+                - XML datetime. Determines how long a message lives in the associated subscriptions.
+      # * +:duplicate_detection_history_time_window+     - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
+      # * +:enable_batched_operations+                   - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
+      # * +:dead_lettering_on_message_expiration:+       - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
+      # * +:lock_duration+                               - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
+      # * +:max_delivery_count+                          - Number. A message is automatically deadlettered after this number of deliveries.
+      # * +:max_size_in_megabytes+                       - Number. Specifies the maximum topic size in megabytes
+      # * +:message_count+                               - Number. Displays the number of messages currently in the queue.
+      # * +:requires_duplicate_detection+                - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
+      # * +:requires_session+                            - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
+      # * +:size_in_bytes+                               - Number. Reflects the actual bytes toward the topic quota that messages in the topic currently occupy.
       #
       def create_queue(queue, options={})
         queue = _new_or_existing(Azure::ServiceBus::Queue, queue, options ? options : {})
@@ -114,14 +113,13 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:MaxSizeInMegabytes+                         - Number. Specifies the maximum topic size in megabytes
-      # * +:SizeInBytes+                                - Number. Reflects the actual bytes toward the topic quota that messages in the topic currently occupy.
-      # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
-      # * +:RequiresDuplicateDetection+                 - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
-      # * +:DuplicateDetectionHistoryTimeWindow+        - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
-      # * +:MaximumNumberOfSubscriptions+               - Number. Specifies the maximum number of subscriptions that can be associated with the topic.
-      # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
-      # * +:DeadLetteringOnFilterEvaluationExceptions+  - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
+      # * +:default_message_time_to_tive+                    - XML datetime. Determines how long a message lives in the associated subscriptions.
+      # * +:maximum_number_of_subscriptions+                 - Number. Specifies the maximum number of subscriptions that can be associated with the topic.
+      # * +:max_size_in_megabytes+                           - Number. Specifies the maximum topic size in megabytes
+      # * +:requires_duplicate_detection+                    - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
+      # * +:dead_lettering_on_filter_evaluation_exceptions+  - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
+      # * +:duplicate_detection_history_time_window+         - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
+      # * +:enable_batched_operations+                       - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
       #
       def create_topic(topic, options={})
         topic = _new_or_existing(Azure::ServiceBus::Topic, topic, options ? options : {})
@@ -176,8 +174,8 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:Filter+                               - String. The rule filter.
-      # * +:Action+                               - String. The rule action.
+      # * +:filter+                               - String. The rule filter.
+      # * +:action+                               - String. The rule action.
       #
       def create_rule(*p)
         rule = _rule_from(*p)
@@ -256,14 +254,14 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:LockDuration+                               - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
-      # * +:RequiresSession+                            - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
-      # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
-      # * +:EnableDeadLetteringOnMessageExpiration:     - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
-      # * +:DeadLetteringOnFilterEvaluationExceptions+  - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
-      # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
-      # * +:MaxDeliveryCount+                           - Number. A message is automatically deadlettered after this number of deliveries.
-      # * +:MessageCount+                               - Number. Displays the number of messages currently in the queue.
+      # * +:lock_duration+                                  - XML datetime. Determines the amount of time in seconds in which a message should be locked for processing by a receiver.
+      # * +:requires_session+                               - Boolean. If set to true, the queue will be session-aware and only SessionReceiver will be supported.
+      # * +:default_message_time_to_live+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
+      # * +:dead_lettering_on_message_expiration:+          - Boolean. This field controls how the Service Bus handles a message whose TTL has expired.
+      # * +:dead_lettering_on_filter_evaluation_exceptions+ - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
+      # * +:enable_batched_operations+                      - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
+      # * +:max_delivery_count+                             - Number. A message is automatically deadlettered after this number of deliveries.
+      # * +:message_count+                                  - Number. Displays the number of messages currently in the queue.
       #
       def create_subscription(*p)
         subscription = _subscription_from(*p)

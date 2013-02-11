@@ -17,16 +17,27 @@ require 'azure/service_bus/filter'
 module Azure
   module ServiceBus
     class CorrelationFilter < Filter
+      # Public: Initialize the Correlation Id Filter.
+      #
+      # ==== Attributes
+      #
+      # * +hash+   - The resource options Hash
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:correlation_id+                                  - The correlation identifier.
+      #
       def initialize(hash=nil)
         hash = {} unless hash
-        @correlation_id = hash["CorrelationId"]
+        @correlation_id = hash[:correlation_id]
         super()
       end
 
       attr_accessor :correlation_id #CorrelationId
 
       def to_hash(hash={})
-        hash["CorrelationId"]=correlation_id if correlation_id
+        hash[:correlation_id]=correlation_id if correlation_id
         super(hash)
       end
     end

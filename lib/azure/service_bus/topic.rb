@@ -27,17 +27,25 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:MaxSizeInMegabytes+                         - Number. Specifies the maximum topic size in megabytes
-      # * +:SizeInBytes+                                - Number. Reflects the actual bytes toward the topic quota that messages in the topic currently occupy.
-      # * +:DefaultMessageTimeToLive+                   - XML datetime. Determines how long a message lives in the associated subscriptions.
-      # * +:RequiresDuplicateDetection+                 - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
-      # * +:DuplicateDetectionHistoryTimeWindow+        - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
-      # * +:MaximumNumberOfSubscriptions+               - Number. Specifies the maximum number of subscriptions that can be associated with the topic.
-      # * +:EnableBatchedOperations+                    - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
-      # * +:DeadLetteringOnFilterEvaluationExceptions+  - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
+      # * +:default_message_time_to_tive+                    - XML datetime. Determines how long a message lives in the associated subscriptions.
+      # * +:maximum_number_of_subscriptions+                 - Number. Specifies the maximum number of subscriptions that can be associated with the topic.
+      # * +:max_size_in_megabytes+                           - Number. Specifies the maximum topic size in megabytes
+      # * +:requires_duplicate_detection+                    - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
+      # * +:dead_lettering_on_filter_evaluation_exceptions+  - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
+      # * +:duplicate_detection_history_time_window+         - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
+      # * +:enable_batched_operations+                       - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
       #
       def initialize(name, options = {})
-        super(name, options)
+        normalized_options = {}
+        normalized_options["DefaultMessageTimeToLive"] = options[:default_message_time_to_live] if options[:default_message_time_to_live]
+        normalized_options["MaximumNumberOfSubscriptions"] = options[:maximum_number_of_subscriptions] if options[:maximum_number_of_subscriptions]
+        normalized_options["MaxSizeInMegabytes"] = options[:max_size_in_megabytes] if options[:max_size_in_megabytes]
+        normalized_options["RequiresDuplicateDetection"] = options[:requires_duplicate_detection] if options[:requires_duplicate_detection]
+        normalized_options["DeadLetteringOnFilterEvaluationExceptions"] = options[:dead_lettering_on_filter_evaluation_exceptions] if options[:dead_lettering_on_filter_evaluation_exceptions]
+        normalized_options["DuplicateDetectionHistoryTimeWindow"] = options[:duplicate_detection_history_time_window] if options[:duplicate_detection_history_time_window]
+        normalized_options["EnableBatchedOperations"] = options[:enable_batched_operations] if options[:enable_batched_operations]
+
+        super(name, normalized_options)
       end
 
       # MaxSizeInMegabytes: Number
@@ -164,14 +172,14 @@ module Azure
 
       def ordered_props
         [
-          'MaxSizeInMegabytes',
-          'SizeInBytes',
           'DefaultMessageTimeToLive',
-          'RequiresDuplicateDetection',
-          'DuplicateDetectionHistoryTimeWindow',
           'MaximumNumberOfSubscriptions',
+          'MaxSizeInMegabytes',
+          'RequiresDuplicateDetection',
+          'DeadLetteringOnFilterEvaluationExceptions',
+          'DuplicateDetectionHistoryTimeWindow',
           'EnableBatchedOperations',
-          'DeadLetteringOnFilterEvaluationExceptions'
+          'SizeInBytes'
         ]
       end
     end
