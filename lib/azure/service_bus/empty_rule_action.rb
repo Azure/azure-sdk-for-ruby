@@ -17,6 +17,11 @@ require 'azure/service_bus/action'
 module Azure
   module ServiceBus
     class EmptyRuleAction < Action
+      # Public: Initialize the empty rule action.
+      #
+      # ==== Attributes
+      #
+      # * +hash+   - The resource options Hash
       def initialize(hash=nil)
         super()
       end

@@ -113,14 +113,13 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:max_size_in_megabytes+                           - Number. Specifies the maximum topic size in megabytes
-      # * +:size_in_bytes+                                   - Number. Reflects the actual bytes toward the topic quota that messages in the topic currently occupy.
       # * +:default_message_time_to_tive+                    - XML datetime. Determines how long a message lives in the associated subscriptions.
-      # * +:requires_duplicate_detection+                    - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
-      # * +:duplicate_detection_history_time_window+         - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
       # * +:maximum_number_of_subscriptions+                 - Number. Specifies the maximum number of subscriptions that can be associated with the topic.
-      # * +:enable_batched_operations+                       - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
+      # * +:max_size_in_megabytes+                           - Number. Specifies the maximum topic size in megabytes
+      # * +:requires_duplicate_detection+                    - Boolean. If enabled, the topic will detect duplicate messages within the time span specified by the DuplicateDetectionHistoryTimeWindow property
       # * +:dead_lettering_on_filter_evaluation_exceptions+  - Boolean. Determines how the Service Bus handles a message that causes an exception during a subscription's filter evaluation.
+      # * +:duplicate_detection_history_time_window+         - XML datetime. Specifies the time span during which the Service Bus will detect message duplication.
+      # * +:enable_batched_operations+                       - Boolean. Enables or disables service side batching behavior when performing operations for the specific queue.
       #
       def create_topic(topic, options={})
         topic = _new_or_existing(Azure::ServiceBus::Topic, topic, options ? options : {})

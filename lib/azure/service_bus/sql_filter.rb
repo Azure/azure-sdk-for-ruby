@@ -17,10 +17,23 @@ require 'azure/service_bus/filter'
 module Azure
   module ServiceBus
     class SqlFilter < Filter
+
+      # Public: Initialize the SQL Rule Filter.
+      #
+      # ==== Attributes
+      #
+      # * +hash+   - The resource options Hash
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:sql_expression+                                 - The SQL expression.
+      # * +:compatibility_level+                            - The compatibility level.
+      #
       def initialize(hash=nil)
         hash = {} unless hash
-        @sql_expression = hash["SqlExpression"]
-        @compatibility_level = (hash["CompatibilityLevel"] || 20).to_i
+        @sql_expression = hash[:sql_expression]
+        @compatibility_level = (hash[:compatibility_level] || 20).to_i
         super()
       end
 
@@ -28,8 +41,8 @@ module Azure
       attr_accessor :compatibility_level
       
       def to_hash(hash={})
-        hash["SqlExpression"]=sql_expression if sql_expression
-        hash["CompatibilityLevel"]=compatibility_level.to_s if compatibility_level
+        hash[:sql_expression]=sql_expression if sql_expression
+        hash[:compatibility_level]=compatibility_level.to_s if compatibility_level
         super(hash)
       end
     end
