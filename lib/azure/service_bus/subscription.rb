@@ -41,14 +41,14 @@ module Azure
       #
       def initialize(name, options = {})
         normalized_options = {}
-        normalized_options["LockDuration"] = options[:lock_duration] if defined? options[:lock_duration]
-        normalized_options["RequiresSession"] = options[:requires_session] if defined? options[:requires_session]
-        normalized_options["DefaultMessageTimeToLive"] = options[:default_message_time_to_live] if defined? options[:default_message_time_to_live]
-        normalized_options["DeadLetteringOnMessageExpiration"] = options[:dead_lettering_on_message_expiration] if defined? options[:dead_lettering_on_message_expiration]
-        normalized_options["DeadLetteringOnFilterEvaluationExceptions"] = options[:dead_lettering_on_filter_evaluation_exceptions] if defined? options[:dead_lettering_on_filter_evaluation_exceptions]
-        normalized_options["EnableBatchedOperations"] = options[:enable_batched_operations] if defined? options[:enable_batched_operations]
-        normalized_options["MaxDeliveryCount"] = options[:max_delivery_count] if defined? options[:max_delivery_count]
-        normalized_options["MessageCount"] = options[:message_count] if defined? options[:message_count]
+        normalized_options["LockDuration"] = options[:lock_duration].to_s if defined? options[:lock_duration]
+        normalized_options["RequiresSession"] = options[:requires_session].to_s if defined? options[:requires_session]
+        normalized_options["DefaultMessageTimeToLive"] = options[:default_message_time_to_live].to_s if defined? options[:default_message_time_to_live]
+        normalized_options["DeadLetteringOnMessageExpiration"] = options[:dead_lettering_on_message_expiration].to_s if defined? options[:dead_lettering_on_message_expiration]
+        normalized_options["DeadLetteringOnFilterEvaluationExceptions"] = options[:dead_lettering_on_filter_evaluation_exceptions].to_s if defined? options[:dead_lettering_on_filter_evaluation_exceptions]
+        normalized_options["EnableBatchedOperations"] = options[:enable_batched_operations].to_s if defined? options[:enable_batched_operations]
+        normalized_options["MaxDeliveryCount"] = options[:max_delivery_count].to_s if defined? options[:max_delivery_count]
+        normalized_options["MessageCount"] = options[:message_count].to_s if defined? options[:message_count]
 
         super(name, normalized_options)
       end

@@ -32,6 +32,14 @@ describe "ServiceBus Subscriptions" do
 
   before { subject.create_topic topic }
 
+  it "should be able to set description values to false" do
+    s = Azure::ServiceBus::Subscription.new(subscription, {
+      :requires_session => false
+    })
+
+    s.requires_session.must_equal false
+  end
+
   it "should be able to create a new subscription" do
     result = subject.create_subscription topic, subscription
     result.must_be :kind_of?, Azure::ServiceBus::Subscription
