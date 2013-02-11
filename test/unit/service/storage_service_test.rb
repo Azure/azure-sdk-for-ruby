@@ -51,16 +51,18 @@ describe Azure::Service::StorageService do
       end
 
       let(:mock_headers) {{ 
-          "Other-Header"=>"SomeValue", 
-          "Custom-Header"=>"PreviousValue"
+        "Other-Header"=>"SomeValue", 
+        "Custom-Header"=>"PreviousValue",
+        "connection"=>"PreviousValue"
       }}
 
       it "merges the custom headers with the HttpRequest headers" do
-        mock_request.expects(:headers).returns(mock_headers)
+        mock_request.expects(:headers).returns(mock_headers).at_least(2)
         subject.call(method, uri, nil, { "Custom-Header"=>"CustomValue"} )
 
         mock_headers["Other-Header"].must_equal "SomeValue"
         mock_headers["Custom-Header"].must_equal "CustomValue"
+        mock_headers["connection"].must_equal "keep-alive"
       end
     end
 
