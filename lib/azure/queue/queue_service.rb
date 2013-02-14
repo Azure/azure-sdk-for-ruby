@@ -37,7 +37,7 @@ module Azure
       #   whose name begins with the specified prefix. (optional)
       # * +:marker+      - String. An identifier the specifies the portion of the 
       #   list to be returned. This value comes from the property
-      #   Azure::Service::EnumerationResults.marker when there 
+      #   Azure::Service::EnumerationResults.continuation_token when there 
       #   are more containers available than were returned. The 
       #   marker value may then be used here to request the next set
       #   of list items. (optional)
@@ -61,7 +61,7 @@ module Azure
       # key "x-ms-invalid-name" in the metadata hash. This may contain multiple values and be an
       # Array (vs a String if it only contains a single value).
       # 
-      # Returns an Azure::Queue::QueueEnumerationResults
+      # Returns an Azure::Service::EnumerationResults
       def list_queues(options={})
         query = { }
         query["prefix"] = options[:prefix] if options[:prefix]

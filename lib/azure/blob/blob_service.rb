@@ -39,7 +39,7 @@ module Azure
       #
       # * +:marker+       - String. An identifier the specifies the portion of the 
       #   list to be returned. This value comes from the property
-      #   Azure::Entity::Blob::EnumerationResults.marker when there 
+      #   Azure::Service::EnumerationResults.continuation_token when there 
       #   are more containers available than were returned. The 
       #   marker value may then be used here to request the next set
       #   of list items. (optional)
@@ -66,7 +66,7 @@ module Azure
       # key "x-ms-invalid-name" in the metadata hash. This may contain multiple values and be an
       # Array (vs a String if it only contains a single value).
       # 
-      # Returns an Azure::Entity::Blob::ContainerEnumerationResults
+      # Returns an Azure::Service::EnumerationResults
       def list_containers(options={})
         query = { }
         if options
@@ -318,7 +318,7 @@ module Azure
       #   be a single character or a string.
       # * +:marker+           - String. An identifier that specifies the portion of the 
       #   list to be returned. This value comes from the property
-      #   Azure::Entity::Blob::BlobEnumerationResults.marker when 
+      #   Azure::Service::EnumerationResults.continuation_token when 
       #   there are more blobs available than were returned. The 
       #   marker value may then be used here to request the next set
       #   of list items. (optional)
@@ -351,7 +351,7 @@ module Azure
       # key "x-ms-invalid-name" in the metadata hash. This may contain multiple values and be an
       # Array (vs a String if it only contains a single value).
       # 
-      # Returns an Azure::Entity::Blob::BlobEnumerationResults
+      # Returns an Azure::Service::EnumerationResults
       def list_blobs(name, options={})
         query = { "comp" => "list" }
         query["prefix"] = options[:prefix].gsub(/\\/, "/") if options[:prefix]
