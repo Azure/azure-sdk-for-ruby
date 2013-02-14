@@ -29,14 +29,14 @@ describe Azure::Queue::QueueService do
       # An empty next marker means to start at the beginning
       next_marker = ''
       begin
-        result, next_link = subject.list_queues( { :marker => next_marker } )
-        result.queues.each { |q|
+        result = subject.list_queues( { :marker => next_marker } )
+        result.each { |q|
           q.name.wont_be_nil
           q.url.wont_be_nil
           expected_queues += 1 if queue_names.include? q.name
         }
 
-        next_marker = result.next_marker
+        next_marker = result.continuation_token
       end while next_marker != ''
       expected_queues.must_equal queue_names.length
     end

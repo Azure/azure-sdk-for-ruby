@@ -24,16 +24,19 @@ describe Azure::Table::TableService do
     after { TableNameHelper.clean }
 
     it "gets a list of tables for the account" do
-      result, token = subject.query_tables
-      result.must_be_kind_of Hash
+      result = subject.query_tables
+      result.must_be_kind_of Array
 
       tables.each { |t| 
-        result.must_include t
+        table = result.find {|c|
+          c[:properties]["TableName"] == t
+        }
+        table.wont_be_nil
         updated = subject.get_table(t)
         updated.wont_be_nil
 
         # this is a weird, but sometimes it's off by a few seconds
-        assert ((result[t] - updated).abs < 30), "time stamps don't match"
+        assert ((table[:updated] - updated).abs < 30), "time stamps don't match"
       }
     end
   end

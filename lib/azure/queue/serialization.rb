@@ -13,10 +13,10 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'azure/service/serialization'
+require 'azure/service/enumeration_results'
 
 require 'azure/queue/queue'
 require 'azure/queue/message'
-require 'azure/queue/queue_enumeration_results'
 
 module Azure
   module Queue
@@ -66,16 +66,15 @@ module Azure
         xml = slopify(xml)
         expect_node("EnumerationResults", xml)
 
-        results = enumeration_results_from_xml(xml, QueueEnumerationResults.new)
-        results.account_name = xml["AccountName"]
-        
+        results = enumeration_results_from_xml(xml, Azure::Service::EnumerationResults.new)
+
         return results unless (xml > "Queues").any? && ((xml > "Queues") > "Queue").any?
 
         if xml.Queues.Queue.count == 0
-          results.queues.push(queue_from_xml(xml.Queues.Queue))
+          results.push(queue_from_xml(xml.Queues.Queue))
         else
           xml.Queues.Queue.each { |queue_node|
-            results.queues.push(queue_from_xml(queue_node))
+            results.push(queue_from_xml(queue_node))
           }
         end
 

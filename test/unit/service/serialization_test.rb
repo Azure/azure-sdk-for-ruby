@@ -119,8 +119,7 @@ describe Azure::Service::Serialization do
       it "parses the XML and populates the provided EnumerationResults instance" do
         result = subject.enumeration_results_from_xml enumeration_results_xml, enumeration_results
         result.must_be :kind_of?, Azure::Service::EnumerationResults
-        result.max_results.must_equal 3
-        result.next_marker.must_equal "video"
+        result.continuation_token.must_equal "video"
       end
 
       it "returns the same instance provided" do

@@ -32,7 +32,7 @@ describe Azure::Blob::BlobService do
       result =  subject.list_containers
 
       found = 0
-      result.containers.each { |c|
+      result.each { |c|
         found += 1 if container_names.include? c.name
       }
       found.must_equal container_names.length
@@ -42,7 +42,7 @@ describe Azure::Blob::BlobService do
       result =  subject.list_containers({ :prefix => container_names[0] })
 
       found = 0
-      result.containers.each { |c|
+      result.each { |c|
         found += 1 if container_names.include? c.name
       }
 
@@ -51,20 +51,20 @@ describe Azure::Blob::BlobService do
 
     it 'lists the containers for the account with max results' do
       result =  subject.list_containers({ :max_results => 1 })
-      result.containers.length.must_equal 1
-      first_container = result.containers[0]
-      result.next_marker.wont_equal("")
+      result.length.must_equal 1
+      first_container = result[0]
+      result.continuation_token.wont_equal("")
 
-      result =  subject.list_containers({ :max_results => 1, :marker => result.next_marker })
-      result.containers.length.must_equal 1
-      result.containers[0].name.wont_equal first_container.name
+      result =  subject.list_containers({ :max_results => 1, :marker => result.continuation_token })
+      result.length.must_equal 1
+      result[0].name.wont_equal first_container.name
     end
 
     it 'returns metadata if the :metadata=>true option is used' do
       result = subject.list_containers({ :metadata => true })
 
       found = 0
-      result.containers.each { |c|
+      result.each { |c|
         if container_names.include? c.name
           found += 1 
           metadata.each { |k,v|

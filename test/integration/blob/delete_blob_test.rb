@@ -57,7 +57,7 @@ describe Azure::Blob::BlobService do
         result = subject.list_blobs(container_name, { :snapshots=> true })
 
         snapshot_exists = false
-        result.blobs.each { |b|
+        result.each { |b|
           snapshot_exists = true if b.name == blob_name and b.snapshot == snapshot
         }
         snapshot_exists.must_equal true
@@ -67,7 +67,7 @@ describe Azure::Blob::BlobService do
 
         # verify blob is gone and snapshot remains
         result = subject.list_blobs(container_name, { :snapshots=> true })
-        result.blobs.length.must_equal 0
+        result.length.must_equal 0
       end
 
       it 'the snapshot parameter deletes a specific blob snapshot' do
@@ -79,7 +79,7 @@ describe Azure::Blob::BlobService do
         result = subject.list_blobs(container_name, { :snapshots=> true })
 
         snapshots = 0
-        result.blobs.each { |b|
+        result.each { |b|
           snapshots += 1 if b.name == blob_name and b.snapshot != nil
         }
         snapshots.must_equal 2
@@ -91,7 +91,7 @@ describe Azure::Blob::BlobService do
         
         snapshots = 0
         blob_exists = false
-        result.blobs.each { |b|
+        result.each { |b|
           blob_exists = true if b.name == blob_name and b.snapshot == nil
           snapshots += 1 if b.name == blob_name and b.snapshot == second_snapshot 
         }
@@ -112,7 +112,7 @@ describe Azure::Blob::BlobService do
           result = subject.list_blobs(container_name, { :snapshots=> true })
 
           snapshot_exists = false
-          result.blobs.each { |b|
+          result.each { |b|
             snapshot_exists = true if b.name == blob_name and b.snapshot == snapshot
           }
           snapshot_exists.must_equal true
@@ -125,7 +125,7 @@ describe Azure::Blob::BlobService do
           
           snapshot_exists = false
           blob_exists = false
-          result.blobs.each { |b|
+          result.each { |b|
             blob_exists = true if b.name == blob_name and b.snapshot == nil
             snapshot_exists = true if b.name == blob_name and b.snapshot == snapshot
           }
@@ -141,7 +141,7 @@ describe Azure::Blob::BlobService do
           result = subject.list_blobs(container_name, { :snapshots=> true })
 
           snapshot_exists = false
-          result.blobs.each { |b|
+          result.each { |b|
             snapshot_exists = true if b.name == blob_name and b.snapshot == snapshot
           }
           snapshot_exists.must_equal true
@@ -151,7 +151,7 @@ describe Azure::Blob::BlobService do
 
           # verify snapshot is gone and blob remains
           result = subject.list_blobs(container_name, { :snapshots=> true })
-          result.blobs.length.must_equal 0
+          result.length.must_equal 0
         end
       end
     end

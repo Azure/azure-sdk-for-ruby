@@ -39,7 +39,7 @@ describe Azure::Blob::BlobService do
 
   describe "#list_containers" do
     let(:method) { :get }
-    let(:container_enumeration_result) { Azure::Blob::ContainerEnumerationResults.new }
+    let(:container_enumeration_result) { Azure::Service::EnumerationResults.new }
 
     before { 
       subject.stubs(:containers_uri).with({}).returns(uri)
@@ -64,7 +64,7 @@ describe Azure::Blob::BlobService do
 
     it "returns a list of containers for the account" do
       result = subject.list_containers
-      result.must_be_kind_of Azure::Blob::ContainerEnumerationResults
+      result.must_be_kind_of Azure::Service::EnumerationResults
     end
 
     describe "when the options Hash is used" do
@@ -469,7 +469,7 @@ describe Azure::Blob::BlobService do
     describe "#list_blobs" do
       let(:method) { :get }
       let(:query) {{"comp"=>"list"}}
-      let(:blob_enumeration_results) { Azure::Blob::BlobEnumerationResults.new}
+      let(:blob_enumeration_results) { Azure::Service::EnumerationResults.new}
 
       before { 
         subject.stubs(:container_uri).with(container_name, query).returns(uri)
@@ -494,7 +494,7 @@ describe Azure::Blob::BlobService do
 
       it "returns a list of containers for the account" do
         result = subject.list_blobs container_name
-        result.must_be_kind_of Azure::Blob::BlobEnumerationResults
+        result.must_be_kind_of Azure::Service::EnumerationResults
       end
 
       describe "when the options Hash is used" do

@@ -57,7 +57,7 @@ describe Azure::Table::TableService do
     after { TableNameHelper.clean }
 
     it "Queries a table for list of entities" do
-      result, token = subject.query_entities table_name
+      result = subject.query_entities table_name
       result.must_be_kind_of Array 
       result.length.must_equal ((partitions.length + 1) * entities_per_partition)
 
@@ -77,7 +77,7 @@ describe Azure::Table::TableService do
       partition = partitions[0]
       row_key = entities[partition][0]
 
-      result, token = subject.query_entities table_name, { :partition_key => partition, :row_key => row_key }
+      result = subject.query_entities table_name, { :partition_key => partition, :row_key => row_key }
       result.must_be_kind_of Array 
       result.length.must_equal 1
 
@@ -95,7 +95,7 @@ describe Azure::Table::TableService do
 
     it "can project a subset of properties, populating sparse properties with nil" do
       projection = ["CustomIntegerProperty", "ThisPropertyDoesNotExist"]
-      result, token = subject.query_entities table_name, { :select => projection }
+      result = subject.query_entities table_name, { :select => projection }
       result.must_be_kind_of Array 
       result.length.must_equal ((partitions.length + 1) * entities_per_partition)
 
@@ -116,44 +116,44 @@ describe Azure::Table::TableService do
       })
 
       filter = "CustomIntegerProperty gt #{entity_properties["CustomIntegerProperty"]} and CustomBooleanProperty eq false"
-      result, token = subject.query_entities table_name, { :filter => filter }
+      result = subject.query_entities table_name, { :filter => filter }
       result.must_be_kind_of Array 
       result.length.must_equal 1
       result.first.properties["PartitionKey"].must_equal "filter-test-partition"
 
       filter = "CustomIntegerProperty gt #{entity_properties["CustomIntegerProperty"]} and CustomBooleanProperty eq true"
-      result, token = subject.query_entities table_name, { :filter => filter }
+      result = subject.query_entities table_name, { :filter => filter }
       result.must_be_kind_of Array 
       result.length.must_equal 0
     end
 
     it "can limit the result set using the top parameter" do
-      result, token = subject.query_entities table_name, { :top => 3 }
+      result = subject.query_entities table_name, { :top => 3 }
       result.must_be_kind_of Array 
       result.length.must_equal 3
-      token.wont_be_nil
+      result.continuation_token.wont_be_nil
     end
 
     it "can page results using the top parameter and continuation_token" do
-      result, token = subject.query_entities table_name, { :top => 3 }
+      result = subject.query_entities table_name, { :top => 3 }
       result.must_be_kind_of Array 
       result.length.must_equal 3
-      token.wont_be_nil
+      result.continuation_token.wont_be_nil
 
-      result2, token1 = subject.query_entities table_name, { :top => 3, :continuation_token => token }
+      result2 = subject.query_entities table_name, { :top => 3, :continuation_token => result.continuation_token }
       result2.must_be_kind_of Array 
       result2.length.must_equal 3
-      token1.wont_be_nil
+      result2.continuation_token.wont_be_nil
 
-      result3, token2 = subject.query_entities table_name, { :top => 3, :continuation_token => token1 }
+      result3 = subject.query_entities table_name, { :top => 3, :continuation_token => result2.continuation_token }
       result3.must_be_kind_of Array 
       result3.length.must_equal 3
-      token2.wont_be_nil
+      result3.continuation_token.wont_be_nil
 
-      result4, token3 = subject.query_entities table_name, { :top => 3, :continuation_token => token2 }
+      result4 = subject.query_entities table_name, { :top => 3, :continuation_token => result3.continuation_token }
       result4.must_be_kind_of Array 
       result4.length.must_equal 3
-      token3.must_be_nil
+      result4.continuation_token.must_be_nil
     end
 
     it "can combine projection, filtering, and paging in the same query" do
@@ -166,29 +166,29 @@ describe Azure::Table::TableService do
 
       filter = "CustomIntegerProperty eq #{entity_properties["CustomIntegerProperty"]}"
       projection = ["PartitionKey", "CustomIntegerProperty"]
-      result, token = subject.query_entities table_name, { :select => projection, :filter => filter, :top => 3 }
+      result = subject.query_entities table_name, { :select => projection, :filter => filter, :top => 3 }
       result.must_be_kind_of Array 
       result.length.must_equal 3
-      token.wont_be_nil
+      result.continuation_token.wont_be_nil
 
       result.first.properties["CustomIntegerProperty"].must_equal entity_properties["CustomIntegerProperty"]
       result.first.properties["PartitionKey"].wont_be_nil
       result.first.properties.length.must_equal 2
 
-      result2, token1 = subject.query_entities table_name, { :select => projection, :filter => filter, :top => 3, :continuation_token => token }
+      result2 = subject.query_entities table_name, { :select => projection, :filter => filter, :top => 3, :continuation_token => result.continuation_token }
       result2.must_be_kind_of Array 
       result2.length.must_equal 3
-      token1.wont_be_nil
+      result2.continuation_token.wont_be_nil
 
-      result3, token2 = subject.query_entities table_name, { :select => projection, :filter => filter, :top => 3, :continuation_token => token1 }
+      result3 = subject.query_entities table_name, { :select => projection, :filter => filter, :top => 3, :continuation_token => result2.continuation_token }
       result3.must_be_kind_of Array 
       result3.length.must_equal 3
-      token2.wont_be_nil
+      result3.continuation_token.wont_be_nil
 
-      result4, token3 = subject.query_entities table_name, { :select => projection, :filter => filter, :top => 3, :continuation_token => token2 }
+      result4 = subject.query_entities table_name, { :select => projection, :filter => filter, :top => 3, :continuation_token => result3.continuation_token }
       result4.must_be_kind_of Array 
       result4.length.must_equal 3
-      token3.must_be_nil
+      result4.continuation_token.must_be_nil
     end
 
   end

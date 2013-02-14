@@ -60,7 +60,7 @@ describe Azure::Table::TableService do
     it "Queries a table for list of entities" do
       q = Azure::Table::Query.new.from table_name
 
-      result, token = q.execute
+      result = q.execute
       result.must_be_kind_of Array 
       result.length.must_equal ((partitions.length + 1) * entities_per_partition)
 
@@ -85,7 +85,7 @@ describe Azure::Table::TableService do
         .partition(partition)
         .row(row_key)
 
-      result, token = q.execute
+      result = q.execute
       result.must_be_kind_of Array 
       result.length.must_equal 1
 
@@ -109,7 +109,7 @@ describe Azure::Table::TableService do
         .select(projection[0])
         .select(projection[1])
 
-      result, token = q.execute
+      result = q.execute
       result.must_be_kind_of Array 
       result.length.must_equal ((partitions.length + 1) * entities_per_partition)
 
@@ -134,7 +134,7 @@ describe Azure::Table::TableService do
         .where("CustomIntegerProperty gt #{entity_properties['CustomIntegerProperty']}")
         .where("CustomBooleanProperty eq false")
 
-      result, token = q.execute
+      result = q.execute
       result.must_be_kind_of Array 
       result.length.must_equal 1
       result.first.properties["PartitionKey"].must_equal "filter-test-partition"
@@ -143,7 +143,7 @@ describe Azure::Table::TableService do
         .from(table_name)
         .where("CustomIntegerProperty gt #{entity_properties['CustomIntegerProperty']}")
         .where("CustomBooleanProperty eq true")
-      result, token = q.execute
+      result = q.execute
       result.must_be_kind_of Array 
       result.length.must_equal 0
     end
@@ -153,10 +153,10 @@ describe Azure::Table::TableService do
         .from(table_name)
         .top(3)
 
-      result, token = q.execute
+      result = q.execute
       result.must_be_kind_of Array 
       result.length.must_equal 3
-      token.wont_be_nil
+      result.continuation_token.wont_be_nil
     end
 
     it "can page results using the top parameter and continuation_token" do
@@ -164,43 +164,43 @@ describe Azure::Table::TableService do
         .from(table_name)
         .top(3)
 
-      result, token = q.execute
+      result = q.execute
       result.must_be_kind_of Array 
       result.length.must_equal 3
-      token.wont_be_nil
+      result.continuation_token.wont_be_nil
 
       q = Azure::Table::Query.new
         .from(table_name)
         .top(3)
-        .next_row(token[:next_row_key])
-        .next_partition(token[:next_partition_key])
+        .next_row(result.continuation_token[:next_row_key])
+        .next_partition(result.continuation_token[:next_partition_key])
 
-      result2, token1 = q.execute
+      result2 = q.execute
       result2.must_be_kind_of Array 
       result2.length.must_equal 3
-      token1.wont_be_nil
+      result2.continuation_token.wont_be_nil
 
       q = Azure::Table::Query.new
         .from(table_name)
         .top(3)
-        .next_row(token1[:next_row_key])
-        .next_partition(token1[:next_partition_key])
+        .next_row(result2.continuation_token[:next_row_key])
+        .next_partition(result2.continuation_token[:next_partition_key])
 
-      result3, token2 = q.execute
+      result3 = q.execute
       result3.must_be_kind_of Array 
       result3.length.must_equal 3
-      token2.wont_be_nil
+      result3.continuation_token.wont_be_nil
 
       q = Azure::Table::Query.new
         .from(table_name)
         .top(3)
-        .next_row(token2[:next_row_key])
-        .next_partition(token2[:next_partition_key])
+        .next_row(result3.continuation_token[:next_row_key])
+        .next_partition(result3.continuation_token[:next_partition_key])
 
-      result4, token3 = q.execute
+      result4 = q.execute
       result4.must_be_kind_of Array 
       result4.length.must_equal 3
-      token3.must_be_nil
+      result4.continuation_token.must_be_nil
     end
 
     it "can combine projection, filtering, and paging in the same query" do
@@ -219,33 +219,33 @@ describe Azure::Table::TableService do
         .where("CustomIntegerProperty eq #{entity_properties['CustomIntegerProperty']}")
         .top(3)
 
-      result, token = q.execute
+      result = q.execute
       result.must_be_kind_of Array 
       result.length.must_equal 3
-      token.wont_be_nil
+      result.continuation_token.wont_be_nil
 
       result.first.properties["CustomIntegerProperty"].must_equal entity_properties["CustomIntegerProperty"]
       result.first.properties["PartitionKey"].wont_be_nil
       result.first.properties.length.must_equal 2
 
-      q.next_row(token[:next_row_key]).next_partition(token[:next_partition_key])
+      q.next_row(result.continuation_token[:next_row_key]).next_partition(result.continuation_token[:next_partition_key])
 
-      result2, token1 = q.execute
+      result2 = q.execute
       result2.must_be_kind_of Array 
       result2.length.must_equal 3
-      token1.wont_be_nil
+      result2.continuation_token.wont_be_nil
 
-      q.next_row(token1[:next_row_key]).next_partition(token1[:next_partition_key])
-      result3, token2 = q.execute
+      q.next_row(result2.continuation_token[:next_row_key]).next_partition(result2.continuation_token[:next_partition_key])
+      result3 = q.execute
       result3.must_be_kind_of Array 
       result3.length.must_equal 3
-      token2.wont_be_nil
+      result3.continuation_token.wont_be_nil
 
-      q.next_row(token2[:next_row_key]).next_partition(token2[:next_partition_key])
-      result4, token3 = q.execute
+      q.next_row(result3.continuation_token[:next_row_key]).next_partition(result3.continuation_token[:next_partition_key])
+      result4 = q.execute
       result4.must_be_kind_of Array 
       result4.length.must_equal 3
-      token3.must_be_nil
+      result4.continuation_token.must_be_nil
     end
   end
 end
