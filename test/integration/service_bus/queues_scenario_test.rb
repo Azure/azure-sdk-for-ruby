@@ -21,7 +21,7 @@ describe "ServiceBus Queues Scenario" do
   after { ServiceBusQueueNameHelper.clean }
 
   def setup_queue()
-    queues, junk = subject.list_queues({ :skip => 20, :top => 2 })
+    queues = subject.list_queues({ :skip => 20, :top => 2 })
     queues.each { |q|
       ScenarioHelper.out "Queue name is " + q.name
     }
