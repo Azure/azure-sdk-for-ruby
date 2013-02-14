@@ -28,7 +28,7 @@ describe "ServiceBus Topics Scenario" do
   after { ServiceBusTopicNameHelper.clean }
 
   def setup_topic()
-    topics, junk = subject.list_topics({ :skip => 20, :top => 2 })
+    topics = subject.list_topics({ :skip => 20, :top => 2 })
     topics.each { |t|
       ScenarioHelper.out "Topic name is " + t.title
     }
@@ -142,7 +142,7 @@ describe "ServiceBus Topics Scenario" do
     subject.create_rule rule3
 
     # subscription_name4 gets two rules to enable duplicate messages
-    lst, junk = subject.list_rules topic_name, subscription_name4
+    lst = subject.list_rules topic_name, subscription_name4
     rule4a = lst[0]
     rule4a.action = Azure::ServiceBus::SqlRuleAction.new({
         :sql_expression => 'SET trueRuleA=TRUE; ' +
@@ -194,7 +194,7 @@ describe "ServiceBus Topics Scenario" do
   end
 
   def show_subscriptions()
-    lst, junk = subject.list_subscriptions topic_name
+    lst = subject.list_subscriptions topic_name
     lst.each { |item|
       show_rules item.title
     }
@@ -202,7 +202,7 @@ describe "ServiceBus Topics Scenario" do
 
   def show_rules(sub_name)
     ScenarioHelper.out 'Subscription: ' + sub_name
-    lst, junk = subject.list_rules topic_name, sub_name
+    lst = subject.list_rules topic_name, sub_name
     lst.each { |item|
       ScenarioHelper.out '  Rule: ' + item.title
       filter = item.filter
