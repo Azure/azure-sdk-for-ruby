@@ -14,14 +14,8 @@
 #--------------------------------------------------------------------------
 module Azure
   module Service
-    class EnumerationResults
-      def initialize
-        yield self if block_given?
-      end
-      attr_accessor :prefix
-      attr_accessor :marker
-      attr_accessor :max_results
-      attr_accessor :next_marker
+    class EnumerationResults < Array
+      attr_accessor :continuation_token
     end
   end
 end

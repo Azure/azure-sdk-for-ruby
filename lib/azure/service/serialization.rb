@@ -91,11 +91,7 @@ module Azure
 
           results = results || EnumerationResults.new; 
 
-          results.max_results = xml.MaxResults.text.to_i if (xml > "MaxResults").any?
-          results.next_marker = xml.NextMarker.text if (xml > "NextMarker").any?
-          results.marker = xml.Marker.text.to_i if (xml > "Marker").any?
-          results.prefix = xml.Prefix.text if (xml > "Prefix").any?
-          
+          results.continuation_token = xml.NextMarker.text if (xml > "NextMarker").any?
           results
         end
 

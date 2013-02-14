@@ -13,13 +13,10 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'azure/service/serialization'
+require 'azure/service/enumeration_results'
 
 require 'azure/blob/container'
-require 'azure/blob/container_enumeration_results'
-
 require 'azure/blob/blob'
-require 'azure/blob/blob_enumeration_results'
-
 require 'azure/blob/block'
 
 require 'base64'
@@ -33,16 +30,15 @@ module Azure
         xml = slopify(xml)
         expect_node("EnumerationResults", xml)
 
-        results = enumeration_results_from_xml(xml, Azure::Blob::ContainerEnumerationResults.new)
-        results.account_name = xml["AccountName"]
+        results = enumeration_results_from_xml(xml, Azure::Service::EnumerationResults.new)
         
         return results unless (xml > "Containers").any? && ((xml > "Containers") > "Container").any?
 
         if xml.Containers.Container.count == 0
-          results.containers.push(container_from_xml(xml.Containers.Container))
+          results.push(container_from_xml(xml.Containers.Container))
         else
           xml.Containers.Container.each { |container_node|
-            results.containers.push(container_from_xml(container_node))
+            results.push(container_from_xml(container_node))
           }
         end
 
@@ -104,27 +100,16 @@ module Azure
         xml = slopify(xml)
         expect_node("EnumerationResults", xml)
 
-        results = enumeration_results_from_xml(xml, Azure::Blob::BlobEnumerationResults.new)
-        results.container_name = xml["ContainerName"]
+        results = enumeration_results_from_xml(xml, Azure::Service::EnumerationResults.new)
 
         return results unless (xml > "Blobs").any?
 
-        if ((xml > "Blobs") > "BlobPrefix").any?
-          if xml.Blobs.BlobPrefix.count == 0
-            results.blob_prefixes.push(xml.Blobs.BlobPrefix.Name.text) #if (xml.Blobs.BlobPrefix > "Name").any?
-          else
-            xml.Blobs.BlobPrefix.each { |blob_prefix_node|
-              results.blob_prefixes.push(blob_prefix_node.Name.text) if (blob_prefix_node > "Name").any?
-            }
-          end
-        end
-
         if ((xml > "Blobs") > "Blob").any?
           if xml.Blobs.Blob.count == 0
-            results.blobs.push(blob_from_xml(xml.Blobs.Blob))
+            results.push(blob_from_xml(xml.Blobs.Blob))
           else
             xml.Blobs.Blob.each { |blob_node|
-              results.blobs.push(blob_from_xml(blob_node))
+              results.push(blob_from_xml(blob_node))
             }
           end
         end

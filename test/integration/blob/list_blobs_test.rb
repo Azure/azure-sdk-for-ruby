@@ -35,9 +35,9 @@ describe Azure::Blob::BlobService do
 
     it 'lists the available blobs' do
       result = subject.list_blobs container_name
-      result.blobs.length.must_equal blob_names.length
+      result.length.must_equal blob_names.length
       expected_blob_names = blob_names.each
-      result.blobs.each { |blob|
+      result.each { |blob|
         blob.name.must_equal expected_blob_names.next
         blob.properties[:content_length].must_equal content.length
       }
@@ -45,27 +45,27 @@ describe Azure::Blob::BlobService do
 
     it 'lists the available blobs with prefix' do
       result = subject.list_blobs container_name, { :prefix => "blobname0" }
-      result.blobs.length.must_equal 1
+      result.length.must_equal 1
     end
 
     it 'lists the available blobs with max results and marker ' do
       result = subject.list_blobs container_name, { :max_results => 2 }
-      result.blobs.length.must_equal 2
-      first_blob = result.blobs[0]
-      result.next_marker.wont_equal("")
+      result.length.must_equal 2
+      first_blob = result[0]
+      result.continuation_token.wont_equal("")
 
-      result = subject.list_blobs container_name, { :max_results => 2, :marker => result.next_marker }
-      result.blobs.length.must_equal 2
-      result.blobs[0].name.wont_equal first_blob.name
+      result = subject.list_blobs container_name, { :max_results => 2, :marker => result.continuation_token }
+      result.length.must_equal 2
+      result[0].name.wont_equal first_blob.name
     end
 
     describe 'when options hash is used' do
       it 'if :metadata is set true, also returns custom metadata for the blobs' do
         result = subject.list_blobs container_name, { :metadata => true }
-        result.blobs.length.must_equal blob_names.length
+        result.length.must_equal blob_names.length
         expected_blob_names = blob_names.each
 
-        result.blobs.each { |blob|
+        result.each { |blob|
           blob.name.must_equal expected_blob_names.next
           blob.properties[:content_length].must_equal content.length
 
@@ -81,12 +81,12 @@ describe Azure::Blob::BlobService do
 
         # verify snapshots aren't returned on a normal call
         result = subject.list_blobs container_name
-        result.blobs.length.must_equal blob_names.length
+        result.length.must_equal blob_names.length
 
         result = subject.list_blobs container_name, { :snapshots => true }
-        result.blobs.length.must_equal blob_names.length + 1
+        result.length.must_equal blob_names.length + 1
         found_snapshot = false
-        result.blobs.each { |blob|
+        result.each { |blob|
           found_snapshot = true if blob.name == blob_names[0] and blob.snapshot == snapshot
         }
         found_snapshot.must_equal true
@@ -98,12 +98,12 @@ describe Azure::Blob::BlobService do
 
         # verify uncommitted blobs aren't returned on a normal call
         result = subject.list_blobs container_name
-        result.blobs.length.must_equal blob_names.length
+        result.length.must_equal blob_names.length
 
         result = subject.list_blobs container_name, { :uncommittedblobs => true }
-        result.blobs.length.must_equal blob_names.length + 1
+        result.length.must_equal blob_names.length + 1
         found_uncommitted = true
-        result.blobs.each { |blob|
+        result.each { |blob|
           found_uncommitted = true if blob.name == "blockblobname"
         }
         found_uncommitted.must_equal true

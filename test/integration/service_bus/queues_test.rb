@@ -127,7 +127,7 @@ describe "ServiceBus Queues" do
       }
       
       it "should be able to get a list of queues" do
-        result, next_link = subject.list_queues
+        result = subject.list_queues
 
         result.must_be :kind_of?, Array
         q_found = false
@@ -142,23 +142,23 @@ describe "ServiceBus Queues" do
       end
 
       it "should be able to use $skip token with list_queues" do
-        result, next_link = subject.list_queues
-        result2, next_link2 = subject.list_queues({ :skip => 1 })
+        result = subject.list_queues
+        result2 = subject.list_queues({ :skip => 1 })
         result2.length.must_equal result.length - 1
         result2[0].id.must_equal result[1].id
       end
       
       it "should be able to use $top token with list_queues" do
-        result, next_link = subject.list_queues
+        result = subject.list_queues
         result.length.wont_equal 1
 
-        result2, next_link2 = subject.list_queues({ :top => 1 })
+        result2 = subject.list_queues({ :top => 1 })
         result2.length.must_equal 1
       end
 
       it "should be able to use $skip and $top token together with list_queues" do
-        result, next_link = subject.list_queues
-        result2, next_link2 = subject.list_queues({ :skip => 1, :top => 1 })
+        result = subject.list_queues
+        result2 = subject.list_queues({ :skip => 1, :top => 1 })
         result2.length.must_equal 1
         result2[0].id.must_equal result[1].id
       end

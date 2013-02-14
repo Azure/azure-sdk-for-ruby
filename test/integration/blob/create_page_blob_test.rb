@@ -40,7 +40,7 @@ describe Azure::Blob::BlobService do
       complex_blob_name.force_encoding("UTF-8")
       found_complex_name = false
       result = subject.list_blobs container_name
-      result.blobs.each { |blob|
+      result.each { |blob|
         found_complex_name = true if blob.name == complex_blob_name
       }
 

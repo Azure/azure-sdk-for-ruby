@@ -19,6 +19,8 @@ require "azure/service_bus/topic"
 require "azure/service_bus/subscription"
 require "azure/service_bus/rule"
 
+require "azure/service/enumeration_results"
+
 module Azure
   module ServiceBus
     module Serialization
@@ -113,7 +115,7 @@ module Azure
 
         def resources_from_xml_with_next_link(resource, xml)
           feed = Nokogiri::XML(xml).remove_namespaces!
-          values = (feed / 'entry').map {|node| resource_from_xml(resource, node) }
+          values = Azure::Service::EnumerationResults.new((feed / 'entry').map {|node| resource_from_xml(resource, node) })
 
           next_token = nil
           next_uri = feed.xpath("//link[@rel='next']/@href")
@@ -128,7 +130,8 @@ module Azure
             end
           end
 
-          return values, next_token
+          values.continuation_token = next_token
+          values
         end
 
         def to_bool(s)

@@ -113,14 +113,7 @@ module Azure
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179405
       #
-      # Returns a tuple of (tables, continuation_token) of the table list and possibly a continuation token
-      # * +tables+             - Hash. A hash of tables and the time they were last updated: 
-      #                        {
-      #                           "TableName"=> "2012-10-03T09:35:31Z"
-      #                        }
-      # * +continuation_token+ - String. A token used to retrieve subsequent pages, if the result set is too large for a 
-      #   single operation to return 
-      #
+      # Returns an array with an extra continuation_token property on success
       def query_tables(options={})
         query = { }
         query["NextTable"] = options[:next_table_token] if options[:next_table_token]
@@ -131,12 +124,9 @@ module Azure
         response = call(:get, uri)
         entries = Azure::Table::Serialization.entries_from_feed_xml(response.body) || []
 
-        results = {}
-        entries.each do |entry|
-          results[entry[:properties]['TableName']] = entry[:updated]
-        end
-
-        return results, response.headers["x-ms-continuation-NextTableName"]
+        values = Azure::Service::EnumerationResults.new(entries)
+        values.continuation_token = response.headers["x-ms-continuation-NextTableName"]
+        values
       end
 
       # Public: Gets the access control list (ACL) for the table.
@@ -248,9 +238,7 @@ module Azure
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179421
       #
-      # Returns a tuple of (results, continuation_token) on success
-      # * +results+             - List. A list of Azure::Entity::Table::Entity instances
-      # * +continuation_token+  - Hash. A token used to retrieve subsequent pages, if the result set is too large for a single operation to return 
+      # Returns an array with an extra continuation_token property on success
       def query_entities(table_name, options={})
         query ={}
         query["$select"] = options[:select].join ',' if options[:select]
@@ -263,7 +251,7 @@ module Azure
         uri = entities_uri(table_name, options[:partition_key], options[:row_key], query)
         response = call(:get, uri, nil, { "DataServiceVersion" => "2.0;NetFx"})
 
-        entities = []
+        entities = Azure::Service::EnumerationResults.new
 
         results = (options[:partition_key] and options[:row_key]) ? [Azure::Table::Serialization.hash_from_entry_xml(response.body)] : Azure::Table::Serialization.entries_from_feed_xml(response.body)
         
@@ -277,13 +265,13 @@ module Azure
           entities.push entity
         end if results
 
-        continuation_token = nil
-        continuation_token = { 
+        entities.continuation_token = nil
+        entities.continuation_token = { 
           :next_partition_key=> response.headers["x-ms-continuation-NextPartitionKey"], 
           :next_row_key => response.headers["x-ms-continuation-NextRowKey"]
           } if response.headers["x-ms-continuation-NextPartitionKey"]
 
-        return entities, continuation_token 
+        entities
       end
 
       # Public: Updates an existing entity in a table. The Update Entity operation replaces 
@@ -481,7 +469,7 @@ module Azure
       def get_entity(table_name, partition_key, row_key, options={})
         options[:partition_key] = partition_key
         options[:row_key] = row_key
-        results, _ = query_entities(table_name, options)
+        results = query_entities(table_name, options)
         results.length > 0 ? results[0] : nil
       end
 

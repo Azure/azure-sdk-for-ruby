@@ -237,10 +237,10 @@ module Azure
         query["$skip"] = options[:skip].to_i.to_s if options[:skip]
         query["$top"] = options[:top].to_i.to_s if options[:top]
 
-        results, next_link = resource_list(:rule, topic_name, subscription_name, query)
+        results = resource_list(:rule, topic_name, subscription_name, query)
         results.each{|r| r.topic = topic_name; r.subscription=subscription_name}
 
-        return results, next_link
+        return results
       end
 
       # Creates a new subscription. Once created, this subscription resource manifest is 
@@ -316,10 +316,10 @@ module Azure
         query["$skip"] = options[:skip].to_i.to_s if options[:skip]
         query["$top"] = options[:top].to_i.to_s if options[:top]
 
-        results, next_link = resource_list(:subscription, topic, query)
+        results = resource_list(:subscription, topic, query)
         results.each { |s| s.topic = topic }
 
-        return results, next_link
+        return results
       end
       
       # Enqueues a message into the specified topic. The limit to the number of messages 

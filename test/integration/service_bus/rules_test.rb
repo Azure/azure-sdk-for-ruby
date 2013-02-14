@@ -103,7 +103,7 @@ describe "ServiceBus Rules" do
     end
 
     it "should be able to list rules" do
-      result, next_link = subject.list_rules topic, subscription
+      result = subject.list_rules topic, subscription
       rule_found = false
       result.each { |r|
         rule_found = true if r.name == rule
@@ -120,23 +120,23 @@ describe "ServiceBus Rules" do
       }
 
       it "should be able to use $skip token" do
-        result, next_link = subject.list_rules topic, subscription
-        result2, next_link2 = subject.list_rules topic, subscription, { :skip => 1 }
+        result = subject.list_rules topic, subscription
+        result2 = subject.list_rules topic, subscription, { :skip => 1 }
         result2.length.must_equal result.length - 1
         result2[0].id.must_equal result[1].id
       end
       
       it "should be able to use $top token" do
-        result, next_link = subject.list_rules topic, subscription
+        result = subject.list_rules topic, subscription
         result.length.wont_equal 1
 
-        result2, next_link2 = subject.list_rules topic, subscription, { :top => 1 }
+        result2 = subject.list_rules topic, subscription, { :top => 1 }
         result2.length.must_equal 1
       end
 
       it "should be able to use $skip and $top token together" do
-        result, next_link = subject.list_rules topic, subscription
-        result2, next_link2 = subject.list_rules topic, subscription, { :skip => 1, :top => 1 }
+        result = subject.list_rules topic, subscription
+        result2 = subject.list_rules topic, subscription, { :skip => 1, :top => 1 }
         result2.length.must_equal 1
         result2[0].id.must_equal result[1].id
       end
