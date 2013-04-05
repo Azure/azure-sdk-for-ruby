@@ -105,6 +105,7 @@ module Azure
             headers["Content-MD5"]    = Base64.strict_encode64(Digest::MD5.digest(body))
           else
             headers["Content-Length"] = "0"
+            headers["Content-Type"] = ""
           end
         end
 
