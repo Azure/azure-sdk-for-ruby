@@ -26,8 +26,6 @@ module Azure
       def to_s
         [MAJOR, MINOR, UPDATE, PRE].compact.join('.')
       end
-
     end
-
   end
 end
