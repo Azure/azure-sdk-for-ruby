@@ -295,6 +295,7 @@ module Azure
       #   time-to-live value. If not specified, the default value is 0.
       # * +:message_ttl+            - Integer. Specifies the time-to-live interval for the message, in seconds. The maximum 
       #   time-to-live allowed is 7 days. If not specified, the default time-to-live is 7 days.
+      # * +:encode+                 - Boolean. If set to true, the message will be base64 encoded.
       # * +:timeout+                - Integer. A timeout in seconds.
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179346
@@ -310,7 +311,7 @@ module Azure
         end
 
         uri = messages_uri(queue_name, query)
-        body = Serialization.message_to_xml(message_text)
+        body = Serialization.message_to_xml(message_text, options[:encode])
 
         call(:post, uri, body, {})
         nil
@@ -393,6 +394,7 @@ module Azure
       #
       # Accepted key/value pairs in options parameter are:
       # * +:number_of_messages+ - Integer. How many messages to return. (optional, Default: 1)
+      # * +:decode+             - Boolean. Boolean value indicating if the message should be base64 decoded.
       # * +:timeout+            - Integer. A timeout in seconds.
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179472
@@ -408,7 +410,7 @@ module Azure
         uri = messages_uri(queue_name, query)
         response = call(:get, uri)
 
-        messages = Serialization.queue_messages_from_xml(response.body)
+        messages = Serialization.queue_messages_from_xml(response.body, options[:decode])
         messages
       end
 
@@ -425,6 +427,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:number_of_messages+ - Integer. How many messages to return. (optional, Default: 1)
       # * +:timeout+            - Integer. A timeout in seconds.
+      # * +:decode+             - Boolean. Boolean value indicating if the message should be base64 decoded.
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179474
       #
@@ -439,7 +442,7 @@ module Azure
         uri = messages_uri(queue_name, query)
         response = call(:get, uri)
 
-        messages = Serialization.queue_messages_from_xml(response.body)
+        messages = Serialization.queue_messages_from_xml(response.body, options[:decode])
         messages
       end
 
@@ -459,6 +462,7 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
+      # * +:encode+                 - Boolean. If set to true, the message will be base64 encoded.
       # * +:timeout+           - Integer. A timeout in seconds.
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452234
@@ -498,7 +502,7 @@ module Azure
         query["timeout"] = options[:timeout].to_s if options[:timeout]
 
         uri = message_uri(queue_name, message_id, query)
-        body = Serialization.message_to_xml(message_text)
+        body = Serialization.message_to_xml(message_text, options[:encode])
 
         response = call(:put, uri, body, {})
         new_pop_receipt = response.headers["x-ms-popreceipt"]
