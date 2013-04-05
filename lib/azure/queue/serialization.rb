@@ -23,24 +23,24 @@ module Azure
     module Serialization
       include Service::Serialization
 
-      def self.queue_messages_from_xml(xml)
+      def self.queue_messages_from_xml(xml, decode)
         xml = slopify(xml)
         expect_node("QueueMessagesList", xml)
         results = []
         return results unless (xml > "QueueMessage").any?
   
         if xml.QueueMessage.count == 0
-          results.push(queue_message_from_xml(xml.QueueMessage))
+          results.push(queue_message_from_xml(xml.QueueMessage, decode))
         else
           xml.QueueMessage.each { |message_node|
-            results.push(queue_message_from_xml(message_node))
+            results.push(queue_message_from_xml(message_node, decode))
           }
         end
 
         results
       end
 
-      def self.queue_message_from_xml(xml)
+      def self.queue_message_from_xml(xml, decode)
         xml = slopify(xml)
         expect_node("QueueMessage", xml)
 
@@ -52,12 +52,18 @@ module Azure
           msg.message_text = xml.MessageText.text if (xml > "MessageText").any?
           msg.time_next_visible = xml.TimeNextVisible.text if (xml > "TimeNextVisible").any?
           msg.pop_receipt = xml.PopReceipt.text if (xml > "PopReceipt").any?
+
+          msg.message_text = Base64.decode64(msg.message_text) if decode
         end
       end
 
-      def self.message_to_xml(message_text)
+      def self.message_to_xml(message_text, encode)
         builder = Nokogiri::XML::Builder.new do |xml|
-          xml.QueueMessage { xml.MessageText message_text }
+          if encode
+            xml.QueueMessage { xml.MessageText Base64.encode64(message_text) }
+          else
+            xml.QueueMessage { xml.MessageText message_text }
+          end
         end
         builder.to_xml
       end
