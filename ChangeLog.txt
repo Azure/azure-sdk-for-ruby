@@ -1,0 +1,5 @@
+2012.04.25 - version 0.5.0
+* First release
+* Ruby 1.9.3 and 2.0 support
+* Storage support: Blob, Table and Queue
+* Service Bus support: Queue, Topic/Subscription
