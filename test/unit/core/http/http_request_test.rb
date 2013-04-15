@@ -57,7 +57,7 @@ describe Azure::Core::Http::HttpRequest do
 
     describe " when the body is nil " do
       it "leaves the Content-Type, Content-Length, and Content-MD5 headers blank" do
-        subject.headers["Content-Type"].must_be_nil
+        subject.headers["Content-Type"].must_equal ""
         subject.headers["Content-Length"].must_equal "0"
         subject.headers["Content-MD5"].must_be_nil
       end
