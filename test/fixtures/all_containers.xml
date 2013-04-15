@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnumerationResults AccountName="http://myaccount.blob.core.windows.net">
+  <Prefix>string-value</Prefix>
+  <Marker>string-value</Marker>
+  <MaxResults>int-value</MaxResults>
+  <Containers>
+    <Container>
+      <Name>container-name</Name>
+      <Url>http://myaccount.blob.core.windows.net/container-name</Url>
+      <Properties>
+        <Last-Modified>date/time-value</Last-Modified>
+        <Etag>etag</Etag>
+      </Properties>
+      <Metadata>
+        <metadata-name>value</metadata-name>
+      </Metadata>
+    </Container>
+  </Containers>
+  <NextMarker>marker-value</NextMarker>
+</EnumerationResults>

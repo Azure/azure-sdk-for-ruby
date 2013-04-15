@@ -1,0 +1,18 @@
+<entry xmlns="http://www.w3.org/2005/Atom">
+  <id>https://gmonfort.servicebus.windows.net/htsjvyukon</id>
+  <title type="text">htsjvyukon</title>
+  <published>2012-06-07T19:49:00Z</published>
+  <updated>2012-06-07T19:49:01Z</updated>
+  <author><name>gmonfort</name></author>
+  <link rel="self" href="https://gmonfort.servicebus.windows.net/htsjvyukon"/>
+  <content type="application/xml">
+    <TopicDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+      <DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive>
+      <MaxSizeInMegabytes>1024</MaxSizeInMegabytes>
+      <RequiresDuplicateDetection>false</RequiresDuplicateDetection>
+      <DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow>
+      <EnableBatchedOperations>true</EnableBatchedOperations>
+      <SizeInBytes>0</SizeInBytes>
+    </TopicDescription>
+  </content>
+</entry>

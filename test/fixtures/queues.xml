@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnumerationResults AccountName="http://myaccount.queue.core.windows.net">
+  <Prefix>queue-prefix</Prefix>
+  <Marker>the-marker</Marker>
+  <MaxResults>100</MaxResults>
+  <Queues>
+    <Queue>
+      <Name>queue-name</Name>
+      <Url>http://myaccount.queue.core.windows.net/queue-name</Url>
+      <Metadata>
+        <Color>purple</Color>
+        <Shape>square</Shape>
+      </Metadata>
+    </Queue>
+  <NextMarker />
+</EnumerationResults>

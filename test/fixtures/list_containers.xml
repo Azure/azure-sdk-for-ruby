@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnumerationResults AccountName=" http://myaccount.blob.core.windows.net">
+  <MaxResults>3</MaxResults>
+  <Containers>
+    <Container>
+      <Name>audio</Name>
+      <Url>http://myaccount.blob.core.windows.net/audio</Url>
+      <Properties>
+        <Last-Modified>Wed, 12 Aug 2009 20:39:39 GMT</Last-Modified>
+        <Etag>0x8CACB9BD7C6B1B2</Etag>
+      </Properties>
+    </Container>
+    <Container>
+      <Name>images</Name>
+      <Url>http://myaccount.blob.core.windows.net/images</Url>
+      <Properties>
+        <Last-Modified>Wed, 12 Aug 2009 20:39:39 GMT</Last-Modified>
+        <Etag>0x8CACB9BD7C1EEEC</Etag>
+      </Properties>
+      <Metadata>
+        <MyMetadata1>first value</MyMetadata1>
+        <MyMetadata2>second value</MyMetadata2>
+        <x-ms-invalid-name>invalid-metadata-name</x-ms-invalid-name>
+        <x-ms-invalid-name>invalid-metadata-name2</x-ms-invalid-name>
+      </Metadata>
+    </Container>
+    <Container>
+      <Name>textfiles</Name>
+      <Url>http://myaccount.blob.core.windows.net/textfiles</Url>
+      <Properties>
+        <Last-Modified>Wed, 12 Aug 2009 20:39:39 GMT</Last-Modified>
+        <Etag>0x8CACB9BD7BACAC3</Etag>
+        <LeaseStatus>locked</LeaseStatus>
+      </Properties>
+    </Container>
+  </Containers>
+  <NextMarker>video</NextMarker>
+</EnumerationResults>

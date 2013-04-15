@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StorageServiceProperties>
+  <Logging>
+    <Version>1.0</Version>
+    <Delete>true</Delete>
+    <Read>false</Read>
+    <Write>true</Write>
+    <RetentionPolicy>
+      <Enabled>true</Enabled>
+      <Days>7</Days>
+    </RetentionPolicy>
+  </Logging>
+  <Metrics>
+    <Version>1.0</Version>
+    <Enabled>true</Enabled>
+    <IncludeAPIs>false</IncludeAPIs>
+    <RetentionPolicy>
+      <Enabled>true</Enabled>
+      <Days>7</Days>
+    </RetentionPolicy>
+  </Metrics>
+  <DefaultServiceVersion>2011-08-18</DefaultServiceVersion>
+</StorageServiceProperties>
