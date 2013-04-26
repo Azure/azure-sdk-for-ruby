@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<QueueMessagesList>
+  <QueueMessage>
+    <MessageId>5974b586-0df3-4e2d-ad0c-18e3892bfca2</MessageId>
+    <InsertionTime>Fri, 09 Oct 2009 21:04:30 GMT</InsertionTime>
+    <ExpirationTime>Fri, 16 Oct 2009 21:04:30 GMT</ExpirationTime>
+    <PopReceipt>YzQ4Yzg1MDItYTc0Ny00OWNjLTkxYTUtZGM0MDFiZDAwYzEw</PopReceipt>
+    <TimeNextVisible>Fri, 09 Oct 2009 23:29:20 GMT</TimeNextVisible>
+    <DequeueCount>1</DequeueCount>
+    <MessageText>PHRlc3Q+dGhpcyBpcyBhIHRlc3QgbWVzc2FnZTwvdGVzdD4=</MessageText>
+  </QueueMessage>
+</QueueMessagesList>

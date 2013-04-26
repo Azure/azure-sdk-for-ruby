@@ -1,0 +1,9 @@
+{
+  "transfer-encoding" => "chunked",
+  "content-type" => "text/plain",
+  "location" => "https://gmonfort.servicebus.windows.net/fgdutifgta/messages/1/670b782c-7dff-4ac1-9858-fa412a66f9b0",
+  "server" => "Microsoft-HTTPAPI/2.0",
+  "brokerproperties" => '"DeliveryCount":1,"LockToken":"670b782c-7dff-4ac1-9858-fa412a66f9b0","LockedUntilUtc":"Tue, 12 Jun 2012 07:25:45 GMT","MessageId":"383598482f704d87bee3ea26a92b9ac0","SequenceNumber":1,"TimeToLive":922337203685.47754,"To":"yo"}',
+  "date" => "Tue, 12 Jun 2012 07:24:45 GMT",
+  "connection" => "close"
+}

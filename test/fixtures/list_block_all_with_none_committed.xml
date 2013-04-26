@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BlockList>
+  <CommittedBlocks />
+  <UncommittedBlocks>
+    <Block>
+      <Name>QmxvY2tJZDAwMQ==</Name>
+      <Size>1024</Size>
+    </Block>
+    <Block>
+      <Name>QmxvY2tJZDAwMg==</Name>
+      <Size>1024</Size>
+    </Block>
+    <Block>
+      <Name>QmxvY2tJZDAwMw==</Name>
+      <Size>1024</Size>
+    </Block>
+    <Block>
+      <Name>QmxvY2tJZDAwNA==</Name>
+      <Size>1024</Size>
+    </Block>
+  </UncommittedBlocks>
+</BlockList>

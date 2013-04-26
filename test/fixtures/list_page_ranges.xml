@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PageList>
+  <PageRange>
+    <Start>0</Start>
+    <End>511</End>
+  </PageRange>
+  <PageRange>
+    <Start>512</Start>
+    <End>1023</End>
+  </PageRange>
+</PageList>

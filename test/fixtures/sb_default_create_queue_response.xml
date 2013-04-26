@@ -1,0 +1,23 @@
+<entry xmlns="http://www.w3.org/2005/Atom">
+  <id>https://gmonfort.servicebus.windows.net/gfyhfiwdqg</id>
+  <title type="text">gfyhfiwdqg</title>
+  <published>2012-06-06T05:00:06Z</published>
+  <updated>2012-06-06T05:00:06Z</updated>
+  <author><name>gmonfort</name></author>
+  <link rel="self" href="https://gmonfort.servicebus.windows.net/gfyhfiwdqg"/>
+  <content type="application/xml">
+    <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+      <LockDuration>PT1M</LockDuration>
+      <MaxSizeInMegabytes>1024</MaxSizeInMegabytes>
+      <RequiresDuplicateDetection>false</RequiresDuplicateDetection>
+      <RequiresSession>false</RequiresSession>
+      <DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive>
+      <DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration>
+      <DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow>
+      <MaxDeliveryCount>10</MaxDeliveryCount>
+      <EnableBatchedOperations>true</EnableBatchedOperations>
+      <SizeInBytes>0</SizeInBytes>
+      <MessageCount>0</MessageCount>
+    </QueueDescription>
+  </content>
+</entry>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<feed xml:base="http://myaccount.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Customers</title>
+  <id>http://myaccount.table.core.windows.net/Customers</id>
+  <updated>2008-10-01T15:26:13Z</updated>
+  <link rel="self" title="Customers" href="Customers" />
+</feed>
