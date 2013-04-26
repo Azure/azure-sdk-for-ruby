@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://myaccount.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2008-09-18T23%3A46%3A19.4277424Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://myaccount.table.core.windows.net/mytable(PartitionKey='mypartitionkey',RowKey='myrowkey1')</id>
+  <title type="text"></title>
+  <updated>2008-09-18T23:46:19.3857256Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="mytable" href="mytable(PartitionKey='mypartitionkey',RowKey='myrowkey1')" />
+  <category term="myaccount.Tables" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>mypartitionkey</d:PartitionKey>
+      <d:RowKey>myrowkey1</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2008-09-18T23:46:19.4277424Z</d:Timestamp>
+      <d:Address>Mountain View</d:Address>
+      <d:Age m:type="Edm.Int32">23</d:Age>
+      <d:AmountDue m:type="Edm.Double">200.23</d:AmountDue>
+      <d:CustomerCode m:type="Edm.Guid">c9da6455-213d-42c9-9a79-3e9149a57833</d:CustomerCode>
+      <d:CustomerSince m:type="Edm.DateTime">2008-07-10T00:00:00</d:CustomerSince>
+      <d:IsActive m:type="Edm.Boolean">true</d:IsActive>
+      <d:NumOfOrders m:type="Edm.Int64">255</d:NumOfOrders>
+    </m:properties>
+  </content>
+</entry>
