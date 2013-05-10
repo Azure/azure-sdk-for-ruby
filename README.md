@@ -1,6 +1,6 @@
 # Windows Azure SDK for Ruby
 
-This project provides a Ruby package that makes it easy to access Windows Azure Services like Storage and Service Bus. 
+This project provides a Ruby package that makes it easy to access and manage Windows Azure Services like Storage, Service Bus and Virtual Machines. 
 
 # Library Features
 
@@ -24,6 +24,16 @@ This project provides a Ruby package that makes it easy to access Windows Azure 
         * send, receive, unlock and delete messages
         * create, list, and delete subscriptions
         * create, list, and delete rules
+* Virtual Machines
+	* Images
+		* list images
+		* delete disks
+	* Virtual Machines
+		* create, list, shut down, delete, find virtual machine deployments
+	* Cloud Services
+		* create, list, delete cloud services
+	* Storage Accounts
+		* create, list storage accounts
 
 # Getting Started
 
@@ -48,7 +58,7 @@ Running the this command ``rdoc`` will generate the API documentation in the `./
 
 ## Setup Connection
 
-You can use this SDK against the Windows Azure Services in the cloud, or against the local Storage Emulator if you are on Windows. Service Bus emulator is not supported. Of course, to use the Windows Azure Services in the cloud, you need to first [create a Windows Azure account](http://www.windowsazure.com/en-us/pricing/free-trial/). After that, you can get the information you need to configure Storage and Service Bus from the [Windows Azure Portal](https://manage.windowsazure.com).
+You can use this SDK against the Windows Azure Services in the cloud, or against the local Storage Emulator if you are on Windows. Service Bus and Windows Azure Service Management emulation are not supported. Of course, to use the Windows Azure Services in the cloud, you need to first [create a Windows Azure account](http://www.windowsazure.com/en-us/pricing/free-trial/). After that, you can get the information you need to configure Storage and Service Bus from the [Windows Azure Portal](https://manage.windowsazure.com).
 
 There are two ways you can set up the connections:
 
@@ -70,6 +80,9 @@ There are two ways you can set up the connections:
       config.sb_namespace         = "<your azure service bus namespace>"
       config.sb_access_key        = "<your azure service bus access key>"
       config.sb_issuer            = "<your azure service bus issuer>"
+      # Configure these 2 properties to use Service Management
+      config.publish_settings_file = "<path to your *.publishsettings file>"
+      config.subscription_id      = "<your subscription id>"
   end
   ```
 
@@ -86,6 +99,7 @@ There are two ways you can set up the connections:
       config.storage_queue_host   = "http://127.0.0.1:10001/devstoreaccount1"
       config.storage_table_host   = "http://127.0.0.1:10002/devstoreaccount1"
       # Local Service Bus Emulator is not supported
+      # Local Service Management emulation is not supported
   end
   ```
 
@@ -108,6 +122,14 @@ There are two ways you can set up the connections:
     AZURE_SERVICEBUS_ISSUER = <your azure service bus issuer>
     ```
 
+  * Service Management
+
+    ```
+	AZURE_PUBLISH_SETTINGS_FILE = <your *.publishsettings file path>
+	AZURE_SUBSCRIPTION_ID = <your subscription ID>
+	AZURE_API_URL = <The endpoint URL of the Windows Azure management service>
+    ```
+
 * Against local Emulator (Windows Only)
 
   * Storage
@@ -121,6 +143,7 @@ There are two ways you can set up the connections:
     ```
 
   * Service Bus: not supported
+  * Service Management: not supported
 
 ## Run Test
 
@@ -310,6 +333,57 @@ azure_service_bus.delete_subscription(subscription)
 
 # Delete a topic
 azure_service_bus.delete_topic(topic1)
+```
+
+## Image Management
+
+### Image List
+Outputs a list of all images that are available to use for provisioning.
+You should choose one of these to use for the :image parameter to the virtual machine create command.
+```ruby
+# Require the azure rubygem
+require 'azure'
+
+  Azure.configure do |config|
+    # Configure these 2 properties to use Storage
+    config.publish_settings_file = 'c:/my.publishsettings'
+    config.subscription_id      = "your subscription id"  #optional
+  end
+
+#Create a service management object
+management_service = ServiceManagement.new
+
+#Get a list of available virtual machine images
+management_service.virtual_machine_images
+
+#Get a list of available regional data center locations
+management_service.locations
+
+#Get a list of existing virtual machines in your subscription
+management_service.virtual_machines
+
+#API to shutdown Virtual Machine
+management_service.shutdown_virtual_machine('vm_name', 'cloud_service_name')
+
+#API to delete Virtual Machine
+management_service.delete_virtual_machine('vm_name','cloud_service_name')
+
+#API to start deployment
+params = {
+  :vm_name=> 'vm_name',
+  :ssh_user=>'someuser',
+  :image=>"5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-63APR20130415",
+  :ssh_password => 'Password1'
+}
+options = {
+  :storage_account_name=>'storage_suse',
+  :cloud_service_name=> 'cloud_service_name',
+  :deployment_name =>'mydeployment',
+  :tcp_endpoints => '80,3889:3889',
+  :service_location =>"West US"
+}
+
+management_service.deployment(params, options)
 ```
 
 # Need Help?

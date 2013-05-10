@@ -29,4 +29,8 @@ Azure.configure do |config|
   config.sb_namespace  = ENV["AZURE_SERVICEBUS_NAMESPACE"]
   config.sb_access_key  = ENV["AZURE_SERVICEBUS_ACCESS_KEY"]
   config.sb_issuer      = ENV["AZURE_SERVICEBUS_ISSUER"]
+
+  config.publish_settings_file = ENV["AZURE_PUBLISH_SETTINGS_FILE"]
+  config.subscription_id      = ENV["AZURE_SUBSCRIPTION_ID"]
+  config.api_url              = ENV["AZURE_API_URL"]
 end
