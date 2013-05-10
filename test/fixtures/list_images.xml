@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<Images xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <OSImage>
+    <Category>RightScale with Linux</Category>
+    <Label>RightImage CentOS 6.2 x64 v5.8.8.1</Label>
+    <LogicalSizeInGB>10</LogicalSizeInGB>
+    <Name>0b11de9248dd4d87b18621318e037d37__RightImage-CentOS-6.2-x64-v5.8.8.1</Name>
+    <OS>Linux</OS>
+    <Eula>http://support.rightscale.com/12-Guides/RightLink/RightLink_End_User_License_Agreeement;http://www.rightscale.com/privacy_policy.php</Eula>
+    <Description>CentOS 6.3 with RightLink 5.8.</Description>
+  </OSImage>
+  <OSImage>
+    <Category>RightScale with Linux</Category>
+    <Label>RightImage CentOS 6.3 x64 v5.8.8.7</Label>
+    <LogicalSizeInGB>10</LogicalSizeInGB>
+    <Name>5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-63APR20130415</Name>
+    <OS>Linux</OS>
+    <Eula>http://support.rightscale.com/12-Guides/RightLink/RightLink_End_User_License_Agreeement;http://www.rightscale.com/privacy_policy.php</Eula>
+    <Description>CentOS 6.3 with RightLink 5.8.</Description>
+  </OSImage>
+  <OSImage>
+    <Category>RightScale with Linux</Category>
+    <Label>RightImage Ubuntu 12.04 x64 v5.8.8.5</Label>
+    <LogicalSizeInGB>10</LogicalSizeInGB>
+    <Name>0b11de9248dd4d87b18621318e037d37__RightImage-Ubuntu-12.04-x64-v5.8.8.5</Name>
+    <OS>Linux</OS>
+    <Eula>http://support.rightscale.com/12-Guides/RightLink/RightLink_End_User_License_Agreeement;http://www.rightscale.com/privacy_policy.php</Eula>
+    <Description>Ubuntu 12.04 with RightLink 5.8.</Description>
+  </OSImage>
+  <OSImage>
+    <Category>RightScale with Linux</Category>
+    <Label>RightImage Ubuntu 12.04 x64 v5.8.8.7</Label>
+    <LogicalSizeInGB>10</LogicalSizeInGB>
+    <Name>0b11de9248dd4d87b18621318e037d37__RightImage-Ubuntu-12.04-x64-v5.8.8.7</Name>
+    <OS>Linux</OS>
+    <Eula>http://support.rightscale.com/12-Guides/RightLink/RightLink_End_User_License_Agreeement;http://www.rightscale.com/privacy_policy.php</Eula>
+    <Description>Ubuntu 12.04 with RightLink 5.8.</Description>
+  </OSImage>
+  <OSImage>
+    <Category>Microsoft Windows Server Group</Category>
+    <Label>Windows Server 2012 Datacenter, March 2013</Label>
+    <LogicalSizeInGB>128</LogicalSizeInGB>
+    <Name>a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201303.01-en.us-127GB.vhd</Name>
+    <OS>Windows</OS>
+    <Description>Windows Server 2012 incorporates Microsoft's experience building and operating public clouds, resulting in a dynamic, highly available server platform. It offers a scalable, dynamic and multi-tenant-aware infrastructure that helps securely connect across premises.</Description>
+  </OSImage>
+  <OSImage>
+    <Category>Microsoft Windows Server Group</Category>
+    <Label>Windows Server 2012 Datacenter, April 2013</Label>
+    <LogicalSizeInGB>128</LogicalSizeInGB>
+    <Name>a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201304.01-en.us-127GB.vhd</Name>
+    <OS>Windows</OS>
+    <Description>Windows Server 2012 incorporates Microsoft's experience building and operating public clouds, resulting in a dynamic, highly available server platform. It offers a scalable, dynamic and multi-tenant-aware infrastructure that helps securely connect across premises.</Description>
+  </OSImage>
+  <OSImage>
+    <Category>Canonical</Category>
+    <Label>Ubuntu Server 12.04.2 LTS</Label>
+    <LogicalSizeInGB>30</LogicalSizeInGB>
+    <Name>b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-12_04_2-LTS-amd64-server-20130325-en-us-30GB</Name>
+    <OS>Linux</OS>
+    <Eula>http://www.ubuntu.com/project/about-ubuntu/licensing;http://www.ubuntu.com/aboutus/privacypolicy;http://www.ubuntu.com/aboutus/privacypolicy</Eula>
+    <Description>Ubuntu Server 12.04.2 LTS (amd64 20130325) for Windows Azure. Ubuntu Server is the world's most popular Linux for cloud environments. Updates and patches for Ubuntu 12.04.2 LTS will be available until 2017-04-26.  Ubuntu Server is the perfect platform for all workloads from web applications to NoSQL databases and Hadoop. More information can be found at:
+http://www.ubuntu.com/business/server</Description>
+  </OSImage> 
+  <OSImage>
+    <Category>SUSE</Category>
+    <Label>SUSE Linux Enterprise Server 11 Service Pack 2</Label>
+    <LogicalSizeInGB>30</LogicalSizeInGB>
+    <Name>b4590d9e3ed742e4a1d46e5424aa335e__SUSE-Linux-Enterprise-Server-11-SP2-v133</Name>
+    <OS>Linux</OS>
+    <Eula>http://www.novell.com/licensing/eula/</Eula>
+    <Description>SUSE Linux Enterprise Server is a highly reliable, scalable, and secure server operating system, builtto power mission-critical workloads in both physical and virtual environments. It is an affordable, interoperable, and manageable open source foundation. With it, enterprises can cost-effectively deliver core business services, enable secure networks, and simplify the management of their heterogeneous IT infrastructure, maximizing efficiency and value. Customization of these images can be done at http://susestudio.com</Description>
+  </OSImage>
+  <OSImage>
+    <Category>RightScale with Windows Server</Category>
+    <Label>RightImage Windows 2008R2 SP1 x64 sqlsvr2012 v5.8.8.1</Label>
+    <LogicalSizeInGB>30</LogicalSizeInGB>
+    <Name>bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2008R2-SP1-x64-sqlsvr2012-v5.8.8.1</Name>
+    <OS>Windows</OS>
+    <Eula>http://support.rightscale.com/12-Guides/RightLink/RightLink_End_User_License_Agreeement;http://www.rightscale.com/privacy_policy.php</Eula>
+    <Description>Windows 2012 with MS SQL Server 2012 Standard and RightLink 5.8.</Description>
+  </OSImage>
+  <OSImage>
+    <Category>RightScale with Windows Server</Category>
+    <Label>RightImage Windows 2012 x64 iis8 v5.8.8.12</Label>
+    <LogicalSizeInGB>30</LogicalSizeInGB>
+    <Name>bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012-x64-iis8-v5.8.8.12</Name>
+    <OS>Windows</OS>
+    <Eula>http://support.rightscale.com/12-Guides/RightLink/RightLink_End_User_License_Agreeement;http://www.rightscale.com/privacy_policy.php</Eula>
+    <Description>Windows 2012 with IIS 8 and RightLink 5.8.</Description>
+  </OSImage>
+  <OSImage>
+    <Category>Microsoft SQL Server Group</Category>
+    <Label>SQL Server 2012 SP1 Enterprise On Windows Server 2008 R2 SP1</Label>
+    <LogicalSizeInGB>127</LogicalSizeInGB>
+    <Name>fb83b3509582419d99629ce476bcb5c8__Microsoft-SQL-Server-2012SP1-Enterprise-CY13SU04-SQL11-SP1-CU3-11.0.3350.0-B</Name>
+    <OS>Windows</OS>
+    <Eula>http://go.microsoft.com/fwlink/?LinkID=285687;http://go.microsoft.com/fwlink/?LinkId=291251</Eula>
+    <Description>Microsoft SQL Server 2012 SP1 Enterprise on Windows Server 2008 R2 Service Pack 1. This image contains the full version of SQL Server. Some SQL Server 2012 components require additional setup and configuration before use. We recommend that you use a virtual machine size of large or higher.</Description>
+  </OSImage>
+  <OSImage>
+    <Category>Microsoft SQL Server Group</Category>
+    <Label>SQL Server 2012 SP1 Standard On Windows Server 2008 R2 SP1</Label>
+    <LogicalSizeInGB>127</LogicalSizeInGB>
+    <Name>fb83b3509582419d99629ce476bcb5c8__Microsoft-SQL-Server-2012SP1-Standard-CY13SU04-SQL11-SP1-CU3-11.0.3350.0-B</Name>
+    <OS>Windows</OS>
+    <Eula>http://go.microsoft.com/fwlink/?LinkID=285691;http://go.microsoft.com/fwlink/?LinkId=291251</Eula>
+    <Description>Microsoft SQL Server 2012 SP1 Standard on Windows Server 2008 R2 Service Pack 1. This image contains the full version of SQL Server. Some SQL Server 2012 components require additional setup and configuration before use. We recommend that you use a virtual machine size of large or higher.</Description>
+  </OSImage>
+</Images>

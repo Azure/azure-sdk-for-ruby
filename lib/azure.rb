@@ -27,9 +27,12 @@ require "azure/service_bus/correlation_filter"
 require "azure/table/table_service"
 require "azure/table/batch"
 require "azure/table/query"
+require "azure/service_management/service_management_service"
 
 # add some aliases for convenience 
 Azure::BlobService = Azure::Blob::BlobService
 Azure::QueueService = Azure::Queue::QueueService
 Azure::TableService = Azure::Table::TableService
 Azure::ServiceBusService = Azure::ServiceBus::ServiceBusService
+Azure::VirtualMachineImageService = Azure::VirtualMachineImageManagement::VirtualMachineImageManagementService
+ServiceManagement = Azure::ServiceManagement::ServiceManagementService
