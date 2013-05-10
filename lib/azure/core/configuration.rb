@@ -161,7 +161,7 @@ module Azure
       # Public: Set the host  for the management API.
       attr_writer :api_url
 
-      #Public: Set the  privet key for SSL/HTTPS request with PEM certificate
+      #Public: Set the  private key for SSL/HTTPS request with PEM certificate
       attr_accessor :http_private_key
 
       #Public: Set the  certificate key for SSL/HTTPS request with PEM certificate
