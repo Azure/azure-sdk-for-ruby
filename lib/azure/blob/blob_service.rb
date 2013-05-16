@@ -776,7 +776,7 @@ module Azure
 
         uri = blob_uri(container, blob, query)
 
-        response = call(:get, uri)
+        response = call(:head, uri)
 
         result = Serialization.blob_from_headers(response.headers)
 
