@@ -23,6 +23,9 @@ require "rexml/document"
 require 'azure/core/utility'
 require 'azure/service_management/management_http_request'
 require 'azure/virtual_machine_image_management/virtual_machine_image_management_service'
+require 'azure/storage_management/storage_management_service'
+require 'azure/cloud_service_management/cloud_service_management_service'
+require 'azure/virtual_machine_management/virtual_machine_management_service'
 
 include Azure::Core::Utility
 include Azure::ServiceManagement
@@ -50,6 +53,13 @@ module Azure
         images = VirtualMachineImageService.list_virtual_machine_images
         puts Tilt.new(self.views('images.erb'), 1, :trim => '%').render(nil, :images => images)
         images
+      end
+
+      # Public: Get a list of virtual machines from the subscription
+      def virtual_machines
+        virtual_machines = VirtualMachineService.list_virtual_machines
+        puts Tilt.new(self.views('servers.erb'), 1, :trim => '%').render(nil, :roles => virtual_machines)
+        virtual_machines
       end
 
     end
