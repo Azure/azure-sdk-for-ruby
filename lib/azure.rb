@@ -36,3 +36,6 @@ Azure::TableService = Azure::Table::TableService
 Azure::ServiceBusService = Azure::ServiceBus::ServiceBusService
 Azure::VirtualMachineImageService = Azure::VirtualMachineImageManagement::VirtualMachineImageManagementService
 ServiceManagement = Azure::ServiceManagement::ServiceManagementService
+Azure::CloudService = Azure::CloudServiceManagement::CloudServicesManagementService
+Azure::StorageService = Azure::StorageManagement::StorageManagementService
+Azure::VirtualMachineService = Azure::VirtualMachineManagement::VirtualMachineManagementService
