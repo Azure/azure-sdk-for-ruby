@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.name    = "azure"
   s.version = Azure::Version
 
-  s.authors     = ["Microsoft Corporation"]
+  s.authors     = ["Microsoft Corporation", "AppFog"]
   s.email       = "azureruby@microsoft.com"
   s.description = "Windows Azure Client Library for Ruby"
   s.summary     = "Official ruby client library to consume Windows Azure services."
