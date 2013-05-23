@@ -1,0 +1,7 @@
+
+<%="Listing Virtual Machine Images".bold %>
+
+  <%="OS Type".bold%>            <%="Category".bold%>                        <%="Name".bold%>
+<%images.each do |image|%>
+  <%=image.os_type.fix%> <%=image.category.fix(20)%>      <%=image.name%>
+<%end%>
