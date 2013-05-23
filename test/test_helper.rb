@@ -42,6 +42,7 @@ require 'azure'
 
 Azure.config.storage_account_name     = "accountname"
 Azure.config.storage_access_key       = "YWNjZXNzLWtleQ=="
+Azure.config.publish_settings_file    = File.expand_path("test/fixtures/azure.publishsettings")
 # Azure.config.storage_table_host     = 
 # Azure.config.storage_blob_host      = 
 # Azure.config.storage_queue_host     = 
