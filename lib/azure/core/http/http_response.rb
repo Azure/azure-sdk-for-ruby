@@ -37,6 +37,13 @@ module Azure
           @http_response.body
         end
 
+        # Public: Get the response status message.
+        #
+        # Returns a String.
+        def message
+          @http_response.message
+        end
+
         # Public: Get the response status code.
         #
         # Returns a Fixnum.
