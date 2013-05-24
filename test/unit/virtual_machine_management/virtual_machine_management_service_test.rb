@@ -88,5 +88,34 @@ describe Azure::VirtualMachineService do
       virtual_machine.tcp_endpoints.must_include({"Name"=>"tcp-port-3889", "Vip"=>"137.116.17.187", "PublicPort"=>"3889", "LocalPort"=>"3889"})
     end
   end
+
+  describe "#find" do
+
+    before {
+      virtual_machine = VirtualMachine.new do |virtual_machine|
+        virtual_machine.vm_name = 'instance-name'
+        virtual_machine.cloud_service_name = 'cloud-service-1'
+      end
+      Azure::VirtualMachineService.stubs(:list_virtual_machines).returns([virtual_machine])
+    }
+
+    it "return nil if virtual machine and cloud server does not exist " do
+      virtual_machine = subject.find 'name','cloud-service'
+      virtual_machine.must_equal nil
+    end
+
+    it "return nil if virtual machine or cloud server does not exist " do
+      virtual_machine = subject.find 'name','cloud-service-1'
+      virtual_machine.must_equal nil
+      virtual_machine = subject.find 'instance-name','cloud_service_name'
+      virtual_machine.must_equal nil
+    end
+
+    it "return virtual machine instance if virtual machine name and cloud server name are valid " do
+      virtual_machine = subject.find 'instance-name','cloud-service-1'
+      virtual_machine.must_be_kind_of VirtualMachine
+    end
+  end
+
   
 end

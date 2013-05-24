@@ -22,7 +22,7 @@ module Azure
 
       def initialize(options={})
         publish_settings_file = options[:publish_setting_file] || Azure.config.publish_settings_file
-        if publish_settings_file
+        if !publish_settings_file.nil?
           publishxml = open(locate_file(publish_settings_file)).read
           cert_base64 = /ManagementCertificate="(.*)">/.match(publishxml)[1]
           cert_content = OpenSSL::PKCS12.new(Base64.decode64(cert_base64))

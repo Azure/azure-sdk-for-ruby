@@ -47,12 +47,26 @@ module Azure
       #
       # Returns None
       def self.delete_disk(disk_name)
-        Loggerx.info "Deleting Disk #{disk_name}"
+        Loggerx.info "Deleting Disk \"#{disk_name}\". "
         path = "/services/disks/#{disk_name}"
         request = ManagementHttpRequest.new(:delete, path)
-        request.call
-      end
+        begin
+          Timeout::timeout(60) do
+            begin
+              request.call
+            rescue Exception
+              print '# '
+              sleep 15
+              retry
+            end
 
+          end
+        rescue Timeout::Error
+          Loggerx.error "Failed to delete the disk."
+        ensure
+          print "\n"
+        end
+      end
     end
   end
 end
