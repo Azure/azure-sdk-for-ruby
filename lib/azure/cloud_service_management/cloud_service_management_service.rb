@@ -28,6 +28,20 @@ module Azure
         Serialization.cloud_services_from_xml(response)
       end
 
+      # Public: Deletes the specified cloud service of given subscription id from Windows Azure.
+      #
+      # ==== Attributes
+      #
+      # * +name+       - String. Cloud service name.
+      #
+      # Returns:  None
+      def self.delete_cloud_service(cloud_service_name)
+        request_path= "/services/hostedservices/#{cloud_service_name}"
+        request = ManagementHttpRequest.new(:delete, request_path)
+        Loggerx.info "Deleting cloud service #{cloud_service_name}. \n"
+        request.call
+      end
+
     end
   end
 end

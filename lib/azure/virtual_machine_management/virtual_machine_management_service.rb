@@ -35,6 +35,115 @@ module Azure
         roles.compact
       end
 
+      # Public: Get a virtual machine for given name and cloud service name.
+      #
+      # ==== Attributes
+      #
+      # * +name+                - String. Virtual machine name.
+      # * +cloud_service_name+  - String. Cloud service name.
+      #
+      # Returns an  Azure::VirtualMachineManagement::VirtualMachine instance.
+      def self.find(name, cloud_service_name)
+        server =  VirtualMachineManagementService.list_virtual_machines.select {|x| x.vm_name == name && x.cloud_service_name == cloud_service_name}
+        server.first
+      end
+
+      # Public: deletes the deployment, cloud service and disk.
+      #
+      # ==== Attributes
+      #
+      # * +vm_name+  - String. Virtual machine name.
+      # * +cloud_service_name+  - String. Cloud service name.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg441305.aspx
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157179.aspx
+      #
+      # Returns NONE
+      def self.delete_virtual_machine(vm_name, cloud_service_name)
+        vm = find(vm_name,cloud_service_name)
+        if vm
+          delete_virtual_machine_deployment(cloud_service_name)
+          Azure::CloudService.delete_cloud_service(cloud_service_name)
+          Loggerx.info "Waiting for disk to be released.\n"
+          sleep 30
+          VirtualMachineDiskManagementService.delete_disk(vm.disk_name)
+        else
+          Loggerx.error "Couldn't found Virtual machine #{vm_name} under cloud service #{cloud_service_name}"
+        end
+      rescue Exception => e
+        puts e.message
+      end
+
+      # Public: shuts down the specified virtual machine.
+      #
+      # ==== Attributes
+      #
+      # * +name+                - String. Virtual machine name.
+      # * +cloud_service_name+  - String. Cloud service name.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157195.aspx
+      #
+      # Returns NONE
+      def self.shutdown(vm_name, cloud_service_name)
+        vm = find(vm_name, cloud_service_name)
+        if vm
+          if vm.deployment_status == 'Running'
+            path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roleinstances/#{vm.vm_name}/Operations"
+            body = Serialization.shutdown_virtual_machine_to_xml
+            Loggerx.info "Shutting down virtual machine \"#{vm.vm_name}\" ..."
+            request = ManagementHttpRequest.new(:post, path, body)
+            request.call
+          else
+            Loggerx.error "Cannot perform the shutdown operation on a stopped deployment."
+          end
+        else
+          Loggerx.error "Couldn't found Virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\". "
+        end
+      end
+
+      # Public: starts the specified virtual machine.
+      #
+      # ==== Attributes
+      #
+      # * +name+                - String. Virtual machine name.
+      # * +cloud_service_name+  - String. Cloud service name.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157189.aspx
+      #
+      # Returns NONE
+      def self.start(vm_name, cloud_service_name)
+        vm = find(vm_name, cloud_service_name)
+        if vm
+          if vm.deployment_status == 'Running'
+            path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roleinstances/#{vm.vm_name}/Operations"
+            body = Serialization.start_virtual_machine_to_xml
+            Loggerx.info "Starting virtual machine \"#{vm.vm_name}\" ..."
+            request = ManagementHttpRequest.new(:post, path, body)
+            request.call
+          else
+            Loggerx.error "Cannot perform the start operation on a stopped deployment."
+          end
+        else
+          Loggerx.error "Couldn't found Virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\"."
+        end
+      end
+
+      # Public: deletes the specified deployment.
+      #
+      # ==== Attributes
+      #
+      # * +cloud_service_name+  - String. Cloud service name.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460815.aspx
+      #
+      # Returns NONE
+      def self.delete_virtual_machine_deployment(cloud_service_name)
+        request_path= "/services/hostedservices/#{cloud_service_name}/deploymentslots/production"
+        request = ManagementHttpRequest.new(:delete, request_path)
+        Loggerx.info "Deleting deployment of cloud service \"#{cloud_service_name}\" ..."
+        request.call
+      end
+
     end
   end
 end

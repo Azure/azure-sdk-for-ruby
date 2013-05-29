@@ -19,6 +19,30 @@ module Azure
   module VirtualMachineManagement
     module Serialization
 
+      def self.shutdown_virtual_machine_to_xml
+        builder = Nokogiri::XML::Builder.new do |xml|
+          xml.ShutdownRoleOperation(
+            'xmlns'=>'http://schemas.microsoft.com/windowsazure',
+            'xmlns:i'=>'http://www.w3.org/2001/XMLSchema-instance'
+          ) {
+            xml.OperationType 'ShutdownRoleOperation'
+          }
+        end
+        builder.doc.to_xml
+      end
+
+      def self.start_virtual_machine_to_xml
+        builder = Nokogiri::XML::Builder.new do |xml|
+          xml.StartRoleOperation(
+            'xmlns'=>'http://schemas.microsoft.com/windowsazure',
+            'xmlns:i'=>'http://www.w3.org/2001/XMLSchema-instance'
+          ) {
+            xml.OperationType 'StartRoleOperation'
+          }
+        end
+        builder.doc.to_xml
+      end
+
       def self.virtual_machines_from_xml(deployXML,cloud_service_name)
         if deployXML.at_css('Deployment Name') != nil
           rolesXML = deployXML.css('Deployment RoleInstanceList RoleInstance')
@@ -36,8 +60,12 @@ module Azure
           vm.udp_endpoints = Array.new
           endpoints = rolesXML.css('InstanceEndpoint')
           endpoints.each do |endpoint|
-            if xml_content(endpoint, 'Name').downcase == 'ssh'
-              vm.ipaddress = xml_content(endpoint, 'Vip')
+            if vm.ipaddress.nil?
+              if xml_content(endpoint, 'Name').downcase == 'ssh'
+                vm.ipaddress = xml_content(endpoint, 'Vip')
+              else xml_content(endpoint, 'Name').downcase == 'winrm'
+                vm.ipaddress = xml_content(endpoint, 'Vip')
+              end
             end
             hash = Hash.new
             hash['Name'] = xml_content(endpoint, 'Name')
@@ -50,6 +78,7 @@ module Azure
               vm.udp_endpoints << hash
             end
           end
+          vm.ipaddress =  xml_content(rolesXML, 'IpAddress') unless vm.ipaddress
           vm
         end
       end
