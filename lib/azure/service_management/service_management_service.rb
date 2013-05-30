@@ -62,6 +62,42 @@ module Azure
         virtual_machines
       end
 
+      # Public: Shut down a virtual machine
+      #
+      # ==== Attributes
+      #
+      # * +name+                - String. The name of the virtual machine.
+      # * +service_name+        - String. The name of the service.
+      #
+      # Returns None
+      def shutdown_virtual_machine(name, service_name)
+        VirtualMachineService.shutdown(name, service_name)
+      end
+
+      # Public: Start a virtual machine
+      #
+      # ==== Attributes
+      #
+      # * +name+                - String. The name of the virtual machine.
+      # * +service_name+        - String. The name of the service.
+      #
+      # Returns None
+      def start_virtual_machine(name, service_name)
+        VirtualMachineService.start(name, service_name)
+      end
+
+      # Public: Delete a virtual machine
+      #
+      # ==== Attributes
+      #
+      # * +name+                - String. The name of the virtual machine.
+      # * +service_name+        - String. The name of the service.
+      #
+      # Returns None
+      def delete_virtual_machine(name, service_name)
+        VirtualMachineService.delete_virtual_machine(name, service_name)
+      end
+
     end
   end
 end

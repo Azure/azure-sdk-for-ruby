@@ -51,4 +51,26 @@ describe Azure::VirtualMachineManagement::Serialization do
 
   end
 
+  describe "#shutdown_virtual_machine_to_xml" do
+
+    it "returns an xml for virtual machine shutdown" do
+      result = subject.shutdown_virtual_machine_to_xml
+      result.must_be_kind_of String
+      doc = Nokogiri::XML(result)
+      doc.css('OperationType').text.must_equal 'ShutdownRoleOperation'
+    end
+
+  end
+
+  describe "#start_virtual_machine_to_xml" do
+
+    it "returns an xml for start virtual machine" do
+      result = subject.start_virtual_machine_to_xml
+      result.must_be_kind_of String
+      doc = Nokogiri::XML(result)
+      doc.css('OperationType').text.must_equal 'StartRoleOperation'
+    end
+
+  end
+
 end
