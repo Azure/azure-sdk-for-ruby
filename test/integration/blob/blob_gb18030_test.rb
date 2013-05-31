@@ -65,8 +65,8 @@ describe 'Blob GB-18030' do
         test_name = container_name + v.encode("UTF-8")
         subject.create_block_blob container_name, test_name, "hi"
         blobs = subject.list_blobs container_name
-        blobs.each { |v|
-          v.name.must_equal test_name
+        blobs.each { |value|
+          value.name.must_equal test_name
         }
         subject.delete_blob container_name, test_name
       end
@@ -83,8 +83,8 @@ describe 'Blob GB-18030' do
         test_name = container_name + v.encode("GB18030")
         subject.create_block_blob container_name, test_name, "hi"
         blobs = subject.list_blobs container_name
-        blobs.each { |v|
-          v.name.encode("UTF-8").must_equal test_name.encode("UTF-8")
+        blobs.each { |value|
+          value.name.encode("UTF-8").must_equal test_name.encode("UTF-8")
         }
         subject.delete_blob container_name, test_name
       end
@@ -145,13 +145,10 @@ describe 'Blob GB-18030' do
     GB18030TestStrings.get.each { |k,v|
       blob_name = 'Read/Write Block Blob Content UTF-8 for ' + k
       content = v.encode("UTF-8")
-      # The :content_encoding can be removed if feature in
-      # https://github.com/appfog/azure-sdk-for-ruby/issues/294
-      # is added.
-      options = { :content_encoding=>"UTF-8" }
-      subject.create_block_blob container_name, blob_name, content, options
+
+      subject.create_block_blob container_name, blob_name, content
       blob, returned_content = subject.get_blob container_name, blob_name
-      returned_content.force_encoding(blob.properties[:content_encoding])
+
       returned_content.must_equal content
     }
   end
