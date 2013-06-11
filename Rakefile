@@ -32,6 +32,7 @@ namespace :test do
       ENV.fetch("AZURE_SERVICEBUS_NAMESPACE", nil),
       ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY", nil),
       # ENV.fetch("AZURE_SERVICEBUS_ISSUER",     nil)
+      ENV.fetch('AZURE_PUBLISH_SETTINGS_FILE', nil)
     ].include?(nil)
 
     abort "[ABORTING] Configure your environment to run the integration tests" if unset_environment

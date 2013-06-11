@@ -25,4 +25,10 @@ Azure::Core.configure do |config|
   config.sb_namespace  = ENV.fetch("AZURE_SERVICEBUS_NAMESPACE")
   config.sb_access_key  = ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY")
   # config.sb_issuer      = ENV.fetch("AZURE_SERVICEBUS_ISSUER")
+  config.publish_settings_file = ENV.fetch('AZURE_PUBLISH_SETTINGS_FILE')
 end
+
+
+MiniTest::Unit.after_tests {
+  VirtualMachineNameGenerator.cleanup
+}

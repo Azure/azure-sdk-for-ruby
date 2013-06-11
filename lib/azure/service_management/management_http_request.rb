@@ -35,7 +35,7 @@ module Azure
       def initialize(method, path, body=nil)
         super
         @warn = false
-        @headers = {"x-ms-version" => "2012-03-01","Content-Type"=> 'application/xml' }
+        @headers = {"x-ms-version" => "2013-03-01", "Content-Type"=> 'application/xml' }
         @uri = URI.parse(Azure.config.api_url + Azure.config.subscription_id + path)
         @key =  Azure.config.http_private_key
         @cert = Azure.config.http_certificate_key
@@ -126,13 +126,14 @@ module Azure
           status_code = xml_content(response, 'Operation HttpStatusCode')
           done = status != 'InProgress'
           if done
-            Loggerx.success " #{status.downcase} (#{status_code})"
-            puts ''
-            if status != "Succeeded"
+            if status.downcase != "succeeded"
               error_code = xml_content(response, 'Operation Error Code')
               error_msg = xml_content(response, 'Operation Error Message')
-              Loggerx.error "#{error_code}: #{error_msg}"
+              Loggerx.exception_message "#{error_code}: #{error_msg}"
+            else
+              Loggerx.success " #{status.downcase} (#{status_code})"
             end
+            puts ''
           else
             sleep(1)
           end

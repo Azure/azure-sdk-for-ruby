@@ -20,7 +20,10 @@ describe Azure::VirtualMachineService do
     ServiceManagement.new
     Azure::VirtualMachineService
   end
- 
+  before{
+    Loggerx.stubs(:info).returns(nil)
+  }
+
   describe "#list_virtual_machines" do
     let(:request_path) {'/services/hostedservices'}
     let(:cloud_services_xml)  { Fixtures["list_cloud_services"] }
@@ -72,7 +75,7 @@ describe Azure::VirtualMachineService do
       virtual_machine.deployment_name.must_equal 'deployment-name'
       virtual_machine.ipaddress.must_equal '137.116.17.187'
     end
-    
+
     it "returns a list of virtual machines for the subscription" do
       results = subject.list_virtual_machines
       results.must_be_kind_of Array
@@ -117,5 +120,186 @@ describe Azure::VirtualMachineService do
     end
   end
 
-  
+  describe "#create_virtual_machine" do
+    let(:images_request_path) {'/services/images'}
+    let(:images_xml)  { Fixtures["list_images"] }
+    let(:virtual_machine_xml)  { Fixtures["virtual_machine"] }
+    let(:method) { :get }
+    let(:mock_request){ mock() }
+
+    let(:os_response_body) {
+      response = mock()
+      response.stubs(:body).returns(images_xml)
+      Nokogiri::XML  response.body
+    }
+
+    before {
+      ManagementHttpRequest.stubs(:new).with(method, images_request_path, nil).returns(mock_request)
+      mock_request.expects(:call).returns(os_response_body)
+      Azure::CloudService.stubs(:create_cloud_service)
+      Azure::CloudService.stubs(:upload_certificate)
+      Azure::StorageService.stubs(:create_storage_account)
+      mock_request = mock()
+      ManagementHttpRequest.expects(:new).with(:post,anything, anything).returns(mock_request)
+      mock_request.expects(:call).returns(nil)
+      virtual_machine = VirtualMachine.new do |virtual_machine|
+        virtual_machine.vm_name = 'instance-name'
+        virtual_machine.ipaddress = '192.168.1.1'
+      end
+      Azure::VirtualMachineService.stubs(:find).returns(virtual_machine)
+    }
+
+    it "should set options hash with valid cloud_service_name, deployment_name, storage_account_name." do
+      params = {
+        :vm_name=>'instance1',
+        :ssh_user=>'root',
+        :image=>"5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-63APR20130415",
+        :password => 'root'
+      }
+      options = {}
+      virtual_machine = subject.create_virtual_machine(params,options)
+      options[:cloud_service_name].wont_be_nil
+      options[:storage_account_name].wont_be_nil
+      options[:deployment_name].wont_be_nil
+      options[:os_type].must_equal 'Linux'
+      assert_match(/^#{params[:vm_name]+'-service'}*/,  "#{options[:cloud_service_name]}")
+    end
+
+    it "should set options hash with valid cloud service name." do
+      params = {
+        :vm_name=>'instance1',
+        :ssh_user=>'root',
+        :image=>"5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-63APR20130415",
+        :password => 'root'
+      }
+
+      options = {
+        :storage_account_name=>'storage_account_name',
+        :deployment_name =>'unique_deployment_name',
+        :tcp_endpoints => '80,3889:3889',
+        :service_location =>"Southeast Asia"
+      }
+      virtual_machine = subject.create_virtual_machine(params,options)
+      options[:cloud_service_name].wont_be_nil
+      assert_match(/^#{params[:vm_name]+'-service-'}*/,  "#{options[:cloud_service_name]}")
+      options[:os_type].must_equal 'Linux'
+    end
+
+  end
+
+  describe "#create_virtual_machine with invalid parameters for windows machine" do
+    let(:images_request_path) {'/services/images'}
+    let(:windows_images_xml)  { Fixtures["list_images"] }
+    let(:virtual_machine_xml)  { Fixtures["virtual_machine"] }
+    let(:method) { :get }
+    let(:mock_request){ mock() }
+    let(:os_response_body) {
+      response = mock()
+      response.stubs(:body).returns(windows_images_xml)
+      Nokogiri::XML  response.body
+    }
+
+    before {
+      ManagementHttpRequest.stubs(:new).with(method, images_request_path, nil).returns(mock_request)
+      mock_request.expects(:call).returns(os_response_body)
+      Azure::CloudService.stubs(:create_cloud_service)
+      Azure::CloudService.stubs(:upload_certificate)
+      Azure::StorageService.stubs(:create_storage_account)
+      Loggerx.expects(:puts).returns(nil).at_least(0)
+      mock_request = mock()
+      ManagementHttpRequest.expects(:new).with(:post,anything, anything).returns(mock_request).at_least(0)
+      mock_request.expects(:call).returns(nil).at_least(0)
+      virtual_machine_obj = VirtualMachine.new do |virtual_machine|
+        virtual_machine.vm_name = 'windows-instance'
+        virtual_machine.ipaddress = '192.168.1.1'
+      end
+      Azure::VirtualMachineService.stubs(:find).returns(virtual_machine_obj)
+    }
+
+    it "should set options os_type with windows." do
+      params = {
+        :vm_name=>'windows-instance',
+        :admin_user=>'root',
+        :image=> "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201304.01-en.us-127GB.vhd",
+        :password => 'root'
+      }
+      options = {}
+      virtual_machine = subject.create_virtual_machine(params,options)
+      options[:cloud_service_name].wont_be_nil
+      options[:storage_account_name].wont_be_nil
+      options[:deployment_name].wont_be_nil
+      options[:os_type].must_equal 'Windows'
+      assert_match(/^#{params[:vm_name]+'-service'}*/,  "#{options[:cloud_service_name]}")
+    end
+
+    it "throws error when admin_user is not given" do
+      params = {
+        :vm_name=>'windows-instance',
+        :image=> "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201304.01-en.us-127GB.vhd",
+        :password => 'root'
+      }
+      options = {}
+      virtual_machine = subject.create_virtual_machine(params,options)
+      assert_match(/You did not provided a valid 'admin_user' value*/,  virtual_machine)
+    end
+
+    it "throws error when certificate path is not valid." do
+      params = {
+        :vm_name=>'windows-instance',
+        :image=> "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201304.01-en.us-127GB.vhd",
+        :password => 'root',
+        :admin_user=>'root'
+      }
+      options = {:winrm_transport =>  ['https','http']}
+      virtual_machine = subject.create_virtual_machine(params,options)
+      assert_match(/You did not provided a valid 'private_key_file, certificate_file' value*/,  virtual_machine)
+    end
+
+    it "throws error when certificate path is not given." do
+      params = {
+        :vm_name=>'windows-instance',
+        :image=> "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201304.01-en.us-127GB.vhd",
+        :password => 'root',
+        :admin_user=>'root'
+      }
+      options = {:winrm_transport =>  ['https','http']}
+      virtual_machine = subject.create_virtual_machine(params,options)
+      assert_match(/You did not provided a valid 'private_key_file, certificate_file' value*/,  virtual_machine)
+    end
+
+    it "throws error when certificate path is not invalid." do
+      params = {
+        :vm_name=>'windows-instance',
+        :image=> "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201304.01-en.us-127GB.vhd",
+        :password => 'root',
+        :admin_user=>'root'
+      }
+      options = {
+        :winrm_transport =>  ['https','http'],
+        :private_key_file => 'f:/invalid_path/private_key' ,
+        :certificate_file => 'f:/invalid_path/certificate.pem'
+      }
+      virtual_machine = subject.create_virtual_machine(params,options)
+      assert_match(/No such file or directory -*/,  virtual_machine)
+    end
+
+    it "should not throws certificate error when wirnm_transport is http" do
+      params = {
+        :vm_name=>'windows-instance',
+        :image=> "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201304.01-en.us-127GB.vhd",
+        :password => 'root',
+        :admin_user=>'root'
+      }
+      options = {
+        :winrm_transport =>  ['http'],
+        :private_key_file => 'f:/invalid_path/private_key' ,
+        :certificate_file => 'f:/invalid_path/certificate.pem'
+      }
+      virtual_machine = subject.create_virtual_machine(params,options)
+      virtual_machine.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
+      virtual_machine.wont_be_nil
+    end
+
+
+  end
 end

@@ -21,6 +21,10 @@ describe Azure::CloudService do
     Azure::CloudService
   end
 
+  before{
+    Loggerx.expects(:puts).returns(nil).at_least(0)
+  }
+
   describe "#list_cloud_services" do
     let(:request_path) {'/services/hostedservices'}
     let(:cloud_services_xml)  { Fixtures["list_cloud_services"] }
@@ -54,5 +58,62 @@ describe Azure::CloudService do
       results.first.must_be_kind_of Azure::CloudServiceManagement::CloudService
     end
   end
+  
+  describe "#get_cloud_service" do
+    let(:request_path) {'/services/hostedservices'}
+    let(:cloud_services_xml)  { Fixtures["list_cloud_services"] }
+    let(:method) { :get }
+    let(:mock_request){ mock() }
+    let(:response) {
+      response = mock()
+      response.stubs(:body).returns(cloud_services_xml)
+      response
+    }
+    let(:response_body) {Nokogiri::XML  response.body}
+  
+    before {
+      ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      mock_request.expects(:call).returns(response_body)
+    }
+  
+    it "assembles a URI for the request" do
+      subject.get_cloud_service 'cloud-service-1'
+    end
+  
+    it "returns true if found cloud service with given name" do
+      result = subject.get_cloud_service 'cloud-service-1'
+      result.must_equal true
+    end
+  
+    it "returns false if cloud service with given name doesn't exists" do
+      result = subject.get_cloud_service 'cloud-service-3'
+      result.must_equal false
+    end
+  end
 
+  describe "#create_cloud_service" do
+    let(:request_path) {'/services/hostedservices'}
+    let(:cloud_services_xml)  { Fixtures["list_cloud_services"] }
+    let(:method) { :get }
+    let(:mock_request){ mock() }
+    let(:response) {
+      response = mock()
+      response.stubs(:body).returns(cloud_services_xml)
+      response
+    }
+    let(:response_body) {Nokogiri::XML  response.body}
+  
+    it "Create cloud service return message if cloud service exists of given name." do
+      ManagementHttpRequest.any_instance.expects(:call).returns response_body
+      msg = subject.create_cloud_service 'cloud-service-1'
+      assert_match(/^Cloud service cloud-service-1 already exists*/, msg)
+    end
+
+    it "Create cloud service if cloud service doesn't exists of given name." do
+      Azure::CloudService.stubs(:get_cloud_service).with('cloud-service-3').returns(false)
+      ManagementHttpRequest.any_instance.expects(:call).returns nil
+      subject.create_cloud_service 'cloud-service-3'
+    end
+
+  end
 end

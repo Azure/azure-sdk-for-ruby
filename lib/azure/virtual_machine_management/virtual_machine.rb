@@ -32,7 +32,7 @@ module Azure
       attr_accessor :tcp_endpoints
       attr_accessor :role_size
       attr_accessor :storage_account_name 
-      attr_accessor :ssh_password
+      attr_accessor :password
       attr_accessor :ssh_user
       attr_accessor :image
       attr_accessor :os_type

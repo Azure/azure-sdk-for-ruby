@@ -30,6 +30,25 @@ module Azure
           Loggerx.error_with_exit "Unable to find #{name} file  "
         end
       end
+
+      def export_der(cert, key, pass=nil, name=nil)
+        begin
+          pkcs12 = OpenSSL::PKCS12.create(pass, name, key, cert)
+          Base64.encode64(pkcs12.to_der)
+        rescue Exception => e
+          puts e.message
+          abort
+        end
+      end
+
+      def export_fingerprint(certificate)
+        Digest::SHA1.hexdigest(certificate.to_der)
+      end
+
+      def enable_winrm?(winrm_transport)
+        (!winrm_transport.nil? && (winrm_transport.select{|x| x.downcase == 'http' or x.downcase == 'https'}.size > 0))
+      end
+
     end
 
     module Logger
@@ -39,6 +58,7 @@ module Azure
         end
 
         def error_with_exit(msg)
+          puts  msg.bold.red
           raise RuntimeError, msg.bold.red
         end
 
@@ -50,6 +70,11 @@ module Azure
         def error(msg)
           puts msg.bold.red
           msg
+        end
+
+        def exception_message(msg)
+          print msg.bold.red
+          raise RuntimeError, msg.bold.red
         end
 
         def success(msg)

@@ -30,6 +30,18 @@ module Azure
         os_images
       end
 
+      def self.disks_from_xml(diskXML)
+        os_disks = Array.new
+        disks = diskXML.css('Disks Disk')
+        disks.each do |disk_node|
+          disk = VirtualMachineDiskManagementService.new
+          disk.name = xml_content(disk_node, 'Name')
+          disk.attached =  !xml_content(disk_node,'AttachedTo').empty?
+          os_disks << disk
+        end
+        os_disks
+      end
+
     end
   end
 end

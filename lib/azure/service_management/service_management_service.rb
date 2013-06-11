@@ -23,9 +23,10 @@ require "rexml/document"
 require 'azure/core/utility'
 require 'azure/service_management/management_http_request'
 require 'azure/virtual_machine_image_management/virtual_machine_image_management_service'
+require 'azure/virtual_machine_management/virtual_machine_management_service'
 require 'azure/storage_management/storage_management_service'
 require 'azure/cloud_service_management/cloud_service_management_service'
-require 'azure/virtual_machine_management/virtual_machine_management_service'
+require 'azure/service_management/location'
 
 include Azure::Core::Utility
 include Azure::ServiceManagement
@@ -48,6 +49,20 @@ module Azure
         File.join(File.dirname(__FILE__), 'views', name)
       end
 
+      # Public: Get a list of virtual machines from the subscription
+      def virtual_machines
+        virtual_machines = VirtualMachineService.list_virtual_machines
+        puts Tilt.new(self.views('servers.erb'), 1, :trim => '%').render(nil, :roles => virtual_machines)
+        virtual_machines
+      end
+
+      # Public: Get a list of available regional data center locations
+      def locations
+        locations = Location.list_locations
+        puts Tilt.new(self.views('locations.erb'), 1, :trim => '%').render(nil, :locations => locations)
+        locations
+      end
+ 
       # Public: Get a list of virtual machine images available in the subscription
       def virtual_machine_images
         images = VirtualMachineImageService.list_virtual_machine_images
@@ -55,11 +70,40 @@ module Azure
         images
       end
 
-      # Public: Get a list of virtual machines from the subscription
-      def virtual_machines
-        virtual_machines = VirtualMachineService.list_virtual_machines
-        puts Tilt.new(self.views('servers.erb'), 1, :trim => '%').render(nil, :roles => virtual_machines)
-        virtual_machines
+      #
+      #
+      # Returns None
+
+      # Public: Create a virtual machine deployment in one step
+      #
+      # ==== Attributes
+      #
+      # * +params+              - Hash. Required parameters.
+      # * +options+             - Hash. Optional parameters.
+      #
+      # ==== Params
+      #
+      # Accepted key/value pairs in the params parameter are:
+      #
+      # * +:vm_name+            - String. The name of the virtual machine tyo create
+      # * +:ssh_user+           - String. The name of the SSH user to enable for the virtual machine (Linux only)
+      # * +:password+           - String. The password for the SSH user or windows Administrator.
+      # * +:image+              - String. The name of the image to derive the virtual machine from
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in the options parameter are:
+      # * +:storage_account_name+   - String. The name of the storage account to use
+      # * +:cloud_service_name+     - String. The name to use for the cloud service
+      # * +:deployment_name+        - String. The name to use for the deployment
+      # * +:tcp_endpoints+          - String. Command delimited list of endpoints to enable. If a number is listed alone, it specifies both the private and the public ports of an endpoint. If two numbers are separated by a colon (":"), the first one represents the private port and the second is the public one
+      # * +:service_location+       - String. The name of the regional data center location where the virtual machine is to be deployed
+      # * +:ssh_private_key_file+    - String. Path of private key file.
+      # * +:ssh_certificate_file+    - String. Path of certificate file.
+      #
+      # Returns None
+      def deployment(params, options={})
+        VirtualMachineService.create_virtual_machine(params, options)
       end
 
       # Public: Shut down a virtual machine

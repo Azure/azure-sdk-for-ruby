@@ -41,7 +41,17 @@ module Azure
     end
 
     class VirtualMachineDiskManagementService
-      attr_accessor :name
+      attr_accessor :name, :attached
+
+      # Public: Get a list of Disks from the server.
+      #
+      # Returns an array of Azure::VirtualMachineDiskManagementService objects
+      def self.list_disks
+        request_path = "/services/disks"
+        request = ManagementHttpRequest.new(:get, request_path, nil)
+        response = request.call
+        Serialization.disks_from_xml(response)
+      end
 
       # Public: Deletes the specified data or operating system disk from the image repository.
       #
@@ -50,23 +60,9 @@ module Azure
         Loggerx.info "Deleting Disk \"#{disk_name}\". "
         path = "/services/disks/#{disk_name}"
         request = ManagementHttpRequest.new(:delete, path)
-        begin
-          Timeout::timeout(60) do
-            begin
-              request.call
-            rescue Exception
-              print '# '
-              sleep 15
-              retry
-            end
-
-          end
-        rescue Timeout::Error
-          Loggerx.error "Failed to delete the disk."
-        ensure
-          print "\n"
-        end
+        request.call
       end
+
     end
   end
 end

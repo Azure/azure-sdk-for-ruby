@@ -1,6 +1,6 @@
 # Windows Azure SDK for Ruby
 
-This project provides a Ruby package that makes it easy to access and manage Windows Azure Services like Storage, Service Bus and Virtual Machines. 
+This project provides a Ruby package that makes it easy to access and manage Windows Azure Services like Storage, Service Bus and Virtual Machines.
 
 # Library Features
 
@@ -335,11 +335,8 @@ azure_service_bus.delete_subscription(subscription)
 azure_service_bus.delete_topic(topic1)
 ```
 
-## Image Management
+## Virtual Machine Management
 
-### Image List
-Outputs a list of all images that are available to use for provisioning.
-You should choose one of these to use for the :image parameter to the virtual machine create command.
 ```ruby
 # Require the azure rubygem
 require 'azure'
@@ -365,6 +362,8 @@ management_service.virtual_machines
 #API to shutdown Virtual Machine
 management_service.shutdown_virtual_machine('vm_name', 'cloud_service_name')
 
+#API to start Virtual Machine
+management_service.start_virtual_machine('vm_name', 'cloud_service_name')
 #API to delete Virtual Machine
 management_service.delete_virtual_machine('vm_name','cloud_service_name')
 
@@ -373,14 +372,18 @@ params = {
   :vm_name=> 'vm_name',
   :ssh_user=>'someuser',
   :image=>"5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-63APR20130415",
-  :ssh_password => 'Password1'
+  :password => 'Password1'
+  :admin_user => 'AdminUserName' #used for Windows image
 }
 options = {
   :storage_account_name=>'storage_suse',
+  :winrm_transport =>  ['https','http','none']
   :cloud_service_name=> 'cloud_service_name',
   :deployment_name =>'mydeployment',
   :tcp_endpoints => '80,3889:3889',
-  :service_location =>"West US"
+  :service_location =>"West US",
+  :ssh_private_key_file => 'c:/private_key.key', #required for ssh login using certificate.
+  :ssh_certificate_file => 'c:/certificate.pem'  #required for ssh login using certificate.
 }
 
 management_service.deployment(params, options)

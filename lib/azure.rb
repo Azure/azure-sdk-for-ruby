@@ -39,3 +39,9 @@ ServiceManagement = Azure::ServiceManagement::ServiceManagementService
 Azure::CloudService = Azure::CloudServiceManagement::CloudServicesManagementService
 Azure::StorageService = Azure::StorageManagement::StorageManagementService
 Azure::VirtualMachineService = Azure::VirtualMachineManagement::VirtualMachineManagementService
+Azure::Location = Azure::ServiceManagement::Location
+
+
+
+
+

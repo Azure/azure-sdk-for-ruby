@@ -31,6 +31,10 @@ describe Azure::VirtualMachineImageService do
     response
   }
   let(:response_body) {Nokogiri::XML  response.body}
+
+  before{
+     Loggerx.expects(:puts).returns(nil).at_least(0)
+  }
   
   describe "#list_virtual_machine_images" do
     
