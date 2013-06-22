@@ -1,6 +1,5 @@
 # Windows Azure SDK for Ruby
 This project provides a Ruby package that makes it easy to access and manage Windows Azure Services like Storage, Service Bus and Virtual Machines.
-
 # Library Features
 * Storage
     * Blobs
@@ -24,32 +23,44 @@ This project provides a Ruby package that makes it easy to access and manage Win
         * create, list, and delete rules
 * Virtual Machine Management
     * Images
-	* list images
-	* delete disks
+		* list images
+		* delete disks
     * Virtual Machines
-	* create linux based VMs and ssh with cert and key option enabled for ssh and WINRM (both http & https)enabled for windows based VMs
-	* list, shut down, delete, find virtual machine deployments
+		* create linux based VMs and ssh with cert and key option enabled for ssh and WINRM (both http & https)enabled for windows based VMs
+		* list, shut down, delete, find virtual machine deployments
     * Cloud Services
-	* create, list, delete cloud services
+		* create, list, delete cloud services
     * Storage Accounts
-	* create, list storage accounts, list locations
+		* create, list storage accounts, list locations
+
 # Getting Started
+
 ## Install the rubygem package
+
 You can install the azure rubygem package directly.
+    
     gem install azure
+
 ## Download Source Code
+
 To get the source code of the SDK via **git** just type:
 ```
 git clone https://github.com/WindowsAzure/azure-sdk-for-ruby.git
 cd ./azure-sdk-for-ruby
 ```
 ## Generate Documentation
+
 Running the command ``rdoc`` will generate the API documentation in the `./doc` directory.
+
 ## Setup Connection
+
 You can use this SDK against the Windows Azure Services in the cloud, or against the local Storage Emulator if you are on Windows. Service Bus and Windows Azure Service Management emulation are not supported. Of course, to use the Windows Azure Services in the cloud, you need to first [create a Windows Azure account](http://www.windowsazure.com/en-us/pricing/free-trial/). After that, you can get the information you need to configure Storage and Service Bus from the [Windows Azure Portal](https://manage.windowsazure.com).
+
 There are two ways you can set up the connections:
+
 1. [via code](#via-code)
 2. [via environment variables](#via-environment-variables)
+
 ### Via Code
 * Against Windows Azure Services in the cloud
 
@@ -119,8 +130,10 @@ You can use the following commands to run:
 * all the tests: ``rake test  ``
 * a specific suite of tests: ``rake test:integration:blob``
 * one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
+
 # Usage
 **For more examples, please see the [Windows Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby)**
+
 ## Storage
 
 ### Blobs
@@ -344,7 +357,6 @@ options = {
   :ssh_private_key_file => 'c:/private_key.key', #required for ssh login using certificate.
   :ssh_certificate_file => 'c:/certificate.pem'  #required for ssh login using certificate.
 }
-
 management_service.deployment(params, options)
 ```
 # Need Help?
