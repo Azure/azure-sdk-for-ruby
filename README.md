@@ -24,16 +24,16 @@ This project provides a Ruby package that makes it easy to access and manage Win
         * send, receive, unlock and delete messages
         * create, list, and delete subscriptions
         * create, list, and delete rules
-* Virtual Machines
+* Virtual Machine Management
 	* Images
 		* list images
 		* delete disks
 	* Virtual Machines
-		* create, list, shut down, delete, find virtual machine deployments
+		* create linux based VMs and ssh with cert and key option enabled for ssh and WINRM (both http & https)enabled for windows based VMs, list, shut down, delete, find virtual machine deployments
 	* Cloud Services
 		* create, list, delete cloud services
 	* Storage Accounts
-		* create, list storage accounts
+		* create, list storage accounts, list locations
 
 # Getting Started
 
@@ -364,6 +364,7 @@ management_service.shutdown_virtual_machine('vm_name', 'cloud_service_name')
 
 #API to start Virtual Machine
 management_service.start_virtual_machine('vm_name', 'cloud_service_name')
+
 #API to delete Virtual Machine
 management_service.delete_virtual_machine('vm_name','cloud_service_name')
 
