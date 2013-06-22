@@ -1,9 +1,7 @@
 # Windows Azure SDK for Ruby
-
 This project provides a Ruby package that makes it easy to access and manage Windows Azure Services like Storage, Service Bus and Virtual Machines.
 
 # Library Features
-
 * Storage
     * Blobs
         * create, list, and delete containers, work with container metadata and permissions, list blobs in container
@@ -25,48 +23,34 @@ This project provides a Ruby package that makes it easy to access and manage Win
         * create, list, and delete subscriptions
         * create, list, and delete rules
 * Virtual Machine Management
-	* Images
-		* list images
-		* delete disks
-	* Virtual Machines
-		* create linux based VMs and ssh with cert and key option enabled for ssh and WINRM (both http & https)enabled for windows based VMs, list, shut down, delete, find virtual machine deployments
-	* Cloud Services
-		* create, list, delete cloud services
-	* Storage Accounts
-		* create, list storage accounts, list locations
-
+    * Images
+	* list images
+	* delete disks
+    * Virtual Machines
+	* create linux based VMs and ssh with cert and key option enabled for ssh and WINRM (both http & https)enabled for windows based VMs
+	* list, shut down, delete, find virtual machine deployments
+    * Cloud Services
+	* create, list, delete cloud services
+    * Storage Accounts
+	* create, list storage accounts, list locations
 # Getting Started
-
 ## Install the rubygem package
-
 You can install the azure rubygem package directly.
-
     gem install azure
-
 ## Download Source Code
-
 To get the source code of the SDK via **git** just type:
-
 ```
 git clone https://github.com/WindowsAzure/azure-sdk-for-ruby.git
 cd ./azure-sdk-for-ruby
 ```
-
 ## Generate Documentation
-
-Running the this command ``rdoc`` will generate the API documentation in the `./doc` directory.
-
+Running the command ``rdoc`` will generate the API documentation in the `./doc` directory.
 ## Setup Connection
-
 You can use this SDK against the Windows Azure Services in the cloud, or against the local Storage Emulator if you are on Windows. Service Bus and Windows Azure Service Management emulation are not supported. Of course, to use the Windows Azure Services in the cloud, you need to first [create a Windows Azure account](http://www.windowsazure.com/en-us/pricing/free-trial/). After that, you can get the information you need to configure Storage and Service Bus from the [Windows Azure Portal](https://manage.windowsazure.com).
-
 There are two ways you can set up the connections:
-
 1. [via code](#via-code)
 2. [via environment variables](#via-environment-variables)
-
 ### Via Code
-
 * Against Windows Azure Services in the cloud
 
   ```ruby
@@ -85,9 +69,7 @@ There are two ways you can set up the connections:
       config.subscription_id      = "<your subscription id>"
   end
   ```
-
 * Against local Emulator (Windows Only)
-
   ```ruby
   require "azure"
 
@@ -102,38 +84,27 @@ There are two ways you can set up the connections:
       # Local Service Management emulation is not supported
   end
   ```
-
 ### Via Environment Variables
-
 * Against Windows Azure Services in the cloud
-
   * Storage
-
     ```
     AZURE_STORAGE_ACCOUNT = <your azure storage account name>
     AZURE_STORAGE_ACCESS_KEY = <your azure storage access key>
     ```
-
   * Service Bus
-
     ```
     AZURE_SERVICEBUS_NAMESPACE = <your azure service bus namespace>
     AZURE_SERVICEBUS_ACCESS_KEY = <your azure service bus access key>
     AZURE_SERVICEBUS_ISSUER = <your azure service bus issuer>
     ```
-
   * Service Management
-
     ```
 	AZURE_PUBLISH_SETTINGS_FILE = <your *.publishsettings file path>
 	AZURE_SUBSCRIPTION_ID = <your subscription ID>
 	AZURE_API_URL = <The endpoint URL of the Windows Azure management service>
     ```
-
 * Against local Emulator (Windows Only)
-
   * Storage
-
     ```
     AZURE_STORAGE_ACCOUNT = devstoreaccount1
     AZURE_STORAGE_ACCESS_KEY = Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
@@ -141,21 +112,15 @@ There are two ways you can set up the connections:
     AZURE_STORAGE_QUEUE_HOST = http://127.0.0.1:10001/devstoreaccount1
     AZURE_STORAGE_TABLE_HOST = http://127.0.0.1:10002/devstoreaccount1
     ```
-
   * Service Bus: not supported
   * Service Management: not supported
-
 ## Run Test
-
 You can use the following commands to run:
 * all the tests: ``rake test  ``
 * a specific suite of tests: ``rake test:integration:blob``
 * one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
-
 # Usage
-
 **For more examples, please see the [Windows Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby)**
-
 ## Storage
 
 ### Blobs
@@ -187,7 +152,6 @@ File.open("download.png", "wb") {|f| f.write(content)}
 # Delete a Blob
 azure_blob_service.delete_blob(container.name, "image-blob")
 ```
-
 ### Tables
 
 ```ruby
@@ -221,7 +185,6 @@ azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 # delete a table
 azure_table_service.delete_table("testtable")
 ```
-
 ### Queues
 
 ```ruby
@@ -254,10 +217,7 @@ azure_queue_service.delete_message("test-queue", message.id, message.pop_receipt
 # Delete a queue
 azure_queue_service.delete_queue("test-queue")
 ```
-
 ## Service Bus
-
-### Queues
 
 ```ruby
 # Require the azure rubygem
@@ -291,7 +251,6 @@ azure_service_bus.delete_queue_message(message)
 # Delete a queue
 azure_service_bus.delete_queue("test-queue-1")
 ```
-
 ### Topics
 
 ```ruby
@@ -334,7 +293,6 @@ azure_service_bus.delete_subscription(subscription)
 # Delete a topic
 azure_service_bus.delete_topic(topic1)
 ```
-
 ## Virtual Machine Management
 
 ```ruby
@@ -389,21 +347,12 @@ options = {
 
 management_service.deployment(params, options)
 ```
-
 # Need Help?
-
 Be sure to check out the Windows Azure [Developer Forums on Stack Overflow and MSDN](http://go.microsoft.com/fwlink/?LinkId=234489) if you have trouble with the provided code.
-
 # Contribute Code or Provide Feedback
-
 If you would like to become an active contributor to this project please follow the instructions provided in [Windows Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
-
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/WindowsAzure/azure-sdk-for-ruby/issues) section of the project.
-
 # Learn More
-
 For documentation on how to host Ruby applications on Windows Azure, please see the [Windows Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby/).
-
 For documentation on Azure PowerShell CLI tool for Windows, please see our readme [here](http://github.com/windowsazure/azure-sdk-tools).
-
 For documentation on the Azure cross platform CLI tool for Windows, Mac and Linux, please see our readme [here](http://github.com/windowsazure/azure-sdk-tools-xplat).
