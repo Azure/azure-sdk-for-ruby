@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-
 module Azure; end
 
 require "azure/core"
@@ -40,8 +39,3 @@ Azure::CloudService = Azure::CloudServiceManagement::CloudServicesManagementServ
 Azure::StorageService = Azure::StorageManagement::StorageManagementService
 Azure::VirtualMachineService = Azure::VirtualMachineManagement::VirtualMachineManagementService
 Azure::Location = Azure::ServiceManagement::Location
-
-
-
-
-
