@@ -130,10 +130,8 @@ You can use the following commands to run:
 * all the tests: ``rake test  ``
 * a specific suite of tests: ``rake test:integration:blob``
 * one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
-
 # Usage
 **For more examples, please see the [Windows Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby)**
-
 ## Storage
 
 ### Blobs
