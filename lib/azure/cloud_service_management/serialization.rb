@@ -22,7 +22,7 @@ module Azure
       def self.cloud_services_to_xml(name, options={})
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.CreateHostedService('xmlns'=>'http://schemas.microsoft.com/windowsazure') {
-            xml.ServiceName  name
+            xml.ServiceName name
             xml.Label Base64.encode64(name)
             xml.Description options[:description] || 'Explicitly created cloud service'
             xml.Location options[:location] || 'West US'
