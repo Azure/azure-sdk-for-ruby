@@ -49,7 +49,7 @@ module Azure
         end
 
         def resource_to_xml(resource, entry)
-          doc = Nokogiri::XML::Builder.new do |xml|
+          doc = Nokogiri::XML::Builder.new(:encoding => "UTF-8") do |xml|
             xml.entry(:xmlns => 'http://www.w3.org/2005/Atom') {
               xml.content(:type => 'application/xml') {
                 xml.send("#{resource.to_s.capitalize}Description", 'xmlns' => 'http://schemas.microsoft.com/netservices/2010/10/servicebus/connect', 'xmlns:i' => 'http://www.w3.org/2001/XMLSchema-instance') {

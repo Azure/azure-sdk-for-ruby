@@ -46,7 +46,7 @@ module Azure
 
         response = request.call
 
-        if !response.body.nil? && response.headers['content-encoding']
+        if !response.nil? && !response.body.nil? && response.headers['content-encoding']
           response.body.force_encoding(response.headers['content-encoding']) 
         end
 

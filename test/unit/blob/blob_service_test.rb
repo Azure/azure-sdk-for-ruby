@@ -1282,7 +1282,7 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#get_blob_properties" do
-        let(:method) { :get }
+        let(:method) { :head }
 
         before {
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
