@@ -1,12 +1,14 @@
 ---
 language: ruby
+
 rvm:
 - 1.9.3
 - 2.0.0
-- jruby-19mode
+
 script:
 - rake test:unit
 - if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ] ; then rake test:integration ; fi
+
 env:
   global:
   - secure: ! 'EMSKuCl/BixCkv7eLIVYj3UbCg0AVUj4h87k11XFwNgRfj1f884lzgNAbIKX
