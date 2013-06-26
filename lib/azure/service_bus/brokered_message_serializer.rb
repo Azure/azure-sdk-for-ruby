@@ -99,9 +99,9 @@ module Azure
       def to_json
         hash = {}
         PROPERTIES.each do |p, u|
-          attr_name = u
+          attr_name = u.encode("UTF-8")
           value = @message.send(attr_name)
-          hash[p] = value unless value.nil?
+          hash[p] = value.to_s.encode("UTF-8") unless value.nil?
         end
         hash.to_json
       end
