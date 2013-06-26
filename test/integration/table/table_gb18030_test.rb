@@ -337,8 +337,8 @@ describe 'Table GB-18030' do
         result.properties["RowKey"].encode("UTF-8").must_equal value.encode("UTF-8")
       end
       batch = Azure::Table::Batch.new table_name, value
-      batch.delete k + counter.to_s
-      batch.delete k + counter.to_s + "2"
+      batch.delete value
+      batch.delete value + "2"
       results = subject.execute_batch batch
       if k != 'ChineseExtB' then
         # Service does not support surrogates in key in URL
