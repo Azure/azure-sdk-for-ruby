@@ -173,7 +173,7 @@ describe "ServiceBus Queues" do
     end
 
     describe "when the queue has messages" do
-      let(:messageContent) { 'messagecontent' }  
+      let(:messageContent) { 'messagecontent' }
       let(:to) { 'yo' }
       let(:label) { 'my_label' }
       let(:properties) {{
