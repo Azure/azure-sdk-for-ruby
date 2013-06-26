@@ -49,6 +49,9 @@ module Azure
         xml.send("content", :type => "application/xml") do |content|
           content.send("m:properties") do |properties|
             hash.each do |key, val|
+              key = key.encode("UTF-8") if key.is_a? String and !key.encoding.names.include?("BINARY")
+              val = val.encode("UTF-8") if val.is_a? String and !val.encoding.names.include?("BINARY")
+
               type = Azure::Table::EdmType.property_type(val)
               attributes = {}
               attributes["m:type"] = type unless type.nil? || type.empty?

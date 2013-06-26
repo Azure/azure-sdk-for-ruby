@@ -104,6 +104,7 @@ describe 'Service Bus Queue GB-18030' do
         # Do not flunk here; the service appears to let some
         # "bad" strings go through
       rescue Azure::Core::Http::HTTPError => error
+        puts error
         error.status_code.must_equal 500
       end
     }

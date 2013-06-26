@@ -80,32 +80,30 @@ describe 'Table GB-18030' do
     }
   end
 
-  # Fails because of
-  # https://github.com/appfog/azure-sdk-for-ruby/issues/297
-  # https://github.com/appfog/azure-sdk-for-ruby/issues/298
   it 'Read, Write, and Query Property Names GB18030' do
     counter = 1
     GB18030TestStrings.get_xml_10_fourth_ed_identifiers.each { |k,v|
-      prop = "prop" + v.encode("GB18030")
+      prop = ("prop" + v).encode("GB18030")
       counter = counter + 1;
       entity_properties = {
         "PartitionKey" => "x",
-        "RowKey" => k + counter.to_s,
-        prop => "value",
+        "RowKey" => k + counter.to_s
       }
+      entity_properties[prop] = "value"
       entity_properties2 = {
         "PartitionKey" => "x",
-        "RowKey" => k + counter.to_s + "2",
-        prop => "value2",
+        "RowKey" => k + counter.to_s + "2"
       }
+      entity_properties2[prop] = "value2"
+
       result = subject.insert_entity table_name, entity_properties
       subject.insert_entity table_name, entity_properties2
-      result.properties[prop2].must_equal "value"
+      result.properties[prop.encode("UTF-8")].must_equal "value"
       if (k != "Chinese_2B5" && k != "Tibetan") then
         filter = prop + " eq 'value'"
         result = subject.query_entities table_name, { :filter => filter }
         result.length.must_equal 1
-        result.first.properties[prop].must_equal "value"
+        result.first.properties[prop.encode("UTF-8")].must_equal "value"
       end
     }
   end
@@ -135,9 +133,6 @@ describe 'Table GB-18030' do
     }
   end
 
-  # Fails because of
-  # https://github.com/appfog/azure-sdk-for-ruby/issues/297
-  # https://github.com/appfog/azure-sdk-for-ruby/issues/298
   it 'Read, Write, and Query Property Values GB18030' do
     counter = 1
     GB18030TestStrings.get.each { |k,v|
@@ -190,12 +185,9 @@ describe 'Table GB-18030' do
     }
   end
 
-  # Fails because of
-  # https://github.com/appfog/azure-sdk-for-ruby/issues/297
-  # https://github.com/appfog/azure-sdk-for-ruby/issues/299
   it 'Read, Write, and Query Key Values GB18030' do
     GB18030TestStrings.get.each { |k,v|
-      value = "value" + v.encode("GB18030")
+      value = ("value" + v).encode("GB18030")
       entity_properties = {
         "PartitionKey" => value.encode("UTF-8"),
         "RowKey" => value.encode("UTF-8")
@@ -240,9 +232,6 @@ describe 'Table GB-18030' do
     }
   end
 
-  # Fails because of
-  # https://github.com/appfog/azure-sdk-for-ruby/issues/297
-  # https://github.com/appfog/azure-sdk-for-ruby/issues/298
   it 'Batch Property Names GB18030' do
     counter = 1
     GB18030TestStrings.get_xml_10_fourth_ed_identifiers.each { |k,v|
@@ -252,7 +241,7 @@ describe 'Table GB-18030' do
       batch.insert k + counter.to_s,       { prop => "value" }
       batch.insert k + counter.to_s + "2", { prop => "value2" }
       results = subject.execute_batch batch
-      results[0].properties[prop].must_equal "value"
+      results[0].properties[prop.encode("UTF-8")].must_equal "value"
       if (k != "Chinese_2B5" && k != "Tibetan") then
         filter = prop + " eq 'value'"
         result = subject.query_entities table_name, { :filter => filter }
@@ -279,9 +268,6 @@ describe 'Table GB-18030' do
     }
   end
 
-  # Fails because of
-  # https://github.com/appfog/azure-sdk-for-ruby/issues/297
-  # https://github.com/appfog/azure-sdk-for-ruby/issues/298
   it 'Batch Property Values GB18030' do
     counter = 1
     GB18030TestStrings.get.each { |k,v|
@@ -291,7 +277,7 @@ describe 'Table GB-18030' do
       batch.insert k + counter.to_s,       { "key" => value }
       batch.insert k + counter.to_s + "2", { "key" => value + "2" }
       results = subject.execute_batch batch
-      results[0].properties["key"].must_equal value
+      results[0].properties["key"].encode("UTF-8").must_equal value.encode("UTF-8")
       filter = "key eq '" + value + "'"
       result = subject.query_entities table_name, { :filter => filter }
       result.length.must_equal 1
@@ -333,13 +319,10 @@ describe 'Table GB-18030' do
     }
   end
 
-  # Fails because of
-  # https://github.com/appfog/azure-sdk-for-ruby/issues/297
-  # https://github.com/appfog/azure-sdk-for-ruby/issues/298
   it 'Batch Key Values GB18030' do
     counter = 1
     GB18030TestStrings.get.each { |k,v|
-      value = "value" + v.encode("GB18030")
+      value = ("value" + v).encode("GB18030")
       counter = counter + 1;
       batch = Azure::Table::Batch.new table_name, value
       batch.insert value, { }

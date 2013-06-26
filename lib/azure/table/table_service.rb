@@ -511,7 +511,7 @@ module Azure
 
         path = if partition_key && row_key
           "%s(PartitionKey='%s',RowKey='%s')" % [
-            table_name, encodeODataUriValue(partition_key), encodeODataUriValue(row_key)
+            table_name, encodeODataUriValue(partition_key.encode("UTF-8")), encodeODataUriValue(row_key.encode("UTF-8"))
           ]
         else
           "%s()" % table_name
@@ -521,6 +521,9 @@ module Azure
         qs = []
         if query
           query.each do | key, val |
+            key = key.encode("UTF-8")
+            val = val.encode("UTF-8")
+
             if key[0] == "$"
               qs.push "#{key}#{::URI.encode_www_form(""=>val)}"
             else
