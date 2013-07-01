@@ -19,7 +19,7 @@ module Azure
   module VirtualMachineManagement
     class VirtualMachineManagementService
 
-      # Public: Get a lists of virtual machine available under the current subscription.
+      # Public: Get a lists of virtual machines available under the current subscription.
       #
       # Returns an list of Azure::VirtualMachineManagement::VirtualMachine instances.
       def self.list_virtual_machines
@@ -35,7 +35,7 @@ module Azure
         roles.compact
       end
 
-      # Public: Get a virtual machine for given name and cloud service name.
+      # Public: Gets a virtual machine based on the provided name and cloud service name.
       #
       # ==== Attributes
       #
@@ -48,7 +48,7 @@ module Azure
         server.first
       end
 
-      # Public:  provisions a virtual machine based on the supplied configuration.
+      # Public: Provisions a virtual machine based on the supplied configuration.
       #
       # ==== Attributes
       #
@@ -66,10 +66,10 @@ module Azure
       #  ==== Options
       #
       # Accepted key/value pairs are:
-      # * +:storage_account_name+     - String.  Name of storage account.
-      # * +:cloud_service_name+       - String.  Name of cloud service.
-      # * +:deployment_name+          - String.  A name for the deployment.
-      # * +:tcp_endpoints+            - String.  Specifies the external port and internal port separated by colon.
+      # * +:storage_account_name+     - String. Name of storage account.
+      # * +:cloud_service_name+       - String. Name of cloud service.
+      # * +:deployment_name+          - String. A name for the deployment.
+      # * +:tcp_endpoints+            - String. Specifies the external port and internal port separated by a colon.
       # * +:service_location+         - String. Specifies the target certificate store location on the virtual machine.
       # * +:ssh_private_key_file+     - String. Path of private key file.
       # * +:ssh_certificate_file+     - String. Path of certificate file.
@@ -97,7 +97,7 @@ module Azure
         e.message
       end
 
-      # Public: deletes the deployment, cloud service and disk.
+      # Public: Deletes the deployment, cloud service and disk.
       #
       # ==== Attributes
       #
@@ -117,12 +117,12 @@ module Azure
           sleep 60
           VirtualMachineDiskManagementService.delete_disk(vm.disk_name)
         else
-          Loggerx.error "Couldn't found Virtual machine #{vm_name} under cloud service #{cloud_service_name}"
+          Loggerx.error "Cannot find virtual machine #{vm_name} under cloud service #{cloud_service_name}"
         end
       rescue 
       end
 
-      # Public: shuts down the specified virtual machine.
+      # Public: Shuts down the specified virtual machine.
       #
       # ==== Attributes
       #
@@ -147,11 +147,11 @@ module Azure
             Loggerx.error "Cannot perform the shutdown operation on a stopped deployment."
           end
         else
-          Loggerx.error "Couldn't found Virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\". "
+          Loggerx.error "Cannot find virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\". "
         end
       end
 
-      # Public: starts the specified virtual machine.
+      # Public: Starts the specified virtual machine.
       #
       # ==== Attributes
       #
@@ -176,11 +176,11 @@ module Azure
             Loggerx.error "Cannot perform the start operation on a stopped deployment."
           end
         else
-          Loggerx.error "Couldn't found Virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\"."
+          Loggerx.error "Cannot find virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\"."
         end
       end
 
-      # Public: deletes the specified deployment.
+      # Public: Deletes the specified deployment.
       #
       # ==== Attributes
       #
@@ -241,7 +241,7 @@ module Azure
           end
           params[:certificate][:fingerprint] = export_fingerprint(params[:certificate][:cert]) if params[:certificate]
         else
-          Loggerx.error_with_exit "You did not provided a valid '#{errors.join(", ")}' value."
+          Loggerx.error_with_exit "You did not provide a valid '#{errors.join(", ")}' value."
         end
       end
 

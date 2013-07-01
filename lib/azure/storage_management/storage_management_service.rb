@@ -18,7 +18,7 @@ module Azure
   module StorageManagement
     class StorageManagementService
 
-      # Public: Get a list of storage accounts available under the current subscription.
+      # Public: Gets a list of storage accounts available under the current subscription.
       #
       # Returns an array of Azure::StorageManagement::StorageAccount objects
       def self.list_storage_accounts
@@ -35,8 +35,7 @@ module Azure
       # * +name+       - String. Storage account name.
       #
       # Returns: A boolean value indicating whether the storage account exists.
-      # If true, the storage account exists of given name. If false, the storage account
-      # doesn't exists.
+      # If true, the storage account exists. If false, the storage account does not exist.
       def self.get_storage_account(name)
         return false if name.nil?
         flag = false
@@ -59,13 +58,13 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:location+            - String.  The location where the storage service will be created.(optional)
+      # * +:location+            - String. The location where the storage service will be created.(optional)
       # * +:description+         - String. A description for the storage service. (optional)
       #
       # Returns None
       def self.create_storage_account(name, options={})
         if get_storage_account(name)
-          Loggerx.warn "Storage Account #{name} already exist. Skipped..."
+          Loggerx.warn "Storage Account #{name} already exists. Skipped..."
         else
           Loggerx.info "Creating Storage Account #{name}."
           body = Serialization.storage_services_to_xml(name, options)

@@ -17,8 +17,8 @@ require "azure/core/http/http_request"
 require "azure/service_management/certificate"
 include Azure::Core::Http
 
-# Represents a HTTP request can perform synchronous queries to a
-# HTTP server, returning a HttpResponse
+# Represents an HTTP request that can perform synchronous queries to a
+# an HTTP server, returning a HttpResponse
 module Azure
   module ServiceManagement
     class ManagementHttpRequest < HttpRequest
@@ -41,7 +41,7 @@ module Azure
         @cert = Azure.config.http_certificate_key
       end
 
-      # Public: Sends request to HTTP server and returns a HttpResponse
+      # Public: Sends a request to HTTP server and returns a HttpResponse
       #
       # Returns a Nokogiri::XML instance of HttpResponse body
       def call
@@ -105,7 +105,7 @@ module Azure
         end
       end
 
-      # Public: The check_completion get status of the specified operation and determine whether
+      # Public: Gets the status of the specified operation and determines whether
       # the operation has succeeded, failed, or is still in progress.
       #
       # ==== Attributes

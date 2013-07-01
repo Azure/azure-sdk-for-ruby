@@ -19,7 +19,7 @@ module Azure
     class VirtualMachineImageManagementService
       attr_accessor :os_type, :name, :category
 
-      # Public: Get a list of Images from the server
+      # Public: Gets a list of virtual machine images from the server
       #
       # Returns an array of Azure::VirtualMachineImageService objects
       def self.list_virtual_machine_images
@@ -29,7 +29,7 @@ module Azure
         Serialization.virtual_machine_images_from_xml(response)
       end
 
-      # Public: Get operating system type of image.
+      # Public: Gets the operating system type of an image.
       #
       # Returns Linux or Windows
       def self.get_os_type(image_name)
@@ -43,7 +43,7 @@ module Azure
     class VirtualMachineDiskManagementService
       attr_accessor :name, :attached
 
-      # Public: Get a list of Disks from the server.
+      # Public: Gets a list of Disks from the server.
       #
       # Returns an array of Azure::VirtualMachineDiskManagementService objects
       def self.list_disks
