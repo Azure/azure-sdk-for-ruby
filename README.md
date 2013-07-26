@@ -1,5 +1,8 @@
-# Windows Azure SDK for Ruby
+# Windows Azure SDK for Ruby [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-for-ruby.png?branch=dev)](https://travis-ci.org/WindowsAzure/azure-sdk-for-ruby)
+
+
 This project provides a Ruby package that makes it easy to access and manage Windows Azure Services like Storage, Service Bus and Virtual Machines.
+
 # Library Features
 * Storage
     * Blobs
@@ -33,21 +36,37 @@ This project provides a Ruby package that makes it easy to access and manage Win
     * Storage Accounts
 		* create, list storage accounts, list locations
 
+# Supported Ruby Versions
+
+* Ruby 1.9.3
+* Ruby 2.0
+
+**Notice** that Ruby 2.0 x64 on Windows is not supported due to the [lack of nokogiri](https://github.com/sparklemotion/nokogiri/issues/864).
+
 # Getting Started
 
 ## Install the rubygem package
 
 You can install the azure rubygem package directly.
-    
-    gem install azure
+
+```bash
+gem install azure
+```
 
 ## Download Source Code
 
 To get the source code of the SDK via **git** just type:
-```
+
+```bash
 git clone https://github.com/WindowsAzure/azure-sdk-for-ruby.git
 cd ./azure-sdk-for-ruby
 ```
+Then, run bundler to install all the gem dependencies:
+
+```bash
+bundle install
+```
+
 ## Generate Documentation
 
 Running the command ``rdoc`` will generate the API documentation in the `./doc` directory.
@@ -98,25 +117,28 @@ There are two ways you can set up the connections:
 ### Via Environment Variables
 * Against Windows Azure Services in the cloud
   * Storage
-    ```
+
+    ```bash
     AZURE_STORAGE_ACCOUNT = <your azure storage account name>
     AZURE_STORAGE_ACCESS_KEY = <your azure storage access key>
     ```
   * Service Bus
-    ```
+
+    ```bash
     AZURE_SERVICEBUS_NAMESPACE = <your azure service bus namespace>
     AZURE_SERVICEBUS_ACCESS_KEY = <your azure service bus access key>
     AZURE_SERVICEBUS_ISSUER = <your azure service bus issuer>
     ```
   * Service Management
-    ```
-	AZURE_PUBLISH_SETTINGS_FILE = <your *.publishsettings file path>
-	AZURE_SUBSCRIPTION_ID = <your subscription ID>
-	AZURE_API_URL = <The endpoint URL of the Windows Azure management service>
+    ```bash
+    AZURE_PUBLISH_SETTINGS_FILE = <your *.publishsettings file path>
+    AZURE_SUBSCRIPTION_ID = <your subscription ID>
+    AZURE_API_URL = <The endpoint URL of the Windows Azure management service>
     ```
 * Against local Emulator (Windows Only)
   * Storage
-    ```
+
+    ```bash
     AZURE_STORAGE_ACCOUNT = devstoreaccount1
     AZURE_STORAGE_ACCESS_KEY = Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
     AZURE_STORAGE_BLOB_HOST = http://127.0.0.1:10000/devstoreaccount1
@@ -127,7 +149,7 @@ There are two ways you can set up the connections:
   * Service Management: not supported
 ## Run Test
 You can use the following commands to run:
-* all the tests: ``rake test  ``
+* all the tests: ``rake test``
 * a specific suite of tests: ``rake test:integration:blob``
 * one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
 # Usage
@@ -310,52 +332,55 @@ azure_service_bus.delete_topic(topic1)
 # Require the azure rubygem
 require 'azure'
 
-  Azure.configure do |config|
-    # Configure these 2 properties to use Storage
-    config.publish_settings_file = 'c:/my.publishsettings'
-    config.subscription_id      = "your subscription id"  #optional
-  end
+Azure.configure do |config|
+  # Configure these 2 properties to use Storage
+  config.publish_settings_file = 'c:/my.publishsettings'
+  config.subscription_id      = "your subscription id" #optional
+end
 
-#Create a service management object
-management_service = ServiceManagement.new
-
-#Get a list of available virtual machine images
-management_service.virtual_machine_images
-
-#Get a list of available regional data center locations
-management_service.locations
+#Create a virtual machine service object
+virtual_machine_service = Azure::VirtualMachineService.new
 
 #Get a list of existing virtual machines in your subscription
-management_service.virtual_machines
+virtual_machine_service.list_virtual_machines
 
 #API to shutdown Virtual Machine
-management_service.shutdown_virtual_machine('vm_name', 'cloud_service_name')
+virtual_machine_service.shutdown_virtual_machine('vm_name', 'cloud_service_name')
 
 #API to start Virtual Machine
-management_service.start_virtual_machine('vm_name', 'cloud_service_name')
+virtual_machine_service.start_virtual_machine('vm_name', 'cloud_service_name')
 
 #API to delete Virtual Machine
-management_service.delete_virtual_machine('vm_name','cloud_service_name')
+virtual_machine_service.delete_virtual_machine('vm_name', 'cloud_service_name')
 
 #API to start deployment
 params = {
-  :vm_name=> 'vm_name',
-  :ssh_user=>'someuser',
-  :image=>"5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-63APR20130415",
-  :password => 'Password1'
-  :admin_user => 'AdminUserName' #used for Windows image
+  :vm_name => 'vm_name',
+  :vm_user => 'someuser',
+  :image => '5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-63APR20130415',
+  :password => 'Password1',
+  :location => 'West US' #valid choices are ('West US', 'East US', 'East Asia', 'Southeast Asia', 'North Europe', 'West Europe')
 }
 options = {
-  :storage_account_name=>'storage_suse',
-  :winrm_transport =>  ['https','http','none']
-  :cloud_service_name=> 'cloud_service_name',
+  :storage_account_name => 'storage_suse',
+  :winrm_transport => ['https','http'],
+  :cloud_service_name => 'cloud_service_name',
   :deployment_name =>'mydeployment',
   :tcp_endpoints => '80,3889:3889',
-  :service_location =>"West US",
-  :ssh_private_key_file => 'c:/private_key.key', #required for ssh login using certificate.
-  :ssh_certificate_file => 'c:/certificate.pem'  #required for ssh login using certificate.
+  :ssh_private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
+  :ssh_certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
+  :ssh_port => 2222,
+  :vm_size => 'Large' #valid choices are (ExtraSmall, Small, Medium, Large, ExtraLarge, A6, A7)
 }
-management_service.deployment(params, options)
+virtual_machine_service.create_virtual_machine(params, options)
+
+#Get a list of available virtual machine images
+virtual_machine_image_service = Azure::VirtualMachineImageService.new
+virtual_machine_image_service.list_virtual_machine_images
+
+#Get a list of available regional data center locations
+base_management = Azure::BaseManagementService.new
+base_management.list_locations
 ```
 # Need Help?
 Be sure to check out the Windows Azure [Developer Forums on Stack Overflow and MSDN](http://go.microsoft.com/fwlink/?LinkId=234489) if you have trouble with the provided code.

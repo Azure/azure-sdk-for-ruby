@@ -16,7 +16,11 @@ require 'azure/cloud_service_management/serialization'
 
 module Azure
   module CloudServiceManagement
-    class CloudServicesManagementService
+    class CloudServicesManagementService < BaseManagementService
+
+      def initialize
+        super()
+      end
 
       # Public: Creates a new cloud service in Windows Azure.
       #
@@ -34,12 +38,12 @@ module Azure
       # See http://msdn.microsoft.com/en-us/library/windowsazure/gg441304.aspx
       #
       # Returns None
-      def self.create_cloud_service(name, options={})
+      def create_cloud_service(name, options={})
         Loggerx.error_with_exit "Cloud service name is not valid " unless name
         if get_cloud_service(name)
           Loggerx.warn "Cloud service #{name} already exists. Skipped..."
         else
-          Loggerx.info "Creating cloud service #{name}."  
+          Loggerx.info "Creating cloud service #{name}."
           request_path = "/services/hostedservices"
           body = Serialization.cloud_services_to_xml(name, options)
           request = ManagementHttpRequest.new(:post, request_path, body)
@@ -50,7 +54,7 @@ module Azure
       # Public: Gets a list of hosted services available under the current subscription.
       #
       # Returns an array of Azure::CloudServiceManagement::CloudService objects
-      def self.list_cloud_services
+      def list_cloud_services
         request_path = "/services/hostedservices"
         request = ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
@@ -66,7 +70,7 @@ module Azure
       # Returns: A boolean value indicating whether the cloud service exists.
       # If true, the cloud service is available. If false, the cloud service
       # does not exist.
-      def self.get_cloud_service(name)
+      def get_cloud_service(name)
         return false if name.nil?
         flag = false
         list_cloud_services.each do |cloud_service|
@@ -85,18 +89,34 @@ module Azure
       # * +name+       - String. Cloud service name.
       #
       # Returns:  None
-      def self.delete_cloud_service(cloud_service_name)
+      def delete_cloud_service(cloud_service_name)
         request_path= "/services/hostedservices/#{cloud_service_name}"
         request = ManagementHttpRequest.new(:delete, request_path)
         Loggerx.info "Deleting cloud service #{cloud_service_name}. \n"
         request.call
       end
 
-      def self.upload_certificate(cloud_service_name, ssh)
+      # Public: Deletes the specified deployment.
+      #
+      # ==== Attributes
+      #
+      # * +cloud_service_name+  - String. Cloud service name.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460815.aspx
+      #
+      # Returns NONE
+      def delete_cloud_service_deployment(cloud_service_name)
+        request_path= "/services/hostedservices/#{cloud_service_name}/deploymentslots/production"
+        request = ManagementHttpRequest.new(:delete, request_path)
+        Loggerx.info "Deleting deployment of cloud service \"#{cloud_service_name}\" ..."
+        request.call
+      end
+
+      def upload_certificate(cloud_service_name, ssh)
         data = export_der(ssh[:cert], ssh[:key])
         request_path= "/services/hostedservices/#{cloud_service_name}/certificates"
         body = Serialization.add_certificate_to_xml(data)
-        Loggerx.info "Uploading certificate to  cloud service #{cloud_service_name}..."
+        Loggerx.info "Uploading certificate to cloud service #{cloud_service_name}..."
         request = ManagementHttpRequest.new(:post, request_path, body)
         request.call
       end

@@ -28,6 +28,12 @@ Azure::Core.configure do |config|
   config.publish_settings_file = ENV.fetch('AZURE_PUBLISH_SETTINGS_FILE')
 end
 
+StorageAccountName = random_string('storagetest',10)
+Images = Azure::VirtualMachineImageService.new.list_virtual_machine_images
+LinuxImage = Images.select{|image| image.os_type == 'Linux'}.first
+WindowsImage = Images.select{|image| image.os_type == 'Windows'}.first
+WindowsImageLocation = WindowsImage.locations.split(';').first
+LinuxImageLocation = LinuxImage.locations.split(';').first
 
 MiniTest::Unit.after_tests {
   VirtualMachineNameGenerator.cleanup

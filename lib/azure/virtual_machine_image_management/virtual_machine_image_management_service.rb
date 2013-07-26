@@ -16,37 +16,34 @@ require "azure/virtual_machine_image_management/serialization"
 
 module Azure
   module VirtualMachineImageManagement
-    class VirtualMachineImageManagementService
-      attr_accessor :os_type, :name, :category
+    class VirtualMachineImageManagementService < BaseManagementService
+
+      def initialize
+        super()
+      end
 
       # Public: Gets a list of virtual machine images from the server
       #
       # Returns an array of Azure::VirtualMachineImageService objects
-      def self.list_virtual_machine_images
+      def list_virtual_machine_images
         request_path = "/services/images"
         request = ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.virtual_machine_images_from_xml(response)
       end
-
-      # Public: Gets the operating system type of an image.
-      #
-      # Returns Linux or Windows
-      def self.get_os_type(image_name)
-        image = list_virtual_machine_images.select{|x|  x.name == image_name}.first
-        Loggerx.error_with_exit "The virtual machine image source is not valid." unless image
-        image.os_type
-      end
  
     end
 
-    class VirtualMachineDiskManagementService
-      attr_accessor :name, :attached
+    class VirtualMachineDiskManagementService < BaseManagementService
+
+      def initialize
+        super()
+      end
 
       # Public: Gets a list of Disks from the server.
       #
       # Returns an array of Azure::VirtualMachineDiskManagementService objects
-      def self.list_disks
+      def list_virtual_machine_disks
         request_path = "/services/disks"
         request = ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
@@ -56,7 +53,7 @@ module Azure
       # Public: Deletes the specified data or operating system disk from the image repository.
       #
       # Returns None
-      def self.delete_disk(disk_name)
+      def delete_virtual_machine_disk(disk_name)
         Loggerx.info "Deleting Disk \"#{disk_name}\". "
         path = "/services/disks/#{disk_name}"
         request = ManagementHttpRequest.new(:delete, path)

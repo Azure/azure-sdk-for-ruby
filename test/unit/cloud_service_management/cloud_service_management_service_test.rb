@@ -16,27 +16,23 @@ require "test_helper"
 
 describe Azure::CloudService do
 
-  subject do
-    ServiceManagement.new
-    Azure::CloudService
-  end
+  subject { Azure::CloudService.new }
+  let(:request_path) {'/services/hostedservices'}
+  let(:cloud_services_xml) { Fixtures["list_cloud_services"] }
+  let(:method) { :get }
+  let(:mock_request){ mock() }
+  let(:response) {
+    response = mock()
+    response.stubs(:body).returns(cloud_services_xml)
+    response
+  }
+  let(:response_body) { Nokogiri::XML response.body }
 
   before{
     Loggerx.expects(:puts).returns(nil).at_least(0)
   }
 
   describe "#list_cloud_services" do
-    let(:request_path) {'/services/hostedservices'}
-    let(:cloud_services_xml)  { Fixtures["list_cloud_services"] }
-    let(:method) { :get }
-    let(:mock_request){ mock() }
-    let(:response) {
-      response = mock()
-      response.stubs(:body).returns(cloud_services_xml)
-      response
-    }
-    let(:response_body) {Nokogiri::XML  response.body}
-  
     before {
       ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
@@ -60,17 +56,6 @@ describe Azure::CloudService do
   end
   
   describe "#get_cloud_service" do
-    let(:request_path) {'/services/hostedservices'}
-    let(:cloud_services_xml)  { Fixtures["list_cloud_services"] }
-    let(:method) { :get }
-    let(:mock_request){ mock() }
-    let(:response) {
-      response = mock()
-      response.stubs(:body).returns(cloud_services_xml)
-      response
-    }
-    let(:response_body) {Nokogiri::XML  response.body}
-  
     before {
       ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
@@ -92,16 +77,6 @@ describe Azure::CloudService do
   end
 
   describe "#create_cloud_service" do
-    let(:request_path) {'/services/hostedservices'}
-    let(:cloud_services_xml)  { Fixtures["list_cloud_services"] }
-    let(:method) { :get }
-    let(:mock_request){ mock() }
-    let(:response) {
-      response = mock()
-      response.stubs(:body).returns(cloud_services_xml)
-      response
-    }
-    let(:response_body) {Nokogiri::XML  response.body}
   
     it "Create cloud service return message if cloud service exists of given name." do
       ManagementHttpRequest.any_instance.expects(:call).returns response_body
@@ -110,7 +85,7 @@ describe Azure::CloudService do
     end
 
     it "Create cloud service if cloud service doesn't exists of given name." do
-      Azure::CloudService.stubs(:get_cloud_service).with('cloud-service-3').returns(false)
+      Azure::CloudService.any_instance.stubs(:get_cloud_service).with('cloud-service-3').returns(false)
       ManagementHttpRequest.any_instance.expects(:call).returns nil
       subject.create_cloud_service 'cloud-service-3'
     end

@@ -12,24 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "test_helper"
+module Azure
+  module VirtualMachineImageManagement
+    class VirtualMachineDisk
 
-describe Azure::VirtualMachineImageManagement::Serialization do
-  subject { Azure::VirtualMachineImageManagement::Serialization }
+      def initialize
+        yield self if block_given?
+      end
 
-  let(:virtual_machine_images_from_xml) { Fixtures["list_images"] }
+      attr_accessor :name, :attached
 
-  describe "#virtual_machine_images_from_xml" do
-
-    it "accepts an XML string" do
-      subject.virtual_machine_images_from_xml Nokogiri::XML(virtual_machine_images_from_xml)
-    end
-
-    it "returns an Array of VirtualMachineImageService instances" do
-      results = subject.virtual_machine_images_from_xml Nokogiri::XML(virtual_machine_images_from_xml)
-      results.must_be_kind_of Array
-      results[0].must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImage
-      results.count.must_equal 12
     end
   end
 end

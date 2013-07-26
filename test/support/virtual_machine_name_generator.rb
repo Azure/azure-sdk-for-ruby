@@ -17,16 +17,17 @@ class VirtualMachineNameGenerator
 
   def initialize(&cleanup_proc)
     @cleanup_proc = cleanup_proc
-    @names = []  
+    @names = []
+    @count = rand(900)
   end
 
   def random_text(text)
-    alpha = ("a".."z").to_a
-    text+10.times.map { alpha[Random.rand(alpha.size)]}.join
+    @count+=1
+    text+@count.to_s+"-#{Array.new(32){rand(36).to_s(36)}.join[0..5]}"
   end
 
   def name
-    vm_name  = random_text('test-')
+    vm_name = random_text('test-')
     cloud_name = random_text(vm_name+'-service-')
     @names << [vm_name,cloud_name]
     return vm_name, cloud_name
@@ -41,43 +42,54 @@ class VirtualMachineNameGenerator
 
   def self.cleanup
     puts "Running after test cleanup."
-    ServiceManagement.new
     #Delete virtual machines
-    virtualmachines = Azure::VirtualMachineService.list_virtual_machines
+    virtual_machine_service = Azure::VirtualMachineService.new
+    virtualmachines = virtual_machine_service.list_virtual_machines
+    azure_cloud_service = Azure::CloudService.new
     virtualmachines.each do |virtualmachine|
       if(virtualmachine.vm_name.include?("test-") && virtualmachine.cloud_service_name.include?(virtualmachine.vm_name+'-service-'))
         begin
-          Azure::VirtualMachineService.delete_virtual_machine_deployment(virtualmachine.cloud_service_name)
-          Azure::CloudService.delete_cloud_service(virtualmachine.cloud_service_name)
+          azure_cloud_service.delete_cloud_service_deployment(virtualmachine.cloud_service_name)
+          azure_cloud_service.delete_cloud_service(virtualmachine.cloud_service_name)
         rescue Exception => e
           Loggerx.error e.message
         end
       end
     end
     #Delete cloud services
-    cloud_services = Azure::CloudService.list_cloud_services
+    Azure::BaseManagementService.new
+    cloud_services = azure_cloud_service.list_cloud_services
     cloud_services.each do |cloud_service|
       if cloud_service.name.include?("test-") && cloud_service.name.include?("-service-")
-        Azure::CloudService.delete_cloud_service(cloud_service.name) rescue nil
+        azure_cloud_service.delete_cloud_service(cloud_service.name)  rescue nil
       end
     end
     #Delete disks
     sleep 60
-    disks = Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService.list_disks
+    disk_management_service = Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService.new
+    disks = disk_management_service.list_virtual_machine_disks
     disks.each do |disk|
       if(disk.name.include?('-service-') && disk.name.include?('test-') && !disk.attached)
-        Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService.delete_disk(disk.name) rescue nil
+        disk_management_service.delete_virtual_machine_disk(disk.name) rescue nil
+      end
+    end
+    #Delete storage account
+    storage_service = Azure::StorageManagement::StorageManagementService.new
+    storage_accounts = storage_service.list_storage_accounts
+    storage_accounts.each do |storage_account|
+      if(storage_account.name.include?('storagetest'))
+        storage_service.delete_storage_account(storage_account.name)
       end
     end
   end
+
 end
 
 VirtualMachineNameHelper = VirtualMachineNameGenerator.new do |name, cloud_name|
-  sm = Azure::ServiceManagement::ServiceManagementService.new
+  cloud_service = Azure::CloudService.new
   begin
-    Timeout::timeout(240) do
-      sm.delete_virtual_machine name, cloud_name
-    end
+    cloud_service.delete_cloud_service_deployment(cloud_name)
+    cloud_service.delete_cloud_service(cloud_name)
   rescue
   end
 end

@@ -14,16 +14,16 @@
 #--------------------------------------------------------------------------
 
 module Azure
-  module ServiceManagement
+  module BaseManagement
     module Serialization
       module ClassMethods
-      
-        def locations_from_xml(locationXML)  
+
+        def locations_from_xml(locationXML)
           location_objs = []
-          xml = locationXML.css('Locations Location')    
+          xml = locationXML.css('Locations Location')
           xml.each do |meta_node|
             loc = Location.new
-            loc.name =  xml_content(meta_node, 'Name')
+            loc.name = xml_content(meta_node, 'Name')
             loc.available_services = meta_node.css('AvailableServices').children.to_ary.join(", ")
             location_objs << loc
           end

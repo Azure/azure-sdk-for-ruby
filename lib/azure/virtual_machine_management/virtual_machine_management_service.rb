@@ -17,21 +17,26 @@ include Azure::VirtualMachineImageManagement
 
 module Azure
   module VirtualMachineManagement
-    class VirtualMachineManagementService
+    class VirtualMachineManagementService < BaseManagementService
+
+      def initialize
+        super()
+      end
 
       # Public: Get a lists of virtual machines available under the current subscription.
       #
       # Returns an list of Azure::VirtualMachineManagement::VirtualMachine instances.
-      def self.list_virtual_machines
+      def list_virtual_machines
         roles = []
-        cloud_services = Azure::CloudService.list_cloud_services
+        cloud_service = Azure::CloudService.new
+        cloud_services = cloud_service.list_cloud_services
         cloud_services.each do |cloud_service|
           request_path = "/services/hostedservices/#{cloud_service.name}/deploymentslots/production"
           request = ManagementHttpRequest.new(:get, request_path)
           request.warn = true
           response = request.call
           roles << Serialization.virtual_machines_from_xml(response,cloud_service.name)
-        end      
+        end
         roles.compact
       end
 
@@ -43,8 +48,8 @@ module Azure
       # * +cloud_service_name+  - String. Cloud service name.
       #
       # Returns an  Azure::VirtualMachineManagement::VirtualMachine instance.
-      def self.find(name, cloud_service_name)
-        server =  VirtualMachineManagementService.list_virtual_machines.select {|x| x.vm_name == name && x.cloud_service_name == cloud_service_name}
+      def get_virtual_machine(name, cloud_service_name)
+        server = list_virtual_machines.select {|x| x.vm_name == name && x.cloud_service_name == cloud_service_name}
         server.first
       end
 
@@ -59,7 +64,7 @@ module Azure
       #
       # Accepted key/value pairs are:
       # * +:vm_name+        - String.  Name of virtual machine.
-      # * +:ssh_user+       - String.  SSH user name for the virtual machine instance.
+      # * +:vm_user+       - String.  User name for the virtual machine instance.
       # * +:password+       - String.  A description for the hosted service.
       # * +:image+          - String.  Name of the disk image to use to create the virtual machine.
       #
@@ -75,24 +80,22 @@ module Azure
       # * +:ssh_certificate_file+     - String. Path of certificate file.
       #
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
-      def self.create_virtual_machine(params, options={})
-        options[:os_type] = Azure::VirtualMachineImageService.get_os_type(params[:image])
+      def create_virtual_machine(params, options={})
+        options[:os_type] = get_os_type(params[:image])
         validate_deployment_params(params, options)
         options[:cloud_service_name] = generate_cloud_service_name(params[:vm_name]) unless options[:cloud_service_name]
         options[:storage_account_name] = generate_storage_account_name(params[:vm_name]) unless options[:storage_account_name] 
-        Azure::CloudService.create_cloud_service(options[:cloud_service_name], :location => options[:location])
-        Azure::CloudService.upload_certificate(options[:cloud_service_name],params[:certificate]) if params[:certificate]
-        Azure::StorageService.create_storage_account(options[:storage_account_name], :location=> options[:location])
+        cloud_service = Azure::CloudService.new
+        cloud_service.create_cloud_service(options[:cloud_service_name], :location => params[:location])
+        cloud_service.upload_certificate(options[:cloud_service_name],params[:certificate]) unless params[:certificate].empty?
+        Azure::StorageService.new.create_storage_account(options[:storage_account_name], :location=> params[:location])
 
         body = Serialization.deployment_to_xml(params,options)
         path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments"
         Loggerx.info "Deployment in progress..."
         request = ManagementHttpRequest.new(:post, path, body)
         request.call
-
-        server = find(params[:vm_name],options[:cloud_service_name])
-        server.os_type = options[:os_type]
-        server
+        get_virtual_machine(params[:vm_name],options[:cloud_service_name])
       rescue Exception => e
         e.message
       end
@@ -108,14 +111,16 @@ module Azure
       # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157179.aspx
       #
       # Returns NONE
-      def self.delete_virtual_machine(vm_name, cloud_service_name)
-        vm = find(vm_name,cloud_service_name)
+      def delete_virtual_machine(vm_name, cloud_service_name)
+        vm = get_virtual_machine(vm_name,cloud_service_name)
         if vm
-          delete_virtual_machine_deployment(cloud_service_name)
-          Azure::CloudService.delete_cloud_service(cloud_service_name)
+          cloud_service = Azure::CloudService.new
+          cloud_service.delete_cloud_service_deployment(cloud_service_name)
+          cloud_service.delete_cloud_service(cloud_service_name)
           Loggerx.info "Waiting for disk to be released.\n"
           sleep 60
-          VirtualMachineDiskManagementService.delete_disk(vm.disk_name)
+          disk_management_service = VirtualMachineDiskManagementService.new
+          disk_management_service.delete_virtual_machine_disk(vm.disk_name)
         else
           Loggerx.error "Cannot find virtual machine #{vm_name} under cloud service #{cloud_service_name}"
         end
@@ -132,10 +137,10 @@ module Azure
       # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157195.aspx
       #
       # Returns NONE
-      def self.shutdown(vm_name, cloud_service_name)
-        vm = find(vm_name, cloud_service_name)
+      def shutdown_virtual_machine(vm_name, cloud_service_name)
+        vm = get_virtual_machine(vm_name, cloud_service_name)
         if vm
-          if vm.status == 'StoppedVM'
+          if ['StoppedVM','StoppedDeallocated'].include?(vm.status)
             Loggerx.error "Cannot perform the shutdown operation on a stopped virtual machine."
           elsif vm.deployment_status == 'Running'
             path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roleinstances/#{vm.vm_name}/Operations"
@@ -161,96 +166,106 @@ module Azure
       # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157189.aspx
       #
       # Returns NONE
-      def self.start(vm_name, cloud_service_name)
-        vm = find(vm_name, cloud_service_name)
+      def start_virtual_machine(vm_name, cloud_service_name)
+        vm = get_virtual_machine(vm_name, cloud_service_name)
         if vm
           if vm.status == 'ReadyRole'
-            Loggerx.error "Cannot perform the start operation on started virtual machine."  
-          elsif vm.deployment_status == 'Running'
+            Loggerx.error "Cannot perform the start operation on started virtual machine."
+          else
             path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roleinstances/#{vm.vm_name}/Operations"
             body = Serialization.start_virtual_machine_to_xml
             Loggerx.info "Starting virtual machine \"#{vm.vm_name}\" ..."
             request = ManagementHttpRequest.new(:post, path, body)
             request.call
-          else
-            Loggerx.error "Cannot perform the start operation on a stopped deployment."
           end
         else
           Loggerx.error "Cannot find virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\"."
         end
       end
 
-      # Public: Deletes the specified deployment.
+      private
+
+      # Private: Gets the operating system type of an image.
       #
-      # ==== Attributes
-      #
-      # * +cloud_service_name+  - String. Cloud service name.
-      #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460815.aspx
-      #
-      # Returns NONE
-      def self.delete_virtual_machine_deployment(cloud_service_name)
-        request_path= "/services/hostedservices/#{cloud_service_name}/deploymentslots/production"
-        request = ManagementHttpRequest.new(:delete, request_path)
-        Loggerx.info "Deleting deployment of cloud service \"#{cloud_service_name}\" ..."
-        request.call
+      # Returns Linux or Windows
+      def get_os_type(image_name)
+        image_service = Azure::VirtualMachineImageService.new
+        image = image_service.list_virtual_machine_images.select{|x| x.name == image_name}.first
+        Loggerx.error_with_exit "The virtual machine image source is not valid." unless image
+        image.os_type
       end
 
-      protected
-
-      def self.generate_cloud_service_name(vm_name)
+      def generate_cloud_service_name(vm_name)
         random_string(vm_name+'-service-')
       end
 
-      def self.generate_storage_account_name(vm_name)
+      def generate_storage_account_name(vm_name)
         random_string(vm_name+'storage').gsub(/[^0-9a-z ]/i, '').downcase[0..23] 
       end
 
-      def self.validate_deployment_params(params, options)
+      def validate_deployment_params(params, options)
         errors = []
-        params_keys = ["vm_name", "image"]
+        params_keys = ["vm_name", "image", "location", "vm_user"]
         if options[:os_type] == "Windows"
-          params_keys += ["password", "admin_user"]
-        else
-          params_keys <<  "ssh_user"
+          params_keys += ["password"]
         end
         options_keys = []
         options_keys = ['private_key_file','certificate_file'] if certificate_required?(params, options)
 
         params_keys.each do |key|
-          errors << key if  params[key.to_sym].nil?
+          errors << key if params[key.to_sym].nil?
         end
         
         options_keys.each do |key|
-          errors << key if  options[key.to_sym].nil?
+          errors << key if options[key.to_sym].nil?
         end
-
+        validate_role_size(options[:vm_size])
+        validate_location(params[:location]) unless errors.include?("location")
         if errors.empty?
           params[:certificate]={}
-          if params[:password] && options[:os_type] == 'Linux'
-            params[:certificate] = nil
-          elsif !winrm_with_https(options) && options[:os_type] == 'Windows'
-            params[:certificate] = nil
-          else
+          if certificate_required?(params, options)
             begin
               params[:certificate][:key] = OpenSSL::PKey.read File.read(options[:private_key_file])
               params[:certificate][:cert] = OpenSSL::X509::Certificate.new File.read(options[:certificate_file])
+              params[:certificate][:fingerprint] = export_fingerprint(params[:certificate][:cert])
             rescue Exception =>e
               Loggerx.error_with_exit e.message
             end
           end
-          params[:certificate][:fingerprint] = export_fingerprint(params[:certificate][:cert]) if params[:certificate]
         else
-          Loggerx.error_with_exit "You did not provide a valid '#{errors.join(", ")}' value."
+          Loggerx.error_with_exit "You did not provide a valid '#{errors.uniq.join(", ")}' value."
         end
       end
 
-      def self.certificate_required?(params, options)
-        ((params[:password].nil? && options[:os_type]=='Linux') or enable_winrm?(options[:winrm_transport]))
+      def certificate_required?(params, options)
+        if options[:os_type] == 'Linux'
+          (params[:password].nil? or (!options[:certificate_file].nil? && !options[:private_key_file].nil?))
+        else
+          winrm_with_https(options)
+        end
       end
 
-      def self.winrm_with_https(options)
-        !options[:winrm_transport].nil? && options[:winrm_transport].include?('https')
+      def winrm_with_https(options)
+        if options[:os_type] == 'Windows'
+          !options[:winrm_transport].nil? && options[:winrm_transport].include?('https')
+        end
+      end
+
+      def validate_role_size(vm_size)
+        valid_role_sizes = ['ExtraSmall', 'Small', 'Medium', 'Large', 'ExtraLarge', 'A6', 'A7']
+        if vm_size && !valid_role_sizes.include?(vm_size)
+          Loggerx.error_with_exit "Value '#{vm_size}' specified for parameter 'vm_size' is invalid. Allowed values are 'ExtraSmall,Small,Medium,Large,ExtraLarge,A6,A7'"
+        end
+      end
+
+      def validate_location(location_name)
+        locations = Azure::BaseManagementService.new.list_locations
+        location = locations.select{|loc| loc.name.downcase == location_name.downcase}.first
+        if location.nil?
+          Loggerx.error_with_exit "Value '#{location_name}' specified for parameter 'location' is invalid. Allowed values are #{locations.collect(&:name).join(',')}"
+        elsif !location.available_services.include?("PersistentVMRole")
+          Loggerx.error_with_exit "Persistentvmrole not enabled for \"#{location.name}\". Try different location"
+        end
       end
 
     end

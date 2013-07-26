@@ -24,7 +24,7 @@ module Azure
             xml.ServiceName name
             xml.Label Base64.encode64(name)
             xml.Description options[:description] || 'Explicitly created storage service'
-            xml.Location  options[:location] || 'West US'
+            xml.Location options[:location]
           }
         end
         builder.doc.to_xml

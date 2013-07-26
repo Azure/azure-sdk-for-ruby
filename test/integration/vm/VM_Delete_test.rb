@@ -12,46 +12,39 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-
 require "integration/test_helper"
-require "azure/virtual_machine_management/virtual_machine_management_service"
 
-describe Azure::ServiceManagement::ServiceManagementService do
+describe Azure::VirtualMachineService do
 
-  subject { Azure::ServiceManagement::ServiceManagementService.new  }
-  after {VirtualMachineNameHelper.clean}
+  subject { Azure::VirtualMachineService.new }
   let(:names) { VirtualMachineNameHelper.name }
   let(:virtual_machine_name) { names.first}
   let(:cloud_service_name) { names.last }
-  let(:mock_request){ mock() }
   let(:username) {'admin'}
   before {
-    Tilt.stubs(:new).returns(mock_request)
-    mock_request.stubs(:render).returns(nil)
     Loggerx.expects(:puts).at_least_once.returns(nil)
-    Azure::VirtualMachineService.expects(:puts).returns(nil).at_least(0)
-    image = subject.virtual_machine_images.select{|x|  x.os_type == 'Linux'}.first
     params = {
-      :vm_name=> virtual_machine_name,
-      :ssh_user=> username,
-      :image=> image.name,
-      :password => 'User123'
+      :vm_name => virtual_machine_name,
+      :vm_user => 'user',
+      :image => LinuxImage.name,
+      :password => 'User123',
+      :location => LinuxImageLocation
     }
     options = {
-      :storage_account_name=>'integrationteststorage',
-      :cloud_service_name=> cloud_service_name,
+      :storage_account_name => StorageAccountName,
+      :cloud_service_name => cloud_service_name,
     }
-    subject.deployment(params,options)
+    subject.create_virtual_machine(params, options)
   }
 
   describe "#delete_virtual_machine" do
 
     it "delete existing virtual machine and cloud service" do
-      subject.delete_virtual_machine( virtual_machine_name, cloud_service_name)
-      vm = Azure::VirtualMachineService.find(virtual_machine_name, cloud_service_name)
+      subject.delete_virtual_machine(virtual_machine_name, cloud_service_name)
+      vm = subject.get_virtual_machine(virtual_machine_name, cloud_service_name)
       vm.must_be_nil
-      cloud_presence = Azure::CloudService.get_cloud_service(cloud_service_name)
-      cloud_presence.must_equal  false
+      cloud_presence = Azure::CloudService.new.get_cloud_service(cloud_service_name)
+      cloud_presence.must_equal false
     end
 
   end

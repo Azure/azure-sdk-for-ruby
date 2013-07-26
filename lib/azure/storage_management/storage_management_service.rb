@@ -21,7 +21,7 @@ module Azure
       # Public: Gets a list of storage accounts available under the current subscription.
       #
       # Returns an array of Azure::StorageManagement::StorageAccount objects
-      def self.list_storage_accounts
+      def list_storage_accounts
         request_path = "/services/storageservices"
         request = ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
@@ -36,10 +36,10 @@ module Azure
       #
       # Returns: A boolean value indicating whether the storage account exists.
       # If true, the storage account exists. If false, the storage account does not exist.
-      def self.get_storage_account(name)
+      def get_storage_account(name)
         return false if name.nil?
         flag = false
-        storage_accounts = list_storage_accounts
+        storage_accounts = Azure::StorageService.new.list_storage_accounts
         storage_accounts.each do |storage|
           if storage.name == name
             flag = true
@@ -48,6 +48,7 @@ module Azure
         end
         flag
       end
+
       # Public: Create a new storage account in Windows Azure.
       #
       # ==== Attributes
@@ -62,7 +63,7 @@ module Azure
       # * +:description+         - String. A description for the storage service. (optional)
       #
       # Returns None
-      def self.create_storage_account(name, options={})
+      def create_storage_account(name, options={})
         if get_storage_account(name)
           Loggerx.warn "Storage Account #{name} already exists. Skipped..."
         else
@@ -72,6 +73,22 @@ module Azure
           request = ManagementHttpRequest.new(:post, request_path, body)
           request.call
         end
+      end
+
+      # Public: Deletes the specified storage account of given subscription id from Windows Azure.
+      #
+      # ==== Attributes
+      #
+      # * +name+       - String. Storage account name.
+      #
+      # Returns:  None
+      def delete_storage_account(name)
+        Loggerx.info "Deleting Storage Account #{name}."
+        request_path = "/services/storageservices/#{name}"
+        request = ManagementHttpRequest.new(:delete, request_path)
+        request.call
+      rescue Exception => e
+        e.message
       end
     end
   end

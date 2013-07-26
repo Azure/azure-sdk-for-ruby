@@ -24,10 +24,6 @@ module Azure
       attr_accessor :description
       attr_accessor :location
 
-      def location
-        @location || 'West US'
-      end
-
     end
   end
 end

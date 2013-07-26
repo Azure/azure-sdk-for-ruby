@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'azure/virtual_machine_image_management/virtual_machine_image'
+require 'azure/virtual_machine_image_management/virtual_machine_disk'
 
 module Azure
   module VirtualMachineImageManagement
@@ -21,10 +23,11 @@ module Azure
         os_images = Array.new
         virtual_machine_images = imageXML.css('Images OSImage')
         virtual_machine_images.each do |image_node|
-          image = VirtualMachineImageManagementService.new
+          image = VirtualMachineImage.new
           image.os_type = xml_content(image_node, 'OS')
           image.name = xml_content(image_node, 'Name')
           image.category = xml_content(image_node, 'Category')
+          image.locations = xml_content(image_node, 'Location')
           os_images << image
         end
         os_images
@@ -34,9 +37,9 @@ module Azure
         os_disks = Array.new
         disks = diskXML.css('Disks Disk')
         disks.each do |disk_node|
-          disk = VirtualMachineDiskManagementService.new
+          disk = VirtualMachineDisk.new
           disk.name = xml_content(disk_node, 'Name')
-          disk.attached =  !xml_content(disk_node,'AttachedTo').empty?
+          disk.attached = !xml_content(disk_node,'AttachedTo').empty?
           os_disks << disk
         end
         os_disks

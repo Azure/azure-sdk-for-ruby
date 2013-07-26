@@ -14,26 +14,24 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 
-describe Azure::BaseManagement::BaseManagementService do
-  subject { Azure::BaseManagement::BaseManagementService.new }
+describe Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService do
 
-  describe "#locations" do
+  subject {
+    Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService.new
+  }
 
-    it "check locations list present" do
-      result = subject.list_locations
-      result.wont_be_nil
+  describe "#list_virtual_machine_disks" do
+
+    it "returns a list of virtual machine disks" do
+      vm_disks = subject.list_virtual_machine_disks
+      vm_disks.wont_be_nil
+      vm_disks.must_be_kind_of Array
+      disk = vm_disks.first
+      disk.must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineDisk
+      disk.name.wont_be_nil
+      [true, false].must_include disk.attached
     end
 
-    it "returns a list of locations" do
-      locations = subject.list_locations
-      locations.must_be_kind_of Array
-      location = locations.first
-      location.must_be_kind_of Azure::BaseManagement::Location
-      refute_equal locations.length, 0
-      location.name.wont_be_nil
-      location.available_services.wont_be_nil
-    end
-
-  end #locations
+  end
 
 end

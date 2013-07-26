@@ -13,30 +13,25 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "integration/test_helper"
-require "azure/virtual_machine_image_management/virtual_machine_image_management_service"
 
-describe Azure::ServiceManagement::ServiceManagementService do
-  subject { Azure::ServiceManagement::ServiceManagementService.new  }
+describe Azure::VirtualMachineImageService do
+
+  subject { Azure::VirtualMachineImageService.new }
 
   describe "#virtual_machine_images" do
-    let(:mock_request){ mock() }
-    before{
-      Tilt.stubs(:new).returns(mock_request)
-      mock_request.stubs(:render).returns(nil)
-    }
 
     it "returns a list of virtual machine images" do
-      virtualImages = subject.virtual_machine_images
+      virtualImages = subject.list_virtual_machine_images
       virtualImages.wont_be_nil
       virtualImages.must_be_kind_of Array
-      image =  virtualImages.first
-      image.must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImageManagementService
+      image = virtualImages.first
+      image.must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImage
       image.os_type.wont_be_nil
       image.category.wont_be_nil
       image.name.wont_be_nil
       refute_equal virtualImages.length, 0
     end
 
-  end 
+  end
 
 end

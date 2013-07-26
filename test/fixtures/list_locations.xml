@@ -56,7 +56,6 @@
     <AvailableServices>
       <AvailableService>Compute</AvailableService>
       <AvailableService>Storage</AvailableService>
-      <AvailableService>PersistentVMRole</AvailableService>
       <AvailableService>HighMemory</AvailableService>
     </AvailableServices>
   </Location>

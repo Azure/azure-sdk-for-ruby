@@ -14,16 +14,15 @@
 #--------------------------------------------------------------------------
 require "test_helper"
 
-describe Azure::ServiceManagement::Location do
+describe Azure::Location do
 
   subject do
-    ServiceManagement.new
-    Azure::ServiceManagement::Location
+    Azure::BaseManagementService.new
   end
 
   describe "#list_locations" do
-    let(:request_path) {'/locations'}
-    let(:locations_xml)  { Fixtures['list_locations'] }
+    let(:request_path) { '/locations' }
+    let(:locations_xml) { Fixtures['list_locations'] }
     let(:method) { :get }
     let(:mock_request){ mock() }
     let(:response) {
@@ -31,10 +30,10 @@ describe Azure::ServiceManagement::Location do
       response.stubs(:body).returns(locations_xml)
       response
     }
-    let(:response_body) {Nokogiri::XML  response.body}
+    let(:response_body) { Nokogiri::XML response.body }
 
-    before {     
-      Azure::ServiceManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+    before {
+      ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     }
 
@@ -46,12 +45,12 @@ describe Azure::ServiceManagement::Location do
       location = subject.list_locations.first
       location.name.must_equal 'West US'
     end
-    
+
     it "returns a list of locations data center locations that are valid for given subscription" do
       results = subject.list_locations
       results.must_be_kind_of Array
       results.length.must_equal 6
-      results.first.must_be_kind_of Azure::ServiceManagement::Location
+      results.first.must_be_kind_of Azure::BaseManagement::Location
     end
   end
 

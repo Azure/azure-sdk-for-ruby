@@ -12,51 +12,45 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-
 require "integration/test_helper"
-require "azure/service_management/service_management_service"
 
-describe Azure::ServiceManagement::ServiceManagementService do
+describe Azure::VirtualMachineService do
 
-  subject { Azure::ServiceManagement::ServiceManagementService.new  }
+  subject { Azure::VirtualMachineService.new }
 
-  describe "#virtual_machines" do
-    after {VirtualMachineNameHelper.clean}
+  describe "#list_virtual_machines" do
     let(:names) { VirtualMachineNameHelper.name }
     let(:virtual_machine_name) { names.first}
     let(:cloud_service_name) { names.last }
-    let(:mock_request){ mock() }
 
     before {
-      Tilt.stubs(:new).returns(mock_request)
-      mock_request.stubs(:render).returns(nil)
       Loggerx.expects(:puts).at_least_once.returns(nil)
-      image = subject.virtual_machine_images.select{|x|  x.os_type == 'Linux'}.first
       params = {
-        :vm_name=> virtual_machine_name,
-        :ssh_user=> 'user',
-        :image=> image.name,
-        :password => 'User123'
+        :vm_name => virtual_machine_name,
+        :vm_user => 'user',
+        :image => LinuxImage.name,
+        :password => 'User123',
+        :location => LinuxImageLocation
       }
       options = {
-        :storage_account_name=>'integrationteststorage',
-        :cloud_service_name=> cloud_service_name,
+        :storage_account_name => StorageAccountName,
+        :cloud_service_name => cloud_service_name,
       }
-      subject.deployment(params,options)
-      sleep 120
+      subject.create_virtual_machine(params,options)
+      sleep 60
     }
 
     it "returns a list of virtual machine images" do
 
-      virtualmachines = subject.virtual_machines
+      virtualmachines = subject.list_virtual_machines
       virtualmachine = virtualmachines.select {|x| x.vm_name == virtual_machine_name && x.cloud_service_name == cloud_service_name}.first
 
       virtualmachines.wont_be_nil
       virtualmachines.must_be_kind_of Array
-
       virtualmachine.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
       virtualmachine.hostname.must_equal virtual_machine_name unless virtualmachine.hostname.empty?
-      ["RoleStateUnknown","ReadyRole","Provisioning"].must_include  virtualmachine.status
+      ["RoleStateUnknown","ReadyRole","Provisioning"].must_include virtualmachine.status
+
       assert_equal(virtualmachine.vm_name, virtual_machine_name, "difference in VM name")
       assert_equal(virtualmachine.role_size, 'Small', "difference in VM rolesize")
       assert_equal(virtualmachine.cloud_service_name, cloud_service_name, "difference in cludservicename")

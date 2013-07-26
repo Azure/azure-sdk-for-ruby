@@ -14,13 +14,13 @@
 #--------------------------------------------------------------------------
 require "azure/core/http/http_response"
 require "azure/core/http/http_request"
-require "azure/service_management/certificate"
+require "azure/base_management/certificate"
 include Azure::Core::Http
 
-# Represents an HTTP request that can perform synchronous queries to a
+# Represents an HTTP request that can perform synchronous queries to
 # an HTTP server, returning a HttpResponse
 module Azure
-  module ServiceManagement
+  module BaseManagement
     class ManagementHttpRequest < HttpRequest
 
       attr_accessor :uri,:warn,:key,:cert
@@ -35,9 +35,9 @@ module Azure
       def initialize(method, path, body=nil)
         super
         @warn = false
-        @headers = {"x-ms-version" => "2013-03-01", "Content-Type"=> 'application/xml' }
+        @headers = {"x-ms-version" => "2013-06-01", "Content-Type"=> 'application/xml' }
         @uri = URI.parse(Azure.config.api_url + Azure.config.subscription_id + path)
-        @key =  Azure.config.http_private_key
+        @key = Azure.config.http_private_key
         @cert = Azure.config.http_certificate_key
       end
 
@@ -72,7 +72,7 @@ module Azure
         response.uri = uri
 
         wait_for_completion(response)
-        Nokogiri::XML  response.body
+        Nokogiri::XML response.body
       end
 
       # Public: Wait for HTTP request completion.
@@ -92,17 +92,18 @@ module Azure
           ret_val
         elsif response.status_code.to_i >= 201 && response.status_code.to_i <= 299
           ret_val = check_completion(response.headers['x-ms-request-id'])
-        else
-          if response.body
-            if warn
-              Loggerx.warn ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
-            else
-              Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
-            end
+        elsif warn && !response.success?
+          #Loggerx.warn ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
+        elsif response.body
+          if ret_val.at_css('Error Code') && ret_val.at_css('Error Message')
+            Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
           else
-            Loggerx.error_with_exit 'http error: ' + response.code
+            Loggerx.exception_message "http error: #{response.status_code}"
           end
+        else
+          Loggerx.exception_message "http error: #{response.status_code}"
         end
+        ret_val
       end
 
       # Public: Gets the status of the specified operation and determines whether
@@ -122,7 +123,7 @@ module Azure
           print '# '
           request= ManagementHttpRequest.new(:get, request_path)
           response = request.call
-          status =   xml_content(response, 'Operation Status')
+          status = xml_content(response, 'Operation Status')
           status_code = xml_content(response, 'Operation HttpStatusCode')
           done = status != 'InProgress'
           if done
@@ -138,6 +139,7 @@ module Azure
             sleep(1)
           end
         end
+        response
       end
     end
   end

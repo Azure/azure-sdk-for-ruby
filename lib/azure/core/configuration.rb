@@ -168,7 +168,7 @@ module Azure
       attr_accessor :http_certificate_key
 
       def api_url
-        @api_url || "https://management.core.windows.net/"
+        "https://#{@api_url}/" if @api_url
       end
 
     end

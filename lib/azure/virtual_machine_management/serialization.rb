@@ -26,6 +26,7 @@ module Azure
             'xmlns:i'=>'http://www.w3.org/2001/XMLSchema-instance'
           ) {
             xml.OperationType 'ShutdownRoleOperation'
+            xml.PostShutdownAction 'StoppedDeallocated'
           }
         end
         builder.doc.to_xml
@@ -61,7 +62,6 @@ module Azure
       end
 
       def self.role_to_xml(params, options)
-        #TODO winrm is not working in windows Temporary set to ssh only remove this once rdp success.
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.PersistentVMRole(
             'xmlns'=>'http://schemas.microsoft.com/windowsazure',
@@ -69,7 +69,7 @@ module Azure
           ) {
             xml.RoleName {xml.text params[:vm_name]}
             xml.OsVersion('i:nil' => 'true')
-            xml.RoleType 'PersistentVMRole'           
+            xml.RoleType 'PersistentVMRole'
            
             xml.ConfigurationSets {
               provisioning_configuration_to_xml(xml, params, options)
@@ -86,9 +86,9 @@ module Azure
               xml.MediaLink 'http://' + options[:storage_account_name] + '.blob.core.windows.net/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd'
               xml.SourceImageName params[:image]
             }
-            xml.RoleSize options[:role_size]
+            xml.RoleSize options[:vm_size]
           }
-        end       
+        end
         builder.doc
       end
 
@@ -97,16 +97,17 @@ module Azure
           xml.ConfigurationSet('i:type' => 'LinuxProvisioningConfigurationSet') {
             xml.ConfigurationSetType 'LinuxProvisioningConfiguration'
             xml.HostName params[:vm_name]
-            xml.UserName params[:ssh_user]
+            xml.UserName params[:vm_user]
             if params[:password]
               xml.UserPassword params[:password]
               xml.DisableSshPasswordAuthentication 'false'
-            else
+            end
+            if params[:certificate][:fingerprint]
               xml.SSH{
                 xml.PublicKeys{
                   xml.PublicKey{
                     xml.Fingerprint params[:certificate][:fingerprint]
-                    xml.Path "/home/#{params[:ssh_user]}/.ssh/authorized_keys"
+                    xml.Path "/home/#{params[:vm_user]}/.ssh/authorized_keys"
                   }
                 }
               }
@@ -136,7 +137,7 @@ module Azure
                 }
               }
             end
-            xml.AdminUsername params[:admin_user]
+            xml.AdminUsername params[:vm_user]
           }
         end
       end
@@ -147,7 +148,7 @@ module Azure
           xml.InputEndpoint {
             xml.LocalPort '22'
             xml.Name 'SSH'
-            xml.Port '22'
+            xml.Port options[:ssh_port] || '22'
             xml.Protocol 'TCP'
           }
         elsif os_type == 'Windows'
@@ -188,7 +189,7 @@ module Azure
         end
       end
 
-      def self.virtual_machines_from_xml(deployXML,cloud_service_name)
+      def self.virtual_machines_from_xml(deployXML, cloud_service_name)
         if deployXML.at_css('Deployment Name') != nil
           rolesXML = deployXML.css('Deployment RoleInstanceList RoleInstance')
           vm = VirtualMachine.new
@@ -200,6 +201,7 @@ module Azure
           vm.deployment_name = xml_content(deployXML, 'Deployment Name')
           vm.deployment_status = xml_content(deployXML, 'Deployment Status')
           osdisk = deployXML.css(deployXML, 'OSVirtualHardDisk')
+          vm.os_type = xml_content(osdisk, 'OS')
           vm.disk_name = xml_content(osdisk, 'DiskName')
           vm.tcp_endpoints = Array.new
           vm.udp_endpoints = Array.new
@@ -223,7 +225,7 @@ module Azure
               vm.udp_endpoints << hash
             end
           end
-          vm.ipaddress =  xml_content(rolesXML, 'IpAddress') unless vm.ipaddress
+          vm.ipaddress = xml_content(rolesXML, 'IpAddress') unless vm.ipaddress
           vm
         end
       end
