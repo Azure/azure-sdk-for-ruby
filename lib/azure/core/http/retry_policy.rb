@@ -39,8 +39,8 @@ module Azure
           response = nil
           begin
             response = _next.call
-          rescue StandardError => e
-            retry if should_retry?(response, retry_data)
+          rescue StandardError => error
+            retry if should_retry?(error, retry_data)
           end
           response
         end
@@ -61,8 +61,8 @@ module Azure
         # constructor the method returns false.
         #
         # Alternatively, a subclass could override this method.
-        def should_retry?(response, retry_data)
-          @block ? @block.call(response, retry_data) : false
+        def should_retry?(error, retry_data)
+          @block ? @block.call(error, retry_data) : false
         end
       end
     end
