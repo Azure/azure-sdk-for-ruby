@@ -12,26 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "/azure/core/http/http_filter"
+require "azure/core/http/http_filter"
 
 module Azure
   module Core
     module Http
-    
-      # A HttpFilter implementation that handles retrying based on a 
+
+      # A HttpFilter implementation that handles retrying based on a
       # specific policy when HTTP layer errors occur
       class RetryPolicy < HttpFilter
-    
+
         def initialize(&block)
           @block = block
         end
 
         attr_accessor :retry_data
 
-        # Overrides the base class implementation of call to implement 
-        # a retry loop that uses should_retry? to determine when to 
+        # Overrides the base class implementation of call to implement
+        # a retry loop that uses should_retry? to determine when to
         # break the loop
-        # 
+        #
         # req   - HttpRequest. The HTTP request
         # _next - HttpFilter. The next filter in the pipeline
         def call(req, _next)
@@ -39,28 +39,30 @@ module Azure
           response = nil
           begin
             response = _next.call
-          end while should_retry?(response, retry_data)
+          rescue StandardError => error
+            retry if should_retry?(error, retry_data)
+          end
           response
         end
 
         # Determines if the HTTP request should continue retrying
-        # 
+        #
         # response - HttpResponse. The response from the active request
         # retry_data - Hash. Stores stateful retry data
         #
-        # The retry_data is a Hash which can be used to store 
-        # stateful data about the request execution context (such as an 
-        # incrementing counter, timestamp, etc). The retry_data object 
+        # The retry_data is a Hash which can be used to store
+        # stateful data about the request execution context (such as an
+        # incrementing counter, timestamp, etc). The retry_data object
         # will be the same instance throughout the lifetime of the request.
         #
-        # If an inline block was passed to the constructor, that block 
+        # If an inline block was passed to the constructor, that block
         # will be used here and should return true to retry the job, or
-        # false to stop exit. If an inline block was not passed to the 
+        # false to stop exit. If an inline block was not passed to the
         # constructor the method returns false.
         #
         # Alternatively, a subclass could override this method.
-        def should_try?(response, retry_data)
-          @block ? @block.call(response, retry_data) : false
+        def should_retry?(error, retry_data)
+          @block ? @block.call(error, retry_data) : false
         end
       end
     end
