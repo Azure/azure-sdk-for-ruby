@@ -14,7 +14,6 @@
 #--------------------------------------------------------------------------
 require "azure/core/http/http_response"
 require "azure/core/http/http_request"
-require "azure/base_management/certificate"
 include Azure::Core::Http
 
 # Represents an HTTP request that can perform synchronous queries to
@@ -36,7 +35,7 @@ module Azure
         super
         @warn = false
         @headers = {"x-ms-version" => "2013-06-01", "Content-Type"=> 'application/xml' }
-        @uri = URI.parse(Azure.config.api_url + Azure.config.subscription_id + path)
+        @uri = URI.parse(Azure.config.management_endpoint + Azure.config.subscription_id + path)
         @key = Azure.config.http_private_key
         @cert = Azure.config.http_certificate_key
       end

@@ -334,8 +334,9 @@ require 'azure'
 
 Azure.configure do |config|
   # Configure these 2 properties to use Storage
-  config.publish_settings_file = 'c:/my.publishsettings'
-  config.subscription_id      = "your subscription id" #optional
+  config.management_certificate = "c:/my_cert.pem"
+  config.subscription_id        = "your subscription id"
+  config.management_endpoint    = "https://management.core.windows.net"
 end
 
 #Create a virtual machine service object
@@ -367,8 +368,8 @@ options = {
   :cloud_service_name => 'cloud_service_name',
   :deployment_name =>'mydeployment',
   :tcp_endpoints => '80,3889:3889',
-  :ssh_private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
-  :ssh_certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
+  :private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
+  :certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
   :ssh_port => 2222,
   :vm_size => 'Large' #valid choices are (ExtraSmall, Small, Medium, Large, ExtraLarge, A6, A7)
 }
