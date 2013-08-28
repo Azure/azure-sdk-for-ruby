@@ -391,8 +391,7 @@ params = {
 }
 options = {
   :storage_account_name => 'storage_suse',
-  :winrm_transport => ['https','http'],  #Currently http is supported. To enable https, set the transport protocol to https, simply rdp to the VM once VM is in ready state,
-  export the certificate ( CN name would be the deployment name) from the certstore of the VM and install to your local machine and communicate WinRM via https.
+  :winrm_transport => ['https','http'], #Currently http is supported. To enable https, set the transport protocol to https, simply rdp to the VM once VM is in ready state, export the certificate ( CN name would be the deployment name) from the certstore of the VM and install to your local machine and communicate WinRM via https.
   :cloud_service_name => 'cloud_service_name',
   :deployment_name =>'mydeployment',
   :tcp_endpoints => '80,3389:3390',
