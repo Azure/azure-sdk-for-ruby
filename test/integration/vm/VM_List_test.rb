@@ -41,7 +41,6 @@ describe Azure::VirtualMachineService do
     }
 
     it "returns a list of virtual machine images" do
-
       virtualmachines = subject.list_virtual_machines
       virtualmachine = virtualmachines.select {|x| x.vm_name == virtual_machine_name && x.cloud_service_name == cloud_service_name}.first
 
@@ -65,7 +64,6 @@ describe Azure::VirtualMachineService do
       refute_equal(virtualmachine.deployment_name, 'xyz123', "VM deployment name must not same")
       refute_equal(virtualmachine.deployment_status, 'Stopped', "VM deployment_status must not same")
       refute_equal(virtualmachine.ipaddress, '157.56.164.134', "VM ipaddress must not same")
-
     end
 
   end

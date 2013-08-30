@@ -46,4 +46,4 @@ Azure::BaseManagementService = Azure::BaseManagement::BaseManagementService
 Azure::CloudService = Azure::CloudServiceManagement::CloudServicesManagementService
 Azure::StorageService = Azure::StorageManagement::StorageManagementService
 Azure::VirtualMachineService = Azure::VirtualMachineManagement::VirtualMachineManagementService
-Azure::Location = Azure::BaseManagement::Location
+

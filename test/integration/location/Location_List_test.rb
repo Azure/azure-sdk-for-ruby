@@ -35,5 +35,5 @@ describe Azure::BaseManagement::BaseManagementService do
     end
 
   end #locations
-
 end
+

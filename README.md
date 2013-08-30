@@ -119,7 +119,7 @@ There are two ways you can set up the connections:
       config.sb_issuer            = "<your azure service bus issuer>"
       # Configure these 3 properties to use Service Management
       config.management_certificate = "<path to your *.pem or *.pfx>". We support passwordless pfx & pem cert formats.
-	  config.subscription_id        = "<your Subscriptionid>"
+      config.subscription_id        = "<your Subscriptionid>"
       config.management_endpoint    = "https://management.core.windows.net"
   end
   ```

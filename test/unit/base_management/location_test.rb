@@ -14,7 +14,7 @@
 #--------------------------------------------------------------------------
 require "test_helper"
 
-describe Azure::Location do
+describe Azure::BaseManagement::Location do
 
   subject do
     Azure::BaseManagementService.new

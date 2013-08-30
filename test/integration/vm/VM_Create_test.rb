@@ -272,5 +272,3 @@ describe Azure::VirtualMachineService do
   end #deployment
 
 end
-
-
