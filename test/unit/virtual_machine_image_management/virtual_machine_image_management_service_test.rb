@@ -16,13 +16,10 @@ require "test_helper"
 
 describe Azure::VirtualMachineImageService do
 
-  subject do
-    ServiceManagement.new
-    Azure::VirtualMachineImageService
-  end
+  subject { Azure::VirtualMachineImageService.new }
 
   let(:request_path) {'/services/images'}
-  let(:images_xml)  { Fixtures["list_images"] }
+  let(:images_xml) { Fixtures["list_images"] }
   let(:method) { :get }
   let(:mock_request){ mock() }
   let(:response) {
@@ -30,7 +27,11 @@ describe Azure::VirtualMachineImageService do
     response.stubs(:body).returns(images_xml)
     response
   }
-  let(:response_body) {Nokogiri::XML  response.body}
+  let(:response_body) { Nokogiri::XML response.body }
+
+  before{
+    Loggerx.expects(:puts).returns(nil).at_least(0)
+  }
   
   describe "#list_virtual_machine_images" do
     
@@ -52,26 +53,7 @@ describe Azure::VirtualMachineImageService do
       results = subject.list_virtual_machine_images
       results.must_be_kind_of Array
       results.length.must_equal 12
-      results.first.must_be_kind_of Azure::VirtualMachineImageService
-    end
-  end
-
-  describe "#get_os_type" do   
-
-    before {
-      ManagementHttpRequest.any_instance.expects(:call).returns response_body
-    }
-
-    it "returns os type of given virtual machine image" do
-      result = subject.get_os_type '0b11de9248dd4d87b18621318e037d37__RightImage-CentOS-6.2-x64-v5.8.8.1'
-      result.must_equal 'Linux'
-    end
-
-    it 'errors if the virtual machine image does not exist' do
-      exception =  assert_raises(RuntimeError) do
-        subject.get_os_type 'invalid-image-name' 
-      end
-      assert_match(/The Virtual machine image source is not valid/i, exception.message)
+      results.first.must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImage
     end
   end
   

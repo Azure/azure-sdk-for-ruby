@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-
 module Azure; end
 
 require "azure/core"
@@ -27,7 +26,15 @@ require "azure/service_bus/correlation_filter"
 require "azure/table/table_service"
 require "azure/table/batch"
 require "azure/table/query"
-require "azure/service_management/service_management_service"
+
+require "azure/core/utility"
+require "azure/base_management/management_http_request"
+require "azure/base_management/base_management_service"
+require "azure/virtual_machine_image_management/virtual_machine_image_management_service"
+require "azure/virtual_machine_management/virtual_machine_management_service"
+require "azure/storage_management/storage_management_service"
+require "azure/cloud_service_management/cloud_service_management_service"
+require "azure/base_management/location"
 
 # add some aliases for convenience 
 Azure::BlobService = Azure::Blob::BlobService
@@ -35,7 +42,8 @@ Azure::QueueService = Azure::Queue::QueueService
 Azure::TableService = Azure::Table::TableService
 Azure::ServiceBusService = Azure::ServiceBus::ServiceBusService
 Azure::VirtualMachineImageService = Azure::VirtualMachineImageManagement::VirtualMachineImageManagementService
-ServiceManagement = Azure::ServiceManagement::ServiceManagementService
+Azure::BaseManagementService = Azure::BaseManagement::BaseManagementService
 Azure::CloudService = Azure::CloudServiceManagement::CloudServicesManagementService
 Azure::StorageService = Azure::StorageManagement::StorageManagementService
 Azure::VirtualMachineService = Azure::VirtualMachineManagement::VirtualMachineManagementService
+

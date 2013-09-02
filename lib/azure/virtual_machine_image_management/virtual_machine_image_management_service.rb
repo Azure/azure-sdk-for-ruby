@@ -16,57 +16,50 @@ require "azure/virtual_machine_image_management/serialization"
 
 module Azure
   module VirtualMachineImageManagement
-    class VirtualMachineImageManagementService
-      attr_accessor :os_type, :name, :category
+    class VirtualMachineImageManagementService < BaseManagementService
 
-      # Public: Get a list of Images from the server
+      def initialize
+        super()
+      end
+
+      # Public: Gets a list of virtual machine images from the server
       #
       # Returns an array of Azure::VirtualMachineImageService objects
-      def self.list_virtual_machine_images
+      def list_virtual_machine_images
         request_path = "/services/images"
         request = ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.virtual_machine_images_from_xml(response)
       end
-
-      # Public: Get operating system type of image.
-      #
-      # Returns Linux or Windows
-      def self.get_os_type(image_name)
-        image = list_virtual_machine_images.select{|x|  x.name == image_name}.first
-        Loggerx.error_with_exit "The virtual machine image source is not valid." unless image
-        image.os_type
-      end
  
     end
 
-    class VirtualMachineDiskManagementService
-      attr_accessor :name
+    class VirtualMachineDiskManagementService < BaseManagementService
+
+      def initialize
+        super()
+      end
+
+      # Public: Gets a list of Disks from the server.
+      #
+      # Returns an array of Azure::VirtualMachineDiskManagementService objects
+      def list_virtual_machine_disks
+        request_path = "/services/disks"
+        request = ManagementHttpRequest.new(:get, request_path, nil)
+        response = request.call
+        Serialization.disks_from_xml(response)
+      end
 
       # Public: Deletes the specified data or operating system disk from the image repository.
       #
       # Returns None
-      def self.delete_disk(disk_name)
+      def delete_virtual_machine_disk(disk_name)
         Loggerx.info "Deleting Disk \"#{disk_name}\". "
         path = "/services/disks/#{disk_name}"
         request = ManagementHttpRequest.new(:delete, path)
-        begin
-          Timeout::timeout(60) do
-            begin
-              request.call
-            rescue Exception
-              print '# '
-              sleep 15
-              retry
-            end
-
-          end
-        rescue Timeout::Error
-          Loggerx.error "Failed to delete the disk."
-        ensure
-          print "\n"
-        end
+        request.call
       end
+
     end
   end
 end

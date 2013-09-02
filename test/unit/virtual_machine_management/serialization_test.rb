@@ -15,7 +15,7 @@
 require "test_helper"
 
 describe Azure::VirtualMachineManagement::Serialization do
-  subject {  Azure::VirtualMachineManagement::Serialization }
+  subject { Azure::VirtualMachineManagement::Serialization }
 
   let(:virtual_machine_xml) { Nokogiri::XML(Fixtures["virtual_machine"]) }
   let(:cloud_service_name) { 'cloud-service-1' }
@@ -26,7 +26,7 @@ describe Azure::VirtualMachineManagement::Serialization do
       subject.virtual_machines_from_xml(virtual_machine_xml,cloud_service_name)
     end
 
-    it "returns an Array of StorageService instances" do
+    it "returns an Array of VirtualMachine instances" do
       result = subject.virtual_machines_from_xml(virtual_machine_xml,cloud_service_name)
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
     end
@@ -58,6 +58,7 @@ describe Azure::VirtualMachineManagement::Serialization do
       result.must_be_kind_of String
       doc = Nokogiri::XML(result)
       doc.css('OperationType').text.must_equal 'ShutdownRoleOperation'
+      doc.css('PostShutdownAction').text.must_equal 'StoppedDeallocated'
     end
 
   end
@@ -69,6 +70,45 @@ describe Azure::VirtualMachineManagement::Serialization do
       result.must_be_kind_of String
       doc = Nokogiri::XML(result)
       doc.css('OperationType').text.must_equal 'StartRoleOperation'
+    end
+
+  end
+
+  describe "#deployment_to_xml" do
+    let(:params){
+      {
+        :vm_name => 'virtual-machine-name',
+        :vm_user => 'username',
+        :image => 'linux_image',
+        :password => 'password',
+        :location => 'West US'
+      }
+    }
+
+    let(:options) {
+      {
+        :storage_account_name => 'storageaccountname',
+        :cloud_service_name => 'cloud-service-name',
+        :tcp_endpoints => '80,3389:3390,85:85'
+      }
+    }
+
+    it "returns an VirtualMachine object with correct tcp endpoints" do
+      result = subject.deployment_to_xml params, options
+      doc = Nokogiri::XML(result)
+      endpoints = doc.css('Deployment RoleList ConfigurationSet InputEndpoints InputEndpoint')
+      tcp_endpoints = []
+      endpoints.each do |endpoint|
+        hash = Hash.new
+        hash['Name'] = xml_content(endpoint, 'Name')
+        hash['PublicPort'] = xml_content(endpoint, 'Port')
+        hash['LocalPort'] = xml_content(endpoint, 'LocalPort')
+        tcp_endpoints << hash
+      end
+      result.must_be_kind_of String
+      tcp_endpoints.must_include({"Name"=>"TCP-PORT-80", "PublicPort"=>"80", "LocalPort"=>"80"})
+      tcp_endpoints.must_include({"Name"=>"TCP-PORT-3389", "PublicPort"=>"3390", "LocalPort"=>"3389"})
+      tcp_endpoints.must_include({"Name"=>"TCP-PORT-85", "PublicPort"=>"85", "LocalPort"=>"85"})
     end
 
   end

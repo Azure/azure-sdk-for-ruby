@@ -15,7 +15,7 @@
 require "test_helper"
 
 describe Azure::StorageManagement::Serialization do
-  subject {  Azure::StorageManagement::Serialization }
+  subject { Azure::StorageManagement::Serialization }
 
   let(:storage_services_from_xml) { Fixtures["list_storage_accounts"] }
 
@@ -33,4 +33,27 @@ describe Azure::StorageManagement::Serialization do
     end
   end
 
+  describe "#storage_services_to_xml" do
+    let(:storage_service_name) {'storage-service'}
+
+    it "accepts an name and options hash" do
+      subject.storage_services_to_xml storage_service_name
+    end
+
+    it "serializes the argument to xml" do
+      results = subject.storage_services_to_xml(storage_service_name, :location => "West US")
+      doc = Nokogiri::XML results
+      doc.css('ServiceName').text.must_equal storage_service_name
+      doc.css('Location').text.must_equal "West US"
+      results.must_be_kind_of String
+    end
+
+    it "serializes the options hash to xml" do
+      results = subject.storage_services_to_xml(storage_service_name, {:location => 'East US'})
+      doc = Nokogiri::XML results
+      doc.css('Location').text.must_equal 'East US'
+      results.must_be_kind_of String
+    end
+
+  end
 end

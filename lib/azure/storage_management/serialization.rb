@@ -18,6 +18,17 @@ require 'azure/storage_management/storage_account'
 module Azure
   module StorageManagement
     module Serialization
+      def self.storage_services_to_xml(name, options={})
+        builder = Nokogiri::XML::Builder.new do |xml|
+          xml.CreateStorageServiceInput('xmlns'=>'http://schemas.microsoft.com/windowsazure') {
+            xml.ServiceName name
+            xml.Label Base64.encode64(name)
+            xml.Description options[:description] || 'Explicitly created storage service'
+            xml.Location options[:location]
+          }
+        end
+        builder.doc.to_xml
+      end
       
       def self.storage_services_from_xml(storageXML)
         storage_accounts = []
