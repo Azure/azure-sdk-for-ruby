@@ -12,5 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-source 'https://rubygems.org'
-gemspec
+require "test_helper"
+require "azure/core/http/retry_policy"
+
+describe Azure::Core::Http::RetryPolicy do
+  it "uses blocks as retry logic" do
+    retry_policy = Azure::Core::Http::RetryPolicy.new do |a,b| true end
+    retry_policy.should_retry?(nil, nil).must_equal true
+  end
+end

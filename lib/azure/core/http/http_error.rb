@@ -61,7 +61,7 @@ module Azure
         #
         # Returns nothing
         def parse_response
-          if @http_response.body.include?("<")
+          if @http_response.body && @http_response.body.include?("<")
 
             document = Nokogiri.Slop(@http_response.body)
 
@@ -75,7 +75,11 @@ module Azure
             @detail = document.css("Detail").first.text if document.css("Detail").any?
           else
             @type = "Unknown"
-            @description = @http_response.body.strip
+            if @http_response.body
+              @description = @http_response.body.strip
+            else
+              @description = @http_response.message.strip
+            end
           end
         end
       end
