@@ -24,7 +24,7 @@ module Azure
       attr_accessor :cloud_service_name
       attr_accessor :status
       attr_accessor :ipaddress
-      attr_accessor :vm_name   
+      attr_accessor :vm_name
       attr_accessor :udp_endpoints
       attr_accessor :hostname
       attr_accessor :deployment_name
@@ -32,8 +32,8 @@ module Azure
       attr_accessor :tcp_endpoints
       attr_accessor :role_size
       attr_accessor :storage_account_name 
-      attr_accessor :ssh_password
-      attr_accessor :ssh_user
+      attr_accessor :password
+      attr_accessor :vm_user
       attr_accessor :image
       attr_accessor :os_type
       attr_accessor :disk_name
@@ -44,10 +44,6 @@ module Azure
 
       def storage_account_name
         @storage_account_name ||= (random_string(@vm_name+'storage').gsub(/[^0-9a-z ]/i, '').downcase[0..23] if @vm_name)
-      end
-
-      def role_size
-        @role_size || "ExtraSmall"
       end
 
       def deployment_name

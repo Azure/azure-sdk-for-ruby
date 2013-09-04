@@ -18,6 +18,18 @@ require 'azure/cloud_service_management/cloud_service'
 module Azure
   module CloudServiceManagement
     module Serialization
+
+      def self.cloud_services_to_xml(name, options={})
+        builder = Nokogiri::XML::Builder.new do |xml|
+          xml.CreateHostedService('xmlns'=>'http://schemas.microsoft.com/windowsazure') {
+            xml.ServiceName name
+            xml.Label Base64.encode64(name)
+            xml.Description options[:description] || 'Explicitly created cloud service'
+            xml.Location options[:location]
+          }
+        end
+        builder.doc.to_xml
+      end
       
       def self.cloud_services_from_xml(cloudXML)
         clouds = []
@@ -28,6 +40,17 @@ module Azure
           clouds << cloud
         end
         clouds.compact
+      end
+
+      def self.add_certificate_to_xml(data)
+        builder = Nokogiri::XML::Builder.new do |xml|
+          xml.CertificateFile('xmlns'=>'http://schemas.microsoft.com/windowsazure') {
+            xml.Data data
+            xml.CertificateFormat 'pfx'
+            xml.Password nil
+          }
+        end
+        builder.doc.to_xml
       end
 
     end

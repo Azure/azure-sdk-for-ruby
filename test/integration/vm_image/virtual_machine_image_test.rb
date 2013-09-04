@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright 2013 Microsoft Open Technologies, Inc.
+# Copyright (c) Microsoft. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,18 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-module Azure
-  module StorageManagement
-    class StorageAccount
+require "integration/test_helper"
 
-      def initialize
-        yield self if block_given?
-      end
+describe Azure::VirtualMachineImageService do
 
-      attr_accessor :name
-      attr_accessor :description
-      attr_accessor :location
+  subject { Azure::VirtualMachineImageService.new }
 
+  describe "#virtual_machine_images" do
+
+    it "returns a list of virtual machine images" do
+      virtualImages = subject.list_virtual_machine_images
+      virtualImages.wont_be_nil
+      virtualImages.must_be_kind_of Array
+      image = virtualImages.first
+      image.must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImage
+      image.os_type.wont_be_nil
+      image.category.wont_be_nil
+      image.name.wont_be_nil
+      refute_equal virtualImages.length, 0
     end
+
   end
+
 end

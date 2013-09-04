@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright 2013 Microsoft Open Technologies, Inc.
+# Copyright (c) Microsoft. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,18 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-module Azure
-  module StorageManagement
-    class StorageAccount
+require "integration/test_helper"
 
-      def initialize
-        yield self if block_given?
-      end
+describe Azure::BaseManagement::BaseManagementService do
+  subject { Azure::BaseManagement::BaseManagementService.new }
 
-      attr_accessor :name
-      attr_accessor :description
-      attr_accessor :location
+  describe "#locations" do
 
+    it "check locations list present" do
+      result = subject.list_locations
+      result.wont_be_nil
     end
-  end
+
+    it "returns a list of locations" do
+      locations = subject.list_locations
+      locations.must_be_kind_of Array
+      location = locations.first
+      location.must_be_kind_of Azure::BaseManagement::Location
+      refute_equal locations.length, 0
+      location.name.wont_be_nil
+      location.available_services.wont_be_nil
+    end
+
+  end #locations
 end
+

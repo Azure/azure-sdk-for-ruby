@@ -15,7 +15,7 @@
 require "test_helper"
 
 describe Azure::CloudServiceManagement::Serialization do
-  subject {  Azure::CloudServiceManagement::Serialization }
+  subject { Azure::CloudServiceManagement::Serialization }
 
   let(:cloud_services_from_xml) { Fixtures["list_cloud_services"] }
 
@@ -33,4 +33,27 @@ describe Azure::CloudServiceManagement::Serialization do
     end
   end
 
+  describe "#cloud_services_to_xml" do
+    let(:cloud_service_name) {'cloud-service'}
+
+    it "accepts an name and options hash" do
+      subject.cloud_services_to_xml cloud_service_name
+    end
+
+    it "serializes the argument to xml" do
+      results = subject.cloud_services_to_xml(cloud_service_name, { :location => "West US"} )
+      doc = Nokogiri::XML results
+      doc.css('ServiceName').text.must_equal cloud_service_name
+      doc.css('Location').text.must_equal "West US"
+      results.must_be_kind_of String
+    end
+
+    it "serializes the options hash to xml" do
+      results = subject.cloud_services_to_xml(cloud_service_name, { :location => 'East US'} )
+      doc = Nokogiri::XML results
+      doc.css('Location').text.must_equal 'East US'
+      results.must_be_kind_of String
+    end
+
+  end
 end
