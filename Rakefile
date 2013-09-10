@@ -33,8 +33,7 @@ namespace :test do
       ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY", nil),
       # ENV.fetch("AZURE_SERVICEBUS_ISSUER",     nil)
       ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE', nil),
-      ENV.fetch('AZURE_SUBSCRIPTION_ID', nil),
-      ENV.fetch('AZURE_MANAGEMENT_ENDPOINT', nil)
+      ENV.fetch('AZURE_SUBSCRIPTION_ID', nil)
     ].include?(nil)
 
     abort "[ABORTING] Configure your environment to run the integration tests" if unset_environment

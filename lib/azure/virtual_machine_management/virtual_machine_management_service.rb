@@ -78,6 +78,9 @@ module Azure
       # * +:service_location+         - String. Specifies the target certificate store location on the virtual machine.
       # * +:ssh_private_key_file+     - String. Path of private key file.
       # * +:ssh_certificate_file+     - String. Path of certificate file.
+      # * +:ssh_port+                 - Integer. Specifies the SSH port number.
+      # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.
+      # * +:location+                 - String. The location where the virtual machine will be created.
       #
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
       def create_virtual_machine(params, options={})
