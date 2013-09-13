@@ -64,9 +64,10 @@ module Azure
       #
       # Accepted key/value pairs are:
       # * +:vm_name+        - String.  Name of virtual machine.
-      # * +:vm_user+       - String.  User name for the virtual machine instance.
+      # * +:vm_user+        - String.  User name for the virtual machine instance.
       # * +:password+       - String.  A description for the hosted service.
       # * +:image+          - String.  Name of the disk image to use to create the virtual machine.
+      # * +:location+       - String. The location where the virtual machine will be created.
       #
       #  ==== Options
       #
@@ -75,9 +76,11 @@ module Azure
       # * +:cloud_service_name+       - String. Name of cloud service.
       # * +:deployment_name+          - String. A name for the deployment.
       # * +:tcp_endpoints+            - String. Specifies the external port and internal port separated by a colon.
-      # * +:service_location+         - String. Specifies the target certificate store location on the virtual machine.
       # * +:ssh_private_key_file+     - String. Path of private key file.
       # * +:ssh_certificate_file+     - String. Path of certificate file.
+      # * +:ssh_port+                 - Integer. Specifies the SSH port number.
+      # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.  
+      # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
       #
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
       def create_virtual_machine(params, options={})

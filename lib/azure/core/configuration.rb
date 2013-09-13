@@ -168,7 +168,9 @@ module Azure
       attr_accessor :http_certificate_key
 
       def management_endpoint
-        if !@management_endpoint.end_with?('/')
+        if @management_endpoint.nil? or @management_endpoint.empty?
+          "https://management.core.windows.net/"
+        elsif !@management_endpoint.end_with?('/')
           @management_endpoint += '/'
         elsif URI(@management_endpoint).scheme.nil?
           "https://#{@management_endpoint}"
