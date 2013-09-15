@@ -51,8 +51,7 @@ class VirtualMachineNameGenerator
         begin
           azure_cloud_service.delete_cloud_service_deployment(virtualmachine.cloud_service_name)
           azure_cloud_service.delete_cloud_service(virtualmachine.cloud_service_name)
-        rescue Exception => e
-          Loggerx.error e.message
+        rescue
         end
       end
     end
@@ -78,7 +77,7 @@ class VirtualMachineNameGenerator
     storage_accounts = storage_service.list_storage_accounts
     storage_accounts.each do |storage_account|
       if(storage_account.name.include?('storagetest'))
-        storage_service.delete_storage_account(storage_account.name)
+        storage_service.delete_storage_account(storage_account.name) rescue nil
       end
     end
   end

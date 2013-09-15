@@ -16,8 +16,12 @@ require 'azure/storage_management/serialization'
 
 module Azure
   module StorageManagement
-    class StorageManagementService
+    class StorageManagementService < BaseManagementService
 
+      def initialize
+        super()
+      end
+      
       # Public: Gets a list of storage accounts available under the current subscription.
       #
       # Returns an array of Azure::StorageManagement::StorageAccount objects
