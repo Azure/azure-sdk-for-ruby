@@ -410,6 +410,48 @@ virtual_machine_image_service.list_virtual_machine_images
 base_management = Azure::BaseManagementService.new
 base_management.list_locations
 ```
+## SQL Database Server Management
+
+```ruby
+# Require the azure rubygem
+require 'azure'
+
+Azure.configure do |config|
+  config.management_certificate = "path to *.pem or *.pfx file"
+  config.subscription_id        = "your subscription id"
+  config.management_endpoint    = "https://management.database.windows.net:8443/" 
+#To access other service management apis use "https://management.core.windows.net".
+end
+
+#Create a database server service object
+sql_db_service = Azure::SqlDatabaseServerService.new
+
+#Get a list of SQL Database servers that are provisioned for a subscription.
+sql_db_service.list_servers
+
+#API to delete SQL Database server
+sql_db_service.delete_server('server_name')
+
+#API to adds a new SQL Database server to a subscription
+sql_db_service.create_server('admin-login', 'ComplexPassword', 'West US')
+
+#API to sets the administrative password of a SQL Database server for a subscription
+sql_db_service.reset_password('server-name', 'NewPassword')
+
+#Get a list of all the server-level firewall rules for a SQL Database server that belongs to a subscription
+sql_db_service.list_server_firewall("server-name")
+
+#API to adds a new server-level firewall rule or updates an existing server-level firewall rule for a SQL Database server with requester’s IP address.
+sql_db_service.delete_server_firewall("server-name", "rule-name")
+
+#API to add/updates server-level firewall rule for a SQL Database server that belongs to a subscription
+ip_range = {:start_ip_address => "0.0.0.1", :end_ip_address => "0.0.0.5"}
+sql_db_service.set_server_level_firewall("server-name", "rule-name", ip_range)
+
+# If ip_range was not specified in the above api then the IP of the machine from where the api is being called would be set as the rule.
+# To toggle between the option to allow windows azure services to access db server similar to azure portal just set the fire wall rule
+# with iprange to be 0.0.0.0 as start and end.Remove the rule to unset this option.
+```
 # Need Help?
 Be sure to check out the Windows Azure [Developer Forums on Stack Overflow and MSDN](http://go.microsoft.com/fwlink/?LinkId=234489) if you have trouble with the provided code.
 # Contribute Code or Provide Feedback

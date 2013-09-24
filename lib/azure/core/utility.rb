@@ -7,6 +7,23 @@ if RUBY_VERSION.to_f < 2.0
 end
 
 module Azure
+  module Error
+    class Error <  Azure::Core::Error
+      attr :description
+
+      attr :status_code
+
+      attr :type
+
+      def initialize(type, status, description)
+        @type = type
+        @status_code = status
+        @description = description
+        super("#{type} (#{status_code}): #{description}")
+      end
+    end
+  end
+
   module Core
     module Utility
 

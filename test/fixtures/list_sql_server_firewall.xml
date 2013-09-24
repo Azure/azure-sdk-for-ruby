@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<FirewallRules xmlns="http://schemas.microsoft.com/sqlazure/2010/12/">
+  <FirewallRule>
+    <Name>AllowAllWindowsAzureIps</Name>
+    <StartIpAddress>0.0.0.0</StartIpAddress>
+    <EndIpAddress>0.0.0.0</EndIpAddress>
+  </FirewallRule>
+  <FirewallRule>
+    <Name>ClientIPAddress_2013-09-03_13:54:21</Name>
+    <StartIpAddress>167.220.224.226</StartIpAddress>
+    <EndIpAddress>167.220.224.226</EndIpAddress>
+  </FirewallRule>
+  <FirewallRule>
+    <Name>Rule1</Name>
+    <StartIpAddress>10.0.0.1</StartIpAddress>
+    <EndIpAddress>10.0.0.255</EndIpAddress>
+  </FirewallRule>
+  <FirewallRule>
+    <Name>Rule2</Name>
+    <StartIpAddress>192.168.1.1</StartIpAddress>
+    <EndIpAddress>192.168.1.255</EndIpAddress>
+  </FirewallRule>
+</FirewallRules>

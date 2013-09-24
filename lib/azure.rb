@@ -35,6 +35,7 @@ require "azure/virtual_machine_management/virtual_machine_management_service"
 require "azure/storage_management/storage_management_service"
 require "azure/cloud_service_management/cloud_service_management_service"
 require "azure/base_management/location"
+require "azure/database/sql_database_server_management_service"
 
 # add some aliases for convenience 
 Azure::BlobService = Azure::Blob::BlobService
@@ -46,4 +47,5 @@ Azure::BaseManagementService = Azure::BaseManagement::BaseManagementService
 Azure::CloudService = Azure::CloudServiceManagement::CloudServicesManagementService
 Azure::StorageService = Azure::StorageManagement::StorageManagementService
 Azure::VirtualMachineService = Azure::VirtualMachineManagement::VirtualMachineManagementService
+Azure::SqlDatabaseServerService = Azure::Database::SqlDatabaseServerManagementService
 
