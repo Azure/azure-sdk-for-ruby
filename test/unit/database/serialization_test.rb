@@ -14,8 +14,8 @@
 #--------------------------------------------------------------------------
 require "test_helper"
 
-describe Azure::Database::Serialization do
-  subject { Azure::Database::Serialization }
+describe Azure::SqlDatabaseManagement::Serialization do
+  subject { Azure::SqlDatabaseManagement::Serialization }
 
   let(:sql_servers_xml) { Fixtures["list_sql_database"] }
 
@@ -28,7 +28,7 @@ describe Azure::Database::Serialization do
     it "returns an Array of CloudService instances" do
       results = subject.databases_from_xml Nokogiri::XML(sql_servers_xml)
       results.must_be_kind_of Array
-      results[0].must_be_kind_of Azure::Database::SqlDatabaseServer
+      results[0].must_be_kind_of Azure::SqlDatabaseManagement::SqlDatabase
       results.count.must_equal 3
     end
   end

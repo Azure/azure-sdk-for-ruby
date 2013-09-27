@@ -14,9 +14,9 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 
-describe Azure::SqlDatabaseServerService do
+describe Azure::SqlDatabaseManagementService do
 
-  subject { Azure::SqlDatabaseServerService.new }
+  subject { Azure::SqlDatabaseManagementService.new }
   let(:login_name) {'ms_open_tech'}
   let(:sql_server) { subject.create_server(login_name, 'User1@123', 'West US') }
 

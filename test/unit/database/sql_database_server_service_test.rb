@@ -14,8 +14,8 @@
 #--------------------------------------------------------------------------
 require "test_helper"
 
-describe Azure::SqlDatabaseServerService do
-  subject { Azure::SqlDatabaseServerService.new }
+describe Azure::SqlDatabaseManagementService do
+  subject { Azure::SqlDatabaseManagementService.new }
 
   let(:response_headers) { {} }
   let(:mock_request){ mock() }
@@ -45,7 +45,7 @@ describe Azure::SqlDatabaseServerService do
       results.must_be_kind_of Array
       results.length.must_equal 3
       sql_server = results.first
-      sql_server.must_be_kind_of Azure::Database::SqlDatabaseServer
+      sql_server.must_be_kind_of Azure::SqlDatabaseManagement::SqlDatabase
       sql_server.name.must_equal 'nn1koc2ney'
       sql_server.administrator_login.must_equal 'SqlServer2'
       sql_server.location.must_equal 'West US'
@@ -56,7 +56,7 @@ describe Azure::SqlDatabaseServerService do
 
   describe "#delete_server" do
     before{
-      Azure::SqlDatabaseServerService.any_instance.stubs(:list_servers).returns([])
+      Azure::SqlDatabaseManagementService.any_instance.stubs(:list_servers).returns([])
     }
 
     it "error if sql server doesnot exists" do
@@ -69,26 +69,26 @@ describe Azure::SqlDatabaseServerService do
 
   end
 
-  describe "#list_server_firewall" do
+  describe "#list_sql_server_firewall_rules" do
     let(:response_xml) { Fixtures["list_sql_server_firewall"] }
     let(:method) { :get }
     let(:sql_server_name) { 'server1' }
     let(:request_path) {"/servers/#{sql_server_name}/firewallrules"}
 
     before{
-      sql_server = Azure::Database::SqlDatabaseServer.new do |server|
+      sql_server = Azure::SqlDatabaseManagement::SqlDatabase.new do |server|
         server.name = sql_server_name
       end
-      Azure::SqlDatabaseServerService.any_instance.stubs(:list_servers).returns([sql_server])
+      Azure::SqlDatabaseManagementService.any_instance.stubs(:list_servers).returns([sql_server])
       ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
     }
 
     it "assembles a URI for the sql server firewall request" do
-      subject.list_server_firewall sql_server_name
+      subject.list_sql_server_firewall_rules sql_server_name
     end
 
     it "returns a list of firewall of given sql servers" do
-      results = subject.list_server_firewall sql_server_name
+      results = subject.list_sql_server_firewall_rules sql_server_name
       results.must_be_kind_of Array
       results.length.must_equal 4
       results.first.must_be_kind_of Hash
@@ -118,11 +118,11 @@ describe Azure::SqlDatabaseServerService do
     end
   end
 
-  describe "#set_server_level_firewall" do
+  describe "#set_sql_server_firewall_rule" do
     it "create sql server" do
       ip_range = {:start_ip_address => "0.0.0.1", :end_ip_address => "0.0.0.5"}
       exception = assert_raises(RuntimeError) do
-        subject.set_server_level_firewall("zv2nfoah2t1", ip_range)
+        subject.set_sql_server_firewall_rule("zv2nfoah2t1", ip_range)
       end
       assert_match(/Missing parameter server_name or rule_name/i, exception.message)
     end

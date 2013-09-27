@@ -14,19 +14,19 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 
-describe Azure::SqlDatabaseServerService do
+describe Azure::SqlDatabaseManagementService do
 
-  subject { Azure::SqlDatabaseServerService.new }
+  subject { Azure::SqlDatabaseManagementService.new }
   let(:login_name) {'ms_open_tech'}
   let(:sql_server) { subject.create_server(login_name, 'User1@123', 'West US') }
-  describe "#list_server_firewall" do
+  describe "#list_sql_server_firewall_rules" do
 
     before {
       Loggerx.expects(:puts).returns(nil).at_least(0)
       Azure.config.management_endpoint = SqlServerEndpoint
       ip_range = {:start_ip_address => "10.20.30.0", :end_ip_address => "10.20.30.255"}
-      subject.set_server_level_firewall(sql_server.name, "rule1", ip_range)
-      subject.set_server_level_firewall(sql_server.name, "rule2")
+      subject.set_sql_server_firewall_rule(sql_server.name, "rule1", ip_range)
+      subject.set_sql_server_firewall_rule(sql_server.name, "rule2")
     }
 
     after {
@@ -34,7 +34,7 @@ describe Azure::SqlDatabaseServerService do
     }
 
     it "returns a list of SQL databse server firewall" do
-      sql_server_firewalls = subject.list_server_firewall(sql_server.name)
+      sql_server_firewalls = subject.list_sql_server_firewall_rules(sql_server.name)
       sql_server_firewalls.wont_be_nil
       sql_server_firewalls.must_be_kind_of Array
       sql_server_firewalls.first.must_be_kind_of Hash

@@ -14,9 +14,9 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 
-describe Azure::SqlDatabaseServerService do
+describe Azure::SqlDatabaseManagementService do
 
-  subject { Azure::SqlDatabaseServerService.new }
+  subject { Azure::SqlDatabaseManagementService.new }
   let(:login_name) {'ms_open_tech'}
   describe "#list_servers" do
 
@@ -36,7 +36,7 @@ describe Azure::SqlDatabaseServerService do
       sql_servers.wont_be_nil
       sql_servers.must_be_kind_of Array
       sql_server = sql_servers.first
-      sql_server.must_be_kind_of Azure::Database::SqlDatabaseServer
+      sql_server.must_be_kind_of Azure::SqlDatabaseManagement::SqlDatabase
       assert_operator sql_servers.size, :>=, 2
     end
 

@@ -14,31 +14,31 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 
-describe Azure::SqlDatabaseServerService do
+describe Azure::SqlDatabaseManagementService do
 
   let(:login_name) {'ms_open_tech'}
   let(:sql_server) { subject.create_server(login_name, 'User1@123', 'West US') }
-   subject { Azure::SqlDatabaseServerService.new }
+   subject { Azure::SqlDatabaseManagementService.new }
 
   before {
     Loggerx.expects(:puts).returns(nil).at_least(0)
     Azure.config.management_endpoint = SqlServerEndpoint
-    subject.set_server_level_firewall(sql_server.name, "rule1")
+    subject.set_sql_server_firewall_rule(sql_server.name, "rule1")
     ip_range = {:start_ip_address => "10.20.30.0", :end_ip_address => "10.20.30.255"}
-    subject.set_server_level_firewall(sql_server.name, "rule2", ip_range)
+    subject.set_sql_server_firewall_rule(sql_server.name, "rule2", ip_range)
   }
 
   after {
     Azure.config.management_endpoint = ManagementServiceEndpoint
   }
 
-  describe "#delete_server_firewall" do
+  describe "#delete_sql_server_firewall_rule" do
 
     it "delete sql database server firewall" do
       server_name = sql_server.name
-      subject.delete_server_firewall(server_name, 'rule1')
+      subject.delete_sql_server_firewall_rule(server_name, 'rule1')
 
-      sql_server_firewalls = subject.list_server_firewall(server_name)
+      sql_server_firewalls = subject.list_sql_server_firewall_rules(server_name)
       sql_server_firewalls.wont_be_nil
       sql_server_firewalls.must_be_kind_of Array
       sql_server_firewalls.first.must_be_kind_of Hash
@@ -52,7 +52,7 @@ describe Azure::SqlDatabaseServerService do
     it "errors if the sql server does not exist" do
       server_name = "unknown-server"
       exception = assert_raises(Azure::Error::Error) do
-        subject.delete_server_firewall(server_name, 'rule1')
+        subject.delete_sql_server_firewall_rule(server_name, 'rule1')
       end
       assert_match(/does not have server #{server_name}./i, exception.message)
     end
@@ -61,7 +61,7 @@ describe Azure::SqlDatabaseServerService do
       server_name = "unknown-server"
       rule_name = 'rule10'
       exception = assert_raises(RuntimeError) do
-        subject.delete_server_firewall(sql_server.name, rule_name)
+        subject.delete_sql_server_firewall_rule(sql_server.name, rule_name)
       end
       assert_match(/The specified firewall rule #{rule_name} does not exist./i, exception.message)
     end

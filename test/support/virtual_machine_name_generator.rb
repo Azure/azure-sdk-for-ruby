@@ -66,7 +66,7 @@ class VirtualMachineNameGenerator
 
     #Delete SQL servers
     Azure.config.management_endpoint = SqlServerEndpoint
-    sql_database_service = Azure::SqlDatabaseServerService.new
+    sql_database_service = Azure::SqlDatabaseManagementService.new
     sql_database_servers = sql_database_service.list_servers
     sql_database_servers.each do |sql_server|
       if(sql_server.administrator_login == 'ms_open_tech')

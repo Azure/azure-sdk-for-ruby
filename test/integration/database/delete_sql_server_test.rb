@@ -14,7 +14,7 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 
-describe Azure::SqlDatabaseServerService do
+describe Azure::SqlDatabaseManagementService do
 
   before {
     Loggerx.expects(:puts).returns(nil).at_least(0)
@@ -25,7 +25,7 @@ describe Azure::SqlDatabaseServerService do
     Azure.config.management_endpoint = ManagementServiceEndpoint
   }
 
-  subject { Azure::SqlDatabaseServerService.new }
+  subject { Azure::SqlDatabaseManagementService.new }
   let(:login_name) {'ms_open_tech'}
   let(:sql_server) { subject.create_server(login_name, 'User1@123', 'West US') }
 

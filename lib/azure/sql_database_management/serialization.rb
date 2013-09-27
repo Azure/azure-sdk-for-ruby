@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'azure/database/sql_database_server'
+require 'azure/sql_database_management/sql_database'
 
 module Azure
-  module Database
+  module SqlDatabaseManagement
     module Serialization
 
       def self.database_to_xml(login, password, location)
@@ -33,7 +33,7 @@ module Azure
         databases = []
         databases_servicesXML = databasesXML.css('Servers  Server')
         databases_servicesXML.each do |database_xml|
-          database = SqlDatabaseServer.new
+          database = SqlDatabase.new
           database.name = xml_content(database_xml, 'Name')
           database.administrator_login = xml_content(database_xml, 'AdministratorLogin')
           database.location = xml_content(database_xml, 'Location')
@@ -46,7 +46,7 @@ module Azure
 
       def self.server_name_from_xml(response_xml, login, location)
         server_name = xml_content(response_xml, 'ServerName')
-        SqlDatabaseServer.new do |db|
+        SqlDatabase.new do |db|
           db.name = server_name
           db.location = location
           db.administrator_login = login

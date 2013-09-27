@@ -13,8 +13,8 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 module Azure
-  module Database
-    class SqlDatabaseServer
+  module SqlDatabaseManagement
+    class SqlDatabase
 
       def initialize
         yield self if block_given?

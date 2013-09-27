@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'azure/database/serialization'
+require 'azure/sql_database_management/serialization'
 
 module Azure
-  module Database
-    class SqlDatabaseServerManagementService < BaseManagementService
+  module SqlDatabaseManagement
+    class SqlDatabaseManagementService < BaseManagementService
 
       def initialize
         @x_ms_version = "1.0"
@@ -119,7 +119,7 @@ module Azure
       # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715280.aspx
       #
       # Returns:  None
-      def set_server_level_firewall(server_name, rule_name, options={})
+      def set_sql_server_firewall_rule(server_name, rule_name, options={})
         unless server_name.class == String && rule_name.class == String
           raise "Missing parameter server_name or rule_name."
         end
@@ -149,7 +149,7 @@ module Azure
       # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715278.aspx
       #
       # Returns an array of firewall
-      def list_server_firewall(server_name)
+      def list_sql_server_firewall_rules(server_name)
         if get_sql_server(server_name)
           request_path = "/servers/#{server_name}/firewallrules"
           request = ManagementHttpRequest.new(:get, request_path)
@@ -169,8 +169,8 @@ module Azure
       # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715277.aspx
       #
       # Returns:  None
-      def delete_server_firewall(server_name, rule_name)
-        if !list_server_firewall(server_name).collect{|x| x[:rule]}.include?(rule_name)
+      def delete_sql_server_firewall_rule(server_name, rule_name)
+        if !list_sql_server_firewall_rules(server_name).collect{|x| x[:rule]}.include?(rule_name)
           error = "The specified firewall rule #{rule_name} does not exist."
           raise error
         elsif get_sql_server(server_name)
