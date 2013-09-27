@@ -28,7 +28,7 @@ module Azure
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715269.aspx
       #
-      # Returns an array of Azure::Database::DatabaseServer objects
+      # Returns an array of Azure::SqlDatabaseManagement::SqlDatabase objects
       def list_servers
         request_path = "/servers"
         request = ManagementHttpRequest.new(:get, request_path, nil)
@@ -47,7 +47,7 @@ module Azure
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715274.aspx
       #
-      # Returns Azure::Database::DatabaseServer object
+      # Returns Azure::SqlDatabaseManagement::SqlDatabase object
       def create_server(login, password, location)
         body = Serialization.database_to_xml(login, password, location)
         request_path = "/servers"
