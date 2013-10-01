@@ -14,9 +14,9 @@
 #--------------------------------------------------------------------------
 require "test_helper"
 
-describe Azure::StorageService do
+describe Azure::StorageManagementService do
 
-  subject { Azure::StorageService.new }
+  subject { Azure::StorageManagementService.new }
   let(:request_path) {'/services/storageservices'}
   let(:storage_accounts_xml) { Fixtures["list_storage_accounts"] }
   let(:method) { :get }
@@ -85,7 +85,7 @@ describe Azure::StorageService do
     end
 
     it "Create storage account if storage account doesn't exists of given name." do
-      Azure::StorageService.any_instance.stubs(:get_storage_account).with('storage3').returns(false)
+      Azure::StorageManagementService.any_instance.stubs(:get_storage_account).with('storage3').returns(false)
       ManagementHttpRequest.any_instance.expects(:call).returns nil
       subject.create_storage_account 'storage3'
     end

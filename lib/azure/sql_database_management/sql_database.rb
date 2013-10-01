@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# Copyright 2013 Microsoft Open Technologies, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,26 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
+module Azure
+  module SqlDatabaseManagement
+    class SqlDatabase
 
-describe Azure::VirtualMachineImageManagementService do
+      def initialize
+        yield self if block_given?
+      end
 
-  subject { Azure::VirtualMachineImageManagementService.new }
+      attr_accessor :name
+      attr_accessor :administrator_login
+      attr_accessor :location
+      attr_accessor :feature_name
+      attr_accessor :feature_value
 
-  describe "#virtual_machine_images" do
-
-    it "returns a list of virtual machine images" do
-      virtualImages = subject.list_virtual_machine_images
-      virtualImages.wont_be_nil
-      virtualImages.must_be_kind_of Array
-      image = virtualImages.first
-      image.must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImage
-      image.os_type.wont_be_nil
-      image.category.wont_be_nil
-      image.name.wont_be_nil
-      refute_equal virtualImages.length, 0
     end
-
   end
-
 end

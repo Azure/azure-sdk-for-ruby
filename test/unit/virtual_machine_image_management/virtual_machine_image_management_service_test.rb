@@ -14,9 +14,9 @@
 #--------------------------------------------------------------------------
 require "test_helper"
 
-describe Azure::VirtualMachineImageService do
+describe Azure::VirtualMachineImageManagementService do
 
-  subject { Azure::VirtualMachineImageService.new }
+  subject { Azure::VirtualMachineImageManagementService.new }
 
   let(:request_path) {'/services/images'}
   let(:images_xml) { Fixtures["list_images"] }

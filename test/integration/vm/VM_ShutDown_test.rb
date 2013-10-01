@@ -14,12 +14,12 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 
-describe Azure::VirtualMachineService do
+describe Azure::VirtualMachineManagementService do
   let(:names) { VirtualMachineNameHelper.name }
   let(:virtual_machine_name) { names.first}
   let(:cloud_service_name) { names.last }
   
-  subject {Azure::VirtualMachineService.new }
+  subject {Azure::VirtualMachineManagementService.new }
  
   before :all do
     Loggerx.expects(:puts).at_least_once.returns(nil)

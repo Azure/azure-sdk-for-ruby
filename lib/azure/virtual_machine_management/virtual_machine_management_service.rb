@@ -28,7 +28,7 @@ module Azure
       # Returns an list of Azure::VirtualMachineManagement::VirtualMachine instances.
       def list_virtual_machines
         roles = []
-        cloud_service = Azure::CloudService.new
+        cloud_service = Azure::CloudServiceManagementService.new
         cloud_services = cloud_service.list_cloud_services
         cloud_services.each do |cloud_service|
           request_path = "/services/hostedservices/#{cloud_service.name}/deploymentslots/production"
@@ -88,10 +88,10 @@ module Azure
         validate_deployment_params(params, options)
         options[:cloud_service_name] = generate_cloud_service_name(params[:vm_name]) unless options[:cloud_service_name]
         options[:storage_account_name] = generate_storage_account_name(params[:vm_name]) unless options[:storage_account_name] 
-        cloud_service = Azure::CloudService.new
+        cloud_service = Azure::CloudServiceManagementService.new
         cloud_service.create_cloud_service(options[:cloud_service_name], :location => params[:location])
         cloud_service.upload_certificate(options[:cloud_service_name],params[:certificate]) unless params[:certificate].empty?
-        Azure::StorageService.new.create_storage_account(options[:storage_account_name], :location=> params[:location])
+        Azure::StorageManagementService.new.create_storage_account(options[:storage_account_name], :location=> params[:location])
 
         body = Serialization.deployment_to_xml(params,options)
         path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments"
@@ -117,7 +117,7 @@ module Azure
       def delete_virtual_machine(vm_name, cloud_service_name)
         vm = get_virtual_machine(vm_name,cloud_service_name)
         if vm
-          cloud_service = Azure::CloudService.new
+          cloud_service = Azure::CloudServiceManagementService.new
           cloud_service.delete_cloud_service_deployment(cloud_service_name)
           cloud_service.delete_cloud_service(cloud_service_name)
           Loggerx.info "Waiting for disk to be released.\n"
@@ -192,7 +192,7 @@ module Azure
       #
       # Returns Linux or Windows
       def get_os_type(image_name)
-        image_service = Azure::VirtualMachineImageService.new
+        image_service = Azure::VirtualMachineImageManagementService.new
         image = image_service.list_virtual_machine_images.select{|x| x.name == image_name}.first
         Loggerx.error_with_exit "The virtual machine image source is not valid." unless image
         image.os_type

@@ -14,12 +14,12 @@
 #--------------------------------------------------------------------------
 require "test_helper"
 
-describe Azure::VirtualMachineService do
+describe Azure::VirtualMachineManagementService do
   VirtualMachine = Azure::VirtualMachineManagement::VirtualMachine
   CloudService = Azure::CloudServiceManagement::CloudService
 
   subject do
-    Azure::VirtualMachineService.new
+    Azure::VirtualMachineManagementService.new
   end
 
   before{
@@ -129,7 +129,7 @@ describe Azure::VirtualMachineService do
         virtual_machine.vm_name = 'instance-name'
         virtual_machine.cloud_service_name = 'cloud-service-1'
       end
-      Azure::VirtualMachineService.any_instance.stubs(:list_virtual_machines).returns([virtual_machine])
+      Azure::VirtualMachineManagementService.any_instance.stubs(:list_virtual_machines).returns([virtual_machine])
     }
 
     it "return nil if virtual machine and cloud server does not exist " do
@@ -169,9 +169,9 @@ describe Azure::VirtualMachineService do
       mock_request = mock()
       ManagementHttpRequest.stubs(:new).with(method, location_request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(location_response_body).at_least(0)
-      Azure::CloudService.any_instance.stubs(:create_cloud_service)
-      Azure::CloudService.any_instance.stubs(:upload_certificate)
-      Azure::StorageService.any_instance.stubs(:create_storage_account)
+      Azure::CloudServiceManagementService.any_instance.stubs(:create_cloud_service)
+      Azure::CloudServiceManagementService.any_instance.stubs(:upload_certificate)
+      Azure::StorageManagementService.any_instance.stubs(:create_storage_account)
       mock_request = mock()
       ManagementHttpRequest.expects(:new).with(:post,anything, anything).returns(mock_request)
       mock_request.expects(:call).returns(nil)
@@ -179,7 +179,7 @@ describe Azure::VirtualMachineService do
         virtual_machine.vm_name = 'instance-name'
         virtual_machine.ipaddress = '192.168.1.1'
       end
-      Azure::VirtualMachineService.stubs(:get_virtual_machine).returns(virtual_machine)
+      Azure::VirtualMachineManagementService.stubs(:get_virtual_machine).returns(virtual_machine)
     }
 
     it "should set options hash with valid cloud_service_name, deployment_name, storage_account_name." do 
@@ -224,9 +224,9 @@ describe Azure::VirtualMachineService do
       mock_request = mock()
       ManagementHttpRequest.stubs(:new).with(method, location_request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(location_response_body).at_least(0)
-      Azure::CloudService.any_instance.stubs(:create_cloud_service)
-      Azure::CloudService.any_instance.stubs(:upload_certificate)
-      Azure::StorageService.any_instance.stubs(:create_storage_account)
+      Azure::CloudServiceManagementService.any_instance.stubs(:create_cloud_service)
+      Azure::CloudServiceManagementService.any_instance.stubs(:upload_certificate)
+      Azure::StorageManagementService.any_instance.stubs(:create_storage_account)
       Loggerx.expects(:puts).returns(nil).at_least(0)
       mock_request = mock()
       ManagementHttpRequest.expects(:new).with(:post,anything, anything).returns(mock_request).at_least(0)
@@ -235,7 +235,7 @@ describe Azure::VirtualMachineService do
         virtual_machine.vm_name = 'windows-instance'
         virtual_machine.ipaddress = '192.168.1.1'
       end
-      Azure::VirtualMachineService.any_instance.stubs(:get_virtual_machine).returns(virtual_machine_obj)
+      Azure::VirtualMachineManagementService.any_instance.stubs(:get_virtual_machine).returns(virtual_machine_obj)
     }
 
     it "should set options os_type with windows." do

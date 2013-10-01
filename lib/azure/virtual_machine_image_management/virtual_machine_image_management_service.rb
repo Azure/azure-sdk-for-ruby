@@ -24,7 +24,7 @@ module Azure
 
       # Public: Gets a list of virtual machine images from the server
       #
-      # Returns an array of Azure::VirtualMachineImageService objects
+      # Returns an array of Azure::VirtualMachineImageManagementService objects
       def list_virtual_machine_images
         request_path = "/services/images"
         request = ManagementHttpRequest.new(:get, request_path, nil)

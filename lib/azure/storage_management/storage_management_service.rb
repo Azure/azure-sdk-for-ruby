@@ -43,7 +43,7 @@ module Azure
       def get_storage_account(name)
         return false if name.nil?
         flag = false
-        storage_accounts = Azure::StorageService.new.list_storage_accounts
+        storage_accounts = Azure::StorageManagementService.new.list_storage_accounts
         storage_accounts.each do |storage|
           if storage.name == name
             flag = true

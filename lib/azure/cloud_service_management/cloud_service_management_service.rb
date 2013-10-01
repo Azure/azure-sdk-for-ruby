@@ -16,7 +16,7 @@ require 'azure/cloud_service_management/serialization'
 
 module Azure
   module CloudServiceManagement
-    class CloudServicesManagementService < BaseManagementService
+    class CloudServiceManagementService < BaseManagementService
 
       def initialize
         super()

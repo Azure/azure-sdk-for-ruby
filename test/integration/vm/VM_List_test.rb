@@ -14,9 +14,9 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 
-describe Azure::VirtualMachineService do
+describe Azure::VirtualMachineManagementService do
 
-  subject { Azure::VirtualMachineService.new }
+  subject { Azure::VirtualMachineManagementService.new }
 
   describe "#list_virtual_machines" do
     let(:names) { VirtualMachineNameHelper.name }

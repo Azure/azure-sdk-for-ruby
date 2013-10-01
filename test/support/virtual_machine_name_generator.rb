@@ -43,9 +43,9 @@ class VirtualMachineNameGenerator
   def self.cleanup
     puts "Running after test cleanup."
     #Delete virtual machines
-    virtual_machine_service = Azure::VirtualMachineService.new
+    virtual_machine_service = Azure::VirtualMachineManagementService.new
     virtualmachines = virtual_machine_service.list_virtual_machines
-    azure_cloud_service = Azure::CloudService.new
+    azure_cloud_service = Azure::CloudServiceManagementService.new
     virtualmachines.each do |virtualmachine|
       if(virtualmachine.vm_name.include?("test-") && virtualmachine.cloud_service_name.include?(virtualmachine.vm_name+'-service-'))
         begin
@@ -63,8 +63,19 @@ class VirtualMachineNameGenerator
         azure_cloud_service.delete_cloud_service(cloud_service.name)  rescue nil
       end
     end
+
+    #Delete SQL servers
+    Azure.config.management_endpoint = SqlServerEndpoint
+    sql_database_service = Azure::SqlDatabaseManagementService.new
+    sql_database_servers = sql_database_service.list_servers
+    sql_database_servers.each do |sql_server|
+      if(sql_server.administrator_login == 'ms_open_tech')
+        sql_database_service.delete_server(sql_server.name) rescue nil
+      end
+    end
+    Azure.config.management_endpoint = ManagementServiceEndpoint
+
     #Delete disks
-    sleep 60
     disk_management_service = Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService.new
     disks = disk_management_service.list_virtual_machine_disks
     disks.each do |disk|
@@ -72,6 +83,7 @@ class VirtualMachineNameGenerator
         disk_management_service.delete_virtual_machine_disk(disk.name) rescue nil
       end
     end
+
     #Delete storage account
     storage_service = Azure::StorageManagement::StorageManagementService.new
     storage_accounts = storage_service.list_storage_accounts
@@ -85,7 +97,7 @@ class VirtualMachineNameGenerator
 end
 
 VirtualMachineNameHelper = VirtualMachineNameGenerator.new do |name, cloud_name|
-  cloud_service = Azure::CloudService.new
+  cloud_service = Azure::CloudServiceManagementService.new
   begin
     cloud_service.delete_cloud_service_deployment(cloud_name)
     cloud_service.delete_cloud_service(cloud_name)
