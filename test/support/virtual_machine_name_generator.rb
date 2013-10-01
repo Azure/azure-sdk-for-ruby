@@ -43,9 +43,9 @@ class VirtualMachineNameGenerator
   def self.cleanup
     puts "Running after test cleanup."
     #Delete virtual machines
-    virtual_machine_service = Azure::VirtualMachineService.new
+    virtual_machine_service = Azure::VirtualMachineManagementService.new
     virtualmachines = virtual_machine_service.list_virtual_machines
-    azure_cloud_service = Azure::CloudService.new
+    azure_cloud_service = Azure::CloudServiceManagementService.new
     virtualmachines.each do |virtualmachine|
       if(virtualmachine.vm_name.include?("test-") && virtualmachine.cloud_service_name.include?(virtualmachine.vm_name+'-service-'))
         begin
@@ -97,7 +97,7 @@ class VirtualMachineNameGenerator
 end
 
 VirtualMachineNameHelper = VirtualMachineNameGenerator.new do |name, cloud_name|
-  cloud_service = Azure::CloudService.new
+  cloud_service = Azure::CloudServiceManagementService.new
   begin
     cloud_service.delete_cloud_service_deployment(cloud_name)
     cloud_service.delete_cloud_service(cloud_name)

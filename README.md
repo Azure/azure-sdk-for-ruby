@@ -367,7 +367,7 @@ Azure.configure do |config|
 end
 
 #Create a virtual machine service object
-virtual_machine_service = Azure::VirtualMachineService.new
+virtual_machine_service = Azure::VirtualMachineManagementService.new
 
 #Get a list of existing virtual machines in your subscription
 virtual_machine_service.list_virtual_machines

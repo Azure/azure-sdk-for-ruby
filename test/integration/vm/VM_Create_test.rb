@@ -14,8 +14,9 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 
-describe Azure::VirtualMachineService do
-  subject { Azure::VirtualMachineService.new }
+describe Azure::VirtualMachineManagementService do
+  subject { Azure::VirtualMachineManagementService.new }
+  let(:cloud_service) { Azure::CloudServiceManagementService.new }
   let(:names) { VirtualMachineNameHelper.name }
   let(:virtual_machine_name) { names.first }
   let(:cloud_service_name) { names.last }
@@ -156,7 +157,7 @@ describe Azure::VirtualMachineService do
       msg = subject.create_virtual_machine(params, default_options)
       assert_match(/invalid. Allowed values are 'a number between 1 to 65535'./i, msg)
 
-      Azure::CloudService.new.delete_cloud_service(cloud_service_name)
+      cloud_service.delete_cloud_service(cloud_service_name)
     end
 
     it "throws error when multiple VMs created under same DNS" do
@@ -181,7 +182,7 @@ describe Azure::VirtualMachineService do
       default_options.merge!(:storage_account_name=>'storageuse_91')
       msg = subject.create_virtual_machine(params, default_options)
       assert_match(/The name is not a valid storage account name./i, msg)
-      Azure::CloudService.new.delete_cloud_service(cloud_service_name)
+      cloud_service.delete_cloud_service(cloud_service_name)
     end
 
     it "error thrown when invalid cloud name is given" do
@@ -194,14 +195,14 @@ describe Azure::VirtualMachineService do
       default_options.merge!(:deployment_name => 'instance_B')
       msg = subject.create_virtual_machine(params, default_options)
       assert_match(/The deployment name is invalid/i, msg)
-      Azure::CloudService.new.delete_cloud_service(cloud_service_name)
+      cloud_service.delete_cloud_service(cloud_service_name)
     end
 
     it "error thrown when invalid Virtual Machine name for Windows OS provided" do
       windows_params.merge!(:vm_name => "MSServerInstnce01")
       msg = subject.create_virtual_machine(windows_params, default_options)
       assert_match(/The computer name cannot be more than 15 characters long, be entirely numeric, or contain the following characters/i, msg)
-      Azure::CloudService.new.delete_cloud_service(cloud_service_name)
+      cloud_service.delete_cloud_service(cloud_service_name)
     end
 
     it "error thrown when blank password for Windows OS provided" do

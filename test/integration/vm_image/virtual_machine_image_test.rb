@@ -14,9 +14,9 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 
-describe Azure::VirtualMachineImageService do
+describe Azure::VirtualMachineImageManagementService do
 
-  subject { Azure::VirtualMachineImageService.new }
+  subject { Azure::VirtualMachineImageManagementService.new }
 
   describe "#virtual_machine_images" do
 
