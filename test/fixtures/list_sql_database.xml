@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/">
+  <Server>
+    <Name>nn1koc2ney</Name>
+    <AdministratorLogin>SqlServer2</AdministratorLogin>
+    <Location>West US</Location>
+    <Features>
+      <Feature>
+        <Name>Premium Mode</Name>
+        <Value>false</Value>
+      </Feature>
+    </Features>
+  </Server>
+  <Server>
+    <Name>w02ckyvf1b</Name>
+    <AdministratorLogin>SqlServer1</AdministratorLogin>
+    <Location>East Asia</Location>
+    <Features>
+      <Feature>
+        <Name>Premium Mode</Name>
+        <Value>false</Value>
+      </Feature>
+    </Features>
+  </Server>
+  <Server>
+    <Name>zv2nfoah2t</Name>
+    <AdministratorLogin>SqlServer3</AdministratorLogin>
+    <Location>South Central US</Location>
+    <Features>
+      <Feature>
+        <Name>Premium Mode</Name>
+        <Value>false</Value>
+      </Feature>
+    </Features>
+  </Server>
+</Servers>

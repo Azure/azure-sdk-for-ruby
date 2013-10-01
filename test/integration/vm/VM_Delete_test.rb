@@ -14,9 +14,9 @@
 #--------------------------------------------------------------------------
 require "integration/test_helper"
 
-describe Azure::VirtualMachineService do
+describe Azure::VirtualMachineManagementService do
 
-  subject { Azure::VirtualMachineService.new }
+  subject { Azure::VirtualMachineManagementService.new }
   let(:names) { VirtualMachineNameHelper.name }
   let(:virtual_machine_name) { names.first}
   let(:cloud_service_name) { names.last }
@@ -45,7 +45,7 @@ describe Azure::VirtualMachineService do
       sleep 60
       vm = subject.get_virtual_machine(virtual_machine_name, cloud_service_name)
       vm.must_be_nil
-      cloud_presence = Azure::CloudService.new.get_cloud_service(cloud_service_name)
+      cloud_presence = Azure::CloudServiceManagementService.new.get_cloud_service(cloud_service_name)
       cloud_presence.must_equal false
     end
 

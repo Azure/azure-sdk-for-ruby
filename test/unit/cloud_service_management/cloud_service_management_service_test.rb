@@ -14,9 +14,9 @@
 #--------------------------------------------------------------------------
 require "test_helper"
 
-describe Azure::CloudService do
+describe Azure::CloudServiceManagementService do
 
-  subject { Azure::CloudService.new }
+  subject { Azure::CloudServiceManagementService.new }
   let(:request_path) {'/services/hostedservices'}
   let(:cloud_services_xml) { Fixtures["list_cloud_services"] }
   let(:method) { :get }
@@ -85,7 +85,7 @@ describe Azure::CloudService do
     end
 
     it "Create cloud service if cloud service doesn't exists of given name." do
-      Azure::CloudService.any_instance.stubs(:get_cloud_service).with('cloud-service-3').returns(false)
+      Azure::CloudServiceManagementService.any_instance.stubs(:get_cloud_service).with('cloud-service-3').returns(false)
       ManagementHttpRequest.any_instance.expects(:call).returns nil
       subject.create_cloud_service 'cloud-service-3'
     end

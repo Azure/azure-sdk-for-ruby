@@ -34,7 +34,12 @@ module Azure
       def initialize(method, path, body=nil)
         super
         @warn = false
-        @headers = {"x-ms-version" => "2013-06-01", "Content-Type"=> 'application/xml' }
+        content_length = body ? body.bytesize.to_s : "0"
+        @headers = {
+          "x-ms-version" => "2013-06-01",
+          "Content-Type"=> 'application/xml',
+          "Content-Length" => content_length
+        }
         @uri = URI.parse(Azure.config.management_endpoint + Azure.config.subscription_id + path)
         @key = Azure.config.http_private_key
         @cert = Azure.config.http_certificate_key
@@ -83,13 +88,12 @@ module Azure
       # Print Error or Success of HttpRequest
       def wait_for_completion(response)
         ret_val = Nokogiri::XML response.body
-
         if ret_val.at_css('Error Code') && ret_val.at_css('Error Code').content == 'AuthenticationFailed'
           Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
         end
-        if response.status_code.to_i == 200
+        if (response.status_code.to_i == 200 or response.status_code.to_i == 201)
           ret_val
-        elsif response.status_code.to_i >= 201 && response.status_code.to_i <= 299
+        elsif response.status_code.to_i > 201 && response.status_code.to_i <= 299
           ret_val = check_completion(response.headers['x-ms-request-id'])
         elsif warn && !response.success?
           #Loggerx.warn ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
