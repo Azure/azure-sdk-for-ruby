@@ -410,6 +410,32 @@ virtual_machine_image_service.list_virtual_machine_images
 base_management = Azure::BaseManagementService.new
 base_management.list_locations
 ```
+## Affinity Group Management
+
+```ruby
+# Require the azure rubygem
+require 'azure'
+
+#Create a affinity group service object
+base_management_service = Azure::BaseManagementService.new
+
+#Get a list of affinity group that are provisioned for a subscription.
+base_management_service.list_affinity_groups
+
+#API to delete affinity group
+base_management_service.delete_affinity_group('affinity-group-name')
+
+#API to add a new affinity group to a subscription
+options = {:description => 'Some Description'}
+base_management_service.create_affinity_group('affinity-group-name', 'West US', 'Label Name', options)
+
+#API to update affinity group
+options = {:description => 'Some Description'}
+base_management_service.update_affinity_group('affinity-group-name', 'Label Name', options)
+
+#API to list properties associated with the specified affinity group
+base_management_service.get_affinity_group('affinity-group-name')
+```
 ## SQL Database Server Management
 
 ```ruby
@@ -419,7 +445,7 @@ require 'azure'
 Azure.configure do |config|
   config.management_certificate = "path to *.pem or *.pfx file"
   config.subscription_id        = "your subscription id"
-  config.management_endpoint    = "https://management.database.windows.net:8443/" 
+  config.management_endpoint    = "https://management.database.windows.net:8443/"
 #To access other service management apis use "https://management.core.windows.net".
 end
 

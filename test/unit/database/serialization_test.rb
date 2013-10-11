@@ -25,7 +25,7 @@ describe Azure::SqlDatabaseManagement::Serialization do
       subject.databases_from_xml Nokogiri::XML(sql_servers_xml)
     end
 
-    it "returns an Array of CloudService instances" do
+    it "returns an Array of SqlDatabaseServer instances" do
       results = subject.databases_from_xml Nokogiri::XML(sql_servers_xml)
       results.must_be_kind_of Array
       results[0].must_be_kind_of Azure::SqlDatabaseManagement::SqlDatabase
@@ -76,7 +76,7 @@ describe Azure::SqlDatabaseManagement::Serialization do
       subject.database_firewall_from_xml Nokogiri::XML(sql_server_firewall_xml)
     end
 
-    it "returns an Array of CloudService instances" do
+    it "returns an Array of SqlDatabaseServer instances with firewall" do
       results = subject.database_firewall_from_xml Nokogiri::XML(sql_server_firewall_xml)
       results.must_be_kind_of Array
       results[0].must_be_kind_of Hash
