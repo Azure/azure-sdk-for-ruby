@@ -84,6 +84,15 @@ class VirtualMachineNameGenerator
       end
     end
 
+    #Delete affinity groups
+    affinity_group_service = Azure::BaseManagementService.new
+    affinity_groups = affinity_group_service.list_affinity_groups
+    affinity_groups.each do |affinity_group|
+      if(affinity_group.name.include?('affinity-group-'))
+        affinity_group_service.delete_affinity_group(affinity_group.name) rescue nil
+      end
+    end
+
     #Delete storage account
     storage_service = Azure::StorageManagement::StorageManagementService.new
     storage_accounts = storage_service.list_storage_accounts

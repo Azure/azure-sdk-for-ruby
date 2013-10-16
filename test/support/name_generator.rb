@@ -73,6 +73,14 @@ ServiceBusTopicNameHelper = NameGenerator.new do |name|
   end
 end
 
+AffinityGroupNameHelper = NameGenerator.new do |name|
+  svc = Azure::BaseManagementService.new
+  begin
+    svc.delete_affinity_group name
+  rescue
+  end
+end
+
 class GB18030TestStringsClass
   def get
     {
