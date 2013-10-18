@@ -58,7 +58,6 @@ class ScenarioHelper
     actual.body.must_equal                       expected.body
     actual.content_type.must_equal               expected.content_type
     actual.correlation_id.must_equal             expected.correlation_id
-    actual.enqueued_time_utc.must_equal          expected.enqueued_time_utc
     actual.label.must_equal                      expected.label
     actual.message_id.must_equal                 expected.message_id
     actual.reply_to.must_equal                   expected.reply_to
@@ -71,6 +70,7 @@ class ScenarioHelper
     # so we cannot verify as much
     actual.delivery_count.must_be :kind_of?, Integer
     actual.sequence_number.must_be :kind_of?, Integer
+    actual.enqueued_time_utc.must_be :kind_of?, Time
     if actual.lock_token != nil
       actual.lock_token.must_be :kind_of?, String
     end
