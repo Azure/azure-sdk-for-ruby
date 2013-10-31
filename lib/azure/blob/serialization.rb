@@ -201,7 +201,7 @@ module Azure
       end
 
       def self.block_list_to_xml(block_list)
-        builder = Nokogiri::XML::Builder.new do |xml|
+        builder = Nokogiri::XML::Builder.new(:encoding => "UTF-8") do |xml|
           xml.BlockList {
             block_list.each { |block|
               encoded_id = Base64.strict_encode64(block[0])
