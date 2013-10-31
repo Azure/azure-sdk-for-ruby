@@ -25,6 +25,7 @@ module Azure
 
       def self.queue_messages_from_xml(xml, decode)
         xml = slopify(xml)
+
         expect_node("QueueMessagesList", xml)
         results = []
         return results unless (xml > "QueueMessage").any?
@@ -58,11 +59,13 @@ module Azure
       end
 
       def self.message_to_xml(message_text, encode)
-        builder = Nokogiri::XML::Builder.new do |xml|
-          if encode
+        if encode
+          builder = Nokogiri::XML::Builder.new do |xml|
             xml.QueueMessage { xml.MessageText Base64.encode64(message_text) }
-          else
-            xml.QueueMessage { xml.MessageText message_text }
+          end
+        else
+          builder = Nokogiri::XML::Builder.new(:encoding => 'utf-8') do |xml|
+            xml.QueueMessage { xml.MessageText message_text.encode("utf-8") }
           end
         end
         builder.to_xml

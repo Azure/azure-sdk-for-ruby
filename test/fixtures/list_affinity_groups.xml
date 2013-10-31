@@ -1,0 +1,22 @@
+<AffinityGroups xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <AffinityGroup>
+    <Name>AG1</Name>
+    <Label>UmFuamFuIGt1bWFyZGZzYXNkIGRhcyBkZmFzZGYgIGFzZGZqYXNka2pkZg==</Label>
+    <Description>First Affinity Group</Description>
+    <Location>West US</Location>
+    <Capabilities>
+      <Capability>PersistentVMRole</Capability>
+      <Capability>HighMemory</Capability>
+    </Capabilities>
+  </AffinityGroup>
+  <AffinityGroup>
+    <Name>AG2</Name>
+    <Label>dm5ldC1BRw==</Label>
+    <Description/>
+    <Location>East Asia</Location>
+    <Capabilities>
+      <Capability>PersistentVMRole</Capability>
+      <Capability>HighMemory</Capability>
+    </Capabilities>
+  </AffinityGroup>
+</AffinityGroups>

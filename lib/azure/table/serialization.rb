@@ -25,7 +25,7 @@ module Azure
     module Serialization
       include Azure::Service::Serialization
 
-      def self.hash_to_entry_xml(hash, id=nil, xml=Nokogiri::XML::Builder.new)
+      def self.hash_to_entry_xml(hash, id=nil, xml=Nokogiri::XML::Builder.new(:encoding => "UTF-8"))
         entry_namespaces = {
           "xmlns"   => "http://www.w3.org/2005/Atom",
           "xmlns:m" => "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata",
@@ -45,10 +45,13 @@ module Azure
         xml
       end
 
-      def self.hash_to_content_xml(hash, xml=Nokogiri::XML::Builder.new)
+      def self.hash_to_content_xml(hash, xml=Nokogiri::XML::Builder.new(:encoding => "UTF-8"))
         xml.send("content", :type => "application/xml") do |content|
           content.send("m:properties") do |properties|
             hash.each do |key, val|
+              key = key.encode("UTF-8") if key.is_a? String and !key.encoding.names.include?("BINARY")
+              val = val.encode("UTF-8") if val.is_a? String and !val.encoding.names.include?("BINARY")
+
               type = Azure::Table::EdmType.property_type(val)
               attributes = {}
               attributes["m:type"] = type unless type.nil? || type.empty?
