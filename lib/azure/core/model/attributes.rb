@@ -3,22 +3,31 @@ module Azure::Core::Model
     extend Azure::Core::Concern
 
     def attributes
-      @attributes = {}
-      class.attribute_names.each { |attribute_name| @attributes[attribute_name.to_sym] = self.send(attribute_name) }
+      @attributes ||= self.class.attributes.dup
+      @attributes.each do |attribute| 
+        attribute.value = self.send(attribute.name)
+      end
       @attributes
     end
 
-    class Attribute
-      attr_accessor :options
-      def initialize(options)
-        self.options = options
+    class Attribute < OpenStruct
+      def xml_tag
+        self.xml_tag || self.name.camelize
+      end
+
+      def xml_tag_value
+        if self.xml_tag_value
+          self.xml_tag_value
+        else 
+          self.value
+        end
       end
     end
 
     module ClassMethods
 
       def attributes
-        @attributes ||= {}
+        @attributes ||= []
       end
 
       def attribute_names
@@ -27,7 +36,7 @@ module Azure::Core::Model
 
       def attribute(name, options = {}, &block)
         attr_accessor name
-        attributes[name.to_sym] << Attribute.new(options)
+        attributes << Attribute.new(options.merge(name: name))
       end
 
       def has_attribute_type(type_name)

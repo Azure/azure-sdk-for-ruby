@@ -3,29 +3,40 @@ module Azure::Core::Xml
     extend Azure::Core::Concern
 
     def to_xml
-
-
-      self.attributes
-
+      builder = Nokogiri::XML::Builder.new do |xml|
+        xml.send(self.class.xml_root, 'xmlns'=>'http://schemas.microsoft.com/windowsazure') do
+          self.attributes.each do |attribute|
+            xml.send(attribute.xml_tag, attribute.xml_value)
+          end
+        end
+      end
+      builder.doc.to_xml
     end
 
     module ClassMethods
 
-      def xml_root(header_name)
-
+      def xml_root(root_tag_name = nil)
+        @root_tag_name ||= root_tag_name
       end
 
-      def from_xml
-        virtual_machine_images = imageXML.css('Images OSImage')
-        virtual_machine_images.each do |image_node|
-          image = Azure::VirtualMachine::Image.new
-          image.os_type = xml_content(image_node, 'OS')
-          image.name = xml_content(image_node, 'Name')
-          image.category = xml_content(image_node, 'Category')
-          image.locations = xml_content(image_node, 'Location')
-          os_images << image
+      def collection_xml_root(collection_xml_root_name = nil)
+        @collection_xml_root_name ||= collection_xml_root_name
+      end
+
+
+      def from_xml(xml)
+        object = self.new
+        self.attributes.each do |a| 
+          object.send("#{a.name}=", xml_content(xml, a.xml_tag))
         end
-        os_images
+        object
+      end
+
+      def from_collection_xml(xml)
+        nodes = xml.css(collection_xml_root)
+        nodes.map do |node|
+          self.from_xml(node)
+        end
       end
 
     end
