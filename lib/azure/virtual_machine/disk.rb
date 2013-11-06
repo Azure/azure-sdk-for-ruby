@@ -13,8 +13,8 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 module Azure
-  module VirtualMachineImageManagement
-    class VirtualMachineDisk
+  module VirtualMachine
+    class Disk
 
       def initialize
         yield self if block_given?
