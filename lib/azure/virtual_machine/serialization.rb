@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'azure/virtual_machine_image_management/virtual_machine_image'
-require 'azure/virtual_machine_image_management/virtual_machine_disk'
+require 'azure/virtual_machine/image'
+require 'azure/virtual_machine/disk'
 
 module Azure
-  module VirtualMachineImageManagement
+  module VirtualMachine
     module Serialization
 
       def self.virtual_machine_images_from_xml(imageXML)

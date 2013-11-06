@@ -12,16 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require "azure/virtual_machine/serialization"
+
 module Azure
-  module VirtualMachineImageManagement
-    class VirtualMachineImage
+  module VirtualMachine
+    
+    class ImageService < BaseManagementService
 
-      def initialize
-        yield self if block_given?
+      # Public: Gets a list of virtual machine images from the server
+      #
+      # Returns an array of Azure::VirtualMachineImageManagementService objects
+      def list_virtual_machine_images
+        response = get("/services/images")
+        Serialization.virtual_machine_images_from_xml(response)
       end
-
-      attr_accessor :os_type, :name, :category, :locations
-
+ 
     end
+
   end
 end
+

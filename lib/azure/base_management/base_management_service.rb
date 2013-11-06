@@ -67,6 +67,12 @@ module Azure
         Serialization.locations_from_xml(response)
       end
 
+      [:get, :post, :put, :delete].each do |method_name|
+        define_method method_name do |request_path, options|
+          ManagementHttpRequest.new(method_name, request_path, options).call
+        end
+      end
+
     end
   end
 end
