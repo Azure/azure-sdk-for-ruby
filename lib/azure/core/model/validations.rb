@@ -2,9 +2,10 @@ module Azure::Core::Model
   module Validations
     extend Azure::Core::Concern
 
-    require_module Azure::Core::Validations
-
-    has_attribute_type :required
+    included do 
+      # needs_module Azure::Core::Model::Attributes
+      has_attribute_type :required
+    end
 
     def valid?
       errors.clear
@@ -19,7 +20,7 @@ module Azure::Core::Model
       errors << "You need to define #{missing_attributes.join(', ')} attributes" unless missing_attributes.empty?
 
       self.custom_validators.each do |validator|
-        errors << validator.message unless &validator.block
+        errors << validator.message unless validator.block.call
       end
     end
 
@@ -28,9 +29,11 @@ module Azure::Core::Model
     end
 
     module ClassMethods
+      
+      Validator = Struct.new(:message, :block)
 
       def validate(message, &block)
-        custom_validators << block
+        custom_validators << Validator.new(message, block)
       end
 
       def custom_validators

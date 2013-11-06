@@ -30,7 +30,7 @@ require "azure/table/query"
 require "azure/core/utility"
 require "azure/base_management/management_http_request"
 require "azure/base_management/base_management_service"
-require "azure/virtual_machine_image_management/virtual_machine_image_management_service"
+require "azure/virtual_machine/image_service"
 require "azure/virtual_machine_management/virtual_machine_management_service"
 require "azure/storage_management/storage_management_service"
 require "azure/cloud_service_management/cloud_service_management_service"
@@ -42,7 +42,7 @@ Azure::BlobService = Azure::Blob::BlobService
 Azure::QueueService = Azure::Queue::QueueService
 Azure::TableService = Azure::Table::TableService
 Azure::ServiceBusService = Azure::ServiceBus::ServiceBusService
-Azure::VirtualMachineImageManagementService = Azure::VirtualMachineImageManagement::VirtualMachineImageManagementService
+# Azure::VirtualMachineImageManagementService = Azure::VirtualMachineImageManagement::VirtualMachineImageManagementService
 Azure::BaseManagementService = Azure::BaseManagement::BaseManagementService
 Azure::CloudServiceManagementService = Azure::CloudServiceManagement::CloudServiceManagementService
 Azure::StorageManagementService = Azure::StorageManagement::StorageManagementService

@@ -23,7 +23,6 @@ module Azure::Core::Xml
         @collection_xml_root_name ||= collection_xml_root_name
       end
 
-
       def from_xml(xml)
         object = self.new
         self.attributes.each do |a| 

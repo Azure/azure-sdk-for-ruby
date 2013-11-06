@@ -14,7 +14,6 @@ module Azure::Core::Model
       def xml_tag
         self.xml_tag || self.name.camelize
       end
-
       def xml_tag_value
         if self.xml_tag_value
           self.xml_tag_value
@@ -42,12 +41,12 @@ module Azure::Core::Model
       def has_attribute_type(type_name)
         class_eval <<-METHODS
           def self.#{type_name}_attribute_names
-            @#{type_name}_attribute_names ||= {}
+            @#{type_name}_attribute_names ||= []
           end
 
           def self.#{type_name}_attribute name, options = {}, &block
-            attr = attribute(name, options, &block)
-            #{type_name}_attribute_names << attr.to_sym
+            attribute(name, options, &block)
+            #{type_name}_attribute_names << name.to_sym
           end
         METHODS
       end

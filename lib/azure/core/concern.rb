@@ -18,7 +18,7 @@ module Azure::Core
     end
 
     def needed_modules
-      @needed_modules = []
+      @needed_modules ||= []
     end
 
     def needs_module(m)

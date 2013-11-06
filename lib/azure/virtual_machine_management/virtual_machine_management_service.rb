@@ -13,15 +13,10 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'azure/virtual_machine_management/serialization'
-include Azure::VirtualMachineImageManagement
 
 module Azure
   module VirtualMachineManagement
     class VirtualMachineManagementService < BaseManagementService
-
-      def initialize
-        super()
-      end
 
       # Public: Get a lists of virtual machines available under the current subscription.
       #
