@@ -14,13 +14,16 @@
 #--------------------------------------------------------------------------
 module Azure
   module VirtualMachine
-    class Image
+    class Image < Azure::Core::Resource
 
-      def initialize
-        yield self if block_given?
-      end
 
-      attr_accessor :os_type, :name, :category, :locations
+      required_attribute :os, xml_tag: "OS"
+      required_attribute :name
+      required_attribute :category
+      required_attribute :locations
+
+      xml_root 'Images OSImage'
+      # attribute :locations      
 
     end
   end
