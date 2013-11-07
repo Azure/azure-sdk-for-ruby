@@ -32,7 +32,7 @@ module Azure::VirtualMachine
     #
     # * +options+    - Hash. Parameters for image creation.
     #
-    #  ==== Required Options
+    #  ==== Required Parameters
     #
     # Accepted key/value pairs are:
     # * +:label+        - String.  Specifies the friendly name of the image.
@@ -40,7 +40,7 @@ module Azure::VirtualMachine
     # * +:name+         - String.  Specifies a name that is used to identify the image when creating virtual machines.
     # * +:os_type+      - String.  The operating system type of the OS image. Possible values are: Linux, Windows.
     #
-    #  ==== Options
+    #  ==== Optional Parameters
     #
     # Accepted key/value pairs are:
     # * +:eula+                  - String.  Specifies the End User License Agreement associated with the image. 
