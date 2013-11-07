@@ -4,7 +4,8 @@ module Azure::Core::Model
 
     def attributes
       @attributes ||= self.class.attributes.dup
-      @attributes.each do |attribute| 
+      @attributes.each do |attribute|
+        attribute.owner = self 
         attribute.value = self.send(attribute.name)
       end
       @attributes
@@ -12,14 +13,11 @@ module Azure::Core::Model
 
     class Attribute < OpenStruct
       def xml_tag
-        self.xml_tag || self.name.camelize
+        self.xml_tag || Azure::Refine::String(self.name).camelize
       end
+
       def xml_tag_value
-        if self.xml_tag_value
-          self.xml_tag_value
-        else 
-          self.value
-        end
+        self.xml_tag_value ? self.xml_tag_value.call(self.value) : self.value
       end
     end
 
