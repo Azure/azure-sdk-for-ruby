@@ -12,18 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'azure/virtual_machine_image_management/virtual_machine_image'
-require 'azure/virtual_machine_image_management/virtual_machine_disk'
+require 'azure/virtual_machine/image'
+require 'azure/virtual_machine/disk'
 
 module Azure
-  module VirtualMachineImageManagement
+  module VirtualMachine
     module Serialization
 
       def self.virtual_machine_images_from_xml(imageXML)
-        os_images = Array.new
+        os_images = []
         virtual_machine_images = imageXML.css('Images OSImage')
         virtual_machine_images.each do |image_node|
-          image = VirtualMachineImage.new
+          image = Azure::VirtualMachine::Image.new
           image.os_type = xml_content(image_node, 'OS')
           image.name = xml_content(image_node, 'Name')
           image.category = xml_content(image_node, 'Category')
@@ -34,10 +34,10 @@ module Azure
       end
 
       def self.disks_from_xml(diskXML)
-        os_disks = Array.new
+        os_disks = []
         disks = diskXML.css('Disks Disk')
         disks.each do |disk_node|
-          disk = VirtualMachineDisk.new
+          disk = Azure::VirtualMachine::Disk.new
           disk.name = xml_content(disk_node, 'Name')
           disk.attached = !xml_content(disk_node,'AttachedTo').empty?
           os_disks << disk

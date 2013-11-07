@@ -13,14 +13,14 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 module Azure
-  module VirtualMachineImageManagement
-    class VirtualMachineImage
+  module VirtualMachine
+    class Disk
 
       def initialize
         yield self if block_given?
       end
 
-      attr_accessor :os_type, :name, :category, :locations
+      attr_accessor :name, :attached
 
     end
   end

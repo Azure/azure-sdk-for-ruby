@@ -14,9 +14,9 @@
 #--------------------------------------------------------------------------
 require "test_helper"
 
-describe Azure::VirtualMachineImageManagementService do
+describe Azure::VirtualMachine::ImageService do
 
-  subject { Azure::VirtualMachineImageManagementService.new }
+  subject { Azure::VirtualMachine::ImageService.new }
 
   let(:request_path) {'/services/images'}
   let(:images_xml) { Fixtures["list_images"] }
@@ -53,7 +53,7 @@ describe Azure::VirtualMachineImageManagementService do
       results = subject.list_virtual_machine_images
       results.must_be_kind_of Array
       results.length.must_equal 12
-      results.first.must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImage
+      results.first.must_be_kind_of Azure::VirtualMachine::Image
     end
   end
   

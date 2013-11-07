@@ -15,6 +15,10 @@
 
 module Azure::Core; end
 
+require "azure/core/concern"
+require "azure/core/refine/string"
+
+require "azure/core/resource"
 require "azure/core/error"
 require "azure/core/configuration"
 
