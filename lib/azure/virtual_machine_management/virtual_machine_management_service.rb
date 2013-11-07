@@ -187,7 +187,7 @@ module Azure
       #
       # Returns Linux or Windows
       def get_os_type(image_name)
-        image_service = Azure::VirtualMachineImageManagementService.new
+        image_service = Azure::VirtualMachine::ImageService.new
         image = image_service.list_virtual_machine_images.select{|x| x.name == image_name}.first
         Loggerx.error_with_exit "The virtual machine image source is not valid." unless image
         image.os_type
