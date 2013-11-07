@@ -26,7 +26,7 @@ This project provides a Ruby package that makes it easy to access and manage Win
         * create, list, and delete rules
 * Virtual Machine Management
     * Images
-        * create, delete, list images
+        * create, delete, update, list images
     * Disks
         * list disks
         * delete disks

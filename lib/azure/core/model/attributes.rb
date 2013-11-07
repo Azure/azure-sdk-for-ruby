@@ -1,3 +1,5 @@
+require 'ostruct'
+
 module Azure::Core::Model
   module Attributes
     extend Azure::Core::Concern
