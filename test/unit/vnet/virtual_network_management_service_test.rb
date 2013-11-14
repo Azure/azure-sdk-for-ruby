@@ -102,7 +102,7 @@ describe Azure::VirtualNetworkManagementService do
         subject.set_network_configuration
       end
 
-      assert_match "Wrong number of argument", exception.message
+      assert_match "Wrong number of arguments", exception.message
     end
 
     it "checks if the file exists" do
@@ -118,7 +118,7 @@ describe Azure::VirtualNetworkManagementService do
         subject.set_network_configuration empty_xml_file
       end
 
-      assert_match "File expects a .xml extention.", exception.message
+      assert_match "File expects a .xml extension.", exception.message
     end
 
   end #~ end of describe#set_network_configuration

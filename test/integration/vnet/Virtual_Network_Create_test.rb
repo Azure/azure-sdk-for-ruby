@@ -77,7 +77,7 @@ describe Azure::VirtualNetworkManagement::VirtualNetwork do
         :dns => [{:name => 'DNS', :ip_address => '1.2.3.4'}]
       }
 
-      subject.set_network_configuration('test', in_affinity_name, update_address_space, update_options)
+      subject.set_network_configuration(in_vnet_name, in_affinity_name, update_address_space, update_options)
       VirtualNetworkHelper.check_config(subject.list_virtual_networks, 'test', in_affinity_name, created_state, update_address_space, update_options)
     end
   end

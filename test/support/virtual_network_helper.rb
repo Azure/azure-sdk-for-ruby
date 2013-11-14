@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
 
 class VirtualNetworkHelper
   def self.check_config(virtual_networks, in_vnet_name, in_affinity_name, created_state, in_address_space, inputoptions)

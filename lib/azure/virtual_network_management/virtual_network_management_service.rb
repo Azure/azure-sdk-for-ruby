@@ -41,7 +41,7 @@ module Azure
           args[3] ||= {:subnet=>[], :dns=>[]}
           set_virtual_network(args[0], args[1], args[2], args[3])
         else
-          raise 'Wrong number of argument'
+          raise 'Wrong number of arguments'
         end
       end
 
@@ -81,7 +81,7 @@ module Azure
       def set_virtual_network_using_xml(file)
         request_path = "/services/networking/media"
         if file !~ /(xml)$/
-          raise "File expects a .xml extention."
+          raise "File expects a .xml extension."
         elsif !File.exist?(file)
           raise "Could not read from file '#{file}'."
         else

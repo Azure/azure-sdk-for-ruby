@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'base64'
 require 'azure/virtual_network_management/virtual_network'
 
 module Azure
@@ -28,8 +27,8 @@ module Azure
           virtual_network.id = xml_content(virtual_network_service_xml, "Id")
           virtual_network.affinity_group = xml_content(virtual_network_service_xml, 'AffinityGroup')
           virtual_network.state = xml_content(virtual_network_service_xml, "State")
-          address_prefixs =  virtual_network_service_xml.css('AddressSpace AddressPrefixes AddressPrefix')
-          virtual_network.address_space = address_prefixs.collect{ |ap| ap.content }
+          address_prefixes =  virtual_network_service_xml.css('AddressSpace AddressPrefixes AddressPrefix')
+          virtual_network.address_space = address_prefixes.collect{ |ap| ap.content }
           subnets_xml =  virtual_network_service_xml.css('Subnets Subnet')
           virtual_network.subnets = subnets_xml.collect{ |sn| {:name => xml_content(sn,"Name"), :address_prefix => xml_content(sn,"AddressPrefix")} }
           dns_servers_xml =  virtual_network_service_xml.css('Dns DnsServers DnsServer')
