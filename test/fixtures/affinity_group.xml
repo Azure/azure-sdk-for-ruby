@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<AffinityGroup xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>AG1</Name>
+  <Label>QUcx\n==</Label>
+  <Description>First Affinity Group</Description>
+  <Location>West US</Location>
+  <HostedServices>
+    <HostedService>
+      <Url>https://management.core.windows.net/abcd/services/hostedservices/vnet-1</Url>
+      <ServiceName>vnet-1</ServiceName>
+      <HostedServiceProperties>
+        <Description i:nil="true"/>
+        <AffinityGroup>Test</AffinityGroup>
+        <Label>dm5ldC0x</Label>
+        <Status>Created</Status>
+        <DateCreated>2013-09-11T06:06:42Z</DateCreated>
+        <DateLastModified>2013-09-11T06:06:49Z</DateLastModified>
+        <ExtendedProperties/>
+      </HostedServiceProperties>
+    </HostedService>
+  </HostedServices>
+  <StorageServices>
+    <StorageService>
+      <Url>https://management.core.windows.net/abcd/services/storageservices/mystorageservice</Url>
+      <ServiceName>mystorageservice</ServiceName>
+      <ExtendedProperties/>
+    </StorageService>
+  </StorageServices>
+  <Capabilities>
+    <Capability>PersistentVMRole</Capability>
+    <Capability>HighMemory</Capability>
+  </Capabilities>
+</AffinityGroup>

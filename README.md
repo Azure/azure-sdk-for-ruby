@@ -24,6 +24,10 @@ This project provides a Ruby package that makes it easy to access and manage Win
         * send, receive, unlock and delete messages
         * create, list, and delete subscriptions
         * create, list, and delete rules
+* Base Management
+	* list locations
+        * Affinity Group
+    		* get, list, create, update, delete affinity groups
 * Virtual Machine Management
     * Images
 		* list images
@@ -37,6 +41,15 @@ This project provides a Ruby package that makes it easy to access and manage Win
 		* create, list, delete cloud services
     * Storage Accounts
 		* create, list storage accounts, list locations
+* SQL Database Server Management
+	* list,create,list sqldb servers & password reset for a sqldbserver
+	* list,set,delete firewall rules for a sqldb server
+    		
+* Virtual Network Management
+    * List VNet
+    * Create VNet 
+    	* via parameters
+    	* via xml file
 		
 # Useful commands for certificate operations
 
@@ -410,6 +423,32 @@ virtual_machine_image_service.list_virtual_machine_images
 base_management = Azure::BaseManagementService.new
 base_management.list_locations
 ```
+## Affinity Group Management
+
+```ruby
+# Require the azure rubygem
+require 'azure'
+
+#Create a affinity group service object
+base_management_service = Azure::BaseManagementService.new
+
+#Get a list of affinity group that are provisioned for a subscription.
+base_management_service.list_affinity_groups
+
+#API to delete affinity group
+base_management_service.delete_affinity_group('affinity-group-name')
+
+#API to add a new affinity group to a subscription
+options = {:description => 'Some Description'}
+base_management_service.create_affinity_group('affinity-group-name', 'West US', 'Label Name', options)
+
+#API to update affinity group
+options = {:description => 'Some Description'}
+base_management_service.update_affinity_group('affinity-group-name', 'Label Name', options)
+
+#API to list properties associated with the specified affinity group
+base_management_service.get_affinity_group('affinity-group-name')
+```
 ## SQL Database Server Management
 
 ```ruby
@@ -419,7 +458,7 @@ require 'azure'
 Azure.configure do |config|
   config.management_certificate = "path to *.pem or *.pfx file"
   config.subscription_id        = "your subscription id"
-  config.management_endpoint    = "https://management.database.windows.net:8443/" 
+  config.management_endpoint    = "https://management.database.windows.net:8443/"
 #To access other service management apis use "https://management.core.windows.net".
 end
 
@@ -452,6 +491,38 @@ sql_db_service.set_sql_server_firewall_rule("server-name", "rule-name", ip_range
 # To toggle between the option to allow windows azure services to access db server similar to azure portal just set the fire wall rule
 # with iprange to be 0.0.0.0 as start and end.Remove the rule to unset this option.
 ```
+##VIRTUAL NETWORK MANAGEMENT
+
+```ruby
+# Require the azure rubygem
+require 'azure'
+
+#Create a virtual network service object
+
+vnet = Azure::VirtualNetworkManagement::VirtualNetworkManagementService.new
+
+#API to get a list of virtual networks created for a subscription.
+
+vnet.list_virtual_networks
+
+#API to configure virtual network with required and optional parameters
+
+address_space = ['172.16.0.0/12',  '10.0.0.0/8',  '192.168.0.0/24']
+
+subnets = [{:name => 'subnet-1',  :ip_address=>'172.16.0.0',  :cidr=>12},  {:name => 'subnet-2',  :ip_address=>'10.0.0.0',  :cidr=>8}]
+
+dns_servers = [{:name => 'dns-1',  :ip_address=>'1.2.3.4'},  {:name => 'dns-2',  :ip_address=>'8.7.6.5'}]
+
+options = {:subnet => subnets, :dns => dns_servers}
+
+vnet.set_network_configuration ('virtual-network-name', 'affinity-group-name', address_space, options)
+
+#API to configure virtual network from xml file that can be exported from management portal and customized to add or delete vnet
+
+vnetxml = './customnetwork.xml'
+
+vnet.set_network_configuration (vnetxml)
+
 # Need Help?
 Be sure to check out the Windows Azure [Developer Forums on Stack Overflow and MSDN](http://go.microsoft.com/fwlink/?LinkId=234489) if you have trouble with the provided code.
 # Contribute Code or Provide Feedback

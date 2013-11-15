@@ -59,7 +59,7 @@ describe Azure::SqlDatabaseManagementService do
       Azure::SqlDatabaseManagementService.any_instance.stubs(:list_servers).returns([])
     }
 
-    it "error if sql server doesnot exists" do
+    it "error if sql server does not exists" do
       server_name = "unknown-server"
       exception = assert_raises(Azure::Error::Error) do
         subject.delete_server server_name
