@@ -49,3 +49,4 @@ class VirtualNetworkHelper
     created_virtual_network[0].dns_servers.first[:ip_address].must_equal inputoptions[:dns][0][:ip_address]
   end
 end
+
