@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
+require 'integration/test_helper'
 
 describe Azure::VirtualNetworkManagement::VirtualNetwork do
 
@@ -20,7 +20,7 @@ describe Azure::VirtualNetworkManagement::VirtualNetwork do
 
   let(:affinity_group_name) { 'my-affinity-group' }
   let(:location) { 'West US' }
-  let(:vnet_name) {'vnet-integration-test'}
+  let(:vnet_name) { 'vnet-integration-test' }
 
   before {
     Loggerx.expects(:puts).returns(nil).at_least(0)

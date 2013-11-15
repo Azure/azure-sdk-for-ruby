@@ -24,8 +24,8 @@ describe Azure::VirtualNetworkManagementService do
   let(:address_space) { ['172.16.0.0/12'] }
 
   input_options = {
-      :subnet => [{:name => 'vnet-test-unit-subnet-1', :ip_address => '172.16.0.0', :cidr => 12}],
-      :dns => [{:name => 'vnet-test-unit-dns-1', :ipaddress => '1.2.3.4'}]
+      :subnet => [{ :name => 'vnet-test-unit-subnet-1', :ip_address => '172.16.0.0', :cidr => 12 }],
+      :dns => [{ :name => 'vnet-test-unit-dns-1', :ipaddress => '1.2.3.4' }]
   }
 
   let(:non_existent_file) { '/this/file/doesnt/exist.xml' }
@@ -34,7 +34,7 @@ describe Azure::VirtualNetworkManagementService do
   let(:list_networks_path) { '/services/networking/virtualnetwork' }
   let(:set_network_path) { '/services/networking/media' }
 
-  let(:virtual_networks) { Fixtures["list_virtual_networks"] }
+  let(:virtual_networks) { Fixtures['list_virtual_networks'] }
 
   let(:getmethod) { :get }
   let(:putmethod) { :put }
@@ -70,29 +70,29 @@ describe Azure::VirtualNetworkManagementService do
     it "sets the properties of the virtual network" do
       virtual_network = subject.list_virtual_networks.first
 
-      #Verify global properties
-      virtual_network.name.must_equal "test-virtual-network"
-      virtual_network.affinity_group.must_equal "Test"
-      virtual_network.id.must_equal "afd3a393-8fe2-4127-a834-1b2b920729fe"
-      virtual_network.state.must_equal "Created"
+      # Verify global properties
+      virtual_network.name.must_equal 'test-virtual-network'
+      virtual_network.affinity_group.must_equal 'Test'
+      virtual_network.id.must_equal 'afd3a393-8fe2-4127-a834-1b2b920729fe'
+      virtual_network.state.must_equal 'Created'
 
-      #Verify address_space
+      # Verify address_space
       virtual_network.address_space.must_be_kind_of Array
       virtual_network.address_space.length.must_equal 1
       virtual_network.address_space.first.must_be_kind_of String
-      virtual_network.address_space.first.must_equal "10.0.0.0/8"
+      virtual_network.address_space.first.must_equal '10.0.0.0/8'
 
-      #Verify subnets
+      # Verify subnets
       virtual_network.subnets.must_be_kind_of Array
       virtual_network.subnets.length.must_equal 1
-      virtual_network.subnets.first[:name].must_equal "Subnet-1"
-      virtual_network.subnets.first[:address_prefix].must_equal "10.0.0.0/11"
+      virtual_network.subnets.first[:name].must_equal 'Subnet-1'
+      virtual_network.subnets.first[:address_prefix].must_equal '10.0.0.0/11'
 
-      #Verify DNS Servers
+      # Verify DNS Servers
       virtual_network.dns_servers.must_be_kind_of Array
       virtual_network.dns_servers.length.must_equal 2
-      virtual_network.dns_servers.first[:name].must_equal "dns-server-1"
-      virtual_network.dns_servers.first[:ip_address].must_equal "1.2.3.4"
+      virtual_network.dns_servers.first[:name].must_equal 'dns-server-1'
+      virtual_network.dns_servers.first[:ip_address].must_equal '1.2.3.4'
     end
   end
 
@@ -102,7 +102,7 @@ describe Azure::VirtualNetworkManagementService do
         subject.set_network_configuration
       end
 
-      assert_match "Wrong number of arguments", exception.message
+      assert_match 'Wrong number of arguments', exception.message
     end
 
     it "checks if the file exists" do
@@ -118,8 +118,8 @@ describe Azure::VirtualNetworkManagementService do
         subject.set_network_configuration empty_xml_file
       end
 
-      assert_match "File expects a .xml extension.", exception.message
+      assert_match 'File expects a .xml extension.', exception.message
     end
 
-  end #~ end of describe#set_network_configuration
+  end # end of describe#set_network_configuration
 end

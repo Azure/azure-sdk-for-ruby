@@ -25,20 +25,20 @@ module Azure
       # Public: Gets a list of virtual network services available under the current subscription.
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157185.aspx
-      # 
+      #
       # Returns an array of Azure::VirtualNetworkServiceManagement::VirtualNetwork objects
       def list_virtual_networks
-        request_path = "/services/networking/virtualnetwork"
+        request_path = '/services/networking/virtualnetwork'
         request = ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.virtual_network_from_xml(response)
       end
-      
+
       def set_network_configuration(*args)
         if args.length == 1
           set_virtual_network_using_xml(args[0])
-        elsif args.length == 4 or args.length == 3
-          args[3] ||= {:subnet=>[], :dns=>[]}
+        elsif args.length == 4 || args.length == 3
+          args[3] ||= { :subnet => [], :dns => [] }
           set_virtual_network(args[0], args[1], args[2], args[3])
         else
           raise 'Wrong number of arguments'
@@ -46,8 +46,8 @@ module Azure
       end
 
       private
-      
-      # Public: Configures virtual network.
+
+      # Private: Configures virtual network.
       #
       # ==== Attributes
       #
@@ -69,27 +69,27 @@ module Azure
       # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157181.aspx
       #
       # Returns None
-      def set_virtual_network(vnet, affinity_group, address_space, options={:subnet=>[], :dns=>[]})
-        request_path = "/services/networking/media"
+      def set_virtual_network(vnet, affinity_group, address_space, options={ :subnet => [], :dns => [] })
+        request_path = '/services/networking/media'
         body = Serialization.virtual_network_to_xml(vnet, affinity_group, address_space, options)
         request = ManagementHttpRequest.new(:put, request_path, body)
-        request.headers["Content-Type"] = 'text/plain'
+        request.headers['Content-Type'] = 'text/plain'
         Loggerx.info "Creating virtual network #{vnet}."
         request.call
       end
 
       def set_virtual_network_using_xml(file)
-        request_path = "/services/networking/media"
+        request_path = '/services/networking/media'
         if file !~ /(xml)$/
-          raise "File expects a .xml extension."
+          raise 'File expects a .xml extension.'
         elsif !File.exist?(file)
           raise "Could not read from file '#{file}'."
         else
-          body =  File.read(file)
+          body = File.read(file)
         end
         request = ManagementHttpRequest.new(:put, request_path, body)
-        request.headers["Content-Type"] = 'text/plain'
-        Loggerx.info "Creating virtual network."
+        request.headers['Content-Type'] = 'text/plain'
+        Loggerx.info 'Creating virtual network.'
         request.call
       end
 
