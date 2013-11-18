@@ -58,7 +58,8 @@ class ScenarioHelper
     actual.body.must_equal                       expected.body
     actual.content_type.must_equal               expected.content_type
     actual.correlation_id.must_equal             expected.correlation_id
-    actual.enqueued_time_utc.must_equal          expected.enqueued_time_utc
+    # Enqueued time is updated after the enqueued time
+    # actual.enqueued_time_utc.must_equal          expected.enqueued_time_utc
     actual.label.must_equal                      expected.label
     actual.message_id.must_equal                 expected.message_id
     actual.reply_to.must_equal                   expected.reply_to
