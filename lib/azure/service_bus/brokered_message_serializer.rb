@@ -131,13 +131,17 @@ module Azure
       #
       # Returns a Time instance
       def self.parse_dot_net_serialized_datetime(datetime)
-        milliseconds_in_second = 1000
-        match = /\/Date\((\d+)\)\//.match(datetime)
-        if !match.nil?
-          ticks = match[1].to_i
-          time = Time.at(ticks / milliseconds_in_second)
-        else
-          nil
+        begin
+          Time.parse(datetime)
+        rescue
+          milliseconds_in_second = 1000
+          match = /\/Date\((\d+)\)\//.match(datetime)
+          if !match.nil?
+            ticks = match[1].to_i
+            time = Time.at(ticks / milliseconds_in_second)
+          else
+            nil
+          end
         end
       end
     end
