@@ -104,8 +104,8 @@ module Azure
 
           if body
             headers["Content-Type"]   = "application/atom+xml; charset=utf-8"
-            headers["Content-Length"] = body.bytesize.to_s
-            headers["Content-MD5"]    = Base64.strict_encode64(Digest::MD5.digest(body))
+            headers["Content-Length"] = body.size.to_s
+            headers["Content-MD5"]    = Base64.strict_encode64(Digest::MD5.digest(body)) if body_needs_encoding?
           else
             headers["Content-Length"] = "0"
             headers["Content-Type"] = ""
@@ -131,7 +131,11 @@ module Azure
           encode_body if body_needs_encoding?
 
           request = http_request_class.new(uri.request_uri, headers)
-          request.body = body
+          if body.kind_of?(IO)
+            request.body_stream = body
+          else
+            request.body = body
+          end
 
           if uri.scheme.downcase == 'https'
             # require 'net/https'
@@ -153,7 +157,7 @@ module Azure
         private
 
         def body_needs_encoding?
-          self.headers && body.kind_of? String
+          self.headers && body.kind_of?(String)
         end
 
         def response_needs_decoding?

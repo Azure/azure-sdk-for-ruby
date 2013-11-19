@@ -29,7 +29,6 @@ module Azure
       attr_accessor :host
 
       def call(method, uri, body=nil, headers=nil)
-
         request = Core::Http::HttpRequest.new(method, uri, body)
         request.headers.merge!(headers) if headers
 
