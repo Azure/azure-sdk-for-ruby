@@ -59,7 +59,6 @@ module Azure
         uri.query = URI.encode_www_form(query) unless query == nil or query.empty?
         uri
       end
-
     end
   end
 end

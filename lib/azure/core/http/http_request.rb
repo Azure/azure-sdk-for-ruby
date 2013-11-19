@@ -41,9 +41,6 @@ module Azure
         # The body of the request (IO or String)
         attr_accessor :body
 
-        # The service response after calling call method
-        attr_accessor :response
-
         # Public: Create the HttpRequest
         #
         # method - Symbol. The HTTP method to use (:get, :post, :put, :del, etc...)
@@ -108,7 +105,7 @@ module Azure
             headers["Content-MD5"]    = Base64.strict_encode64(Digest::MD5.digest(body)) if body.kind_of?(String)
           else
             headers["Content-Length"] = "0"
-            headers["Content-Type"] = ""
+            headers["Content-Type"]   = ""
           end
         end
 
@@ -142,19 +139,15 @@ module Azure
             http.verify_mode = OpenSSL::SSL::VERIFY_NONE
           end
 
-          self.response = HttpResponse.new(http.request(request))
-          self.response.uri = uri
+          response = HttpResponse.new(http.request(request))
+          response.uri = uri
 
           raise response.error unless response.success?
 
           response
-
         end
 
-
         private
-
-
 
         def http
           return @http if @http
@@ -172,6 +165,7 @@ module Azure
         def proxy_uri
           @proxy_uri ||= URI::parse(ENV['HTTP_PROXY'] || ENV['HTTPS_PROXY']) if has_proxy?
         end
+
       end
     end
   end
