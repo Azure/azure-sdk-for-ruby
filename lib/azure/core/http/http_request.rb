@@ -105,7 +105,7 @@ module Azure
           if body
             headers["Content-Type"]   = "application/atom+xml; charset=utf-8"
             headers["Content-Length"] = body.size.to_s
-            headers["Content-MD5"]    = Base64.strict_encode64(Digest::MD5.digest(body)) if body_needs_encoding?
+            headers["Content-MD5"]    = Base64.strict_encode64(Digest::MD5.digest(body)) if body.kind_of?(String)
           else
             headers["Content-Length"] = "0"
             headers["Content-Type"] = ""
@@ -128,7 +128,6 @@ module Azure
         # Returns a HttpResponse
         def call
 
-          encode_body if body_needs_encoding?
 
           request = http_request_class.new(uri.request_uri, headers)
           if body.kind_of?(IO)
@@ -147,7 +146,6 @@ module Azure
           self.response.uri = uri
 
           raise response.error unless response.success?
-          decode_response if response_needs_decoding?
 
           response
 
@@ -156,25 +154,7 @@ module Azure
 
         private
 
-        def body_needs_encoding?
-          self.headers && body.kind_of?(String)
-        end
 
-        def response_needs_decoding?
-          !response.nil? && !response.body.nil? && response.headers['content-encoding']
-        end
-
-        def encode_body
-          if headers['Content-Encoding'].nil?
-            headers['Content-Encoding'] = body.encoding.to_s
-          else
-            body.force_encoding(headers['Content-Encoding'])
-          end
-        end
-
-        def decode_response
-          response.body.force_encoding(response.headers['content-encoding'])
-        end
 
         def http
           return @http if @http
