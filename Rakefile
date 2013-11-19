@@ -91,6 +91,8 @@ namespace :test do
     component_task :table
     component_task :affinity_group
     component_task :vnet
+    component_task :vm
+    component_task :vm_image
   end
 
   task :cleanup => :require_environment do
