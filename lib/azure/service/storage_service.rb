@@ -74,6 +74,7 @@ module Azure
           headers["x-ms-meta-#{key}"] = value
         end
       end
+
     end
   end
 end

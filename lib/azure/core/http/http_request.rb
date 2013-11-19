@@ -41,6 +41,9 @@ module Azure
         # The body of the request (IO or String)
         attr_accessor :body
 
+        # The service response after calling call method
+        attr_accessor :response
+
         # Public: Create the HttpRequest
         #
         # method - Symbol. The HTTP method to use (:get, :post, :put, :del, etc...)
@@ -124,21 +127,11 @@ module Azure
         #
         # Returns a HttpResponse
         def call
+
+          encode_body if body_needs_encoding?
+
           request = http_request_class.new(uri.request_uri, headers)
-          request.body = body if body
-
-          http = nil
-          if ENV['HTTP_PROXY'] || ENV['HTTPS_PROXY']
-            if ENV['HTTP_PROXY']
-              proxy_uri = URI::parse(ENV['HTTP_PROXY'])
-            else
-              proxy_uri = URI::parse(ENV['HTTPS_PROXY'])
-            end
-
-            http = Net::HTTP::Proxy(proxy_uri.host, proxy_uri.port).new(uri.host, uri.port)
-          else
-            http = Net::HTTP.new(uri.host, uri.port)
-          end
+          request.body = body
 
           if uri.scheme.downcase == 'https'
             # require 'net/https'
@@ -146,10 +139,54 @@ module Azure
             http.verify_mode = OpenSSL::SSL::VERIFY_NONE
           end
 
-          response = HttpResponse.new(http.request(request))
-          response.uri = uri
+          self.response = HttpResponse.new(http.request(request))
+          self.response.uri = uri
+
           raise response.error unless response.success?
+          decode_response if response_needs_decoding?
+
           response
+
+        end
+
+
+        private
+
+        def body_needs_encoding?
+          self.headers && body.kind_of? String
+        end
+
+        def response_needs_decoding?
+          !response.nil? && !response.body.nil? && response.headers['content-encoding']
+        end
+
+        def encode_body
+          if headers['Content-Encoding'].nil?
+            headers['Content-Encoding'] = body.encoding.to_s
+          else
+            body.force_encoding(headers['Content-Encoding'])
+          end
+        end
+
+        def decode_response
+          response.body.force_encoding(response.headers['content-encoding'])
+        end
+
+        def http
+          return @http if @http
+          @http = if has_proxy?
+            Net::HTTP::Proxy(proxy_uri.host, proxy_uri.port).new(uri.host, uri.port)
+          else
+            Net::HTTP.new(uri.host, uri.port)
+          end
+        end
+
+        def has_proxy?
+          !!(ENV['HTTP_PROXY'] || ENV['HTTPS_PROXY'])
+        end
+
+        def proxy_uri
+          @proxy_uri ||= URI::parse(ENV['HTTP_PROXY'] || ENV['HTTPS_PROXY']) if has_proxy?
         end
       end
     end
