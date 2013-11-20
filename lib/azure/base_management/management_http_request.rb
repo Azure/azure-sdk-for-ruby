@@ -34,7 +34,7 @@ module Azure
       def initialize(method, path, body=nil)
         super
         @warn = false
-        content_length = body ? body.bytesize.to_s : "0"
+        content_length = body.is_a?(String) ? body.bytesize.to_s : (body || []).size.to_s
         @headers = {
           "x-ms-version" => "2013-06-01",
           "Content-Type"=> 'application/xml',

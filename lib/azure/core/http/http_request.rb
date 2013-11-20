@@ -101,8 +101,8 @@ module Azure
 
           if body
             headers["Content-Type"]   = "application/atom+xml; charset=utf-8"
-            headers["Content-Length"] = body.bytesize.to_s
-            headers["Content-MD5"]    = Base64.strict_encode64(Digest::MD5.digest(body))
+            headers["Content-Length"] = body.size.to_s
+            headers["Content-MD5"]    = Base64.strict_encode64(Digest::MD5.digest(body)) if body.kind_of?(String)
           else
             headers["Content-Length"] = "0"
             headers["Content-Type"] = ""
@@ -124,20 +124,13 @@ module Azure
         #
         # Returns a HttpResponse
         def call
+
+
           request = http_request_class.new(uri.request_uri, headers)
-          request.body = body if body
-
-          http = nil
-          if ENV['HTTP_PROXY'] || ENV['HTTPS_PROXY']
-            if ENV['HTTP_PROXY']
-              proxy_uri = URI::parse(ENV['HTTP_PROXY'])
-            else
-              proxy_uri = URI::parse(ENV['HTTPS_PROXY'])
-            end
-
-            http = Net::HTTP::Proxy(proxy_uri.host, proxy_uri.port).new(uri.host, uri.port)
+          if body.kind_of?(IO)
+            request.body_stream = body
           else
-            http = Net::HTTP.new(uri.host, uri.port)
+            request.body = body
           end
 
           if uri.scheme.downcase == 'https'
@@ -148,9 +141,31 @@ module Azure
 
           response = HttpResponse.new(http.request(request))
           response.uri = uri
+
           raise response.error unless response.success?
+
           response
         end
+
+        private
+
+        def http
+          return @http if @http
+          @http = if has_proxy?
+            Net::HTTP::Proxy(proxy_uri.host, proxy_uri.port).new(uri.host, uri.port)
+          else
+            Net::HTTP.new(uri.host, uri.port)
+          end
+        end
+
+        def has_proxy?
+          !!(ENV['HTTP_PROXY'] || ENV['HTTPS_PROXY'])
+        end
+
+        def proxy_uri
+          @proxy_uri ||= URI::parse(ENV['HTTP_PROXY'] || ENV['HTTPS_PROXY']) if has_proxy?
+        end
+
       end
     end
   end

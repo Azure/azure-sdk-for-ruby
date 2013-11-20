@@ -29,11 +29,12 @@ module Azure
       attr_accessor :host
 
       def call(method, uri, body=nil, headers=nil)
-        if headers && !body.nil?
+
+        if headers && body.kind_of?(String)
           if headers['Content-Encoding'].nil?
             headers['Content-Encoding'] = body.encoding.to_s
-          else 
-            body.force_encoding(headers['Content-Encoding']) 
+          else
+            body.force_encoding(headers['Content-Encoding'])
           end
         end
 
