@@ -12,21 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+
 module Azure
-  module BaseManagement
-    # Represents an AffinityGroup
-    class AffinityGroup
+  module VirtualNetworkManagement
+    # Represents a Virtual Network
+    class VirtualNetwork
       def initialize
         yield self if block_given?
+        @address_space = []
+        @subnets = []
+        @dns_servers = []
       end
 
       attr_accessor :name
-      attr_accessor :label
-      attr_accessor :description
-      attr_accessor :location
-      attr_accessor :hosted_services
-      attr_accessor :storage_services
-      attr_accessor :capability
+      attr_accessor :state
+      attr_accessor :id
+      attr_accessor :address_space
+      attr_accessor :subnets
+      attr_accessor :dns_servers
+      attr_accessor :affinity_group
     end
   end
 end

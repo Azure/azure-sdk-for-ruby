@@ -30,9 +30,9 @@ describe Azure::SqlDatabaseManagementService do
     }
 
     it "should be able to create a new sql database server." do
-      sql_server = subject.create_server(login_name, 'User@123', 'West US')
+      sql_server = subject.create_server(login_name, 'User@123', WindowsImageLocation)
       sql_server.name.wont_be_nil
-      sql_server.location.must_equal "West US"
+      sql_server.location.must_equal WindowsImageLocation
       sql_server.administrator_login.must_equal login_name
     end
 
@@ -47,7 +47,7 @@ describe Azure::SqlDatabaseManagementService do
     it "errors if the sql server passsword is invalid" do
       password = 'weak'
       exception = assert_raises(RuntimeError) do
-        subject.create_server(login_name, password, 'West US')
+        subject.create_server(login_name, password, WindowsImageLocation)
       end
       assert_match(/Password validation failed/i, exception.message)
     end

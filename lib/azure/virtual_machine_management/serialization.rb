@@ -55,6 +55,9 @@ module Azure
             xml.DeploymentSlot 'Production'
             xml.Label Base64.encode64(options[:deployment_name]).strip
             xml.RoleList { xml.Role('i:type'=>'PersistentVMRole') }
+            if options[:virtual_network_name]
+              xml.VirtualNetworkName options[:virtual_network_name]
+            end
           }
         end
         builder.doc.at_css('Role') << role_to_xml(params, options).at_css('PersistentVMRole').children.to_s
@@ -79,6 +82,11 @@ module Azure
                   default_endpoints_to_xml(xml, options)
                   tcp_endpoints_to_xml(xml, options[:tcp_endpoints]) if options[:tcp_endpoints]
                 }
+                if options[:virtual_network_name] && options[:subnet_name]
+                  xml.SubnetNames {
+                    xml.SubnetName options[:subnet_name]
+                  }
+                end
               }
             }
             xml.Label Base64.encode64(params[:vm_name]).strip
@@ -131,7 +139,7 @@ module Azure
                   if options[:winrm_transport].include?('https')
                     xml.Listener {
                       xml.Protocol 'Https'
-                      xml.CertificateThumbprint params[:certificate][:fingerprint]
+                      xml.CertificateThumbprint params[:certificate][:fingerprint] if params[:certificate][:fingerprint]
                     }
                   end
                 }
@@ -177,10 +185,11 @@ module Azure
             ports = endpoint.split(':')
             xml.InputEndpoint {
               xml.LocalPort ports[0]
-              xml.Name 'TCP-PORT-' + ports[0]
               if ports.length > 1
+                xml.Name 'TCP-PORT-' + ports[1]
                 xml.Port ports[1]
               else
+                xml.Name 'TCP-PORT-' + ports[0]
                 xml.Port ports[0]
               end
               xml.Protocol 'TCP'
@@ -226,6 +235,8 @@ module Azure
             end
           end
           vm.ipaddress = xml_content(rolesXML, 'IpAddress') unless vm.ipaddress
+          vm.virtual_network_name = xml_content(deployXML.css('Deployment'),
+                                                'VirtualNetworkName')
           vm
         end
       end

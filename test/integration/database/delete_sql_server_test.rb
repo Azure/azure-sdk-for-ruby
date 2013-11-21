@@ -27,7 +27,7 @@ describe Azure::SqlDatabaseManagementService do
 
   subject { Azure::SqlDatabaseManagementService.new }
   let(:login_name) {'ms_open_tech'}
-  let(:sql_server) { subject.create_server(login_name, 'User1@123', 'West US') }
+  let(:sql_server) { subject.create_server(login_name, 'User1@123', WindowsImageLocation) }
 
   describe "#delete_sql_server" do
 

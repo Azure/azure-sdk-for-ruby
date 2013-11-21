@@ -12,33 +12,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
+require 'integration/test_helper'
 
-require "azure/service_bus/brokered_message"
+require 'azure/service_bus/brokered_message'
 
 class ScenarioHelper
-  def ScenarioHelper.out (s)
-    if (false)
-      print s + "\n"
-    end
+  def self.out(s)
+    print s + "\n" if false
   end
 
-  def ScenarioHelper.get_custom_properties(i)
+  def self.get_custom_properties(i)
     custom_properties             = {}
-    custom_properties['i']        = i;
+    custom_properties['i']        = i
     custom_properties['test']     = Time.local(2001, i, 1)
-    custom_properties['name']     = 'Test' + i.to_s;
-    custom_properties['meanname'] = "'\"Me`\\'&*<>!@#%^*)\n" + i.to_s;
-    custom_properties['int']      = 50 + i;
-    custom_properties['float']    = 3.14159 + i;
-    custom_properties['even']     = (i % 2 == 0);
-    custom_properties;
+    custom_properties['name']     = 'Test' + i.to_s
+    custom_properties['meanname'] = "'\"Me`\\'&*<>!@#%^*)\n" + i.to_s
+    custom_properties['int']      = 50 + i
+    custom_properties['float']    = 3.14159 + i
+    custom_properties['even']     = (i % 2 == 0)
+    custom_properties
   end
 
-  def ScenarioHelper.create_issue_message(issue_id, issue_body, label)
+  def self.create_issue_message(issue_id, issue_body, label)
     message = Azure::ServiceBus::BrokeredMessage.new(issue_body)
 
-    message.correlation_id  = "correlationid" + label
+    message.correlation_id  = 'correlationid' + label
     message.delivery_count  = 1
     message.sequence_number = 12
     message.content_type    = 'text/xml'
@@ -47,14 +45,16 @@ class ScenarioHelper
     message.message_id      = issue_id
 
     custom_properties = ScenarioHelper.get_custom_properties issue_id.to_i
-    custom_properties.each { |key, value|
+    custom_properties.each do |key, value|
       message.properties[key] = value
-    }
+    end
 
     message
   end
 
-  def ScenarioHelper.compare_messages(expected, actual, custom_properties = nil)
+  def self.compare_messages(expected,
+                            actual,
+                            custom_properties = nil)
     actual.body.must_equal                       expected.body
     actual.content_type.must_equal               expected.content_type
     actual.correlation_id.must_equal             expected.correlation_id
@@ -62,41 +62,40 @@ class ScenarioHelper
     actual.message_id.must_equal                 expected.message_id
     actual.reply_to.must_equal                   expected.reply_to
     actual.reply_to_session_id.must_equal        expected.reply_to_session_id
-    actual.scheduled_enqueue_time_utc.must_equal expected.scheduled_enqueue_time_utc
+    actual.scheduled_enqueue_time_utc.must_equal(
+      expected.scheduled_enqueue_time_utc
+    )
     actual.session_id.must_equal                 expected.session_id
     actual.to.must_equal                         expected.to
 
     # Note: The following properties are controlled by the server,
     # so we cannot verify as much
-    actual.delivery_count.must_be :kind_of?, Integer
-    actual.sequence_number.must_be :kind_of?, Integer
-    actual.enqueued_time_utc.must_be :kind_of?, Time
-    if actual.lock_token != nil
-      actual.lock_token.must_be :kind_of?, String
-    end
-    if actual.locked_until_utc != nil
-      actual.locked_until_utc.must_be :kind_of?, Time
+    actual.delivery_count.must_be_kind_of Integer
+    actual.sequence_number.must_be_kind_of Integer
+    actual.enqueued_time_utc.must_be_kind_of Time
+    actual.lock_token.must_be_kind_of String unless actual.lock_token.nil?
+
+    actual.locked_until_utc.must_be_kind_of Time\
+      unless actual.locked_until_utc.nil?
+
+    if custom_properties.nil?
+      expected_properties = expected.properties
+      index = expected_properties['i']
+      index = 1 if index.nil?
+      custom_properties = get_custom_properties(index.to_i)
     end
 
-    if custom_properties == nil
-      expected_properties = expected.properties;
-      index = expected_properties["i"];
-      if (index == nil)
-        index = 1;
-      end
-      custom_properties = get_custom_properties(index.to_i);
-    end
-
-    custom_properties.each { |key, value|
-      ScenarioHelper.out key + ":" + value.to_s
-      ScenarioHelper.out key.downcase + ":" + (actual.properties[key.downcase] == nil ? "<nil>" : actual.properties[key.downcase].to_s)
-      if value != "GUID"
-        if value != nil && value.class == Time
-          value.httpdate.must_equal actual.properties[key.downcase]
+    custom_properties.each do |key, value|
+      ScenarioHelper.out key + ':' + value.to_s
+      k_d = actual.properties[key.downcase]
+      ScenarioHelper.out("#{k_d}:#{k_d.nil? ? '<nil>' : k_d.to_s}")
+      if value != 'GUID'
+        if !value.nil? && value.class == Time
+          value.httpdate.must_equal k_d
         else
-          value.must_equal actual.properties[key.downcase]
+          value.must_equal(k_d)
         end
       end
-    }
+    end
   end
 end

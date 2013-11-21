@@ -24,8 +24,12 @@ module Azure
           xml.CreateHostedService('xmlns'=>'http://schemas.microsoft.com/windowsazure') {
             xml.ServiceName name
             xml.Label Base64.encode64(name)
-            xml.Description options[:description] || 'Explicitly created cloud service'
-            xml.Location options[:location]
+            xml.Description options[:description] || 'Explicitly created cloud service'  
+            if !options[:affinity_group_name].nil?
+              xml.AffinityGroup options[:affinity_group_name]
+            else
+              xml.Location options[:location]
+            end
           }
         end
         builder.doc.to_xml
@@ -37,6 +41,7 @@ module Azure
         cloud_services_xml.each do |cloud_service_xml|
           cloud = CloudService.new
           cloud.name = xml_content(cloud_service_xml, 'ServiceName')
+          cloud.affinity_group = xml_content(cloud_service_xml, 'HostedServiceProperties AffinityGroup')
           clouds << cloud
         end
         clouds.compact

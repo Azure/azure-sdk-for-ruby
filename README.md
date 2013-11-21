@@ -24,6 +24,10 @@ This project provides a Ruby package that makes it easy to access and manage Win
         * send, receive, unlock and delete messages
         * create, list, and delete subscriptions
         * create, list, and delete rules
+* Base Management
+	* list locations
+        * Affinity Group
+    		* get, list, create, update, delete affinity groups
 * Virtual Machine Management
     * Images
 		* list images
@@ -33,10 +37,20 @@ This project provides a Ruby package that makes it easy to access and manage Win
     * Virtual Machines
 		* create linux based VMs and ssh with cert and key option enabled for ssh and WINRM (both http & https)enabled for windows based VMs
 		* list, shut down, delete, find virtual machine deployments. While shutting down your VMs the provisioning state would be deallocated and this VM will not be included in the billing cycle.
+		* Create VM for a specific virtual network
     * Cloud Services
 		* create, list, delete cloud services
     * Storage Accounts
 		* create, list storage accounts, list locations
+* SQL Database Server Management
+	* list,create,list sqldb servers & password reset for a sqldbserver
+	* list,set,delete firewall rules for a sqldb server
+    		
+* Virtual Network Management
+    * List VNet
+    * Create VNet 
+    	* via parameters
+    	* via xml file
 		
 # Useful commands for certificate operations
 
@@ -387,23 +401,25 @@ params = {
   :vm_user => 'azureuser',
   :image => '5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-63APR20130415',
   :password => 'Password',
-  :location => 'West US'
+  :location => 'West US',
+  :affinity_group_name => 'affinity1'
 }
 options = {
   :storage_account_name => 'storage_suse',
   :winrm_transport => ['https','http'], #Currently http is supported. To enable https, set the transport protocol to https, simply rdp to the VM once VM is in ready state, export the certificate ( CN name would be the deployment name) from the certstore of the VM and install to your local machine and communicate WinRM via https.
   :cloud_service_name => 'cloud_service_name',
-  :deployment_name =>'mydeployment',
+  :deployment_name =>'vm_name',
   :tcp_endpoints => '80,3389:3390',
   :private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
   :certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
   :ssh_port => 2222,
-  :vm_size => 'Small' #valid choices are (ExtraSmall, Small, Medium, Large, ExtraLarge, A6, A7)
+  :vm_size => 'Small', #valid choices are (ExtraSmall, Small, Medium, Large, ExtraLarge, A6, A7)
+  :virtual_network_name => 'xplattestvnet'
 }
 virtual_machine_service.create_virtual_machine(params, options)
 
 #Get a list of available virtual machine images
-virtual_machine_image_service = Azure::VirtualMachineImageService.new
+virtual_machine_image_service = Azure::VirtualMachineImageManagementService.new
 virtual_machine_image_service.list_virtual_machine_images
 
 #Get a list of available regional data center locations
@@ -477,6 +493,38 @@ sql_db_service.set_sql_server_firewall_rule("server-name", "rule-name", ip_range
 # If ip_range was not specified in the above api then the IP of the machine from where the api is being called would be set as the rule.
 # To toggle between the option to allow windows azure services to access db server similar to azure portal just set the fire wall rule
 # with iprange to be 0.0.0.0 as start and end.Remove the rule to unset this option.
+```
+##VIRTUAL NETWORK MANAGEMENT
+
+```ruby
+# Require the azure rubygem
+require 'azure'
+
+#Create a virtual network service object
+
+vnet = Azure::VirtualNetworkManagementService.new
+
+#API to get a list of virtual networks created for a subscription.
+
+vnet.list_virtual_networks
+
+#API to configure virtual network with required and optional parameters
+
+address_space = ['172.16.0.0/12',  '10.0.0.0/8',  '192.168.0.0/24']
+
+subnets = [{:name => 'subnet-1',  :ip_address=>'172.16.0.0',  :cidr=>12},  {:name => 'subnet-2',  :ip_address=>'10.0.0.0',  :cidr=>8}]
+
+dns_servers = [{:name => 'dns-1',  :ip_address=>'1.2.3.4'},  {:name => 'dns-2',  :ip_address=>'8.7.6.5'}]
+
+options = {:subnet => subnets, :dns => dns_servers}
+
+vnet.set_network_configuration('virtual-network-name', 'affinity-group-name', address_space, options)
+
+#API to configure virtual network from xml file that can be exported from management portal and customized to add or delete vnet
+
+vnetxml = './customnetwork.xml'
+
+vnet.set_network_configuration(vnetxml)
 ```
 # Need Help?
 Be sure to check out the Windows Azure [Developer Forums on Stack Overflow and MSDN](http://go.microsoft.com/fwlink/?LinkId=234489) if you have trouble with the provided code.
