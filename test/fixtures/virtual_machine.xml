@@ -95,6 +95,7 @@ kZS1mYWNlNSI+DQogICAgPEluc3RhbmNlcyBjb3VudD0iMSIgLz4NCiAgPC9Sb2xlPg0KPC9TZXJ2aWN
   <SdkVersion/>
   <Locked>false</Locked>
   <RollbackAllowed>false</RollbackAllowed>
+  <VirtualNetworkName>test-virtual-network</VirtualNetworkName>
   <CreatedTime>2013-04-29T06:12:01Z</CreatedTime>
   <LastModifiedTime>2013-04-29T10:45:19Z</LastModifiedTime>
   <ExtendedProperties/>

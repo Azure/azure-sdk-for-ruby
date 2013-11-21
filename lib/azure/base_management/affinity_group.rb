@@ -14,8 +14,8 @@
 #--------------------------------------------------------------------------
 module Azure
   module BaseManagement
+    # Represents an AffinityGroup
     class AffinityGroup
-
       def initialize
         yield self if block_given?
       end

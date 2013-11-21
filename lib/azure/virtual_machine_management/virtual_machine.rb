@@ -37,6 +37,8 @@ module Azure
       attr_accessor :image
       attr_accessor :os_type
       attr_accessor :disk_name
+      attr_accessor :virtual_network_name
+      attr_accessor :virtual_network
 
       def cloud_service_name
         @cloud_service_name ||= (random_string(@vm_name+'-service-') if @vm_name)

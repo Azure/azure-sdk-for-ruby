@@ -12,21 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "test_helper"
+require 'test_helper'
 
 describe Azure::VirtualNetworkManagementService do
 
   subject { Azure::VirtualNetworkManagementService.new }
 
-  #Setup mock parameters and return values
+  # Setup mock parameters and return values
   let(:vmname) { 'vnet-test-unit-1' }
   let(:affinity_group) { 'RubyTest' }
   let(:address_space) { ['172.16.0.0/12'] }
-
-  input_options = {
-      :subnet => [{ :name => 'vnet-test-unit-subnet-1', :ip_address => '172.16.0.0', :cidr => 12 }],
-      :dns => [{ :name => 'vnet-test-unit-dns-1', :ipaddress => '1.2.3.4' }]
-  }
 
   let(:non_existent_file) { '/this/file/doesnt/exist.xml' }
   let(:empty_xml_file) { './test/fixtures/empty_xml_file' }
@@ -39,35 +34,45 @@ describe Azure::VirtualNetworkManagementService do
   let(:getmethod) { :get }
   let(:putmethod) { :put }
 
-  let(:mock_list_virtual_networks_request) { mock() }
+  let(:mock_list_virtual_networks_request) { mock }
   let(:list_networks_response) do
-    list_networks_response = mock()
+    list_networks_response = mock
     list_networks_response.stubs(:body).returns(virtual_networks)
     list_networks_response
   end
-  let(:list_networks_response_body) { Nokogiri::XML list_networks_response.body }
+  let(:list_networks_response_body) do
+    Nokogiri::XML list_networks_response.body
+  end
 
-  let(:mock_set_network_request) { mock() }
+  let(:mock_set_network_request) { mock }
   let(:set_network_response) do
-    set_network_response = mock()
+    set_network_response = mock
     set_network_response.stubs(:body).returns(empty_xml_file)
     set_network_response
   end
-  let(:set_network_response_body) { Nokogiri::XML set_network_response.body }
+  let(:set_network_response_body) do
+    Nokogiri::XML set_network_response.body
+  end
 
-  describe "#list_virtual_networks" do
+  describe '#list_virtual_networks' do
     before do
-      ManagementHttpRequest.stubs(:new).with(getmethod, list_networks_path, nil).returns(mock_list_virtual_networks_request)
-      mock_list_virtual_networks_request.expects(:call).returns(list_networks_response_body)
+      ManagementHttpRequest.stubs(:new).with(
+        getmethod,
+        list_networks_path,
+        nil
+      ).returns(mock_list_virtual_networks_request)
+      mock_list_virtual_networks_request.expects(:call).returns(
+        list_networks_response_body
+      )
     end
 
-    it "returns list of virtual networks" do
+    it 'returns list of virtual networks' do
       results = subject.list_virtual_networks
       results.must_be_kind_of Array
       results.length.must_equal 3
     end
 
-    it "sets the properties of the virtual network" do
+    it 'sets the properties of the virtual network' do
       virtual_network = subject.list_virtual_networks.first
 
       # Verify global properties
@@ -96,8 +101,8 @@ describe Azure::VirtualNetworkManagementService do
     end
   end
 
-  describe "#set_network_configuration" do
-    it "throws error if wrong number of arguments (0) passed" do
+  describe '#set_network_configuration' do
+    it 'throws error if wrong number of arguments (0) passed' do
       exception = assert_raises(RuntimeError) do
         subject.set_network_configuration
       end
@@ -105,15 +110,16 @@ describe Azure::VirtualNetworkManagementService do
       assert_match 'Wrong number of arguments', exception.message
     end
 
-    it "checks if the file exists" do
+    it 'checks if the file exists' do
       exception = assert_raises(RuntimeError) do
         subject.set_network_configuration non_existent_file
       end
 
-      assert_match "Could not read from file '#{non_existent_file}'.", exception.message
+      assert_match("Could not read from file '#{non_existent_file}'.",
+                   exception.message)
     end
 
-    it "checks if the file name ends in .xml" do
+    it 'checks if the file name ends in .xml' do
       exception = assert_raises(RuntimeError) do
         subject.set_network_configuration empty_xml_file
       end
