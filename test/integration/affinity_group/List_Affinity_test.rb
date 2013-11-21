@@ -12,22 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
+require 'integration/test_helper'
 
 describe Azure::BaseManagementService do
 
   subject { Azure::BaseManagementService.new }
   let(:affinity_group_name) { AffinityGroupNameHelper.name }
-  
-  before{
+
+  before do
     Loggerx.expects(:puts).returns(nil).at_least(0)
-    subject.create_affinity_group(affinity_group_name, 'West US', 'Label Name')
-  }
+    subject.create_affinity_group(affinity_group_name,
+                                  WindowsImageLocation,
+                                  'Label Name')
+  end
+
   after { AffinityGroupNameHelper.clean }
 
-  describe "#list_affinity_groups" do
-
-    it "list affinity groups" do
+  describe '#list_affinity_groups' do
+    it 'list affinity groups' do
       affinity_groups = subject.list_affinity_groups
       affinity_group = affinity_groups.first
       affinity_groups.wont_be_nil
@@ -35,6 +37,5 @@ describe Azure::BaseManagementService do
       affinity_group.must_be_kind_of Azure::BaseManagement::AffinityGroup
       assert_operator affinity_groups.size, :>=, 1
     end
-    
   end
 end

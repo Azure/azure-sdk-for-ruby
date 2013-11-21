@@ -15,8 +15,8 @@
 
 module Azure
   module VirtualNetworkManagement
+    # Represents a Virtual Network
     class VirtualNetwork
-
       def initialize
         yield self if block_given?
         @address_space = []
@@ -31,7 +31,6 @@ module Azure
       attr_accessor :subnets
       attr_accessor :dns_servers
       attr_accessor :affinity_group
-
     end
   end
 end

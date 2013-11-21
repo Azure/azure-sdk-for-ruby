@@ -65,6 +65,7 @@ module Azure
             }
           }
         end
+        puts builder.doc.to_xml
         builder.doc.to_xml
       end
 
@@ -100,10 +101,11 @@ module Azure
           xml.DnsServer('name' => dns[:name], 'IPAddress' => dns[:ip_address])
         end
         dns_servers.each do |dns|
-          xml.DnsServer('name' => dns[:name], 'IPAddress' => dns[:ip_address]) unless dns_names.include?(dns[:name])
+          xml.DnsServer('name' => dns[:name],
+                        'IPAddress' => dns[:ip_address]) unless\
+                        dns_names.include?(dns[:name])
         end
       end
-
     end
   end
 end

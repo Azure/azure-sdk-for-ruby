@@ -19,18 +19,18 @@ if RUBY_VERSION.to_f < 2.0
   begin
     require 'Win32/Console/ANSI' if RUBY_PLATFORM =~ /win32|mingw32/
   rescue LoadError
-    puts 'WARNING: Output will look weird on Windows unless you install the "win32console" gem.'
+    puts 'WARNING: Output will look weird on Windows unless'\
+         ' you install the "win32console" gem.'
   end
 end
 
 module Azure
   module Error
+    # Azure Error
     class Error <  Azure::Core::Error
-      attr :description
-
-      attr :status_code
-
-      attr :type
+      attr_reader :description
+      attr_reader :status_code
+      attr_reader :type
 
       def initialize(type, status, description)
         @type = type
@@ -43,17 +43,14 @@ module Azure
 
   module Core
     module Utility
-
-      def random_string(str='azure',no_of_char=5)
-        str+(0...no_of_char).map{ ('a'..'z').to_a[rand(26)] }.join
+      def random_string(str = 'azure', no_of_char = 5)
+        str + (0...no_of_char).map { ('a'..'z').to_a[rand(26)] }.join
       end
 
-      def xml_content(xml, key, default='')
+      def xml_content(xml, key, default = '')
         content = default
         node = xml.at_css(key)
-        if node
-          content = node.text
-        end
+        content = node.text if node
         content
       end
 
@@ -67,14 +64,12 @@ module Azure
         end
       end
 
-      def export_der(cert, key, pass=nil, name=nil)
-        begin
-          pkcs12 = OpenSSL::PKCS12.create(pass, name, key, cert)
-          Base64.encode64(pkcs12.to_der)
-        rescue Exception => e
-          puts e.message
-          abort
-        end
+      def export_der(cert, key, pass = nil, name = nil)
+        pkcs12 = OpenSSL::PKCS12.create(pass, name, key, cert)
+        Base64.encode64(pkcs12.to_der)
+      rescue Exception => e
+        puts e.message
+        abort
       end
 
       def export_fingerprint(certificate)
@@ -82,11 +77,11 @@ module Azure
       end
 
       def enable_winrm?(winrm_transport)
-        (!winrm_transport.nil? && (winrm_transport.select{|x| x.downcase == 'http' or x.downcase == 'https'}.size > 0))
+        (!winrm_transport.nil? && (winrm_transport.select { |x| x.downcase == 'http' || x.downcase == 'https' }.size > 0))
       end
-
     end
 
+    # Logger
     module Logger
       class << self
         def info(msg)
@@ -95,7 +90,7 @@ module Azure
 
         def error_with_exit(msg)
           puts  msg.bold.red
-          raise RuntimeError, msg.bold.red
+          raise msg.bold.red
         end
 
         def warn(msg)
@@ -110,57 +105,55 @@ module Azure
 
         def exception_message(msg)
           print msg.bold.red
-          raise RuntimeError, msg.bold.red
+          raise msg.bold.red
         end
 
         def success(msg)
-          msg_with_new_line = msg+"\n"
+          msg_with_new_line = msg + "\n"
           print msg_with_new_line.green
         end
       end
     end
-
   end
 end
 
 class String
-  { :reset          =>  0,
-    :bold           =>  1,
-    :dark           =>  2,
-    :underline      =>  4,
-    :blink          =>  5,
-    :orange         =>  6,
-    :negative       =>  7,
-    :black          => 30,
-    :red            => 31,
-    :green          => 32,
-    :yellow         => 33,
-    :blue           => 34,
-    :magenta        => 35,
-    :cyan           => 36,
-    :white          => 37,
+  { reset:  0,
+    bold:  1,
+    dark:  2,
+    underline:  4,
+    blink:  5,
+    orange:  6,
+    negative:  7,
+    black: 30,
+    red: 31,
+    green: 32,
+    yellow: 33,
+    blue: 34,
+    magenta: 35,
+    cyan: 36,
+    white: 37,
   }.each do |key, value|
     define_method key do
       "\e[#{value}m" + self + "\e[0m"
     end
   end
-
 end
 
+# Code validate private/public IP acceptable ranges.
 class IPAddr
-
-  PrivateRanges = [
-    IPAddr.new("10.0.0.0/8"),
-    IPAddr.new("172.16.0.0/12"),
-    IPAddr.new("192.168.0.0/16")
+  PRIVATE_RANGES = [
+    IPAddr.new('10.0.0.0/8'),
+    IPAddr.new('172.16.0.0/12'),
+    IPAddr.new('192.168.0.0/16')
   ]
 
   def private?
     return false unless self.ipv4?
-    PrivateRanges.each do |ipr|
+    PRIVATE_RANGES.each do |ipr|
       return true if ipr.include?(self)
     end
-    return false
+    false
   end
 
   def public?
@@ -187,12 +180,11 @@ class IPAddr
     end
 
     def address_prefix(ip, cidr)
-      ip+'/'+cidr.to_s
+      ip + '/' + cidr.to_s
     end
 
-    def valid? ip
+    def valid?(ip)
       (IPAddr.new(ip) rescue nil).nil?
     end
   end
 end
-

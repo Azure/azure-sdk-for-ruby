@@ -23,7 +23,7 @@ describe Azure::SqlDatabaseManagementService do
     before {
       Loggerx.expects(:puts).returns(nil).at_least(0)
       Azure.config.management_endpoint = SqlServerEndpoint
-      subject.create_server(login_name, 'User1@123', 'West US')
+      subject.create_server(login_name, 'User1@123', WindowsImageLocation)
       subject.create_server(login_name, 'User2@123', 'East US')
     }
 
