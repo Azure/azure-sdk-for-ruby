@@ -45,7 +45,7 @@ describe Azure::VirtualMachineManagementService do
     }
   }
 
-  let(:in_vnet_name) { 'integration-test-virtual-network' }
+  let(:in_vnet_name) { 'vm-test-virtual-network-3' }
   
   let(:options){
     {
@@ -62,7 +62,7 @@ describe Azure::VirtualMachineManagementService do
     }
   }
 
-  let(:in_affinity_name) { 'test-affinity-group' }
+  let(:in_affinity_name) { 'integration-test-affinity-group' }
   let(:in_address_space) { ['172.16.0.0/12'] }
   inputoptions = {
       :subnet => [{ :name => 'Subnet-1', :ip_address => '172.16.0.0', :cidr => 12 }],
