@@ -134,7 +134,7 @@ describe Azure::VirtualNetworkManagement::Serialization do
       # Verify DnsServers
       dns_servers = result.css 'DnsServers DnsServer'
 
-      dns_servers.size.must_equal 6
+      dns_servers.size.must_equal 4
       dns_servers[0].attr('name').must_equal(input_options[:dns][0][:name])
       dns_servers[0].attr('IPAddress').must_equal(
         input_options[:dns][0][:ip_address]

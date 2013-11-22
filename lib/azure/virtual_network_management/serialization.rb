@@ -162,8 +162,8 @@ module Azure
         dns_names = []
 
         dns_list = {}
-        dns_list.merge!(merge_dns(dns_servers))
         dns_list.merge!(merge_dns(new_dns_servers))
+        dns_list.merge!(merge_dns(dns_servers))
         
         dns_list.each do |name, ip_address|
           xml.DnsServer('name' => name, 'IPAddress' => ip_address)
