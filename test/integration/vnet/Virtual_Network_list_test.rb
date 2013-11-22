@@ -20,7 +20,7 @@ describe Azure::VirtualNetworkManagement::VirtualNetwork do
 
   let(:affinity_group_name) { 'my-affinity-group' }
   let(:location) { 'West US' }
-  let(:vnet_name) { 'vnet-integration-test-2' }
+  let(:vnet_name) { 'vnet-integration-test' }
 
   before do
     Loggerx.expects(:puts).returns(nil).at_least(0)

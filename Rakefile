@@ -93,6 +93,7 @@ namespace :test do
     component_task :vnet
     component_task :vm
     component_task :vm_image
+    component_task :service_bus
   end
 
   task :cleanup => :require_environment do
