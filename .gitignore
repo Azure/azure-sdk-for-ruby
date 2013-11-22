@@ -3,4 +3,10 @@ tags
 /pkg
 /doc
 Gemfile.lock
+nbproject/*
+*.gem
+.idea/*
+.project
+
+
 .DS_Store

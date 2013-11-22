@@ -582,9 +582,9 @@ module Azure
         }
 
         message_properties.each do |k,v|
-          headers[k.to_s] = v
+          headers[k.to_s.encode("UTF-8")] = v.encode("UTF-8")
         end
-        
+
         headers["Content-Type"] = content_type
 
         call(:post, messages_uri(path), message.body, headers)

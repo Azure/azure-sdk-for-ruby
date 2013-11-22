@@ -12,17 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "rubygems"
-require "json"
-require "time"
-require "uri"
+require 'rubygems'
+require 'json'
+require 'time'
+require 'uri'
 
-require "azure/service_bus/brokered_message"
+require 'azure/service_bus/brokered_message'
 
 module Azure
   module ServiceBus
+    # BrokeredMessageSerializer
     class BrokeredMessageSerializer
-
       PROPERTIES = {
         'ContentType'             => 'content_type',
         'CorrelationId'           => 'correlation_id',
@@ -41,7 +41,7 @@ module Azure
         'ReplyToSessionId'        => 'reply_to_session_id'
       }.freeze
 
-      attr :message
+      attr_reader :message
 
       def initialize(msg)
         @message = msg
@@ -50,44 +50,57 @@ module Azure
       def self.get_from_http_response(response)
         props = JSON.parse(response.headers['brokerproperties'])
         BrokeredMessage.new(response.body) do |m|
-          m.location                    = URI(response.headers['location']) unless response.headers['location'].nil?
-          m.content_type                = response.headers['content-type']
+          loc_header = response.headers['location']
+          m.location = URI(loc_header) unless loc_header.nil?
+          m.content_type = response.headers['content-type']
 
           # String based properties
-          m.lock_token                  = props['LockToken']
-          m.message_id                  = props['MessageId']
-          m.label                       = props['Label']
-          m.to                          = props['To']
-          m.session_id                  = props['SessionID']
-          m.correlation_id              = props['CorrelationId']
-          m.reply_to                    = props['ReplyTo']
-          m.reply_to                    = props['ReplyTo']
-          m.reply_to_session_id         = props['ReplyToSessionId']
+          m.lock_token = props['LockToken']
+          m.message_id = props['MessageId']
+          m.label = props['Label']
+          m.to = props['To']
+          m.session_id = props['SessionID']
+          m.correlation_id = props['CorrelationId']
+          m.reply_to = props['ReplyTo']
+          m.reply_to = props['ReplyTo']
+          m.reply_to_session_id = props['ReplyToSessionId']
 
           # Time based properties
-          m.locked_until_utc            = Time.parse(props['LockedUntilUtc']) unless props['LockedUntilUtc'].nil?
-          m.enqueued_time_utc           = Time.parse(props['EnqueuedTimeUtc']) unless props['EnqueuedTimeUtc'].nil?
-          m.scheduled_enqueue_time_utc  = Time.parse(props['ScheduledEnqueueTimeUtc']) unless props['ScheduledEnqueueTimeUtc'].nil?
+          utc_lock = props['LockedUntilUtc']
+          m.locked_until_utc = Time.parse(utc_lock) unless utc_lock.nil?
+
+          enqueued_time_utc = parse_dot_net_serialized_datetime(
+            props['EnqueuedTimeUtc']
+          ) unless props['EnqueuedTimeUtc'].nil?
+          m.enqueued_time_utc = enqueued_time_utc unless enqueued_time_utc.nil?
+
+          m.scheduled_enqueue_time_utc = Time.parse(
+            props['ScheduledEnqueueTimeUtc']
+          ) unless props['ScheduledEnqueueTimeUtc'].nil?
 
           # Numeric based properties
-          m.delivery_count              = props['DeliveryCount'].to_i
-          m.sequence_number             = props['SequenceNumber'].to_i
-          m.time_to_live                = props['TimeToLive'].to_f
+          m.delivery_count = props['DeliveryCount'].to_i
+          m.sequence_number = props['SequenceNumber'].to_i
+          m.time_to_live = props['TimeToLive'].to_f
 
           # Custom Properties
-          header_names_black_list = [
-            'brokerproperties',
-            'date',
-            'transfer-encoding',
-            'location',
-            'server',
-            'connection',
-            'content-type',
-            'content-length'
-          ]
-          props = response.headers.reject {|k,_| header_names_black_list.include?(k.downcase) }
+          header_names_black_list = %w(
+            brokerproperties
+            date
+            transfer-encoding
+            location
+            server
+            connection
+            content-type
+            content-length
+          )
+
+          props = response.headers.reject do |k, _|
+            header_names_black_list.include?(k.downcase)
+          end
+
           props.each do |prop_name, value|
-            parsed = JSON.parse("{ \"" + prop_name + "\" : " + value + "}")
+            parsed = JSON.parse('{ "' + prop_name + '" : ' + value + '}')
             m.properties[prop_name] = parsed[prop_name]
           end
         end
@@ -99,9 +112,9 @@ module Azure
       def to_json
         hash = {}
         PROPERTIES.each do |p, u|
-          attr_name = u
+          attr_name = u.encode('UTF-8')
           value = @message.send(attr_name)
-          hash[p] = value unless value.nil?
+          hash[p] = value.to_s.encode('UTF-8') unless value.nil?
         end
         hash.to_json
       end
@@ -113,14 +126,29 @@ module Azure
       def get_property_headers
         hash = {}
         @message.properties.each do |name, value|
-          if value != nil && value.class == Time
-            value = value.httpdate
-          end
+          value = value.httpdate if !value.nil? && value.class == Time
 
-          tmp = JSON.generate [ value ]
-          hash[name] = tmp[1..(tmp.length-2)]
+          tmp = JSON.generate [value]
+          hash[name] = tmp[1..(tmp.length - 2)]
         end
         hash
+      end
+
+      private
+
+      # Take the .net json serialization of a DateTime (i.e. /Date(...)/)
+      # and return a time object
+      #
+      # Returns a Time instance
+      def self.parse_dot_net_serialized_datetime(datetime)
+        milliseconds_in_second = 1000
+        match = /\/Date\((\d+)\)\//.match(datetime)
+        if !match.nil?
+          ticks = match[1].to_i
+          Time.at(ticks / milliseconds_in_second)
+        else
+          nil
+        end
       end
     end
   end

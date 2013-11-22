@@ -32,6 +32,8 @@ namespace :test do
       ENV.fetch("AZURE_SERVICEBUS_NAMESPACE", nil),
       ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY", nil),
       # ENV.fetch("AZURE_SERVICEBUS_ISSUER",     nil)
+      ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE', nil),
+      ENV.fetch('AZURE_SUBSCRIPTION_ID', nil)
     ].include?(nil)
 
     abort "[ABORTING] Configure your environment to run the integration tests" if unset_environment
@@ -42,7 +44,7 @@ namespace :test do
     t.verbose = true
     t.libs = ["lib", "test"]
   end
-  
+
   namespace :unit do
     def component_task(component)
       Rake::TestTask.new component do |t|
@@ -50,7 +52,7 @@ namespace :test do
         t.verbose = true
         t.libs = ["lib", "test"]
       end
-      
+
       task component => "test:require_environment"
     end
 
@@ -60,6 +62,8 @@ namespace :test do
     component_task :service
     component_task :table
     component_task :service_bus
+    component_task :affinity_group
+    component_task :vnet
   end
 
   Rake::TestTask.new :integration do |t|
@@ -85,6 +89,11 @@ namespace :test do
     component_task :blob
     component_task :queue
     component_task :table
+    component_task :affinity_group
+    component_task :vnet
+    component_task :vm
+    component_task :vm_image
+    component_task :service_bus
   end
 
   task :cleanup => :require_environment do
@@ -101,6 +110,9 @@ namespace :test do
       config.acs_namespace  = ENV.fetch("AZURE_SERVICEBUS_NAMESPACE")
       config.sb_access_key  = ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY")
       # config.sb_issuer      = ENV.fetch("AZURE_SERVICEBUS_ISSUER")
+      config.management_certificate  = ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE')
+      config.management_endpoint  = ENV.fetch("AZURE_MANAGEMENT_ENDPOINT")
+      config.subscription_id  = ENV.fetch("AZURE_SUBSCRIPTION_ID")
     end
   end
 end

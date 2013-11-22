@@ -18,11 +18,27 @@ require "azure"
 Azure::Core.configure do |config|
   config.storage_access_key     = ENV.fetch("AZURE_STORAGE_ACCESS_KEY")
   config.storage_account_name   = ENV.fetch("AZURE_STORAGE_ACCOUNT")
-  # config.storage_table_host     = ENV.fetch("AZURE_STORAGE_TABLE_HOST")
+  config.storage_table_host     = ENV.fetch("AZURE_STORAGE_TABLE_HOST")
   # config.storage_blob_host      = ENV.fetch("AZURE_STORAGE_BLOB_HOST")
   # config.storage_queue_host     = ENV.fetch("AZURE_STORAGE_QUEUE_HOST")
 
   config.sb_namespace  = ENV.fetch("AZURE_SERVICEBUS_NAMESPACE")
   config.sb_access_key  = ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY")
   # config.sb_issuer      = ENV.fetch("AZURE_SERVICEBUS_ISSUER")
+  config.management_certificate  = ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE')
+  # config.management_endpoint  = ENV.fetch("AZURE_MANAGEMENT_ENDPOINT")
+  config.subscription_id  = ENV.fetch("AZURE_SUBSCRIPTION_ID")
 end
+
+StorageAccountName = random_string('storagetest',10)
+SqlServerEndpoint = "https://management.database.windows.net:8443/"
+ManagementServiceEndpoint = Azure.config.management_endpoint
+Images = Azure::VirtualMachineImageManagementService.new.list_virtual_machine_images
+LinuxImage = Images.select{|image| image.os_type == 'Linux'}.first
+WindowsImage = Images.select{|image| image.os_type == 'Windows'}.first
+WindowsImageLocation = WindowsImage.locations.split(';').first
+LinuxImageLocation = LinuxImage.locations.split(';').first
+
+MiniTest::Unit.after_tests {
+  VirtualMachineNameGenerator.cleanup
+}

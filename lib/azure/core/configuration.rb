@@ -147,6 +147,38 @@ module Azure
       def default_host(service)
         "http://#{storage_account_name}.#{service}.core.windows.net"
       end
+
+      #===================================================================
+      #*******************Management API configuration********************
+      #===================================================================
+
+      # Public: Get the Subscription Id and certificate key for the management API.
+      attr_accessor :management_certificate
+
+      # Public: Get/Set the Subscription Id  for the management API.
+      attr_accessor :subscription_id
+
+      # Public: Set the host  for the management API.
+      attr_writer :management_endpoint
+
+      #Public: Set the  private key for SSL/HTTPS request with PEM certificate
+      attr_accessor :http_private_key
+
+      #Public: Set the  certificate key for SSL/HTTPS request with PEM certificate
+      attr_accessor :http_certificate_key
+
+      def management_endpoint
+        if @management_endpoint.nil? or @management_endpoint.empty?
+          "https://management.core.windows.net/"
+        elsif !@management_endpoint.end_with?('/')
+          @management_endpoint += '/'
+        elsif URI(@management_endpoint).scheme.nil?
+          "https://#{@management_endpoint}"
+        else
+          @management_endpoint
+        end
+      end
+
     end
   end
 end

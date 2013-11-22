@@ -1,0 +1,33 @@
+---
+language: ruby
+
+rvm:
+- 1.9.3
+- 2.0.0
+
+script:
+- rake test:unit
+- if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ] ; then rake test:integration ; fi
+
+env:
+  global:
+  - secure: ! 'EMSKuCl/BixCkv7eLIVYj3UbCg0AVUj4h87k11XFwNgRfj1f884lzgNAbIKX
+
+      IknDibQFz7OwMApMK12SmbmzXGKV1WlGevDL1Jbv1pYxfvjjRJYy1yaXJTBu
+
+      Y0tyvX2psZLFsMT1k1/NehzDuRYnzFGhDKdVgUCh+YTNa8KY3Kg='
+  - secure: ! 'UzKA8lMUIUuNqHplayxTM9qFD5e70B5AdRXa1iSHRgOrzBoRuWHr2OrI9cUC
+
+      XQ8tncOhU8mMXLL3xKzyOxTE+TX2rEE6c5tHMM0099+yCQBjwRgcZCIMlcDy
+
+      T+hCPOPZngFWM8z38S3wH39bOM3ddGO05I8jCN1HqXRcR92BS0I='
+  - secure: ! 'nWqLZqxm8u7bxU1gsnzEH9NT8NNnTwFNyDTAZRcHTUcuiR5jVI3+YH1+cFQ3
+
+      e/J1JBwqPO0T/IaR59ujGWpfd2UFSUvSa95cKlDg1BgDzQQ3yYS3gNssqoQW
+
+      Zbfabil9akFl2CZWliR1maQKkjDaEeUI6MLeBrj9i8giB2gxLg0='
+  - secure: ! 'BL/xe3bbmKhcK9gXI6dOhM7XPh/5YhiaEanEWGvgUQfcHMrmqiDHnjbeF+8M
+
+      +SwmmseAD7EzT/Q3gjJh3PcB35IIUsX/RyFuNNghuuiHg9G+uiRG9YQi9AFT
+
+      gIBIuWS3/vDYs05G1fib1rfFBRq66kJo6lIO8XFdSs+9jcLvPiI='
