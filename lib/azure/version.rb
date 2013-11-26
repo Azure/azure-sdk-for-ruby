@@ -16,7 +16,7 @@
 module Azure
   class Version
     MAJOR = 0 unless defined? MAJOR
-    MINOR = 5 unless defined? MINOR
+    MINOR = 6 unless defined? MINOR
     UPDATE = 0 unless defined? UPDATE
     PRE = nil unless defined? PRE
 

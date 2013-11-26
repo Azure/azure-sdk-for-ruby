@@ -69,7 +69,7 @@ module Azure
           utc_lock = props['LockedUntilUtc']
           m.locked_until_utc = Time.parse(utc_lock) unless utc_lock.nil?
 
-          enqueued_time_utc = parse_dot_net_serialized_datetime(
+          enqueued_time_utc = Time.parse(
             props['EnqueuedTimeUtc']
           ) unless props['EnqueuedTimeUtc'].nil?
           m.enqueued_time_utc = enqueued_time_utc unless enqueued_time_utc.nil?
@@ -132,23 +132,6 @@ module Azure
           hash[name] = tmp[1..(tmp.length - 2)]
         end
         hash
-      end
-
-      private
-
-      # Take the .net json serialization of a DateTime (i.e. /Date(...)/)
-      # and return a time object
-      #
-      # Returns a Time instance
-      def self.parse_dot_net_serialized_datetime(datetime)
-        milliseconds_in_second = 1000
-        match = /\/Date\((\d+)\)\//.match(datetime)
-        if !match.nil?
-          ticks = match[1].to_i
-          Time.at(ticks / milliseconds_in_second)
-        else
-          nil
-        end
       end
     end
   end
