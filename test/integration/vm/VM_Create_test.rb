@@ -147,7 +147,7 @@ describe Azure::VirtualMachineManagementService do
       assert_equal(result.os_type, 'Linux',"Error in the OS type of VI created")
     end
 
-    it "ssh should be accesible using certificate on different port and virutal machine size should be Medium" do
+    it "ssh should be accessible using certificate on different port and virtual machine size should be Medium" do
       params.delete(:password)
       default_options.merge!(:ssh_port => '2222', :vm_size => 'Medium', :private_key_file => private_key, :certificate_file => certificate)
       subject.create_virtual_machine(params, default_options)

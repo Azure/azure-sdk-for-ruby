@@ -18,7 +18,7 @@ require "azure"
 Azure::Core.configure do |config|
   config.storage_access_key     = ENV.fetch("AZURE_STORAGE_ACCESS_KEY")
   config.storage_account_name   = ENV.fetch("AZURE_STORAGE_ACCOUNT")
-  config.storage_table_host     = ENV.fetch("AZURE_STORAGE_TABLE_HOST")
+  # config.storage_table_host     = ENV.fetch("AZURE_STORAGE_TABLE_HOST")
   # config.storage_blob_host      = ENV.fetch("AZURE_STORAGE_BLOB_HOST")
   # config.storage_queue_host     = ENV.fetch("AZURE_STORAGE_QUEUE_HOST")
 
