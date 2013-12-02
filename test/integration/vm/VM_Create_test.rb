@@ -45,9 +45,13 @@ describe Azure::VirtualMachineManagementService do
     }
   }
 
+  let(:in_vnet_name) { 'integration-test-virtual-network' }
+  
   let(:options){
     {
-      :storage_account_name => storage_account_name
+      :storage_account_name => storage_account_name,
+      :virtual_network_name => in_vnet_name,
+      :subnet_name => 'Subnet-1'
     }
   }
 
@@ -58,13 +62,26 @@ describe Azure::VirtualMachineManagementService do
     }
   }
 
+  let(:in_affinity_name) { 'test-affinity-group' }
+  let(:in_address_space) { ['172.16.0.0/12'] }
+  inputoptions = {
+      :subnet => [{ :name => 'Subnet-1', :ip_address => '172.16.0.0', :cidr => 12 }],
+      :dns => [{ :name => 'DNS', :ip_address => '1.2.3.4' }]
+  }
+  
   before{
     Loggerx.expects(:puts).returns(nil).at_least(0)
+    
+    affinity_group_service = Azure::BaseManagementService.new
+    affinity_group_service.create_affinity_group(in_affinity_name, WindowsImageLocation, 'Label') rescue nil
+    
+    virtual_network_service = Azure::VirtualNetworkManagementService.new
+    virtual_network_service.set_network_configuration(in_vnet_name, in_affinity_name, in_address_space, inputoptions)
   }
 
   describe "#deployment" do
 
-    it "should set options hash with valid cloud_service_name, deployment_name, storage_account_name." do
+    it "should set options hash with valid cloud_service_name, deployment_name, storage_account_name and virtual network" do
       subject.create_virtual_machine(params, options)
       cloud_name = options[:cloud_service_name]
       virtual_machine = subject.get_virtual_machine(virtual_machine_name, cloud_name)
@@ -76,10 +93,12 @@ describe Azure::VirtualMachineManagementService do
       virtual_machine.os_type.must_equal 'Linux'
       options[:storage_account_name].wont_be_nil
       assert_match(/^#{params[:vm_name]+'-service'}*/, cloud_name)
+      virtual_machine.virtual_network_name.must_equal in_vnet_name
+      virtual_machine.virtual_network.must_be_kind_of Azure::VirtualNetworkManagement::VirtualNetwork 
     end
 
-    it "should creates http and https enabled winrm virtual machine." do
-      default_options.merge!(:winrm_transport => ['https','http'], :private_key_file => private_key, :certificate_file => certificate)
+    it "should creates http and https enabled winrm virtual machine without certificate." do
+      default_options.merge!(:winrm_transport => ['https','http'])
       subject.create_virtual_machine(windows_params, default_options)
       result = subject.get_virtual_machine(virtual_machine_name, cloud_service_name)
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
@@ -93,7 +112,7 @@ describe Azure::VirtualMachineManagementService do
       sleep 30
     end
 
-    it "should creates only https enabled winrm virtual machine." do
+    it "should creates https enabled winrm virtual machine using certificate." do
       default_options.merge!(:winrm_transport => ['https'], :private_key_file => private_key, :certificate_file => certificate)
       subject.create_virtual_machine(windows_params, default_options)
       result = subject.get_virtual_machine(virtual_machine_name, cloud_service_name)
@@ -120,7 +139,7 @@ describe Azure::VirtualMachineManagementService do
       assert (not tcp_endpoints_names.include? "WinRm-Http")
     end
 
-    it "created vm should be accessible using password and certificate" do
+    it "created linux virtual machine should be accessible using password and certificate" do
       default_options.merge!(:private_key_file => private_key, :certificate_file => certificate)
       subject.create_virtual_machine(params, default_options)
       result = subject.get_virtual_machine(virtual_machine_name, cloud_service_name)
@@ -128,7 +147,7 @@ describe Azure::VirtualMachineManagementService do
       assert_equal(result.os_type, 'Linux',"Error in the OS type of VI created")
     end
 
-    it "ssh should be accesible using certificate on different port and virutal machine size should be Medium" do
+    it "ssh should be accessible using certificate on different port and virtual machine size should be Medium" do
       params.delete(:password)
       default_options.merge!(:ssh_port => '2222', :vm_size => 'Medium', :private_key_file => private_key, :certificate_file => certificate)
       subject.create_virtual_machine(params, default_options)

@@ -12,23 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
+require 'integration/test_helper'
 
 describe Azure::BaseManagementService do
 
   subject { Azure::BaseManagementService.new }
   let(:affinity_group_name) { AffinityGroupNameHelper.name }
 
-  describe "#affinity_group" do
+  describe '#affinity_group' do
     let(:label_name)  { 'Label' }
-    let(:options) { {:description => 'Some Description'} }
+    let(:options) { { description: 'Some Description' } }
 
-    before{
-      Loggerx.expects(:puts).returns(nil).at_least(0)      
-    }
+    before do
+      Loggerx.expects(:puts).returns(nil).at_least(0)
+    end
 
-    it "get affinity group properties for an existing group" do
-      subject.create_affinity_group(affinity_group_name, 'West US', label_name, options)
+    it 'get affinity group properties for an existing group' do
+      subject.create_affinity_group(affinity_group_name,
+                                    WindowsImageLocation,
+                                    label_name,
+                                    options)
       affinity = subject.get_affinity_group(affinity_group_name)
       affinity.must_be_kind_of Azure::BaseManagement::AffinityGroup
       affinity.name.must_equal affinity_group_name
@@ -38,16 +41,15 @@ describe Azure::BaseManagementService do
       affinity.capability.wont_equal []
       AffinityGroupNameHelper.clean
     end
-     
-	  it "get affinity group properties for an non existing affinity group name" do
-	    affinity_group_name = 'unknown'
+
+    it 'gets properties for an non existing affinity group name' do
+      affinity_group_name = 'unknown'
       begin
-        affinity = subject.get_affinity_group(affinity_group_name)
+        subject.get_affinity_group(affinity_group_name)
       rescue Azure::Error::Error => error
         error.status_code.must_equal 404
-        error.type.must_equal "AffinityGroupNotFound"
+        error.type.must_equal 'AffinityGroupNotFound'
       end
     end
-	
-  end	
+  end
 end

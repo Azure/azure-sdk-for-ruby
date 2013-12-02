@@ -55,5 +55,11 @@ describe Azure::StorageManagement::Serialization do
       results.must_be_kind_of String
     end
 
+    it "uses affinity_group from the hash instead of location" do
+      results = subject.storage_services_to_xml(storage_service_name, {:affinity_group_name => 'my-affinity-group', :location => 'East US'})
+      doc = Nokogiri::XML results
+      doc.css('AffinityGroup').text.must_equal 'my-affinity-group'
+      results.must_be_kind_of String
+    end
   end
 end

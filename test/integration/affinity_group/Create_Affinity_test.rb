@@ -12,24 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
+require 'integration/test_helper'
 
 describe Azure::BaseManagementService do
 
   subject { Azure::BaseManagementService.new }
-  let(:affinity_group_name) { random_string('affinity-group-',10) }
-  let(:location) { 'West US' }
-  
-  before {
-    Loggerx.expects(:puts).returns(nil).at_least(0)
-  }
-  let(:label){ 'Label Name' }
-  let(:options) { {:description => 'sample description'} }
-    
-  describe "#create_affinity_group" do
+  let(:affinity_group_name) { random_string('affinity-group-', 10) }
+  let(:location) { WindowsImageLocation }
 
-    it "create new affinity group with valid params" do
-      subject.create_affinity_group(affinity_group_name, location, label, options)
+  before do
+    Loggerx.expects(:puts).returns(nil).at_least(0)
+  end
+
+  let(:label) { 'Label Name' }
+  let(:options) { { description: 'sample description' } }
+
+  describe '#create_affinity_group' do
+
+    it 'create new affinity group with valid params' do
+      subject.create_affinity_group(affinity_group_name,
+                                    location,
+                                    label,
+                                    options)
       affinity_group = subject.get_affinity_group(affinity_group_name)
       affinity_group.must_be_kind_of Azure::BaseManagement::AffinityGroup
       affinity_group.name.wont_be_nil
@@ -39,14 +43,14 @@ describe Azure::BaseManagementService do
       affinity_group.description.must_equal options[:description]
     end
 
-    it "errors if the affinity group location is not valid" do
+    it 'errors if the affinity group location is not valid' do
       exception = assert_raises(RuntimeError) do
         subject.create_affinity_group(affinity_group_name, 'North West', label)
       end
       assert_match(/Allowed values are East Asia/i, exception.message)
     end
-  
-    it "create new affinity group without optional params" do
+
+    it 'create new affinity group without optional params' do
       subject.create_affinity_group(affinity_group_name, location, label)
       affinity_group = subject.get_affinity_group(affinity_group_name)
       affinity_group.must_be_kind_of Azure::BaseManagement::AffinityGroup

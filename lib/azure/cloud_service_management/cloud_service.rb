@@ -24,6 +24,7 @@ module Azure
       attr_accessor :name
       attr_accessor :description
       attr_accessor :location
+      attr_accessor :affinity_group
 
     end
   end

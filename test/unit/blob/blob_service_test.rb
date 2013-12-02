@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "test_helper"
+require 'test_helper'
 require 'azure/blob/blob_service'
 require 'azure/blob/serialization'
 require 'azure/blob/container'

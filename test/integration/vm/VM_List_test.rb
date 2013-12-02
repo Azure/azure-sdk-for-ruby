@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ describe Azure::VirtualMachineManagementService do
       virtualmachines.must_be_kind_of Array
       virtualmachine.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
       virtualmachine.hostname.must_equal virtual_machine_name unless virtualmachine.hostname.empty?
-      ["RoleStateUnknown","ReadyRole","Provisioning"].must_include virtualmachine.status
+      %w[RoleStateUnknown ReadyRole Provisioning BusyRole].must_include virtualmachine.status
 
       assert_equal(virtualmachine.vm_name, virtual_machine_name, "difference in VM name")
       assert_equal(virtualmachine.role_size, 'Small', "difference in VM rolesize")

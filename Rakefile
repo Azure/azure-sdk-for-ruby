@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,9 +26,9 @@ namespace :test do
     unset_environment = [
       ENV.fetch("AZURE_STORAGE_ACCOUNT",  nil),
       ENV.fetch("AZURE_STORAGE_ACCESS_KEY",    nil),
-      # ENV.fetch("AZURE_TABLE_HOST",    nil),
-      # ENV.fetch("AZURE_BLOB_HOST",     nil),
-      # ENV.fetch("AZURE_QUEUE_HOST",    nil),
+      # ENV.fetch("AZURE_STORAGE_TABLE_HOST",    nil),
+      # ENV.fetch("AZURE_STORAGE_BLOB_HOST",     nil),
+      # ENV.fetch("AZURE_STORAGE_QUEUE_HOST",    nil),
       ENV.fetch("AZURE_SERVICEBUS_NAMESPACE", nil),
       ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY", nil),
       # ENV.fetch("AZURE_SERVICEBUS_ISSUER",     nil)
@@ -56,13 +56,18 @@ namespace :test do
       task component => "test:require_environment"
     end
 
-    component_task :core
-    component_task :blob
-    component_task :queue
-    component_task :service
-    component_task :table
-    component_task :service_bus
     component_task :affinity_group
+    component_task :base_management
+    component_task :blob
+    component_task :cloud_service_management
+    component_task :core
+    component_task :database
+    component_task :service
+    component_task :storage_management
+    component_task :table
+    component_task :virtual_machine_image_management
+    component_task :virtual_machine_management
+    component_task :vnet
   end
 
   Rake::TestTask.new :integration do |t|
@@ -84,11 +89,16 @@ namespace :test do
       task component => "test:require_environment"
     end
 
-    component_task :service_bus
     component_task :blob
     component_task :queue
     component_task :table
+    component_task :service_bus
+    component_task :database
     component_task :affinity_group
+    component_task :location
+    component_task :vnet
+    component_task :vm
+    component_task :vm_image
   end
 
   task :cleanup => :require_environment do
@@ -98,9 +108,9 @@ namespace :test do
     Azure.configure do |config|
       config.access_key     = ENV.fetch("AZURE_STORAGE_ACCESS_KEY")
       config.account_name   = ENV.fetch("AZURE_STORAGE_ACCOUNT")
-      # config.table_host     = ENV.fetch("AZURE_TABLE_HOST")
-      # config.blob_host      = ENV.fetch("AZURE_BLOB_HOST")
-      # config.queue_host     = ENV.fetch("AZURE_QUEUE_HOST")
+      # config.table_host     = ENV.fetch("AZURE_STORAGE_TABLE_HOST")
+      # config.blob_host      = ENV.fetch("AZURE_STORAGE_BLOB_HOST")
+      # config.queue_host     = ENV.fetch("AZURE_STORAGE_QUEUE_HOST")
 
       config.acs_namespace  = ENV.fetch("AZURE_SERVICEBUS_NAMESPACE")
       config.sb_access_key  = ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY")

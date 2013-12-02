@@ -107,7 +107,7 @@ describe Azure::VirtualMachineManagement::Serialization do
       end
       result.must_be_kind_of String
       tcp_endpoints.must_include({"Name"=>"TCP-PORT-80", "PublicPort"=>"80", "LocalPort"=>"80"})
-      tcp_endpoints.must_include({"Name"=>"TCP-PORT-3389", "PublicPort"=>"3390", "LocalPort"=>"3389"})
+      tcp_endpoints.must_include({"Name"=>"TCP-PORT-3390", "PublicPort"=>"3390", "LocalPort"=>"3389"})
       tcp_endpoints.must_include({"Name"=>"TCP-PORT-85", "PublicPort"=>"85", "LocalPort"=>"85"})
     end
 

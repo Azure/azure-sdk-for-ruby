@@ -37,6 +37,19 @@ module Azure
           response = request.call
           roles << Serialization.virtual_machines_from_xml(response,cloud_service.name)
         end
+        
+        vnet_service = Azure::VirtualNetworkManagementService.new
+        virtual_networks = vnet_service.list_virtual_networks
+        
+        roles.each do |role|
+          next if role.nil?
+          vnet = virtual_networks.select do |network|
+            network.name == role.virtual_network_name
+          end
+
+          role.virtual_network = vnet.first unless vnet.nil? || vnet.empty?
+        end
+
         roles.compact
       end
 
@@ -75,7 +88,8 @@ module Azure
       # * +:storage_account_name+     - String. Name of storage account.
       # * +:cloud_service_name+       - String. Name of cloud service.
       # * +:deployment_name+          - String. A name for the deployment.
-      # * +:tcp_endpoints+            - String. Specifies the external port and internal port separated by a colon.
+      # * +:tcp_endpoints+            - String. Specifies the internal port and external/public port separated by a colon.
+      #   You can map multiple internal and external ports by separating them with a comma.
       # * +:ssh_private_key_file+     - String. Path of private key file.
       # * +:ssh_certificate_file+     - String. Path of certificate file.
       # * +:ssh_port+                 - Integer. Specifies the SSH port number.
@@ -88,10 +102,24 @@ module Azure
         validate_deployment_params(params, options)
         options[:cloud_service_name] = generate_cloud_service_name(params[:vm_name]) unless options[:cloud_service_name]
         options[:storage_account_name] = generate_storage_account_name(params[:vm_name]) unless options[:storage_account_name] 
+        optionals = {}
+        if options[:virtual_network_name]
+          virtual_network_service = Azure::VirtualNetworkManagementService.new
+          virtual_networks = virtual_network_service.list_virtual_networks.select{|x| x.name == options[:virtual_network_name]}
+          if virtual_networks.empty?
+            Loggerx.error_with_exit "Virtual network #{options[:virtual_network_name]} doesn't exists"
+          else
+            optionals[:affinity_group_name] = virtual_networks.first.affinity_group
+          end
+        elsif options[:affinity_group_name]
+          optionals[:affinity_group_name] = options[:affinity_group_name]
+        else
+          optionals[:location] = params[:location]
+        end       
         cloud_service = Azure::CloudServiceManagementService.new
-        cloud_service.create_cloud_service(options[:cloud_service_name], :location => params[:location])
+        cloud_service.create_cloud_service(options[:cloud_service_name], optionals)
         cloud_service.upload_certificate(options[:cloud_service_name],params[:certificate]) unless params[:certificate].empty?
-        Azure::StorageManagementService.new.create_storage_account(options[:storage_account_name], :location=> params[:location])
+        Azure::StorageManagementService.new.create_storage_account(options[:storage_account_name], optionals)
 
         body = Serialization.deployment_to_xml(params,options)
         path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments"
@@ -250,7 +278,7 @@ module Azure
 
       def winrm_with_https(options)
         if options[:os_type] == 'Windows'
-          !options[:winrm_transport].nil? && options[:winrm_transport].include?('https')
+          options[:winrm_transport] && options[:winrm_transport].include?('https') && options[:certificate_file] && options[:private_key_file]
         end
       end
 
