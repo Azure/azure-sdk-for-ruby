@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -201,7 +201,7 @@ module Azure
       end
 
       def self.block_list_to_xml(block_list)
-        builder = Nokogiri::XML::Builder.new do |xml|
+        builder = Nokogiri::XML::Builder.new(:encoding => "UTF-8") do |xml|
           xml.BlockList {
             block_list.each { |block|
               encoded_id = Base64.strict_encode64(block[0])

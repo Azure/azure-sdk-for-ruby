@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,6 +42,9 @@ require 'azure'
 
 Azure.config.storage_account_name     = "accountname"
 Azure.config.storage_access_key       = "YWNjZXNzLWtleQ=="
+Azure.config.management_certificate   = File.expand_path("test/fixtures/management_certificate.pem")
+Azure.config.management_endpoint      = "https://management.core.windows.net"
+Azure.config.subscription_id          = "subscription-id"
 # Azure.config.storage_table_host     = 
 # Azure.config.storage_blob_host      = 
 # Azure.config.storage_queue_host     = 

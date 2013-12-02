@@ -1,4 +1,14 @@
-2012.04.25 - version 0.5.0
+2013.12.02 - version 0.6.0
+* Add the following service management API
+  * Virtual Machine
+  * Virtual Machine Image
+  * Virtual Network
+  * Cloud Service
+  * Storage
+  * Sql Database
+  * Location and Affinity Group
+
+2013.04.25 - version 0.5.0
 * First release
 * Ruby 1.9.3 and 2.0 support
 * Storage support: Blob, Table and Queue

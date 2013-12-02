@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -582,9 +582,9 @@ module Azure
         }
 
         message_properties.each do |k,v|
-          headers[k.to_s] = v
+          headers[k.to_s.encode("UTF-8")] = v.encode("UTF-8")
         end
-        
+
         headers["Content-Type"] = content_type
 
         call(:post, messages_uri(path), message.body, headers)

@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -35,6 +35,13 @@ module Azure
         # Returns a String.
         def body
           @http_response.body
+        end
+
+        # Public: Get the response status message.
+        #
+        # Returns a String.
+        def message
+          @http_response.message
         end
 
         # Public: Get the response status code.

@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,19 +32,23 @@ describe Azure::Blob::BlobService do
   }
 
   it 'creates the container with explicit name and some blobs' do
-    container = subject.create_container container_name
-    container.name.must_equal container_name
+    begin
+      container = subject.create_container container_name
+      container.name.must_equal container_name
 
-    # explicit root container name
-    blob = subject.create_page_blob container_name, blob_name1, length
-    blob.name.must_equal blob_name1
+      # explicit root container name
+      blob = subject.create_page_blob container_name, blob_name1, length
+      blob.name.must_equal blob_name1
 
-    # nil container name
-    blob = subject.create_page_blob nil, blob_name2, length
-    blob.name.must_equal blob_name2
+      # nil container name
+      blob = subject.create_page_blob nil, blob_name2, length
+      blob.name.must_equal blob_name2
 
-    # empty string container name
-    blob = subject.create_page_blob "", blob_name3, length
-    blob.name.must_equal blob_name3
+      # empty string container name
+      blob = subject.create_page_blob "", blob_name3, length
+      blob.name.must_equal blob_name3
+    rescue Azure::Core::Http::HTTPError => error
+      error.status_code.must_equal 409
+    end
   end
 end

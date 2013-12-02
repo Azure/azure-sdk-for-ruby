@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -61,7 +61,7 @@ module Azure
         #
         # Returns nothing
         def parse_response
-          if @http_response.body.include?("<")
+          if @http_response.body && @http_response.body.include?("<")
 
             document = Nokogiri.Slop(@http_response.body)
 
@@ -75,7 +75,11 @@ module Azure
             @detail = document.css("Detail").first.text if document.css("Detail").any?
           else
             @type = "Unknown"
-            @description = @http_response.body.strip
+            if @http_response.body
+              @description = @http_response.body.strip
+            else
+              @description = @http_response.message.strip
+            end
           end
         end
       end

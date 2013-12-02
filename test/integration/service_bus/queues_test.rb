@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -173,7 +173,7 @@ describe "ServiceBus Queues" do
     end
 
     describe "when the queue has messages" do
-      let(:messageContent) { 'messagecontent' }  
+      let(:messageContent) { 'messagecontent' }
       let(:to) { 'yo' }
       let(:label) { 'my_label' }
       let(:properties) {{

@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -48,8 +48,9 @@ module Azure
         end_of_body = changeset_boundary_or_end(context.dup.merge!({:index=>context[:index] + 1})) if context[:index] < (context[:lines].length - 1)
 
         if end_of_body
-          context[:responses].last[:body] << current_line(context) if context[:responses].last[:body]
-          return context[:responses].last[:body] || ""
+          context[:responses].last[:body] ||= ""
+          context[:responses].last[:body] << current_line(context)
+          return context[:responses].last[:body]
         else 
           context[:responses].last[:body] ||= ""
           context[:responses].last[:body] << current_line(context)

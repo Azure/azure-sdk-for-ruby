@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,4 +29,8 @@ Azure.configure do |config|
   config.sb_namespace  = ENV["AZURE_SERVICEBUS_NAMESPACE"]
   config.sb_access_key  = ENV["AZURE_SERVICEBUS_ACCESS_KEY"]
   config.sb_issuer      = ENV["AZURE_SERVICEBUS_ISSUER"]
+
+  config.management_certificate  = ENV["AZURE_MANAGEMENT_CERTIFICATE"]
+  config.subscription_id         = ENV["AZURE_SUBSCRIPTION_ID"]
+  config.management_endpoint     = ENV["AZURE_MANAGEMENT_ENDPOINT"]
 end

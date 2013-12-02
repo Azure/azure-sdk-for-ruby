@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -511,16 +511,19 @@ module Azure
 
         path = if partition_key && row_key
           "%s(PartitionKey='%s',RowKey='%s')" % [
-            table_name, encodeODataUriValue(partition_key), encodeODataUriValue(row_key)
+            table_name.encode("UTF-8"), encodeODataUriValue(partition_key.encode("UTF-8")), encodeODataUriValue(row_key.encode("UTF-8"))
           ]
         else
-          "%s()" % table_name
+          "%s()" % table_name.encode("UTF-8")
         end
 
         uri = generate_uri(path)
         qs = []
         if query
           query.each do | key, val |
+            key = key.encode("UTF-8")
+            val = val.encode("UTF-8")
+
             if key[0] == "$"
               qs.push "#{key}#{::URI.encode_www_form(""=>val)}"
             else

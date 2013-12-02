@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -776,7 +776,7 @@ module Azure
 
         uri = blob_uri(container, blob, query)
 
-        response = call(:get, uri)
+        response = call(:head, uri)
 
         result = Serialization.blob_from_headers(response.headers)
 
@@ -1401,20 +1401,20 @@ module Azure
       # Returns a URI.
       protected
       def blob_uri(container_name, blob_name, query={})
-        blob_name = CGI.escape(blob_name)
-
-        # Unencode the forward slashes to match what the server expects.
-        blob_name = blob_name.gsub(/%2F/, '/')
-        # Unencode the backward slashes to match what the server expects.
-        blob_name = blob_name.gsub(/%5C/, '/')
-        # Re-encode the spaces (encoded as space) to the % encoding.
-        blob_name = blob_name.gsub(/\+/, '%20')
-
         if container_name.nil? || container_name.empty?
           path = blob_name
         else
           path = File.join(container_name, blob_name)
         end
+
+        path = CGI.escape(path.encode('UTF-8'))
+
+        # Unencode the forward slashes to match what the server expects.
+        path = path.gsub(/%2F/, '/')
+        # Unencode the backward slashes to match what the server expects.
+        path = path.gsub(/%5C/, '/')
+        # Re-encode the spaces (encoded as space) to the % encoding.
+        path = path.gsub(/\+/, '%20')
 
         generate_uri(path, query)
       end

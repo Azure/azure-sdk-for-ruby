@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "/azure/core/http/http_filter"
+require "azure/core/http/http_filter"
 
 module Azure
   module Core
@@ -39,8 +39,14 @@ module Azure
           response = nil
           begin
             response = _next.call
+          rescue
+            retry_data[:error] = $!
           end while should_retry?(response, retry_data)
-          response
+          if retry_data.has_key?(:error)
+            raise retry_data[:error]
+          else
+            response
+          end
         end
 
         # Determines if the HTTP request should continue retrying
@@ -59,7 +65,7 @@ module Azure
         # constructor the method returns false.
         #
         # Alternatively, a subclass could override this method.
-        def should_try?(response, retry_data)
+        def should_retry?(response, retry_data)
           @block ? @block.call(response, retry_data) : false
         end
       end

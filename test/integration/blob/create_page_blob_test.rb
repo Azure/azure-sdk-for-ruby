@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright (c) Microsoft. All rights reserved.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ describe Azure::Blob::BlobService do
   describe '#create_page_blob' do
     let(:container_name) { ContainerNameHelper.name }
     let(:blob_name) { "blobname" }
-    let(:complex_blob_name) { 'qa-872053-/*"\'&.({[<+ ' + 0x7D.chr +  0xEB.chr + 0x8B.chr + 0xA4.chr + '_' + "0" }
+    let(:complex_blob_name) { 'qa-872053-/*"\'&.({[<+ ' + [ 0x7D, 0xEB, 0x8B, 0xA4].pack('U*') + '_' + "0" }
     let(:length) { 1024 }
     before { 
       subject.create_container container_name
