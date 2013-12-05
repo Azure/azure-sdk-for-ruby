@@ -734,16 +734,16 @@ describe Azure::Blob::BlobService do
             subject.create_blob_pages container_name, blob_name, start_range, end_range, content, { :if_sequence_number_lt => "isnlt-value" }
           end
 
-          it "modifies the request headers when provided a :if_sequence_number_lte value" do
-            request_headers["x-ms-if-sequence-number-lte"] = "isnlte-value"
-            subject.create_blob_pages container_name, blob_name, start_range, end_range, content, { :if_sequence_number_lte => "isnlte-value" }
+          it "modifies the request headers when provided a :if_sequence_number_le value" do
+            request_headers["x-ms-if-sequence-number-le"] = "isnle-value"
+            subject.create_blob_pages container_name, blob_name, start_range, end_range, content, { :if_sequence_number_le => "isnle-value" }
           end
-          
+
           it "modifies the request headers when provided a :if_modified_since value" do
             request_headers["If-Modified-Since"] = "ims-value"
             subject.create_blob_pages container_name, blob_name, start_range, end_range, content, { :if_modified_since => "ims-value" }
           end
-          
+
           it "modifies the request headers when provided a :if_unmodified_since value" do
             request_headers["If-Unmodified-Since"] = "iums-value"
             subject.create_blob_pages container_name, blob_name, start_range, end_range, content, { :if_unmodified_since => "iums-value" }

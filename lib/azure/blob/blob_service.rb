@@ -460,7 +460,7 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:if_sequence_number_lte+ - If the blob's sequence number is less than or equal to the specified value, the request proceeds; otherwise it fails with the SequenceNumberConditionNotMet error (HTTP status code 412 - Precondition Failed).
+      # * +:if_sequence_number_le+ - If the blob's sequence number is less than or equal to the specified value, the request proceeds; otherwise it fails with the SequenceNumberConditionNotMet error (HTTP status code 412 - Precondition Failed).
       # * +:if_sequence_number_lt+  - If the blob's sequence number is less than the specified value, the request proceeds; otherwise it fails with SequenceNumberConditionNotMet error (HTTP status code 412 - Precondition Failed).
       # * +:if_sequence_number_eq+  - If the blob's sequence number is equal to the specified value, the request proceeds; otherwise it fails with SequenceNumberConditionNotMet error (HTTP status code 412 - Precondition Failed).
       # * +:if_modified_since+      - A DateTime value. Specify this conditional header to write the page only if the blob has been modified since the specified date/time. If the blob has not been modified, the Blob service returns status code 412 (Precondition Failed).
@@ -486,7 +486,7 @@ module Azure
 
         # set optional headers
         unless options.empty?
-          headers["x-ms-if-sequence-number-lte"] = options[:if_sequence_number_lte] if options[:if_sequence_number_lte]
+          headers["x-ms-if-sequence-number-le"] = options[:if_sequence_number_le] if options[:if_sequence_number_le]
           headers["x-ms-if-sequence-number-lt"] = options[:if_sequence_number_lt] if options[:if_sequence_number_lt]
           headers["x-ms-if-sequence-number-eq"] = options[:if_sequence_number_eq] if options[:if_sequence_number_eq]
           headers["If-Modified-Since"] = options[:if_modified_since] if options[:if_modified_since]
