@@ -283,7 +283,8 @@ relay2.requires_client_authorization = false
 relay2 = azure_service_bus.create_relay(relay2)
 
 # Delete a relay endpoint
-azure_service_bus.delete_relay("test-relay2")```
+azure_service_bus.delete_relay("test-relay2")
+```
 
 ### Queues
 
