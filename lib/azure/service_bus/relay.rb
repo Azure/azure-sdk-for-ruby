@@ -27,13 +27,13 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:relay_type+                                  - String. Determines the type of the relay endpoint.
+      # * +:relay_type+                                  - String. Determines the type of the relay endpoint. This is required.
       # * +:requires_client_authorization+               - Boolean. Determines whether or not clients need to authenticate when making calls.
       # * +:requires_transport_security+                 - Boolean. Determines whether or not the endpoint uses transport security. 
       #
-      def initialize(name, options = {})
+      def initialize(name, options)
         normalized_options = {}
-        normalized_options["RelayType"] = options[:relay_type].to_s if options.has_key?(:relay_type)
+        normalized_options["RelayType"] = options[:relay_type].to_s
         normalized_options["RequiresClientAuthorization"] = options[:requires_client_authorization].to_s if options.has_key?(:requires_client_authorization)
         normalized_options["RequiresTransportSecurity"] = options[:requires_transport_security].to_s if options.has_key?(:requires_transport_security)
         super(name, normalized_options)
