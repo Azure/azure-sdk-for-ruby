@@ -265,6 +265,28 @@ azure_queue_service.delete_queue("test-queue")
 ```
 ## Service Bus
 
+### Relay
+
+```ruby
+# Require the azure rubygem
+require "azure"
+
+# Create an azure service bus object
+azure_service_bus = Azure::ServiceBusService.new
+
+# Create a relay endpoint with just the endpoint name
+relay1 = azure_service_bus.create_relay("test-relay-1", { :relay_type => "Http" })
+
+# Create a relay endpoint with a relay object
+relay2 = Azure::ServiceBus::Relay.new("test-relay-2")
+relay2.requires_client_authorization = false
+relay2 = azure_service_bus.create_relay(relay2)
+
+# Delete a relay endpoint
+azure_service_bus.delete_relay("test-relay2")
+
+### Queues
+
 ```ruby
 # Require the azure rubygem
 require "azure"
