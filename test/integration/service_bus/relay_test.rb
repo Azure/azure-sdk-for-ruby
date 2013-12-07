@@ -21,28 +21,16 @@ describe "ServiceBus Relay" do
   let(:name_alternative) { ServiceBusRelayNameHelper.name }
   let(:description) {{
     :relay_type => 'Http',
-    :requires_client_authorization => "true",
-    :requires_transport_security => "true"
+    :requires_client_authorization => true,
+    :requires_transport_security => true
   }}
   let(:description_alternative) {{
-    ::relay_type => 'NetTcp',
-    :requires_client_authorization => "false",
-    :requires_transport_security => "false"
+    :relay_type => 'NetTcp',
+    :requires_client_authorization => false,
+    :requires_transport_security => false
   }}
 
   after { ServiceBusRelayNameHelper.clean }
-
-  it "should be able to create a new relay endpoint from a string" do
-    relay = subject.create_relay name
-    relay.must_be_kind_of Azure::ServiceBus::Relay
-    relay.name.must_equal name
-  end
-
-  it "should be able to create a new relay endpoint from a Relay" do
-    relay = subject.create_relay Azure::ServiceBus::Relay.new(name)
-    relay.must_be_kind_of Azure::ServiceBus::Relay
-    relay.name.must_equal name
-  end
 
   it "should be able to create a new relay endpoint from a string and description Hash" do
     relay = subject.create_relay name_alternative, description_alternative
@@ -65,20 +53,7 @@ describe "ServiceBus Relay" do
   end
 
   describe 'when a relay exists' do
-    before { subject.create_relay name }
-
-    describe '#delete_relay' do
-      it "should raise exception if the relay endpoint cannot be deleted" do
-        assert_raises(Azure::Core::Http::HTTPError) do
-          subject.delete_relay ServiceBusRelayNameHelper.name
-        end
-      end
-
-      it "should be able to delete the relay endpoint" do
-        response = subject.delete_relay name
-        response.must_equal nil
-      end
-    end
+    before { subject.create_relay name, description }
 
     describe "#get_relay" do
       it "should be able to get a relay by name" do
@@ -95,12 +70,25 @@ describe "ServiceBus Relay" do
       end
     end
 
+    describe '#delete_relay' do
+      it "should raise exception if the relay endpoint cannot be deleted" do
+        assert_raises(Azure::Core::Http::HTTPError) do
+          subject.delete_relay ServiceBusRelayNameHelper.name
+        end
+      end
+
+      it "should be able to delete the relay endpoint" do
+        response = subject.delete_relay name
+        response.must_equal nil
+      end
+    end
+
     describe 'when there are multiple relay endpoints' do
       let(:name1) { ServiceBusRelayNameHelper.name }
       let(:name2) { ServiceBusRelayNameHelper.name }
       before { 
-        subject.create_relay name1
-        subject.create_relay name2
+        subject.create_relay name1, description
+        subject.create_relay name2, description_alternative
       }
       
       it "should be able to get a list of relays" do

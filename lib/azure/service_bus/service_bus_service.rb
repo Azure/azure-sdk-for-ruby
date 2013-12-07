@@ -34,8 +34,7 @@ module Azure
             req.headers.delete "x-ms-version"
             req.headers.delete "DataServiceVersion"
             req.headers.delete "MaxDataServiceVersion"
-
-            req.headers.add "X-Process-At", "servicebus"
+            req.headers["X-Process-At"] = "servicebus"
             res.call
           end
       end
