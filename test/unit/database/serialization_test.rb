@@ -19,6 +19,15 @@ describe Azure::SqlDatabaseManagement::Serialization do
 
   let(:sql_servers_xml) { Fixtures['list_sql_database'] }
 
+  before {
+    @rdfe = Azure.config.disable_sql_rdfe
+    Azure.config.disable_sql_rdfe = 'true'
+  }
+
+  after {
+    Azure.config.disable_sql_rdfe = "#{@rdfe}"
+  }
+
   describe '#databases_from_xml' do
 
     it 'accepts an XML string' do

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Error xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Code>BadRequest</Code>
+	<Message>Extended property name blobnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+nnnnnnnnns is too long. Only 64 characters are permitted.</Message>
+</Error>

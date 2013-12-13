@@ -72,17 +72,6 @@ class VirtualMachineNameGenerator
       end
     end
 
-    # Delete SQL servers
-    Azure.config.management_endpoint = SqlServerEndpoint
-    sql_database_service = Azure::SqlDatabaseManagementService.new
-    sql_database_servers = sql_database_service.list_servers
-    sql_database_servers.each do |sql_server|
-      if sql_server.administrator_login == 'ms_open_tech'
-        sql_database_service.delete_server(sql_server.name) rescue nil
-      end
-    end
-    Azure.config.management_endpoint = ManagementServiceEndpoint
-
     # Delete disks
     disk_management_service = Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService.new
     disks = disk_management_service.list_virtual_machine_disks

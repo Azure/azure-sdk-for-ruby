@@ -108,6 +108,10 @@ There are two ways you can set up the connections:
       config.management_certificate = "<path to your *.pem or *.pfx>"
       config.subscription_id        = "<your Subscriptionid>"
       config.management_endpoint    = "https://management.core.windows.net"
+      # This property enables/disables SQL API RDFE endpoint. By default RDFE is enabled. RDFE will also be enabled if you do not set this property
+      config.disable_sql_rdfe = true
+      # Configure the non-RDFE SQL API endpoint here
+      config.sql_management_endpoint = "http://management.database.windows.net:8443"
   end
   ```
 * Against local Emulator (Windows Only)
@@ -146,7 +150,8 @@ There are two ways you can set up the connections:
 	AZURE_MANAGEMENT_CERTIFICATE = <path to *.pem or *.pfx>
     AZURE_SUBSCRIPTION_ID = <your subscription ID>
 	AZURE_MANAGEMENT_ENDPOINT = <The endpoint URL of Windows Azure management service>
-
+    AZURE_SQL_MANAGEMENT_ENDPOINT = <Non-RDFE SQL Management Endpoint>
+    AZURE_DISABLE_SQL_RDFE = <true_or_false>
     ```
 * Against local Emulator (Windows Only)
   * Storage

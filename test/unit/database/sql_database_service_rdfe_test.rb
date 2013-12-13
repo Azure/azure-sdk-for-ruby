@@ -14,7 +14,7 @@
 #--------------------------------------------------------------------------
 require 'test_helper'
 
-describe 'Azure::SqlDatabaseManagementService - non-RDFE Endpoint' do
+describe 'Azure::SqlDatabaseManagementService - RDFE Endpoint' do
   subject { Azure::SqlDatabaseManagementService.new }
 
   let(:response_headers) { {} }
@@ -27,7 +27,7 @@ describe 'Azure::SqlDatabaseManagementService - non-RDFE Endpoint' do
     mock_request.stubs(:headers).returns(response_headers)
     mock_request.expects(:call).returns(Nokogiri::XML response_xml).at_least(0)
     @rdfe_off = Azure.config.disable_sql_rdfe
-    Azure.config.disable_sql_rdfe = 'true'
+    Azure.config.disable_sql_rdfe = nil
   end
 
   after do
@@ -37,14 +37,14 @@ describe 'Azure::SqlDatabaseManagementService - non-RDFE Endpoint' do
   describe '#list_servers' do
     let(:response_xml) { Fixtures['list_sql_database'] }
     let(:method) { :get }
-    let(:request_path) { '/servers' }
+    let(:request_path) { '/services/sqlservers/servers' }
 
     before do
-      SqlManagementHttpRequest.stubs(:new).with(
-        method,
-        request_path,
-        nil
-      ).returns(mock_request)
+        ManagementHttpRequest.stubs(:new).with(
+          method,
+          request_path,
+          nil
+        ).returns(mock_request)
     end
 
     it 'assembles a URI for the request' do
@@ -85,10 +85,10 @@ describe 'Azure::SqlDatabaseManagementService - non-RDFE Endpoint' do
   end
 
   describe '#list_sql_server_firewall_rules' do
-    let(:response_xml) { Fixtures['list_sql_server_firewall'] }
+    let(:response_xml) { Fixtures['list_sql_server_firewall_rdfe'] }
     let(:method) { :get }
     let(:sql_server_name) { 'server1' }
-    let(:request_path) { "/servers/#{sql_server_name}/firewallrules" }
+    let(:request_path) { "/services/sqlservers/servers/#{sql_server_name}/firewallrules" }
 
     before do
       sql_server = Azure::SqlDatabaseManagement::SqlDatabase.new do |server|
@@ -98,7 +98,7 @@ describe 'Azure::SqlDatabaseManagementService - non-RDFE Endpoint' do
         :list_servers
       ).returns([sql_server])
 
-      SqlManagementHttpRequest.stubs(:new).with(
+      ManagementHttpRequest.stubs(:new).with(
         method,
         request_path,
         nil
@@ -120,13 +120,13 @@ describe 'Azure::SqlDatabaseManagementService - non-RDFE Endpoint' do
   describe '#create_server' do
     let(:response_xml) { Fixtures['create_sql_database_server'] }
     let(:method) { :post }
-    let(:request_path) { '/servers' }
+    let(:request_path) { '/services/sqlservers/servers' }
     let(:password) { 'User@123' }
     let(:login) { 'ms_open_tech' }
     let(:location) { 'West US' }
 
     before do
-      SqlManagementHttpRequest.stubs(:new).with(
+      ManagementHttpRequest.stubs(:new).with(
         method,
         request_path,
         anything

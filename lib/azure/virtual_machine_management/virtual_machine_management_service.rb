@@ -71,7 +71,8 @@ module Azure
       # ==== Attributes
       #
       # * +params+    - Hash.  parameters.
-      # * +Options+    - Hash.  Optional parameters.
+      # * +options+   - Hash.  Optional parameters.
+      # * +add_role+  - true/false. Optional Parameter. Default is false
       #
       #  ==== Params
       #
@@ -81,6 +82,8 @@ module Azure
       # * +:password+       - String.  A description for the hosted service.
       # * +:image+          - String.  Name of the disk image to use to create the virtual machine.
       # * +:location+       - String. The location where the virtual machine will be created.
+      # * +:affinity_group_name - String. The affinity group name to be used
+      # for the cloud service and the storage account if these do not exist.
       #
       #  ==== Options
       #
@@ -96,36 +99,60 @@ module Azure
       # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.  
       # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
       #
+      #  ==== add_role
+      #
+      # Accepted values are:
+      # * +false+   - Will add a new deployment in a cloud service.
+      # * +true+    - Will add a new role to a cloud service. Atleast one
+      # deployment should exist before you can add a role.
+      #
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
-      def create_virtual_machine(params, options={})
+      #
+      # See:
+      # http://msdn.microsoft.com/en-us/library/windowsazure/jj157194.aspx
+      # http://msdn.microsoft.com/en-us/library/windowsazure/jj157186.aspx
+      def create_virtual_machine(params, options = {}, add_role = false)
         options[:os_type] = get_os_type(params[:image])
         validate_deployment_params(params, options)
-        options[:cloud_service_name] = generate_cloud_service_name(params[:vm_name]) unless options[:cloud_service_name]
-        options[:storage_account_name] = generate_storage_account_name(params[:vm_name]) unless options[:storage_account_name] 
-        optionals = {}
-        if options[:virtual_network_name]
-          virtual_network_service = Azure::VirtualNetworkManagementService.new
-          virtual_networks = virtual_network_service.list_virtual_networks.select{|x| x.name == options[:virtual_network_name]}
-          if virtual_networks.empty?
-            Loggerx.error_with_exit "Virtual network #{options[:virtual_network_name]} doesn't exists"
-          else
-            optionals[:affinity_group_name] = virtual_networks.first.affinity_group
-          end
-        elsif options[:affinity_group_name]
-          optionals[:affinity_group_name] = options[:affinity_group_name]
-        else
-          optionals[:location] = params[:location]
-        end       
-        cloud_service = Azure::CloudServiceManagementService.new
-        cloud_service.create_cloud_service(options[:cloud_service_name], optionals)
-        cloud_service.upload_certificate(options[:cloud_service_name],params[:certificate]) unless params[:certificate].empty?
-        Azure::StorageManagementService.new.create_storage_account(options[:storage_account_name], optionals)
+        options[:deployment_name] ||= options[:cloud_service_name]
 
-        body = Serialization.deployment_to_xml(params,options)
-        path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments"
+        unless add_role
+          Loggerx.info "Creating deploymnent..."
+          options[:cloud_service_name] = generate_cloud_service_name(params[:vm_name]) unless options[:cloud_service_name]
+          options[:storage_account_name] = generate_storage_account_name(params[:vm_name]) unless options[:storage_account_name] 
+
+          optionals = {}
+
+          if options[:virtual_network_name]
+            virtual_network_service = Azure::VirtualNetworkManagementService.new
+            virtual_networks = virtual_network_service.list_virtual_networks.select{|x| x.name == options[:virtual_network_name]}
+            if virtual_networks.empty?
+              Loggerx.error_with_exit "Virtual network #{options[:virtual_network_name]} doesn't exists"
+            else
+              optionals[:affinity_group_name] = virtual_networks.first.affinity_group
+            end
+          elsif options[:affinity_group_name]
+            optionals[:affinity_group_name] = options[:affinity_group_name]
+          else
+            optionals[:location] = params[:location]
+          end
+
+          cloud_service = Azure::CloudServiceManagementService.new
+          cloud_service.create_cloud_service(options[:cloud_service_name], optionals)
+          cloud_service.upload_certificate(options[:cloud_service_name],params[:certificate]) unless params[:certificate].empty?
+          Azure::StorageManagementService.new.create_storage_account(options[:storage_account_name], optionals)
+          body = Serialization.deployment_to_xml(params,options)
+          path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments"
+        else
+          Loggerx.info "Deployment exists, adding role..."
+          body = Serialization.role_to_xml(params, options).to_xml
+          path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments/#{options[:deployment_name]}/roles"
+        end
+
         Loggerx.info "Deployment in progress..."
         request = ManagementHttpRequest.new(:post, path, body)
         request.call
+
         get_virtual_machine(params[:vm_name],options[:cloud_service_name])
       rescue Exception => e
         e.message

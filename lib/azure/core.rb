@@ -18,7 +18,8 @@ module Azure::Core; end
 require "azure/core/error"
 require "azure/core/configuration"
 
-# load default configuration from environment variables (user can always override this later)
+# load default configuration from environment variables
+# (user can always override this later)
 Azure.configure do |config|
   config.storage_access_key     = ENV["AZURE_STORAGE_ACCESS_KEY"]
   config.storage_account_name   = ENV["AZURE_STORAGE_ACCOUNT"]
@@ -33,4 +34,7 @@ Azure.configure do |config|
   config.management_certificate  = ENV["AZURE_MANAGEMENT_CERTIFICATE"]
   config.subscription_id         = ENV["AZURE_SUBSCRIPTION_ID"]
   config.management_endpoint     = ENV["AZURE_MANAGEMENT_ENDPOINT"]
+  config.sql_management_endpoint = ENV["AZURE_SQL_MANAGEMENT_ENDPOINT"]
+
+  config.disable_sql_rdfe = ENV['AZURE_DISABLE_SQL_RDFE'] || 'false'
 end

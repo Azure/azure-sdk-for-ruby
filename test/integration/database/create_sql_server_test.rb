@@ -22,11 +22,6 @@ describe Azure::SqlDatabaseManagementService do
 
     before {
       Loggerx.expects(:puts).returns(nil).at_least(0)
-      Azure.config.management_endpoint = SqlServerEndpoint
-    }
-
-    after {
-      Azure.config.management_endpoint = ManagementServiceEndpoint
     }
 
     it "should be able to create a new sql database server." do
@@ -34,6 +29,8 @@ describe Azure::SqlDatabaseManagementService do
       sql_server.name.wont_be_nil
       sql_server.location.must_equal WindowsImageLocation
       sql_server.administrator_login.must_equal login_name
+
+      subject.delete_server sql_server.name
     end
 
     it "errors if the sql server location does not exist" do

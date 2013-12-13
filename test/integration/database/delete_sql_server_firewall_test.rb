@@ -22,14 +22,13 @@ describe Azure::SqlDatabaseManagementService do
 
   before {
     Loggerx.expects(:puts).returns(nil).at_least(0)
-    Azure.config.management_endpoint = SqlServerEndpoint
     subject.set_sql_server_firewall_rule(sql_server.name, "rule1")
     ip_range = {:start_ip_address => "10.20.30.0", :end_ip_address => "10.20.30.255"}
     subject.set_sql_server_firewall_rule(sql_server.name, "rule2", ip_range)
   }
 
   after {
-    Azure.config.management_endpoint = ManagementServiceEndpoint
+    subject.delete_server(sql_server.name)
   }
 
   describe "#delete_sql_server_firewall_rule" do
@@ -58,7 +57,6 @@ describe Azure::SqlDatabaseManagementService do
     end
 
     it "errors if the sql server firewall rule does not exist" do
-      server_name = "unknown-server"
       rule_name = 'rule10'
       exception = assert_raises(RuntimeError) do
         subject.delete_sql_server_firewall_rule(sql_server.name, rule_name)

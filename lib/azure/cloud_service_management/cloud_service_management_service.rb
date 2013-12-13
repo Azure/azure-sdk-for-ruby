@@ -32,13 +32,22 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:location+            - String. The regional data center location where the cloud service will be created.(optional)
+      # * +:label+  -String. The label for this cloud service.
       # * +:description+         - String. A description for the hosted service. (optional)
+      # * +:location+  - String. The regional data center location where the
+      # cloud service will be created. Required if affinity group not
+      # specified (optional)
+      # * +:affinity_group_name  - String. Name of the affinity group with
+      # which to assocate the cloud service. Required if location not
+      # specified (optional)
+      # * +:extended_properties+  - Hash. Key/Value pairs of extended
+      # properties to add to the cloud service. The key is used as the
+      # property name and the value as its value. (optional)
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/gg441304.aspx
       #
       # Returns None
-      def create_cloud_service(name, options={})
+      def create_cloud_service(name, options = {})
         Loggerx.error_with_exit "Cloud service name is not valid " unless name
         if get_cloud_service(name)
           Loggerx.warn "Cloud service #{name} already exists. Skipped..."

@@ -31,8 +31,15 @@ module Azure
       # Returns an array of Azure::SqlDatabaseManagement::SqlDatabase objects
       def list_servers
         request_path = "/servers"
-        request = ManagementHttpRequest.new(:get, request_path, nil)
-        request.headers["x-ms-version"] = @x_ms_version
+
+        if Azure.config.disable_sql_rdfe
+          request = SqlManagementHttpRequest.new(:get, request_path, nil)
+          request.headers["x-ms-version"] = @x_ms_version
+        else
+          request_path = "/services/sqlservers#{request_path}"
+          request = ManagementHttpRequest.new(:get, request_path, nil)
+        end
+
         response = request.call
         Serialization.databases_from_xml(response)
       end
@@ -51,8 +58,15 @@ module Azure
       def create_server(login, password, location)
         body = Serialization.database_to_xml(login, password, location)
         request_path = "/servers"
-        request = ManagementHttpRequest.new(:post, request_path, body)
-        request.headers["x-ms-version"] = @x_ms_version
+
+        if Azure.config.disable_sql_rdfe
+          request = SqlManagementHttpRequest.new(:post, request_path, body)
+          request.headers["x-ms-version"] = @x_ms_version
+        else
+          request_path = "/services/sqlservers#{request_path}"
+          request = ManagementHttpRequest.new(:post, request_path, body)
+        end
+
         response = request.call
         sql_server = Serialization.server_name_from_xml(response, login, location)
         Loggerx.info "SQL database server #{sql_server.name} is created." if sql_server
@@ -72,8 +86,15 @@ module Azure
       def delete_server(name)
         if get_sql_server(name)
           request_path = "/servers/#{name}"
-          request = ManagementHttpRequest.new(:delete, request_path)
-          request.headers["x-ms-version"] = @x_ms_version
+
+          if Azure.config.disable_sql_rdfe
+            request = SqlManagementHttpRequest.new(:delete, request_path)
+            request.headers["x-ms-version"] = @x_ms_version
+          else
+            request_path = "/services/sqlservers#{request_path}"
+            request = ManagementHttpRequest.new(:delete, request_path)
+          end
+
           request.call
           Loggerx.info "Deleted database server #{name}."
         end
@@ -94,8 +115,15 @@ module Azure
         if get_sql_server(name)
           request_path = "/servers/#{name}?op=ResetPassword"
           body = Serialization.reset_password_to_xml(password)
-          request = ManagementHttpRequest.new(:post, request_path, body)
-          request.headers["x-ms-version"] = @x_ms_version
+
+          if Azure.config.disable_sql_rdfe
+            request = SqlManagementHttpRequest.new(:post, request_path, body)
+            request.headers["x-ms-version"] = @x_ms_version
+          else
+            request_path = "/services/sqlservers#{request_path}"
+            request = ManagementHttpRequest.new(:post, request_path, body)
+          end
+
           request.call
           Loggerx.info "Password for server #{name} changed successfully."
         end
@@ -132,8 +160,12 @@ module Azure
             request_path = "/servers/#{server_name}/firewallrules/#{rule_name}?op=AutoDetectClientIP"
             method = :post
           end
-          request = ManagementHttpRequest.new(method, request_path, body)
+          request = SqlManagementHttpRequest.new(method, request_path, body)
           request.headers["x-ms-version"] = @x_ms_version
+
+          # RDFE Endpoint throws errors for this operation. Need to re-visit
+          # this once the Azure API is working.
+
           request.call
           Loggerx.info "Added server-level firewall rule #{rule_name}."
         end
@@ -152,8 +184,15 @@ module Azure
       def list_sql_server_firewall_rules(server_name)
         if get_sql_server(server_name)
           request_path = "/servers/#{server_name}/firewallrules"
-          request = ManagementHttpRequest.new(:get, request_path)
-          request.headers["x-ms-version"] = @x_ms_version
+
+          if Azure.config.disable_sql_rdfe
+            request = SqlManagementHttpRequest.new(:get, request_path)
+            request.headers["x-ms-version"] = @x_ms_version
+          else
+            request_path = "/services/sqlservers#{request_path}"
+            request = ManagementHttpRequest.new(:get, request_path)
+          end
+
           response = request.call
           Serialization.database_firewall_from_xml(response)
         end
@@ -175,8 +214,15 @@ module Azure
           raise error
         elsif get_sql_server(server_name)
           request_path = "/servers/#{server_name}/firewallrules/#{rule_name}"
-          request = ManagementHttpRequest.new(:delete, request_path)
-          request.headers["x-ms-version"] = @x_ms_version
+
+          if Azure.config.disable_sql_rdfe
+            request = SqlManagementHttpRequest.new(:delete, request_path)
+            request.headers["x-ms-version"] = @x_ms_version
+          else
+            request_path = "/services/sqlservers#{request_path}"
+            request = ManagementHttpRequest.new(:delete, request_path)
+          end
+
           request.call
           Loggerx.info "Deleted server-level firewall rule #{rule_name}."
         end

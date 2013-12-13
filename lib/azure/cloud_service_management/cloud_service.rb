@@ -21,10 +21,17 @@ module Azure
         yield self if block_given?
       end
 
+      attr_accessor :url
       attr_accessor :name
+      attr_accessor :label
       attr_accessor :description
       attr_accessor :location
       attr_accessor :affinity_group
+      attr_accessor :status
+      attr_accessor :date_created
+      attr_accessor :date_modified
+      attr_accessor :extended_properties
+      attr_accessor :default_winrm_certificate_thumbprint
 
     end
   end

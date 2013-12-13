@@ -24,11 +24,10 @@ describe Azure::SqlDatabaseManagementService do
 
     before {
       Loggerx.expects(:puts).returns(nil).at_least(0)
-      Azure.config.management_endpoint = SqlServerEndpoint
     }
 
     after {
-      Azure.config.management_endpoint = ManagementServiceEndpoint
+      subject.delete_server(sql_server.name)
     }
 
     it "should be able to reset password of sql database server." do
