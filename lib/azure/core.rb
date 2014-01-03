@@ -36,5 +36,5 @@ Azure.configure do |config|
   config.management_endpoint     = ENV["AZURE_MANAGEMENT_ENDPOINT"]
   config.sql_management_endpoint = ENV["AZURE_SQL_MANAGEMENT_ENDPOINT"]
 
-  config.disable_sql_rdfe = ENV['AZURE_DISABLE_SQL_RDFE'] || 'false'
+  config.disable_sql_endpoint = ENV['AZURE_DISABLE_SQL_ENDPOINT'] || 'false'
 end

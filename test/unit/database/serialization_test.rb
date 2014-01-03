@@ -20,12 +20,12 @@ describe Azure::SqlDatabaseManagement::Serialization do
   let(:sql_servers_xml) { Fixtures['list_sql_database'] }
 
   before {
-    @rdfe = Azure.config.disable_sql_rdfe
-    Azure.config.disable_sql_rdfe = 'true'
+    @rdfe = Azure.config.disable_sql_endpoint
+    Azure.config.disable_sql_endpoint = 'true'
   }
 
   after {
-    Azure.config.disable_sql_rdfe = "#{@rdfe}"
+    Azure.config.disable_sql_endpoint = "#{@rdfe}"
   }
 
   describe '#databases_from_xml' do

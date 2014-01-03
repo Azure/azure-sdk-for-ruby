@@ -32,7 +32,7 @@ module Azure
       def list_servers
         request_path = "/servers"
 
-        if Azure.config.disable_sql_rdfe
+        if Azure.config.disable_sql_endpoint
           request = SqlManagementHttpRequest.new(:get, request_path, nil)
           request.headers["x-ms-version"] = @x_ms_version
         else
@@ -59,7 +59,7 @@ module Azure
         body = Serialization.database_to_xml(login, password, location)
         request_path = "/servers"
 
-        if Azure.config.disable_sql_rdfe
+        if Azure.config.disable_sql_endpoint
           request = SqlManagementHttpRequest.new(:post, request_path, body)
           request.headers["x-ms-version"] = @x_ms_version
         else
@@ -87,7 +87,7 @@ module Azure
         if get_sql_server(name)
           request_path = "/servers/#{name}"
 
-          if Azure.config.disable_sql_rdfe
+          if Azure.config.disable_sql_endpoint
             request = SqlManagementHttpRequest.new(:delete, request_path)
             request.headers["x-ms-version"] = @x_ms_version
           else
@@ -116,7 +116,7 @@ module Azure
           request_path = "/servers/#{name}?op=ResetPassword"
           body = Serialization.reset_password_to_xml(password)
 
-          if Azure.config.disable_sql_rdfe
+          if Azure.config.disable_sql_endpoint
             request = SqlManagementHttpRequest.new(:post, request_path, body)
             request.headers["x-ms-version"] = @x_ms_version
           else
@@ -185,7 +185,7 @@ module Azure
         if get_sql_server(server_name)
           request_path = "/servers/#{server_name}/firewallrules"
 
-          if Azure.config.disable_sql_rdfe
+          if Azure.config.disable_sql_endpoint
             request = SqlManagementHttpRequest.new(:get, request_path)
             request.headers["x-ms-version"] = @x_ms_version
           else
@@ -215,7 +215,7 @@ module Azure
         elsif get_sql_server(server_name)
           request_path = "/servers/#{server_name}/firewallrules/#{rule_name}"
 
-          if Azure.config.disable_sql_rdfe
+          if Azure.config.disable_sql_endpoint
             request = SqlManagementHttpRequest.new(:delete, request_path)
             request.headers["x-ms-version"] = @x_ms_version
           else

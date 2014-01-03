@@ -26,12 +26,12 @@ describe 'Azure::SqlDatabaseManagementService - non-RDFE Endpoint' do
     Loggerx.expects(:puts).returns(nil).at_least(0)
     mock_request.stubs(:headers).returns(response_headers)
     mock_request.expects(:call).returns(Nokogiri::XML response_xml).at_least(0)
-    @rdfe_off = Azure.config.disable_sql_rdfe
-    Azure.config.disable_sql_rdfe = 'true'
+    @rdfe_off = Azure.config.disable_sql_endpoint
+    Azure.config.disable_sql_endpoint = 'true'
   end
 
   after do
-    Azure.config.disable_sql_rdfe = "#{@rdfe_off}"
+    Azure.config.disable_sql_endpoint = "#{@rdfe_off}"
   end
 
   describe '#list_servers' do

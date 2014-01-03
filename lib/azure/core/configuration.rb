@@ -195,11 +195,11 @@ module Azure
       end
 
       # Public: Set this true to use non-RDFE SQL API Endpoint
-      attr_accessor :disable_sql_rdfe
+      attr_accessor :disable_sql_endpoint
 
-      def disable_sql_rdfe
-        return false if @disable_sql_rdfe.nil? or @disable_sql_rdfe.empty?
-        @disable_sql_rdfe.downcase == 'true'
+      def disable_sql_endpoint
+        return false if @disable_sql_endpoint.nil? or @disable_sql_endpoint.empty?
+        @disable_sql_endpoint.downcase == 'true'
       end
     end
   end
