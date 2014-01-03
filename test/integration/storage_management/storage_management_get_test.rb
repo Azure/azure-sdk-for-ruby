@@ -12,56 +12,53 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "test_helper"
+require 'test_helper'
 
 describe Azure::StorageManagementService do
 
   subject { Azure::StorageManagementService.new }
-  let(:request_path) {'/services/storageservices'}
-  let(:get_storage_accounts_xml) { Fixtures["get_storage_properties"] }
+  let(:request_path) { '/services/storageservices' }
+  let(:get_storage_accounts_xml) { Fixtures['get_storage_properties'] }
   let(:method) { :get }
-  let(:mock_request){ mock() }
-  let(:response) {
-    response = mock()
+  let(:mock_request) { mock }
+  let(:response) do
+    response = mock
     response.stubs(:body).returns(get_storage_accounts_xml)
     response
-  }
-    let(:get_storage_account_error_xml) { Fixtures["get_storage_account_error"] }
-	let(:response1) {
-		response1 = mock()
+  end
+  let(:get_storage_account_error_xml) { Fixtures['get_storage_account_error'] }
+	let(:response1) do
+		response1 = mock
 		response1.stubs(:body).returns(get_storage_account_error_xml)
 		response1
-	}
-  let(:response_body) {Nokogiri::XML response.body}
-  before{
-    Loggerx.expects(:puts).returns(nil).at_least(0)
-  }
-  
-describe "#get_storage_account" do
-	it "Get storage account by specifying null" do
-	result = subject.get_storage_account nil
-	result.must_equal false
 	end
-	
-	it "Get storage account with valid name" do
-	  Azure::StorageManagementService.any_instance.stubs(:get_storage_account).with('validname').returns(true)
+  let(:response_body) { Nokogiri::XML response.body }
+  before do
+    Loggerx.expects(:puts).returns(nil).at_least(0)
+  end
+
+  describe '#get_storage_account' do
+    it 'Get storage account by specifying null' do
+      result = subject.get_storage_account nil
+      result.must_equal false
+    end
+
+    it 'Get storage account with valid name' do
+      Azure::StorageManagementService.any_instance.stubs(:get_storage_account).with('validname').returns(true)
       result = subject.get_storage_account 'validname'
-	  result.must_equal true
+      result.must_equal true
     end
-	
-	it "Get storage account with invalid name - spl characters" do
-       Azure::StorageManagementService.any_instance.stubs(:get_storage_account).with('invalidname@@@@@@@@@@@@@@@@@@').returns(false)
-       result = subject.get_storage_account 'invalidname@@@@@@@@@@@@@@@@@@'
-	   result.must_equal false
+
+    it 'Get storage account with invalid name - spl characters' do
+      Azure::StorageManagementService.any_instance.stubs(:get_storage_account).with('invalidname@@@@@@@@@@@@@@@@@@').returns(false)
+      result = subject.get_storage_account 'invalidname@@@@@@@@@@@@@@@@@@'
+      result.must_equal false
     end
-	
-	it "Get storage account with invalid name - long name" do
-       Azure::StorageManagementService.any_instance.stubs(:get_storage_account).with('invalidname....................................').returns(false)
-       result = subject.get_storage_account 'invalidname....................................'
-	   result.must_equal false
+
+    it 'Get storage account with invalid name - long name' do
+      Azure::StorageManagementService.any_instance.stubs(:get_storage_account).with('invalidname....................................').returns(false)
+      result = subject.get_storage_account 'invalidname....................................'
+      result.must_equal false
     end
+  end
 end
-end
-	
-	
-	

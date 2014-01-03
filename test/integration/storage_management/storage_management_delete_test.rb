@@ -21,7 +21,7 @@ describe Azure::StorageManagementService do
 	let(:request_path) {'/services/storageservices'}  
 	let(:method) { :post }
 	let(:mock_request){ mock() }
-  	let(:delete_storage_error) { Fixtures["delete_storage_error"] }
+  let(:delete_storage_error) { Fixtures["delete_storage_error"] }
 	let(:responseResourceNotFound) {
 		responseResourceNotFound = mock()
 		responseResourceNotFound.stubs(:body).returns(delete_storage_error)
@@ -40,20 +40,20 @@ describe Azure::StorageManagementService do
     Loggerx.expects(:puts).returns(nil).at_least(0)
   }
   
-describe "#delete_storage_account" do
+  describe "#delete_storage_account" do
 
     it "Delete non existing storage account" do		
-		ManagementHttpRequest.any_instance.expects(:call).returns responseResourceNotFound_body
-		subject.delete_storage_account 'invalidstorageacc'
-		msg = responseResourceNotFound_body.at('Error')
-		assert_match(/^ResourceNotFound*/, msg.at('Code').text)
-	end
+      ManagementHttpRequest.any_instance.expects(:call).returns responseResourceNotFound_body
+      subject.delete_storage_account 'invalidstorageacc'
+      msg = responseResourceNotFound_body.at('Error')
+      assert_match(/^ResourceNotFound*/, msg.at('Code').text)
+    end
 	
-	it "Delete storage account with containers having disks" do		
-		ManagementHttpRequest.any_instance.expects(:call).returns responseBadRequest_body
-		subject.delete_storage_account 'storagewithcontainer'
-		msg = responseBadRequest_body.at('Error')
-		assert_match(/^BadRequest*/, msg.at('Code').text)
-	end
+    it "Delete storage account with containers having disks" do
+      ManagementHttpRequest.any_instance.expects(:call).returns responseBadRequest_body
+      subject.delete_storage_account 'storagewithcontainer'
+      msg = responseBadRequest_body.at('Error')
+      assert_match(/^BadRequest*/, msg.at('Code').text)
+    end
   end
 end
