@@ -16,7 +16,7 @@
 # an HTTP server, returning a HttpResponse
 module Azure
   module BaseManagement
-    # This class is used for communicating with the non-RDFE SQL API endpoint
+    # This class is used for communicating with the Management certificate authentication API endpoint
     class SqlManagementHttpRequest < ManagementHttpRequest
       attr_accessor :uri
       # Public: Creates the ManagementHttpRequest
@@ -28,7 +28,7 @@ module Azure
       # cert    - String. The request certificate
       def initialize(method, path, body=nil)
         super(method, path, body)
-        @uri = URI.parse(Azure.config.sql_management_endpoint + Azure.config.subscription_id + path)
+        @uri = URI.parse(Azure.config.sql_database_management_endpoint + Azure.config.subscription_id + path)
         @key = Azure.config.http_private_key
         @cert = Azure.config.http_certificate_key
       end

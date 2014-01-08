@@ -18,7 +18,7 @@ describe Azure::SqlDatabaseManagementService do
 
   let(:login_name) {'ms_open_tech'}
   let(:sql_server) { subject.create_server(login_name, 'User1@123', WindowsImageLocation) }
-   subject { Azure::SqlDatabaseManagementService.new }
+  subject { Azure::SqlDatabaseManagementService.new }
 
   before {
     Loggerx.expects(:puts).returns(nil).at_least(0)

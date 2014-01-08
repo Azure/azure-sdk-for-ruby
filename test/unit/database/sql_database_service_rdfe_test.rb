@@ -14,7 +14,7 @@
 #--------------------------------------------------------------------------
 require 'test_helper'
 
-describe 'Azure::SqlDatabaseManagementService - RDFE Endpoint' do
+describe 'Azure::SqlDatabaseManagementService - Management certificate authentication Endpoint' do
   subject { Azure::SqlDatabaseManagementService.new }
 
   let(:response_headers) { {} }
@@ -26,12 +26,7 @@ describe 'Azure::SqlDatabaseManagementService - RDFE Endpoint' do
     Loggerx.expects(:puts).returns(nil).at_least(0)
     mock_request.stubs(:headers).returns(response_headers)
     mock_request.expects(:call).returns(Nokogiri::XML response_xml).at_least(0)
-    @rdfe_off = Azure.config.disable_sql_endpoint
-    Azure.config.disable_sql_endpoint = nil
-  end
-
-  after do
-    Azure.config.disable_sql_endpoint = "#{@rdfe_off}"
+    Azure.config.sql_database_authentication_mode = :management_certificate
   end
 
   describe '#list_servers' do
@@ -40,11 +35,11 @@ describe 'Azure::SqlDatabaseManagementService - RDFE Endpoint' do
     let(:request_path) { '/services/sqlservers/servers' }
 
     before do
-        ManagementHttpRequest.stubs(:new).with(
-          method,
-          request_path,
-          nil
-        ).returns(mock_request)
+      ManagementHttpRequest.stubs(:new).with(
+        method,
+        request_path,
+        nil
+      ).returns(mock_request)
     end
 
     it 'assembles a URI for the request' do
@@ -71,7 +66,7 @@ describe 'Azure::SqlDatabaseManagementService - RDFE Endpoint' do
         :list_servers
       ).returns([])
     end
-
+  
     it 'error if sql server does not exists' do
       s_name = 'unknown-server'
       exception = assert_raises(Azure::Error::Error) do
@@ -79,17 +74,16 @@ describe 'Azure::SqlDatabaseManagementService - RDFE Endpoint' do
       end
       s_id = Azure.config.subscription_id
       assert_match(/Subscription #{s_id} does not have server #{s_name}./i,
-                   exception.message)
+        exception.message)
     end
-
   end
 
   describe '#list_sql_server_firewall_rules' do
-    let(:response_xml) { Fixtures['list_sql_server_firewall_rdfe'] }
+    let(:response_xml) { Fixtures['sql_authentication_list_firewall'] }
     let(:method) { :get }
     let(:sql_server_name) { 'server1' }
     let(:request_path) { "/services/sqlservers/servers/#{sql_server_name}/firewallrules" }
-
+  
     before do
       sql_server = Azure::SqlDatabaseManagement::SqlDatabase.new do |server|
         server.name = sql_server_name
@@ -97,18 +91,18 @@ describe 'Azure::SqlDatabaseManagementService - RDFE Endpoint' do
       Azure::SqlDatabaseManagementService.any_instance.stubs(
         :list_servers
       ).returns([sql_server])
-
+  
       ManagementHttpRequest.stubs(:new).with(
         method,
         request_path,
         nil
       ).returns(mock_request)
     end
-
+  
     it 'assembles a URI for the sql server firewall request' do
       subject.list_sql_server_firewall_rules sql_server_name
     end
-
+  
     it 'returns a list of firewall of given sql servers' do
       results = subject.list_sql_server_firewall_rules sql_server_name
       results.must_be_kind_of Array
@@ -153,7 +147,8 @@ describe 'Azure::SqlDatabaseManagementService - RDFE Endpoint' do
         subject.set_sql_server_firewall_rule('zv2nfoah2t1', ip_range)
       end
       assert_match(/Missing parameter server_name or rule_name/i,
-                   exception.message)
+        exception.message)
     end
   end
+
 end

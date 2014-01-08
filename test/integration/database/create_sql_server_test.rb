@@ -29,7 +29,6 @@ describe Azure::SqlDatabaseManagementService do
       sql_server.name.wont_be_nil
       sql_server.location.must_equal WindowsImageLocation
       sql_server.administrator_login.must_equal login_name
-
       subject.delete_server sql_server.name
     end
 

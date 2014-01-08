@@ -167,8 +167,8 @@ module Azure
       #Public: Set the  certificate key for SSL/HTTPS request with PEM certificate
       attr_accessor :http_certificate_key
 
-      # Public: Set the host for SQL Management API (non-RDFE SQL Endpoint)
-      attr_accessor :sql_management_endpoint
+      # Public: Set the host for SQL Management API (SQL Server authentication Endpoint)
+      attr_accessor :sql_database_management_endpoint
 
       def management_endpoint
         if @management_endpoint.nil? or @management_endpoint.empty?
@@ -182,25 +182,25 @@ module Azure
         end
       end
 
-      def sql_management_endpoint
-        if @sql_management_endpoint.nil? or @sql_management_endpoint.empty?
+      def sql_database_management_endpoint
+        if @sql_database_management_endpoint.nil? or @sql_database_management_endpoint.empty?
           "https://management.database.windows.net:8443/"
-        elsif !@sql_management_endpoint.end_with?('/')
-          @sql_management_endpoint += '/'
-        elsif URI(@sql_management_endpoint).scheme.nil?
-          "https://#{@sql_management_endpoint}"
+        elsif !@sql_database_management_endpoint.end_with?('/')
+          @sql_database_management_endpoint += '/'
+        elsif URI(@sql_database_management_endpoint).scheme.nil?
+          "https://#{@sql_database_management_endpoint}"
         else
           @management_endpoint
         end
       end
 
-      # Public: Set this true to use non-RDFE SQL API Endpoint
-      attr_accessor :disable_sql_endpoint
+      # Public: Set this to enable Management certificate authentication or SQL Server authentication
+      attr_accessor :sql_database_authentication_mode
 
-      def disable_sql_endpoint
-        return false if @disable_sql_endpoint.nil? or @disable_sql_endpoint.empty?
-        @disable_sql_endpoint.downcase == 'true'
+      def sql_database_authentication_mode
+        @sql_database_authentication_mode || :sql_server
       end
+      
     end
   end
 end

@@ -77,7 +77,7 @@ module Azure
 
       def self.database_firewall_from_xml(response_xml)
         firewalls = []
-        if Azure.config.disable_sql_endpoint
+        if Azure.config.sql_database_authentication_mode == :sql_server
           database_firewallXML = response_xml.css('FirewallRules  FirewallRule')
           database_firewallXML.each do |firewall_xml|
             firewall = {

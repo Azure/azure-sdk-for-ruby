@@ -31,15 +31,13 @@ module Azure
       # Returns an array of Azure::SqlDatabaseManagement::SqlDatabase objects
       def list_servers
         request_path = "/servers"
-
-        if Azure.config.disable_sql_endpoint
+        if sql_endpoint?
           request = SqlManagementHttpRequest.new(:get, request_path, nil)
           request.headers["x-ms-version"] = @x_ms_version
         else
           request_path = "/services/sqlservers#{request_path}"
           request = ManagementHttpRequest.new(:get, request_path, nil)
         end
-
         response = request.call
         Serialization.databases_from_xml(response)
       end
@@ -58,15 +56,13 @@ module Azure
       def create_server(login, password, location)
         body = Serialization.database_to_xml(login, password, location)
         request_path = "/servers"
-
-        if Azure.config.disable_sql_endpoint
+        if sql_endpoint?
           request = SqlManagementHttpRequest.new(:post, request_path, body)
           request.headers["x-ms-version"] = @x_ms_version
         else
           request_path = "/services/sqlservers#{request_path}"
           request = ManagementHttpRequest.new(:post, request_path, body)
         end
-
         response = request.call
         sql_server = Serialization.server_name_from_xml(response, login, location)
         Loggerx.info "SQL database server #{sql_server.name} is created." if sql_server
@@ -86,8 +82,7 @@ module Azure
       def delete_server(name)
         if get_sql_server(name)
           request_path = "/servers/#{name}"
-
-          if Azure.config.disable_sql_endpoint
+          if sql_endpoint?
             request = SqlManagementHttpRequest.new(:delete, request_path)
             request.headers["x-ms-version"] = @x_ms_version
           else
@@ -113,10 +108,9 @@ module Azure
       # Returns:  None
       def reset_password(name, password)
         if get_sql_server(name)
-          request_path = "/servers/#{name}?op=ResetPassword"
           body = Serialization.reset_password_to_xml(password)
-
-          if Azure.config.disable_sql_endpoint
+          request_path = "/servers/#{name}?op=ResetPassword"
+          if sql_endpoint?
             request = SqlManagementHttpRequest.new(:post, request_path, body)
             request.headers["x-ms-version"] = @x_ms_version
           else
@@ -163,7 +157,7 @@ module Azure
           request = SqlManagementHttpRequest.new(method, request_path, body)
           request.headers["x-ms-version"] = @x_ms_version
 
-          # RDFE Endpoint throws errors for this operation. Need to re-visit
+          # SQL Server authentication Endpoint throws errors for this operation. Need to re-visit
           # this once the Azure API is working.
 
           request.call
@@ -184,15 +178,13 @@ module Azure
       def list_sql_server_firewall_rules(server_name)
         if get_sql_server(server_name)
           request_path = "/servers/#{server_name}/firewallrules"
-
-          if Azure.config.disable_sql_endpoint
+          if sql_endpoint?
             request = SqlManagementHttpRequest.new(:get, request_path)
             request.headers["x-ms-version"] = @x_ms_version
           else
             request_path = "/services/sqlservers#{request_path}"
             request = ManagementHttpRequest.new(:get, request_path)
           end
-
           response = request.call
           Serialization.database_firewall_from_xml(response)
         end
@@ -214,21 +206,23 @@ module Azure
           raise error
         elsif get_sql_server(server_name)
           request_path = "/servers/#{server_name}/firewallrules/#{rule_name}"
-
-          if Azure.config.disable_sql_endpoint
+          if sql_endpoint?
             request = SqlManagementHttpRequest.new(:delete, request_path)
             request.headers["x-ms-version"] = @x_ms_version
           else
             request_path = "/services/sqlservers#{request_path}"
             request = ManagementHttpRequest.new(:delete, request_path)
           end
-
           request.call
           Loggerx.info "Deleted server-level firewall rule #{rule_name}."
         end
       end
 
       private
+      def sql_endpoint?
+        Azure.config.sql_database_authentication_mode == :sql_server
+      end
+      
       def get_sql_server(server_name)
         if server_name.empty?
           error = Azure::Error::Error.new("DatabaseServerNotFound", 40645,  "Servername cannot be empty or null.")

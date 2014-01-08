@@ -34,7 +34,6 @@ Azure.configure do |config|
   config.management_certificate  = ENV["AZURE_MANAGEMENT_CERTIFICATE"]
   config.subscription_id         = ENV["AZURE_SUBSCRIPTION_ID"]
   config.management_endpoint     = ENV["AZURE_MANAGEMENT_ENDPOINT"]
-  config.sql_management_endpoint = ENV["AZURE_SQL_MANAGEMENT_ENDPOINT"]
-
-  config.disable_sql_endpoint = ENV['AZURE_DISABLE_SQL_ENDPOINT'] || 'false'
+  config.sql_database_management_endpoint = ENV["AZURE_SQL_DATABASE_MANAGEMENT_ENDPOINT"]
+  config.sql_database_authentication_mode = ENV["AZURE_SQL_DATABASE_AUTHENTICATION_MODE"]
 end

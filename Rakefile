@@ -118,7 +118,7 @@ namespace :test do
       # config.sb_issuer      = ENV.fetch("AZURE_SERVICEBUS_ISSUER")
       config.management_certificate  = ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE')
       config.management_endpoint  = ENV.fetch("AZURE_MANAGEMENT_ENDPOINT")
-      config.sql_management_endpoint = ENV.fetch("AZURE_SQL_MANAGEMENT_ENDPOINT")
+      config.sql_database_management_endpoint = ENV.fetch("AZURE_SQL_DATABASE_MANAGEMENT_ENDPOINT")
       config.subscription_id  = ENV.fetch("AZURE_SUBSCRIPTION_ID")
     end
   end
