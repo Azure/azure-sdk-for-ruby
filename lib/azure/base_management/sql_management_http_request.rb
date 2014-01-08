@@ -24,13 +24,21 @@ module Azure
       # method  - Symbol. The HTTP method to use (:get, :post, :put, :del, etc...)
       # path    - URI. The URI of the HTTP endpoint to query
       # body    - IO or String. The request body (optional)
-      # key     - String. The request key
-      # cert    - String. The request certificate
-      def initialize(method, path, body=nil)
-        super(method, path, body)
-        @uri = URI.parse(Azure.config.sql_database_management_endpoint + Azure.config.subscription_id + path)
-        @key = Azure.config.http_private_key
-        @cert = Azure.config.http_certificate_key
+      def initialize(method, path, body = nil)
+        if sql_endpoint?
+          super(method, path, body)
+          @headers['x-ms-version'] = '1.0'
+          @uri = URI.parse(Azure.config.sql_database_management_endpoint + Azure.config.subscription_id + path)
+        else
+          path = "/services/sqlservers#{path}"
+          super(method, path, body)
+        end
+      end
+
+      private
+
+      def sql_endpoint?
+        Azure.config.sql_database_authentication_mode == :sql_server
       end
     end
   end

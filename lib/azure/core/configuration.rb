@@ -198,7 +198,12 @@ module Azure
       attr_accessor :sql_database_authentication_mode
 
       def sql_database_authentication_mode
-        @sql_database_authentication_mode || :sql_server
+        sdam = @sql_database_authentication_mode || :sql_server
+        if [:sql_server, :management_certificate].include? sdam.to_sym
+          @sql_database_authentication_mode.to_sym
+        else
+          :sql_server
+        end
       end
       
     end
