@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Error xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Code>BadRequest</Code>
+	<Message>The label is not a valid storage account label.</Message>
+</Error>

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Error xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Code>BadRequest</Code>
+	<Message>Storage account storagewithcontainer has  container(s) which have an active image and/or disk artifacts. Ensure those artifacts are removed from the image repository before deleting this storage account.</Message>
+</Error>

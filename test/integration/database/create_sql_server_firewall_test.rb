@@ -19,15 +19,15 @@ describe Azure::SqlDatabaseManagementService do
   subject { Azure::SqlDatabaseManagementService.new }
   let(:login_name) {'ms_open_tech'}
   let(:sql_server) { subject.create_server(login_name, 'User1@123', WindowsImageLocation) }
+
   describe "#set_sql_server_firewall_rule" do
 
     before {
       Loggerx.expects(:puts).returns(nil).at_least(0)
-      Azure.config.management_endpoint = SqlServerEndpoint
     }
 
     after {
-      Azure.config.management_endpoint = ManagementServiceEndpoint
+      subject.delete_server(sql_server.name)
     }
 
     it "should adds a new server-level firewall rule for a SQL Database server with requester's IP address." do

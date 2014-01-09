@@ -18,7 +18,9 @@ describe Azure::SqlDatabaseManagement::Serialization do
   subject { Azure::SqlDatabaseManagement::Serialization }
 
   let(:sql_servers_xml) { Fixtures['list_sql_database'] }
-
+  before do
+    Azure.config.sql_database_authentication_mode = :sql_server
+  end
   describe '#databases_from_xml' do
 
     it 'accepts an XML string' do

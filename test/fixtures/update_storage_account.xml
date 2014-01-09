@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<UpdateStorageServiceInput xmlns="http://schemas.microsoft.com/windowsazure">
+  <Label>VGVzdCBMYWJlbA==
+</Label>
+  <GeoReplicationEnabled>false</GeoReplicationEnabled>
+  <ExtendedProperties>
+    <ExtendedProperty>
+      <Name>prop_1_name</Name>
+      <Value>prop_1_value</Value>
+    </ExtendedProperty>
+    <ExtendedProperty>
+      <Name>prop_2_name</Name>
+      <Value>prop_2_value</Value>
+    </ExtendedProperty>
+  </ExtendedProperties>
+</UpdateStorageServiceInput>

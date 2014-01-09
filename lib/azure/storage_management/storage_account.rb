@@ -14,16 +14,27 @@
 #--------------------------------------------------------------------------
 module Azure
   module StorageManagement
+    # Represents a Windows Azure storage account
     class StorageAccount
-
       def initialize
         yield self if block_given?
       end
-
+      attr_accessor :url
       attr_accessor :name
       attr_accessor :description
       attr_accessor :location
-
+      attr_accessor :affinity_group
+      attr_accessor :label
+      attr_accessor :status
+      attr_accessor :endpoints
+      attr_accessor :geo_replication_enabled
+      attr_accessor :geo_primary_region
+      attr_accessor :status_of_primary
+      attr_accessor :last_geo_failover_time
+      attr_accessor :geo_secondary_region
+      attr_accessor :status_of_secondary
+      attr_accessor :creation_time
+      attr_accessor :extended_properties
     end
   end
 end

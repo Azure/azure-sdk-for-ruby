@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Error xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Code>BadRequest</Code>
+	<Message>The subscription policy limit for resource type 'storage account count' was exceeded. The limit for resourc
+e type 'storage account count' is 26 per subscription, the current count is 26, and the requested increment is 1.</Message>
+</Error>

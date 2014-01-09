@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ServiceResources xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <ServiceResource>
+    <Name>AllowAllWindowsAzureIps</Name>
+    <Type>Microsoft.SqlAzure.FirewallRule</Type>
+    <StartIpAddress>0.0.0.0</StartIpAddress>
+    <EndIpAddress>0.0.0.0</EndIpAddress>
+  </ServiceResource>
+  <ServiceResource>
+    <Name>ClientIPAddress_2013-09-03_13:54:21</Name>
+    <Type>Microsoft.SqlAzure.FirewallRule</Type>
+    <StartIpAddress>167.220.224.226</StartIpAddress>
+    <EndIpAddress>167.220.224.226</EndIpAddress>
+  </ServiceResource>
+  <ServiceResource>
+    <Name>Rule1</Name>
+    <Type>Microsoft.SqlAzure.FirewallRule</Type>
+    <StartIpAddress>10.0.0.1</StartIpAddress>
+    <EndIpAddress>10.0.0.255</EndIpAddress>
+  </ServiceResource>
+  <ServiceResource>
+    <Name>Rule2</Name>
+    <Type>Microsoft.SqlAzure.FirewallRule</Type>
+    <StartIpAddress>192.168.1.1</StartIpAddress>
+    <EndIpAddress>192.168.1.255</EndIpAddress>
+  </ServiceResource>
+</ServiceResources>
