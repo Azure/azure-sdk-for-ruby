@@ -378,8 +378,7 @@ params = {
   :vm_user => 'azureuser',
   :image => '5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-63APR20130415',
   :password => 'Password',
-  :location => 'West US',
-  :affinity_group_name => 'affinity1'
+  :location => 'West US'
 }
 options = {
   :storage_account_name => 'storage_suse',
@@ -391,9 +390,17 @@ options = {
   :certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
   :ssh_port => 2222,
   :vm_size => 'Small', #valid choices are (ExtraSmall, Small, Medium, Large, ExtraLarge, A6, A7)
-  :virtual_network_name => 'xplattestvnet'
+  :affinity_group_name => 'affinity1',
+  :virtual_network_name => 'xplattestvnet',
+  :subnet_name => 'subnet1'
 }
-virtual_machine_service.create_virtual_machine(params, options)
+virtual_machine_service.create_virtual_machine(params,options,add_role=false)
+# Here add_role is used as a flag to create multiple roles under the same cloud service. This parameter is false
+# by default. Atleast a single deployment should be created under a hosted service prior to setting this flag.
+
+#API usage to add new roles under cloud service creating VM 
+
+virtual_machine_service.create_virtual_machine(params,options,add_role=true)
 
 #Get a list of available virtual machine images
 virtual_machine_image_service = Azure::VirtualMachineImageManagementService.new

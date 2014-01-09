@@ -130,7 +130,7 @@ module Azure
           request = SqlManagementHttpRequest.new(method, request_path, body)
           request.headers['x-ms-version'] = '1.0'
           request.uri = URI.parse(Azure.config.sql_database_management_endpoint + Azure.config.subscription_id + request_path)
-          # SQL Server authentication Endpoint throws errors for this operation. Need to re-visit
+          # Management certificate authentication Endpoint throws errors for this operation. Need to re-visit
           # this once the Azure API is working.
 
           request.call
