@@ -61,6 +61,9 @@ module Azure
       end
 
       def self.firewall_rule_to_xml(options)
+        # Need to revisit and implement RDFE request XML.
+        # Currently Azure is throwing Internal Server Error when executing the
+        # API
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.FirewallRule('xmlns'=>'http://schemas.microsoft.com/sqlazure/2010/12/',
             'xmlns:xsi'=>'http://www.w3.org/2001/XMLSchema-instance',
@@ -74,13 +77,31 @@ module Azure
 
       def self.database_firewall_from_xml(response_xml)
         firewalls = []
-        database_firewallXML = response_xml.css('FirewallRules  FirewallRule')
-        database_firewallXML.each do |firewall_xml|
-          firewall = { :rule => xml_content(firewall_xml, 'Name'),
-            :start_ip_address => xml_content(firewall_xml, 'StartIpAddress'),
-            :end_ip_address => xml_content(firewall_xml, 'EndIpAddress')
-          }
-          firewalls << firewall
+        if Azure.config.sql_database_authentication_mode == :sql_server
+          database_firewallXML = response_xml.css('FirewallRules  FirewallRule')
+          database_firewallXML.each do |firewall_xml|
+            firewall = {
+              :rule => xml_content(firewall_xml, 'Name'),
+              :start_ip_address => xml_content(firewall_xml, 'StartIpAddress'),
+              :end_ip_address => xml_content(firewall_xml, 'EndIpAddress')
+            }
+            firewalls << firewall
+          end
+        else
+          service_resources = response_xml.css(
+            'ServiceResources ServiceResource'
+          )
+          service_resources.each do |resource|
+            type = xml_content(resource, 'Type')
+            if type == 'Microsoft.SqlAzure.FirewallRule'
+              firewall = {
+                rule: xml_content(resource, 'Name'),
+                start_ip_address: xml_content(resource, 'StartIPAddress'),
+                end_ip_address: xml_content(resource, 'EndIPAddress')
+              }
+              firewalls << firewall
+            end
+          end
         end
         firewalls.compact
       end

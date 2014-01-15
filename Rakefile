@@ -89,16 +89,17 @@ namespace :test do
       task component => "test:require_environment"
     end
 
-    component_task :blob
-    component_task :queue
-    component_task :table
-    component_task :service_bus
-    component_task :database
     component_task :affinity_group
+    component_task :blob
+    component_task :database
     component_task :location
-    component_task :vnet
+    component_task :queue
+    component_task :service_bus
+    component_task :storage_management
+    component_task :table
     component_task :vm
     component_task :vm_image
+    component_task :vnet
   end
 
   task :cleanup => :require_environment do
@@ -117,6 +118,7 @@ namespace :test do
       # config.sb_issuer      = ENV.fetch("AZURE_SERVICEBUS_ISSUER")
       config.management_certificate  = ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE')
       config.management_endpoint  = ENV.fetch("AZURE_MANAGEMENT_ENDPOINT")
+      config.sql_database_management_endpoint = ENV.fetch("AZURE_SQL_DATABASE_MANAGEMENT_ENDPOINT")
       config.subscription_id  = ENV.fetch("AZURE_SUBSCRIPTION_ID")
     end
   end

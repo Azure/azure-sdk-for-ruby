@@ -55,7 +55,6 @@ describe Azure::StorageManagementService do
   end
 
   describe "#get_storage_account" do
-
     before {
       ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
@@ -77,6 +76,33 @@ describe Azure::StorageManagementService do
   end
 
   describe "#create_storage_account" do
+    let(:options) {
+      {
+        location: 'East Asia',
+        description: 'Test Storage Description'
+      }
+    }
+
+    it 'Checks if name is provided' do
+      exception = assert_raises(RuntimeError) do
+        subject.create_storage_account(options)
+      end
+      assert_match('Name not specified', exception.message)
+    end
+
+    it 'Checks if name is not nil' do
+      exception = assert_raises(RuntimeError) do
+        subject.create_storage_account('', options)
+      end
+      assert_match('Name not specified', exception.message)
+    end
+
+    it 'Checks if name is not empty' do
+      exception = assert_raises(RuntimeError) do
+        subject.create_storage_account('', options)
+      end
+      assert_match('Name not specified', exception.message)
+    end
 
     it "Create storage account return message if storage account exists of given name." do
       ManagementHttpRequest.any_instance.expects(:call).returns response_body
@@ -90,5 +116,118 @@ describe Azure::StorageManagementService do
       subject.create_storage_account 'storage3'
     end
 
+  end
+
+  describe "#update_storage_account" do
+    let(:updated_accounts_xml) { Fixtures["updated_storage_accounts"] }
+    let(:no_options_specified) { 'No options specified' }
+    let(:update_storage_account_req) { Fixtures["update_storage_account"] }
+
+    let(:updated_storage_account_mock_request){ mock() }
+    let(:updated_storage_account_response) {
+      updated_storage_account_response = mock()
+      updated_storage_account_response.stubs(:body).returns(updated_accounts_xml)
+      updated_storage_account_response
+    }
+    let(:updated_storage_account_response_body) {Nokogiri::XML updated_storage_account_response.body}
+
+    let(:update_request) {
+      update_request = mock()
+      update_request.stubs(:body).returns('')
+      update_request
+    }
+
+    before {
+      ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      mock_request.expects(:call).returns(response_body)
+
+      Azure::StorageManagement::Serialization.stubs(:update_storage_account).returns(update_storage_account_req)
+    }
+
+    let(:options) { {
+        description: 'Test Description',
+        label: 'Test Label',
+        geo_replication_enabled: false,
+        extended_properties: {
+          prop_1_name: 'prop_1_value',
+          prop_2_name: 'prop_2_value'
+        }
+      }
+    }
+
+    it "checks if nil options is provided" do
+      exception = assert_raises RuntimeError do
+        subject.update_storage_account 'storage2', nil
+      end
+      assert_match no_options_specified, exception.message
+    end
+
+    it "checks if empty options is provided" do
+      exception = assert_raises RuntimeError do
+        subject.update_storage_account 'storage2', Hash.new
+      end
+      assert_match no_options_specified, exception.message
+    end
+
+    it "checks if account exists before updating" do
+      ret_val = subject.update_storage_account 'storage3', Hash.new
+      ret_val.must_equal "Storage Account 'storage3' does not exist. Skipped..."
+    end
+
+    it "updates the specified account" do
+      ManagementHttpRequest.stubs(:new).with(:put, "#{request_path}/storage2", update_storage_account_req).returns(update_request)
+      update_request.expects(:call).returns('')
+
+      subject.update_storage_account 'storage2', options
+
+      ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(updated_storage_account_mock_request)
+      updated_storage_account_mock_request.expects(:call).returns(updated_storage_account_response_body)
+
+      accounts = subject.list_storage_accounts
+
+      accounts.each { |account|
+        next unless account.name == 'storage2'
+
+        account.name.must_equal 'storage2'
+        account.label.must_equal options[:label]
+        account.geo_replication_enabled.must_equal "#{options[:geo_replication_enabled]}"
+
+        account.extended_properties.each { |prop|
+          prop[:value].must_equal "#{options[:extended_properties][:"#{prop[:name]}"]}"
+        }
+      }
+    end
+  end
+
+  describe '#get_storage_account_properties' do
+    let(:account_name) { 'storage2' }
+    let(:label) { 'ValidLabel' }
+    let(:request_path) { "/services/storageservices/#{account_name}" }
+    let(:account_xml) { Fixtures['get_storage_account_properties'] }
+
+    let(:get_account_mock_request) { mock() }
+    let(:get_account_response) {
+      get_account_response = mock()
+      get_account_response.stubs(:body).returns(account_xml)
+      get_account_response
+    }
+    let(:get_account_response_body) {
+      Nokogiri::XML(get_account_response.body)
+    }
+
+    before {
+      ManagementHttpRequest.stubs(:new).with(
+        :get, request_path, nil
+      ).returns(get_account_mock_request)
+      get_account_mock_request.expects(:call).returns(
+        get_account_response_body
+      )
+    }
+
+    it 'returns the label as a Base64 decoded string' do
+      account = subject.get_storage_account_properties(account_name)
+      account.label.must_be_kind_of(String)
+      account.label.must_equal(label)
+    end
   end
 end

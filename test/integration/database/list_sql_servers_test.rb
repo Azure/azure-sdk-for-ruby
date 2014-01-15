@@ -22,22 +22,21 @@ describe Azure::SqlDatabaseManagementService do
 
     before {
       Loggerx.expects(:puts).returns(nil).at_least(0)
-      Azure.config.management_endpoint = SqlServerEndpoint
-      subject.create_server(login_name, 'User1@123', WindowsImageLocation)
-      subject.create_server(login_name, 'User2@123', 'East US')
-    }
-
-    after {
-      Azure.config.management_endpoint = ManagementServiceEndpoint
     }
 
     it "returns a list of SQL databse servers" do
+      server1 = subject.create_server(login_name, 'User1@123', WindowsImageLocation)
+      server2 = subject.create_server(login_name, 'User2@123', 'East US')
+
       sql_servers = subject.list_servers
       sql_servers.wont_be_nil
       sql_servers.must_be_kind_of Array
       sql_server = sql_servers.first
       sql_server.must_be_kind_of Azure::SqlDatabaseManagement::SqlDatabase
       assert_operator sql_servers.size, :>=, 2
+
+      subject.delete_server(server1.name)
+      subject.delete_server(server2.name)
     end
 
   end

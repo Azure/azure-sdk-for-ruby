@@ -31,8 +31,6 @@ Azure::Core.configure do |config|
 end
 
 StorageAccountName = random_string('storagetest',10)
-SqlServerEndpoint = "https://management.database.windows.net:8443/"
-ManagementServiceEndpoint = Azure.config.management_endpoint
 Images = Azure::VirtualMachineImageManagementService.new.list_virtual_machine_images
 LinuxImage = Images.select{|image| image.os_type == 'Linux'}.first
 WindowsImage = Images.select{|image| image.os_type == 'Windows'}.first

@@ -72,17 +72,6 @@ class VirtualMachineNameGenerator
       end
     end
 
-    # Delete SQL servers
-    Azure.config.management_endpoint = SqlServerEndpoint
-    sql_database_service = Azure::SqlDatabaseManagementService.new
-    sql_database_servers = sql_database_service.list_servers
-    sql_database_servers.each do |sql_server|
-      if sql_server.administrator_login == 'ms_open_tech'
-        sql_database_service.delete_server(sql_server.name) rescue nil
-      end
-    end
-    Azure.config.management_endpoint = ManagementServiceEndpoint
-
     # Delete disks
     disk_management_service = Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService.new
     disks = disk_management_service.list_virtual_machine_disks
@@ -92,6 +81,15 @@ class VirtualMachineNameGenerator
         disk_management_service.delete_virtual_machine_disk(
           disk.name
         ) rescue nil
+      end
+    end
+
+    # Delete storage account
+    storage_service = Azure::StorageManagementService.new
+    storage_accounts = storage_service.list_storage_accounts
+    storage_accounts.each do |storage_account|
+      if storage_account.name.include?('storagetest')
+        storage_service.delete_storage_account(storage_account.name) rescue nil
       end
     end
 
@@ -106,14 +104,6 @@ class VirtualMachineNameGenerator
       end
     end
 
-    # Delete storage account
-    storage_service = Azure::StorageManagementService.new
-    storage_accounts = storage_service.list_storage_accounts
-    storage_accounts.each do |storage_account|
-      if storage_account.name.include?('storagetest')
-        storage_service.delete_storage_account(storage_account.name) rescue nil
-      end
-    end
   end
 end
 

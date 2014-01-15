@@ -10,8 +10,18 @@
       <Status>Created</Status>
       <DateCreated>2013-04-22T07:37:56Z</DateCreated>
       <DateLastModified>2013-04-22T07:38:09Z</DateLastModified>
-      <ExtendedProperties/>
+      <ExtendedProperties>
+        <ExtendedProperty>
+          <Name>prop_1_name</Name>
+          <Value>prop_1_value</Value>
+        </ExtendedProperty>
+        <ExtendedProperty>
+          <Name>prop_2_name</Name>
+          <Value>prop_2_value</Value>
+        </ExtendedProperty>
+      </ExtendedProperties>
     </HostedServiceProperties>
+    <DefaultWinRMCertificateThumbprint>dummy-cert-value</DefaultWinRMCertificateThumbprint>
   </HostedService>
   <HostedService>
     <Url>https://management.core.windows.net/268abcd2-fabc-4cd3-a4ea-80324bddff87/services/hostedservices/cloud-service-2</Url>

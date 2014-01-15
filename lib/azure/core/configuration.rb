@@ -167,6 +167,9 @@ module Azure
       #Public: Set the  certificate key for SSL/HTTPS request with PEM certificate
       attr_accessor :http_certificate_key
 
+      # Public: Set the host for SQL Management API (SQL Server authentication Endpoint)
+      attr_accessor :sql_database_management_endpoint
+
       def management_endpoint
         if @management_endpoint.nil? or @management_endpoint.empty?
           "https://management.core.windows.net/"
@@ -179,6 +182,30 @@ module Azure
         end
       end
 
+      def sql_database_management_endpoint
+        if @sql_database_management_endpoint.nil? or @sql_database_management_endpoint.empty?
+          "https://management.database.windows.net:8443/"
+        elsif !@sql_database_management_endpoint.end_with?('/')
+          @sql_database_management_endpoint += '/'
+        elsif URI(@sql_database_management_endpoint).scheme.nil?
+          "https://#{@sql_database_management_endpoint}"
+        else
+          @management_endpoint
+        end
+      end
+
+      # Public: Set this to enable Management certificate authentication or SQL Server authentication
+      attr_accessor :sql_database_authentication_mode
+
+      def sql_database_authentication_mode
+        sdam = @sql_database_authentication_mode || :sql_server
+        if [:sql_server, :management_certificate].include? sdam.to_sym
+          @sql_database_authentication_mode.to_sym
+        else
+          :sql_server
+        end
+      end
+      
     end
   end
 end
