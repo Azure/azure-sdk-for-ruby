@@ -1,0 +1,32 @@
+
+<?xml version="1.0"?>
+<StorageService xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <Url>https://management.core.windows.net/82f43e56-n564-4e01-hfie-4ce5362a101a/services/storageservices/storageacc</Url
+>
+  <ServiceName>storageacc</ServiceName>
+  <StorageServiceProperties>
+    <Description i:nil="true"/>
+    <AffinityGroup>agbabu1</AffinityGroup>
+    <Label>VmFsaWRMYWJlbA==</Label>
+    <Status>Created</Status>
+    <Endpoints>
+      <Endpoint>http://storageacc.blob.core.windows.net/</Endpoint>
+      <Endpoint>http://storageacc.queue.core.windows.net/</Endpoint>
+      <Endpoint>http://storageacc.table.core.windows.net/</Endpoint>
+    </Endpoints>
+    <GeoReplicationEnabled>false</GeoReplicationEnabled>
+    <GeoPrimaryRegion>East US</GeoPrimaryRegion>
+    <GeoSecondaryRegion/>
+    <CreationTime>2013-12-03T19:39:33Z</CreationTime>
+    <CustomDomains/>
+  </StorageServiceProperties>
+  <ExtendedProperties>
+    <ExtendedProperty>
+      <Name>blob</Name>
+      <Value>verbose</Value>
+    </ExtendedProperty>
+  </ExtendedProperties>
+  <Capabilities>
+    <Capability>PersistentVMRole</Capability>
+  </Capabilities>
+</StorageService>
