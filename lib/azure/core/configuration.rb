@@ -200,7 +200,7 @@ module Azure
       def sql_database_authentication_mode
         sdam = @sql_database_authentication_mode || :sql_server
         if [:sql_server, :management_certificate].include? sdam.to_sym
-          @sql_database_authentication_mode.to_sym
+          sdam.to_sym
         else
           :sql_server
         end

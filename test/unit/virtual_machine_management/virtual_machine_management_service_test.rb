@@ -103,7 +103,6 @@ describe Azure::VirtualMachineManagementService do
       ManagementHttpRequest.stubs(:new).with(method, "/services/hostedservices/cloud-service-2/deploymentslots/production").returns(mock_virtual_machine_request)
       mock_virtual_machine_request.expects(:call).twice.returns(virtual_machine_response_body).returns(Nokogiri::XML  deployment_error_response.body)
       ManagementHttpRequest.stubs(:new).with(method, '/services/networking/virtualnetwork', nil).returns(mock_virtual_network_request)
-      mock_virtual_network_request.expects(:call).returns(virtual_networks_response_body)
     }
 
     it "assembles a URI for the request" do
@@ -119,8 +118,6 @@ describe Azure::VirtualMachineManagementService do
       virtual_machine.deployment_name.must_equal 'deployment-name'
       virtual_machine.ipaddress.must_equal '137.116.17.187'
       virtual_machine.virtual_network_name.must_equal 'test-virtual-network'
-      virtual_machine.virtual_network.wont_be_nil
-      virtual_machine.virtual_network.must_be_kind_of Azure::VirtualNetworkManagement::VirtualNetwork
     end
 
     it "returns a list of virtual machines for the subscription" do

@@ -27,12 +27,12 @@ describe Azure::VirtualMachineManagement::Serialization do
     end
 
     it "returns an Array of VirtualMachine instances" do
-      result = subject.virtual_machines_from_xml(virtual_machine_xml,cloud_service_name)
+      result = subject.virtual_machines_from_xml(virtual_machine_xml,cloud_service_name).first
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
     end
 
     it "returns a virtual_machine, with it's attribute populated" do
-      virtual_machine = subject.virtual_machines_from_xml(virtual_machine_xml,cloud_service_name)
+      virtual_machine = subject.virtual_machines_from_xml(virtual_machine_xml,cloud_service_name).first
       virtual_machine.vm_name.must_equal 'instance-name'
       virtual_machine.role_size.must_equal 'Small'
       virtual_machine.hostname.must_equal 'host-name'
@@ -42,7 +42,7 @@ describe Azure::VirtualMachineManagement::Serialization do
     end
 
     it "returns a virtual_machine, with it's tcp_endpoints attribute" do
-      virtual_machine = subject.virtual_machines_from_xml(virtual_machine_xml,cloud_service_name)
+      virtual_machine = subject.virtual_machines_from_xml(virtual_machine_xml,cloud_service_name).first
       virtual_machine.tcp_endpoints.must_be_kind_of Array
       virtual_machine.tcp_endpoints.must_include({"Name"=>"SSH", "Vip"=>"137.116.17.187", "PublicPort"=>"22", "LocalPort"=>"22"})
       virtual_machine.tcp_endpoints.must_include({"Name"=>"tcp-port-80", "Vip"=>"137.116.17.187", "PublicPort"=>"80", "LocalPort"=>"80"})
