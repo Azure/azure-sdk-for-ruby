@@ -139,7 +139,7 @@ module Azure
             end
             puts ''
           else
-            sleep(1)
+            sleep(5)
           end
         end
         response
