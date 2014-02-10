@@ -85,6 +85,7 @@ module Azure
       # * +:ssh_port+                 - Integer. Specifies the SSH port number.
       # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.  
       # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
+      # * +:availability_set_name+    - String. Specifies the availability set name.
       #
       #  ==== add_role
       #
