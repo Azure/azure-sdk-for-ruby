@@ -46,8 +46,6 @@ describe Azure::VirtualMachineManagementService do
     }
   end
 
-  let(:in_vnet_name) { 'integration-test-virtual-network' }
-
   let(:options)do
     {
       storage_account_name: storage_account_name,
@@ -63,25 +61,17 @@ describe Azure::VirtualMachineManagementService do
     }
   end
 
-  let(:in_affinity_name) { 'test-affinity-group' }
-  let(:in_address_space) { ['172.16.0.0/12'] }
-  inputoptions = {
-    subnet: [{ name: 'Subnet-1', ip_address: '172.16.0.0', cidr: 12 }],
-    dns: [{ name: 'DNS', ip_address: '1.2.3.4' }]
-  }
-
+  
   before do
     Loggerx.expects(:puts).returns(nil).at_least(0)
-    affinity_group_service = Azure::BaseManagementService.new
-    affinity_group_service.create_affinity_group(in_affinity_name, WindowsImageLocation, 'Label') rescue nil
-    virtual_network_service = Azure::VirtualNetworkManagementService.new
-    virtual_network_service.set_network_configuration(in_vnet_name, in_affinity_name, in_address_space, inputoptions)
+    
   end
 
   describe '#deployment' do
 
     it 'should set options hash with valid cloud_service_name, deployment_name, storage_account_name and virtual network' do
       cloud_name = options[:cloud_service_name]
+      options[:availability_set_name] = 'aval-set-test'
       subject.create_virtual_machine(params, options, false)
       virtual_machine = subject.get_virtual_machine(virtual_machine_name, cloud_name)
       virtual_machine.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
@@ -91,6 +81,7 @@ describe Azure::VirtualMachineManagementService do
       virtual_machine.deployment_name.must_equal virtual_machine.cloud_service_name
       virtual_machine.os_type.must_equal 'Linux'
       virtual_machine.role_size.must_equal 'Small'
+      virtual_machine.availability_set_name.must_equal 'aval-set-test'
       options[:storage_account_name].wont_be_nil
       assert_match(/^#{params[:vm_name] + '-service'}*/, cloud_name)
       # Test for add role
@@ -151,6 +142,7 @@ describe Azure::VirtualMachineManagementService do
       result = subject.get_virtual_machine(virtual_machine_name, cloud_service_name)
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
       assert_equal(result.os_type, 'Linux', 'Error in the OS type of VI created')
+      sleep 30
     end
 
     it 'throws Runtime error as port value is beyond or less than actual range' do

@@ -39,6 +39,7 @@ describe Azure::VirtualMachineManagement::Serialization do
       virtual_machine.cloud_service_name.must_equal 'cloud-service-1'
       virtual_machine.deployment_name.must_equal 'deployment-name'
       virtual_machine.ipaddress.must_equal '137.116.17.187'
+      virtual_machine.availability_set_name.must_equal 'vm-availability'
     end
 
     it "returns a virtual_machine, with it's tcp_endpoints attribute" do
@@ -89,7 +90,8 @@ describe Azure::VirtualMachineManagement::Serialization do
       {
         :storage_account_name => 'storageaccountname',
         :cloud_service_name => 'cloud-service-name',
-        :tcp_endpoints => '80,3389:3390,85:85'
+        :tcp_endpoints => '80,3389:3390,85:85',
+        :availability_set_name => 'aval-set'
       }
     }
 
@@ -105,6 +107,7 @@ describe Azure::VirtualMachineManagement::Serialization do
         hash['LocalPort'] = xml_content(endpoint, 'LocalPort')
         tcp_endpoints << hash
       end
+      doc.css('Deployment RoleList AvailabilitySetName').text.must_equal 'aval-set'
       result.must_be_kind_of String
       tcp_endpoints.must_include({"Name"=>"TCP-PORT-80", "PublicPort"=>"80", "LocalPort"=>"80"})
       tcp_endpoints.must_include({"Name"=>"TCP-PORT-3390", "PublicPort"=>"3390", "LocalPort"=>"3389"})
