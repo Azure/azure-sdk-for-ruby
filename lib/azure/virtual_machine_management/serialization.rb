@@ -88,6 +88,7 @@ module Azure
                 end
               end
             end
+            xml.AvailabilitySetName options[:availability_set_name]
             xml.Label Base64.encode64(params[:vm_name]).strip
             xml.OSVirtualHardDisk do
               xml.MediaLink 'http://' + options[:storage_account_name] + '.blob.core.windows.net/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd'
@@ -198,7 +199,7 @@ module Azure
       end
 
       def self.virtual_machines_from_xml(deployXML, cloud_service_name)
-        unless deployXML.at_css('Deployment Name').nil?
+        unless (deployXML.nil? or deployXML.at_css('Deployment Name').nil?)
           rolesXML = deployXML.css('Deployment RoleInstanceList RoleInstance')
           vms = []
           rolesXML.each do |instance|
@@ -215,6 +216,7 @@ module Azure
             vm.virtual_network_name = xml_content(deployXML.css('Deployment'), 'VirtualNetworkName')
             deployXML.css('Deployment RoleList Role').each do |role|
               if xml_content(role, 'RoleName') ==  xml_content(instance, 'RoleName')
+                vm.availability_set_name = xml_content(role, 'AvailabilitySetName')
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
                 break
