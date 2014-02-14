@@ -32,11 +32,11 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency("nokogiri",   "~> 1.5")
   s.add_runtime_dependency("mime-types", "~> 1.0")
-  s.add_runtime_dependency "json"
-  s.add_runtime_dependency "uuid"
+  s.add_runtime_dependency("json", "~> 0")
+  s.add_runtime_dependency("uuid", "~> 0")
 
-  s.add_development_dependency("rake")
+  s.add_development_dependency("rake", "~> 0")
   s.add_development_dependency("minitest", "~> 3.0")
-  s.add_development_dependency("mocha")
-  s.add_development_dependency("turn")
+  s.add_development_dependency("mocha", "~> 0")
+  s.add_development_dependency("turn", "~> 0")
 end
