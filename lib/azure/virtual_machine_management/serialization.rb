@@ -18,16 +18,15 @@ require 'base64'
 module Azure
   module VirtualMachineManagement
     module Serialization
-
       def self.shutdown_virtual_machine_to_xml
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.ShutdownRoleOperation(
-            'xmlns'=>'http://schemas.microsoft.com/windowsazure',
-            'xmlns:i'=>'http://www.w3.org/2001/XMLSchema-instance'
-          ) {
+            'xmlns' => 'http://schemas.microsoft.com/windowsazure',
+            'xmlns:i' => 'http://www.w3.org/2001/XMLSchema-instance'
+          ) do
             xml.OperationType 'ShutdownRoleOperation'
             xml.PostShutdownAction 'StoppedDeallocated'
-          }
+          end
         end
         builder.doc.to_xml
       end
@@ -35,11 +34,11 @@ module Azure
       def self.start_virtual_machine_to_xml
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.StartRoleOperation(
-            'xmlns'=>'http://schemas.microsoft.com/windowsazure',
-            'xmlns:i'=>'http://www.w3.org/2001/XMLSchema-instance'
-          ) {
+            'xmlns' => 'http://schemas.microsoft.com/windowsazure',
+            'xmlns:i' => 'http://www.w3.org/2001/XMLSchema-instance'
+          ) do
             xml.OperationType 'StartRoleOperation'
-          }
+          end
         end
         builder.doc.to_xml
       end
@@ -48,17 +47,17 @@ module Azure
         options[:deployment_name] ||= options[:cloud_service_name]
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.Deployment(
-            'xmlns'=>'http://schemas.microsoft.com/windowsazure',
-            'xmlns:i'=>'http://www.w3.org/2001/XMLSchema-instance'
-          ) {
+            'xmlns' => 'http://schemas.microsoft.com/windowsazure',
+            'xmlns:i' => 'http://www.w3.org/2001/XMLSchema-instance'
+          ) do
             xml.Name options[:deployment_name]
             xml.DeploymentSlot 'Production'
             xml.Label Base64.encode64(options[:deployment_name]).strip
-            xml.RoleList { xml.Role('i:type'=>'PersistentVMRole') }
+            xml.RoleList { xml.Role('i:type' => 'PersistentVMRole') }
             if options[:virtual_network_name]
               xml.VirtualNetworkName options[:virtual_network_name]
             end
-          }
+          end
         end
         builder.doc.at_css('Role') << role_to_xml(params, options).at_css('PersistentVMRole').children.to_s
         builder.doc.to_xml
@@ -67,42 +66,43 @@ module Azure
       def self.role_to_xml(params, options)
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.PersistentVMRole(
-            'xmlns'=>'http://schemas.microsoft.com/windowsazure',
-            'xmlns:i'=>'http://www.w3.org/2001/XMLSchema-instance'
-          ) {
-            xml.RoleName {xml.text params[:vm_name]}
+            'xmlns' => 'http://schemas.microsoft.com/windowsazure',
+            'xmlns:i' => 'http://www.w3.org/2001/XMLSchema-instance'
+          ) do
+            xml.RoleName { xml.text params[:vm_name] }
             xml.OsVersion('i:nil' => 'true')
             xml.RoleType 'PersistentVMRole'
-           
-            xml.ConfigurationSets {
+
+            xml.ConfigurationSets do
               provisioning_configuration_to_xml(xml, params, options)
-              xml.ConfigurationSet('i:type' => 'NetworkConfigurationSet') {
+              xml.ConfigurationSet('i:type' => 'NetworkConfigurationSet') do
                 xml.ConfigurationSetType 'NetworkConfiguration'
-                xml.InputEndpoints {
+                xml.InputEndpoints do
                   default_endpoints_to_xml(xml, options)
                   tcp_endpoints_to_xml(xml, options[:tcp_endpoints]) if options[:tcp_endpoints]
-                }
-                if options[:virtual_network_name] && options[:subnet_name]
-                  xml.SubnetNames {
-                    xml.SubnetName options[:subnet_name]
-                  }
                 end
-              }
-            }
+                if options[:virtual_network_name] && options[:subnet_name]
+                  xml.SubnetNames do
+                    xml.SubnetName options[:subnet_name]
+                  end
+                end
+              end
+            end
+            xml.AvailabilitySetName options[:availability_set_name]
             xml.Label Base64.encode64(params[:vm_name]).strip
-            xml.OSVirtualHardDisk {
+            xml.OSVirtualHardDisk do
               xml.MediaLink 'http://' + options[:storage_account_name] + '.blob.core.windows.net/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd'
               xml.SourceImageName params[:image]
-            }
+            end
             xml.RoleSize options[:vm_size]
-          }
+          end
         end
         builder.doc
       end
 
       def self.provisioning_configuration_to_xml(xml, params, options)
         if options[:os_type] == 'Linux'
-          xml.ConfigurationSet('i:type' => 'LinuxProvisioningConfigurationSet') {
+          xml.ConfigurationSet('i:type' => 'LinuxProvisioningConfigurationSet') do
             xml.ConfigurationSetType 'LinuxProvisioningConfiguration'
             xml.HostName params[:vm_name]
             xml.UserName params[:vm_user]
@@ -111,70 +111,70 @@ module Azure
               xml.DisableSshPasswordAuthentication 'false'
             end
             if params[:certificate][:fingerprint]
-              xml.SSH{
-                xml.PublicKeys{
-                  xml.PublicKey{
+              xml.SSH do
+                xml.PublicKeys do
+                  xml.PublicKey do
                     xml.Fingerprint params[:certificate][:fingerprint]
                     xml.Path "/home/#{params[:vm_user]}/.ssh/authorized_keys"
-                  }
-                }
-              }
+                  end
+                end
+              end
             end
-          }   
+          end
         elsif options[:os_type] == 'Windows'
-          xml.ConfigurationSet('i:type' => 'WindowsProvisioningConfigurationSet') {
+          xml.ConfigurationSet('i:type' => 'WindowsProvisioningConfigurationSet') do
             xml.ConfigurationSetType 'WindowsProvisioningConfiguration'
             xml.ComputerName params[:vm_name]
             xml.AdminPassword params[:password]
             xml.ResetPasswordOnFirstLogon 'false'
             xml.EnableAutomaticUpdates 'true'
             if enable_winrm?(options[:winrm_transport])
-              xml.WinRM {
-                xml.Listeners {
+              xml.WinRM do
+                xml.Listeners do
                   if options[:winrm_transport].include?('http')
-                    xml.Listener {
+                    xml.Listener do
                       xml.Protocol 'Http'
-                    }
+                    end
                   end
                   if options[:winrm_transport].include?('https')
-                    xml.Listener {
+                    xml.Listener do
                       xml.Protocol 'Https'
                       xml.CertificateThumbprint params[:certificate][:fingerprint] if params[:certificate][:fingerprint]
-                    }
+                    end
                   end
-                }
-              }
+                end
+              end
             end
             xml.AdminUsername params[:vm_user]
-          }
+          end
         end
       end
 
       def self.default_endpoints_to_xml(xml, options)
         os_type = options[:os_type]
         if os_type == 'Linux'
-          xml.InputEndpoint {
+          xml.InputEndpoint do
             xml.LocalPort '22'
             xml.Name 'SSH'
             xml.Port options[:ssh_port] || '22'
             xml.Protocol 'TCP'
-          }
+          end
         elsif os_type == 'Windows'
           if options[:winrm_transport] && options[:winrm_transport].include?('http')
-            xml.InputEndpoint {
+            xml.InputEndpoint do
               xml.LocalPort '5985'
               xml.Name 'WinRm-Http'
               xml.Port '5985'
               xml.Protocol 'TCP'
-            }
+            end
           end
           if options[:winrm_transport] && options[:winrm_transport].include?('https')
-            xml.InputEndpoint {
+            xml.InputEndpoint do
               xml.LocalPort '5986'
               xml.Name 'WinRm-Https'
               xml.Port '5986'
               xml.Protocol 'TCP'
-            }
+            end
           end
         end
       end
@@ -183,7 +183,7 @@ module Azure
         if tcp_endpoints
           tcp_endpoints.split(',').each do |endpoint|
             ports = endpoint.split(':')
-            xml.InputEndpoint {
+            xml.InputEndpoint do
               xml.LocalPort ports[0]
               if ports.length > 1
                 xml.Name 'TCP-PORT-' + ports[1]
@@ -193,55 +193,65 @@ module Azure
                 xml.Port ports[0]
               end
               xml.Protocol 'TCP'
-            }
+            end
           end
         end
       end
 
       def self.virtual_machines_from_xml(deployXML, cloud_service_name)
-        if deployXML.at_css('Deployment Name') != nil
+        unless (deployXML.nil? or deployXML.at_css('Deployment Name').nil?)
           rolesXML = deployXML.css('Deployment RoleInstanceList RoleInstance')
-          vm = VirtualMachine.new
-          vm.status = xml_content(rolesXML, 'InstanceStatus')
-          vm.vm_name = xml_content(rolesXML, 'RoleName')
-          vm.role_size = xml_content(rolesXML, 'InstanceSize')
-          vm.hostname = xml_content(rolesXML, 'HostName')
-          vm.cloud_service_name = cloud_service_name
-          vm.deployment_name = xml_content(deployXML, 'Deployment Name')
-          vm.deployment_status = xml_content(deployXML, 'Deployment Status')
-          osdisk = deployXML.css(deployXML, 'OSVirtualHardDisk')
-          vm.os_type = xml_content(osdisk, 'OS')
-          vm.disk_name = xml_content(osdisk, 'DiskName')
-          vm.tcp_endpoints = Array.new
-          vm.udp_endpoints = Array.new
-          endpoints = rolesXML.css('InstanceEndpoint')
-          endpoints.each do |endpoint|
-            if vm.ipaddress.nil?
-              if xml_content(endpoint, 'Name').downcase == 'ssh'
-                vm.ipaddress = xml_content(endpoint, 'Vip')
-              elsif !(xml_content(endpoint, 'Name').downcase =~ /winrm/).nil?
-                vm.ipaddress = xml_content(endpoint, 'Vip')
+          vms = []
+          rolesXML.each do |instance|
+            vm = VirtualMachine.new
+            vm.status = xml_content(instance, 'InstanceStatus')
+            vm.vm_name = xml_content(instance, 'RoleName').downcase
+            vm.role_size = xml_content(instance, 'InstanceSize')
+            vm.hostname = xml_content(instance, 'HostName')
+            vm.cloud_service_name = cloud_service_name.downcase
+            vm.deployment_name = xml_content(deployXML, 'Deployment Name')
+            vm.deployment_status = xml_content(deployXML, 'Deployment Status')
+            tcp_endpoints_from_xml(instance, vm)
+            vm.ipaddress = xml_content(instance, 'IpAddress') unless vm.ipaddress
+            vm.virtual_network_name = xml_content(deployXML.css('Deployment'), 'VirtualNetworkName')
+            deployXML.css('Deployment RoleList Role').each do |role|
+              if xml_content(role, 'RoleName') ==  xml_content(instance, 'RoleName')
+                vm.availability_set_name = xml_content(role, 'AvailabilitySetName')
+                vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
+                vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
+                break
               end
             end
-            hash = Hash.new
-            hash['Name'] = xml_content(endpoint, 'Name')
-            hash['Vip'] = xml_content(endpoint, 'Vip')
-            hash['PublicPort'] = xml_content(endpoint, 'PublicPort')
-            hash['LocalPort'] = xml_content(endpoint, 'LocalPort')
-            if xml_content(endpoint, 'Protocol') == 'tcp'
-              vm.tcp_endpoints << hash
-            else
-              vm.udp_endpoints << hash
-            end
+            vms << vm
           end
-          vm.ipaddress = xml_content(rolesXML, 'IpAddress') unless vm.ipaddress
-          vm.virtual_network_name = xml_content(deployXML.css('Deployment'),
-                                                'VirtualNetworkName')
-          vm
+          vms
         end
       end
 
+      def self.tcp_endpoints_from_xml(rolesXML, vm)
+        vm.tcp_endpoints = []
+        vm.udp_endpoints = []
+        endpoints = rolesXML.css('InstanceEndpoint')
+        endpoints.each do |endpoint|
+          if vm.ipaddress.nil?
+            if xml_content(endpoint, 'Name').downcase == 'ssh'
+              vm.ipaddress = xml_content(endpoint, 'Vip')
+            elsif !(xml_content(endpoint, 'Name').downcase =~ /winrm/).nil?
+              vm.ipaddress = xml_content(endpoint, 'Vip')
+            end
+          end
+          hash = Hash.new
+          hash['Name'] = xml_content(endpoint, 'Name')
+          hash['Vip'] = xml_content(endpoint, 'Vip')
+          hash['PublicPort'] = xml_content(endpoint, 'PublicPort')
+          hash['LocalPort'] = xml_content(endpoint, 'LocalPort')
+          if xml_content(endpoint, 'Protocol') == 'tcp'
+            vm.tcp_endpoints << hash
+          else
+            vm.udp_endpoints << hash
+          end
+        end
+      end
     end
   end
 end
-

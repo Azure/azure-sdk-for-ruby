@@ -37,20 +37,7 @@ module Azure
           response = request.call
           roles << Serialization.virtual_machines_from_xml(response,cloud_service.name)
         end
-        
-        vnet_service = Azure::VirtualNetworkManagementService.new
-        virtual_networks = vnet_service.list_virtual_networks
-        
-        roles.each do |role|
-          next if role.nil?
-          vnet = virtual_networks.select do |network|
-            network.name == role.virtual_network_name
-          end
-
-          role.virtual_network = vnet.first unless vnet.nil? || vnet.empty?
-        end
-
-        roles.compact
+        roles.flatten.compact
       end
 
       # Public: Gets a virtual machine based on the provided name and cloud service name.
@@ -98,6 +85,7 @@ module Azure
       # * +:ssh_port+                 - Integer. Specifies the SSH port number.
       # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.  
       # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
+      # * +:availability_set_name+    - String. Specifies the availability set name.
       #
       #  ==== add_role
       #
@@ -115,14 +103,12 @@ module Azure
         options[:os_type] = get_os_type(params[:image])
         validate_deployment_params(params, options)
         options[:deployment_name] ||= options[:cloud_service_name]
-
+        
         unless add_role
           Loggerx.info "Creating deploymnent..."
-          options[:cloud_service_name] = generate_cloud_service_name(params[:vm_name]) unless options[:cloud_service_name]
-          options[:storage_account_name] = generate_storage_account_name(params[:vm_name]) unless options[:storage_account_name] 
-
+          options[:cloud_service_name] ||= generate_cloud_service_name(params[:vm_name])
+          options[:storage_account_name] ||= generate_storage_account_name(params[:vm_name])
           optionals = {}
-
           if options[:virtual_network_name]
             virtual_network_service = Azure::VirtualNetworkManagementService.new
             virtual_networks = virtual_network_service.list_virtual_networks.select{|x| x.name == options[:virtual_network_name]}
@@ -136,7 +122,6 @@ module Azure
           else
             optionals[:location] = params[:location]
           end
-
           cloud_service = Azure::CloudServiceManagementService.new
           cloud_service.create_cloud_service(options[:cloud_service_name], optionals)
           cloud_service.upload_certificate(options[:cloud_service_name],params[:certificate]) unless params[:certificate].empty?
@@ -144,16 +129,17 @@ module Azure
           body = Serialization.deployment_to_xml(params,options)
           path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments"
         else
+
           Loggerx.info "Deployment exists, adding role..."
           body = Serialization.role_to_xml(params, options).to_xml
           path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments/#{options[:deployment_name]}/roles"
         end
-
+        Loggerx.error 'Cloud service name is required for adding role.' unless options[:cloud_service_name]
+        Loggerx.error 'Storage account name is required for adding role.' unless options[:storage_account_name]
         Loggerx.info "Deployment in progress..."
         request = ManagementHttpRequest.new(:post, path, body)
         request.call
-
-        get_virtual_machine(params[:vm_name],options[:cloud_service_name])
+        get_virtual_machine(params[:vm_name], options[:cloud_service_name])
       rescue Exception => e
         e.message
       end

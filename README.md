@@ -392,7 +392,8 @@ options = {
   :vm_size => 'Small', #valid choices are (ExtraSmall, Small, Medium, Large, ExtraLarge, A6, A7)
   :affinity_group_name => 'affinity1',
   :virtual_network_name => 'xplattestvnet',
-  :subnet_name => 'subnet1'
+  :subnet_name => 'subnet1',
+  :availability_set_name => 'availabiltyset1'
 }
 virtual_machine_service.create_virtual_machine(params,options,add_role=false)
 # Here add_role is used as a flag to create multiple roles under the same cloud service. This parameter is false

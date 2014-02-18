@@ -16,7 +16,6 @@
 module Azure
   module VirtualMachineManagement
     class VirtualMachine
-
       def initialize
         yield self if block_given?
       end
@@ -31,27 +30,12 @@ module Azure
       attr_accessor :deployment_status
       attr_accessor :tcp_endpoints
       attr_accessor :role_size
-      attr_accessor :storage_account_name 
-      attr_accessor :password
       attr_accessor :vm_user
       attr_accessor :image
       attr_accessor :os_type
       attr_accessor :disk_name
       attr_accessor :virtual_network_name
-      attr_accessor :virtual_network
-
-      def cloud_service_name
-        @cloud_service_name ||= (random_string(@vm_name+'-service-') if @vm_name)
-      end
-
-      def storage_account_name
-        @storage_account_name ||= (random_string(@vm_name+'storage').gsub(/[^0-9a-z ]/i, '').downcase[0..23] if @vm_name)
-      end
-
-      def deployment_name
-        @deployment_name ||= @cloud_service_name
-      end
-
+      attr_accessor :availability_set_name
     end
   end
 end

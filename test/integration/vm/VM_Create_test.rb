@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
+require 'integration/test_helper'
 
 describe Azure::VirtualMachineManagementService do
   subject { Azure::VirtualMachineManagementService.new }
@@ -23,69 +23,56 @@ describe Azure::VirtualMachineManagementService do
   let(:storage_account_name) { StorageAccountName }
   let(:username) { 'adminuser' }
   let(:password) { 'Admin123' }
-  let(:certificate) { Fixtures["certificate.pem"] }
-  let(:private_key) { Fixtures["privatekey.key"] }
-   
-  let(:params){
-    {
-      :vm_name => virtual_machine_name,
-      :vm_user => username,
-      :image => LinuxImage.name,
-      :password => password,
-      :location => LinuxImageLocation
-    }
-  }
+  let(:certificate) { Fixtures['certificate.pem'] }
+  let(:private_key) { Fixtures['privatekey.key'] }
 
-  let(:windows_params){
+  let(:params)do
     {
-      :vm_name => virtual_machine_name,
-      :vm_user => username,
-      :image => WindowsImage.name,
-      :password => password,
-      :location => WindowsImageLocation
+      vm_name: virtual_machine_name,
+      vm_user: username,
+      image: LinuxImage.name,
+      password: password,
+      location: LinuxImageLocation
     }
-  }
+  end
 
-  let(:in_vnet_name) { 'integration-test-virtual-network' }
+  let(:windows_params)do
+    {
+      vm_name: virtual_machine_name,
+      vm_user: username,
+      image: WindowsImage.name,
+      password: password,
+      location: WindowsImageLocation
+    }
+  end
+
+  let(:options)do
+    {
+      storage_account_name: storage_account_name,
+      cloud_service_name: cloud_service_name,
+      vm_size: 'Small'
+    }
+  end
+
+  let(:default_options) do
+    {
+      storage_account_name: storage_account_name,
+      cloud_service_name: cloud_service_name
+    }
+  end
+
   
-  let(:options){
-    {
-      :storage_account_name => storage_account_name,
-      :cloud_service_name => cloud_service_name,
-      
-	  :vm_size =>'A7'
-    }
-  }
-
-  let(:default_options) {
-    {
-      :storage_account_name => storage_account_name,
-      :cloud_service_name => cloud_service_name
-    }
-  }
-
-  let(:in_affinity_name) { 'test-affinity-group' }
-  let(:in_address_space) { ['172.16.0.0/12'] }
-  inputoptions = {
-      :subnet => [{ :name => 'Subnet-1', :ip_address => '172.16.0.0', :cidr => 12 }],
-      :dns => [{ :name => 'DNS', :ip_address => '1.2.3.4' }]
-  }
-  
-  before{
+  before do
     Loggerx.expects(:puts).returns(nil).at_least(0)
     
-    affinity_group_service = Azure::BaseManagementService.new
-    affinity_group_service.create_affinity_group(in_affinity_name, WindowsImageLocation, 'Label') rescue nil
-    
-    virtual_network_service = Azure::VirtualNetworkManagementService.new
-    virtual_network_service.set_network_configuration(in_vnet_name, in_affinity_name, in_address_space, inputoptions)
-  }
+  end
 
-  describe "#deployment" do
+  describe '#deployment' do
 
-    it "should set options hash with valid cloud_service_name, deployment_name, storage_account_name and virtual network" do
-      subject.create_virtual_machine(params, options,add_role=false)
+    it 'should set options hash with valid cloud_service_name, deployment_name, storage_account_name and virtual network' do
       cloud_name = options[:cloud_service_name]
+      options[:availability_set_name] = 'aval-set-test'
+      subject.create_virtual_machine(params, options, false)
       virtual_machine = subject.get_virtual_machine(virtual_machine_name, cloud_name)
       virtual_machine.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
       virtual_machine.cloud_service_name.wont_be_nil
@@ -93,124 +80,134 @@ describe Azure::VirtualMachineManagementService do
       virtual_machine.deployment_name.wont_be_nil
       virtual_machine.deployment_name.must_equal virtual_machine.cloud_service_name
       virtual_machine.os_type.must_equal 'Linux'
+      virtual_machine.role_size.must_equal 'Small'
+      virtual_machine.availability_set_name.must_equal 'aval-set-test'
       options[:storage_account_name].wont_be_nil
-      assert_match(/^#{params[:vm_name]+'-service'}*/, cloud_name)
+      assert_match(/^#{params[:vm_name] + '-service'}*/, cloud_name)
+      # Test for add role
+      params[:vm_name] = 'test-add-role-vm'
+      options[:ssh_port] = 2222
+      vm = subject.create_virtual_machine(params, options, true)
+      vm.cloud_service_name.must_equal cloud_name
+      vm.vm_name.must_equal params[:vm_name]
+      virtual_machine.deployment_name.wont_be_nil
+      virtual_machine.os_type.must_equal 'Linux'
     end
 
-    it "should creates http and https enabled winrm virtual machine without certificate." do
-      default_options.merge!(:winrm_transport => ['https','http'])
-      subject.create_virtual_machine(windows_params, default_options,add_role=false)
+    it 'should creates http and https enabled winrm virtual machine without certificate.' do
+      default_options.merge!(winrm_transport: %w(https http))
+      subject.create_virtual_machine(windows_params, default_options)
       result = subject.get_virtual_machine(virtual_machine_name, cloud_service_name)
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
-      assert_equal(result.os_type, 'Windows',"Error in the OS type of VI created")
+      assert_equal(result.os_type, 'Windows', 'Error in the OS type of VI created')
       tcp_endpoints_names = []
       result.tcp_endpoints.each do |tcp_endpoint|
-        tcp_endpoints_names << tcp_endpoint["Name"]
+        tcp_endpoints_names << tcp_endpoint['Name']
       end
-      tcp_endpoints_names.must_include "WinRm-Https"
-      tcp_endpoints_names.must_include "WinRm-Http"
+      tcp_endpoints_names.must_include 'WinRm-Https'
+      tcp_endpoints_names.must_include 'WinRm-Http'
       sleep 30
     end
 
-    it "should creates https enabled winrm virtual machine using certificate." do
-      default_options.merge!(:winrm_transport => ['https'], :private_key_file => private_key, :certificate_file => certificate)
-      subject.create_virtual_machine(windows_params, default_options,add_role=false)
+    it 'should creates https enabled winrm virtual machine using certificate.' do
+      default_options.merge!(winrm_transport: ['https'], private_key_file: private_key, certificate_file: certificate)
+      subject.create_virtual_machine(windows_params, default_options)
       result = subject.get_virtual_machine(virtual_machine_name, cloud_service_name)
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
-      assert_equal(result.os_type, 'Windows',"Error in the OS type of VI created")
+      assert_equal(result.os_type, 'Windows', 'Error in the OS type of VI created')
       tcp_endpoints_names = []
       result.tcp_endpoints.each do |tcp_endpoint|
-        tcp_endpoints_names << tcp_endpoint["Name"]
+        tcp_endpoints_names << tcp_endpoint['Name']
       end
-      tcp_endpoints_names.must_include "WinRm-Https"
+      tcp_endpoints_names.must_include 'WinRm-Https'
     end
 
-    it "should creates windows virtual machine without winrm." do
-      default_options.merge!(:winrm_transport => ['none'])
-      subject.create_virtual_machine(windows_params, default_options,add_role=false)
+    it 'should creates windows virtual machine without winrm.' do
+      default_options.merge!(winrm_transport: ['none'])
+      subject.create_virtual_machine(windows_params, default_options)
       result = subject.get_virtual_machine(virtual_machine_name, cloud_service_name)
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
-      assert_equal(result.os_type, 'Windows',"Error in the OS type of VI created")
+      assert_equal(result.os_type, 'Windows', 'Error in the OS type of VI created')
       tcp_endpoints_names = []
       result.tcp_endpoints.each do |tcp_endpoint|
-        tcp_endpoints_names << tcp_endpoint["Name"]
+        tcp_endpoints_names << tcp_endpoint['Name']
       end
-      assert (not tcp_endpoints_names.include? "WinRm-Https")
-      assert (not tcp_endpoints_names.include? "WinRm-Http")
+      assert (!tcp_endpoints_names.include? 'WinRm-Https')
+      assert (!tcp_endpoints_names.include? 'WinRm-Http')
     end
 
-    it "created linux virtual machine should be accessible using password and certificate" do
-      default_options.merge!(:private_key_file => private_key, :certificate_file => certificate)
-      subject.create_virtual_machine(params, default_options,add_role=false)
+    it 'created linux virtual machine should be accessible using password and certificate' do
+      default_options.merge!(private_key_file: private_key, certificate_file: certificate)
+      subject.create_virtual_machine(params, default_options)
       result = subject.get_virtual_machine(virtual_machine_name, cloud_service_name)
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
-      assert_equal(result.os_type, 'Linux',"Error in the OS type of VI created")
+      assert_equal(result.os_type, 'Linux', 'Error in the OS type of VI created')
+      sleep 30
     end
 
-
-    it "throws Runtime error as port value is beyond or less than actual range" do
-      default_options.merge!(:tcp_endpoints => '80,166535:166535')
-      msg = subject.create_virtual_machine(params, default_options,add_role=false)
+    it 'throws Runtime error as port value is beyond or less than actual range' do
+      default_options.merge!(tcp_endpoints: '80,166535:166535')
+      msg = subject.create_virtual_machine(params, default_options)
       assert_match(/invalid. Allowed values are 'a number between 1 to 65535'./i, msg)
 
-      default_options.merge!(:tcp_endpoints => '80,0:0')
-      msg = subject.create_virtual_machine(params, default_options,add_role=false)
+      default_options.merge!(tcp_endpoints: '80,0:0')
+      msg = subject.create_virtual_machine(params, default_options)
       assert_match(/invalid. Allowed values are 'a number between 1 to 65535'./i, msg)
 
       cloud_service.delete_cloud_service(cloud_service_name)
     end
 
-    it "throws error when multiple VMs created under same DNS" do
-      subject.create_virtual_machine(params, default_options,add_role=false)
+    it 'throws error when multiple VMs created under same DNS' do
+      subject.create_virtual_machine(params, default_options)
       msg = subject.create_virtual_machine(windows_params, default_options)
-      assert_match(/The specified deployment slot Production is occupied./i,msg)
+      assert_match(/The specified deployment slot Production is occupied./i, msg)
     end
 
-    it "throws SystemExit error when vm_user not provided" do
+    it 'throws SystemExit error when vm_user not provided' do
       params.delete(:vm_user)
       msg = subject.create_virtual_machine(params)
       assert_match(/You did not provide a valid 'vm_user' value./i, msg)
     end
 
-    it "throws Runtime error when image not provide" do
+    it 'throws Runtime error when image not provide' do
       params.delete(:image)
       msg = subject.create_virtual_machine(params)
       assert_match(/The virtual machine image source is not valid/i, msg)
     end
 
-    it "error thrown when invalid storage account name is given" do
-      default_options.merge!(:storage_account_name=>'storageuse_91')
-      msg = subject.create_virtual_machine(params, default_options,add_role=false)
+    it 'error thrown when invalid storage account name is given' do
+      default_options.merge!(storage_account_name: 'storageuse_91')
+      msg = subject.create_virtual_machine(params, default_options)
       assert_match(/The name is not a valid storage account name./i, msg)
       cloud_service.delete_cloud_service(cloud_service_name)
     end
 
-    it "error thrown when invalid cloud name is given" do
-      default_options.merge!(:cloud_service_name => 'cloud-server-test_91')
-      msg = subject.create_virtual_machine(params, default_options,add_role=false)
+    it 'error thrown when invalid cloud name is given' do
+      default_options.merge!(cloud_service_name: 'cloud-server-test_91')
+      msg = subject.create_virtual_machine(params, default_options)
       assert_match(/The hosted service name is invalid/i, msg)
     end
 
-    it "error thrown when invalid deployment name provided" do
-      default_options.merge!(:deployment_name => 'instance_B')
-      msg = subject.create_virtual_machine(params, default_options,add_role=false)
+    it 'error thrown when invalid deployment name provided' do
+      default_options.merge!(deployment_name: 'instance_B')
+      msg = subject.create_virtual_machine(params, default_options)
       assert_match(/The deployment name is invalid/i, msg)
       cloud_service.delete_cloud_service(cloud_service_name)
     end
 
-    it "error thrown when invalid Virtual Machine name for Windows OS provided" do
-      windows_params.merge!(:vm_name => "MSServerInstnce01")
-      msg = subject.create_virtual_machine(windows_params, default_options,add_role=false)
+    it 'error thrown when invalid Virtual Machine name for Windows OS provided' do
+      windows_params.merge!(vm_name: 'MSServerInstnce01')
+      msg = subject.create_virtual_machine(windows_params, default_options)
       assert_match(/The computer name cannot be more than 15 characters long, be entirely numeric, or contain the following characters/i, msg)
       cloud_service.delete_cloud_service(cloud_service_name)
     end
 
-    it "error thrown when blank password for Windows OS provided" do
+    it 'error thrown when blank password for Windows OS provided' do
       windows_params.delete(:password)
-      msg = subject.create_virtual_machine(windows_params, default_options,add_role=false)
+      msg = subject.create_virtual_machine(windows_params, default_options)
       assert_match(/You did not provide a valid 'password' value./i, msg)
     end
 
-  end #deployment
+  end # deployment
 
 end
