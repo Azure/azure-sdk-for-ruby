@@ -162,9 +162,24 @@ module Azure
           cloud_service.delete_cloud_service_deployment(cloud_service_name)
           cloud_service.delete_cloud_service(cloud_service_name)
           Loggerx.info "Waiting for disk to be released.\n"
-          sleep 60
+          disk_name = vm.disk_name
           disk_management_service = VirtualMachineDiskManagementService.new
-          disk_management_service.delete_virtual_machine_disk(vm.disk_name)
+          # Wait 180s for disk to be released.
+          disk = nil
+          18.times do
+            print '# '
+            disk = disk_management_service.get_virtual_machine_disk(disk_name)
+            unless disk.attached
+              print "Disk released.\n"
+              break
+            end
+            sleep 10
+          end
+          if disk.attached
+            Loggerx.error "\nCannot delete disk #{disk_name}."
+          else
+            disk_management_service.delete_virtual_machine_disk(disk_name)
+          end
         else
           Loggerx.error "Cannot find virtual machine #{vm_name} under cloud service #{cloud_service_name}"
         end
