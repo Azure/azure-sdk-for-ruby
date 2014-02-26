@@ -20,7 +20,7 @@ describe Azure::VirtualMachineManagementService do
   subject { Azure::VirtualMachineManagementService.new }
 
   before do
-    Loggerx.expects(:puts).at_least_once.returns(nil)
+    Loggerx.expects(:puts).returns(nil).at_least(0)
     params = {
       vm_name: vm_name,
       vm_user: 'user',
@@ -68,7 +68,8 @@ describe Azure::VirtualMachineManagementService do
       it 'starts virtual machine' do
         subject.start_virtual_machine(vm_name, csn)
         vm = subject.get_virtual_machine(vm_name, csn)
-        %w(ReadyRole Provisioning CreatingVM RoleStateUnknown).must_include  vm.status
+        statuses = %w(ReadyRole Provisioning CreatingVM RoleStateUnknown)
+        statuses.must_include  vm.status
       end
 
     end
@@ -89,6 +90,18 @@ describe Azure::VirtualMachineManagementService do
         vm = subject.get_virtual_machine(vm_name, csn)
         vm.vm_name.must_equal vm_name
         vm.cloud_service_name.must_equal csn
+      end
+    end
+
+    describe '#list_virtual_machines' do
+      it 'returns a list of virtual machines' do
+        vms = subject.list_virtual_machines
+        vms.wont_be_nil
+        vms.must_be_kind_of Array
+        vm = vms.first
+        vm.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
+        vm_names = vms.map(&:vm_name)
+        vm_names.must_include  vm.vm_name
       end
     end
 
