@@ -75,6 +75,17 @@ describe Azure::VirtualMachineManagement::Serialization do
 
   end
 
+  describe "#restart_virtual_machine_to_xml" do
+
+    it "returns an xml for restart virtual machine" do
+      result = subject.restart_virtual_machine_to_xml
+      result.must_be_kind_of String
+      doc = Nokogiri::XML(result)
+      doc.css('OperationType').text.must_equal 'RestartRoleOperation'
+    end
+
+  end
+
   describe "#deployment_to_xml" do
     let(:params){
       {

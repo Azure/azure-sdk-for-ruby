@@ -43,6 +43,18 @@ module Azure
         builder.doc.to_xml
       end
 
+      def self.restart_virtual_machine_to_xml
+        builder = Nokogiri::XML::Builder.new do |xml|
+          xml.StartRoleOperation(
+            'xmlns' => 'http://schemas.microsoft.com/windowsazure',
+            'xmlns:i' => 'http://www.w3.org/2001/XMLSchema-instance'
+          ) do
+            xml.OperationType 'RestartRoleOperation'
+          end
+        end
+        builder.doc.to_xml
+      end
+
       def self.deployment_to_xml(params, options)
         options[:deployment_name] ||= options[:cloud_service_name]
         builder = Nokogiri::XML::Builder.new do |xml|

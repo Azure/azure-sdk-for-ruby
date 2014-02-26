@@ -227,6 +227,29 @@ module Azure
         end
       end
 
+      # Public: Restarts the specified virtual machine.
+      #
+      # ==== Attributes
+      #
+      # * +name+                - String. Virtual machine name.
+      # * +cloud_service_name+  - String. Cloud service name.
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157197.aspx
+      #
+      # Returns NONE
+      def restart_virtual_machine(vm_name, cloud_service_name)
+        vm = get_virtual_machine(vm_name, cloud_service_name)
+        if vm
+          path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roleinstances/#{vm.vm_name}/Operations"
+          body = Serialization.restart_virtual_machine_to_xml
+          Loggerx.info "Restarting virtual machine \"#{vm.vm_name}\" ..."
+          request = ManagementHttpRequest.new(:post, path, body)
+          request.call
+        else
+          Loggerx.error "Cannot find virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\"."
+        end
+      end
+
       private
 
       # Private: Gets the operating system type of an image.
