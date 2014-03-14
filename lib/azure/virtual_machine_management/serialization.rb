@@ -45,7 +45,7 @@ module Azure
 
       def self.restart_virtual_machine_to_xml
         builder = Nokogiri::XML::Builder.new do |xml|
-          xml.StartRoleOperation(
+          xml.RestartRoleOperation(
             'xmlns' => 'http://schemas.microsoft.com/windowsazure',
             'xmlns:i' => 'http://www.w3.org/2001/XMLSchema-instance'
           ) do
@@ -113,6 +113,7 @@ module Azure
       end
 
       def self.provisioning_configuration_to_xml(xml, params, options)
+        fingerprint = params[:certificate][:fingerprint]
         if options[:os_type] == 'Linux'
           xml.ConfigurationSet('i:type' => 'LinuxProvisioningConfigurationSet') do
             xml.ConfigurationSetType 'LinuxProvisioningConfiguration'
@@ -122,11 +123,11 @@ module Azure
               xml.UserPassword params[:password]
               xml.DisableSshPasswordAuthentication 'false'
             end
-            if params[:certificate][:fingerprint]
+            if fingerprint
               xml.SSH do
                 xml.PublicKeys do
                   xml.PublicKey do
-                    xml.Fingerprint params[:certificate][:fingerprint]
+                    xml.Fingerprint fingerprint
                     xml.Path "/home/#{params[:vm_user]}/.ssh/authorized_keys"
                   end
                 end
@@ -151,7 +152,7 @@ module Azure
                   if options[:winrm_transport].include?('https')
                     xml.Listener do
                       xml.Protocol 'Https'
-                      xml.CertificateThumbprint params[:certificate][:fingerprint] if params[:certificate][:fingerprint]
+                      xml.CertificateThumbprint fingerprint if fingerprint
                     end
                   end
                 end
@@ -164,73 +165,82 @@ module Azure
 
       def self.default_endpoints_to_xml(xml, options)
         os_type = options[:os_type]
+        endpoints = []
         if os_type == 'Linux'
-          xml.InputEndpoint do
-            xml.LocalPort '22'
-            xml.Name 'SSH'
-            xml.Port options[:ssh_port] || '22'
-            xml.Protocol 'TCP'
+          endpoints <<  {
+            name: 'SSH',
+            public_port: options[:ssh_port] || '22',
+            protocol: 'TCP',
+            local_port: '22'
+          }
+        elsif os_type == 'Windows' && options[:winrm_transport]
+          if options[:winrm_transport].include?('http')
+            endpoints <<  {
+              name: 'WinRm-Http',
+              public_port: '5985',
+              protocol: 'TCP',
+              local_port: '5985'
+            }
           end
-        elsif os_type == 'Windows'
-          if options[:winrm_transport] && options[:winrm_transport].include?('http')
-            xml.InputEndpoint do
-              xml.LocalPort '5985'
-              xml.Name 'WinRm-Http'
-              xml.Port '5985'
-              xml.Protocol 'TCP'
-            end
-          end
-          if options[:winrm_transport] && options[:winrm_transport].include?('https')
-            xml.InputEndpoint do
-              xml.LocalPort '5986'
-              xml.Name 'WinRm-Https'
-              xml.Port '5986'
-              xml.Protocol 'TCP'
-            end
+          if options[:winrm_transport].include?('https')
+            endpoints <<  {
+              name: 'PowerShell',
+              public_port: '5986',
+              protocol: 'TCP',
+              local_port: '5986'
+            }
           end
         end
+        endpoints_to_xml(xml, endpoints)
       end
 
       def self.tcp_endpoints_to_xml(xml, tcp_endpoints)
-        if tcp_endpoints
-          tcp_endpoints.split(',').each do |endpoint|
-            ports = endpoint.split(':')
-            xml.InputEndpoint do
-              xml.LocalPort ports[0]
-              if ports.length > 1
-                xml.Name 'TCP-PORT-' + ports[1]
-                xml.Port ports[1]
-              else
-                xml.Name 'TCP-PORT-' + ports[0]
-                xml.Port ports[0]
-              end
-              xml.Protocol 'TCP'
-            end
+        endpoints = []
+        tcp_endpoints.split(',').each do |endpoint|
+          ports = endpoint.split(':')
+          tcp_ep = {}
+          if ports.length > 1
+            tcp_ep[:name]  = 'TCP-PORT-' + ports[1]
+            tcp_ep[:public_port] = ports[1]
+          else
+            tcp_ep[:name] = 'TCP-PORT-' + ports[0]
+            tcp_ep[:public_port] = ports[0]
           end
+          tcp_ep[:local_port] = ports[0]
+          tcp_ep[:protocol] = 'TCP'
+          endpoints << tcp_ep
         end
+        endpoints_to_xml(xml, endpoints)
       end
 
       def self.virtual_machines_from_xml(deployXML, cloud_service_name)
-        unless (deployXML.nil? or deployXML.at_css('Deployment Name').nil?)
-          rolesXML = deployXML.css('Deployment RoleInstanceList RoleInstance')
+        unless deployXML.nil? or deployXML.at_css('Deployment Name').nil?
+          instances = deployXML.css('Deployment RoleInstanceList RoleInstance')
+          roles = deployXML.css('Deployment RoleList Role')
+          ip = deployXML.css('Deployment VirtualIPs VirtualIP')
           vms = []
-          rolesXML.each do |instance|
+          instances.each do |instance|
             vm = VirtualMachine.new
+            role_name = xml_content(instance, 'RoleName')
             vm.status = xml_content(instance, 'InstanceStatus')
-            vm.vm_name = xml_content(instance, 'RoleName').downcase
+            vm.vm_name = role_name.downcase
+            vm.ipaddress = xml_content(ip, 'Address')
             vm.role_size = xml_content(instance, 'InstanceSize')
             vm.hostname = xml_content(instance, 'HostName')
             vm.cloud_service_name = cloud_service_name.downcase
             vm.deployment_name = xml_content(deployXML, 'Deployment Name')
             vm.deployment_status = xml_content(deployXML, 'Deployment Status')
-            tcp_endpoints_from_xml(instance, vm)
-            vm.ipaddress = xml_content(instance, 'IpAddress') unless vm.ipaddress
-            vm.virtual_network_name = xml_content(deployXML.css('Deployment'), 'VirtualNetworkName')
-            deployXML.css('Deployment RoleList Role').each do |role|
-              if xml_content(role, 'RoleName') ==  xml_content(instance, 'RoleName')
+            vm.virtual_network_name =  xml_content(
+              deployXML.css('Deployment'),
+              'VirtualNetworkName'
+            )
+            roles.each do |role|
+              if xml_content(role, 'RoleName') ==  role_name
                 vm.availability_set_name = xml_content(role, 'AvailabilitySetName')
+                endpoints_from_xml(role, vm)
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
+                vm.media_link = xml_content(role, 'OSVirtualHardDisk MediaLink')
                 break
               end
             end
@@ -240,30 +250,124 @@ module Azure
         end
       end
 
-      def self.tcp_endpoints_from_xml(rolesXML, vm)
+      def self.endpoints_from_xml(rolesXML, vm)
         vm.tcp_endpoints = []
         vm.udp_endpoints = []
-        endpoints = rolesXML.css('InstanceEndpoint')
+        endpoints = rolesXML.css('ConfigurationSets ConfigurationSet InputEndpoints InputEndpoint')
         endpoints.each do |endpoint|
-          if vm.ipaddress.nil?
-            if xml_content(endpoint, 'Name').downcase == 'ssh'
-              vm.ipaddress = xml_content(endpoint, 'Vip')
-            elsif !(xml_content(endpoint, 'Name').downcase =~ /winrm/).nil?
-              vm.ipaddress = xml_content(endpoint, 'Vip')
-            end
+          lb_name = xml_content(endpoint, 'LoadBalancedEndpointSetName')
+          ep = {}
+          ep[:name] = xml_content(endpoint, 'Name')
+          ep[:vip] = xml_content(endpoint, 'Vip')
+          ep[:public_port] = xml_content(endpoint, 'Port')
+          ep[:local_port] = xml_content(endpoint, 'LocalPort')
+          ep[:protocol] = xml_content(endpoint, 'Protocol')
+          server_return = xml_content(endpoint, 'EnableDirectServerReturn')
+          ep[:direct_server_return] = server_return if !server_return.empty?
+          unless lb_name.empty?
+            ep[:protocol] = endpoint.css('Protocol').last.text
+            ep[:load_balancer_name] =  lb_name
+            lb_port = xml_content(endpoint, 'LoadBalancerProbe Port')
+            lb_protocol = xml_content(endpoint, 'LoadBalancerProbe Protocol')
+            lb_path = xml_content(endpoint, 'LoadBalancerProbe Path')
+            lb_interval = xml_content(
+              endpoint,
+              'LoadBalancerProbe IntervalInSeconds'
+            )
+            lb_timeout = xml_content(
+              endpoint,
+              'LoadBalancerProbe TimeoutInSeconds'
+            )
+            ep[:load_balancer] = {
+              port: lb_port,
+              path: lb_path,
+              protocol: lb_protocol,
+              interval: lb_interval,
+              timeout: lb_timeout
+            }
           end
-          hash = Hash.new
-          hash['Name'] = xml_content(endpoint, 'Name')
-          hash['Vip'] = xml_content(endpoint, 'Vip')
-          hash['PublicPort'] = xml_content(endpoint, 'PublicPort')
-          hash['LocalPort'] = xml_content(endpoint, 'LocalPort')
-          if xml_content(endpoint, 'Protocol') == 'tcp'
-            vm.tcp_endpoints << hash
+          if ep[:protocol].downcase == 'tcp'
+            vm.tcp_endpoints << ep
           else
-            vm.udp_endpoints << hash
+            vm.udp_endpoints << ep
           end
         end
       end
+
+      def self.update_role_to_xml(endpoints, vm)
+        builder = Nokogiri::XML::Builder.new do |xml|
+          xml.PersistentVMRole(
+            'xmlns' => 'http://schemas.microsoft.com/windowsazure',
+            'xmlns:i' => 'http://www.w3.org/2001/XMLSchema-instance'
+          ) do
+            xml.ConfigurationSets do
+              xml.ConfigurationSet do
+                xml.ConfigurationSetType 'NetworkConfiguration'
+                xml.InputEndpoints do
+                  endpoints_to_xml(xml, endpoints)
+                end
+              end
+            end
+            xml.OSVirtualHardDisk do
+            end
+          end
+        end
+        builder.doc.to_xml
+      end
+
+      def self.endpoints_to_xml(xml, endpoints)
+        endpoints.each do |endpoint|
+          endpoint[:load_balancer] ||= {}
+          protocol = endpoint[:protocol]
+          port = endpoint[:public_port]
+          interval = endpoint[:load_balancer][:interval]
+          timeout =  endpoint[:load_balancer][:timeout]
+          path = endpoint[:load_balancer][:path]
+          balancer_name = endpoint[:load_balancer_name]
+          xml.InputEndpoint do
+            xml.LoadBalancedEndpointSetName balancer_name if balancer_name
+            xml.LocalPort endpoint[:local_port]
+            xml.Name endpoint[:name]
+            xml.Port endpoint[:public_port]
+            if balancer_name
+              xml.LoadBalancerProbe do
+                xml.Path path if path
+                xml.Port endpoint[:load_balancer][:port] || port
+                xml.Protocol endpoint[:load_balancer][:protocol] || 'TCP'
+                xml.IntervalInSeconds interval if interval
+                xml.TimeoutInSeconds timeout if timeout
+              end
+            end
+            xml.Protocol protocol
+            xml.EnableDirectServerReturn endpoint[:direct_server_return] unless endpoint[:direct_server_return].nil?
+          end
+        end
+      end
+
+      def self.add_data_disk_to_xml(lun, media_link, options)
+        if options[:import] && options[:disk_name].nil?
+          Loggerx.error_with_exit "The data disk name is not valid."
+        end
+        builder = Nokogiri::XML::Builder.new do |xml|
+          xml.DataVirtualHardDisk(
+            'xmlns' => 'http://schemas.microsoft.com/windowsazure',
+            'xmlns:i' => 'http://www.w3.org/2001/XMLSchema-instance'
+          ) do
+            xml.HostCaching options[:host_caching] || 'ReadOnly'
+            xml.DiskLabel options[:disk_label]
+            xml.DiskName options[:disk_name] if options[:import]
+            xml.Lun lun
+            xml.LogicalDiskSizeInGB options[:disk_size] || 1
+            unless options[:import]
+              disk_name  = media_link[/([^\/]+)$/]
+              media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd')
+              xml.MediaLink media_link
+            end
+          end
+        end
+        builder.doc.to_xml
+      end
+
     end
   end
 end

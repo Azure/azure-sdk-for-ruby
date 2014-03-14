@@ -18,7 +18,6 @@ include Azure::VirtualMachineImageManagement
 module Azure
   module VirtualMachineManagement
     class VirtualMachineManagementService < BaseManagementService
-
       def initialize
         super()
       end
@@ -26,16 +25,19 @@ module Azure
       # Public: Get a lists of virtual machines available under the current subscription.
       #
       # Returns an list of Azure::VirtualMachineManagement::VirtualMachine instances.
-      def list_virtual_machines
+      def list_virtual_machines(*cloud_service_names)
         roles = []
-        cloud_service = Azure::CloudServiceManagementService.new
-        cloud_services = cloud_service.list_cloud_services
-        cloud_services.each do |cloud_service|
-          request_path = "/services/hostedservices/#{cloud_service.name}/deploymentslots/production"
+        cloud_service_names.flatten!
+        if cloud_service_names.empty?
+          cloud_service = Azure::CloudServiceManagementService.new
+          cloud_service_names = cloud_service.list_cloud_services.map(&:name)
+        end
+        cloud_service_names.each do |cloud_service_name|
+          request_path = "/services/hostedservices/#{cloud_service_name}/deploymentslots/production"
           request = ManagementHttpRequest.new(:get, request_path)
           request.warn = true
           response = request.call
-          roles << Serialization.virtual_machines_from_xml(response,cloud_service.name)
+          roles << Serialization.virtual_machines_from_xml(response, cloud_service_name)
         end
         roles.flatten.compact
       end
@@ -49,7 +51,7 @@ module Azure
       #
       # Returns an  Azure::VirtualMachineManagement::VirtualMachine instance.
       def get_virtual_machine(name, cloud_service_name)
-        server = list_virtual_machines.select {|x| x.vm_name == name && x.cloud_service_name == cloud_service_name}
+        server = list_virtual_machines(cloud_service_name).select { |x| x.vm_name == name && x.cloud_service_name == cloud_service_name }
         server.first
       end
 
@@ -83,7 +85,7 @@ module Azure
       # * +:ssh_private_key_file+     - String. Path of private key file.
       # * +:ssh_certificate_file+     - String. Path of certificate file.
       # * +:ssh_port+                 - Integer. Specifies the SSH port number.
-      # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.  
+      # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.
       # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
       # * +:availability_set_name+    - String. Specifies the availability set name.
       #
@@ -103,15 +105,15 @@ module Azure
         options[:os_type] = get_os_type(params[:image])
         validate_deployment_params(params, options)
         options[:deployment_name] ||= options[:cloud_service_name]
-        
+
         unless add_role
-          Loggerx.info "Creating deploymnent..."
+          Loggerx.info 'Creating deploymnent...'
           options[:cloud_service_name] ||= generate_cloud_service_name(params[:vm_name])
           options[:storage_account_name] ||= generate_storage_account_name(params[:vm_name])
           optionals = {}
           if options[:virtual_network_name]
             virtual_network_service = Azure::VirtualNetworkManagementService.new
-            virtual_networks = virtual_network_service.list_virtual_networks.select{|x| x.name == options[:virtual_network_name]}
+            virtual_networks = virtual_network_service.list_virtual_networks.select { |x| x.name == options[:virtual_network_name] }
             if virtual_networks.empty?
               Loggerx.error_with_exit "Virtual network #{options[:virtual_network_name]} doesn't exists"
             else
@@ -124,19 +126,19 @@ module Azure
           end
           cloud_service = Azure::CloudServiceManagementService.new
           cloud_service.create_cloud_service(options[:cloud_service_name], optionals)
-          cloud_service.upload_certificate(options[:cloud_service_name],params[:certificate]) unless params[:certificate].empty?
+          cloud_service.upload_certificate(options[:cloud_service_name], params[:certificate]) unless params[:certificate].empty?
           Azure::StorageManagementService.new.create_storage_account(options[:storage_account_name], optionals)
-          body = Serialization.deployment_to_xml(params,options)
+          body = Serialization.deployment_to_xml(params, options)
           path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments"
         else
 
-          Loggerx.info "Deployment exists, adding role..."
+          Loggerx.info 'Deployment exists, adding role...'
           body = Serialization.role_to_xml(params, options).to_xml
           path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments/#{options[:deployment_name]}/roles"
         end
         Loggerx.error 'Cloud service name is required for adding role.' unless options[:cloud_service_name]
         Loggerx.error 'Storage account name is required for adding role.' unless options[:storage_account_name]
-        Loggerx.info "Deployment in progress..."
+        Loggerx.info 'Deployment in progress...'
         request = ManagementHttpRequest.new(:post, path, body)
         request.call
         get_virtual_machine(params[:vm_name], options[:cloud_service_name])
@@ -156,7 +158,7 @@ module Azure
       #
       # Returns NONE
       def delete_virtual_machine(vm_name, cloud_service_name)
-        vm = get_virtual_machine(vm_name,cloud_service_name)
+        vm = get_virtual_machine(vm_name, cloud_service_name)
         if vm
           cloud_service = Azure::CloudServiceManagementService.new
           cloud_service.delete_cloud_service_deployment(cloud_service_name)
@@ -164,7 +166,7 @@ module Azure
           Loggerx.info "Waiting for disk to be released.\n"
           disk_name = vm.disk_name
           disk_management_service = VirtualMachineDiskManagementService.new
-          # Wait 180s for disk to be released.
+          # Wait for 180s for disk to be released.
           disk = nil
           18.times do
             print '# '
@@ -183,7 +185,7 @@ module Azure
         else
           Loggerx.error "Cannot find virtual machine #{vm_name} under cloud service #{cloud_service_name}"
         end
-      rescue 
+      rescue
       end
 
       # Public: Shuts down the specified virtual machine.
@@ -199,8 +201,8 @@ module Azure
       def shutdown_virtual_machine(vm_name, cloud_service_name)
         vm = get_virtual_machine(vm_name, cloud_service_name)
         if vm
-          if ['StoppedVM','StoppedDeallocated'].include?(vm.status)
-            Loggerx.error "Cannot perform the shutdown operation on a stopped virtual machine."
+          if ['StoppedVM', 'StoppedDeallocated'].include?(vm.status)
+            Loggerx.error 'Cannot perform the shutdown operation on a stopped virtual machine.'
           elsif vm.deployment_status == 'Running'
             path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roleinstances/#{vm.vm_name}/Operations"
             body = Serialization.shutdown_virtual_machine_to_xml
@@ -208,7 +210,7 @@ module Azure
             request = ManagementHttpRequest.new(:post, path, body)
             request.call
           else
-            Loggerx.error "Cannot perform the shutdown operation on a stopped deployment."
+            Loggerx.error 'Cannot perform the shutdown operation on a stopped deployment.'
           end
         else
           Loggerx.error "Cannot find virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\". "
@@ -229,7 +231,7 @@ module Azure
         vm = get_virtual_machine(vm_name, cloud_service_name)
         if vm
           if vm.status == 'ReadyRole'
-            Loggerx.error "Cannot perform the start operation on started virtual machine."
+            Loggerx.error 'Cannot perform the start operation on started virtual machine.'
           else
             path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roleinstances/#{vm.vm_name}/Operations"
             body = Serialization.start_virtual_machine_to_xml
@@ -264,6 +266,133 @@ module Azure
           Loggerx.error "Cannot find virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\"."
         end
       end
+      
+      # Public: Add/Update endpoints of virtual machine.
+      #
+      # ==== Attributes
+      #
+      # * +name+                - String. Virtual machine name.
+      # * +cloud_service_name+  - String. Cloud service name.
+      # * +input_endpoints+     - Hash. A hash of the name/value pairs for the endpoint.
+      #
+      # ==== Endpoint
+      #
+      # Accepted key/value pairs are:
+      # * +:local_port+   - String. Specifies the internal port on which the
+      #   Virtual Machine is listening.
+      # * +:public_port+  - String. Specifies the external port to use for
+      #   the endpoint.
+      # * +:name+         - String. Specifies the name of the external endpoint.
+      # * +load_balancer_name+  - String. Specifies a name for a set of
+      #   load-balanced endpoints.
+      # * +:protocol+              - String. Specifies the transport protocol
+      #   for the endpoint. Possible values are: TCP, UDP
+      # * +:direct_server_return+  - String. Specifies whether the endpoint
+      #   uses Direct Server Return. (optional)
+      # * +:load_balancer          - Hash. Contains properties that define the
+      #   endpoint settings that the load balancer uses to monitor the
+      #   availability of the Virtual Machine (optional)
+      #
+      # === Load balancer
+      #
+      # Accepted key/value pairs are:
+      # * +:port+   - String. Specifies the internal port on which the
+      #   Virtual Machine is listening.
+      # * +:protocol+  - String. Specifies the protocol to use to inspect the
+      #   availability status of the virtual machine.
+      # * +:interval+  - String. Specifies the interval for the load balancer
+      #   probe in seconds. (optional)
+      # * +:timeout+   - String. Specifies the timeout for the load balancer
+      #   probe in seconds. (optional)
+      # * +:path+      - String. Specifies the relative path to inspect to
+      #   determine the availability status of the Virtual Machine. (optional)
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157187.aspx
+      #
+      # Returns NONE
+      def update_endpoints(vm_name, cloud_service_name, *input_endpoints)
+        input_endpoints.flatten!
+        vm = get_virtual_machine(vm_name, cloud_service_name)
+        if vm
+          path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roles/#{vm_name}"
+          endpoints = vm.tcp_endpoints + vm.udp_endpoints
+          input_endpoints.each do |iep|
+            endpoints.delete_if { |ep| iep[:name].downcase == ep[:name].downcase && iep[:protocol].downcase  == ep[:protocol] }
+          end
+          endpoints += input_endpoints
+          body = Serialization.update_role_to_xml(endpoints, vm)
+          request = ManagementHttpRequest.new(:put, path, body)
+          Loggerx.info "Updating endpoints of virtual machine #{vm.vm_name} ..."
+          request.call
+        else
+          Loggerx.error "Cannot find virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\"."
+        end
+      end
+
+      # Public: Delete endpoint of virtual machine.
+      #
+      # ==== Attributes
+      #
+      # * +name+                - String. Virtual machine name.
+      # * +cloud_service_name+  - String. Cloud service name.
+      # * +endpoint_name+       - String. Name of endpoint.
+      # 
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157187.aspx
+      #
+      # Returns NONE
+      def delete_endpoint(vm_name, cloud_service_name, endpoint_name)
+        vm = get_virtual_machine(vm_name, cloud_service_name)
+        if vm
+          path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roles/#{vm_name}"
+          endpoints = vm.tcp_endpoints + vm.udp_endpoints
+          endpoints.delete_if { |ep| endpoint_name.downcase == ep[:name].downcase }
+          body = Serialization.update_role_to_xml(endpoints, vm)
+          request = ManagementHttpRequest.new(:put, path, body)
+          Loggerx.info "Deleting virtual machine endpoint #{endpoint_name} ..."
+          request.call
+        else
+          Loggerx.error "Cannot find virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\"."
+        end
+      end
+
+      # Public: adds a data disk to a virtual machine.
+      #
+      # ==== Attributes
+      #
+      # * +cloud_service_name+  - String. Cloud service name.
+      # * +vm_name+           - String. Virtual machine name.
+      # * +lun+                 - String. Specifies the Logical Unit Number
+      #   (LUN) for the disk. Valid LUN values are 0 through 15.
+      # * +options+             - Hash. Optional parameters.
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:import+        - Boolean. if true, then allows to use an existing
+      #  disk by disk name. if false, then create and attach new data disk.
+      # * +:disk_name+     - String. Specifies the name of the disk.
+      #   Reqruied if using existing disk.
+      # * +:host_caching+  - String. Specifies the caching behavior of data disk
+      #   The default is ReadOnly. Possible values are: None, ReadOnly, ReadWrite
+      # * +:disk_label+    - String. Specifies the description of the data disk.
+      # * +:disk_size+     - String. Specifies the size of disk in GB
+      #
+      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157199.aspx
+      #
+      # Returns None
+      def add_data_disk(vm_name, cloud_service_name, lun, options = {})
+        options[:import] ||= false
+        vm = get_virtual_machine(vm_name, cloud_service_name)
+        if vm
+          path = "/services/hostedservices/#{cloud_service_name}/deployments/#{vm.deployment_name}/roles/#{vm_name}/DataDisks"
+          body = Serialization.add_data_disk_to_xml(lun, vm.media_link, options)
+          Loggerx.info "Adding data disk to virtual machine #{vm_name} ..."
+          request = ManagementHttpRequest.new(:post, path, body)
+          request.call
+        else
+          Loggerx.error "Cannot find virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\"."
+        end
+      end
 
       private
 
@@ -272,45 +401,45 @@ module Azure
       # Returns Linux or Windows
       def get_os_type(image_name)
         image_service = Azure::VirtualMachineImageManagementService.new
-        image = image_service.list_virtual_machine_images.select{|x| x.name == image_name}.first
-        Loggerx.error_with_exit "The virtual machine image source is not valid." unless image
+        image = image_service.list_virtual_machine_images.select { |x| x.name == image_name }.first
+        Loggerx.error_with_exit 'The virtual machine image source is not valid.' unless image
         image.os_type
       end
 
       def generate_cloud_service_name(vm_name)
-        random_string(vm_name+'-service-')
+        random_string(vm_name + '-service-')
       end
 
       def generate_storage_account_name(vm_name)
-        random_string(vm_name+'storage').gsub(/[^0-9a-z ]/i, '').downcase[0..23] 
+        random_string(vm_name + 'storage').gsub(/[^0-9a-z ]/i, '').downcase[0..23]
       end
 
       def validate_deployment_params(params, options)
         errors = []
-        params_keys = ["vm_name", "image", "location", "vm_user"]
-        if options[:os_type] == "Windows"
-          params_keys += ["password"]
+        params_keys = ['vm_name', 'image', 'location', 'vm_user']
+        if options[:os_type] == 'Windows'
+          params_keys += ['password']
         end
         options_keys = []
-        options_keys = ['private_key_file','certificate_file'] if certificate_required?(params, options)
+        options_keys = ['private_key_file', 'certificate_file'] if certificate_required?(params, options)
 
         params_keys.each do |key|
           errors << key if params[key.to_sym].nil?
         end
-        
+
         options_keys.each do |key|
           errors << key if options[key.to_sym].nil?
         end
         validate_role_size(options[:vm_size])
-        validate_location(params[:location]) unless errors.include?("location")
+        validate_location(params[:location]) unless errors.include?('location')
         if errors.empty?
-          params[:certificate]={}
+          params[:certificate] = {}
           if certificate_required?(params, options)
             begin
               params[:certificate][:key] = OpenSSL::PKey.read File.read(options[:private_key_file])
               params[:certificate][:cert] = OpenSSL::X509::Certificate.new File.read(options[:certificate_file])
               params[:certificate][:fingerprint] = export_fingerprint(params[:certificate][:cert])
-            rescue Exception =>e
+            rescue Exception => e
               Loggerx.error_with_exit e.message
             end
           end
@@ -342,14 +471,13 @@ module Azure
 
       def validate_location(location_name)
         locations = Azure::BaseManagementService.new.list_locations
-        location = locations.select{|loc| loc.name.downcase == location_name.downcase}.first
+        location = locations.select { |loc| loc.name.downcase == location_name.downcase }.first
         if location.nil?
-          Loggerx.error_with_exit "Value '#{location_name}' specified for parameter 'location' is invalid. Allowed values are #{locations.collect(&:name).join(',')}"
-        elsif !location.available_services.include?("PersistentVMRole")
+          Loggerx.error_with_exit "Value '#{location_name}' specified for parameter 'location' is invalid. Allowed values are #{locations.map(&:name).join(',')}"
+        elsif !location.available_services.include?('PersistentVMRole')
           Loggerx.error_with_exit "Persistentvmrole not enabled for \"#{location.name}\". Try different location"
         end
       end
-
     end
   end
 end
