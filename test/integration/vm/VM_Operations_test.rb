@@ -42,7 +42,6 @@ describe Azure::VirtualMachineManagementService do
   describe 'Operations on virtual machine' do
 
     describe '#shutdown_virtual_machine' do
-
       it 'shuts down virtual machine' do
         subject.shutdown_virtual_machine(vm_name, csn)
         vm = subject.get_virtual_machine(vm_name, csn)
@@ -65,6 +64,7 @@ describe Azure::VirtualMachineManagementService do
       before do
         subject.shutdown_virtual_machine(vm_name, csn)
       end
+      
       it 'starts virtual machine' do
         subject.start_virtual_machine(vm_name, csn)
         vm = subject.get_virtual_machine(vm_name, csn)
@@ -102,6 +102,71 @@ describe Azure::VirtualMachineManagementService do
         vm.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
         vm_names = vms.map(&:vm_name)
         vm_names.must_include  vm.vm_name
+      end
+    end
+
+    describe '#add_data_disk' do
+      it 'add data disk to virtual machine' do
+        lun = rand(1..15)
+        others = { disk_size: 100 }
+        subject.add_data_disk(vm_name, csn , lun, others)
+        dms = VirtualMachineDiskManagementService.new
+        disks = dms.list_virtual_machine_disks
+        disks = disks.select { |x| (/#{csn}/ =~ x.name) && x.os_type.empty? }
+        assert_operator disks.size, :>=, 1
+        disks.first.size.must_equal others[:disk_size].to_s
+      end
+    end
+
+    describe 'Add, Update, Delete endpoints' do
+      
+      it 'should add endpoints to virtual machine.' do
+        ep1 =  {
+          name: 'endpoint-1',
+          public_port: 777,
+          local_port: 777,
+          protocol: 'UDP',
+        }
+        ep2 =  {
+          name: 'endpoint-2',
+          public_port: 888,
+          local_port: 889,
+          protocol: 'UDP',
+          load_balancer_name: 'lb',
+          load_balancer: { protocol: 'http', path: 'mypath' }
+        }
+        subject.update_endpoints(vm_name, csn,  ep1, ep2)
+        vm = subject.get_virtual_machine(vm_name, csn)
+        vm.udp_endpoints.size.must_equal 2
+        vm.udp_endpoints.first[:name].must_equal 'endpoint-1'
+        vm.udp_endpoints.last[:name].must_equal 'endpoint-2'
+      end
+
+      it 'should update existing endpoints of virtual machine.' do
+        ep1 =  {
+          name: 'SSH',
+          public_port: 2222,
+          local_port: 22,
+          protocol: 'TCP',
+        }
+        subject.update_endpoints(vm_name, csn,  ep1)
+        vm = subject.get_virtual_machine(vm_name, csn)
+        vm.tcp_endpoints.size.must_equal 1
+        vm.tcp_endpoints.first[:name].must_equal 'SSH'
+        vm.tcp_endpoints.first[:public_port].must_equal '2222'
+      end
+
+      it 'should delete endpoint of virtual machine.' do
+        subject.delete_endpoint(vm_name, csn,  'SSH')
+        vm = subject.get_virtual_machine(vm_name, csn)
+        vm.tcp_endpoints.size.must_equal 0
+        ep1 =  {
+          name: 'SSH',
+          public_port: 22,
+          local_port: 22,
+          protocol: 'TCP',
+        }
+        subject.update_endpoints(vm_name, csn,  ep1)
       end
     end
 

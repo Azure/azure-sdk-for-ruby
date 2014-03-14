@@ -28,7 +28,7 @@ class VirtualMachineNameGenerator
     vm_name = random_text('test-')
     cloud_name = random_text(vm_name + '-service-')
     @names << [vm_name, cloud_name]
-    return vm_name, cloud_name
+    [vm_name, cloud_name]
   end
 
   def clean
@@ -44,43 +44,31 @@ class VirtualMachineNameGenerator
     virtual_machine_service = Azure::VirtualMachineManagementService.new
     virtualmachines = virtual_machine_service.list_virtual_machines
     azure_cloud_service = Azure::CloudServiceManagementService.new
-    virtualmachines.each do |virtualmachine|
-      if virtualmachine.vm_name.include?('test-') &&\
-          virtualmachine.cloud_service_name.include?(
-            virtualmachine.vm_name + '-service-'
-          )
-        begin
-          azure_cloud_service.delete_cloud_service_deployment(
-            virtualmachine.cloud_service_name
-          )
-          azure_cloud_service.delete_cloud_service(
-            virtualmachine.cloud_service_name
-          )
-        rescue
-        end
+    virtualmachines.each do |vm|
+      vm_name = vm.vm_name + '-service-'
+      csn = vm.cloud_service_name
+      if vm.vm_name.include?('test-') && csn.include?(vm_name)
+        azure_cloud_service.delete_cloud_service_deployment(csn) rescue nil
       end
     end
+
     # Delete cloud services
-    Azure::BaseManagementService.new
     cloud_services = azure_cloud_service.list_cloud_services
     cloud_services.each do |cloud_service|
-      if cloud_service.name.include?('test-') &&\
-         cloud_service.name.include?('-service-')
-        azure_cloud_service.delete_cloud_service(
-          cloud_service.name
-        )  rescue nil
+      csn = cloud_service.name
+      if csn.include?('test-') && csn.include?('-service-')
+        azure_cloud_service.delete_cloud_service(csn)  rescue nil
       end
     end
 
     # Delete disks
-    disk_management_service = Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService.new
-    disks = disk_management_service.list_virtual_machine_disks
+    disk_service = VirtualMachineDiskManagementService.new
+    sleep 60
+    disks = disk_service.list_virtual_machine_disks
     disks.each do |disk|
-      if disk.name.include?('-service-') &&\
-         disk.name.include?('test-') && !disk.attached
-        disk_management_service.delete_virtual_machine_disk(
-          disk.name
-        ) rescue nil
+      name = disk.name
+      if name.include?('-service-') && name.include?('test-') && !disk.attached
+        disk_service.delete_virtual_machine_disk(name) rescue nil
       end
     end
 
@@ -94,16 +82,13 @@ class VirtualMachineNameGenerator
     end
 
     # Delete affinity groups
-    affinity_group_service = Azure::BaseManagementService.new
-    affinity_groups = affinity_group_service.list_affinity_groups
+    ag_service = Azure::BaseManagementService.new
+    affinity_groups = ag_service.list_affinity_groups
     affinity_groups.each do |affinity_group|
       if affinity_group.name.include?('affinity-group-')
-        affinity_group_service.delete_affinity_group(
-          affinity_group.name
-        ) rescue nil
+        ag_service.delete_affinity_group(affinity_group.name) rescue nil
       end
     end
-
   end
 end
 

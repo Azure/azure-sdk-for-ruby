@@ -63,7 +63,6 @@ describe Azure::VirtualMachineManagementService do
 
   before do
     Loggerx.expects(:puts).returns(nil).at_least(0)
-
   end
 
   describe '#deployment' do
@@ -99,9 +98,9 @@ describe Azure::VirtualMachineManagementService do
       assert_equal(result.os_type, 'Windows')
       tcp_endpoints_names = []
       result.tcp_endpoints.each do |tcp_endpoint|
-        tcp_endpoints_names << tcp_endpoint['Name']
+        tcp_endpoints_names << tcp_endpoint[:name]
       end
-      tcp_endpoints_names.must_include 'WinRm-Https'
+      tcp_endpoints_names.must_include 'PowerShell'
       tcp_endpoints_names.must_include 'WinRm-Http'
       sleep 30
     end
@@ -117,9 +116,9 @@ describe Azure::VirtualMachineManagementService do
       assert_equal(result.os_type, 'Windows')
       tcp_endpoints_names = []
       result.tcp_endpoints.each do |tcp_endpoint|
-        tcp_endpoints_names << tcp_endpoint['Name']
+        tcp_endpoints_names << tcp_endpoint[:name]
       end
-      tcp_endpoints_names.must_include 'WinRm-Https'
+      tcp_endpoints_names.must_include 'PowerShell'
     end
 
     it 'should creates windows virtual machine without winrm.' do
@@ -131,7 +130,7 @@ describe Azure::VirtualMachineManagementService do
       result.tcp_endpoints.each do |tcp_endpoint|
         tcp_endpoints_names << tcp_endpoint['Name']
       end
-      assert !tcp_endpoints_names.include?('WinRm-Https')
+      assert !tcp_endpoints_names.include?('PowerShell')
       assert !tcp_endpoints_names.include?('WinRm-Http')
     end
 
