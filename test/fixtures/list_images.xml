@@ -4,7 +4,7 @@
     <Category>RightScale with Linux</Category>
     <Label>RightImage CentOS 6.2 x64 v5.8.8.1</Label>
     <LogicalSizeInGB>10</LogicalSizeInGB>
-    <Name>0b11de9248dd4d87b18621318e037d37__RightImage-CentOS-6.2-x64-v5.8.8.1</Name>
+    <Name>RightImage-CentOS-6.2-x64-v5.8.8.1</Name>
     <OS>Linux</OS>
     <Eula>http://support.rightscale.com/12-Guides/RightLink/RightLink_End_User_License_Agreeement;http://www.rightscale.com/privacy_policy.php</Eula>
     <Description>CentOS 6.3 with RightLink 5.8.</Description>

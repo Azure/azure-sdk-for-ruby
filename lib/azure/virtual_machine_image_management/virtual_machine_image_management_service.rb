@@ -50,6 +50,11 @@ module Azure
         Serialization.disks_from_xml(response)
       end
 
+      def get_virtual_machine_disk(disk_name)
+        disk = list_virtual_machine_disks.select {|x| x.name == disk_name}
+        disk.first
+      end
+
       # Public: Deletes the specified data or operating system disk from the image repository.
       #
       # Returns None

@@ -105,4 +105,9 @@ kZS1mYWNlNSI+DQogICAgPEluc3RhbmNlcyBjb3VudD0iMSIgLz4NCiAgPC9Sb2xlPg0KPC9TZXJ2aWN
     <EndTime>2013-04-13T08:00:00Z</EndTime>
     <Status>PersistentVMUpdateCompleted</Status>
   </PersistentVMDowntime>
+  <VirtualIPs>
+    <VirtualIP>
+      <Address>137.116.17.187</Address>
+    </VirtualIP>
+  </VirtualIPs>
 </Deployment>
