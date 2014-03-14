@@ -369,6 +369,38 @@ virtual_machine_service.shutdown_virtual_machine('vm_name', 'cloud_service_name'
 #API to start Virtual Machine
 virtual_machine_service.start_virtual_machine('vm_name', 'cloud_service_name')
 
+#API to restart Virtual Machine
+virtual_machine_service.restart_virtual_machine('vm_name', 'cloud_service_name')
+
+#API for add disk to Virtual Machine
+lun = 1  #Valid LUN values are 0 through 15.
+options = {
+  :disk_label => 'disk-label',
+  :disk_size => 100, #In GB
+  :import => false
+}
+virtual_machine_service.add_data_disk('vm_name', 'cloud_service_name', lun, options)
+
+#API to add/update Virtual Machine endpoints
+endpoint1 = {
+    :name => 'ep-1',
+    :public_port => 996,
+    :local_port => 998,
+    :protocol => 'TCP',
+  }
+endpoint2 = {
+    :name => 'ep-2',
+    :public_port => 997,
+    :local_port => 997,
+    :protocol => 'TCP',
+    :load_balancer_name => ‘lb-ep2’,
+    :load_balancer => {:protocol => 'http', :path => 'hello'}
+  }
+virtual_machine_service.update_endpoints('vm_name', 'cloud_service_name', endpoint1, endpoint2)
+
+#API to delete Virtual Machine endpoint
+virtual_machine_service.delete_endpoint('vm_name', 'cloud_service_name', 'endpoint_name')
+
 #API to delete Virtual Machine
 virtual_machine_service.delete_virtual_machine('vm_name', 'cloud_service_name')
 
