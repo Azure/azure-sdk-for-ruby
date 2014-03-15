@@ -1,3 +1,8 @@
+2014.02.18 - version 0.6.1
+* Fixed http redirection error.
+* Add a new role to existing deployment
+* Add support for including VMs in availability sets
+
 2013.12.02 - version 0.6.0
 * Add the following service management API
   * Virtual Machine
