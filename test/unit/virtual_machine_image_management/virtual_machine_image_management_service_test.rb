@@ -36,7 +36,11 @@ describe Azure::VirtualMachineImageManagementService do
   describe "#list_virtual_machine_images" do
     
     before {
-      ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      ManagementHttpRequest.stubs(:new).with(
+        method,
+        request_path,
+        nil
+      ).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     }
   
@@ -46,14 +50,15 @@ describe Azure::VirtualMachineImageManagementService do
   
     it "sets the properties of the virtual machine images" do
       virtual_machine_image = subject.list_virtual_machine_images.first
-      virtual_machine_image.name.must_equal '0b11de9248dd4d87b18621318e037d37__RightImage-CentOS-6.2-x64-v5.8.8.1'
+      virtual_machine_image.name.must_equal 'RightImage-CentOS-6.2-x64-v5.8.8.1'
     end
 
     it "returns a list of virtual machine images from server" do
       results = subject.list_virtual_machine_images
       results.must_be_kind_of Array
       results.length.must_equal 12
-      results.first.must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImage
+      image_klass = Azure::VirtualMachineImageManagement::VirtualMachineImage
+      results.first.must_be_kind_of image_klass
     end
   end
   

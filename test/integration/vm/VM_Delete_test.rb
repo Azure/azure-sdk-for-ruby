@@ -12,44 +12,44 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
+require 'integration/test_helper'
 
 describe Azure::VirtualMachineManagementService do
 
   subject { Azure::VirtualMachineManagementService.new }
   let(:names) { VirtualMachineNameHelper.name }
-  let(:virtual_machine_name) { names.first}
-  let(:cloud_service_name) { names.last }
-  let(:username) {'admin'}
-  before {
+  let(:virtual_machine_name) { names.first }
+  let(:csn) { names.last }
+  let(:username) { 'admin' }
+  before do
     Loggerx.expects(:puts).at_least_once.returns(nil)
     params = {
-      :vm_name => virtual_machine_name,
-      :vm_user => 'user',
-      :image => LinuxImage.name,
-      :password => 'User123',
-      :location => LinuxImageLocation
+      vm_name: virtual_machine_name,
+      vm_user: 'user',
+      image: LinuxImage.name,
+      password: 'User123',
+      location: LinuxImageLocation
     }
     options = {
-      :storage_account_name => StorageAccountName,
-      :cloud_service_name => cloud_service_name,
+      storage_account_name: StorageAccountName,
+      cloud_service_name: csn,
     }
     subject.create_virtual_machine(params, options)
     sleep 60
-  }
+  end
 
-  describe "#delete_virtual_machine" do
+  describe '#delete_virtual_machine' do
 
-    it "delete existing virtual machine and cloud service" do
-      subject.delete_virtual_machine(virtual_machine_name, cloud_service_name)
+    it 'delete existing virtual machine and cloud service' do
+      subject.delete_virtual_machine(virtual_machine_name, csn)
       sleep 60
-      vm = subject.get_virtual_machine(virtual_machine_name, cloud_service_name)
+      vm = subject.get_virtual_machine(virtual_machine_name, csn)
       vm.must_be_nil
-      cloud_presence = Azure::CloudServiceManagementService.new.get_cloud_service(cloud_service_name)
+      cloud_service = Azure::CloudServiceManagementService.new
+      cloud_presence = cloud_service.get_cloud_service(csn)
       cloud_presence.must_equal false
     end
 
   end
 
 end
-

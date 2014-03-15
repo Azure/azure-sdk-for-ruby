@@ -20,7 +20,7 @@ module Azure
         yield self if block_given?
       end
 
-      attr_accessor :name, :attached
+      attr_accessor :name, :attached, :os_type, :image, :size
 
     end
   end

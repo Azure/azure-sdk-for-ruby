@@ -39,7 +39,10 @@ module Azure
         disks.each do |disk_node|
           disk = VirtualMachineDisk.new
           disk.name = xml_content(disk_node, 'Name')
+          disk.os_type = xml_content(disk_node, 'OS')
           disk.attached = !xml_content(disk_node,'AttachedTo').empty?
+          disk.image = xml_content(disk_node, 'SourceImageName')
+          disk.size = xml_content(disk_node, 'LogicalDiskSizeInGB')
           os_disks << disk
         end
         os_disks
