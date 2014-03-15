@@ -1,8 +1,8 @@
 2014.03.15 - version 0.6.2
-* Restart Virtual Machine.
-* Add disk to Virtual Machine.
-* Add/Update Virtual Machine endpoints.
-* Delete Virtual Machine endpoint.
+* Restart Virtual Machine
+* Add disk to Virtual Machine
+* Add/Update Virtual Machine endpoints
+* Delete Virtual Machine endpoint
 
 2014.02.18 - version 0.6.1
 * Fixed http redirection error
