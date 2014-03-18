@@ -18,6 +18,7 @@ require 'base64'
 module Azure
   module VirtualMachineManagement
     module Serialization
+      extend Azure::Core::Utility
       def self.shutdown_virtual_machine_to_xml
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.ShutdownRoleOperation(

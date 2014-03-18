@@ -15,6 +15,8 @@
 require 'test_helper'
 
 describe Azure::VirtualMachineManagement::Serialization do
+  include Azure::Core::Utility
+  
   subject { Azure::VirtualMachineManagement::Serialization }
 
   let(:vm_xml) { Nokogiri::XML(Fixtures['virtual_machine']) }

@@ -18,7 +18,8 @@ require 'azure/virtual_machine_image_management/virtual_machine_disk'
 module Azure
   module VirtualMachineImageManagement
     module Serialization
-
+      extend Azure::Core::Utility
+      
       def self.virtual_machine_images_from_xml(imageXML)
         os_images = Array.new
         virtual_machine_images = imageXML.css('Images OSImage')

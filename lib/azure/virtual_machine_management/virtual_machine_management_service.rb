@@ -18,6 +18,8 @@ include Azure::VirtualMachineImageManagement
 module Azure
   module VirtualMachineManagement
     class VirtualMachineManagementService < BaseManagement::BaseManagementService
+      include  Azure::Core::Utility
+
       def initialize
         super()
       end

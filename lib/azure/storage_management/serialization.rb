@@ -20,6 +20,7 @@ module Azure
     # Storage management serialization module is responsible for converting
     # the objects to XML and vice versa.
     module Serialization
+      extend Azure::Core::Utility
       def self.storage_services_to_xml(name, options = {})
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.CreateStorageServiceInput(
