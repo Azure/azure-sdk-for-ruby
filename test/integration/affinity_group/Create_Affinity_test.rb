@@ -21,7 +21,7 @@ describe Azure::BaseManagementService do
   let(:location) { WindowsImageLocation }
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   end
 
   let(:label) { 'Label Name' }

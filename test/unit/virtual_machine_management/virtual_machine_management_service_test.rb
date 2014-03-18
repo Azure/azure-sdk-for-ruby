@@ -22,7 +22,7 @@ describe Azure::VirtualMachineManagementService do
   end
 
   before do
-    Loggerx.stubs(:info).returns(nil)
+    Azure::Loggerx.stubs(:info).returns(nil)
   end
 
   let(:params)do
@@ -285,7 +285,7 @@ describe Azure::VirtualMachineManagementService do
       Azure::CloudServiceManagementService.any_instance.stubs(:create_cloud_service)
       Azure::CloudServiceManagementService.any_instance.stubs(:upload_certificate)
       Azure::StorageManagementService.any_instance.stubs(:create_storage_account)
-      Loggerx.expects(:puts).returns(nil).at_least(0)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       mock_request = mock
       Azure::BaseManagement::ManagementHttpRequest.expects(:new).with(
         :post,
@@ -415,7 +415,7 @@ describe Azure::VirtualMachineManagementService do
     before do
       Azure::BaseManagement::ManagementHttpRequest.any_instance.expects(:call).returns response_body
       subject.class.send(:public, *subject.class.private_instance_methods)
-      Loggerx.expects(:puts).returns(nil).at_least(0)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     end
 
     it 'returns os type of given virtual machine image' do

@@ -20,7 +20,7 @@ describe Azure::VirtualMachineManagementService do
   subject { Azure::VirtualMachineManagementService.new }
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     params = {
       vm_name: vm_name,
       vm_user: 'user',

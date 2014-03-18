@@ -23,7 +23,7 @@ require 'azure/base_management/location'
 require 'azure/base_management/affinity_group'
 
 include Azure::Core::Utility
-Loggerx = Azure::Core::Logger
+Azure::Loggerx = Azure::Core::Logger
 
 module Azure
   module BaseManagement
@@ -131,7 +131,7 @@ module Azure
           request_path = '/affinitygroups'
           request = ManagementHttpRequest.new(:post, request_path, body)
           request.call
-          Loggerx.info "Affinity Group #{name} is created."
+          Azure::Loggerx.info "Affinity Group #{name} is created."
         end
       end
 
@@ -160,7 +160,7 @@ module Azure
           request_path = "/affinitygroups/#{name}"
           request = ManagementHttpRequest.new(:put, request_path, body)
           request.call
-          Loggerx.info "Affinity Group #{name} is updated."
+          Azure::Loggerx.info "Affinity Group #{name} is updated."
         end
       end
 
@@ -178,7 +178,7 @@ module Azure
           request_path = "/affinitygroups/#{name}"
           request = ManagementHttpRequest.new(:delete, request_path)
           request.call
-          Loggerx.info "Deleted affinity group #{name}."
+          Azure::Loggerx.info "Deleted affinity group #{name}."
         end
       end
 

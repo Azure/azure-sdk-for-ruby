@@ -28,7 +28,7 @@ describe Azure::StorageManagementService do
   }
   let(:response_body) {Nokogiri::XML response.body}
   before{
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   }
 
   describe "#list_storage_accounts" do

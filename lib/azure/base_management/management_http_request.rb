@@ -66,7 +66,7 @@ module Azure
       def wait_for_completion(response)
         ret_val = Nokogiri::XML response.body
         if ret_val.at_css('Error Code') && ret_val.at_css('Error Code').content == 'AuthenticationFailed'
-          Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
+          Azure::Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
         end
         if response.status_code.to_i == 200 || response.status_code.to_i == 201
           return response
@@ -75,15 +75,15 @@ module Azure
         elsif response.status_code.to_i > 201 && response.status_code.to_i <= 299
           check_completion(response.headers['x-ms-request-id'])
         elsif warn && !response.success?
-          # Loggerx.warn ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
+          # Azure::Loggerx.warn ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
         elsif response.body
           if ret_val.at_css('Error Code') && ret_val.at_css('Error Message')
-            Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
+            Azure::Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
           else
-            Loggerx.exception_message "http error: #{response.status_code}"
+            Azure::Loggerx.exception_message "http error: #{response.status_code}"
           end
         else
-          Loggerx.exception_message "http error: #{response.status_code}"
+          Azure::Loggerx.exception_message "http error: #{response.status_code}"
         end
       end
 
@@ -122,9 +122,9 @@ module Azure
             if status.downcase != 'succeeded'
               error_code = xml_content(ret_val, 'Operation Error Code')
               error_msg = xml_content(ret_val, 'Operation Error Message')
-              Loggerx.exception_message "#{error_code}: #{error_msg}"
+              Azure::Loggerx.exception_message "#{error_code}: #{error_msg}"
             else
-              Loggerx.success "#{status.downcase} (#{status_code})"
+              Azure::Loggerx.success "#{status.downcase} (#{status_code})"
             end
             return
           else

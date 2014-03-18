@@ -21,7 +21,7 @@ describe Azure::SqlDatabaseManagementService do
   describe "#create_server" do
 
     before {
-      Loggerx.expects(:puts).returns(nil).at_least(0)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     }
 
     it "should be able to create a new sql database server." do

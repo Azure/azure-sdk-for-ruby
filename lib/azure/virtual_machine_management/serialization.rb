@@ -346,7 +346,7 @@ module Azure
 
       def self.add_data_disk_to_xml(lun, media_link, options)
         if options[:import] && options[:disk_name].nil?
-          Loggerx.error_with_exit "The data disk name is not valid."
+          Azure::Loggerx.error_with_exit "The data disk name is not valid."
         end
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.DataVirtualHardDisk(

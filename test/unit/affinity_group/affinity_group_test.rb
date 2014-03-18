@@ -23,7 +23,7 @@ describe Azure::BaseManagementService do
   let(:response_xml) { nil }
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     mock_request.expects(:call).returns(Nokogiri::XML response_xml).at_least(0)
   end
 

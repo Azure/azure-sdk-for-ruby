@@ -23,7 +23,7 @@ describe Azure::VirtualNetworkManagement::VirtualNetwork do
   let(:vnet_name) { 'vnet-integration-test' }
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     affinity_group_service = Azure::BaseManagementService.new
     affinity_group_service.create_affinity_group(affinity_group_name,
                                                  location,

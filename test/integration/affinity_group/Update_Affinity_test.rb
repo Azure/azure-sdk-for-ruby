@@ -23,7 +23,7 @@ describe Azure::BaseManagementService do
   )
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   end
 
   subject { Azure::BaseManagementService.new }

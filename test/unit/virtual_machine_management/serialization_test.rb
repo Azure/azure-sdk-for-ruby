@@ -165,7 +165,7 @@ describe Azure::VirtualMachineManagement::Serialization do
     let(:media_link) { 'https://sta.blob.managment.core.net/vhds/1234.vhd' }
     let(:lun) { 5 }
     before do
-      Loggerx.expects(:puts).returns(nil).at_least(0)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     end
 
     it 'returns an xml for newly created data disk' do

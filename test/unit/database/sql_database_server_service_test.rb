@@ -24,7 +24,7 @@ describe 'Azure::SqlDatabaseManagementService' do
 
   describe 'SQL Server authentication Endpoint' do
     before do
-      Loggerx.expects(:puts).returns(nil).at_least(0)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       mock_request.stubs(:headers).returns(response_headers)
       mock_request.expects(:call).returns(Nokogiri::XML response_xml).at_least(0)
       Azure.config.sql_database_authentication_mode = :sql_server
@@ -156,7 +156,7 @@ describe 'Azure::SqlDatabaseManagementService' do
 
   describe 'Management Certificate authentication Endpoint' do
     before do
-      Loggerx.expects(:puts).returns(nil).at_least(0)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       mock_request.stubs(:headers).returns(response_headers)
       mock_request.expects(:call).returns(Nokogiri::XML response_xml).at_least(0)
       Azure.config.sql_database_authentication_mode = :management_certificate
