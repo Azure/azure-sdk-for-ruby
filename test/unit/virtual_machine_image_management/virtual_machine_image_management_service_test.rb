@@ -36,7 +36,7 @@ describe Azure::VirtualMachineImageManagementService do
   describe "#list_virtual_machine_images" do
     
     before {
-      ManagementHttpRequest.stubs(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         method,
         request_path,
         nil

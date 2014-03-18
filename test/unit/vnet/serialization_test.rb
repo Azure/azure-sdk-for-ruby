@@ -93,7 +93,7 @@ describe Azure::VirtualNetworkManagement::Serialization do
 
   describe '#virtual_network_to_xml' do
     before do
-      ManagementHttpRequest.any_instance.expects(
+      Azure::BaseManagement::ManagementHttpRequest.any_instance.expects(
         :call
       ).returns(virtual_networks_xml)
     end

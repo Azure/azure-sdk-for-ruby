@@ -17,7 +17,7 @@ include Azure::VirtualMachineImageManagement
 
 module Azure
   module VirtualMachineManagement
-    class VirtualMachineManagementService < BaseManagementService
+    class VirtualMachineManagementService < BaseManagement::BaseManagementService
       def initialize
         super()
       end
@@ -34,7 +34,7 @@ module Azure
         end
         cloud_service_names.each do |cloud_service_name|
           request_path = "/services/hostedservices/#{cloud_service_name}/deploymentslots/production"
-          request = ManagementHttpRequest.new(:get, request_path)
+          request = BaseManagement::ManagementHttpRequest.new(:get, request_path)
           request.warn = true
           response = request.call
           roles << Serialization.virtual_machines_from_xml(response, cloud_service_name)
@@ -139,7 +139,7 @@ module Azure
         Loggerx.error 'Cloud service name is required for adding role.' unless options[:cloud_service_name]
         Loggerx.error 'Storage account name is required for adding role.' unless options[:storage_account_name]
         Loggerx.info 'Deployment in progress...'
-        request = ManagementHttpRequest.new(:post, path, body)
+        request = BaseManagement::ManagementHttpRequest.new(:post, path, body)
         request.call
         get_virtual_machine(params[:vm_name], options[:cloud_service_name])
       rescue Exception => e
@@ -207,7 +207,7 @@ module Azure
             path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roleinstances/#{vm.vm_name}/Operations"
             body = Serialization.shutdown_virtual_machine_to_xml
             Loggerx.info "Shutting down virtual machine \"#{vm.vm_name}\" ..."
-            request = ManagementHttpRequest.new(:post, path, body)
+            request = BaseManagement::ManagementHttpRequest.new(:post, path, body)
             request.call
           else
             Loggerx.error 'Cannot perform the shutdown operation on a stopped deployment.'
@@ -236,7 +236,7 @@ module Azure
             path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roleinstances/#{vm.vm_name}/Operations"
             body = Serialization.start_virtual_machine_to_xml
             Loggerx.info "Starting virtual machine \"#{vm.vm_name}\" ..."
-            request = ManagementHttpRequest.new(:post, path, body)
+            request = BaseManagement::ManagementHttpRequest.new(:post, path, body)
             request.call
           end
         else
@@ -260,7 +260,7 @@ module Azure
           path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roleinstances/#{vm.vm_name}/Operations"
           body = Serialization.restart_virtual_machine_to_xml
           Loggerx.info "Restarting virtual machine \"#{vm.vm_name}\" ..."
-          request = ManagementHttpRequest.new(:post, path, body)
+          request = BaseManagement::ManagementHttpRequest.new(:post, path, body)
           request.call
         else
           Loggerx.error "Cannot find virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\"."
@@ -321,7 +321,7 @@ module Azure
           end
           endpoints += input_endpoints
           body = Serialization.update_role_to_xml(endpoints, vm)
-          request = ManagementHttpRequest.new(:put, path, body)
+          request = BaseManagement::ManagementHttpRequest.new(:put, path, body)
           Loggerx.info "Updating endpoints of virtual machine #{vm.vm_name} ..."
           request.call
         else
@@ -347,7 +347,7 @@ module Azure
           endpoints = vm.tcp_endpoints + vm.udp_endpoints
           endpoints.delete_if { |ep| endpoint_name.downcase == ep[:name].downcase }
           body = Serialization.update_role_to_xml(endpoints, vm)
-          request = ManagementHttpRequest.new(:put, path, body)
+          request = BaseManagement::ManagementHttpRequest.new(:put, path, body)
           Loggerx.info "Deleting virtual machine endpoint #{endpoint_name} ..."
           request.call
         else
@@ -387,7 +387,7 @@ module Azure
           path = "/services/hostedservices/#{cloud_service_name}/deployments/#{vm.deployment_name}/roles/#{vm_name}/DataDisks"
           body = Serialization.add_data_disk_to_xml(lun, vm.media_link, options)
           Loggerx.info "Adding data disk to virtual machine #{vm_name} ..."
-          request = ManagementHttpRequest.new(:post, path, body)
+          request = BaseManagement::ManagementHttpRequest.new(:post, path, body)
           request.call
         else
           Loggerx.error "Cannot find virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\"."

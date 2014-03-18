@@ -16,7 +16,7 @@ require 'azure/sql_database_management/serialization'
 
 module Azure
   module SqlDatabaseManagement
-    class SqlDatabaseManagementService < BaseManagementService
+    class SqlDatabaseManagementService < BaseManagement::BaseManagementService
 
       def initialize
         super()
@@ -30,7 +30,7 @@ module Azure
       # Returns an array of Azure::SqlDatabaseManagement::SqlDatabase objects
       def list_servers
         request_path = '/servers'
-        request = SqlManagementHttpRequest.new(:get, request_path, nil)
+        request = BaseManagement::SqlManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.databases_from_xml(response)
       end
@@ -49,7 +49,7 @@ module Azure
       def create_server(login, password, location)
         body = Serialization.database_to_xml(login, password, location)
         request_path = '/servers'
-        request = SqlManagementHttpRequest.new(:post, request_path, body)
+        request = BaseManagement::SqlManagementHttpRequest.new(:post, request_path, body)
         response = request.call
         sql_server = Serialization.server_name_from_xml(response, login, location)
         Loggerx.info "SQL database server #{sql_server.name} is created." if sql_server
@@ -69,7 +69,7 @@ module Azure
       def delete_server(name)
         if get_sql_server(name)
           request_path = "/servers/#{name}"
-          request = SqlManagementHttpRequest.new(:delete, request_path)
+          request = BaseManagement::SqlManagementHttpRequest.new(:delete, request_path)
           request.call
           Loggerx.info "Deleted database server #{name}."
         end
@@ -90,7 +90,7 @@ module Azure
         if get_sql_server(name)
           body = Serialization.reset_password_to_xml(password)
           request_path = "/servers/#{name}?op=ResetPassword"
-          request = SqlManagementHttpRequest.new(:post, request_path, body)
+          request = BaseManagement::SqlManagementHttpRequest.new(:post, request_path, body)
           request.call
           Loggerx.info "Password for server #{name} changed successfully."
         end
@@ -127,7 +127,7 @@ module Azure
             request_path = "/servers/#{server_name}/firewallrules/#{rule_name}?op=AutoDetectClientIP"
             method = :post
           end
-          request = SqlManagementHttpRequest.new(method, request_path, body)
+          request = BaseManagement::SqlManagementHttpRequest.new(method, request_path, body)
           request.headers['x-ms-version'] = '1.0'
           request.uri = URI.parse(Azure.config.sql_database_management_endpoint + Azure.config.subscription_id + request_path)
           # Management certificate authentication Endpoint throws errors for this operation. Need to re-visit
@@ -151,7 +151,7 @@ module Azure
       def list_sql_server_firewall_rules(server_name)
         if get_sql_server(server_name)
           request_path = "/servers/#{server_name}/firewallrules"
-          request = SqlManagementHttpRequest.new(:get, request_path)
+          request = BaseManagement::SqlManagementHttpRequest.new(:get, request_path)
           response = request.call
           Serialization.database_firewall_from_xml(response)
         end
@@ -173,7 +173,7 @@ module Azure
           raise error
         elsif get_sql_server(server_name)
           request_path = "/servers/#{server_name}/firewallrules/#{rule_name}"
-          request = SqlManagementHttpRequest.new(:delete, request_path)
+          request = BaseManagement::SqlManagementHttpRequest.new(:delete, request_path)
           request.call
           Loggerx.info "Deleted server-level firewall rule #{rule_name}."
         end

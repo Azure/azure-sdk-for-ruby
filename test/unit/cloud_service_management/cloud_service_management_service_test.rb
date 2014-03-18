@@ -34,7 +34,7 @@ describe Azure::CloudServiceManagementService do
 
   describe "#list_cloud_services" do
     before {
-      ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     }
   
@@ -57,7 +57,7 @@ describe Azure::CloudServiceManagementService do
   
   describe "#get_cloud_service" do
     before {
-      ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     }
   
@@ -79,14 +79,14 @@ describe Azure::CloudServiceManagementService do
   describe "#create_cloud_service" do
   
     it "Create cloud service return message if cloud service exists of given name." do
-      ManagementHttpRequest.any_instance.expects(:call).returns response_body
+      Azure::BaseManagement::ManagementHttpRequest.any_instance.expects(:call).returns response_body
       msg = subject.create_cloud_service 'cloud-service-1'
       assert_match(/^Cloud service cloud-service-1 already exists*/, msg)
     end
 
     it "Create cloud service if cloud service doesn't exists of given name." do
       Azure::CloudServiceManagementService.any_instance.stubs(:get_cloud_service).with('cloud-service-3').returns(false)
-      ManagementHttpRequest.any_instance.expects(:call).returns nil
+      Azure::BaseManagement::ManagementHttpRequest.any_instance.expects(:call).returns nil
       subject.create_cloud_service 'cloud-service-3'
     end
 

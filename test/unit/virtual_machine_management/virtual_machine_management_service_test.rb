@@ -96,13 +96,13 @@ describe Azure::VirtualMachineManagementService do
     let(:virtual_networks_response_body) { Nokogiri::XML virtual_networks_response.body }
 
     before do
-      ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_cloud_service_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_cloud_service_request)
       mock_cloud_service_request.expects(:call).returns(cloud_service_response_body)
-      ManagementHttpRequest.stubs(:new).with(method, '/services/hostedservices/cloud-service-1/deploymentslots/production').returns(mock_virtual_machine_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, '/services/hostedservices/cloud-service-1/deploymentslots/production').returns(mock_virtual_machine_request)
       mock_virtual_machine_request.stubs(:warn=).returns(true).twice
-      ManagementHttpRequest.stubs(:new).with(method, '/services/hostedservices/cloud-service-2/deploymentslots/production').returns(mock_virtual_machine_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, '/services/hostedservices/cloud-service-2/deploymentslots/production').returns(mock_virtual_machine_request)
       mock_virtual_machine_request.expects(:call).twice.returns(virtual_machine_response_body).returns(Nokogiri::XML  deployment_error_response.body)
-      ManagementHttpRequest.stubs(:new).with(method, '/services/networking/virtualnetwork', nil).returns(mock_virtual_network_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, '/services/networking/virtualnetwork', nil).returns(mock_virtual_network_request)
     end
 
     it 'assembles a URI for the request' do
@@ -198,14 +198,14 @@ describe Azure::VirtualMachineManagementService do
     end
 
     before do
-      ManagementHttpRequest.stubs(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         method,
         images_request_path,
         nil
       ).returns(mock_request)
       mock_request.expects(:call).returns(os_response_body)
       mock_request = mock
-      ManagementHttpRequest.stubs(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         method,
         location_request_path,
         nil
@@ -215,7 +215,7 @@ describe Azure::VirtualMachineManagementService do
       Azure::CloudServiceManagementService.any_instance.stubs(:upload_certificate)
       Azure::StorageManagementService.any_instance.stubs(:create_storage_account)
       mock_request = mock
-      ManagementHttpRequest.expects(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.expects(:new).with(
         :post,
         anything,
         anything
@@ -269,14 +269,14 @@ describe Azure::VirtualMachineManagementService do
     end
 
     before do
-      ManagementHttpRequest.stubs(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         method,
         images_request_path,
         nil
       ).returns(mock_request)
       mock_request.expects(:call).returns(os_response_body)
       mock_request = mock
-      ManagementHttpRequest.stubs(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         method,
         location_request_path,
         nil
@@ -287,7 +287,7 @@ describe Azure::VirtualMachineManagementService do
       Azure::StorageManagementService.any_instance.stubs(:create_storage_account)
       Loggerx.expects(:puts).returns(nil).at_least(0)
       mock_request = mock
-      ManagementHttpRequest.expects(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.expects(:new).with(
         :post,
         anything,
         anything
@@ -413,7 +413,7 @@ describe Azure::VirtualMachineManagementService do
     let(:response_body) { Nokogiri::XML response.body }
 
     before do
-      ManagementHttpRequest.any_instance.expects(:call).returns response_body
+      Azure::BaseManagement::ManagementHttpRequest.any_instance.expects(:call).returns response_body
       subject.class.send(:public, *subject.class.private_instance_methods)
       Loggerx.expects(:puts).returns(nil).at_least(0)
     end

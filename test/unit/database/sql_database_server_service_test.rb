@@ -36,7 +36,7 @@ describe 'Azure::SqlDatabaseManagementService' do
       let(:request_path) { '/servers' }
 
       before do
-        SqlManagementHttpRequest.stubs(:new).with(
+        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
           method,
           request_path,
           nil
@@ -94,7 +94,7 @@ describe 'Azure::SqlDatabaseManagementService' do
           :list_servers
         ).returns([sql_server])
 
-        SqlManagementHttpRequest.stubs(:new).with(
+        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
           method,
           request_path,
           nil
@@ -122,7 +122,7 @@ describe 'Azure::SqlDatabaseManagementService' do
       let(:location) { 'West US' }
 
       before do
-        SqlManagementHttpRequest.stubs(:new).with(
+        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
           method,
           request_path,
           anything
@@ -168,7 +168,7 @@ describe 'Azure::SqlDatabaseManagementService' do
       let(:request_path) { '/servers' }
 
       before do
-        SqlManagementHttpRequest.stubs(:new).with(
+        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
           method,
           request_path,
           nil
@@ -226,7 +226,7 @@ describe 'Azure::SqlDatabaseManagementService' do
           :list_servers
         ).returns([sql_server])
 
-        SqlManagementHttpRequest.stubs(:new).with(
+        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
           method,
           request_path,
           nil
@@ -254,7 +254,7 @@ describe 'Azure::SqlDatabaseManagementService' do
       let(:location) { 'West US' }
 
       before do
-        SqlManagementHttpRequest.stubs(:new).with(
+        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
           method,
           request_path,
           anything
