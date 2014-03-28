@@ -161,7 +161,7 @@ module Azure
         request.call
         get_virtual_machine(params[:vm_name], options[:cloud_service_name])
       rescue Exception => e
-        e.message
+        Loggerx.error_with_exit e.message
       end
 
       # Public: Deletes the deployment, cloud service and disk.

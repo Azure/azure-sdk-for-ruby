@@ -277,6 +277,7 @@ module Azure
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
                 vm.media_link = xml_content(role, 'OSVirtualHardDisk MediaLink')
+                vm.image = xml_content(role, 'OSVirtualHardDisk SourceImageName')
                 break
               end
             end
