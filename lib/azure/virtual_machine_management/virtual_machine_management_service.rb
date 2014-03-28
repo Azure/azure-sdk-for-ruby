@@ -85,6 +85,8 @@ module Azure
       # * +:ssh_private_key_file+     - String. Path of private key file.
       # * +:ssh_certificate_file+     - String. Path of certificate file.
       # * +:ssh_port+                 - Integer. Specifies the SSH port number.
+      # * +:winrm_http_port           - Integer. Specifies the WinRM HTTP port number.
+      # * +:winrm_https_port          - Integer. Specifies the WinRM HTTPS port number.
       # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.
       # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
       # * +:availability_set_name+    - String. Specifies the availability set name.
@@ -131,6 +133,22 @@ module Azure
           body = Serialization.deployment_to_xml(params, options)
           path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments"
         else
+          cloud_services = Azure::CloudServiceManagementService.new.get_cloud_service_properties(
+            options[:cloud_service_name]
+          )
+
+          existing_ports = []
+
+          # There should be only one cloud_serivce in the Array.
+          cloud_services.each do |cloud_service|
+            cloud_service.virtual_machines[options[:deployment_name].to_sym].each do |vm|
+              vm.tcp_endpoints.each do |endpoint|
+                existing_ports << endpoint[:public_port]
+              end
+            end
+          end
+
+          options[:existing_ports] = existing_ports
 
           Loggerx.info 'Deployment exists, adding role...'
           body = Serialization.role_to_xml(params, options).to_xml

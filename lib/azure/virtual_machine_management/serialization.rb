@@ -91,7 +91,11 @@ module Azure
                 xml.ConfigurationSetType 'NetworkConfiguration'
                 xml.InputEndpoints do
                   default_endpoints_to_xml(xml, options)
-                  tcp_endpoints_to_xml(xml, options[:tcp_endpoints]) if options[:tcp_endpoints]
+                  tcp_endpoints_to_xml(
+                    xml,
+                    options[:tcp_endpoints],
+                    options[:existing_ports]
+                  ) if options[:tcp_endpoints]
                 end
                 if options[:virtual_network_name] && options[:subnet_name]
                   xml.SubnetNames do
@@ -127,8 +131,14 @@ module Azure
               xml.SSH do
                 xml.PublicKeys do
                   xml.PublicKey do
-                    xml.Fingerprint fingerprint
+                    xml.Fingerprint fingerprint.to_s.upcase
                     xml.Path "/home/#{params[:vm_user]}/.ssh/authorized_keys"
+                  end
+                end
+                xml.KeyPairs do
+                  xml.KeyPair do
+                    xml.Fingerprint fingerprint.to_s.upcase
+                    xml.Path "/home/#{params[:vm_user]}/.ssh/id_rsa"
                   end
                 end
               end
@@ -167,25 +177,43 @@ module Azure
         os_type = options[:os_type]
         endpoints = []
         if os_type == 'Linux'
+          options[:ssh_port] ||= '22'
+
+          port_already_opened?(options[:existing_ports], options[:ssh_port])
+
           endpoints <<  {
             name: 'SSH',
-            public_port: options[:ssh_port] || '22',
+            public_port: options[:ssh_port],
             protocol: 'TCP',
             local_port: '22'
           }
         elsif os_type == 'Windows' && options[:winrm_transport]
           if options[:winrm_transport].include?('http')
+            options[:winrm_http_port] ||= '5985'
+
+            port_already_opened?(
+              options[:existing_ports],
+              options[:winrm_http_port]
+            )
+
             endpoints <<  {
               name: 'WinRm-Http',
-              public_port: '5985',
+              public_port: options[:winrm_http_port],
               protocol: 'TCP',
               local_port: '5985'
             }
           end
           if options[:winrm_transport].include?('https')
+            options[:winrm_https_port] ||= '5986'
+
+            port_already_opened?(
+              options[:existing_ports],
+              options[:winrm_https_port]
+            )
+
             endpoints <<  {
               name: 'PowerShell',
-              public_port: '5986',
+              public_port: options[:winrm_https_port],
               protocol: 'TCP',
               local_port: '5986'
             }
@@ -194,20 +222,28 @@ module Azure
         endpoints_to_xml(xml, endpoints)
       end
 
-      def self.tcp_endpoints_to_xml(xml, tcp_endpoints)
+      def self.tcp_endpoints_to_xml(xml, tcp_endpoints, existing_ports = [])
         endpoints = []
+
         tcp_endpoints.split(',').each do |endpoint|
           ports = endpoint.split(':')
           tcp_ep = {}
+
           if ports.length > 1
-            tcp_ep[:name]  = 'TCP-PORT-' + ports[1]
+            port_already_opened?(existing_ports, ports[1])
+
+            tcp_ep[:name] = "TCP-PORT-#{ports[1]}"
             tcp_ep[:public_port] = ports[1]
           else
-            tcp_ep[:name] = 'TCP-PORT-' + ports[0]
+            port_already_opened?(existing_ports, ports[0])
+
+            tcp_ep[:name] = "TCP-PORT-#{ports[0]}"
             tcp_ep[:public_port] = ports[0]
           end
+
           tcp_ep[:local_port] = ports[0]
           tcp_ep[:protocol] = 'TCP'
+
           endpoints << tcp_ep
         end
         endpoints_to_xml(xml, endpoints)
@@ -368,6 +404,14 @@ module Azure
         builder.doc.to_xml
       end
 
+      private
+
+      def self.port_already_opened?(existing_ports, port)
+        return false if existing_ports.nil?
+        raise "Port #{port} conflicts with a port already opened."\
+              " Please select a different port." if existing_ports.include?(port)
+        false
+      end
     end
   end
 end
