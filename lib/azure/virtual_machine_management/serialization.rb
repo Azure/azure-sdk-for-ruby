@@ -131,8 +131,14 @@ module Azure
               xml.SSH do
                 xml.PublicKeys do
                   xml.PublicKey do
-                    xml.Fingerprint fingerprint
+                    xml.Fingerprint fingerprint.to_s.upcase
                     xml.Path "/home/#{params[:vm_user]}/.ssh/authorized_keys"
+                  end
+                end
+                xml.KeyPairs do
+                  xml.KeyPair do
+                    xml.Fingerprint fingerprint.to_s.upcase
+                    xml.Path "/home/#{params[:vm_user]}/.ssh/id_rsa"
                   end
                 end
               end
@@ -260,6 +266,7 @@ module Azure
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
                 vm.media_link = xml_content(role, 'OSVirtualHardDisk MediaLink')
+                vm.image = xml_content(role, 'OSVirtualHardDisk SourceImageName')
                 break
               end
             end
