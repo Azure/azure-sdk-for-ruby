@@ -83,7 +83,6 @@ describe Azure::VirtualMachineManagementService do
       assert_match(/^#{params[:vm_name] + '-service'}*/, csn)
       # Test for add role
       params[:vm_name] = 'test-add-role-vm'
-      options[:ssh_port] = 2222
       vm = subject.create_virtual_machine(params, options, true)
       vm.cloud_service_name.must_equal csn
       vm.vm_name.must_equal params[:vm_name]
