@@ -30,7 +30,6 @@ module Azure
       attr_accessor :deployment_status
       attr_accessor :tcp_endpoints
       attr_accessor :role_size
-      attr_accessor :vm_user
       attr_accessor :image
       attr_accessor :os_type
       attr_accessor :disk_name

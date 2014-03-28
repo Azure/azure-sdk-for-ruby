@@ -105,7 +105,7 @@ describe Azure::VirtualMachineManagement::Serialization do
   end
 
   describe '#deployment_to_xml' do
-    let(:params)do
+    let(:params) do
       {
         vm_name: 'virtual-machine-name',
         vm_user: 'username',
@@ -125,7 +125,7 @@ describe Azure::VirtualMachineManagement::Serialization do
     end
 
     it 'returns an VirtualMachine object with correct tcp endpoints' do
-      params[:certificate] = { fingerprint: 'CFB8C256D2986559C630547F2D0' }
+      params[:certificate] = {fingerprint: 'CFB8C256D2986559C630547F2D0'}
       result = subject.deployment_to_xml params, options
       doc = Nokogiri::XML(result)
       endpoints = doc.css('Deployment RoleList ConfigurationSet InputEndpoints InputEndpoint')
@@ -160,7 +160,7 @@ describe Azure::VirtualMachineManagement::Serialization do
   describe '#add_data_disk_to_xml' do
 
     let(:options) do
-      { disk_size:  100 }
+      {disk_size: 100}
     end
     let(:media_link) { 'https://sta.blob.managment.core.net/vhds/1234.vhd' }
     let(:lun) { 5 }
@@ -169,7 +169,7 @@ describe Azure::VirtualMachineManagement::Serialization do
     end
 
     it 'returns an xml for newly created data disk' do
-      result = subject.add_data_disk_to_xml(lun, media_link , options)
+      result = subject.add_data_disk_to_xml(lun, media_link, options)
       doc = Nokogiri::XML(result)
       disk_size = doc.css('DataVirtualHardDisk LogicalDiskSizeInGB').text
       media_link = doc.css('DataVirtualHardDisk MediaLink').text
@@ -184,7 +184,7 @@ describe Azure::VirtualMachineManagement::Serialization do
     it 'returns an xml for existing data disk' do
       options[:import] = true
       options[:disk_name] = 'disk_name'
-      result = subject.add_data_disk_to_xml(lun, media_link , options)
+      result = subject.add_data_disk_to_xml(lun, media_link, options)
       doc = Nokogiri::XML(result)
       media_link = doc.css('DataVirtualHardDisk MediaLink').text
       disk_name = doc.css('DataVirtualHardDisk DiskName').text
@@ -197,10 +197,39 @@ describe Azure::VirtualMachineManagement::Serialization do
     it 'raise error when disk name is empty' do
       options[:import] = true
       exception = assert_raises(RuntimeError) do
-        subject.add_data_disk_to_xml(lun, media_link , options)
+        subject.add_data_disk_to_xml(lun, media_link, options)
       end
       assert_match(/The data disk name is not valid/i, exception.message)
     end
   end
 
+  describe '#add_data_disk_to_xml' do
+    let(:preferred_port) { '22' }
+    before do
+      subject.class.send(:public, *subject.class.private_instance_methods)
+      Loggerx.expects(:puts).returns(nil).at_least(0)
+    end
+
+    it 'returns an xml for newly created data disk' do
+      result = subject.assign_random_port(preferred_port, [preferred_port])
+      assert_operator result.to_i, :>=, 10000
+      assert_operator result.to_i, :<=, 65535
+    end
+
+    it 'returns an xml for newly created data disk' do
+      result = subject.assign_random_port(preferred_port, nil)
+      result.must_equal preferred_port
+    end
+
+    it 'returns an xml for newly created data disk' do
+      result = subject.assign_random_port(preferred_port, [])
+      result.must_equal preferred_port
+    end
+
+    it 'returns an xml for newly created data disk' do
+      result = subject.assign_random_port(preferred_port, ['1', preferred_port])
+      assert_operator result.to_i, :>=, 10000
+      assert_operator result.to_i, :<=, 65535
+    end
+  end
 end
