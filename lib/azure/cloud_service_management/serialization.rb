@@ -14,6 +14,7 @@
 #--------------------------------------------------------------------------
 require 'base64'
 require 'azure/cloud_service_management/cloud_service'
+require 'azure/virtual_machine_management/serialization'
 
 module Azure
   module CloudServiceManagement
@@ -54,6 +55,8 @@ module Azure
       def self.cloud_services_from_xml(cloud_xml)
         clouds = []
         cloud_services_xml = cloud_xml.css('HostedServices HostedService')
+        cloud_services_xml = cloud_xml.css('HostedService') if \
+          cloud_services_xml.length == 0
         cloud_services_xml.each do |cloud_service_xml|
           cloud = CloudService.new
           cloud.url = xml_content(cloud_service_xml, 'Url')
@@ -80,6 +83,18 @@ module Azure
             cloud_service_xml, 'DefaultWinRMCertificateThumbprint'
           )
 
+          vms_in_deployment = {}
+
+          cloud_service_xml.css('Deployments').each do |deployxml|
+            deployment_name = xml_content(deployxml, 'Deployment Name')
+            vms = Azure::VirtualMachineManagement::Serialization.virtual_machines_from_xml(
+              deployxml, cloud.name
+            )
+
+            vms_in_deployment[deployment_name.to_sym] = vms
+          end
+
+          cloud.virtual_machines = vms_in_deployment
           clouds << cloud
         end
         clouds.compact

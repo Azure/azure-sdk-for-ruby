@@ -32,7 +32,7 @@ module Azure
       attr_accessor :date_modified
       attr_accessor :extended_properties
       attr_accessor :default_winrm_certificate_thumbprint
-
+      attr_accessor :virtual_machines
     end
   end
 end

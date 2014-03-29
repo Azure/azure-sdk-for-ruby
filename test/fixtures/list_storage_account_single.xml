@@ -1,0 +1,25 @@
+
+<?xml version="1.0"?>
+<StorageServices xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <StorageService>
+    <Url>https://management.core.windows.net/268a3762-abcd-4cd3-a4ea-80e84bddff87/services/storageservices/storage1</Url>
+    <ServiceName>storage1</ServiceName>
+    <StorageServiceProperties>
+      <Description i:nil="true"/>
+      <Location>West US</Location>
+      <Label>c3VzZQ==</Label>
+      <Status>Created</Status>
+      <Endpoints>
+        <Endpoint>http://storage1.blob.core.windows.net/</Endpoint>
+        <Endpoint>http://storage1.queue.core.windows.net/</Endpoint>
+        <Endpoint>http://storage1.table.core.windows.net/</Endpoint>
+      </Endpoints>
+      <GeoReplicationEnabled>true</GeoReplicationEnabled>
+      <GeoPrimaryRegion>West US</GeoPrimaryRegion>
+      <StatusOfPrimary/>
+      <GeoSecondaryRegion>East US</GeoSecondaryRegion>
+      <StatusOfSecondary/>
+    </StorageServiceProperties>
+    <ExtendedProperties/>
+  </StorageService>
+</StorageServices>

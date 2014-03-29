@@ -91,6 +91,13 @@ module Azure
         flag
       end
 
+      def get_cloud_service_properties(name)
+        request_path = "/services/hostedservices/#{name}?embed-detail=true"
+        request = ManagementHttpRequest.new(:get, request_path)
+        response = request.call
+        Serialization.cloud_services_from_xml(response)
+      end
+
       # Public: Deletes the specified cloud service of given subscription id from Windows Azure.
       #
       # ==== Attributes

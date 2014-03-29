@@ -67,7 +67,7 @@ module Azure
         request_path = "/services/storageservices/#{name}"
         request = ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
-        Serialization.storage_services_from_xml(response)
+        Serialization.storage_services_from_xml(response).first
       end
 
       # Public: Create a new storage account in Windows Azure.
