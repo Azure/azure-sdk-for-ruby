@@ -1,3 +1,10 @@
+2014.03.28 - version 0.6.3
+* Added get_cloud_service_properties method, which returns all cloud service properties (embed-detail=true), including info about all VMs
+* Added winrm_http_port and winrm_https_port to get_virtual_machine method to allow the users to configure custom ports for winrm-http and winrm-https
+* Checks if any ports are in use before adding a role in the existing cloud service
+* Auto generate public port for add role.
+* Fix issue https://github.com/WindowsAzure/azure-sdk-for-ruby/issues/130
+
 2014.03.15 - version 0.6.2
 * Restart Virtual Machine
 * Add disk to Virtual Machine
