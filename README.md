@@ -1,5 +1,5 @@
 # Windows Azure SDK for Ruby
-[![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-for-ruby.png?branch=dev)
+[![Build Status](https://travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=dev)](https://travis-ci.org/Azure/azure-sdk-for-ruby)
 
 
 This project provides a Ruby package that makes it easy to access and manage Windows Azure Services like Storage, Service Bus and Virtual Machines.
