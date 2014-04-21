@@ -36,6 +36,7 @@ module Azure
       attr_accessor :virtual_network_name
       attr_accessor :availability_set_name
       attr_accessor :media_link
+      attr_accessor :data_disks
     end
   end
 end

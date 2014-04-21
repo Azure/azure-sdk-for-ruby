@@ -169,22 +169,28 @@ describe Azure::VirtualMachineManagement::Serialization do
   describe '#add_data_disk_to_xml' do
 
     let(:options) do
-      {disk_size: 100}
+      {
+       disk_size: 100,
+       lun: 5
+      }
     end
     let(:media_link) { 'https://sta.blob.managment.core.net/vhds/1234.vhd' }
-    let(:lun) { 5 }
+
     before do
       Loggerx.expects(:puts).returns(nil).at_least(0)
+      @vm = Azure::VirtualMachineManagement::VirtualMachine.new
+      @vm.data_disks = []
+      @vm.media_link = media_link
     end
 
-    it 'returns an xml for newly created data disk' do
-      result = subject.add_data_disk_to_xml(lun, media_link, options)
+    it 'returns an xml for newly created data disk' do      
+      result = subject.add_data_disk_to_xml(@vm, options)
       doc = Nokogiri::XML(result)
       disk_size = doc.css('DataVirtualHardDisk LogicalDiskSizeInGB').text
       media_link = doc.css('DataVirtualHardDisk MediaLink').text
       disk_name = doc.css('DataVirtualHardDisk DiskName').text
       result.must_be_kind_of String
-      doc.css('DataVirtualHardDisk Lun').text.must_equal lun.to_s
+      doc.css('DataVirtualHardDisk Lun').text.must_equal options[:lun].to_s
       disk_size.must_equal options[:disk_size].to_s
       media_link.wont_be_empty
       disk_name.must_be_empty
@@ -192,13 +198,14 @@ describe Azure::VirtualMachineManagement::Serialization do
 
     it 'returns an xml for existing data disk' do
       options[:import] = true
+      options.delete(:lun)
       options[:disk_name] = 'disk_name'
-      result = subject.add_data_disk_to_xml(lun, media_link, options)
+      result = subject.add_data_disk_to_xml(@vm, options)
       doc = Nokogiri::XML(result)
       media_link = doc.css('DataVirtualHardDisk MediaLink').text
       disk_name = doc.css('DataVirtualHardDisk DiskName').text
       result.must_be_kind_of String
-      doc.css('DataVirtualHardDisk Lun').text.must_equal lun.to_s
+      doc.css('DataVirtualHardDisk Lun').text.must_equal '0'
       media_link.must_be_empty
       disk_name.wont_be_empty
     end
@@ -206,7 +213,7 @@ describe Azure::VirtualMachineManagement::Serialization do
     it 'raise error when disk name is empty' do
       options[:import] = true
       exception = assert_raises(RuntimeError) do
-        subject.add_data_disk_to_xml(lun, media_link, options)
+        subject.add_data_disk_to_xml(@vm, options)
       end
       assert_match(/The data disk name is not valid/i, exception.message)
     end

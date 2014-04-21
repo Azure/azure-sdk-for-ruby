@@ -373,13 +373,14 @@ virtual_machine_service.start_virtual_machine('vm_name', 'cloud_service_name')
 virtual_machine_service.restart_virtual_machine('vm_name', 'cloud_service_name')
 
 #API for add disk to Virtual Machine
-lun = 1  #Valid LUN values are 0 through 15.
 options = {
   :disk_label => 'disk-label',
   :disk_size => 100, #In GB
-  :import => false
+  :import => false,
+  :lun => 10,  #Valid LUN values are 0 through 15.
+  :disk_name => 'Disk name' #Required when import is true
 }
-virtual_machine_service.add_data_disk('vm_name', 'cloud_service_name', lun, options)
+virtual_machine_service.add_data_disk('vm_name', 'cloud_service_name', options)
 
 #API to add/update Virtual Machine endpoints
 endpoint1 = {

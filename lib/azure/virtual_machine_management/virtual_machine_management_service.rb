@@ -377,8 +377,6 @@ module Azure
       #
       # * +cloud_service_name+  - String. Cloud service name.
       # * +vm_name+           - String. Virtual machine name.
-      # * +lun+                 - String. Specifies the Logical Unit Number
-      #   (LUN) for the disk. Valid LUN values are 0 through 15.
       # * +options+             - Hash. Optional parameters.
       #
       # ==== Options
@@ -392,16 +390,18 @@ module Azure
       #   The default is ReadOnly. Possible values are: None, ReadOnly, ReadWrite
       # * +:disk_label+    - String. Specifies the description of the data disk.
       # * +:disk_size+     - String. Specifies the size of disk in GB
+      # * +lun+                 - String. Specifies the Logical Unit Number
+      #   (LUN) for the disk. Valid LUN values are 0 through 15.
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157199.aspx
       #
       # Returns None
-      def add_data_disk(vm_name, cloud_service_name, lun, options = {})
+      def add_data_disk(vm_name, cloud_service_name, options = {})
         options[:import] ||= false
         vm = get_virtual_machine(vm_name, cloud_service_name)
         if vm
           path = "/services/hostedservices/#{cloud_service_name}/deployments/#{vm.deployment_name}/roles/#{vm_name}/DataDisks"
-          body = Serialization.add_data_disk_to_xml(lun, vm.media_link, options)
+          body = Serialization.add_data_disk_to_xml(vm, options)
           Loggerx.info "Adding data disk to virtual machine #{vm_name} ..."
           request = ManagementHttpRequest.new(:post, path, body)
           request.call
