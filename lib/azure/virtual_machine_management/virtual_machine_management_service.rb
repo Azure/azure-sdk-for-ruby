@@ -51,7 +51,7 @@ module Azure
       #
       # Returns an  Azure::VirtualMachineManagement::VirtualMachine instance.
       def get_virtual_machine(name, cloud_service_name)
-        server = list_virtual_machines(cloud_service_name).select { |x| x.vm_name == name && x.cloud_service_name == cloud_service_name }
+        server = list_virtual_machines(cloud_service_name).select { |x| x.vm_name == name }
         server.first
       end
 
@@ -174,11 +174,19 @@ module Azure
       #
       # Returns NONE
       def delete_virtual_machine(vm_name, cloud_service_name)
-        vm = get_virtual_machine(vm_name, cloud_service_name)
+        virtual_machines = list_virtual_machines(cloud_service_name)
+        vm = virtual_machines.select { |x| x.vm_name == vm_name }.first
         if vm
-          cloud_service = Azure::CloudServiceManagementService.new
-          cloud_service.delete_cloud_service_deployment(cloud_service_name)
-          cloud_service.delete_cloud_service(cloud_service_name)
+          if virtual_machines.size == 1
+            cloud_service = Azure::CloudServiceManagementService.new
+            cloud_service.delete_cloud_service_deployment(cloud_service_name)
+            cloud_service.delete_cloud_service(cloud_service_name)
+          else
+            path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roles/#{vm.vm_name}"
+            Loggerx.info "Deleting virtual machine #{vm_name}. \n"
+            request = ManagementHttpRequest.new(:delete, path)
+            request.call
+          end
           Loggerx.info "Waiting for disk to be released.\n"
           disk_name = vm.disk_name
           disk_management_service = VirtualMachineDiskManagementService.new
@@ -304,7 +312,7 @@ module Azure
       # * +:protocol+              - String. Specifies the transport protocol
       #   for the endpoint. Possible values are: TCP, UDP
       # * +:direct_server_return+  - String. Specifies whether the endpoint
-      #   uses Direct Server Return. (optional)
+      #   uses Direct Server Return. Possible values are: true, false (optional)
       # * +:load_balancer          - Hash. Contains properties that define the
       #   endpoint settings that the load balancer uses to monitor the
       #   availability of the Virtual Machine (optional)
@@ -333,7 +341,7 @@ module Azure
           path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roles/#{vm_name}"
           endpoints = vm.tcp_endpoints + vm.udp_endpoints
           input_endpoints.each do |iep|
-            endpoints.delete_if { |ep| iep[:name].downcase == ep[:name].downcase && iep[:protocol].downcase  == ep[:protocol] }
+            endpoints.delete_if { |ep| iep[:name].downcase == ep[:name].downcase }
           end
           endpoints += input_endpoints
           body = Serialization.update_role_to_xml(endpoints, vm)
