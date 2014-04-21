@@ -64,7 +64,7 @@ describe Azure::VirtualMachineManagementService do
       before do
         subject.shutdown_virtual_machine(vm_name, csn)
       end
-      
+
       it 'starts virtual machine' do
         subject.start_virtual_machine(vm_name, csn)
         vm = subject.get_virtual_machine(vm_name, csn)
@@ -118,7 +118,7 @@ describe Azure::VirtualMachineManagementService do
     end
 
     describe 'Add, Update, Delete endpoints' do
-      
+
       it 'should add endpoints to virtual machine.' do
         ep1 =  {
           name: 'endpoint-1',

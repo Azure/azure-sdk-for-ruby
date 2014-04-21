@@ -50,7 +50,7 @@ describe Azure::VirtualMachineManagementService do
     {
       storage_account_name: storage_account_name,
       cloud_service_name: cloud_service_name,
-      vm_size: 'Small'
+      vm_size: 'Basic_A0'
     }
   end
 
@@ -119,7 +119,7 @@ describe Azure::VirtualMachineManagementService do
         virtual_machine.virtual_network_name.must_equal options[:virtual_network_name]
       end
     end
-    
+
     it 'should set options hash with valid cloud_service_name, deployment_name, storage_account_name and virtual network' do
       csn = options[:cloud_service_name]
       options[:availability_set_name] = 'aval-set-test'
@@ -130,7 +130,7 @@ describe Azure::VirtualMachineManagementService do
       vm.deployment_name.wont_be_nil
       vm.deployment_name.must_equal vm.cloud_service_name
       vm.os_type.must_equal 'Linux'
-      vm.role_size.must_equal 'Small'
+      vm.role_size.must_equal 'Basic_A0'
       vm.availability_set_name.must_equal 'aval-set-test'
       options[:storage_account_name].wont_be_nil
       assert_match(/^#{params[:vm_name] + '-service'}*/, csn)

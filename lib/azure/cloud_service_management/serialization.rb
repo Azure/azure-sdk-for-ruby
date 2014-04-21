@@ -93,8 +93,7 @@ module Azure
             vms = Azure::VirtualMachineManagement::Serialization.virtual_machines_from_xml(
               deployxml, cloud.name
             )
-
-            vms_in_deployment[deployment_name.to_sym] = vms
+            vms_in_deployment[deployment_name.to_sym] = vms if vms
           end
 
           cloud.virtual_machines = vms_in_deployment

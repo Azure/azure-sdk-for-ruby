@@ -422,7 +422,7 @@ options = {
   :private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
   :certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
   :ssh_port => 2222,
-  :vm_size => 'Small', #valid choices are (ExtraSmall, Small, Medium, Large, ExtraLarge, A6, A7)
+  :vm_size => 'Small', #valid choices are (ExtraSmall Small Medium Large ExtraLarge A5 A6 A7 Basic_A0 Basic_A1 Basic_A2 Basic_A3 Basic_A4)
   :affinity_group_name => 'affinity1',
   :virtual_network_name => 'xplattestvnet',
   :subnet_name => 'subnet1',
@@ -447,7 +447,7 @@ options = {
   :certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
   :winrm_https_port => 5999,
   :winrm_http_port => 6999, #Used to open different powershell port
-  :vm_size => 'Small', #valid choices are (ExtraSmall, Small, Medium, Large, ExtraLarge, A6, A7)
+  :vm_size => 'Small', #valid choices are (ExtraSmall Small Medium Large ExtraLarge A5 A6 A7 Basic_A0 Basic_A1 Basic_A2 Basic_A3 Basic_A4)
   :availability_set_name => 'availabiltyset'
 }
 virtual_machine_service.add_role(params, options)
