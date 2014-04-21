@@ -12,20 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "test_helper"
+require 'test_helper'
 
 describe Azure::VirtualMachineImageManagement::Serialization do
   subject { Azure::VirtualMachineImageManagement::Serialization }
 
-  let(:virtual_machine_images_from_xml) { Fixtures["list_images"] }
+  let(:virtual_machine_images_from_xml) { Fixtures['list_images'] }
 
-  describe "#virtual_machine_images_from_xml" do
+  describe '#virtual_machine_images_from_xml' do
 
-    it "accepts an XML string" do
+    it 'accepts an XML string' do
       subject.virtual_machine_images_from_xml Nokogiri::XML(virtual_machine_images_from_xml)
     end
 
-    it "returns an Array of VirtualMachineImageService instances" do
+    it 'returns an Array of VirtualMachineImageService instances' do
       results = subject.virtual_machine_images_from_xml Nokogiri::XML(virtual_machine_images_from_xml)
       results.must_be_kind_of Array
       results[0].must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImage

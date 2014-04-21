@@ -66,8 +66,10 @@ module Azure
 
           cloud.label = Base64.decode64(xml_content(props_xml, 'Label'))
           cloud.description = xml_content(props_xml, 'Description')
-          cloud.location = xml_content(props_xml, 'Location')
-          cloud.affinity_group = xml_content(props_xml, 'AffinityGroup')
+          location = xml_content(props_xml, 'Location')
+          cloud.location = location unless location.empty?
+          affinity_group =  xml_content(props_xml, 'AffinityGroup')
+          cloud.affinity_group = affinity_group unless affinity_group
           cloud.status = xml_content(props_xml, 'Status')
           cloud.date_created = xml_content(props_xml, 'DateCreated')
           cloud.date_modified = xml_content(props_xml, 'DateLastModified')
@@ -82,7 +84,8 @@ module Azure
           cloud.default_winrm_certificate_thumbprint = xml_content(
             cloud_service_xml, 'DefaultWinRMCertificateThumbprint'
           )
-
+          deployment_xml = cloud_services_xml.css('Deployments Deployment')
+          cloud.deployment_name = xml_content(deployment_xml, 'Name')
           vms_in_deployment = {}
 
           cloud_service_xml.css('Deployments').each do |deployxml|
@@ -102,15 +105,14 @@ module Azure
 
       def self.add_certificate_to_xml(data)
         builder = Nokogiri::XML::Builder.new do |xml|
-          xml.CertificateFile('xmlns'=>'http://schemas.microsoft.com/windowsazure') {
+          xml.CertificateFile('xmlns' => 'http://schemas.microsoft.com/windowsazure') do
             xml.Data data
             xml.CertificateFormat 'pfx'
             xml.Password nil
-          }
+          end
         end
         builder.doc.to_xml
       end
-
     end
   end
 end

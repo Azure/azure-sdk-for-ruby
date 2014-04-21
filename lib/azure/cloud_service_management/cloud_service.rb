@@ -16,7 +16,6 @@
 module Azure
   module CloudServiceManagement
     class CloudService
-
       def initialize
         yield self if block_given?
       end
@@ -33,6 +32,7 @@ module Azure
       attr_accessor :extended_properties
       attr_accessor :default_winrm_certificate_thumbprint
       attr_accessor :virtual_machines
+      attr_accessor :deployment_name
     end
   end
 end

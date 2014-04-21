@@ -103,63 +103,106 @@ module Azure
       # See:
       # http://msdn.microsoft.com/en-us/library/windowsazure/jj157194.aspx
       # http://msdn.microsoft.com/en-us/library/windowsazure/jj157186.aspx
-      def create_virtual_machine(params, options = {}, add_role = false)
+      def create_virtual_machine(params, options = {})
         options[:os_type] = get_os_type(params[:image])
         validate_deployment_params(params, options)
         options[:deployment_name] ||= options[:cloud_service_name]
-
-        unless add_role
-          Loggerx.info 'Creating deploymnent...'
-          options[:cloud_service_name] ||= generate_cloud_service_name(params[:vm_name])
-          options[:storage_account_name] ||= generate_storage_account_name(params[:vm_name])
-          optionals = {}
-          if options[:virtual_network_name]
-            virtual_network_service = Azure::VirtualNetworkManagementService.new
-            virtual_networks = virtual_network_service.list_virtual_networks.select { |x| x.name == options[:virtual_network_name] }
-            if virtual_networks.empty?
-              Loggerx.error_with_exit "Virtual network #{options[:virtual_network_name]} doesn't exists"
-            else
-              optionals[:affinity_group_name] = virtual_networks.first.affinity_group
-            end
-          elsif options[:affinity_group_name]
-            optionals[:affinity_group_name] = options[:affinity_group_name]
+        Loggerx.info 'Creating deploymnent...'
+        options[:cloud_service_name] ||= generate_cloud_service_name(params[:vm_name])
+        options[:storage_account_name] ||= generate_storage_account_name(params[:vm_name])
+        optionals = {}
+        if options[:virtual_network_name]
+          virtual_network_service = Azure::VirtualNetworkManagementService.new
+          virtual_networks = virtual_network_service.list_virtual_networks.select { |x| x.name == options[:virtual_network_name] }
+          if virtual_networks.empty?
+            Loggerx.error_with_exit "Virtual network #{options[:virtual_network_name]} doesn't exists"
           else
-            optionals[:location] = params[:location]
+            optionals[:affinity_group_name] = virtual_networks.first.affinity_group
           end
-          cloud_service = Azure::CloudServiceManagementService.new
-          cloud_service.create_cloud_service(options[:cloud_service_name], optionals)
-          cloud_service.upload_certificate(options[:cloud_service_name], params[:certificate]) unless params[:certificate].empty?
-          Azure::StorageManagementService.new.create_storage_account(options[:storage_account_name], optionals)
-          body = Serialization.deployment_to_xml(params, options)
-          path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments"
+        elsif options[:affinity_group_name]
+          optionals[:affinity_group_name] = options[:affinity_group_name]
         else
-          cloud_services = Azure::CloudServiceManagementService.new.get_cloud_service_properties(
-            options[:cloud_service_name]
-          )
-          existing_ports = []
-          # There should be only one cloud_serivce in the Array.
-          cloud_services.each do |cloud_service|
-            cloud_service.virtual_machines[options[:deployment_name].to_sym].each do |vm|
-              vm.tcp_endpoints.each do |endpoint|
-                existing_ports << endpoint[:public_port]
-              end
-            end
-          end
-
-          options[:existing_ports] = existing_ports
-
-          Loggerx.info 'Deployment exists, adding role...'
-          body = Serialization.role_to_xml(params, options).to_xml
-          path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments/#{options[:deployment_name]}/roles"
+          optionals[:location] = params[:location]
         end
-        Loggerx.error 'Cloud service name is required for adding role.' unless options[:cloud_service_name]
-        Loggerx.error 'Storage account name is required for adding role.' unless options[:storage_account_name]
+        cloud_service = Azure::CloudServiceManagementService.new
+        cloud_service.create_cloud_service(options[:cloud_service_name], optionals)
+        cloud_service.upload_certificate(options[:cloud_service_name], params[:certificate]) unless params[:certificate].empty?
+        Azure::StorageManagementService.new.create_storage_account(options[:storage_account_name], optionals)
+        body = Serialization.deployment_to_xml(params, options)
+        path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments"
         Loggerx.info 'Deployment in progress...'
         request = ManagementHttpRequest.new(:post, path, body)
         request.call
         get_virtual_machine(params[:vm_name], options[:cloud_service_name])
       rescue Exception => e
         e.message
+      end
+
+      # Public: Add a new role to a cloud service. Atleast one deployment should exist before you can add a role.
+      #
+      # ==== Attributes
+      #
+      # * +params+    - Hash.  parameters.
+      # * +options+   - Hash.  Optional parameters.
+      #
+      #  ==== Params
+      #
+      # Accepted key/value pairs are:
+      # * +:vm_name+             - String.  Name of virtual machine.
+      # * +:vm_user+             - String.  User name for the virtual machine instance.
+      # * +:password+            - String.  A description for the hosted service.
+      # * +:image+               - String.  Name of the disk image to use to create the virtual machine.
+      # * +:cloud_service_name+  - String. Name of cloud service.
+      #
+      #  ==== Options
+      #
+      # Accepted key/value pairs are:
+      # * +:storage_account_name+  - String. Name of storage account.
+      # * +:tcp_endpoints+         - String. Specifies the internal port and external/public port separated by a colon.
+      #   You can map multiple internal and external ports by separating them with a comma.
+      # * +:ssh_private_key_file+  - String. Path of private key file.
+      # * +:ssh_certificate_file+  - String. Path of certificate file.
+      # * +:ssh_port+              - Integer. Specifies the SSH port number.
+      # * +:winrm_http_port        - Integer. Specifies the WinRM HTTP port number.
+      # * +:winrm_https_port       - Integer. Specifies the WinRM HTTPS port number.
+      # * +:vm_size+               - String. Specifies the size of the virtual machine instance.
+      # * +:winrm_transport+       - Array. Specifies WINRM transport protocol.
+      #
+      # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
+      #
+      # See:
+      # http://msdn.microsoft.com/en-us/library/windowsazure/jj157186.aspx
+      def add_role(params, options = {})
+        options[:os_type] = get_os_type(params[:image])
+        validate_deployment_params(params, options, true)
+        cloud_service = Azure::CloudServiceManagementService.new
+        cloud_service = cloud_service.get_cloud_service_properties(params[:cloud_service_name])
+        deployment_name = cloud_service.deployment_name
+        Loggerx.error_with_exit "Deployment doesn't exists." if cloud_service && deployment_name.empty?
+        others = {}
+        if options[:storage_account_name].nil?
+          if cloud_service.location
+            others[:location] = cloud_service.location
+          elsif cloud_service.affinity_group
+            others[:affinity_group_name] = cloud_service.affinity_group
+          end
+          options[:storage_account_name] ||= generate_storage_account_name(params[:vm_name])
+        end
+        Azure::StorageManagementService.new.create_storage_account(options[:storage_account_name], others)
+        Loggerx.info 'Deployment exists, adding role...'
+        existing_ports = []
+        cloud_service.virtual_machines[deployment_name.to_sym].each do |vm|
+          vm.tcp_endpoints.each do |endpoint|
+            existing_ports << endpoint[:public_port]
+          end
+        end
+        options[:existing_ports] = existing_ports
+        body = Serialization.role_to_xml(params, options).to_xml
+        path = "/services/hostedservices/#{cloud_service.name}/deployments/#{deployment_name}/roles"
+        Loggerx.info 'Deployment in progress...'
+        request = ManagementHttpRequest.new(:post, path, body)
+        request.call
+        get_virtual_machine(params[:vm_name], cloud_service.name)
       end
 
       # Public: Deletes the deployment, cloud service and disk.
@@ -225,7 +268,7 @@ module Azure
       def shutdown_virtual_machine(vm_name, cloud_service_name)
         vm = get_virtual_machine(vm_name, cloud_service_name)
         if vm
-          if ['StoppedVM', 'StoppedDeallocated'].include?(vm.status)
+          if %w(StoppedVM StoppedDeallocated).include?(vm.status)
             Loggerx.error 'Cannot perform the shutdown operation on a stopped virtual machine.'
           elsif vm.deployment_status == 'Running'
             path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roleinstances/#{vm.vm_name}/Operations"
@@ -290,7 +333,7 @@ module Azure
           Loggerx.error "Cannot find virtual machine \"#{vm_name}\" under cloud service \"#{cloud_service_name}\"."
         end
       end
-      
+
       # Public: Add/Update endpoints of virtual machine.
       #
       # ==== Attributes
@@ -360,7 +403,7 @@ module Azure
       # * +name+                - String. Virtual machine name.
       # * +cloud_service_name+  - String. Cloud service name.
       # * +endpoint_name+       - String. Name of endpoint.
-      # 
+      #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157187.aspx
       #
       # Returns NONE
@@ -438,15 +481,17 @@ module Azure
         random_string(vm_name + 'storage').gsub(/[^0-9a-z ]/i, '').downcase[0..23]
       end
 
-      def validate_deployment_params(params, options)
+      def validate_deployment_params(params, options, add_role = false)
         errors = []
-        params_keys = ['vm_name', 'image', 'location', 'vm_user']
-        if options[:os_type] == 'Windows'
-          params_keys += ['password']
-        end
+        params_keys = %w(vm_name image vm_user)
+        params_keys += ['password'] if options[:os_type] == 'Windows'
         options_keys = []
-        options_keys = ['private_key_file', 'certificate_file'] if certificate_required?(params, options)
-
+        options_keys = %w(private_key_file certificate_file) if certificate_required?(params, options)
+        if add_role
+          params_keys += ['cloud_service_name']
+        else
+          params_keys += ['location']
+        end
         params_keys.each do |key|
           errors << key if params[key.to_sym].nil?
         end
@@ -454,9 +499,10 @@ module Azure
         options_keys.each do |key|
           errors << key if options[key.to_sym].nil?
         end
-        validate_role_size(options[:vm_size])
-        validate_location(params[:location]) unless errors.include?('location')
+
         if errors.empty?
+          validate_location(params[:location]) unless add_role
+          validate_role_size(options[:vm_size])
           params[:certificate] = {}
           if certificate_required?(params, options)
             begin
@@ -487,7 +533,7 @@ module Azure
       end
 
       def validate_role_size(vm_size)
-        valid_role_sizes = ['ExtraSmall', 'Small', 'Medium', 'Large', 'ExtraLarge', 'A6', 'A7']
+        valid_role_sizes = %w(ExtraSmall Small Medium Large ExtraLarge A6 A7)
         if vm_size && !valid_role_sizes.include?(vm_size)
           Loggerx.error_with_exit "Value '#{vm_size}' specified for parameter 'vm_size' is invalid. Allowed values are 'ExtraSmall,Small,Medium,Large,ExtraLarge,A6,A7'"
         end

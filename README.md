@@ -428,13 +428,29 @@ options = {
   :subnet_name => 'subnet1',
   :availability_set_name => 'availabiltyset1'
 }
-virtual_machine_service.create_virtual_machine(params,options,add_role=false)
-# Here add_role is used as a flag to create multiple roles under the same cloud service. This parameter is false
-# by default. Atleast a single deployment should be created under a hosted service prior to setting this flag.
+virtual_machine_service.create_virtual_machine(params,options)
 
 #API usage to add new roles under cloud service creating VM 
-
-virtual_machine_service.create_virtual_machine(params,options,add_role=true)
+#API add_role create multiple roles under the same cloud service. Atleast a single deployment should be created under a hosted service.
+params = {
+  :vm_name => 'vm_name',
+  :cloud_service_name => 'cloud_service_name',
+  :vm_user => 'azureuser',
+  :image => 'a699494373c04fc0bc8f2bb1389d6106__Win2K8R2SP1-Datacenter-201305.01-en.us-127GB.vhd',
+  :password => 'ComplexPassword',
+}
+options = {
+  :storage_account_name => 'storage_suse',
+  :winrm_transport => ['https','http'], #Currently http is supported. To enable https, set the transport protocol to https, simply rdp to the VM once VM is in ready state, export the certificate ( CN name would be the deployment name) from the certstore of the VM and install to your local machine and communicate WinRM via https.
+  :tcp_endpoints => '80,3389:3390',
+  :private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
+  :certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
+  :winrm_https_port => 5999,
+  :winrm_http_port => 6999, #Used to open different powershell port
+  :vm_size => 'Small', #valid choices are (ExtraSmall, Small, Medium, Large, ExtraLarge, A6, A7)
+  :availability_set_name => 'availabiltyset'
+}
+virtual_machine_service.add_role(params, options)
 
 #Get a list of available virtual machine images
 virtual_machine_image_service = Azure::VirtualMachineImageManagementService.new

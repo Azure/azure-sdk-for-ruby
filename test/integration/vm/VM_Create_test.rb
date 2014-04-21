@@ -67,10 +67,63 @@ describe Azure::VirtualMachineManagementService do
 
   describe '#deployment' do
 
+    describe '#add_role' do
+      before do
+        @vm_obj = subject.create_virtual_machine(params, options)
+        params[:cloud_service_name] = options[:cloud_service_name]
+        options.delete(:cloud_service_name)
+        params.delete(:location)
+        params[:vm_name] = "add-#{virtual_machine_name}"
+        sleep 30
+      end
+
+      it 'should add role to existing storage account and cloud service' do
+        vm = subject.add_role(params, options)
+        vm.cloud_service_name.must_equal params[:cloud_service_name]
+        vm.vm_name.must_equal params[:vm_name]
+        vm.deployment_name.must_equal @vm_obj.deployment_name
+        vm.os_type.must_equal 'Linux'
+      end
+
+      it 'should add role and create new storage account' do
+        params[:vm_name] = "add-storage-#{virtual_machine_name}"
+        vm = subject.add_role(params)
+        vm.cloud_service_name.must_equal params[:cloud_service_name]
+        vm.vm_name.must_equal params[:vm_name]
+        vm.deployment_name.must_equal @vm_obj.deployment_name
+      end
+    end
+
+    describe '#virtual_network' do
+      before do
+        options[:virtual_network_name] = 'v-net'
+        affinity_gorup_name = random_string('affinity-group-', 10)
+        Azure::BaseManagementService.new.create_affinity_group(
+          affinity_gorup_name,
+          params[:location],
+          'AG1'
+        ) rescue nil
+        vnet_service = Azure::VirtualNetworkManagementService
+        vnet_service.new.set_network_configuration(
+          options[:virtual_network_name],
+          affinity_gorup_name,
+          ['172.16.0.0/12']
+        ) rescue nil
+        subject.create_virtual_machine(params, options)
+      end
+
+      it 'should provision virtual machine in a existing virtual network' do
+        virtual_machine = subject.get_virtual_machine(virtual_machine_name, cloud_service_name)
+        virtual_machine.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
+        virtual_machine.vm_name.must_equal virtual_machine_name
+        virtual_machine.virtual_network_name.must_equal options[:virtual_network_name]
+      end
+    end
+    
     it 'should set options hash with valid cloud_service_name, deployment_name, storage_account_name and virtual network' do
       csn = options[:cloud_service_name]
       options[:availability_set_name] = 'aval-set-test'
-      vm = subject.create_virtual_machine(params, options, false)
+      vm = subject.create_virtual_machine(params, options)
       vm.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
       vm.cloud_service_name.wont_be_nil
       vm.vm_name.must_equal virtual_machine_name
@@ -81,13 +134,6 @@ describe Azure::VirtualMachineManagementService do
       vm.availability_set_name.must_equal 'aval-set-test'
       options[:storage_account_name].wont_be_nil
       assert_match(/^#{params[:vm_name] + '-service'}*/, csn)
-      # Test for add role
-      params[:vm_name] = 'test-add-role-vm'
-      vm = subject.create_virtual_machine(params, options, true)
-      vm.cloud_service_name.must_equal csn
-      vm.vm_name.must_equal params[:vm_name]
-      vm.deployment_name.wont_be_nil
-      vm.os_type.must_equal 'Linux'
     end
 
     it 'should creates http and https enabled winrm virtual machine without certificate.' do

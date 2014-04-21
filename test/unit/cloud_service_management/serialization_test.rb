@@ -59,7 +59,7 @@ describe Azure::CloudServiceManagement::Serialization do
   end
 
   describe '#cloud_services_to_xml' do
-    let(:cloud_service_name) {'cloud-service'}
+    let(:cloud_service_name) { 'cloud-service' }
 
     it 'accepts an name and options hash' do
       subject.cloud_services_to_xml cloud_service_name
@@ -68,9 +68,9 @@ describe Azure::CloudServiceManagement::Serialization do
     it 'uses name for label if label not provided' do
       results = subject.cloud_services_to_xml(
         cloud_service_name,
-        {
-          location: 'East Asia'
-        }
+
+        location: 'East Asia'
+
       )
 
       doc = Nokogiri::XML(results)
@@ -80,10 +80,10 @@ describe Azure::CloudServiceManagement::Serialization do
     it 'uses label when label is provided' do
       results = subject.cloud_services_to_xml(
         cloud_service_name,
-        {
-          location: 'East Asia',
-          label: 'My Label'
-        }
+
+        location: 'East Asia',
+        label: 'My Label'
+
       )
 
       doc = Nokogiri::XML(results)
@@ -92,7 +92,7 @@ describe Azure::CloudServiceManagement::Serialization do
 
     it 'serializes the argument to xml' do
       results = subject.cloud_services_to_xml(
-        cloud_service_name, { location: 'West US' }
+        cloud_service_name,  location: 'West US'
       )
       results.must_be_kind_of String
       doc = Nokogiri::XML results
@@ -103,10 +103,10 @@ describe Azure::CloudServiceManagement::Serialization do
     it 'uses affinity_group if provided and ignores location' do
       results = subject.cloud_services_to_xml(
         cloud_service_name,
-        {
-          affinity_group_name: 'my-affinity-group',
-          location: 'West US'
-        }
+
+        affinity_group_name: 'my-affinity-group',
+        location: 'West US'
+
       )
       results.must_be_kind_of String
       doc = Nokogiri::XML results
@@ -119,9 +119,9 @@ describe Azure::CloudServiceManagement::Serialization do
     it 'uses location when affinity group not provided' do
       results = subject.cloud_services_to_xml(
         cloud_service_name,
-        {
-          location: 'East Asia'
-        }
+
+        location: 'East Asia'
+
       )
 
       doc = Nokogiri::XML(results)
@@ -137,9 +137,9 @@ describe Azure::CloudServiceManagement::Serialization do
       }
       results = subject.cloud_services_to_xml(
         cloud_service_name,
-        {
-          extended_properties: xtended_props
-        }
+
+        extended_properties: xtended_props
+
       )
 
       doc = Nokogiri::XML(results)
@@ -159,7 +159,7 @@ describe Azure::CloudServiceManagement::Serialization do
     it 'serializes the options hash to xml' do
       results = subject.cloud_services_to_xml(
         cloud_service_name,
-        { location: 'East US' }
+        location: 'East US'
       )
       doc = Nokogiri::XML results
       doc.css('Location').text.must_equal 'East US'
