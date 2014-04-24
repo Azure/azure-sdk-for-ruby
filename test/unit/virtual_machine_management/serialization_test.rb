@@ -158,7 +158,7 @@ describe Azure::VirtualMachineManagement::Serialization do
         public_port: '85',
         local_port: '85'
       )
-       tcp_endpoints.must_include(
+      tcp_endpoints.must_include(
         name: 'PowerShell',
         public_port: '5988',
         local_port: '5986'
@@ -170,8 +170,7 @@ describe Azure::VirtualMachineManagement::Serialization do
 
     let(:options) do
       {
-       disk_size: 100,
-       lun: 5
+        disk_size: 100,
       }
     end
     let(:media_link) { 'https://sta.blob.managment.core.net/vhds/1234.vhd' }
@@ -190,7 +189,6 @@ describe Azure::VirtualMachineManagement::Serialization do
       media_link = doc.css('DataVirtualHardDisk MediaLink').text
       disk_name = doc.css('DataVirtualHardDisk DiskName').text
       result.must_be_kind_of String
-      doc.css('DataVirtualHardDisk Lun').text.must_equal options[:lun].to_s
       disk_size.must_equal options[:disk_size].to_s
       media_link.wont_be_empty
       disk_name.must_be_empty
@@ -198,14 +196,12 @@ describe Azure::VirtualMachineManagement::Serialization do
 
     it 'returns an xml for existing data disk' do
       options[:import] = true
-      options.delete(:lun)
       options[:disk_name] = 'disk_name'
       result = subject.add_data_disk_to_xml(@vm, options)
       doc = Nokogiri::XML(result)
       media_link = doc.css('DataVirtualHardDisk MediaLink').text
       disk_name = doc.css('DataVirtualHardDisk DiskName').text
       result.must_be_kind_of String
-      doc.css('DataVirtualHardDisk Lun').text.must_equal '0'
       media_link.must_be_empty
       disk_name.wont_be_empty
     end

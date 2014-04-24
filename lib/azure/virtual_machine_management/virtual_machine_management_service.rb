@@ -51,7 +51,7 @@ module Azure
       #
       # Returns an  Azure::VirtualMachineManagement::VirtualMachine instance.
       def get_virtual_machine(name, cloud_service_name)
-        server = list_virtual_machines(cloud_service_name).select { |x| x.vm_name == name }
+        server = list_virtual_machines(cloud_service_name).select { |x| x.vm_name == name.downcase }
         server.first
       end
 
@@ -180,14 +180,12 @@ module Azure
         deployment_name = cloud_service.deployment_name
         Loggerx.error_with_exit "Deployment doesn't exists." if cloud_service && deployment_name.empty?
         others = {}
-        if options[:storage_account_name].nil?
-          if cloud_service.location
-            others[:location] = cloud_service.location
-          elsif cloud_service.affinity_group
-            others[:affinity_group_name] = cloud_service.affinity_group
-          end
-          options[:storage_account_name] ||= generate_storage_account_name(params[:vm_name])
+        if cloud_service.location
+          others[:location] = cloud_service.location
+        elsif cloud_service.affinity_group
+          others[:affinity_group_name] = cloud_service.affinity_group
         end
+        options[:storage_account_name] ||= generate_storage_account_name(params[:vm_name])
         Azure::StorageManagementService.new.create_storage_account(options[:storage_account_name], others)
         Loggerx.info 'Deployment exists, adding role...'
         existing_ports = []
@@ -441,8 +439,6 @@ module Azure
       #   The default is ReadOnly. Possible values are: None, ReadOnly, ReadWrite
       # * +:disk_label+    - String. Specifies the description of the data disk.
       # * +:disk_size+     - String. Specifies the size of disk in GB
-      # * +lun+                 - String. Specifies the Logical Unit Number
-      #   (LUN) for the disk. Valid LUN values are 0 through 15.
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157199.aspx
       #

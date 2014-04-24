@@ -86,10 +86,10 @@ describe Azure::VirtualMachineManagementService do
       end
 
       it 'should add role and create new storage account' do
-        params[:vm_name] = "add-storage-#{virtual_machine_name}"
+        params[:vm_name] = "Add-storage-#{virtual_machine_name}"
         vm = subject.add_role(params)
         vm.cloud_service_name.must_equal params[:cloud_service_name]
-        vm.vm_name.must_equal params[:vm_name]
+        vm.vm_name.must_equal params[:vm_name].downcase
         vm.deployment_name.must_equal @vm_obj.deployment_name
       end
     end

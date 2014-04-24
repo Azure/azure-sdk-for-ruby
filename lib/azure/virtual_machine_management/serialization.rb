@@ -390,7 +390,6 @@ module Azure
           Loggerx.error_with_exit "The data disk name is not valid."
         end
         media_link = vm.media_link
-        lun = options[:lun] || (Array(0..15) - vm.data_disks.map{|x| x[:lun].to_i}).first
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.DataVirtualHardDisk(
             'xmlns' => 'http://schemas.microsoft.com/windowsazure',
@@ -399,7 +398,6 @@ module Azure
             xml.HostCaching options[:host_caching] || 'ReadOnly'
             xml.DiskLabel options[:disk_label]
             xml.DiskName options[:disk_name] if options[:import]
-            xml.Lun lun
             xml.LogicalDiskSizeInGB options[:disk_size] || 100
             unless options[:import]
               disk_name = media_link[/([^\/]+)$/]
