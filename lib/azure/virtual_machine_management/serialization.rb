@@ -263,6 +263,7 @@ module Azure
               if xml_content(role, 'RoleName') == role_name
                 vm.availability_set_name = xml_content(role, 'AvailabilitySetName')
                 endpoints_from_xml(role, vm)
+                vm.data_disks = data_disks_from_xml(role)
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
                 vm.media_link = xml_content(role, 'OSVirtualHardDisk MediaLink')
@@ -274,6 +275,20 @@ module Azure
           end
           vms
         end
+      end
+
+      def self.data_disks_from_xml(rolesXML)
+        data_disks = []
+        virtual_hard_disks = rolesXML.css('DataVirtualHardDisks DataVirtualHardDisk')
+        virtual_hard_disks.each do |disk|
+          data_disk = {}
+          data_disk[:name] = xml_content(disk, 'DiskName')
+          data_disk[:lun] =  xml_content(disk, 'Lun')
+          data_disk[:size_in_gb] = xml_content(disk, 'LogicalDiskSizeInGB')
+          data_disk[:media_link] = xml_content(disk, 'MediaLink')
+          data_disks << data_disk
+        end
+        data_disks
       end
 
       def self.endpoints_from_xml(rolesXML, vm)
@@ -370,10 +385,11 @@ module Azure
         end
       end
 
-      def self.add_data_disk_to_xml(lun, media_link, options)
+      def self.add_data_disk_to_xml(vm, options)
         if options[:import] && options[:disk_name].nil?
           Loggerx.error_with_exit "The data disk name is not valid."
         end
+        media_link = vm.media_link
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.DataVirtualHardDisk(
             'xmlns' => 'http://schemas.microsoft.com/windowsazure',
@@ -382,8 +398,7 @@ module Azure
             xml.HostCaching options[:host_caching] || 'ReadOnly'
             xml.DiskLabel options[:disk_label]
             xml.DiskName options[:disk_name] if options[:import]
-            xml.Lun lun
-            xml.LogicalDiskSizeInGB options[:disk_size] || 1
+            xml.LogicalDiskSizeInGB options[:disk_size] || 100
             unless options[:import]
               disk_name = media_link[/([^\/]+)$/]
               media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd')
@@ -399,7 +414,7 @@ module Azure
       def self.port_already_opened?(existing_ports, port)
         return false if existing_ports.nil?
         raise "Port #{port} conflicts with a port already opened. "\
-              "Please select a different port." if existing_ports.include?(port)
+          "Please select a different port." if existing_ports.include?(port)
         false
       end
 

@@ -1,3 +1,10 @@
+2014.04.22 - version 0.6.4
+* Upgraded Service Management Versioning to 2014-04-01
+* Created separate API for add role
+* Logical Unit Number(lun) is optional argument in API add_data_disk
+* Cloud service should delete only if there are no other VMs/Deployments in the cloud service
+* Added more sizes(Basic_A0, Basic_A1, Basic_A2, Basic_A3, Basic_A4) options for Virtual Machine and Cloud Service.
+
 2014.03.28 - version 0.6.3
 * Added get_cloud_service_properties method, which returns all cloud service properties (embed-detail=true), including info about all VMs
 * Added winrm_http_port and winrm_https_port to get_virtual_machine method to allow the users to configure custom ports for winrm-http and winrm-https

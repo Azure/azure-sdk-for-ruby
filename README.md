@@ -373,13 +373,13 @@ virtual_machine_service.start_virtual_machine('vm_name', 'cloud_service_name')
 virtual_machine_service.restart_virtual_machine('vm_name', 'cloud_service_name')
 
 #API for add disk to Virtual Machine
-lun = 1  #Valid LUN values are 0 through 15.
 options = {
   :disk_label => 'disk-label',
   :disk_size => 100, #In GB
-  :import => false
+  :import => false,
+  :disk_name => 'Disk name' #Required when import is true
 }
-virtual_machine_service.add_data_disk('vm_name', 'cloud_service_name', lun, options)
+virtual_machine_service.add_data_disk('vm_name', 'cloud_service_name', options)
 
 #API to add/update Virtual Machine endpoints
 endpoint1 = {
@@ -421,19 +421,35 @@ options = {
   :private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
   :certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
   :ssh_port => 2222,
-  :vm_size => 'Small', #valid choices are (ExtraSmall, Small, Medium, Large, ExtraLarge, A6, A7)
+  :vm_size => 'Small', #valid choices are (ExtraSmall Small Medium Large ExtraLarge A5 A6 A7 Basic_A0 Basic_A1 Basic_A2 Basic_A3 Basic_A4)
   :affinity_group_name => 'affinity1',
   :virtual_network_name => 'xplattestvnet',
   :subnet_name => 'subnet1',
   :availability_set_name => 'availabiltyset1'
 }
-virtual_machine_service.create_virtual_machine(params,options,add_role=false)
-# Here add_role is used as a flag to create multiple roles under the same cloud service. This parameter is false
-# by default. Atleast a single deployment should be created under a hosted service prior to setting this flag.
+virtual_machine_service.create_virtual_machine(params,options)
 
 #API usage to add new roles under cloud service creating VM 
-
-virtual_machine_service.create_virtual_machine(params,options,add_role=true)
+#API add_role create multiple roles under the same cloud service. Atleast a single deployment should be created under a hosted service.
+params = {
+  :vm_name => 'vm_name',
+  :cloud_service_name => 'cloud_service_name',
+  :vm_user => 'azureuser',
+  :image => 'a699494373c04fc0bc8f2bb1389d6106__Win2K8R2SP1-Datacenter-201305.01-en.us-127GB.vhd',
+  :password => 'ComplexPassword',
+}
+options = {
+  :storage_account_name => 'storage_suse',
+  :winrm_transport => ['https','http'], #Currently http is supported. To enable https, set the transport protocol to https, simply rdp to the VM once VM is in ready state, export the certificate ( CN name would be the deployment name) from the certstore of the VM and install to your local machine and communicate WinRM via https.
+  :tcp_endpoints => '80,3389:3390',
+  :private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
+  :certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
+  :winrm_https_port => 5999,
+  :winrm_http_port => 6999, #Used to open different powershell port
+  :vm_size => 'Small', #valid choices are (ExtraSmall Small Medium Large ExtraLarge A5 A6 A7 Basic_A0 Basic_A1 Basic_A2 Basic_A3 Basic_A4)
+  :availability_set_name => 'availabiltyset'
+}
+virtual_machine_service.add_role(params, options)
 
 #Get a list of available virtual machine images
 virtual_machine_image_service = Azure::VirtualMachineImageManagementService.new

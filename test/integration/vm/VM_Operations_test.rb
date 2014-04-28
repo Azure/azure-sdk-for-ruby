@@ -64,7 +64,7 @@ describe Azure::VirtualMachineManagementService do
       before do
         subject.shutdown_virtual_machine(vm_name, csn)
       end
-      
+
       it 'starts virtual machine' do
         subject.start_virtual_machine(vm_name, csn)
         vm = subject.get_virtual_machine(vm_name, csn)
@@ -107,9 +107,8 @@ describe Azure::VirtualMachineManagementService do
 
     describe '#add_data_disk' do
       it 'add data disk to virtual machine' do
-        lun = rand(1..15)
         others = { disk_size: 100 }
-        subject.add_data_disk(vm_name, csn , lun, others)
+        subject.add_data_disk(vm_name, csn, others)
         dms = VirtualMachineDiskManagementService.new
         disks = dms.list_virtual_machine_disks
         disks = disks.select { |x| (/#{csn}/ =~ x.name) && x.os_type.empty? }
@@ -119,7 +118,7 @@ describe Azure::VirtualMachineManagementService do
     end
 
     describe 'Add, Update, Delete endpoints' do
-      
+
       it 'should add endpoints to virtual machine.' do
         ep1 =  {
           name: 'endpoint-1',

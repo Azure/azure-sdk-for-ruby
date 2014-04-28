@@ -55,13 +55,13 @@ module Azure
       end
 
       # Public: Gets the properties of the storage account specified.
-      # 
+      #
       # ==== Attributes
       #
       # * +name+  - String. The name of the storage account. Required.
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460802.aspx
-      # 
+      #
       # Returns the storage account
       def get_storage_account_properties(name)
         request_path = "/services/storageservices/#{name}"
