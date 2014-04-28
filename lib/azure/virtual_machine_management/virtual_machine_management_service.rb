@@ -48,11 +48,16 @@ module Azure
       #
       # * +name+                - String. Virtual machine name.
       # * +cloud_service_name+  - String. Cloud service name.
+      # * +ignore_case+         - Boolean. Ignore case of machine and cloud service strings.
       #
       # Returns an  Azure::VirtualMachineManagement::VirtualMachine instance.
-      def get_virtual_machine(name, cloud_service_name)
-        server = list_virtual_machines(cloud_service_name).select { |x| x.vm_name == name && x.cloud_service_name == cloud_service_name }
-        server.first
+      def get_virtual_machine(name, cloud_service_name, ignore_case=false)
+        virtual_machines = list_virtual_machines(cloud_service_name)
+        if ignore_case
+          virtual_machines.select { |x| x.vm_name.casecmp(name) == 0 && x.cloud_service_name.casecmp(cloud_service_name) == 0 }.first
+        else
+          virtual_machines.select { |x| x.vm_name == name && x.cloud_service_name == cloud_service_name }.first
+        end
       end
 
       # Public: Provisions a virtual machine based on the supplied configuration.

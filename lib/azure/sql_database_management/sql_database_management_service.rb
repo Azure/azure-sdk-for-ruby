@@ -18,7 +18,8 @@ module Azure
   module SqlDatabaseManagement
     class SqlDatabaseManagementService < BaseManagementService
 
-      def initialize
+      def initialize(config = nil)
+        @config = config || Azure.config unless @config
         super()
       end
 
@@ -129,7 +130,7 @@ module Azure
           end
           request = SqlManagementHttpRequest.new(method, request_path, body)
           request.headers['x-ms-version'] = '1.0'
-          request.uri = URI.parse(Azure.config.sql_database_management_endpoint + Azure.config.subscription_id + request_path)
+          request.uri = URI.parse(@config.sql_database_management_endpoint + @config.subscription_id + request_path)
           # Management certificate authentication Endpoint throws errors for this operation. Need to re-visit
           # this once the Azure API is working.
 
@@ -189,7 +190,7 @@ module Azure
           if sql_server
             return sql_server
           else
-            error = Azure::Error::Error.new("DatabaseServerNotFound", 40647,  "Subscription #{Azure.config.subscription_id} does not have server #{server_name}.")
+            error = Azure::Error::Error.new("DatabaseServerNotFound", 40647,  "Subscription #{@config.subscription_id} does not have server #{server_name}.")
           end
         end
         raise error if error

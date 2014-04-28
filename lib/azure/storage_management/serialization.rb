@@ -41,6 +41,16 @@ module Azure
         builder.doc.to_xml
       end
 
+      def self.storage_account_keys_from_xml(storage_xml)
+        storage_xml.css('StorageService')
+        storage_service_xml = storage_xml.css('StorageService').first
+        service_key_xml = storage_service_xml.css('StorageServiceKeys').first
+        storage_account_keys = StorageAccountKeys.new
+        storage_account_keys.url = xml_content(storage_service_xml, 'Url')
+        storage_account_keys.primary_key = xml_content(service_key_xml, 'Primary')
+        storage_account_keys.secondary_key = xml_content(service_key_xml, 'Secondary')
+      end
+
       def self.storage_services_from_xml(storage_xml)
         storage_accounts = []
         storage_services_xml = storage_xml.css('StorageService')

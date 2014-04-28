@@ -29,11 +29,12 @@ Loggerx = Azure::Core::Logger
 module Azure
   module BaseManagement
     class BaseManagementService
-      def initialize
+      def initialize(config=nil)
+        @config = config || Azure.config unless @config
         validate_configuration
-        cert_file = File.read(Azure.config.management_certificate)
+        cert_file = File.read(@config.management_certificate)
         begin
-          if Azure.config.management_certificate =~ /(pem)$/
+          if @config.management_certificate =~ /(pem)$/
             certificate_key = OpenSSL::X509::Certificate.new(cert_file)
             private_key = OpenSSL::PKey::RSA.new(cert_file)
           else
@@ -48,26 +49,25 @@ module Azure
           raise "Management certificate not valid. Error: #{e.message}"
         end
 
-        Azure.configure do |config|
-          config.http_certificate_key = certificate_key
-          config.http_private_key = private_key
-        end
+        
+        @config.http_certificate_key = certificate_key
+        @config.http_private_key = private_key
       end
 
       def validate_configuration
-        subs_id = Azure.config.subscription_id
+        subs_id = @config.subscription_id
         error_message = 'Subscription ID not valid.'
         raise error_message if subs_id.nil? || subs_id.empty?
 
-        m_ep = Azure.config.management_endpoint
+        m_ep = @config.management_endpoint
         error_message = 'Management endpoint not valid.'
         raise error_message if m_ep.nil? || m_ep.empty?
 
-        m_cert = Azure.config.management_certificate
+        m_cert = @config.management_certificate
         error_message = "Could not read from file '#{m_cert}'."
         raise error_message unless test('r', m_cert)
 
-        m_cert = Azure.config.management_certificate
+        m_cert = @config.management_certificate
         error_message = 'Management certificate expects a .pem or .pfx file.'
         raise error_message unless m_cert =~ /(pem|pfx)$/
       end

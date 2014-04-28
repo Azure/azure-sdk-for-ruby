@@ -28,9 +28,11 @@ module Azure
       # method  - Symbol. The HTTP method to use (:get, :post, :put, :del, etc...)
       # path    - URI. The URI of the HTTP endpoint to query
       # body    - IO or String. The request body (optional)
+      # config  - Azure Configuration object. (optional)
       # key     - String. The request key
       # cert    - String. The request certificate
-      def initialize(method, path, body = nil)
+      def initialize(method, path, body = nil, config = nil)
+        @config = config || Azure.config unless @config
         super
         @warn = false
         content_length = body ? body.bytesize.to_s : '0'
@@ -39,9 +41,9 @@ module Azure
           'Content-Type' => 'application/xml',
           'Content-Length' => content_length
         }
-        @uri = URI.parse(Azure.config.management_endpoint + Azure.config.subscription_id + path)
-        @key = Azure.config.http_private_key
-        @cert = Azure.config.http_certificate_key
+        @uri = URI.parse(@config.management_endpoint + @config.subscription_id + path)
+        @key = @config.http_private_key
+        @cert = @config.http_certificate_key
       end
 
       # Public: Sends a request to HTTP server and returns a HttpResponse
@@ -98,7 +100,7 @@ module Azure
       #
       # Print Error or Success of Operation.
       def check_completion(request_id)
-        request_path = "/#{Azure.config.subscription_id}/operations/#{request_id}"
+        request_path = "/#{@config.subscription_id}/operations/#{request_id}"
         http = http_setup
         headers['Content-Length'] = '0'
         @method = :get
