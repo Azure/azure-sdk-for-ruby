@@ -29,8 +29,10 @@ module Azure
         #
         # access_key - The access_key encoded in Base64. Defaults to the one
         #              in the global configuration.
-        def initialize(access_key=Azure.config.storage_access_key)
-          @access_key = Base64.strict_decode64(access_key)
+        # config     - Azure Configuration object.
+        def initialize(access_key=nil, config = nil)
+          @config = config || Azure.config unless @config
+          @access_key = Base64.strict_decode64(access_key || @config.storage_access_key)
         end
 
         # Public: Generate an HMAC signature.

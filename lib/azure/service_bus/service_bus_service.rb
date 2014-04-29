@@ -25,9 +25,10 @@ module Azure
 
       DEFAULT_TIMEOUT = 60
 
-      def initialize(host=Azure.config.service_bus_host)
+      def initialize(host=nil, config=nil)
+         @config = config || Azure.config unless @config 
         super(Azure::ServiceBus::Auth::WrapSigner.new)
-          @host = host
+          @host = host || @config.service_bus_host
           
           with_filter do |req, res| 
             req.headers.delete "x-ms-date"

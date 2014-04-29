@@ -54,6 +54,20 @@ module Azure
         flag
       end
 
+      # Public: Gets the keys of the storage account specified.
+      # 
+      # ==== Attributes
+      #
+      # * +name+  - String. The name of the storage account. Required.
+      #
+      # Returns the storage account keys
+      def get_storage_account_keys(name)
+        request_path = "/services/storageservices/#{name}/keys"
+        request = ManagementHttpRequest.new(:get, request_path, nil)
+        response = request.call
+        Serialization.storage_account_keys_from_xml(response)
+      end
+
       # Public: Gets the properties of the storage account specified.
       # 
       # ==== Attributes

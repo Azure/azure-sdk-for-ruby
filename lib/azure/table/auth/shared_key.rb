@@ -30,9 +30,10 @@ module Azure
         #                global configuration.
         # access_key   - The access_key encoded in Base64. Defaults to the
         #                one in the global configuration.
-        def initialize(account_name=Azure.config.storage_account_name, access_key=Azure.config.storage_access_key)
-          @account_name = account_name
-          super(access_key)
+        def initialize(account_name=nil, access_key=nil, config=nil)
+          @config = config || Azure.config unless @config
+          @account_name = account_name || @config.storage_account_name 
+          super(access_key || @config.storage_access_key)
         end
 
         # Public: The name of the strategy.

@@ -28,6 +28,8 @@ module Azure
           image.name = xml_content(image_node, 'Name')
           image.category = xml_content(image_node, 'Category')
           image.locations = xml_content(image_node, 'Location')
+          image.media_link = xml_content(image_node, 'MediaLink')
+
           os_images << image
         end
         os_images

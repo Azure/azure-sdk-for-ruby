@@ -23,9 +23,10 @@ module Azure
   module Table
     class TableService < Azure::Service::StorageService
 
-      def initialize
+      def initialize(config=nil)
+        @config = config || Azure.config unless @config
         super(Azure::Table::Auth::SharedKey.new)
-        @host = Azure.config.storage_table_host
+        @host = @config.storage_table_host
       end
 
       # Public: Creates new table in the storage account

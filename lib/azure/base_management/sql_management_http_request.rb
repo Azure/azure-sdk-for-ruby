@@ -24,11 +24,13 @@ module Azure
       # method  - Symbol. The HTTP method to use (:get, :post, :put, :del, etc...)
       # path    - URI. The URI of the HTTP endpoint to query
       # body    - IO or String. The request body (optional)
-      def initialize(method, path, body = nil)
+      # config  - Azure Configuration object (optional)
+      def initialize(method, path, body = nil, config =  nil)
+        @config = config || Azure.config unless @config
         if sql_endpoint?
           super(method, path, body)
           @headers['x-ms-version'] = '1.0'
-          @uri = URI.parse(Azure.config.sql_database_management_endpoint + Azure.config.subscription_id + path)
+          @uri = URI.parse(@config.sql_database_management_endpoint + @config.subscription_id + path)
         else
           path = "/services/sqlservers#{path}"
           super(method, path, body)
@@ -38,7 +40,7 @@ module Azure
       private
 
       def sql_endpoint?
-        Azure.config.sql_database_authentication_mode == :sql_server
+        @config.sql_database_authentication_mode == :sql_server
       end
     end
   end

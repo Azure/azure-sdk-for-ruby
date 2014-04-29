@@ -178,9 +178,22 @@ describe Azure::VirtualMachineManagementService do
       virtual_machine.must_equal nil
     end
 
-    it 'return virtual machine instance if virtual machine name and cloud server name are valid ' do
+    it 'return virtual machine instance if virtual machine name and cloud server name match exactly' do
       virtual_machine = subject.get_virtual_machine 'instance-name', 'cloud-service-1'
       virtual_machine.must_be_kind_of VirtualMachine
+    end
+
+    describe 'the virtual machine name and cloud server name are valid but do not match given a difference in character case' do
+  
+      it 'return nil if the function is not instructed to ignore case' do
+        virtual_machine = subject.get_virtual_machine 'Instance-name', 'Cloud-service-1'
+        virtual_machine.must_equal nil
+      end
+  
+      it 'return virtual machine instance if the function is instructed to ignore case' do
+        virtual_machine = subject.get_virtual_machine 'INSTANCE-NAME', 'CLOUD-SERVICE-1', true
+        virtual_machine.must_be_kind_of VirtualMachine
+      end
     end
   end
 

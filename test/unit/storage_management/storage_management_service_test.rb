@@ -258,4 +258,50 @@ describe Azure::StorageManagementService do
       account.label.must_equal(label)
     end
   end
+
+
+  describe '#get_storage_account_keys' do
+    let(:account_name) { 'storage2' }
+    let(:label) { 'ValidLabel' }
+    let(:request_path) { "/services/storageservices/#{account_name}/keys" }
+    let(:account_keys_xml) { "<?xml version=\"1.0\"?>\n<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\n  <Url>https://management.core.windows.net/01234567-89ab-cdef-0123-456789abcdef/services/storageservices/myexamplestorage1</Url>\n  <StorageServiceKeys>\n    <Primary>XrmGWqu9qpgKX5G3lf+V5Bc0nFIGjGWiWhHTdMxkA5Mb4WjJ0rDV+3USWW/6fAWCrszrkr2+JUb1c5mxQdq4nw==</Primary>\n    <Secondary>VuXywhZaNbkh//SN70yL1w6na2H1FUOvjukSOAReQ6QM4kHNY7LmQUhgENw6Tp/SBz4y65R3Y5L5c5+zqXNvVA==</Secondary>\n  </StorageServiceKeys>\n</StorageService>" } 
+    let(:mock_request) { mock() }
+    let(:mock_response) {
+      mock_response = mock()
+      mock_response.stubs(:body).returns(account_keys_xml)
+      mock_response
+    }
+    let(:response_body) {
+      Nokogiri::XML(mock_response.body)
+    }
+
+    before {
+      ManagementHttpRequest.stubs(:new).with(
+        :get, request_path, nil
+      ).returns(mock_request)
+      mock_request.expects(:call).returns(
+        response_body
+      )
+    }
+
+    it 'Returns a StorageAccountKeys object' do
+      keys = subject.get_storage_account_keys(account_name)
+      keys.must_be_instance_of(Azure::StorageManagement::StorageAccountKeys)
+    end
+
+    it 'returns the xml url' do
+      keys = subject.get_storage_account_keys(account_name)
+      keys.url.must_equal('https://management.core.windows.net/01234567-89ab-cdef-0123-456789abcdef/services/storageservices/myexamplestorage1')
+    end
+
+    it 'returns the primary key' do
+      keys = subject.get_storage_account_keys(account_name)
+      keys.primary_key.must_equal('XrmGWqu9qpgKX5G3lf+V5Bc0nFIGjGWiWhHTdMxkA5Mb4WjJ0rDV+3USWW/6fAWCrszrkr2+JUb1c5mxQdq4nw==')
+    end
+
+    it 'returns the secondary key' do
+      keys = subject.get_storage_account_keys(account_name)
+      keys.secondary_key.must_equal('VuXywhZaNbkh//SN70yL1w6na2H1FUOvjukSOAReQ6QM4kHNY7LmQUhgENw6Tp/SBz4y65R3Y5L5c5+zqXNvVA==')
+    end
+  end
 end

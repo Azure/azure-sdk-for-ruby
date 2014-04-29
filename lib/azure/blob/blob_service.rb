@@ -20,9 +20,10 @@ module Azure
   module Blob
     class BlobService < Service::StorageService
 
-      def initialize
+      def initialize(config = nil)
+        @config = config || Azure.config unless @config
         super()
-        @host = Azure.config.storage_blob_host
+        @host = @config.storage_blob_host
       end
 
       # Public: Get a list of Containers from the server

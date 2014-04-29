@@ -24,11 +24,12 @@ module Azure
       # Create a new instance of the SignedService
       #
       # signer        - Azure::Core::Auth::Signer. An implementation of Signer used for signing requests. (optional, Default=Azure::Core::Auth::SharedKey.new)
-      # account_name  - String. The account name (optional, Default=Azure.config.storage_account_name)  
-      def initialize(signer=Core::Auth::SharedKey.new, account_name=Azure.config.storage_account_name)
+      # account_name  - String. The account name (optional)
+      def initialize(signer=nil, account_name=nil, config=nil)
+        @config = config || Azure.config unless @config
         super()
-        @account_name = account_name
-        @signer = signer
+        @account_name = account_name || @config.storage_account_name
+        @signer = signer || Core::Auth::SharedKey.new(nil, @config)
         filters.unshift Core::Http::SignerFilter.new(signer) if signer
       end
 

@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "singleton"
 
 module Azure
 
@@ -50,9 +49,18 @@ module Azure
       Configuration.instance
     end
 
-    # Singleton that keeps the configuration of the system.
+    # Azure API Configuration
     class Configuration
-      include Singleton
+      @@the_instance = nil
+ 
+      def self.instance
+        @@the_instance = self.new unless @@the_instance
+        return @@the_instance 
+      end
+
+      def self.set_instance(instance)
+        @@the_instance = instance
+      end
 
       # Public: Get/Set the Access Key for this service.
       attr_accessor :storage_access_key
