@@ -49,6 +49,7 @@ module Azure
         storage_account_keys.url = xml_content(storage_service_xml, 'Url')
         storage_account_keys.primary_key = xml_content(service_key_xml, 'Primary')
         storage_account_keys.secondary_key = xml_content(service_key_xml, 'Secondary')
+        return storage_account_keys
       end
 
       def self.storage_services_from_xml(storage_xml)
