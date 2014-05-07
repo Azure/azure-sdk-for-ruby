@@ -12,24 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'test_helper'
+require 'integration/test_helper'
 
-describe Azure::VirtualMachineImageManagement::Serialization do
-  subject { Azure::VirtualMachineImageManagement::Serialization }
+describe Azure::CloudServiceManagementService do
 
-  let(:virtual_machine_images_from_xml) { Fixtures['list_images'] }
+  subject { Azure::CloudServiceManagementService.new }
+  let(:options) do
+    {
+      location: 'West US',
+      description: 'Test'
+    }
+  end
 
-  describe '#virtual_machine_images_from_xml' do
+  before do
+    Loggerx.expects(:puts).returns(nil).at_least(0)
+  end
 
-    it 'accepts an XML string' do
-      subject.virtual_machine_images_from_xml Nokogiri::XML(virtual_machine_images_from_xml)
+  describe '#create_cloud_service' do
+    before do
+      @cloud_name = random_string('test-service-cloud', 10)
+      subject.create_cloud_service(@cloud_name, options)
     end
 
-    it 'returns an Array of VirtualMachineImageService instances' do
-      results = subject.virtual_machine_images_from_xml Nokogiri::XML(virtual_machine_images_from_xml)
-      results.must_be_kind_of Array
-      results[0].must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImage
-      results.count.must_equal 12
+    it 'Creates a new cloud service in Windows Azure.' do
+      cloud_service = subject.get_cloud_service_properties(@cloud_name)
+      assert cloud_service.name, @cloud_name
+      assert cloud_service.location, options[:location]
+      assert cloud_service.virtual_machines, Hash.new
     end
   end
 end

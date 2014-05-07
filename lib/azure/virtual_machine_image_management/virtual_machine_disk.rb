@@ -15,13 +15,11 @@
 module Azure
   module VirtualMachineImageManagement
     class VirtualMachineDisk
-
       def initialize
         yield self if block_given?
       end
 
       attr_accessor :name, :attached, :os_type, :image, :size
-
     end
   end
 end

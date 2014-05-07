@@ -12,31 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'integration/test_helper'
 
-module Azure
-  module VirtualMachineManagement
-    class VirtualMachine
-      def initialize
-        yield self if block_given?
-      end
+describe Azure::CloudServiceManagementService do
 
-      attr_accessor :cloud_service_name
-      attr_accessor :status
-      attr_accessor :ipaddress
-      attr_accessor :vm_name
-      attr_accessor :udp_endpoints
-      attr_accessor :hostname
-      attr_accessor :deployment_name
-      attr_accessor :deployment_status
-      attr_accessor :tcp_endpoints
-      attr_accessor :role_size
-      attr_accessor :image
-      attr_accessor :os_type
-      attr_accessor :disk_name
-      attr_accessor :virtual_network_name
-      attr_accessor :availability_set_name
-      attr_accessor :media_link
-      attr_accessor :data_disks
+  subject { Azure::CloudServiceManagementService.new }
+
+  let(:options) do
+    {
+      location: 'West US',
+      description: 'Test'
+    }
+  end
+
+  before do
+    Loggerx.expects(:puts).returns(nil).at_least(0)
+  end
+
+  describe '#delete_cloud_service' do
+    before do
+      @cloud_name = random_string('test-service-cloud', 10)
+      subject.create_cloud_service(@cloud_name, options)
+    end
+
+    it 'Deletes the cloud service in Windows Azure.' do
+      subject.delete_cloud_service(@cloud_name)
+      present = subject.get_cloud_service(@cloud_name)
+      assert_equal present, false
     end
   end
 end
