@@ -120,12 +120,16 @@ describe Azure::VirtualMachineManagement::Serialization do
         storage_account_name: 'storageaccountname',
         cloud_service_name: 'cloud-service-name',
         tcp_endpoints: '80,3389:3390,85:85',
-        availability_set_name: 'aval-set'
+        availability_set_name: 'aval-set',
+        winrm_https_port: '5988',
+        winrm_transport: ['http','https']
       }
     end
 
     it 'returns an VirtualMachine object with correct tcp endpoints' do
       params[:certificate] = {fingerprint: 'CFB8C256D2986559C630547F2D0'}
+      options[:os_type] = 'Windows'
+      options[:existing_ports] = ['5985']
       result = subject.deployment_to_xml params, options
       doc = Nokogiri::XML(result)
       endpoints = doc.css('Deployment RoleList ConfigurationSet InputEndpoints InputEndpoint')
@@ -154,28 +158,37 @@ describe Azure::VirtualMachineManagement::Serialization do
         public_port: '85',
         local_port: '85'
       )
+      tcp_endpoints.must_include(
+        name: 'PowerShell',
+        public_port: '5988',
+        local_port: '5986'
+      )
     end
   end
 
   describe '#add_data_disk_to_xml' do
 
     let(:options) do
-      {disk_size: 100}
+      {
+        disk_size: 100,
+      }
     end
     let(:media_link) { 'https://sta.blob.managment.core.net/vhds/1234.vhd' }
-    let(:lun) { 5 }
+
     before do
       Loggerx.expects(:puts).returns(nil).at_least(0)
+      @vm = Azure::VirtualMachineManagement::VirtualMachine.new
+      @vm.data_disks = []
+      @vm.media_link = media_link
     end
 
-    it 'returns an xml for newly created data disk' do
-      result = subject.add_data_disk_to_xml(lun, media_link, options)
+    it 'returns an xml for newly created data disk' do      
+      result = subject.add_data_disk_to_xml(@vm, options)
       doc = Nokogiri::XML(result)
       disk_size = doc.css('DataVirtualHardDisk LogicalDiskSizeInGB').text
       media_link = doc.css('DataVirtualHardDisk MediaLink').text
       disk_name = doc.css('DataVirtualHardDisk DiskName').text
       result.must_be_kind_of String
-      doc.css('DataVirtualHardDisk Lun').text.must_equal lun.to_s
       disk_size.must_equal options[:disk_size].to_s
       media_link.wont_be_empty
       disk_name.must_be_empty
@@ -184,12 +197,11 @@ describe Azure::VirtualMachineManagement::Serialization do
     it 'returns an xml for existing data disk' do
       options[:import] = true
       options[:disk_name] = 'disk_name'
-      result = subject.add_data_disk_to_xml(lun, media_link, options)
+      result = subject.add_data_disk_to_xml(@vm, options)
       doc = Nokogiri::XML(result)
       media_link = doc.css('DataVirtualHardDisk MediaLink').text
       disk_name = doc.css('DataVirtualHardDisk DiskName').text
       result.must_be_kind_of String
-      doc.css('DataVirtualHardDisk Lun').text.must_equal lun.to_s
       media_link.must_be_empty
       disk_name.wont_be_empty
     end
@@ -197,36 +209,36 @@ describe Azure::VirtualMachineManagement::Serialization do
     it 'raise error when disk name is empty' do
       options[:import] = true
       exception = assert_raises(RuntimeError) do
-        subject.add_data_disk_to_xml(lun, media_link, options)
+        subject.add_data_disk_to_xml(@vm, options)
       end
       assert_match(/The data disk name is not valid/i, exception.message)
     end
   end
 
-  describe '#add_data_disk_to_xml' do
+  describe '#assign_random_port' do
     let(:preferred_port) { '22' }
     before do
       subject.class.send(:public, *subject.class.private_instance_methods)
       Loggerx.expects(:puts).returns(nil).at_least(0)
     end
 
-    it 'returns an xml for newly created data disk' do
+    it 'returns random port number when preferred port is in use' do
       result = subject.assign_random_port(preferred_port, [preferred_port])
       assert_operator result.to_i, :>=, 10000
       assert_operator result.to_i, :<=, 65535
     end
 
-    it 'returns an xml for newly created data disk' do
+    it 'returns preferred port number when used ports is nil' do
       result = subject.assign_random_port(preferred_port, nil)
       result.must_equal preferred_port
     end
 
-    it 'returns an xml for newly created data disk' do
+    it 'returns preferred port number when used ports is empty' do
       result = subject.assign_random_port(preferred_port, [])
       result.must_equal preferred_port
     end
 
-    it 'returns an xml for newly created data disk' do
+    it 'returns random port number when preferred port is in use' do
       result = subject.assign_random_port(preferred_port, ['1', preferred_port])
       assert_operator result.to_i, :>=, 10000
       assert_operator result.to_i, :<=, 65535
