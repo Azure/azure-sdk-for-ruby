@@ -212,6 +212,12 @@ describe Azure::VirtualMachineManagementService do
       ).returns(virtual_machine)
     end
 
+    it 'should alias A1 to Small' do
+      options = { :vm_size => 'A1' }
+      subject.create_virtual_machine(params, options)
+      options[:vm_size].must_equal 'Small'
+    end
+
     it 'should set options hash with valid cloud_service_name, deployment_name, storage_account_name.' do
       options = {}
       subject.create_virtual_machine(params, options)
