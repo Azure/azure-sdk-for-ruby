@@ -60,7 +60,11 @@ module Azure
             end
           }
         end
-        builder.doc.at_css('Role') << role_to_xml(params, options).at_css('PersistentVMRole').children.to_s
+        if options[:image_type] == :vm_image
+          builder.doc.at_css('Role') << role_to_xml_vmimage(params, options).at_css('PersistentVMRole').children.to_s
+        else
+          builder.doc.at_css('Role') << role_to_xml(params, options).at_css('PersistentVMRole').children.to_s
+        end
         builder.doc.to_xml
       end
 
@@ -94,6 +98,37 @@ module Azure
               xml.MediaLink 'http://' + options[:storage_account_name] + '.blob.core.windows.net/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd'
               xml.SourceImageName params[:image]
             }
+            xml.RoleSize options[:vm_size]
+          }
+        end
+        builder.doc
+      end
+
+      def self.role_to_xml_vmimage(params, options)
+        builder = Nokogiri::XML::Builder.new do |xml|
+          xml.PersistentVMRole(
+            'xmlns'=>'http://schemas.microsoft.com/windowsazure',
+            'xmlns:i'=>'http://www.w3.org/2001/XMLSchema-instance'
+          ) {
+            xml.RoleName {xml.text params[:vm_name]}
+            xml.RoleType 'PersistentVMRole'
+           
+            xml.ConfigurationSets {
+              provisioning_configuration_to_xml(xml, params, options)
+              xml.ConfigurationSet('i:type' => 'NetworkConfigurationSet') {
+                xml.ConfigurationSetType 'NetworkConfiguration'
+                xml.InputEndpoints {
+                  default_endpoints_to_xml(xml, options)
+                  tcp_endpoints_to_xml(xml, options[:tcp_endpoints]) if options[:tcp_endpoints]
+                }
+                if options[:virtual_network_name] && options[:subnet_name]
+                  xml.SubnetNames {
+                    xml.SubnetName options[:subnet_name]
+                  }
+                end
+              }
+            }
+            xml.VMImageName params[:image]
             xml.RoleSize options[:vm_size]
           }
         end

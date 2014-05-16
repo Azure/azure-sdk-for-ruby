@@ -36,7 +36,7 @@ module Azure
         @warn = false
         content_length = body ? body.bytesize.to_s : "0"
         @headers = {
-          "x-ms-version" => "2013-06-01",
+          "x-ms-version" => "2014-05-01",
           "Content-Type"=> 'application/xml',
           "Content-Length" => content_length
         }
@@ -73,7 +73,6 @@ module Azure
         end
         #http.set_debug_output($stdout)
         response = HttpResponse.new(http.request(request))
-        response.uri = uri
 
         wait_for_completion(response)
         Nokogiri::XML response.body
@@ -95,6 +94,11 @@ module Azure
           ret_val
         elsif response.status_code.to_i > 201 && response.status_code.to_i <= 299
           ret_val = check_completion(response.headers['x-ms-request-id'])
+        elsif response.status_code.to_i == 307 
+          #Loggerx.info  "http 307 recieved  -  redirected to #{response.headers['location']}..."
+          ### if we get an http 307 (temproary redirect) retry on the new uri
+          @uri =  URI::parse (response.headers['location'])
+          call
         elsif warn && !response.success?
           #Loggerx.warn ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
         elsif response.body

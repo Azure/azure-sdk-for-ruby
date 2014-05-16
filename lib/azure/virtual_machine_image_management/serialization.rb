@@ -28,9 +28,27 @@ module Azure
           image.name = xml_content(image_node, 'Name')
           image.category = xml_content(image_node, 'Category')
           image.locations = xml_content(image_node, 'Location')
+          image.image_type = :os_image
           os_images << image
         end
         os_images
+      end
+
+      def self.virtual_machine_vmimages_from_xml(imageXML)
+        vm_images = Array.new
+        virtual_machine_vmimages = imageXML.css('VMImages VMImage')
+        virtual_machine_vmimages.each do |image_node|
+          image = VirtualMachineImage.new
+          image.name = xml_content(image_node, 'Name')
+          image.category = xml_content(image_node, 'Category')
+          image.locations = xml_content(image_node, 'Location')
+          os_disk_configuration = image_node.css('OSDiskConfiguration' )
+
+          image.os_type = xml_content(os_disk_configuration, 'OS')
+          image.image_type = :vm_image
+          vm_images << image
+        end
+        vm_images
       end
 
       def self.disks_from_xml(diskXML)

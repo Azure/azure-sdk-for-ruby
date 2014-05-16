@@ -99,6 +99,7 @@ module Azure
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
       def create_virtual_machine(params, options={})
         options[:os_type] = get_os_type(params[:image])
+        options[:image_type] = get_image_type(params[:image])
         validate_deployment_params(params, options)
         options[:cloud_service_name] = generate_cloud_service_name(params[:vm_name]) unless options[:cloud_service_name]
         options[:storage_account_name] = generate_storage_account_name(params[:vm_name]) unless options[:storage_account_name] 
@@ -224,6 +225,13 @@ module Azure
         image = image_service.list_virtual_machine_images.select{|x| x.name == image_name}.first
         Loggerx.error_with_exit "The virtual machine image source is not valid." unless image
         image.os_type
+      end
+
+      def get_image_type(image_name)
+        image_service = Azure::VirtualMachineImageManagementService.new
+        image = image_service.list_virtual_machine_images.select{|x| x.name == image_name}.first
+        Loggerx.error_with_exit "The virtual machine image source is not valid." unless image
+        image.image_type
       end
 
       def generate_cloud_service_name(vm_name)

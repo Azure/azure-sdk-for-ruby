@@ -29,7 +29,16 @@ module Azure
         request_path = "/services/images"
         request = ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
-        Serialization.virtual_machine_images_from_xml(response)
+        images = Serialization.virtual_machine_images_from_xml(response)
+        
+
+        request_path = "/services/vmimages"
+        request = ManagementHttpRequest.new(:get, request_path, nil)
+        response = request.call
+        #puts response
+        images += Serialization.virtual_machine_vmimages_from_xml(response)
+
+        images
       end
  
     end
