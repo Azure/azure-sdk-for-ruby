@@ -85,6 +85,7 @@ module Azure
       # * +:ssh_private_key_file+     - String. Path of private key file.
       # * +:ssh_certificate_file+     - String. Path of certificate file.
       # * +:ssh_port+                 - Integer. Specifies the SSH port number.
+      # * +:no_ssh_endpoint+          - Boolean. True skips the creation of an endpoint for SSH
       # * +:winrm_http_port           - Integer. Specifies the WinRM HTTP port number.
       # * +:winrm_https_port          - Integer. Specifies the WinRM HTTPS port number.
       # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.

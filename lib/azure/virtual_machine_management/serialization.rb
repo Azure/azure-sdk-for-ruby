@@ -177,7 +177,7 @@ module Azure
         os_type = options[:os_type]
         used_ports = options[:existing_ports]
         endpoints = []
-        if os_type == 'Linux'
+        if os_type == 'Linux' && !options[:no_ssh_endpoint]
           preferred_port = '22'
           port_already_opened?(used_ports, options[:ssh_port])
           endpoints << {
