@@ -23,6 +23,7 @@ module Azure
       attr_accessor :cloud_service_name
       attr_accessor :status
       attr_accessor :ipaddress
+      attr_accessor :private_ipaddress
       attr_accessor :vm_name
       attr_accessor :udp_endpoints
       attr_accessor :hostname

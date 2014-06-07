@@ -250,6 +250,7 @@ module Azure
             vm.status = xml_content(instance, 'InstanceStatus')
             vm.vm_name = role_name.downcase
             vm.ipaddress = xml_content(ip, 'Address')
+            vm.private_ipaddress = xml_content(instance, 'IpAddress')
             vm.role_size = xml_content(instance, 'InstanceSize')
             vm.hostname = xml_content(instance, 'HostName')
             vm.cloud_service_name = cloud_service_name.downcase
