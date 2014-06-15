@@ -90,6 +90,8 @@ module Azure
       # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.
       # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
       # * +:availability_set_name+    - String. Specifies the availability set name.
+      # * +:virtual_network_name+     - String. Specifies the name of the Virtual Network to connect the role to
+      # * +:subnet_name+              - String. Specifies the subnet to connect the role to (must also specify virtual_network_name)
       #
       #  ==== add_role
       #

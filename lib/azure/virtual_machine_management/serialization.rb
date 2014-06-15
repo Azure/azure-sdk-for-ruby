@@ -256,6 +256,7 @@ module Azure
             vm.cloud_service_name = cloud_service_name.downcase
             vm.deployment_name = xml_content(deployXML, 'Deployment Name')
             vm.deployment_status = xml_content(deployXML, 'Deployment Status')
+            vm.virtual_network_subnet_name = xml_content(deployXML, 'SubnetName')
             vm.virtual_network_name = xml_content(
               deployXML.css('Deployment'),
               'VirtualNetworkName'

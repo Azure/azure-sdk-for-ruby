@@ -35,6 +35,7 @@ module Azure
       attr_accessor :os_type
       attr_accessor :disk_name
       attr_accessor :virtual_network_name
+      attr_accessor :virtual_network_subnet_name
       attr_accessor :availability_set_name
       attr_accessor :media_link
       attr_accessor :data_disks
