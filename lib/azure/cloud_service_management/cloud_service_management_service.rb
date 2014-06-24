@@ -116,12 +116,15 @@ module Azure
       # ==== Attributes
       #
       # * +cloud_service_name+  - String. Cloud service name.
+      # * +slot+                - String. Either 'production' or 'staging'. Optional parameters. 
+      #                           Default if not specified is 'production'
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460815.aspx
       #
       # Returns NONE
-      def delete_cloud_service_deployment(cloud_service_name)
-        request_path = "/services/hostedservices/#{cloud_service_name}/deploymentslots/production"
+      def delete_cloud_service_deployment(cloud_service_name, slot='production')
+        slot = "production" unless slot
+        request_path = "/services/hostedservices/#{cloud_service_name}/deploymentslots/#{slot}"
         request = ManagementHttpRequest.new(:delete, request_path)
         Loggerx.info "Deleting deployment of cloud service \"#{cloud_service_name}\" ..."
         request.call
