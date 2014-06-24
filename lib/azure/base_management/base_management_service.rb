@@ -31,14 +31,18 @@ module Azure
     class BaseManagementService
       def initialize
         validate_configuration
-        cert_file = File.read(Azure.config.management_certificate)
+        cert_file = nil
         begin
           if Azure.config.management_certificate =~ /(pem)$/
+            cert_file = File.read(Azure.config.management_certificate)
             certificate_key = OpenSSL::X509::Certificate.new(cert_file)
             private_key = OpenSSL::PKey::RSA.new(cert_file)
           else
-          # Parse pfx content
-            cert_content = OpenSSL::PKCS12.new(Base64.decode64(cert_file))
+            # Parse pfx content
+            File.open(Azure.config.management_certificate, "rb") do |f|
+                cert_file = f.read
+            end
+            cert_content = OpenSSL::PKCS12.new(cert_file)
             certificate_key = OpenSSL::X509::Certificate.new(
               cert_content.certificate.to_pem
             )
