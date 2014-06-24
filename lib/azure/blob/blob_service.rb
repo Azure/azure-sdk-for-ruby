@@ -595,6 +595,7 @@ module Azure
         headers["Content-Language"] = options[:content_language] if options[:content_language]
         headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
         headers["Cache-Control"] = options[:cache_control] if options[:cache_control]
+        headers["Keep-Alive"] = "timeout=#{options[:timeout]}" if options[:timeout]
 
         headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
         headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
