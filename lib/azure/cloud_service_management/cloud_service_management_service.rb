@@ -138,7 +138,6 @@ module Azure
       #
       # ==== Attributes
       #
-      # * +deployment_name+       - String. Name of the deployment
       # * +cloud_service_name+    - String. Name of the Cloud Service where the deployment 
       #                             needs to be created
       # * +package_url+           - String. URL of the blob storage where the .cspkg is being
@@ -172,7 +171,6 @@ module Azure
         Loggerx.error_with_exit 'Cloud service name is not valid' unless cloud_service_name
         Loggerx.error_with_exit 'Package url is not valid' unless package_url
         Loggerx.error_with_exit 'ServiceConfiguration.cscfg is not valid' unless service_configuration
-        fire_and_forget = options[:fire_and_forget].nil? ? false : options[:fire_and_forget]
 
         # 1. Identify which type of query needs to be processes
         request_path = nil
@@ -205,8 +203,43 @@ module Azure
           Loggerx.info info_msg
           body = Serialization.upgrade_deployment_to_xml(package_url, service_configuration, options)
           request = ManagementHttpRequest.new(:post, request_path, body)
-          request.call({:fire_and_forget => fire_and_forget})
+          request.call(options)
         end
+      end
+
+      # Public: Swap the staging and production deployment of a specific cloud service 
+      #
+      # ==== Attributes
+      #
+      # * +cloud_service_name+    - String. Name of the Cloud Service where the deployments
+      #                             are going to be swapped
+      # * +options+               - Hash. Optional parameters.
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      #
+      # * +fire_and_forget+           - Boolean(efault is false). If true, the client 
+      #                                 does not wait until the request is completed.
+      #
+      # More details at http://msdn.microsoft.com/en-us/library/azure/ee460814.aspx
+      #
+      # Returns None
+      def swap_deployment(cloud_service_name, options={})
+        Loggerx.error_with_exit 'Cloud service name is not valid' unless cloud_service_name
+
+        staging_deployment = get_deployment(cloud_service_name, {:slot => "staging", :no_exit_on_failure => true})
+        Loggerx.error_with_exit "Staging deployment on cloud service #{cloud_service_name} does not exist yet." unless staging_deployment.exists?
+        Loggerx.error_with_exit "Staging deployment on cloud service #{cloud_service_name} is transitioning. Wait until transitioning is over before swapping." if staging_deployment.is_transitioning?
+        production_deployment = get_deployment(cloud_service_name, {:slot => "production", :no_exit_on_failure => true})
+        Loggerx.error_with_exit "Production deployment on cloud service #{cloud_service_name} does not exist yet." unless production_deployment.exists?
+        Loggerx.error_with_exit "Production deployment on cloud service #{cloud_service_name} is transitioning. Wait until transitioning is over before swapping." if production_deployment.is_transitioning?
+
+        Loggerx.info "Swapping deployments on cloud service #{cloud_service_name} starting"
+        request_path = "/services/hostedservices/#{cloud_service_name}"
+        body = Serialization.swap_deployments_to_xml(production_deployment.name, staging_deployment.name)
+        request = ManagementHttpRequest.new(:post, request_path, body)
+        request.call(options)
       end
 
       # Public: Gets a specific deployment of a Cloud Service based on either its name, or its slot

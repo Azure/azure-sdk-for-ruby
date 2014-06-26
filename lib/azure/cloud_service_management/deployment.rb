@@ -39,7 +39,7 @@ module Azure
       attr_accessor :persistent_vm_downtime
       attr_accessor :virtual_ips
 
-      def all_vms_running
+      def all_vms_running?
         if role_instances.nil? || role_instances.empty?
           return false
         else

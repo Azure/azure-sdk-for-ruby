@@ -122,6 +122,18 @@ module Azure
         builder.doc.to_xml
       end
 
+      def self.swap_deployments_to_xml(production_deployment_name, staging_deployment_name)
+        builder = Nokogiri::XML::Builder.new do |xml|
+          xml.Swap(
+            'xmlns' => 'http://schemas.microsoft.com/windowsazure'
+          ) do
+            xml.Production(production_deployment_name)
+            xml.SourceDeployment(staging_deployment_name)
+          end
+        end
+        builder.doc.to_xml
+      end
+
       def self.deployment_from_xml(cloud_xml)
         deployment = nil
         unless cloud_xml.nil? 

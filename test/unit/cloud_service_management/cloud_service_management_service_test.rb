@@ -13,6 +13,7 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'test_helper'
+require 'securerandom'
 
 describe Azure::CloudServiceManagementService do
 
@@ -97,18 +98,18 @@ describe Azure::CloudServiceManagementService do
   let(:get_deployment_request_path) { "/services/hostedservices/#{cloud_service_name}/deploymentslots/#{slot}" }
   let(:existing_deployment_xml) { Fixtures['get_deployment_existing'] }
   let(:existing_deployment_response) do
-    response = mock
-    response.stubs(:body).returns(existing_deployment_xml)
-    response.stubs(:code).returns(200)
-    response
+    deployment = mock
+    deployment.stubs(:body).returns(existing_deployment_xml)
+    deployment.stubs(:code).returns(200)
+    deployment
   end
 
   let(:missing_deployment_xml) { Fixtures['get_deployment_missing'] }
   let(:missing_deployment_response) do
-    response = mock
-    response.stubs(:body).returns(missing_deployment_xml)
-    response.stubs(:code).returns(500)
-    response
+    deployment = mock
+    deployment.stubs(:body).returns(missing_deployment_xml)
+    deployment.stubs(:code).returns(500)
+    deployment
   end
 
   describe '#get_deployment' do
@@ -150,21 +151,22 @@ describe Azure::CloudServiceManagementService do
   let(:service_config) { "fewcqfewqfeqc43" }
   let(:deployment_name) { "deployment_test" }
   let(:no_deployment) do
-    response = mock
-    response.stubs(:exists?).returns(false)
-    response
+    deployment = mock
+    deployment.stubs(:exists?).returns(false)
+    deployment
   end
   let(:transitioning_deployment) do
-    response = mock
-    response.stubs(:exists?).returns(true)
-    response.stubs(:is_transitioning?).returns(true)
-    response
+    deployment = mock
+    deployment.stubs(:exists?).returns(true)
+    deployment.stubs(:is_transitioning?).returns(true)
+    deployment
   end
   let(:existing_deployment) do
-    response = mock
-    response.stubs(:exists?).returns(true)
-    response.stubs(:is_transitioning?).returns(false)
-    response
+    deployment = mock
+    deployment.stubs(:exists?).returns(true)
+    deployment.stubs(:is_transitioning?).returns(false)
+    deployment.stubs(:name).returns("existing_deployment")
+    deployment
   end
 
   describe '#upgrade_deployment' do
@@ -194,28 +196,65 @@ describe Azure::CloudServiceManagementService do
     end
   end
 
-  describe '#create_deployment' do
+  describe '#swap_deployment' do
 
-    it 'Fails and throw an error if the deployment already exists.' do
-      subject.stubs(:get_deployment).returns(existing_deployment)
+    it 'Fails and throw an error if the staging deployment does not exist yet.' do
+      subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "staging", :no_exit_on_failure => true})
+        .returns(no_deployment)
+      subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "production", :no_exit_on_failure => true})
+        .returns(existing_deployment)
 
       exception = assert_raises(RuntimeError) do
-        subject.create_deployment(deployment_name, cloud_service_name, package_url, service_config, {:slot => slot })
+        subject.swap_deployment(cloud_service_name)
       end
-      assert_match(/.*#{slot.capitalize} deployment '#{deployment_name}' on cloud service #{cloud_service_name} already exist.*/, exception.message)
+      assert_match(/.*Staging deployment on cloud service #{cloud_service_name} does not exist yet.*/, exception.message)
     end
 
-    it "Upgrades the deployment if the it does already exists and the 'upgrade_if_exists' option has been set to true." do
-      subject.stubs(:get_deployment).returns(existing_deployment)
-      subject.stubs(:upgrade_deployment).returns(nil)
+    it 'Fails and throw an error if the Production deployment does not exist yet.' do
+      subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "staging", :no_exit_on_failure => true})
+        .returns(existing_deployment)
+      subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "production", :no_exit_on_failure => true})
+        .returns(no_deployment)
 
-      subject.create_deployment(deployment_name, cloud_service_name, package_url, service_config, {:slot => slot, :upgrade_if_exists => true })
+      exception = assert_raises(RuntimeError) do
+        subject.swap_deployment(cloud_service_name)
+      end
+      assert_match(/.*Production deployment on cloud service #{cloud_service_name} does not exist yet.*/, exception.message)
     end
 
-    it "Creates a new deployment if the it does not already exist." do
-      subject.stubs(:get_deployment).returns(no_deployment)
+    it 'Fails and throw an error if the staging deployment is currently transitioning.' do
+      subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "staging", :no_exit_on_failure => true})
+        .returns(transitioning_deployment)
+      subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "production", :no_exit_on_failure => true})
+        .returns(existing_deployment)
+
+      exception = assert_raises(RuntimeError) do
+        subject.swap_deployment(cloud_service_name)
+      end
+      assert_match(/.*Staging deployment on cloud service #{cloud_service_name} is transitioning.*/, exception.message)
+    end
+
+    it 'Fails and throw an error if the production deployment is currently transitioning.' do
+      subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "staging", :no_exit_on_failure => true})
+        .returns(existing_deployment)
+      subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "production", :no_exit_on_failure => true})
+        .returns(transitioning_deployment)
+
+      exception = assert_raises(RuntimeError) do
+        subject.swap_deployment(cloud_service_name)
+      end
+      assert_match(/.*Production deployment on cloud service #{cloud_service_name} is transitioning.*/, exception.message)
+    end
+
+    it "Swaps the production and staging deployment for the specified cloud service." do
+      subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "staging", :no_exit_on_failure => true})
+        .returns(existing_deployment)
+      subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "production", :no_exit_on_failure => true})
+        .returns(existing_deployment)
+
       ManagementHttpRequest.any_instance.expects(:call).returns nil
-      subject.create_deployment(deployment_name, cloud_service_name, package_url, service_config, {:slot => slot })
+
+      subject.swap_deployment(cloud_service_name)
     end
   end
 end
