@@ -46,27 +46,52 @@ module Azure
 
       # Public: Sends a request to HTTP server and returns a HttpResponse
       #
+      # * +options+             - Hash. Optional parameters.
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      #
+      # * +:fire_and_forget+    - Boolean(optional). Default is false. If true, the client 
+      #                           does not wait until the request is completed
+      # * +:no_exit_on_failure+ - Boolean(optional). Default is false.
+      #
       # Returns a Nokogiri::XML instance of HttpResponse body
-      def call
+      def call(options={})
+        fire_and_forget = options[:fire_and_forget].nil? ? false : options[:fire_and_forget]
         request = http_request_class.new(uri.request_uri, headers)
         request.body = body if body
         http = http_setup
         # http.set_debug_output($stdout)
-        response = wait_for_completion(HttpResponse.new(http.request(request)))
-        Nokogiri::XML response.body unless response.nil?
+        if fire_and_forget
+          response = validate_response(HttpResponse.new(http.request(request)), options)
+          Nokogiri::XML response.body unless response.nil?
+        else
+          response = wait_for_completion(HttpResponse.new(http.request(request)), options)
+          Nokogiri::XML response.body unless response.nil?
+        end
       end
 
       # Public: Wait for HTTP request completion.
       #
       # ==== Attributes
       #
-      # * +response+       - Azure::Core::Http::HttpResponse. HttpResponse Response
+      # * +response+            - Azure::Core::Http::HttpResponse. HttpResponse Response
+      # * +options+             - Hash. Optional parameters.
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      #
+      # * +:no_exit_on_failure+ - Boolean(optional). Default is false.
       #
       # Print Error or Success of HttpRequest
-      def wait_for_completion(response)
+      def wait_for_completion(response, options={})
+        no_exit_on_failure = options[:no_exit_on_failure].nil? ? false : options[:no_exit_on_failure]
         ret_val = Nokogiri::XML response.body
         if ret_val.at_css('Error Code') && ret_val.at_css('Error Code').content == 'AuthenticationFailed'
-          Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
+          error_msg = ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
+          return log_warn_or_exit(response, error_msg, no_exit_on_failure)
         end
         if response.status_code.to_i == 200 || response.status_code.to_i == 201
           return response
@@ -78,7 +103,44 @@ module Azure
           # Loggerx.warn ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
         elsif response.body
           if ret_val.at_css('Error Code') && ret_val.at_css('Error Message')
-            Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
+            error_msg = ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
+            return log_warn_or_exit(response, error_msg, no_exit_on_failure)
+          else
+            Loggerx.exception_message "http error: #{response.status_code}"
+          end
+        else
+          Loggerx.exception_message "http error: #{response.status_code}"
+        end
+      end
+
+      # Public: Validate the Http response
+      #
+      # ==== Attributes
+      #
+      # * +response+            - Azure::Core::Http::HttpResponse. HttpResponse Response
+      # * +options+             - Hash. Optional parameters.
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      #
+      # * +:no_exit_on_failure+ - Boolean(optional). Default is false.
+      #
+      # Print Error or Success of HttpRequest
+      def validate_response(response, options={})
+        no_exit_on_failure = options[:no_exit_on_failure].nil? ? false : options[:no_exit_on_failure]
+        ret_val = Nokogiri::XML response.body
+        if ret_val.at_css('Error Code') && ret_val.at_css('Error Code').content == 'AuthenticationFailed'
+          error_msg = ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
+          return log_warn_or_exit(response, error_msg, no_exit_on_failure)
+        end
+        status_code = response.status_code.to_i
+        if [200, 201, 202].include? status_code
+          return response
+        elsif response.body
+          if ret_val.at_css('Error Code') && ret_val.at_css('Error Message')
+            error_msg = ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
+            return log_warn_or_exit(response, error_msg, no_exit_on_failure)
           else
             Loggerx.exception_message "http error: #{response.status_code}"
           end
@@ -167,6 +229,16 @@ module Azure
         end
         http
       end
+
+      private
+        def log_warn_or_exit(response, error_msg, no_exit_on_failure)
+          if no_exit_on_failure
+            Loggerx.warn "Warning: #{error_msg}"
+            return response
+          else
+            Loggerx.error_with_exit error_msg
+          end
+        end
     end
   end
 end
