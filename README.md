@@ -524,7 +524,7 @@ ip_range = {:start_ip_address => "0.0.0.1", :end_ip_address => "0.0.0.5"}
 sql_db_service.set_sql_server_firewall_rule("server-name", "rule-name", ip_range)
 
 # If ip_range was not specified in the above api then the IP of the machine from where the api is being called would be set as the rule.
-# To toggle between the option to allow microsoft azure services to access db server similar to azure portal just set the fire wall rule
+# To toggle between the option to allow Microsoft Azure services to access db server similar to azure portal just set the fire wall rule
 # with iprange to be 0.0.0.0 as start and end.Remove the rule to unset this option.
 ```
 ## Virtual Network Management
