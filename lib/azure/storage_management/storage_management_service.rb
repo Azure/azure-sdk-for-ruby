@@ -60,7 +60,7 @@ module Azure
       #
       # * +name+  - String. The name of the storage account. Required.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460802.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee460802.aspx
       #
       # Returns the storage account
       def get_storage_account_properties(name)
@@ -70,7 +70,7 @@ module Azure
         Serialization.storage_services_from_xml(response).first
       end
 
-      # Public: Create a new storage account in Windows Azure.
+      # Public: Create a new storage account in Microsoft Azure.
       #
       # ==== Attributes
       #
@@ -109,7 +109,7 @@ module Azure
         end
       end
 
-      # Public: Updates an existing storage account in Windows Azure
+      # Public: Updates an existing storage account in Microsoft Azure
       #
       # ==== Attributes
       #
@@ -146,7 +146,7 @@ module Azure
       end
 
       # Public: Deletes the specified storage account of given subscription id
-      # from Windows Azure.
+      # from Microsoft Azure.
       #
       # ==== Attributes
       #
