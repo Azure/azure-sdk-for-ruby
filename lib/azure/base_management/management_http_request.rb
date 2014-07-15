@@ -94,7 +94,7 @@ module Azure
       #
       # * +request_id+       - String.  x-ms-request-id response header of request
       #
-      # See: http://msdn.microsoft.com/en-us/library/windowsazure/ee460783.aspx
+      # See: http://msdn.microsoft.com/en-us/library/azure/ee460783.aspx
       #
       # Print Error or Success of Operation.
       def check_completion(request_id)

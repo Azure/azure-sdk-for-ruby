@@ -84,7 +84,7 @@ module Azure
       # Public: Gets a lists the affinity groups associated with
       # the specified subscription.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460797.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee460797.aspx
       #
       # Returns an array of Azure::BaseManagement::AffinityGroup objects
       def list_affinity_groups
@@ -110,7 +110,7 @@ module Azure
       # * +:description+   - String. A description for the affinity group.
       # (optional)
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715317.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715317.aspx
       #
       # Returns:  None
       def create_affinity_group(name, location, label, options = {})
@@ -151,7 +151,7 @@ module Azure
       # * +:description+   - String. A description for the affinity group.
       # (optional)
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715316.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715316.aspx
       #
       # Returns:  None
       def update_affinity_group(name, label, options = {})
@@ -171,7 +171,7 @@ module Azure
       #
       # * +name+       - String. Affinity Group name.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715314.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715314.aspx
       #
       # Returns:  None
       def delete_affinity_group(name)
@@ -190,7 +190,7 @@ module Azure
       #
       # * +name+       - String. Affinity Group name.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460789.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee460789.aspx
       #
       # Returns:  Azure::BaseManagement::AffinityGroup object
       def get_affinity_group(name)

@@ -35,7 +35,7 @@ describe Azure::CloudServiceManagementService do
       subject.create_cloud_service(@cloud_name, options)
     end
 
-    it 'Deletes the cloud service in Windows Azure.' do
+    it 'Deletes the cloud service in Microsoft Azure.' do
       subject.delete_cloud_service(@cloud_name)
       present = subject.get_cloud_service(@cloud_name)
       assert_equal present, false

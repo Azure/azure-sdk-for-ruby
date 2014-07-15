@@ -34,7 +34,7 @@ describe Azure::CloudServiceManagementService do
       subject.create_cloud_service(@cloud_name, options)
     end
 
-    it 'Creates a new cloud service in Windows Azure.' do
+    it 'Creates a new cloud service in Microsoft Azure.' do
       cloud_service = subject.get_cloud_service_properties(@cloud_name)
       assert cloud_service.name, @cloud_name
       assert cloud_service.location, options[:location]

@@ -97,7 +97,7 @@ module Azure
       # * +:public_access_level+ - String. One of "container" or "blob" (optional)
       # * +:timeout+             - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179468.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179468.aspx
       #
       # Returns a Container
       def create_container(name, options={})
@@ -132,7 +132,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+   - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179408.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179408.aspx
       #
       # Returns nil on success
       def delete_container(name, options={})
@@ -155,7 +155,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+   - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179370.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179370.aspx
       #
       # Returns a Container
       def get_container_properties(name, options={})
@@ -181,7 +181,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+   - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691976.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee691976.aspx
       #
       # Returns a Container
       def get_container_metadata(name, options={})
@@ -208,7 +208,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+   - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179469.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179469.aspx
       #
       # Returns a tuple of (container, signed_identifiers)
       #   container           - A Azure::Entity::Blob::Container instance
@@ -242,7 +242,7 @@ module Azure
       # * +:signed_identifiers+          - Array. A list of Azure::Entity::SignedIdentifier instances (optional) 
       # * +:timeout+                     - Integer. A timeout in seconds.
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179391.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179391.aspx
       #
       # Returns a tuple of (container, signed_identifiers)
       # * +container+           - A Azure::Entity::Blob::Container instance
@@ -285,7 +285,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+  - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179362.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179362.aspx
       #
       # Returns nil on success
       def set_container_metadata(name, metadata, options={})
@@ -345,7 +345,7 @@ module Azure
       # service. Beginning with that version, all metadata names must adhere to the naming 
       # conventions for C# identifiers.
       #
-      # See: http://msdn.microsoft.com/en-us/library/windowsazure/dd135734.aspx
+      # See: http://msdn.microsoft.com/en-us/library/azure/dd135734.aspx
       #
       # Any metadata with invalid names which were previously stored, will be returned with the 
       # key "x-ms-invalid-name" in the metadata hash. This may contain multiple values and be an
@@ -401,7 +401,7 @@ module Azure
       # * +:sequence_number+       - Integer. The sequence number is a user-controlled value that you can use to track requests. The value of the sequence number must be between 0 and 2^63 - 1.The default value is 0.
       # * +:timeout+               - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179451.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179451.aspx
       #
       # Returns a Blob
       def create_page_blob(container, blob, length, options={})
@@ -469,7 +469,7 @@ module Azure
       # * +:if_none_match+          - An ETag value. Specify an ETag value for this conditional header to write the page only if the blob's ETag value does not match the value specified. If the values are identical, the Blob service returns status code 412 (Precondition Failed).
       # * +:timeout+                - Integer. A timeout in seconds.
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691975.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee691975.aspx
       #
       # Returns Blob
       def create_blob_pages(container, blob, start_range, end_range, content, options={})
@@ -518,7 +518,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+     - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691975.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee691975.aspx
       #
       # Returns Blob
       def clear_blob_pages(container, blob, start_range, end_range, options={})
@@ -575,7 +575,7 @@ module Azure
       # * +:metadata+              - Hash. Custom metadata values to store with the blob.
       # * +:timeout+               - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179451.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179451.aspx
       #
       # Returns a Blob
       def create_block_blob(container, blob, content, options={})
@@ -629,7 +629,7 @@ module Azure
       # * +:content_md5+           - String. Content MD5 for the request contents.
       # * +:timeout+               - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135726.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd135726.aspx
       #
       # Returns the MD5 of the uploaded block (as calculated by the server)
       def create_blob_block(container, blob, block_id, content, options={})
@@ -682,7 +682,7 @@ module Azure
       # * +:metadata+              - Hash. Custom metadata values to store with the blob.
       # * +:timeout+               - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179467.aspx 
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179467.aspx 
       # 
       # Returns nil on success
       def commit_blob_blocks(container, blob, block_list, options={})
@@ -715,7 +715,7 @@ module Azure
       #    committed to a given blob with commitBlobBlocks.
       # 2) Uncommitted Block List: The list of blocks that have been uploaded for a 
       #    blob using Put Block (REST API), but that have not yet been committed. 
-      #    These blocks are stored in Windows Azure in association with a blob, but do
+      #    These blocks are stored in Microsoft Azure in association with a blob, but do
       #    not yet form part of the blob.
       #
       # ==== Attributes
@@ -732,7 +732,7 @@ module Azure
       #   retrieve information from. (optional)
       # * +:timeout+        - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179400.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179400.aspx
       #
       # Returns a list of Azure::Entity::Blob::Block instances
       def list_blob_blocks(container, blob, options={})
@@ -766,7 +766,7 @@ module Azure
       #   retrieve information from.
       # * +:timeout+       - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179394.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179394.aspx
       #
       # Returns a Blob
       def get_blob_properties(container, blob, options={})
@@ -801,7 +801,7 @@ module Azure
       #   retrieve information from.
       # * +:timeout+       - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179350.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179350.aspx
       #
       # Returns a Blob
       def get_blob_metadata(container, blob, options={})
@@ -839,7 +839,7 @@ module Azure
       #   retrieve information from. (optional)
       # * +:timeout+        - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691973.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee691973.aspx
       #
       # Returns a list of page ranges in the format [ [start, end], [start, end], ... ]
       #
@@ -937,7 +937,7 @@ module Azure
       #     * :content_encoding
       #     * :content_language
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691966.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee691966.aspx
       #
       # Returns nil on success.
       def set_blob_properties(container, blob, options={})
@@ -976,7 +976,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+       - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179414.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179414.aspx
       #
       # Returns nil on success.
       def set_blob_metadata(container, blob, metadata, options={})
@@ -1011,7 +1011,7 @@ module Azure
       #   start_range and end_range are specified. (optional)
       # * +:timeout+         - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179440.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179440.aspx
       #
       # Returns a blob and the blob body
       def get_blob(container, blob, options={})
@@ -1055,7 +1055,7 @@ module Azure
       #   * +:include+  - Deletes the blob and all of the snapshots for the blob
       # * +:timeout+           - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179440.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179440.aspx
       #
       # Returns nil on success
       def delete_blob(container, blob, options={})
@@ -1100,7 +1100,7 @@ module Azure
       #   service returns status code 412 (Precondition Failed).
       # * +:timeout+                  - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691971.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee691971.aspx
       # 
       # Returns the snapshot DateTime value
       def create_blob_snapshot(container, blob, options={})
@@ -1168,7 +1168,7 @@ module Azure
       #   identical, the Blob service returns status code 412 (Precondition Failed).
       # * +:timeout+                    - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd894037.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/dd894037.aspx
       #
       # Returns a tuple of (copy_id, copy_status). 
       #
@@ -1221,7 +1221,7 @@ module Azure
       #   if the proposed lease ID is not in the correct format. (optional)
       # * +:timeout+           - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee691972.aspx
       #
       # Returns a String of the new unique lease id. While the lease is active, you must include the lease ID with any request 
       # to write to the blob, or to renew, change, or release the lease. A successful renew operation also returns the lease id
@@ -1262,7 +1262,7 @@ module Azure
       # Accepted key/value pairs in options parameter are: 
       # * +:timeout+          - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee691972.aspx
       #
       # Returns the renewed lease id
       def renew_lease(container, blob, lease, options={})
@@ -1295,7 +1295,7 @@ module Azure
       # Accepted key/value pairs in options parameter are: 
       # * +:timeout+          - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee691972.aspx
       #
       # Returns nil on success
       def release_lease(container, blob, lease, options={})
@@ -1340,7 +1340,7 @@ module Azure
       #   period elapses, and an infinite lease breaks immediately.
       # * +:timeout+          - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691972.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee691972.aspx
       #
       # Returns an Integer of the remaining lease time. This value is the approximate time remaining in the lease 
       # period, in seconds. This header is returned only for a successful request to break the lease. If the break 
