@@ -116,6 +116,7 @@ describe Azure::VirtualMachineManagementService do
       virtual_machine.deployment_name.must_equal 'deployment-name'
       virtual_machine.ipaddress.must_equal '137.116.17.187'
       virtual_machine.virtual_network_name.must_equal 'test-virtual-network'
+      virtual_machine.subnet.must_equal 'test-subnet'
     end
 
     it 'returns a list of virtual machines for the subscription' do

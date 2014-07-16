@@ -182,7 +182,7 @@ describe Azure::VirtualMachineManagement::Serialization do
       @vm.media_link = media_link
     end
 
-    it 'returns an xml for newly created data disk' do      
+    it 'returns an xml for newly created data disk' do
       result = subject.add_data_disk_to_xml(@vm, options)
       doc = Nokogiri::XML(result)
       disk_size = doc.css('DataVirtualHardDisk LogicalDiskSizeInGB').text

@@ -95,9 +95,14 @@ describe Azure::VirtualMachineManagementService do
     end
 
     describe '#virtual_network' do
+      let(:subnet_name) { 'Subnet-1' }
       before do
         options[:virtual_network_name] = 'v-net'
         affinity_gorup_name = random_string('affinity-group-', 10)
+        inputoptions = {
+          subnet: [{ name: subnet_name, ip_address: '172.16.0.0', cidr: 12 }],
+          dns: [{ name: 'DNS', ip_address: '1.2.3.4' }]
+        }
         Azure::BaseManagementService.new.create_affinity_group(
           affinity_gorup_name,
           params[:location],
@@ -107,8 +112,10 @@ describe Azure::VirtualMachineManagementService do
         vnet_service.new.set_network_configuration(
           options[:virtual_network_name],
           affinity_gorup_name,
-          ['172.16.0.0/12']
+          ['172.16.0.0/12'],
+          inputoptions
         ) rescue nil
+        options[:subnet_name] = subnet_name
         subject.create_virtual_machine(params, options)
       end
 
@@ -117,6 +124,7 @@ describe Azure::VirtualMachineManagementService do
         virtual_machine.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
         virtual_machine.vm_name.must_equal virtual_machine_name
         virtual_machine.virtual_network_name.must_equal options[:virtual_network_name]
+        virtual_machine.subnet.must_equal subnet_name
       end
     end
 

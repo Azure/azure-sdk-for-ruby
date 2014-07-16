@@ -264,6 +264,10 @@ module Azure
                 vm.availability_set_name = xml_content(role, 'AvailabilitySetName')
                 endpoints_from_xml(role, vm)
                 vm.data_disks = data_disks_from_xml(role)
+                subnet = xml_content(role,
+                  'ConfigurationSets ConfigurationSet SubnetNames SubnetName'
+                )
+                vm.subnet = subnet unless subnet.empty?
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
                 vm.media_link = xml_content(role, 'OSVirtualHardDisk MediaLink')
@@ -346,6 +350,9 @@ module Azure
                 xml.ConfigurationSetType 'NetworkConfiguration'
                 xml.InputEndpoints do
                   endpoints_to_xml(xml, endpoints)
+                end
+                xml.SubnetNames do
+                  xml.SubnetName vm.subnet if vm.subnet
                 end
               end
             end
