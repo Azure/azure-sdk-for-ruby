@@ -161,6 +161,51 @@ module Azure
       rescue Exception => e
         e.message
       end
+
+      # Public: Regenerates the primary or secondary access key for the specified storage account
+      #
+      # ==== Attributes
+      #
+      # * +name+       - String. Storage account name.
+      # * +key_type+   - String. Specifies which key(primary or secondary) to regenerate
+      #
+      # Returns an  Azure::StorageManagement::StorageAccountKeys instance.
+      #
+      # See:
+      # http://msdn.microsoft.com/en-us/library/azure/ee460795.aspx
+      def regenerate_storage_account_keys(name, key_type = 'primary')
+        if get_storage_account name
+          path = "/services/storageservices/#{name}/keys?action=regenerate"
+          body = Serialization.regenerate_storage_account_keys_to_xml key_type
+          request = ManagementHttpRequest.new(:post, path, body)
+          response = request.call
+          Serialization.storage_account_keys_from_xml(response)
+        else
+          Loggerx.warn "Storage Account '#{name}' does not exist."
+        end
+      end
+
+      # Public: Gets the primary and secondary access keys for the specified storage account.
+      #
+      # ==== Attributes
+      #
+      # * +name+       - String. Storage account name.
+      #
+      # Returns an  Azure::StorageManagement::StorageAccountKeys instance.
+      #
+      # See:
+      # http://msdn.microsoft.com/en-us/library/azure/ee460785.aspx
+      def get_storage_account_keys(name)
+        if get_storage_account name
+          path = "/services/storageservices/#{name}/keys"
+          request = ManagementHttpRequest.new(:get, path)
+          response = request.call
+          Serialization.storage_account_keys_from_xml(response)
+        else
+          Loggerx.warn "Storage Account '#{name}' does not exist."
+        end
+      end
+
     end
   end
 end

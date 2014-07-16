@@ -82,6 +82,23 @@ describe Azure::StorageManagementService do
     storage.geo_replication_enabled.must_equal 'true'
   end
 
+  it 'regenerate storage account keys' do
+    storage_name = StorageName
+    storage_keys1 = subject.regenerate_storage_account_keys(storage_name)
+    storage_keys1.primary_key.wont_be_nil
+    storage_keys1.secondary_key.wont_be_nil
+    storage_keys2 = subject.regenerate_storage_account_keys(storage_name, 'secondary')
+    storage_keys1.primary_key.must_equal storage_keys2.primary_key
+    storage_keys1.secondary_key.wont_equal storage_keys2.secondary_key
+  end
+
+  it 'get storage account keys' do
+    storage_name = StorageName
+    storage_keys1 = subject.get_storage_account_keys(storage_name)
+    storage_keys1.primary_key.wont_be_nil
+    storage_keys1.secondary_key.wont_be_nil   
+  end
+
   it 'update storage account' do
     options = {
       label: 'labelchanged',
