@@ -551,7 +551,7 @@ dns_servers = [{:name => 'dns-1',  :ip_address=>'1.2.3.4'},  {:name => 'dns-2', 
 
 options = {:subnet => subnets, :dns => dns_servers}
 
-vnet.set_network_configuration('virtual-network-name', 'affinity-group-name', address_space, options)
+vnet.set_network_configuration('virtual-network-name', 'location_name', address_space, options)
 
 #API to configure virtual network from xml file that can be exported from management portal and customized to add or delete vnet
 

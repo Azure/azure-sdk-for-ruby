@@ -54,7 +54,7 @@ module Azure
       # ==== Attributes
       #
       # * +vnet+              - String. The name of the virtual network.
-      # * +affinity_group+    - String. The name of the affinity group.
+      # * +location+          - String. The location where the virtual network will be created.
       # * +address_space+     - Array. Contains a collection of Classless
       #   Inter-Domain Routing (CIDR) identifiers that specify the address
       #   space that you will use for your local network site

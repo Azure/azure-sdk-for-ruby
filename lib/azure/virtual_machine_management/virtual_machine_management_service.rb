@@ -61,7 +61,6 @@ module Azure
       #
       # * +params+    - Hash.  parameters.
       # * +options+   - Hash.  Optional parameters.
-      # * +add_role+  - true/false. Optional Parameter. Default is false
       #
       #  ==== Params
       #
