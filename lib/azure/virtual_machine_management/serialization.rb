@@ -260,7 +260,7 @@ module Azure
               'VirtualNetworkName'
             )
             roles.each do |role|
-              if xml_content(role, 'RoleName').casecmp(role_name) == 0
+              if xml_content(role, 'RoleName') == role_name
                 vm.availability_set_name = xml_content(role, 'AvailabilitySetName')
                 endpoints_from_xml(role, vm)
                 vm.data_disks = data_disks_from_xml(role)

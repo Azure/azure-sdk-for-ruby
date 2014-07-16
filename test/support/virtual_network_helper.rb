@@ -16,7 +16,7 @@
 class VirtualNetworkHelper
   def self.check_config(virtual_networks,
                         in_vnet_name,
-                        in_affinity_name,
+                        location,
                         created_state,
                         in_address_space,
                         inputoptions)
@@ -38,7 +38,7 @@ class VirtualNetworkHelper
 
     # Verify global properties
     created_virtual_network[0].name.must_equal in_vnet_name
-    created_virtual_network[0].affinity_group.must_equal in_affinity_name
+    created_virtual_network[0].location.must_equal location
     created_virtual_network[0].state.must_equal created_state
 
     # Verify address_space

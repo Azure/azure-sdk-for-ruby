@@ -95,22 +95,17 @@ describe Azure::VirtualMachineManagementService do
 
     describe '#virtual_network' do
       let(:subnet_name) { 'Subnet-1' }
+      let(:location) { LinuxImageLocation }
       before do
         options[:virtual_network_name] = 'v-net'
-        affinity_gorup_name = random_string('affinity-group-', 10)
         inputoptions = {
           subnet: [{ name: subnet_name, ip_address: '172.16.0.0', cidr: 12 }],
           dns: [{ name: 'DNS', ip_address: '1.2.3.4' }]
         }
-        Azure::BaseManagementService.new.create_affinity_group(
-          affinity_gorup_name,
-          params[:location],
-          'AG1'
-        ) rescue nil
         vnet_service = Azure::VirtualNetworkManagementService
         vnet_service.new.set_network_configuration(
           options[:virtual_network_name],
-          affinity_gorup_name,
+          location,
           ['172.16.0.0/12'],
           inputoptions
         ) rescue nil

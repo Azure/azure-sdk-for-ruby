@@ -117,7 +117,12 @@ module Azure
           if virtual_networks.empty?
             Loggerx.error_with_exit "Virtual network #{options[:virtual_network_name]} doesn't exists"
           else
-            optionals[:affinity_group_name] = virtual_networks.first.affinity_group
+            vnet = virtual_networks.first
+            if !vnet.affinity_group.empty?
+              options[:affinity_group_name] = vnet.affinity_group
+            else
+              optionals[:location] = vnet.location
+            end
           end
         elsif options[:affinity_group_name]
           optionals[:affinity_group_name] = options[:affinity_group_name]
