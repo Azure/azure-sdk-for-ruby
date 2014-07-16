@@ -55,7 +55,7 @@ module Azure
         builder.doc.to_xml
       end
 
-      def self.deployment_to_xml(params, options)
+      def self.deployment_to_xml(params, image, options)
         options[:deployment_name] ||= options[:cloud_service_name]
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.Deployment(
@@ -71,11 +71,11 @@ module Azure
             end
           end
         end
-        builder.doc.at_css('Role') << role_to_xml(params, options).at_css('PersistentVMRole').children.to_s
+        builder.doc.at_css('Role') << role_to_xml(params, image, options).at_css('PersistentVMRole').children.to_s
         builder.doc.to_xml
       end
 
-      def self.role_to_xml(params, options)
+      def self.role_to_xml(params, image, options)
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.PersistentVMRole(
             'xmlns' => 'http://schemas.microsoft.com/windowsazure',
@@ -106,8 +106,13 @@ module Azure
             end
             xml.AvailabilitySetName options[:availability_set_name]
             xml.Label Base64.encode64(params[:vm_name]).strip
+            if image.category == 'User'
+              storage_host = URI.parse( image.media_link ).host
+            else
+              storage_host = options[:storage_account_name] + '.blob.core.windows.net'
+            end
             xml.OSVirtualHardDisk do
-              xml.MediaLink 'http://' + options[:storage_account_name] + '.blob.core.windows.net/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd'
+              xml.MediaLink 'http://' + storage_host + '/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd'
               xml.SourceImageName params[:image]
             end
             xml.RoleSize options[:vm_size]

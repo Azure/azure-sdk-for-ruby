@@ -370,20 +370,20 @@ describe Azure::VirtualMachineManagementService do
     end
   end
 
-  describe '#get_os_type' do
+  describe '#get_image' do
 
     before do
       subject.class.send(:public, *subject.class.private_instance_methods)
     end
 
     it 'returns os type of given virtual machine image' do
-      result = subject.get_os_type 'RightImage-CentOS-6.2-x64-v5.8.8.1'
-      result.must_equal 'Linux'
+      result = subject.get_image 'RightImage-CentOS-6.2-x64-v5.8.8.1'
+      result.os_type.must_equal 'Linux'
     end
 
     it 'errors if the virtual machine image does not exist' do
       exception = assert_raises(RuntimeError) do
-        subject.get_os_type 'invalid-image-name'
+        subject.get_image 'invalid-image-name'
       end
       error_msg = 'The virtual machine image source is not valid'
       assert_match(/#{error_msg}/i, exception.message)
