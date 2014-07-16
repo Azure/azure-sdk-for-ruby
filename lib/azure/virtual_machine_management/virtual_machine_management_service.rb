@@ -51,7 +51,7 @@ module Azure
       #
       # Returns an  Azure::VirtualMachineManagement::VirtualMachine instance.
       def get_virtual_machine(name, cloud_service_name)
-        server = list_virtual_machines(cloud_service_name).select { |x| x.vm_name == name.downcase }
+        server = list_virtual_machines(cloud_service_name).select { |x| x.vm_name.casecmp(name) == 0 }
         server.first
       end
 

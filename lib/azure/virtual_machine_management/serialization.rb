@@ -248,11 +248,11 @@ module Azure
             vm = VirtualMachine.new
             role_name = xml_content(instance, 'RoleName')
             vm.status = xml_content(instance, 'InstanceStatus')
-            vm.vm_name = role_name.downcase
+            vm.vm_name = role_name
             vm.ipaddress = xml_content(ip, 'Address')
             vm.role_size = xml_content(instance, 'InstanceSize')
             vm.hostname = xml_content(instance, 'HostName')
-            vm.cloud_service_name = cloud_service_name.downcase
+            vm.cloud_service_name = cloud_service_name
             vm.deployment_name = xml_content(deployXML, 'Deployment Name')
             vm.deployment_status = xml_content(deployXML, 'Deployment Status')
             vm.virtual_network_name = xml_content(
@@ -260,7 +260,7 @@ module Azure
               'VirtualNetworkName'
             )
             roles.each do |role|
-              if xml_content(role, 'RoleName') == role_name
+              if xml_content(role, 'RoleName').casecmp(role_name) == 0
                 vm.availability_set_name = xml_content(role, 'AvailabilitySetName')
                 endpoints_from_xml(role, vm)
                 vm.data_disks = data_disks_from_xml(role)

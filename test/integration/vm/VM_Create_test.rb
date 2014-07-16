@@ -74,7 +74,6 @@ describe Azure::VirtualMachineManagementService do
         options.delete(:cloud_service_name)
         params.delete(:location)
         params[:vm_name] = "add-#{virtual_machine_name}"
-        sleep 30
       end
 
       it 'should add role to existing storage account and cloud service' do
@@ -89,7 +88,7 @@ describe Azure::VirtualMachineManagementService do
         params[:vm_name] = "Add-storage-#{virtual_machine_name}"
         vm = subject.add_role(params)
         vm.cloud_service_name.must_equal params[:cloud_service_name]
-        vm.vm_name.must_equal params[:vm_name].downcase
+        vm.vm_name.must_equal params[:vm_name]
         vm.deployment_name.must_equal @vm_obj.deployment_name
       end
     end
@@ -155,7 +154,6 @@ describe Azure::VirtualMachineManagementService do
       end
       tcp_endpoints_names.must_include 'PowerShell'
       tcp_endpoints_names.must_include 'WinRm-Http'
-      sleep 30
     end
 
     it 'should creates https enabled winrm virtual machine using certificate.' do
@@ -195,7 +193,6 @@ describe Azure::VirtualMachineManagementService do
       result = subject.create_virtual_machine(params, default_options)
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
       assert_equal(result.os_type, 'Linux')
-      sleep 30
     end
 
     it 'throws error as port value is beyond or less than actual range' do
