@@ -36,5 +36,12 @@ module Azure
       attr_accessor :creation_time
       attr_accessor :extended_properties
     end
+
+    # Represents Windows Azure storage account keys
+    class StorageAccountKeys
+      attr_accessor :url
+      attr_accessor :primary_key
+      attr_accessor :secondary_key
+    end
   end
 end

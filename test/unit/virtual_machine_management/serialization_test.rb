@@ -126,11 +126,18 @@ describe Azure::VirtualMachineManagement::Serialization do
       }
     end
 
+    let(:image) do
+      Azure::VirtualMachineImageManagement::VirtualMachineImage.new do |i|
+        i.name = 'windows-instance'
+        i.os_type = 'Linux'
+      end
+    end
+  
     it 'returns an VirtualMachine object with correct tcp endpoints' do
       params[:certificate] = {fingerprint: 'CFB8C256D2986559C630547F2D0'}
       options[:os_type] = 'Windows'
       options[:existing_ports] = ['5985']
-      result = subject.deployment_to_xml params, options
+      result = subject.deployment_to_xml params, image, options
       doc = Nokogiri::XML(result)
       endpoints = doc.css('Deployment RoleList ConfigurationSet InputEndpoints InputEndpoint')
       tcp_endpoints = []
@@ -182,7 +189,7 @@ describe Azure::VirtualMachineManagement::Serialization do
       @vm.media_link = media_link
     end
 
-    it 'returns an xml for newly created data disk' do      
+    it 'returns an xml for newly created data disk' do
       result = subject.add_data_disk_to_xml(@vm, options)
       doc = Nokogiri::XML(result)
       disk_size = doc.css('DataVirtualHardDisk LogicalDiskSizeInGB').text

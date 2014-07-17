@@ -24,16 +24,11 @@ describe Azure::VirtualNetworkManagement::VirtualNetwork do
 
   before do
     Loggerx.expects(:puts).returns(nil).at_least(0)
-    affinity_group_service = Azure::BaseManagementService.new
-    affinity_group_service.create_affinity_group(affinity_group_name,
-                                                 location,
-                                                 'Label Name'
-                                                ) rescue nil
     address_space = %w(172.16.0.0/12 10.0.0.0/8 192.168.0.0/24)
     unless subject.list_virtual_networks.map(&:name).include?(vnet_name)
       subject.set_network_configuration(
         vnet_name,
-        affinity_group_name,
+        location,
         address_space
       )
     end

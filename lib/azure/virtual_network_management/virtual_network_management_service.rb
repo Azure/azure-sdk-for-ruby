@@ -54,7 +54,7 @@ module Azure
       # ==== Attributes
       #
       # * +vnet+              - String. The name of the virtual network.
-      # * +affinity_group+    - String. The name of the affinity group.
+      # * +location+          - String. The location where the virtual network will be created.
       # * +address_space+     - Array. Contains a collection of Classless
       #   Inter-Domain Routing (CIDR) identifiers that specify the address
       #   space that you will use for your local network site
@@ -73,7 +73,7 @@ module Azure
       #
       # Returns None
       def set_virtual_network(vnet,
-                              affinity_group,
+                              location,
                               address_space,
                               options = {
                                 subnet: [],
@@ -81,7 +81,7 @@ module Azure
                               })
         request_path = '/services/networking/media'
         body = Serialization.virtual_network_to_xml(vnet,
-                                                    affinity_group,
+                                                    location,
                                                     address_space,
                                                     options)
         request = ManagementHttpRequest.new(:put, request_path, body)

@@ -23,8 +23,8 @@ describe Azure::VirtualNetworkManagement::Serialization do
   let(:virtual_networks_string) { Fixtures ['list_virtual_networks'] }
 
   let(:vnet_name) { 'test-vnet-name' }
-  let(:affinity_group) { 'test-affinity-group' }
   let(:address_space) { ['172.16.0.0/12', '10.0.0.1/12'] }
+  let(:location) { 'West US' }
 
   input_options = {
       subnet: [
@@ -100,7 +100,7 @@ describe Azure::VirtualNetworkManagement::Serialization do
 
     let(:result_string) do
       subject.virtual_network_to_xml(vnet_name,
-                                     affinity_group,
+                                     location,
                                      address_space,
                                      input_options)
     end
@@ -110,12 +110,12 @@ describe Azure::VirtualNetworkManagement::Serialization do
     end
 
     it 'accepts parameters without providing subnet/dns' do
-      subject.virtual_network_to_xml(vnet_name, affinity_group, address_space)
+      subject.virtual_network_to_xml(vnet_name, location, address_space)
     end
 
     it 'accepts parameters including subnet/dns' do
       subject.virtual_network_to_xml(vnet_name,
-                                     affinity_group,
+                                     location,
                                      address_space,
                                      input_options)
     end
@@ -127,7 +127,7 @@ describe Azure::VirtualNetworkManagement::Serialization do
 
     it 'sets the name and affinity group for the new VirtualNetwork' do
       virtual_network.attr('name').must_equal vnet_name
-      virtual_network.attr('AffinityGroup').must_equal affinity_group
+      virtual_network.attr('Location').must_equal location
     end
 
     it 'adds new dns servers on the top of existing dns servers' do

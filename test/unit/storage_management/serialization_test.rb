@@ -224,9 +224,22 @@ describe Azure::StorageManagement::Serialization do
       update_xml.css('GeoReplicationEnabled').size.must_equal(1)
       update_xml.css('ExtendedProperties ExtendedProperty').size.must_equal(1)
       update_xml.css('ExtendedProperties ExtendedProperty Name').text
-        .must_equal("#{:prop_1_name}")
+      .must_equal("#{:prop_1_name}")
       update_xml.css('ExtendedProperties ExtendedProperty Value')
-        .text.must_equal(options[:extended_properties][:prop_1_name])
+      .text.must_equal(options[:extended_properties][:prop_1_name])
     end
   end
+
+  describe "#regenerate_storage_account_keys_from_xml" do
+    let(:storage_services_access_keys) { Fixtures["storage_service_keys"] }
+    
+    it "returns an Array of StorageService instances" do
+      storage_keys_xml = Nokogiri::XML(storage_services_access_keys)
+      result = subject.storage_account_keys_from_xml storage_keys_xml
+      result.must_be_kind_of Azure::StorageManagement::StorageAccountKeys
+      result.primary_key.wont_be_nil
+      result.secondary_key.wont_be_nil
+    end
+  end
+
 end

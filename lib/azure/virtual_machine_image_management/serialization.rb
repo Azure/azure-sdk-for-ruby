@@ -26,6 +26,7 @@ module Azure
           image.os_type = xml_content(image_node, 'OS')
           image.name = xml_content(image_node, 'Name')
           image.category = xml_content(image_node, 'Category')
+          image.media_link = xml_content(image_node, 'MediaLink')
           image.locations = xml_content(image_node, 'Location')
           os_images << image
         end
