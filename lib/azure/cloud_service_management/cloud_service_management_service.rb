@@ -229,11 +229,10 @@ module Azure
         Loggerx.error_with_exit 'Cloud service name is not valid' unless cloud_service_name
 
         staging_deployment = get_deployment(cloud_service_name, {:slot => "staging", :no_exit_on_failure => true})
-        Loggerx.error_with_exit "Staging deployment on cloud service #{cloud_service_name} does not exist yet." unless staging_deployment.exists?
-        Loggerx.error_with_exit "Staging deployment on cloud service #{cloud_service_name} is transitioning. Wait until transitioning is over before swapping." if staging_deployment.is_transitioning?
+        Loggerx.error_with_exit "Staging deployment on cloud service #{cloud_service_name} is transitioning. Wait until transitioning is over before swapping." if (staging_deployment.exists? && staging_deployment.is_transitioning?)
         production_deployment = get_deployment(cloud_service_name, {:slot => "production", :no_exit_on_failure => true})
-        Loggerx.error_with_exit "Production deployment on cloud service #{cloud_service_name} does not exist yet." unless production_deployment.exists?
-        Loggerx.error_with_exit "Production deployment on cloud service #{cloud_service_name} is transitioning. Wait until transitioning is over before swapping." if production_deployment.is_transitioning?
+        Loggerx.error_with_exit "Production deployment on cloud service #{cloud_service_name} is transitioning. Wait until transitioning is over before swapping." if (production_deployment.exists? && production_deployment.is_transitioning?)
+        Loggerx.error_with_exit "There are no deployments on cloud service #{cloud_service_name}." unless (staging_deployment.exists? || production_deployment.exists?)
 
         Loggerx.info "Swapping deployments on cloud service #{cloud_service_name} starting"
         request_path = "/services/hostedservices/#{cloud_service_name}"
