@@ -198,28 +198,16 @@ describe Azure::CloudServiceManagementService do
 
   describe '#swap_deployment' do
 
-    it 'Fails and throw an error if the staging deployment does not exist yet.' do
+    it 'Fails and throw an error if both the staging and production deployment do not exist yet.' do
       subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "staging", :no_exit_on_failure => true})
         .returns(no_deployment)
-      subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "production", :no_exit_on_failure => true})
-        .returns(existing_deployment)
-
-      exception = assert_raises(RuntimeError) do
-        subject.swap_deployment(cloud_service_name)
-      end
-      assert_match(/.*Staging deployment on cloud service #{cloud_service_name} does not exist yet.*/, exception.message)
-    end
-
-    it 'Fails and throw an error if the Production deployment does not exist yet.' do
-      subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "staging", :no_exit_on_failure => true})
-        .returns(existing_deployment)
       subject.stubs(:get_deployment).with(cloud_service_name, {:slot => "production", :no_exit_on_failure => true})
         .returns(no_deployment)
 
       exception = assert_raises(RuntimeError) do
         subject.swap_deployment(cloud_service_name)
       end
-      assert_match(/.*Production deployment on cloud service #{cloud_service_name} does not exist yet.*/, exception.message)
+      assert_match(/.*There are no deployments on cloud service #{cloud_service_name}.*/, exception.message)
     end
 
     it 'Fails and throw an error if the staging deployment is currently transitioning.' do
