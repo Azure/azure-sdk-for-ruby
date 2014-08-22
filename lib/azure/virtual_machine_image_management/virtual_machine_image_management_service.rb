@@ -24,12 +24,35 @@ module Azure
       # Public: Gets a list of virtual machine images from the server
       #
       # Returns an array of Azure::VirtualMachineImageManagementService objects
-      def list_virtual_machine_images
+      def list_public_virtual_machine_images
         request_path = '/services/images'
         request = ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.virtual_machine_images_from_xml(response)
       end
+
+      # Public: Gets a list of private virtual machine images from the server
+      #
+      # Returns an array of Azure::VirtualMachineImageManagementService objects
+      def list_private_virtual_machine_images
+        request_path = '/services/vmimages'
+        request = ManagementHttpRequest.new(:get, request_path, nil)
+        response = request.call
+        Serialization.virtual_machine_vmimages_from_xml(response)
+      end
+
+      # Public: Gets a list of all virtual machine images from the server both user created images and public images
+      #
+      # Returns an array of Azure::VirtualMachineImageManagementService objects
+      def list_all_virtual_machine_images
+        images = Array.new
+        public_images = list_public_virtual_machine_images
+        private_images = list_private_virtual_machine_images
+        images.concat public_images
+        images.concat private_images
+        images
+      end
+
     end
 
     class VirtualMachineDiskManagementService < BaseManagementService

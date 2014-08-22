@@ -31,7 +31,7 @@ Azure::Core.configure do |config|
 end
 
 StorageAccountName = random_string('storagetest',10)
-Images = Azure::VirtualMachineImageManagementService.new.list_virtual_machine_images
+Images = Azure::VirtualMachineImageManagementService.new.list_all_virtual_machine_images
 LinuxImage = Images.select{|image| image.os_type == 'Linux'}.first
 WindowsImage = Images.select{|image| image.os_type == 'Windows'}.first
 WindowsImageLocation = WindowsImage.locations.split(';').first
