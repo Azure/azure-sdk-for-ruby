@@ -103,7 +103,7 @@ describe Azure::VirtualMachineImageManagementService do
 
   end
 
-  describe '#list_all_virtual_machine_images' do
+  describe '#list_virtual_machine_images' do
 
     before do
       ManagementHttpRequest.stubs(:new).with(
@@ -122,7 +122,7 @@ describe Azure::VirtualMachineImageManagementService do
     end
 
     it 'returns a list of virtual machine images from server' do
-      results = subject.list_all_virtual_machine_images
+      results = subject.list_virtual_machine_images
       results.must_be_kind_of Array
       results.length.must_equal 14
       image_klass = Azure::VirtualMachineImageManagement::VirtualMachineImage

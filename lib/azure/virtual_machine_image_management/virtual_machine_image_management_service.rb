@@ -44,7 +44,7 @@ module Azure
       # Public: Gets a list of all virtual machine images from the server both user created images and public images
       #
       # Returns an array of Azure::VirtualMachineImageManagementService objects
-      def list_all_virtual_machine_images
+      def list_virtual_machine_images
         images = Array.new
         public_images = list_public_virtual_machine_images
         private_images = list_private_virtual_machine_images

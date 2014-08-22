@@ -21,7 +21,7 @@ describe Azure::VirtualMachineImageManagementService do
   describe "#virtual_machine_images" do
 
     it "returns a list of virtual machine images" do
-      virtualImages = subject.list_all_virtual_machine_images
+      virtualImages = subject.list_virtual_machine_images
       virtualImages.wont_be_nil
       virtualImages.must_be_kind_of Array
       image = virtualImages.first
