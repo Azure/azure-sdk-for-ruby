@@ -111,20 +111,56 @@ describe Azure::VirtualMachineImageManagementService do
         public_request_path,
         nil
       ).returns(mock_request)
-      mock_request.expects(:call).returns(public_response_body)
+
 
       ManagementHttpRequest.stubs(:new).with(
         method,
         private_request_path,
         nil
       ).returns(mock_request2)
-      mock_request2.expects(:call).returns(private_response_body)
+
     end
 
-    it 'returns a list of virtual machine images from server' do
+    it 'returns a list of virtual machine images from server when no type is specified' do
+      mock_request.expects(:call).returns(public_response_body)
+      mock_request2.expects(:call).returns(private_response_body)
+
       results = subject.list_virtual_machine_images
       results.must_be_kind_of Array
       results.length.must_equal 14
+      image_klass = Azure::VirtualMachineImageManagement::VirtualMachineImage
+      results.first.must_be_kind_of image_klass
+    end
+
+    it 'returns a list of virtual machine images from server when :all is specified' do
+      mock_request.expects(:call).returns(public_response_body)
+      mock_request2.expects(:call).returns(private_response_body)
+
+      results = subject.list_virtual_machine_images :all
+      results.must_be_kind_of Array
+      results.length.must_equal 14
+      image_klass = Azure::VirtualMachineImageManagement::VirtualMachineImage
+      results.first.must_be_kind_of image_klass
+    end
+
+    it 'returns a list of virtual machine images from server when :public is specified' do
+      mock_request.expects(:call).returns(public_response_body)
+      mock_request2.expects(:call).never
+
+      results = subject.list_virtual_machine_images :public
+      results.must_be_kind_of Array
+      results.length.must_equal 12
+      image_klass = Azure::VirtualMachineImageManagement::VirtualMachineImage
+      results.first.must_be_kind_of image_klass
+    end
+
+    it 'returns a list of virtual machine images from server when :private is specified' do
+      mock_request.expects(:call).never
+      mock_request2.expects(:call).returns(private_response_body)
+
+      results = subject.list_virtual_machine_images :private
+      results.must_be_kind_of Array
+      results.length.must_equal 2
       image_klass = Azure::VirtualMachineImageManagement::VirtualMachineImage
       results.first.must_be_kind_of image_klass
     end
