@@ -50,12 +50,22 @@ describe Azure::VirtualMachineManagementService do
   end
   let(:location_response_body) { Nokogiri::XML location_response.body }
   let(:mock_virtual_machine_request) { mock }
+
   let(:windows_images_xml) { Fixtures['list_images'] }
   let(:images_request_path) { '/services/images' }
   let(:mock_request) { mock }
   let(:os_response_body) do
     response = mock
     response.stubs(:body).returns(windows_images_xml)
+    Nokogiri::XML response.body
+  end
+
+  let(:vm_images_xml) { Fixtures['list_vmimages'] }
+  let(:vmimages_request_path) { '/services/vmimages' }
+  let(:vmmock_request) { mock }
+  let(:vm_response_body) do
+    response = mock
+    response.stubs(:body).returns(vm_images_xml)
     Nokogiri::XML response.body
   end
 
@@ -68,6 +78,13 @@ describe Azure::VirtualMachineManagementService do
       nil
     ).returns(mock_request)
     mock_request.expects(:call).returns(os_response_body).at_least(0)
+    
+    ManagementHttpRequest.stubs(:new).with(
+      :get,
+      vmimages_request_path,
+      nil
+    ).returns(vmmock_request)
+    vmmock_request.expects(:call).returns(vm_response_body).at_least(0)
   end
 
   describe '#list_virtual_machines' do

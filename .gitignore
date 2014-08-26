@@ -10,3 +10,5 @@ nbproject/*
 
 
 .DS_Store
+.ruby-version
+.ruby-gemset
