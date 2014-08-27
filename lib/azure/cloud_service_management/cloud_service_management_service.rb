@@ -79,15 +79,7 @@ module Azure
       # If true, the cloud service is available. If false, the cloud service
       # does not exist.
       def get_cloud_service(name)
-        return false if name.nil?
-        flag = false
-        list_cloud_services.each do |cloud_service|
-          if cloud_service.name == name
-            flag = true
-            break
-          end
-        end
-        flag
+        list_cloud_services.select { |x| x.name.casecmp(name) == 0 }.first
       end
 
       def get_cloud_service_properties(name)

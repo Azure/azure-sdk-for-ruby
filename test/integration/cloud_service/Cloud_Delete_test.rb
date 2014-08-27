@@ -37,8 +37,8 @@ describe Azure::CloudServiceManagementService do
 
     it 'Deletes the cloud service in Windows Azure.' do
       subject.delete_cloud_service(@cloud_name)
-      present = subject.get_cloud_service(@cloud_name)
-      assert_equal present, false
+      cloud_service = subject.get_cloud_service(@cloud_name)
+      cloud_service.must_equal nil
     end
   end
 end

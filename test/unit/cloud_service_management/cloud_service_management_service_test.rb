@@ -67,12 +67,12 @@ describe Azure::CloudServiceManagementService do
 
     it 'returns true if found cloud service with given name' do
       result = subject.get_cloud_service 'cloud-service-1'
-      result.must_equal true
+      result.must_be_kind_of Azure::CloudServiceManagement::CloudService
     end
 
     it "returns false if cloud service with given name doesn't exists" do
       result = subject.get_cloud_service 'cloud-service-3'
-      result.must_equal false
+      result.must_equal nil
     end
   end
 
