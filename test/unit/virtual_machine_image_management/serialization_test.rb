@@ -17,19 +17,34 @@ require 'test_helper'
 describe Azure::VirtualMachineImageManagement::Serialization do
   subject { Azure::VirtualMachineImageManagement::Serialization }
 
-  let(:virtual_machine_images_from_xml) { Fixtures['list_images'] }
-
-  describe '#virtual_machine_images_from_xml' do
+  describe '#virtual_machine_os_images_from_xml' do
+    let(:os_images_xml) { Fixtures['list_os_images'] }
 
     it 'accepts an XML string' do
-      subject.virtual_machine_images_from_xml Nokogiri::XML(virtual_machine_images_from_xml)
+      subject.virtual_machine_os_images_from_xml Nokogiri::XML(os_images_xml)
     end
 
     it 'returns an Array of VirtualMachineImageService instances' do
-      results = subject.virtual_machine_images_from_xml Nokogiri::XML(virtual_machine_images_from_xml)
+      results = subject.virtual_machine_os_images_from_xml Nokogiri::XML(os_images_xml)
       results.must_be_kind_of Array
-      results[0].must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImage
+      results[0].must_be_kind_of VirtualMachineImage
       results.count.must_equal 12
     end
   end
+
+  describe '#virtual_machine_vm_images_from_xml' do
+    let(:vm_images_xml) { Fixtures['list_vm_images'] }
+
+    it 'accepts an XML string' do
+      subject.virtual_machine_vm_images_from_xml Nokogiri::XML(vm_images_xml)
+    end
+
+    it 'returns an Array of VirtualMachineImageService instances' do
+      results = subject.virtual_machine_vm_images_from_xml Nokogiri::XML(vm_images_xml)
+      results.must_be_kind_of Array
+      results[0].must_be_kind_of VirtualMachineImage
+      results.count.must_equal 1
+    end
+  end
+
 end
