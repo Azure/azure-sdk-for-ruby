@@ -21,7 +21,7 @@ module Azure
         super()
       end
 
-      # Public: Creates a new cloud service in Windows Azure.
+      # Public: Creates a new cloud service in Microsoft Azure.
       #
       # ==== Attributes
       #
@@ -43,7 +43,7 @@ module Azure
       # properties to add to the cloud service. The key is used as the
       # property name and the value as its value. (optional)
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg441304.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg441304.aspx
       #
       # Returns None
       def create_cloud_service(name, options = {})
@@ -89,7 +89,7 @@ module Azure
         Serialization.cloud_services_from_xml(response).first
       end
 
-      # Public: Deletes the specified cloud service of given subscription id from Windows Azure.
+      # Public: Deletes the specified cloud service of given subscription id from Microsoft Azure.
       #
       # ==== Attributes
       #
@@ -109,7 +109,7 @@ module Azure
       #
       # * +cloud_service_name+  - String. Cloud service name.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460815.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee460815.aspx
       #
       # Returns NONE
       def delete_cloud_service_deployment(cloud_service_name)

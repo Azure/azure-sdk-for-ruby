@@ -14,7 +14,7 @@
 #--------------------------------------------------------------------------
 module Azure
   module StorageManagement
-    # Represents a Windows Azure storage account
+    # Represents a Microsoft Azure storage account
     class StorageAccount
       def initialize
         yield self if block_given?

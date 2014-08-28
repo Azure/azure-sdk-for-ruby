@@ -201,7 +201,7 @@ module Azure
       # * +row_key+       - String. The row key
       # * +entity_values+ - Hash. A hash of the name/value pairs for the entity. 
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179433
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179433
       public
       def insert(row_key, entity_values)
         check_entity_key(row_key)
@@ -231,7 +231,7 @@ module Azure
       # * :create_if_not_exists  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
       #   that entity will be inserted. If false, the operation will fail. (optional, Default=false)
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179427
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179427
       public
       def update(row_key, entity_values, options={})
         check_entity_key(row_key)
@@ -263,7 +263,7 @@ module Azure
       # * +create_if_not_exists+  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
       #   that entity will be inserted. If false, the operation will fail. (optional, Default=false)
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179392
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179392
       public
       def merge(row_key, entity_values, options={})
         check_entity_key(row_key)
@@ -286,7 +286,7 @@ module Azure
       # * +row_key+               - String. The row key
       # * +entity_values+         - Hash. A hash of the name/value pairs for the entity.
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452241
+      # See http://msdn.microsoft.com/en-us/library/azure/hh452241
       public
       def insert_or_merge(row_key, entity_values)
         merge(row_key, entity_values, { :create_if_not_exists => true })
@@ -300,7 +300,7 @@ module Azure
       # * +row_key+               - String. The row key
       # * +entity_values+         - Hash. A hash of the name/value pairs for the entity. 
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452242
+      # See http://msdn.microsoft.com/en-us/library/azure/hh452242
       public
       def insert_or_replace(row_key, entity_values)
         update(row_key, entity_values, { :create_if_not_exists => true })
@@ -319,7 +319,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +if_match+      - String. A matching condition which is required for update (optional, Default="*")
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135727
+      # See http://msdn.microsoft.com/en-us/library/azure/dd135727
       public
       def delete(row_key, options={})
         add_operation(:delete, @table_service.entities_uri(table, partition, row_key), nil, {"If-Match"=> options[:if_match] || "*"})

@@ -100,8 +100,8 @@ module Azure
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
       #
       # See:
-      # http://msdn.microsoft.com/en-us/library/windowsazure/jj157194.aspx
-      # http://msdn.microsoft.com/en-us/library/windowsazure/jj157186.aspx
+      # http://msdn.microsoft.com/en-us/library/azure/jj157194.aspx
+      # http://msdn.microsoft.com/en-us/library/azure/jj157186.aspx
       def create_virtual_machine(params, options = {})
         image = get_image(params[:image])
         options[:os_type] = image.os_type
@@ -178,7 +178,7 @@ module Azure
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
       #
       # See:
-      # http://msdn.microsoft.com/en-us/library/windowsazure/jj157186.aspx
+      # http://msdn.microsoft.com/en-us/library/azure/jj157186.aspx
       def add_role(params, options = {})
         image = get_image(params[:image])
         options[:os_type] = image.os_type
@@ -220,8 +220,8 @@ module Azure
       # * +vm_name+  - String. Virtual machine name.
       # * +cloud_service_name+  - String. Cloud service name.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg441305.aspx
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157179.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg441305.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/jj157179.aspx
       #
       # Returns NONE
       def delete_virtual_machine(vm_name, cloud_service_name)
@@ -270,7 +270,7 @@ module Azure
       # * +name+                - String. Virtual machine name.
       # * +cloud_service_name+  - String. Cloud service name.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157195.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/jj157195.aspx
       #
       # Returns NONE
       def shutdown_virtual_machine(vm_name, cloud_service_name)
@@ -299,7 +299,7 @@ module Azure
       # * +name+                - String. Virtual machine name.
       # * +cloud_service_name+  - String. Cloud service name.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157189.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/jj157189.aspx
       #
       # Returns NONE
       def start_virtual_machine(vm_name, cloud_service_name)
@@ -326,7 +326,7 @@ module Azure
       # * +name+                - String. Virtual machine name.
       # * +cloud_service_name+  - String. Cloud service name.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157197.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/jj157197.aspx
       #
       # Returns NONE
       def restart_virtual_machine(vm_name, cloud_service_name)
@@ -382,7 +382,7 @@ module Azure
       # * +:path+      - String. Specifies the relative path to inspect to
       #   determine the availability status of the Virtual Machine. (optional)
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157187.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/jj157187.aspx
       #
       # Returns NONE
       def update_endpoints(vm_name, cloud_service_name, *input_endpoints)
@@ -412,7 +412,7 @@ module Azure
       # * +cloud_service_name+  - String. Cloud service name.
       # * +endpoint_name+       - String. Name of endpoint.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157187.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/jj157187.aspx
       #
       # Returns NONE
       def delete_endpoint(vm_name, cloud_service_name, endpoint_name)
@@ -450,7 +450,7 @@ module Azure
       # * +:disk_label+    - String. Specifies the description of the data disk.
       # * +:disk_size+     - String. Specifies the size of disk in GB
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157199.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/jj157199.aspx
       #
       # Returns None
       def add_data_disk(vm_name, cloud_service_name, options = {})

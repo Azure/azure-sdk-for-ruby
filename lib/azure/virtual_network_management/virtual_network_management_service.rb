@@ -25,7 +25,7 @@ module Azure
       # Public: Gets a list of virtual network services available under the
       # current subscription.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157185.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/jj157185.aspx
       #
       # Returns an array of
       # Azure::VirtualNetworkServiceManagement::VirtualNetwork objects
@@ -69,7 +69,7 @@ module Azure
       # * +dns_servers+         - Array. A hash of the name/value pairs.
       #   Contains the name and IPv4 address of the DNS server. (optional)
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157181.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/jj157181.aspx
       #
       # Returns None
       def set_virtual_network(vnet,
