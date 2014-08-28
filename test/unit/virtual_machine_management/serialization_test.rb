@@ -122,7 +122,7 @@ describe Azure::VirtualMachineManagement::Serialization do
         tcp_endpoints: '80,3389:3390,85:85',
         availability_set_name: 'aval-set',
         winrm_https_port: '5988',
-        winrm_transport: ['http','https']
+        winrm_transport: %w(http https)
       }
     end
 
@@ -130,11 +130,12 @@ describe Azure::VirtualMachineManagement::Serialization do
       Azure::VirtualMachineImageManagement::VirtualMachineImage.new do |i|
         i.name = 'windows-instance'
         i.os_type = 'Linux'
+        i.image_type = 'OS'
       end
     end
-  
+
     it 'returns an VirtualMachine object with correct tcp endpoints' do
-      params[:certificate] = {fingerprint: 'CFB8C256D2986559C630547F2D0'}
+      params[:certificate] = { fingerprint: 'CFB8C256D2986559C630547F2D0' }
       options[:os_type] = 'Windows'
       options[:existing_ports] = ['5985']
       result = subject.deployment_to_xml params, image, options
@@ -177,7 +178,7 @@ describe Azure::VirtualMachineManagement::Serialization do
 
     let(:options) do
       {
-        disk_size: 100,
+        disk_size: 100
       }
     end
     let(:media_link) { 'https://sta.blob.managment.core.net/vhds/1234.vhd' }

@@ -23,12 +23,33 @@ module Azure
 
       # Public: Gets a list of virtual machine images from the server
       #
-      # Returns an array of Azure::VirtualMachineImageManagementService objects
+      # Returns an array of Azure::VirtualMachineImageManagement::VirtualMachineImage objects
       def list_virtual_machine_images
+        list_os_images + list_vm_images
+      end
+
+      # Private: Gets a list of the operating system images that is associated with the specified subscription
+      #
+      # See http://msdn.microsoft.com/en-us/library/azure/jj157191.aspx
+      #
+      # Returns an array of Azure::VirtualMachineImageManagement::VirtualMachineImage objects
+      def list_os_images
         request_path = '/services/images'
         request = ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
-        Serialization.virtual_machine_images_from_xml(response)
+        Serialization.virtual_machine_os_images_from_xml(response)
+      end
+
+      # Private: Gets a list of the VM Images that is associated with the specified subscription
+      #
+      # See http://msdn.microsoft.com/en-us/library/azure/dn499770.aspx
+      #
+      # Returns an array of Azure::VirtualMachineImageManagement::VirtualMachineImage objects
+      def list_vm_images
+        request_path = '/services/vmimages'
+        request = ManagementHttpRequest.new(:get, request_path, nil)
+        response = request.call
+        Serialization.virtual_machine_vm_images_from_xml(response)
       end
     end
 

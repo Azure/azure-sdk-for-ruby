@@ -50,12 +50,15 @@ describe Azure::VirtualMachineManagementService do
   end
   let(:location_response_body) { Nokogiri::XML location_response.body }
   let(:mock_virtual_machine_request) { mock }
-  let(:windows_images_xml) { Fixtures['list_images'] }
-  let(:images_request_path) { '/services/images' }
   let(:mock_request) { mock }
-  let(:os_response_body) do
+  let(:os_image_response_body) do
     response = mock
-    response.stubs(:body).returns(windows_images_xml)
+    response.stubs(:body).returns(Fixtures['list_os_images'])
+    Nokogiri::XML response.body
+  end
+  let(:vm_image_response_body) do
+    response = mock
+    response.stubs(:body).returns(Fixtures['list_vm_images'])
     Nokogiri::XML response.body
   end
 
@@ -64,10 +67,17 @@ describe Azure::VirtualMachineManagementService do
     Loggerx.expects(:puts).returns(nil).at_least(0)
     ManagementHttpRequest.stubs(:new).with(
       :get,
-      images_request_path,
+      '/services/images',
       nil
     ).returns(mock_request)
-    mock_request.expects(:call).returns(os_response_body).at_least(0)
+    mock_request.expects(:call).returns(os_image_response_body).at_least(0)
+    vm_request = mock
+    ManagementHttpRequest.stubs(:new).with(
+      :get,
+      '/services/vmimages',
+      nil
+    ).returns(vm_request)
+    vm_request.expects(:call).returns(vm_image_response_body).at_least(0)
   end
 
   describe '#list_virtual_machines' do
@@ -100,7 +110,7 @@ describe Azure::VirtualMachineManagementService do
       mock_cloud_service_request.expects(:call).returns(cloud_service_response_body)
       ManagementHttpRequest.stubs(:new).with(method, anything).returns(mock_virtual_machine_request)
       mock_virtual_machine_request.stubs(:warn=).returns(true).twice
-      mock_virtual_machine_request.expects(:call).twice.returns(virtual_machine_response_body).returns(Nokogiri::XML  deployment_error_response.body)
+      mock_virtual_machine_request.expects(:call).twice.returns(virtual_machine_response_body).returns(Nokogiri::XML deployment_error_response.body)
     end
 
     it 'assembles a URI for the request' do
@@ -297,7 +307,7 @@ describe Azure::VirtualMachineManagementService do
     it 'throws error when certificate path is not invalid.' do
       options = {
         winrm_transport: %w(https http),
-        private_key_file: 'f:/invalid_path/private_key' ,
+        private_key_file: 'f:/invalid_path/private_key',
         certificate_file: 'f:/invalid_path/certificate.pem'
       }
       virtual_machine = subject.create_virtual_machine(windows_params, options)
@@ -307,7 +317,7 @@ describe Azure::VirtualMachineManagementService do
     it 'should not throws certificate error when wirnm_transport is http' do
       options = {
         winrm_transport: ['http'],
-        private_key_file: 'f:/invalid_path/private_key' ,
+        private_key_file: 'f:/invalid_path/private_key',
         certificate_file: 'f:/invalid_path/certificate.pem'
       }
       virtual_machine = subject.create_virtual_machine(windows_params, options)
@@ -417,7 +427,7 @@ describe Azure::VirtualMachineManagementService do
     it 'throws error when certificate path is not invalid.' do
       options = {
         winrm_transport: %w(https http),
-        private_key_file: 'f:/invalid_path/private_key' ,
+        private_key_file: 'f:/invalid_path/private_key',
         certificate_file: 'f:/invalid_path/certificate.pem'
       }
       exception = assert_raises(RuntimeError) do

@@ -45,7 +45,7 @@ describe Azure::VirtualMachineManagementService do
       vm.must_be_nil
       cloud_service = Azure::CloudServiceManagementService.new
       cloud_presence = cloud_service.get_cloud_service(csn)
-      cloud_presence.must_equal false
+      cloud_presence.must_equal nil
     end
 
   end
