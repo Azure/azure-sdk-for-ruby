@@ -38,20 +38,9 @@ module Azure
       #
       # * +name+       - String. Storage account name.
       #
-      # Returns: A boolean value indicating whether the storage account exists.
-      # If true, the storage account exists. If false, the storage account
-      # does not exist.
+      # Returns an Azure::StorageManagement::StorageAccount instance
       def get_storage_account(name)
-        return false if name.nil?
-        flag = false
-        storage_accounts = list_storage_accounts
-        storage_accounts.each do |storage|
-          if storage.name == name
-            flag = true
-            break
-          end
-        end
-        flag
+        list_storage_accounts.select { |x| x.name.casecmp(name) == 0 }.first
       end
 
       # Public: Gets the properties of the storage account specified.
@@ -94,10 +83,14 @@ module Azure
       # * +:extended_properties+      - Hash. Key/Value pairs of extended
       # properties to add to the storage account. The key is used as the
       # property name and the value as its value. (optional)
+      # * +:account_type+  - String.  Specifies the type of storage account
       #
+      # See http://msdn.microsoft.com/en-us/library/azure/hh264518.aspx
+      # 
       # Returns None
       def create_storage_account(name, options = {})
         raise 'Name not specified' if !name || name.class != String || name.empty?
+        options[:account_type] ||= 'Standard_GRS'
         if get_storage_account(name)
           Loggerx.warn "Storage Account #{name} already exists. Skipped..."
         else
@@ -114,7 +107,7 @@ module Azure
       # ==== Attributes
       #
       # * +name+          - String. The name of the storage service.
-      # * +options+       - Hash. Optional parameters.
+      # * +options+       - Hash.  parameters.
       #
       # ==== Options
       #
@@ -126,14 +119,17 @@ module Azure
       # Required if no label is provided. If both label and description are
       # provided, only the label will get updated.
       # * +:geo_replication_enabled+ - Boolean (TrueClass/FalseClass). Boolean
-      # flag indicating wheter to turn Geo replication on or off. (optional)
+      # flag indicating whether to turn Geo replication on or off. (optional)
       # * +:extended_properties+      - Hash. Key/Value pairs of extended
       # properties to add to the storage account. The key is used as the
       # property name and the value as its value. (optional)
+      # * +:account_type+  - String.  Specifies the type of storage account
+      #
+      # See http://msdn.microsoft.com/en-us/library/azure/hh264516.aspx
       #
       # Returns None
       # Fails with RuntimeError if invalid options specified
-      def update_storage_account(name, options = {})
+      def update_storage_account(name, options)
         if get_storage_account name
           Loggerx.info "Account '#{name}' exists, updating..."
           body = Serialization.storage_update_to_xml options
@@ -152,13 +148,15 @@ module Azure
       #
       # * +name+       - String. Storage account name.
       #
+      # See http://msdn.microsoft.com/en-us/library/azure/hh264517.aspx
+      # 
       # Returns:  None
       def delete_storage_account(name)
         Loggerx.info "Deleting Storage Account #{name}."
         request_path = "/services/storageservices/#{name}"
         request = ManagementHttpRequest.new(:delete, request_path)
         request.call
-      rescue Exception => e
+      rescue => e
         e.message
       end
 
@@ -205,7 +203,6 @@ module Azure
           Loggerx.warn "Storage Account '#{name}' does not exist."
         end
       end
-
     end
   end
 end

@@ -92,14 +92,16 @@ describe Azure::StorageManagementService do
       subject.get_storage_account 'storage1'
     end
 
-    it "returns true if found storage account with given name" do
-      result = subject.get_storage_account 'storage1'
-      result.must_equal true
+    it "returns storage account instance" do
+      storage_account_name = 'storage1'
+      result = subject.get_storage_account storage_account_name
+      result.must_be_kind_of Azure::StorageManagement::StorageAccount
+      result.name.must_equal storage_account_name
     end
 
     it "returns false if storage account with given name doesn't exists" do
       result = subject.get_storage_account 'storage3'
-      result.must_equal false
+      result.must_equal nil
     end
   end
 
@@ -149,15 +151,12 @@ describe Azure::StorageManagementService do
   describe "#update_storage_account" do
     let(:updated_accounts_xml) { Fixtures["updated_storage_accounts"] }
     let(:no_options_specified) { 'No options specified' }
-    let(:update_storage_account_req) { Fixtures["update_storage_account"] }
-
-    let(:updated_storage_account_mock_request){ mock() }
-    let(:updated_storage_account_response) {
+    let(:sa_response) {
       updated_storage_account_response = mock()
       updated_storage_account_response.stubs(:body).returns(updated_accounts_xml)
       updated_storage_account_response
+      Nokogiri::XML updated_storage_account_response.body
     }
-    let(:updated_storage_account_response_body) {Nokogiri::XML updated_storage_account_response.body}
 
     let(:update_request) {
       update_request = mock()
@@ -168,8 +167,6 @@ describe Azure::StorageManagementService do
     before {
       ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
-
-      Azure::StorageManagement::Serialization.stubs(:update_storage_account).returns(update_storage_account_req)
     }
 
     let(:options) { {
@@ -182,13 +179,6 @@ describe Azure::StorageManagementService do
         }
       }
     }
-
-    it "checks if nil options is provided" do
-      exception = assert_raises RuntimeError do
-        subject.update_storage_account 'storage2', nil
-      end
-      assert_match no_options_specified, exception.message
-    end
 
     it "checks if empty options is provided" do
       exception = assert_raises RuntimeError do
@@ -203,26 +193,20 @@ describe Azure::StorageManagementService do
     end
 
     it "updates the specified account" do
-      ManagementHttpRequest.stubs(:new).with(:put, "#{request_path}/storage2", update_storage_account_req).returns(update_request)
-      update_request.expects(:call).returns('')
-
+      ManagementHttpRequest.stubs(:new).with(
+        :put,
+        "#{request_path}/storage2",
+        Fixtures['update_storage_account']
+      ).returns(update_request)
+      update_request.expects(:call)
       subject.update_storage_account 'storage2', options
-
-      ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(updated_storage_account_mock_request)
-      updated_storage_account_mock_request.expects(:call).returns(updated_storage_account_response_body)
-
-      accounts = subject.list_storage_accounts
-
-      accounts.each { |account|
-        next unless account.name == 'storage2'
-
-        account.name.must_equal 'storage2'
-        account.label.must_equal options[:label]
-        account.geo_replication_enabled.must_equal "#{options[:geo_replication_enabled]}"
-
-        account.extended_properties.each { |prop|
-          prop[:value].must_equal "#{options[:extended_properties][:"#{prop[:name]}"]}"
-        }
+      mock_request.expects(:call).returns(sa_response)
+      storage_account = subject.list_storage_accounts.last
+      storage_account.name.must_equal 'storage2'
+      storage_account.label.must_equal options[:label]
+      storage_account.geo_replication_enabled.must_equal "#{options[:geo_replication_enabled]}"
+      storage_account.extended_properties.each { |prop|
+        prop[:value].must_equal "#{options[:extended_properties][:"#{prop[:name]}"]}"
       }
     end
   end
@@ -253,9 +237,11 @@ describe Azure::StorageManagementService do
     }
 
     it 'returns the label as a Base64 decoded string' do
-      account = subject.get_storage_account_properties(account_name)
-      account.label.must_be_kind_of(String)
-      account.label.must_equal(label)
+      storage_account = subject.get_storage_account_properties(account_name)
+      storage_account.label.must_be_kind_of(String)
+      storage_account.label.must_equal(label)
+      storage_account.account_type.must_equal 'Standard_GRS'
+      storage_account.geo_primary_region.must_equal 'West US'
     end
   end
 end
