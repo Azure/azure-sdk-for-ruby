@@ -40,7 +40,7 @@ module Azure
       #
       # Returns an Azure::StorageManagement::StorageAccount instance
       def get_storage_account(name)
-        list_storage_accounts.select { |x| x.name.casecmp(name) == 0 }.first
+        list_storage_accounts.select { |x| x.name.casecmp(name.to_s) == 0 }.first
       end
 
       # Public: Gets the properties of the storage account specified.
@@ -107,7 +107,7 @@ module Azure
       # ==== Attributes
       #
       # * +name+          - String. The name of the storage service.
-      # * +options+       - Hash.  parameters.
+      # * +options+       - Hash. parameters.
       #
       # ==== Options
       #
