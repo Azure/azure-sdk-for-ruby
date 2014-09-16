@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Metrics>
+<HourMetrics>
   <Version>1.0</Version>
   <Enabled>true</Enabled>
   <IncludeAPIs>false</IncludeAPIs>
@@ -7,4 +7,4 @@
     <Enabled>true</Enabled>
     <Days>7</Days>
   </RetentionPolicy>
-</Metrics>
+</HourMetrics>

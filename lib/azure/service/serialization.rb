@@ -22,6 +22,8 @@ require 'azure/service/storage_service_properties'
 require 'azure/service/logging'
 require 'azure/service/metrics'
 require 'azure/service/retention_policy'
+require 'azure/service/cors'
+require 'azure/service/cors_rule'
 
 module Azure
   module Service
@@ -148,18 +150,27 @@ module Azure
           end
         end
 
-        def metrics_to_xml(metrics, xml)
-          xml.Metrics { 
-            xml.Version metrics.version if metrics.version
-            xml.Enabled metrics.enabled unless metrics.enabled == nil
-            xml.IncludeAPIs metrics.include_apis unless metrics.include_apis == nil
-            retention_policy_to_xml(metrics.retention_policy, xml) if metrics.retention_policy
+        def metrics_to_xml_children(metrics, xml)
+          xml.Version metrics.version if metrics.version
+          xml.Enabled metrics.enabled unless metrics.enabled == nil
+          xml.IncludeAPIs metrics.include_apis unless metrics.include_apis == nil
+          retention_policy_to_xml(metrics.retention_policy, xml) if metrics.retention_policy
+        end
+
+        def hour_metrics_to_xml(metrics, xml)
+          xml.HourMetrics { 
+            metrics_to_xml_children(metrics, xml)
+          }
+        end
+
+        def minute_metrics_to_xml(metrics, xml)
+          xml.MinuteMetrics { 
+            metrics_to_xml_children(metrics, xml)
           }
         end
 
         def metrics_from_xml(xml)
           xml = slopify(xml)
-          expect_node("Metrics", xml)
 
           Metrics.new do |metrics|
             metrics.version = xml.Version.text if (xml > "Version").any?
@@ -191,13 +202,58 @@ module Azure
             logging.retention_policy = retention_policy_from_xml(xml.RetentionPolicy)
           end
         end
+
+        def cors_to_xml(cors, xml)
+          xml.Cors {
+            cors.cors_rules.to_a.each do |cors_rule|
+              cors_rule_to_xml(cors_rule, xml)
+            end
+          }
+        end
+
+        def cors_rule_to_xml(cors_rule, xml)
+          xml.CorsRule {
+            xml.AllowedOrigins cors_rule.allowed_origins.join(",") if cors_rule.allowed_origins
+            xml.AllowedMethods cors_rule.allowed_methods.join(",") if cors_rule.allowed_methods
+            xml.MaxAgeInSeconds cors_rule.max_age_in_seconds if cors_rule.max_age_in_seconds
+            xml.ExposedHeaders cors_rule.exposed_headers.join(",") if cors_rule.exposed_headers
+            xml.AllowedHeaders cors_rule.allowed_headers.join(",") if cors_rule.allowed_headers
+          }
+        end
+
+        def cors_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("Cors", xml)
+
+          Cors.new do |cors|
+            cors.cors_rules = xml.children.to_a.map {|child| cors_rule_from_xml(child)}
+          end
+        end
+
+        def cors_rule_from_xml(xml)
+          xml = slopify(xml)
+          expect_node("CorsRule", xml)
+
+          CorsRule.new do |cors_rule|
+            cors_rule.allowed_origins =  ary_from_node(xml.AllowedOrigins) if (xml > "AllowedOrigins").any?
+            cors_rule.allowed_methods =  ary_from_node(xml.AllowedMethods) if (xml > "AllowedMethods").any?
+            cors_rule.max_age_in_seconds = xml.MaxAgeInSeconds.text.to_i if (xml > "MaxAgeInSeconds").any?
+            cors_rule.exposed_headers = ary_from_node(xml.ExposedHeaders) if (xml > "ExposedHeaders").any?
+            cors_rule.allowed_headers = ary_from_node(xml.AllowedHeaders) if (xml > "AllowedHeaders").any?
+          end
+        end
+
+        def ary_from_node(node)
+          node.text.split(",").map {|s| s.strip}
+        end
         
         def service_properties_to_xml(properties)
           builder = Nokogiri::XML::Builder.new(:encoding => 'utf-8') do |xml|
             xml.StorageServiceProperties {
               logging_to_xml(properties.logging, xml) if properties.logging
-              metrics_to_xml(properties.metrics, xml) if properties.metrics
-              xml.DefaultServiceVersion properties.default_service_version if properties.default_service_version
+              hour_metrics_to_xml(properties.hour_metrics, xml) if properties.hour_metrics
+              minute_metrics_to_xml(properties.minute_metrics, xml) if properties.minute_metrics
+              cors_to_xml(properties.cors, xml) if properties.cors
             }
           end
           builder.to_xml
@@ -210,7 +266,9 @@ module Azure
           StorageServiceProperties.new do |props|
             props.default_service_version = xml.DefaultServiceVersion.text if (xml > "DefaultServiceVersion").any?
             props.logging = logging_from_xml(xml.Logging)
-            props.metrics = metrics_from_xml(xml.Metrics)
+            props.hour_metrics = metrics_from_xml(xml.HourMetrics)
+            props.minute_metrics = metrics_from_xml(xml.MinuteMetrics)
+            props.cors = cors_from_xml(xml.Cors)
           end
         end
 

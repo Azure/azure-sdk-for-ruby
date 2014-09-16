@@ -14,18 +14,23 @@
 #--------------------------------------------------------------------------
 require 'azure/service/logging'
 require 'azure/service/metrics'
+require 'azure/service/cors'
 
 module Azure
   module Service
     class StorageServiceProperties
       def initialize
         @logging = Logging.new
-        @metrics = Metrics.new
+        @hour_metrics = Metrics.new
+        @minute_metrics = Metrics.new
+        @cors = Cors.new
         yield self if block_given?
       end
 
       attr_accessor :logging
-      attr_accessor :metrics
+      attr_accessor :hour_metrics
+      attr_accessor :minute_metrics
+      attr_accessor :cors
       attr_accessor :default_service_version
     end
   end
