@@ -415,7 +415,7 @@ module Azure
             xml.LogicalDiskSizeInGB options[:disk_size] || 100
             unless options[:import]
               disk_name = media_link[/([^\/]+)$/]
-              media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd')
+              media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk_%Y_%m_%d_%H_%M_%S')) + '.vhd')
               xml.MediaLink media_link
             end
           end

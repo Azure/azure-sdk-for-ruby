@@ -14,11 +14,13 @@
       <Endpoint>http://storageacc.queue.core.windows.net/</Endpoint>
       <Endpoint>http://storageacc.table.core.windows.net/</Endpoint>
     </Endpoints>
-    <GeoReplicationEnabled>false</GeoReplicationEnabled>
-    <GeoPrimaryRegion>East US</GeoPrimaryRegion>
-    <GeoSecondaryRegion/>
-    <CreationTime>2013-12-03T19:39:33Z</CreationTime>
+    <GeoPrimaryRegion>West US</GeoPrimaryRegion>
+    <StatusOfPrimary>Available</StatusOfPrimary>
+    <GeoSecondaryRegion>East US</GeoSecondaryRegion>
+    <StatusOfSecondary>Available</StatusOfSecondary>
+    <CreationTime>2013-03-06T09:34:37Z</CreationTime>
     <CustomDomains/>
+    <AccountType>Standard_GRS</AccountType>
   </StorageServiceProperties>
   <ExtendedProperties>
     <ExtendedProperty>

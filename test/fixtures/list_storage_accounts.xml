@@ -19,6 +19,7 @@
       <StatusOfPrimary/>
       <GeoSecondaryRegion>East US</GeoSecondaryRegion>
       <StatusOfSecondary/>
+      <AccountType>Standard_GRS</AccountType>
     </StorageServiceProperties>
     <ExtendedProperties/>
   </StorageService>
@@ -40,6 +41,7 @@
       <StatusOfPrimary/>
       <GeoSecondaryRegion>East US</GeoSecondaryRegion>
       <StatusOfSecondary/>
+      <AccountType>Standard_GRS</AccountType>
     </StorageServiceProperties>
     <ExtendedProperties/>
   </StorageService>

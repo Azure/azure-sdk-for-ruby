@@ -35,6 +35,7 @@ module Azure
       attr_accessor :status_of_secondary
       attr_accessor :creation_time
       attr_accessor :extended_properties
+      attr_accessor :account_type
     end
 
     # Represents Windows Azure storage account keys
