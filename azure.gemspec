@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9.3'
 
   s.add_runtime_dependency('nokogiri',   "~> 1.5")
-  s.add_runtime_dependency("mime-types", "~> 1.0")
+  s.add_runtime_dependency("mime-types", "~> 2.3")
   s.add_runtime_dependency('json', '~> 1.8')
   s.add_runtime_dependency('uuid', '~> 2.0')
   s.add_runtime_dependency('systemu', '~> 2.6')
