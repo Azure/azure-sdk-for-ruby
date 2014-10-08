@@ -23,7 +23,6 @@ describe Azure::VirtualMachineManagementService do
   let(:storage_account_name) { StorageAccountName }
   let(:username) { 'adminuser' }
   let(:password) { 'Admin123' }
-  let(:certificate) { Fixtures['certificate.pem'] }
   let(:private_key) { Fixtures['privatekey.key'] }
 
   let(:params)do
@@ -154,8 +153,7 @@ describe Azure::VirtualMachineManagementService do
     it 'should creates https enabled winrm virtual machine using certificate.' do
       default_options.merge!(
         winrm_transport: ['https'],
-        private_key_file: private_key,
-        certificate_file: certificate
+        private_key_file: private_key
       )
       result = subject.create_virtual_machine(windows_params, default_options)
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
@@ -182,8 +180,7 @@ describe Azure::VirtualMachineManagementService do
 
     it 'created linux virtual machine should be accessible using password and certificate' do
       default_options.merge!(
-        private_key_file: private_key,
-        certificate_file: certificate
+        private_key_file: private_key
       )
       result = subject.create_virtual_machine(params, default_options)
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
