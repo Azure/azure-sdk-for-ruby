@@ -29,14 +29,6 @@ module Azure
       attr_accessor :host
 
       def call(method, uri, body=nil, headers=nil)
-        if headers && !body.nil?
-          if headers['Content-Encoding'].nil?
-            headers['Content-Encoding'] = body.encoding.to_s
-          else 
-            body.force_encoding(headers['Content-Encoding']) 
-          end
-        end
-
         request = Core::Http::HttpRequest.new(method, uri, body)
         request.headers.merge!(headers) if headers
 
@@ -45,10 +37,6 @@ module Azure
         yield request if block_given?
 
         response = request.call
-
-        if !response.nil? && !response.body.nil? && response.headers['content-encoding']
-          response.body.force_encoding(response.headers['content-encoding']) 
-        end
 
         response
       end
