@@ -30,14 +30,13 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 1.9.3'
 
-  s.add_runtime_dependency('nokogiri',   "~> 1.5")
-  s.add_runtime_dependency("mime-types", "~> 1.0")
+  s.add_runtime_dependency('nokogiri',   '~> 1.5')
   s.add_runtime_dependency('json', '~> 1.8')
   s.add_runtime_dependency('uuid', '~> 2.0')
   s.add_runtime_dependency('systemu', '~> 2.6')
 
-  s.add_development_dependency("rake", '~> 10.0')
-  s.add_development_dependency("minitest", "~> 3.0")
+  s.add_development_dependency('rake', '~> 10.0')
+  s.add_development_dependency('minitest', '~> 3.0')
   s.add_development_dependency('mocha', '~> 1.0')
   s.add_development_dependency('turn', '~> 0.9')
 end

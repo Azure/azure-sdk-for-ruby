@@ -82,7 +82,6 @@ module Azure
       # * +:tcp_endpoints+            - String. Specifies the internal port and external/public port separated by a colon.
       #   You can map multiple internal and external ports by separating them with a comma.
       # * +:ssh_private_key_file+     - String. Path of private key file.
-      # * +:ssh_certificate_file+     - String. Path of certificate file.
       # * +:ssh_port+                 - Integer. Specifies the SSH port number.
       # * +:winrm_http_port           - Integer. Specifies the WinRM HTTP port number.
       # * +:winrm_https_port          - Integer. Specifies the WinRM HTTPS port number.
@@ -101,13 +100,12 @@ module Azure
       #
       # See:
       # http://msdn.microsoft.com/en-us/library/azure/jj157194.aspx
-      # http://msdn.microsoft.com/en-us/library/azure/jj157186.aspx
       def create_virtual_machine(params, options = {})
         image = get_image(params[:image])
         options[:os_type] = image.os_type
         validate_deployment_params(params, options)
         options[:deployment_name] ||= options[:cloud_service_name]
-        Loggerx.info 'Creating deploymnent...'
+        Loggerx.info 'Creating deployment...'
         options[:cloud_service_name] ||= generate_cloud_service_name(params[:vm_name])        
         optionals = {}
         if options[:virtual_network_name]
@@ -168,7 +166,6 @@ module Azure
       # * +:tcp_endpoints+         - String. Specifies the internal port and external/public port separated by a colon.
       #   You can map multiple internal and external ports by separating them with a comma.
       # * +:ssh_private_key_file+  - String. Path of private key file.
-      # * +:ssh_certificate_file+  - String. Path of certificate file.
       # * +:ssh_port+              - Integer. Specifies the SSH port number.
       # * +:winrm_http_port        - Integer. Specifies the WinRM HTTP port number.
       # * +:winrm_https_port       - Integer. Specifies the WinRM HTTPS port number.
@@ -492,7 +489,7 @@ module Azure
         params_keys = %w(vm_name image vm_user)
         params_keys += ['password'] if options[:os_type] == 'Windows'
         options_keys = []
-        options_keys = %w(private_key_file certificate_file) if certificate_required?(params, options)
+        options_keys = %w(private_key_file) if certificate_required?(params, options)
         if add_role
           params_keys += ['cloud_service_name']
         else
@@ -513,7 +510,7 @@ module Azure
           if certificate_required?(params, options)
             begin
               params[:certificate][:key] = OpenSSL::PKey.read File.read(options[:private_key_file])
-              params[:certificate][:cert] = OpenSSL::X509::Certificate.new File.read(options[:certificate_file])
+              params[:certificate][:cert] = get_certificate(options[:private_key_file])
               params[:certificate][:fingerprint] = export_fingerprint(params[:certificate][:cert])
             rescue Exception => e
               Loggerx.error_with_exit e.message
@@ -526,7 +523,7 @@ module Azure
 
       def certificate_required?(params, options)
         if options[:os_type] == 'Linux'
-          (params[:password].nil? or (!options[:certificate_file].nil? && !options[:private_key_file].nil?))
+          params[:password].nil?
         else
           winrm_with_https(options)
         end
@@ -534,7 +531,7 @@ module Azure
 
       def winrm_with_https(options)
         if options[:os_type] == 'Windows'
-          options[:winrm_transport] && options[:winrm_transport].include?('https') && options[:certificate_file] && options[:private_key_file]
+          options[:winrm_transport] && options[:winrm_transport].include?('https') && options[:private_key_file]
         end
       end
 
