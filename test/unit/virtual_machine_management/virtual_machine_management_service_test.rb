@@ -78,6 +78,10 @@ describe Azure::VirtualMachineManagementService do
       nil
     ).returns(vm_request)
     vm_request.expects(:call).returns(vm_image_response_body).at_least(0)
+    role_sizes = Azure::BaseManagement::Serialization.role_sizes_from_xml(Nokogiri::XML Fixtures['role_sizes'])
+    Azure::BaseManagementService.any_instance.stubs(
+      :list_rolesizes
+    ).returns(role_sizes)
   end
 
   describe '#list_virtual_machines' do

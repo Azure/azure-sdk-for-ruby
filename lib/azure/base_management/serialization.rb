@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'azure/base_management/location'
+require 'azure/base_management/affinity_group'
+require 'azure/base_management/role_size'
 
 module Azure
   module BaseManagement
@@ -27,6 +30,24 @@ module Azure
           location_objs << loc
         end
         location_objs
+      end
+
+      def self.role_sizes_from_xml(xml)
+        results = []
+        xml.css('RoleSizes RoleSize').each do |role_size_node|
+          results.push role_size_from_xml(role_size_node)
+        end
+        results
+      end
+
+      def self.role_size_from_xml(xml)
+        RoleSize.new do |role_size|
+          role_size.name = xml_content(xml, 'Name')
+          role_size.cores = xml_content(xml, 'Cores')
+          role_size.label = xml_content(xml, 'Label')
+          role_size.memory = xml_content(xml, 'MemoryInMb')
+          role_size.max_data_disk = xml_content(xml, 'MaxDataDiskCount')
+        end
       end
 
       def self.affinity_group_to_xml(name, location, label, options = {})
@@ -57,7 +78,7 @@ module Azure
           affinity_group.location = xml_content(ag_xml, 'Location')
 
           capabilities = ag_xml.css('Capabilities Capability')
-          affinity_group.capability = capabilities.map { |x|  x.content }
+          affinity_group.capability = capabilities.map(&:content)
           affinity_groups << affinity_group
         end
         affinity_groups.compact
@@ -109,7 +130,7 @@ module Azure
               service_name: xml_content(storage_service_xml, 'ServiceName')
             }
           end
-          affinity_group.capability = capability_xml.map { |x| x.content }
+          affinity_group.capability = capability_xml.map(&:content)
         end
       end
 

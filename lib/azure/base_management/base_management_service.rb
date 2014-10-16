@@ -19,8 +19,6 @@ require 'openssl'
 require 'uri'
 require 'rexml/document'
 require 'azure/base_management/serialization'
-require 'azure/base_management/location'
-require 'azure/base_management/affinity_group'
 
 include Azure::BaseManagement
 include Azure::Core::Utility
@@ -79,6 +77,17 @@ module Azure
         request = ManagementHttpRequest.new(:get, '/locations')
         response = request.call
         Serialization.locations_from_xml(response)
+      end
+
+      # Public: Gets a lists the role sizes that are available under the specified subscription
+      #
+      # See http://msdn.microsoft.com/en-us/library/azure/dn469422.aspx
+      #
+      # Returns an array of Azure::BaseManagement::RoleSize objects
+      def list_rolesizes
+        request = ManagementHttpRequest.new(:get, '/rolesizes')
+        response = request.call
+        Serialization.role_sizes_from_xml(response)
       end
 
       # Public: Gets a lists the affinity groups associated with
