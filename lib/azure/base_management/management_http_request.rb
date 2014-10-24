@@ -34,11 +34,11 @@ module Azure
         super
         @warn = false
         content_length = body ? body.bytesize.to_s : '0'
-        @headers = {
+        @headers.update({
           'x-ms-version' => '2014-06-01',
           'Content-Type' => 'application/xml',
           'Content-Length' => content_length
-        }
+        })
         @uri = URI.parse(Azure.config.management_endpoint + Azure.config.subscription_id + path)
         @key = Azure.config.http_private_key
         @cert = Azure.config.http_certificate_key
