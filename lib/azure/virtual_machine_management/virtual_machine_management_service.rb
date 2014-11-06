@@ -88,13 +88,7 @@ module Azure
       # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.
       # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
       # * +:availability_set_name+    - String. Specifies the availability set name.
-      #
-      #  ==== add_role
-      #
-      # Accepted values are:
-      # * +false+   - Will add a new deployment in a cloud service.
-      # * +true+    - Will add a new role to a cloud service. Atleast one
-      # deployment should exist before you can add a role.
+      # * +:custom_data+              - String. Inject data into an Azure Virtual Machine when it is being provisioned.
       #
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
       #
@@ -171,7 +165,8 @@ module Azure
       # * +:winrm_https_port       - Integer. Specifies the WinRM HTTPS port number.
       # * +:vm_size+               - String. Specifies the size of the virtual machine instance.
       # * +:winrm_transport+       - Array. Specifies WINRM transport protocol.
-      #
+      # * +:custom_data+           - String. Inject data into an Azure Virtual Machine when it is being provisioned
+      # 
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
       #
       # See:

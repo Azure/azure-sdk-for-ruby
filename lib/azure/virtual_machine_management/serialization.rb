@@ -125,6 +125,7 @@ module Azure
 
       def self.provisioning_configuration_to_xml(xml, params, options)
         fingerprint = params[:certificate][:fingerprint]
+        custom_data = options[:custom_data]
         if options[:os_type] == 'Linux'
           xml.ConfigurationSet('i:type' => 'LinuxProvisioningConfigurationSet') do
             xml.ConfigurationSetType 'LinuxProvisioningConfiguration'
@@ -150,6 +151,7 @@ module Azure
                 end
               end
             end
+            xml.CustomData Base64.encode64(custom_data) if custom_data
           end
         elsif options[:os_type] == 'Windows'
           xml.ConfigurationSet('i:type' => 'WindowsProvisioningConfigurationSet') do
@@ -176,6 +178,7 @@ module Azure
               end
             end
             xml.AdminUsername params[:vm_user]
+            xml.CustomData Base64.encode64(custom_data) if custom_data
           end
         end
       end
