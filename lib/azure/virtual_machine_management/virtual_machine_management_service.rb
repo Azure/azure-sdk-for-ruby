@@ -61,7 +61,6 @@ module Azure
       #
       # * +params+    - Hash.  parameters.
       # * +options+   - Hash.  Optional parameters.
-      # * +add_role+  - true/false. Optional Parameter. Default is false
       #
       #  ==== Params
       #
@@ -90,13 +89,6 @@ module Azure
       # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.
       # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
       # * +:availability_set_name+    - String. Specifies the availability set name.
-      #
-      #  ==== add_role
-      #
-      # Accepted values are:
-      # * +false+   - Will add a new deployment in a cloud service.
-      # * +true+    - Will add a new role to a cloud service. Atleast one
-      # deployment should exist before you can add a role.
       #
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
       #
