@@ -1069,10 +1069,21 @@ module Azure
 
         headers = { }
         headers["x-ms-delete-snapshots"] = options[:delete_snapshots].to_s if options[:delete_snapshots] && options[:snapshot] == nil
-        puts '-----------------------------> DELETE BLOB URI'
-        puts uri
-        puts '=============================================='
-        #call(:delete, uri, nil, headers)
+        call(:delete, uri, nil, headers)
+        nil
+      end
+
+      # Public: Deletes a blob or blob snapshot.
+      #
+      # ==== Attributes
+      #
+      # * +url+          - String. The url of blob.
+      #
+      # Returns nil on success
+      def delete_blob_by_url(url)
+        headers = { }
+        uri = URI.parse(url)
+        call(:delete, uri, nil, headers)
         nil
       end
 
