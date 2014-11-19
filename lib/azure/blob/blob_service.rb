@@ -1082,11 +1082,10 @@ module Azure
       # Returns nil on success
       def delete_blob_by_url(url)
         headers = { }
-        headers["x-ms-lease-action"] = "break"
-        headers["x-ms-lease-break-period"] = options[:break_period].to_s if options[:break_period]
+        headers['x-ms-lease-action'] = 'break'
 
         response = call(:put, uri, nil, headers)
-        response.headers["x-ms-lease-time"].to_i
+        response.headers['x-ms-lease-time'].to_i
 
         headers = { }
         uri = URI.parse(url)
