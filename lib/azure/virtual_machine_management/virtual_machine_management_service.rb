@@ -247,6 +247,10 @@ module Azure
             Loggerx.error "\nCannot delete disk #{disk_name}."
           else
             disk_management_service.delete_virtual_machine_disk(disk_name)
+            if Azure.config.storage_account_name && Azure.config.storage_access_key
+              service = Azure::Blob::BlobService.new
+              service.delete_blob_by_url(vm.media_link)
+            end
           end
         else
           Loggerx.error "Cannot find virtual machine #{vm_name} under cloud service #{cloud_service_name}"
