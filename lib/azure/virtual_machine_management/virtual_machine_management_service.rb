@@ -250,6 +250,7 @@ module Azure
             if Azure.config.storage_account_name && Azure.config.storage_access_key
               Loggerx.info "Deleting VHD \"#{vm.media_link}\". "
               service = Azure::Blob::BlobService.new
+              Loggerx.info "Break lease \"#{service.break_lease_by_url(url)}\". "
               service.delete_blob_by_url(vm.media_link)
             end
           end

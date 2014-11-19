@@ -1082,15 +1082,6 @@ module Azure
       # Returns nil on success
       def delete_blob_by_url(url)
         headers = { }
-        headers['x-ms-lease-action'] = 'break'
-        uri = URI.parse(url)
-        query = { 'comp' => 'lease'}
-        uri.query = URI.encode_www_form(query)
-
-        response = call(:put, uri, nil, headers)
-        response.headers['x-ms-lease-time'].to_i
-
-        headers = { }
         uri = URI.parse(url)
         call(:delete, uri, nil, headers)
         nil
@@ -1379,6 +1370,18 @@ module Azure
 
         response = call(:put, uri, nil, headers)
         response.headers["x-ms-lease-time"].to_i
+      end
+
+      def break_lease_by_url(url)
+        headers = { }
+        headers['x-ms-lease-action'] = 'break'
+        uri = URI.parse(url)
+
+        query = { 'comp' => 'lease'}
+        uri.query = URI.encode_www_form(query)
+
+        response = call(:put, uri, nil, headers)
+        response.headers['x-ms-lease-time'].to_i
       end
 
       # Protected: Generate the URI for the collection of containers.
