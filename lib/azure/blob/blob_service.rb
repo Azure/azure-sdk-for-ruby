@@ -1083,12 +1083,12 @@ module Azure
       def delete_blob_by_url(url)
         headers = { }
         headers['x-ms-lease-action'] = 'break'
+        uri = URI.parse(url)
 
         response = call(:put, uri, nil, headers)
         response.headers['x-ms-lease-time'].to_i
 
         headers = { }
-        uri = URI.parse(url)
         call(:delete, uri, nil, headers)
         nil
       end
