@@ -107,7 +107,7 @@ module Azure
             xml.AvailabilitySetName options[:availability_set_name]
             xml.Label Base64.encode64(params[:vm_name]).strip
             xml.OSVirtualHardDisk do
-              xml.MediaLink 'http://' + options[:storage_account_name] + '.blob.core.windows.net/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd'
+              xml.MediaLink 'http://' + options[:storage_account_name] + '.blob.core.windows.net/vhds/' + (Time.now.strftime('disk1_%Y_%m_%d_%H_%M')) + '.vhd'
               xml.SourceImageName params[:image]
             end
             xml.RoleSize options[:vm_size]
@@ -401,7 +401,7 @@ module Azure
             xml.LogicalDiskSizeInGB options[:disk_size] || 100
             unless options[:import]
               disk_name = media_link[/([^\/]+)$/]
-              media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd')
+              media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk2_%Y_%m_%d_%H_%M')) + '.vhd')
               xml.MediaLink media_link
             end
           end
