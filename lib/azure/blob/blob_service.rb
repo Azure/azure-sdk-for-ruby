@@ -1084,6 +1084,8 @@ module Azure
         headers = { }
         headers['x-ms-lease-action'] = 'break'
         uri = URI.parse(url)
+        query = { 'comp' => 'lease'}
+        uri.query = URI.encode_www_form(query)
 
         response = call(:put, uri, nil, headers)
         response.headers['x-ms-lease-time'].to_i
