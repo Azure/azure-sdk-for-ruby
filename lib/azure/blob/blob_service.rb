@@ -1069,8 +1069,10 @@ module Azure
 
         headers = { }
         headers["x-ms-delete-snapshots"] = options[:delete_snapshots].to_s if options[:delete_snapshots] && options[:snapshot] == nil
-
-        call(:delete, uri, nil, headers)
+        puts '-----------------------------> DELETE BLOB URI'
+        puts uri
+        puts '=============================================='
+        #call(:delete, uri, nil, headers)
         nil
       end
 
