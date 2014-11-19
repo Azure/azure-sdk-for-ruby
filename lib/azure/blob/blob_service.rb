@@ -1091,6 +1091,7 @@ module Azure
         response.headers['x-ms-lease-time'].to_i
 
         headers = { }
+        uri = URI.parse(url)
         call(:delete, uri, nil, headers)
         nil
       end
