@@ -233,7 +233,7 @@ module Azure
           disk_management_service = VirtualMachineDiskManagementService.new
           # Wait for 180s for disk to be released.
           disk = nil
-          50.times do
+          100.times do
             print '# '
             disk = disk_management_service.get_virtual_machine_disk(disk_name)
             if disk && !disk.attached
