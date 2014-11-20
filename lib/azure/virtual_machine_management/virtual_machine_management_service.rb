@@ -236,7 +236,7 @@ module Azure
           50.times do
             print '# '
             disk = disk_management_service.get_virtual_machine_disk(disk_name)
-            unless disk.nil? && disk.attached
+            if !disk.nil? && !disk.attached
               print "Disk released.\n"
               break
             end
