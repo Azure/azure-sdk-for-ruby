@@ -255,14 +255,12 @@ module Azure
                 Loggerx.info "Break lease \"#{vhd_url}\". "
                 service.break_lease_by_url(vhd_url)
               rescue Azure::Core::Http::HTTPError => ex
-                puts 'EX!!!!'
                 if ex.message.include? 'There is currently no lease on the blob'
-                  puts 'message is ok!'
+                  Loggerx.info 'There is currently no lease on the blob, deleting vhd.....'
                 else
                   raise ex
                 end
               end
-
               sleep 10
               service.delete_blob_by_url(vhd_url)
             end
