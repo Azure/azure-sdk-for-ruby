@@ -248,11 +248,23 @@ module Azure
           else
             disk_management_service.delete_virtual_machine_disk(disk_name)
             if Azure.config.storage_account_name && Azure.config.storage_access_key
-              Loggerx.info "Deleting VHD \"#{vm.media_link}\". "
+              vhd_url = vm.media_link
+              Loggerx.info "Deleting VHD \"#{vhd_url}\". "
               service = Azure::Blob::BlobService.new
-              Loggerx.info "Break lease \"#{service.break_lease_by_url(url)}\". "
+              begin
+                Loggerx.info "Break lease \"#{vhd_url}\". "
+                service.break_lease_by_url(vhd_url)
+              rescue Azure::Core::Http::HTTPError => ex
+                puts 'EX!!!!'
+                if ex.message.include? 'There is currently no lease on the blob'
+                  puts 'message is ok!'
+                else
+                  raise ex
+                end
+              end
+
               sleep 10
-              service.delete_blob_by_url(vm.media_link)
+              service.delete_blob_by_url(vhd_url)
             end
           end
         else
