@@ -233,16 +233,16 @@ module Azure
           disk_management_service = VirtualMachineDiskManagementService.new
           # Wait for 180s for disk to be released.
           disk = nil
-          28.times do
+          50.times do
             print '# '
             disk = disk_management_service.get_virtual_machine_disk(disk_name)
-            unless disk.attached
+            if disk && disk.attached
               print "Disk released.\n"
               break
             end
             sleep 10
           end
-          if disk.attached
+          if !disk || (disk && disk.attached)
             Loggerx.error "\nCannot delete disk #{disk_name}."
           else
             disk_management_service.delete_virtual_machine_disk(disk_name)
