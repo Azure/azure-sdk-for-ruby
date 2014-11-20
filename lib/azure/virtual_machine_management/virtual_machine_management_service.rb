@@ -236,15 +236,17 @@ module Azure
           50.times do
             print '# '
             disk = disk_management_service.get_virtual_machine_disk(disk_name)
-            if disk && disk.attached
+            if !disk.nil? && disk.attached
               print "Disk released.\n"
               break
             end
             sleep 10
           end
-          if !disk || (disk && disk.attached)
+          if disk.nil?
+            Loggerx.error "\nDisk #{disk_name} is nil :(."
+          elsif disk && disk.attached
             Loggerx.error "\nCannot delete disk #{disk_name}."
-          else
+          elsif disk && !disk.attached
             disk_management_service.delete_virtual_machine_disk(disk_name)
             if Azure.config.storage_account_name && Azure.config.storage_access_key
               vhd_url = vm.media_link
@@ -263,6 +265,8 @@ module Azure
               sleep 10
               service.delete_blob_by_url(vhd_url)
             end
+          else
+            Loggerx.error "\nSomething bad happened while disk release.... Disk is not released and vhd in not deleted!"
           end
         else
           Loggerx.error "Cannot find virtual machine #{vm_name} under cloud service #{cloud_service_name}"
