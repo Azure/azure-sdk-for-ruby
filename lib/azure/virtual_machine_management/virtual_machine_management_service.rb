@@ -131,7 +131,6 @@ module Azure
         body = Serialization.deployment_to_xml(params, options)
         path = "/services/hostedservices/#{options[:cloud_service_name]}/deployments"
         Loggerx.info 'Deployment in progress...'
-        Loggerx.info "Body = #{body}"
         request = ManagementHttpRequest.new(:post, path, body)
         request.call
         get_virtual_machine(params[:vm_name], options[:cloud_service_name])
