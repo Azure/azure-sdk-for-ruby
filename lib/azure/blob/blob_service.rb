@@ -1069,7 +1069,20 @@ module Azure
 
         headers = { }
         headers["x-ms-delete-snapshots"] = options[:delete_snapshots].to_s if options[:delete_snapshots] && options[:snapshot] == nil
+        call(:delete, uri, nil, headers)
+        nil
+      end
 
+      # Public: Deletes a blob or blob snapshot.
+      #
+      # ==== Attributes
+      #
+      # * +url+          - String. The url of blob.
+      #
+      # Returns nil on success
+      def delete_blob_by_url(url)
+        headers = { }
+        uri = URI.parse(url)
         call(:delete, uri, nil, headers)
         nil
       end
@@ -1357,6 +1370,18 @@ module Azure
 
         response = call(:put, uri, nil, headers)
         response.headers["x-ms-lease-time"].to_i
+      end
+
+      def break_lease_by_url(url)
+        headers = { }
+        headers['x-ms-lease-action'] = 'break'
+        uri = URI.parse(url)
+
+        query = { 'comp' => 'lease'}
+        uri.query = URI.encode_www_form(query)
+
+        response = call(:put, uri, nil, headers)
+        response.headers['x-ms-lease-time'].to_i
       end
 
       # Protected: Generate the URI for the collection of containers.

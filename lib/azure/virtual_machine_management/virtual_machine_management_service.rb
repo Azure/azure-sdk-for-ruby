@@ -233,19 +233,40 @@ module Azure
           disk_management_service = VirtualMachineDiskManagementService.new
           # Wait for 180s for disk to be released.
           disk = nil
-          18.times do
+          100.times do
             print '# '
             disk = disk_management_service.get_virtual_machine_disk(disk_name)
-            unless disk.attached
+            if disk && !disk.attached
               print "Disk released.\n"
               break
             end
             sleep 10
           end
-          if disk.attached
+          if disk.nil?
+            Loggerx.error "\nDisk #{disk_name} is nil :(."
+          elsif disk && disk.attached
             Loggerx.error "\nCannot delete disk #{disk_name}."
-          else
+          elsif disk && !disk.attached
             disk_management_service.delete_virtual_machine_disk(disk_name)
+            if Azure.config.storage_account_name && Azure.config.storage_access_key
+              vhd_url = vm.media_link
+              Loggerx.info "Deleting VHD \"#{vhd_url}\". "
+              service = Azure::Blob::BlobService.new
+              begin
+                Loggerx.info "Break lease \"#{vhd_url}\". "
+                service.break_lease_by_url(vhd_url)
+              rescue Azure::Core::Http::HTTPError => ex
+                if ex.message.include? 'There is currently no lease on the blob'
+                  Loggerx.info 'There is currently no lease on the blob, deleting vhd.....'
+                else
+                  raise ex
+                end
+              end
+              sleep 10
+              service.delete_blob_by_url(vhd_url)
+            end
+          else
+            Loggerx.error "\nSomething bad happened while disk release.... Disk is not released and vhd in not deleted!"
           end
         else
           Loggerx.error "Cannot find virtual machine #{vm_name} under cloud service #{cloud_service_name}"
@@ -529,9 +550,9 @@ module Azure
       end
 
       def validate_role_size(vm_size)
-        valid_role_sizes = %w(ExtraSmall Small Medium Large ExtraLarge A5 A6 A7 Basic_A0 Basic_A1 Basic_A2 Basic_A3 Basic_A4)
+        valid_role_sizes = %w(ExtraSmall Small Medium Large ExtraLarge A5 A6 A7 A8 A9 Standard_D1 Standard_D2 Standard_D3 Standard_D4 Standard_D11 Standard_D12 Standard_D13 Standard_D14 Basic_A0 Basic_A1 Basic_A2 Basic_A3 Basic_A4)
         if vm_size && !valid_role_sizes.include?(vm_size)
-          Loggerx.error_with_exit "Value '#{vm_size}' specified for parameter 'vm_size' is invalid. Allowed values are 'ExtraSmall,Small,Medium,Large,ExtraLarge,A6,A7'"
+          Loggerx.error_with_exit "Value '#{vm_size}' specified for parameter 'vm_size' is invalid. Allowed values are 'ExtraSmall,Small,Medium,Large,ExtraLarge,A5,A6,A7,A8,A9,Standard_D1,Standard_D2,Standard_D3,Standard_D4,Standard_D11,Standard_D12,Standard_D13,Standard_D14,Basic_A0,Basic_A1,Basic_A2,Basic_A3,Basic_A4'"
         end
       end
 
