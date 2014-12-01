@@ -14,6 +14,7 @@
 #--------------------------------------------------------------------------
 require "minitest/autorun"
 require "mocha/setup"
+require 'timecop'
 
 # Attempt to load turn to show formatted test results
 begin
