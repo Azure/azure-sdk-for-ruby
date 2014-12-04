@@ -40,4 +40,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency("minitest", "~> 3.0")
   s.add_development_dependency('mocha', '~> 1.0')
   s.add_development_dependency('turn', '~> 0.9')
+  s.add_development_dependency('timecop', '~> 0.7')
 end

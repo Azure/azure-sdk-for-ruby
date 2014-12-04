@@ -111,7 +111,8 @@ describe Azure::VirtualMachineManagement::Serialization do
         vm_user: 'username',
         image: 'linux_image',
         password: 'password',
-        location: 'West US'
+        location: 'West US',
+        certificate: {fingerprint: 'CFB8C256D2986559C630547F2D0'}
       }
     end
 
@@ -122,14 +123,13 @@ describe Azure::VirtualMachineManagement::Serialization do
         tcp_endpoints: '80,3389:3390,85:85',
         availability_set_name: 'aval-set',
         winrm_https_port: '5988',
-        winrm_transport: ['http','https']
+        winrm_transport: ['http','https'],
+        os_type: 'Windows',
+        existing_ports: ['5985']
       }
     end
 
     it 'returns an VirtualMachine object with correct tcp endpoints' do
-      params[:certificate] = {fingerprint: 'CFB8C256D2986559C630547F2D0'}
-      options[:os_type] = 'Windows'
-      options[:existing_ports] = ['5985']
       result = subject.deployment_to_xml params, options
       doc = Nokogiri::XML(result)
       endpoints = doc.css('Deployment RoleList ConfigurationSet InputEndpoints InputEndpoint')
@@ -164,6 +164,17 @@ describe Azure::VirtualMachineManagement::Serialization do
         local_port: '5986'
       )
     end
+
+    it 'returns a VirtualMachine object with it the vhds media_link that includes seconds and milliseconds' do
+      now = Time.now
+      Timecop.freeze(now) do
+        result = subject.deployment_to_xml params, options
+        doc = Nokogiri::XML(result)
+        media_link_uri = URI.parse(doc.css('Deployment RoleList OSVirtualHardDisk MediaLink').text)
+        disk_time_name = /disk_(.*?)\.vhd/.match(media_link_uri.path).captures.first
+        disk_time_name.must_equal now.strftime('%Y_%m_%d_%H_%M_%S_%L')
+      end
+    end
   end
 
   describe '#add_data_disk_to_xml' do
@@ -182,7 +193,7 @@ describe Azure::VirtualMachineManagement::Serialization do
       @vm.media_link = media_link
     end
 
-    it 'returns an xml for newly created data disk' do      
+    it 'returns an xml for newly created data disk' do
       result = subject.add_data_disk_to_xml(@vm, options)
       doc = Nokogiri::XML(result)
       disk_size = doc.css('DataVirtualHardDisk LogicalDiskSizeInGB').text
