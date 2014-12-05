@@ -230,19 +230,19 @@ module Azure
             request = ManagementHttpRequest.new(:delete, path)
             request.call
           end
+          delete_storage_blob(vm.media_link)
           Loggerx.info "Waiting for disk to be released.\n"
           disk_name = vm.disk_name
           disk_management_service = VirtualMachineDiskManagementService.new
-          # Wait for 180s for disk to be released.
-          disk = nil
-          18.times do
+          # Wait for disk to be released.
+          10.times do
             print '# '
             disk = disk_management_service.get_virtual_machine_disk(disk_name)
             unless disk.attached
               print "Disk released.\n"
               break
             end
-            sleep 10
+            sleep 5
           end
           if disk.attached
             Loggerx.error "\nCannot delete disk #{disk_name}."
@@ -546,6 +546,30 @@ module Azure
           Loggerx.error_with_exit "Persistentvmrole not enabled for \"#{location.name}\". Try different location"
         end
       end
+
+      def delete_storage_blob(media_link)
+        uri = URI(media_link)
+        storage_name = Azure.config.storage_account_name
+        storage_key = Azure.config.storage_access_key
+        set_storage_configuration(uri.host.split('.').first)
+        azure_blob_service = Azure::BlobService.new
+        azure_blob_service.break_lease(nil, uri.path)
+        azure_blob_service.delete_blob(nil, uri.path)
+        reset_storage_configuration(storage_name, storage_key)
+      end
+
+      def set_storage_configuration(storage_account)
+        storage_service = Azure::StorageManagementService.new
+        storage_keys = storage_service.get_storage_account_keys(storage_account)
+        Azure.config.storage_account_name = storage_account
+        Azure.config.storage_access_key = storage_keys.primary_key
+      end
+
+      def reset_storage_configuration(storage_name, storage_access_key)
+        Azure.config.storage_account_name = storage_name
+        Azure.config.storage_access_key = storage_access_key
+      end
+
     end
   end
 end
