@@ -234,15 +234,16 @@ module Azure
           Loggerx.info "Waiting for disk to be released.\n"
           disk_name = vm.disk_name
           disk_management_service = VirtualMachineDiskManagementService.new
+          disk = disk_management_service.get_virtual_machine_disk(disk_name)
           # Wait for disk to be released.
           10.times do
             print '# '
-            disk = disk_management_service.get_virtual_machine_disk(disk_name)
             unless disk.attached
               print "Disk released.\n"
               break
             end
             sleep 5
+            disk = disk_management_service.get_virtual_machine_disk(disk_name)
           end
           if disk.attached
             Loggerx.error "\nCannot delete disk #{disk_name}."
@@ -553,7 +554,9 @@ module Azure
         storage_key = Azure.config.storage_access_key
         set_storage_configuration(uri.host.split('.').first)
         azure_blob_service = Azure::BlobService.new
-        azure_blob_service.break_lease(nil, uri.path)
+        blob =  azure_blob_service.get_blob_properties(nil, uri.path)
+        lease_status = blob.properties[:lease_status]
+        azure_blob_service.break_lease(nil, uri.path) if lease_status == 'locked'
         azure_blob_service.delete_blob(nil, uri.path)
         reset_storage_configuration(storage_name, storage_key)
       end
