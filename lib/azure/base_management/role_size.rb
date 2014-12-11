@@ -12,33 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'azure/base_management/serialization'
 
 module Azure
-  module VirtualMachineManagement
-    class VirtualMachine
+  module BaseManagement
+    class RoleSize
+      attr_accessor :name, :label, :cores, :memory, :max_data_disk
+
       def initialize
         yield self if block_given?
       end
-
-      attr_accessor :cloud_service_name
-      attr_accessor :status
-      attr_accessor :ipaddress
-      attr_accessor :private_ipaddress
-      attr_accessor :vm_name
-      attr_accessor :udp_endpoints
-      attr_accessor :hostname
-      attr_accessor :deployment_name
-      attr_accessor :deployment_status
-      attr_accessor :tcp_endpoints
-      attr_accessor :role_size
-      attr_accessor :image
-      attr_accessor :os_type
-      attr_accessor :disk_name
-      attr_accessor :virtual_network_name
-      attr_accessor :availability_set_name
-      attr_accessor :media_link
-      attr_accessor :data_disks
-      attr_accessor :subnet
     end
   end
 end

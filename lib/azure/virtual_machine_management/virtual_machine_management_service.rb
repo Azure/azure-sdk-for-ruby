@@ -88,13 +88,7 @@ module Azure
       # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.
       # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
       # * +:availability_set_name+    - String. Specifies the availability set name.
-      #
-      #  ==== add_role
-      #
-      # Accepted values are:
-      # * +false+   - Will add a new deployment in a cloud service.
-      # * +true+    - Will add a new role to a cloud service. Atleast one
-      # deployment should exist before you can add a role.
+      # * +:custom_data+              - String. Inject data into an Azure Virtual Machine when it is being provisioned.
       #
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
       #
@@ -171,7 +165,8 @@ module Azure
       # * +:winrm_https_port       - Integer. Specifies the WinRM HTTPS port number.
       # * +:vm_size+               - String. Specifies the size of the virtual machine instance.
       # * +:winrm_transport+       - Array. Specifies WINRM transport protocol.
-      #
+      # * +:custom_data+           - String. Inject data into an Azure Virtual Machine when it is being provisioned
+      # 
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
       #
       # See:
@@ -235,19 +230,20 @@ module Azure
             request = ManagementHttpRequest.new(:delete, path)
             request.call
           end
+          delete_storage_blob(vm.media_link)
           Loggerx.info "Waiting for disk to be released.\n"
           disk_name = vm.disk_name
           disk_management_service = VirtualMachineDiskManagementService.new
-          # Wait for 180s for disk to be released.
-          disk = nil
-          18.times do
+          disk = disk_management_service.get_virtual_machine_disk(disk_name)
+          # Wait for disk to be released.
+          10.times do
             print '# '
-            disk = disk_management_service.get_virtual_machine_disk(disk_name)
             unless disk.attached
               print "Disk released.\n"
               break
             end
-            sleep 10
+            sleep 5
+            disk = disk_management_service.get_virtual_machine_disk(disk_name)
           end
           if disk.attached
             Loggerx.error "\nCannot delete disk #{disk_name}."
@@ -536,9 +532,9 @@ module Azure
       end
 
       def validate_role_size(vm_size)
-        valid_role_sizes = %w(ExtraSmall Small Medium Large ExtraLarge A5 A6 A7 Basic_A0 Basic_A1 Basic_A2 Basic_A3 Basic_A4)
-        if vm_size && !valid_role_sizes.include?(vm_size)
-          Loggerx.error_with_exit "Value '#{vm_size}' specified for parameter 'vm_size' is invalid. Allowed values are 'ExtraSmall,Small,Medium,Large,ExtraLarge,A6,A7'"
+        role_sizes = Azure::BaseManagementService.new.list_rolesizes.map(&:name)
+        if vm_size && !role_sizes.include?(vm_size)
+          Loggerx.error_with_exit "Value '#{vm_size}' specified for parameter 'vm_size' is invalid. Allowed values are #{role_sizes.join(',')}"
         end
       end
 
@@ -551,6 +547,32 @@ module Azure
           Loggerx.error_with_exit "Persistentvmrole not enabled for \"#{location.name}\". Try different location"
         end
       end
+
+      def delete_storage_blob(media_link)
+        uri = URI(media_link)
+        storage_name = Azure.config.storage_account_name
+        storage_key = Azure.config.storage_access_key
+        set_storage_configuration(uri.host.split('.').first)
+        azure_blob_service = Azure::BlobService.new
+        blob =  azure_blob_service.get_blob_properties(nil, uri.path)
+        lease_status = blob.properties[:lease_status]
+        azure_blob_service.break_lease(nil, uri.path) if lease_status == 'locked'
+        azure_blob_service.delete_blob(nil, uri.path)
+        reset_storage_configuration(storage_name, storage_key)
+      end
+
+      def set_storage_configuration(storage_account)
+        storage_service = Azure::StorageManagementService.new
+        storage_keys = storage_service.get_storage_account_keys(storage_account)
+        Azure.config.storage_account_name = storage_account
+        Azure.config.storage_access_key = storage_keys.primary_key
+      end
+
+      def reset_storage_configuration(storage_name, storage_access_key)
+        Azure.config.storage_account_name = storage_name
+        Azure.config.storage_access_key = storage_access_key
+      end
+
     end
   end
 end

@@ -124,6 +124,7 @@ describe Azure::VirtualMachineManagementService do
     it 'should set options hash with valid cloud_service_name, deployment_name, storage_account_name and virtual network' do
       csn = options[:cloud_service_name]
       options[:availability_set_name] = 'aval-set-test'
+      options[:custom_data] = '#!/bin/sh\necho "setting up custom data" > /tmp/data'
       vm = subject.create_virtual_machine(params, options)
       vm.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
       vm.cloud_service_name.wont_be_nil

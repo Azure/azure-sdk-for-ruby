@@ -424,7 +424,8 @@ options = {
   :affinity_group_name => 'affinity1',
   :virtual_network_name => 'xplattestvnet',
   :subnet_name => 'subnet1',
-  :availability_set_name => 'availabiltyset1'
+  :availability_set_name => 'availabiltyset1',
+  :custom_data => '#!/bin/sh\n ls -lart > ~/files.txt'
 }
 virtual_machine_service.create_virtual_machine(params,options)
 
