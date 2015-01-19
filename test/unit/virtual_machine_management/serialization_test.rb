@@ -125,7 +125,8 @@ describe Azure::VirtualMachineManagement::Serialization do
         winrm_https_port: '5988',
         winrm_transport: ['http','https'],
         os_type: 'Windows',
-        existing_ports: ['5985']
+        existing_ports: ['5985'],
+        reserved_ip_name: "AnAwesomeIP"
       }
     end
 
@@ -173,6 +174,15 @@ describe Azure::VirtualMachineManagement::Serialization do
         media_link_uri = URI.parse(doc.css('Deployment RoleList OSVirtualHardDisk MediaLink').text)
         disk_time_name = /disk_(.*?)\.vhd/.match(media_link_uri.path).captures.first
         disk_time_name.must_equal now.strftime('%Y_%m_%d_%H_%M_%S_%L')
+      end
+    end
+
+    it 'returns a VirtualMachine object with the correct reserved IP' do
+      now = Time.now
+      Timecop.freeze(now) do
+        result = subject.deployment_to_xml params, options
+        doc = Nokogiri::XML(result)
+        doc.css('ReservedIPName').text.must_equal "AnAwesomeIP"
       end
     end
   end

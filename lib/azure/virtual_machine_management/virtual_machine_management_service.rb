@@ -89,6 +89,7 @@ module Azure
       # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.
       # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
       # * +:availability_set_name+    - String. Specifies the availability set name.
+      # * +:reserved_ip_name+         - String. Specifies the reserved IP name.
       #
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
       #
@@ -99,7 +100,7 @@ module Azure
         options[:os_type] = get_os_type(params[:image])
         validate_deployment_params(params, options)
         options[:deployment_name] ||= options[:cloud_service_name]
-        Loggerx.info 'Creating deploymnent...'
+        Loggerx.info 'Creating deployment...'
         options[:cloud_service_name] ||= generate_cloud_service_name(params[:vm_name])
         options[:storage_account_name] ||= generate_storage_account_name(params[:vm_name])
         optionals = {}

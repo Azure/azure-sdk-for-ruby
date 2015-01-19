@@ -69,6 +69,9 @@ module Azure
             if options[:virtual_network_name]
               xml.VirtualNetworkName options[:virtual_network_name]
             end
+            if options[:reserved_ip_name]
+              xml.ReservedIPName options[:reserved_ip_name]
+            end
           end
         end
         builder.doc.at_css('Role') << role_to_xml(params, options).at_css('PersistentVMRole').children.to_s
