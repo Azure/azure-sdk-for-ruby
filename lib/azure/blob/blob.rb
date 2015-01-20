@@ -16,7 +16,7 @@
 module Azure
   module Blob
     class Blob
-      
+
       def initialize
         @properties = {}
         @metadata = {}

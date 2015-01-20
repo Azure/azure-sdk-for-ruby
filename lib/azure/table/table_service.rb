@@ -24,6 +24,7 @@ module Azure
     class TableService < Azure::Service::StorageService
 
       def initialize
+        validate_configuration
         super(Azure::Table::Auth::SharedKey.new)
         @host = Azure.config.storage_table_host
       end
@@ -33,7 +34,7 @@ module Azure
       # ==== Attributes
       #
       # * +table_name+ - String. The table name
-      # * +options+    - Hash. Optional parameters. 
+      # * +options+    - Hash. Optional parameters.
       #
       # ==== Options
       #
@@ -58,7 +59,7 @@ module Azure
       # ==== Attributes
       #
       # * +table_name+ - String. The table name
-      # * +options+    - Hash. Optional parameters. 
+      # * +options+    - Hash. Optional parameters.
       #
       # ==== Options
       #
@@ -81,7 +82,7 @@ module Azure
       # ==== Attributes
       #
       # * +table_name+ - String. The table name
-      # * +options+    - Hash. Optional parameters. 
+      # * +options+    - Hash. Optional parameters.
       #
       # ==== Options
       #
@@ -102,7 +103,7 @@ module Azure
       #
       # ==== Attributes
       #
-      # * +options+    - Hash. Optional parameters. 
+      # * +options+    - Hash. Optional parameters.
       #
       # ==== Options
       #
@@ -134,7 +135,7 @@ module Azure
       # ==== Attributes
       #
       # * +table_name+ - String. The table name
-      # * +options+    - Hash. Optional parameters. 
+      # * +options+    - Hash. Optional parameters.
       #
       # ==== Options
       #
@@ -160,14 +161,14 @@ module Azure
       # ==== Attributes
       #
       # * +table_name+ - String. The table name
-      # * +options+    - Hash. Optional parameters. 
+      # * +options+    - Hash. Optional parameters.
       #
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
       # * +:signed_identifiers+  - Array. A list of Azure::Entity::SignedIdentifier instances
       # * +:timeout+             - Integer. A timeout in seconds.
-      # 
+      #
       # See http://msdn.microsoft.com/en-us/library/azure/jj159102
       #
       # Returns nil on success
@@ -189,8 +190,8 @@ module Azure
       # ==== Attributes
       #
       # * +table_name+    - String. The table name
-      # * +entity_values+ - Hash. A hash of the name/value pairs for the entity. 
-      # * +options+       - Hash. Optional parameters. 
+      # * +entity_values+ - Hash. A hash of the name/value pairs for the entity.
+      # * +options+       - Hash. Optional parameters.
       #
       # ==== Options
       #
@@ -207,7 +208,7 @@ module Azure
         query["timeout"] = options[:timeout].to_s if options[:timeout]
 
         response = call(:post, entities_uri(table_name, nil, nil, query), body)
-        
+
         result = Azure::Table::Serialization.hash_from_entry_xml(response.body)
 
         Entity.new do |entity|
@@ -223,7 +224,7 @@ module Azure
       # ==== Attributes
       #
       # * +table_name+    - String. The table name
-      # * +options+       - Hash. Optional parameters. 
+      # * +options+       - Hash. Optional parameters.
       #
       # ==== Options
       #
@@ -254,7 +255,7 @@ module Azure
         entities = Azure::Service::EnumerationResults.new
 
         results = (options[:partition_key] and options[:row_key]) ? [Azure::Table::Serialization.hash_from_entry_xml(response.body)] : Azure::Table::Serialization.entries_from_feed_xml(response.body)
-        
+
         results.each do |result|
           entity = Entity.new do |e|
             e.table = table_name
@@ -266,34 +267,34 @@ module Azure
         end if results
 
         entities.continuation_token = nil
-        entities.continuation_token = { 
-          :next_partition_key=> response.headers["x-ms-continuation-NextPartitionKey"], 
+        entities.continuation_token = {
+          :next_partition_key=> response.headers["x-ms-continuation-NextPartitionKey"],
           :next_row_key => response.headers["x-ms-continuation-NextRowKey"]
           } if response.headers["x-ms-continuation-NextPartitionKey"]
 
         entities
       end
 
-      # Public: Updates an existing entity in a table. The Update Entity operation replaces 
+      # Public: Updates an existing entity in a table. The Update Entity operation replaces
       # the entire entity and can be used to remove properties.
       #
       # ==== Attributes
       #
       # * +table_name+    - String. The table name
       # * +entity_values+ - Hash. A hash of the name/value pairs for the entity.
-      # * +options+       - Hash. Optional parameters. 
+      # * +options+       - Hash. Optional parameters.
       #
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
       # * +:if_match+              - String. A matching condition which is required for update (optional, Default="*")
-      # * +:create_if_not_exists+  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
+      # * +:create_if_not_exists+  - Boolean. If true, and partition_key and row_key do not reference and existing entity,
       #   that entity will be inserted. If false, the operation will fail. (optional, Default=false)
       # * +:timeout+               - Integer. A timeout in seconds.
       #
       # See http://msdn.microsoft.com/en-us/library/azure/dd179427
       #
-      # Returns the ETag for the entity on success 
+      # Returns the ETag for the entity on success
       def update_entity(table_name, entity_values, options={})
         if_match = "*"
         if_match = options[:if_match] if options[:if_match]
@@ -319,19 +320,19 @@ module Azure
       #
       # * +table_name+    - String. The table name
       # * +entity_values+ - Hash. A hash of the name/value pairs for the entity.
-      # * +options+       - Hash. Optional parameters. 
+      # * +options+       - Hash. Optional parameters.
       #
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
       # * +:if_match+              - String. A matching condition which is required for update (optional, Default="*")
-      # * +:create_if_not_exists+  - Boolean. If true, and partition_key and row_key do not reference and existing entity, 
+      # * +:create_if_not_exists+  - Boolean. If true, and partition_key and row_key do not reference and existing entity,
       #   that entity will be inserted. If false, the operation will fail. (optional, Default=false)
       # * +:timeout+               - Integer. A timeout in seconds.
-      # 
+      #
       # See http://msdn.microsoft.com/en-us/library/azure/dd179392
-      # 
-      # Returns the ETag for the entity on success 
+      #
+      # Returns the ETag for the entity on success
       def merge_entity(table_name, entity_values, options={})
         if_match = "*"
         if_match = options[:if_match] if options[:if_match]
@@ -356,16 +357,16 @@ module Azure
       #
       # * +table_name+    - String. The table name
       # * +entity_values+ - Hash. A hash of the name/value pairs for the entity.
-      # * +options+       - Hash. Optional parameters. 
+      # * +options+       - Hash. Optional parameters.
       #
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+      - Integer. A timeout in seconds.
-      # 
+      #
       # See http://msdn.microsoft.com/en-us/library/azure/hh452241
-      # 
-      # Returns the ETag for the entity on success 
+      #
+      # Returns the ETag for the entity on success
       def insert_or_merge_entity(table_name, entity_values, options={})
         options[:create_if_not_exists] = true
         merge_entity(table_name, entity_values, options)
@@ -377,16 +378,16 @@ module Azure
       #
       # * +table_name+    - String. The table name
       # * +entity_values+ - Hash. A hash of the name/value pairs for the entity.
-      # * +options+       - Hash. Optional parameters. 
+      # * +options+       - Hash. Optional parameters.
       #
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+      - Integer. A timeout in seconds.
-      # 
+      #
       # See http://msdn.microsoft.com/en-us/library/azure/hh452242
       #
-      # Returns the ETag for the entity on success 
+      # Returns the ETag for the entity on success
       def insert_or_replace_entity(table_name, entity_values, options={})
         options[:create_if_not_exists] = true
         update_entity(table_name, entity_values, options)
@@ -554,6 +555,14 @@ module Azure
         value = URI.escape(value)
 
         value
+      end
+
+      # Private: Raise error if mandatory config parameter not present
+      private
+      def validate_configuration
+        sto_ak = Azure.config.storage_access_key
+        error_message = 'Storage access key missing.'
+        raise error_message if sto_ak.nil? || sto_ak.empty?
       end
     end
   end

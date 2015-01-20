@@ -22,6 +22,7 @@ module Azure
     class BlobService < Service::StorageService
 
       def initialize
+        validate_configuration
         super()
         @host = Azure.config.storage_blob_host
       end
@@ -242,7 +243,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:signed_identifiers+          - Array. A list of Azure::Entity::SignedIdentifier instances (optional)
       # * +:timeout+                     - Integer. A timeout in seconds.
-      # 
+      #
       # See http://msdn.microsoft.com/en-us/library/azure/dd179391.aspx
       #
       # Returns a tuple of (container, signed_identifiers)
@@ -469,7 +470,7 @@ module Azure
       # * +:if_match+               - An ETag value. Specify an ETag value for this conditional header to write the page only if the blob's ETag value matches the value specified. If the values do not match, the Blob service returns status code 412 (Precondition Failed).
       # * +:if_none_match+          - An ETag value. Specify an ETag value for this conditional header to write the page only if the blob's ETag value does not match the value specified. If the values are identical, the Blob service returns status code 412 (Precondition Failed).
       # * +:timeout+                - Integer. A timeout in seconds.
-      # 
+      #
       # See http://msdn.microsoft.com/en-us/library/azure/ee691975.aspx
       #
       # Returns Blob
@@ -684,7 +685,7 @@ module Azure
       # * +:metadata+              - Hash. Custom metadata values to store with the blob.
       # * +:timeout+               - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/azure/dd179467.aspx 
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179467.aspx
       #
       # Returns nil on success
       def commit_blob_blocks(container, blob, block_list, options={})
@@ -716,8 +717,8 @@ module Azure
       # There are two block lists maintained for a blob:
       # 1) Committed Block List: The list of blocks that have been successfully
       #    committed to a given blob with commitBlobBlocks.
-      # 2) Uncommitted Block List: The list of blocks that have been uploaded for a 
-      #    blob using Put Block (REST API), but that have not yet been committed. 
+      # 2) Uncommitted Block List: The list of blocks that have been uploaded for a
+      #    blob using Put Block (REST API), but that have not yet been committed.
       #    These blocks are stored in Microsoft Azure in association with a blob, but do
       #    not yet form part of the blob.
       #
@@ -1422,6 +1423,15 @@ module Azure
 
         generate_uri(path, query)
       end
+
+      # Private: Raise error if mandatory config parameter not present
+      private
+      def validate_configuration
+        sto_ak = Azure.config.storage_access_key
+        error_message = 'Storage access key missing.'
+        raise error_message if sto_ak.nil? || sto_ak.empty?
+      end
+
     end
   end
 end
