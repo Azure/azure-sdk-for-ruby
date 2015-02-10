@@ -104,6 +104,7 @@ module Azure
                   xml.SubnetNames do
                     xml.SubnetName options[:subnet_name]
                   end
+                  xml.StaticVirtualNetworkIPAddress options[:static_virtual_network_ipaddress] if options[:static_virtual_network_ipaddress]
                 end
               end
             end

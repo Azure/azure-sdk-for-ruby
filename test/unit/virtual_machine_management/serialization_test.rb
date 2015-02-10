@@ -265,4 +265,28 @@ describe Azure::VirtualMachineManagement::Serialization do
       assert_operator result.to_i, :<=, 65535
     end
   end
+  
+  describe "#role_to_xml" do
+    
+    before(:each) do
+      @params = { 
+          :certificate => { :fingerprint => "fingerprint" },
+          :vm_name => "aVMName", 
+          :image => "anImage" 
+      }
+      
+      @options = { 
+          :virtual_network_name => "aNetworkName", 
+          :subnet_name => "someSubnet", 
+          :storage_account_name => "storage", 
+          :vm_size => "Small" 
+      }
+    end
+    
+    it "should return a valid role containing a static vnet ip address" do
+      @options[:static_virtual_network_ipaddress] = "1.2.3.4"
+      result = subject.role_to_xml(@params, @options)
+      result.css('StaticVirtualNetworkIPAddress').text.must_equal "1.2.3.4"
+    end
+  end
 end
