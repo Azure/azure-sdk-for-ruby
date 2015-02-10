@@ -272,21 +272,29 @@ describe Azure::VirtualMachineManagement::Serialization do
       @params = { 
           :certificate => { :fingerprint => "fingerprint" },
           :vm_name => "aVMName", 
-          :image => "anImage" 
+          :image => "anImage",
+          :vm_user => "nocturnal_flying_echolocating_mammal_man"
       }
       
       @options = { 
           :virtual_network_name => "aNetworkName", 
           :subnet_name => "someSubnet", 
           :storage_account_name => "storage", 
-          :vm_size => "Small" 
+          :vm_size => "Small",
+          :os_type => "Linux"
       }
     end
     
-    it "should return a valid role containing a static vnet ip address" do
+    it "should return a valid role containing a static vnet ip address if provided in options" do
       @options[:static_virtual_network_ipaddress] = "1.2.3.4"
       result = subject.role_to_xml(@params, @options)
       result.css('StaticVirtualNetworkIPAddress').text.must_equal "1.2.3.4"
+    end
+
+    it "should return a valid role containing a custom data section if provided in params" do
+      @params[:custom_data] = "blahblahblah"
+      result = subject.role_to_xml(@params, @options)
+      result.css('CustomData').text.must_equal "blahblahblah"
     end
   end
 end

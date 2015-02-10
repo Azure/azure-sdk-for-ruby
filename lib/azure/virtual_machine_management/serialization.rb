@@ -147,6 +147,7 @@ module Azure
                 end
               end
             end
+            xml.CustomData params[:custom_data] if params[:custom_data]
           end
         elsif options[:os_type] == 'Windows'
           xml.ConfigurationSet('i:type' => 'WindowsProvisioningConfigurationSet') do
