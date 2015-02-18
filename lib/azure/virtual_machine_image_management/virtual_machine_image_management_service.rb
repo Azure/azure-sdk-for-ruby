@@ -21,15 +21,44 @@ module Azure
         super()
       end
 
-      # Public: Gets a list of virtual machine images from the server
+      # Public: Gets a list of all virtual machine images from the server both user created images and public images
+      # @param imageType = :public (public images), :private (user generated images). :all (both types)
+      # Returns an array of Azure::VirtualMachineImageManagementService objects
+      def list_virtual_machine_images(imageType=:all)
+        images = Array.new
+        if imageType == :public or imageType == :all
+          public_images = list_public_virtual_machine_images
+          images.concat public_images
+        end
+
+        if imageType == :private or imageType == :all
+          private_images = list_private_virtual_machine_images
+          images.concat private_images
+        end
+
+        images
+      end
+
+      # Public: Gets a list of virtual machine images from the server returns both user generated and public images by default
       #
       # Returns an array of Azure::VirtualMachineImageManagementService objects
-      def list_virtual_machine_images
+      def list_public_virtual_machine_images
         request_path = '/services/images'
         request = ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.virtual_machine_images_from_xml(response)
       end
+
+      # Public: Gets a list of private virtual machine images from the server
+      #
+      # Returns an array of Azure::VirtualMachineImageManagementService objects
+      def list_private_virtual_machine_images
+        request_path = '/services/vmimages'
+        request = ManagementHttpRequest.new(:get, request_path, nil)
+        response = request.call
+        Serialization.virtual_machine_vmimages_from_xml(response)
+      end
+
     end
 
     class VirtualMachineDiskManagementService < BaseManagementService

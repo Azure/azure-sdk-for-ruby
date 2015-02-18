@@ -18,6 +18,7 @@ describe Azure::VirtualMachineImageManagement::Serialization do
   subject { Azure::VirtualMachineImageManagement::Serialization }
 
   let(:virtual_machine_images_from_xml) { Fixtures['list_images'] }
+  let(:virtual_machine_vmimages_from_xml) { Fixtures['list_vmimages'] }
 
   describe '#virtual_machine_images_from_xml' do
 
@@ -28,8 +29,23 @@ describe Azure::VirtualMachineImageManagement::Serialization do
     it 'returns an Array of VirtualMachineImageService instances' do
       results = subject.virtual_machine_images_from_xml Nokogiri::XML(virtual_machine_images_from_xml)
       results.must_be_kind_of Array
-      results[0].must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImage
+      results.first.must_be_kind_of Azure::VirtualMachineImageManagement::VirtualMachineImage
       results.count.must_equal 12
     end
+
+    it 'parses an OSImage node correctly' do
+      results = subject.virtual_machine_images_from_xml Nokogiri::XML(virtual_machine_images_from_xml)
+      results.first.name.must_equal 'RightImage-CentOS-6.2-x64-v5.8.8.1'
+      results.first.os_type.must_equal 'Linux'
+      results.first.category.must_equal 'RightScale with Linux'
+    end
+
+    it 'parses an VMImage node correctly' do
+      results = subject.virtual_machine_vmimages_from_xml Nokogiri::XML(virtual_machine_vmimages_from_xml)
+      results.first.name.must_equal 'name-of-image'
+      results.first.os_type.must_equal 'operating-system-of-image'
+      results.first.category.must_equal 'category-of-image'
+    end
+
   end
 end
