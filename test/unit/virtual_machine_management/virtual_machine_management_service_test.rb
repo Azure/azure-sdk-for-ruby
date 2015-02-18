@@ -423,7 +423,7 @@ describe Azure::VirtualMachineManagementService do
         subject.add_role(windows_params, options)
       end
       error_msg = 'No such file or directory -'
-      assert_match(/#{error_msg}/i, exception.message)
+      assert_match(/#{error_msg}*/i, exception.message)
     end
 
     it 'throws error when wrong role size is given' do
