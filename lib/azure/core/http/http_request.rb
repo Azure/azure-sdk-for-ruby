@@ -95,7 +95,7 @@ module Azure
         def default_headers(current_time)
           headers["User-Agent"] = "Azure-SDK-For-Ruby/" + Azure::Version.to_s
           headers["x-ms-date"] = current_time
-          headers["x-ms-version"] = "2012-02-12"
+          headers["x-ms-version"] = "2013-08-15"
           headers["DataServiceVersion"] = "1.0;NetFx"
           headers["MaxDataServiceVersion"] = "2.0;NetFx"
 
