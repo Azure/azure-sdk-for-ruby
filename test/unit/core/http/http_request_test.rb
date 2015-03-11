@@ -22,19 +22,19 @@ describe Azure::Core::Http::HttpRequest do
     end
 
     it "sets the x-ms-date header to the current_time" do
-      subject.headers["x-ms-date"] = "Thu, 04 Oct 2012 06:38:27 GMT"
+      subject.headers["x-ms-date"].must_equal "Thu, 04 Oct 2012 06:38:27 GMT"
     end
 
     it "sets the x-ms-version header to the current API version" do
-      subject.headers["x-ms-version"] = "2013-08-15"
+      subject.headers["x-ms-version"].must_equal "2013-08-15"
     end
 
     it "sets the DataServiceVersion header to the current API version" do
-      subject.headers["DataServiceVersion"] = "1.0;NetFx"
+      subject.headers["DataServiceVersion"].must_equal "1.0;NetFx"
     end
 
     it "sets the MaxDataServiceVersion header to the current max` API version" do
-      subject.headers["MaxDataServiceVersion"] = "2.0;NetFx"
+      subject.headers["MaxDataServiceVersion"].must_equal "2.0;NetFx"
     end
 
     describe " when passed a body " do
