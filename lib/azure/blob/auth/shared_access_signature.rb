@@ -16,7 +16,6 @@
 # TODO: add expected commenting
 # TODO: extract common SAS logic, add support for the other SAS types
 # TODO: tests
-# TODO: can the empty strings be safely removed?
 
 require "azure/core/configuration"
 require "azure/core/auth/signer"
@@ -29,41 +28,30 @@ module Azure
     module Auth
       class SharedAccessSignature < Core::Auth::Signer
         DEFAULTS = {
-          path: '/',
           resource: 'b',
           permissions: 'r',
-          start: '',
-          expiry: '',
-          identifier: '',
-          version: '2013-08-15',
-          cache_control: '',
-          content_disposition: '',
-          content_encoding: '',
-          content_language: '',
-          content_type: ''
+          version: '2013-08-15'
         }
 
-        MAPPINGS = {
-          sp: :permissions,
-          st: :start,
-          se: :expiry,
-          sr: :resource,
-          si: :identifier,
-
-          sv: :version,
-
-          rscc: :cache_control,
-          rscd: :content_disposition,
-          rsce: :content_encoding,
-          rscl: :content_language,
-          rsct: :content_type
+        KEY_MAPPINGS = {
+          permissions:         :sp,
+          start:               :st,
+          expiry:              :se,
+          resource:            :sr,
+          identifier:          :si,
+          version:             :sv,
+          cache_control:       :rscc,
+          content_disposition: :rscd,
+          content_encoding:    :rsce,
+          content_language:    :rscl,
+          content_type:        :rsct
         }
 
         OPTIONAL_QUERY_PARAMS = [:sp, :si, :rscc, :rscd, :rsce, :rscl, :rsct]
 
-        # The Azure account's name.
-        attr :account_name
+        attr :path
         attr :options
+        attr :account_name
 
         # Public: Initialize the Signer.
         #
@@ -71,7 +59,8 @@ module Azure
         #                global configuration.
         # access_key   - The access_key encoded in Base64. Defaults to the
         #                one in the global configuration.
-        def initialize(options={}, account_name=Azure.config.storage_account_name, access_key=Azure.config.storage_access_key)
+        def initialize(path='/', options={}, account_name=Azure.config.storage_account_name, access_key=Azure.config.storage_access_key)
+          @path = path
           @account_name = account_name
           @options = DEFAULTS.merge(options)
 
@@ -79,6 +68,7 @@ module Azure
         end
 
         def signable_string
+          # The newlines from empty strings here are required
           [
             options[:permissions],
             options[:start],
@@ -100,9 +90,9 @@ module Azure
           # Note: 'c' is planned to become 'container' in a forthcoming API update
           if options[:resource].first == 'c' then
             # If resource is a container, remove the last part (which is the filename)
-            options[:path].split('/').reverse.drop(1).reverse.join('/')
+            path.split('/').reverse.drop(1).reverse.join('/')
           else
-            options[:path]
+            path
           end
         end
 
@@ -115,17 +105,23 @@ module Azure
         end
 
         def query_hash
-          Hash[MAPPINGS.map { |query_key, friendly_key|
-            [query_key, URI.unescape(options[friendly_key])]
+          Hash[options.map { |k, v|
+            [KEY_MAPPINGS[k], v]
           }].reject { |k,v|
-            OPTIONAL_QUERY_PARAMS.include?(k) && v == ''
-          }.merge(sig: URI.unescape(signature))
+            OPTIONAL_QUERY_PARAMS.include?(k) && v.to_s == ''
+          }.merge(
+            sig: signature
+          )
+        end
+
+        def unescaped_query_hash
+          Hash[query_hash.map{ |k, v| [k, URI.unescape(v)] }]
         end
 
         def signed_uri
-          uri  = Addressable::URI.new
-          uri.query_values = query_hash
-          "https://#{account_name}.blob.core.windows.net/#{options[:path]}?#{uri.query}"
+          uri = Addressable::URI.new
+          uri.query_values = unescaped_query_hash
+          "https://#{account_name}.blob.core.windows.net/#{path}?#{uri.query}"
         end
 
         def to_s
