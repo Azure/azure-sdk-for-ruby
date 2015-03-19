@@ -13,9 +13,7 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 
-# TODO: add expected commenting
 # TODO: extract common SAS logic, add support for the other SAS types
-# TODO: tests
 
 require "azure/core/configuration"
 require "azure/core/auth/signer"
@@ -55,10 +53,28 @@ module Azure
 
         # Public: Initialize the Signer.
         #
-        # account_name - The account name. Defaults to the one in the
-        #                global configuration.
-        # access_key   - The access_key encoded in Base64. Defaults to the
-        #                one in the global configuration.
+        # ==== Attributes
+        #
+        # * +path+         - the container or blob path
+        # * +options+      - Hash. Optional parameters
+        # * +account_name+ - The account name. Defaults to the one in the
+        #                    global configuration.
+        # * +access_key+   - The access_key encoded in Base64. Defaults to the
+        #                    one in the global configuration.
+        #
+        # ==== Options
+        #
+        # * +:permissions+  - String. Combination of 'r','w','d','l' (container only) in this order. Default 'r'
+        # * +:start+        - String. Date/Time in ISO8601 format. Optional.
+        # * +:expiry+       - String. Date/Time in ISO8601 format. Required.
+        # * +:identifier+   - String. Identifier for stored access policy. Optional
+        # * +:version+      - String. API version. Default '2013-08-15'
+        #
+        # * +:cache_control       - String. Response header override. Optional.
+        # * +:content_disposition - String. Response header override. Optional.
+        # * +:content_encoding    - String. Response header override. Optional.
+        # * +:content_language    - String. Response header override. Optional.
+        # * +:content_type        - String. Response header override. Optional.
         def initialize(path='/', options={}, account_name=Azure.config.storage_account_name, access_key=Azure.config.storage_access_key)
           @path = path
           @account_name = account_name
@@ -67,7 +83,9 @@ module Azure
           super(access_key)
         end
 
+        # Public: Construct the plaintext to the spec required for signatures
         def signable_string
+          # Order is significant
           # The newlines from empty strings here are required
           [
             options[:permissions],
@@ -86,19 +104,21 @@ module Azure
           ].join("\n")
         end
 
-        def canonicalized_path
-          # Note: 'c' is planned to become 'container' in a forthcoming API update
-          if options[:resource].first == 'c' then
-            # If resource is a container, remove the last part (which is the filename)
-            path.split('/').reverse.drop(1).reverse.join('/')
-          else
-            path
-          end
+        def canonicalized_resource
+          "/#{account_name}/#{path}"
         end
 
-        def canonicalized_resource
-          "/#{account_name}/#{canonicalized_path}"
+        # Public: A customised URI reflecting options for the resource signed with the Shared Access Signature
+        def signed_uri
+          query_params = URI.encode_www_form(query_hash)
+          "https://#{account_name}.blob.core.windows.net/#{path}?#{query_params}"
         end
+
+        def to_s
+          signed_uri
+        end
+
+        private
 
         def signature
           sign(signable_string)
@@ -112,20 +132,6 @@ module Azure
           }.merge(
             sig: signature
           )
-        end
-
-        def unescaped_query_hash
-          Hash[query_hash.map{ |k, v| [k, URI.unescape(v)] }]
-        end
-
-        def signed_uri
-          uri = Addressable::URI.new
-          uri.query_values = unescaped_query_hash
-          "https://#{account_name}.blob.core.windows.net/#{path}?#{uri.query}"
-        end
-
-        def to_s
-          signed_uri
         end
 
       end
