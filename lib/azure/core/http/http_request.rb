@@ -124,6 +124,7 @@ module Azure
         #
         # Returns a HttpResponse
         def call
+          uri.port = 443
           request = http_request_class.new(uri.request_uri, headers)
           request.body = body if body
 
@@ -139,13 +140,21 @@ module Azure
           else
             http = Net::HTTP.new(uri.host, uri.port)
           end
-
-          if uri.scheme.downcase == 'https'
-            # require 'net/https'
-            http.use_ssl = true
-            http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+          
+          cert_file = File.dirname(__FILE__) + '/ca_chain_bundle.crt'
+          
+          if defined? Rails
+            certificate = Rails.cache.fetch('azure/ca_chain_bundle') do
+              File.read(cert_file)
+            end
+          else
+            certificate = File.read(cert_file)
           end
-
+          
+          http.use_ssl = true
+          http.cert = OpenSSL::X509::Certificate.new certificate
+          http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+          
           response = HttpResponse.new(http.request(request))
           response.uri = uri
           raise response.error unless response.success?
