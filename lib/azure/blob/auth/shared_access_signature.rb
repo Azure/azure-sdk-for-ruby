@@ -56,7 +56,7 @@ module Azure
         # ==== Attributes
         #
         # * +path+         - the container or blob path
-        # * +options+      - Hash. Optional parameters
+        # * +options+      - Hash. Required and optional parameters
         # * +account_name+ - The account name. Defaults to the one in the
         #                    global configuration.
         # * +access_key+   - The access_key encoded in Base64. Defaults to the
@@ -64,9 +64,10 @@ module Azure
         #
         # ==== Options
         #
+        # * +:resource+     - String. Resource type, either 'b' (blob) or 'c' (container). Default 'b'
         # * +:permissions+  - String. Combination of 'r','w','d','l' (container only) in this order. Default 'r'
-        # * +:start+        - String. Date/Time in ISO8601 format. Optional.
-        # * +:expiry+       - String. Date/Time in ISO8601 format. Required.
+        # * +:start+        - String. UTC Date/Time in ISO8601 format. Optional.
+        # * +:expiry+       - String. UTC Date/Time in ISO8601 format. Required.
         # * +:identifier+   - String. Identifier for stored access policy. Optional
         # * +:version+      - String. API version. Default '2013-08-15'
         #
@@ -75,7 +76,7 @@ module Azure
         # * +:content_encoding    - String. Response header override. Optional.
         # * +:content_language    - String. Response header override. Optional.
         # * +:content_type        - String. Response header override. Optional.
-        def initialize(path='/', options={}, account_name=Azure.config.storage_account_name, access_key=Azure.config.storage_access_key)
+        def initialize(path, options, account_name=Azure.config.storage_account_name, access_key=Azure.config.storage_access_key)
           @path = path
           @account_name = account_name
           @options = DEFAULTS.merge(options)
