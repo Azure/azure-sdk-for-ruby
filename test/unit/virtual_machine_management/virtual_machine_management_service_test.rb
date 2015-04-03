@@ -422,7 +422,7 @@ describe Azure::VirtualMachineManagementService do
       exception = assert_raises(RuntimeError) do
         subject.add_role(windows_params, options)
       end
-      error_msg = 'No such file or directory -'
+      error_msg = 'No such file or directory'
       assert_match(/#{error_msg}/i, exception.message)
     end
 
