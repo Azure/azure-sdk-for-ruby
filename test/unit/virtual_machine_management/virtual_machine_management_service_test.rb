@@ -61,7 +61,6 @@ describe Azure::VirtualMachineManagementService do
 
   before do
     Loggerx.stubs(:info).returns(nil)
-    Loggerx.expects(:puts).returns(nil).at_least(0)
     ManagementHttpRequest.stubs(:new).with(
       :get,
       images_request_path,
@@ -344,28 +343,37 @@ describe Azure::VirtualMachineManagementService do
       assert_match(/Persistentvmrole not enabled for "West Europe"*/, msg)
     end
 
-    it 'vm_size should be case sensitive' do
+    it 'warns if vm_size is not in the correct case' do
       options = {
         vm_size: 'extralarge'
       }
-      msg = subject.create_virtual_machine(params, options)
-      assert_match(/Value 'extralarge' specified for parameter 'vm_size' is invalid/, msg)
+      out, err = capture_io do 
+        msg = subject.create_virtual_machine(params, options)
+      end
+      error_msg = "'extralarge' specified for parameter 'vm_size' is not in the list of valid VM role sizes."
+      assert_match(/#{error_msg}*/, out)
     end
 
-    it 'throws error when wrong role size is given' do
+    it 'warns when wrong role size is given' do
       options = {
         vm_size: 'wrong size'
       }
-      virtual_machine = subject.create_virtual_machine(params, options)
-      error_msg = "'wrong size' specified for parameter 'vm_size' is invalid."
-      assert_match(/#{error_msg}*/, virtual_machine)
+      out, err = capture_io do 
+        virtual_machine = subject.create_virtual_machine(params, options)
+      end
+      error_msg = "'wrong size' specified for parameter 'vm_size' is not in the list of valid VM role sizes."
+      assert_match(/#{error_msg}*/, out)
     end
 
-    it 'should not throw any error if role size is empty' do
+    it 'should warn if role size is empty' do
       options = {
         vm_size: ''
       }
-      subject.create_virtual_machine(params, options)
+      out, err = capture_io do 
+        subject.create_virtual_machine(params, options)
+      end
+      error_msg = "'' specified for parameter 'vm_size' is not in the list of valid VM role sizes."
+      assert_match(/#{error_msg}*/, out)
     end
   end
 
@@ -424,15 +432,6 @@ describe Azure::VirtualMachineManagementService do
       end
       error_msg = 'No such file or directory'
       assert_match(/#{error_msg}/i, exception.message)
-    end
-
-    it 'throws error when wrong role size is given' do
-      options = { vm_size: 'wrong size' }
-      exception = assert_raises(RuntimeError) do
-        subject.add_role(windows_params, options)
-      end
-      error_msg = "wrong size' specified for parameter 'vm_size' is invalid."
-      assert_match(/#{error_msg}*/, exception.message)
     end
 
   end
