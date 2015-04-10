@@ -250,6 +250,7 @@ module Azure
         def service_properties_to_xml(properties)
           builder = Nokogiri::XML::Builder.new(:encoding => 'utf-8') do |xml|
             xml.StorageServiceProperties {
+              xml.DefaultServiceVersion(properties.default_service_version) if properties.default_service_version
               logging_to_xml(properties.logging, xml) if properties.logging
               hour_metrics_to_xml(properties.hour_metrics, xml) if properties.hour_metrics
               minute_metrics_to_xml(properties.minute_metrics, xml) if properties.minute_metrics

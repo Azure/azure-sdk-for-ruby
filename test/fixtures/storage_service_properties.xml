@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StorageServiceProperties>
+  <DefaultServiceVersion>2011-08-18</DefaultServiceVersion>
   <Logging>
     <Version>1.0</Version>
     <Delete>true</Delete>
