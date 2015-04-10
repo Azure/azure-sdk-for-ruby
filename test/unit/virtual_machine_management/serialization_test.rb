@@ -125,7 +125,8 @@ describe Azure::VirtualMachineManagement::Serialization do
         winrm_https_port: '5988',
         winrm_transport: ['http','https'],
         os_type: 'Windows',
-        existing_ports: ['5985']
+        existing_ports: ['5985'],
+        reserved_ip_name: "AnAwesomeIP"
       }
     end
 
@@ -173,6 +174,15 @@ describe Azure::VirtualMachineManagement::Serialization do
         media_link_uri = URI.parse(doc.css('Deployment RoleList OSVirtualHardDisk MediaLink').text)
         disk_time_name = /disk_(.*?)\.vhd/.match(media_link_uri.path).captures.first
         disk_time_name.must_equal now.strftime('%Y_%m_%d_%H_%M_%S_%L')
+      end
+    end
+
+    it 'returns a VirtualMachine object with the correct reserved IP' do
+      now = Time.now
+      Timecop.freeze(now) do
+        result = subject.deployment_to_xml params, options
+        doc = Nokogiri::XML(result)
+        doc.css('ReservedIPName').text.must_equal "AnAwesomeIP"
       end
     end
   end
@@ -253,6 +263,38 @@ describe Azure::VirtualMachineManagement::Serialization do
       result = subject.assign_random_port(preferred_port, ['1', preferred_port])
       assert_operator result.to_i, :>=, 10000
       assert_operator result.to_i, :<=, 65535
+    end
+  end
+  
+  describe "#role_to_xml" do
+    
+    before(:each) do
+      @params = { 
+          :certificate => { :fingerprint => "fingerprint" },
+          :vm_name => "aVMName", 
+          :image => "anImage",
+          :vm_user => "nocturnal_flying_echolocating_mammal_man"
+      }
+      
+      @options = { 
+          :virtual_network_name => "aNetworkName", 
+          :subnet_name => "someSubnet", 
+          :storage_account_name => "storage", 
+          :vm_size => "Small",
+          :os_type => "Linux"
+      }
+    end
+    
+    it "should return a valid role containing a static vnet ip address if provided in options" do
+      @options[:static_virtual_network_ipaddress] = "1.2.3.4"
+      result = subject.role_to_xml(@params, @options)
+      result.css('StaticVirtualNetworkIPAddress').text.must_equal "1.2.3.4"
+    end
+
+    it "should return a valid role containing a custom data section if provided in params" do
+      @params[:custom_data] = "blahblahblah"
+      result = subject.role_to_xml(@params, @options)
+      result.css('CustomData').text.must_equal "blahblahblah"
     end
   end
 end

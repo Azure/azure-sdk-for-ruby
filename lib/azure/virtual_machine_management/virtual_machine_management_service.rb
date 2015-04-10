@@ -89,6 +89,7 @@ module Azure
       # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.
       # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
       # * +:availability_set_name+    - String. Specifies the availability set name.
+      # * +:reserved_ip_name+         - String. Specifies the reserved IP name.
       #
       # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
       #

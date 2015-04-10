@@ -451,6 +451,7 @@ options = {
   :virtual_network_name => 'xplattestvnet',
   :subnet_name => 'subnet1',
   :availability_set_name => 'availabiltyset1'
+  :reserved_ip_name => 'reservedipname'
 }
 virtual_machine_service.create_virtual_machine(params,options)
 
