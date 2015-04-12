@@ -934,6 +934,11 @@ describe Azure::Blob::BlobService do
             subject.create_block_blob container_name, blob_name, content, { :blob_cache_control => "bcc-value" }
           end
 
+          it "modifies the request headers when provided a :blob_content_disposition value" do
+            request_headers["x-ms-blob-content-disposition"] = "bcd-value"
+            subject.create_block_blob container_name, blob_name, content, { :blob_content_disposition => "bcd-value" }
+          end
+
           it "modifies the request headers when provided a :content_type value" do
             request_headers["Content-Type"] = "ct-value"
             subject.create_block_blob container_name, blob_name, content, { :content_type => "ct-value" }
@@ -1035,6 +1040,11 @@ describe Azure::Blob::BlobService do
           it "modifies the request headers when provided a :blob_cache_control value" do
             request_headers["x-ms-blob-cache-control"] = "bcc-value"
             subject.commit_blob_blocks container_name, blob_name, block_list, { :blob_cache_control => "bcc-value" }
+          end
+
+          it "modifies the request headers when provided a :blob_content_disposition value" do
+            request_headers["x-ms-blob-content-disposition"] = "bcd-value"
+            subject.commit_blob_blocks container_name, blob_name, block_list, { :blob_content_disposition => "bcd-value" }
           end
 
           it "modifies the request headers when provided a :metadata value" do
@@ -1230,6 +1240,11 @@ describe Azure::Blob::BlobService do
           it "modifies the request headers when provided a :blob_cache_control value" do
             request_headers["x-ms-blob-cache-control"] = "bcc-value"
             subject.set_blob_properties container_name, blob_name, { :blob_cache_control => "bcc-value" }
+          end
+
+          it "modifies the request headers when provided a :blob_content_disposition value" do
+            request_headers["x-ms-blob-content-disposition"] = "bcd-value"
+            subject.set_blob_properties container_name, blob_name, { :blob_content_disposition => "bcd-value" }
           end
 
           it "modifies the request headers when provided a :blob_content_length value" do

@@ -563,18 +563,19 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:content_type+          - String. Content type for the request. Will be saved with blob unless alternate value is provided in blob_content_type.
-      # * +:content_encoding+      - String. Content encoding for the request. Will be saved with blob unless alternate value is provided in blob_content_encoding.
-      # * +:content_language+      - String. Content language for the request. Will be saved with blob unless alternate value is provided in blob_content_language.
-      # * +:content_md5+           - String. Content MD5 for the request. Will be saved with blob unless alternate value is provided in blob_content_md5.
-      # * +:cache_control+         - String. Cache control for the request. Will be saved with blob unless alternate value is provided in blob_cache_control.
-      # * +:blob_content_type+     - String. Content type for the blob. Will be saved with blob.
-      # * +:blob_content_encoding+ - String. Content encoding for the blob. Will be saved with blob.
-      # * +:blob_content_language+ - String. Content language for the blob. Will be saved with blob.
-      # * +:blob_content_md5+      - String. Content MD5 for the blob. Will be saved with blob.
-      # * +:blob_cache_control+    - String. Cache control for the blob. Will be saved with blob.
-      # * +:metadata+              - Hash. Custom metadata values to store with the blob.
-      # * +:timeout+               - Integer. A timeout in seconds.
+      # * +:content_type+             - String. Content type for the request. Will be saved with blob unless alternate value is provided in blob_content_type.
+      # * +:content_encoding+         - String. Content encoding for the request. Will be saved with blob unless alternate value is provided in blob_content_encoding.
+      # * +:content_language+         - String. Content language for the request. Will be saved with blob unless alternate value is provided in blob_content_language.
+      # * +:content_md5+              - String. Content MD5 for the request. Will be saved with blob unless alternate value is provided in blob_content_md5.
+      # * +:cache_control+            - String. Cache control for the request. Will be saved with blob unless alternate value is provided in blob_cache_control.
+      # * +:blob_content_type+        - String. Content type for the blob. Will be saved with blob.
+      # * +:blob_content_encoding+    - String. Content encoding for the blob. Will be saved with blob.
+      # * +:blob_content_language+    - String. Content language for the blob. Will be saved with blob.
+      # * +:blob_content_md5+         - String. Content MD5 for the blob. Will be saved with blob.
+      # * +:blob_cache_control+       - String. Cache control for the blob. Will be saved with blob.
+      # * +:blob_content_disposition+ - String. Content disposition for the blob. Will be saved with blob.
+      # * +:metadata+                 - Hash. Custom metadata values to store with the blob.
+      # * +:timeout+                  - Integer. A timeout in seconds.
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179451.aspx
       #
@@ -602,6 +603,7 @@ module Azure
         headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
         headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
         headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
+        headers["x-ms-blob-content-disposition"] = options[:blob_content_disposition] if options[:blob_content_disposition]
 
         add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
 
@@ -700,6 +702,7 @@ module Azure
           headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
           headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
           headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
+          headers["x-ms-blob-content-disposition"] = options[:blob_content_disposition] if options[:blob_content_disposition]
 
           add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
         end
@@ -879,6 +882,7 @@ module Azure
       # * +:content_encoding+         - String. Content encoding for the blob. Will be saved with blob.
       # * +:content_language+         - String. Content language for the blob. Will be saved with blob.
       # * +:content_md5+              - String. Content MD5 for the blob. Will be saved with blob.
+      # * +:content_disposition+      - String. Content disposition for the blob. Will be saved with blob.
       # * +:cache_control+            - String. Cache control for the blob. Will be saved with blob.
       # * +:content_length+           - Integer. Resizes a page blob to the specified size. If the specified
       #   value is less than the current size of the blob, then all pages above
@@ -937,6 +941,7 @@ module Azure
       #     * :content_md5
       #     * :content_encoding
       #     * :content_language
+      #     * :content_disposition
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/ee691966.aspx
       #
@@ -957,6 +962,7 @@ module Azure
           headers["x-ms-blob-content-length"] = options[:blob_content_length].to_s if options[:blob_content_length]
           headers["x-ms-blob-sequence-number-action"] = options[:sequence_number_action].to_s if options[:sequence_number_action]
           headers["x-ms-blob-sequence-number"] = options[:sequence_number].to_s if options[:sequence_number]
+          headers["x-ms-blob-content-disposition"] = options[:blob_content_disposition] if options[:blob_content_disposition]
         end
 
         call(:put, uri, nil, headers)
