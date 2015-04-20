@@ -86,7 +86,7 @@ module Azure
                                                     options)
         request = BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
         request.headers['Content-Type'] = 'text/plain'
-        Azure::Loggerx.info "Creating virtual network #{vnet}."
+        Loggerx.info "Creating virtual network #{vnet}."
         request.call
       end
 
@@ -101,7 +101,7 @@ module Azure
         end
         request = BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
         request.headers['Content-Type'] = 'text/plain'
-        Azure::Loggerx.info 'Creating virtual network.'
+        Loggerx.info 'Creating virtual network.'
         request.call
       end
     end

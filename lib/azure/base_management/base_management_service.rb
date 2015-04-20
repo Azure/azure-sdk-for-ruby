@@ -130,7 +130,7 @@ module Azure
           request_path = '/affinitygroups'
           request = ManagementHttpRequest.new(:post, request_path, body)
           request.call
-          Azure::Loggerx.info "Affinity Group #{name} is created."
+          Loggerx.info "Affinity Group #{name} is created."
         end
       end
 
@@ -159,7 +159,7 @@ module Azure
           request_path = "/affinitygroups/#{name}"
           request = ManagementHttpRequest.new(:put, request_path, body)
           request.call
-          Azure::Loggerx.info "Affinity Group #{name} is updated."
+          Loggerx.info "Affinity Group #{name} is updated."
         end
       end
 
@@ -177,7 +177,7 @@ module Azure
           request_path = "/affinitygroups/#{name}"
           request = ManagementHttpRequest.new(:delete, request_path)
           request.call
-          Azure::Loggerx.info "Deleted affinity group #{name}."
+          Loggerx.info "Deleted affinity group #{name}."
         end
       end
 

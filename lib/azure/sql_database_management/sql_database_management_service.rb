@@ -52,7 +52,7 @@ module Azure
         request = BaseManagement::SqlManagementHttpRequest.new(:post, request_path, body)
         response = request.call
         sql_server = Serialization.server_name_from_xml(response, login, location)
-        Azure::Loggerx.info "SQL database server #{sql_server.name} is created." if sql_server
+        Loggerx.info "SQL database server #{sql_server.name} is created." if sql_server
         sql_server
       end
 
@@ -71,7 +71,7 @@ module Azure
           request_path = "/servers/#{name}"
           request = BaseManagement::SqlManagementHttpRequest.new(:delete, request_path)
           request.call
-          Azure::Loggerx.info "Deleted database server #{name}."
+          Loggerx.info "Deleted database server #{name}."
         end
       end
 
@@ -92,7 +92,7 @@ module Azure
           request_path = "/servers/#{name}?op=ResetPassword"
           request = BaseManagement::SqlManagementHttpRequest.new(:post, request_path, body)
           request.call
-          Azure::Loggerx.info "Password for server #{name} changed successfully."
+          Loggerx.info "Password for server #{name} changed successfully."
         end
       end
 
@@ -134,7 +134,7 @@ module Azure
           # this once the Azure API is working.
 
           request.call
-          Azure::Loggerx.info "Added server-level firewall rule #{rule_name}."
+          Loggerx.info "Added server-level firewall rule #{rule_name}."
         end
       end
 
@@ -175,7 +175,7 @@ module Azure
           request_path = "/servers/#{server_name}/firewallrules/#{rule_name}"
           request = BaseManagement::SqlManagementHttpRequest.new(:delete, request_path)
           request.call
-          Azure::Loggerx.info "Deleted server-level firewall rule #{rule_name}."
+          Loggerx.info "Deleted server-level firewall rule #{rule_name}."
         end
       end
 

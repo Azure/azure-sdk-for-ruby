@@ -60,7 +60,7 @@ module Azure
         elsif File.exist?(File.join(ENV['HOME'], name))
           File.join(ENV['HOME'], name)
         else
-          Azure::Loggerx.error_with_exit "Unable to find #{name} file  "
+          Loggerx.error_with_exit "Unable to find #{name} file  "
         end
       end
 

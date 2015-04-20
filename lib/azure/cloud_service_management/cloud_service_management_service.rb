@@ -48,11 +48,11 @@ module Azure
       #
       # Returns None
       def create_cloud_service(name, options = {})
-        Azure::Loggerx.error_with_exit "Cloud service name is not valid " unless name
+        Loggerx.error_with_exit "Cloud service name is not valid " unless name
         if get_cloud_service(name)
-          Azure::Loggerx.warn "Cloud service #{name} already exists. Skipped..."
+          Loggerx.warn "Cloud service #{name} already exists. Skipped..."
         else
-          Azure::Loggerx.info "Creating cloud service #{name}."
+          Loggerx.info "Creating cloud service #{name}."
           request_path = "/services/hostedservices"
           body = Serialization.cloud_services_to_xml(name, options)
           request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
@@ -101,7 +101,7 @@ module Azure
       def delete_cloud_service(cloud_service_name)
         request_path= "/services/hostedservices/#{cloud_service_name}"
         request = BaseManagement::ManagementHttpRequest.new(:delete, request_path)
-        Azure::Loggerx.info "Deleting cloud service #{cloud_service_name}. \n"
+        Loggerx.info "Deleting cloud service #{cloud_service_name}. \n"
         request.call
       end
 
@@ -117,7 +117,7 @@ module Azure
       def delete_cloud_service_deployment(cloud_service_name)
         request_path= "/services/hostedservices/#{cloud_service_name}/deploymentslots/production"
         request = BaseManagement::ManagementHttpRequest.new(:delete, request_path)
-        Azure::Loggerx.info "Deleting deployment of cloud service \"#{cloud_service_name}\" ..."
+        Loggerx.info "Deleting deployment of cloud service \"#{cloud_service_name}\" ..."
         request.call
       end
 
@@ -125,7 +125,7 @@ module Azure
         data = export_der(ssh[:cert], ssh[:key])
         request_path= "/services/hostedservices/#{cloud_service_name}/certificates"
         body = BaseManagement::Serialization.add_certificate_to_xml(data)
-        Azure::Loggerx.info "Uploading certificate to cloud service #{cloud_service_name}..."
+        Loggerx.info "Uploading certificate to cloud service #{cloud_service_name}..."
         request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
         request.call
       end

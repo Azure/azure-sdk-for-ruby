@@ -59,7 +59,7 @@ module Azure
       #
       # Returns None
       def delete_virtual_machine_disk(disk_name)
-        Azure::Loggerx.info "Deleting Disk \"#{disk_name}\". "
+        Loggerx.info "Deleting Disk \"#{disk_name}\". "
         path = "/services/disks/#{disk_name}"
         request = BaseManagement::ManagementHttpRequest.new(:delete, path)
         request.call
