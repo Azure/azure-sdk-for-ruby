@@ -55,19 +55,19 @@ module Azure
       end
 
       # Public: Gets the properties of the storage account specified.
-      # 
+      #
       # ==== Attributes
       #
       # * +name+  - String. The name of the storage account. Required.
       #
       # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460802.aspx
-      # 
+      #
       # Returns the storage account
       def get_storage_account_properties(name)
         request_path = "/services/storageservices/#{name}"
         request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
-        Serialization.storage_services_from_xml(response)
+        Serialization.storage_services_from_xml(response).first
       end
 
       # Public: Create a new storage account in Windows Azure.

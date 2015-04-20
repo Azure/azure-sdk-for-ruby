@@ -48,12 +48,12 @@ module Azure
       #
       # Returns None
       def create_cloud_service(name, options = {})
-        Loggerx.error_with_exit "Cloud service name is not valid " unless name
+        Loggerx.error_with_exit 'Cloud service name is not valid ' unless name
         if get_cloud_service(name)
           Loggerx.warn "Cloud service #{name} already exists. Skipped..."
         else
           Loggerx.info "Creating cloud service #{name}."
-          request_path = "/services/hostedservices"
+          request_path = '/services/hostedservices'
           body = Serialization.cloud_services_to_xml(name, options)
           request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
           request.call
@@ -64,7 +64,7 @@ module Azure
       #
       # Returns an array of Azure::CloudServiceManagement::CloudService objects
       def list_cloud_services
-        request_path = "/services/hostedservices"
+        request_path = '/services/hostedservices'
         request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.cloud_services_from_xml(response)
@@ -89,6 +89,13 @@ module Azure
           end
         end
         flag
+      end
+
+      def get_cloud_service_properties(name)
+        request_path = "/services/hostedservices/#{name}?embed-detail=true"
+        request = ManagementHttpRequest.new(:get, request_path)
+        response = request.call
+        Serialization.cloud_services_from_xml(response).first
       end
 
       # Public: Deletes the specified cloud service of given subscription id from Windows Azure.
@@ -129,7 +136,6 @@ module Azure
         request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
         request.call
       end
-
     end
   end
 end

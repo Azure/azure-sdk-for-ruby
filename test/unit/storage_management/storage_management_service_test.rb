@@ -19,14 +19,25 @@ describe Azure::StorageManagementService do
   subject { Azure::StorageManagementService.new }
   let(:request_path) {'/services/storageservices'}
   let(:storage_accounts_xml) { Fixtures["list_storage_accounts"] }
+  let(:one_storage_account_xml) { Fixtures['list_storage_account_single']}
   let(:method) { :get }
   let(:mock_request){ mock() }
+
   let(:response) {
     response = mock()
     response.stubs(:body).returns(storage_accounts_xml)
     response
   }
+
+  let(:single_response) {
+    single_response = mock()
+    single_response.stubs(:body).returns(one_storage_account_xml)
+    single_response
+  }
+
   let(:response_body) {Nokogiri::XML response.body}
+  let(:single_response_body) { Nokogiri::XML single_response.body }
+
   before{
     Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   }
@@ -51,6 +62,23 @@ describe Azure::StorageManagementService do
       results.must_be_kind_of Array
       results.length.must_equal 2
       results.first.must_be_kind_of Azure::StorageManagement::StorageAccount
+    end
+  end
+
+  describe "#list_storage_accounts_single" do
+    before {
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+        method, request_path, nil
+      ).returns(mock_request)
+      mock_request.expects(:call).returns(single_response_body)
+    }
+
+    it "returns an array even if single account exists" do
+      results = subject.list_storage_accounts
+      results.must_be_kind_of Array
+      results.length.must_equal 1
+      results.first.must_be_kind_of Azure::StorageManagement::StorageAccount
+      results.first.name.must_equal 'storage1'
     end
   end
 

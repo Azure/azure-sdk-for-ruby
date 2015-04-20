@@ -12,20 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "test_helper"
+require 'test_helper'
 
 describe Azure::CloudServiceManagementService do
 
   subject { Azure::CloudServiceManagementService.new }
-  let(:request_path) {'/services/hostedservices'}
-  let(:cloud_services_xml) { Fixtures["list_cloud_services"] }
+  let(:request_path) { '/services/hostedservices' }
+  let(:cloud_services_xml) { Fixtures['list_cloud_services'] }
   let(:method) { :get }
-  let(:mock_request){ mock() }
-  let(:response) {
-    response = mock()
+  let(:mock_request) { mock }
+  let(:response) do
+    response = mock
     response.stubs(:body).returns(cloud_services_xml)
     response
-  }
+  end
   let(:response_body) { Nokogiri::XML response.body }
 
   before{
@@ -33,43 +33,43 @@ describe Azure::CloudServiceManagementService do
   }
 
   describe "#list_cloud_services" do
-    before {
+    before do
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
-    }
-  
-    it "assembles a URI for the request" do
+    end
+
+    it 'assembles a URI for the request' do
       subject.list_cloud_services
     end
-  
-    it "sets the properties of the CloudService instance" do
+
+    it 'sets the properties of the CloudService instance' do
       cloud_service = subject.list_cloud_services.first
       cloud_service.name.must_equal 'cloud-service-1'
     end
-  
-    it "returns a list of cloud services for the subscription" do
+
+    it 'returns a list of cloud services for the subscription' do
       results = subject.list_cloud_services
       results.must_be_kind_of Array
       results.length.must_equal 2
       results.first.must_be_kind_of Azure::CloudServiceManagement::CloudService
     end
   end
-  
+
   describe "#get_cloud_service" do
-    before {
+    before do
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
-    }
-  
-    it "assembles a URI for the request" do
+    end
+
+    it 'assembles a URI for the request' do
       subject.get_cloud_service 'cloud-service-1'
     end
-  
-    it "returns true if found cloud service with given name" do
+
+    it 'returns true if found cloud service with given name' do
       result = subject.get_cloud_service 'cloud-service-1'
       result.must_equal true
     end
-  
+
     it "returns false if cloud service with given name doesn't exists" do
       result = subject.get_cloud_service 'cloud-service-3'
       result.must_equal false
@@ -77,7 +77,7 @@ describe Azure::CloudServiceManagementService do
   end
 
   describe "#create_cloud_service" do
-  
+
     it "Create cloud service return message if cloud service exists of given name." do
       Azure::BaseManagement::ManagementHttpRequest.any_instance.expects(:call).returns response_body
       msg = subject.create_cloud_service 'cloud-service-1'

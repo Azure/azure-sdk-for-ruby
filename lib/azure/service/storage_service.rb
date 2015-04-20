@@ -35,7 +35,7 @@ module Azure
       # Returns a Hash with the service properties or nil if the operation failed
       def get_service_properties
         uri = service_properties_uri
-        response = call(:get, uri)
+        response = call(:get, uri, nil, service_properties_headers)
         Serialization.service_properties_from_xml response.body
       end
 
@@ -51,7 +51,7 @@ module Azure
         body = Serialization.service_properties_to_xml service_properties
 
         uri = service_properties_uri
-        call(:put, uri, body)
+        call(:put, uri, body, service_properties_headers)
         nil
       end
 
@@ -73,6 +73,10 @@ module Azure
         metadata.each do |key, value|
           headers["x-ms-meta-#{key}"] = value
         end
+      end
+
+      def service_properties_headers
+        {"x-ms-version" => "2013-08-15"}
       end
     end
   end

@@ -108,12 +108,6 @@ module Azure
           storage_accounts << storage_account
         end
 
-        # returns the first storage account if only one found
-        # This will be the case when calling the get_storage_account_properties
-        # API or if only one storage account exists for the subscription
-        return storage_accounts.first if storage_accounts.size == 1
-
-        # returns all the storage accounts, if more than 1 found
         storage_accounts.compact
       end
 

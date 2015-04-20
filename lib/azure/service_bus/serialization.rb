@@ -18,6 +18,7 @@ require "azure/service_bus/queue"
 require "azure/service_bus/topic"
 require "azure/service_bus/subscription"
 require "azure/service_bus/rule"
+require "azure/service_bus/relay"
 
 require "azure/service/enumeration_results"
 

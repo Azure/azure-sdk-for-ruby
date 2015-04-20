@@ -12,48 +12,48 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "test_helper"
+require 'test_helper'
 
 describe Azure::VirtualMachineImageManagementService do
 
   subject { Azure::VirtualMachineImageManagementService.new }
 
-  let(:request_path) {'/services/images'}
-  let(:images_xml) { Fixtures["list_images"] }
+  let(:request_path) { '/services/images' }
+  let(:images_xml) { Fixtures['list_images'] }
   let(:method) { :get }
-  let(:mock_request){ mock() }
-  let(:response) {
-    response = mock()
+  let(:mock_request) { mock }
+  let(:response) do
+    response = mock
     response.stubs(:body).returns(images_xml)
     response
-  }
+  end
   let(:response_body) { Nokogiri::XML response.body }
 
   before{
     Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   }
-  
+
   describe "#list_virtual_machine_images" do
-    
-    before {
+
+    before do
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         method,
         request_path,
         nil
       ).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
-    }
-  
-    it "assembles a URI for the request" do
+    end
+
+    it 'assembles a URI for the request' do
       subject.list_virtual_machine_images
     end
-  
-    it "sets the properties of the virtual machine images" do
+
+    it 'sets the properties of the virtual machine images' do
       virtual_machine_image = subject.list_virtual_machine_images.first
       virtual_machine_image.name.must_equal 'RightImage-CentOS-6.2-x64-v5.8.8.1'
     end
 
-    it "returns a list of virtual machine images from server" do
+    it 'returns a list of virtual machine images from server' do
       results = subject.list_virtual_machine_images
       results.must_be_kind_of Array
       results.length.must_equal 12
@@ -61,5 +61,5 @@ describe Azure::VirtualMachineImageManagementService do
       results.first.must_be_kind_of image_klass
     end
   end
-  
+
 end

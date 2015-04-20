@@ -35,7 +35,7 @@ module Azure
         @warn = false
         content_length = body ? body.bytesize.to_s : '0'
         @headers = {
-          'x-ms-version' => '2013-06-01',
+          'x-ms-version' => '2014-04-01',
           'Content-Type' => 'application/xml',
           'Content-Length' => content_length
         }

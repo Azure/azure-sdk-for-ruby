@@ -70,6 +70,9 @@ module Azure
             if options[:virtual_network_name]
               xml.VirtualNetworkName options[:virtual_network_name]
             end
+            if options[:reserved_ip_name]
+              xml.ReservedIPName options[:reserved_ip_name]
+            end
           end
         end
         builder.doc.at_css('Role') << role_to_xml(params, options).at_css('PersistentVMRole').children.to_s
@@ -92,19 +95,24 @@ module Azure
                 xml.ConfigurationSetType 'NetworkConfiguration'
                 xml.InputEndpoints do
                   default_endpoints_to_xml(xml, options)
-                  tcp_endpoints_to_xml(xml, options[:tcp_endpoints]) if options[:tcp_endpoints]
+                  tcp_endpoints_to_xml(
+                    xml,
+                    options[:tcp_endpoints],
+                    options[:existing_ports]
+                  ) if options[:tcp_endpoints]
                 end
                 if options[:virtual_network_name] && options[:subnet_name]
                   xml.SubnetNames do
                     xml.SubnetName options[:subnet_name]
                   end
+                  xml.StaticVirtualNetworkIPAddress options[:static_virtual_network_ipaddress] if options[:static_virtual_network_ipaddress]
                 end
               end
             end
             xml.AvailabilitySetName options[:availability_set_name]
             xml.Label Base64.encode64(params[:vm_name]).strip
             xml.OSVirtualHardDisk do
-              xml.MediaLink 'http://' + options[:storage_account_name] + '.blob.core.windows.net/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd'
+              xml.MediaLink 'http://' + options[:storage_account_name] + '.blob.core.windows.net/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M_%S_%L')) + '.vhd'
               xml.SourceImageName params[:image]
             end
             xml.RoleSize options[:vm_size]
@@ -128,12 +136,19 @@ module Azure
               xml.SSH do
                 xml.PublicKeys do
                   xml.PublicKey do
-                    xml.Fingerprint fingerprint
+                    xml.Fingerprint fingerprint.to_s.upcase
                     xml.Path "/home/#{params[:vm_user]}/.ssh/authorized_keys"
+                  end
+                end
+                xml.KeyPairs do
+                  xml.KeyPair do
+                    xml.Fingerprint fingerprint.to_s.upcase
+                    xml.Path "/home/#{params[:vm_user]}/.ssh/id_rsa"
                   end
                 end
               end
             end
+            xml.CustomData params[:custom_data] if params[:custom_data]
           end
         elsif options[:os_type] == 'Windows'
           xml.ConfigurationSet('i:type' => 'WindowsProvisioningConfigurationSet') do
@@ -166,49 +181,64 @@ module Azure
 
       def self.default_endpoints_to_xml(xml, options)
         os_type = options[:os_type]
+        used_ports = options[:existing_ports]
         endpoints = []
         if os_type == 'Linux'
-          endpoints <<  {
+          preferred_port = '22'
+          port_already_opened?(used_ports, options[:ssh_port])
+          endpoints << {
             name: 'SSH',
-            public_port: options[:ssh_port] || '22',
+            public_port: options[:ssh_port] || assign_random_port(preferred_port, used_ports),
             protocol: 'TCP',
-            local_port: '22'
+            local_port: preferred_port
           }
         elsif os_type == 'Windows' && options[:winrm_transport]
           if options[:winrm_transport].include?('http')
-            endpoints <<  {
+            preferred_port = '5985'
+            port_already_opened?(used_ports, options[:winrm_http_port])
+            endpoints << {
               name: 'WinRm-Http',
-              public_port: '5985',
+              public_port: options[:winrm_http_port] || assign_random_port(preferred_port, used_ports),
               protocol: 'TCP',
-              local_port: '5985'
+              local_port: preferred_port
             }
           end
           if options[:winrm_transport].include?('https')
-            endpoints <<  {
+            preferred_port = '5986'
+            port_already_opened?(used_ports, options[:winrm_https_port])
+            endpoints << {
               name: 'PowerShell',
-              public_port: '5986',
+              public_port: options[:winrm_https_port] || assign_random_port(preferred_port, used_ports),
               protocol: 'TCP',
-              local_port: '5986'
+              local_port: preferred_port
             }
           end
         end
         endpoints_to_xml(xml, endpoints)
       end
 
-      def self.tcp_endpoints_to_xml(xml, tcp_endpoints)
+      def self.tcp_endpoints_to_xml(xml, tcp_endpoints, existing_ports = [])
         endpoints = []
+
         tcp_endpoints.split(',').each do |endpoint|
           ports = endpoint.split(':')
           tcp_ep = {}
+
           if ports.length > 1
-            tcp_ep[:name]  = 'TCP-PORT-' + ports[1]
+            port_already_opened?(existing_ports, ports[1])
+
+            tcp_ep[:name] = "TCP-PORT-#{ports[1]}"
             tcp_ep[:public_port] = ports[1]
           else
-            tcp_ep[:name] = 'TCP-PORT-' + ports[0]
+            port_already_opened?(existing_ports, ports[0])
+
+            tcp_ep[:name] = "TCP-PORT-#{ports[0]}"
             tcp_ep[:public_port] = ports[0]
           end
+
           tcp_ep[:local_port] = ports[0]
           tcp_ep[:protocol] = 'TCP'
+
           endpoints << tcp_ep
         end
         endpoints_to_xml(xml, endpoints)
@@ -231,17 +261,19 @@ module Azure
             vm.cloud_service_name = cloud_service_name.downcase
             vm.deployment_name = xml_content(deployXML, 'Deployment Name')
             vm.deployment_status = xml_content(deployXML, 'Deployment Status')
-            vm.virtual_network_name =  xml_content(
+            vm.virtual_network_name = xml_content(
               deployXML.css('Deployment'),
               'VirtualNetworkName'
             )
             roles.each do |role|
-              if xml_content(role, 'RoleName') ==  role_name
+              if xml_content(role, 'RoleName') == role_name
                 vm.availability_set_name = xml_content(role, 'AvailabilitySetName')
                 endpoints_from_xml(role, vm)
+                vm.data_disks = data_disks_from_xml(role)
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
                 vm.media_link = xml_content(role, 'OSVirtualHardDisk MediaLink')
+                vm.image = xml_content(role, 'OSVirtualHardDisk SourceImageName')
                 break
               end
             end
@@ -249,6 +281,20 @@ module Azure
           end
           vms
         end
+      end
+
+      def self.data_disks_from_xml(rolesXML)
+        data_disks = []
+        virtual_hard_disks = rolesXML.css('DataVirtualHardDisks DataVirtualHardDisk')
+        virtual_hard_disks.each do |disk|
+          data_disk = {}
+          data_disk[:name] = xml_content(disk, 'DiskName')
+          data_disk[:lun] =  xml_content(disk, 'Lun')
+          data_disk[:size_in_gb] = xml_content(disk, 'LogicalDiskSizeInGB')
+          data_disk[:media_link] = xml_content(disk, 'MediaLink')
+          data_disks << data_disk
+        end
+        data_disks
       end
 
       def self.endpoints_from_xml(rolesXML, vm)
@@ -267,7 +313,7 @@ module Azure
           ep[:direct_server_return] = server_return if !server_return.empty?
           unless lb_name.empty?
             ep[:protocol] = endpoint.css('Protocol').last.text
-            ep[:load_balancer_name] =  lb_name
+            ep[:load_balancer_name] = lb_name
             lb_port = xml_content(endpoint, 'LoadBalancerProbe Port')
             lb_protocol = xml_content(endpoint, 'LoadBalancerProbe Protocol')
             lb_path = xml_content(endpoint, 'LoadBalancerProbe Path')
@@ -322,7 +368,7 @@ module Azure
           protocol = endpoint[:protocol]
           port = endpoint[:public_port]
           interval = endpoint[:load_balancer][:interval]
-          timeout =  endpoint[:load_balancer][:timeout]
+          timeout = endpoint[:load_balancer][:timeout]
           path = endpoint[:load_balancer][:path]
           balancer_name = endpoint[:load_balancer_name]
           xml.InputEndpoint do
@@ -345,10 +391,11 @@ module Azure
         end
       end
 
-      def self.add_data_disk_to_xml(lun, media_link, options)
+      def self.add_data_disk_to_xml(vm, options)
         if options[:import] && options[:disk_name].nil?
           Loggerx.error_with_exit "The data disk name is not valid."
         end
+        media_link = vm.media_link
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.DataVirtualHardDisk(
             'xmlns' => 'http://schemas.microsoft.com/windowsazure',
@@ -357,16 +404,37 @@ module Azure
             xml.HostCaching options[:host_caching] || 'ReadOnly'
             xml.DiskLabel options[:disk_label]
             xml.DiskName options[:disk_name] if options[:import]
-            xml.Lun lun
-            xml.LogicalDiskSizeInGB options[:disk_size] || 1
+            xml.LogicalDiskSizeInGB options[:disk_size] || 100
             unless options[:import]
-              disk_name  = media_link[/([^\/]+)$/]
+              disk_name = media_link[/([^\/]+)$/]
               media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd')
               xml.MediaLink media_link
             end
           end
         end
         builder.doc.to_xml
+      end
+
+      private
+
+      def self.port_already_opened?(existing_ports, port)
+        return false if existing_ports.nil?
+        raise "Port #{port} conflicts with a port already opened. "\
+          "Please select a different port." if existing_ports.include?(port)
+        false
+      end
+
+      def self.assign_random_port(preferred_port, used_ports)
+        random_port = nil
+        if used_ports.nil? || !used_ports.include?(preferred_port)
+          random_port = preferred_port
+        else
+          random_port = Random.new.rand(10000..65535)
+          while(used_ports.include?(random_port.to_s))
+            random_port = Random.new.rand(10000..65535)
+          end
+        end
+        random_port
       end
 
     end

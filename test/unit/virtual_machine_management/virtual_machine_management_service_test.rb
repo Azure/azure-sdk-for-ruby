@@ -21,11 +21,7 @@ describe Azure::VirtualMachineManagementService do
     Azure::VirtualMachineManagementService.new
   end
 
-  before do
-    Azure::Loggerx.stubs(:info).returns(nil)
-  end
-
-  let(:params)do
+  let(:params) do
     {
       vm_name: 'instance1',
       vm_user: 'root',
@@ -35,7 +31,7 @@ describe Azure::VirtualMachineManagementService do
     }
   end
 
-  let(:windows_params)do
+  let(:windows_params) do
     {
       vm_name: 'instance1',
       vm_user: 'administrator',
@@ -53,56 +49,57 @@ describe Azure::VirtualMachineManagementService do
     response
   end
   let(:location_response_body) { Nokogiri::XML location_response.body }
+  let(:mock_virtual_machine_request) { mock }
+  let(:windows_images_xml) { Fixtures['list_images'] }
+  let(:images_request_path) { '/services/images' }
+  let(:mock_request) { mock }
+  let(:os_response_body) do
+    response = mock
+    response.stubs(:body).returns(windows_images_xml)
+    Nokogiri::XML response.body
+  end
+
+  before do
+    Azure::Loggerx.stubs(:info).returns(nil)
+    Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+      :get,
+      images_request_path,
+      nil
+    ).returns(mock_request)
+    mock_request.expects(:call).returns(os_response_body).at_least(0)
+  end
 
   describe '#list_virtual_machines' do
     let(:request_path) { '/services/hostedservices' }
     let(:cloud_services_xml) { Fixtures['list_cloud_services'] }
     let(:virtual_machine_xml) { Fixtures['virtual_machine'] }
     let(:deployment_error_xml) { Fixtures['deployment_error'] }
-    let(:virtual_networks_xml) { Fixtures['list_virtual_networks'] }
-
     let(:method) { :get }
-
     let(:mock_cloud_service_request) { mock }
-    let(:mock_virtual_machine_request) { mock }
-    let(:mock_virtual_network_request) { mock }
-
     let(:cloud_service_response) do
       cloud_service_response = mock
       cloud_service_response.stubs(:body).returns(cloud_services_xml)
       cloud_service_response
     end
-
     let(:virtual_machine_response) do
       virtual_machine_response = mock
       virtual_machine_response.stubs(:body).returns(virtual_machine_xml)
       virtual_machine_response
     end
-
     let(:deployment_error_response) do
       http_error_response = mock
       http_error_response.stubs(:body).returns(deployment_error_xml)
       http_error_response
     end
-
-    let(:virtual_networks_response) do
-      virtual_networks_response = mock
-      virtual_networks_response.stubs(:body).returns(virtual_networks_xml)
-      virtual_networks_response
-    end
-
     let(:cloud_service_response_body) { Nokogiri::XML cloud_service_response.body }
     let(:virtual_machine_response_body) { Nokogiri::XML virtual_machine_response.body }
-    let(:virtual_networks_response_body) { Nokogiri::XML virtual_networks_response.body }
 
     before do
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_cloud_service_request)
       mock_cloud_service_request.expects(:call).returns(cloud_service_response_body)
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, '/services/hostedservices/cloud-service-1/deploymentslots/production').returns(mock_virtual_machine_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, anything).returns(mock_virtual_machine_request)
       mock_virtual_machine_request.stubs(:warn=).returns(true).twice
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, '/services/hostedservices/cloud-service-2/deploymentslots/production').returns(mock_virtual_machine_request)
       mock_virtual_machine_request.expects(:call).twice.returns(virtual_machine_response_body).returns(Nokogiri::XML  deployment_error_response.body)
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, '/services/networking/virtualnetwork', nil).returns(mock_virtual_network_request)
     end
 
     it 'assembles a URI for the request' do
@@ -157,9 +154,9 @@ describe Azure::VirtualMachineManagementService do
   describe '#get_virtual_machine' do
 
     before do
-      virtual_machine = VirtualMachine.new do |virtual_machine|
-        virtual_machine.vm_name = 'instance-name'
-        virtual_machine.cloud_service_name = 'cloud-service-1'
+      virtual_machine = VirtualMachine.new do |vm|
+        vm.vm_name = 'instance-name'
+        vm.cloud_service_name = 'cloud-service-1'
       end
       Azure::VirtualMachineManagementService.any_instance.stubs(
         :list_virtual_machines
@@ -172,38 +169,22 @@ describe Azure::VirtualMachineManagementService do
     end
 
     it 'return nil if virtual machine or cloud server does not exist ' do
-      virtual_machine = subject.get_virtual_machine 'name', 'cloud-service-1'
-      virtual_machine.must_equal nil
-      virtual_machine = subject.get_virtual_machine 'instance-name', 'cloud_service_name'
-      virtual_machine.must_equal nil
+      vm = subject.get_virtual_machine 'name', 'cloud-service-1'
+      vm.must_equal nil
+      vm = subject.get_virtual_machine 'name2', 'cloud_service_name'
+      vm.must_equal nil
     end
 
     it 'return virtual machine instance if virtual machine name and cloud server name are valid ' do
-      virtual_machine = subject.get_virtual_machine 'instance-name', 'cloud-service-1'
-      virtual_machine.must_be_kind_of VirtualMachine
+      vm = subject.get_virtual_machine 'instance-name', 'cloud-service-1'
+      vm.must_be_kind_of VirtualMachine
     end
   end
 
   describe '#create_virtual_machine' do
-    let(:images_request_path) { '/services/images' }
-    let(:images_xml) { Fixtures['list_images'] }
-    let(:virtual_machine_xml) { Fixtures['virtual_machine'] }
     let(:method) { :get }
-    let(:mock_request) { mock }
-
-    let(:os_response_body) do
-      response = mock
-      response.stubs(:body).returns(images_xml)
-      Nokogiri::XML response.body
-    end
 
     before do
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
-        method,
-        images_request_path,
-        nil
-      ).returns(mock_request)
-      mock_request.expects(:call).returns(os_response_body)
       mock_request = mock
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         method,
@@ -257,24 +238,11 @@ describe Azure::VirtualMachineManagementService do
   end
 
   describe '#create_virtual_machine with invalid parameters for windows machine' do
-    let(:images_request_path) { '/services/images' }
-    let(:windows_images_xml) { Fixtures['list_images'] }
     let(:virtual_machine_xml) { Fixtures['virtual_machine'] }
     let(:method) { :get }
-    let(:mock_request) { mock }
-    let(:os_response_body) do
-      response = mock
-      response.stubs(:body).returns(windows_images_xml)
-      Nokogiri::XML response.body
-    end
 
     before do
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
-        method,
-        images_request_path,
-        nil
-      ).returns(mock_request)
-      mock_request.expects(:call).returns(os_response_body)
+
       mock_request = mock
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         method,
@@ -285,7 +253,6 @@ describe Azure::VirtualMachineManagementService do
       Azure::CloudServiceManagementService.any_instance.stubs(:create_cloud_service)
       Azure::CloudServiceManagementService.any_instance.stubs(:upload_certificate)
       Azure::StorageManagementService.any_instance.stubs(:create_storage_account)
-      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       mock_request = mock
       Azure::BaseManagement::ManagementHttpRequest.expects(:new).with(
         :post,
@@ -377,45 +344,44 @@ describe Azure::VirtualMachineManagementService do
       assert_match(/Persistentvmrole not enabled for "West Europe"*/, msg)
     end
 
-    it 'vm_size should be case sensitive' do
+    it 'warns if vm_size is not in the correct case' do
       options = {
         vm_size: 'extralarge'
       }
-      msg = subject.create_virtual_machine(params, options)
-      assert_match(/Value 'extralarge' specified for parameter 'vm_size' is invalid/, msg)
+      out, err = capture_io do
+        msg = subject.create_virtual_machine(params, options)
+      end
+      error_msg = "'extralarge' specified for parameter 'vm_size' is not in the list of valid VM role sizes."
+      assert_match(/#{error_msg}*/, out)
     end
 
-    it 'throws error when wrong role size is given' do
+    it 'warns when wrong role size is given' do
       options = {
         vm_size: 'wrong size'
       }
-      virtual_machine = subject.create_virtual_machine(params, options)
-      error_msg = "'wrong size' specified for parameter 'vm_size' is invalid."
-      assert_match(/#{error_msg}*/, virtual_machine)
+      out, err = capture_io do
+        virtual_machine = subject.create_virtual_machine(params, options)
+      end
+      error_msg = "'wrong size' specified for parameter 'vm_size' is not in the list of valid VM role sizes."
+      assert_match(/#{error_msg}*/, out)
     end
 
-    it 'should not throw any error if role size is empty' do
+    it 'should warn if role size is empty' do
       options = {
         vm_size: ''
       }
-      subject.create_virtual_machine(params, options)
+      out, err = capture_io do
+        subject.create_virtual_machine(params, options)
+      end
+      error_msg = "'' specified for parameter 'vm_size' is not in the list of valid VM role sizes."
+      assert_match(/#{error_msg}*/, out)
     end
   end
 
   describe '#get_os_type' do
-    let(:images_xml) { Fixtures['list_images'] }
-    let(:mock_request) { mock }
-    let(:response) do
-      response = mock
-      response.stubs(:body).returns(images_xml)
-      response
-    end
-    let(:response_body) { Nokogiri::XML response.body }
 
     before do
-      Azure::BaseManagement::ManagementHttpRequest.any_instance.expects(:call).returns response_body
       subject.class.send(:public, *subject.class.private_instance_methods)
-      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     end
 
     it 'returns os type of given virtual machine image' do
@@ -430,6 +396,45 @@ describe Azure::VirtualMachineManagementService do
       error_msg = 'The virtual machine image source is not valid'
       assert_match(/#{error_msg}/i, exception.message)
     end
+  end
+
+  describe '#add_role' do
+
+    before do
+      windows_params[:cloud_service_name] = 'cloud-service-1'
+    end
+
+    it 'should throws error when cloud service name is empty' do
+      windows_params.delete(:cloud_service_name)
+      exception = assert_raises(RuntimeError) do
+        subject.add_role(params)
+      end
+      error_msg = 'You did not provide a valid \'cloud_service_name\' value'
+      assert_match(/#{error_msg}/i, exception.message)
+    end
+
+    it 'throws error when vm_user is not given' do
+      windows_params.delete(:vm_user)
+      exception = assert_raises(RuntimeError) do
+        subject.add_role(windows_params)
+      end
+      error_msg = 'You did not provide a valid \'vm_user\' value'
+      assert_match(/#{error_msg}/i, exception.message)
+    end
+
+    it 'throws error when certificate path is not invalid.' do
+      options = {
+        winrm_transport: %w(https http),
+        private_key_file: 'f:/invalid_path/private_key' ,
+        certificate_file: 'f:/invalid_path/certificate.pem'
+      }
+      exception = assert_raises(RuntimeError) do
+        subject.add_role(windows_params, options)
+      end
+      error_msg = 'No such file or directory'
+      assert_match(/#{error_msg}/i, exception.message)
+    end
+
   end
 
 end

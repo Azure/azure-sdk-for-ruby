@@ -1,7 +1,8 @@
-# Windows Azure SDK for Ruby [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-for-ruby.png?branch=dev)](https://travis-ci.org/WindowsAzure/azure-sdk-for-ruby)
+# Microsoft Azure SDK for Ruby
+[![Build Status](https://travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=dev)](https://travis-ci.org/Azure/azure-sdk-for-ruby)
 
 
-This project provides a Ruby package that makes it easy to access and manage Windows Azure Services like Storage, Service Bus and Virtual Machines.
+This project provides a Ruby package that makes it easy to access and manage Microsoft Azure Services like Storage, Service Bus and Virtual Machines.
 
 # Library Features
 * Storage
@@ -25,23 +26,23 @@ This project provides a Ruby package that makes it easy to access and manage Win
         * create, list, and delete subscriptions
         * create, list, and delete rules
 * Base Management
-	* list locations
+  * list locations
     * get, list, create, update, delete affinity groups
 * Virtual Machine Management
     * list images
-	* list, delete Disks
+  * list, delete Disks
     * Virtual Machines
-		* create linux based VMs and ssh with cert and key option enabled for ssh and WINRM (both http & https)enabled for windows based VMs
-		* list, shut down, delete, find virtual machine deployments. While shutting down your VMs the provisioning state would be deallocated and this VM will not be included in the billing cycle.
-		* Create VM for a specific virtual network
+    * create linux based VMs and ssh with cert and key option enabled for ssh and WINRM (both http & https)enabled for windows based VMs
+    * list, shut down, delete, find virtual machine deployments. While shutting down your VMs the provisioning state would be deallocated and this VM will not be included in the billing cycle.
+    * Create VM for a specific virtual network
 * Cloud Service Management
     * create, list, delete cloud services
 * Storage Account Management
     * create, list storage accounts, list locations
 * SQL Database Server Management
-	* list, create SQL Database servers
-	* reset password for a SQL Database server
-	* list, set, delete firewall rules for a SQL Database server
+  * list, create SQL Database servers
+  * reset password for a SQL Database server
+  * list, set, delete firewall rules for a SQL Database server
 * Virtual Network Management
     * List VNet
     * Create VNet via parameters or xml file
@@ -68,7 +69,7 @@ gem install azure
 To get the source code of the SDK via **git** just type:
 
 ```bash
-git clone https://github.com/WindowsAzure/azure-sdk-for-ruby.git
+git clone https://github.com/Azure/azure-sdk-for-ruby.git
 cd ./azure-sdk-for-ruby
 ```
 Then, run bundler to install all the gem dependencies:
@@ -83,7 +84,7 @@ Running the command ``rdoc`` will generate the API documentation in the `./doc` 
 
 ## Setup Connection
 
-You can use this SDK against the Windows Azure Services in the cloud, or against the local Storage Emulator if you are on Windows. Service Bus and Windows Azure Service Management emulation are not supported. Of course, to use the Windows Azure Services in the cloud, you need to first [create a Windows Azure account](http://www.windowsazure.com/en-us/pricing/free-trial/). After that, you can get the information you need to configure Storage and Service Bus from the [Windows Azure Portal](https://manage.windowsazure.com).
+You can use this SDK against the Microsoft Azure Services in the cloud, or against the local Storage Emulator if you are on Windows. Service Bus and Microsoft Azure Service Management emulation are not supported. Of course, to use the Microsoft Azure Services in the cloud, you need to first [create a Microsoft Azure account](http://www.windowsazure.com/en-us/pricing/free-trial/). After that, you can get the information you need to configure Storage and Service Bus from the [Microsoft Azure Portal](https://manage.windowsazure.com).
 
 There are two ways you can set up the connections:
 
@@ -91,7 +92,7 @@ There are two ways you can set up the connections:
 2. [via environment variables](#via-environment-variables)
 
 ### Via Code
-* Against Windows Azure Services in the cloud
+* Against Microsoft Azure Services in the cloud
 
   ```ruby
   require "azure"
@@ -130,7 +131,7 @@ There are two ways you can set up the connections:
   end
   ```
 ### Via Environment Variables
-* Against Windows Azure Services in the cloud
+* Against Microsoft Azure Services in the cloud
   * Storage
 
     ```bash
@@ -149,7 +150,7 @@ There are two ways you can set up the connections:
     ```bash
     AZURE_MANAGEMENT_CERTIFICATE = <path to *.pem or *.pfx>
     AZURE_SUBSCRIPTION_ID = <your subscription ID>
-    AZURE_MANAGEMENT_ENDPOINT = <The endpoint URL of Windows Azure management service>
+    AZURE_MANAGEMENT_ENDPOINT = <The endpoint URL of Microsoft Azure management service>
     AZURE_SQL_DATABASE_MANAGEMENT_ENDPOINT = <SQL Database Management Endpoint>
     AZURE_SQL_DATABASE_AUTHENTICATION_MODE = <:management_certificate or :sql_server>
     ```
@@ -171,7 +172,7 @@ You can use the following commands to run:
 * a specific suite of tests: ``rake test:integration:blob``
 * one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
 # Usage
-**For more examples, please see the [Windows Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby)**
+**For more examples, please see the [Microsoft Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby)**
 ## Storage
 
 ### Blobs
@@ -270,6 +271,29 @@ azure_queue_service.delete_queue("test-queue")
 ```
 ## Service Bus
 
+### Relay
+
+```ruby
+# Require the azure rubygem
+require "azure"
+
+# Create an azure service bus object
+azure_service_bus = Azure::ServiceBusService.new
+
+# Create a relay endpoint with just the endpoint name
+relay1 = azure_service_bus.create_relay("test-relay-1", { :relay_type => "Http" })
+
+# Create a relay endpoint with a relay object
+relay2 = Azure::ServiceBus::Relay.new("test-relay-2")
+relay2.requires_client_authorization = false
+relay2 = azure_service_bus.create_relay(relay2)
+
+# Delete a relay endpoint
+azure_service_bus.delete_relay("test-relay2")
+```
+
+### Queues
+
 ```ruby
 # Require the azure rubygem
 require "azure"
@@ -302,6 +326,7 @@ azure_service_bus.delete_queue_message(message)
 # Delete a queue
 azure_service_bus.delete_queue("test-queue-1")
 ```
+
 ### Topics
 
 ```ruby
@@ -373,13 +398,13 @@ virtual_machine_service.start_virtual_machine('vm_name', 'cloud_service_name')
 virtual_machine_service.restart_virtual_machine('vm_name', 'cloud_service_name')
 
 #API for add disk to Virtual Machine
-lun = 1  #Valid LUN values are 0 through 15.
 options = {
   :disk_label => 'disk-label',
   :disk_size => 100, #In GB
-  :import => false
+  :import => false,
+  :disk_name => 'Disk name' #Required when import is true
 }
-virtual_machine_service.add_data_disk('vm_name', 'cloud_service_name', lun, options)
+virtual_machine_service.add_data_disk('vm_name', 'cloud_service_name', options)
 
 #API to add/update Virtual Machine endpoints
 endpoint1 = {
@@ -421,19 +446,36 @@ options = {
   :private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
   :certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
   :ssh_port => 2222,
-  :vm_size => 'Small', #valid choices are (ExtraSmall, Small, Medium, Large, ExtraLarge, A6, A7)
+  :vm_size => 'Small', #valid choices are (Basic_A0,Basic_A1,Basic_A2,Basic_A3,Basic_A4,ExtraSmall,Small,Medium,Large,ExtraLarge,A5,A6,A7,A8,A9,Standard_D1,Standard_D2,Standard_D3,Standard_D4,Standard_D11,Standard_D12,Standard_D13,Standard_D14,Standard_DS1,Standard_DS2,Standard_DS3,Standard_DS4,Standard_DS11,Standard_DS12,Standard_DS13,Standard_DS14,Standard_G1,Standard_G2,Standard_G3,Standard_G4,Standard_G5)
   :affinity_group_name => 'affinity1',
   :virtual_network_name => 'xplattestvnet',
   :subnet_name => 'subnet1',
   :availability_set_name => 'availabiltyset1'
+  :reserved_ip_name => 'reservedipname'
 }
-virtual_machine_service.create_virtual_machine(params,options,add_role=false)
-# Here add_role is used as a flag to create multiple roles under the same cloud service. This parameter is false
-# by default. Atleast a single deployment should be created under a hosted service prior to setting this flag.
+virtual_machine_service.create_virtual_machine(params,options)
 
 #API usage to add new roles under cloud service creating VM 
-
-virtual_machine_service.create_virtual_machine(params,options,add_role=true)
+#API add_role create multiple roles under the same cloud service. Atleast a single deployment should be created under a hosted service.
+params = {
+  :vm_name => 'vm_name',
+  :cloud_service_name => 'cloud_service_name',
+  :vm_user => 'azureuser',
+  :image => 'a699494373c04fc0bc8f2bb1389d6106__Win2K8R2SP1-Datacenter-201305.01-en.us-127GB.vhd',
+  :password => 'ComplexPassword',
+}
+options = {
+  :storage_account_name => 'storage_suse',
+  :winrm_transport => ['https','http'], #Currently http is supported. To enable https, set the transport protocol to https, simply rdp to the VM once VM is in ready state, export the certificate ( CN name would be the deployment name) from the certstore of the VM and install to your local machine and communicate WinRM via https.
+  :tcp_endpoints => '80,3389:3390',
+  :private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
+  :certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
+  :winrm_https_port => 5999,
+  :winrm_http_port => 6999, #Used to open different powershell port
+  :vm_size => 'Small', #valid choices are (Basic_A0,Basic_A1,Basic_A2,Basic_A3,Basic_A4,ExtraSmall,Small,Medium,Large,ExtraLarge,A5,A6,A7,A8,A9,Standard_D1,Standard_D2,Standard_D3,Standard_D4,Standard_D11,Standard_D12,Standard_D13,Standard_D14,Standard_DS1,Standard_DS2,Standard_DS3,Standard_DS4,Standard_DS11,Standard_DS12,Standard_DS13,Standard_DS14,Standard_G1,Standard_G2,Standard_G3,Standard_G4,Standard_G5)
+  :availability_set_name => 'availabiltyset'
+}
+virtual_machine_service.add_role(params, options)
 
 #Get a list of available virtual machine images
 virtual_machine_image_service = Azure::VirtualMachineImageManagementService.new
@@ -508,7 +550,7 @@ ip_range = {:start_ip_address => "0.0.0.1", :end_ip_address => "0.0.0.5"}
 sql_db_service.set_sql_server_firewall_rule("server-name", "rule-name", ip_range)
 
 # If ip_range was not specified in the above api then the IP of the machine from where the api is being called would be set as the rule.
-# To toggle between the option to allow windows azure services to access db server similar to azure portal just set the fire wall rule
+# To toggle between the option to allow Microsoft Azure services to access db server similar to azure portal just set the fire wall rule
 # with iprange to be 0.0.0.0 as start and end.Remove the rule to unset this option.
 ```
 ## Virtual Network Management
@@ -551,23 +593,23 @@ Currently the sdk supports *.pem or *.pfx (passwordless pfx) for service managem
 * To create pfx, simply download the publishsettings file for your subscription, copy the contents of Management Certificate from the publishsettings and save it in a file and name the file as your cert.pfx. This pfx will be a passwordless pfx which can be supplied as a cert parameter for Service Management Commands
 * Using the following openssl commands to extract the pem file and pass the pem file as management cert parameter.
     * To get only private key from pfx use Openssl.exe pkcs12 -in cert.pfx -nocerts -out cert.pem
-	* To remove passphrase from the above private key use ``Openssl.exe rsa -in cert.pem -out certprivnopassword.pem``
-	* To extract both public & private keys from pfx use ``Openssl.exe pkcs12 -in cert.pfx -out certprivpub.pem``
-	* To extract only public key from pem use ``Openssl.exe x509 -inform pem -in certprivpub.pem -pubkey -out certpub.pem -outform pem``
+  * To remove passphrase from the above private key use ``Openssl.exe rsa -in cert.pem -out certprivnopassword.pem``
+  * To extract both public & private keys from pfx use ``Openssl.exe pkcs12 -in cert.pfx -out certprivpub.pem``
+  * To extract only public key from pem use ``Openssl.exe x509 -inform pem -in certprivpub.pem -pubkey -out certpub.pem -outform pem``
 * Finally copy the public key & private key to a file *.pem and pass that pem file to management cert parameter.
 * To extract pem from custom certificate, export the pfx, follow the above steps to convert to pem and pass that pem file to management cert parameter.
 
 # Need Help?
 
-Be sure to check out the Windows Azure [Developer Forums on Stack Overflow and MSDN](http://go.microsoft.com/fwlink/?LinkId=234489) if you have trouble with the provided code.
+Be sure to check out the Microsoft Azure [Developer Forums on Stack Overflow and MSDN](http://go.microsoft.com/fwlink/?LinkId=234489) if you have trouble with the provided code.
 
 # Contribute Code or Provide Feedback
 
-If you would like to become an active contributor to this project please follow the instructions provided in [Windows Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
-If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/WindowsAzure/azure-sdk-for-ruby/issues) section of the project.
+If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
+If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-ruby/issues) section of the project.
 
 # Learn More
 
-For documentation on how to host Ruby applications on Windows Azure, please see the [Windows Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby/).
-For documentation on Azure PowerShell CLI tool for Windows, please see our readme [here](http://github.com/windowsazure/azure-sdk-tools).
-For documentation on the Azure cross platform CLI tool for Windows, Mac and Linux, please see our readme [here](http://github.com/windowsazure/azure-sdk-tools-xplat).
+For documentation on how to host Ruby applications on Microsoft Azure, please see the [Microsoft Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby/).
+For documentation on Azure PowerShell CLI tool for Windows, please see our readme [here](http://github.com/azure/azure-sdk-tools).
+For documentation on the Azure cross platform CLI tool for Windows, Mac and Linux, please see our readme [here](http://github.com/azure/azure-sdk-tools-xplat).
