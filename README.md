@@ -113,6 +113,8 @@ There are two ways you can set up the connections:
       config.sql_database_authentication_mode = <:management_certificate or :sql_server>
       # Configure SQL Server authentication API endpoint here
       config.sql_database_management_endpoint = "http://management.database.windows.net:8443"
+      # Configure a ca_cert.pem file if you are having issues with ssl peer verification 
+      config.ca_file = "./ca_file.pem"
   end
   ```
 * Against local Emulator (Windows Only)
@@ -153,6 +155,11 @@ There are two ways you can set up the connections:
     AZURE_MANAGEMENT_ENDPOINT = <The endpoint URL of Microsoft Azure management service>
     AZURE_SQL_DATABASE_MANAGEMENT_ENDPOINT = <SQL Database Management Endpoint>
     AZURE_SQL_DATABASE_AUTHENTICATION_MODE = <:management_certificate or :sql_server>
+    ```
+    
+  * SSL CA_Certs [see gist](https://gist.github.com/fnichol/867550)
+    ```bash
+    AZURE_CA_FILE=<path to *.pem>
     ```
 * Against local Emulator (Windows Only)
   * Storage
