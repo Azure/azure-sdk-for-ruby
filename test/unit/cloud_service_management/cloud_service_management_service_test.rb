@@ -28,13 +28,13 @@ describe Azure::CloudServiceManagementService do
   end
   let(:response_body) { Nokogiri::XML response.body }
 
-  before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
-  end
+  before{
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+  }
 
-  describe '#list_cloud_services' do
+  describe "#list_cloud_services" do
     before do
-      ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     end
 
@@ -55,9 +55,9 @@ describe Azure::CloudServiceManagementService do
     end
   end
 
-  describe '#get_cloud_service' do
+  describe "#get_cloud_service" do
     before do
-      ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     end
 
@@ -76,17 +76,17 @@ describe Azure::CloudServiceManagementService do
     end
   end
 
-  describe '#create_cloud_service' do
+  describe "#create_cloud_service" do
 
-    it 'Create cloud service return message if cloud service exists of given name.' do
-      ManagementHttpRequest.any_instance.expects(:call).returns response_body
+    it "Create cloud service return message if cloud service exists of given name." do
+      Azure::BaseManagement::ManagementHttpRequest.any_instance.expects(:call).returns response_body
       msg = subject.create_cloud_service 'cloud-service-1'
       assert_match(/^Cloud service cloud-service-1 already exists*/, msg)
     end
 
     it "Create cloud service if cloud service doesn't exists of given name." do
       Azure::CloudServiceManagementService.any_instance.stubs(:get_cloud_service).with('cloud-service-3').returns(false)
-      ManagementHttpRequest.any_instance.expects(:call).returns nil
+      Azure::BaseManagement::ManagementHttpRequest.any_instance.expects(:call).returns nil
       subject.create_cloud_service 'cloud-service-3'
     end
 

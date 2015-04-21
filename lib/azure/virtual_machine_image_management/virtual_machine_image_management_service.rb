@@ -16,7 +16,8 @@ require 'azure/virtual_machine_image_management/serialization'
 
 module Azure
   module VirtualMachineImageManagement
-    class VirtualMachineImageManagementService < BaseManagementService
+    class VirtualMachineImageManagementService < BaseManagement::BaseManagementService
+
       def initialize
         super()
       end
@@ -26,13 +27,14 @@ module Azure
       # Returns an array of Azure::VirtualMachineImageManagementService objects
       def list_virtual_machine_images
         request_path = '/services/images'
-        request = ManagementHttpRequest.new(:get, request_path, nil)
+        request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.virtual_machine_images_from_xml(response)
       end
     end
 
-    class VirtualMachineDiskManagementService < BaseManagementService
+    class VirtualMachineDiskManagementService < BaseManagement::BaseManagementService
+
       def initialize
         super()
       end
@@ -42,7 +44,7 @@ module Azure
       # Returns an array of Azure::VirtualMachineDiskManagementService objects
       def list_virtual_machine_disks
         request_path = '/services/disks'
-        request = ManagementHttpRequest.new(:get, request_path, nil)
+        request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.disks_from_xml(response)
       end
@@ -58,7 +60,7 @@ module Azure
       def delete_virtual_machine_disk(disk_name)
         Loggerx.info "Deleting Disk \"#{disk_name}\". "
         path = "/services/disks/#{disk_name}"
-        request = ManagementHttpRequest.new(:delete, path)
+        request = BaseManagement::ManagementHttpRequest.new(:delete, path)
         request.call
       end
     end

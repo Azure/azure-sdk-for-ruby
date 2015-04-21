@@ -23,7 +23,7 @@ describe Azure::BaseManagementService do
   let(:response_xml) { nil }
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     mock_request.expects(:call).returns(Nokogiri::XML response_xml).at_least(0)
   end
 
@@ -33,7 +33,7 @@ describe Azure::BaseManagementService do
     let(:method) { :get }
 
     before do
-      ManagementHttpRequest.stubs(:new).with(method,
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method,
                                              request_path,
                                              nil).returns(mock_request)
     end
@@ -92,7 +92,7 @@ describe Azure::BaseManagementService do
     let(:location_response_body) { Nokogiri::XML location_response.body }
 
     before do
-      ManagementHttpRequest.stubs(:new).with(method,
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method,
                                              request_path,
                                              anything).returns(mock_request)
       mock_request.expects(:call).returns(
@@ -100,13 +100,13 @@ describe Azure::BaseManagementService do
       ).at_least(0)
       mock_request = mock
 
-      ManagementHttpRequest.stubs(:new).with(:get,
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get,
                                              location_request_path,
                                              nil).returns(mock_request)
       mock_request.expects(:call).returns(location_response_body).at_least(0)
       mock_request = mock
 
-      ManagementHttpRequest.stubs(:new).with(:get,
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get,
                                              request_path,
                                              nil).returns(mock_request)
       mock_request.expects(:call).returns(
@@ -146,7 +146,7 @@ describe Azure::BaseManagementService do
       Azure::BaseManagementService.any_instance.stubs(
         :affinity_group
       ).returns(true)
-      ManagementHttpRequest.stubs(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         :get,
         request_path,
         nil

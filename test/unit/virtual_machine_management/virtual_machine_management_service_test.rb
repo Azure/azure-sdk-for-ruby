@@ -60,8 +60,8 @@ describe Azure::VirtualMachineManagementService do
   end
 
   before do
-    Loggerx.stubs(:info).returns(nil)
-    ManagementHttpRequest.stubs(:new).with(
+    Azure::Loggerx.stubs(:info).returns(nil)
+    Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
       :get,
       images_request_path,
       nil
@@ -95,9 +95,9 @@ describe Azure::VirtualMachineManagementService do
     let(:virtual_machine_response_body) { Nokogiri::XML virtual_machine_response.body }
 
     before do
-      ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_cloud_service_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_cloud_service_request)
       mock_cloud_service_request.expects(:call).returns(cloud_service_response_body)
-      ManagementHttpRequest.stubs(:new).with(method, anything).returns(mock_virtual_machine_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, anything).returns(mock_virtual_machine_request)
       mock_virtual_machine_request.stubs(:warn=).returns(true).twice
       mock_virtual_machine_request.expects(:call).twice.returns(virtual_machine_response_body).returns(Nokogiri::XML  deployment_error_response.body)
     end
@@ -186,7 +186,7 @@ describe Azure::VirtualMachineManagementService do
 
     before do
       mock_request = mock
-      ManagementHttpRequest.stubs(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         method,
         location_request_path,
         nil
@@ -196,7 +196,7 @@ describe Azure::VirtualMachineManagementService do
       Azure::CloudServiceManagementService.any_instance.stubs(:upload_certificate)
       Azure::StorageManagementService.any_instance.stubs(:create_storage_account)
       mock_request = mock
-      ManagementHttpRequest.expects(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.expects(:new).with(
         :post,
         anything,
         anything
@@ -242,8 +242,9 @@ describe Azure::VirtualMachineManagementService do
     let(:method) { :get }
 
     before do
+
       mock_request = mock
-      ManagementHttpRequest.stubs(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         method,
         location_request_path,
         nil
@@ -253,7 +254,7 @@ describe Azure::VirtualMachineManagementService do
       Azure::CloudServiceManagementService.any_instance.stubs(:upload_certificate)
       Azure::StorageManagementService.any_instance.stubs(:create_storage_account)
       mock_request = mock
-      ManagementHttpRequest.expects(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.expects(:new).with(
         :post,
         anything,
         anything
@@ -347,7 +348,7 @@ describe Azure::VirtualMachineManagementService do
       options = {
         vm_size: 'extralarge'
       }
-      out, err = capture_io do 
+      out, err = capture_io do
         msg = subject.create_virtual_machine(params, options)
       end
       error_msg = "'extralarge' specified for parameter 'vm_size' is not in the list of valid VM role sizes."
@@ -358,7 +359,7 @@ describe Azure::VirtualMachineManagementService do
       options = {
         vm_size: 'wrong size'
       }
-      out, err = capture_io do 
+      out, err = capture_io do
         virtual_machine = subject.create_virtual_machine(params, options)
       end
       error_msg = "'wrong size' specified for parameter 'vm_size' is not in the list of valid VM role sizes."
@@ -369,7 +370,7 @@ describe Azure::VirtualMachineManagementService do
       options = {
         vm_size: ''
       }
-      out, err = capture_io do 
+      out, err = capture_io do
         subject.create_virtual_machine(params, options)
       end
       error_msg = "'' specified for parameter 'vm_size' is not in the list of valid VM role sizes."

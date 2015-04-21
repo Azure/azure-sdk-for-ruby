@@ -38,7 +38,7 @@ describe Azure::StorageManagementService do
   let(:options) { { description: 'sample description' } }
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   end
 
   it 'list storage accounts' do

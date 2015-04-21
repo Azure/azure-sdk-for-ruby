@@ -15,6 +15,8 @@
 require 'test_helper'
 
 describe Azure::VirtualMachineManagement::Serialization do
+  include Azure::Core::Utility
+
   subject { Azure::VirtualMachineManagement::Serialization }
 
   let(:vm_xml) { Nokogiri::XML(Fixtures['virtual_machine']) }
@@ -197,7 +199,7 @@ describe Azure::VirtualMachineManagement::Serialization do
     let(:media_link) { 'https://sta.blob.managment.core.net/vhds/1234.vhd' }
 
     before do
-      Loggerx.expects(:puts).returns(nil).at_least(0)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       @vm = Azure::VirtualMachineManagement::VirtualMachine.new
       @vm.data_disks = []
       @vm.media_link = media_link
@@ -240,7 +242,7 @@ describe Azure::VirtualMachineManagement::Serialization do
     let(:preferred_port) { '22' }
     before do
       subject.class.send(:public, *subject.class.private_instance_methods)
-      Loggerx.expects(:puts).returns(nil).at_least(0)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     end
 
     it 'returns random port number when preferred port is in use' do
@@ -265,26 +267,26 @@ describe Azure::VirtualMachineManagement::Serialization do
       assert_operator result.to_i, :<=, 65535
     end
   end
-  
+
   describe "#role_to_xml" do
-    
+
     before(:each) do
-      @params = { 
+      @params = {
           :certificate => { :fingerprint => "fingerprint" },
-          :vm_name => "aVMName", 
+          :vm_name => "aVMName",
           :image => "anImage",
           :vm_user => "nocturnal_flying_echolocating_mammal_man"
       }
-      
-      @options = { 
-          :virtual_network_name => "aNetworkName", 
-          :subnet_name => "someSubnet", 
-          :storage_account_name => "storage", 
+
+      @options = {
+          :virtual_network_name => "aNetworkName",
+          :subnet_name => "someSubnet",
+          :storage_account_name => "storage",
           :vm_size => "Small",
           :os_type => "Linux"
       }
     end
-    
+
     it "should return a valid role containing a static vnet ip address if provided in options" do
       @options[:static_virtual_network_ipaddress] = "1.2.3.4"
       result = subject.role_to_xml(@params, @options)

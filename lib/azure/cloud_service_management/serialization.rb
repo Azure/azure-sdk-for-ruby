@@ -19,6 +19,7 @@ require 'azure/virtual_machine_management/serialization'
 module Azure
   module CloudServiceManagement
     module Serialization
+      extend Azure::Core::Utility
       def self.cloud_services_to_xml(name, options = {})
         options[:label] = options[:label] || name
 

@@ -17,7 +17,7 @@ require "integration/test_helper"
 describe Azure::SqlDatabaseManagementService do
 
   before {
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   }
 
   subject { Azure::SqlDatabaseManagementService.new }

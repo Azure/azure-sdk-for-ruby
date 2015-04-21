@@ -29,14 +29,14 @@ describe Azure::VirtualMachineImageManagementService do
   end
   let(:response_body) { Nokogiri::XML response.body }
 
-  before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
-  end
+  before{
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+  }
 
-  describe '#list_virtual_machine_images' do
+  describe "#list_virtual_machine_images" do
 
     before do
-      ManagementHttpRequest.stubs(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         method,
         request_path,
         nil

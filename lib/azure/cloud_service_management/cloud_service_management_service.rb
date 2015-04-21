@@ -16,7 +16,8 @@ require 'azure/cloud_service_management/serialization'
 
 module Azure
   module CloudServiceManagement
-    class CloudServiceManagementService < BaseManagementService
+    class CloudServiceManagementService < BaseManagement::BaseManagementService
+
       def initialize
         super()
       end
@@ -54,7 +55,7 @@ module Azure
           Loggerx.info "Creating cloud service #{name}."
           request_path = '/services/hostedservices'
           body = Serialization.cloud_services_to_xml(name, options)
-          request = ManagementHttpRequest.new(:post, request_path, body)
+          request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
           request.call
         end
       end
@@ -64,7 +65,7 @@ module Azure
       # Returns an array of Azure::CloudServiceManagement::CloudService objects
       def list_cloud_services
         request_path = '/services/hostedservices'
-        request = ManagementHttpRequest.new(:get, request_path, nil)
+        request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.cloud_services_from_xml(response)
       end
@@ -105,8 +106,8 @@ module Azure
       #
       # Returns:  None
       def delete_cloud_service(cloud_service_name)
-        request_path = "/services/hostedservices/#{cloud_service_name}"
-        request = ManagementHttpRequest.new(:delete, request_path)
+        request_path= "/services/hostedservices/#{cloud_service_name}"
+        request = BaseManagement::ManagementHttpRequest.new(:delete, request_path)
         Loggerx.info "Deleting cloud service #{cloud_service_name}. \n"
         request.call
       end
@@ -121,18 +122,18 @@ module Azure
       #
       # Returns NONE
       def delete_cloud_service_deployment(cloud_service_name)
-        request_path = "/services/hostedservices/#{cloud_service_name}/deploymentslots/production"
-        request = ManagementHttpRequest.new(:delete, request_path)
+        request_path= "/services/hostedservices/#{cloud_service_name}/deploymentslots/production"
+        request = BaseManagement::ManagementHttpRequest.new(:delete, request_path)
         Loggerx.info "Deleting deployment of cloud service \"#{cloud_service_name}\" ..."
         request.call
       end
 
       def upload_certificate(cloud_service_name, ssh)
         data = export_der(ssh[:cert], ssh[:key])
-        request_path = "/services/hostedservices/#{cloud_service_name}/certificates"
-        body = Serialization.add_certificate_to_xml(data)
+        request_path= "/services/hostedservices/#{cloud_service_name}/certificates"
+        body = BaseManagement::Serialization.add_certificate_to_xml(data)
         Loggerx.info "Uploading certificate to cloud service #{cloud_service_name}..."
-        request = ManagementHttpRequest.new(:post, request_path, body)
+        request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
         request.call
       end
     end
