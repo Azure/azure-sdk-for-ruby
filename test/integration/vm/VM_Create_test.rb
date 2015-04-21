@@ -15,6 +15,8 @@
 require 'integration/test_helper'
 
 describe Azure::VirtualMachineManagementService do
+  include Azure::Core::Utility
+
   subject { Azure::VirtualMachineManagementService.new }
   let(:cloud_service) { Azure::CloudServiceManagementService.new }
   let(:names) { VirtualMachineNameHelper.name }

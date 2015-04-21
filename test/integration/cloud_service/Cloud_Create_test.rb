@@ -15,6 +15,7 @@
 require 'integration/test_helper'
 
 describe Azure::CloudServiceManagementService do
+  include Azure::Core::Utility
 
   subject { Azure::CloudServiceManagementService.new }
   let(:options) do
@@ -25,7 +26,7 @@ describe Azure::CloudServiceManagementService do
   end
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   end
 
   describe '#create_cloud_service' do

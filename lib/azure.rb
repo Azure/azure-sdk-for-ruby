@@ -50,3 +50,4 @@ Azure::StorageManagementService = Azure::StorageManagement::StorageManagementSer
 Azure::VirtualMachineManagementService = Azure::VirtualMachineManagement::VirtualMachineManagementService
 Azure::SqlDatabaseManagementService = Azure::SqlDatabaseManagement::SqlDatabaseManagementService
 Azure::VirtualNetworkManagementService = Azure::VirtualNetworkManagement::VirtualNetworkManagementService
+Azure::Loggerx = Azure::Core::Logger

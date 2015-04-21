@@ -142,8 +142,9 @@ module Azure
 
           if uri.scheme.downcase == 'https'
             # require 'net/https'
+            http.ca_file = Azure.config.ca_file if Azure.config.ca_file
             http.use_ssl = true
-            http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+            http.verify_mode = OpenSSL::SSL::VERIFY_PEER
           end
 
           response = HttpResponse.new(http.request(request))

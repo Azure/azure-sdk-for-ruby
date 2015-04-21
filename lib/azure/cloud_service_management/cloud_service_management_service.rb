@@ -17,6 +17,7 @@ require 'azure/cloud_service_management/serialization'
 module Azure
   module CloudServiceManagement
     class CloudServiceManagementService < BaseManagement::BaseManagementService
+      include Azure::Core::Utility
 
       def initialize
         super()
@@ -93,7 +94,7 @@ module Azure
 
       def get_cloud_service_properties(name)
         request_path = "/services/hostedservices/#{name}?embed-detail=true"
-        request = ManagementHttpRequest.new(:get, request_path)
+        request = BaseManagement::ManagementHttpRequest.new(:get, request_path)
         response = request.call
         Serialization.cloud_services_from_xml(response).first
       end
@@ -131,7 +132,7 @@ module Azure
       def upload_certificate(cloud_service_name, ssh)
         data = export_der(ssh[:cert], ssh[:key])
         request_path= "/services/hostedservices/#{cloud_service_name}/certificates"
-        body = BaseManagement::Serialization.add_certificate_to_xml(data)
+        body = Serialization.add_certificate_to_xml(data)
         Loggerx.info "Uploading certificate to cloud service #{cloud_service_name}..."
         request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
         request.call

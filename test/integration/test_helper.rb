@@ -12,25 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "test_helper"
-require "azure"
+require 'test_helper'
+require 'azure'
 
 Azure::Core.configure do |config|
-  config.storage_access_key     = ENV.fetch("AZURE_STORAGE_ACCESS_KEY")
-  config.storage_account_name   = ENV.fetch("AZURE_STORAGE_ACCOUNT")
-  # config.storage_table_host     = ENV.fetch("AZURE_STORAGE_TABLE_HOST")
-  # config.storage_blob_host      = ENV.fetch("AZURE_STORAGE_BLOB_HOST")
-  # config.storage_queue_host     = ENV.fetch("AZURE_STORAGE_QUEUE_HOST")
-
-  config.sb_namespace  = ENV.fetch("AZURE_SERVICEBUS_NAMESPACE")
-  config.sb_access_key  = ENV.fetch("AZURE_SERVICEBUS_ACCESS_KEY")
-  # config.sb_issuer      = ENV.fetch("AZURE_SERVICEBUS_ISSUER")
+  config.storage_access_key     = ENV.fetch('AZURE_STORAGE_ACCESS_KEY')
+  config.storage_account_name   = ENV.fetch('AZURE_STORAGE_ACCOUNT')
+  config.sb_namespace  = ENV.fetch('AZURE_SERVICEBUS_NAMESPACE')
+  config.sb_access_key  = ENV.fetch('AZURE_SERVICEBUS_ACCESS_KEY')
   config.management_certificate  = ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE')
-  # config.management_endpoint  = ENV.fetch("AZURE_MANAGEMENT_ENDPOINT")
-  config.subscription_id  = ENV.fetch("AZURE_SUBSCRIPTION_ID")
+  config.subscription_id  = ENV.fetch('AZURE_SUBSCRIPTION_ID')
 end
 
-StorageAccountName = random_string('storagetest',10)
+util = Class.new.extend(Azure::Core::Utility)
+
+StorageAccountName = util.random_string('storagetest',10)
 Images = Azure::VirtualMachineImageManagementService.new.list_virtual_machine_images
 LinuxImage = Images.select{|image| image.os_type == 'Linux'}.first
 WindowsImage = Images.select{|image| image.os_type == 'Windows'}.first
