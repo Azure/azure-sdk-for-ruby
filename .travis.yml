@@ -8,6 +8,6 @@ rvm:
 - 2.2.0
 
 script:
-- rake test:unit
+- bundle exec rake test:unit
 - if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ] ; then rake test:integration ; fi
 
