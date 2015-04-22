@@ -19,7 +19,7 @@ describe Azure::BaseManagementService do
 
   subject { Azure::BaseManagementService.new }
   let(:affinity_group_name) { random_string('affinity-group-', 10) }
-  let(:location) { WindowsImageLocation }
+  let(:image_location) { WindowsImageLocation }
 
   before do
     Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
@@ -38,7 +38,7 @@ describe Azure::BaseManagementService do
       affinity_group = subject.get_affinity_group(affinity_group_name)
       affinity_group.must_be_kind_of Azure::BaseManagement::AffinityGroup
       affinity_group.name.wont_be_nil
-      affinity_group.location.must_equal location
+      affinity_group.location.must_equal image_location
       affinity_group.name.must_equal affinity_group_name
       affinity_group.label.must_equal label
       affinity_group.description.must_equal options[:description]
@@ -56,7 +56,7 @@ describe Azure::BaseManagementService do
       affinity_group = subject.get_affinity_group(affinity_group_name)
       affinity_group.must_be_kind_of Azure::BaseManagement::AffinityGroup
       affinity_group.name.wont_be_nil
-      affinity_group.location.must_equal location
+      affinity_group.location.must_equal image_location
       affinity_group.name.must_equal affinity_group_name
       affinity_group.label.must_equal label
     end

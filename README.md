@@ -51,6 +51,8 @@ This project provides a Ruby package that makes it easy to access and manage Mic
 
 * Ruby 1.9.3
 * Ruby 2.0
+* Ruby 2.1
+* Ruby 2.2
 
 **Notice** that Ruby 2.0 x64 on Windows is not supported due to the [lack of nokogiri](https://github.com/sparklemotion/nokogiri/issues/864).
 

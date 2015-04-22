@@ -22,13 +22,13 @@ describe Azure::BaseManagementService do
 
   subject { Azure::BaseManagementService.new }
   let(:affinity_group_name) { AffinityGroupNameHelper.name }
-  let(:location) { WindowsImageLocation }
+  let(:image_location) { WindowsImageLocation }
   let(:label) { 'Label Name' }
 
   describe '#delete_affinity_group' do
 
     it 'delete affinity group' do
-      subject.create_affinity_group(affinity_group_name, location, label)
+      subject.create_affinity_group(affinity_group_name, image_location, label)
       subject.delete_affinity_group(affinity_group_name)
       affinity_list = subject.list_affinity_groups.select do |x|
         x.name == affinity_group_name

@@ -19,7 +19,7 @@ describe Azure::CloudServiceManagementService do
   subject { Azure::CloudServiceManagementService.new }
   let(:request_path) { '/services/hostedservices' }
   let(:cloud_services_xml) { Fixtures['list_cloud_services'] }
-  let(:method) { :get }
+  let(:verb) { :get }
   let(:mock_request) { mock }
   let(:response) do
     response = mock
@@ -34,7 +34,7 @@ describe Azure::CloudServiceManagementService do
 
   describe "#list_cloud_services" do
     before do
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(verb, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     end
 
@@ -57,7 +57,7 @@ describe Azure::CloudServiceManagementService do
 
   describe "#get_cloud_service" do
     before do
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(verb, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     end
 

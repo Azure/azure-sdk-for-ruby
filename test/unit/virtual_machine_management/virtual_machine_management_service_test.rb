@@ -23,21 +23,21 @@ describe Azure::VirtualMachineManagementService do
 
   let(:params) do
     {
-      vm_name: 'instance1',
-      vm_user: 'root',
-      image: '5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-63APR20130415',
-      password: 'root',
-      location: 'West US'
+        vm_name: 'instance1',
+        vm_user: 'root',
+        image: '5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-63APR20130415',
+        password: 'root',
+        location: 'West US'
     }
   end
 
   let(:windows_params) do
     {
-      vm_name: 'instance1',
-      vm_user: 'administrator',
-      image: 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201304.01-en.us-127GB.vhd',
-      password: 'Admin123',
-      location: 'West US'
+        vm_name: 'instance1',
+        vm_user: 'administrator',
+        image: 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201304.01-en.us-127GB.vhd',
+        password: 'Admin123',
+        location: 'West US'
     }
   end
 
@@ -62,9 +62,9 @@ describe Azure::VirtualMachineManagementService do
   before do
     Azure::Loggerx.stubs(:info).returns(nil)
     Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
-      :get,
-      images_request_path,
-      nil
+        :get,
+        images_request_path,
+        nil
     ).returns(mock_request)
     mock_request.expects(:call).returns(os_response_body).at_least(0)
   end
@@ -74,7 +74,7 @@ describe Azure::VirtualMachineManagementService do
     let(:cloud_services_xml) { Fixtures['list_cloud_services'] }
     let(:virtual_machine_xml) { Fixtures['virtual_machine'] }
     let(:deployment_error_xml) { Fixtures['deployment_error'] }
-    let(:method) { :get }
+    let(:verb) { :get }
     let(:mock_cloud_service_request) { mock }
     let(:cloud_service_response) do
       cloud_service_response = mock
@@ -95,11 +95,11 @@ describe Azure::VirtualMachineManagementService do
     let(:virtual_machine_response_body) { Nokogiri::XML virtual_machine_response.body }
 
     before do
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_cloud_service_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(verb, request_path, nil).returns(mock_cloud_service_request)
       mock_cloud_service_request.expects(:call).returns(cloud_service_response_body)
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, anything).returns(mock_virtual_machine_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(verb, anything).returns(mock_virtual_machine_request)
       mock_virtual_machine_request.stubs(:warn=).returns(true).twice
-      mock_virtual_machine_request.expects(:call).twice.returns(virtual_machine_response_body).returns(Nokogiri::XML  deployment_error_response.body)
+      mock_virtual_machine_request.expects(:call).twice.returns(virtual_machine_response_body).returns(Nokogiri::XML deployment_error_response.body)
     end
 
     it 'assembles a URI for the request' do
@@ -128,25 +128,25 @@ describe Azure::VirtualMachineManagementService do
       virtual_machine = subject.list_virtual_machines.first
       virtual_machine.tcp_endpoints.must_be_kind_of Array
       virtual_machine.tcp_endpoints.must_include(
-        name:  'SSH',
-        vip:  '137.116.17.187',
-        public_port:  '22',
-        local_port: '22',
-        protocol: 'tcp'
+          name: 'SSH',
+          vip: '137.116.17.187',
+          public_port: '22',
+          local_port: '22',
+          protocol: 'tcp'
       )
       virtual_machine.tcp_endpoints.must_include(
-        name: 'tcp-port-80',
-        vip: '137.117.17.187',
-        public_port: '80',
-        local_port: '80',
-        protocol: 'tcp'
+          name: 'tcp-port-80',
+          vip: '137.117.17.187',
+          public_port: '80',
+          local_port: '80',
+          protocol: 'tcp'
       )
       virtual_machine.tcp_endpoints.must_include(
-        name: 'tcp-port-3889',
-        vip: '137.116.17.187',
-        public_port: '3889',
-        local_port: '3889',
-        protocol: 'tcp'
+          name: 'tcp-port-3889',
+          vip: '137.116.17.187',
+          public_port: '3889',
+          local_port: '3889',
+          protocol: 'tcp'
       )
     end
   end
@@ -159,7 +159,7 @@ describe Azure::VirtualMachineManagementService do
         vm.cloud_service_name = 'cloud-service-1'
       end
       Azure::VirtualMachineManagementService.any_instance.stubs(
-        :list_virtual_machines
+          :list_virtual_machines
       ).returns([virtual_machine])
     end
 
@@ -182,14 +182,14 @@ describe Azure::VirtualMachineManagementService do
   end
 
   describe '#create_virtual_machine' do
-    let(:method) { :get }
+    let(:verb) { :get }
 
     before do
       mock_request = mock
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
-        method,
-        location_request_path,
-        nil
+          verb,
+          location_request_path,
+          nil
       ).returns(mock_request)
       mock_request.expects(:call).returns(location_response_body).at_least(0)
       Azure::CloudServiceManagementService.any_instance.stubs(:create_cloud_service)
@@ -197,9 +197,9 @@ describe Azure::VirtualMachineManagementService do
       Azure::StorageManagementService.any_instance.stubs(:create_storage_account)
       mock_request = mock
       Azure::BaseManagement::ManagementHttpRequest.expects(:new).with(
-        :post,
-        anything,
-        anything
+          :post,
+          anything,
+          anything
       ).returns(mock_request)
       mock_request.expects(:call).returns(nil)
       virtual_machine = VirtualMachine.new do |vm|
@@ -207,7 +207,7 @@ describe Azure::VirtualMachineManagementService do
         vm.ipaddress = '192.168.1.1'
       end
       Azure::VirtualMachineManagementService.stubs(
-        :get_virtual_machine
+          :get_virtual_machine
       ).returns(virtual_machine)
     end
 
@@ -224,9 +224,9 @@ describe Azure::VirtualMachineManagementService do
 
     it 'should set options hash with valid cloud service name.' do
       options = {
-        storage_account_name:  'storage_account_name',
-        deployment_name:  'unique_deployment_name',
-        tcp_endpoints: '80,3889:3889'
+          storage_account_name: 'storage_account_name',
+          deployment_name: 'unique_deployment_name',
+          tcp_endpoints: '80,3889:3889'
       }
       subject.create_virtual_machine(params, options)
       csn = options[:cloud_service_name]
@@ -239,15 +239,15 @@ describe Azure::VirtualMachineManagementService do
 
   describe '#create_virtual_machine with invalid parameters for windows machine' do
     let(:virtual_machine_xml) { Fixtures['virtual_machine'] }
-    let(:method) { :get }
+    let(:verb) { :get }
 
     before do
 
       mock_request = mock
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
-        method,
-        location_request_path,
-        nil
+          verb,
+          location_request_path,
+          nil
       ).returns(mock_request)
       mock_request.expects(:call).returns(location_response_body).at_least(0)
       Azure::CloudServiceManagementService.any_instance.stubs(:create_cloud_service)
@@ -255,9 +255,9 @@ describe Azure::VirtualMachineManagementService do
       Azure::StorageManagementService.any_instance.stubs(:create_storage_account)
       mock_request = mock
       Azure::BaseManagement::ManagementHttpRequest.expects(:new).with(
-        :post,
-        anything,
-        anything
+          :post,
+          anything,
+          anything
       ).returns(mock_request).at_least(0)
       mock_request.expects(:call).returns(nil).at_least(0)
       virtual_machine_obj = VirtualMachine.new do |virtual_machine|
@@ -265,7 +265,7 @@ describe Azure::VirtualMachineManagementService do
         virtual_machine.ipaddress = '192.168.1.1'
       end
       Azure::VirtualMachineManagementService.any_instance.stubs(
-        :get_virtual_machine
+          :get_virtual_machine
       ).returns(virtual_machine_obj)
     end
 
@@ -288,16 +288,16 @@ describe Azure::VirtualMachineManagementService do
     end
 
     it 'self-signed certificate is generated by vm and used for the virtual machine when certificate path is not given.' do
-      options = { winrm_transport: %w(https http) }
+      options = {winrm_transport: %w(https http)}
       virtual_machine = subject.create_virtual_machine(windows_params, options)
       virtual_machine.wont_be_nil
     end
 
     it 'throws error when certificate path is not invalid.' do
       options = {
-        winrm_transport: %w(https http),
-        private_key_file: 'f:/invalid_path/private_key' ,
-        certificate_file: 'f:/invalid_path/certificate.pem'
+          winrm_transport: %w(https http),
+          private_key_file: 'f:/invalid_path/private_key',
+          certificate_file: 'f:/invalid_path/certificate.pem'
       }
       virtual_machine = subject.create_virtual_machine(windows_params, options)
       assert_match(/No such file or directory -*/, virtual_machine)
@@ -305,9 +305,9 @@ describe Azure::VirtualMachineManagementService do
 
     it 'should not throws certificate error when wirnm_transport is http' do
       options = {
-        winrm_transport: ['http'],
-        private_key_file: 'f:/invalid_path/private_key' ,
-        certificate_file: 'f:/invalid_path/certificate.pem'
+          winrm_transport: ['http'],
+          private_key_file: 'f:/invalid_path/private_key',
+          certificate_file: 'f:/invalid_path/certificate.pem'
       }
       virtual_machine = subject.create_virtual_machine(windows_params, options)
       virtual_machine.must_be_kind_of VirtualMachine
@@ -346,7 +346,7 @@ describe Azure::VirtualMachineManagementService do
 
     it 'warns if vm_size is not in the correct case' do
       options = {
-        vm_size: 'extralarge'
+          vm_size: 'extralarge'
       }
       out, err = capture_io do
         msg = subject.create_virtual_machine(params, options)
@@ -357,7 +357,7 @@ describe Azure::VirtualMachineManagementService do
 
     it 'warns when wrong role size is given' do
       options = {
-        vm_size: 'wrong size'
+          vm_size: 'wrong size'
       }
       out, err = capture_io do
         virtual_machine = subject.create_virtual_machine(params, options)
@@ -368,7 +368,7 @@ describe Azure::VirtualMachineManagementService do
 
     it 'should warn if role size is empty' do
       options = {
-        vm_size: ''
+          vm_size: ''
       }
       out, err = capture_io do
         subject.create_virtual_machine(params, options)
@@ -424,9 +424,9 @@ describe Azure::VirtualMachineManagementService do
 
     it 'throws error when certificate path is not invalid.' do
       options = {
-        winrm_transport: %w(https http),
-        private_key_file: 'f:/invalid_path/private_key' ,
-        certificate_file: 'f:/invalid_path/certificate.pem'
+          winrm_transport: %w(https http),
+          private_key_file: 'f:/invalid_path/private_key',
+          certificate_file: 'f:/invalid_path/certificate.pem'
       }
       exception = assert_raises(RuntimeError) do
         subject.add_role(windows_params, options)

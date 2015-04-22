@@ -20,7 +20,7 @@ describe Azure::VirtualMachineImageManagementService do
 
   let(:request_path) { '/services/images' }
   let(:images_xml) { Fixtures['list_images'] }
-  let(:method) { :get }
+  let(:verb) { :get }
   let(:mock_request) { mock }
   let(:response) do
     response = mock
@@ -29,7 +29,7 @@ describe Azure::VirtualMachineImageManagementService do
   end
   let(:response_body) { Nokogiri::XML response.body }
 
-  before{
+  before {
     Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   }
 
@@ -37,9 +37,9 @@ describe Azure::VirtualMachineImageManagementService do
 
     before do
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
-        method,
-        request_path,
-        nil
+          verb,
+          request_path,
+          nil
       ).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     end

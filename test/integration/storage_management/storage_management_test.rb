@@ -35,7 +35,6 @@ describe Azure::StorageManagementService do
 
   let(:affinity_group_name) { affinity_name }
   let(:storage_name) { Time.now.getutc.to_i.to_s }
-  let(:location) { 'West US' }
   let(:label) { 'Label Name' }
   let(:options) { { description: 'sample description' } }
 

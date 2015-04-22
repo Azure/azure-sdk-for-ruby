@@ -17,11 +17,11 @@ require "test_helper"
 describe Azure::StorageManagementService do
 
   subject { Azure::StorageManagementService.new }
-  let(:request_path) {'/services/storageservices'}
+  let(:request_path) { '/services/storageservices' }
   let(:storage_accounts_xml) { Fixtures["list_storage_accounts"] }
-  let(:one_storage_account_xml) { Fixtures['list_storage_account_single']}
-  let(:method) { :get }
-  let(:mock_request){ mock() }
+  let(:one_storage_account_xml) { Fixtures['list_storage_account_single'] }
+  let(:verb) { :get }
+  let(:mock_request) { mock() }
 
   let(:response) {
     response = mock()
@@ -35,16 +35,16 @@ describe Azure::StorageManagementService do
     single_response
   }
 
-  let(:response_body) {Nokogiri::XML response.body}
+  let(:response_body) { Nokogiri::XML response.body }
   let(:single_response_body) { Nokogiri::XML single_response.body }
 
-  before{
+  before {
     Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   }
 
   describe "#list_storage_accounts" do
     before {
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(verb, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     }
 
@@ -68,7 +68,7 @@ describe Azure::StorageManagementService do
   describe "#list_storage_accounts_single" do
     before {
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
-        method, request_path, nil
+          verb, request_path, nil
       ).returns(mock_request)
       mock_request.expects(:call).returns(single_response_body)
     }
@@ -84,7 +84,7 @@ describe Azure::StorageManagementService do
 
   describe "#get_storage_account" do
     before {
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(verb, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     }
 
@@ -106,8 +106,8 @@ describe Azure::StorageManagementService do
   describe "#create_storage_account" do
     let(:options) {
       {
-        location: 'East Asia',
-        description: 'Test Storage Description'
+          location: 'East Asia',
+          description: 'Test Storage Description'
       }
     }
 
@@ -151,13 +151,13 @@ describe Azure::StorageManagementService do
     let(:no_options_specified) { 'No options specified' }
     let(:update_storage_account_req) { Fixtures["update_storage_account"] }
 
-    let(:updated_storage_account_mock_request){ mock() }
+    let(:updated_storage_account_mock_request) { mock() }
     let(:updated_storage_account_response) {
       updated_storage_account_response = mock()
       updated_storage_account_response.stubs(:body).returns(updated_accounts_xml)
       updated_storage_account_response
     }
-    let(:updated_storage_account_response_body) {Nokogiri::XML updated_storage_account_response.body}
+    let(:updated_storage_account_response_body) { Nokogiri::XML updated_storage_account_response.body }
 
     let(:update_request) {
       update_request = mock()
@@ -166,7 +166,7 @@ describe Azure::StorageManagementService do
     }
 
     before {
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(verb, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
 
       Azure::StorageManagement::Serialization.stubs(:update_storage_account).returns(update_storage_account_req)
@@ -177,10 +177,10 @@ describe Azure::StorageManagementService do
         label: 'Test Label',
         geo_replication_enabled: false,
         extended_properties: {
-          prop_1_name: 'prop_1_value',
-          prop_2_name: 'prop_2_value'
+            prop_1_name: 'prop_1_value',
+            prop_2_name: 'prop_2_value'
         }
-      }
+    }
     }
 
     it "checks if nil options is provided" do
@@ -208,7 +208,7 @@ describe Azure::StorageManagementService do
 
       subject.update_storage_account 'storage2', options
 
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(updated_storage_account_mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(verb, request_path, nil).returns(updated_storage_account_mock_request)
       updated_storage_account_mock_request.expects(:call).returns(updated_storage_account_response_body)
 
       accounts = subject.list_storage_accounts
@@ -245,10 +245,10 @@ describe Azure::StorageManagementService do
 
     before {
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
-        :get, request_path, nil
+          :get, request_path, nil
       ).returns(get_account_mock_request)
       get_account_mock_request.expects(:call).returns(
-        get_account_response_body
+          get_account_response_body
       )
     }
 
