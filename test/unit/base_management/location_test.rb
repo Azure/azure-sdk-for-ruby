@@ -23,7 +23,6 @@ describe Azure::BaseManagement::Location do
   describe "#list_locations" do
     let(:request_path) { '/locations' }
     let(:locations_xml) { Fixtures['list_locations'] }
-    let(:method) { :get }
     let(:mock_request){ mock() }
     let(:response) {
       response = mock()
@@ -33,7 +32,7 @@ describe Azure::BaseManagement::Location do
     let(:response_body) { Nokogiri::XML response.body }
 
     before {
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(method, request_path, nil).returns(mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get, request_path, nil).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     }
 

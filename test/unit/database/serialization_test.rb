@@ -38,18 +38,18 @@ describe Azure::SqlDatabaseManagement::Serialization do
   describe '#database_to_xml' do
     let(:login) { 'administrator' }
     let(:password) { 'Password@123' }
-    let(:location) { 'West US' }
+    let(:geo_location) { 'West US' }
 
     it 'accepts an name and options hash' do
-      subject.database_to_xml(login, password, location)
+      subject.database_to_xml(login, password, geo_location)
     end
 
     it 'serializes the argument to xml' do
-      results = subject.database_to_xml login, password, location
+      results = subject.database_to_xml login, password, geo_location
       doc = Nokogiri::XML results
       doc.css('AdministratorLogin').text.must_equal login
       doc.css('AdministratorLoginPassword').text.must_equal password
-      doc.css('Location').text.must_equal location
+      doc.css('Location').text.must_equal geo_location
       results.must_be_kind_of String
     end
 
@@ -58,8 +58,8 @@ describe Azure::SqlDatabaseManagement::Serialization do
   describe '#firewall_rule_to_xml' do
     let(:options) do
       {
-        start_ip_address: '10.0.0.1',
-        end_ip_address: '10.0.0.255'
+          start_ip_address: '10.0.0.1',
+          end_ip_address: '10.0.0.255'
       }
     end
 
@@ -86,7 +86,7 @@ describe Azure::SqlDatabaseManagement::Serialization do
 
     it 'returns an Array of SqlDatabaseServer instances with firewall' do
       results = subject.database_firewall_from_xml(
-        Nokogiri::XML(sql_server_firewall_xml)
+          Nokogiri::XML(sql_server_firewall_xml)
       )
       results.must_be_kind_of Array
       results[0].must_be_kind_of Hash

@@ -13,16 +13,10 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'minitest/autorun'
-require 'mocha/setup'
+require 'mocha/mini_test'
+require 'minitest/reporters'
+Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require 'timecop'
-
-# Attempt to load turn to show formatted test results
-begin
-  require "turn"
-  Turn.config.format = :pretty
-  Turn.config.natural = true
-rescue LoadError
-end
 
 # add to the MiniTest DSL
 module Kernel

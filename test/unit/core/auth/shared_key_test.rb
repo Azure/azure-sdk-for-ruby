@@ -18,7 +18,7 @@ require "azure/core/auth/shared_key"
 describe Azure::Core::Auth::SharedKey do
   subject { Azure::Core::Auth::SharedKey.new "account-name", "YWNjZXNzLWtleQ==" }
   
-  let(:method) { "POST" }
+  let(:verb) { "POST" }
   let(:uri) { URI.parse "http://dummy.uri/resource" }
   let(:headers) do
     {
@@ -40,7 +40,7 @@ describe Azure::Core::Auth::SharedKey do
 
   describe "sign" do
     it "creates a signature from the provided HTTP method, uri, and a specific set of standard headers" do
-      subject.sign(method, uri, headers).must_equal "account-name:vcdxlDVoE1QvJerkg0ci3Wlnj2Qq8yzlsrkRf5dEU/I="
+      subject.sign(verb, uri, headers).must_equal "account-name:vcdxlDVoE1QvJerkg0ci3Wlnj2Qq8yzlsrkRf5dEU/I="
     end
   end
   

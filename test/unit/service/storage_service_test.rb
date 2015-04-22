@@ -21,7 +21,7 @@ require "azure/service/storage_service_properties"
 describe Azure::Service::StorageService do
 
   let(:uri){ URI.parse "http://dummy.uri/resource" }
-  let(:method){ :get }
+  let(:verb){ :get }
 
   subject do
     storage_service = Azure::Service::StorageService.new
@@ -34,7 +34,7 @@ describe Azure::Service::StorageService do
     let(:mock_signer_filter){ mock() }
 
     before do 
-      Azure::Core::Http::HttpRequest.stubs(:new).with(method, uri, nil).returns(mock_request)
+      Azure::Core::Http::HttpRequest.stubs(:new).with(verb, uri, nil).returns(mock_request)
       Azure::Core::Http::SignerFilter.stubs(:new).returns(mock_signer_filter)
 
       mock_request.expects(:call)
@@ -42,7 +42,7 @@ describe Azure::Service::StorageService do
 
     it "adds a SignerFilter to the HTTP pipeline" do
       mock_request.expects(:with_filter).with(mock_signer_filter)
-      subject.call(method, uri)
+      subject.call(verb, uri)
     end
 
     describe "when passed the optional headers arguement" do
@@ -58,7 +58,7 @@ describe Azure::Service::StorageService do
 
       it "merges the custom headers with the HttpRequest headers" do
         mock_request.expects(:headers).returns(mock_headers).at_least(2)
-        subject.call(method, uri, nil, { "Custom-Header"=>"CustomValue"} )
+        subject.call(verb, uri, nil, { "Custom-Header"=>"CustomValue"} )
 
         mock_headers["Other-Header"].must_equal "SomeValue"
         mock_headers["Custom-Header"].must_equal "CustomValue"
@@ -72,8 +72,8 @@ describe Azure::Service::StorageService do
       end
 
       it "passes the body to the to HttpRequest" do
-        Azure::Core::Http::HttpRequest.stubs(:new).with(method, uri, 'body').returns(mock_request)
-        subject.call(method, uri, "body")
+        Azure::Core::Http::HttpRequest.stubs(:new).with(verb, uri, 'body').returns(mock_request)
+        subject.call(verb, uri, "body")
       end
     end
 
@@ -92,7 +92,7 @@ describe Azure::Service::StorageService do
         mock_request.expects(:with_filter).with(filter)
         mock_request.expects(:with_filter).with(filter1)
         
-        subject.call(method, uri)
+        subject.call(verb, uri)
       end
     end
   end

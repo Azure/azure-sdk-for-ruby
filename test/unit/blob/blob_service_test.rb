@@ -38,12 +38,12 @@ describe Azure::Blob::BlobService do
   }
 
   describe "#list_containers" do
-    let(:method) { :get }
+    let(:verb) { :get }
     let(:container_enumeration_result) { Azure::Service::EnumerationResults.new }
 
     before { 
       subject.stubs(:containers_uri).with({}).returns(uri)
-      subject.stubs(:call).with(method, uri).returns(response)
+      subject.stubs(:call).with(verb, uri).returns(response)
       serialization.stubs(:container_enumeration_results_from_xml).with(response_body).returns(container_enumeration_result)
     }
 
@@ -53,7 +53,7 @@ describe Azure::Blob::BlobService do
     end
 
     it "calls StorageService#call with the prepared request" do
-      subject.expects(:call).with(method, uri).returns(response)
+      subject.expects(:call).with(verb, uri).returns(response)
       subject.list_containers
     end
 
@@ -127,10 +127,10 @@ describe Azure::Blob::BlobService do
 
     describe "#create_container" do
 
-      let(:method) { :put }
+      let(:verb) { :put }
       before { 
         subject.stubs(:container_uri).with(container_name, {}).returns(uri)
-        subject.stubs(:call).with(method, uri, nil, {}).returns(response)
+        subject.stubs(:call).with(verb, uri, nil, {}).returns(response)
         serialization.stubs(:container_from_headers).with(response_headers).returns(container)
       }
 
@@ -140,7 +140,7 @@ describe Azure::Blob::BlobService do
       end
 
       it "calls StorageService#call with the prepared request" do
-        subject.expects(:call).with(method, uri, nil, {}).returns(response)
+        subject.expects(:call).with(verb, uri, nil, {}).returns(response)
         subject.create_container container_name
       end
 
@@ -171,7 +171,7 @@ describe Azure::Blob::BlobService do
 
           subject.stubs(:container_uri).with(container_name, {}).returns(uri)
           serialization.stubs(:container_from_headers).with(response_headers).returns(container)
-          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
         }
 
         it "adds metadata to the request headers" do
@@ -187,7 +187,7 @@ describe Azure::Blob::BlobService do
 
           subject.stubs(:container_uri).with(container_name, {}).returns(uri)
           serialization.stubs(:container_from_headers).with(response_headers).returns(container)
-          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
         }
 
         it "adds public_access_level to the request headers" do
@@ -197,11 +197,11 @@ describe Azure::Blob::BlobService do
     end
 
     describe "#delete_container" do 
-      let(:method) { :delete }
+      let(:verb) { :delete }
       before {
         response.stubs(:success?).returns(true)
         subject.stubs(:container_uri).with(container_name, {}).returns(uri)
-        subject.stubs(:call).with(method, uri).returns(response)
+        subject.stubs(:call).with(verb, uri).returns(response)
       }
       
       it "assembles a URI for the request" do
@@ -210,7 +210,7 @@ describe Azure::Blob::BlobService do
       end
 
       it "calls StorageService#call with the prepared request" do
-        subject.expects(:call).with(method, uri).returns(response)
+        subject.expects(:call).with(verb, uri).returns(response)
         subject.delete_container container_name
       end
 
@@ -221,14 +221,14 @@ describe Azure::Blob::BlobService do
     end
 
     describe "#get_container_properties" do
-      let(:method) { :get }
+      let(:verb) { :get }
       let(:container_properties) { {} }
 
       before {
         container.properties = container_properties
         response_headers = {}
         subject.stubs(:container_uri).with(container_name, {}).returns(uri)
-        subject.stubs(:call).with(method, uri).returns(response)
+        subject.stubs(:call).with(verb, uri).returns(response)
         serialization.stubs(:container_from_headers).with(response_headers).returns(container)
       }
 
@@ -238,7 +238,7 @@ describe Azure::Blob::BlobService do
       end
 
       it "calls StorageService#call with the prepared request" do
-        subject.expects(:call).with(method, uri).returns(response)
+        subject.expects(:call).with(verb, uri).returns(response)
         subject.get_container_properties container_name
       end
 
@@ -256,7 +256,7 @@ describe Azure::Blob::BlobService do
     end
 
     describe "#get_container_metadata" do
-      let(:method) { :get }
+      let(:verb) { :get }
       let(:container_metadata) { { "MetadataKey" => "MetaDataValue", "MetadataKey1" => "MetaDataValue1" } }
       let(:response_headers) { { "x-ms-meta-MetadataKey" => "MetaDataValue", "x-ms-meta-MetadataKey1" => "MetaDataValue1" } }
 
@@ -264,7 +264,7 @@ describe Azure::Blob::BlobService do
         query.update({ "comp" => "metadata" }) 
         response.stubs(:headers).returns(response_headers) 
         subject.stubs(:container_uri).with(container_name, query).returns(uri)
-        subject.stubs(:call).with(method, uri).returns(response)
+        subject.stubs(:call).with(verb, uri).returns(response)
 
         container.metadata = container_metadata
         serialization.stubs(:container_from_headers).with(response_headers).returns(container)
@@ -276,7 +276,7 @@ describe Azure::Blob::BlobService do
       end
 
       it "calls StorageService#call with the prepared request" do
-        subject.expects(:call).with(method, uri).returns(response)
+        subject.expects(:call).with(verb, uri).returns(response)
         subject.get_container_metadata container_name
       end
 
@@ -294,7 +294,7 @@ describe Azure::Blob::BlobService do
     end
 
     describe "#get_container_acl" do
-      let(:method) { :get }
+      let(:verb) { :get }
       let(:signed_identifier){ Azure::Service::SignedIdentifier.new }
       let(:signed_identifiers){ [signed_identifier] }
 
@@ -303,7 +303,7 @@ describe Azure::Blob::BlobService do
         response.stubs(:headers).returns({}) 
         response_body.stubs(:length).returns(37)
         subject.stubs(:container_uri).with(container_name, query).returns(uri)
-        subject.stubs(:call).with(method, uri).returns(response)
+        subject.stubs(:call).with(verb, uri).returns(response)
 
         serialization.stubs(:container_from_headers).with(response_headers).returns(container)
         serialization.stubs(:signed_identifiers_from_xml).with(response_body).returns(signed_identifiers)
@@ -315,7 +315,7 @@ describe Azure::Blob::BlobService do
       end
 
       it "calls StorageService#call with the prepared request" do
-        subject.expects(:call).with(method, uri).returns(response)
+        subject.expects(:call).with(verb, uri).returns(response)
         subject.get_container_acl container_name
       end
 
@@ -337,7 +337,7 @@ describe Azure::Blob::BlobService do
     end
 
     describe "#set_container_acl" do
-      let(:method) { :put }
+      let(:verb) { :put }
       let(:public_access_level) { "any-public-access-level" }
 
       before {
@@ -346,7 +346,7 @@ describe Azure::Blob::BlobService do
 
         response.stubs(:headers).returns({}) 
         subject.stubs(:container_uri).with(container_name, query).returns(uri)
-        subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+        subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
         serialization.stubs(:container_from_headers).with(response_headers).returns(container)
       }
 
@@ -356,7 +356,7 @@ describe Azure::Blob::BlobService do
       end
 
       it "calls StorageService#call with the prepared request" do
-        subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+        subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
         subject.set_container_acl container_name, public_access_level
       end
 
@@ -383,7 +383,7 @@ describe Azure::Blob::BlobService do
         }
 
         it "sets the x-ms-blob-public-access header" do
-          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           subject.set_container_acl container_name, public_access_level
         end
 
@@ -391,7 +391,7 @@ describe Azure::Blob::BlobService do
           let(:signed_identifier){ Azure::Service::SignedIdentifier.new }
           let(:signed_identifiers){ [signed_identifier] }
           before {
-            subject.stubs(:call).with(method, uri, request_body, request_headers).returns(response)
+            subject.stubs(:call).with(verb, uri, request_body, request_headers).returns(response)
             serialization.stubs(:signed_identifiers_to_xml).with(signed_identifiers).returns(request_body)
           }
           
@@ -420,7 +420,7 @@ describe Azure::Blob::BlobService do
         }
 
         it "sets the x-ms-blob-public-access header" do
-          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           subject.set_container_acl container_name, public_access_level
         end
       end
@@ -432,14 +432,14 @@ describe Azure::Blob::BlobService do
         }
 
         it "sets the x-ms-blob-public-access header" do
-          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           subject.set_container_acl container_name, public_access_level
         end
       end
     end
 
     describe "#set_container_metadata" do
-      let(:method) { :put }
+      let(:verb) { :put }
       let(:container_metadata) { { "MetadataKey" => "MetaDataValue", "MetadataKey1" => "MetaDataValue1" } }
       let(:request_headers) { { "x-ms-meta-MetadataKey" => "MetaDataValue", "x-ms-meta-MetadataKey1" => "MetaDataValue1" } }
 
@@ -447,7 +447,7 @@ describe Azure::Blob::BlobService do
         query.update({ "comp" => "metadata" }) 
         response.stubs(:success?).returns(true)
         subject.stubs(:container_uri).with(container_name, query).returns(uri)
-        subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+        subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
       }
 
       it "assembles a URI for the request" do
@@ -456,7 +456,7 @@ describe Azure::Blob::BlobService do
       end
 
       it "calls StorageService#call with the prepared request" do
-        subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+        subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
         subject.set_container_metadata container_name, container_metadata
       end
 
@@ -467,13 +467,13 @@ describe Azure::Blob::BlobService do
     end
 
     describe "#list_blobs" do
-      let(:method) { :get }
+      let(:verb) { :get }
       let(:query) {{"comp"=>"list"}}
       let(:blob_enumeration_results) { Azure::Service::EnumerationResults.new}
 
       before { 
         subject.stubs(:container_uri).with(container_name, query).returns(uri)
-        subject.stubs(:call).with(method, uri).returns(response)
+        subject.stubs(:call).with(verb, uri).returns(response)
         serialization.stubs(:blob_enumeration_results_from_xml).with(response_body).returns(blob_enumeration_results)
       }
 
@@ -483,7 +483,7 @@ describe Azure::Blob::BlobService do
       end
 
       it "calls StorageService#call with the prepared request" do
-        subject.expects(:call).with(method, uri).returns(response)
+        subject.expects(:call).with(verb, uri).returns(response)
         subject.list_blobs container_name
       end
 
@@ -583,7 +583,7 @@ describe Azure::Blob::BlobService do
       let(:blob) { Azure::Blob::Blob.new }
 
       describe "#create_page_blob" do
-        let(:method) { :put }
+        let(:verb) { :put }
         let(:blob_length) { 37 }
         let(:request_headers) { 
           {
@@ -596,7 +596,7 @@ describe Azure::Blob::BlobService do
 
         before {
           subject.stubs(:blob_uri).with(container_name, blob_name, {}).returns(uri)
-          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
           serialization.stubs(:blob_from_headers).with(response_headers).returns(blob)
         }
 
@@ -606,7 +606,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           subject.create_page_blob container_name, blob_name, blob_length
         end
 
@@ -687,7 +687,7 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#create_blob_pages" do
-        let(:method) { :put }
+        let(:verb) { :put }
         let(:start_range) { 255 }
         let(:end_range) { 512 }
         let(:content) { "some content" }
@@ -702,7 +702,7 @@ describe Azure::Blob::BlobService do
 
         before {
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri, content, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, content, request_headers).returns(response)
           serialization.stubs(:blob_from_headers).with(response_headers).returns(blob)
         }
 
@@ -712,7 +712,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, content, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, content, request_headers).returns(response)
           subject.create_blob_pages container_name, blob_name, start_range, end_range, content
         end
 
@@ -767,7 +767,7 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#clear_blob_pages" do
-        let(:method) { :put }
+        let(:verb) { :put }
         let(:query) { {"comp" => "page"} }
         let(:start_range){ 255 }
         let(:end_range){ 512 }
@@ -781,7 +781,7 @@ describe Azure::Blob::BlobService do
 
         before {
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
           serialization.stubs(:blob_from_headers).with(response_headers).returns(blob)
         }
 
@@ -791,7 +791,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           subject.clear_blob_pages container_name, blob_name, start_range, end_range
         end
 
@@ -807,7 +807,7 @@ describe Azure::Blob::BlobService do
         #   before { request_headers["x-ms-range"]="#{start_range}-" }
 
         #   it "modifies the request headers with the desired range" do
-        #     subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+        #     subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
         #     subject.clear_blob_pages container_name, blob_name, start_range
         #   end
         # end
@@ -817,7 +817,7 @@ describe Azure::Blob::BlobService do
         #   before { request_headers["x-ms-range"]="0-#{end_range}" }
 
         #   it "modifies the request headers with the desired range" do
-        #     subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+        #     subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
         #     subject.clear_blob_pages container_name, blob_name, nil, end_range
         #   end
         # end
@@ -826,7 +826,7 @@ describe Azure::Blob::BlobService do
         #   before { request_headers["x-ms-range"]="bytes=#{start_range}-#{end_range}" }
 
         #   it "modifies the request headers with the desired range" do
-        #     subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+        #     subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
         #     subject.clear_blob_pages container_name, blob_name, start_range, end_range
         #   end
         # end
@@ -835,7 +835,7 @@ describe Azure::Blob::BlobService do
       describe "#create_blob_block" do
         require 'base64'
 
-        let(:method) { :put }
+        let(:verb) { :put }
         let(:content) { "some content"}
         let(:block_id) { "block-id"}
         let(:server_generated_content_md5) { "server-content-md5" }
@@ -845,7 +845,7 @@ describe Azure::Blob::BlobService do
           query.update({ "comp" => "block", "blockid" => Base64.strict_encode64(block_id) }) 
           response_headers["Content-MD5"] = server_generated_content_md5 
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri, content, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, content, request_headers).returns(response)
         }
 
         it "assembles a URI for the request" do
@@ -854,7 +854,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, content, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, content, request_headers).returns(response)
           subject.create_blob_block container_name, blob_name, block_id, content
         end
 
@@ -876,7 +876,7 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#create_block_blob" do
-        let(:method) { :put }
+        let(:verb) { :put }
         let(:content) { "some content" }
         let(:request_headers) { 
           {
@@ -887,7 +887,7 @@ describe Azure::Blob::BlobService do
 
         before {
           subject.stubs(:blob_uri).with(container_name, blob_name, {}).returns(uri)
-          subject.stubs(:call).with(method, uri, content, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, content, request_headers).returns(response)
           serialization.stubs(:blob_from_headers).with(response_headers).returns(blob)
         }
 
@@ -897,7 +897,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, content, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, content, request_headers).returns(response)
           subject.create_block_blob container_name, blob_name, content
         end
 
@@ -973,7 +973,7 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#commit_blob_blocks" do
-        let(:method) { :put }
+        let(:verb) { :put }
         let(:request_body) { "body" }
         let(:block_list) { mock() }
         let(:request_headers) { {} }
@@ -983,7 +983,7 @@ describe Azure::Blob::BlobService do
           response.stubs(:success?).returns(true)
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
           serialization.stubs(:block_list_to_xml).with(block_list).returns(request_body)
-          subject.stubs(:call).with(method, uri, request_body, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, request_body, request_headers).returns(response)
         }
 
         it "assembles a URI for the request" do
@@ -992,7 +992,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, request_body, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, request_body, request_headers).returns(response)
           subject.commit_blob_blocks container_name, blob_name, block_list
         end
 
@@ -1051,13 +1051,13 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#list_blob_blocks" do
-        let(:method) { :get }
+        let(:verb) { :get }
         let(:query) {{"comp"=>"blocklist", "blocklisttype"=>"all"}}
         let(:blob_block_list) { [Azure::Blob::Block.new] }
 
         before { 
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri).returns(response)
+          subject.stubs(:call).with(verb, uri).returns(response)
           serialization.stubs(:block_list_from_xml).with(response_body).returns(blob_block_list)
         }
 
@@ -1067,7 +1067,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri).returns(response)
+          subject.expects(:call).with(verb, uri).returns(response)
           subject.list_blob_blocks container_name, blob_name
         end
 
@@ -1108,13 +1108,13 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#list_page_blob_ranges" do
-        let(:method) { :get }
+        let(:verb) { :get }
         let(:query) { {"comp"=>"pagelist"} }
         let(:page_list) { [[0, 511], [512, 1023]] }
 
         before { 
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
           serialization.stubs(:page_list_from_xml).with(response_body).returns(page_list)
         }
 
@@ -1124,7 +1124,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           subject.list_page_blob_ranges container_name, blob_name
         end
 
@@ -1146,7 +1146,7 @@ describe Azure::Blob::BlobService do
         #   before { request_headers["x-ms-range"]="#{start_range}-" }
 
         #   it "modifies the request headers with the desired range" do
-        #     subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+        #     subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
         #     subject.list_page_blob_ranges container_name, blob_name, start_range
         #   end
         # end
@@ -1156,7 +1156,7 @@ describe Azure::Blob::BlobService do
         #   before { request_headers["x-ms-range"]="0-#{end_range}" }
 
         #   it "modifies the request headers with the desired range" do
-        #     subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+        #     subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
         #     subject.list_page_blob_ranges container_name, blob_name, nil, end_range
         #   end
         # end
@@ -1167,7 +1167,7 @@ describe Azure::Blob::BlobService do
           before { request_headers["x-ms-range"]="bytes=#{start_range}-#{end_range}" }
 
           it "modifies the request headers with the desired range" do
-            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
             subject.list_page_blob_ranges container_name, blob_name, { :start_range => start_range, :end_range => end_range }
           end
         end
@@ -1181,14 +1181,14 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#set_blob_properties" do
-        let(:method) { :put }
+        let(:verb) { :put }
         let(:request_headers) { {} }
 
         before {
           query.update({ "comp" => "properties" }) 
           response.stubs(:success?).returns(true)
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
         }
 
         it "assembles a URI for the request" do
@@ -1197,7 +1197,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           subject.set_blob_properties container_name, blob_name
         end
 
@@ -1254,7 +1254,7 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#set_blob_metadata" do
-        let(:method) { :put }
+        let(:verb) { :put }
         let(:blob_metadata) { { "MetadataKey" => "MetaDataValue", "MetadataKey1" => "MetaDataValue1" } }
         let(:request_headers) { { "x-ms-meta-MetadataKey" => "MetaDataValue", "x-ms-meta-MetadataKey1" => "MetaDataValue1" } }
 
@@ -1262,7 +1262,7 @@ describe Azure::Blob::BlobService do
           query.update({ "comp" => "metadata" }) 
           response.stubs(:success?).returns(true)
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
         }
 
         it "assembles a URI for the request" do
@@ -1271,7 +1271,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           subject.set_blob_metadata container_name, blob_name, blob_metadata
         end
 
@@ -1282,11 +1282,11 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#get_blob_properties" do
-        let(:method) { :head }
+        let(:verb) { :head }
 
         before {
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri).returns(response)
+          subject.stubs(:call).with(verb, uri).returns(response)
           serialization.stubs(:blob_from_headers).with(response_headers).returns(blob)
         }
       
@@ -1296,7 +1296,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri).returns(response)
+          subject.expects(:call).with(verb, uri).returns(response)
           subject.get_blob_properties container_name, blob_name
         end
 
@@ -1325,13 +1325,13 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#get_blob_metadata" do
-        let(:method) { :get }
+        let(:verb) { :get }
 
         before {
           query["comp"]="metadata"
 
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri).returns(response)
+          subject.stubs(:call).with(verb, uri).returns(response)
           serialization.stubs(:blob_from_headers).with(response_headers).returns(blob)
         }
       
@@ -1341,7 +1341,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri).returns(response)
+          subject.expects(:call).with(verb, uri).returns(response)
           subject.get_blob_metadata container_name, blob_name
         end
 
@@ -1373,14 +1373,14 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#get_blob" do
-        let(:method) { :get }
+        let(:verb) { :get }
 
         before {
           response.stubs(:success?).returns(true)
           response_body = "body-contents"
 
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
           serialization.stubs(:blob_from_headers).with(response_headers).returns(blob)
         }
       
@@ -1390,7 +1390,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           subject.get_blob container_name, blob_name
         end
 
@@ -1418,7 +1418,7 @@ describe Azure::Blob::BlobService do
         #   before { request_headers["x-ms-range"]="#{start_range}-" }
 
         #   it "modifies the request headers with the desired range" do
-        #     subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+        #     subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
         #     subject.get_blob container_name, blob_name, start_range
         #   end
         # end
@@ -1428,7 +1428,7 @@ describe Azure::Blob::BlobService do
         #   before { request_headers["x-ms-range"]="0-#{end_range}" }
 
         #   it "modifies the request headers with the desired range" do
-        #     subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+        #     subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
         #     subject.get_blob container_name, blob_name, nil, end_range
         #   end
         # end
@@ -1439,7 +1439,7 @@ describe Azure::Blob::BlobService do
           before { request_headers["x-ms-range"]="bytes=#{start_range}-#{end_range}" }
 
           it "modifies the request headers with the desired range" do
-            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
             subject.get_blob container_name, blob_name, { :start_range => start_range, :end_range => end_range }
           end
         end
@@ -1456,14 +1456,14 @@ describe Azure::Blob::BlobService do
             }
 
             it "modifies the request headers to include the x-ms-range-get-content-md5 header" do
-              subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+              subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
               subject.get_blob container_name, blob_name, { :start_range => start_range, :end_range => end_range, :get_content_md5 => true }
             end
           end
 
           describe "and a range is NOT specified" do
             it "does not modify the request headers" do
-              subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+              subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
               subject.get_blob container_name, blob_name, { :get_content_md5 => true }
             end
           end
@@ -1471,14 +1471,14 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#delete_blob" do
-        let(:method) { :delete }
+        let(:verb) { :delete }
 
         before {
           response.stubs(:success?).returns(true)
           request_headers["x-ms-delete-snapshots"] = "include"
 
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
         }
       
         it "assembles a URI for the request" do
@@ -1487,7 +1487,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           subject.delete_blob container_name, blob_name
         end
 
@@ -1509,7 +1509,7 @@ describe Azure::Blob::BlobService do
           end
 
           it "does not include a x-ms-delete-snapshots header" do
-            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
             subject.delete_blob container_name, blob_name, { :snapshot => source_snapshot }
           end
         end
@@ -1519,7 +1519,7 @@ describe Azure::Blob::BlobService do
           before { request_headers["x-ms-delete-snapshots"]=delete_snapshots.to_s }
 
           it "modifies the request headers with the provided value" do
-            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
             subject.delete_blob container_name, blob_name, { :delete_snapshots => delete_snapshots }
           end
         end
@@ -1538,14 +1538,14 @@ describe Azure::Blob::BlobService do
           end
 
           it "does not include a x-ms-delete-snapshots header" do
-            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
             subject.delete_blob container_name, blob_name, { :snapshot => source_snapshot, :delete_snapshots => delete_snapshots }
           end
         end
       end
 
       describe "#create_blob_snapshot" do
-        let(:method) { :put }
+        let(:verb) { :put }
         let(:snapshot_id) { "snapshot-id" }
 
         before {
@@ -1554,7 +1554,7 @@ describe Azure::Blob::BlobService do
           response_headers["x-ms-snapshot"] = snapshot_id
 
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
         }
       
         it "assembles a URI for the request" do
@@ -1563,7 +1563,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           subject.create_blob_snapshot container_name, blob_name
         end
 
@@ -1575,7 +1575,7 @@ describe Azure::Blob::BlobService do
 
         describe "when the options Hash is used" do
           before { 
-            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           }
 
           it "modifies the request headers when provided a :if_modified_since value" do
@@ -1612,7 +1612,7 @@ describe Azure::Blob::BlobService do
       end
 
       describe "#copy_blob" do
-        let(:method) { :put }
+        let(:verb) { :put }
         let(:source_container_name) { "source-container-name" }
         let(:source_blob_name) { "source-blob-name" }
         let(:source_uri) { URI.parse("http://dummy.uri/source") }
@@ -1628,7 +1628,7 @@ describe Azure::Blob::BlobService do
 
           subject.stubs(:blob_uri).with(container_name, blob_name, {}).returns(uri)
           subject.stubs(:blob_uri).with(source_container_name, source_blob_name, query).returns(source_uri)
-          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
         }
       
         it "assembles a URI for the request" do
@@ -1642,7 +1642,7 @@ describe Azure::Blob::BlobService do
         end
 
         it "calls StorageService#call with the prepared request" do
-          subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           subject.copy_blob container_name, blob_name, source_container_name, source_blob_name
         end
 
@@ -1666,7 +1666,7 @@ describe Azure::Blob::BlobService do
 
         describe "when the options Hash is used" do
           before { 
-            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
           }
 
           it "modifies the request headers when provided a :dest_if_modified_since value" do
@@ -1723,13 +1723,13 @@ describe Azure::Blob::BlobService do
       end
 
       describe "lease functions" do 
-        let(:method) { :put }
+        let(:verb) { :put }
         let(:lease_id) { "lease-id" }
         
         before { 
           query.update({"comp"=>"lease"})
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
-          subject.stubs(:call).with(method, uri, nil, request_headers).returns(response)
+          subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
         }
 
         describe "#acquire_lease" do
@@ -1747,7 +1747,7 @@ describe Azure::Blob::BlobService do
           end
 
           it "calls StorageService#call with the prepared request" do
-            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
             subject.acquire_lease container_name, blob_name
           end
 
@@ -1761,7 +1761,7 @@ describe Azure::Blob::BlobService do
             before { request_headers["x-ms-lease-duration"] = "37" }
 
             it "modifies the headers to include the provided duration value" do
-              subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+              subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
               subject.acquire_lease container_name, blob_name, { :duration => duration }
             end
           end
@@ -1772,7 +1772,7 @@ describe Azure::Blob::BlobService do
             before { request_headers["x-ms-proposed-lease-id"] = proposed_lease_id }
 
             it "modifies the headers to include the proposed lease id" do
-              subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+              subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
               subject.acquire_lease container_name, blob_name, { :duration => default_duration, :proposed_lease_id => proposed_lease_id }
             end
           end
@@ -1793,7 +1793,7 @@ describe Azure::Blob::BlobService do
           end
 
           it "calls StorageService#call with the prepared request" do
-            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
             subject.renew_lease container_name, blob_name, lease_id
           end
 
@@ -1817,7 +1817,7 @@ describe Azure::Blob::BlobService do
           end
 
           it "calls StorageService#call with the prepared request" do
-            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
             subject.release_lease container_name, blob_name, lease_id
           end
 
@@ -1842,7 +1842,7 @@ describe Azure::Blob::BlobService do
           end
 
           it "calls StorageService#call with the prepared request" do
-            subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+            subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
             subject.break_lease container_name, blob_name
           end
 
@@ -1856,7 +1856,7 @@ describe Azure::Blob::BlobService do
             before { request_headers["x-ms-lease-break-period"] = break_period.to_s }
 
             it "modifies the request headers to include a break period" do
-              subject.expects(:call).with(method, uri, nil, request_headers).returns(response)
+              subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
               subject.break_lease container_name, blob_name, { :break_period => break_period }
             end
           end

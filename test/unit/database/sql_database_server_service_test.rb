@@ -32,14 +32,14 @@ describe 'Azure::SqlDatabaseManagementService' do
 
     describe '#list_servers' do
       let(:response_xml) { Fixtures['list_sql_database'] }
-      let(:method) { :get }
+      let(:verb) { :get }
       let(:request_path) { '/servers' }
 
       before do
         Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
-          method,
-          request_path,
-          nil
+            verb,
+            request_path,
+            nil
         ).returns(mock_request)
       end
 
@@ -64,7 +64,7 @@ describe 'Azure::SqlDatabaseManagementService' do
     describe '#delete_server' do
       before do
         Azure::SqlDatabaseManagementService.any_instance.stubs(
-          :list_servers
+            :list_servers
         ).returns([])
       end
 
@@ -82,7 +82,7 @@ describe 'Azure::SqlDatabaseManagementService' do
 
     describe '#list_sql_server_firewall_rules' do
       let(:response_xml) { Fixtures['list_sql_server_firewall'] }
-      let(:method) { :get }
+      let(:verb) { :get }
       let(:sql_server_name) { 'server1' }
       let(:request_path) { "/servers/#{sql_server_name}/firewallrules" }
 
@@ -91,13 +91,13 @@ describe 'Azure::SqlDatabaseManagementService' do
           server.name = sql_server_name
         end
         Azure::SqlDatabaseManagementService.any_instance.stubs(
-          :list_servers
+            :list_servers
         ).returns([sql_server])
 
         Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
-          method,
-          request_path,
-          nil
+            verb,
+            request_path,
+            nil
         ).returns(mock_request)
       end
 
@@ -115,36 +115,36 @@ describe 'Azure::SqlDatabaseManagementService' do
 
     describe '#create_server' do
       let(:response_xml) { Fixtures['create_sql_database_server'] }
-      let(:method) { :post }
+      let(:verb) { :post }
       let(:request_path) { '/servers' }
       let(:password) { 'User@123' }
       let(:login) { 'ms_open_tech' }
-      let(:location) { 'West US' }
+      let(:geo_location) { 'West US' }
 
       before do
         Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
-          method,
-          request_path,
-          anything
+            verb,
+            request_path,
+            anything
         ).returns(mock_request)
 
         mock_request.stubs(:headers).returns(response_headers)
         mock_request.expects(:call).returns(
-          Nokogiri::XML response_xml
+            Nokogiri::XML response_xml
         ).at_least(0)
       end
 
       it 'create sql server' do
-        sql_server = subject.create_server(login, password, location)
+        sql_server = subject.create_server(login, password, geo_location)
         sql_server.name.must_equal 'gxyfzrhx2c'
         sql_server.administrator_login.must_equal login
-        sql_server.location.must_equal location
+        sql_server.location.must_equal geo_location
       end
     end
 
     describe '#set_sql_server_firewall_rule' do
       it 'create sql server' do
-        ip_range = { start_ip_address: '0.0.0.1', end_ip_address: '0.0.0.5' }
+        ip_range = {start_ip_address: '0.0.0.1', end_ip_address: '0.0.0.5'}
         exception = assert_raises(RuntimeError) do
           subject.set_sql_server_firewall_rule('zv2nfoah2t1', ip_range)
         end
@@ -164,15 +164,11 @@ describe 'Azure::SqlDatabaseManagementService' do
 
     describe '#list_servers' do
       let(:response_xml) { Fixtures['list_sql_database'] }
-      let(:method) { :get }
+      let(:verb) { :get }
       let(:request_path) { '/servers' }
 
       before do
-        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
-          method,
-          request_path,
-          nil
-        ).returns(mock_request)
+        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(verb, request_path, nil).returns(mock_request)
       end
 
       it 'assembles a URI for the request' do
@@ -196,7 +192,7 @@ describe 'Azure::SqlDatabaseManagementService' do
     describe '#delete_server' do
       before do
         Azure::SqlDatabaseManagementService.any_instance.stubs(
-          :list_servers
+            :list_servers
         ).returns([])
       end
 
@@ -214,7 +210,7 @@ describe 'Azure::SqlDatabaseManagementService' do
 
     describe '#list_sql_server_firewall_rules' do
       let(:response_xml) { Fixtures['list_firewall_management_endpoint'] }
-      let(:method) { :get }
+      let(:verb) { :get }
       let(:sql_server_name) { 'server1' }
       let(:request_path) { "/servers/#{sql_server_name}/firewallrules" }
 
@@ -223,13 +219,13 @@ describe 'Azure::SqlDatabaseManagementService' do
           server.name = sql_server_name
         end
         Azure::SqlDatabaseManagementService.any_instance.stubs(
-          :list_servers
+            :list_servers
         ).returns([sql_server])
 
         Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
-          method,
-          request_path,
-          nil
+            verb,
+            request_path,
+            nil
         ).returns(mock_request)
       end
 
@@ -247,36 +243,36 @@ describe 'Azure::SqlDatabaseManagementService' do
 
     describe '#create_server' do
       let(:response_xml) { Fixtures['create_sql_database_server'] }
-      let(:method) { :post }
+      let(:verb) { :post }
       let(:request_path) { '/servers' }
       let(:password) { 'User@123' }
       let(:login) { 'ms_open_tech' }
-      let(:location) { 'West US' }
+      let(:geo_location) { 'West US' }
 
       before do
         Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
-          method,
-          request_path,
-          anything
+            verb,
+            request_path,
+            anything
         ).returns(mock_request)
 
         mock_request.stubs(:headers).returns(response_headers)
         mock_request.expects(:call).returns(
-          Nokogiri::XML response_xml
+            Nokogiri::XML response_xml
         ).at_least(0)
       end
 
       it 'create sql server' do
-        sql_server = subject.create_server(login, password, location)
+        sql_server = subject.create_server(login, password, geo_location)
         sql_server.name.must_equal 'gxyfzrhx2c'
         sql_server.administrator_login.must_equal login
-        sql_server.location.must_equal location
+        sql_server.location.must_equal geo_location
       end
     end
 
     describe '#set_sql_server_firewall_rule' do
       it 'create sql server' do
-        ip_range = { start_ip_address: '0.0.0.1', end_ip_address: '0.0.0.5' }
+        ip_range = {start_ip_address: '0.0.0.1', end_ip_address: '0.0.0.5'}
         exception = assert_raises(RuntimeError) do
           subject.set_sql_server_firewall_rule('zv2nfoah2t1', ip_range)
         end

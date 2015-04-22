@@ -17,7 +17,7 @@ require "integration/test_helper"
 describe "ServiceBus Relay" do
 
   subject { Azure::ServiceBus::ServiceBusService.new }
-  let(:name) { ServiceBusRelayNameHelper.name }
+  let(:bus_name) { ServiceBusRelayNameHelper.name }
   let(:name_alternative) { ServiceBusRelayNameHelper.name }
   let(:description) {{
     :relay_type => 'Http',
@@ -57,10 +57,10 @@ describe "ServiceBus Relay" do
 
     describe "#get_relay" do
       it "should be able to get a relay by name" do
-        result = subject.get_relay name
+        result = subject.get_relay bus_name
 
         result.must_be_kind_of Azure::ServiceBus::Relay
-        result.name.must_equal name
+        result.name.must_equal bus_name
       end
 
       it "if the relay endpoint doesn't exists it should throw" do
@@ -78,7 +78,7 @@ describe "ServiceBus Relay" do
       end
 
       it "should be able to delete the relay endpoint" do
-        response = subject.delete_relay name
+        response = subject.delete_relay bus_name
         response.must_equal nil
       end
     end
@@ -99,7 +99,7 @@ describe "ServiceBus Relay" do
         q1_found = false
         q2_found = false
         result.each { |q|
-          q_found = true if q.name == name
+          q_found = true if q.name == bus_name
           q1_found = true if q.name == name1
           q2_found = true if q.name == name2
         }
