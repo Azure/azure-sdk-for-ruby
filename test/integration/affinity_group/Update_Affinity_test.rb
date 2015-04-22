@@ -15,7 +15,9 @@
 require 'integration/test_helper'
 
 describe Azure::BaseManagementService do
-  AffinityGroupName = random_string('affinity-group-', 10)
+  util = Class.new.extend(Azure::Core::Utility)
+  AffinityGroupName = util.random_string('affinity-group-', 10)
+
   Azure::BaseManagementService.new.create_affinity_group(
     AffinityGroupName,
     WindowsImageLocation,

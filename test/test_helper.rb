@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "minitest/autorun"
-require "mocha/setup"
+require 'minitest/autorun'
+require 'mocha/setup'
 require 'timecop'
 
 # Attempt to load turn to show formatted test results
@@ -28,27 +28,21 @@ end
 module Kernel
   def need_tests_for(name)
     describe "##{name}" do
-      it "needs unit tests" do
-        skip ""
+      it 'needs unit tests' do
+        skip ''
       end
     end
   end
 end
 
 
-Dir["./test/support/**/*.rb"].each { |dep| require dep }
+Dir['./test/support/**/*.rb'].each { |dep| require dep }
 
 # mock configuration setup
 require 'azure'
 
-Azure.config.storage_account_name     = "accountname"
-Azure.config.storage_access_key       = "YWNjZXNzLWtleQ=="
-Azure.config.management_certificate   = File.expand_path("test/fixtures/management_certificate.pem")
-Azure.config.management_endpoint      = "https://management.core.windows.net"
-Azure.config.subscription_id          = "subscription-id"
-# Azure.config.storage_table_host     = 
-# Azure.config.storage_blob_host      = 
-# Azure.config.storage_queue_host     = 
-# Azure.config.sb_namespace           = 
-# Azure.config.sb_access_key          = 
-# Azure.config.sb_issuer              = 
+Azure.config.storage_account_name     = 'accountname'
+Azure.config.storage_access_key       = 'YWNjZXNzLWtleQ=='
+Azure.config.management_certificate   = File.expand_path('test/fixtures/management_certificate.pem')
+Azure.config.management_endpoint      = 'https://management.core.windows.net'
+Azure.config.subscription_id          = 'subscription-id'

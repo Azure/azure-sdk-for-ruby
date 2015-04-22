@@ -193,7 +193,7 @@ module Azure
         body = Serialization.role_to_xml(params, options).to_xml
         path = "/services/hostedservices/#{cloud_service.name}/deployments/#{deployment_name}/roles"
         Loggerx.info 'Deployment in progress...'
-        request = ManagementHttpRequest.new(:post, path, body)
+        request = BaseManagement::ManagementHttpRequest.new(:post, path, body)
         request.call
         get_virtual_machine(params[:vm_name], cloud_service.name)
       end
@@ -220,7 +220,7 @@ module Azure
           else
             path = "/services/hostedservices/#{vm.cloud_service_name}/deployments/#{vm.deployment_name}/roles/#{vm.vm_name}"
             Loggerx.info "Deleting virtual machine #{vm_name}. \n"
-            request = ManagementHttpRequest.new(:delete, path)
+            request = BaseManagement::ManagementHttpRequest.new(:delete, path)
             request.call
           end
           Loggerx.info "Waiting for disk to be released.\n"

@@ -21,6 +21,7 @@ include Azure::Core::Http
 module Azure
   module BaseManagement
     class ManagementHttpRequest < HttpRequest
+      include Azure::Core::Utility
       attr_accessor :uri, :warn, :key, :cert
 
       # Public: Creates the ManagementHttpRequest

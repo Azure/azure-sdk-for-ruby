@@ -15,6 +15,7 @@
 require 'integration/test_helper'
 
 describe Azure::BaseManagementService do
+  include Azure::Core::Utility
 
   subject { Azure::BaseManagementService.new }
   let(:affinity_group_name) { random_string('affinity-group-', 10) }
@@ -47,7 +48,7 @@ describe Azure::BaseManagementService do
       exception = assert_raises(RuntimeError) do
         subject.create_affinity_group(affinity_group_name, 'North West', label)
       end
-      assert_match(/Allowed values are East Asia/i, exception.message)
+      assert_match(/Allowed values are South Central US,West US,East US,East US 2,Central US,North Europe,West Europe,Southeast Asia,East Asia/i, exception.message)
     end
 
     it 'create new affinity group without optional params' do

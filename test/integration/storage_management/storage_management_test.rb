@@ -15,14 +15,16 @@
 require 'integration/test_helper'
 
 describe Azure::StorageManagementService do
+
+  util = Class.new.extend(Azure::Core::Utility)
   subject { Azure::StorageManagementService.new }
-  affinity_name = random_string('affinity-group-', 10)
+  affinity_name = util.random_string('affinity-group-', 10)
   Azure::BaseManagementService.new.create_affinity_group(
     affinity_name,
     'West US',
     'Label Name'
   )
-  StorageName =  random_string('storagetest', 10)
+  StorageName =  util.random_string('storagetest', 10)
   opts = {
     affinity_group_name: affinity_name,
     label: 'storagelabel',

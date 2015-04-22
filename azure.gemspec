@@ -12,33 +12,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "date"
+require 'date'
 
 require File.expand_path('../lib/azure/version', __FILE__)
 
 Gem::Specification.new do |s|
-  s.name    = "azure"
+  s.name    = 'azure'
   s.version = Azure::Version
 
-  s.authors     = ["Microsoft Corporation", "AppFog"]
-  s.email       = "azureruby@microsoft.com"
-  s.description = "Windows Azure Client Library for Ruby"
-  s.summary     = "Official ruby client library to consume Windows Azure services."
-  s.homepage    = "http://github.com/WindowsAzure/azure-sdk-for-ruby"
+  s.authors     = ['Microsoft Corporation', 'AppFog']
+  s.email       = 'azureruby@microsoft.com'
+  s.description = 'Windows Azure Client Library for Ruby'
+  s.summary     = 'Official ruby client library to consume Windows Azure services.'
+  s.homepage    = 'http://github.com/WindowsAzure/azure-sdk-for-ruby'
   s.license     = 'Apache License, Version 2.0'
   s.files       = `git ls-files`.split("\n")
 
   s.required_ruby_version = '>= 1.9.3'
 
-  s.add_runtime_dependency('nokogiri',   "~> 1.5")
-  s.add_runtime_dependency("mime-types", "~> 1.0")
+  s.add_runtime_dependency('nokogiri', '~> 1.5')
+  s.add_runtime_dependency('mime-types', '~> 1.0')
   s.add_runtime_dependency('json', '~> 1.8')
   s.add_runtime_dependency('uuid', '~> 2.0')
   s.add_runtime_dependency('systemu', '~> 2.6')
 
-  s.add_development_dependency("rake", '~> 10.0')
-  s.add_development_dependency("minitest", "~> 3.0")
+  s.add_development_dependency('rake', '~> 10.0')
+  s.add_development_dependency('minitest', '~> 3.0')
   s.add_development_dependency('mocha', '~> 1.0')
   s.add_development_dependency('turn', '~> 0.9')
   s.add_development_dependency('timecop', '~> 0.7')
+  s.add_development_dependency('dotenv', '~> 2.0' )
 end
