@@ -157,9 +157,9 @@ There are two ways you can set up the connections:
     AZURE_SQL_DATABASE_AUTHENTICATION_MODE = <:management_certificate or :sql_server>
     ```
     
-  * SSL CA_Certs [see gist](https://gist.github.com/fnichol/867550)
+  * [SSL Certificate File](https://gist.github.com/fnichol/867550)
     ```bash
-    AZURE_CA_FILE=<path to *.pem>
+    SSL_CERT_FILE=<path to *.pem>
     ```
 * Against local Emulator (Windows Only)
   * Storage
