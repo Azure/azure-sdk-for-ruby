@@ -37,5 +37,5 @@ Azure.configure do |config|
   config.sql_database_management_endpoint = ENV['AZURE_SQL_DATABASE_MANAGEMENT_ENDPOINT']
   config.sql_database_authentication_mode = ENV['AZURE_SQL_DATABASE_AUTHENTICATION_MODE']
 
-  config.ca_file = ENV['AZURE_CA_FILE']
+  config.ca_file = ENV['SSL_CERT_FILE']
 end
