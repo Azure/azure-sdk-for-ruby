@@ -32,7 +32,7 @@ describe Azure::BaseManagementService do
 
     it 'create new affinity group with valid params' do
       subject.create_affinity_group(affinity_group_name,
-                                    location,
+                                    image_location,
                                     label,
                                     options)
       affinity_group = subject.get_affinity_group(affinity_group_name)
@@ -52,7 +52,7 @@ describe Azure::BaseManagementService do
     end
 
     it 'create new affinity group without optional params' do
-      subject.create_affinity_group(affinity_group_name, location, label)
+      subject.create_affinity_group(affinity_group_name, image_location, label)
       affinity_group = subject.get_affinity_group(affinity_group_name)
       affinity_group.must_be_kind_of Azure::BaseManagement::AffinityGroup
       affinity_group.name.wont_be_nil

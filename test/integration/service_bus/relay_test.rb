@@ -53,7 +53,7 @@ describe "ServiceBus Relay" do
   end
 
   describe 'when a relay exists' do
-    before { subject.create_relay name, description }
+    before { subject.create_relay bus_name, description }
 
     describe "#get_relay" do
       it "should be able to get a relay by name" do
