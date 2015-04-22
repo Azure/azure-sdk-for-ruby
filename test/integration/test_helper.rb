@@ -33,6 +33,6 @@ WindowsImage = Images.select{|image| image.os_type == 'Windows'}.first
 WindowsImageLocation = WindowsImage.locations.split(';').first
 LinuxImageLocation = LinuxImage.locations.split(';').first
 
-MiniTest::Unit.after_tests {
+MiniTest.after_run {
   VirtualMachineNameGenerator.cleanup
 }

@@ -31,7 +31,7 @@ module Azure
       # * +:requires_client_authorization+               - Boolean. Determines whether or not clients need to authenticate when making calls.
       # * +:requires_transport_security+                 - Boolean. Determines whether or not the endpoint uses transport security. 
       #
-      def initialize(name, options)
+      def initialize(name, options = {})
         normalized_options = {}
         normalized_options["RelayType"] = options[:relay_type].to_s
         normalized_options["RequiresClientAuthorization"] = options[:requires_client_authorization].to_s if options.has_key?(:requires_client_authorization)
