@@ -31,9 +31,10 @@ module Azure
     class BaseManagementService
       def initialize
         validate_configuration
-        cert_file = File.read(Azure.config.management_certificate)
+        cert_file = Azure.config.management_certificate
+        cert_file = File.read(Azure.config.management_certificate) if File.file?(cert_file)
         begin
-          if Azure.config.management_certificate =~ /(pem)$/
+          if cert_file =~ /-----BEGIN CERTIFICATE-----/
             certificate_key = OpenSSL::X509::Certificate.new(cert_file)
             private_key = OpenSSL::PKey::RSA.new(cert_file)
           else
@@ -64,12 +65,10 @@ module Azure
         raise error_message if m_ep.nil? || m_ep.empty?
 
         m_cert = Azure.config.management_certificate
-        error_message = "Could not read from file '#{m_cert}'."
-        raise error_message unless test('r', m_cert)
-
-        m_cert = Azure.config.management_certificate
-        error_message = 'Management certificate expects a .pem or .pfx file.'
-        raise error_message unless m_cert =~ /(pem|pfx)$/
+        if m_cert =~ /(pem|pfx)$/ # validate only if input is file path
+          error_message = "Could not read from file '#{m_cert}'."
+          raise error_message unless test('r', m_cert)
+        end
       end
 
       # Public: Gets a list of regional data center locations from the server
