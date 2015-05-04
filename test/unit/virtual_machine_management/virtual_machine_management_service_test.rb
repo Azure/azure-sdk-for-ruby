@@ -127,6 +127,7 @@ describe Azure::VirtualMachineManagementService do
       virtual_machine.ipaddress.must_equal '137.116.17.187'
       virtual_machine.virtual_network_name.must_equal 'test-virtual-network'
       virtual_machine.subnet.must_equal 'test-subnet'
+      virtual_machine.static_virtual_network_ipaddress.must_equal '100.65.164.123'
     end
 
     it 'returns a list of virtual machines for the subscription' do

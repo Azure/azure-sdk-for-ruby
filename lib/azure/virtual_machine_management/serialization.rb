@@ -100,6 +100,7 @@ module Azure
                   xml.SubnetNames do
                     xml.SubnetName options[:subnet_name]
                   end
+                  xml.StaticVirtualNetworkIPAddress options[:static_virtual_network_ipaddress] if options[:static_virtual_network_ipaddress]
                 end
               end
             end
@@ -275,6 +276,8 @@ module Azure
                   'ConfigurationSets ConfigurationSet SubnetNames SubnetName'
                 )
                 vm.subnet = subnet unless subnet.empty?
+                static_virtual_network_ipaddress =  xml_content(role,'ConfigurationSets ConfigurationSet StaticVirtualNetworkIPAddress')
+                vm.static_virtual_network_ipaddress = static_virtual_network_ipaddress unless static_virtual_network_ipaddress.empty?
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
                 vm.media_link = xml_content(role, 'OSVirtualHardDisk MediaLink')
@@ -361,6 +364,7 @@ module Azure
                 xml.SubnetNames do
                   xml.SubnetName vm.subnet if vm.subnet
                 end
+                xml.StaticVirtualNetworkIPAddress vm.static_virtual_network_ipaddress if vm.static_virtual_network_ipaddress
               end
             end
             xml.OSVirtualHardDisk do
