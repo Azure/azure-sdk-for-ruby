@@ -701,6 +701,7 @@ module Azure
           headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
           headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
           headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
+          headers["x-ms-blob-content-disposition"] = options[:blob_content_disposition] if options[:blob_content_disposition]
 
           add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
         end
@@ -856,7 +857,7 @@ module Azure
 
         options[:start_range] = 0 if options[:end_range] and not options[:start_range]
 
-        headers = { }
+        headers = service_properties_headers
         headers = { "x-ms-range" =>  "bytes=#{options[:start_range]}-#{options[:end_range]}" } if options[:start_range]
 
         response = call(:get, uri, nil, headers)
@@ -958,6 +959,7 @@ module Azure
           headers["x-ms-blob-content-length"] = options[:blob_content_length].to_s if options[:blob_content_length]
           headers["x-ms-blob-sequence-number-action"] = options[:sequence_number_action].to_s if options[:sequence_number_action]
           headers["x-ms-blob-sequence-number"] = options[:sequence_number].to_s if options[:sequence_number]
+          headers["x-ms-blob-content-disposition"] = options[:blob_content_disposition] if options[:blob_content_disposition]
         end
 
         call(:put, uri, nil, headers)

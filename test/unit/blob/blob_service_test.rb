@@ -25,7 +25,7 @@ describe Azure::Blob::BlobService do
   let(:serialization) { Azure::Blob::Serialization }
   let(:uri) { URI.parse "http://foo.com" }
   let(:query) { {} }
-  let(:request_headers) { {} }
+  let(:request_headers) { {'x-ms-version' => '2013-08-15'} }
   let(:request_body) { "request-body" }
 
   let(:response_headers) { {} }
@@ -130,7 +130,7 @@ describe Azure::Blob::BlobService do
       let(:verb) { :put }
       before {
         subject.stubs(:container_uri).with(container_name, {}).returns(uri)
-        subject.stubs(:call).with(verb, uri, nil, {}).returns(response)
+        subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
         serialization.stubs(:container_from_headers).with(response_headers).returns(container)
       }
 
@@ -140,7 +140,7 @@ describe Azure::Blob::BlobService do
       end
 
       it "calls StorageService#call with the prepared request" do
-        subject.expects(:call).with(verb, uri, nil, {}).returns(response)
+        subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
         subject.create_container container_name
       end
 
@@ -159,20 +159,20 @@ describe Azure::Blob::BlobService do
       describe "when optional metadata parameter is used" do
         let(:container_metadata) {
           {
-              "MetadataKey" => "MetaDataValue",
-              "MetadataKey1" => "MetaDataValue1"}
+              'MetadataKey' => 'MetaDataValue',
+              'MetadataKey1' => 'MetaDataValue1'}
         }
 
-        before {
+        before do
           request_headers = {
-              "x-ms-meta-MetadataKey" => "MetaDataValue",
-              "x-ms-meta-MetadataKey1" => "MetaDataValue1"
+              'x-ms-meta-MetadataKey' => 'MetaDataValue',
+              'x-ms-meta-MetadataKey1' => 'MetaDataValue1',
+              'x-ms-version' => '2013-08-15'
           }
-
           subject.stubs(:container_uri).with(container_name, {}).returns(uri)
           serialization.stubs(:container_from_headers).with(response_headers).returns(container)
           subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
-        }
+        end
 
         it "adds metadata to the request headers" do
           subject.create_container container_name, container_metadata
@@ -183,7 +183,7 @@ describe Azure::Blob::BlobService do
         let(:public_access_level) { "public-access-level-value" }
 
         before {
-          request_headers = {"x-ms-blob-public-access" => public_access_level}
+          request_headers = {"x-ms-blob-public-access" => public_access_level, 'x-ms-version' => '2013-08-15'}
 
           subject.stubs(:container_uri).with(container_name, {}).returns(uri)
           serialization.stubs(:container_from_headers).with(response_headers).returns(container)
@@ -441,7 +441,7 @@ describe Azure::Blob::BlobService do
     describe "#set_container_metadata" do
       let(:verb) { :put }
       let(:container_metadata) { {"MetadataKey" => "MetaDataValue", "MetadataKey1" => "MetaDataValue1"} }
-      let(:request_headers) { {"x-ms-meta-MetadataKey" => "MetaDataValue", "x-ms-meta-MetadataKey1" => "MetaDataValue1"} }
+      let(:request_headers) { {"x-ms-meta-MetadataKey" => "MetaDataValue", "x-ms-meta-MetadataKey1" => "MetaDataValue1", 'x-ms-version' => '2013-08-15'} }
 
       before {
         query.update({"comp" => "metadata"})
@@ -590,7 +590,8 @@ describe Azure::Blob::BlobService do
               "x-ms-blob-type" => "PageBlob",
               "Content-Length" => 0.to_s,
               "x-ms-blob-content-length" => blob_length.to_s,
-              "x-ms-sequence-number" => 0.to_s
+              "x-ms-sequence-number" => 0.to_s,
+              'x-ms-version' => '2013-08-15'
           }
         }
 
@@ -696,7 +697,8 @@ describe Azure::Blob::BlobService do
           {
               "x-ms-page-write" => "update",
               "x-ms-range" => "bytes=#{start_range}-#{end_range}",
-              "Content-Type" => ""
+              "Content-Type" => "",
+              'x-ms-version' => '2013-08-15'
           }
         }
 
@@ -775,7 +777,8 @@ describe Azure::Blob::BlobService do
           {
               "x-ms-range" => "bytes=#{start_range}-#{end_range}",
               "x-ms-page-write" => "clear",
-              "Content-Type" => ""
+              "Content-Type" => "",
+              'x-ms-version' => '2013-08-15'
           }
         }
 
@@ -839,7 +842,7 @@ describe Azure::Blob::BlobService do
         let(:content) { "some content" }
         let(:block_id) { "block-id" }
         let(:server_generated_content_md5) { "server-content-md5" }
-        let(:request_headers) { {} }
+        let(:request_headers) { {'x-ms-version' => '2013-08-15'} }
 
         before {
           query.update({"comp" => "block", "blockid" => Base64.strict_encode64(block_id)})
@@ -881,7 +884,8 @@ describe Azure::Blob::BlobService do
         let(:request_headers) {
           {
               "x-ms-blob-type" => "BlockBlob",
-              "Content-Type" => "application/octet-stream"
+              "Content-Type" => "application/octet-stream",
+              'x-ms-version' => '2013-08-15'
           }
         }
 
@@ -981,7 +985,7 @@ describe Azure::Blob::BlobService do
         let(:verb) { :put }
         let(:request_body) { "body" }
         let(:block_list) { mock() }
-        let(:request_headers) { {} }
+        let(:request_headers) { {'x-ms-version' => '2013-08-15'} }
 
         before {
           query.update({"comp" => "blocklist"})
@@ -1174,7 +1178,7 @@ describe Azure::Blob::BlobService do
         describe "when both start_range and end_range are provided" do
           let(:start_range) { 255 }
           let(:end_range) { 512 }
-          before { request_headers["x-ms-range"]="bytes=#{start_range}-#{end_range}" }
+          let(:request_headers) { {'x-ms-range' => "bytes=#{start_range}-#{end_range}"} }
 
           it "modifies the request headers with the desired range" do
             subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
@@ -1192,7 +1196,7 @@ describe Azure::Blob::BlobService do
 
       describe "#set_blob_properties" do
         let(:verb) { :put }
-        let(:request_headers) { {} }
+        let(:request_headers) { {'x-ms-version' => '2013-08-15'} }
 
         before {
           query.update({"comp" => "properties"})
@@ -1271,7 +1275,7 @@ describe Azure::Blob::BlobService do
       describe "#set_blob_metadata" do
         let(:verb) { :put }
         let(:blob_metadata) { {"MetadataKey" => "MetaDataValue", "MetadataKey1" => "MetaDataValue1"} }
-        let(:request_headers) { {"x-ms-meta-MetadataKey" => "MetaDataValue", "x-ms-meta-MetadataKey1" => "MetaDataValue1"} }
+        let(:request_headers) { {"x-ms-meta-MetadataKey" => "MetaDataValue", "x-ms-meta-MetadataKey1" => "MetaDataValue1", 'x-ms-version' => '2013-08-15'} }
 
         before {
           query.update({"comp" => "metadata"})
@@ -1451,7 +1455,9 @@ describe Azure::Blob::BlobService do
         describe "when both start_range and end_range are provided" do
           let(:start_range) { 255 }
           let(:end_range) { 512 }
-          before { request_headers["x-ms-range"]="bytes=#{start_range}-#{end_range}" }
+          before {
+            request_headers["x-ms-range"]="bytes=#{start_range}-#{end_range}"
+          }
 
           it "modifies the request headers with the desired range" do
             subject.expects(:call).with(verb, uri, nil, request_headers).returns(response)
@@ -1491,6 +1497,7 @@ describe Azure::Blob::BlobService do
         before {
           response.stubs(:success?).returns(true)
           request_headers["x-ms-delete-snapshots"] = "include"
+          request_headers['x-ms-version'] = '2013-08-15'
 
           subject.stubs(:blob_uri).with(container_name, blob_name, query).returns(uri)
           subject.stubs(:call).with(verb, uri, nil, request_headers).returns(response)
