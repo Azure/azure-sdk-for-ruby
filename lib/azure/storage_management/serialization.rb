@@ -52,11 +52,9 @@ module Azure
           storage_account.name = xml_content(
             storage_service_xml, 'ServiceName'
           )
-
           storage_service_properties = storage_service_xml.css(
             'StorageServiceProperties'
           )
-
           storage_account.description = xml_content(
             storage_service_properties, 'Description'
           )
@@ -77,6 +75,9 @@ module Azure
           ).map { |endpoint| endpoint.content }
           storage_account.geo_replication_enabled = xml_content(
             storage_service_properties, 'GeoReplicationEnabled'
+          )
+          storage_account.account_type = xml_content(
+            storage_service_properties, 'AccountType'
           )
           storage_account.geo_primary_region = xml_content(
             storage_service_properties, 'GeoPrimaryRegion'
@@ -113,13 +114,13 @@ module Azure
 
       def self.storage_update_to_xml(options)
         # Cannot update if options is nil or empty
-        fail 'No options specified' if options.nil? || options.empty?
+        fail 'No options specified' if options.empty?
 
         # Either one of Label, or Description is required.
         if (options[:label].nil? || options[:label].empty?) &&
-           (options[:description].nil? || options[:description].empty?)
+            (options[:description].nil? || options[:description].empty?)
           fail 'Either one of Label or Description'\
-                ' has to be provided. Both cannot be empty'
+            ' has to be provided. Both cannot be empty'
         end
 
         # The input param may not be nil or empty, but the values inside may
@@ -130,15 +131,13 @@ module Azure
           when :description, :label
             is_empty = value.nil? || value.empty?
           when :geo_replication_enabled
-            is_empty = !(value.kind_of?(TrueClass)\
-              || value.kind_of?(FalseClass))
+            is_empty = !(value.is_a?(TrueClass) || value.is_a?(FalseClass))
           when :extended_properties
             value.each do |p, v|
               is_empty = ((p.nil? || p.empty?) || (v.nil? || v.empty?))
               break unless is_empty
             end
           end
-
           break unless is_empty
         end
 
@@ -167,18 +166,38 @@ module Azure
         gre = options[:geo_replication_enabled]
         xml.GeoReplicationEnabled(
           gre
-        ) unless gre.nil?\
-          || !(gre.kind_of?(TrueClass) || gre.kind_of?(FalseClass))
+        ) unless gre.nil? || !(gre.is_a?(TrueClass) || gre.is_a?(FalseClass))
         xml.ExtendedProperties do
           options[:extended_properties].each do |name, value|
             xml.ExtendedProperty do
               xml.Name name
               xml.Value value
-            end unless (name.nil? || name.empty?)\
-              || (value.nil? || value.empty?)
+            end unless (name.to_s.empty?) || (value.to_s.empty?)
           end
-        end unless options[:extended_properties].nil?\
-          || options[:extended_properties].empty?
+        end unless options[:extended_properties].to_s.empty?
+        xml.AccountType options[:account_type] if options[:account_type]
+      end
+
+      def self.storage_account_keys_from_xml(storage_xml)
+        storage_xml.css('StorageService')
+        storage_service_xml = storage_xml.css('StorageService').first
+        service_key_xml = storage_service_xml.css('StorageServiceKeys').first
+        storage_account_keys = StorageAccountKeys.new
+        storage_account_keys.url = xml_content(storage_service_xml, 'Url')
+        storage_account_keys.primary_key = xml_content(service_key_xml, 'Primary')
+        storage_account_keys.secondary_key = xml_content(service_key_xml, 'Secondary')
+        storage_account_keys
+      end
+
+      def self.regenerate_storage_account_keys_to_xml(key_type)
+        builder = Nokogiri::XML::Builder.new do |xml|
+          xml.RegenerateKeys(
+            'xmlns' => 'http://schemas.microsoft.com/windowsazure'
+          ) do
+            xml.KeyType(key_type)
+          end
+        end
+        builder.doc.to_xml
       end
     end
   end

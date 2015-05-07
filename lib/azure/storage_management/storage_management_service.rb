@@ -27,7 +27,7 @@ module Azure
       # Returns an array of Azure::StorageManagement::StorageAccount objects
       def list_storage_accounts
         request_path = '/services/storageservices'
-        request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
+        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.storage_services_from_xml(response)
       end
@@ -38,20 +38,9 @@ module Azure
       #
       # * +name+       - String. Storage account name.
       #
-      # Returns: A boolean value indicating whether the storage account exists.
-      # If true, the storage account exists. If false, the storage account
-      # does not exist.
+      # Returns an Azure::StorageManagement::StorageAccount instance
       def get_storage_account(name)
-        return false if name.nil?
-        flag = false
-        storage_accounts = list_storage_accounts
-        storage_accounts.each do |storage|
-          if storage.name == name
-            flag = true
-            break
-          end
-        end
-        flag
+        list_storage_accounts.select { |x| x.name.casecmp(name.to_s) == 0 }.first
       end
 
       # Public: Gets the properties of the storage account specified.
@@ -60,17 +49,17 @@ module Azure
       #
       # * +name+  - String. The name of the storage account. Required.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460802.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee460802.aspx
       #
       # Returns the storage account
       def get_storage_account_properties(name)
         request_path = "/services/storageservices/#{name}"
-        request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
+        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.storage_services_from_xml(response).first
       end
 
-      # Public: Create a new storage account in Windows Azure.
+      # Public: Create a new storage account in Microsoft Azure.
       #
       # ==== Attributes
       #
@@ -94,27 +83,31 @@ module Azure
       # * +:extended_properties+      - Hash. Key/Value pairs of extended
       # properties to add to the storage account. The key is used as the
       # property name and the value as its value. (optional)
+      # * +:account_type+  - String.  Specifies the type of storage account
       #
+      # See http://msdn.microsoft.com/en-us/library/azure/hh264518.aspx
+      # 
       # Returns None
       def create_storage_account(name, options = {})
         raise 'Name not specified' if !name || name.class != String || name.empty?
+        options[:account_type] ||= 'Standard_GRS'
         if get_storage_account(name)
-          Loggerx.warn "Storage Account #{name} already exists. Skipped..."
+          Azure::Loggerx.warn "Storage Account #{name} already exists. Skipped..."
         else
-          Loggerx.info "Creating Storage Account #{name}."
+          Azure::Loggerx.info "Creating Storage Account #{name}."
           body = Serialization.storage_services_to_xml(name, options)
           request_path = '/services/storageservices'
-          request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
           request.call
         end
       end
 
-      # Public: Updates an existing storage account in Windows Azure
+      # Public: Updates an existing storage account in Microsoft Azure
       #
       # ==== Attributes
       #
       # * +name+          - String. The name of the storage service.
-      # * +options+       - Hash. Optional parameters.
+      # * +options+       - Hash. parameters.
       #
       # ==== Options
       #
@@ -126,40 +119,89 @@ module Azure
       # Required if no label is provided. If both label and description are
       # provided, only the label will get updated.
       # * +:geo_replication_enabled+ - Boolean (TrueClass/FalseClass). Boolean
-      # flag indicating wheter to turn Geo replication on or off. (optional)
+      # flag indicating whether to turn Geo replication on or off. (optional)
       # * +:extended_properties+      - Hash. Key/Value pairs of extended
       # properties to add to the storage account. The key is used as the
       # property name and the value as its value. (optional)
+      # * +:account_type+  - String.  Specifies the type of storage account
+      #
+      # See http://msdn.microsoft.com/en-us/library/azure/hh264516.aspx
       #
       # Returns None
       # Fails with RuntimeError if invalid options specified
-      def update_storage_account(name, options = {})
+      def update_storage_account(name, options)
         if get_storage_account name
-          Loggerx.info "Account '#{name}' exists, updating..."
+          Azure::Loggerx.info "Account '#{name}' exists, updating..."
           body = Serialization.storage_update_to_xml options
           request_path = "/services/storageservices/#{name}"
-          request = BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
           request.call
         else
-          Loggerx.warn "Storage Account '#{name}' does not exist. Skipped..."
+          Azure::Loggerx.warn "Storage Account '#{name}' does not exist. Skipped..."
         end
       end
 
       # Public: Deletes the specified storage account of given subscription id
-      # from Windows Azure.
+      # from Microsoft Azure.
       #
       # ==== Attributes
       #
       # * +name+       - String. Storage account name.
       #
+      # See http://msdn.microsoft.com/en-us/library/azure/hh264517.aspx
+      # 
       # Returns:  None
       def delete_storage_account(name)
-        Loggerx.info "Deleting Storage Account #{name}."
+        Azure::Loggerx.info "Deleting Storage Account #{name}."
         request_path = "/services/storageservices/#{name}"
-        request = BaseManagement::ManagementHttpRequest.new(:delete, request_path)
+        request = Azure::BaseManagement::ManagementHttpRequest.new(:delete, request_path)
         request.call
-      rescue Exception => e
+      rescue => e
         e.message
+      end
+
+      # Public: Regenerates the primary or secondary access key for the specified storage account
+      #
+      # ==== Attributes
+      #
+      # * +name+       - String. Storage account name.
+      # * +key_type+   - String. Specifies which key(primary or secondary) to regenerate
+      #
+      # Returns an  Azure::StorageManagement::StorageAccountKeys instance.
+      #
+      # See:
+      # http://msdn.microsoft.com/en-us/library/azure/ee460795.aspx
+      def regenerate_storage_account_keys(name, key_type = 'primary')
+        if get_storage_account name
+          path = "/services/storageservices/#{name}/keys?action=regenerate"
+          body = Serialization.regenerate_storage_account_keys_to_xml key_type
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:post, path, body)
+          response = request.call
+          Serialization.storage_account_keys_from_xml(response)
+        else
+          Azure::Loggerx.warn "Storage Account '#{name}' does not exist."
+        end
+      end
+
+      # Public: Gets the primary and secondary access keys for the specified storage account.
+      #
+      # ==== Attributes
+      #
+      # * +name+       - String. Storage account name.
+      #
+      # Returns an  Azure::StorageManagement::StorageAccountKeys instance.
+      #
+      # See:
+      # http://msdn.microsoft.com/en-us/library/azure/ee460785.aspx
+      def get_storage_account_keys(name)
+        if get_storage_account name
+          path = "/services/storageservices/#{name}/keys"
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:get, path)
+          response = request.call
+          Serialization.storage_account_keys_from_xml(response)
+        else
+          Azure::Loggerx.warn "Storage Account '#{name}' does not exist."
+        end
       end
     end
   end

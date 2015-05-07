@@ -35,19 +35,17 @@ describe Azure::VirtualMachineManagementService do
       cloud_service_name: csn,
     }
     subject.create_virtual_machine(params, options)
-    sleep 60
   end
 
   describe '#delete_virtual_machine' do
 
     it 'delete existing virtual machine and cloud service' do
       subject.delete_virtual_machine(virtual_machine_name, csn)
-      sleep 60
       vm = subject.get_virtual_machine(virtual_machine_name, csn)
       vm.must_be_nil
       cloud_service = Azure::CloudServiceManagementService.new
       cloud_presence = cloud_service.get_cloud_service(csn)
-      cloud_presence.must_equal false
+      cloud_presence.must_equal nil
     end
 
   end

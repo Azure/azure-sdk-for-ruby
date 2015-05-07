@@ -25,7 +25,7 @@ module Azure
       # Public: Gets a list of virtual network services available under the
       # current subscription.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157185.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/jj157185.aspx
       #
       # Returns an array of
       # Azure::VirtualNetworkServiceManagement::VirtualNetwork objects
@@ -54,7 +54,7 @@ module Azure
       # ==== Attributes
       #
       # * +vnet+              - String. The name of the virtual network.
-      # * +affinity_group+    - String. The name of the affinity group.
+      # * +location+          - String. The location where the virtual network will be created.
       # * +address_space+     - Array. Contains a collection of Classless
       #   Inter-Domain Routing (CIDR) identifiers that specify the address
       #   space that you will use for your local network site
@@ -69,11 +69,11 @@ module Azure
       # * +dns_servers+         - Array. A hash of the name/value pairs.
       #   Contains the name and IPv4 address of the DNS server. (optional)
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj157181.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/jj157181.aspx
       #
       # Returns None
       def set_virtual_network(vnet,
-                              affinity_group,
+                              location,
                               address_space,
                               options = {
                                 subnet: [],
@@ -81,12 +81,12 @@ module Azure
                               })
         request_path = '/services/networking/media'
         body = Serialization.virtual_network_to_xml(vnet,
-                                                    affinity_group,
+                                                    location,
                                                     address_space,
                                                     options)
         request = BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
         request.headers['Content-Type'] = 'text/plain'
-        Loggerx.info "Creating virtual network #{vnet}."
+        Azure::Loggerx.info "Creating virtual network #{vnet}."
         request.call
       end
 
@@ -101,7 +101,7 @@ module Azure
         end
         request = BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
         request.headers['Content-Type'] = 'text/plain'
-        Loggerx.info 'Creating virtual network.'
+        Azure::Loggerx.info 'Creating virtual network.'
         request.call
       end
     end

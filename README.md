@@ -1,5 +1,9 @@
+<<<<<<< HEAD
+# Microsoft Azure SDK for Ruby [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=dev)](https://travis-ci.org/Azure/azure-sdk-for-ruby)
+=======
 # Microsoft Azure SDK for Ruby
 [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=dev)](https://travis-ci.org/Azure/azure-sdk-for-ruby) [![Code Climate](https://codeclimate.com/github/Azure/azure-sdk-for-ruby/badges/gpa.svg)](https://codeclimate.com/github/Azure/azure-sdk-for-ruby)
+>>>>>>> master
 
 
 This project provides a Ruby package that makes it easy to access and manage Microsoft Azure Services like Storage, Service Bus and Virtual Machines.
@@ -54,8 +58,6 @@ This project provides a Ruby package that makes it easy to access and manage Mic
 * Ruby 2.1
 * Ruby 2.2
 
-**Notice** that Ruby 2.0 x64 on Windows is not supported due to the [lack of nokogiri](https://github.com/sparklemotion/nokogiri/issues/864).
-
 # Getting Started
 
 ## Install the rubygem package
@@ -86,7 +88,11 @@ Running the command ``rdoc`` will generate the API documentation in the `./doc` 
 
 ## Setup Connection
 
+<<<<<<< HEAD
+You can use this SDK against the Microsoft Azure Services in the cloud, or against the local Storage Emulator if you are on Windows. Service Bus and Microsoft Azure Service Management emulation are not supported. Of course, to use the Microsoft Azure Services in the cloud, you need to first [create a Microsoft Azure account](http://www.azure.com/en-us/pricing/free-trial/). After that, you can get the information you need to configure Storage and Service Bus from the [Microsoft Azure Portal](https://manage.azure.com).
+=======
 You can use this SDK against the Microsoft Azure Services in the cloud, or against the local Storage Emulator if you are on Windows. Service Bus and Microsoft Azure Service Management emulation are not supported. Of course, to use the Microsoft Azure Services in the cloud, you need to first [create a Microsoft Azure account](http://www.windowsazure.com/en-us/pricing/free-trial/). After that, you can get the information you need to configure Storage and Service Bus from the [Microsoft Azure Portal](https://manage.windowsazure.com).
+>>>>>>> master
 
 There are two ways you can set up the connections:
 
@@ -181,7 +187,11 @@ You can use the following commands to run:
 * a specific suite of tests: ``rake test:integration:blob``
 * one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
 # Usage
+<<<<<<< HEAD
+**For more examples, please see the [Microsoft Azure Ruby Developer Center](http://www.azure.com/en-us/develop/ruby)**
+=======
 **For more examples, please see the [Microsoft Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby)**
+>>>>>>> master
 ## Storage
 
 ### Blobs
@@ -453,7 +463,6 @@ options = {
   :deployment_name =>'vm_name',
   :tcp_endpoints => '80,3389:3390',
   :private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
-  :certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
   :ssh_port => 2222,
   :vm_size => 'Small', #valid choices are (Basic_A0,Basic_A1,Basic_A2,Basic_A3,Basic_A4,ExtraSmall,Small,Medium,Large,ExtraLarge,A5,A6,A7,A8,A9,Standard_D1,Standard_D2,Standard_D3,Standard_D4,Standard_D11,Standard_D12,Standard_D13,Standard_D14,Standard_DS1,Standard_DS2,Standard_DS3,Standard_DS4,Standard_DS11,Standard_DS12,Standard_DS13,Standard_DS14,Standard_G1,Standard_G2,Standard_G3,Standard_G4,Standard_G5)
   :affinity_group_name => 'affinity1',
@@ -478,7 +487,6 @@ options = {
   :winrm_transport => ['https','http'], #Currently http is supported. To enable https, set the transport protocol to https, simply rdp to the VM once VM is in ready state, export the certificate ( CN name would be the deployment name) from the certstore of the VM and install to your local machine and communicate WinRM via https.
   :tcp_endpoints => '80,3389:3390',
   :private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
-  :certificate_file => 'c:/certificate.pem', #required for ssh or winrm(https) certificate.
   :winrm_https_port => 5999,
   :winrm_http_port => 6999, #Used to open different powershell port
   :vm_size => 'Small', #valid choices are (Basic_A0,Basic_A1,Basic_A2,Basic_A3,Basic_A4,ExtraSmall,Small,Medium,Large,ExtraLarge,A5,A6,A7,A8,A9,Standard_D1,Standard_D2,Standard_D3,Standard_D4,Standard_D11,Standard_D12,Standard_D13,Standard_D14,Standard_DS1,Standard_DS2,Standard_DS3,Standard_DS4,Standard_DS11,Standard_DS12,Standard_DS13,Standard_DS14,Standard_G1,Standard_G2,Standard_G3,Standard_G4,Standard_G5)
@@ -586,7 +594,7 @@ dns_servers = [{:name => 'dns-1',  :ip_address=>'1.2.3.4'},  {:name => 'dns-2', 
 
 options = {:subnet => subnets, :dns => dns_servers}
 
-vnet.set_network_configuration('virtual-network-name', 'affinity-group-name', address_space, options)
+vnet.set_network_configuration('virtual-network-name', 'location_name', address_space, options)
 
 #API to configure virtual network from xml file that can be exported from management portal and customized to add or delete vnet
 
@@ -599,14 +607,21 @@ vnet.set_network_configuration(vnetxml)
 
 Currently the sdk supports *.pem or *.pfx (passwordless pfx) for service management operations. Following are the steps discussed on various cert operations.
 
-* To create pfx, simply download the publishsettings file for your subscription, copy the contents of Management Certificate from the publishsettings and save it in a file and name the file as your cert.pfx. This pfx will be a passwordless pfx which can be supplied as a cert parameter for Service Management Commands
-* Using the following openssl commands to extract the pem file and pass the pem file as management cert parameter.
-    * To get only private key from pfx use Openssl.exe pkcs12 -in cert.pfx -nocerts -out cert.pem
-  * To remove passphrase from the above private key use ``Openssl.exe rsa -in cert.pem -out certprivnopassword.pem``
-  * To extract both public & private keys from pfx use ``Openssl.exe pkcs12 -in cert.pfx -out certprivpub.pem``
-  * To extract only public key from pem use ``Openssl.exe x509 -inform pem -in certprivpub.pem -pubkey -out certpub.pem -outform pem``
-* Finally copy the public key & private key to a file *.pem and pass that pem file to management cert parameter.
-* To extract pem from custom certificate, export the pfx, follow the above steps to convert to pem and pass that pem file to management cert parameter.
+## Publish Settings files
+
+* To create a pfx from the publishsettings, simply download the publishsettings file for your subscription 
+[https://manage.windowsazure.com/publishsettings](https://manage.windowsazure.com/publishsettings/index?client=powershell). Make sure you have this gem installed and
+ run `pfxer --in [path to your .publishsettings file]`. This will create a .pfx from your publish settings file which can 
+ be supplied as a cert parameter for Service Management Commands.
+ 
+## Generate New Cert and Upload to Azure Portal
+
+* Using the following openssl commands to create a cert and upload to Azure Management
+  * Generate public and private `openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.key -out mycert.pem`
+  * Generate public .cer for Azure upload `openssl x509 -inform pem -in mycert.pem -outform der -out mycert_mgmt.cer`
+  * Upload the `mycert_mgmt.cer` to Azure Management through [https://management.azure.com](https://management.azure.com)
+  * Combine the public and private into one `cat mycert.key mycert.pem > cert.pem`
+  * Use cert.pem as your cert parameter for Service Management Commands.
 
 # Need Help?
 
@@ -614,11 +629,11 @@ Be sure to check out the Microsoft Azure [Developer Forums on Stack Overflow and
 
 # Contribute Code or Provide Feedback
 
-If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
+If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.com/guidelines.html).
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-ruby/issues) section of the project.
 
 # Learn More
 
-For documentation on how to host Ruby applications on Microsoft Azure, please see the [Microsoft Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby/).
+For documentation on how to host Ruby applications on Microsoft Azure, please see the [Microsoft Azure Ruby Developer Center](http://www.azure.com/en-us/develop/ruby/).
 For documentation on Azure PowerShell CLI tool for Windows, please see our readme [here](http://github.com/azure/azure-sdk-tools).
 For documentation on the Azure cross platform CLI tool for Windows, Mac and Linux, please see our readme [here](http://github.com/azure/azure-sdk-tools-xplat).

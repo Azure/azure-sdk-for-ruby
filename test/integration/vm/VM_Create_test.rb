@@ -25,7 +25,6 @@ describe Azure::VirtualMachineManagementService do
   let(:storage_account_name) { StorageAccountName }
   let(:username) { 'adminuser' }
   let(:password) { 'Admin123' }
-  let(:certificate) { Fixtures['certificate.pem'] }
   let(:private_key) { Fixtures['privatekey.key'] }
 
   let(:params)do
@@ -76,7 +75,6 @@ describe Azure::VirtualMachineManagementService do
         options.delete(:cloud_service_name)
         params.delete(:location)
         params[:vm_name] = "add-#{virtual_machine_name}"
-        sleep 30
       end
 
       it 'should add role to existing storage account and cloud service' do
@@ -91,26 +89,28 @@ describe Azure::VirtualMachineManagementService do
         params[:vm_name] = "Add-storage-#{virtual_machine_name}"
         vm = subject.add_role(params)
         vm.cloud_service_name.must_equal params[:cloud_service_name]
-        vm.vm_name.must_equal params[:vm_name].downcase
+        vm.vm_name.must_equal params[:vm_name]
         vm.deployment_name.must_equal @vm_obj.deployment_name
       end
     end
 
     describe '#virtual_network' do
+      let(:subnet_name) { 'Subnet-1' }
+      let(:geo_location) { LinuxImageLocation }
       before do
         options[:virtual_network_name] = 'v-net'
-        affinity_gorup_name = random_string('affinity-group-', 10)
-        Azure::BaseManagementService.new.create_affinity_group(
-          affinity_gorup_name,
-          params[:location],
-          'AG1'
-        ) rescue nil
+        inputoptions = {
+          subnet: [{ name: subnet_name, ip_address: '172.16.0.0', cidr: 12 }],
+          dns: [{ name: 'DNS', ip_address: '1.2.3.4' }]
+        }
         vnet_service = Azure::VirtualNetworkManagementService
         vnet_service.new.set_network_configuration(
           options[:virtual_network_name],
-          affinity_gorup_name,
-          ['172.16.0.0/12']
+          geo_location,
+          ['172.16.0.0/12'],
+          inputoptions
         ) rescue nil
+        options[:subnet_name] = subnet_name
         subject.create_virtual_machine(params, options)
       end
 
@@ -119,6 +119,7 @@ describe Azure::VirtualMachineManagementService do
         virtual_machine.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
         virtual_machine.vm_name.must_equal virtual_machine_name
         virtual_machine.virtual_network_name.must_equal options[:virtual_network_name]
+        virtual_machine.subnet.must_equal subnet_name
       end
     end
 
@@ -149,14 +150,12 @@ describe Azure::VirtualMachineManagementService do
       end
       tcp_endpoints_names.must_include 'PowerShell'
       tcp_endpoints_names.must_include 'WinRm-Http'
-      sleep 30
     end
 
     it 'should creates https enabled winrm virtual machine using certificate.' do
       default_options.merge!(
         winrm_transport: ['https'],
-        private_key_file: private_key,
-        certificate_file: certificate
+        private_key_file: private_key
       )
       result = subject.create_virtual_machine(windows_params, default_options)
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
@@ -183,13 +182,11 @@ describe Azure::VirtualMachineManagementService do
 
     it 'created linux virtual machine should be accessible using password and certificate' do
       default_options.merge!(
-        private_key_file: private_key,
-        certificate_file: certificate
+        private_key_file: private_key
       )
       result = subject.create_virtual_machine(params, default_options)
       result.must_be_kind_of Azure::VirtualMachineManagement::VirtualMachine
       assert_equal(result.os_type, 'Linux')
-      sleep 30
     end
 
     it 'throws error as port value is beyond or less than actual range' do

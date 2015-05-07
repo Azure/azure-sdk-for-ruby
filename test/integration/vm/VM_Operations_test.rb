@@ -35,7 +35,6 @@ describe Azure::VirtualMachineManagementService do
     vm = subject.get_virtual_machine(vm_name, csn)
     if vm.nil?
       subject.create_virtual_machine(params, options)
-      sleep 60 # Wait to finish provision.
     end
   end
 

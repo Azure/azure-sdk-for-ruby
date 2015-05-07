@@ -37,6 +37,7 @@ module Azure
       attr_accessor :availability_set_name
       attr_accessor :media_link
       attr_accessor :data_disks
+      attr_accessor :subnet
     end
   end
 end

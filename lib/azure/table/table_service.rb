@@ -41,7 +41,7 @@ module Azure
       #
       # * +:timeout+   - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135729
+      # See http://msdn.microsoft.com/en-us/library/azure/dd135729
       #
       # Returns nil on success
       def create_table(table_name, options={})
@@ -65,7 +65,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+   - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179387
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179387
       #
       # Returns nil on success
       def delete_table(table_name, options={})
@@ -111,7 +111,7 @@ module Azure
       #   larger than a single operation can return at once. (optional)
       # * +:timeout+            - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179405
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179405
       #
       # Returns an array with an extra continuation_token property on success
       def query_tables(options={})
@@ -141,7 +141,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+   - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159100
+      # See http://msdn.microsoft.com/en-us/library/azure/jj159100
       #
       # Returns a list of Azure::Entity::SignedIdentifier instances
       def get_table_acl(table_name, options={})
@@ -168,7 +168,7 @@ module Azure
       # * +:signed_identifiers+  - Array. A list of Azure::Entity::SignedIdentifier instances
       # * +:timeout+             - Integer. A timeout in seconds.
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159102
+      # See http://msdn.microsoft.com/en-us/library/azure/jj159102
       #
       # Returns nil on success
       def set_table_acl(table_name, options={})
@@ -197,7 +197,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+      - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179433
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179433
       #
       # Returns a Azure::Entity::Table::Entity
       def insert_entity(table_name, entity_values, options={})
@@ -236,7 +236,7 @@ module Azure
       # * +:continuation_token+ - Hash. The continuation token.
       # * +:timeout+            - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179421
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179421
       #
       # Returns an array with an extra continuation_token property on success
       def query_entities(table_name, options={})
@@ -291,7 +291,7 @@ module Azure
       #   that entity will be inserted. If false, the operation will fail. (optional, Default=false)
       # * +:timeout+               - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179427
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179427
       #
       # Returns the ETag for the entity on success 
       def update_entity(table_name, entity_values, options={})
@@ -329,7 +329,7 @@ module Azure
       #   that entity will be inserted. If false, the operation will fail. (optional, Default=false)
       # * +:timeout+               - Integer. A timeout in seconds.
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179392
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179392
       # 
       # Returns the ETag for the entity on success 
       def merge_entity(table_name, entity_values, options={})
@@ -363,7 +363,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+      - Integer. A timeout in seconds.
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452241
+      # See http://msdn.microsoft.com/en-us/library/azure/hh452241
       # 
       # Returns the ETag for the entity on success 
       def insert_or_merge_entity(table_name, entity_values, options={})
@@ -384,7 +384,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+      - Integer. A timeout in seconds.
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452242
+      # See http://msdn.microsoft.com/en-us/library/azure/hh452242
       #
       # Returns the ETag for the entity on success 
       def insert_or_replace_entity(table_name, entity_values, options={})
@@ -407,7 +407,7 @@ module Azure
       # * +:if_match+     - String. A matching condition which is required for update (optional, Default="*")
       # * +:timeout+      - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd135727
+      # See http://msdn.microsoft.com/en-us/library/azure/dd135727
       #
       # Returns nil on success
       def delete_entity(table_name, partition_key, row_key, options={})
@@ -433,7 +433,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+      - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd894038
+      # See http://msdn.microsoft.com/en-us/library/azure/dd894038
       #
       # Returns an array of results, one for each operation in the batch
       def execute_batch(batch, options={})

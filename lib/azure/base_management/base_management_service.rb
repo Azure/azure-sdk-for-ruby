@@ -12,12 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'rubygems'
-require 'nokogiri'
-require 'base64'
-require 'openssl'
-require 'uri'
-require 'rexml/document'
+
 require 'azure/base_management/serialization'
 require 'azure/base_management/location'
 require 'azure/base_management/affinity_group'
@@ -27,14 +22,21 @@ module Azure
     class BaseManagementService
       def initialize
         validate_configuration
-        cert_file = File.read(Azure.config.management_certificate)
+        cert_file = Azure.config.management_certificate
+
+        if File.file?(cert_file) && cert_file =~ /(pem)$/
+          cert_file = File.read(Azure.config.management_certificate)
+        else
+          cert_file = File.binread(Azure.config.management_certificate)
+        end
+
         begin
           if Azure.config.management_certificate =~ /(pem)$/
             certificate_key = OpenSSL::X509::Certificate.new(cert_file)
             private_key = OpenSSL::PKey::RSA.new(cert_file)
           else
           # Parse pfx content
-            cert_content = OpenSSL::PKCS12.new(Base64.decode64(cert_file))
+            cert_content = OpenSSL::PKCS12.new(cert_file)
             certificate_key = OpenSSL::X509::Certificate.new(
               cert_content.certificate.to_pem
             )
@@ -72,7 +74,7 @@ module Azure
       #
       # Returns an array of Azure::BaseManagement::Location objects
       def list_locations
-        request = ManagementHttpRequest.new(:get, '/locations')
+        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, '/locations')
         response = request.call
         Serialization.locations_from_xml(response)
       end
@@ -80,12 +82,12 @@ module Azure
       # Public: Gets a lists the affinity groups associated with
       # the specified subscription.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460797.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee460797.aspx
       #
       # Returns an array of Azure::BaseManagement::AffinityGroup objects
       def list_affinity_groups
         request_path = '/affinitygroups'
-        request = ManagementHttpRequest.new(:get, request_path, nil)
+        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.affinity_groups_from_xml(response)
       end
@@ -106,7 +108,7 @@ module Azure
       # * +:description+   - String. A description for the affinity group.
       # (optional)
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715317.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715317.aspx
       #
       # Returns:  None
       def create_affinity_group(name, location, label, options = {})
@@ -126,9 +128,9 @@ module Azure
                                                      label,
                                                      options)
           request_path = '/affinitygroups'
-          request = ManagementHttpRequest.new(:post, request_path, body)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
           request.call
-          Loggerx.info "Affinity Group #{name} is created."
+          Azure::Loggerx.info "Affinity Group #{name} is created."
         end
       end
 
@@ -147,7 +149,7 @@ module Azure
       # * +:description+   - String. A description for the affinity group.
       # (optional)
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715316.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715316.aspx
       #
       # Returns:  None
       def update_affinity_group(name, label, options = {})
@@ -155,9 +157,9 @@ module Azure
         if affinity_group(name)
           body = Serialization.resource_to_xml(label, options)
           request_path = "/affinitygroups/#{name}"
-          request = ManagementHttpRequest.new(:put, request_path, body)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
           request.call
-          Loggerx.info "Affinity Group #{name} is updated."
+          Azure::Loggerx.info "Affinity Group #{name} is updated."
         end
       end
 
@@ -167,15 +169,15 @@ module Azure
       #
       # * +name+       - String. Affinity Group name.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715314.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715314.aspx
       #
       # Returns:  None
       def delete_affinity_group(name)
         if affinity_group(name)
           request_path = "/affinitygroups/#{name}"
-          request = ManagementHttpRequest.new(:delete, request_path)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:delete, request_path)
           request.call
-          Loggerx.info "Deleted affinity group #{name}."
+          Azure::Loggerx.info "Deleted affinity group #{name}."
         end
       end
 
@@ -186,13 +188,13 @@ module Azure
       #
       # * +name+       - String. Affinity Group name.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460789.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee460789.aspx
       #
       # Returns:  Azure::BaseManagement::AffinityGroup object
       def get_affinity_group(name)
         if affinity_group(name)
           request_path = "/affinitygroups/#{name}"
-          request = ManagementHttpRequest.new(:get, request_path)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path)
           response = request.call
           Serialization.affinity_group_from_xml(response)
         end
