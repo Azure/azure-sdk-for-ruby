@@ -96,7 +96,7 @@ describe Azure::VirtualMachineManagementService do
 
     describe '#virtual_network' do
       let(:subnet_name) { 'Subnet-1' }
-      let(:location) { LinuxImageLocation }
+      let(:geo_location) { LinuxImageLocation }
       before do
         options[:virtual_network_name] = 'v-net'
         inputoptions = {
@@ -106,7 +106,7 @@ describe Azure::VirtualMachineManagementService do
         vnet_service = Azure::VirtualNetworkManagementService
         vnet_service.new.set_network_configuration(
           options[:virtual_network_name],
-          location,
+          geo_location,
           ['172.16.0.0/12'],
           inputoptions
         ) rescue nil

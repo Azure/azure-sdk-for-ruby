@@ -126,7 +126,7 @@ describe Azure::VirtualMachineManagement::Serialization do
           availability_set_name: 'aval-set',
           winrm_https_port: '5988',
           winrm_transport: %w(http https),
-          reserved_ip_name: "AnAwesomeIP"
+          reserved_ip_name: 'AnAwesomeIP'
       }
     end
 

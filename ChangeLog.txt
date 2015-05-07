@@ -1,3 +1,19 @@
+2015.05.06 - version 0.7.0.pre
+* Upgraded ASM versioning to 2014-06-01
+* Added the ability to use personal vm images not just gallery images
+* Namespaced all of the things so there is no leakage
+* Added proper support for .pfx
+* Added bin to transform .publishsettings files to .pfx files
+* Added support for Azure.config.management_certificate as string
+* Added ms-blob-content-disposition support, bump blob `x-ms-version` header to `2013-08-15`
+* Fixed KeepAlive and timeout for blobs
+* VM sizes are available -- we just warn if they are not in our list
+* Support for nokogiri on windows
+* Ability to delete a staging deployment of a cloud service
+* Peek_lock fixed for service bus
+* Support for creating shared access signatures
+
+
 2014.05.06 - version 0.6.4
 * Upgraded Service Management Versioning to 2014-04-01
 * Created separate API for add role

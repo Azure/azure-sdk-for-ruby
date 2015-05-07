@@ -26,6 +26,8 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://github.com/azure/azure-sdk-for-ruby'
   s.license     = 'Apache License, Version 2.0'
   s.files       = `git ls-files`.split("\n")
+  s.bindir      = 'bin'
+  s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
 
   s.required_ruby_version = '>= 1.9.3'
 
@@ -34,6 +36,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('json', '~> 1.8')
   s.add_runtime_dependency('uuid', '~> 2.0')
   s.add_runtime_dependency('systemu', '~> 2.6')
+  s.add_runtime_dependency('thor', '~> 0.19')
 
   s.add_development_dependency('rake', '~> 10.0')
   s.add_development_dependency('minitest', '~> 5')

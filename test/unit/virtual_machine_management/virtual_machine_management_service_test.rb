@@ -63,8 +63,6 @@ describe Azure::VirtualMachineManagementService do
   end
 
   before do
-    #Azure::Loggerx.stubs(:info).returns(nil)
-    #Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         :get,
         '/services/images',

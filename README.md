@@ -58,8 +58,6 @@ This project provides a Ruby package that makes it easy to access and manage Mic
 * Ruby 2.1
 * Ruby 2.2
 
-**Notice** that Ruby 2.0 x64 on Windows is not supported due to the [lack of nokogiri](https://github.com/sparklemotion/nokogiri/issues/864).
-
 # Getting Started
 
 ## Install the rubygem package
@@ -609,14 +607,21 @@ vnet.set_network_configuration(vnetxml)
 
 Currently the sdk supports *.pem or *.pfx (passwordless pfx) for service management operations. Following are the steps discussed on various cert operations.
 
-* To create pfx, simply download the publishsettings file for your subscription, copy the contents of Management Certificate from the publishsettings and save it in a file and name the file as your cert.pfx. This pfx will be a passwordless pfx which can be supplied as a cert parameter for Service Management Commands
-* Using the following openssl commands to extract the pem file and pass the pem file as management cert parameter.
-    * To get only private key from pfx use Openssl.exe pkcs12 -in cert.pfx -nocerts -out cert.pem
-  * To remove passphrase from the above private key use ``Openssl.exe rsa -in cert.pem -out certprivnopassword.pem``
-  * To extract both public & private keys from pfx use ``Openssl.exe pkcs12 -in cert.pfx -out certprivpub.pem``
-  * To extract only public key from pem use ``Openssl.exe x509 -inform pem -in certprivpub.pem -pubkey -out certpub.pem -outform pem``
-* Finally copy the public key & private key to a file *.pem and pass that pem file to management cert parameter.
-* To extract pem from custom certificate, export the pfx, follow the above steps to convert to pem and pass that pem file to management cert parameter.
+## Publish Settings files
+
+* To create a pfx from the publishsettings, simply download the publishsettings file for your subscription 
+[https://manage.windowsazure.com/publishsettings](https://manage.windowsazure.com/publishsettings/index?client=powershell). Make sure you have this gem installed and
+ run `pfxer --in [path to your .publishsettings file]`. This will create a .pfx from your publish settings file which can 
+ be supplied as a cert parameter for Service Management Commands.
+ 
+## Generate New Cert and Upload to Azure Portal
+
+* Using the following openssl commands to create a cert and upload to Azure Management
+  * Generate public and private `openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.key -out mycert.pem`
+  * Generate public .cer for Azure upload `openssl x509 -inform pem -in mycert.pem -outform der -out mycert_mgmt.cer`
+  * Upload the `mycert_mgmt.cer` to Azure Management through [https://management.azure.com](https://management.azure.com)
+  * Combine the public and private into one `cat mycert.key mycert.pem > cert.pem`
+  * Use cert.pem as your cert parameter for Service Management Commands.
 
 # Need Help?
 
