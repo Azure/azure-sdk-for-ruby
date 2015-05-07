@@ -17,6 +17,7 @@ require 'azure/sql_database_management/sql_database'
 module Azure
   module SqlDatabaseManagement
     module Serialization
+      extend Azure::Core::Utility
 
       def self.database_to_xml(login, password, location)
         builder = Nokogiri::XML::Builder.new do |xml|

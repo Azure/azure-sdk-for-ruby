@@ -20,7 +20,7 @@ describe Azure::BaseManagementService do
   let(:affinity_group_name) { AffinityGroupNameHelper.name }
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     subject.create_affinity_group(affinity_group_name,
                                   WindowsImageLocation,
                                   'Label Name')

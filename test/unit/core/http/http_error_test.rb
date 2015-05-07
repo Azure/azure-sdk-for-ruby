@@ -17,7 +17,7 @@ require "azure/core/http/http_error"
 
 describe Azure::Core::Http::HTTPError do
   let :http_response do
-    double(:body=> Fixtures[:http_error], :status_code=> 409, :uri=>'http://dummy.uri')
+    stub(:body => Fixtures[:http_error], :status_code => 409, :uri => 'http://dummy.uri')
   end
 
   subject do
@@ -48,10 +48,15 @@ describe Azure::Core::Http::HTTPError do
     subject.message.must_equal "TableAlreadyExists (409): The table specified already exists."
   end
 
-  it "sets the type to unknown if the response body is not an XML" do
-    http_response.body = "\r\nInvalid request\r\n"
+  describe 'with invalid http_response body' do
 
-    subject.type.must_equal "Unknown"
-    subject.description.must_equal "Invalid request"
+    let :http_response do
+      stub(:body => "\r\nInvalid request\r\n", :status_code => 409, :uri => 'http://dummy.uri')
+    end
+
+    it "sets the type to unknown if the response body is not an XML" do
+      subject.type.must_equal "Unknown"
+      subject.description.must_equal "Invalid request"
+    end
   end
 end

@@ -17,7 +17,7 @@ require 'azure/storage_management/serialization'
 module Azure
   module StorageManagement
     # Provides Storage Management API
-    class StorageManagementService < BaseManagementService
+    class StorageManagementService < BaseManagement::BaseManagementService
       def initialize
         super()
       end
@@ -27,7 +27,7 @@ module Azure
       # Returns an array of Azure::StorageManagement::StorageAccount objects
       def list_storage_accounts
         request_path = '/services/storageservices'
-        request = ManagementHttpRequest.new(:get, request_path, nil)
+        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.storage_services_from_xml(response)
       end
@@ -54,7 +54,7 @@ module Azure
       # Returns the storage account
       def get_storage_account_properties(name)
         request_path = "/services/storageservices/#{name}"
-        request = ManagementHttpRequest.new(:get, request_path, nil)
+        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.storage_services_from_xml(response).first
       end
@@ -92,12 +92,12 @@ module Azure
         raise 'Name not specified' if !name || name.class != String || name.empty?
         options[:account_type] ||= 'Standard_GRS'
         if get_storage_account(name)
-          Loggerx.warn "Storage Account #{name} already exists. Skipped..."
+          Azure::Loggerx.warn "Storage Account #{name} already exists. Skipped..."
         else
-          Loggerx.info "Creating Storage Account #{name}."
+          Azure::Loggerx.info "Creating Storage Account #{name}."
           body = Serialization.storage_services_to_xml(name, options)
           request_path = '/services/storageservices'
-          request = ManagementHttpRequest.new(:post, request_path, body)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
           request.call
         end
       end
@@ -131,13 +131,13 @@ module Azure
       # Fails with RuntimeError if invalid options specified
       def update_storage_account(name, options)
         if get_storage_account name
-          Loggerx.info "Account '#{name}' exists, updating..."
+          Azure::Loggerx.info "Account '#{name}' exists, updating..."
           body = Serialization.storage_update_to_xml options
           request_path = "/services/storageservices/#{name}"
-          request = ManagementHttpRequest.new(:put, request_path, body)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
           request.call
         else
-          Loggerx.warn "Storage Account '#{name}' does not exist. Skipped..."
+          Azure::Loggerx.warn "Storage Account '#{name}' does not exist. Skipped..."
         end
       end
 
@@ -152,9 +152,9 @@ module Azure
       # 
       # Returns:  None
       def delete_storage_account(name)
-        Loggerx.info "Deleting Storage Account #{name}."
+        Azure::Loggerx.info "Deleting Storage Account #{name}."
         request_path = "/services/storageservices/#{name}"
-        request = ManagementHttpRequest.new(:delete, request_path)
+        request = Azure::BaseManagement::ManagementHttpRequest.new(:delete, request_path)
         request.call
       rescue => e
         e.message
@@ -175,11 +175,11 @@ module Azure
         if get_storage_account name
           path = "/services/storageservices/#{name}/keys?action=regenerate"
           body = Serialization.regenerate_storage_account_keys_to_xml key_type
-          request = ManagementHttpRequest.new(:post, path, body)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:post, path, body)
           response = request.call
           Serialization.storage_account_keys_from_xml(response)
         else
-          Loggerx.warn "Storage Account '#{name}' does not exist."
+          Azure::Loggerx.warn "Storage Account '#{name}' does not exist."
         end
       end
 
@@ -196,11 +196,11 @@ module Azure
       def get_storage_account_keys(name)
         if get_storage_account name
           path = "/services/storageservices/#{name}/keys"
-          request = ManagementHttpRequest.new(:get, path)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:get, path)
           response = request.call
           Serialization.storage_account_keys_from_xml(response)
         else
-          Loggerx.warn "Storage Account '#{name}' does not exist."
+          Azure::Loggerx.warn "Storage Account '#{name}' does not exist."
         end
       end
     end

@@ -17,6 +17,7 @@ require 'azure/virtual_network_management/virtual_network'
 module Azure
   module VirtualNetworkManagement
     module Serialization
+      extend Azure::Core::Utility
       def self.virtual_network_from_xml(network_xml)
         virtual_networks = []
         virtual_network_services_xml = network_xml.css(

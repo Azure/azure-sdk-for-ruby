@@ -57,6 +57,14 @@ QueueNameHelper = NameGenerator.new do |name|
   end
 end
 
+ServiceBusRelayNameHelper = NameGenerator.new do |name|
+  svc = Azure::ServiceBus::ServiceBusService.new
+  begin
+    svc.delete_relay name
+  rescue
+  end
+end
+
 ServiceBusQueueNameHelper = NameGenerator.new do |name|
   svc = Azure::ServiceBus::ServiceBusService.new
   begin
