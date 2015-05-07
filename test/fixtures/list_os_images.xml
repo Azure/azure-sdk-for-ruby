@@ -59,7 +59,7 @@
     <Name>b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-12_04_2-LTS-amd64-server-20130325-en-us-30GB</Name>
     <OS>Linux</OS>
     <Eula>http://www.ubuntu.com/project/about-ubuntu/licensing;http://www.ubuntu.com/aboutus/privacypolicy;http://www.ubuntu.com/aboutus/privacypolicy</Eula>
-    <Description>Ubuntu Server 12.04.2 LTS (amd64 20130325) for Windows Azure. Ubuntu Server is the world's most popular Linux for cloud environments. Updates and patches for Ubuntu 12.04.2 LTS will be available until 2017-04-26.  Ubuntu Server is the perfect platform for all workloads from web applications to NoSQL databases and Hadoop. More information can be found at:
+    <Description>Ubuntu Server 12.04.2 LTS (amd64 20130325) for Microsoft Azure. Ubuntu Server is the world's most popular Linux for cloud environments. Updates and patches for Ubuntu 12.04.2 LTS will be available until 2017-04-26.  Ubuntu Server is the perfect platform for all workloads from web applications to NoSQL databases and Hadoop. More information can be found at:
 http://www.ubuntu.com/business/server</Description>
   </OSImage> 
   <OSImage>

@@ -48,9 +48,9 @@ describe Azure::StorageManagementService do
     storagelist.must_be_kind_of Array
   end
 
-  it 'get storage account' do
+  it 'get_storage_account return nil if storage account with given name not exists' do
     storage = subject.get_storage_account('nonexistentstorage')
-    storage.must_equal false
+    storage.must_equal nil
   end
 
   it 'create storage account' do
@@ -61,18 +61,18 @@ describe Azure::StorageManagementService do
       geo_replication_enabled: 'false'
     }
     subject.create_storage_account(storage_name, options)
-    present = subject.get_storage_account(storage_name)
-    present.must_equal true
+    storage_account = subject.get_storage_account(storage_name)
+    storage_account.must_be_kind_of Azure::StorageManagement::StorageAccount
     # Test for delete storage account
     subject.delete_storage_account(storage_name)
-    present = subject.get_storage_account(storage_name)
-    present.must_equal false
+    storage_account = subject.get_storage_account(storage_name)
+    storage_account.must_equal nil
   end
 
   it 'get storage account' do
     storage_name = StorageName
-    present = subject.get_storage_account(storage_name)
-    present.must_equal true
+    storage_account = subject.get_storage_account(storage_name)
+    storage_account.must_be_kind_of Azure::StorageManagement::StorageAccount
   end
 
   it 'get storage account properties' do
@@ -80,20 +80,24 @@ describe Azure::StorageManagementService do
     storage = subject.get_storage_account_properties(storage_name)
     storage.name.must_equal storage_name
     storage.label.must_equal 'storagelabel'
-    storage.geo_replication_enabled.must_equal 'true'
+    storage.account_type.must_equal 'Standard_GRS'
   end
 
-  it 'update storage account' do
-    options = {
-      label: 'labelchanged',
-      description: 'description changed'
-    }
+  it 'regenerate storage account keys' do
     storage_name = StorageName
-    subject.update_storage_account(storage_name, options)
-    storage = subject.get_storage_account_properties(storage_name)
-    storage.name.must_equal storage_name
-    storage.label.must_equal 'labelchanged'
-    subject.update_storage_account(storage_name, opts)
+    storage_keys1 = subject.regenerate_storage_account_keys(storage_name)
+    storage_keys1.primary_key.wont_be_nil
+    storage_keys1.secondary_key.wont_be_nil
+    storage_keys2 = subject.regenerate_storage_account_keys(storage_name, 'secondary')
+    storage_keys1.primary_key.must_equal storage_keys2.primary_key
+    storage_keys1.secondary_key.wont_equal storage_keys2.secondary_key
+  end
+
+  it 'get storage account keys' do
+    storage_name = StorageName
+    storage_keys1 = subject.get_storage_account_keys(storage_name)
+    storage_keys1.primary_key.wont_be_nil
+    storage_keys1.secondary_key.wont_be_nil
   end
 
   it 'get storage account properties error' do
@@ -144,18 +148,38 @@ describe Azure::StorageManagementService do
     assert_match('The affinity group does not exist.', exception.message)
   end
 
-  it 'update storage account with non existent storage name' do
-    options = {
-      label: 'labelchanged',
-      description: 'description changed'
-    }
-    storage_name = 'storage_nonexistent'
-    storage = subject.update_storage_account(storage_name, options)
-    assert_match(/Storage Account 'storage_nonexistent' does not exist. Skipped.../, storage)
-  end
-
   it 'delete storage account that does not exist' do
     msg = subject.delete_storage_account('invalidstorageaccount')
     assert_match(/The storage account 'invalidstorageaccount' was not found./, msg)
+  end
+
+  describe '#update_storage_account' do
+
+    it 'update storage account with non existent storage name' do
+      options = {
+        label: 'labelchanged',
+        description: 'description changed'
+      }
+      storage_name = 'storage_nonexistent'
+      storage = subject.update_storage_account(storage_name, options)
+      error_msg = "Storage Account 'storage_nonexistent' does not exist"
+      assert_match(/#{error_msg}/, storage)
+    end
+
+    it 'update existing storage account' do
+      options = {
+        label: 'labelchanged',
+        description: 'description changed',
+        account_type: 'Standard_LRS'
+      }
+      storage_name = StorageName
+      subject.update_storage_account(storage_name, options)
+      storage = subject.get_storage_account_properties(storage_name)
+      storage.name.must_equal storage_name
+      storage.label.must_equal 'labelchanged'
+      storage.account_type.must_equal 'Standard_LRS'
+      opts[:account_type] = 'Standard_GRS'
+      subject.update_storage_account(storage_name, opts)
+    end
   end
 end

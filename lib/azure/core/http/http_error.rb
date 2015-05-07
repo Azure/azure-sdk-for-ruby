@@ -29,7 +29,7 @@ module Azure
 
         # Public: The type of error
         #
-        # http://msdn.microsoft.com/en-us/library/windowsazure/dd179357
+        # http://msdn.microsoft.com/en-us/library/azure/dd179357
         #
         # Returns a String
         attr :type

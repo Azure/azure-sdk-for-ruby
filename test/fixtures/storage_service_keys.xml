@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StorageService>
+    <Url>https://management.core.windows.net/268a3762-fce0-4cd3-a4ea-80e84bddff87/services/storageservices/mystorageaccount</Url>
+    <StorageServiceKeys>
+        <Primary>NUDgoUeopv3eacgEQYhLlPCq751UBzcfn9AR3YWHXJu4m+A==</Primary>
+        <Secondary>7M+cT1mt4YqJ7mQ5bK+/MZwk1tdwaKKivA0hg==</Secondary>
+    </StorageServiceKeys>
+</StorageService>

@@ -55,7 +55,7 @@ module Azure
       # service. Beginning with that version, all metadata names must adhere to the naming 
       # conventions for C# identifiers.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179466 
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179466 
       #
       # Any metadata with invalid names which were previously stored, will be returned with the 
       # key "x-ms-invalid-name" in the metadata hash. This may contain multiple values and be an
@@ -95,7 +95,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+   - Integer. A timeout in seconds.
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179454
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179454
       # 
       # Returns nil on success
       def clear_messages(queue_name, options={})
@@ -119,7 +119,7 @@ module Azure
       # * +:metadata+      - Hash. A hash of user defined metadata.
       # * +:timeout+       - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179342
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179342
       #
       # Returns nil on success
       def create_queue(queue_name, options={})
@@ -147,7 +147,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+       - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179436
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179436
       #
       # Returns nil on success
       def delete_queue(queue_name, options={})
@@ -172,7 +172,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+       - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179384
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179384
       #
       # Returns a tuple of (approximate_message_count, metadata)
       # * approximate_messages_count  - Integer. The approximate number of messages in the queue. This number is not
@@ -207,7 +207,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+       - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179348
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179348
       #
       # Returns nil on success
       def set_queue_metadata(queue_name, metadata, options={})
@@ -235,7 +235,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+       - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159101
+      # See http://msdn.microsoft.com/en-us/library/azure/jj159101
       #
       # Returns a list of Azure::Entity::SignedIdentifier instances
       def get_queue_acl(queue_name, options={})
@@ -262,7 +262,7 @@ module Azure
       # * +:signed_identifiers+  - Array. A list of Azure::Entity::SignedIdentifier instances 
       # * +:timeout+             - Integer. A timeout in seconds.
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/jj159099
+      # See http://msdn.microsoft.com/en-us/library/azure/jj159099
       #
       # Returns nil on success
       def set_queue_acl(queue_name, options={})
@@ -298,7 +298,7 @@ module Azure
       # * +:encode+                 - Boolean. If set to true, the message will be base64 encoded.
       # * +:timeout+                - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179346
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179346
       #
       # Returns nil on success
       def create_message(queue_name, message_text, options={})
@@ -332,7 +332,7 @@ module Azure
       # Accepted key/value pairs in options parameter are:
       # * +:timeout+     - Integer. A timeout in seconds.
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179347
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179347
       #
       # Returns nil on success
       #
@@ -397,7 +397,7 @@ module Azure
       # * +:decode+             - Boolean. Boolean value indicating if the message should be base64 decoded.
       # * +:timeout+            - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179472
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179472
       #
       # Returns a list of Azure::Entity::Queue::Message instances
       def peek_messages(queue_name, options={})
@@ -429,7 +429,7 @@ module Azure
       # * +:timeout+            - Integer. A timeout in seconds.
       # * +:decode+             - Boolean. Boolean value indicating if the message should be base64 decoded.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/dd179474
+      # See http://msdn.microsoft.com/en-us/library/azure/dd179474
       #
       # Returns a list of Azure::Entity::Queue::Message instances
       def list_messages(queue_name, visibility_timeout, options={})
@@ -465,7 +465,7 @@ module Azure
       # * +:encode+                 - Boolean. If set to true, the message will be base64 encoded.
       # * +:timeout+           - Integer. A timeout in seconds.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/hh452234
+      # See http://msdn.microsoft.com/en-us/library/azure/hh452234
       #
       # Returns a tuple of (pop_receipt, time_next_visible)
       # * pop_receipt        - String. The pop receipt of the queue message.

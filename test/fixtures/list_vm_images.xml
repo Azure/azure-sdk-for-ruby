@@ -1,0 +1,21 @@
+<VMImages>
+  <VMImage>
+    <Name>Ansible-20140729-87566</Name>
+    <Label>Ansible image</Label>
+    <Category>User</Category>
+    <OSDiskConfiguration>
+      <Name>Ansible-20140729-87566-os-2014-07-29</Name>
+      <HostCaching>ReadWrite</HostCaching>
+      <OSState>Specialized</OSState>
+      <OS>Linux</OS>
+      <MediaLink>http://mystorage.blob.core.windows.net/vhds/Ansible-20140729-87566-os-2014-07-29.vhd</MediaLink>
+      <LogicalDiskSizeInGB>30</LogicalDiskSizeInGB>
+    </OSDiskConfiguration>
+    <DataDiskConfigurations />
+    <ServiceName>ansibles</ServiceName>
+    <DeploymentName>Ansible</DeploymentName>
+    <RoleName>Ansible</RoleName>
+    <Location>West US</Location>
+    <CreatedTime>2014-07-29T09:22:41.5598445Z</CreatedTime>
+  </VMImage>
+</VMImages>

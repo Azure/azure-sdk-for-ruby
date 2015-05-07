@@ -31,6 +31,7 @@ module Azure
       attr_accessor :subnets
       attr_accessor :dns_servers
       attr_accessor :affinity_group
+      attr_accessor :location
     end
   end
 end

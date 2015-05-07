@@ -60,7 +60,7 @@ module Azure
         elsif File.exist?(File.join(ENV['HOME'], name))
           File.join(ENV['HOME'], name)
         else
-          Loggerx.error_with_exit "Unable to find #{name} file  "
+          Azure::Loggerx.error_with_exit "Unable to find #{name} file  "
         end
       end
 
@@ -79,6 +79,21 @@ module Azure
       def enable_winrm?(winrm_transport)
         (!winrm_transport.nil? && (winrm_transport.select { |x| x.downcase == 'http' || x.downcase == 'https' }.size > 0))
       end
+
+      def get_certificate(private_key_file)
+        rsa = OpenSSL::PKey.read File.read(private_key_file)
+        cert = OpenSSL::X509::Certificate.new
+        cert.version = 2
+        cert.serial = 0
+        name = OpenSSL::X509::Name.new([['CN', 'Azure Management Certificate']])
+        cert.subject = cert.issuer = name
+        cert.not_before = Time.now
+        cert.not_after = cert.not_before + (60*60*24*365)
+        cert.public_key = rsa.public_key
+        cert.sign(rsa, OpenSSL::Digest::SHA1.new)
+        cert
+      end
+
     end
 
     # Logger

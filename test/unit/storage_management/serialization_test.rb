@@ -34,7 +34,7 @@ describe Azure::StorageManagement::Serialization do
   end
 
   describe "#storage_services_to_xml" do
-    let(:storage_service_name) {'storage-service'}
+    let(:storage_service_name) { 'storage-service' }
     let(:storage_options) { {
         :extended_properties=> {
           :prop_1_name=>"prop_1_value"
@@ -57,14 +57,18 @@ describe Azure::StorageManagement::Serialization do
     end
 
     it "serializes the options hash to xml" do
-      results = subject.storage_services_to_xml(storage_service_name, {:location => 'East US'})
+      results = subject.storage_services_to_xml(storage_service_name, :location => 'East US')
       doc = Nokogiri::XML results
       doc.css('Location').text.must_equal 'East US'
       results.must_be_kind_of String
     end
 
     it "uses affinity_group from the hash instead of location" do
-      results = subject.storage_services_to_xml(storage_service_name, {:affinity_group_name => 'my-affinity-group', :location => 'East US'})
+      params = {
+        :affinity_group_name => 'my-affinity-group',
+        :location => 'East US'
+      }
+      results = subject.storage_services_to_xml(storage_service_name, params)
       doc = Nokogiri::XML results
       doc.css('AffinityGroup').text.must_equal 'my-affinity-group'
       results.must_be_kind_of String
@@ -142,15 +146,10 @@ describe Azure::StorageManagement::Serialization do
       }
     }
 
-    let(:no_options_message) {'No options specified'}
-    let(:label_or_desc_required) { 'Either one of Label or Description has to be provided. Both cannot be empty' }
-
-    it "checks if the parameter is nil" do
-      exception = assert_raises RuntimeError do
-        subject.storage_update_to_xml nil
-      end
-      assert_match no_options_message, exception.message
-    end
+    let(:no_options_message) { 'No options specified' }
+    let(:label_or_desc_required) {
+      'Either one of Label or Description has to be provided.'
+    }
 
     it "checks if the parameter is empty" do
       exception = assert_raises RuntimeError do
@@ -224,9 +223,22 @@ describe Azure::StorageManagement::Serialization do
       update_xml.css('GeoReplicationEnabled').size.must_equal(1)
       update_xml.css('ExtendedProperties ExtendedProperty').size.must_equal(1)
       update_xml.css('ExtendedProperties ExtendedProperty Name').text
-        .must_equal("#{:prop_1_name}")
+      .must_equal("#{:prop_1_name}")
       update_xml.css('ExtendedProperties ExtendedProperty Value')
-        .text.must_equal(options[:extended_properties][:prop_1_name])
+      .text.must_equal(options[:extended_properties][:prop_1_name])
     end
   end
+
+  describe "#regenerate_storage_account_keys_from_xml" do
+    let(:storage_services_access_keys) { Fixtures["storage_service_keys"] }
+
+    it "returns an Array of StorageService instances" do
+      storage_keys_xml = Nokogiri::XML(storage_services_access_keys)
+      result = subject.storage_account_keys_from_xml storage_keys_xml
+      result.must_be_kind_of Azure::StorageManagement::StorageAccountKeys
+      result.primary_key.wont_be_nil
+      result.secondary_key.wont_be_nil
+    end
+  end
+
 end
