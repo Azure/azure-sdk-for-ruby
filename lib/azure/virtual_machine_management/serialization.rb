@@ -56,7 +56,7 @@ module Azure
         builder.doc.to_xml
       end
 
-      def self.deployment_to_xml(params, options)
+      def self.deployment_to_xml(params, image, options)
         options[:deployment_name] ||= options[:cloud_service_name]
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.Deployment(
@@ -75,11 +75,11 @@ module Azure
             end
           end
         end
-        builder.doc.at_css('Role') << role_to_xml(params, options).at_css('PersistentVMRole').children.to_s
+        builder.doc.at_css('Role') << role_to_xml(params, image, options).at_css('PersistentVMRole').children.to_s
         builder.doc.to_xml
       end
 
-      def self.role_to_xml(params, options)
+      def self.role_to_xml(params, image, options)
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.PersistentVMRole(
             'xmlns' => 'http://schemas.microsoft.com/windowsazure',
@@ -88,9 +88,8 @@ module Azure
             xml.RoleName { xml.text params[:vm_name] }
             xml.OsVersion('i:nil' => 'true')
             xml.RoleType 'PersistentVMRole'
-
             xml.ConfigurationSets do
-              provisioning_configuration_to_xml(xml, params, options)
+              provisioning_configuration_to_xml(xml, params, options) if image.image_type == 'OS'
               xml.ConfigurationSet('i:type' => 'NetworkConfigurationSet') do
                 xml.ConfigurationSetType 'NetworkConfiguration'
                 xml.InputEndpoints do
@@ -109,11 +108,19 @@ module Azure
                 end
               end
             end
+            xml.VMImageName image.name if image.image_type == 'VM'
             xml.AvailabilitySetName options[:availability_set_name]
             xml.Label Base64.encode64(params[:vm_name]).strip
-            xml.OSVirtualHardDisk do
-              xml.MediaLink 'http://' + options[:storage_account_name] + '.blob.core.windows.net/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M_%S_%L')) + '.vhd'
-              xml.SourceImageName params[:image]
+            if image.category == 'User'
+              storage_host = URI.parse( image.media_link ).host
+            else
+              storage_host = options[:storage_account_name] + '.blob.core.windows.net'
+            end
+            if image.image_type == 'OS'
+              xml.OSVirtualHardDisk do
+                xml.MediaLink 'http://' + storage_host + '/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M_%S_%L')) + '.vhd'
+                xml.SourceImageName params[:image]
+              end
             end
             xml.RoleSize options[:vm_size]
           end
@@ -254,11 +261,11 @@ module Azure
             vm = VirtualMachine.new
             role_name = xml_content(instance, 'RoleName')
             vm.status = xml_content(instance, 'InstanceStatus')
-            vm.vm_name = role_name.downcase
+            vm.vm_name = role_name
             vm.ipaddress = xml_content(ip, 'Address')
             vm.role_size = xml_content(instance, 'InstanceSize')
             vm.hostname = xml_content(instance, 'HostName')
-            vm.cloud_service_name = cloud_service_name.downcase
+            vm.cloud_service_name = cloud_service_name
             vm.deployment_name = xml_content(deployXML, 'Deployment Name')
             vm.deployment_status = xml_content(deployXML, 'Deployment Status')
             vm.virtual_network_name = xml_content(
@@ -270,6 +277,10 @@ module Azure
                 vm.availability_set_name = xml_content(role, 'AvailabilitySetName')
                 endpoints_from_xml(role, vm)
                 vm.data_disks = data_disks_from_xml(role)
+                subnet = xml_content(role,
+                  'ConfigurationSets ConfigurationSet SubnetNames SubnetName'
+                )
+                vm.subnet = subnet unless subnet.empty?
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
                 vm.media_link = xml_content(role, 'OSVirtualHardDisk MediaLink')
@@ -353,6 +364,9 @@ module Azure
                 xml.InputEndpoints do
                   endpoints_to_xml(xml, endpoints)
                 end
+                xml.SubnetNames do
+                  xml.SubnetName vm.subnet if vm.subnet
+                end
               end
             end
             xml.OSVirtualHardDisk do
@@ -393,7 +407,7 @@ module Azure
 
       def self.add_data_disk_to_xml(vm, options)
         if options[:import] && options[:disk_name].nil?
-          Loggerx.error_with_exit "The data disk name is not valid."
+          Azure::Loggerx.error_with_exit "The data disk name is not valid."
         end
         media_link = vm.media_link
         builder = Nokogiri::XML::Builder.new do |xml|
@@ -407,7 +421,7 @@ module Azure
             xml.LogicalDiskSizeInGB options[:disk_size] || 100
             unless options[:import]
               disk_name = media_link[/([^\/]+)$/]
-              media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd')
+              media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk_%Y_%m_%d_%H_%M_%S')) + '.vhd')
               xml.MediaLink media_link
             end
           end

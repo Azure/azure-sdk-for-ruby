@@ -50,26 +50,40 @@ describe Azure::VirtualMachineManagementService do
   end
   let(:location_response_body) { Nokogiri::XML location_response.body }
   let(:mock_virtual_machine_request) { mock }
-  let(:windows_images_xml) { Fixtures['list_images'] }
-  let(:images_request_path) { '/services/images' }
   let(:mock_request) { mock }
-  let(:os_response_body) do
+  let(:os_image_response_body) do
     response = mock
-    response.stubs(:body).returns(windows_images_xml)
+    response.stubs(:body).returns(Fixtures['list_os_images'])
+    Nokogiri::XML response.body
+  end
+  let(:vm_image_response_body) do
+    response = mock
+    response.stubs(:body).returns(Fixtures['list_vm_images'])
     Nokogiri::XML response.body
   end
 
   before do
-    Azure::Loggerx.stubs(:info).returns(nil)
     Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         :get,
-        images_request_path,
+        '/services/images',
         nil
     ).returns(mock_request)
-    mock_request.expects(:call).returns(os_response_body).at_least(0)
+    mock_request.expects(:call).returns(os_image_response_body).at_least(0)
+    vm_request = mock
+    Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+        :get,
+        '/services/vmimages',
+        nil
+    ).returns(vm_request)
+    vm_request.expects(:call).returns(vm_image_response_body).at_least(0)
   end
 
   describe '#list_virtual_machines' do
+    before do
+      Azure::Loggerx.stubs(:info).returns(nil)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+    end
+
     let(:request_path) { '/services/hostedservices' }
     let(:cloud_services_xml) { Fixtures['list_cloud_services'] }
     let(:virtual_machine_xml) { Fixtures['virtual_machine'] }
@@ -115,6 +129,7 @@ describe Azure::VirtualMachineManagementService do
       virtual_machine.deployment_name.must_equal 'deployment-name'
       virtual_machine.ipaddress.must_equal '137.116.17.187'
       virtual_machine.virtual_network_name.must_equal 'test-virtual-network'
+      virtual_machine.subnet.must_equal 'test-subnet'
     end
 
     it 'returns a list of virtual machines for the subscription' do
@@ -154,6 +169,8 @@ describe Azure::VirtualMachineManagementService do
   describe '#get_virtual_machine' do
 
     before do
+      Azure::Loggerx.stubs(:info).returns(nil)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       virtual_machine = VirtualMachine.new do |vm|
         vm.vm_name = 'instance-name'
         vm.cloud_service_name = 'cloud-service-1'
@@ -185,6 +202,8 @@ describe Azure::VirtualMachineManagementService do
     let(:verb) { :get }
 
     before do
+      Azure::Loggerx.stubs(:info).returns(nil)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       mock_request = mock
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
           verb,
@@ -242,7 +261,7 @@ describe Azure::VirtualMachineManagementService do
     let(:verb) { :get }
 
     before do
-
+      windows_params[:cloud_service_name] = 'cloud-service-1'
       mock_request = mock
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
           verb,
@@ -378,20 +397,22 @@ describe Azure::VirtualMachineManagementService do
     end
   end
 
-  describe '#get_os_type' do
+  describe '#get_image' do
 
     before do
+      Azure::Loggerx.stubs(:info).returns(nil)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       subject.class.send(:public, *subject.class.private_instance_methods)
     end
 
     it 'returns os type of given virtual machine image' do
-      result = subject.get_os_type 'RightImage-CentOS-6.2-x64-v5.8.8.1'
-      result.must_equal 'Linux'
+      result = subject.get_image 'RightImage-CentOS-6.2-x64-v5.8.8.1'
+      result.os_type.must_equal 'Linux'
     end
 
     it 'errors if the virtual machine image does not exist' do
       exception = assert_raises(RuntimeError) do
-        subject.get_os_type 'invalid-image-name'
+        subject.get_image 'invalid-image-name'
       end
       error_msg = 'The virtual machine image source is not valid'
       assert_match(/#{error_msg}/i, exception.message)
@@ -401,6 +422,8 @@ describe Azure::VirtualMachineManagementService do
   describe '#add_role' do
 
     before do
+      Azure::Loggerx.stubs(:info).returns(nil)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       windows_params[:cloud_service_name] = 'cloud-service-1'
     end
 

@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby -U
+
+require 'azure'
+require 'thor'
+require 'fileutils'
+
+module Azure
+  class Pfxer < Thor
+    desc 'transform', 'Transforms a publish settings file from Azure into a .pfx'
+
+    long_desc <<-TRANSFORM
+
+    `transform` will create a .pfx file from an Azure publish settings file. The publish settings file contains a
+    pfx, but the pfx is base64 encode within the publish settings xml structure. This is here to make that a little
+    easier.
+
+    TRANSFORM
+
+    option :in, required: true, desc: 'Path to publish settings file'
+    option :out, desc: 'Path to where you want your .pfx'
+    def transform
+      path = File.expand_path(options[:in])
+      if File.exists?(path)
+        pub_settings_xml = Nokogiri::XML(File.read(path))
+        b64_pfx = pub_settings_xml.css('PublishData PublishProfile Subscription')[0]['ManagementCertificate']
+        pfx = Base64.decode64(b64_pfx)
+        file_name = File.basename(path, '.publishsettings').downcase.gsub(' ', '_')
+        out_path = options[:out] || File.join(File.dirname(path), file_name + '.pfx')
+        File.binwrite(File.expand_path(out_path), pfx)
+      end
+    end
+  end
+end
+
+Azure::Pfxer.start(ARGV)

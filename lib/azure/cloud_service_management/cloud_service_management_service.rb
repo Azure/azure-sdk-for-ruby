@@ -23,7 +23,7 @@ module Azure
         super()
       end
 
-      # Public: Creates a new cloud service in Windows Azure.
+      # Public: Creates a new cloud service in Microsoft Azure.
       #
       # ==== Attributes
       #
@@ -45,15 +45,15 @@ module Azure
       # properties to add to the cloud service. The key is used as the
       # property name and the value as its value. (optional)
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg441304.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg441304.aspx
       #
       # Returns None
       def create_cloud_service(name, options = {})
-        Loggerx.error_with_exit 'Cloud service name is not valid ' unless name
+        Azure::Loggerx.error_with_exit 'Cloud service name is not valid ' unless name
         if get_cloud_service(name)
-          Loggerx.warn "Cloud service #{name} already exists. Skipped..."
+          Azure::Loggerx.warn "Cloud service #{name} already exists. Skipped..."
         else
-          Loggerx.info "Creating cloud service #{name}."
+          Azure::Loggerx.info "Creating cloud service #{name}."
           request_path = '/services/hostedservices'
           body = Serialization.cloud_services_to_xml(name, options)
           request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
@@ -81,15 +81,7 @@ module Azure
       # If true, the cloud service is available. If false, the cloud service
       # does not exist.
       def get_cloud_service(name)
-        return false if name.nil?
-        flag = false
-        list_cloud_services.each do |cloud_service|
-          if cloud_service.name == name
-            flag = true
-            break
-          end
-        end
-        flag
+        list_cloud_services.select { |x| x.name.casecmp(name) == 0 }.first
       end
 
       def get_cloud_service_properties(name)
@@ -99,7 +91,7 @@ module Azure
         Serialization.cloud_services_from_xml(response).first
       end
 
-      # Public: Deletes the specified cloud service of given subscription id from Windows Azure.
+      # Public: Deletes the specified cloud service of given subscription id from Microsoft Azure.
       #
       # ==== Attributes
       #
@@ -109,7 +101,7 @@ module Azure
       def delete_cloud_service(cloud_service_name)
         request_path= "/services/hostedservices/#{cloud_service_name}"
         request = BaseManagement::ManagementHttpRequest.new(:delete, request_path)
-        Loggerx.info "Deleting cloud service #{cloud_service_name}. \n"
+        Azure::Loggerx.info "Deleting cloud service #{cloud_service_name}. \n"
         request.call
       end
 
@@ -118,14 +110,17 @@ module Azure
       # ==== Attributes
       #
       # * +cloud_service_name+  - String. Cloud service name.
+      # * +slot+                - String. 'production' or 'staging'. Optional parameters.
+      #                           Default if not specified is 'production'
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/ee460815.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/ee460815.aspx
       #
       # Returns NONE
-      def delete_cloud_service_deployment(cloud_service_name)
-        request_path= "/services/hostedservices/#{cloud_service_name}/deploymentslots/production"
+      def delete_cloud_service_deployment(cloud_service_name, slot='production')
+        slot = 'production' unless slot
+        request_path= "/services/hostedservices/#{cloud_service_name}/deploymentslots/#{slot}"
         request = BaseManagement::ManagementHttpRequest.new(:delete, request_path)
-        Loggerx.info "Deleting deployment of cloud service \"#{cloud_service_name}\" ..."
+        Azure::Loggerx.info "Deleting deployment of cloud service \"#{cloud_service_name}\" ..."
         request.call
       end
 
@@ -133,7 +128,7 @@ module Azure
         data = export_der(ssh[:cert], ssh[:key])
         request_path= "/services/hostedservices/#{cloud_service_name}/certificates"
         body = Serialization.add_certificate_to_xml(data)
-        Loggerx.info "Uploading certificate to cloud service #{cloud_service_name}..."
+        Azure::Loggerx.info "Uploading certificate to cloud service #{cloud_service_name}..."
         request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
         request.call
       end

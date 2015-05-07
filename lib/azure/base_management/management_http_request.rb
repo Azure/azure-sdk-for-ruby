@@ -35,11 +35,11 @@ module Azure
         super
         @warn = false
         content_length = body ? body.bytesize.to_s : '0'
-        @headers = {
-          'x-ms-version' => '2014-04-01',
-          'Content-Type' => 'application/xml',
-          'Content-Length' => content_length
-        }
+        @headers.update({
+                            'x-ms-version' => '2014-06-01',
+                            'Content-Type' => 'application/xml',
+                            'Content-Length' => content_length
+                        })
         @uri = URI.parse(Azure.config.management_endpoint + Azure.config.subscription_id + path)
         @key = Azure.config.http_private_key
         @cert = Azure.config.http_certificate_key
@@ -67,7 +67,7 @@ module Azure
       def wait_for_completion(response)
         ret_val = Nokogiri::XML response.body
         if ret_val.at_css('Error Code') && ret_val.at_css('Error Code').content == 'AuthenticationFailed'
-          Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
+          Azure::Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
         end
         if response.status_code.to_i == 200 || response.status_code.to_i == 201
           return response
@@ -75,16 +75,18 @@ module Azure
           rebuild_request response
         elsif response.status_code.to_i > 201 && response.status_code.to_i <= 299
           check_completion(response.headers['x-ms-request-id'])
+        elsif response.status_code.to_i == 307
+          @uri = URI::parse (response.headers['location'])
+          call
         elsif warn && !response.success?
-          # Loggerx.warn ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
         elsif response.body
           if ret_val.at_css('Error Code') && ret_val.at_css('Error Message')
-            Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
+            Azure::Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
           else
-            Loggerx.exception_message "http error: #{response.status_code}"
+            Azure::Loggerx.exception_message "http error: #{response.status_code}"
           end
         else
-          Loggerx.exception_message "http error: #{response.status_code}"
+          Azure::Loggerx.exception_message "http error: #{response.status_code}"
         end
       end
 
@@ -95,7 +97,7 @@ module Azure
       #
       # * +request_id+       - String.  x-ms-request-id response header of request
       #
-      # See: http://msdn.microsoft.com/en-us/library/windowsazure/ee460783.aspx
+      # See: http://msdn.microsoft.com/en-us/library/azure/ee460783.aspx
       #
       # Print Error or Success of Operation.
       def check_completion(request_id)
@@ -123,9 +125,9 @@ module Azure
             if status.downcase != 'succeeded'
               error_code = xml_content(ret_val, 'Operation Error Code')
               error_msg = xml_content(ret_val, 'Operation Error Message')
-              Loggerx.exception_message "#{error_code}: #{error_msg}"
+              Azure::Loggerx.exception_message "#{error_code}: #{error_msg}"
             else
-              Loggerx.success "#{status.downcase} (#{status_code})"
+              Azure::Loggerx.success "#{status.downcase} (#{status_code})"
             end
             return
           else

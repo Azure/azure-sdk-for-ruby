@@ -25,7 +25,7 @@ module Azure
       # Public: Gets a list of database servers available under the
       # current subscription.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715269.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715269.aspx
       #
       # Returns an array of Azure::SqlDatabaseManagement::SqlDatabase objects
       def list_servers
@@ -35,7 +35,7 @@ module Azure
         Serialization.databases_from_xml(response)
       end
 
-      # Public: Create a new database server in Windows Azure.
+      # Public: Create a new database server in Microsoft Azure.
       #
       # ==== Attributes
       #
@@ -43,7 +43,7 @@ module Azure
       # * +password+       - String. The administrator login password.
       # * +:location+      - String. The location where the database server will be created.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715274.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715274.aspx
       #
       # Returns Azure::SqlDatabaseManagement::SqlDatabase object
       def create_server(login, password, location)
@@ -52,18 +52,18 @@ module Azure
         request = BaseManagement::SqlManagementHttpRequest.new(:post, request_path, body)
         response = request.call
         sql_server = Serialization.server_name_from_xml(response, login, location)
-        Loggerx.info "SQL database server #{sql_server.name} is created." if sql_server
+        Azure::Loggerx.info "SQL database server #{sql_server.name} is created." if sql_server
         sql_server
       end
 
       # Public: Deletes the specified database server of given
-      # subscription id from Windows Azure.
+      # subscription id from Microsoft Azure.
       #
       # ==== Attributes
       #
       # * +name+       - String. Database server name.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715285.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715285.aspx
       #
       # Returns:  None
       def delete_server(name)
@@ -71,7 +71,7 @@ module Azure
           request_path = "/servers/#{name}"
           request = BaseManagement::SqlManagementHttpRequest.new(:delete, request_path)
           request.call
-          Loggerx.info "Deleted database server #{name}."
+          Azure::Loggerx.info "Deleted database server #{name}."
         end
       end
 
@@ -83,7 +83,7 @@ module Azure
       # * +name+           - String. Database server name.
       # * +password+       - String. Database server new password.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715272.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715272.aspx
       #
       # Returns:  None
       def reset_password(name, password)
@@ -92,7 +92,7 @@ module Azure
           request_path = "/servers/#{name}?op=ResetPassword"
           request = BaseManagement::SqlManagementHttpRequest.new(:post, request_path, body)
           request.call
-          Loggerx.info "Password for server #{name} changed successfully."
+          Azure::Loggerx.info "Password for server #{name} changed successfully."
         end
       end
 
@@ -111,7 +111,7 @@ module Azure
       # * +:start_ip_address+     - String. Start of the IP Range
       # * +:end_ip_address+       - String. End of the IP Range
       # 
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715280.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715280.aspx
       #
       # Returns:  None
       def set_sql_server_firewall_rule(server_name, rule_name, options = {})
@@ -134,7 +134,7 @@ module Azure
           # this once the Azure API is working.
 
           request.call
-          Loggerx.info "Added server-level firewall rule #{rule_name}."
+          Azure::Loggerx.info "Added server-level firewall rule #{rule_name}."
         end
       end
 
@@ -145,7 +145,7 @@ module Azure
       #
       # * +server_name+    - String. Database server name.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715278.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715278.aspx
       #
       # Returns an array of firewall
       def list_sql_server_firewall_rules(server_name)
@@ -164,7 +164,7 @@ module Azure
       # * +name+            - String. SQL database server name.
       # * +rule_name+       - String. SQL database server firewall rule name.
       #
-      # See http://msdn.microsoft.com/en-us/library/windowsazure/gg715277.aspx
+      # See http://msdn.microsoft.com/en-us/library/azure/gg715277.aspx
       #
       # Returns:  None
       def delete_sql_server_firewall_rule(server_name, rule_name)
@@ -175,7 +175,7 @@ module Azure
           request_path = "/servers/#{server_name}/firewallrules/#{rule_name}"
           request = BaseManagement::SqlManagementHttpRequest.new(:delete, request_path)
           request.call
-          Loggerx.info "Deleted server-level firewall rule #{rule_name}."
+          Azure::Loggerx.info "Deleted server-level firewall rule #{rule_name}."
         end
       end
 

@@ -18,48 +18,97 @@ describe Azure::VirtualMachineImageManagementService do
 
   subject { Azure::VirtualMachineImageManagementService.new }
 
-  let(:request_path) { '/services/images' }
-  let(:images_xml) { Fixtures['list_images'] }
+  let(:os_image_request_path) { '/services/images' }
+  let(:vm_image_request_path) { '/services/vmimages' }
+  let(:os_images_xml) { Fixtures['list_os_images'] }
+  let(:vm_images_xml) { Fixtures['list_vm_images'] }
   let(:verb) { :get }
-  let(:mock_request) { mock }
-  let(:response) do
+  let(:os_images_response) do
     response = mock
-    response.stubs(:body).returns(images_xml)
-    response
+    response.stubs(:body).returns(os_images_xml)
+    Nokogiri::XML response.body
   end
-  let(:response_body) { Nokogiri::XML response.body }
+  let(:vm_images_response) do
+    response = mock
+    response.stubs(:body).returns(vm_images_xml)
+    Nokogiri::XML response.body
+  end
 
   before {
     Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   }
 
-  describe "#list_virtual_machine_images" do
-
+  describe '#list_os_images' do
+    let(:verb) { :get }
     before do
+      os_images_request = mock
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
           verb,
-          request_path,
+          os_image_request_path,
           nil
-      ).returns(mock_request)
-      mock_request.expects(:call).returns(response_body)
+      ).returns(os_images_request)
+      os_images_request.expects(:call).returns(os_images_response)
     end
 
-    it 'assembles a URI for the request' do
-      subject.list_virtual_machine_images
-    end
-
-    it 'sets the properties of the virtual machine images' do
-      virtual_machine_image = subject.list_virtual_machine_images.first
-      virtual_machine_image.name.must_equal 'RightImage-CentOS-6.2-x64-v5.8.8.1'
-    end
-
-    it 'returns a list of virtual machine images from server' do
-      results = subject.list_virtual_machine_images
-      results.must_be_kind_of Array
-      results.length.must_equal 12
-      image_klass = Azure::VirtualMachineImageManagement::VirtualMachineImage
-      results.first.must_be_kind_of image_klass
+    it 'returns a list of os images from server' do
+      os_images = subject.list_os_images
+      os_images.must_be_kind_of Array
+      image_klass = VirtualMachineImage
+      os_images.length.must_equal 12
+      image = os_images.first
+      image.must_be_kind_of image_klass
+      image.image_type.must_equal 'OS'
     end
   end
 
+  describe '#list_vm_images' do
+    let(:verb) { :get }
+    before do
+      vm_images_request = mock
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+          verb,
+          vm_image_request_path,
+          nil
+      ).returns(vm_images_request)
+      vm_images_request.expects(:call).returns(vm_images_response)
+    end
+
+    it 'returns a list of vm images from server' do
+      vm_images = subject.list_vm_images
+      vm_images.must_be_kind_of Array
+      vm_images.length.must_equal 1
+      image_klass = VirtualMachineImage
+      image = vm_images.first
+      image.must_be_kind_of image_klass
+      image.image_type.must_equal 'VM'
+    end
+  end
+
+  describe '#list_images' do
+    let(:verb) { :get }
+    before do
+      vm_images_request = mock
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+          verb,
+          vm_image_request_path,
+          nil
+      ).returns(vm_images_request)
+      vm_images_request.expects(:call).returns(vm_images_response)
+      os_images_request = mock
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+          verb,
+          os_image_request_path,
+          nil
+      ).returns(os_images_request)
+      os_images_request.expects(:call).returns(os_images_response)
+    end
+
+    it 'returns a list of virtual machine images' do
+      images = subject.list_virtual_machine_images
+      images.must_be_kind_of Array
+      images.length.must_equal 13
+      images.last.image_type.must_equal 'VM'
+      images.first.image_type.must_equal 'OS'
+    end
+  end
 end

@@ -16,7 +16,7 @@ module Azure
   module ServiceBus
     class BrokeredMessage
 
-      # Please read http://msdn.microsoft.com/en-us/library/windowsazure/hh780742
+      # Please read http://msdn.microsoft.com/en-us/library/azure/hh780742
       # for more information on brokered message properties
 
       # Public: Get/Set the ContentType of the message
