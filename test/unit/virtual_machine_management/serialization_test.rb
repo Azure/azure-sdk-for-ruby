@@ -15,6 +15,8 @@
 require 'test_helper'
 
 describe Azure::VirtualMachineManagement::Serialization do
+  include Azure::Core::Utility
+
   subject { Azure::VirtualMachineManagement::Serialization }
 
   let(:vm_xml) { Nokogiri::XML(Fixtures['virtual_machine']) }
@@ -46,25 +48,25 @@ describe Azure::VirtualMachineManagement::Serialization do
       virtual_machine = subject.virtual_machines_from_xml(vm_xml, csn).first
       virtual_machine.tcp_endpoints.must_be_kind_of Array
       virtual_machine.tcp_endpoints.must_include(
-        name: 'SSH',
-        vip: '137.116.17.187',
-        public_port: '22',
-        local_port:  '22',
-        protocol: 'tcp'
+          name: 'SSH',
+          vip: '137.116.17.187',
+          public_port: '22',
+          local_port: '22',
+          protocol: 'tcp'
       )
       virtual_machine.tcp_endpoints.must_include(
-        name: 'tcp-port-80',
-        vip: '137.117.17.187',
-        public_port:  '80',
-        local_port:  '80',
-        protocol: 'tcp'
+          name: 'tcp-port-80',
+          vip: '137.117.17.187',
+          public_port: '80',
+          local_port: '80',
+          protocol: 'tcp'
       )
       virtual_machine.tcp_endpoints.must_include(
-        name: 'tcp-port-3889',
-        vip: '137.116.17.187',
-        public_port:  '3889',
-        local_port:  '3889',
-        protocol: 'tcp'
+          name: 'tcp-port-3889',
+          vip: '137.116.17.187',
+          public_port: '3889',
+          local_port: '3889',
+          protocol: 'tcp'
       )
     end
 
@@ -107,22 +109,24 @@ describe Azure::VirtualMachineManagement::Serialization do
   describe '#deployment_to_xml' do
     let(:params) do
       {
-        vm_name: 'virtual-machine-name',
-        vm_user: 'username',
-        image: 'linux_image',
-        password: 'password',
-        location: 'West US'
+          vm_name: 'virtual-machine-name',
+          vm_user: 'username',
+          image: 'linux_image',
+          password: 'password',
+          location: 'West US',
+          certificate: {fingerprint: 'CFB8C256D2986559C630547F2D0'}
       }
     end
 
     let(:options) do
       {
-        storage_account_name: 'storageaccountname',
-        cloud_service_name: 'cloud-service-name',
-        tcp_endpoints: '80,3389:3390,85:85',
-        availability_set_name: 'aval-set',
-        winrm_https_port: '5988',
-        winrm_transport: %w(http https)
+          storage_account_name: 'storageaccountname',
+          cloud_service_name: 'cloud-service-name',
+          tcp_endpoints: '80,3389:3390,85:85',
+          availability_set_name: 'aval-set',
+          winrm_https_port: '5988',
+          winrm_transport: %w(http https),
+          reserved_ip_name: 'AnAwesomeIP'
       }
     end
 
@@ -135,7 +139,7 @@ describe Azure::VirtualMachineManagement::Serialization do
     end
 
     it 'returns an VirtualMachine object with correct tcp endpoints' do
-      params[:certificate] = { fingerprint: 'CFB8C256D2986559C630547F2D0' }
+      params[:certificate] = {fingerprint: 'CFB8C256D2986559C630547F2D0'}
       options[:os_type] = 'Windows'
       options[:existing_ports] = ['5985']
       result = subject.deployment_to_xml params, image, options
@@ -152,25 +156,45 @@ describe Azure::VirtualMachineManagement::Serialization do
       doc.css('Deployment RoleList AvailabilitySetName').text.must_equal 'aval-set'
       result.must_be_kind_of String
       tcp_endpoints.must_include(
-        name: 'TCP-PORT-80',
-        public_port: '80',
-        local_port: '80'
+          name: 'TCP-PORT-80',
+          public_port: '80',
+          local_port: '80'
       )
       tcp_endpoints.must_include(
-        name: 'TCP-PORT-3390',
-        public_port: '3390',
-        local_port: '3389'
+          name: 'TCP-PORT-3390',
+          public_port: '3390',
+          local_port: '3389'
       )
       tcp_endpoints.must_include(
-        name: 'TCP-PORT-85',
-        public_port: '85',
-        local_port: '85'
+          name: 'TCP-PORT-85',
+          public_port: '85',
+          local_port: '85'
       )
       tcp_endpoints.must_include(
-        name: 'PowerShell',
-        public_port: '5988',
-        local_port: '5986'
+          name: 'PowerShell',
+          public_port: '5988',
+          local_port: '5986'
       )
+    end
+
+    it 'returns a VirtualMachine object with it the vhds media_link that includes seconds and milliseconds' do
+      now = Time.now
+      Timecop.freeze(now) do
+        result = subject.deployment_to_xml params, image, options
+        doc = Nokogiri::XML(result)
+        media_link_uri = URI.parse(doc.css('Deployment RoleList OSVirtualHardDisk MediaLink').text)
+        disk_time_name = /disk_(.*?)\.vhd/.match(media_link_uri.path).captures.first
+        disk_time_name.must_equal now.strftime('%Y_%m_%d_%H_%M_%S_%L')
+      end
+    end
+
+    it 'returns a VirtualMachine object with the correct reserved IP' do
+      now = Time.now
+      Timecop.freeze(now) do
+        result = subject.deployment_to_xml params, image, options
+        doc = Nokogiri::XML(result)
+        doc.css('ReservedIPName').text.must_equal "AnAwesomeIP"
+      end
     end
   end
 
@@ -178,13 +202,13 @@ describe Azure::VirtualMachineManagement::Serialization do
 
     let(:options) do
       {
-        disk_size: 100
+          disk_size: 100
       }
     end
     let(:media_link) { 'https://sta.blob.managment.core.net/vhds/1234.vhd' }
 
     before do
-      Loggerx.expects(:puts).returns(nil).at_least(0)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       @vm = Azure::VirtualMachineManagement::VirtualMachine.new
       @vm.data_disks = []
       @vm.media_link = media_link
@@ -227,7 +251,7 @@ describe Azure::VirtualMachineManagement::Serialization do
     let(:preferred_port) { '22' }
     before do
       subject.class.send(:public, *subject.class.private_instance_methods)
-      Loggerx.expects(:puts).returns(nil).at_least(0)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     end
 
     it 'returns random port number when preferred port is in use' do
@@ -250,6 +274,43 @@ describe Azure::VirtualMachineManagement::Serialization do
       result = subject.assign_random_port(preferred_port, ['1', preferred_port])
       assert_operator result.to_i, :>=, 10000
       assert_operator result.to_i, :<=, 65535
+    end
+  end
+
+  describe "#role_to_xml" do
+
+    let(:params) do
+      {:certificate => {:fingerprint => "fingerprint"},
+       :vm_name => "aVMName",
+       :vm_user => "nocturnal_flying_echolocating_mammal_man"}
+    end
+
+    let(:image) do
+      Azure::VirtualMachineImageManagement::VirtualMachineImage.new do |i|
+        i.name = 'windows-instance'
+        i.os_type = 'Linux'
+        i.image_type = 'OS'
+      end
+    end
+
+    let(:options) do
+      {:virtual_network_name => "aNetworkName",
+       :subnet_name => "someSubnet",
+       :storage_account_name => "storage",
+       :vm_size => "Small",
+       :os_type => "Linux"}
+    end
+
+    it "should return a valid role containing a static vnet ip address if provided in options" do
+      options[:static_virtual_network_ipaddress] = "1.2.3.4"
+      result = subject.role_to_xml(params, image, options)
+      result.css('StaticVirtualNetworkIPAddress').text.must_equal "1.2.3.4"
+    end
+
+    it "should return a valid role containing a custom data section if provided in params" do
+      params[:custom_data] = 'blahblahblah'
+      result = subject.role_to_xml(params, image, options)
+      result.css('CustomData').text.must_equal "blahblahblah"
     end
   end
 end

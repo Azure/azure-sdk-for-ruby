@@ -17,7 +17,7 @@ require 'test_helper'
 describe Azure::BaseManagement::Serialization do
 
   subject { Azure::BaseManagement::Serialization }
-  let(:location) { 'West Us' }
+  let(:geo_location) { 'West Us' }
 
   describe '#affinity_group_to_xml' do
     let(:affinity_group_name) { 'AG1' }
@@ -25,26 +25,26 @@ describe Azure::BaseManagement::Serialization do
 
     it 'serializes the argument to xml' do
       result = subject.affinity_group_to_xml(affinity_group_name,
-                                             location,
+                                             geo_location,
                                              label)
       doc = Nokogiri::XML result
       doc.css('Name').text.must_equal affinity_group_name
       doc.css('Label').text.must_equal Base64.encode64(label).strip
-      doc.css('Location').text.must_equal location
+      doc.css('Location').text.must_equal geo_location
       result.must_be_kind_of String
     end
 
     it 'serializes the argument to xml when optional description is given' do
-      options = { description: 'Affinity Group Description' }
+      options = {description: 'Affinity Group Description'}
       result = subject.affinity_group_to_xml(affinity_group_name,
-                                             location,
+                                             geo_location,
                                              label,
                                              options)
       doc = Nokogiri::XML result
       doc.css('Name').text.must_equal affinity_group_name
       doc.css('Label').text.must_equal Base64.encode64(label).strip
       doc.css('Description').text.must_equal options[:description]
-      doc.css('Location').text.must_equal location
+      doc.css('Location').text.must_equal geo_location
       result.must_be_kind_of String
     end
   end
@@ -81,8 +81,7 @@ describe Azure::BaseManagement::Serialization do
       affinity_group.storage_services.size.must_equal 1
       affinity_group.capability.must_equal %w[PersistentVMRole HighMemory]
       affinity_group.name.must_equal affinity_group_xml.css('Name').text
-      affinity_group.description.must_equal affinity_group_xml.css(
-        'Description').text
+      affinity_group.description.must_equal affinity_group_xml.css('Description').text
     end
   end
 end

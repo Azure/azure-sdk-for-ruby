@@ -10,3 +10,6 @@ nbproject/*
 
 
 .DS_Store
+.ruby-version
+.env
+*.pem

@@ -18,7 +18,7 @@ require "azure/core/auth/shared_key_lite"
 describe Azure::Core::Auth::SharedKeyLite do
   subject { Azure::Core::Auth::SharedKeyLite.new "account-name", "YWNjZXNzLWtleQ==" }
   
-  let(:method) { "POST" }
+  let(:verb) { "POST" }
   let(:uri) { URI.parse "http://dummy.uri/resource" }
   let(:headers) do
     {
@@ -35,16 +35,16 @@ describe Azure::Core::Auth::SharedKeyLite do
   
   describe "sign" do
     it "creates a signature from the provided HTTP method, uri, and reduced set of standard headers" do
-      subject.sign(method, uri, headers).must_equal "account-name:vVFnj/+27JFABZgpt5H8g/JVU2HuWFnjv5aeUIxQvBE="
+      subject.sign(verb, uri, headers).must_equal "account-name:vVFnj/+27JFABZgpt5H8g/JVU2HuWFnjv5aeUIxQvBE="
     end
 
     it "ignores standard headers other than Content-MD5, Content-Type, and Date" do
-      subject.sign(method, uri, headers.merge({"Content-Encoding"=> "foo"})).must_equal "account-name:vVFnj/+27JFABZgpt5H8g/JVU2HuWFnjv5aeUIxQvBE="
+      subject.sign(verb, uri, headers.merge({"Content-Encoding"=> "foo"})).must_equal "account-name:vVFnj/+27JFABZgpt5H8g/JVU2HuWFnjv5aeUIxQvBE="
     end
 
     it "throws IndexError when there is no Date header" do
       assert_raises IndexError do
-        subject.sign(method, uri, headers_without_date)
+        subject.sign(verb, uri, headers_without_date)
       end
     end
   end

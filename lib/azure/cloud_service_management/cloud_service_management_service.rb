@@ -16,7 +16,9 @@ require 'azure/cloud_service_management/serialization'
 
 module Azure
   module CloudServiceManagement
-    class CloudServiceManagementService < BaseManagementService
+    class CloudServiceManagementService < BaseManagement::BaseManagementService
+      include Azure::Core::Utility
+
       def initialize
         super()
       end
@@ -47,14 +49,14 @@ module Azure
       #
       # Returns None
       def create_cloud_service(name, options = {})
-        Loggerx.error_with_exit 'Cloud service name is not valid ' unless name
+        Azure::Loggerx.error_with_exit 'Cloud service name is not valid ' unless name
         if get_cloud_service(name)
-          Loggerx.warn "Cloud service #{name} already exists. Skipped..."
+          Azure::Loggerx.warn "Cloud service #{name} already exists. Skipped..."
         else
-          Loggerx.info "Creating cloud service #{name}."
+          Azure::Loggerx.info "Creating cloud service #{name}."
           request_path = '/services/hostedservices'
           body = Serialization.cloud_services_to_xml(name, options)
-          request = ManagementHttpRequest.new(:post, request_path, body)
+          request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
           request.call
         end
       end
@@ -64,7 +66,7 @@ module Azure
       # Returns an array of Azure::CloudServiceManagement::CloudService objects
       def list_cloud_services
         request_path = '/services/hostedservices'
-        request = ManagementHttpRequest.new(:get, request_path, nil)
+        request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.cloud_services_from_xml(response)
       end
@@ -84,7 +86,7 @@ module Azure
 
       def get_cloud_service_properties(name)
         request_path = "/services/hostedservices/#{name}?embed-detail=true"
-        request = ManagementHttpRequest.new(:get, request_path)
+        request = BaseManagement::ManagementHttpRequest.new(:get, request_path)
         response = request.call
         Serialization.cloud_services_from_xml(response).first
       end
@@ -97,9 +99,9 @@ module Azure
       #
       # Returns:  None
       def delete_cloud_service(cloud_service_name)
-        request_path = "/services/hostedservices/#{cloud_service_name}"
-        request = ManagementHttpRequest.new(:delete, request_path)
-        Loggerx.info "Deleting cloud service #{cloud_service_name}. \n"
+        request_path= "/services/hostedservices/#{cloud_service_name}"
+        request = BaseManagement::ManagementHttpRequest.new(:delete, request_path)
+        Azure::Loggerx.info "Deleting cloud service #{cloud_service_name}. \n"
         request.call
       end
 
@@ -108,23 +110,26 @@ module Azure
       # ==== Attributes
       #
       # * +cloud_service_name+  - String. Cloud service name.
+      # * +slot+                - String. 'production' or 'staging'. Optional parameters.
+      #                           Default if not specified is 'production'
       #
       # See http://msdn.microsoft.com/en-us/library/azure/ee460815.aspx
       #
       # Returns NONE
-      def delete_cloud_service_deployment(cloud_service_name)
-        request_path = "/services/hostedservices/#{cloud_service_name}/deploymentslots/production"
-        request = ManagementHttpRequest.new(:delete, request_path)
-        Loggerx.info "Deleting deployment of cloud service \"#{cloud_service_name}\" ..."
+      def delete_cloud_service_deployment(cloud_service_name, slot='production')
+        slot = 'production' unless slot
+        request_path= "/services/hostedservices/#{cloud_service_name}/deploymentslots/#{slot}"
+        request = BaseManagement::ManagementHttpRequest.new(:delete, request_path)
+        Azure::Loggerx.info "Deleting deployment of cloud service \"#{cloud_service_name}\" ..."
         request.call
       end
 
       def upload_certificate(cloud_service_name, ssh)
         data = export_der(ssh[:cert], ssh[:key])
-        request_path = "/services/hostedservices/#{cloud_service_name}/certificates"
+        request_path= "/services/hostedservices/#{cloud_service_name}/certificates"
         body = Serialization.add_certificate_to_xml(data)
-        Loggerx.info "Uploading certificate to cloud service #{cloud_service_name}..."
-        request = ManagementHttpRequest.new(:post, request_path, body)
+        Azure::Loggerx.info "Uploading certificate to cloud service #{cloud_service_name}..."
+        request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
         request.call
       end
     end

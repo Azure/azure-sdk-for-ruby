@@ -15,14 +15,16 @@
 require 'integration/test_helper'
 
 describe Azure::StorageManagementService do
+
+  util = Class.new.extend(Azure::Core::Utility)
   subject { Azure::StorageManagementService.new }
-  affinity_name = random_string('affinity-group-', 10)
+  affinity_name = util.random_string('affinity-group-', 10)
   Azure::BaseManagementService.new.create_affinity_group(
     affinity_name,
     'West US',
     'Label Name'
   )
-  StorageName =  random_string('storagetest', 10)
+  StorageName =  util.random_string('storagetest', 10)
   opts = {
     affinity_group_name: affinity_name,
     label: 'storagelabel',
@@ -33,12 +35,11 @@ describe Azure::StorageManagementService do
 
   let(:affinity_group_name) { affinity_name }
   let(:storage_name) { Time.now.getutc.to_i.to_s }
-  let(:location) { 'West US' }
   let(:label) { 'Label Name' }
   let(:options) { { description: 'sample description' } }
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   end
 
   it 'list storage accounts' do

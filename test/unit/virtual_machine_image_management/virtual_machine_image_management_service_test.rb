@@ -22,7 +22,7 @@ describe Azure::VirtualMachineImageManagementService do
   let(:vm_image_request_path) { '/services/vmimages' }
   let(:os_images_xml) { Fixtures['list_os_images'] }
   let(:vm_images_xml) { Fixtures['list_vm_images'] }
-  let(:method) { :get }
+  let(:verb) { :get }
   let(:os_images_response) do
     response = mock
     response.stubs(:body).returns(os_images_xml)
@@ -34,18 +34,18 @@ describe Azure::VirtualMachineImageManagementService do
     Nokogiri::XML response.body
   end
 
-  before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
-  end
+  before {
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+  }
 
   describe '#list_os_images' do
-    let(:method) { :get }
+    let(:verb) { :get }
     before do
       os_images_request = mock
-      ManagementHttpRequest.stubs(:new).with(
-        method,
-        os_image_request_path,
-        nil
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+          verb,
+          os_image_request_path,
+          nil
       ).returns(os_images_request)
       os_images_request.expects(:call).returns(os_images_response)
     end
@@ -62,13 +62,13 @@ describe Azure::VirtualMachineImageManagementService do
   end
 
   describe '#list_vm_images' do
-    let(:method) { :get }
+    let(:verb) { :get }
     before do
       vm_images_request = mock
-      ManagementHttpRequest.stubs(:new).with(
-        method,
-        vm_image_request_path,
-        nil
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+          verb,
+          vm_image_request_path,
+          nil
       ).returns(vm_images_request)
       vm_images_request.expects(:call).returns(vm_images_response)
     end
@@ -85,20 +85,20 @@ describe Azure::VirtualMachineImageManagementService do
   end
 
   describe '#list_images' do
-    let(:method) { :get }
+    let(:verb) { :get }
     before do
       vm_images_request = mock
-      ManagementHttpRequest.stubs(:new).with(
-        method,
-        vm_image_request_path,
-        nil
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+          verb,
+          vm_image_request_path,
+          nil
       ).returns(vm_images_request)
       vm_images_request.expects(:call).returns(vm_images_response)
       os_images_request = mock
-      ManagementHttpRequest.stubs(:new).with(
-        method,
-        os_image_request_path,
-        nil
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+          verb,
+          os_image_request_path,
+          nil
       ).returns(os_images_request)
       os_images_request.expects(:call).returns(os_images_response)
     end

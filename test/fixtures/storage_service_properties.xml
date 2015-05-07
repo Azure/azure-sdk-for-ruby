@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StorageServiceProperties>
+  <DefaultServiceVersion>2011-08-18</DefaultServiceVersion>
   <Logging>
     <Version>1.0</Version>
     <Delete>true</Delete>
@@ -10,7 +11,7 @@
       <Days>7</Days>
     </RetentionPolicy>
   </Logging>
-  <Metrics>
+  <HourMetrics>
     <Version>1.0</Version>
     <Enabled>true</Enabled>
     <IncludeAPIs>false</IncludeAPIs>
@@ -18,6 +19,37 @@
       <Enabled>true</Enabled>
       <Days>7</Days>
     </RetentionPolicy>
-  </Metrics>
-  <DefaultServiceVersion>2011-08-18</DefaultServiceVersion>
+  </HourMetrics>
+  <MinuteMetrics>
+    <Version>1.0</Version>
+    <Enabled>true</Enabled>
+    <IncludeAPIs>false</IncludeAPIs>
+    <RetentionPolicy>
+      <Enabled>true</Enabled>
+      <Days>7</Days>
+    </RetentionPolicy>
+  </MinuteMetrics>
+  <Cors>
+    <CorsRule>
+      <AllowedOrigins>http://www.contoso.com,http://dummy.uri</AllowedOrigins>
+      <AllowedMethods>PUT,HEAD</AllowedMethods>
+      <MaxAgeInSeconds>5</MaxAgeInSeconds>
+      <ExposedHeaders>x-ms-*</ExposedHeaders>
+      <AllowedHeaders>x-ms-blob-content-type,x-ms-blob-content-disposition</AllowedHeaders>
+    </CorsRule>
+    <CorsRule>
+      <AllowedOrigins>*</AllowedOrigins>
+      <AllowedMethods>PUT,GET</AllowedMethods>
+      <MaxAgeInSeconds>5</MaxAgeInSeconds>
+      <ExposedHeaders>x-ms-*</ExposedHeaders>
+      <AllowedHeaders>x-ms-blob-content-type,x-ms-blob-content-disposition</AllowedHeaders>
+    </CorsRule>
+    <CorsRule>
+      <AllowedOrigins>http://www.contoso.com</AllowedOrigins>
+      <AllowedMethods>GET</AllowedMethods>
+      <MaxAgeInSeconds>5</MaxAgeInSeconds>
+      <ExposedHeaders>x-ms-*</ExposedHeaders>
+      <AllowedHeaders>x-ms-client-request-id</AllowedHeaders>
+    </CorsRule>
+  </Cors>
 </StorageServiceProperties>

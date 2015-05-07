@@ -23,17 +23,16 @@ describe Azure::BaseManagementService do
   let(:response_xml) { nil }
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     mock_request.expects(:call).returns(Nokogiri::XML response_xml).at_least(0)
   end
 
   describe '#list_affinity_groups' do
     let(:request_path) { '/affinitygroups' }
     let(:response_xml) { Fixtures['list_affinity_groups'] }
-    let(:method) { :get }
 
     before do
-      ManagementHttpRequest.stubs(:new).with(method,
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get,
                                              request_path,
                                              nil).returns(mock_request)
     end
@@ -76,10 +75,9 @@ describe Azure::BaseManagementService do
   end
 
   describe '#create_affinity_group' do
-    let(:method) { :post }
     let(:request_path) { '/affinitygroups' }
-    let(:name) { 'AG1' }
-    let(:location) { 'West US' }
+    let(:ag_name) { 'AG1' }
+    let(:geo_location) { 'West US' }
     let(:label) { 'Label Name' }
 
     let(:location_request_path) { '/locations' }
@@ -92,7 +90,7 @@ describe Azure::BaseManagementService do
     let(:location_response_body) { Nokogiri::XML location_response.body }
 
     before do
-      ManagementHttpRequest.stubs(:new).with(method,
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:post,
                                              request_path,
                                              anything).returns(mock_request)
       mock_request.expects(:call).returns(
@@ -100,13 +98,13 @@ describe Azure::BaseManagementService do
       ).at_least(0)
       mock_request = mock
 
-      ManagementHttpRequest.stubs(:new).with(:get,
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get,
                                              location_request_path,
                                              nil).returns(mock_request)
       mock_request.expects(:call).returns(location_response_body).at_least(0)
       mock_request = mock
 
-      ManagementHttpRequest.stubs(:new).with(:get,
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get,
                                              request_path,
                                              nil).returns(mock_request)
       mock_request.expects(:call).returns(
@@ -116,10 +114,10 @@ describe Azure::BaseManagementService do
 
     it 'error if affinity group already exists' do
       exception = assert_raises(Azure::Error::Error) do
-        subject.create_affinity_group(name, location, label)
+        subject.create_affinity_group(ag_name, geo_location, label)
       end
       assert_match(
-       /An affinity group #{name} already exists in the current subscription/i,
+       /An affinity group #{ag_name} already exists in the current subscription/i,
        exception.message
       )
     end
@@ -140,13 +138,12 @@ describe Azure::BaseManagementService do
     let(:affinity_group_name) { 'AG1' }
     let(:request_path) { '/affinitygroups/' + affinity_group_name }
     let(:response_xml) { Fixtures['affinity_group'] }
-    let(:method) { :get }
 
     before do
       Azure::BaseManagementService.any_instance.stubs(
         :affinity_group
       ).returns(true)
-      ManagementHttpRequest.stubs(:new).with(
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         :get,
         request_path,
         nil

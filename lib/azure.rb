@@ -14,6 +14,13 @@
 #--------------------------------------------------------------------------
 module Azure; end
 
+require 'rubygems'
+require 'nokogiri'
+require 'base64'
+require 'openssl'
+require 'uri'
+require 'rexml/document'
+
 require 'azure/core'
 require 'azure/blob/blob_service'
 require 'azure/queue/queue_service'
@@ -50,3 +57,4 @@ Azure::StorageManagementService = Azure::StorageManagement::StorageManagementSer
 Azure::VirtualMachineManagementService = Azure::VirtualMachineManagement::VirtualMachineManagementService
 Azure::SqlDatabaseManagementService = Azure::SqlDatabaseManagement::SqlDatabaseManagementService
 Azure::VirtualNetworkManagementService = Azure::VirtualNetworkManagement::VirtualNetworkManagementService
+Azure::Loggerx = Azure::Core::Logger

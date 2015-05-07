@@ -24,7 +24,7 @@ describe Azure::BaseManagementService do
     let(:options) { { description: 'Some Description' } }
 
     before do
-      Loggerx.expects(:puts).returns(nil).at_least(0)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     end
 
     it 'get affinity group properties for an existing group' do
