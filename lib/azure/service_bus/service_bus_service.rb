@@ -510,8 +510,7 @@ module Azure
       # * +:timeout+     - Integer. Timeout for the REST call.
       #
       def receive_queue_message(queue, options={})
-        peek_lock = true
-        peek_lock = options[:peek_lock] if options[:peek_lock]
+        peek_lock = options.fetch(:peek_lock, true)
 
         options[:timeout] = options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT
         if peek_lock
@@ -535,8 +534,7 @@ module Azure
       # * +:timeout+     - Integer. Timeout for the REST call.
       #
       def receive_subscription_message(topic, subscription, options={})
-        peek_lock = true
-        peek_lock = options[:peek_lock] if options[:peek_lock]
+        peek_lock = options.fetch(:peek_lock, true)
 
         options[:timeout] = options[:timeout] ? options[:timeout] : DEFAULT_TIMEOUT
         if peek_lock
