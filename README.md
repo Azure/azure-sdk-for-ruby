@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-# Microsoft Azure SDK for Ruby [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=dev)](https://travis-ci.org/Azure/azure-sdk-for-ruby)
-=======
+
 # Microsoft Azure SDK for Ruby
 [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=dev)](https://travis-ci.org/Azure/azure-sdk-for-ruby) [![Code Climate](https://codeclimate.com/github/Azure/azure-sdk-for-ruby/badges/gpa.svg)](https://codeclimate.com/github/Azure/azure-sdk-for-ruby)
->>>>>>> master
 
 
 This project provides a Ruby package that makes it easy to access and manage Microsoft Azure Services like Storage, Service Bus and Virtual Machines.
@@ -88,11 +85,7 @@ Running the command ``rdoc`` will generate the API documentation in the `./doc` 
 
 ## Setup Connection
 
-<<<<<<< HEAD
 You can use this SDK against the Microsoft Azure Services in the cloud, or against the local Storage Emulator if you are on Windows. Service Bus and Microsoft Azure Service Management emulation are not supported. Of course, to use the Microsoft Azure Services in the cloud, you need to first [create a Microsoft Azure account](http://www.azure.com/en-us/pricing/free-trial/). After that, you can get the information you need to configure Storage and Service Bus from the [Microsoft Azure Portal](https://manage.azure.com).
-=======
-You can use this SDK against the Microsoft Azure Services in the cloud, or against the local Storage Emulator if you are on Windows. Service Bus and Microsoft Azure Service Management emulation are not supported. Of course, to use the Microsoft Azure Services in the cloud, you need to first [create a Microsoft Azure account](http://www.windowsazure.com/en-us/pricing/free-trial/). After that, you can get the information you need to configure Storage and Service Bus from the [Microsoft Azure Portal](https://manage.windowsazure.com).
->>>>>>> master
 
 There are two ways you can set up the connections:
 
@@ -187,11 +180,7 @@ You can use the following commands to run:
 * a specific suite of tests: ``rake test:integration:blob``
 * one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
 # Usage
-<<<<<<< HEAD
 **For more examples, please see the [Microsoft Azure Ruby Developer Center](http://www.azure.com/en-us/develop/ruby)**
-=======
-**For more examples, please see the [Microsoft Azure Ruby Developer Center](http://www.windowsazure.com/en-us/develop/ruby)**
->>>>>>> master
 ## Storage
 
 ### Blobs
