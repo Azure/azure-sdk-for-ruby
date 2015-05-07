@@ -1,4 +1,4 @@
-2014.04.22 - version 0.6.4
+2014.05.06 - version 0.6.4
 * Upgraded Service Management Versioning to 2014-04-01
 * Created separate API for add role
 * Logical Unit Number(lun) is optional argument in API add_data_disk

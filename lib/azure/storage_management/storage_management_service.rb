@@ -17,7 +17,7 @@ require 'azure/storage_management/serialization'
 module Azure
   module StorageManagement
     # Provides Storage Management API
-    class StorageManagementService < BaseManagementService
+    class StorageManagementService < BaseManagement::BaseManagementService
       def initialize
         super()
       end
@@ -27,7 +27,7 @@ module Azure
       # Returns an array of Azure::StorageManagement::StorageAccount objects
       def list_storage_accounts
         request_path = '/services/storageservices'
-        request = ManagementHttpRequest.new(:get, request_path, nil)
+        request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.storage_services_from_xml(response)
       end
@@ -54,7 +54,7 @@ module Azure
       # Returns the storage account
       def get_storage_account_properties(name)
         request_path = "/services/storageservices/#{name}"
-        request = ManagementHttpRequest.new(:get, request_path, nil)
+        request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.storage_services_from_xml(response).first
       end
@@ -97,7 +97,7 @@ module Azure
           Loggerx.info "Creating Storage Account #{name}."
           body = Serialization.storage_services_to_xml(name, options)
           request_path = '/services/storageservices'
-          request = ManagementHttpRequest.new(:post, request_path, body)
+          request = BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
           request.call
         end
       end
@@ -134,7 +134,7 @@ module Azure
           Loggerx.info "Account '#{name}' exists, updating..."
           body = Serialization.storage_update_to_xml options
           request_path = "/services/storageservices/#{name}"
-          request = ManagementHttpRequest.new(:put, request_path, body)
+          request = BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
           request.call
         else
           Loggerx.warn "Storage Account '#{name}' does not exist. Skipped..."
@@ -154,7 +154,7 @@ module Azure
       def delete_storage_account(name)
         Loggerx.info "Deleting Storage Account #{name}."
         request_path = "/services/storageservices/#{name}"
-        request = ManagementHttpRequest.new(:delete, request_path)
+        request = BaseManagement::ManagementHttpRequest.new(:delete, request_path)
         request.call
       rescue => e
         e.message

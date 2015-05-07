@@ -17,7 +17,7 @@ require 'azure/virtual_network_management/serialization'
 module Azure
   module VirtualNetworkManagement
     # VirtualNetworkManagementService
-    class VirtualNetworkManagementService < BaseManagementService
+    class VirtualNetworkManagementService < BaseManagement::BaseManagementService
       def initialize
         super()
       end
@@ -31,7 +31,7 @@ module Azure
       # Azure::VirtualNetworkServiceManagement::VirtualNetwork objects
       def list_virtual_networks
         request_path = '/services/networking/virtualnetwork'
-        request = ManagementHttpRequest.new(:get, request_path, nil)
+        request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.virtual_network_from_xml(response)
       end
@@ -84,7 +84,7 @@ module Azure
                                                     location,
                                                     address_space,
                                                     options)
-        request = ManagementHttpRequest.new(:put, request_path, body)
+        request = BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
         request.headers['Content-Type'] = 'text/plain'
         Loggerx.info "Creating virtual network #{vnet}."
         request.call
@@ -99,7 +99,7 @@ module Azure
         else
           body = File.read(file)
         end
-        request = ManagementHttpRequest.new(:put, request_path, body)
+        request = BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
         request.headers['Content-Type'] = 'text/plain'
         Loggerx.info 'Creating virtual network.'
         request.call

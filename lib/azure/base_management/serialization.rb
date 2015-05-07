@@ -16,6 +16,7 @@
 module Azure
   module BaseManagement
     module Serialization
+      extend Azure::Core::Utility
       def self.locations_from_xml(locationXML)
         location_objs = []
         xml = locationXML.css('Locations Location')

@@ -23,7 +23,7 @@ describe Azure::SqlDatabaseManagementService do
   describe "#set_sql_server_firewall_rule" do
 
     before {
-      Loggerx.expects(:puts).returns(nil).at_least(0)
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     }
 
     after {

@@ -15,23 +15,24 @@
 require 'integration/test_helper'
 
 describe Azure::BaseManagementService do
-  AffinityGroupName = random_string('affinity-group-', 10)
+  util = Class.new.extend(Azure::Core::Utility)
+  AffinityGroupName = util.random_string('affinity-group-', 10)
+
   Azure::BaseManagementService.new.create_affinity_group(
-    AffinityGroupName,
-    WindowsImageLocation,
-    'Label'
+      AffinityGroupName,
+      WindowsImageLocation,
+      'Label'
   )
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   end
 
   subject { Azure::BaseManagementService.new }
   let(:affinity_group_name) { AffinityGroupName }
-  let(:location) { 'Central US' }
 
   describe '#update_affinity_group' do
-    let(:options) { { description: 'sample description' } }
+    let(:options) { {description: 'sample description'} }
 
     it 'update affinity group' do
       label = 'updated label'
@@ -61,7 +62,7 @@ describe Azure::BaseManagementService do
     end
 
     it 'error if description content exceeds allowed limit of 1024 chars' do
-      options = { description: 'a' * 1025 }
+      options = {description: 'a' * 1025}
       exception = assert_raises(RuntimeError) do
         subject.update_affinity_group(affinity_group_name,
                                       'this is update operation',

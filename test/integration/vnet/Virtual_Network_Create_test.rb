@@ -32,7 +32,17 @@ describe Azure::VirtualNetworkManagement::VirtualNetwork do
   subject { Azure::VirtualNetworkManagementService.new }
 
   before do
+# <<<<<<< HEAD
     Loggerx.expects(:puts).returns(nil).at_least(0)
+# =======
+#     Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+#
+#     affinity_group_service = Azure::BaseManagementService.new
+#     affinity_group_service.create_affinity_group(in_affinity_name,
+#                                                  WindowsImageLocation,
+#                                                  'Label'
+#                                                 ) rescue nil
+# >>>>>>> master
   end
 
   describe 'Create virtual network valid params' do

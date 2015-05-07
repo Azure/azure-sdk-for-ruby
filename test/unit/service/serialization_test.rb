@@ -214,7 +214,7 @@ describe Azure::Service::Serialization do
   end
 
   describe "#retention_policy_from_xml" do
-    let(:retention_policy_xml) { Nokogiri.Slop(Fixtures["storage_service_properties"]).root.Metrics.RetentionPolicy }
+    let(:retention_policy_xml) { Nokogiri.Slop(Fixtures["storage_service_properties"]).root.HourMetrics.RetentionPolicy }
     
     it "accepts an XML Node" do
       subject.retention_policy_from_xml retention_policy_xml
@@ -233,7 +233,7 @@ describe Azure::Service::Serialization do
     end
   end
 
-  describe "#metrics_to_xml" do
+  describe "#hour_metrics_to_xml" do
     let(:metrics) { 
       metrics = Azure::Service::Metrics.new
       metrics.version = "1.0"
@@ -250,20 +250,20 @@ describe Azure::Service::Serialization do
     
     it "accepts a Metrics instance and an Nokogiri::XML::Builder instance" do
       Nokogiri::XML::Builder.new do |xml|
-        subject.metrics_to_xml metrics, xml
+        subject.hour_metrics_to_xml metrics, xml
       end
     end
 
     it "adds to the XML Builder, which will create the XML graph of the provided values" do
       builder = Nokogiri::XML::Builder.new do |xml|
-        subject.metrics_to_xml metrics, xml
+        subject.hour_metrics_to_xml metrics, xml
       end
       builder.to_xml.must_equal metrics_xml
     end
   end
   
   describe "#metrics_from_xml" do
-    let(:metrics_xml) { Nokogiri.Slop(Fixtures["storage_service_properties"]).root.Metrics }
+    let(:metrics_xml) { Nokogiri.Slop(Fixtures["storage_service_properties"]).root.HourMetrics }
     let(:mock_retention_policy) { mock }
 
     before { 
@@ -362,13 +362,42 @@ describe Azure::Service::Serialization do
       retention_policy.enabled = true
       retention_policy.days = 7
 
-      metrics = service_properties.metrics = Azure::Service::Metrics.new
+      metrics = service_properties.hour_metrics = Azure::Service::Metrics.new
       metrics.version = "1.0"
       metrics.enabled = true
       metrics.include_apis = false
       retention_policy = metrics.retention_policy = Azure::Service::RetentionPolicy.new
       retention_policy.enabled = true
       retention_policy.days = 7
+
+      service_properties.minute_metrics = metrics
+
+      service_properties.cors = Azure::Service::Cors.new do |cors|
+        cors.cors_rules = []
+        cors.cors_rules.push(Azure::Service::CorsRule.new { |cors_rule|
+          cors_rule.allowed_origins = ["http://www.contoso.com", "http://dummy.uri"]
+          cors_rule.allowed_methods = ["PUT", "HEAD"]
+          cors_rule.max_age_in_seconds = 5
+          cors_rule.exposed_headers = ["x-ms-*"]
+          cors_rule.allowed_headers = ["x-ms-blob-content-type", "x-ms-blob-content-disposition"]
+        })
+
+        cors.cors_rules.push(Azure::Service::CorsRule.new { |cors_rule|
+          cors_rule.allowed_origins = ["*"]
+          cors_rule.allowed_methods = ["PUT", "GET"]
+          cors_rule.max_age_in_seconds = 5
+          cors_rule.exposed_headers = ["x-ms-*"]
+          cors_rule.allowed_headers = ["x-ms-blob-content-type", "x-ms-blob-content-disposition"]
+        })
+
+        cors.cors_rules.push(Azure::Service::CorsRule.new { |cors_rule|
+          cors_rule.allowed_origins = ["http://www.contoso.com"]
+          cors_rule.allowed_methods = ["GET"]
+          cors_rule.max_age_in_seconds = 5
+          cors_rule.exposed_headers = ["x-ms-*"]
+          cors_rule.allowed_headers = ["x-ms-client-request-id"]
+        })
+      end
 
       service_properties
     }
@@ -389,10 +418,12 @@ describe Azure::Service::Serialization do
     let(:service_properties_xml) { Fixtures["storage_service_properties"]}
     let(:mock_logging) { mock }
     let(:mock_metrics) { mock }
+    let(:mock_cors) { mock }
 
     before { 
       subject.expects(:logging_from_xml).returns(mock_logging)
-      subject.expects(:metrics_from_xml).returns(mock_metrics)
+      subject.expects(:metrics_from_xml).twice.returns(mock_metrics)
+      subject.expects(:cors_from_xml).returns(mock_cors)
     }
     
     it "accepts an XML string" do
@@ -407,9 +438,9 @@ describe Azure::Service::Serialization do
 
     it "sets the properties of the StorageServiceProperties instance" do
       service_properties = subject.service_properties_from_xml service_properties_xml
-      service_properties.default_service_version.must_equal "2011-08-18"
       service_properties.logging.must_equal mock_logging
-      service_properties.metrics.must_equal mock_metrics
+      service_properties.hour_metrics.must_equal mock_metrics
+      service_properties.minute_metrics.must_equal mock_metrics
     end
   end
 

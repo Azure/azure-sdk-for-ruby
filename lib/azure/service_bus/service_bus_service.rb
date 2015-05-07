@@ -34,8 +34,65 @@ module Azure
             req.headers.delete "x-ms-version"
             req.headers.delete "DataServiceVersion"
             req.headers.delete "MaxDataServiceVersion"
+            req.headers["X-Process-At"] = "servicebus"
             res.call
           end
+      end
+
+      # Creates a new relay endpoint. Once created, this relay endpoint resource manifest is immutable. 
+      # 
+      # ==== Attributes
+      #
+      # * +relay+        - Azure::ServiceBus::Relay instance to create on server, or a string of the relay endpoint name
+      # * +options+      - Hash. The relay endpoint properties. 
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:relay_type+                                  - String. Determines the type of the relay endpoint.
+      # * +:requires_client_authorization+               - Boolean. Determines whether or not clients need to authenticate when making calls.
+      # * +:requires_transport_security+                 - Boolean. Determines whether or not the endpoint uses transport security. 
+      #
+      def create_relay(relay, options={})
+        relay = _new_or_existing(Azure::ServiceBus::Relay, relay, options ? options : {})
+        create_resource_entry(:relay, relay, relay.name)
+      end
+
+      # Deletes an existing relay endpoint. 
+      # 
+      # ==== Attributes
+      #
+      # * +relay+ - Azure::ServiceBus::Relay instance to delete or a string of the relay endpoint name
+      def delete_relay(relay)
+        delete_resource_entry(:relay, _name_for(relay))
+      end
+
+      # Retrieves the description for the specified relay endpoint.
+      # 
+      # ==== Attributes
+      #
+      # * +relay+ - Azure::ServiceBus::Relay instance to retrieve or a string of the relay endpoint name
+      def get_relay(relay)
+        resource_entry(:relay, _name_for(relay))
+      end
+
+      # Enumerates the relay endpoints in the service namespace.
+      #
+      # ==== Attributes
+      #
+      # * +options+    - Hash. Optional parameters.
+      #
+      # ==== Options
+      #
+      # Accepted key/value pairs in options parameter are:
+      # * +:skip+      - Integer. Number of queues to skip.
+      # * +:top+       - Integer. Number of queues to list.
+      def list_relays(options={})
+        query = {}
+        query["$skip"] = options[:skip].to_i.to_s if options[:skip]
+        query["$top"] = options[:top].to_i.to_s if options[:top]
+
+        resource_list(:relay, query)
       end
 
       # Creates a new queue. Once created, this queue's resource manifest is immutable. 
@@ -783,6 +840,12 @@ module Azure
       end
 
       protected
+      def relay_uri(relay, query={})
+        query["api-version"] = "2013-10"
+        generate_uri(relay, query)
+      end
+
+      protected
       def queue_uri(topic, query={})
         generate_uri(topic, query)
       end
@@ -802,6 +865,11 @@ module Azure
       protected
       def subscription_list_uri(topic, query={})
         resource_list_uri(:subscription, query, topic)
+      end
+
+      protected
+      def relay_list_uri(query={})
+        resource_list_uri(:relay, query)
       end
 
       protected

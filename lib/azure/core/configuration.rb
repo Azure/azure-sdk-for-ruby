@@ -66,6 +66,13 @@ module Azure
       # Public: Set the Service Bus Issuer for this service.
       attr_writer :sb_issuer
 
+      # Public: Get/Set path of a CA certification directory containing certifications in
+      # PEM format.
+      #
+      # For example:
+      #   config.ca_file = 'ca_cert.pem'
+      attr_accessor :ca_file
+
       # Public: Get the issuer for the service bus. If you set something using #sb_issuer=,
       # then we use that. Otherwise, we default to the default issuer: "owner"
       def sb_issuer

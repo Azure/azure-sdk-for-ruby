@@ -15,6 +15,8 @@
 require 'integration/test_helper'
 
 describe Azure::VirtualMachineManagementService do
+  include Azure::Core::Utility
+
   subject { Azure::VirtualMachineManagementService.new }
   let(:cloud_service) { Azure::CloudServiceManagementService.new }
   let(:names) { VirtualMachineNameHelper.name }
@@ -61,7 +63,7 @@ describe Azure::VirtualMachineManagementService do
   end
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   end
 
   describe '#deployment' do

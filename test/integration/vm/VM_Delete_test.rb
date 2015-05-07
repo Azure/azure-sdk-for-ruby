@@ -22,7 +22,7 @@ describe Azure::VirtualMachineManagementService do
   let(:csn) { names.last }
   let(:username) { 'admin' }
   before do
-    Loggerx.expects(:puts).at_least_once.returns(nil)
+    Azure::Loggerx.expects(:puts).at_least_once.returns(nil)
     params = {
       vm_name: virtual_machine_name,
       vm_user: 'user',

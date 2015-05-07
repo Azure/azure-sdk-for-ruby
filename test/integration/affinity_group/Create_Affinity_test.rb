@@ -15,13 +15,14 @@
 require 'integration/test_helper'
 
 describe Azure::BaseManagementService do
+  include Azure::Core::Utility
 
   subject { Azure::BaseManagementService.new }
   let(:affinity_group_name) { random_string('affinity-group-', 10) }
-  let(:location) { WindowsImageLocation }
+  let(:image_location) { WindowsImageLocation }
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   end
 
   let(:label) { 'Label Name' }
@@ -31,13 +32,13 @@ describe Azure::BaseManagementService do
 
     it 'create new affinity group with valid params' do
       subject.create_affinity_group(affinity_group_name,
-                                    location,
+                                    image_location,
                                     label,
                                     options)
       affinity_group = subject.get_affinity_group(affinity_group_name)
       affinity_group.must_be_kind_of Azure::BaseManagement::AffinityGroup
       affinity_group.name.wont_be_nil
-      affinity_group.location.must_equal location
+      affinity_group.location.must_equal image_location
       affinity_group.name.must_equal affinity_group_name
       affinity_group.label.must_equal label
       affinity_group.description.must_equal options[:description]
@@ -47,15 +48,15 @@ describe Azure::BaseManagementService do
       exception = assert_raises(RuntimeError) do
         subject.create_affinity_group(affinity_group_name, 'North West', label)
       end
-      assert_match(/'location' is invalid/i, exception.message)
+      assert_match(/Allowed values are South Central US,West US,East US,East US 2,Central US,North Europe,West Europe,Southeast Asia,East Asia/i, exception.message)
     end
 
     it 'create new affinity group without optional params' do
-      subject.create_affinity_group(affinity_group_name, location, label)
+      subject.create_affinity_group(affinity_group_name, image_location, label)
       affinity_group = subject.get_affinity_group(affinity_group_name)
       affinity_group.must_be_kind_of Azure::BaseManagement::AffinityGroup
       affinity_group.name.wont_be_nil
-      affinity_group.location.must_equal location
+      affinity_group.location.must_equal image_location
       affinity_group.name.must_equal affinity_group_name
       affinity_group.label.must_equal label
     end

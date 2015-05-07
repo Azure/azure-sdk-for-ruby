@@ -22,10 +22,6 @@ require 'azure/base_management/serialization'
 require 'azure/base_management/location'
 require 'azure/base_management/affinity_group'
 
-include Azure::BaseManagement
-include Azure::Core::Utility
-Loggerx = Azure::Core::Logger
-
 module Azure
   module BaseManagement
     class BaseManagementService

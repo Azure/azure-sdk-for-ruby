@@ -18,6 +18,7 @@ require 'base64'
 module Azure
   module VirtualMachineManagement
     module Serialization
+      extend Azure::Core::Utility
       def self.shutdown_virtual_machine_to_xml
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.ShutdownRoleOperation(
@@ -69,6 +70,9 @@ module Azure
             if options[:virtual_network_name]
               xml.VirtualNetworkName options[:virtual_network_name]
             end
+            if options[:reserved_ip_name]
+              xml.ReservedIPName options[:reserved_ip_name]
+            end
           end
         end
         builder.doc.at_css('Role') << role_to_xml(params, image, options).at_css('PersistentVMRole').children.to_s
@@ -100,6 +104,7 @@ module Azure
                   xml.SubnetNames do
                     xml.SubnetName options[:subnet_name]
                   end
+                  xml.StaticVirtualNetworkIPAddress options[:static_virtual_network_ipaddress] if options[:static_virtual_network_ipaddress]
                 end
               end
             end
@@ -113,7 +118,7 @@ module Azure
             end
             if image.image_type == 'OS'
               xml.OSVirtualHardDisk do
-                xml.MediaLink 'http://' + storage_host + '/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd'
+                xml.MediaLink 'http://' + storage_host + '/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M_%S_%L')) + '.vhd'
                 xml.SourceImageName params[:image]
               end
             end
@@ -150,6 +155,7 @@ module Azure
                 end
               end
             end
+            xml.CustomData params[:custom_data] if params[:custom_data]
           end
         elsif options[:os_type] == 'Windows'
           xml.ConfigurationSet('i:type' => 'WindowsProvisioningConfigurationSet') do
