@@ -89,7 +89,7 @@ module Azure
             xml.OsVersion('i:nil' => 'true')
             xml.RoleType 'PersistentVMRole'
             xml.ConfigurationSets do
-              provisioning_configuration_to_xml(xml, params, options) if image.image_type == 'OS'
+              provisioning_configuration_to_xml(xml, params, options) if image.image_type == 'OS' || image.image_type == 'VM'
               xml.ConfigurationSet('i:type' => 'NetworkConfigurationSet') do
                 xml.ConfigurationSetType 'NetworkConfiguration'
                 xml.InputEndpoints do
