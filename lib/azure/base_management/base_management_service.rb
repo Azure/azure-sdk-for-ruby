@@ -24,14 +24,14 @@ module Azure
         validate_configuration
         cert_file = Azure.config.management_certificate
 
-        if File.file?(cert_file) && cert_file =~ /(pem)$/
+        if File.file?(cert_file) && File.extname(cert_file).downcase == '.pem'
           cert_file = File.read(Azure.config.management_certificate)
         else
           cert_file = File.binread(Azure.config.management_certificate)
         end
 
         begin
-          if Azure.config.management_certificate =~ /(pem)$/
+          if File.extname(Azure.config.management_certificate).downcase == '.pem'
             certificate_key = OpenSSL::X509::Certificate.new(cert_file)
             private_key = OpenSSL::PKey::RSA.new(cert_file)
           else
@@ -42,7 +42,7 @@ module Azure
             )
             private_key = OpenSSL::PKey::RSA.new(cert_content.key.to_pem)
           end
-        rescue Exception => e
+        rescue OpenSSL::OpenSSLError => e
           raise "Management certificate not valid. Error: #{e.message}"
         end
 
@@ -67,7 +67,7 @@ module Azure
 
         m_cert = Azure.config.management_certificate
         error_message = 'Management certificate expects a .pem or .pfx file.'
-        raise error_message unless m_cert =~ /(pem|pfx)$/
+        raise error_message unless ['.pem', '.pfx'].include?(File.extname(m_cert).downcase)
       end
 
       # Public: Gets a list of regional data center locations from the server
