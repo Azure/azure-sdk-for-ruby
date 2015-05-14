@@ -97,6 +97,7 @@ describe Azure::VirtualMachineManagementService do
     describe '#virtual_network' do
       let(:subnet_name) { 'Subnet-1' }
       let(:geo_location) { LinuxImageLocation }
+      let(:static_virtual_network_ipaddress){'172.16.0.10'}
       before do
         options[:virtual_network_name] = 'v-net'
         inputoptions = {
@@ -111,6 +112,7 @@ describe Azure::VirtualMachineManagementService do
           inputoptions
         ) rescue nil
         options[:subnet_name] = subnet_name
+        options[:static_virtual_network_ipaddress] = '172.16.0.10'
         subject.create_virtual_machine(params, options)
       end
 
@@ -120,6 +122,7 @@ describe Azure::VirtualMachineManagementService do
         virtual_machine.vm_name.must_equal virtual_machine_name
         virtual_machine.virtual_network_name.must_equal options[:virtual_network_name]
         virtual_machine.subnet.must_equal subnet_name
+        virtual_machine.static_virtual_network_ipaddress.must_equal static_virtual_network_ipaddress
       end
     end
 
