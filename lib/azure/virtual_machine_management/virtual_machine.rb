@@ -38,6 +38,7 @@ module Azure
       attr_accessor :media_link
       attr_accessor :data_disks
       attr_accessor :subnet
+      attr_accessor :static_virtual_network_ipaddress
     end
   end
 end
