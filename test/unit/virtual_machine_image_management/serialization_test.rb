@@ -17,15 +17,15 @@ require 'test_helper'
 describe Azure::VirtualMachineImageManagement::Serialization do
   subject { Azure::VirtualMachineImageManagement::Serialization }
 
-  describe '#virtual_machine_os_images_from_xml' do
+  describe '#virtual_machine_images_from_xml' do
     let(:os_images_xml) { Fixtures['list_os_images'] }
 
     it 'accepts an XML string' do
-      subject.virtual_machine_os_images_from_xml Nokogiri::XML(os_images_xml)
+      subject.virtual_machine_images_from_xml Nokogiri::XML(os_images_xml)
     end
 
     it 'returns an Array of VirtualMachineImageService instances' do
-      results = subject.virtual_machine_os_images_from_xml Nokogiri::XML(os_images_xml)
+      results = subject.virtual_machine_images_from_xml Nokogiri::XML(os_images_xml)
       results.must_be_kind_of Array
       results[0].must_be_kind_of VirtualMachineImage
       results.count.must_equal 12

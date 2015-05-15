@@ -21,7 +21,7 @@ describe Azure::SqlDatabaseManagementService do
   subject { Azure::SqlDatabaseManagementService.new }
 
   before {
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     subject.set_sql_server_firewall_rule(sql_server.name, "rule1")
     ip_range = {:start_ip_address => "10.20.30.0", :end_ip_address => "10.20.30.255"}
     subject.set_sql_server_firewall_rule(sql_server.name, "rule2", ip_range)

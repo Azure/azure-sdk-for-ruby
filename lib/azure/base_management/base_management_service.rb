@@ -12,19 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'rubygems'
-require 'nokogiri'
-require 'base64'
-require 'openssl'
-require 'uri'
-require 'rexml/document'
+
 require 'azure/base_management/serialization'
 require 'azure/base_management/location'
 require 'azure/base_management/affinity_group'
-
-include Azure::BaseManagement
-include Azure::Core::Utility
-Loggerx = Azure::Core::Logger
 
 module Azure
   module BaseManagement
@@ -32,20 +23,21 @@ module Azure
       def initialize
         validate_configuration
         cert_file = Azure.config.management_certificate
-        cert_file = File.read(Azure.config.management_certificate) if File.file?(cert_file)
+        cert_file = read_cert_from_file(cert_file) if File.file?(cert_file)
+
         begin
           if cert_file =~ /-----BEGIN CERTIFICATE-----/
             certificate_key = OpenSSL::X509::Certificate.new(cert_file)
             private_key = OpenSSL::PKey::RSA.new(cert_file)
           else
           # Parse pfx content
-            cert_content = OpenSSL::PKCS12.new(Base64.decode64(cert_file))
+            cert_content = OpenSSL::PKCS12.new(cert_file)
             certificate_key = OpenSSL::X509::Certificate.new(
               cert_content.certificate.to_pem
             )
             private_key = OpenSSL::PKey::RSA.new(cert_content.key.to_pem)
           end
-        rescue Exception => e
+        rescue OpenSSL::OpenSSLError => e
           raise "Management certificate not valid. Error: #{e.message}"
         end
 
@@ -75,7 +67,7 @@ module Azure
       #
       # Returns an array of Azure::BaseManagement::Location objects
       def list_locations
-        request = ManagementHttpRequest.new(:get, '/locations')
+        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, '/locations')
         response = request.call
         Serialization.locations_from_xml(response)
       end
@@ -88,7 +80,7 @@ module Azure
       # Returns an array of Azure::BaseManagement::AffinityGroup objects
       def list_affinity_groups
         request_path = '/affinitygroups'
-        request = ManagementHttpRequest.new(:get, request_path, nil)
+        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
         response = request.call
         Serialization.affinity_groups_from_xml(response)
       end
@@ -129,9 +121,9 @@ module Azure
                                                      label,
                                                      options)
           request_path = '/affinitygroups'
-          request = ManagementHttpRequest.new(:post, request_path, body)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:post, request_path, body)
           request.call
-          Loggerx.info "Affinity Group #{name} is created."
+          Azure::Loggerx.info "Affinity Group #{name} is created."
         end
       end
 
@@ -158,9 +150,9 @@ module Azure
         if affinity_group(name)
           body = Serialization.resource_to_xml(label, options)
           request_path = "/affinitygroups/#{name}"
-          request = ManagementHttpRequest.new(:put, request_path, body)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
           request.call
-          Loggerx.info "Affinity Group #{name} is updated."
+          Azure::Loggerx.info "Affinity Group #{name} is updated."
         end
       end
 
@@ -176,9 +168,9 @@ module Azure
       def delete_affinity_group(name)
         if affinity_group(name)
           request_path = "/affinitygroups/#{name}"
-          request = ManagementHttpRequest.new(:delete, request_path)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:delete, request_path)
           request.call
-          Loggerx.info "Deleted affinity group #{name}."
+          Azure::Loggerx.info "Deleted affinity group #{name}."
         end
       end
 
@@ -195,13 +187,20 @@ module Azure
       def get_affinity_group(name)
         if affinity_group(name)
           request_path = "/affinitygroups/#{name}"
-          request = ManagementHttpRequest.new(:get, request_path)
+          request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path)
           response = request.call
           Serialization.affinity_group_from_xml(response)
         end
       end
 
       private
+      def read_cert_from_file(cert_file_path)
+        if File.extname(cert_file_path).downcase == '.pem'
+          File.read(cert_file_path)
+        else
+          File.binread(cert_file_path)
+        end
+      end
 
       def affinity_group(affinity_group_name)
         if affinity_group_name.nil? ||\

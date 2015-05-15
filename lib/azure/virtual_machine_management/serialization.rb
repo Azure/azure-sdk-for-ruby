@@ -18,6 +18,7 @@ require 'base64'
 module Azure
   module VirtualMachineManagement
     module Serialization
+      extend Azure::Core::Utility
       def self.shutdown_virtual_machine_to_xml
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.ShutdownRoleOperation(
@@ -69,6 +70,9 @@ module Azure
             if options[:virtual_network_name]
               xml.VirtualNetworkName options[:virtual_network_name]
             end
+            if options[:reserved_ip_name]
+              xml.ReservedIPName options[:reserved_ip_name]
+            end
           end
         end
         builder.doc.at_css('Role') << role_to_xml(params, image, options).at_css('PersistentVMRole').children.to_s
@@ -85,7 +89,7 @@ module Azure
             xml.OsVersion('i:nil' => 'true')
             xml.RoleType 'PersistentVMRole'
             xml.ConfigurationSets do
-              provisioning_configuration_to_xml(xml, params, options) if image.image_type == 'OS'
+              provisioning_configuration_to_xml(xml, params, options) if image.image_type == 'OS' || image.image_type == 'VM'
               xml.ConfigurationSet('i:type' => 'NetworkConfigurationSet') do
                 xml.ConfigurationSetType 'NetworkConfiguration'
                 xml.InputEndpoints do
@@ -100,6 +104,7 @@ module Azure
                   xml.SubnetNames do
                     xml.SubnetName options[:subnet_name]
                   end
+                  xml.StaticVirtualNetworkIPAddress options[:static_virtual_network_ipaddress] if options[:static_virtual_network_ipaddress]
                 end
               end
             end
@@ -113,7 +118,7 @@ module Azure
             end
             if image.image_type == 'OS'
               xml.OSVirtualHardDisk do
-                xml.MediaLink 'http://' + storage_host + '/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M')) + '.vhd'
+                xml.MediaLink 'http://' + storage_host + '/vhds/' + (Time.now.strftime('disk_%Y_%m_%d_%H_%M_%S_%L')) + '.vhd'
                 xml.SourceImageName params[:image]
               end
             end
@@ -150,6 +155,7 @@ module Azure
                 end
               end
             end
+            xml.CustomData params[:custom_data] if params[:custom_data]
           end
         elsif options[:os_type] == 'Windows'
           xml.ConfigurationSet('i:type' => 'WindowsProvisioningConfigurationSet') do
@@ -275,6 +281,8 @@ module Azure
                   'ConfigurationSets ConfigurationSet SubnetNames SubnetName'
                 )
                 vm.subnet = subnet unless subnet.empty?
+                static_virtual_network_ipaddress =  xml_content(role,'ConfigurationSets ConfigurationSet StaticVirtualNetworkIPAddress')
+                vm.static_virtual_network_ipaddress = static_virtual_network_ipaddress unless static_virtual_network_ipaddress.empty?
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
                 vm.media_link = xml_content(role, 'OSVirtualHardDisk MediaLink')
@@ -361,6 +369,7 @@ module Azure
                 xml.SubnetNames do
                   xml.SubnetName vm.subnet if vm.subnet
                 end
+                xml.StaticVirtualNetworkIPAddress vm.static_virtual_network_ipaddress if vm.static_virtual_network_ipaddress
               end
             end
             xml.OSVirtualHardDisk do
@@ -401,7 +410,7 @@ module Azure
 
       def self.add_data_disk_to_xml(vm, options)
         if options[:import] && options[:disk_name].nil?
-          Loggerx.error_with_exit "The data disk name is not valid."
+          Azure::Loggerx.error_with_exit "The data disk name is not valid."
         end
         media_link = vm.media_link
         builder = Nokogiri::XML::Builder.new do |xml|

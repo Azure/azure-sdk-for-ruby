@@ -17,7 +17,7 @@ require 'support/virtual_network_helper'
 
 describe Azure::VirtualNetworkManagement::VirtualNetwork do
   let(:in_vnet_name) { 'newvnet' }
-  let(:location) { 'West US' }
+  let(:geo_location) { 'West US' }
   let(:in_address_space) { ['172.16.0.0/12'] }
   let(:invalid_address_space) { ['', ''] }
   let(:invalid_cidr_address_space) { ['10.0.0.0'] }
@@ -32,19 +32,19 @@ describe Azure::VirtualNetworkManagement::VirtualNetwork do
   subject { Azure::VirtualNetworkManagementService.new }
 
   before do
-    Loggerx.expects(:puts).returns(nil).at_least(0)
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   end
 
   describe 'Create virtual network valid params' do
     it 'Create virtual network with valid params' do
       subject.set_network_configuration(in_vnet_name,
-                                        location,
+                                        geo_location,
                                         in_address_space,
                                         inputoptions)
 
       VirtualNetworkHelper.check_config(subject.list_virtual_networks,
                                         in_vnet_name,
-                                        location,
+                                        geo_location,
                                         created_state,
                                         in_address_space,
                                         inputoptions)
@@ -60,7 +60,7 @@ describe Azure::VirtualNetworkManagement::VirtualNetwork do
 
       exception = assert_raises(RuntimeError) do
         subject.set_network_configuration(in_vnet_name,
-                                          location,
+                                          geo_location,
                                           in_address_space,
                                           options)
       end
@@ -72,7 +72,7 @@ describe Azure::VirtualNetworkManagement::VirtualNetwork do
     it 'Create virtual network with invalid options' do
       exception = assert_raises(RuntimeError) do
         subject.set_network_configuration(in_vnet_name,
-                                          location,
+                                          geo_location,
                                           invalid_address_space,
                                           inputoptions)
       end
@@ -89,12 +89,12 @@ describe Azure::VirtualNetworkManagement::VirtualNetwork do
       }
 
       subject.set_network_configuration(in_vnet_name,
-                                        location,
+                                        geo_location,
                                         update_address_space,
                                         update_options)
       VirtualNetworkHelper.check_config(subject.list_virtual_networks,
                                         in_vnet_name,
-                                        location,
+                                        geo_location,
                                         created_state,
                                         update_address_space,
                                         update_options)
@@ -105,7 +105,7 @@ describe Azure::VirtualNetworkManagement::VirtualNetwork do
     it 'Create virtual network with invalid options' do
       exception = assert_raises(RuntimeError) do
         subject.set_network_configuration(in_vnet_name,
-                                          location,
+                                          geo_location,
                                           invalid_cidr_address_space,
                                           inputoptions)
       end

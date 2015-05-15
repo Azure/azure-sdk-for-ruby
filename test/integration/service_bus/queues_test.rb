@@ -17,7 +17,7 @@ require "integration/test_helper"
 describe "ServiceBus Queues" do
 
   subject { Azure::ServiceBus::ServiceBusService.new }
-  let(:name) { ServiceBusQueueNameHelper.name }
+  let(:queue_name) { ServiceBusQueueNameHelper.name }
   let(:name_alternative) { ServiceBusQueueNameHelper.name }
   let(:description) {{
     :default_message_time_to_live => 'P10675199DT2H48M5.4775807S',
@@ -44,15 +44,15 @@ describe "ServiceBus Queues" do
   after { ServiceBusQueueNameHelper.clean }
 
   it "should be able to create a new queue from a string" do
-    queue = subject.create_queue name
+    queue = subject.create_queue queue_name
     queue.must_be_kind_of Azure::ServiceBus::Queue
-    queue.name.must_equal name
+    queue.name.must_equal queue_name
   end
 
   it "should be able to create a new queue from a Queue" do
-    queue = subject.create_queue Azure::ServiceBus::Queue.new(name)
+    queue = subject.create_queue Azure::ServiceBus::Queue.new(queue_name)
     queue.must_be_kind_of Azure::ServiceBus::Queue
-    queue.name.must_equal name
+    queue.name.must_equal queue_name
   end
 
   it "should be able to create a new queue from a string and description Hash" do
@@ -88,7 +88,7 @@ describe "ServiceBus Queues" do
   end
 
   describe 'when a queue exists' do
-    before { subject.create_queue name }
+    before { subject.create_queue queue_name }
 
     describe '#delete_queue' do
       it "should raise exception if the queue cannot be deleted" do
@@ -98,17 +98,17 @@ describe "ServiceBus Queues" do
       end
 
       it "should be able to delete the queue" do
-        response = subject.delete_queue name
+        response = subject.delete_queue queue_name
         response.must_equal nil
       end
     end
 
     describe "#get_queue" do
       it "should be able to get a queue by name" do
-        result = subject.get_queue name
+        result = subject.get_queue queue_name
 
         result.must_be_kind_of Azure::ServiceBus::Queue
-        result.name.must_equal name
+        result.name.must_equal queue_name
       end
 
       it "if the queue doesn't exists it should throw" do
@@ -134,7 +134,7 @@ describe "ServiceBus Queues" do
         q1_found = false
         q2_found = false
         result.each { |q|
-          q_found = true if q.name == name
+          q_found = true if q.name == queue_name
           q1_found = true if q.name == name1
           q2_found = true if q.name == name2
         }
@@ -168,7 +168,7 @@ describe "ServiceBus Queues" do
       msg = Azure::ServiceBus::BrokeredMessage.new("some text") do |m|
         m.to = "yo"
       end
-      res = subject.send_queue_message name, msg
+      res = subject.send_queue_message queue_name, msg
       res.must_be_nil
     end
 
@@ -190,10 +190,10 @@ describe "ServiceBus Queues" do
       }}
       let(:msg) { m = Azure::ServiceBus::BrokeredMessage.new(messageContent, properties); m.to = 'me'; m }
       
-      before { subject.send_queue_message name, msg }
+      before { subject.send_queue_message queue_name, msg }
       
       it "should be able to peek a message from a queue" do
-        retrieved = subject.peek_lock_queue_message name
+        retrieved = subject.peek_lock_queue_message queue_name
         retrieved.must_be :kind_of?, Azure::ServiceBus::BrokeredMessage
 
         retrieved.body.must_equal msg.body
@@ -214,22 +214,22 @@ describe "ServiceBus Queues" do
       end
 
       it "should be able to read-delete a message from a queue" do
-        retrieved = subject.read_delete_queue_message name
+        retrieved = subject.read_delete_queue_message queue_name
 
         retrieved.must_be :kind_of?, Azure::ServiceBus::BrokeredMessage
         retrieved.body.must_equal msg.body
         retrieved.to.must_equal msg.to
 
         # it should be deleted
-        retrieved = subject.read_delete_queue_message name, { :timeout => 2 }
+        retrieved = subject.read_delete_queue_message queue_name, { :timeout => 2 }
         retrieved.must_be_nil
       end
 
       it "should be able to unlock a message from a queue" do
-        retrieved = subject.peek_lock_queue_message name, { :timeout => 2 }
+        retrieved = subject.peek_lock_queue_message queue_name, { :timeout => 2 }
 
         # There shouldn't be an available message in the queue
-        retrieved2 = subject.peek_lock_queue_message name, { :timeout => 2 }
+        retrieved2 = subject.peek_lock_queue_message queue_name, { :timeout => 2 }
         retrieved2.must_be_nil
 
         # Unlock the message
@@ -237,25 +237,25 @@ describe "ServiceBus Queues" do
         res.must_be_nil
 
         # The message should be available once again
-        retrieved = subject.peek_lock_queue_message name, { :timeout => 2 }
+        retrieved = subject.peek_lock_queue_message queue_name, { :timeout => 2 }
         retrieved.body.must_equal msg.body
       end
     
       it "should be able to delete a message from a queue" do
 
-        retrieved = subject.peek_lock_queue_message name
+        retrieved = subject.peek_lock_queue_message queue_name
         retrieved.body.must_equal msg.body
 
         subject.delete_queue_message retrieved
 
         # it should be deleted
-        retrieved = subject.peek_lock_queue_message name, { :timeout => 2 }
+        retrieved = subject.peek_lock_queue_message queue_name, { :timeout => 2 }
         assert_nil retrieved
       end
 
       it "should be able to read a message from a queue" do
-        subject.send_queue_message name, msg
-        retrieved = subject.receive_queue_message name
+        subject.send_queue_message queue_name, msg
+        retrieved = subject.receive_queue_message queue_name
 
         retrieved.must_be :kind_of?, Azure::ServiceBus::BrokeredMessage
         retrieved.body.must_equal msg.body

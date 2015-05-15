@@ -140,10 +140,13 @@ module Azure
             http = Net::HTTP.new(uri.host, uri.port)
           end
 
+          http.read_timeout = headers['Keep-Alive'].split('=').last.to_i unless headers.nil? || headers['Keep-Alive'].nil?
+
           if uri.scheme.downcase == 'https'
             # require 'net/https'
+            http.ca_file = Azure.config.ca_file if Azure.config.ca_file
             http.use_ssl = true
-            http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+            http.verify_mode = OpenSSL::SSL::VERIFY_PEER
           end
 
           response = HttpResponse.new(http.request(request))
