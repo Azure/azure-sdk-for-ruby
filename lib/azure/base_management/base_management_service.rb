@@ -57,7 +57,7 @@ module Azure
         raise error_message if m_ep.nil? || m_ep.empty?
 
         m_cert = Azure.config.management_certificate
-        if m_cert =~ /(pem|pfx)$/ # validate only if input is file path
+        if File.file?(m_cert) && File.extname(m_cert).downcase =~ /(pem|pfx)$/ # validate only if input is file path
           error_message = "Could not read from file '#{m_cert}'."
           raise error_message unless test('r', m_cert)
         end
