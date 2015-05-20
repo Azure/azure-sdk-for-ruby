@@ -79,6 +79,19 @@ module Azure
         Serialization.locations_from_xml(response)
       end
 
+      # Public: Gets a list of role sizes associated with the
+      # specified subscription.
+      #
+      # Returns an array of String values for role sizes
+      def list_role_sizes
+        role_sizes = []
+        locations = list_locations
+        locations.each do | location |
+         role_sizes << location.role_sizes
+        end
+        role_sizes.flatten.uniq.compact.sort
+      end
+
       # Public: Gets a lists the affinity groups associated with
       # the specified subscription.
       #

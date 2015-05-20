@@ -9,6 +9,31 @@
       <AvailableService>PersistentVMRole</AvailableService>
       <AvailableService>HighMemory</AvailableService>
     </AvailableServices>
+    <ComputeCapabilities>
+     <VirtualMachinesRoleSizes>
+      <RoleSize>A5</RoleSize>
+      <RoleSize>A6</RoleSize>
+      <RoleSize>A7</RoleSize>
+      <RoleSize>Basic_A0</RoleSize>
+      <RoleSize>Basic_A1</RoleSize>
+      <RoleSize>Basic_A2</RoleSize>
+      <RoleSize>Basic_A3</RoleSize>
+      <RoleSize>Basic_A4</RoleSize>
+      <RoleSize>ExtraLarge</RoleSize>
+      <RoleSize>ExtraSmall</RoleSize>
+      <RoleSize>Large</RoleSize>
+      <RoleSize>Medium</RoleSize>
+      <RoleSize>Small</RoleSize>
+      <RoleSize>Standard_D1</RoleSize>
+      <RoleSize>Standard_D11</RoleSize>
+      <RoleSize>Standard_D12</RoleSize>
+      <RoleSize>Standard_D13</RoleSize>
+      <RoleSize>Standard_D14</RoleSize>
+      <RoleSize>Standard_D2</RoleSize>
+      <RoleSize>Standard_D3</RoleSize>
+      <RoleSize>Standard_D4</RoleSize>
+     </VirtualMachinesRoleSizes>
+    </ComputeCapabilities>
   </Location>
   <Location>
     <Name>East US</Name>
@@ -19,6 +44,31 @@
       <AvailableService>PersistentVMRole</AvailableService>
       <AvailableService>HighMemory</AvailableService>
     </AvailableServices>
+    <ComputeCapabilities>
+      <VirtualMachinesRoleSizes>
+       <RoleSize>A5</RoleSize>
+       <RoleSize>A6</RoleSize>
+       <RoleSize>A7</RoleSize>
+       <RoleSize>Basic_A0</RoleSize>
+       <RoleSize>Basic_A1</RoleSize>
+       <RoleSize>Basic_A2</RoleSize>
+       <RoleSize>Basic_A3</RoleSize>
+       <RoleSize>Basic_A4</RoleSize>
+       <RoleSize>ExtraLarge</RoleSize>
+       <RoleSize>ExtraSmall</RoleSize>
+       <RoleSize>Large</RoleSize>
+       <RoleSize>Medium</RoleSize>
+       <RoleSize>Small</RoleSize>
+       <RoleSize>Standard_D1</RoleSize>
+       <RoleSize>Standard_D11</RoleSize>
+       <RoleSize>Standard_D12</RoleSize>
+       <RoleSize>Standard_D13</RoleSize>
+       <RoleSize>Standard_D14</RoleSize>
+       <RoleSize>Standard_D2</RoleSize>
+       <RoleSize>Standard_D3</RoleSize>
+       <RoleSize>Standard_D4</RoleSize>
+      </VirtualMachinesRoleSizes>
+    </ComputeCapabilities>
   </Location>
   <Location>
     <Name>East Asia</Name>
@@ -29,6 +79,31 @@
       <AvailableService>PersistentVMRole</AvailableService>
       <AvailableService>HighMemory</AvailableService>
     </AvailableServices>
+    <ComputeCapabilities>
+     <VirtualMachinesRoleSizes>
+      <RoleSize>A5</RoleSize>
+      <RoleSize>A6</RoleSize>
+      <RoleSize>A7</RoleSize>
+      <RoleSize>Basic_A0</RoleSize>
+      <RoleSize>Basic_A1</RoleSize>
+      <RoleSize>Basic_A2</RoleSize>
+      <RoleSize>Basic_A3</RoleSize>
+      <RoleSize>Basic_A4</RoleSize>
+      <RoleSize>ExtraLarge</RoleSize>
+      <RoleSize>ExtraSmall</RoleSize>
+      <RoleSize>Large</RoleSize>
+      <RoleSize>Medium</RoleSize>
+      <RoleSize>Small</RoleSize>
+      <RoleSize>Standard_D1</RoleSize>
+      <RoleSize>Standard_D11</RoleSize>
+      <RoleSize>Standard_D12</RoleSize>
+      <RoleSize>Standard_D13</RoleSize>
+      <RoleSize>Standard_D14</RoleSize>
+      <RoleSize>Standard_D2</RoleSize>
+      <RoleSize>Standard_D3</RoleSize>
+      <RoleSize>Standard_D4</RoleSize>
+     </VirtualMachinesRoleSizes>
+    </ComputeCapabilities>
   </Location>
   <Location>
     <Name>Southeast Asia</Name>
@@ -39,6 +114,31 @@
       <AvailableService>PersistentVMRole</AvailableService>
       <AvailableService>HighMemory</AvailableService>
     </AvailableServices>
+    <ComputeCapabilities>
+     <VirtualMachinesRoleSizes>
+      <RoleSize>A5</RoleSize>
+      <RoleSize>A6</RoleSize>
+      <RoleSize>A7</RoleSize>
+      <RoleSize>Basic_A0</RoleSize>
+      <RoleSize>Basic_A1</RoleSize>
+      <RoleSize>Basic_A2</RoleSize>
+      <RoleSize>Basic_A3</RoleSize>
+      <RoleSize>Basic_A4</RoleSize>
+      <RoleSize>ExtraLarge</RoleSize>
+      <RoleSize>ExtraSmall</RoleSize>
+      <RoleSize>Large</RoleSize>
+      <RoleSize>Medium</RoleSize>
+      <RoleSize>Small</RoleSize>
+      <RoleSize>Standard_D1</RoleSize>
+      <RoleSize>Standard_D11</RoleSize>
+      <RoleSize>Standard_D12</RoleSize>
+      <RoleSize>Standard_D13</RoleSize>
+      <RoleSize>Standard_D14</RoleSize>
+      <RoleSize>Standard_D2</RoleSize>
+      <RoleSize>Standard_D3</RoleSize>
+      <RoleSize>Standard_D4</RoleSize>
+     </VirtualMachinesRoleSizes>
+    </ComputeCapabilities>
   </Location>
   <Location>
     <Name>North Europe</Name>
@@ -49,6 +149,31 @@
       <AvailableService>PersistentVMRole</AvailableService>
       <AvailableService>HighMemory</AvailableService>
     </AvailableServices>
+    <ComputeCapabilities>
+     <VirtualMachinesRoleSizes>
+      <RoleSize>A5</RoleSize>
+      <RoleSize>A6</RoleSize>
+      <RoleSize>A7</RoleSize>
+      <RoleSize>Basic_A0</RoleSize>
+      <RoleSize>Basic_A1</RoleSize>
+      <RoleSize>Basic_A2</RoleSize>
+      <RoleSize>Basic_A3</RoleSize>
+      <RoleSize>Basic_A4</RoleSize>
+      <RoleSize>ExtraLarge</RoleSize>
+      <RoleSize>ExtraSmall</RoleSize>
+      <RoleSize>Large</RoleSize>
+      <RoleSize>Medium</RoleSize>
+      <RoleSize>Small</RoleSize>
+      <RoleSize>Standard_D1</RoleSize>
+      <RoleSize>Standard_D11</RoleSize>
+      <RoleSize>Standard_D12</RoleSize>
+      <RoleSize>Standard_D13</RoleSize>
+      <RoleSize>Standard_D14</RoleSize>
+      <RoleSize>Standard_D2</RoleSize>
+      <RoleSize>Standard_D3</RoleSize>
+      <RoleSize>Standard_D4</RoleSize>
+     </VirtualMachinesRoleSizes>
+    </ComputeCapabilities>
   </Location>
   <Location>
     <Name>West Europe</Name>
@@ -58,5 +183,30 @@
       <AvailableService>Storage</AvailableService>
       <AvailableService>HighMemory</AvailableService>
     </AvailableServices>
+    <ComputeCapabilities>
+     <VirtualMachinesRoleSizes>
+      <RoleSize>A5</RoleSize>
+      <RoleSize>A6</RoleSize>
+      <RoleSize>A7</RoleSize>
+      <RoleSize>Basic_A0</RoleSize>
+      <RoleSize>Basic_A1</RoleSize>
+      <RoleSize>Basic_A2</RoleSize>
+      <RoleSize>Basic_A3</RoleSize>
+      <RoleSize>Basic_A4</RoleSize>
+      <RoleSize>ExtraLarge</RoleSize>
+      <RoleSize>ExtraSmall</RoleSize>
+      <RoleSize>Large</RoleSize>
+      <RoleSize>Medium</RoleSize>
+      <RoleSize>Small</RoleSize>
+      <RoleSize>Standard_D1</RoleSize>
+      <RoleSize>Standard_D11</RoleSize>
+      <RoleSize>Standard_D12</RoleSize>
+      <RoleSize>Standard_D13</RoleSize>
+      <RoleSize>Standard_D14</RoleSize>
+      <RoleSize>Standard_D2</RoleSize>
+      <RoleSize>Standard_D3</RoleSize>
+      <RoleSize>Standard_D4</RoleSize>
+     </VirtualMachinesRoleSizes>
+    </ComputeCapabilities>
   </Location>
 </Locations>

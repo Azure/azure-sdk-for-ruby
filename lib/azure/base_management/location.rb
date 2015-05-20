@@ -17,7 +17,7 @@ require "azure/base_management/serialization"
 module Azure
   module BaseManagement
     class Location
-      attr_accessor :name, :available_services
+      attr_accessor :name, :available_services, :role_sizes
 
       def initialize
         yield self if block_given?
