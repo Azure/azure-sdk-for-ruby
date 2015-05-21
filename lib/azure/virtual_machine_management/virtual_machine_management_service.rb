@@ -101,16 +101,22 @@ module Azure
         options[:os_type] = image.os_type
         validate_deployment_params(params, options)
         options[:deployment_name] ||= options[:cloud_service_name]
+
         Azure::Loggerx.info 'Creating deployment...'
 
         options[:cloud_service_name] ||= generate_cloud_service_name(params[:vm_name])
         options[:storage_account_name] ||= generate_storage_account_name(params[:vm_name])
         optionals = {}
+
         if options[:virtual_network_name]
           virtual_network_service = Azure::VirtualNetworkManagementService.new
-          virtual_networks = virtual_network_service.list_virtual_networks.select { |x| x.name == options[:virtual_network_name] }
+
+          virtual_networks = virtual_network_service.list_virtual_networks.select { |x|
+            x.name == options[:virtual_network_name]
+          }
+
           if virtual_networks.empty?
-            Azure::Loggerx.error_with_exit "Virtual network #{options[:virtual_network_name]} doesn't exists"
+            Azure::Loggerx.error_with_exit "Virtual network #{options[:virtual_network_name]} doesn't exist"
           else
             vnet = virtual_networks.first
             if !vnet.affinity_group.empty?
@@ -124,9 +130,14 @@ module Azure
         else
           optionals[:location] = params[:location]
         end
+
         cloud_service = Azure::CloudServiceManagementService.new
         cloud_service.create_cloud_service(options[:cloud_service_name], optionals)
-        cloud_service.upload_certificate(options[:cloud_service_name], params[:certificate]) unless params[:certificate].empty?
+
+        unless params[:certificate].empty?
+          cloud_service.upload_certificate(options[:cloud_service_name], params[:certificate])
+        end
+
         unless image.category == 'User'
           options[:storage_account_name] ||= generate_storage_account_name(params[:vm_name])
           Azure::StorageManagementService.new.create_storage_account(options[:storage_account_name], optionals)
@@ -138,7 +149,7 @@ module Azure
         request.call
         get_virtual_machine(params[:vm_name], options[:cloud_service_name])
       rescue Exception => e
-        e.message
+        Azure::Loggerx.error_with_exit "Unable to create virtual machine: #{e.message}"
       end
 
       # Public: Add a new role to a cloud service. Atleast one deployment should exist before you can add a role.
