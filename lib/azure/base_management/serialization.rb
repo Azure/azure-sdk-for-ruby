@@ -25,6 +25,11 @@ module Azure
           loc.name = xml_content(meta_node, 'Name')
           available_services = meta_node.css('AvailableServices').children
           loc.available_services = available_services.to_ary.join(', ')
+          role_sizes = []
+          meta_node.css('VirtualMachinesRoleSizes RoleSize').each do | role_size_node |
+            role_sizes << role_size_node.text
+          end
+          loc.role_sizes = role_sizes
           location_objs << loc
         end
         location_objs

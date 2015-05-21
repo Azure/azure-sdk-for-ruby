@@ -422,10 +422,19 @@ describe Azure::VirtualMachineManagementService do
 
   describe '#add_role' do
 
+    let(:verb) { :get }
+
     before do
       Azure::Loggerx.stubs(:info).returns(nil)
       Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       windows_params[:cloud_service_name] = 'cloud-service-1'
+      mock_request = mock
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+          verb,
+          location_request_path,
+          nil
+      ).returns(mock_request)
+      mock_request.expects(:call).returns(location_response_body).at_least(0)
     end
 
     it 'should throws error when cloud service name is empty' do
