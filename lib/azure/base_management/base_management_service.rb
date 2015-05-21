@@ -23,15 +23,10 @@ module Azure
       def initialize
         validate_configuration
         cert_file = Azure.config.management_certificate
-
-        if File.file?(cert_file) && File.extname(cert_file).downcase == '.pem'
-          cert_file = File.read(Azure.config.management_certificate)
-        else
-          cert_file = File.binread(Azure.config.management_certificate)
-        end
+        cert_file = read_cert_from_file(cert_file) if File.file?(cert_file)
 
         begin
-          if File.extname(Azure.config.management_certificate).downcase == '.pem'
+          if cert_file =~ /-----BEGIN CERTIFICATE-----/
             certificate_key = OpenSSL::X509::Certificate.new(cert_file)
             private_key = OpenSSL::PKey::RSA.new(cert_file)
           else
@@ -62,12 +57,10 @@ module Azure
         raise error_message if m_ep.nil? || m_ep.empty?
 
         m_cert = Azure.config.management_certificate
-        error_message = "Could not read from file '#{m_cert}'."
-        raise error_message unless test('r', m_cert)
-
-        m_cert = Azure.config.management_certificate
-        error_message = 'Management certificate expects a .pem or .pfx file.'
-        raise error_message unless ['.pem', '.pfx'].include?(File.extname(m_cert).downcase)
+        if File.file?(m_cert) && File.extname(m_cert).downcase =~ /(pem|pfx)$/ # validate only if input is file path
+          error_message = "Could not read from file '#{m_cert}'."
+          raise error_message unless test('r', m_cert)
+        end
       end
 
       # Public: Gets a list of regional data center locations from the server
@@ -214,6 +207,13 @@ module Azure
       end
 
       private
+      def read_cert_from_file(cert_file_path)
+        if File.extname(cert_file_path).downcase == '.pem'
+          File.read(cert_file_path)
+        else
+          File.binread(cert_file_path)
+        end
+      end
 
       def affinity_group(affinity_group_name)
         if affinity_group_name.nil? ||\
