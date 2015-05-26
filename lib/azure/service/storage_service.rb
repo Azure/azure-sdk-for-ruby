@@ -21,6 +21,7 @@ module Azure
 
       def initialize
         validate_configuration
+        super()
       end
 
 
