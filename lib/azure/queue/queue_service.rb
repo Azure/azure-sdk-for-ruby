@@ -21,7 +21,6 @@ module Azure
 
       def initialize
         validate_configuration
-        super()
         @host = Azure.config.storage_queue_host
       end
 

@@ -23,7 +23,6 @@ module Azure
 
       def initialize
         validate_configuration
-        super()
         @host = Azure.config.storage_blob_host
       end
 
