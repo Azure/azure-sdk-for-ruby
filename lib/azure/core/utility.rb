@@ -116,7 +116,7 @@ module Azure
           if logger.nil?
             puts msg.bold.red
           else
-            logger.error(msg.bold.red)
+            logger.error(msg)
           end
 
           raise msg.bold.red
@@ -126,7 +126,7 @@ module Azure
           if logger.nil?
             puts msg.yellow
           else
-            logger.warn(msg.yellow)
+            logger.warn(msg)
           end
 
           msg
@@ -136,7 +136,7 @@ module Azure
           if logger.nil?
             puts msg.bold.red
           else
-            logger.error(msg.bold.red)
+            logger.error(msg)
           end
 
           msg
@@ -146,7 +146,7 @@ module Azure
           if logger.nil?
             puts msg.bold.red
           else
-            logger.warn(msg.bold.red)
+            logger.warn(msg)
           end
 
           raise msg.bold.red
@@ -157,7 +157,7 @@ module Azure
           if logger.nil?
             print msg_with_new_line.green
           else
-            logger.info(msg_with_new_line.green)
+            logger.info(msg)
           end
         end
 
