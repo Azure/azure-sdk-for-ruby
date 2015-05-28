@@ -15,10 +15,17 @@
 require 'test_helper'
 
 describe Azure::Core::Logger do
+  subject { Azure::Core::Logger }
   let(:msg) { "message" }
 
+  after {
+    subject.initialize_external_logger(nil)
+  }
+
   describe "Log without external logger" do
-    subject { Azure::Core::Logger }
+    before {
+      subject.initialize_external_logger(nil)
+    }
 
     it "#info" do
       out, err = capture_io { subject.info(msg) }
@@ -68,7 +75,6 @@ describe Azure::Core::Logger do
   end
 
   describe "Log with external logger" do
-    subject { Azure::Core::Logger }
     let(:fake_output) { StringIO.new }
 
     before {
