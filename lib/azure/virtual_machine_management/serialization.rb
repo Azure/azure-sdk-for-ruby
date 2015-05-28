@@ -89,7 +89,7 @@ module Azure
             xml.OsVersion('i:nil' => 'true')
             xml.RoleType 'PersistentVMRole'
             xml.ConfigurationSets do
-              provisioning_configuration_to_xml(xml, params, options) if image.image_type == 'OS'
+              provisioning_configuration_to_xml(xml, params, options) if image.image_type == 'OS' || image.image_type == 'VM'
               xml.ConfigurationSet('i:type' => 'NetworkConfigurationSet') do
                 xml.ConfigurationSetType 'NetworkConfiguration'
                 xml.InputEndpoints do
@@ -281,6 +281,8 @@ module Azure
                   'ConfigurationSets ConfigurationSet SubnetNames SubnetName'
                 )
                 vm.subnet = subnet unless subnet.empty?
+                static_virtual_network_ipaddress =  xml_content(role,'ConfigurationSets ConfigurationSet StaticVirtualNetworkIPAddress')
+                vm.static_virtual_network_ipaddress = static_virtual_network_ipaddress unless static_virtual_network_ipaddress.empty?
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
                 vm.media_link = xml_content(role, 'OSVirtualHardDisk MediaLink')
@@ -367,6 +369,7 @@ module Azure
                 xml.SubnetNames do
                   xml.SubnetName vm.subnet if vm.subnet
                 end
+                xml.StaticVirtualNetworkIPAddress vm.static_virtual_network_ipaddress if vm.static_virtual_network_ipaddress
               end
             end
             xml.OSVirtualHardDisk do

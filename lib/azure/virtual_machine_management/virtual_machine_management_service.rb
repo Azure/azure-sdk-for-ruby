@@ -534,13 +534,7 @@ module Azure
       end
 
       def validate_role_size(vm_size)
-        suggested_role_sizes = %w(
-          Basic_A0 Basic_A1 Basic_A2 Basic_A3 Basic_A4
-          ExtraSmall Small Medium Large ExtraLarge A5 A6 A7 A8 A9 A10 A11
-          Standard_D1 Standard_D2 Standard_D3 Standard_D4 Standard_D11 Standard_D12 Standard_D13 Standard_D14
-          Standard_DS1 Standard_DS2 Standard_DS3 Standard_DS4 Standard_DS11 Standard_DS12 Standard_DS13 Standard_DS14
-          Standard_G1 Standard_G2 Standard_G3 Standard_G4 Standard_G5
-        )
+        suggested_role_sizes = Azure::BaseManagementService.new.list_role_sizes
         if vm_size && !suggested_role_sizes.include?(vm_size)
           Azure::Loggerx.warn "Value '#{vm_size}' specified for parameter 'vm_size' is not in the list of valid VM role sizes. Suggested values are '#{suggested_role_sizes.join(',')}'"
         end

@@ -130,6 +130,7 @@ describe Azure::VirtualMachineManagementService do
       virtual_machine.ipaddress.must_equal '137.116.17.187'
       virtual_machine.virtual_network_name.must_equal 'test-virtual-network'
       virtual_machine.subnet.must_equal 'test-subnet'
+      virtual_machine.static_virtual_network_ipaddress.must_equal '100.65.164.123'
     end
 
     it 'returns a list of virtual machines for the subscription' do
@@ -421,10 +422,19 @@ describe Azure::VirtualMachineManagementService do
 
   describe '#add_role' do
 
+    let(:verb) { :get }
+
     before do
       Azure::Loggerx.stubs(:info).returns(nil)
       Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       windows_params[:cloud_service_name] = 'cloud-service-1'
+      mock_request = mock
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+          verb,
+          location_request_path,
+          nil
+      ).returns(mock_request)
+      mock_request.expects(:call).returns(location_response_body).at_least(0)
     end
 
     it 'should throws error when cloud service name is empty' do
