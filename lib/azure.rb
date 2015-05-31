@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-module Azure; end
 
 require 'rubygems'
 require 'nokogiri'
@@ -20,6 +19,12 @@ require 'base64'
 require 'openssl'
 require 'uri'
 require 'rexml/document'
+require 'azure/version'
+require 'azure/configurable'
+require 'azure/default'
+require 'azure/client_services'
+require 'azure/http_client'
+require 'azure/client'
 
 require 'azure/core'
 require 'azure/blob/blob_service'
@@ -58,3 +63,27 @@ Azure::VirtualMachineManagementService = Azure::VirtualMachineManagement::Virtua
 Azure::SqlDatabaseManagementService = Azure::SqlDatabaseManagement::SqlDatabaseManagementService
 Azure::VirtualNetworkManagementService = Azure::VirtualNetworkManagement::VirtualNetworkManagementService
 Azure::Loggerx = Azure::Core::Logger
+
+module Azure
+  class << self
+    include Azure::Configurable
+
+    # API client based on configured options {Configurable}
+    #
+    # @return [Azure::Client] API wrapper
+    def client(options = {})
+      @client = Azure::Client.new(options) unless defined?(@client) && @client.same_options?(options)
+      @client
+    end
+
+    private
+
+    def method_missing(method_name, *args, &block)
+      return super unless client.respond_to?(method_name)
+      client.send(method_name, *args, &block)
+    end
+
+  end
+
+  Azure.setup
+end

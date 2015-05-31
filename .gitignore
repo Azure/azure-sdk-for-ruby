@@ -1,4 +1,10 @@
 .rvmrc
+*.gem
+*.rbc
+*.swp
+*.tmproj
+*~
+.\#*
 tags
 /pkg
 /doc
@@ -7,6 +13,15 @@ nbproject/*
 *.gem
 .idea/*
 .project
+.bundle
+.config
+.yardoc
+_yardoc
+coverage
+doc/
+lib/bundler/man
+pkg
+rdoc
 
 
 .DS_Store

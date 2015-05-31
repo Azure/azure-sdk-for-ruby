@@ -25,18 +25,18 @@ module Azure
 
       DEFAULT_TIMEOUT = 60
 
-      def initialize(host=Azure.config.service_bus_host)
-        super(Azure::ServiceBus::Auth::WrapSigner.new)
-          @host = host
-          
-          with_filter do |req, res| 
-            req.headers.delete "x-ms-date"
-            req.headers.delete "x-ms-version"
-            req.headers.delete "DataServiceVersion"
-            req.headers.delete "MaxDataServiceVersion"
-            req.headers["X-Process-At"] = "servicebus"
-            res.call
-          end
+      def initialize(host=nil, options = {})
+        super(Azure::ServiceBus::Auth::WrapSigner.new, nil, options)
+        @host = host || @client.config.service_bus_host
+
+        with_filter do |req, res|
+          req.headers.delete "x-ms-date"
+          req.headers.delete "x-ms-version"
+          req.headers.delete "DataServiceVersion"
+          req.headers.delete "MaxDataServiceVersion"
+          req.headers["X-Process-At"] = "servicebus"
+          res.call
+        end
       end
 
       # Creates a new relay endpoint. Once created, this relay endpoint resource manifest is immutable. 

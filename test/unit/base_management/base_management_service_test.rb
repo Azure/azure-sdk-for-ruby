@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# # Copyright (c) Microsoft and contributors. All rights reserved.
+# Copyright 2013 Microsoft Open Technologies, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'test_helper'
 
-module Azure::Core; end
+describe Azure::BaseManagement::BaseManagementService do
 
-require 'azure/core/error'
+end

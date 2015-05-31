@@ -14,15 +14,14 @@
 #--------------------------------------------------------------------------
 require 'azure/core/http/http_response'
 require 'azure/core/http/http_request'
-include Azure::Core::Http
 
 # Represents an HTTP request that can perform synchronous queries to
 # an HTTP server, returning a HttpResponse
 module Azure
   module BaseManagement
-    class ManagementHttpRequest < HttpRequest
+    class ManagementHttpRequest < Azure::Core::Http::HttpRequest
       include Azure::Core::Utility
-      attr_accessor :uri, :warn, :key, :cert
+      attr_accessor :uri, :warn
 
       # Public: Creates the ManagementHttpRequest
       #
@@ -31,8 +30,8 @@ module Azure
       # body    - IO or String. The request body (optional)
       # key     - String. The request key
       # cert    - String. The request certificate
-      def initialize(method, path, body = nil)
-        super
+      def initialize(method, path, options = {})
+        super(method, path, options)
         @warn = false
         content_length = body ? body.bytesize.to_s : '0'
         @headers.update({
@@ -40,9 +39,9 @@ module Azure
                             'Content-Type' => 'application/xml',
                             'Content-Length' => content_length
                         })
-        @uri = URI.parse(Azure.config.management_endpoint + Azure.config.subscription_id + path)
-        @key = Azure.config.http_private_key
-        @cert = Azure.config.http_certificate_key
+        @uri = URI.parse(client.management_endpoint + client.subscription_id + path)
+        @key = client.http_private_key
+        @cert = client.http_certificate_key
       end
 
       # Public: Sends a request to HTTP server and returns a HttpResponse
@@ -52,7 +51,6 @@ module Azure
         request = http_request_class.new(uri.request_uri, headers)
         request.body = body if body
         http = http_setup
-        # http.set_debug_output($stdout)
         response = wait_for_completion(HttpResponse.new(http.request(request)))
         Nokogiri::XML response.body unless response.nil?
       end
@@ -70,14 +68,11 @@ module Azure
           Azure::Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
         end
         if response.status_code.to_i == 200 || response.status_code.to_i == 201
-          return response
+          response
         elsif redirected? response
           rebuild_request response
         elsif response.status_code.to_i > 201 && response.status_code.to_i <= 299
           check_completion(response.headers['x-ms-request-id'])
-        elsif response.status_code.to_i == 307
-          @uri = URI::parse (response.headers['location'])
-          call
         elsif warn && !response.success?
         elsif response.body
           if ret_val.at_css('Error Code') && ret_val.at_css('Error Message')
@@ -101,12 +96,12 @@ module Azure
       #
       # Print Error or Success of Operation.
       def check_completion(request_id)
-        request_path = "/#{Azure.config.subscription_id}/operations/#{request_id}"
+        request_path = "/#{client.subscription_id}/operations/#{request_id}"
         http = http_setup
         headers['Content-Length'] = '0'
         @method = :get
         done = false
-        while not done
+        until done
           print '# '
           request = http_request_class.new(request_path, headers)
           response = HttpResponse.new(http.request(request))
@@ -146,29 +141,6 @@ module Azure
 
       def redirected?(response)
         (response.status_code.to_i == 307)
-      end
-
-      def http_setup(host_uri = nil)
-        @uri = host_uri if host_uri
-        http = nil
-        if ENV['HTTP_PROXY'] || ENV['HTTPS_PROXY']
-          if ENV['HTTP_PROXY']
-            proxy_uri = URI.parse(ENV['HTTP_PROXY'])
-          else
-            proxy_uri = URI.parse(ENV['HTTPS_PROXY'])
-          end
-          http = Net::HTTP::Proxy(proxy_uri.host, proxy_uri.port).new(uri.host, uri.port)
-        else
-          http = Net::HTTP.new(uri.host, uri.port)
-        end
-
-        if uri.scheme.downcase == 'https'
-          http.use_ssl = true
-          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-          http.cert = cert
-          http.key = key
-        end
-        http
       end
     end
   end

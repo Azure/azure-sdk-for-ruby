@@ -12,9 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "openssl"
-require "base64"
-require "azure/core/configuration"
+require 'openssl'
+require 'base64'
 
 module Azure
   module Core
@@ -31,7 +30,7 @@ module Azure
         #              in the global configuration.
         def initialize(access_key=Azure.config.storage_access_key)
           if access_key.nil?
-            raise ArgumentError, "storage access key must be provided"
+            raise ArgumentError, 'storage access key must be provided'
           end
 
           @access_key = Base64.strict_decode64(access_key)
@@ -43,7 +42,7 @@ module Azure
         #
         # Returns a Base64 String signed with HMAC.
         def sign(body)
-          signed = OpenSSL::HMAC.digest("sha256", access_key, body)
+          signed = OpenSSL::HMAC.digest('sha256', access_key, body)
           Base64.strict_encode64(signed)
         end
       end

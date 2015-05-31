@@ -22,13 +22,14 @@ module Azure
       # Create a new instance of the Service
       # 
       # host            - String. The hostname. (optional, Default empty)
-      def initialize(host='')
+      def initialize(host='', options = {})
         @host = host
+        @client = options[:client] || Azure.client
       end
 
       attr_accessor :host
 
-      def call(method, uri, body=nil, headers=nil)
+      def call(method, uri, body=nil, headers={})
         if headers && !body.nil?
           if headers['Content-Encoding'].nil?
             headers['Content-Encoding'] = body.encoding.to_s
@@ -37,13 +38,8 @@ module Azure
           end
         end
 
-        request = Core::Http::HttpRequest.new(method, uri, body)
-        request.headers.merge!(headers) if headers
-
-        request.headers['connection'] = 'keep-alive' if request.respond_to? :headers
-
+        request = Core::Http::HttpRequest.new(method, uri, body: body, headers: headers, client: @client)
         yield request if block_given?
-
         response = request.call
 
         if !response.nil? && !response.body.nil? && response.headers['content-encoding']

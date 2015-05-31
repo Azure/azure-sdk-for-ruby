@@ -16,7 +16,7 @@ module Azure
   module Core
     # Public: Superclass for errors generated from this library, so people can
     # just rescue this for generic error handling
-    class Error < StandardError
-    end
+    class Error < StandardError;end
+    class HttpError < StandardError;end
   end
 end

@@ -17,8 +17,8 @@ require 'azure/core/http/http_request'
 
 describe Azure::Core::Http::HttpRequest do
   describe ' default_headers ' do
-    subject do 
-      Azure::Core::Http::HttpRequest.new(:get, URI('/'), nil, 'Thu, 04 Oct 2012 06:38:27 GMT')
+    subject do
+      Azure::Core::Http::HttpRequest.new(:get, URI('/'), body: nil, current_time: 'Thu, 04 Oct 2012 06:38:27 GMT')
     end
 
     it 'sets the x-ms-date header to the current_time' do
@@ -47,7 +47,10 @@ describe Azure::Core::Http::HttpRequest do
 
     describe 'when not using a ca_file' do
       subject do
-        Azure::Core::Http::HttpRequest.new(:get, URI('https://manage.windowsazure.com'), nil, 'Thu, 04 Oct 2012 06:38:27 GMT')
+        Azure::Core::Http::HttpRequest.new(:get,
+                                           URI('https://manage.windowsazure.com'),
+                                           body: nil,
+                                           current_time: 'Thu, 04 Oct 2012 06:38:27 GMT')
       end
 
       it 'should set the ca_file on the http request' do
@@ -68,7 +71,10 @@ describe Azure::Core::Http::HttpRequest do
       end
 
       subject do
-        Azure::Core::Http::HttpRequest.new(:get, URI('https://manage.windowsazure.com'), nil, 'Thu, 04 Oct 2012 06:38:27 GMT')
+        Azure::Core::Http::HttpRequest.new(:get,
+                                           URI('https://manage.windowsazure.com'),
+                                           body: nil,
+                                           current_time: 'Thu, 04 Oct 2012 06:38:27 GMT')
       end
 
       let :ca_http do
@@ -81,12 +87,31 @@ describe Azure::Core::Http::HttpRequest do
         end
         ca_http.verify
       end
+    end
+
+    describe 'when passed custom headers' do
+      subject do
+        Azure::Core::Http::HttpRequest.new(:get, URI('/'),
+                                           body: nil,
+                                           headers: {
+                                               'blah' => 'something',
+                                               'x-ms-version' => '123'
+                                           })
+      end
+
+      it 'should have overridden the value of x-ms-version' do
+        subject.headers['x-ms-version'].must_equal '123'
+      end
+
+      it 'should have added in the blah = something header' do
+        subject.headers['blah'].must_equal 'something'
+      end
 
     end
 
     describe ' when passed a body ' do
-      subject do 
-        Azure::Core::Http::HttpRequest.new(:get, URI('/'), '<body/>')
+      subject do
+        Azure::Core::Http::HttpRequest.new(:get, URI('/'), body: '<body/>')
       end
 
       it 'sets the default Content-Type header' do

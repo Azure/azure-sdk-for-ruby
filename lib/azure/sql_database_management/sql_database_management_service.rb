@@ -18,10 +18,6 @@ module Azure
   module SqlDatabaseManagement
     class SqlDatabaseManagementService < BaseManagement::BaseManagementService
 
-      def initialize
-        super()
-      end
-
       # Public: Gets a list of database servers available under the
       # current subscription.
       #

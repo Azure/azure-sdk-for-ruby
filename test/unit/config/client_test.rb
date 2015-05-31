@@ -12,7 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'test_helper'
 
-module Azure::Core; end
+describe Azure::Client do
 
-require 'azure/core/error'
+  describe 'default configuration for a client instance' do
+    subject { Azure.client }
+
+    Azure::Configurable.keys.each do |key|
+      it "should have the same value as its parent for #{key}" do
+        subject.send(key.to_sym).must_equal Azure.send(key.to_sym)
+      end
+
+      unless key == :management_certificate ## TODO: generate another pem and pfx for file / string tests then remove this
+        it "should have a different value as its parent after changing the client for #{key}" do
+          subject.send("#{key}=".to_sym, 'blah')
+          subject.send(key.to_sym).wont_equal Azure.send(key.to_sym)
+        end
+      end
+    end
+
+  end
+
+end

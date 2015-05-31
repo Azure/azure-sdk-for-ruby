@@ -15,8 +15,7 @@
 
 # TODO: extract common SAS logic, add support for the other SAS types
 
-require "azure/core/configuration"
-require "azure/core/auth/signer"
+require 'azure/core/auth/signer'
 
 # This will break if used against API version prior to 2013-08-15 as the format
 # changed

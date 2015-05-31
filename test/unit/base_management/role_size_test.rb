@@ -32,7 +32,7 @@ describe Azure::BaseManagement::Location do
     let(:response_body) { Nokogiri::XML response.body }
 
     before {
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get, request_path, nil).returns(mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get, request_path, anything).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     }
 

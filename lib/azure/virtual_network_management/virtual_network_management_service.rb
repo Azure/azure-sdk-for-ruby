@@ -18,9 +18,6 @@ module Azure
   module VirtualNetworkManagement
     # VirtualNetworkManagementService
     class VirtualNetworkManagementService < BaseManagement::BaseManagementService
-      def initialize
-        super()
-      end
 
       # Public: Gets a list of virtual network services available under the
       # current subscription.

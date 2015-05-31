@@ -18,10 +18,6 @@ module Azure
   module VirtualMachineImageManagement
     class VirtualMachineImageManagementService < BaseManagement::BaseManagementService
 
-      def initialize
-        super()
-      end
-
       # Public: Gets a list of virtual machine images from the server
       #
       # Returns an array of Azure::VirtualMachineImageManagement::VirtualMachineImage objects
@@ -48,7 +44,7 @@ module Azure
       # Returns an array of Azure::VirtualMachineImageManagement::VirtualMachineImage objects
       def list_vm_images
         request_path = '/services/vmimages'
-        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
+        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path)
         response = request.call
         Serialization.virtual_machine_vm_images_from_xml(response)
       end
@@ -56,16 +52,12 @@ module Azure
 
     class VirtualMachineDiskManagementService < BaseManagement::BaseManagementService
 
-      def initialize
-        super()
-      end
-
       # Public: Gets a list of Disks from the server.
       #
       # Returns an array of Azure::VirtualMachineDiskManagementService objects
       def list_virtual_machine_disks
         request_path = '/services/disks'
-        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
+        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path)
         response = request.call
         Serialization.disks_from_xml(response)
       end

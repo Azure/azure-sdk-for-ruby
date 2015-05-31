@@ -25,9 +25,9 @@ module Azure
       #
       # signer        - Azure::Core::Auth::Signer. An implementation of Signer used for signing requests. (optional, Default=Azure::Core::Auth::SharedKey.new)
       # account_name  - String. The account name (optional, Default=Azure.config.storage_account_name)  
-      def initialize(signer=Core::Auth::SharedKey.new, account_name=Azure.config.storage_account_name)
-        super()
-        @account_name = account_name
+      def initialize(signer=Core::Auth::SharedKey.new, account_name=nil, options={})
+        super('', options)
+        @account_name = account_name || @client.storage_account_name
         @signer = signer
         filters.unshift Core::Http::SignerFilter.new(signer) if signer
       end

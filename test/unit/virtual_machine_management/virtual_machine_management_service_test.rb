@@ -66,14 +66,14 @@ describe Azure::VirtualMachineManagementService do
     Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         :get,
         '/services/images',
-        nil
+        anything
     ).returns(mock_request)
     mock_request.expects(:call).returns(os_image_response_body).at_least(0)
     vm_request = mock
     Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         :get,
         '/services/vmimages',
-        nil
+        anything
     ).returns(vm_request)
     vm_request.expects(:call).returns(vm_image_response_body).at_least(0)
   end
@@ -109,9 +109,11 @@ describe Azure::VirtualMachineManagementService do
     let(:virtual_machine_response_body) { Nokogiri::XML virtual_machine_response.body }
 
     before do
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(verb, request_path, nil).returns(mock_cloud_service_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(verb, request_path, anything).returns(mock_cloud_service_request)
       mock_cloud_service_request.expects(:call).returns(cloud_service_response_body)
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(verb, anything).returns(mock_virtual_machine_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new)
+          .with(verb, regexp_matches(/\/services\/hostedservices\/(.+)\/deploymentslots\/production/), anything)
+          .returns(mock_virtual_machine_request)
       mock_virtual_machine_request.stubs(:warn=).returns(true).twice
       mock_virtual_machine_request.expects(:call).twice.returns(virtual_machine_response_body).returns(Nokogiri::XML deployment_error_response.body)
     end
@@ -208,7 +210,7 @@ describe Azure::VirtualMachineManagementService do
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
           verb,
           location_request_path,
-          nil
+          anything
       ).returns(mock_request)
       mock_request.expects(:call).returns(location_response_body).at_least(0)
       Azure::CloudServiceManagementService.any_instance.stubs(:create_cloud_service)
@@ -266,7 +268,7 @@ describe Azure::VirtualMachineManagementService do
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
           verb,
           location_request_path,
-          nil
+          anything
       ).returns(mock_request)
       mock_request.expects(:call).returns(location_response_body).at_least(0)
       Azure::CloudServiceManagementService.any_instance.stubs(:create_cloud_service)
@@ -437,7 +439,7 @@ describe Azure::VirtualMachineManagementService do
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
           verb,
           location_request_path,
-          nil
+          anything
       ).returns(mock_request)
       mock_request.expects(:call).returns(location_response_body).at_least(0)
     end

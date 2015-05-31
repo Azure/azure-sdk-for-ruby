@@ -62,7 +62,7 @@ module Azure
       # Returns a URI.
       def service_properties_uri(query={})
         query.update(restype: 'service', comp: 'properties')
-        generate_uri("", query)
+        generate_uri('', query)
       end
 
       # Adds metadata properties to header hash with required prefix
@@ -76,7 +76,7 @@ module Azure
       end
 
       def service_properties_headers
-        {"x-ms-version" => "2013-08-15"}
+        {'x-ms-version' => '2013-08-15'}
       end
     end
   end

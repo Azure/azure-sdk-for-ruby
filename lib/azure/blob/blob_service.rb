@@ -21,9 +21,9 @@ module Azure
   module Blob
     class BlobService < Service::StorageService
 
-      def initialize
-        super()
-        @host = Azure.config.storage_blob_host
+      def initialize(options = {})
+        @client = options[:client] || Azure.client
+        @host = @client.storage_blob_host
       end
 
       # Public: Get a list of Containers from the server
@@ -103,7 +103,7 @@ module Azure
       # Returns a Container
       def create_container(name, options={})
         query = { }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = container_uri(name, query)
 
@@ -111,7 +111,7 @@ module Azure
 
         add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
 
-        headers["x-ms-blob-public-access"] = options[:public_access_level].to_s if options[:public_access_level]
+        headers['x-ms-blob-public-access'] = options[:public_access_level].to_s if options[:public_access_level]
 
         response = call(:put, uri, nil, headers)
 
@@ -138,7 +138,7 @@ module Azure
       # Returns nil on success
       def delete_container(name, options={})
         query = { }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         call(:delete, container_uri(name, query))
         nil
@@ -161,7 +161,7 @@ module Azure
       # Returns a Container
       def get_container_properties(name, options={})
         query = { }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         response = call(:get, container_uri(name, query))
 
@@ -186,8 +186,8 @@ module Azure
       #
       # Returns a Container
       def get_container_metadata(name, options={})
-        query = { "comp" => "metadata" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'metadata'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         response = call(:get, container_uri(name, query))
 
@@ -216,8 +216,8 @@ module Azure
       #   signed_identifiers  - A list of Azure::Entity::SignedIdentifier instances
       #
       def get_container_acl(name, options={})
-        query = { "comp" => "acl" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'acl'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
         response = call(:get, container_uri(name, query))
 
         container = Serialization.container_from_headers(response.headers)
@@ -250,12 +250,12 @@ module Azure
       # * +signed_identifiers+  - A list of Azure::Entity::SignedIdentifier instances
       #
       def set_container_acl(name, public_access_level, options={})
-        query = { "comp" => "acl" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'acl'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
         uri =container_uri(name, query)
 
         headers = service_properties_headers
-        headers["x-ms-blob-public-access"] = public_access_level if public_access_level && public_access_level.to_s.length > 0
+        headers['x-ms-blob-public-access'] = public_access_level if public_access_level && public_access_level.to_s.length > 0
 
         signed_identifiers = nil
         signed_identifiers = options[:signed_identifiers] if options[:signed_identifiers]
@@ -290,8 +290,8 @@ module Azure
       #
       # Returns nil on success
       def set_container_metadata(name, metadata, options={})
-        query = { "comp" => "metadata" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'metadata'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         headers = service_properties_headers
         add_metadata_to_headers(metadata, headers) if metadata
@@ -354,20 +354,20 @@ module Azure
       #
       # Returns an Azure::Service::EnumerationResults
       def list_blobs(name, options={})
-        query = { "comp" => "list" }
-        query["prefix"] = options[:prefix].gsub(/\\/, "/") if options[:prefix]
-        query["delimiter"] = options[:delimiter] if options[:delimiter]
-        query["marker"] = options[:marker] if options[:marker]
-        query["maxresults"] = options[:max_results].to_s if options[:max_results]
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'list'}
+        query['prefix'] = options[:prefix].gsub(/\\/, "/") if options[:prefix]
+        query['delimiter'] = options[:delimiter] if options[:delimiter]
+        query['marker'] = options[:marker] if options[:marker]
+        query['maxresults'] = options[:max_results].to_s if options[:max_results]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         included_datasets = []
-        included_datasets.push("metadata") if options[:metadata] == true
-        included_datasets.push("snapshots") if options[:snapshots] == true
-        included_datasets.push("uncommittedblobs") if options[:uncommittedblobs] == true
-        included_datasets.push("copy") if options[:copy] == true
+        included_datasets.push('metadata') if options[:metadata] == true
+        included_datasets.push('snapshots') if options[:snapshots] == true
+        included_datasets.push('uncommittedblobs') if options[:uncommittedblobs] == true
+        included_datasets.push('copy') if options[:copy] == true
 
-        query["include"] = included_datasets.join ',' if included_datasets.length > 0
+        query['include'] = included_datasets.join ',' if included_datasets.length > 0
 
         uri = container_uri(name, query)
         response = call(:get, uri)
@@ -407,34 +407,34 @@ module Azure
       # Returns a Blob
       def create_page_blob(container, blob, length, options={})
         query = { }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
         headers = service_properties_headers
 
         # set x-ms-blob-type to PageBlob
-        headers["x-ms-blob-type"] = "PageBlob"
+        headers['x-ms-blob-type'] = 'PageBlob'
 
         # ensure content-length is 0 and x-ms-blob-content-length is the blob length
-        headers["Content-Length"] = 0.to_s
-        headers["x-ms-blob-content-length"] = length.to_s
+        headers['Content-Length'] = 0.to_s
+        headers['x-ms-blob-content-length'] = length.to_s
 
         # set x-ms-sequence-number from options (or default to 0)
-        headers["x-ms-sequence-number"] = (options[:sequence_number] || 0).to_s
+        headers['x-ms-sequence-number'] = (options[:sequence_number] || 0).to_s
 
         # set the rest of the optional headers
-        headers["Content-Type"] = options[:content_type] if options[:content_type]
-        headers["Content-Encoding"] = options[:content_encoding] if options[:content_encoding]
-        headers["Content-Language"] = options[:content_language] if options[:content_language]
-        headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
-        headers["Cache-Control"] = options[:cache_control] if options[:cache_control]
+        headers['Content-Type'] = options[:content_type] if options[:content_type]
+        headers['Content-Encoding'] = options[:content_encoding] if options[:content_encoding]
+        headers['Content-Language'] = options[:content_language] if options[:content_language]
+        headers['Content-MD5'] = options[:content_md5] if options[:content_md5]
+        headers['Cache-Control'] = options[:cache_control] if options[:cache_control]
 
-        headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
-        headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
-        headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
-        headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
-        headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
+        headers['x-ms-blob-content-type'] = options[:blob_content_type] if options[:blob_content_type]
+        headers['x-ms-blob-content-encoding'] = options[:blob_content_encoding] if options[:blob_content_encoding]
+        headers['x-ms-blob-content-language'] = options[:blob_content_language] if options[:blob_content_language]
+        headers['x-ms-blob-content-md5'] = options[:blob_content_md5] if options[:blob_content_md5]
+        headers['x-ms-blob-cache-control'] = options[:blob_cache_control] if options[:blob_cache_control]
 
         add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
 
@@ -474,26 +474,26 @@ module Azure
       #
       # Returns Blob
       def create_blob_pages(container, blob, start_range, end_range, content, options={})
-        query = { "comp" => "page" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'page'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
         headers = service_properties_headers
-        headers["x-ms-range"] = "bytes=#{start_range}-#{end_range}"
-        headers["x-ms-page-write"] = "update"
+        headers['x-ms-range'] = "bytes=#{start_range}-#{end_range}"
+        headers['x-ms-page-write'] = 'update'
 
         # clear default content type
-        headers["Content-Type"] = ""
+        headers['Content-Type'] = ''
 
         # set optional headers
         unless options.empty?
-          headers["x-ms-if-sequence-number-le"] = options[:if_sequence_number_le] if options[:if_sequence_number_le]
-          headers["x-ms-if-sequence-number-lt"] = options[:if_sequence_number_lt] if options[:if_sequence_number_lt]
-          headers["x-ms-if-sequence-number-eq"] = options[:if_sequence_number_eq] if options[:if_sequence_number_eq]
-          headers["If-Modified-Since"] = options[:if_modified_since] if options[:if_modified_since]
-          headers["If-Unmodified-Since"] = options[:if_unmodified_since] if options[:if_unmodified_since]
-          headers["If-Match"] = options[:if_match] if options[:if_match]
-          headers["If-None-Match"] = options[:if_none_match] if options[:if_none_match]
+          headers['x-ms-if-sequence-number-le'] = options[:if_sequence_number_le] if options[:if_sequence_number_le]
+          headers['x-ms-if-sequence-number-lt'] = options[:if_sequence_number_lt] if options[:if_sequence_number_lt]
+          headers['x-ms-if-sequence-number-eq'] = options[:if_sequence_number_eq] if options[:if_sequence_number_eq]
+          headers['If-Modified-Since'] = options[:if_modified_since] if options[:if_modified_since]
+          headers['If-Unmodified-Since'] = options[:if_unmodified_since] if options[:if_unmodified_since]
+          headers['If-Match'] = options[:if_match] if options[:if_match]
+          headers['If-None-Match'] = options[:if_none_match] if options[:if_none_match]
         end
 
         response = call(:put, uri, content, headers)
@@ -523,17 +523,17 @@ module Azure
       #
       # Returns Blob
       def clear_blob_pages(container, blob, start_range, end_range, options={})
-        query = { "comp" => "page" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'page'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
         headers = service_properties_headers
-        headers["x-ms-range"] = "bytes=#{start_range}-#{end_range}"
-        headers["x-ms-page-write"] = "clear"
+        headers['x-ms-range'] = "bytes=#{start_range}-#{end_range}"
+        headers['x-ms-page-write'] = 'clear'
 
         # clear default content type
-        headers["Content-Type"] = ""
+        headers['Content-Type'] = ''
 
         response = call(:put, uri, nil, headers)
 
@@ -581,28 +581,28 @@ module Azure
       # Returns a Blob
       def create_block_blob(container, blob, content, options={})
         query = { }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
         headers = service_properties_headers
 
         # set x-ms-blob-type to BlockBlob
-        headers["x-ms-blob-type"] = "BlockBlob"
+        headers['x-ms-blob-type'] = 'BlockBlob'
 
         # set the rest of the optional headers
-        headers["Content-Type"] = options[:content_type] || "application/octet-stream"
-        headers["Content-Encoding"] = options[:content_encoding] if options[:content_encoding]
-        headers["Content-Language"] = options[:content_language] if options[:content_language]
-        headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
-        headers["Cache-Control"] = options[:cache_control] if options[:cache_control]
+        headers['Content-Type'] = options[:content_type] || 'application/octet-stream'
+        headers['Content-Encoding'] = options[:content_encoding] if options[:content_encoding]
+        headers['Content-Language'] = options[:content_language] if options[:content_language]
+        headers['Content-MD5'] = options[:content_md5] if options[:content_md5]
+        headers['Cache-Control'] = options[:cache_control] if options[:cache_control]
 
-        headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
-        headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
-        headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
-        headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
-        headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
-        headers["x-ms-blob-content-disposition"] = options[:blob_content_disposition] if options[:blob_content_disposition]
+        headers['x-ms-blob-content-type'] = options[:blob_content_type] if options[:blob_content_type]
+        headers['x-ms-blob-content-encoding'] = options[:blob_content_encoding] if options[:blob_content_encoding]
+        headers['x-ms-blob-content-language'] = options[:blob_content_language] if options[:blob_content_language]
+        headers['x-ms-blob-content-md5'] = options[:blob_content_md5] if options[:blob_content_md5]
+        headers['x-ms-blob-cache-control'] = options[:blob_cache_control] if options[:blob_cache_control]
+        headers['x-ms-blob-content-disposition'] = options[:blob_content_disposition] if options[:blob_content_disposition]
 
         add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
 
@@ -635,18 +635,18 @@ module Azure
       #
       # Returns the MD5 of the uploaded block (as calculated by the server)
       def create_blob_block(container, blob, block_id, content, options={})
-        query = { "comp" => "block" }
-        query["blockid"] = Base64.strict_encode64(block_id)
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'block'}
+        query['blockid'] = Base64.strict_encode64(block_id)
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
         headers = service_properties_headers
-        headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
+        headers['Content-MD5'] = options[:content_md5] if options[:content_md5]
 
         response = call(:put, uri, content, headers)
 
-        response.headers["Content-MD5"]
+        response.headers['Content-MD5']
       end
 
       # Public: Commits existing blob blocks to a blob.
@@ -688,20 +688,20 @@ module Azure
       #
       # Returns nil on success
       def commit_blob_blocks(container, blob, block_list, options={})
-        query = { "comp" => "blocklist" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'blocklist'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
         headers = service_properties_headers
         unless options.empty?
-          headers["Content-MD5"] = options[:content_md5] if options[:content_md5]
-          headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
-          headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
-          headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
-          headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
-          headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
-          headers["x-ms-blob-content-disposition"] = options[:blob_content_disposition] if options[:blob_content_disposition]
+          headers['Content-MD5'] = options[:content_md5] if options[:content_md5]
+          headers['x-ms-blob-content-type'] = options[:blob_content_type] if options[:blob_content_type]
+          headers['x-ms-blob-content-encoding'] = options[:blob_content_encoding] if options[:blob_content_encoding]
+          headers['x-ms-blob-content-language'] = options[:blob_content_language] if options[:blob_content_language]
+          headers['x-ms-blob-content-md5'] = options[:blob_content_md5] if options[:blob_content_md5]
+          headers['x-ms-blob-cache-control'] = options[:blob_cache_control] if options[:blob_cache_control]
+          headers['x-ms-blob-content-disposition'] = options[:blob_content_disposition] if options[:blob_content_disposition]
 
           add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
         end
@@ -742,10 +742,10 @@ module Azure
 
         options[:blocklist_type] = options[:blocklist_type] || :all
 
-        query = { "comp" => "blocklist" }
-        query["snapshot"] = options[:snapshot] if options[:snapshot]
-        query["blocklisttype"] = options[:blocklist_type].to_s if options[:blocklist_type]
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'blocklist'}
+        query['snapshot'] = options[:snapshot] if options[:snapshot]
+        query['blocklisttype'] = options[:blocklist_type].to_s if options[:blocklist_type]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
@@ -774,8 +774,8 @@ module Azure
       # Returns a Blob
       def get_blob_properties(container, blob, options={})
         query = { }
-        query["snapshot"] = options[:snapshot] if options[:snapshot]
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query['snapshot'] = options[:snapshot] if options[:snapshot]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
@@ -808,9 +808,9 @@ module Azure
       #
       # Returns a Blob
       def get_blob_metadata(container, blob, options={})
-        query = {"comp"=>"metadata"}
-        query["snapshot"] = options[:snapshot] if options[:snapshot]
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = {'comp' => 'metadata'}
+        query['snapshot'] = options[:snapshot] if options[:snapshot]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
@@ -849,16 +849,16 @@ module Azure
       #   eg. [ [0, 511], [512, 1024], ... ]
       #
       def list_page_blob_ranges(container, blob, options={})
-        query = {"comp"=>"pagelist"}
-        query.update({"snapshot" => options[:snapshot]}) if options[:snapshot]
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = {'comp' => 'pagelist'}
+        query.update({'snapshot' => options[:snapshot]}) if options[:snapshot]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
         options[:start_range] = 0 if options[:end_range] and not options[:start_range]
 
         headers = service_properties_headers
-        headers = { "x-ms-range" =>  "bytes=#{options[:start_range]}-#{options[:end_range]}" } if options[:start_range]
+        headers = { 'x-ms-range' =>  "bytes=#{options[:start_range]}-#{options[:end_range]}" } if options[:start_range]
 
         response = call(:get, uri, nil, headers)
 
@@ -944,22 +944,22 @@ module Azure
       #
       # Returns nil on success.
       def set_blob_properties(container, blob, options={})
-        query = { "comp" => "properties" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'properties'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
         uri = blob_uri(container, blob, query)
 
         headers = service_properties_headers
 
         unless options.empty?
-          headers["x-ms-blob-content-type"] = options[:blob_content_type] if options[:blob_content_type]
-          headers["x-ms-blob-content-encoding"] = options[:blob_content_encoding] if options[:blob_content_encoding]
-          headers["x-ms-blob-content-language"] = options[:blob_content_language] if options[:blob_content_language]
-          headers["x-ms-blob-content-md5"] = options[:blob_content_md5] if options[:blob_content_md5]
-          headers["x-ms-blob-cache-control"] = options[:blob_cache_control] if options[:blob_cache_control]
-          headers["x-ms-blob-content-length"] = options[:blob_content_length].to_s if options[:blob_content_length]
-          headers["x-ms-blob-sequence-number-action"] = options[:sequence_number_action].to_s if options[:sequence_number_action]
-          headers["x-ms-blob-sequence-number"] = options[:sequence_number].to_s if options[:sequence_number]
-          headers["x-ms-blob-content-disposition"] = options[:blob_content_disposition] if options[:blob_content_disposition]
+          headers['x-ms-blob-content-type'] = options[:blob_content_type] if options[:blob_content_type]
+          headers['x-ms-blob-content-encoding'] = options[:blob_content_encoding] if options[:blob_content_encoding]
+          headers['x-ms-blob-content-language'] = options[:blob_content_language] if options[:blob_content_language]
+          headers['x-ms-blob-content-md5'] = options[:blob_content_md5] if options[:blob_content_md5]
+          headers['x-ms-blob-cache-control'] = options[:blob_cache_control] if options[:blob_cache_control]
+          headers['x-ms-blob-content-length'] = options[:blob_content_length].to_s if options[:blob_content_length]
+          headers['x-ms-blob-sequence-number-action'] = options[:sequence_number_action].to_s if options[:sequence_number_action]
+          headers['x-ms-blob-sequence-number'] = options[:sequence_number].to_s if options[:sequence_number]
+          headers['x-ms-blob-content-disposition'] = options[:blob_content_disposition] if options[:blob_content_disposition]
         end
 
         call(:put, uri, nil, headers)
@@ -984,8 +984,8 @@ module Azure
       #
       # Returns nil on success.
       def set_blob_metadata(container, blob, metadata, options={})
-        query = { "comp" => "metadata" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'metadata'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
         uri = blob_uri(container, blob, query)
 
         headers = service_properties_headers
@@ -1020,20 +1020,20 @@ module Azure
       # Returns a blob and the blob body
       def get_blob(container, blob, options={})
         query = { }
-        query["snapshot"] = options[:snapshot] if options[:snapshot]
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query['snapshot'] = options[:snapshot] if options[:snapshot]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
         uri = blob_uri(container, blob, query)
 
         headers = service_properties_headers
         options[:start_range] = 0 if options[:end_range] and not options[:start_range]
         if options[:start_range]
-          headers["x-ms-range"] = "bytes=#{options[:start_range]}-#{options[:end_range]}"
-          headers["x-ms-range-get-content-md5"] = true if options[:get_content_md5]
+          headers['x-ms-range'] = "bytes=#{options[:start_range]}-#{options[:end_range]}"
+          headers['x-ms-range-get-content-md5'] = true if options[:get_content_md5]
         end
 
         response = call(:get, uri, nil, headers)
         result = Serialization.blob_from_headers(response.headers)
-        result.name = blob if not result.name
+        result.name = blob unless result.name
         return result, response.body
       end
 
@@ -1064,15 +1064,15 @@ module Azure
       # Returns nil on success
       def delete_blob(container, blob, options={})
         query = { }
-        query["snapshot"] = options[:snapshot] if options[:snapshot]
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query['snapshot'] = options[:snapshot] if options[:snapshot]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
-        options[:delete_snapshots] = :include if !options[:delete_snapshots]
+        options[:delete_snapshots] = :include unless options[:delete_snapshots]
 
         headers = service_properties_headers
-        headers["x-ms-delete-snapshots"] = options[:delete_snapshots].to_s if options[:delete_snapshots] && options[:snapshot] == nil
+        headers['x-ms-delete-snapshots'] = options[:delete_snapshots].to_s if options[:delete_snapshots] && options[:snapshot] == nil
 
         call(:delete, uri, nil, headers)
         nil
@@ -1108,8 +1108,8 @@ module Azure
       #
       # Returns the snapshot DateTime value
       def create_blob_snapshot(container, blob, options={})
-        query = { "comp" => "snapshot" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'snapshot'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
@@ -1117,15 +1117,15 @@ module Azure
         unless options.empty?
           add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
 
-          headers["If-Modified-Since"] = options[:if_modified_since] if options[:if_modified_since]
-          headers["If-Unmodified-Since"] = options[:if_unmodified_since] if options[:if_unmodified_since]
-          headers["If-Match"] = options[:if_match] if options[:if_match]
-          headers["If-None-Match"] = options[:if_none_match] if options[:if_none_match]
+          headers['If-Modified-Since'] = options[:if_modified_since] if options[:if_modified_since]
+          headers['If-Unmodified-Since'] = options[:if_unmodified_since] if options[:if_unmodified_since]
+          headers['If-Match'] = options[:if_match] if options[:if_match]
+          headers['If-None-Match'] = options[:if_none_match] if options[:if_none_match]
         end
 
         response = call(:put, uri, nil, headers)
 
-        response.headers["x-ms-snapshot"]
+        response.headers['x-ms-snapshot']
       end
 
       # Public: Copies a source blob to a destination blob within the same storage account.
@@ -1184,27 +1184,27 @@ module Azure
       #
       def copy_blob(destination_container, destination_blob, source_container, source_blob, options={})
         query = { }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(destination_container, destination_blob, query)
         headers = service_properties_headers
-        headers["x-ms-copy-source"] = blob_uri(source_container, source_blob, options[:source_snapshot] ? { "snapshot" => options[:source_snapshot] } : {}).to_s
+        headers['x-ms-copy-source'] = blob_uri(source_container, source_blob, options[:source_snapshot] ? { 'snapshot' => options[:source_snapshot] } : {}).to_s
 
         unless options.empty?
-          headers["If-Modified-Since"] = options[:dest_if_modified_since] if options[:dest_if_modified_since]
-          headers["If-Unmodified-Since"] = options[:dest_if_unmodified_since] if options[:dest_if_unmodified_since]
-          headers["If-Match"] = options[:dest_if_match] if options[:dest_if_match]
-          headers["If-None-Match"] = options[:dest_if_none_match] if options[:dest_if_none_match]
-          headers["x-ms-source-if-modified-since"] = options[:source_if_modified_since] if options[:source_if_modified_since]
-          headers["x-ms-source-if-unmodified-since"] = options[:source_if_unmodified_since] if options[:source_if_unmodified_since]
-          headers["x-ms-source-if-match"] = options[:source_if_match] if options[:source_if_match]
-          headers["x-ms-source-if-none-match"] = options[:source_if_none_match] if options[:source_if_none_match]
+          headers['If-Modified-Since'] = options[:dest_if_modified_since] if options[:dest_if_modified_since]
+          headers['If-Unmodified-Since'] = options[:dest_if_unmodified_since] if options[:dest_if_unmodified_since]
+          headers['If-Match'] = options[:dest_if_match] if options[:dest_if_match]
+          headers['If-None-Match'] = options[:dest_if_none_match] if options[:dest_if_none_match]
+          headers['x-ms-source-if-modified-since'] = options[:source_if_modified_since] if options[:source_if_modified_since]
+          headers['x-ms-source-if-unmodified-since'] = options[:source_if_unmodified_since] if options[:source_if_unmodified_since]
+          headers['x-ms-source-if-match'] = options[:source_if_match] if options[:source_if_match]
+          headers['x-ms-source-if-none-match'] = options[:source_if_none_match] if options[:source_if_none_match]
 
           add_metadata_to_headers(options[:metadata], headers) if options[:metadata]
         end
 
         response = call(:put, uri, nil, headers)
-        return response.headers["x-ms-copy-id"], response.headers["x-ms-copy-status"]
+        return response.headers['x-ms-copy-id'], response.headers['x-ms-copy-status']
       end
 
       # Public: Establishes an exclusive one-minute write lock on a blob. To write to a locked
@@ -1232,8 +1232,8 @@ module Azure
       # for the active lease.
       #
       def acquire_lease(container, blob, options={})
-        query = { "comp" => "lease" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'lease'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
@@ -1241,12 +1241,12 @@ module Azure
         duration = options[:duration] if options[:duration]
 
         headers = service_properties_headers
-        headers["x-ms-lease-action"] = "acquire"
-        headers["x-ms-lease-duration"] = duration.to_s if duration
-        headers["x-ms-proposed-lease-id"] = options[:proposed_lease_id] if options[:proposed_lease_id]
+        headers['x-ms-lease-action'] = 'acquire'
+        headers['x-ms-lease-duration'] = duration.to_s if duration
+        headers['x-ms-proposed-lease-id'] = options[:proposed_lease_id] if options[:proposed_lease_id]
 
         response = call(:put, uri, nil, headers)
-        response.headers["x-ms-lease-id"]
+        response.headers['x-ms-lease-id']
       end
 
       # Public: Renews the lease. The lease can be renewed if the lease ID specified on the request matches that
@@ -1270,17 +1270,17 @@ module Azure
       #
       # Returns the renewed lease id
       def renew_lease(container, blob, lease, options={})
-        query = { "comp" => "lease" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'lease'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
         headers = service_properties_headers
-        headers["x-ms-lease-action"] = "renew"
-        headers["x-ms-lease-id"] = lease
+        headers['x-ms-lease-action'] = 'renew'
+        headers['x-ms-lease-id'] = lease
 
         response = call(:put, uri, nil, headers)
-        response.headers["x-ms-lease-id"]
+        response.headers['x-ms-lease-id']
       end
 
       # Public: Releases the lease. The lease may be released if the lease ID specified on the request matches that
@@ -1303,14 +1303,14 @@ module Azure
       #
       # Returns nil on success
       def release_lease(container, blob, lease, options={})
-        query = { "comp" => "lease" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'lease'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
         headers = service_properties_headers
-        headers["x-ms-lease-action"] = "release"
-        headers["x-ms-lease-id"] = lease
+        headers['x-ms-lease-action'] = 'release'
+        headers['x-ms-lease-id'] = lease
 
         call(:put, uri, nil, headers)
         nil
@@ -1350,17 +1350,17 @@ module Azure
       # period, in seconds. This header is returned only for a successful request to break the lease. If the break
       # is immediate, 0 is returned.
       def break_lease(container, blob, options={})
-        query = { "comp" => "lease" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'lease'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = blob_uri(container, blob, query)
 
         headers = service_properties_headers
-        headers["x-ms-lease-action"] = "break"
-        headers["x-ms-lease-break-period"] = options[:break_period].to_s if options[:break_period]
+        headers['x-ms-lease-action'] = 'break'
+        headers['x-ms-lease-break-period'] = options[:break_period].to_s if options[:break_period]
 
         response = call(:put, uri, nil, headers)
-        response.headers["x-ms-lease-time"].to_i
+        response.headers['x-ms-lease-time'].to_i
       end
 
       # Protected: Generate the URI for the collection of containers.
@@ -1373,8 +1373,8 @@ module Azure
       # Returns a URI.
       protected
       def containers_uri(query={})
-        query = { "comp" => "list" }.merge(query)
-        generate_uri("/", query)
+        query = { 'comp' => 'list'}.merge(query)
+        generate_uri('/', query)
       end
 
       # Protected: Generate the URI for a specific container.
@@ -1389,7 +1389,7 @@ module Azure
       protected
       def container_uri(name, query={})
         return name if name.kind_of? ::URI
-        query = { "restype" => "container" }.merge(query)
+        query = { 'restype' => 'container'}.merge(query)
         generate_uri(name, query)
       end
 

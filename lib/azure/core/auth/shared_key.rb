@@ -12,9 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "cgi"
-require "azure/core/configuration"
-require "azure/core/auth/signer"
+require 'cgi'
+require 'azure/core/auth/signer'
 
 module Azure
   module Core
