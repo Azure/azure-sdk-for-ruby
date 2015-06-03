@@ -138,7 +138,7 @@ module Azure
         request.call
         get_virtual_machine(params[:vm_name], options[:cloud_service_name])
       rescue Exception => e
-        e.message
+        Azure::Loggerx.error_with_exit "Failed to create virtual machine : "+e.message
       end
 
       # Public: Add a new role to a cloud service. Atleast one deployment should exist before you can add a role.

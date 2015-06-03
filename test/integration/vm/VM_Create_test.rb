@@ -194,67 +194,67 @@ describe Azure::VirtualMachineManagementService do
 
     it 'throws error as port value is beyond or less than actual range' do
       default_options.merge!(tcp_endpoints: '80,166535:166535')
-      msg = subject.create_virtual_machine(params, default_options)
+      ex = assert_raises(RuntimeError){subject.create_virtual_machine(params, default_options)}
       error_msg = "invalid. Allowed values are 'a number between 1 to 65535'."
-      assert_match(/#{error_msg}/i, msg)
+      assert_match(/#{error_msg}/i, ex.message)
 
       default_options.merge!(tcp_endpoints: '80,0:0')
-      msg = subject.create_virtual_machine(params, default_options)
-      assert_match(/#{error_msg}/i, msg)
+      ex = assert_raises(RuntimeError){subject.create_virtual_machine(params, default_options)}
+      assert_match(/#{error_msg}/i,ex.message)
       cloud_service.delete_cloud_service(cloud_service_name)
     end
 
     it 'throws error when multiple VMs created under same DNS' do
       subject.create_virtual_machine(params, default_options)
-      msg = subject.create_virtual_machine(windows_params, default_options)
+      ex = assert_raises(RuntimeError){subject.create_virtual_machine(windows_params, default_options)}
       error_msg = 'The specified deployment slot Production is occupied.'
-      assert_match(/#{error_msg}/i, msg)
+      assert_match(/#{error_msg}/i, ex.message)
     end
 
     it 'throws SystemExit error when vm_user not provided' do
       params.delete(:vm_user)
-      msg = subject.create_virtual_machine(params)
-      assert_match(/You did not provide a valid 'vm_user' value./i, msg)
+      ex = assert_raises(RuntimeError){subject.create_virtual_machine(params)}
+      assert_match(/You did not provide a valid 'vm_user' value./i, ex.message)
     end
 
     it 'throws Runtime error when image not provide' do
       params.delete(:image)
-      msg = subject.create_virtual_machine(params)
-      assert_match(/The virtual machine image source is not valid/i, msg)
+      ex = assert_raises(RuntimeError){ subject.create_virtual_machine(params)}
+      assert_match(/The virtual machine image source is not valid/i, ex.message)
     end
 
     it 'error thrown when invalid storage account name is given' do
       default_options.merge!(storage_account_name: 'storageuse_91')
-      msg = subject.create_virtual_machine(params, default_options)
-      assert_match(/The name is not a valid storage account name./i, msg)
+      ex = assert_raises(RuntimeError){subject.create_virtual_machine(params, default_options)}
+      assert_match(/The name is not a valid storage account name./i, ex.message)
       cloud_service.delete_cloud_service(cloud_service_name)
     end
 
     it 'error thrown when invalid cloud name is given' do
       default_options.merge!(cloud_service_name: 'cloud-server-test_91')
-      msg = subject.create_virtual_machine(params, default_options)
-      assert_match(/The hosted service name is invalid/i, msg)
+      ex = assert_raises(RuntimeError){ subject.create_virtual_machine(params, default_options)}
+      assert_match(/The hosted service name is invalid/i, ex.message)
     end
 
     it 'error thrown when invalid deployment name provided' do
       default_options.merge!(deployment_name: 'instance_B')
-      msg = subject.create_virtual_machine(params, default_options)
-      assert_match(/The deployment name is invalid/i, msg)
+      ex = assert_raises(RuntimeError){subject.create_virtual_machine(params, default_options)}
+      assert_match(/The deployment name is invalid/i,ex.message)
       cloud_service.delete_cloud_service(cloud_service_name)
     end
 
     it 'error thrown when invalid VM name given for Windows OS' do
       windows_params.merge!(vm_name: 'MSServerInstnce01')
-      msg = subject.create_virtual_machine(windows_params, default_options)
+      ex = assert_raises(RuntimeError) {subject.create_virtual_machine(windows_params, default_options)}
       error_msg = 'The computer name cannot be more than 15 characters long'
-      assert_match(/#{error_msg}/i, msg)
+      assert_match(/#{error_msg}/i, ex.message)
       cloud_service.delete_cloud_service(cloud_service_name)
     end
 
     it 'error thrown when blank password for Windows OS provided' do
       windows_params.delete(:password)
-      msg = subject.create_virtual_machine(windows_params, default_options)
-      assert_match(/You did not provide a valid 'password' value./i, msg)
+      ex = assert_raises(RuntimeError){ subject.create_virtual_machine(windows_params, default_options)}
+      assert_match(/You did not provide a valid 'password' value./i, ex.message)
     end
 
   end # deployment
