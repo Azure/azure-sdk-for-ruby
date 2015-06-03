@@ -94,38 +94,75 @@ module Azure
         cert
       end
 
+      def initialize_external_logger(logger)
+        Loggerx.initialize_external_logger(logger)
+      end
     end
 
     # Logger
     module Logger
       class << self
+        attr_accessor :logger
+
         def info(msg)
-          puts msg.bold.white
+          if logger.nil?
+            puts msg.bold.white
+          else
+            logger.info(msg)
+          end
         end
 
         def error_with_exit(msg)
-          puts  msg.bold.red
+          if logger.nil?
+            puts msg.bold.red
+          else
+            logger.error(msg)
+          end
+
           raise msg.bold.red
         end
 
         def warn(msg)
-          puts msg.yellow
+          if logger.nil?
+            puts msg.yellow
+          else
+            logger.warn(msg)
+          end
+
           msg
         end
 
         def error(msg)
-          puts msg.bold.red
+          if logger.nil?
+            puts msg.bold.red
+          else
+            logger.error(msg)
+          end
+
           msg
         end
 
         def exception_message(msg)
-          print msg.bold.red
+          if logger.nil?
+            puts msg.bold.red
+          else
+            logger.warn(msg)
+          end
+
           raise msg.bold.red
         end
 
         def success(msg)
           msg_with_new_line = msg + "\n"
-          print msg_with_new_line.green
+          if logger.nil?
+            print msg_with_new_line.green
+          else
+            logger.info(msg)
+          end
+        end
+
+        def initialize_external_logger(logger)
+          @logger = logger
         end
       end
     end
