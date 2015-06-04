@@ -240,6 +240,25 @@ module Azure
           raise error
         end
       end
+
+      def validate_configuration
+        subs_id = Azure.config.subscription_id
+        error_message = 'Subscription ID not valid.'
+        raise error_message if subs_id.nil? || subs_id.empty?
+
+        m_ep = Azure.config.management_endpoint
+        error_message = 'Management endpoint not valid.'
+        raise error_message if m_ep.nil? || m_ep.empty?
+
+        m_cert = Azure.config.management_certificate
+        error_message = "Could not read management certificate: '#{m_cert}'."
+        raise error_message if m_cert.nil? || m_cert.empty? || !test('r', m_cert)
+
+        m_cert = Azure.config.management_certificate
+        error_message = 'Management certificate expects a .pem or .pfx file.'
+        raise error_message unless m_cert =~ /(pem|pfx)$/
+      end
+
     end
   end
 end

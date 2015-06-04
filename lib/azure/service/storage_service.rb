@@ -18,12 +18,10 @@ module Azure
   module Service
     # A base class for StorageService implementations
     class StorageService < Azure::Core::SignedService
-      # Create a new instance of the StorageService
-      #
-      # signer        - Azure::Core::Auth::Signer. An implementation of Signer used for signing requests. (optional, Default=Azure::Core::Auth::SharedKey.new)
-      # account_name  - String. The account name (optional, Default=Azure.config.storage_account_name)  
-      def initialize(signer=Core::Auth::SharedKey.new, account_name=Azure.config.storage_account_name)
-        super(signer, account_name)
+
+      def initialize
+        validate_configuration
+        super()
       end
 
 
@@ -66,9 +64,9 @@ module Azure
       end
 
       # Adds metadata properties to header hash with required prefix
-      # 
+      #
       # metadata  - A Hash of metadata name/value pairs
-      # headers   - A Hash of HTTP headers 
+      # headers   - A Hash of HTTP headers
       def add_metadata_to_headers(metadata, headers)
         metadata.each do |key, value|
           headers["x-ms-meta-#{key}"] = value
@@ -78,6 +76,15 @@ module Azure
       def service_properties_headers
         {"x-ms-version" => "2013-08-15"}
       end
+
+      private
+
+      def validate_configuration
+        sto_an = Azure.config.storage_account_name
+        error_message = 'Storage account name missing.'
+        raise error_message if sto_an.nil? || sto_an.empty?
+      end
+
     end
   end
 end
