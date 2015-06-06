@@ -101,8 +101,13 @@ module Azure
 
           if body
             headers["Content-Type"]   = "application/atom+xml; charset=utf-8"
-            headers["Content-Length"] = body.bytesize.to_s
-            headers["Content-MD5"]    = Base64.strict_encode64(Digest::MD5.digest(body))
+            if IO === body
+              headers["Content-Length"] = body.size.to_s
+              headers["Content-MD5"]    = Digest::MD5.file(body.path).base64digest
+            else
+              headers["Content-Length"] = body.bytesize.to_s
+              headers["Content-MD5"]    = Base64.strict_encode64(Digest::MD5.digest(body))
+            end
           else
             headers["Content-Length"] = "0"
             headers["Content-Type"] = ""
@@ -125,7 +130,11 @@ module Azure
         # Returns a HttpResponse
         def call
           request = http_request_class.new(uri.request_uri, headers)
-          request.body = body if body
+          if IO === body
+            request.body_stream = body
+          elsif body
+            request.body = body
+          end
 
           http = nil
           if ENV['HTTP_PROXY'] || ENV['HTTPS_PROXY']
