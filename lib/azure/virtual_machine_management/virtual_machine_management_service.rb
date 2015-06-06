@@ -106,7 +106,9 @@ module Azure
         options[:cloud_service_name] ||= generate_cloud_service_name(params[:vm_name])
         options[:storage_account_name] ||= generate_storage_account_name(params[:vm_name])
         optionals = {}
-        if options[:virtual_network_name]
+        if options[:affinity_group_name]
+          optionals[:affinity_group_name] = options[:affinity_group_name] 
+        elsif options[:virtual_network_name]
           virtual_network_service = Azure::VirtualNetworkManagementService.new
           virtual_networks = virtual_network_service.list_virtual_networks.select { |x| x.name == options[:virtual_network_name] }
           if virtual_networks.empty?
@@ -119,8 +121,6 @@ module Azure
               optionals[:location] = vnet.location
             end
           end
-        elsif options[:affinity_group_name]
-          optionals[:affinity_group_name] = options[:affinity_group_name]
         else
           optionals[:location] = params[:location]
         end
