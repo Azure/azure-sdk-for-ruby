@@ -42,9 +42,7 @@ module Azure
     # @!attribute http_certificate_key
     #   @return [String] Public key used for HTTPS certificate based authentication (derived from the management cert)
     # @!attribute sql_database_management_endpoint
-    #   @return [String] Azure SQL database management endpoint. default: https://management.database.windows.net:8443/
-    # @!attribute sql_database_authentication_mode
-    #   @return [String] Azure SQL database authentication mode. default:
+    #   @return [String] Azure SQL database management endpoint. default: https://management.core.windows.net:8443/
     # @!attribute storage_blob_host
     #   @return [String] Set the host for the Blob service. Only set this if you want
     #     something custom (like, for example, to point this to a LocalStorage
@@ -83,7 +81,6 @@ module Azure
                 :storage_blob_host,
                 :storage_queue_host,
                 :sql_database_management_endpoint,
-                :sql_database_authentication_mode,
                 :management_endpoint
 
     class << self

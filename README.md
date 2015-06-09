@@ -20,9 +20,9 @@ This project provides a Ruby package that makes it easy to access and manage Mic
     * [Locations](#locations)
     * [Affinity Groups](#affinity)
 * [Virtual Machine Management](#vms)
-    * [list images](#images)
     * list, delete Disks
     * manage virtual machines
+    * [list images](#images)
 * Cloud Service Management
 * [SQL Database Server Management](#sql)
 * [Virtual Network Management](#vnets)
@@ -45,24 +45,6 @@ You can install the azure rubygem package directly.
 ```bash
 gem install azure
 ```
-
-## Download Source Code
-
-To get the source code of the SDK via **git** just type:
-
-```bash
-git clone https://github.com/Azure/azure-sdk-for-ruby.git
-cd ./azure-sdk-for-ruby
-```
-Then, run bundler to install all the gem dependencies:
-
-```bash
-bundle install
-```
-
-## Generate Documentation
-
-Running the command ``rdoc`` will generate the API documentation in the `./doc` directory.
 
 ## Setup Connection
 
@@ -166,13 +148,6 @@ There are two ways you can set up the connections:
     * Service Bus: not supported
 
     * Service Management: not supported
-
-## Run Test
-
-You can use the following commands to run:
-* all the tests: ``rake test``
-* a specific suite of tests: ``rake test:integration:blob``
-* one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
 
 # Usage
 
@@ -640,37 +615,86 @@ vnet.set_network_configuration(vnetxml)
 
 ```
 
-# Useful commands for certificate operations
+# Getting Started with Certificates
 
 Currently the sdk supports *.pem or *.pfx (passwordless pfx) for service management operations. Following are the steps discussed on various cert operations.
 
-## Publish Settings files
+## Get Started with Publish Settings
 
 * To create a pfx from the publishsettings, simply download the publishsettings file for your subscription 
 [https://manage.windowsazure.com/publishsettings](https://manage.windowsazure.com/publishsettings/index?client=powershell). Make sure you have this gem installed and
  run `pfxer --in [path to your .publishsettings file]`. This will create a .pfx from your publish settings file which can 
  be supplied as a cert parameter for Service Management Commands.
  
-## Generate New Cert and Upload to Azure Portal
+## Get Started with OpenSSL
 
 * Using the following openssl commands to create a cert and upload to Azure Management
-  * Generate public and private `openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.key -out mycert.pem`
-  * Generate public .cer for Azure upload `openssl x509 -inform pem -in mycert.pem -outform der -out mycert_mgmt.cer`
-  * Upload the `mycert_mgmt.cer` to Azure Management through [https://management.azure.com](https://management.azure.com)
-  * Combine the public and private into one `cat mycert.key mycert.pem > cert.pem`
+  * Generate public and private `openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout cert.pem -out cert.pem`
+  * Generate public .cer for Azure upload `openssl x509 -inform pem -in cert.pem -outform der -out mgmt.cer`
+  * Upload the `mgmt.cer` to Azure Management through [https://management.azure.com](https://management.azure.com)
   * Use cert.pem as your cert parameter for Service Management Commands.
-
-# Need Help?
-
-Be sure to check out the Microsoft Azure [Developer Forums on Stack Overflow and MSDN](http://go.microsoft.com/fwlink/?LinkId=234489) if you have trouble with the provided code.
 
 # Contribute Code or Provide Feedback
 
-If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.com/guidelines.html).
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+
+## Development Environment Setup
+
+### Download Source Code
+
+To get the source code of the SDK via **git** just type:
+
+```bash
+git clone https://github.com/Azure/azure-sdk-for-ruby.git
+cd ./azure-sdk-for-ruby
+```
+
+Then, run bundler to install all the gem dependencies:
+
+```bash
+bundle install
+```
+
+### Setup the Environment for Integration Tests
+
+If you would like to run the integration test suite, you will need to setup environment variables which will be used
+during the integration tests. These tests will use these credentials to run live tests against Azure with the provided
+credentials (you will be charged for usage, so verify the clean up scripts did their job at the end of a test run).
+
+The root of the project contains a .env_sample file. This dot file is a sample of the actual environment vars needed to
+run the integration tests.
+
+Do the following to prepare your environment for integration tests:
+
+* Copy .env_sample to .env **relative to root of the project dir**
+* Update .env with your credentials **.env is in the .gitignore, so should only reside locally**
+
+### Run Tests
+
+You can use the following commands to run:
+
+* All the tests: ``rake test``. **This will run integration tests if you have .env file or env vars setup**
+* A specific suite of tests: ``rake test:unit``, ``rake test:integration``, ``rake test:integration:blob``, etc.
+* one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
+
+### Generate Documentation
+
+Running the command ``yard`` will generate the API documentation in the `./doc` directory.
+
+## Provide Feedback
+
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-ruby/issues) section of the project.
 
-# Learn More
+# Maintainers
 
-For documentation on how to host Ruby applications on Microsoft Azure, please see the [Microsoft Azure Ruby Developer Center](http://www.azure.com/en-us/develop/ruby/).
-For documentation on Azure PowerShell CLI tool for Windows, please see our readme [here](http://github.com/azure/azure-sdk-tools).
-For documentation on the Azure cross platform CLI tool for Windows, Mac and Linux, please see our readme [here](http://github.com/azure/azure-sdk-tools-xplat).
+* [David Justice](https://github.com/devigned)
+
+# Azure CLI Tooling
+
+For documentation on [Azure PowerShell](http://github.com/azure/azure-powershell).
+For documentation on [Azure CLI](http://github.com/azure/azure-xplat-cli).

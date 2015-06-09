@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
-require "azure/blob/blob_service"
-require "azure/core/http/http_error"
+require 'integration/test_helper'
+require 'azure/blob/blob_service'
+require 'azure/core/http/http_error'
 
 describe Azure::Blob::BlobService do
   subject { Azure::Blob::BlobService.new }
@@ -29,7 +29,7 @@ describe Azure::Blob::BlobService do
     end
 
     it 'creates the container with custom metadata' do
-      metadata = { "CustomMetadataProperty"=>"CustomMetadataValue" }
+      metadata = { 'CustomMetadataProperty' => 'CustomMetadataValue'}
 
       container = subject.create_container container_name, { :metadata => metadata }
       
@@ -44,7 +44,7 @@ describe Azure::Blob::BlobService do
     end
 
     it 'errors if the container already exists' do
-      container = subject.create_container container_name
+      subject.create_container container_name
       
       assert_raises(Azure::Core::Http::HTTPError) do
         subject.create_container container_name
@@ -53,7 +53,7 @@ describe Azure::Blob::BlobService do
     
     it 'errors if the container name is invalid' do
       assert_raises(Azure::Core::Http::HTTPError) do
-        subject.create_container "this_container.cannot-exist!"
+        subject.create_container 'this_container.cannot-exist!'
       end
     end
   end

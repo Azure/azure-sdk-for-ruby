@@ -27,7 +27,6 @@ describe 'Azure::SqlDatabaseManagementService' do
       Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       mock_request.stubs(:headers).returns(response_headers)
       mock_request.expects(:call).returns(Nokogiri::XML response_xml).at_least(0)
-      Azure.config.sql_database_authentication_mode = :sql_server
     end
 
     describe '#list_servers' do
@@ -204,7 +203,6 @@ describe 'Azure::SqlDatabaseManagementService' do
       Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       mock_request.stubs(:headers).returns(response_headers)
       mock_request.expects(:call).returns(Nokogiri::XML response_xml).at_least(0)
-      Azure.config.sql_database_authentication_mode = :management_certificate
     end
 
     describe '#list_servers' do

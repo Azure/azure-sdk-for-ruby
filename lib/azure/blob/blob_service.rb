@@ -1366,6 +1366,28 @@ module Azure
         response.headers['x-ms-lease-time'].to_i
       end
 
+      def call(method, uri, body=nil, headers=nil)
+        # Force the request.body to the content encoding of specified in the header
+        # (content encoding probably shouldn't be used this way)
+        if headers && !body.nil?
+          if headers['Content-Encoding'].nil?
+            headers['Content-Encoding'] = body.encoding.to_s
+          else
+            body.force_encoding(headers['Content-Encoding'])
+          end
+        end
+
+        response = super
+
+        # Force the response.body to the content encoding of specified in the header.
+        # content-encoding is echo'd back for the blob and is used to store the encoding of the octet stream
+        if !response.nil? && !response.body.nil? && response.headers['content-encoding']
+          response.body.force_encoding(response.headers['content-encoding'])
+        end
+
+        response
+      end
+
       # Protected: Generate the URI for the collection of containers.
       #
       # ==== Attributes
@@ -1389,7 +1411,6 @@ module Azure
       # * +host+  - The host of the API.
       #
       # Returns a URI.
-      protected
       def container_uri(name, query={})
         return name if name.kind_of? ::URI
         query = { 'restype' => 'container'}.merge(query)
@@ -1406,7 +1427,6 @@ module Azure
       # * +host+           - The host of the API.
       #
       # Returns a URI.
-      protected
       def blob_uri(container_name, blob_name, query={})
         if container_name.nil? || container_name.empty?
           path = blob_name
