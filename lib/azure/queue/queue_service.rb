@@ -20,7 +20,7 @@ module Azure
     class QueueService < Service::StorageService
 
       def initialize(options = {})
-        @client = options[:client] || Azure.client
+        super(nil, nil, options)
         @host = @client.storage_queue_host
       end
 

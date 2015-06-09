@@ -28,7 +28,7 @@ module Azure
       # Azure::VirtualNetworkServiceManagement::VirtualNetwork objects
       def list_virtual_networks
         request_path = '/services/networking/virtualnetwork'
-        request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
+        request = client.management_request(:get, request_path, nil)
         response = request.call
         Serialization.virtual_network_from_xml(response)
       end
@@ -81,7 +81,7 @@ module Azure
                                                     location,
                                                     address_space,
                                                     options)
-        request = BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
+        request = client.management_request(:put, request_path, body)
         request.headers['Content-Type'] = 'text/plain'
         Azure::Loggerx.info "Creating virtual network #{vnet}."
         request.call
@@ -96,7 +96,7 @@ module Azure
         else
           body = File.read(file)
         end
-        request = BaseManagement::ManagementHttpRequest.new(:put, request_path, body)
+        request = client.management_request(:put, request_path, body)
         request.headers['Content-Type'] = 'text/plain'
         Azure::Loggerx.info 'Creating virtual network.'
         request.call

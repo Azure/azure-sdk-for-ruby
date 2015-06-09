@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
+require 'integration/test_helper'
 
-describe "ServiceBus Queues" do
+describe 'ServiceBus Queues' do
 
   subject { Azure::ServiceBus::ServiceBusService.new }
   let(:queue_name) { ServiceBusQueueNameHelper.name }

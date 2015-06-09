@@ -18,27 +18,17 @@ module Azure
   module BaseManagement
     # This class is used for communicating with the Management certificate authentication API endpoint
     class SqlManagementHttpRequest < ManagementHttpRequest
-      attr_accessor :uri
-      # Public: Creates the ManagementHttpRequest
+
+      # Creates the SqlManagementHttpRequest
       #
-      # method  - Symbol. The HTTP method to use (:get, :post, :put, :del, etc...)
-      # path    - URI. The URI of the HTTP endpoint to query
-      # body    - IO or String. The request body (optional)
-      def initialize(method, path, body = nil)
-        if sql_endpoint?
-          super(method, path, body)
-          @headers['x-ms-version'] = '1.0'
-          @uri = URI.parse(Azure.config.sql_database_management_endpoint + Azure.config.subscription_id + path)
-        else
-          path = "/services/sqlservers#{path}"
-          super(method, path, body)
-        end
-      end
-
-      private
-
-      def sql_endpoint?
-        Azure.config.sql_database_authentication_mode == :sql_server
+      # @param method           [Symbol] The HTTP method to use (:get, :post, :put, :del, etc...)
+      # @param path             [URI] The URI of the HTTP endpoint to query
+      # @param options_or_body  [Hash|IO|String] The request options including {:client, :body} or raw body only
+      def initialize(method, path, options_or_body = {})
+        path = '/services/sqlservers' + (path.start_with?('/') ? path : '/' + path)
+        super(method, path, options_or_body)
+        headers['x-ms-version'] = '2012-03-01'
+        self.uri = URI.parse(Azure.config.sql_database_management_endpoint + Azure.config.subscription_id + path)
       end
     end
   end

@@ -45,9 +45,10 @@ describe Azure::Blob::BlobService do
       blob.name.must_equal blob_name2
 
       # empty string container name
-      blob = subject.create_page_blob "", blob_name3, length
+      blob = subject.create_page_blob '', blob_name3, length
       blob.name.must_equal blob_name3
     rescue Azure::Core::Http::HTTPError => error
+      puts error.message
       error.status_code.must_equal 409
     end
   end

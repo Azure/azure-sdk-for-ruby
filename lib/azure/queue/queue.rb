@@ -22,7 +22,6 @@ module Azure
       end
 
       attr_accessor :name
-      attr_accessor :url
       attr_accessor :metadata
     end
   end

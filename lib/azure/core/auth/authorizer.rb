@@ -27,7 +27,7 @@ module Azure
         # Returns the modified request
         def sign(request, signer)
           signature = signer.sign(request.method, request.uri, request.headers)
-          request.headers["Authorization"] = "#{signer.name} #{signature}"
+          request.headers['Authorization'] = "#{signer.name} #{signature}"
           request
         end
       end

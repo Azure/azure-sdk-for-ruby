@@ -21,27 +21,26 @@ module Azure
   module BaseManagement
     class ManagementHttpRequest < Azure::Core::Http::HttpRequest
       include Azure::Core::Utility
-      attr_accessor :uri, :warn
+      attr_accessor :warn
 
-      # Public: Creates the ManagementHttpRequest
+      # Creates the ManagementHttpRequest
       #
-      # method  - Symbol. The HTTP method to use (:get, :post, :put, :del, etc...)
-      # path    - URI. The URI of the HTTP endpoint to query
-      # body    - IO or String. The request body (optional)
-      # key     - String. The request key
-      # cert    - String. The request certificate
-      def initialize(method, path, options = {})
-        super(method, path, options)
-        @warn = false
+      # @param method           [Symbol] The HTTP method to use (:get, :post, :put, :del, etc...)
+      # @param path             [URI] The URI of the HTTP endpoint to query
+      # @param options_or_body  [Hash|IO|String] The request options including {:client, :body} or raw body only
+      def initialize(method, path, options_or_body = {})
+        options ||= unless options_or_body.is_a?(Hash)
+                    {body: options_or_body}
+                  end || options_or_body || {}
+        options[:client] ||= Azure
+        super(method, self.class.request_uri(path, options[:client]), options)
+        @warn = options.fetch(:warn, false)
         content_length = body ? body.bytesize.to_s : '0'
-        @headers.update({
-                            'x-ms-version' => '2014-06-01',
+        headers.update({
+                            'x-ms-version' => '2015-04-01',
                             'Content-Type' => 'application/xml',
                             'Content-Length' => content_length
                         })
-        @uri = URI.parse(client.management_endpoint + client.subscription_id + path)
-        @key = client.http_private_key
-        @cert = client.http_certificate_key
       end
 
       # Public: Sends a request to HTTP server and returns a HttpResponse
@@ -49,10 +48,14 @@ module Azure
       # Returns a Nokogiri::XML instance of HttpResponse body
       def call
         request = http_request_class.new(uri.request_uri, headers)
-        request.body = body if body
+        set_request_body(request)
         http = http_setup
-        response = wait_for_completion(HttpResponse.new(http.request(request)))
+        response = wait_for_completion(Azure::Core::Http::HttpResponse.new(http.request(request)))
         Nokogiri::XML response.body unless response.nil?
+      end
+
+      def apply_body_headers
+        super
       end
 
       # Public: Wait for HTTP request completion.
@@ -74,6 +77,7 @@ module Azure
         elsif response.status_code.to_i > 201 && response.status_code.to_i <= 299
           check_completion(response.headers['x-ms-request-id'])
         elsif warn && !response.success?
+          response
         elsif response.body
           if ret_val.at_css('Error Code') && ret_val.at_css('Error Message')
             Azure::Loggerx.error_with_exit ret_val.at_css('Error Code').content + ' : ' + ret_val.at_css('Error Message').content
@@ -83,6 +87,13 @@ module Azure
         else
           Azure::Loggerx.exception_message "http error: #{response.status_code}"
         end
+      end
+
+      def http_setup
+        http = super
+        http.cert = @client.http_certificate_key if @client.http_certificate_key
+        http.key = @client.http_private_key if @client.http_private_key
+        http
       end
 
       # Public: Gets the status of the specified operation and determines whether
@@ -104,7 +115,7 @@ module Azure
         until done
           print '# '
           request = http_request_class.new(request_path, headers)
-          response = HttpResponse.new(http.request(request))
+          response = Azure::Core::Http::HttpResponse.new(http.request(request))
           ret_val = Nokogiri::XML response.body
           status = xml_content(ret_val, 'Operation Status')
           status_code = response.status_code.to_i
@@ -112,8 +123,8 @@ module Azure
             done = true
           end
           if redirected? response
-            host_uri = URI.parse(response.headers['location'])
-            http = http_setup(host_uri)
+            @uri = self.class.request_uri(response.headers['location'], client)
+            http = http_setup
             done = false
           end
           if done
@@ -135,12 +146,19 @@ module Azure
         host_uri = URI.parse(response.headers['location'])
         request = http_request_class.new(host_uri.request_uri, headers)
         request.body = body if body
-        http = http_setup(host_uri)
+        http = http_setup
         wait_for_completion(HttpResponse.new(http.request(request)))
       end
 
       def redirected?(response)
         (response.status_code.to_i == 307)
+      end
+
+      private
+
+      def self.request_uri(path, client)
+        relative_path = path =~ /^\// ? path[1..-1] : path # remove the starting slash in the relative path if exists
+        URI.join(client.management_endpoint, '/' + client.subscription_id + '/', relative_path)
       end
     end
   end

@@ -32,21 +32,78 @@ describe Azure do
     end
 
     describe 'configuration of management certificates with files and strings' do
+      let(:private_key) {Azure.http_private_key}
+      let(:public_key) {Azure.http_certificate_key}
+
       describe 'using a pfx' do
+
         describe 'loaded as a string' do
+          before do
+            Azure.management_certificate = File.binread(Fixtures['management_certificate.pfx'])
+          end
+
+          it 'should populate the private key' do
+            refute_nil(private_key)
+            private_key.must_be_kind_of(OpenSSL::PKey::RSA)
+          end
+
+          it 'should populate the public key' do
+            refute_nil(public_key)
+            public_key.must_be_kind_of(OpenSSL::X509::Certificate)
+          end
 
         end
-        describe 'loaded as a file' do
 
+        describe 'loaded as a file' do
+          before do
+            Azure.management_certificate = Fixtures['management_certificate.pfx']
+          end
+
+          it 'should populate the private key' do
+            refute_nil(private_key)
+            private_key.must_be_kind_of(OpenSSL::PKey::RSA)
+          end
+
+          it 'should populate the public key' do
+            refute_nil(public_key)
+            public_key.must_be_kind_of(OpenSSL::X509::Certificate)
+          end
         end
       end
+
       describe 'using a pem' do
+
         describe 'loaded as a string' do
+          before do
+            Azure.management_certificate = File.read(Fixtures['management_certificate.pem'])
+          end
+
+          it 'should populate the private key' do
+            refute_nil(private_key)
+            private_key.must_be_kind_of(OpenSSL::PKey::RSA)
+          end
+
+          it 'should populate the public key' do
+            refute_nil(public_key)
+            public_key.must_be_kind_of(OpenSSL::X509::Certificate)
+          end
 
         end
 
         describe 'loaded as a file' do
+          before do
+            Azure.management_certificate = Fixtures['management_certificate.pem']
+          end
 
+          it 'should populate the private key' do
+            refute_nil(private_key)
+            private_key.must_be_kind_of(OpenSSL::PKey::RSA)
+          end
+
+          it 'should populate the public key' do
+            refute_nil(public_key)
+            public_key.must_be_kind_of(OpenSSL::X509::Certificate)
+          end
         end
       end
     end

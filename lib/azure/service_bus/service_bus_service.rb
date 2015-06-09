@@ -14,6 +14,7 @@
 #--------------------------------------------------------------------------
 require 'azure/core/signed_service'
 require 'azure/service_bus/auth/wrap_signer'
+require 'azure/service_bus/auth/shared_access_signer'
 require 'azure/service_bus/serialization'
 
 require 'azure/service_bus/brokered_message_serializer'
@@ -26,15 +27,17 @@ module Azure
       DEFAULT_TIMEOUT = 60
 
       def initialize(host=nil, options = {})
-        super(Azure::ServiceBus::Auth::WrapSigner.new, nil, options)
+        client_config = options[:client] || Azure
+        signer = options[:signer] || Auth::WrapSigner.new(client_config.acs_host, client: client_config)
+        super(signer, nil, options)
         @host = host || @client.config.service_bus_host
 
         with_filter do |req, res|
-          req.headers.delete "x-ms-date"
-          req.headers.delete "x-ms-version"
-          req.headers.delete "DataServiceVersion"
-          req.headers.delete "MaxDataServiceVersion"
-          req.headers["X-Process-At"] = "servicebus"
+          req.headers.delete 'x-ms-date'
+          req.headers.delete 'x-ms-version'
+          req.headers.delete 'DataServiceVersion'
+          req.headers.delete 'MaxDataServiceVersion'
+          req.headers['X-Process-At'] = 'servicebus'
           res.call
         end
       end
@@ -140,7 +143,7 @@ module Azure
       def get_queue(queue)
         resource_entry(:queue, _name_for(queue))
       end
-      
+
       # Enumerates the queues in the service namespace.
       #
       # ==== Attributes
@@ -159,7 +162,7 @@ module Azure
 
         resource_list(:queue, query)
       end
-      
+
       # Creates a new topic. Once created, this topic resource manifest is immutable. 
       # 
       # ==== Attributes
@@ -295,7 +298,7 @@ module Azure
         query["$top"] = options[:top].to_i.to_s if options[:top]
 
         results = resource_list(:rule, topic_name, subscription_name, query)
-        results.each{|r| r.topic = topic_name; r.subscription=subscription_name}
+        results.each { |r| r.topic = topic_name; r.subscription=subscription_name }
 
         return results
       end
@@ -349,7 +352,7 @@ module Azure
       # such as Azure::ServiceBus::Subscription instance.
       def get_subscription(*p)
         topic_name, subscription_name = _subscription_args(*p)
-        
+
         result = resource_entry(:subscription, topic_name, subscription_name)
         result.topic = topic_name
         result
@@ -378,7 +381,7 @@ module Azure
 
         return results
       end
-      
+
       # Enqueues a message into the specified topic. The limit to the number of messages 
       # which may be present in the topic is governed by the message size in MaxTopicSizeInBytes. 
       # If this message causes the topic to exceed its quota, a quota exceeded error is 
@@ -612,12 +615,11 @@ module Azure
       end
 
       def _modify_message(method, message)
-        uri = nil
-        if (message.respond_to? :location)
-          uri = message.location
-        else
-          uri = message
-        end
+        uri = if (message.respond_to? :location)
+                message.location
+              else
+                message
+              end
 
         call(method, uri)
         nil
@@ -633,10 +635,10 @@ module Azure
         content_type = message.content_type || 'text/plain'
 
         headers = {
-          'BrokerProperties'=> broker_properties
+            'BrokerProperties' => broker_properties
         }
 
-        message_properties.each do |k,v|
+        message_properties.each do |k, v|
           headers[k.to_s.encode("UTF-8")] = v.encode("UTF-8")
         end
 
@@ -655,7 +657,7 @@ module Azure
       end
 
       def _retrieve_message(method, path, timeout=DEFAULT_TIMEOUT)
-        uri = messages_head_uri(path, { "timeout"=> timeout.to_s })
+        uri = messages_head_uri(path, {"timeout" => timeout.to_s})
 
         response = call(method, uri)
         (response.status_code == 204) ? nil : BrokeredMessageSerializer.get_from_http_response(response)
@@ -665,7 +667,7 @@ module Azure
         rule = nil
 
         if p.length == 3 or p.length == 4
-          rule = Azure::ServiceBus::Rule.new(p[2]) do |r| 
+          rule = Azure::ServiceBus::Rule.new(p[2]) do |r|
             r.topic = p[0]
             r.subscription = p[1]
             r.description = p[3] if p.length == 4
@@ -699,11 +701,11 @@ module Azure
         subscription = nil
 
         if p.length == 3
-          subscription = Azure::ServiceBus::Subscription.new(p[1], p[2]) do |sub| 
+          subscription = Azure::ServiceBus::Subscription.new(p[1], p[2]) do |sub|
             sub.topic = p[0]
           end
         elsif p.length == 2
-          subscription = Azure::ServiceBus::Subscription.new(p[1]) do |sub| 
+          subscription = Azure::ServiceBus::Subscription.new(p[1]) do |sub|
             sub.topic = p[0]
           end
         elsif p.length == 1 and p[0].respond_to? :name and p[0].respond_to? :topic and p[0].respond_to? :description

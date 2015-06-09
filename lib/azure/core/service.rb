@@ -21,32 +21,19 @@ module Azure
 
       # Create a new instance of the Service
       # 
-      # host            - String. The hostname. (optional, Default empty)
+      # @param host     [String] The hostname. (optional, Default empty)
+      # @param options  [Hash] options including {:client} (optional, Default {})
       def initialize(host='', options = {})
         @host = host
-        @client = options[:client] || Azure.client
+        @client = options[:client] || Azure
       end
 
-      attr_accessor :host
+      attr_accessor :host, :client
 
       def call(method, uri, body=nil, headers={})
-        if headers && !body.nil?
-          if headers['Content-Encoding'].nil?
-            headers['Content-Encoding'] = body.encoding.to_s
-          else 
-            body.force_encoding(headers['Content-Encoding']) 
-          end
-        end
-
         request = Core::Http::HttpRequest.new(method, uri, body: body, headers: headers, client: @client)
         yield request if block_given?
-        response = request.call
-
-        if !response.nil? && !response.body.nil? && response.headers['content-encoding']
-          response.body.force_encoding(response.headers['content-encoding']) 
-        end
-
-        response
+        request.call
       end
 
       def generate_uri(path='', query={})

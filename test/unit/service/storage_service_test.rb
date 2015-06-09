@@ -22,6 +22,7 @@ describe Azure::Service::StorageService do
 
   let(:uri) { URI.parse 'http://dummy.uri/resource' }
   let(:verb) { :get }
+  let(:x_ms_version) {'2014-02-14'}
 
   subject do
     storage_service = Azure::Service::StorageService.new
@@ -145,7 +146,7 @@ describe Azure::Service::StorageService do
     }
 
     let(:service_properties_uri) { URI.parse 'http://dummy.uri/service/properties' }
-    let(:service_properties_headers) { {'x-ms-version' => '2013-08-15'} }
+    let(:service_properties_headers) { {'x-ms-version' => x_ms_version} }
 
     before do
       Azure::Service::Serialization.stubs(:service_properties_from_xml).with(service_properties_xml).returns(service_properties)
@@ -175,7 +176,7 @@ describe Azure::Service::StorageService do
   end
 
   describe '#set_service_properties' do
-    let(:service_properties_xml) { Fixtures["storage_service_properties"] }
+    let(:service_properties_xml) { Fixtures['storage_service_properties'] }
     let(:service_properties) { Azure::Service::StorageServiceProperties.new }
     let(:response) {
       response = mock()
@@ -184,7 +185,7 @@ describe Azure::Service::StorageService do
     }
 
     let(:service_properties_uri) { URI.parse 'http://dummy.uri/service/properties' }
-    let(:service_properties_headers) { {'x-ms-version' => '2013-08-15'} }
+    let(:service_properties_headers) { {'x-ms-version' => x_ms_version} }
 
     before do
       Azure::Service::Serialization.stubs(:service_properties_to_xml).with(service_properties).returns(service_properties_xml)

@@ -24,13 +24,13 @@ describe Azure::SqlDatabaseManagement::Serialization do
   describe '#databases_from_xml' do
 
     it 'accepts an XML string' do
-      subject.databases_from_xml Nokogiri::XML(sql_servers_xml)
+      subject.servers_from_xml Nokogiri::XML(sql_servers_xml)
     end
 
-    it 'returns an Array of SqlDatabaseServer instances' do
-      results = subject.databases_from_xml Nokogiri::XML(sql_servers_xml)
+    it 'returns an Array of SqlServer instances' do
+      results = subject.servers_from_xml Nokogiri::XML(sql_servers_xml)
       results.must_be_kind_of Array
-      results[0].must_be_kind_of Azure::SqlDatabaseManagement::SqlDatabase
+      results[0].must_be_kind_of Azure::SqlDatabaseManagement::SqlServer
       results.count.must_equal 3
     end
   end
@@ -41,11 +41,11 @@ describe Azure::SqlDatabaseManagement::Serialization do
     let(:geo_location) { 'West US' }
 
     it 'accepts an name and options hash' do
-      subject.database_to_xml(login, password, geo_location)
+      subject.server_to_xml(login, password, geo_location)
     end
 
     it 'serializes the argument to xml' do
-      results = subject.database_to_xml login, password, geo_location
+      results = subject.server_to_xml login, password, geo_location
       doc = Nokogiri::XML results
       doc.css('AdministratorLogin').text.must_equal login
       doc.css('AdministratorLoginPassword').text.must_equal password
@@ -56,22 +56,22 @@ describe Azure::SqlDatabaseManagement::Serialization do
   end
 
   describe '#firewall_rule_to_xml' do
-    let(:options) do
-      {
-          start_ip_address: '10.0.0.1',
-          end_ip_address: '10.0.0.255'
-      }
+    let(:rule) do
+      Azure::SqlDatabaseManagement::FirewallRule.new do |rule|
+        rule.start_ip_address = '10.0.0.1'
+        rule.end_ip_address = '10.0.0.255'
+      end
     end
 
     it 'accepts a ip range' do
-      subject.firewall_rule_to_xml(options)
+      subject.firewall_rule_to_xml(rule)
     end
 
     it 'serializes the argument to xml' do
-      results = subject.firewall_rule_to_xml options
+      results = subject.firewall_rule_to_xml rule
       doc = Nokogiri::XML results
-      doc.css('StartIpAddress').text.must_equal options[:start_ip_address]
-      doc.css('EndIpAddress').text.must_equal options[:end_ip_address]
+      doc.css('StartIPAddress').text.must_equal rule.start_ip_address
+      doc.css('EndIPAddress').text.must_equal rule.end_ip_address
       results.must_be_kind_of String
     end
 
@@ -84,12 +84,12 @@ describe Azure::SqlDatabaseManagement::Serialization do
       subject.database_firewall_from_xml Nokogiri::XML(sql_server_firewall_xml)
     end
 
-    it 'returns an Array of SqlDatabaseServer instances with firewall' do
+    it 'returns an Array of FirewallRule instances' do
       results = subject.database_firewall_from_xml(
           Nokogiri::XML(sql_server_firewall_xml)
       )
       results.must_be_kind_of Array
-      results[0].must_be_kind_of Hash
+      results[0].must_be_kind_of Azure::SqlDatabaseManagement::FirewallRule
       results.count.must_equal 4
     end
 

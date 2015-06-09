@@ -1,3 +1,18 @@
+#-------------------------------------------------------------------------
+# # Copyright (c) Microsoft and contributors. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#--------------------------------------------------------------------------
+
 module Azure
   # The Azure::Configurable module provides basic configuration for Azure activities.
   module Configurable
@@ -8,6 +23,10 @@ module Azure
     #   @return [String] Azure Storage account name
     # @!attribute sb_access_key
     #   @return [String] Azure Service Bus access key
+    # @!attribute sb_sas_key
+    #   @return [String] Azure Service Bus Shared Access Signature key
+    # @!attribute sb_sas_key_name
+    #   @return [String] Azure Service Bus Shared Access Signature key name
     # @!attribute sb_namespace
     #   @return [String] Azure Service Bus namespace
     # @!attribute sb_issuer
@@ -49,18 +68,18 @@ module Azure
                   :storage_account_name,
                   :sb_access_key,
                   :sb_namespace,
+                  :sb_sas_key,
+                  :sb_sas_key_name,
                   :sb_issuer,
                   :ca_file,
-                  :subscription_id,
-                  :sql_database_authentication_mode
+                  :subscription_id
 
     attr_reader :http_private_key,
                 :http_certificate_key,
                 :acs_host,
                 :service_bus_host
 
-    attr_writer :sb_issuer,
-                :storage_table_host,
+    attr_writer :storage_table_host,
                 :storage_blob_host,
                 :storage_queue_host,
                 :sql_database_management_endpoint,
@@ -76,12 +95,13 @@ module Azure
             :storage_access_key,
             :storage_account_name,
             :sb_access_key,
+            :sb_sas_key,
+            :sb_sas_key_name,
             :ca_file,
             :sb_namespace,
             :management_certificate,
             :subscription_id,
             :sql_database_management_endpoint,
-            :sql_database_authentication_mode,
             :sb_issuer,
             :storage_table_host,
             :storage_blob_host,
@@ -97,12 +117,22 @@ module Azure
     end
 
     # Reset configuration options to default values
-    def reset!
+    def reset!(options = {})
       Azure::Configurable.keys.each do |key|
-        instance_variable_set(:"@#{key}", Azure::Default.options[key])
+        value = if self == Azure
+                  Azure::Default.options[key]
+                else
+                  Azure.send(key)
+                end
+
+        if key == :management_certificate
+          @certificate_key = nil
+          @private_key = nil
+          send(:"#{key.to_s + '='}", value)
+        else
+          instance_variable_set(:"@#{key}", options.fetch(key, value))
+        end
       end
-      @certificate_key = nil
-      @private_key = nil
       self.send(:reset_agents!) if self.respond_to?(:reset_agents!)
       self
     end
@@ -117,34 +147,45 @@ module Azure
     # @param  [String|File] the string or file representing the .pem or .pfx
     def management_certificate=(cert_string_or_file)
       self.send(:reset_agents!) if self.respond_to?(:reset_agents!)
-      if File.file?(cert_string_or_file) && File.extname(cert_string_or_file).downcase =~ /(pem|pfx)$/ # validate only if input is file path
-        error_message = "Could not read from file '#{cert_string_or_file}'."
-        raise ArgumentError.new(error_message) unless test('r', cert_string_or_file)
-      end
+      if cert_string_or_file.nil?
+        @certificate_key = @private_key = @management_certificate = nil
+      else
 
-      cert_file = if File.file?(cert_string_or_file)
-                    read_cert_from_file(cert_string_or_file)
-                  else
-                    cert_string_or_file
-                  end
+        # the pfx may have null chars which will raise an exception in File.file?
+        invalid_file_chars = cert_string_or_file.to_s =~ /\x00/
 
-      begin
-        if cert_file =~ /-----BEGIN CERTIFICATE-----/
-          @certificate_key = OpenSSL::X509::Certificate.new(cert_file)
-          @private_key = OpenSSL::PKey::RSA.new(cert_file)
-        else
-          # Parse pfx content
-          cert_content = OpenSSL::PKCS12.new(cert_file)
-          @certificate_key = OpenSSL::X509::Certificate.new(
-              cert_content.certificate.to_pem
-          )
-          @private_key = OpenSSL::PKey::RSA.new(cert_content.key.to_pem)
+        # validate only if input is file path
+        if !invalid_file_chars && File.file?(cert_string_or_file) && File.extname(cert_string_or_file).downcase =~ /(pem|pfx)$/
+          error_message = "Could not read from file '#{cert_string_or_file}'."
+          raise ArgumentError.new(error_message) unless test('r', cert_string_or_file)
         end
-        @management_certificate = cert_file
-      rescue OpenSSL::OpenSSLError => e
-        @certificate_key = nil
-        @private_key = nil
-        raise ArgumentError.new("Management certificate not valid. Error: #{e.message}")
+
+        # get the string representation of cert
+        cert_file = if !invalid_file_chars && File.file?(cert_string_or_file)
+                      read_cert_from_file(cert_string_or_file)
+                    else
+                      cert_string_or_file
+                    end
+
+        begin
+          if cert_file =~ /-----BEGIN CERTIFICATE-----/
+            # Parse pem content
+            @certificate_key = OpenSSL::X509::Certificate.new(cert_file)
+            @private_key = OpenSSL::PKey::RSA.new(cert_file)
+          else
+            # Parse pfx content
+            cert_content = OpenSSL::PKCS12.new(cert_file)
+            @certificate_key = OpenSSL::X509::Certificate.new(
+                cert_content.certificate.to_pem
+            )
+            @private_key = OpenSSL::PKey::RSA.new(cert_content.key.to_pem)
+          end
+          @management_certificate = cert_file
+        rescue OpenSSL::OpenSSLError => e
+          @certificate_key = nil
+          @private_key = nil
+          raise ArgumentError.new("Management certificate not valid. Error: #{e.message}")
+        end
       end
     end
 
@@ -173,9 +214,9 @@ module Azure
     def sql_database_management_endpoint
       normalize_endpoint do
         if URI(@sql_database_management_endpoint).scheme.nil?
-          "https://#{@sql_database_management_endpoint}"
+          "https://#{@sql_database_management_endpoint}:8443"
         else
-          @management_endpoint
+          @sql_database_management_endpoint
         end
       end
     end
@@ -225,7 +266,7 @@ module Azure
     private
 
     def default_host(service)
-      "http://#{storage_account_name}.#{service}.core.windows.net"
+      "https://#{storage_account_name}.#{service}.core.windows.net"
     end
 
     def read_cert_from_file(cert_file_path)

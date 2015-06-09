@@ -15,13 +15,13 @@
 require 'test_helper'
 require 'azure'
 
-Azure::Core.configure do |config|
-  config.storage_access_key     = ENV.fetch('AZURE_STORAGE_ACCESS_KEY')
-  config.storage_account_name   = ENV.fetch('AZURE_STORAGE_ACCOUNT')
-  config.sb_namespace  = ENV.fetch('AZURE_SERVICEBUS_NAMESPACE')
-  config.sb_access_key  = ENV.fetch('AZURE_SERVICEBUS_ACCESS_KEY')
-  config.management_certificate  = ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE')
-  config.subscription_id  = ENV.fetch('AZURE_SUBSCRIPTION_ID')
+Azure.configure do |config|
+  config.storage_access_key       = ENV.fetch('AZURE_STORAGE_ACCESS_KEY')
+  config.storage_account_name     = ENV.fetch('AZURE_STORAGE_ACCOUNT')
+  config.sb_namespace             = ENV.fetch('AZURE_SERVICEBUS_NAMESPACE')
+  config.sb_access_key            = ENV.fetch('AZURE_SERVICEBUS_ACCESS_KEY')
+  config.management_certificate   = ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE')
+  config.subscription_id          = ENV.fetch('AZURE_SUBSCRIPTION_ID')
 end
 
 util = Class.new.extend(Azure::Core::Utility)
@@ -30,8 +30,10 @@ StorageAccountName = util.random_string('storagetest',10)
 Images = Azure::VirtualMachineImageManagementService.new.list_virtual_machine_images
 LinuxImage = Images.select{|image| image.os_type == 'Linux'}.first
 WindowsImage = Images.select{|image| image.os_type == 'Windows'}.first
-WindowsImageLocation = WindowsImage.locations.split(';').first
-LinuxImageLocation = LinuxImage.locations.split(';').first
+locations = WindowsImage.locations.split(';')
+WindowsImageLocation = locations.include?('West US') ? 'West US' : locations.first
+locations = LinuxImage.locations.split(';')
+LinuxImageLocation = locations.include?('West US') ? 'West US' : locations.first
 
 MiniTest.after_run {
   VirtualMachineNameGenerator.cleanup

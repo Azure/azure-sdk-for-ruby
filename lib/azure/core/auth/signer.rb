@@ -18,33 +18,33 @@ require 'base64'
 module Azure
   module Core
     module Auth
-      # Public: Utility class to sign strings with HMAC-256 and then encode the
+      # Utility class to sign strings with HMAC-256 and then encode the
       # signed string using Base64.
       class Signer
         # The access key for the account
         attr :access_key
 
-        # Public: Initialize the Signer.
+        # Initialize the Signer.
         #
-        # access_key - The access_key encoded in Base64. Defaults to the one
-        #              in the global configuration.
-        def initialize(access_key=Azure.config.storage_access_key)
+        # @param access_key [String] The access_key encoded in Base64.
+        def initialize(access_key)
           if access_key.nil?
-            raise ArgumentError, 'storage access key must be provided'
+            raise ArgumentError, 'Signing key must be provided'
           end
 
           @access_key = Base64.strict_decode64(access_key)
         end
 
-        # Public: Generate an HMAC signature.
+        # Generate an HMAC signature.
         #
-        # body - The string to sign.
+        # @param body [String] The string to sign.
         #
-        # Returns a Base64 String signed with HMAC.
+        # @return [String] a Base64 String signed with HMAC.
         def sign(body)
           signed = OpenSSL::HMAC.digest('sha256', access_key, body)
           Base64.strict_encode64(signed)
         end
+
       end
     end
   end

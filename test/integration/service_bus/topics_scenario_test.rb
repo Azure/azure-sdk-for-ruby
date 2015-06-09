@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
-# require "integration/test/service_bus/scenario_helper"
+require 'integration/test_helper'
+require 'integration/service_bus/scenario_test'
 
-require "azure/service_bus/brokered_message"
+require 'azure/service_bus/brokered_message'
 
 describe "ServiceBus Topics Scenario" do
   let(:topic_name){ ServiceBusTopicNameHelper.name }
@@ -295,9 +295,9 @@ describe "ServiceBus Topics Scenario" do
       subject.delete_subscription_message message1again.location
       flunk 'Deleting a RECEIVEANDDELETE messasge should fail'
     rescue Azure::Core::Http::HTTPError => error
-      ScenarioHelper.out "As expected, could not delete a deleted message"
+      ScenarioHelper.out 'As expected, could not delete a deleted message'
       error.status_code.must_equal 400
-      error.type.must_equal "Unknown"
+      error.type.must_equal 'Unknown'
     end
 
     if expected_count > 0
@@ -348,7 +348,7 @@ describe "ServiceBus Topics Scenario" do
     message_count.must_equal 0
   end
 
-  it "should be able to upload many messages to a topic and read them back from all subscriptions" do
+  it 'should be able to upload many messages to a topic and read them back from all subscriptions' do
     setup_topic
     setup_subscriptions
     setup_rules

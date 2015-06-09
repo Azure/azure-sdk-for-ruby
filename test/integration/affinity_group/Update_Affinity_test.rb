@@ -25,6 +25,10 @@ describe Azure::BaseManagementService do
   )
 
   before do
+
+  end
+
+  before do
     Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
   end
 

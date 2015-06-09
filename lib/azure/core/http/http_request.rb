@@ -41,30 +41,31 @@ module Azure
         # The body of the request (IO or String)
         attr_accessor :body
 
+        # Azure client which contains configuration context and http agents
+        # @return [Azure::Client]
         attr_accessor :client
-
-        # Optional authentication options for Service Management
-        attr_accessor :key, :cert
 
         # Public: Create the HttpRequest
         #
         # @param method   [Symbol] The HTTP method to use (:get, :post, :put, :del, etc...)
         # @param uri      [URI] The URI of the HTTP endpoint to query
-        # @param options  [String|Hash] body or {:body, :client, :current_time}
-        def initialize(method, uri, options = {})
-          options ||= {}
-          if options.is_a?(Hash)
-            @body = options[:body]
-          else
-            @body = options
-          end
+        # @param options_or_body  [Hash|IO|String] The request options including {:client, :body} or raw body only
+        def initialize(method, uri, options_or_body = {})
+          options ||= unless options_or_body.is_a?(Hash)
+                        {body: options_or_body}
+                      end || options_or_body || {}
 
           @method = method
-          @uri = uri
-          @client = options[:client] || Azure.client
+          @uri = if uri.is_a?(String)
+                   URI.parse(uri)
+                 else
+                   uri
+                 end
 
-          @headers = default_headers(options[:current_time] || Time.now.httpdate).merge(options[:headers] || {})
-          apply_body_headers
+          @client = options[:client] || Azure
+
+          self.headers = default_headers(options[:current_time] || Time.now.httpdate).merge(options[:headers] || {})
+          self.body = options[:body]
         end
 
         # Public: Applies a HttpFilter to the HTTP Pipeline
@@ -111,9 +112,10 @@ module Azure
           {}.tap do |def_headers|
             def_headers['User-Agent'] = Azure::Default::USER_AGENT
             def_headers['x-ms-date'] = current_time
-            def_headers['x-ms-version'] = '2012-02-12'
+            def_headers['x-ms-version'] = '2014-02-14'
             def_headers['DataServiceVersion'] = '1.0;NetFx'
             def_headers['MaxDataServiceVersion'] = '2.0;NetFx'
+            def_headers['Content-Type'] = 'application/atom+xml; charset=utf-8'
           end
         end
 
@@ -127,39 +129,39 @@ module Azure
           raise
         end
 
-        def http_setup(uri = nil)
-          uri = URI.parse(uri) if uri.is_a?(String)
+        def http_setup
           http = @client.agents(uri)
 
           if uri.scheme.downcase == 'https'
-            # require 'net/https'
-            http.ca_file = Azure.config.ca_file if Azure.config.ca_file
+            http.ca_file = @client.ca_file if @client.ca_file
             http.use_ssl = true
             http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-            http.cert = cert if cert
-            http.key = key if key
           end
 
           unless headers.nil?
             keep_alive = headers['Keep-Alive'] || headers['keep-alive']
-            http.read_timeout = keep_alive.split('=').last.to_i unless keep_alive == nil
+            http.read_timeout = keep_alive.split('=').last.to_i unless keep_alive.nil?
           end
 
           http
         end
 
+        def body=(body)
+          @body = body
+          apply_body_headers
+        end
 
-        # Public: Sends request to HTTP server and returns a HttpResponse
+
+        # Sends request to HTTP server and returns a HttpResponse
         #
-        # Returns a HttpResponse
+        # @return [HttpResponse]
         def call
           request = http_request_class.new(uri, headers)
-          apply_body_headers
-          set_request_body(request) if body
-          http = http_setup(uri)
+          set_request_body(request)
+          http = http_setup
           response = HttpResponse.new(http.request(request))
           response.uri = uri
-          raise Azure::Core::Error.new(response.error) unless response.success?
+          raise response.error unless response.success?
           response
         end
 
@@ -167,7 +169,6 @@ module Azure
 
         def apply_body_headers
           if body
-            headers['Content-Type'] = 'application/atom+xml; charset=utf-8'
             if IO === body
               headers['Content-Length'] = body.size.to_s
               headers['Content-MD5'] = Digest::MD5.file(body.path).base64digest
@@ -176,7 +177,6 @@ module Azure
               headers['Content-MD5'] = Base64.strict_encode64(Digest::MD5.digest(body))
             end
           else
-            headers['Content-Type'] = ''
             headers['Content-Length'] = '0'
           end
         end

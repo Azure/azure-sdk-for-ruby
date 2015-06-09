@@ -19,118 +19,125 @@ require 'azure/core/auth/signer'
 
 # This will break if used against API version prior to 2013-08-15 as the format
 # changed
-# See https://msdn.microsoft.com/library/azure/dn140255.aspx for more information on construction
+# @see https://msdn.microsoft.com/library/azure/dn140255.aspx for more information on construction
 module Azure
   module Blob
     module Auth
-      class SharedAccessSignature < Core::Auth::Signer
+      class SharedAccessSignature < Azure::Core::Auth::Signer
         DEFAULTS = {
-          resource: 'b',
-          permissions: 'r',
-          version: '2013-08-15'
+            resource: 'b',
+            permissions: 'r',
+            version: '2014-02-14'
         }
 
         KEY_MAPPINGS = {
-          permissions:         :sp,
-          start:               :st,
-          expiry:              :se,
-          resource:            :sr,
-          identifier:          :si,
-          version:             :sv,
-          cache_control:       :rscc,
-          content_disposition: :rscd,
-          content_encoding:    :rsce,
-          content_language:    :rscl,
-          content_type:        :rsct
+            permissions:          :sp,
+            start:                :st,
+            expiry:               :se,
+            resource:             :sr,
+            identifier:           :si,
+            version:              :sv,
+            cache_control:        :rscc,
+            content_disposition:  :rscd,
+            content_encoding:     :rsce,
+            content_language:     :rscl,
+            content_type:         :rsct
         }
 
         OPTIONAL_QUERY_PARAMS = [:sp, :si, :rscc, :rscd, :rsce, :rscl, :rsct]
 
-        attr :path
-        attr :options
         attr :account_name
 
         # Public: Initialize the Signer.
         #
-        # ==== Attributes
-        #
-        # * +path+         - the container or blob path
-        # * +options+      - Hash. Required and optional parameters
-        # * +account_name+ - The account name. Defaults to the one in the
-        #                    global configuration.
-        # * +access_key+   - The access_key encoded in Base64. Defaults to the
-        #                    one in the global configuration.
+        # @param account_name [String] The account name. Defaults to the one in the global configuration.
+        # @param access_key [String]   The access_key encoded in Base64. Defaults to the one in the global configuration.
+        def initialize(account_name=Azure.storage_account_name, access_key=Azure.storage_access_key)
+          @account_name = account_name
+          super(access_key)
+        end
+
+        # Construct the plaintext to the spec required for signatures
+        # @return [String]
+        def signable_string(path, options)
+          # Order is significant
+          # The newlines from empty strings here are required
+          [
+              options[:permissions],
+              options[:start],
+              options[:expiry],
+              canonicalized_resource(path),
+              options[:identifier],
+
+              options[:version],
+
+              options[:cache_control],
+              options[:content_disposition],
+              options[:content_encoding],
+              options[:content_language],
+              options[:content_type]
+          ].join("\n")
+        end
+
+        # Return the cononicalized resource representation of the blob resource
+        # @return [String]
+        def canonicalized_resource(path)
+          "/#{account_name}#{path.start_with?('/') ? '' : '/'}#{path}"
+        end
+
+        # A customised URI reflecting options for the resource signed with the Shared Access Signature
+        # @param uri      [URI] uri to resource including query options
+        # @param options  [Hash]
         #
         # ==== Options
         #
         # * +:resource+     - String. Resource type, either 'b' (blob) or 'c' (container). Default 'b'
         # * +:permissions+  - String. Combination of 'r','w','d','l' (container only) in this order. Default 'r'
         # * +:start+        - String. UTC Date/Time in ISO8601 format. Optional.
-        # * +:expiry+       - String. UTC Date/Time in ISO8601 format. Required.
+        # * +:expiry+       - String. UTC Date/Time in ISO8601 format. Optional. Default now + 30 minutes.
         # * +:identifier+   - String. Identifier for stored access policy. Optional
-        # * +:version+      - String. API version. Default '2013-08-15'
+        # * +:version+      - String. API version. Default 2014-02-14
         #
-        # * +:cache_control       - String. Response header override. Optional.
-        # * +:content_disposition - String. Response header override. Optional.
-        # * +:content_encoding    - String. Response header override. Optional.
-        # * +:content_language    - String. Response header override. Optional.
-        # * +:content_type        - String. Response header override. Optional.
-        def initialize(path, options, account_name=Azure.config.storage_account_name, access_key=Azure.config.storage_access_key)
-          @path = path
-          @account_name = account_name
-          @options = DEFAULTS.merge(options)
+        # * +:cache_control+       - String. Response header override. Optional.
+        # * +:content_disposition+ - String. Response header override. Optional.
+        # * +:content_encoding+    - String. Response header override. Optional.
+        # * +:content_language+    - String. Response header override. Optional.
+        # * +:content_type+        - String. Response header override. Optional.
+        def signed_uri(uri, options)
+          parsed_query = CGI::parse(uri.query || '').inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
-          super(access_key)
+          options[:expiry] ||= (Time.now + 60*30).utc.iso8601
+
+          if parsed_query.has_key?(:restype)
+            options[:resource] = parsed_query[:restype].first == 'container' ? 'c' : 'b'
+          end
+
+          options = DEFAULTS.merge(options)
+          sas_params = URI.encode_www_form(query_hash(uri.path, options))
+          URI.parse(uri.to_s + (uri.query.nil? ? '?' : '&') + sas_params)
         end
 
-        # Public: Construct the plaintext to the spec required for signatures
-        def signable_string
-          # Order is significant
-          # The newlines from empty strings here are required
-          [
-            options[:permissions],
-            options[:start],
-            options[:expiry],
-            canonicalized_resource,
-            options[:identifier],
+        def sign_request(req)
+          header_options = {}.tap do |opts|
+            opts[:version] = req.headers['x-ms-version'] if req.headers.has_key?('x-ms-version')
+          end
 
-            options[:version],
-
-            options[:cache_control],
-            options[:content_disposition],
-            options[:content_encoding],
-            options[:content_language],
-            options[:content_type]
-          ].join("\n")
-        end
-
-        def canonicalized_resource
-          "/#{account_name}/#{path}"
-        end
-
-        # Public: A customised URI reflecting options for the resource signed with the Shared Access Signature
-        def signed_uri
-          query_params = URI.encode_www_form(query_hash)
-          "https://#{account_name}.blob.core.windows.net/#{path}?#{query_params}"
-        end
-
-        def to_s
-          signed_uri
+          req.uri = signed_uri(req.uri, header_options)
         end
 
         private
 
-        def signature
-          sign(signable_string)
+        def signature(path, options)
+          sign(signable_string(path, options))
         end
 
-        def query_hash
+        def query_hash(path, options)
           Hash[options.map { |k, v|
-            [KEY_MAPPINGS[k], v]
-          }].reject { |k,v|
+                 [KEY_MAPPINGS[k], v]
+               }].reject { |k, v|
             OPTIONAL_QUERY_PARAMS.include?(k) && v.to_s == ''
           }.merge(
-            sig: signature
+              sig: signature(path, options)
           )
         end
 

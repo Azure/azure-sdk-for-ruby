@@ -81,17 +81,17 @@ module Azure
       #   You can map multiple internal and external ports by separating them with a comma.
       # * +:ssh_private_key_file+     - String. Path of private key file.
       # * +:ssh_port+                 - Integer. Specifies the SSH port number.
-      # * +:winrm_http_port           - Integer. Specifies the WinRM HTTP port number.
-      # * +:winrm_https_port          - Integer. Specifies the WinRM HTTPS port number.
+      # * +:winrm_http_port+          - Integer. Specifies the WinRM HTTP port number.
+      # * +:winrm_https_port+         - Integer. Specifies the WinRM HTTPS port number.
       # * +:vm_size+                  - String. Specifies the size of the virtual machine instance.
       # * +:winrm_transport+          - Array. Specifies WINRM transport protocol.
       # * +:availability_set_name+    - String. Specifies the availability set name.
       # * +:reserved_ip_name+         - String. Specifies the reserved IP name.
       #
-      # Returns Azure::VirtualMachineManagement::VirtualMachine objects of newly created instance.
+      # @return [Azure::VirtualMachineManagement::VirtualMachine] objects of newly created instance.
       #
-      # See:
-      # http://msdn.microsoft.com/en-us/library/azure/jj157194.aspx
+      #
+      # @see http://msdn.microsoft.com/en-us/library/azure/jj157194.aspx
       def create_virtual_machine(params, options = {})
         image = get_image(params[:image])
         options[:os_type] = image.os_type

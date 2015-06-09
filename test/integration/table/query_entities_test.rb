@@ -95,6 +95,7 @@ describe Azure::Table::TableService do
 
     it "can project a subset of properties, populating sparse properties with nil" do
       projection = ["CustomIntegerProperty", "ThisPropertyDoesNotExist"]
+      puts '#########################################'
       result = subject.query_entities table_name, { :select => projection }
       result.must_be_kind_of Array 
       result.length.must_equal ((partitions.length + 1) * entities_per_partition)

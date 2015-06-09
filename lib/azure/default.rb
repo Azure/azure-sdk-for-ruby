@@ -1,9 +1,24 @@
+#-------------------------------------------------------------------------
+# # Copyright (c) Microsoft and contributors. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#--------------------------------------------------------------------------
+
 module Azure
 
   # Default configuration options for {Client}
   module Default
     # Default API endpoint
-    SERVICE_MANAGEMENT_ENDPOINT = 'https://management.core.windows.net/'.freeze
+    SERVICE_MANAGEMENT_ENDPOINT = 'https://management.core.windows.net'.freeze
 
     # Default User Agent header string
     USER_AGENT   = "Azure-SDK-For-Ruby/#{Azure::Version}".freeze
@@ -58,6 +73,18 @@ module Azure
         ENV['AZURE_SERVICEBUS_ACCESS_KEY']
       end
 
+      # Default service bus Shared Access Policy key
+      # @return [String]
+      def sb_sas_key
+        ENV['AZURE_SERVICEBUS_SAS_KEY']
+      end
+
+      # Default service bus Shared Access Policy key name
+      # @return [String]
+      def sb_sas_key_name
+        ENV['AZURE_SERVICEBUS_SAS_KEY_NAME']
+      end
+
       # Default service bus issuer
       # @return [String]
       def sb_issuer
@@ -79,19 +106,13 @@ module Azure
       # Default Azure management endpoint
       # @return [String]
       def management_endpoint
-        ENV['AZURE_MANAGEMENT_ENDPOINT'] || SERVICE_MANAGEMENT_ENDPOINT
+        ENV['AZURE_MANAGEMENT_ENDPOINT'] || (SERVICE_MANAGEMENT_ENDPOINT + '/')
       end
 
       # Default SQL database management endpoint
       # @return [String]
       def sql_database_management_endpoint
-        ENV['AZURE_SQL_DATABASE_MANAGEMENT_ENDPOINT'] || 'https://management.database.windows.net:8443/'
-      end
-
-      # Default SQL database authentication mode
-      # @return [String]
-      def sql_database_authentication_mode
-        ENV['AZURE_SQL_DATABASE_AUTHENTICATION_MODE'] || :sql_server
+        ENV['AZURE_SQL_DATABASE_MANAGEMENT_ENDPOINT'] || "#{SERVICE_MANAGEMENT_ENDPOINT}:8443/"
       end
 
       # Default Certificate Authority bundle to be used for https

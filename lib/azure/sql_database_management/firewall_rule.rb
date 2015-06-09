@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# # Copyright (c) Microsoft and contributors. All rights reserved.
+# Copyright 2015 Microsoft Open Technologies, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,9 +13,18 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 module Azure
-  module Core
-    # Superclass for errors generated from this library, so people can
-    # just rescue this for generic error handling
-    class Error < StandardError;end
+  module SqlDatabaseManagement
+    class FirewallRule
+
+      def initialize
+        yield self if block_given?
+      end
+
+      attr_accessor :name
+      attr_accessor :type
+      attr_accessor :start_ip_address
+      attr_accessor :end_ip_address
+
+    end
   end
 end

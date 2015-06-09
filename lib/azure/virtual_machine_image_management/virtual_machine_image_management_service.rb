@@ -32,7 +32,7 @@ module Azure
       # Returns an array of Azure::VirtualMachineImageManagement::VirtualMachineImage objects
       def list_os_images
         request_path = '/services/images'
-        request = BaseManagement::ManagementHttpRequest.new(:get, request_path, nil)
+        request = client.management_request(:get, request_path, nil)
         response = request.call
         Serialization.virtual_machine_images_from_xml(response)
       end
@@ -44,7 +44,7 @@ module Azure
       # Returns an array of Azure::VirtualMachineImageManagement::VirtualMachineImage objects
       def list_vm_images
         request_path = '/services/vmimages'
-        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path)
+        request = client.management_request(:get, request_path)
         response = request.call
         Serialization.virtual_machine_vm_images_from_xml(response)
       end
@@ -57,7 +57,7 @@ module Azure
       # Returns an array of Azure::VirtualMachineDiskManagementService objects
       def list_virtual_machine_disks
         request_path = '/services/disks'
-        request = Azure::BaseManagement::ManagementHttpRequest.new(:get, request_path)
+        request = client.management_request(:get, request_path)
         response = request.call
         Serialization.disks_from_xml(response)
       end
@@ -73,7 +73,7 @@ module Azure
       def delete_virtual_machine_disk(disk_name)
         Azure::Loggerx.info "Deleting Disk \"#{disk_name}\". "
         path = "/services/disks/#{disk_name}"
-        request = BaseManagement::ManagementHttpRequest.new(:delete, path)
+        request = client.management_request(:delete, path)
         request.call
       end
     end

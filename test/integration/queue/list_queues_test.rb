@@ -32,7 +32,6 @@ describe Azure::Queue::QueueService do
         result = subject.list_queues( { :marker => next_marker } )
         result.each { |q|
           q.name.wont_be_nil
-          q.url.wont_be_nil
           expected_queues += 1 if queue_names.include? q.name
         }
 

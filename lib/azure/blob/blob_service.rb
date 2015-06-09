@@ -22,8 +22,11 @@ module Azure
     class BlobService < Service::StorageService
 
       def initialize(options = {})
-        @client = options[:client] || Azure.client
-        @host = @client.storage_blob_host
+        client_config = options[:client] || Azure
+        signer = options[:signer] || Azure::Core::Auth::SharedKey.new(client_config.storage_account_name,
+                                                                      client_config.storage_access_key)
+        super(signer, client_config.storage_account_name, options)
+        @host = client.storage_blob_host
       end
 
       # Public: Get a list of Containers from the server
@@ -71,11 +74,11 @@ module Azure
       def list_containers(options={})
         query = { }
         if options
-          query["prefix"] = options[:prefix] if options[:prefix]
-          query["marker"] = options[:marker] if options[:marker]
-          query["maxresults"] = options[:max_results].to_s if options[:max_results]
-          query["include"] = "metadata" if options[:metadata] == true
-          query["timeout"] = options[:timeout].to_s if options[:timeout]
+          query['prefix'] = options[:prefix] if options[:prefix]
+          query['marker'] = options[:marker] if options[:marker]
+          query['maxresults'] = options[:max_results].to_s if options[:max_results]
+          query['include'] = 'metadata' if options[:metadata] == true
+          query['timeout'] = options[:timeout].to_s if options[:timeout]
         end
 
         uri = containers_uri(query)
@@ -355,7 +358,7 @@ module Azure
       # Returns an Azure::Service::EnumerationResults
       def list_blobs(name, options={})
         query = { 'comp' => 'list'}
-        query['prefix'] = options[:prefix].gsub(/\\/, "/") if options[:prefix]
+        query['prefix'] = options[:prefix].gsub(/\\/, '/') if options[:prefix]
         query['delimiter'] = options[:delimiter] if options[:delimiter]
         query['marker'] = options[:marker] if options[:marker]
         query['maxresults'] = options[:max_results].to_s if options[:max_results]
