@@ -21,9 +21,10 @@ module Azure
 
       # Create a new instance of the FilteredService
       # 
-      # host            - String. The hostname. (optional, Default empty)
-      def initialize(host='')
-        super(host)
+      # @param host     [String] The hostname. (optional, Default empty)
+      # @param options  [Hash] options including {:client} (optional, Default {})
+      def initialize(host='', options={})
+        super
         @filters = []
       end
 

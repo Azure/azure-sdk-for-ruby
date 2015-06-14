@@ -12,101 +12,88 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'azure/sql_database_management/sql_database'
+require 'azure/sql_database_management/sql_server'
+require 'azure/sql_database_management/firewall_rule'
 
 module Azure
   module SqlDatabaseManagement
     module Serialization
       extend Azure::Core::Utility
 
-      def self.database_to_xml(login, password, location)
+      def self.server_to_xml(login, password, location, version = 12.0)
         builder = Nokogiri::XML::Builder.new do |xml|
-          xml.Server('xmlns'=>'http://schemas.microsoft.com/sqlazure/2010/12/') {
+          xml.Server('xmlns' => 'http://schemas.microsoft.com/sqlazure/2010/12/') {
             xml.AdministratorLogin login
             xml.AdministratorLoginPassword password
             xml.Location location
+            xml.Version version
           }
         end
         builder.doc.to_xml
       end
 
-      def self.databases_from_xml(databasesXML)
-        databases = []
-        databases_servicesXML = databasesXML.css('Servers  Server')
-        databases_servicesXML.each do |database_xml|
-          database = SqlDatabase.new
-          database.name = xml_content(database_xml, 'Name')
-          database.administrator_login = xml_content(database_xml, 'AdministratorLogin')
-          database.location = xml_content(database_xml, 'Location')
-          database.feature_name = xml_content(database_xml, 'Features Feature Name')
-          database.feature_value = xml_content(database_xml, 'Features Feature Value')
-          databases << database
+      def self.servers_from_xml(wrapper_XML)
+        servers_XML = wrapper_XML.css('Servers  Server')
+        servers_XML.map do |server_xml|
+          server = SqlServer.new
+          server.name = xml_content(server_xml, 'Name')
+          server.administrator_login = xml_content(server_xml, 'AdministratorLogin')
+          server.location = xml_content(server_xml, 'Location')
+          server.version = xml_content(server_xml, 'Version')
+          server.state = xml_content(server_xml, 'State')
+          server.fully_qualified_domain_name = xml_content(server_xml, 'FullyQualifiedDomainName')
+          server
         end
-        databases.compact
       end
 
-      def self.server_name_from_xml(response_xml, login, location)
+      def self.server_name_from_xml(response_xml, login, location, version)
         server_name = xml_content(response_xml, 'ServerName')
-        SqlDatabase.new do |db|
+        SqlServer.new do |db|
           db.name = server_name
           db.location = location
           db.administrator_login = login
+          db.version = version
+          db.fully_qualified_domain_name = response_xml.css('ServerName').first['FullyQualifiedDomainName']
         end
       end
 
       def self.reset_password_to_xml(password)
         builder = Nokogiri::XML::Builder.new do |xml|
-          xml.AdministratorLoginPassword(password, {'xmlns'=>'http://schemas.microsoft.com/sqlazure/2010/12/'})
+          xml.AdministratorLoginPassword(password, {'xmlns' => 'http://schemas.microsoft.com/sqlazure/2010/12/'})
         end
         builder.doc.to_xml
       end
 
-      def self.firewall_rule_to_xml(options)
-        # Need to revisit and implement RDFE request XML.
-        # Currently Azure is throwing Internal Server Error when executing the
-        # API
+      # Serialize a firewall rule to xml
+      # @param rule [Azure::SqlDatabaseManagement::FirewallRule] The firewall rule to serialize
+      # @return [String] xml document contain the firewall rule
+      def self.firewall_rule_to_xml(rule)
         builder = Nokogiri::XML::Builder.new do |xml|
-          xml.FirewallRule('xmlns'=>'http://schemas.microsoft.com/sqlazure/2010/12/',
-            'xmlns:xsi'=>'http://www.w3.org/2001/XMLSchema-instance',
-            'xsi:schemaLocation'=>'http://schemas.microsoft.com/sqlazure/2010/12/ FirewallRule.xsd') {
-            xml.StartIpAddress options[:start_ip_address]
-            xml.EndIpAddress options[:end_ip_address]
+          xml.ServiceResource('xmlns' => 'http://schemas.microsoft.com/windowsazure') {
+            xml.Name rule.name
+            xml.StartIPAddress rule.start_ip_address
+            xml.EndIPAddress rule.end_ip_address
           }
         end
         builder.doc.to_xml
       end
 
+      # Create a list of firewall hashes from xml
+      # @param response_xml The xml containing the list of ServiceResources (firewall rules)
+      # @return [Array<Azure::SqlDatabaseManagement::FirewallRule>]
       def self.database_firewall_from_xml(response_xml)
-        firewalls = []
-        if Azure.config.sql_database_authentication_mode == :sql_server
-          database_firewallXML = response_xml.css('FirewallRules  FirewallRule')
-          database_firewallXML.each do |firewall_xml|
-            firewall = {
-              :rule => xml_content(firewall_xml, 'Name'),
-              :start_ip_address => xml_content(firewall_xml, 'StartIpAddress'),
-              :end_ip_address => xml_content(firewall_xml, 'EndIpAddress')
-            }
-            firewalls << firewall
-          end
-        else
-          service_resources = response_xml.css(
+        service_resources = response_xml.css(
             'ServiceResources ServiceResource'
-          )
-          service_resources.each do |resource|
-            type = xml_content(resource, 'Type')
-            if type == 'Microsoft.SqlAzure.FirewallRule'
-              firewall = {
-                rule: xml_content(resource, 'Name'),
-                start_ip_address: xml_content(resource, 'StartIPAddress'),
-                end_ip_address: xml_content(resource, 'EndIPAddress')
-              }
-              firewalls << firewall
-            end
+        )
+        service_resources.map do |resource|
+          FirewallRule.new do |rule|
+            rule.name = xml_content(resource, 'Name')
+            rule.type = xml_content(resource, 'Type')
+            rule.start_ip_address = xml_content(resource, 'StartIPAddress')
+            rule.end_ip_address = xml_content(resource, 'EndIPAddress')
           end
         end
-        firewalls.compact
       end
-
     end
   end
 end

@@ -28,7 +28,7 @@ describe Azure::VirtualNetworkManagement::VirtualNetwork do
     unless subject.list_virtual_networks.map(&:name).include?(vnet_name)
       subject.set_network_configuration(
         vnet_name,
-        location,
+        geo_location,
         address_space
       )
     end

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "test_helper"
+require 'test_helper'
 
 describe Azure::BaseManagement::Location do
 
@@ -20,7 +20,7 @@ describe Azure::BaseManagement::Location do
     Azure::BaseManagementService.new
   end
 
-  describe "#list_role_sizes" do
+  describe '#list_role_sizes' do
     let(:request_path) { '/locations' }
     let(:locations_xml) { Fixtures['list_locations'] }
     let(:mock_request){ mock() }
@@ -32,15 +32,15 @@ describe Azure::BaseManagement::Location do
     let(:response_body) { Nokogiri::XML response.body }
 
     before {
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get, request_path, nil).returns(mock_request)
+      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get, request_path, anything).returns(mock_request)
       mock_request.expects(:call).returns(response_body)
     }
 
-    it "assembles a URI for the request" do
+    it 'assembles a URI for the request' do
       subject.list_role_sizes
     end
 
-    it "returns a list of role-sizes that are valid for given subscription" do
+    it 'returns a list of role-sizes that are valid for given subscription' do
       results = subject.list_role_sizes
       results.must_be_kind_of Array
       results.length.must_equal 21

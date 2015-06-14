@@ -6,45 +6,26 @@
 This project provides a Ruby package that makes it easy to access and manage Microsoft Azure Services like Storage, Service Bus and Virtual Machines.
 
 # Library Features
-* Storage
-    * Blobs
-        * create, list, and delete containers, work with container metadata and permissions, list blobs in container
-        * create block and page blobs (from a stream, a file, or a string), work with blob blocks and pages, delete blobs
-        * work with blob properties, metadata, leases, snapshot a blob
-    * Tables
-        * create and delete tables
-        * create, query, insert, update, merge, and delete entities
-    * Queues
-        * create, list, and delete queues, and work with queue metadata
-        * create, get, peek, update, delete messages
-* Service Bus
-    * Queues
-        * create, list and delete queues
-        * send, receive, unlock and delete messages
-    * Topics
-        * create, list, and delete topics
-        * send, receive, unlock and delete messages
-        * create, list, and delete subscriptions
-        * create, list, and delete rules
-* Base Management
-  * list locations
-    * get, list, create, update, delete affinity groups
-* Virtual Machine Management
-    * list images
-  * list, delete Disks
-    * Virtual Machines
-    * create linux based VMs and ssh with cert and key option enabled for ssh and WINRM (both http & https)enabled for windows based VMs
-    * list, shut down, delete, find virtual machine deployments. While shutting down your VMs the provisioning state would be deallocated and this VM will not be included in the billing cycle.
-    * Create VM for a specific virtual network
-* Cloud Service Management
-    * create, list, delete cloud services
+
+* [Storage](#storage)
+    * [Blobs](#blobs)
+    * [Tables](#tables)
+    * [Queues](#queues)
 * Storage Account Management
-    * create, list storage accounts, list locations
-* SQL Database Server Management
-  * list, create SQL Database servers
-  * reset password for a SQL Database server
-  * list, set, delete firewall rules for a SQL Database server
-* Virtual Network Management
+* [Service Bus](#service-bus)
+    * [relays](#relays)
+    * [Queues](#sb-queues)
+    * [Topics](#topics)
+* [Base Management](#base-mgmt)
+    * [Locations](#locations)
+    * [Affinity Groups](#affinity)
+* [Virtual Machine Management](#vms)
+    * list, delete Disks
+    * manage virtual machines
+    * [list images](#images)
+* Cloud Service Management
+* [SQL Database Server Management](#sql)
+* [Virtual Network Management](#vnets)
     * List VNet
     * Create VNet via parameters or xml file
 
@@ -54,6 +35,8 @@ This project provides a Ruby package that makes it easy to access and manage Mic
 * Ruby 2.0
 * Ruby 2.1
 * Ruby 2.2
+
+Note: x64 Ruby for Windows is known to have some compatibility issues.
 
 # Getting Started
 
@@ -65,24 +48,6 @@ You can install the azure rubygem package directly.
 gem install azure
 ```
 
-## Download Source Code
-
-To get the source code of the SDK via **git** just type:
-
-```bash
-git clone https://github.com/Azure/azure-sdk-for-ruby.git
-cd ./azure-sdk-for-ruby
-```
-Then, run bundler to install all the gem dependencies:
-
-```bash
-bundle install
-```
-
-## Generate Documentation
-
-Running the command ``rdoc`` will generate the API documentation in the `./doc` directory.
-
 ## Setup Connection
 
 You can use this SDK against the Microsoft Azure Services in the cloud, or against the local Storage Emulator if you are on Windows. Service Bus and Microsoft Azure Service Management emulation are not supported. Of course, to use the Microsoft Azure Services in the cloud, you need to first [create a Microsoft Azure account](http://www.azure.com/en-us/pricing/free-trial/). After that, you can get the information you need to configure Storage and Service Bus from the [Microsoft Azure Portal](https://manage.azure.com).
@@ -92,63 +57,72 @@ There are two ways you can set up the connections:
 1. [via code](#via-code)
 2. [via environment variables](#via-environment-variables)
 
+<a name="via-code"></a>
 ### Via Code
 * Against Microsoft Azure Services in the cloud
 
-  ```ruby
+```ruby
+
   require "azure"
 
-  Azure.configure do |config|
-      # Configure these 2 properties to use Storage
-      config.storage_account_name = "<your azure storage account name>"
-      config.storage_access_key   = "<your azure storage access key>"
-      # Configure these 3 properties to use Service Bus
-      config.sb_namespace         = "<your azure service bus namespace>"
-      config.sb_access_key        = "<your azure service bus access key>"
-      config.sb_issuer            = "<your azure service bus issuer>"
-      # Configure these 3 properties to use Service Management. We support passwordless pfx & pem cert formats.
-      config.management_certificate = "<path to your *.pem or *.pfx>"
-      config.subscription_id        = "<your Subscriptionid>"
-      config.management_endpoint    = "https://management.core.windows.net"
-      # This property enables/disables SQL Server authentication. By default SQL Server authentication is enabled. SQL Server authentication will also be enabled if you do not set this property
-      config.sql_database_authentication_mode = <:management_certificate or :sql_server>
-      # Configure SQL Server authentication API endpoint here
-      config.sql_database_management_endpoint = "http://management.database.windows.net:8443"
-      # Configure a ca_cert.pem file if you are having issues with ssl peer verification 
-      config.ca_file = "./ca_file.pem"
-  end
-  ```
+  Azure.storage_account_name = "<your azure storage account name>"
+  Azure.storage_access_key   = "<your azure storage access key>"
+
+  # Configure these 3 properties to use Service Bus
+  Azure.sb_namespace         = "<your azure service bus namespace>"
+  Azure.sb_access_key        = "<your azure service bus access key>"
+  Azure.sb_issuer            = "<your azure service bus issuer>"
+
+  # Configure these 3 properties to use Service Management. We support passwordless pfx & pem cert formats.
+  Azure.management_certificate = "<path to your *.pem or *.pfx>"
+  Azure.subscription_id        = "<your Subscriptionid>"
+
+  # Configure a ca_cert.pem file if you are having issues with ssl peer verification
+  Azure.ca_file = "./ca_file.pem"
+
+  # Or create a specific instance of an Azure.client, which will inherit your default configuration settings.
+  client = Azure.client(storage_account_name: "your account name", storage_access_key: "your access key")
+
+```
+
 * Against local Emulator (Windows Only)
-  ```ruby
+
+```ruby
+
   require "azure"
 
-  Azure.configure do |config|
-      # Configure these 2 properties to use local Storage Emulator
-      config.storage_account_name = "devstoreaccount1"
-      config.storage_access_key   = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="
-      config.storage_blob_host    = "http://127.0.0.1:10000/devstoreaccount1"
-      config.storage_queue_host   = "http://127.0.0.1:10001/devstoreaccount1"
-      config.storage_table_host   = "http://127.0.0.1:10002/devstoreaccount1"
-      # Local Service Bus Emulator is not supported
-      # Local Service Management emulation is not supported
-  end
-  ```
+  # Configure these 2 properties to use local Storage Emulator
+  Azure.storage_account_name = "devstoreaccount1"
+  Azure.storage_access_key   = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="
+
+  Azure.storage_blob_host    = "http://127.0.0.1:10000/devstoreaccount1"
+  Azure.storage_queue_host   = "http://127.0.0.1:10001/devstoreaccount1"
+  Azure.storage_table_host   = "http://127.0.0.1:10002/devstoreaccount1"
+
+  # Local Service Bus Emulator is not supported
+  # Local Service Management emulation is not supported
+
+```
+
+<a name="via-environment-variables"></a>
 ### Via Environment Variables
+
 * Against Microsoft Azure Services in the cloud
-  * Storage
+
+    * Storage
 
     ```bash
     AZURE_STORAGE_ACCOUNT = <your azure storage account name>
     AZURE_STORAGE_ACCESS_KEY = <your azure storage access key>
     ```
-  * Service Bus
+    * Service Bus
 
     ```bash
     AZURE_SERVICEBUS_NAMESPACE = <your azure service bus namespace>
     AZURE_SERVICEBUS_ACCESS_KEY = <your azure service bus access key>
     AZURE_SERVICEBUS_ISSUER = <your azure service bus issuer>
     ```
-  * Service Management
+    * Service Management
 
     ```bash
     AZURE_MANAGEMENT_CERTIFICATE = <path to *.pem or *.pfx>
@@ -157,13 +131,14 @@ There are two ways you can set up the connections:
     AZURE_SQL_DATABASE_MANAGEMENT_ENDPOINT = <SQL Database Management Endpoint>
     AZURE_SQL_DATABASE_AUTHENTICATION_MODE = <:management_certificate or :sql_server>
     ```
+    * [SSL Certificate File](https://gist.github.com/fnichol/867550)
     
-  * [SSL Certificate File](https://gist.github.com/fnichol/867550)
     ```bash
     SSL_CERT_FILE=<path to *.pem>
     ```
 * Against local Emulator (Windows Only)
-  * Storage
+
+    * Storage
 
     ```bash
     AZURE_STORAGE_ACCOUNT = devstoreaccount1
@@ -172,190 +147,224 @@ There are two ways you can set up the connections:
     AZURE_STORAGE_QUEUE_HOST = http://127.0.0.1:10001/devstoreaccount1
     AZURE_STORAGE_TABLE_HOST = http://127.0.0.1:10002/devstoreaccount1
     ```
-  * Service Bus: not supported
-  * Service Management: not supported
-## Run Test
-You can use the following commands to run:
-* all the tests: ``rake test``
-* a specific suite of tests: ``rake test:integration:blob``
-* one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
+    * Service Bus: not supported
+
+    * Service Management: not supported
+
 # Usage
-**For more examples, please see the [Microsoft Azure Ruby Developer Center](http://www.azure.com/en-us/develop/ruby)**
+
+<a name="storage"></a>
 ## Storage
 
-### Blobs
+### Setup your Storage Credentials
 
 ```ruby
+
 # Require the azure rubygem
 require "azure"
 
+# Add your default storage credentials
+Azure.storage_account_name = "your account name"
+Azure.storage_access_key = "your access key"
+
+# Or create a specific instance of an Azure.client
+client = Azure.client(storage_account_name: "your account name", storage_access_key: "your access key")
+
+default_blobs = Azure.blobs     # uses the Azure.storage_account_name and Azure.storage_access_key
+
+blobs = client.blobs            # uses the client.storage_account_name and client.storage_access_key
+
+```
+<a name="blobs"></a>
+### Blobs
+
+```ruby
+
 # Create an azure storage blob service object
-azure_blob_service = Azure::BlobService.new
+blobs = Azure.blobs
 
 # Create a container
-container = azure_blob_service.create_container("test-container")
+container = blobs.create_container("test-container")
 
 # Upload a Blob
 content = File.open('test.jpg', 'rb') { |file| file.read }
-azure_blob_service.create_block_blob(container.name, "image-blob", content)
+blobs.create_block_blob(container.name, "image-blob", content)
 
 # List containers
-azure_blob_service.list_containers()
+blobs.list_containers()
 
 # List Blobs
-azure_blob_service.list_blobs(container.name)
+blobs.list_blobs(container.name)
 
 # Download a Blob
-blob, content = azure_blob_service.get_blob(container.name, "image-blob")
+blob, content = blobs.get_blob(container.name, "image-blob")
 File.open("download.png", "wb") {|f| f.write(content)}
 
 # Delete a Blob
-azure_blob_service.delete_blob(container.name, "image-blob")
+blobs.delete_blob(container.name, "image-blob")
+
 ```
+<a name="tables"></a>
 ### Tables
 
 ```ruby
+
 # Require the azure rubygem
 require "azure"
 
 # Create an azure storage table service object
-azure_table_service = Azure::TableService.new
+tables = Azure.tables
 
 # Create a table
-azure_table_service.create_table("testtable")
+tables.create_table("testtable")
 
 # Insert an entity
 entity = { "content" => "test entity", :partition_key => "test-partition-key", :row_key => "1" }
-azure_table_service.insert_entity("testtable", entity)
+tables.insert_entity("testtable", entity)
 
 # Get an entity
-result = azure_table_service.get_entity("testtable", "test-partition-key", "1")
+result = tables.get_entity("testtable", "test-partition-key", "1")
 
 # Update an entity
 result.properties["content"] = "test entity with updated content"
-azure_table_service.update_entity(result.table, result.properties)
+tables.update_entity(result.table, result.properties)
 
 # Query entities
 query = { :filter => "content eq 'test entity'" }
-result, token = azure_table_service.query_entities("testtable", query)
+result, token = tables.query_entities("testtable", query)
 
 # Delete an entity
-azure_table_service.delete_entity("testtable", "test-partition-key", "1")
+tables.delete_entity("testtable", "test-partition-key", "1")
 
 # delete a table
-azure_table_service.delete_table("testtable")
+tables.delete_table("testtable")
+
 ```
+
+<a name="queues"></a>
 ### Queues
 
 ```ruby
+
 # Require the azure rubygem
 require "azure"
 
 # Create an azure storage queue service object
-azure_queue_service = Azure::QueueService.new
+queues = Azure.queues
 
 # Create a queue
-azure_queue_service.create_queue("test-queue")
+queues.create_queue("test-queue")
 
 # Create a message
-azure_queue_service.create_message("test-queue", "test message")
+queues.create_message("test-queue", "test message")
 
 # Get one or more messages with setting the visibility timeout
-result = azure_queue_service.list_messages("test-queue", 30, {:number_of_messages => 10})
+result = queues.list_messages("test-queue", 30, {:number_of_messages => 10})
 
 # Get one or more messages without setting the visibility timeout
-result = azure_queue_service.peek_messages("test-queue", {:number_of_messages => 10})
+result = queues.peek_messages("test-queue", {:number_of_messages => 10})
 
 # Update a message
-message = azure_queue_service.list_messages("test-queue", 30)
-pop_receipt, time_next_visible = azure_queue_service.update_message("test-queue", message.id, message.pop_receipt, "updated test message", 30)
+message = queues.list_messages("test-queue", 30)
+pop_receipt, time_next_visible = queues.update_message("test-queue", message.id, message.pop_receipt, "updated test message", 30)
 
 # Delete a message
-message = azure_queue_service.list_messages("test-queue", 30)
-azure_queue_service.delete_message("test-queue", message.id, message.pop_receipt)
+message = queues.list_messages("test-queue", 30)
+queues.delete_message("test-queue", message.id, message.pop_receipt)
 
 # Delete a queue
-azure_queue_service.delete_queue("test-queue")
+queues.delete_queue("test-queue")
+
 ```
+
+<a name="service-bus"></a>
 ## Service Bus
 
+<a name="relays"></a>
 ### Relay
 
 ```ruby
+
 # Require the azure rubygem
 require "azure"
 
 # Create an azure service bus object
-azure_service_bus = Azure::ServiceBusService.new
+service_bus = Azure.service_bus
 
 # Create a relay endpoint with just the endpoint name
-relay1 = azure_service_bus.create_relay("test-relay-1", { :relay_type => "Http" })
+relay1 = service_bus.create_relay("test-relay-1", { :relay_type => "Http" })
 
 # Create a relay endpoint with a relay object
 relay2 = Azure::ServiceBus::Relay.new("test-relay-2")
 relay2.requires_client_authorization = false
-relay2 = azure_service_bus.create_relay(relay2)
+relay2 = service_bus.create_relay(relay2)
 
 # Delete a relay endpoint
-azure_service_bus.delete_relay("test-relay2")
+service_bus.delete_relay("test-relay2")
+
 ```
 
+<a name="sb-queues"></a>
 ### Queues
 
 ```ruby
+
 # Require the azure rubygem
 require "azure"
 
 # Create an azure service bus object
-azure_service_bus = Azure::ServiceBusService.new
+service_bus = Azure.service_bus
 
 # Create a queue with just the queue name
-queue1 = azure_service_bus.create_queue("test-queue-1")
+queue1 = service_bus.create_queue("test-queue-1")
 
 # Create a queue with a queue object
 queue2 = Azure::ServiceBus::Queue.new("test-queue-2")
 queue2.max_size_in_megabytes = 2048
-queue2 = azure_service_bus.create_queue(queue2)
+queue2 = service_bus.create_queue(queue2)
 
 # Send a queue message with just the message body
-azure_service_bus.send_queue_message("test-queue-1", "test queue message")
+service_bus.send_queue_message("test-queue-1", "test queue message")
 
 # Send a queue message with a brokered message object
 message = Azure::ServiceBus::BrokeredMessage.new("another test queue message")
 message.correlation_id = "test-correlation-id-1"
-azure_service_bus.send_queue_message("test-queue-1", message)
+service_bus.send_queue_message("test-queue-1", message)
 
 # Receive a queue message
-message = azure_service_bus.receive_queue_message("test-queue-1")
+message = service_bus.receive_queue_message("test-queue-1")
 
 # Delete a queue message
-azure_service_bus.delete_queue_message(message)
+service_bus.delete_queue_message(message)
 
 # Delete a queue
-azure_service_bus.delete_queue("test-queue-1")
+service_bus.delete_queue("test-queue-1")
+
 ```
 
+<a name="topics"></a>
 ### Topics
 
 ```ruby
+
 # Require the azure rubygem
 require "azure"
 
 # Create an azure service bus object
-azure_service_bus = Azure::ServiceBusService.new
+service_bus = Azure.service_bus
 
 # Create a topic with just the topic name
-topic1 = azure_service_bus.create_topic("test-topic-1")
+topic1 = service_bus.create_topic("test-topic-1")
 
 # Create a topic with a topic object
 topic2 = Azure::ServiceBus::Topic.new("test-topic-2")
 topic2.max_size_in_megabytes = 2048
-topic2 = azure_service_bus.create_topic(topic2)
+topic2 = service_bus.create_topic(topic2)
 
 # Create a subscription
 subscription = Azure::ServiceBus::Subscription.new("test-subscription-1")
 subscription.topic = topic1.name
-subscription = azure_service_bus.create_subscription(subscription)
+subscription = service_bus.create_subscription(subscription)
 
 # Send a topic message with just the message body
 azure_service_bus.send_topic_message(topic1, "test topic message")
@@ -363,58 +372,59 @@ azure_service_bus.send_topic_message(topic1, "test topic message")
 # Send a topic message with a brokered message object
 message = Azure::ServiceBus::BrokeredMessage.new("another test topic message")
 message.correlation_id = "test-correlation-id-1"
-azure_service_bus.send_topic_message(topic1, message)
+service_bus.send_topic_message(topic1, message)
 
 # Receive a subscription message
-message = azure_service_bus.receive_subscription_message(topic1.name, subscription.name)
+message = service_bus.receive_subscription_message(topic1.name, subscription.name)
 
 # Delete a subscription message
-azure_service_bus.delete_subscription_message(message)
+service_bus.delete_subscription_message(message)
 
 # Delete a subscription
-azure_service_bus.delete_subscription(subscription)
+service_bus.delete_subscription(subscription)
 
 # Delete a topic
-azure_service_bus.delete_topic(topic1)
+service_bus.delete_topic(topic1)
+
 ```
+
+<a name="vms"></a>
 ## Virtual Machine Management
 
 ```ruby
+
 # Require the azure rubygem
 require 'azure'
 
-Azure.configure do |config|
-  # Configure these 3 properties to use Storage
-  config.management_certificate = "path to *.pem or *.pfx file"
-  config.subscription_id        = "your subscription id"
-  config.management_endpoint    = "https://management.core.windows.net"
-end
+# Configure these properties
+Azure.management_certificate = "path to *.pem or *.pfx file"
+Azure.subscription_id        = "your subscription id"
 
-#Create a virtual machine service object
-virtual_machine_service = Azure::VirtualMachineManagementService.new
+# Create a virtual machine service object
+vm_management = Azure.vm_management
 
-#Get a list of existing virtual machines in your subscription
-virtual_machine_service.list_virtual_machines
+# Get a list of existing virtual machines in your subscription
+vm_management.list_virtual_machines
 
-#API to shutdown Virtual Machine
-virtual_machine_service.shutdown_virtual_machine('vm_name', 'cloud_service_name')
+# API to shutdown Virtual Machine
+vm_management.shutdown_virtual_machine('vm_name', 'cloud_service_name')
 
-#API to start Virtual Machine
-virtual_machine_service.start_virtual_machine('vm_name', 'cloud_service_name')
+# API to start Virtual Machine
+vm_management.start_virtual_machine('vm_name', 'cloud_service_name')
 
-#API to restart Virtual Machine
-virtual_machine_service.restart_virtual_machine('vm_name', 'cloud_service_name')
+# API to restart Virtual Machine
+vm_management.restart_virtual_machine('vm_name', 'cloud_service_name')
 
-#API for add disk to Virtual Machine
+# API for add disk to Virtual Machine
 options = {
   :disk_label => 'disk-label',
   :disk_size => 100, #In GB
   :import => false,
   :disk_name => 'Disk name' #Required when import is true
 }
-virtual_machine_service.add_data_disk('vm_name', 'cloud_service_name', options)
+vm_management.add_data_disk('vm_name', 'cloud_service_name', options)
 
-#API to add/update Virtual Machine endpoints
+# API to add/update Virtual Machine endpoints
 endpoint1 = {
     :name => 'ep-1',
     :public_port => 996,
@@ -429,15 +439,15 @@ endpoint2 = {
     :load_balancer_name => ‘lb-ep2’,
     :load_balancer => {:protocol => 'http', :path => 'hello'}
   }
-virtual_machine_service.update_endpoints('vm_name', 'cloud_service_name', endpoint1, endpoint2)
+vm_management.update_endpoints('vm_name', 'cloud_service_name', endpoint1, endpoint2)
 
-#API to delete Virtual Machine endpoint
-virtual_machine_service.delete_endpoint('vm_name', 'cloud_service_name', 'endpoint_name')
+# API to delete Virtual Machine endpoint
+vm_management.delete_endpoint('vm_name', 'cloud_service_name', 'endpoint_name')
 
-#API to delete Virtual Machine
-virtual_machine_service.delete_virtual_machine('vm_name', 'cloud_service_name')
+# API to delete Virtual Machine
+vm_management.delete_virtual_machine('vm_name', 'cloud_service_name')
 
-#API to start deployment
+# API to start deployment
 params = {
   :vm_name => 'vm_name',
   :vm_user => 'azureuser',
@@ -447,23 +457,22 @@ params = {
 }
 options = {
   :storage_account_name => 'storage_suse',
-  :winrm_transport => ['https','http'], #Currently http is supported. To enable https, set the transport protocol to https, simply rdp to the VM once VM is in ready state, export the certificate ( CN name would be the deployment name) from the certstore of the VM and install to your local machine and communicate WinRM via https.
   :cloud_service_name => 'cloud_service_name',
   :deployment_name =>'vm_name',
   :tcp_endpoints => '80,3389:3390',
-  :private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
+  :private_key_file => './private_key.key',     # required for ssh
   :ssh_port => 2222,
-  :vm_size => 'Small', #valid choices are (Basic_A0,Basic_A1,Basic_A2,Basic_A3,Basic_A4,ExtraSmall,Small,Medium,Large,ExtraLarge,A5,A6,A7,A8,A9,Standard_D1,Standard_D2,Standard_D3,Standard_D4,Standard_D11,Standard_D12,Standard_D13,Standard_D14,Standard_DS1,Standard_DS2,Standard_DS3,Standard_DS4,Standard_DS11,Standard_DS12,Standard_DS13,Standard_DS14,Standard_G1,Standard_G2,Standard_G3,Standard_G4,Standard_G5)
+  :vm_size => 'Small',                          # Use any Azure VM size
   :affinity_group_name => 'affinity1',
   :virtual_network_name => 'xplattestvnet',
   :subnet_name => 'subnet1',
-  :availability_set_name => 'availabiltyset1'
+  :availability_set_name => 'availabiltyset1',
   :reserved_ip_name => 'reservedipname'
 }
-virtual_machine_service.create_virtual_machine(params,options)
+vm_management.create_virtual_machine(params,options)
 
-#API usage to add new roles under cloud service creating VM 
-#API add_role create multiple roles under the same cloud service. Atleast a single deployment should be created under a hosted service.
+# API usage to add new roles under cloud service creating VM
+# API add_role create multiple roles under the same cloud service. Atleast a single deployment should be created under a hosted service.
 params = {
   :vm_name => 'vm_name',
   :cloud_service_name => 'cloud_service_name',
@@ -473,156 +482,221 @@ params = {
 }
 options = {
   :storage_account_name => 'storage_suse',
-  :winrm_transport => ['https','http'], #Currently http is supported. To enable https, set the transport protocol to https, simply rdp to the VM once VM is in ready state, export the certificate ( CN name would be the deployment name) from the certstore of the VM and install to your local machine and communicate WinRM via https.
+  :winrm_transport => ['https','http'],         # Currently http(s) is supported.
   :tcp_endpoints => '80,3389:3390',
-  :private_key_file => 'c:/private_key.key', #required for ssh or winrm(https) certificate.
+  :private_key_file => './private_key.key',     # Required for winrm(https) certificate.
   :winrm_https_port => 5999,
-  :winrm_http_port => 6999, #Used to open different powershell port
-  :vm_size => 'Small', #valid choices are (Basic_A0,Basic_A1,Basic_A2,Basic_A3,Basic_A4,ExtraSmall,Small,Medium,Large,ExtraLarge,A5,A6,A7,A8,A9,Standard_D1,Standard_D2,Standard_D3,Standard_D4,Standard_D11,Standard_D12,Standard_D13,Standard_D14,Standard_DS1,Standard_DS2,Standard_DS3,Standard_DS4,Standard_DS11,Standard_DS12,Standard_DS13,Standard_DS14,Standard_G1,Standard_G2,Standard_G3,Standard_G4,Standard_G5)
+  :winrm_http_port => 6999,                     # Used to open different powershell port
+  :vm_size => 'Small',                          # Use any Azure VM size
   :availability_set_name => 'availabiltyset'
 }
-virtual_machine_service.add_role(params, options)
+vm_management.add_role(params, options)
 
-#Get a list of available virtual machine images
-virtual_machine_image_service = Azure::VirtualMachineImageManagementService.new
-virtual_machine_image_service.list_virtual_machine_images
-
-#Get a list of available regional data center locations
-base_management = Azure::BaseManagementService.new
-base_management.list_locations
 ```
-## Affinity Group Management
+
+<a name="images"></a>
+## List Images
 
 ```ruby
+
+# Get a list of available virtual machine images
+vm_image_management = Azure.vm_image_management
+vm_image_management.list_virtual_machine_images
+
+```
+
+<a name="base-mgmt"></a>
+## Base Management
+
+<a name="locations"></a>
+```ruby
+
+# Get a list of available regional data center locations
+base_management = Azure.base_management
+base_management.list_locations
+
+```
+
+<a name="affinity"></a>
+### Affinity Group Management
+
+```ruby
+
 # Require the azure rubygem
 require 'azure'
 
-#Create a affinity group service object
-base_management_service = Azure::BaseManagementService.new
+# Create a affinity group service object
+base_management = Azure.base_management
 
-#Get a list of affinity group that are provisioned for a subscription.
-base_management_service.list_affinity_groups
+# Get a list of affinity group that are provisioned for a subscription.
+base_management.list_affinity_groups
 
-#API to delete affinity group
-base_management_service.delete_affinity_group('affinity-group-name')
+# API to delete affinity group
+base_management.delete_affinity_group('affinity-group-name')
 
-#API to add a new affinity group to a subscription
+# API to add a new affinity group to a subscription
 options = {:description => 'Some Description'}
-base_management_service.create_affinity_group('affinity-group-name', 'West US', 'Label Name', options)
+base_management.create_affinity_group('affinity-group-name', 'West US', 'Label Name', options)
 
-#API to update affinity group
+# API to update affinity group
 options = {:description => 'Some Description'}
-base_management_service.update_affinity_group('affinity-group-name', 'Label Name', options)
+base_management.update_affinity_group('affinity-group-name', 'Label Name', options)
 
-#API to list properties associated with the specified affinity group
-base_management_service.get_affinity_group('affinity-group-name')
+# API to list properties associated with the specified affinity group
+base_management.get_affinity_group('affinity-group-name')
+
 ```
+
+<a name="sql"></a>
 ## SQL Database Server Management
 
 ```ruby
+
 # Require the azure rubygem
 require 'azure'
 
-Azure.configure do |config|
-  config.management_certificate = "path to *.pem or *.pfx file"
-  config.subscription_id        = "your subscription id"
-  config.management_endpoint    = "https://management.database.windows.net:8443/"
-#To access other service management apis use "https://management.core.windows.net".
-end
+# Configure these properties
+Azure.management_certificate = "path to *.pem or *.pfx file"
+Azure.subscription_id        = "your subscription id"
 
-#Create a database server service object
-sql_db_service = Azure::SqlDatabaseManagementService.new
+# Create a database server service object
+sql_db_service = Azure.sql_database_management
 
-#Get a list of SQL Database servers that are provisioned for a subscription.
+# Get a list of SQL Database servers that are provisioned for a subscription.
 sql_db_service.list_servers
 
-#API to delete SQL Database server
+# API to delete SQL Database server
 sql_db_service.delete_server('server_name')
 
-#API to adds a new SQL Database server to a subscription
+# API to adds a new SQL Database server to a subscription
 sql_db_service.create_server('admin-login', 'ComplexPassword', 'West US')
 
-#API to sets the administrative password of a SQL Database server for a subscription
+# API to sets the administrative password of a SQL Database server for a subscription
 sql_db_service.reset_password('server-name', 'NewPassword')
 
-#Get a list of all the server-level firewall rules for a SQL Database server that belongs to a subscription
+# Get a list of all the server-level firewall rules for a SQL Database server that belongs to a subscription
 sql_db_service.list_sql_server_firewall_rules("server-name")
 
-#API to adds a new server-level firewall rule or updates an existing server-level firewall rule for a SQL Database server with requester’s IP address.
+# API to adds a new server-level firewall rule or updates an existing server-level firewall rule for a SQL Database server with requester’s IP address.
 sql_db_service.delete_sql_server_firewall_rule("server-name", "rule-name")
 
-#API to add/updates server-level firewall rule for a SQL Database server that belongs to a subscription
+# API to add/updates server-level firewall rule for a SQL Database server that belongs to a subscription
 ip_range = {:start_ip_address => "0.0.0.1", :end_ip_address => "0.0.0.5"}
 sql_db_service.set_sql_server_firewall_rule("server-name", "rule-name", ip_range)
 
 # If ip_range was not specified in the above api then the IP of the machine from where the api is being called would be set as the rule.
 # To toggle between the option to allow Microsoft Azure services to access db server similar to azure portal just set the fire wall rule
 # with iprange to be 0.0.0.0 as start and end.Remove the rule to unset this option.
+
 ```
+
+<a name="vnets"></a>
 ## Virtual Network Management
 
 ```ruby
+
 # Require the azure rubygem
 require 'azure'
 
-#Create a virtual network service object
+# Create a virtual network service object
+vnet = Azure.network_management
 
-vnet = Azure::VirtualNetworkManagementService.new
-
-#API to get a list of virtual networks created for a subscription.
-
+# API to get a list of virtual networks created for a subscription.
 vnet.list_virtual_networks
 
-#API to configure virtual network with required and optional parameters
-
+# API to configure virtual network with required and optional parameters
 address_space = ['172.16.0.0/12',  '10.0.0.0/8',  '192.168.0.0/24']
-
 subnets = [{:name => 'subnet-1',  :ip_address=>'172.16.0.0',  :cidr=>12},  {:name => 'subnet-2',  :ip_address=>'10.0.0.0',  :cidr=>8}]
-
 dns_servers = [{:name => 'dns-1',  :ip_address=>'1.2.3.4'},  {:name => 'dns-2',  :ip_address=>'8.7.6.5'}]
-
 options = {:subnet => subnets, :dns => dns_servers}
-
 vnet.set_network_configuration('virtual-network-name', 'location_name', address_space, options)
 
-#API to configure virtual network from xml file that can be exported from management portal and customized to add or delete vnet
-
+# API to configure virtual network from xml file that can be exported from management portal and customized to add or delete vnet
 vnetxml = './customnetwork.xml'
-
 vnet.set_network_configuration(vnetxml)
+
 ```
 
-# Useful commands for certificate operations
+# Getting Started with Certificates
 
 Currently the sdk supports *.pem or *.pfx (passwordless pfx) for service management operations. Following are the steps discussed on various cert operations.
 
-## Publish Settings files
+## Get Started with Publish Settings
 
 * To create a pfx from the publishsettings, simply download the publishsettings file for your subscription 
 [https://manage.windowsazure.com/publishsettings](https://manage.windowsazure.com/publishsettings/index?client=powershell). Make sure you have this gem installed and
  run `pfxer --in [path to your .publishsettings file]`. This will create a .pfx from your publish settings file which can 
  be supplied as a cert parameter for Service Management Commands.
  
-## Generate New Cert and Upload to Azure Portal
+## Get Started with OpenSSL
 
 * Using the following openssl commands to create a cert and upload to Azure Management
-  * Generate public and private `openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.key -out mycert.pem`
-  * Generate public .cer for Azure upload `openssl x509 -inform pem -in mycert.pem -outform der -out mycert_mgmt.cer`
-  * Upload the `mycert_mgmt.cer` to Azure Management through [https://management.azure.com](https://management.azure.com)
-  * Combine the public and private into one `cat mycert.key mycert.pem > cert.pem`
+  * Generate public and private `openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout cert.pem -out cert.pem`
+  * Generate public .cer for Azure upload `openssl x509 -inform pem -in cert.pem -outform der -out mgmt.cer`
+  * Upload the `mgmt.cer` to Azure Management through [https://management.azure.com](https://management.azure.com)
   * Use cert.pem as your cert parameter for Service Management Commands.
-
-# Need Help?
-
-Be sure to check out the Microsoft Azure [Developer Forums on Stack Overflow and MSDN](http://go.microsoft.com/fwlink/?LinkId=234489) if you have trouble with the provided code.
 
 # Contribute Code or Provide Feedback
 
-If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.com/guidelines.html).
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+
+## Development Environment Setup
+
+### Download Source Code
+
+To get the source code of the SDK via **git** just type:
+
+```bash
+git clone https://github.com/Azure/azure-sdk-for-ruby.git
+cd ./azure-sdk-for-ruby
+```
+
+Then, run bundler to install all the gem dependencies:
+
+```bash
+bundle install
+```
+
+### Setup the Environment for Integration Tests
+
+If you would like to run the integration test suite, you will need to setup environment variables which will be used
+during the integration tests. These tests will use these credentials to run live tests against Azure with the provided
+credentials (you will be charged for usage, so verify the clean up scripts did their job at the end of a test run).
+
+The root of the project contains a .env_sample file. This dot file is a sample of the actual environment vars needed to
+run the integration tests.
+
+Do the following to prepare your environment for integration tests:
+
+* Copy .env_sample to .env **relative to root of the project dir**
+* Update .env with your credentials **.env is in the .gitignore, so should only reside locally**
+
+### Run Tests
+
+You can use the following commands to run:
+
+* All the tests: ``rake test``. **This will run integration tests if you have .env file or env vars setup**
+* A specific suite of tests: ``rake test:unit``, ``rake test:integration``, ``rake test:integration:blob``, etc.
+* one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
+
+### Generate Documentation
+
+Running the command ``yard`` will generate the API documentation in the `./doc` directory.
+
+## Provide Feedback
+
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-ruby/issues) section of the project.
 
-# Learn More
+# Maintainers
 
-For documentation on how to host Ruby applications on Microsoft Azure, please see the [Microsoft Azure Ruby Developer Center](http://www.azure.com/en-us/develop/ruby/).
-For documentation on Azure PowerShell CLI tool for Windows, please see our readme [here](http://github.com/azure/azure-sdk-tools).
-For documentation on the Azure cross platform CLI tool for Windows, Mac and Linux, please see our readme [here](http://github.com/azure/azure-sdk-tools-xplat).
+* [David Justice](https://github.com/devigned)
+
+# Azure CLI Tooling
+
+For documentation on [Azure PowerShell](http://github.com/azure/azure-powershell).
+For documentation on [Azure CLI](http://github.com/azure/azure-xplat-cli).

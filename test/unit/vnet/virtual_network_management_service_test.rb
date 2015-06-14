@@ -56,7 +56,7 @@ describe Azure::VirtualNetworkManagementService do
 
   describe '#list_virtual_networks' do
     before do
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+      subject.client.stubs(:management_request).with(
         getmethod,
         list_networks_path,
         nil

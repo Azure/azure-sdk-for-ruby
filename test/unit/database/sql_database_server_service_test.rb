@@ -27,7 +27,6 @@ describe 'Azure::SqlDatabaseManagementService' do
       Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       mock_request.stubs(:headers).returns(response_headers)
       mock_request.expects(:call).returns(Nokogiri::XML response_xml).at_least(0)
-      Azure.config.sql_database_authentication_mode = :sql_server
     end
 
     describe '#list_servers' do
@@ -36,10 +35,10 @@ describe 'Azure::SqlDatabaseManagementService' do
       let(:request_path) { '/servers' }
 
       before do
-        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
+        subject.client.stubs(:sql_management_request).with(
             verb,
             request_path,
-            nil
+            anything
         ).returns(mock_request)
       end
 
@@ -52,12 +51,12 @@ describe 'Azure::SqlDatabaseManagementService' do
         results.must_be_kind_of Array
         results.length.must_equal 3
         sql_server = results.first
-        sql_server.must_be_kind_of Azure::SqlDatabaseManagement::SqlDatabase
+        sql_server.must_be_kind_of Azure::SqlDatabaseManagement::SqlServer
         sql_server.name.must_equal 'nn1koc2ney'
         sql_server.administrator_login.must_equal 'SqlServer2'
         sql_server.location.must_equal 'West US'
-        sql_server.feature_name.must_equal 'Premium Mode'
-        sql_server.feature_value.must_equal 'false'
+        sql_server.fully_qualified_domain_name.nil?.must_equal false
+        sql_server.version.must_equal '12.0'
       end
     end
 
@@ -70,11 +69,10 @@ describe 'Azure::SqlDatabaseManagementService' do
 
       it 'error if sql server does not exists' do
         s_name = 'unknown-server'
-        exception = assert_raises(Azure::Error::Error) do
+        exception = assert_raises(Azure::SqlDatabaseManagement::ServerDoesNotExist) do
           subject.delete_server s_name
         end
-        s_id = Azure.config.subscription_id
-        assert_match(/Subscription #{s_id} does not have server #{s_name}./i,
+        assert_match(/Server named unknown-server does not exist./i,
                      exception.message)
       end
 
@@ -87,17 +85,16 @@ describe 'Azure::SqlDatabaseManagementService' do
       let(:request_path) { "/servers/#{sql_server_name}/firewallrules" }
 
       before do
-        sql_server = Azure::SqlDatabaseManagement::SqlDatabase.new do |server|
+        sql_server = Azure::SqlDatabaseManagement::SqlServer.new do |server|
           server.name = sql_server_name
         end
         Azure::SqlDatabaseManagementService.any_instance.stubs(
             :list_servers
         ).returns([sql_server])
 
-        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
+        subject.client.stubs(:sql_management_request).with(
             verb,
-            request_path,
-            nil
+            request_path
         ).returns(mock_request)
       end
 
@@ -109,7 +106,7 @@ describe 'Azure::SqlDatabaseManagementService' do
         results = subject.list_sql_server_firewall_rules sql_server_name
         results.must_be_kind_of Array
         results.length.must_equal 4
-        results.first.must_be_kind_of Hash
+        results.first.must_be_kind_of Azure::SqlDatabaseManagement::FirewallRule
       end
     end
 
@@ -118,15 +115,31 @@ describe 'Azure::SqlDatabaseManagementService' do
       let(:verb) { :post }
       let(:request_path) { '/servers' }
       let(:password) { 'User@123' }
-      let(:login) { 'ms_open_tech' }
+      let(:login) { 'login_user' }
       let(:geo_location) { 'West US' }
 
+      let(:sql_server_name) { 'server1' }
+      let(:sql_server) {
+        Azure::SqlDatabaseManagement::SqlServer.new do |server|
+          server.name = sql_server_name
+        end
+      }
+      let(:sql_server2) {
+        Azure::SqlDatabaseManagement::SqlServer.new do |server|
+          server.name = sql_server_name + '_blah'
+        end
+      }
+
       before do
-        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
+        subject.client.stubs(:sql_management_request).with(
             verb,
             request_path,
             anything
         ).returns(mock_request)
+
+        Azure::SqlDatabaseManagementService.any_instance.stubs(
+            :list_servers
+        ).returns([sql_server], [sql_server, sql_server2])
 
         mock_request.stubs(:headers).returns(response_headers)
         mock_request.expects(:call).returns(
@@ -140,15 +153,46 @@ describe 'Azure::SqlDatabaseManagementService' do
         sql_server.administrator_login.must_equal login
         sql_server.location.must_equal geo_location
       end
+
+      describe 'when catching a 500 error and verifying the server was made' do
+
+        before do
+          Azure::SqlDatabaseManagementService.any_instance.stubs(
+              :list_servers
+          ).returns([sql_server])
+
+          subject.client.stubs(:sql_management_request).with(
+              verb,
+              request_path,
+              anything
+          ).returns(mock_request)
+          mock_request.stubs(:headers).returns(response_headers)
+          mock_request.expects(:call).raises(RuntimeError.new('Please retry the request'))
+        end
+
+        it 'will raise if nothing new is returned from the list_servers call' do
+          assert_raises(RuntimeError) do
+            subject.create_server(login, password, geo_location)
+          end
+        end
+
+        it 'will not raise if there is a new server returned from the second list_servers call' do
+          Azure::SqlDatabaseManagementService.any_instance.stubs(
+              :list_servers
+          ).returns([sql_server], [sql_server, sql_server2])
+
+          subject.create_server(login, password, geo_location).must_equal sql_server2
+        end
+      end
+
     end
 
     describe '#set_sql_server_firewall_rule' do
       it 'create sql server' do
-        ip_range = {start_ip_address: '0.0.0.1', end_ip_address: '0.0.0.5'}
-        exception = assert_raises(RuntimeError) do
-          subject.set_sql_server_firewall_rule('zv2nfoah2t1', ip_range)
+        exception = assert_raises(ArgumentError) do
+          subject.set_sql_server_firewall_rule('zv2nfoah2t1', nil)
         end
-        assert_match(/Missing parameter server_name or rule_name/i,
+        assert_match(/Missing or empty parameter server_name, rule_name, start_ip or end_ip/i,
                      exception.message)
       end
     end
@@ -159,7 +203,6 @@ describe 'Azure::SqlDatabaseManagementService' do
       Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       mock_request.stubs(:headers).returns(response_headers)
       mock_request.expects(:call).returns(Nokogiri::XML response_xml).at_least(0)
-      Azure.config.sql_database_authentication_mode = :management_certificate
     end
 
     describe '#list_servers' do
@@ -168,7 +211,7 @@ describe 'Azure::SqlDatabaseManagementService' do
       let(:request_path) { '/servers' }
 
       before do
-        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(verb, request_path, nil).returns(mock_request)
+        subject.client.stubs(:sql_management_request).with(verb, request_path).returns(mock_request)
       end
 
       it 'assembles a URI for the request' do
@@ -180,12 +223,12 @@ describe 'Azure::SqlDatabaseManagementService' do
         results.must_be_kind_of Array
         results.length.must_equal 3
         sql_server = results.first
-        sql_server.must_be_kind_of Azure::SqlDatabaseManagement::SqlDatabase
+        sql_server.must_be_kind_of Azure::SqlDatabaseManagement::SqlServer
         sql_server.name.must_equal 'nn1koc2ney'
         sql_server.administrator_login.must_equal 'SqlServer2'
         sql_server.location.must_equal 'West US'
-        sql_server.feature_name.must_equal 'Premium Mode'
-        sql_server.feature_value.must_equal 'false'
+        sql_server.version.must_equal '12.0'
+        sql_server.fully_qualified_domain_name.nil?.must_equal false
       end
     end
 
@@ -198,11 +241,10 @@ describe 'Azure::SqlDatabaseManagementService' do
 
       it 'error if sql server does not exists' do
         s_name = 'unknown-server'
-        exception = assert_raises(Azure::Error::Error) do
+        exception = assert_raises(Azure::SqlDatabaseManagement::ServerDoesNotExist) do
           subject.delete_server s_name
         end
-        s_id = Azure.config.subscription_id
-        assert_match(/Subscription #{s_id} does not have server #{s_name}./i,
+        assert_match(/Server named unknown-server does not exist./i,
                      exception.message)
       end
 
@@ -215,17 +257,16 @@ describe 'Azure::SqlDatabaseManagementService' do
       let(:request_path) { "/servers/#{sql_server_name}/firewallrules" }
 
       before do
-        sql_server = Azure::SqlDatabaseManagement::SqlDatabase.new do |server|
+        sql_server = Azure::SqlDatabaseManagement::SqlServer.new do |server|
           server.name = sql_server_name
         end
         Azure::SqlDatabaseManagementService.any_instance.stubs(
             :list_servers
         ).returns([sql_server])
 
-        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
+        subject.client.stubs(:sql_management_request).with(
             verb,
-            request_path,
-            nil
+            request_path
         ).returns(mock_request)
       end
 
@@ -237,7 +278,7 @@ describe 'Azure::SqlDatabaseManagementService' do
         results = subject.list_sql_server_firewall_rules sql_server_name
         results.must_be_kind_of Array
         results.length.must_equal 4
-        results.first.must_be_kind_of Hash
+        results.first.must_be_kind_of Azure::SqlDatabaseManagement::FirewallRule
       end
     end
 
@@ -246,11 +287,27 @@ describe 'Azure::SqlDatabaseManagementService' do
       let(:verb) { :post }
       let(:request_path) { '/servers' }
       let(:password) { 'User@123' }
-      let(:login) { 'ms_open_tech' }
+      let(:login) { 'test_login' }
       let(:geo_location) { 'West US' }
 
+      let(:sql_server_name) { 'server1' }
+      let(:sql_server) {
+        Azure::SqlDatabaseManagement::SqlServer.new do |server|
+          server.name = sql_server_name
+        end
+      }
+      let(:sql_server2) {
+        Azure::SqlDatabaseManagement::SqlServer.new do |server|
+          server.name = sql_server_name + '_blah'
+        end
+      }
+
       before do
-        Azure::BaseManagement::SqlManagementHttpRequest.stubs(:new).with(
+        Azure::SqlDatabaseManagementService.any_instance.stubs(
+            :list_servers
+        ).returns([sql_server], [sql_server, sql_server2])
+
+        subject.client.stubs(:sql_management_request).with(
             verb,
             request_path,
             anything
@@ -271,12 +328,12 @@ describe 'Azure::SqlDatabaseManagementService' do
     end
 
     describe '#set_sql_server_firewall_rule' do
-      it 'create sql server' do
-        ip_range = {start_ip_address: '0.0.0.1', end_ip_address: '0.0.0.5'}
-        exception = assert_raises(RuntimeError) do
-          subject.set_sql_server_firewall_rule('zv2nfoah2t1', ip_range)
+
+      it 'set server firewall with a nil param' do
+        exception = assert_raises(ArgumentError) do
+          subject.set_sql_server_firewall_rule('zv2nfoah2t1', nil)
         end
-        assert_match(/Missing parameter server_name or rule_name/i,
+        assert_match(/Missing or empty parameter server_name, rule_name, start_ip or end_ip/i,
                      exception.message)
       end
     end

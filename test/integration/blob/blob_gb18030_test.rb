@@ -12,15 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
-require "azure/blob/blob_service"
+require 'integration/test_helper'
+require 'azure/blob/blob_service'
 
 describe 'Blob GB-18030' do
   subject { Azure::Blob::BlobService.new }
   after { ContainerNameHelper.clean }
 
   let(:container_name) { ContainerNameHelper.name }
-  let(:blob_name) { "blobname" }
+  let(:blob_name) { 'blobname' }
   let(:length) { 1024 }
 
   before {
@@ -34,8 +34,8 @@ describe 'Blob GB-18030' do
     # characters, per the Blob Service spec.
     GB18030TestStrings.get.each { |k,v|
       begin
-        subject.create_container container_name + v.encode("UTF-8")
-        flunk "No exception"
+        subject.create_container container_name + v.encode('UTF-8')
+        flunk 'No exception'
       rescue
         # Add validation?
       end
@@ -48,8 +48,8 @@ describe 'Blob GB-18030' do
     # characters, per the Blob Service spec.
     GB18030TestStrings.get.each { |k,v|
       begin
-        subject.create_container container_name + v.encode("GB18030")
-        flunk "No exception"
+        subject.create_container container_name + v.encode('GB18030')
+        flunk 'No exception'
       rescue
         # Add validation?
       end
@@ -62,8 +62,8 @@ describe 'Blob GB-18030' do
     GB18030TestStrings.get.each { |k,v|
       # The Blob service does not support characters from extended plains.
       if k != 'ChineseExtB' then
-        test_name = container_name + v.encode("UTF-8")
-        subject.create_block_blob container_name, test_name, "hi"
+        test_name = container_name + v.encode('UTF-8')
+        subject.create_block_blob container_name, test_name, 'hi'
         blobs = subject.list_blobs container_name
         blobs.each { |value|
           value.name.must_equal test_name
@@ -80,11 +80,11 @@ describe 'Blob GB-18030' do
     GB18030TestStrings.get.each { |k,v|
       # The Blob service does not support characters from extended plains.
       if k != 'ChineseExtB' then
-        test_name = container_name + v.encode("GB18030")
-        subject.create_block_blob container_name, test_name, "hi"
+        test_name = container_name + v.encode('GB18030')
+        subject.create_block_blob container_name, test_name, 'hi'
         blobs = subject.list_blobs container_name
         blobs.each { |value|
-          value.name.encode("UTF-8").must_equal test_name.encode("UTF-8")
+          value.name.encode('UTF-8').must_equal test_name.encode('UTF-8')
         }
         subject.delete_blob container_name, test_name
       end
@@ -94,9 +94,9 @@ describe 'Blob GB-18030' do
   it 'Read/Write Blob Metadata UTF-8 key' do
     GB18030TestStrings.get.each { |k,v|
       begin
-        metadata = {"custommetadata" + v.encode("UTF-8") => "CustomMetadataValue" }
+        metadata = {'custommetadata' + v.encode('UTF-8') => 'CustomMetadataValue'}
         subject.set_blob_metadata container_name, blob_name, metadata
-        flunk "No exception"
+        flunk 'No exception'
       rescue Azure::Core::Http::HTTPError => error
         error.status_code.must_equal 400
       end
@@ -106,9 +106,9 @@ describe 'Blob GB-18030' do
   it 'Read/Write Blob Metadata GB-18030 key' do
     GB18030TestStrings.get.each { |k,v|
       begin
-        metadata = {"custommetadata" + v.encode("GB18030") => "CustomMetadataValue" }
+        metadata = {'custommetadata' + v.encode('GB18030') => 'CustomMetadataValue'}
         subject.set_blob_metadata container_name, blob_name, metadata
-        flunk "No exception"
+        flunk 'No exception'
       rescue Azure::Core::Http::HTTPError => error
         error.status_code.must_equal 400
       end
@@ -118,9 +118,9 @@ describe 'Blob GB-18030' do
   it 'Read/Write Blob Metadata UTF-8 value' do
     GB18030TestStrings.get.each { |k,v|
       begin
-        metadata = {"custommetadata" => "CustomMetadataValue" + v.encode("UTF-8")}
+        metadata = {'custommetadata' => 'CustomMetadataValue' + v.encode('UTF-8')}
         subject.set_blob_metadata container_name, blob_name, metadata
-        flunk "No exception"
+        flunk 'No exception'
       rescue Azure::Core::Http::HTTPError => error
         # TODO: Error should really be 400
         error.status_code.must_equal 403
@@ -131,9 +131,9 @@ describe 'Blob GB-18030' do
   it 'Read/Write Blob Metadata GB-18030 value' do
     GB18030TestStrings.get.each { |k,v|
       begin
-        metadata = {"custommetadata" => "CustomMetadataValue" + v.encode("GB18030")}
+        metadata = {'custommetadata' => 'CustomMetadataValue' + v.encode('GB18030')}
         subject.set_blob_metadata container_name, blob_name, metadata
-        flunk "No exception"
+        flunk 'No exception'
       rescue Azure::Core::Http::HTTPError => error
         # TODO: Error should really be 400
         error.status_code.must_equal 403
@@ -144,7 +144,7 @@ describe 'Blob GB-18030' do
   it 'Read/Write Blob Block Content UTF-8' do
     GB18030TestStrings.get.each { |k,v|
       blob_name = 'Read/Write Block Blob Content UTF-8 for ' + k
-      content = v.encode("UTF-8")
+      content = v.encode('UTF-8')
 
       subject.create_block_blob container_name, blob_name, content
       blob, returned_content = subject.get_blob container_name, blob_name
@@ -156,8 +156,8 @@ describe 'Blob GB-18030' do
   it 'Read/Write Blob Block Content GB18030' do
     GB18030TestStrings.get.each { |k,v|
       blob_name = 'Read/Write Block Blob Content GB18030 for ' + k
-      content = v.encode("GB18030")
-      options = { :content_encoding=>"GB18030" }
+      content = v.encode('GB18030')
+      options = { :content_encoding=> 'GB18030'}
       subject.create_block_blob container_name, blob_name, content, options
       blob, returned_content = subject.get_blob container_name, blob_name
       returned_content.force_encoding(blob.properties[:content_encoding])
@@ -168,10 +168,10 @@ describe 'Blob GB-18030' do
   it 'Read/Write Blob Page Content UTF-8' do
     GB18030TestStrings.get.each { |k,v|
       blob_name = 'Read/Write Page Blob Content UTF-8 for ' + k
-      options = { :content_encoding=>"UTF-8" }
-      content = v.encode("UTF-8")
+      options = { :content_encoding=> 'UTF-8'}
+      content = v.encode('UTF-8')
       while content.bytesize < 512 do
-        content << "X"
+        content << 'X'
       end
       subject.create_page_blob container_name, blob_name, 512, options
       subject.create_blob_pages container_name, blob_name, 0, 511, content
@@ -184,10 +184,10 @@ describe 'Blob GB-18030' do
   it 'Read/Write Blob Page Content GB18030' do
     GB18030TestStrings.get.each { |k,v|
       blob_name = 'Read/Write Page Blob Content GB18030 for ' + k
-      options = { :content_encoding=>"GB18030" }
-      content = v.encode("GB18030")
+      options = { :content_encoding=> 'GB18030'}
+      content = v.encode('GB18030')
       while content.bytesize < 512 do
-        content << "X"
+        content << 'X'
       end
       subject.create_page_blob container_name, blob_name, 512, options
       subject.create_blob_pages container_name, blob_name, 0, 511, content

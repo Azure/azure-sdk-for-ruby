@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
+require 'integration/test_helper'
 
-describe "ServiceBus Topics" do
+describe 'ServiceBus Topics' do
   subject { Azure::ServiceBus::ServiceBusService.new }
   after { ServiceBusTopicNameHelper.clean }
   let(:topic){ ServiceBusTopicNameHelper.name }
@@ -29,14 +29,14 @@ describe "ServiceBus Topics" do
     :enable_batched_operations => true,
   }}
 
-  it "should be able to create a new topic" do
+  it 'should be able to create a new topic' do
     result = subject.create_topic topic, { :max_size_in_megabytes => 2048 }
     result.must_be :kind_of?, Azure::ServiceBus::Topic
     result.name.must_equal topic
     result.max_size_in_megabytes.must_equal 2048
   end
 
-  it "should be able to create a new topic from a string and description Hash" do
+  it 'should be able to create a new topic from a string and description Hash' do
     result = subject.create_topic topic_alternative, description_alternative
     result.must_be :kind_of?, Azure::ServiceBus::Topic
     result.name.must_equal topic_alternative
@@ -50,20 +50,20 @@ describe "ServiceBus Topics" do
     result.enable_batched_operations.must_equal description_alternative[:enable_batched_operations]
   end
 
-  describe "when a topic exists" do
+  describe 'when a topic exists' do
     before { subject.create_topic topic }
 
-    it "should be able to delete the topic" do
+    it 'should be able to delete the topic' do
       subject.delete_topic topic
     end
 
-    it "should be able to get the topic" do
+    it 'should be able to get the topic' do
       result = subject.get_topic topic
       result.must_be :kind_of?, Azure::ServiceBus::Topic
       result.name.must_equal topic
     end
 
-    it "should be able to list topics" do
+    it 'should be able to list topics' do
       result = subject.list_topics
       topic_found = false
       result.each { |t|
@@ -72,9 +72,9 @@ describe "ServiceBus Topics" do
       assert topic_found, "list_topics didn't include the expected topic"
     end
 
-    it "should be able to send the topic a message" do
-      message = Azure::ServiceBus::BrokeredMessage.new("some text", {:prop1 => "val1"}) do |m|
-        m.to = "me"
+    it 'should be able to send the topic a message' do
+      message = Azure::ServiceBus::BrokeredMessage.new('some text', {:prop1 => 'val1'}) do |m|
+        m.to = 'me'
         m.label = 'my_label'
       end
       result = subject.send_topic_message topic, message
@@ -90,7 +90,7 @@ describe "ServiceBus Topics" do
         subject.create_topic topic2
       }
 
-      it "should be able to list topics" do
+      it 'should be able to list topics' do
         result = subject.list_topics
         topic_found = false
         topic1_found = false
@@ -103,14 +103,14 @@ describe "ServiceBus Topics" do
         assert (topic_found and topic1_found and topic2_found), "list_topics didn't include the expected topic"
       end
 
-      it "should be able to use $skip token with list_topics" do
+      it 'should be able to use $skip token with list_topics' do
         result = subject.list_topics
         result2 = subject.list_topics({ :skip => 1 })
         result2.length.must_equal result.length - 1
         result2[0].id.must_equal result[1].id
       end
       
-      it "should be able to use $top token with list_topics" do
+      it 'should be able to use $top token with list_topics' do
         result = subject.list_topics
         result.length.wont_equal 1
 
@@ -118,7 +118,7 @@ describe "ServiceBus Topics" do
         result2.length.must_equal 1
       end
 
-      it "should be able to use $skip and $top token together with list_topics" do
+      it 'should be able to use $skip and $top token together with list_topics' do
         result = subject.list_topics
         result2 = subject.list_topics({ :skip => 1, :top => 1 })
         result2.length.must_equal 1

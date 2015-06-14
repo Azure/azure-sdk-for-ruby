@@ -12,28 +12,36 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "uri"
+require 'uri'
 
-require "azure/core/auth/signer"
-require "azure/service_bus/auth/wrap_service"
+require 'azure/core/auth/signer'
+require 'azure/service_bus/auth/wrap_service'
 
 module Azure
   module ServiceBus
     module Auth
       class WrapSigner < Azure::Core::Auth::Signer
 
-        def initialize
+        def initialize(host = nil, options={})
+          client = (options[:client] || Azure)
+          host = host || client.acs_host
           @tokens = {}
-          @wrap_service = Azure::ServiceBus::Auth::WrapService.new
+          @wrap_service = Azure::ServiceBus::Auth::WrapService.new(host, nil, nil, options)
         end
 
         attr_accessor :tokens
 
         def name
-          "WRAP"
+          'WRAP'
         end
 
         public
+
+        def sign_request(req)
+          signature = sign(req.method, req.uri, req.headers)
+          req.headers['Authorization'] = "#{name} #{signature}"
+        end
+
         def sign(method, uri, headers)
           access_token = get_access_token(create_scope_uri(uri))
           'access_token="%s"' % access_token

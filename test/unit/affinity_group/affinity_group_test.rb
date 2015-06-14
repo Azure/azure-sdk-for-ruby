@@ -34,7 +34,7 @@ describe Azure::BaseManagementService do
     before do
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get,
                                              request_path,
-                                             nil).returns(mock_request)
+                                             anything).returns(mock_request)
     end
 
     it 'returns a list of affinity groups for the subscription' do
@@ -100,13 +100,13 @@ describe Azure::BaseManagementService do
 
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get,
                                              location_request_path,
-                                             nil).returns(mock_request)
+                                             anything).returns(mock_request)
       mock_request.expects(:call).returns(location_response_body).at_least(0)
       mock_request = mock
 
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(:get,
                                              request_path,
-                                             nil).returns(mock_request)
+                                             anything).returns(mock_request)
       mock_request.expects(:call).returns(
         Nokogiri::XML Fixtures['list_affinity_groups']
       ).at_least(0)
@@ -146,7 +146,7 @@ describe Azure::BaseManagementService do
       Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
         :get,
         request_path,
-        nil
+        anything
       ).returns(mock_request)
       mock_request.expects(:call).returns(
         Nokogiri::XML response_xml

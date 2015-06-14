@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/core/http/http_error"
+require 'azure/core/http/http_error'
 
 module Azure
   module Core
@@ -23,7 +23,7 @@ module Azure
         # Public: Initialize a new response.
         #
         # http_response - A Net::HTTPResponse.
-        def initialize(http_response, uri="")
+        def initialize(http_response, uri='')
           @http_response = http_response
           @uri = uri
         end

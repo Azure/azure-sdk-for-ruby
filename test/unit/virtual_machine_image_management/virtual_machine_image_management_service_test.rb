@@ -42,7 +42,7 @@ describe Azure::VirtualMachineImageManagementService do
     let(:verb) { :get }
     before do
       os_images_request = mock
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+      subject.client.stubs(:management_request).with(
           verb,
           os_image_request_path,
           nil
@@ -65,7 +65,7 @@ describe Azure::VirtualMachineImageManagementService do
     let(:verb) { :get }
     before do
       vm_images_request = mock
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+      subject.client.stubs(:management_request).with(
           verb,
           vm_image_request_path,
           nil
@@ -88,14 +88,14 @@ describe Azure::VirtualMachineImageManagementService do
     let(:verb) { :get }
     before do
       vm_images_request = mock
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+      subject.client.stubs(:management_request).with(
           verb,
           vm_image_request_path,
           nil
       ).returns(vm_images_request)
       vm_images_request.expects(:call).returns(vm_images_response)
       os_images_request = mock
-      Azure::BaseManagement::ManagementHttpRequest.stubs(:new).with(
+      subject.client.stubs(:management_request).with(
           verb,
           os_image_request_path,
           nil

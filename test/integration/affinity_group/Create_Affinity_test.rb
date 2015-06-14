@@ -48,7 +48,7 @@ describe Azure::BaseManagementService do
       exception = assert_raises(RuntimeError) do
         subject.create_affinity_group(affinity_group_name, 'North West', label)
       end
-      assert_match(/Allowed values are Central US,South Central US,West US,East US,East US 2,North Europe,West Europe,Southeast Asia,East Asia,Japan West,Japan East,Brazil South/i, exception.message)
+      assert_match(/Allowed values are /i, exception.message)
     end
 
     it 'create new affinity group without optional params' do

@@ -20,10 +20,12 @@ module Azure
     class StorageService < Azure::Core::SignedService
       # Create a new instance of the StorageService
       #
-      # signer        - Azure::Core::Auth::Signer. An implementation of Signer used for signing requests. (optional, Default=Azure::Core::Auth::SharedKey.new)
-      # account_name  - String. The account name (optional, Default=Azure.config.storage_account_name)  
-      def initialize(signer=Core::Auth::SharedKey.new, account_name=Azure.config.storage_account_name)
-        super(signer, account_name)
+      # @param signer         [Azure::Core::Auth::Signer] An implementation of Signer used for signing requests.
+      # (optional, Default=Azure::Core::Auth::SharedKey.new)
+      # @param account_name   [String] The account name (optional, Default=Azure.config.storage_account_name)
+      # @param options        [Azure::Configurable] the client configuration context
+      def initialize(signer=Core::Auth::SharedKey.new, account_name=nil, options = {})
+        super(signer, account_name, options)
       end
 
 
@@ -62,7 +64,7 @@ module Azure
       # Returns a URI.
       def service_properties_uri(query={})
         query.update(restype: 'service', comp: 'properties')
-        generate_uri("", query)
+        generate_uri('', query)
       end
 
       # Adds metadata properties to header hash with required prefix
@@ -76,8 +78,9 @@ module Azure
       end
 
       def service_properties_headers
-        {"x-ms-version" => "2013-08-15"}
+        {'x-ms-version' => '2014-02-14'}
       end
+
     end
   end
 end

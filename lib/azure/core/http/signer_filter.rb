@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/core/http/http_filter"
+require 'azure/core/http/http_filter'
 
 module Azure
   module Core
@@ -24,8 +24,7 @@ module Azure
         end
 
         def call(req, _next)
-          signature = @signer.sign(req.method, req.uri, req.headers)
-          req.headers["Authorization"] = "#{@signer.name} #{signature}"
+          @signer.sign_request(req)
           _next.call
         end
       end

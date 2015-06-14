@@ -17,14 +17,14 @@ require "integration/test_helper"
 describe Azure::SqlDatabaseManagementService do
 
   subject { Azure::SqlDatabaseManagementService.new }
-  let(:login_name) {'ms_open_tech'}
-  describe "#list_servers" do
+  let(:login_name) {'test_login'}
+  describe '#list_servers' do
 
     before {
       Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     }
 
-    it "returns a list of SQL databse servers" do
+    it 'returns a list of SQL databse servers' do
       server1 = subject.create_server(login_name, 'User1@123', WindowsImageLocation)
       server2 = subject.create_server(login_name, 'User2@123', 'East US')
 
@@ -32,7 +32,7 @@ describe Azure::SqlDatabaseManagementService do
       sql_servers.wont_be_nil
       sql_servers.must_be_kind_of Array
       sql_server = sql_servers.first
-      sql_server.must_be_kind_of Azure::SqlDatabaseManagement::SqlDatabase
+      sql_server.must_be_kind_of Azure::SqlDatabaseManagement::SqlServer
       assert_operator sql_servers.size, :>=, 2
 
       subject.delete_server(server1.name)

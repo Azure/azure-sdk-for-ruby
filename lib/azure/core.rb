@@ -16,26 +16,3 @@
 module Azure::Core; end
 
 require 'azure/core/error'
-require 'azure/core/configuration'
-
-# load default configuration from environment variables
-# (user can always override this later)
-Azure.configure do |config|
-  config.storage_access_key     = ENV['AZURE_STORAGE_ACCESS_KEY']
-  config.storage_account_name   = ENV['AZURE_STORAGE_ACCOUNT']
-  config.storage_table_host     = ENV['AZURE_STORAGE_TABLE_HOST']
-  config.storage_blob_host      = ENV['AZURE_STORAGE_BLOB_HOST']
-  config.storage_queue_host     = ENV['AZURE_STORAGE_QUEUE_HOST']
-
-  config.sb_namespace  = ENV['AZURE_SERVICEBUS_NAMESPACE']
-  config.sb_access_key  = ENV['AZURE_SERVICEBUS_ACCESS_KEY']
-  config.sb_issuer      = ENV['AZURE_SERVICEBUS_ISSUER']
-
-  config.management_certificate  = ENV['AZURE_MANAGEMENT_CERTIFICATE']
-  config.subscription_id         = ENV['AZURE_SUBSCRIPTION_ID']
-  config.management_endpoint     = ENV['AZURE_MANAGEMENT_ENDPOINT']
-  config.sql_database_management_endpoint = ENV['AZURE_SQL_DATABASE_MANAGEMENT_ENDPOINT']
-  config.sql_database_authentication_mode = ENV['AZURE_SQL_DATABASE_AUTHENTICATION_MODE']
-
-  config.ca_file = ENV['SSL_CERT_FILE']
-end

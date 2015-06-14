@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/table/auth/shared_key"
+require 'azure/table/auth/shared_key'
 
 module Azure
   module Table
@@ -22,7 +22,7 @@ module Azure
         #
         # Returns a String.
         def name
-          "SharedKeyLite"
+          'SharedKeyLite'
         end
 
         # Generate the string to sign.
@@ -34,7 +34,7 @@ module Azure
         # Returns a plain text string.
         def signable_string(method, uri, headers)
           [
-            headers.fetch("Date") { headers.fetch("x-ms-date") },
+            headers.fetch('Date') { headers.fetch('x-ms-date') },
             canonicalized_resource(uri)
           ].join("\n")
         end

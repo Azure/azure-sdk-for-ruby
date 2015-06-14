@@ -15,7 +15,6 @@
 require 'azure/service/storage_service'
 
 require 'azure/table/auth/shared_key'
-
 require 'azure/table/serialization'
 require 'azure/table/entity'
 
@@ -23,9 +22,11 @@ module Azure
   module Table
     class TableService < Azure::Service::StorageService
 
-      def initialize
-        super(Azure::Table::Auth::SharedKey.new)
-        @host = Azure.config.storage_table_host
+      def initialize(options = {})
+        client_config = options[:client] || Azure
+        signer = options[:signer] || Auth::SharedKey.new(client_config.storage_account_name, client_config.storage_access_key)
+        super(signer, client_config.storage_account_name, options)
+        @host = client.storage_table_host
       end
 
       # Public: Creates new table in the storage account
@@ -43,10 +44,10 @@ module Azure
       #
       # See http://msdn.microsoft.com/en-us/library/azure/dd135729
       #
-      # Returns nil on success
+      # @return [nil] on success
       def create_table(table_name, options={})
         query = { }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         body = Azure::Table::Serialization.hash_to_entry_xml({"TableName" => table_name}).to_xml
         call(:post, collection_uri(query), body)
@@ -145,10 +146,10 @@ module Azure
       #
       # Returns a list of Azure::Entity::SignedIdentifier instances
       def get_table_acl(table_name, options={})
-        query = { "comp" => "acl" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'acl'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
-        response = call(:get, generate_uri(table_name, query))
+        response = call(:get, generate_uri(table_name, query), nil, {'x-ms-version' => '2012-02-12'})
 
         signed_identifiers = []
         signed_identifiers = Azure::Table::Serialization.signed_identifiers_from_xml response.body unless response.body == nil or response.body.length < 1
@@ -172,14 +173,14 @@ module Azure
       #
       # Returns nil on success
       def set_table_acl(table_name, options={})
-        query = { "comp" => "acl" }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query = { 'comp' => 'acl'}
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         uri = generate_uri(table_name, query)
         body = nil
         body = Azure::Table::Serialization.signed_identifiers_to_xml options[:signed_identifiers] if options[:signed_identifiers] && options[:signed_identifiers].length > 0
 
-        call(:put, uri, body, {})
+        call(:put, uri, body, {'x-ms-version' => '2012-02-12'})
         nil
       end
 
@@ -204,7 +205,7 @@ module Azure
         body = Azure::Table::Serialization.hash_to_entry_xml(entity_values).to_xml
 
         query = { }
-        query["timeout"] = options[:timeout].to_s if options[:timeout]
+        query['timeout'] = options[:timeout].to_s if options[:timeout]
 
         response = call(:post, entities_uri(table_name, nil, nil, query), body)
         
@@ -213,7 +214,7 @@ module Azure
         Entity.new do |entity|
           entity.table = table_name
           entity.updated = result[:updated]
-          entity.etag = response.headers["etag"] || result[:etag]
+          entity.etag = response.headers['etag'] || result[:etag]
           entity.properties = result[:properties]
         end
       end
@@ -438,8 +439,8 @@ module Azure
       # Returns an array of results, one for each operation in the batch
       def execute_batch(batch, options={})
         headers = {
-          "Content-Type"=> "multipart/mixed; boundary=#{batch.batch_id}",
-          "Accept"=> 'application/atom+xml,application/xml',
+          'Content-Type' => "multipart/mixed; boundary=#{batch.batch_id}",
+          'Accept' => 'application/atom+xml,application/xml',
           'Accept-Charset'=> 'UTF-8'
         }
 
@@ -447,7 +448,7 @@ module Azure
         query["timeout"] = options[:timeout].to_s if options[:timeout]
 
         body = batch.to_body
-        response = call(:post, generate_uri("/$batch", query), body, headers)
+        response = call(:post, generate_uri('/$batch', query), body, headers)
         batch.parse_response(response)
       end
 

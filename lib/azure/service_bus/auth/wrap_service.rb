@@ -20,10 +20,11 @@ module Azure
     module Auth
       class WrapService < Azure::Core::FilteredService
 
-        def initialize(host=Azure.config.acs_host, issuer=Azure.config.sb_issuer, access_key=Azure.config.sb_access_key)
-          super(host)
-          @issuer = issuer
-          @access_key = access_key
+        def initialize(host=nil, issuer=nil, access_key=nil, options={})
+          host = host || (options[:client] || Azure).acs_host
+          super(host, options)
+          @issuer = issuer || client.sb_issuer
+          @access_key = access_key || client.sb_access_key
         end
 
         # Gets a WRAP access token with specified parameters.

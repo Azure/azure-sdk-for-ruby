@@ -68,7 +68,9 @@ namespace :test do
   end
 
   Rake::TestTask.new :integration do |t|
-    t.pattern = 'test/integration/**/*_test.rb'
+    t.test_files = Dir['test/integration/**/*_test.rb'].reject do |path|
+      path.include?('database')
+    end
     t.verbose = true
     t.libs = %w(lib test)
   end

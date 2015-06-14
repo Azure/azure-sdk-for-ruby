@@ -14,7 +14,7 @@
 #--------------------------------------------------------------------------
 module Azure
   module SqlDatabaseManagement
-    class SqlDatabase
+    class SqlServer
 
       def initialize
         yield self if block_given?
@@ -23,8 +23,9 @@ module Azure
       attr_accessor :name
       attr_accessor :administrator_login
       attr_accessor :location
-      attr_accessor :feature_name
-      attr_accessor :feature_value
+      attr_accessor :fully_qualified_domain_name
+      attr_accessor :version
+      attr_accessor :state
 
     end
   end

@@ -19,9 +19,9 @@ module Azure
   module Queue
     class QueueService < Service::StorageService
 
-      def initialize
-        super()
-        @host = Azure.config.storage_queue_host
+      def initialize(options = {})
+        super(nil, nil, options)
+        @host = @client.storage_queue_host
       end
 
       # Public: Get a list of Queues from the server

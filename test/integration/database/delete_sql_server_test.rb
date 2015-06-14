@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
+require 'integration/test_helper'
 
 describe Azure::SqlDatabaseManagementService do
 
@@ -21,35 +21,22 @@ describe Azure::SqlDatabaseManagementService do
   }
 
   subject { Azure::SqlDatabaseManagementService.new }
-  let(:login_name) {'ms_open_tech'}
+  let(:login_name) { 'test_login' }
   let(:sql_server) { subject.create_server(login_name, 'User1@123', WindowsImageLocation) }
 
-  describe "#delete_sql_server" do
+  describe '#delete_sql_server' do
 
-    it "delete sql database server" do
+    it 'delete sql database server' do
       server_name = sql_server.name
       subject.delete_server(server_name)
-      sql_server = subject.list_servers.select{|x| x.name == server_name}.first
+      sql_server = subject.list_servers.select { |x| x.name == server_name }.first
       sql_server.must_be_nil
     end
 
-    it "errors if the sql server does not exist" do
-      server_name = "unknown-server"
-      exception = assert_raises(Azure::Error::Error) do
-        subject.delete_server(server_name)
-      end
-      assert_match(/does not have server #{server_name}./i, exception.message)
-    end
-
-    it "exception message should be valid" do
-      server_name = "unknown-server"
-      begin
-        subject.delete_server(server_name)
-      rescue Azure::Error::Error => error
-        error.status_code.must_equal 40647
-        error.type.must_equal "DatabaseServerNotFound"
-        error.description.end_with?("does not have server #{server_name}.").must_equal true
-      end
+    it 'raise if the sql server does not exist' do
+      assert_raises(Azure::SqlDatabaseManagement::ServerDoesNotExist) {
+        subject.delete_server('unknown-server')
+      }
     end
 
   end
