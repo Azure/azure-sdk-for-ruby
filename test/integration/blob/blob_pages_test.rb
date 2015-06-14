@@ -12,16 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
-require "azure/blob/blob_service"
+require 'integration/test_helper'
+require 'azure/blob/blob_service'
 
 describe Azure::Blob::BlobService do
   subject { Azure::Blob::BlobService.new }
   after { TableNameHelper.clean }
   
   let(:container_name) { ContainerNameHelper.name }
-  let(:blob_name) { "blobname" }
-  let(:blob_name2) { "blobname2" }
+  let(:blob_name) { 'blobname' }
+  let(:blob_name2) { 'blobname2' }
   let(:length) { 2560 }
   before { 
     subject.create_container container_name
@@ -31,8 +31,8 @@ describe Azure::Blob::BlobService do
   
   describe '#create_blob_pages' do
     it 'creates pages in a page blob' do
-      content = ""
-      512.times.each{|i| content << "@" }
+      content = ''
+      512.times.each{|i| content << '@' }
 
       subject.create_blob_pages container_name, blob_name, 0, 511, content
       subject.create_blob_pages container_name, blob_name, 1024, 1535, content
@@ -47,8 +47,8 @@ describe Azure::Blob::BlobService do
 
   describe 'when the options hash is used' do
     it 'if none match is specified' do
-      content = ""
-      512.times.each{|i| content << "@" }
+      content = ''
+      512.times.each{|i| content << '@' }
 
       blob = subject.create_blob_pages container_name, blob_name2, 0, 511, content
 
@@ -58,18 +58,18 @@ describe Azure::Blob::BlobService do
     end
 
     it 'if match is specified' do
-      content = ""
-      512.times.each{|i| content << "@" }
+      content = ''
+      512.times.each{|i| content << '@' }
 
       blob = subject.create_blob_pages container_name, blob_name, 0, 511, content
       subject.create_blob_pages container_name, blob_name, 1024, 1535, content, { :if_match => blob.properties[:etag] }
     end
   end
 
-  describe "#clear_blob_pages" do
+  describe '#clear_blob_pages' do
     before { 
-      content = ""
-      512.times.each{|i| content << "@" }
+      content = ''
+      512.times.each{|i| content << '@' }
 
       subject.create_blob_pages container_name, blob_name, 0, 511, content
       subject.create_blob_pages container_name, blob_name, 1024, 1535, content
@@ -85,7 +85,7 @@ describe Azure::Blob::BlobService do
       ranges[2][1].must_equal 2559
     }
 
-    describe "when both start_range and end_range are specified" do
+    describe 'when both start_range and end_range are specified' do
       it 'clears the data in page blobs within the provided range' do
         subject.clear_blob_pages container_name, blob_name, 512, 1535
 
@@ -101,8 +101,8 @@ describe Azure::Blob::BlobService do
 
   describe '#list_page_blob_ranges' do
     before { 
-      content = ""
-      512.times.each{|i| content << "@" }
+      content = ''
+      512.times.each{|i| content << '@' }
 
       subject.create_blob_pages container_name, blob_name, 0, 511, content
       subject.create_blob_pages container_name, blob_name, 1024, 1535, content

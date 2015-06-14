@@ -36,6 +36,8 @@ This project provides a Ruby package that makes it easy to access and manage Mic
 * Ruby 2.1
 * Ruby 2.2
 
+Note: x64 Ruby for Windows is known to have some compatibility issues.
+
 # Getting Started
 
 ## Install the rubygem package

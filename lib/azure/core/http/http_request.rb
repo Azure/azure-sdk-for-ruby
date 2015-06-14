@@ -156,7 +156,12 @@ module Azure
         #
         # @return [HttpResponse]
         def call
-          request = http_request_class.new(uri, headers)
+          request = if RUBY_VERSION =~ /^1\.9/
+                      http_request_class.new(uri.request_uri, headers)
+                    else
+                      http_request_class.new(uri, headers)
+                    end
+
           set_request_body(request)
           http = http_setup
           response = HttpResponse.new(http.request(request))

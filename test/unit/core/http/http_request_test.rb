@@ -48,12 +48,12 @@ describe Azure::Core::Http::HttpRequest do
     describe 'when not using a ca_file' do
       subject do
         Azure::Core::Http::HttpRequest.new(:get,
-                                           URI('https://manage.windowsazure.com'),
+                                           URI('https://management.core.windows.net'),
                                            body: nil,
                                            current_time: 'Thu, 04 Oct 2012 06:38:27 GMT')
       end
 
-      it 'should set the ca_file on the http request' do
+      it 'should not set the ca_file on the http request' do
         Net::HTTP.stub(:new, http) do
           subject.call
         end
@@ -72,7 +72,7 @@ describe Azure::Core::Http::HttpRequest do
 
       subject do
         Azure::Core::Http::HttpRequest.new(:get,
-                                           URI('https://manage.windowsazure.com'),
+                                           URI('https://management.core.windows.net'),
                                            body: nil,
                                            current_time: 'Thu, 04 Oct 2012 06:38:27 GMT')
       end
