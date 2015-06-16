@@ -116,6 +116,10 @@ namespace :test do
   end
 end
 
+task :console do
+  exec 'irb -r azure -I ./lib'
+end
+
 task :test => %w(test:unit test:integration)
 
 task :default => :test

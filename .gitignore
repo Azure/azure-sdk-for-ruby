@@ -2,6 +2,7 @@
 tags
 /pkg
 /doc
+coverage
 Gemfile.lock
 nbproject/*
 *.gem

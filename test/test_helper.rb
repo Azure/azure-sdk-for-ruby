@@ -19,6 +19,7 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require 'timecop'
 require 'logger'
 require 'stringio'
+require 'simplecov'
 
 # add to the MiniTest DSL
 module Kernel
@@ -30,7 +31,6 @@ module Kernel
     end
   end
 end
-
 
 Dir['./test/support/**/*.rb'].each { |dep| require dep }
 
