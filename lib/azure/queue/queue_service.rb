@@ -566,3 +566,5 @@ module Azure
     end
   end
 end
+
+Azure::QueueService = Azure::Queue::QueueService

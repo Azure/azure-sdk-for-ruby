@@ -1448,3 +1448,5 @@ module Azure
     end
   end
 end
+
+Azure::BlobService = Azure::Blob::BlobService

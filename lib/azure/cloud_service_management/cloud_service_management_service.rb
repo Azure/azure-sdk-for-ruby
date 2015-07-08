@@ -131,3 +131,5 @@ module Azure
     end
   end
 end
+
+Azure::CloudServiceManagementService = Azure::CloudServiceManagement::CloudServiceManagementService

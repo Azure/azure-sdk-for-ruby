@@ -203,3 +203,5 @@ module Azure
     end
   end
 end
+
+Azure::StorageManagementService = Azure::StorageManagement::StorageManagementService

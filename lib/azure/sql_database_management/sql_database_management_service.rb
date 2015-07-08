@@ -207,3 +207,5 @@ module Azure
     end
   end
 end
+
+Azure::SqlDatabaseManagementService = Azure::SqlDatabaseManagement::SqlDatabaseManagementService

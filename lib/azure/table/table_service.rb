@@ -559,3 +559,5 @@ module Azure
     end
   end
 end
+
+Azure::TableService = Azure::Table::TableService
