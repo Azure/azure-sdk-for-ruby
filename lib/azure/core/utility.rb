@@ -240,3 +240,5 @@ class IPAddr
     end
   end
 end
+
+Azure::Loggerx = Azure::Core::Logger

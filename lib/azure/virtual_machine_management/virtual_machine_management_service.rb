@@ -548,3 +548,5 @@ module Azure
     end
   end
 end
+
+Azure::VirtualMachineManagementService = Azure::VirtualMachineManagement::VirtualMachineManagementService

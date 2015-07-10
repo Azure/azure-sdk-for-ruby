@@ -79,3 +79,5 @@ module Azure
     end
   end
 end
+
+Azure::VirtualMachineImageManagementService = Azure::VirtualMachineImageManagement::VirtualMachineImageManagementService

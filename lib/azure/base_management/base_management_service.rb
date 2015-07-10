@@ -216,3 +216,5 @@ module Azure
     end
   end
 end
+
+Azure::BaseManagementService = Azure::BaseManagement::BaseManagementService

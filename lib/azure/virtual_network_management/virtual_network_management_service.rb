@@ -104,3 +104,5 @@ module Azure
     end
   end
 end
+
+Azure::VirtualNetworkManagementService = Azure::VirtualNetworkManagement::VirtualNetworkManagementService

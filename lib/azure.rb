@@ -20,52 +20,88 @@ require 'openssl'
 require 'uri'
 require 'rexml/document'
 require 'addressable/uri'
-require 'azure/version'
-require 'azure/configurable'
-require 'azure/default'
-require 'azure/client_services'
-require 'azure/http_client'
-require 'azure/client'
-
-require 'azure/core'
-require 'azure/blob/blob_service'
-require 'azure/queue/queue_service'
-require 'azure/service_bus/service_bus_service'
-require 'azure/service_bus/empty_rule_action'
-require 'azure/service_bus/sql_rule_action'
-require 'azure/service_bus/sql_filter'
-require 'azure/service_bus/true_filter'
-require 'azure/service_bus/correlation_filter'
-require 'azure/table/table_service'
-require 'azure/table/batch'
-require 'azure/table/query'
-require 'azure/core/utility'
-require 'azure/base_management/management_http_request'
-require 'azure/base_management/sql_management_http_request'
-require 'azure/base_management/base_management_service'
-require 'azure/virtual_machine_image_management/virtual_machine_image_management_service'
-require 'azure/virtual_machine_management/virtual_machine_management_service'
-require 'azure/storage_management/storage_management_service'
-require 'azure/cloud_service_management/cloud_service_management_service'
-require 'azure/base_management/location'
-require 'azure/sql_database_management/sql_database_management_service'
-require 'azure/virtual_network_management/virtual_network_management_service'
-
-# add some aliases for convenience
-Azure::BlobService = Azure::Blob::BlobService
-Azure::QueueService = Azure::Queue::QueueService
-Azure::TableService = Azure::Table::TableService
-Azure::ServiceBusService = Azure::ServiceBus::ServiceBusService
-Azure::VirtualMachineImageManagementService = Azure::VirtualMachineImageManagement::VirtualMachineImageManagementService
-Azure::BaseManagementService = Azure::BaseManagement::BaseManagementService
-Azure::CloudServiceManagementService = Azure::CloudServiceManagement::CloudServiceManagementService
-Azure::StorageManagementService = Azure::StorageManagement::StorageManagementService
-Azure::VirtualMachineManagementService = Azure::VirtualMachineManagement::VirtualMachineManagementService
-Azure::SqlDatabaseManagementService = Azure::SqlDatabaseManagement::SqlDatabaseManagementService
-Azure::VirtualNetworkManagementService = Azure::VirtualNetworkManagement::VirtualNetworkManagementService
-Azure::Loggerx = Azure::Core::Logger
 
 module Azure
+  autoload :Client,                           'azure/client'
+  autoload :ClientServices,                   'azure/client_services'
+  autoload :Configurable,                     'azure/configurable'
+  autoload :Default,                          'azure/default'
+  autoload :HttpClient,                       'azure/http_client'
+  autoload :Version,                          'azure/version'
+
+  # helpers because the naming is far too verbose
+  autoload :BaseManagementService,                    'azure/base_management/base_management_service'
+  autoload :CloudServiceManagementService,            'azure/cloud_service_management/cloud_service_management_service'
+  autoload :SqlDatabaseManagementService,             'azure/sql_database_management/sql_database_management_service'
+  autoload :StorageManagementService,                 'azure/storage_management/storage_management_service'
+  autoload :VirtualMachineImageManagementService,     'azure/virtual_machine_image_management/virtual_machine_image_management_service'
+  autoload :VirtualMachineManagementService,          'azure/virtual_machine_management/virtual_machine_management_service'
+  autoload :VirtualNetworkManagementService,          'azure/virtual_network_management/virtual_network_management_service'
+
+  module BaseManagement
+    autoload :ManagementHttpRequest,          'azure/base_management/management_http_request'
+    autoload :SqlManagementHttpRequest,       'azure/base_management/sql_management_http_request'
+    autoload :BaseManagementService,          'azure/base_management/base_management_service'
+    autoload :Location,                       'azure/base_management/location'
+  end
+
+  module Blob
+    autoload :BlobService,                    'azure/blob/blob_service'
+  end
+
+  module CloudServiceManagement
+    autoload :CloudServiceManagementService,    'azure/cloud_service_management/cloud_service_management_service'
+  end
+
+  module Core
+    autoload :Utility,                        'azure/core/utility'
+    autoload :Error,                          'azure/core/error'
+  end
+
+  module Queue
+    autoload :QueueService,                   'azure/queue/queue_service'
+  end
+
+  module ServiceBus
+    autoload :ServiceBusService,        'azure/service_bus/service_bus_service'
+    autoload :EmptyRuleAction,          'azure/service_bus/empty_rule_action'
+    autoload :SqlRuleAction,            'azure/service_bus/sql_rule_action'
+    autoload :SqlFilter,                'azure/service_bus/sql_filter'
+    autoload :TrueFilter,               'azure/service_bus/true_filter'
+    autoload :CorrelationFilter,        'azure/service_bus/correlation_filter'
+  end
+
+  module SqlDatabaseManagement
+    autoload :SqlDatabaseManagementService,     'azure/sql_database_management/sql_database_management_service'
+    autoload :Serialization,                    'azure/sql_database_management/serialization'
+  end
+
+  module StorageManagement
+    autoload :StorageManagementService,         'azure/storage_management/storage_management_service'
+    autoload :Serialization,                    'azure/storage_management/serialization'
+  end
+
+  module Table
+    autoload :TableService,             'azure/table/table_service'
+    autoload :Batch,                    'azure/table/batch'
+    autoload :Query,                    'azure/table/query'
+  end
+
+  module VirtualMachineImageManagement
+    autoload :VirtualMachineImageManagementService, 'azure/virtual_machine_image_management/virtual_machine_image_management_service'
+    autoload :Serialization,                        'azure/virtual_machine_image_management/serialization'
+  end
+
+  module VirtualMachineManagement
+    autoload :VirtualMachineManagementService,  'azure/virtual_machine_management/virtual_machine_management_service'
+    autoload :Serialization,                    'azure/virtual_machine_management/serialization'
+  end
+
+  module VirtualNetworkManagement
+    autoload :VirtualNetworkManagementService,  'azure/virtual_network_management/virtual_network_management_service'
+    autoload :Serialization,                    'azure/virtual_network_management/serialization'
+  end
+
   class << self
     include Azure::Configurable
 

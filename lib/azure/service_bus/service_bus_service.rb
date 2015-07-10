@@ -895,3 +895,5 @@ module Azure
     end
   end
 end
+
+Azure::ServiceBusService = Azure::ServiceBus::ServiceBusService
