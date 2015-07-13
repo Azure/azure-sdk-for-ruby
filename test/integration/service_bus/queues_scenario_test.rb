@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "integration/test_helper"
+require 'integration/test_helper'
 
-describe "ServiceBus Queues Scenario" do
+describe 'ServiceBus Queues Scenario' do
   let(:queue_name) { ServiceBusQueueNameHelper.name }
 
   subject { Azure::ServiceBus::ServiceBusService.new }
@@ -23,18 +23,18 @@ describe "ServiceBus Queues Scenario" do
   def setup_queue()
     queues = subject.list_queues({ :skip => 20, :top => 2 })
     queues.each { |q|
-      ScenarioHelper.out "Queue name is " + q.name
+      ScenarioHelper.out 'Queue name is ' + q.name
     }
 
-    ScenarioHelper.out "checking if queue already exists " + queue_name
+    ScenarioHelper.out 'checking if queue already exists ' + queue_name
     begin
       subject.get_queue queue_name
-      ScenarioHelper.out "Queue already exists deleting it"
+      ScenarioHelper.out 'Queue already exists deleting it'
       subject.delete_queue queue_name
     rescue Azure::Core::Http::HTTPError => error
-      ScenarioHelper.out "could not get an existing queue (" + error.type + "), proceeding..."
+      ScenarioHelper.out 'could not get an existing queue (' + error.type + '), proceeding...'
       error.status_code.must_equal 404
-      error.type.must_equal "ResourceNotFound"
+      error.type.must_equal 'ResourceNotFound'
     end
 
     q = Azure::ServiceBus::Queue.new(queue_name, {
@@ -68,7 +68,7 @@ describe "ServiceBus Queues Scenario" do
           subject.send_queue_message queue_name, message
           success = true
         rescue Azure::Core::Http::HTTPError => error
-          ScenarioHelper.out "got error: " + error
+          ScenarioHelper.out 'got error: ' + error
           retry_counter = retry_counter + 1
           if retry_counter > 5
             throw error
@@ -137,9 +137,9 @@ describe "ServiceBus Queues Scenario" do
       subject.delete_queue_message message1again
       flunk 'Deleting a RECEIVEANDDELETE messasge should fail'
     rescue Azure::Core::Http::HTTPError => error
-      ScenarioHelper.out "As expected, could not delete a deleted message"
+      ScenarioHelper.out 'As expected, could not delete a deleted message'
       error.status_code.must_equal 400
-      error.type.must_equal "Unknown"
+      error.type.must_equal 'Unknown'
     end
 
     if expected_count > 0
@@ -189,7 +189,7 @@ describe "ServiceBus Queues Scenario" do
     message_count.must_equal 0
   end
 
-  it "should be able to upload many messages and read them back" do
+  it 'should be able to upload many messages and read them back' do
 
     setup_queue
 

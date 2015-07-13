@@ -17,19 +17,19 @@ require 'azure/service/serialization'
 require 'azure/table/guid'
 require 'azure/table/edmtype'
 
-require "time"
-require "date"
+require 'time'
+require 'date'
 
 module Azure
   module Table
     module Serialization
       include Azure::Service::Serialization
 
-      def self.hash_to_entry_xml(hash, id=nil, xml=Nokogiri::XML::Builder.new(:encoding => "UTF-8"))
+      def self.hash_to_entry_xml(hash, id=nil, xml=Nokogiri::XML::Builder.new(:encoding => 'UTF-8'))
         entry_namespaces = {
-          "xmlns"   => "http://www.w3.org/2005/Atom",
-          "xmlns:m" => "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata",
-          "xmlns:d" => "http://schemas.microsoft.com/ado/2007/08/dataservices"
+          'xmlns' => 'http://www.w3.org/2005/Atom',
+          'xmlns:m' => 'http://schemas.microsoft.com/ado/2007/08/dataservices/metadata',
+          'xmlns:d' => 'http://schemas.microsoft.com/ado/2007/08/dataservices'
         }
 
         xml.entry entry_namespaces do |entry|
@@ -45,19 +45,19 @@ module Azure
         xml
       end
 
-      def self.hash_to_content_xml(hash, xml=Nokogiri::XML::Builder.new(:encoding => "UTF-8"))
-        xml.send("content", :type => "application/xml") do |content|
-          content.send("m:properties") do |properties|
+      def self.hash_to_content_xml(hash, xml=Nokogiri::XML::Builder.new(:encoding => 'UTF-8'))
+        xml.send('content', :type => 'application/xml') do |content|
+          content.send('m:properties') do |properties|
             hash.each do |key, val|
-              key = key.encode("UTF-8") if key.is_a? String and !key.encoding.names.include?("BINARY")
-              val = val.encode("UTF-8") if val.is_a? String and !val.encoding.names.include?("BINARY")
+              key = key.encode('UTF-8') if key.is_a? String and !key.encoding.names.include?('BINARY')
+              val = val.encode('UTF-8') if val.is_a? String and !val.encoding.names.include?('BINARY')
 
               type = Azure::Table::EdmType.property_type(val)
               attributes = {}
-              attributes["m:type"] = type unless type.nil? || type.empty?
+              attributes['m:type'] = type unless type.nil? || type.empty?
 
               if val.nil?
-                attributes["m:null"] = "true"
+                attributes['m:null'] = 'true'
                 properties.send("d:#{key}", attributes)
               else
                 properties.send("d:#{key}", Azure::Table::EdmType.serialize_value(type, val), attributes)
@@ -71,16 +71,16 @@ module Azure
 
       def self.entries_from_feed_xml(xml)
         xml = slopify(xml)
-        expect_node("feed", xml)
+        expect_node('feed', xml)
 
-        return nil unless (xml > "entry").any?
+        return nil unless (xml > 'entry').any?
         
         results = []
         
-        if (xml > "entry").count == 0
-          results.push hash_from_entry_xml((xml > "entry"))
+        if (xml > 'entry').count == 0
+          results.push hash_from_entry_xml((xml > 'entry'))
         else
-          (xml > "entry").each do |entry|
+          (xml > 'entry').each do |entry|
             results.push hash_from_entry_xml(entry)
           end
         end
@@ -90,14 +90,14 @@ module Azure
 
       def self.hash_from_entry_xml(xml)
         xml = slopify(xml)
-        expect_node("entry", xml)
+        expect_node('entry', xml)
         result = {}
-        result[:etag] = xml["etag"]
-        result[:updated] = Time.parse((xml > "updated").text) if (xml > "updated").any?
+        result[:etag] = xml['etag']
+        result[:updated] = Time.parse((xml > 'updated').text) if (xml > 'updated').any?
         properties = {} 
-        if (xml > "content").any?
-          (xml > "content").first.first_element_child.element_children.each do |prop|
-            properties[prop.name] = prop.text != "" ? Azure::Table::EdmType.unserialize_query_value(prop.text, prop["m:type"]) : prop["null"] ? nil : ""
+        if (xml > 'content').any?
+          (xml > 'content').first.first_element_child.element_children.each do |prop|
+            properties[prop.name] = prop.text != '' ? Azure::Table::EdmType.unserialize_query_value(prop.text, prop['m:type']) : prop['null'] ? nil : ''
           end
         end
         result[:properties] = properties

@@ -12,23 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "test_helper"
-require "azure/core/http/http_error"
+require 'test_helper'
+require 'azure/core/http/http_error'
 
 describe Azure::Core::Http::HTTPError do
   let :http_response do
-    stub(:body => Fixtures[:http_error], :status_code => 409, :uri => 'http://dummy.uri')
+    stub(body: Fixtures[:http_error], status_code: 409, uri: 'http://dummy.uri', headers: {})
   end
 
   subject do
     Azure::Core::Http::HTTPError.new(http_response)
   end
 
-  it "is an instance of Azure::Core::Error" do
+  it 'is an instance of Azure::Core::Error' do
     subject.must_be_kind_of Azure::Core::Error
   end
 
-  it "lets us see the original uri" do
+  it 'lets us see the original uri' do
     subject.uri.must_equal 'http://dummy.uri'
   end
 
@@ -37,26 +37,25 @@ describe Azure::Core::Http::HTTPError do
   end
 
   it "lets us see the error's type" do
-    subject.type.must_equal "TableAlreadyExists"
+    subject.type.must_equal 'TableAlreadyExists'
   end
 
   it "lets us see the error's description" do
-    subject.description.must_equal "The table specified already exists."
+    subject.description.must_equal 'The table specified already exists.'
   end
 
-  it "generates an error message that wraps both the type and description" do
-    subject.message.must_equal "TableAlreadyExists (409): The table specified already exists."
+  it 'generates an error message that wraps both the type and description' do
+    subject.message.must_equal 'TableAlreadyExists (409): The table specified already exists.'
   end
 
   describe 'with invalid http_response body' do
-
     let :http_response do
-      stub(:body => "\r\nInvalid request\r\n", :status_code => 409, :uri => 'http://dummy.uri')
+      stub(:body => "\r\nInvalid request\r\n", :status_code => 409, :uri => 'http://dummy.uri', headers: {})
     end
 
-    it "sets the type to unknown if the response body is not an XML" do
-      subject.type.must_equal "Unknown"
-      subject.description.must_equal "Invalid request"
+    it 'sets the type to unknown if the response body is not an XML' do
+      subject.type.must_equal 'Unknown'
+      subject.description.must_equal 'Invalid request'
     end
   end
 end
