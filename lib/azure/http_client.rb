@@ -65,19 +65,21 @@ module Azure
 
     private
 
-    def build_http(uri = nil)
-      if ENV['HTTP_PROXY'] || ENV['HTTPS_PROXY']
-        if ENV['HTTP_PROXY']
-          proxy_uri = URI::parse(ENV['HTTP_PROXY'])
-        else
-          proxy_uri = URI::parse(ENV['HTTPS_PROXY'])
-        end
+    def build_http(uri)
+      ssl_options = {}
+      if uri.scheme.downcase == 'https'
+        ssl_options[:ca_file] = self.ca_file if self.ca_file
+        ssl_options[:verify] = true
+      end
 
-        Net::HTTP::Proxy(proxy_uri.host, proxy_uri.port).new(uri.host, uri.port)
-      else
-        Net::HTTP.new(uri.host, uri.port)
+      proxy_options = if ENV['HTTP_PROXY'] || ENV['HTTPS_PROXY']
+                        ENV['HTTP_PROXY'] ? URI::parse(ENV['HTTP_PROXY']) : URI::parse(ENV['HTTPS_PROXY'])
+                      end || nil
+
+      Faraday.new(uri, ssl: ssl_options, proxy: proxy_options) do |conn|
+        conn.use FaradayMiddleware::FollowRedirects
+        conn.adapter Faraday.default_adapter
       end
     end
-
   end
 end

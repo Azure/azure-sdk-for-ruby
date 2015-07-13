@@ -20,6 +20,8 @@ require 'openssl'
 require 'uri'
 require 'rexml/document'
 require 'addressable/uri'
+require 'faraday'
+require 'faraday_middleware'
 
 module Azure
   autoload :Client,                           'azure/client'
@@ -43,23 +45,35 @@ module Azure
     autoload :SqlManagementHttpRequest,       'azure/base_management/sql_management_http_request'
     autoload :BaseManagementService,          'azure/base_management/base_management_service'
     autoload :Location,                       'azure/base_management/location'
+    autoload :AffinityGroup,                  'azure/base_management/affinity_group'
+    autoload :Serialization,                  'azure/base_management/serialization'
   end
 
   module Blob
     autoload :BlobService,                    'azure/blob/blob_service'
+    autoload :Blob,                           'azure/blob/blob'
+    autoload :Block,                          'azure/blob/block'
+    autoload :Container,                      'azure/blob/container'
+    autoload :Serialization,                  'azure/blob/serialization'
   end
 
   module CloudServiceManagement
     autoload :CloudServiceManagementService,    'azure/cloud_service_management/cloud_service_management_service'
+    autoload :CloudService,                     'azure/cloud_service_management/cloud_service'
   end
 
   module Core
     autoload :Utility,                        'azure/core/utility'
     autoload :Error,                          'azure/core/error'
+    autoload :Service,                        'azure/core/service'
+    autoload :FilteredService,                'azure/core/filtered_service'
+    autoload :SignedService,                  'azure/core/signed_service'
   end
 
   module Queue
     autoload :QueueService,                   'azure/queue/queue_service'
+    autoload :Message,                        'azure/queue/message'
+    autoload :Queue,                          'azure/queue/queue'
   end
 
   module ServiceBus
@@ -74,11 +88,13 @@ module Azure
   module SqlDatabaseManagement
     autoload :SqlDatabaseManagementService,     'azure/sql_database_management/sql_database_management_service'
     autoload :Serialization,                    'azure/sql_database_management/serialization'
+    autoload :SqlServer,                        'azure/sql_database_management/sql_server'
   end
 
   module StorageManagement
     autoload :StorageManagementService,         'azure/storage_management/storage_management_service'
     autoload :Serialization,                    'azure/storage_management/serialization'
+    autoload :StorageAccount,                   'azure/storage_management/storage_account'
   end
 
   module Table
@@ -90,16 +106,20 @@ module Azure
   module VirtualMachineImageManagement
     autoload :VirtualMachineImageManagementService, 'azure/virtual_machine_image_management/virtual_machine_image_management_service'
     autoload :Serialization,                        'azure/virtual_machine_image_management/serialization'
+    autoload :VirtualMachineImage,                  'azure/virtual_machine_image_management/virtual_machine_image'
+    autoload :VirtualMachineDisk,                   'azure/virtual_machine_image_management/virtual_machine_disk'
   end
 
   module VirtualMachineManagement
     autoload :VirtualMachineManagementService,  'azure/virtual_machine_management/virtual_machine_management_service'
     autoload :Serialization,                    'azure/virtual_machine_management/serialization'
+    autoload :VirtualMachine,                   'azure/virtual_machine_management/virtual_machine'
   end
 
   module VirtualNetworkManagement
     autoload :VirtualNetworkManagementService,  'azure/virtual_network_management/virtual_network_management_service'
     autoload :Serialization,                    'azure/virtual_network_management/serialization'
+    autoload :VirtualNetwork,                   'azure/virtual_network_management/virtual_network'
   end
 
   class << self

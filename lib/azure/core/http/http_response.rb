@@ -37,18 +37,11 @@ module Azure
           @http_response.body
         end
 
-        # Public: Get the response status message.
-        #
-        # Returns a String.
-        def message
-          @http_response.message
-        end
-
         # Public: Get the response status code.
         #
         # Returns a Fixnum.
         def status_code
-          @http_response.code.to_i
+          @http_response.status
         end
 
         # Public: Check if this response was successful. A request is considered
@@ -56,14 +49,14 @@ module Azure
         #
         # Returns nil|false.
         def success?
-          (200..399).include? status_code
+          @http_response.success?
         end
 
         # Public: Get all the response headers as a Hash.
         #
         # Returns a Hash.
         def headers
-          @headers ||= HeaderHash.new(@http_response.to_hash)
+          @http_response.headers
         end
 
         # Public: Get an error that wraps this HTTP response, as long as this
@@ -77,56 +70,19 @@ module Azure
         
         alias_method :error, :exception
 
-        # Since HTTP Headers are case insensitive, this class will 
-        # normalize them to lowercase. This also wraps Net::HTTPResponse 
-        # headers by returning their values as strings, not arrays, by selecting
-        # the first value from the array.
-        class HeaderHash < Hash
-          # Public: Initialize the header hash.
-          #
-          # headers - A Hash of headers as returned from Net::HTTPResponse#to_hash.
-          def initialize(headers)
-            super
-            headers = Hash[headers.map { |k,v| [k.downcase.freeze, v.first.freeze] }]
-            replace(headers)
-          end
-
-          # Public: Get a header's value or nil if it's not present.
-          #
-          # header - A string with the header's name.
-          #
-          # Returns a String or nil.
-          def [](header)
-            super(header.downcase)
-          end
-
-          # Public: Get a header's value or a specified default.
-          #
-          # header  - A string with the header's name.
-          # default - A default value.
-          #
-          # Yields a block where you can specify the default value.
-          #
-          # Returns a String, or the specified default.
-          def fetch(header, *default, &block)
-            if (args = default.size) > 1
-              raise ArgumentError, "wrong number of arguments(#{args + 1} for 2)"
-            end
-
-            super(header.downcase, *default, &block)
-          end
-        end
-        
+        # TODO: This needs to be deleted and HttpError needs to be refactored to not rely on HttpResponse.
+        # The dependency on knowing the internal structure of HttpResponse breaks good design principles.
+        # The only reason this class exists is because the HttpError parses the HttpResponse to produce an error msg.
         class MockResponse
           def initialize(code, body, headers)
-            @code = code.to_s 
+            @status = code
             @body = body
             @headers = headers
             @headers.each { |k,v|
-              @headers[k] = [v] unless v.respond_to? first 
-            } 
+              @headers[k] = [v] unless v.respond_to? first
+            }
           end
-          attr_accessor :code
+          attr_accessor :status
           attr_accessor :body
           attr_accessor :headers
 

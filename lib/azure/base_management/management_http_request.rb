@@ -47,10 +47,12 @@ module Azure
       #
       # Returns a Nokogiri::XML instance of HttpResponse body
       def call
-        request = http_request_class.new(uri.request_uri, headers)
-        set_request_body(request)
-        http = http_setup
-        response = wait_for_completion(Azure::Core::Http::HttpResponse.new(http.request(request)))
+        conn = http_setup
+        res = conn.run_request(method.to_sym, uri, nil, nil) do  |req|
+          req.body = body if body
+          req.headers = headers if headers
+        end
+        response = wait_for_completion(Azure::Core::Http::HttpResponse.new(res))
         Nokogiri::XML response.body unless response.nil?
       end
 
@@ -91,8 +93,8 @@ module Azure
 
       def http_setup
         http = super
-        http.cert = @client.http_certificate_key if @client.http_certificate_key
-        http.key = @client.http_private_key if @client.http_private_key
+        http.ssl[:client_cert] = @client.http_certificate_key if @client.http_certificate_key
+        http.ssl[:client_key] = @client.http_private_key if @client.http_private_key
         http
       end
 
@@ -108,14 +110,17 @@ module Azure
       # Print Error or Success of Operation.
       def check_completion(request_id)
         request_path = "/#{client.subscription_id}/operations/#{request_id}"
-        http = http_setup
+        conn = http_setup
         headers['Content-Length'] = '0'
         @method = :get
         done = false
         until done
-          print '# '
-          request = http_request_class.new(request_path, headers)
-          response = Azure::Core::Http::HttpResponse.new(http.request(request))
+          Azure::Loggerx.info('# ')
+          res = conn.run_request(method.to_sym, URI(request_path), nil, nil) do  |req|
+            req.body = body if body
+            req.headers = headers if headers
+          end
+          response = Azure::Core::Http::HttpResponse.new(res)
           ret_val = Nokogiri::XML response.body
           status = xml_content(ret_val, 'Operation Status')
           status_code = response.status_code.to_i
@@ -124,7 +129,7 @@ module Azure
           end
           if redirected? response
             @uri = self.class.request_uri(response.headers['location'], client)
-            http = http_setup
+            conn = http_setup
             done = false
           end
           if done
@@ -144,10 +149,12 @@ module Azure
 
       def rebuild_request(response)
         host_uri = URI.parse(response.headers['location'])
-        request = http_request_class.new(host_uri.request_uri, headers)
-        request.body = body if body
-        http = http_setup
-        wait_for_completion(HttpResponse.new(http.request(request)))
+        conn = http_setup
+        res = conn.run_request(method.to_sym, host_uri, nil, nil) do  |req|
+          req.body = body if body
+          req.headers = headers if headers
+        end
+        wait_for_completion(HttpResponse.new(res))
       end
 
       def redirected?(response)

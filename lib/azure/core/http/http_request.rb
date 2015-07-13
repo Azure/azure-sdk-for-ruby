@@ -119,24 +119,8 @@ module Azure
           end
         end
 
-        # Obtain the Net::HTTP class that will handle this request
-        #
-        # Returns a subclass of Net::HTTPRequest
-        def http_request_class
-          Net::HTTP.const_get(method.to_s.capitalize)
-        rescue NameError => e
-          e.message = "#{method} is an invalid HTTP method"
-          raise
-        end
-
         def http_setup
           http = @client.agents(uri)
-
-          if uri.scheme.downcase == 'https'
-            http.ca_file = @client.ca_file if @client.ca_file
-            http.use_ssl = true
-            http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-          end
 
           unless headers.nil?
             keep_alive = headers['Keep-Alive'] || headers['keep-alive']
@@ -151,20 +135,17 @@ module Azure
           apply_body_headers
         end
 
-
         # Sends request to HTTP server and returns a HttpResponse
         #
         # @return [HttpResponse]
         def call
-          request = if RUBY_VERSION =~ /^1\.9/
-                      http_request_class.new(uri.request_uri, headers)
-                    else
-                      http_request_class.new(uri, headers)
-                    end
+          conn = http_setup
+          res = conn.run_request(method.to_sym, uri, nil, nil) do |req|
+            req.body = body if body
+            req.headers = headers if headers
+          end
 
-          set_request_body(request)
-          http = http_setup
-          response = HttpResponse.new(http.request(request))
+          response = HttpResponse.new(res)
           response.uri = uri
           raise response.error unless response.success?
           response
@@ -186,13 +167,6 @@ module Azure
           end
         end
 
-        def set_request_body(request)
-          if IO === body
-            request.body_stream = body
-          else
-            request.body = body
-          end
-        end
       end
     end
   end

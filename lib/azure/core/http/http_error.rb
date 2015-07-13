@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require "azure/core/error"
+require 'azure/core/error'
 
 module Azure
   module Core
@@ -61,24 +61,22 @@ module Azure
         #
         # Returns nothing
         def parse_response
-          if @http_response.body && @http_response.body.include?("<")
+          if @http_response.body && @http_response.body.include?('<')
 
             document = Nokogiri.Slop(@http_response.body)
 
-            @type = document.css("code").first.text if document.css("code").any?
-            @type = document.css("Code").first.text if document.css("Code").any?
-            @description = document.css("message").first.text if document.css("message").any?
-            @description = document.css("Message").first.text if document.css("Message").any?
+            @type = document.css('code').first.text if document.css('code').any?
+            @type = document.css('Code').first.text if document.css('Code').any?
+            @description = document.css('message').first.text if document.css('message').any?
+            @description = document.css('Message').first.text if document.css('Message').any?
 
             # service bus uses detail instead of message
-            @detail = document.css("detail").first.text if document.css("detail").any?
-            @detail = document.css("Detail").first.text if document.css("Detail").any?
+            @detail = document.css('detail').first.text if document.css('detail').any?
+            @detail = document.css('Detail').first.text if document.css('Detail').any?
           else
-            @type = "Unknown"
+            @type = 'Unknown'
             if @http_response.body
-              @description = @http_response.body.strip
-            else
-              @description = @http_response.message.strip
+              @description = "#{@http_response.body.strip}"
             end
           end
         end
