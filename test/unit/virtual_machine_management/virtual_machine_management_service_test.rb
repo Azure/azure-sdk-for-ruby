@@ -318,8 +318,8 @@ describe Azure::VirtualMachineManagementService do
     it 'throws error when certificate path is not invalid.' do
       options = {
           winrm_transport: %w(https http),
-          private_key_file: 'f:/invalid_path/private_key',
-          certificate_file: 'f:/invalid_path/certificate.pem'
+          private_key_file: 'c:/invalid_path/private_key',
+          certificate_file: 'c:/invalid_path/certificate.pem'
       }
       ex = assert_raises(RuntimeError) {subject.create_virtual_machine(windows_params, options)}
       error_msg = 'No such file or directory -'
@@ -329,8 +329,8 @@ describe Azure::VirtualMachineManagementService do
     it 'should not throws certificate error when wirnm_transport is http' do
       options = {
           winrm_transport: ['http'],
-          private_key_file: 'f:/invalid_path/private_key',
-          certificate_file: 'f:/invalid_path/certificate.pem'
+          private_key_file: 'c:/invalid_path/private_key',
+          certificate_file: 'c:/invalid_path/certificate.pem'
       }
       virtual_machine = subject.create_virtual_machine(windows_params, options)
       virtual_machine.must_be_kind_of VirtualMachine
@@ -465,8 +465,8 @@ describe Azure::VirtualMachineManagementService do
     it 'throws error when certificate path is not invalid.' do
       options = {
           winrm_transport: %w(https http),
-          private_key_file: 'f:/invalid_path/private_key',
-          certificate_file: 'f:/invalid_path/certificate.pem'
+          private_key_file: 'c:/invalid_path/private_key',
+          certificate_file: 'c:/invalid_path/certificate.pem'
       }
       exception = assert_raises(RuntimeError) do
         subject.add_role(windows_params, options)
