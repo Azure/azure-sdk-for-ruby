@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureStorageManagement
+module Azure::ARM::Storage
   #
   # StorageAccounts
   #
@@ -64,7 +64,7 @@ module AzureStorageManagement
       # Serialize Request
       http_request.add_field('Content-Type', 'application/json')
       if (account_name1)
-        account_name1 = AzureStorageManagement::Models::StorageAccountCheckNameAvailabilityParameters.serialize_object(account_name1)
+        account_name1 = Azure::ARM::Storage::Models::StorageAccountCheckNameAvailabilityParameters.serialize_object(account_name1)
       end
       request_content = account_name1
       http_request.body = JSON.generate(request_content, quirks_mode: true)
@@ -88,7 +88,7 @@ module AzureStorageManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureStorageManagement::Models::CheckNameAvailabilityResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Storage::Models::CheckNameAvailabilityResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -133,7 +133,7 @@ module AzureStorageManagement
       # Defining deserialization method.
       deserialize_method = lambda do |parsed_response|
         if (parsed_response)
-          parsed_response = AzureStorageManagement::Models::StorageAccount.deserialize_object(parsed_response)
+          parsed_response = Azure::ARM::Storage::Models::StorageAccount.deserialize_object(parsed_response)
         end
       end
 
@@ -198,7 +198,7 @@ module AzureStorageManagement
       # Serialize Request
       http_request.add_field('Content-Type', 'application/json')
       if (parameters1)
-        parameters1 = AzureStorageManagement::Models::StorageAccountCreateParameters.serialize_object(parameters1)
+        parameters1 = Azure::ARM::Storage::Models::StorageAccountCreateParameters.serialize_object(parameters1)
       end
       request_content = parameters1
       http_request.body = JSON.generate(request_content, quirks_mode: true)
@@ -222,7 +222,7 @@ module AzureStorageManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureStorageManagement::Models::StorageAccount.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Storage::Models::StorageAccount.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -369,7 +369,7 @@ module AzureStorageManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureStorageManagement::Models::StorageAccount.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Storage::Models::StorageAccount.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -445,7 +445,7 @@ module AzureStorageManagement
       # Serialize Request
       http_request.add_field('Content-Type', 'application/json')
       if (parameters1)
-        parameters1 = AzureStorageManagement::Models::StorageAccountUpdateParameters.serialize_object(parameters1)
+        parameters1 = Azure::ARM::Storage::Models::StorageAccountUpdateParameters.serialize_object(parameters1)
       end
       request_content = parameters1
       http_request.body = JSON.generate(request_content, quirks_mode: true)
@@ -469,7 +469,7 @@ module AzureStorageManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureStorageManagement::Models::StorageAccount.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Storage::Models::StorageAccount.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -545,7 +545,7 @@ module AzureStorageManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureStorageManagement::Models::StorageAccountKeys.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Storage::Models::StorageAccountKeys.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -616,7 +616,7 @@ module AzureStorageManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureStorageManagement::Models::StorageAccountListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Storage::Models::StorageAccountListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -692,7 +692,7 @@ module AzureStorageManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureStorageManagement::Models::StorageAccountListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Storage::Models::StorageAccountListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -759,7 +759,7 @@ module AzureStorageManagement
       # Serialize Request
       http_request.add_field('Content-Type', 'application/json')
       if (regenerate_key1)
-        regenerate_key1 = AzureStorageManagement::Models::StorageAccountRegenerateKeyParameters.serialize_object(regenerate_key1)
+        regenerate_key1 = Azure::ARM::Storage::Models::StorageAccountRegenerateKeyParameters.serialize_object(regenerate_key1)
       end
       request_content = regenerate_key1
       http_request.body = JSON.generate(request_content, quirks_mode: true)
@@ -783,7 +783,7 @@ module AzureStorageManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureStorageManagement::Models::StorageAccountKeys.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Storage::Models::StorageAccountKeys.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -850,7 +850,7 @@ module AzureStorageManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureStorageManagement::Models::StorageAccountListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Storage::Models::StorageAccountListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -918,7 +918,7 @@ module AzureStorageManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureStorageManagement::Models::StorageAccountListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Storage::Models::StorageAccountListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e

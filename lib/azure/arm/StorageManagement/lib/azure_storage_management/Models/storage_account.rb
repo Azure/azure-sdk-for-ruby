@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureStorageManagement
+module Azure::ARM::Storage
   module Models
     #
-    # Model object.
+    # The storage account.
     #
     class StorageAccount < MsRestAzure::Resource
       # @return [StorageAccountProperties]
@@ -44,7 +44,7 @@ module AzureStorageManagement
 
         serialized_property = object.properties
         if (serialized_property)
-          serialized_property = AzureStorageManagement::Models::StorageAccountProperties.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Storage::Models::StorageAccountProperties.serialize_object(serialized_property)
         end
         output_object['properties'] = serialized_property unless serialized_property.nil?
 
@@ -77,7 +77,7 @@ module AzureStorageManagement
 
         deserialized_property = object['properties']
         if (deserialized_property)
-          deserialized_property = AzureStorageManagement::Models::StorageAccountProperties.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Storage::Models::StorageAccountProperties.deserialize_object(deserialized_property)
         end
         output_object.properties = deserialized_property
 

@@ -2,10 +2,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureStorageManagement
+module Azure::ARM::Storage
   module Models
     #
-    # Model object.
+    # The URIs that are used to perform a retrieval of a public blob, queue or
+    # table object.
     #
     class Endpoints
       # @return [String] Gets the blob endpoint.

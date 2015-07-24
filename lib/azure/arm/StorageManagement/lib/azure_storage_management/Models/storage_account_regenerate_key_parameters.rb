@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureStorageManagement
+module Azure::ARM::Storage
   module Models
     #
     # Model object.
@@ -42,7 +42,7 @@ module AzureStorageManagement
         output_object = StorageAccountRegenerateKeyParameters.new
 
         deserialized_property = object['keyName']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureStorageManagement::KeyName.constants.any? { |e| AzureStorageManagement::KeyName.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Storage::KeyName.constants.any? { |e| Azure::ARM::Storage::KeyName.const_get(e) == deserialized_property })
         output_object.key_name = deserialized_property
 
         output_object.validate

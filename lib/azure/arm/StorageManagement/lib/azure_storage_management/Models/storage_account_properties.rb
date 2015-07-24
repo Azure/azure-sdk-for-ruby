@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureStorageManagement
+module Azure::ARM::Storage
   module Models
     #
     # Model object.
@@ -89,7 +89,7 @@ module AzureStorageManagement
 
         serialized_property = object.primary_endpoints
         if (serialized_property)
-          serialized_property = AzureStorageManagement::Models::Endpoints.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Storage::Models::Endpoints.serialize_object(serialized_property)
         end
         output_object['primaryEndpoints'] = serialized_property unless serialized_property.nil?
 
@@ -115,13 +115,13 @@ module AzureStorageManagement
 
         serialized_property = object.custom_domain
         if (serialized_property)
-          serialized_property = AzureStorageManagement::Models::CustomDomain.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Storage::Models::CustomDomain.serialize_object(serialized_property)
         end
         output_object['customDomain'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.secondary_endpoints
         if (serialized_property)
-          serialized_property = AzureStorageManagement::Models::Endpoints.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Storage::Models::Endpoints.serialize_object(serialized_property)
         end
         output_object['secondaryEndpoints'] = serialized_property unless serialized_property.nil?
 
@@ -138,16 +138,16 @@ module AzureStorageManagement
         output_object = StorageAccountProperties.new
 
         deserialized_property = object['provisioningState']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureStorageManagement::ProvisioningState.constants.any? { |e| AzureStorageManagement::ProvisioningState.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Storage::ProvisioningState.constants.any? { |e| Azure::ARM::Storage::ProvisioningState.const_get(e) == deserialized_property })
         output_object.provisioning_state = deserialized_property
 
         deserialized_property = object['accountType']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureStorageManagement::AccountType.constants.any? { |e| AzureStorageManagement::AccountType.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Storage::AccountType.constants.any? { |e| Azure::ARM::Storage::AccountType.const_get(e) == deserialized_property })
         output_object.account_type = deserialized_property
 
         deserialized_property = object['primaryEndpoints']
         if (deserialized_property)
-          deserialized_property = AzureStorageManagement::Models::Endpoints.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Storage::Models::Endpoints.deserialize_object(deserialized_property)
         end
         output_object.primary_endpoints = deserialized_property
 
@@ -155,7 +155,7 @@ module AzureStorageManagement
         output_object.primary_location = deserialized_property
 
         deserialized_property = object['statusOfPrimary']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureStorageManagement::AccountStatus.constants.any? { |e| AzureStorageManagement::AccountStatus.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Storage::AccountStatus.constants.any? { |e| Azure::ARM::Storage::AccountStatus.const_get(e) == deserialized_property })
         output_object.status_of_primary = deserialized_property
 
         deserialized_property = object['lastGeoFailoverTime']
@@ -166,7 +166,7 @@ module AzureStorageManagement
         output_object.secondary_location = deserialized_property
 
         deserialized_property = object['statusOfSecondary']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureStorageManagement::AccountStatus.constants.any? { |e| AzureStorageManagement::AccountStatus.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Storage::AccountStatus.constants.any? { |e| Azure::ARM::Storage::AccountStatus.const_get(e) == deserialized_property })
         output_object.status_of_secondary = deserialized_property
 
         deserialized_property = object['creationTime']
@@ -175,13 +175,13 @@ module AzureStorageManagement
 
         deserialized_property = object['customDomain']
         if (deserialized_property)
-          deserialized_property = AzureStorageManagement::Models::CustomDomain.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Storage::Models::CustomDomain.deserialize_object(deserialized_property)
         end
         output_object.custom_domain = deserialized_property
 
         deserialized_property = object['secondaryEndpoints']
         if (deserialized_property)
-          deserialized_property = AzureStorageManagement::Models::Endpoints.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Storage::Models::Endpoints.deserialize_object(deserialized_property)
         end
         output_object.secondary_endpoints = deserialized_property
 

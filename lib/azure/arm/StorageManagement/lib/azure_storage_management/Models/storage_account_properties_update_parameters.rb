@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureStorageManagement
+module Azure::ARM::Storage
   module Models
     #
     # Model object.
@@ -42,7 +42,7 @@ module AzureStorageManagement
 
         serialized_property = object.custom_domain
         if (serialized_property)
-          serialized_property = AzureStorageManagement::Models::CustomDomain.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Storage::Models::CustomDomain.serialize_object(serialized_property)
         end
         output_object['customDomain'] = serialized_property unless serialized_property.nil?
 
@@ -59,12 +59,12 @@ module AzureStorageManagement
         output_object = StorageAccountPropertiesUpdateParameters.new
 
         deserialized_property = object['accountType']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureStorageManagement::AccountType.constants.any? { |e| AzureStorageManagement::AccountType.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Storage::AccountType.constants.any? { |e| Azure::ARM::Storage::AccountType.const_get(e) == deserialized_property })
         output_object.account_type = deserialized_property
 
         deserialized_property = object['customDomain']
         if (deserialized_property)
-          deserialized_property = AzureStorageManagement::Models::CustomDomain.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Storage::Models::CustomDomain.deserialize_object(deserialized_property)
         end
         output_object.custom_domain = deserialized_property
 

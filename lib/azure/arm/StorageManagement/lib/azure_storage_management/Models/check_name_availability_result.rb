@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureStorageManagement
+module Azure::ARM::Storage
   module Models
     #
-    # Model object.
+    # The CheckNameAvailability operation response.
     #
     class CheckNameAvailabilityResult
       # @return [Boolean] Gets a boolean value that indicates whether the name
@@ -63,7 +63,7 @@ module AzureStorageManagement
         output_object.name_available = deserialized_property
 
         deserialized_property = object['reason']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureStorageManagement::Reason.constants.any? { |e| AzureStorageManagement::Reason.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Storage::Reason.constants.any? { |e| Azure::ARM::Storage::Reason.const_get(e) == deserialized_property })
         output_object.reason = deserialized_property
 
         deserialized_property = object['message']
