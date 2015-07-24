@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureStorageManagement
+module Azure::ARM::Storage
   module Models
     #
-    # Model object.
+    # The list storage accounts operation response.
     #
     class StorageAccountListResult
       # @return [Array<StorageAccount>] Gets the list of storage accounts and
@@ -41,7 +41,7 @@ module AzureStorageManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureStorageManagement::Models::StorageAccount.serialize_object(element)
+              element = Azure::ARM::Storage::Models::StorageAccount.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -69,7 +69,7 @@ module AzureStorageManagement
           deserializedArray = [];
           deserialized_property.each do |element1|
             if (element1)
-              element1 = AzureStorageManagement::Models::StorageAccount.deserialize_object(element1)
+              element1 = Azure::ARM::Storage::Models::StorageAccount.deserialize_object(element1)
             end
             deserializedArray.push(element1);
           end

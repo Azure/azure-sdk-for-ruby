@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureStorageManagement
+module Azure::ARM::Storage
   module Models
     #
-    # Model object.
+    # The access keys for the storage account.
     #
     class StorageAccountKeys
       # @return [String] Gets the value of key 1.

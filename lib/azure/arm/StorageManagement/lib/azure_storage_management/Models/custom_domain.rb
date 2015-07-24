@@ -2,10 +2,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureStorageManagement
+module Azure::ARM::Storage
   module Models
     #
-    # Model object.
+    # The custom domain assigned to this storage account. This can be set via
+    # Update.
     #
     class CustomDomain
       # @return [String] Gets or sets the custom domain name. Name is the
