@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Resource group information.
     #
     class ResourceGroupExtended
       # @return [String] Gets or sets the ID of the resource group.
@@ -58,7 +58,7 @@ module AzureResourceManagement
 
         serialized_property = object.properties
         if (serialized_property)
-          serialized_property = AzureResourceManagement::Models::ResourceGroupFormatResourceProperties.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Resources::Models::ResourceGroupFormatResourceProperties.serialize_object(serialized_property)
         end
         output_object['properties'] = serialized_property unless serialized_property.nil?
 
@@ -70,6 +70,7 @@ module AzureResourceManagement
 
         serialized_property = object.provisioning_state
         output_object['provisioningState'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -90,7 +91,7 @@ module AzureResourceManagement
 
         deserialized_property = object['properties']
         if (deserialized_property)
-          deserialized_property = AzureResourceManagement::Models::ResourceGroupFormatResourceProperties.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Resources::Models::ResourceGroupFormatResourceProperties.deserialize_object(deserialized_property)
         end
         output_object.properties = deserialized_property
 
@@ -102,7 +103,9 @@ module AzureResourceManagement
 
         deserialized_property = object['provisioningState']
         output_object.provisioning_state = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

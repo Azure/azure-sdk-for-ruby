@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Deployment properties with additional details.
     #
     class DeploymentPropertiesExtended
       # @return [String] Gets or sets the state of the provisioning.
@@ -89,7 +89,7 @@ module AzureResourceManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureResourceManagement::Models::Provider.serialize_object(element)
+              element = Azure::ARM::Resources::Models::Provider.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -102,7 +102,7 @@ module AzureResourceManagement
           serializedArray = [];
           serialized_property.each do |element1|
             if (element1)
-              element1 = AzureResourceManagement::Models::Dependency.serialize_object(element1)
+              element1 = Azure::ARM::Resources::Models::Dependency.serialize_object(element1)
             end
             serializedArray.push(element1);
           end
@@ -115,7 +115,7 @@ module AzureResourceManagement
 
         serialized_property = object.template_link
         if (serialized_property)
-          serialized_property = AzureResourceManagement::Models::TemplateLink.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Resources::Models::TemplateLink.serialize_object(serialized_property)
         end
         output_object['templateLink'] = serialized_property unless serialized_property.nil?
 
@@ -124,12 +124,13 @@ module AzureResourceManagement
 
         serialized_property = object.parameters_link
         if (serialized_property)
-          serialized_property = AzureResourceManagement::Models::ParametersLink.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Resources::Models::ParametersLink.serialize_object(serialized_property)
         end
         output_object['parametersLink'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.mode
         output_object['mode'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -160,7 +161,7 @@ module AzureResourceManagement
           deserializedArray = [];
           deserialized_property.each do |element2|
             if (element2)
-              element2 = AzureResourceManagement::Models::Provider.deserialize_object(element2)
+              element2 = Azure::ARM::Resources::Models::Provider.deserialize_object(element2)
             end
             deserializedArray.push(element2);
           end
@@ -173,7 +174,7 @@ module AzureResourceManagement
           deserializedArray = [];
           deserialized_property.each do |element3|
             if (element3)
-              element3 = AzureResourceManagement::Models::Dependency.deserialize_object(element3)
+              element3 = Azure::ARM::Resources::Models::Dependency.deserialize_object(element3)
             end
             deserializedArray.push(element3);
           end
@@ -186,7 +187,7 @@ module AzureResourceManagement
 
         deserialized_property = object['templateLink']
         if (deserialized_property)
-          deserialized_property = AzureResourceManagement::Models::TemplateLink.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Resources::Models::TemplateLink.deserialize_object(deserialized_property)
         end
         output_object.template_link = deserialized_property
 
@@ -195,14 +196,16 @@ module AzureResourceManagement
 
         deserialized_property = object['parametersLink']
         if (deserialized_property)
-          deserialized_property = AzureResourceManagement::Models::ParametersLink.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Resources::Models::ParametersLink.deserialize_object(deserialized_property)
         end
         output_object.parameters_link = deserialized_property
 
         deserialized_property = object['mode']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureResourceManagement::DeploymentMode.constants.any? { |e| AzureResourceManagement::DeploymentMode.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Resources::DeploymentMode.constants.any? { |e| Azure::ARM::Resources::DeploymentMode.const_get(e) == deserialized_property })
         output_object.mode = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

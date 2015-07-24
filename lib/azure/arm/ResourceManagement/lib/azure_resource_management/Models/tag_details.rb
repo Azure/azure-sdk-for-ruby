@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Tag details.
     #
     class TagDetails
       # @return [String] Gets or sets the tag ID.
@@ -49,7 +49,7 @@ module AzureResourceManagement
 
         serialized_property = object.count
         if (serialized_property)
-          serialized_property = AzureResourceManagement::Models::TagCount.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Resources::Models::TagCount.serialize_object(serialized_property)
         end
         output_object['count'] = serialized_property unless serialized_property.nil?
 
@@ -58,13 +58,14 @@ module AzureResourceManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureResourceManagement::Models::TagValue.serialize_object(element)
+              element = Azure::ARM::Resources::Models::TagValue.serialize_object(element)
             end
             serializedArray.push(element);
           end
           serialized_property = serializedArray;
         end
         output_object['values'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -85,7 +86,7 @@ module AzureResourceManagement
 
         deserialized_property = object['count']
         if (deserialized_property)
-          deserialized_property = AzureResourceManagement::Models::TagCount.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Resources::Models::TagCount.deserialize_object(deserialized_property)
         end
         output_object.count = deserialized_property
 
@@ -94,14 +95,16 @@ module AzureResourceManagement
           deserializedArray = [];
           deserialized_property.each do |element1|
             if (element1)
-              element1 = AzureResourceManagement::Models::TagValue.deserialize_object(element1)
+              element1 = Azure::ARM::Resources::Models::TagValue.deserialize_object(element1)
             end
             deserializedArray.push(element1);
           end
           deserialized_property = deserializedArray;
         end
         output_object.values = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Deployment operation parameters.
     #
     class Deployment
       # @return [DeploymentProperties] Gets or sets the deployment properties.
@@ -29,9 +29,10 @@ module AzureResourceManagement
 
         serialized_property = object.properties
         if (serialized_property)
-          serialized_property = AzureResourceManagement::Models::DeploymentProperties.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Resources::Models::DeploymentProperties.serialize_object(serialized_property)
         end
         output_object['properties'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -46,10 +47,12 @@ module AzureResourceManagement
 
         deserialized_property = object['properties']
         if (deserialized_property)
-          deserialized_property = AzureResourceManagement::Models::DeploymentProperties.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Resources::Models::DeploymentProperties.deserialize_object(deserialized_property)
         end
         output_object.properties = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

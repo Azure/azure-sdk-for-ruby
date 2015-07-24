@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # List of resource groups.
     #
     class ResourceListResult
       # @return [Array<GenericResource>] Gets or sets the list of resource
@@ -40,7 +40,7 @@ module AzureResourceManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureResourceManagement::Models::GenericResource.serialize_object(element)
+              element = Azure::ARM::Resources::Models::GenericResource.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -50,6 +50,7 @@ module AzureResourceManagement
 
         serialized_property = object.next_link
         output_object['nextLink'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -67,7 +68,7 @@ module AzureResourceManagement
           deserializedArray = [];
           deserialized_property.each do |element1|
             if (element1)
-              element1 = AzureResourceManagement::Models::GenericResource.deserialize_object(element1)
+              element1 = Azure::ARM::Resources::Models::GenericResource.deserialize_object(element1)
             end
             deserializedArray.push(element1);
           end
@@ -77,7 +78,9 @@ module AzureResourceManagement
 
         deserialized_property = object['nextLink']
         output_object.next_link = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

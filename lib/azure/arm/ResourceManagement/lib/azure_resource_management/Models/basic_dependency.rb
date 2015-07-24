@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Deployment dependency information.
     #
     class BasicDependency
       # @return [String] Gets or sets the ID of the dependency.
@@ -41,6 +41,7 @@ module AzureResourceManagement
 
         serialized_property = object.resource_name
         output_object['resourceName'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -61,7 +62,9 @@ module AzureResourceManagement
 
         deserialized_property = object['resourceName']
         output_object.resource_name = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

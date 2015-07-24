@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Deployment operation properties.
     #
     class DeploymentOperationProperties
       # @return [String] Gets or sets the state of the provisioning.
@@ -54,9 +54,10 @@ module AzureResourceManagement
 
         serialized_property = object.target_resource
         if (serialized_property)
-          serialized_property = AzureResourceManagement::Models::TargetResource.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Resources::Models::TargetResource.serialize_object(serialized_property)
         end
         output_object['targetResource'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -84,10 +85,12 @@ module AzureResourceManagement
 
         deserialized_property = object['targetResource']
         if (deserialized_property)
-          deserialized_property = AzureResourceManagement::Models::TargetResource.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Resources::Models::TargetResource.deserialize_object(deserialized_property)
         end
         output_object.target_resource = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

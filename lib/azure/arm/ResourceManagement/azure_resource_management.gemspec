@@ -14,11 +14,13 @@
 #--------------------------------------------------------------------------
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'azure_resource_management/module_definition'
 require 'azure_resource_management/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "azure_resource_management"
-  spec.version       = AzureResourceManagement::VERSION
+  spec.version       = Azure::ARM::Resources::VERSION
   spec.authors       = ['Microsoft Corporation', 'AppFog', 'Akvelon']
   spec.email         = 'azureruby@microsoft.com'
   spec.description   = 'Microsoft Azure Resource Management Client Library for Ruby'

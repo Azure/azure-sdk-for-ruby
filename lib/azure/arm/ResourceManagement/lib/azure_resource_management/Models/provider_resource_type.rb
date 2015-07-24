@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Resource type managed by the resource provider.
     #
     class ProviderResourceType
       # @return [String] Gets or sets the resource type.
@@ -56,6 +56,7 @@ module AzureResourceManagement
 
         serialized_property = object.properties
         output_object['properties'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -79,7 +80,9 @@ module AzureResourceManagement
 
         deserialized_property = object['properties']
         output_object.properties = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

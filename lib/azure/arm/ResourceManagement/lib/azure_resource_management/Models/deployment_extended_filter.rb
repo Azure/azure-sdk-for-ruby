@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Deployment filter.
     #
     class DeploymentExtendedFilter
       # @return [String] Gets or sets the provisioning state.
@@ -29,6 +29,7 @@ module AzureResourceManagement
 
         serialized_property = object.provisioning_state
         output_object['provisioningState'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -43,7 +44,9 @@ module AzureResourceManagement
 
         deserialized_property = object['provisioningState']
         output_object.provisioning_state = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end
