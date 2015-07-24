@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Properties of Frontend Port of application gateway
     #
     class ApplicationGatewayFrontendPortPropertiesFormat
       # @return [Integer] Gets or sets the frontend port

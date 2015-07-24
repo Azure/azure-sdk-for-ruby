@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Dns Settings of a network interface
     #
     class NetworkInterfaceDnsSettings
       # @return [Array<String>] Gets or sets list of DNS servers IP addresses

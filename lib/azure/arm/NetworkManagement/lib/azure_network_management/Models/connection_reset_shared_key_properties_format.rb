@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # VirtualNeworkGatewayConnectionResetSharedKey properties
     #
     class ConnectionResetSharedKeyPropertiesFormat
       # @return [Integer] The virtual network connection reset shared key

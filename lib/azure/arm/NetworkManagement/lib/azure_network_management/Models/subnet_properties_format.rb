@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
     # Model object.
@@ -49,7 +49,7 @@ module AzureNetworkManagement
 
         serialized_property = object.network_security_group
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::SubResource.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::SubResource.serialize_object(serialized_property)
         end
         output_object['networkSecurityGroup'] = serialized_property unless serialized_property.nil?
 
@@ -58,7 +58,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureNetworkManagement::Models::SubResource.serialize_object(element)
+              element = Azure::ARM::Network::Models::SubResource.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -86,7 +86,7 @@ module AzureNetworkManagement
 
         deserialized_property = object['networkSecurityGroup']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::SubResource.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::SubResource.deserialize_object(deserialized_property)
         end
         output_object.network_security_group = deserialized_property
 
@@ -95,7 +95,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element1|
             if (element1)
-              element1 = AzureNetworkManagement::Models::SubResource.deserialize_object(element1)
+              element1 = Azure::ARM::Network::Models::SubResource.deserialize_object(element1)
             end
             deserializedArray.push(element1);
           end

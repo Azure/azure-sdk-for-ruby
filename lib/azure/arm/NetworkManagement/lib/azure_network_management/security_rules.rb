@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   #
   # SecurityRules
   #
@@ -180,7 +180,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::SecurityRule.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::SecurityRule.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -221,7 +221,7 @@ module AzureNetworkManagement
       # Defining deserialization method.
       deserialize_method = lambda do |parsed_response|
         if (parsed_response)
-          parsed_response = AzureNetworkManagement::Models::SecurityRule.deserialize_object(parsed_response)
+          parsed_response = Azure::ARM::Network::Models::SecurityRule.deserialize_object(parsed_response)
         end
       end
 
@@ -284,7 +284,7 @@ module AzureNetworkManagement
       # Serialize Request
       http_request.add_field('Content-Type', 'application/json')
       if (security_rule_parameters1)
-        security_rule_parameters1 = AzureNetworkManagement::Models::SecurityRule.serialize_object(security_rule_parameters1)
+        security_rule_parameters1 = Azure::ARM::Network::Models::SecurityRule.serialize_object(security_rule_parameters1)
       end
       request_content = security_rule_parameters1
       http_request.body = JSON.generate(request_content, quirks_mode: true)
@@ -308,7 +308,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::SecurityRule.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::SecurityRule.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -320,7 +320,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::SecurityRule.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::SecurityRule.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -398,7 +398,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::SecurityRuleListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::SecurityRuleListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -465,7 +465,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::SecurityRuleListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::SecurityRuleListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e

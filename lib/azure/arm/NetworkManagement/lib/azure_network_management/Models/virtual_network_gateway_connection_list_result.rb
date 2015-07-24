@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Response for ListVirtualNetworkGatewayConnections Api service call
     #
     class VirtualNetworkGatewayConnectionListResult
       # @return [Array<VirtualNetworkGatewayConnection>] Gets List of
@@ -40,7 +40,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureNetworkManagement::Models::VirtualNetworkGatewayConnection.serialize_object(element)
+              element = Azure::ARM::Network::Models::VirtualNetworkGatewayConnection.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -69,7 +69,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element1|
             if (element1)
-              element1 = AzureNetworkManagement::Models::VirtualNetworkGatewayConnection.deserialize_object(element1)
+              element1 = Azure::ARM::Network::Models::VirtualNetworkGatewayConnection.deserialize_object(element1)
             end
             deserializedArray.push(element1);
           end

@@ -2,10 +2,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Response for ListSecurityRule Api service callRetrieves all security
+    # rules that belongs to a network security group
     #
     class SecurityRuleListResult
       # @return [Array<SecurityRule>] Gets security rules in a network
@@ -40,7 +41,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureNetworkManagement::Models::SecurityRule.serialize_object(element)
+              element = Azure::ARM::Network::Models::SecurityRule.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -68,7 +69,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element1|
             if (element1)
-              element1 = AzureNetworkManagement::Models::SecurityRule.deserialize_object(element1)
+              element1 = Azure::ARM::Network::Models::SecurityRule.deserialize_object(element1)
             end
             deserializedArray.push(element1);
           end

@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Contains FQDN of the DNS record associated with the public IP address
     #
     class PublicIpAddressDnsSettings
       # @return [String] Gets or sets the Domain name label.The concatenation

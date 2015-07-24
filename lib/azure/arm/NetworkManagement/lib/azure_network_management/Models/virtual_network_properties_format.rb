@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
     # Model object.
@@ -48,13 +48,13 @@ module AzureNetworkManagement
 
         serialized_property = object.address_space
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::AddressSpace.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::AddressSpace.serialize_object(serialized_property)
         end
         output_object['addressSpace'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.dhcp_options
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::DhcpOptions.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::DhcpOptions.serialize_object(serialized_property)
         end
         output_object['dhcpOptions'] = serialized_property unless serialized_property.nil?
 
@@ -63,7 +63,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureNetworkManagement::Models::Subnet.serialize_object(element)
+              element = Azure::ARM::Network::Models::Subnet.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -88,13 +88,13 @@ module AzureNetworkManagement
 
         deserialized_property = object['addressSpace']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::AddressSpace.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::AddressSpace.deserialize_object(deserialized_property)
         end
         output_object.address_space = deserialized_property
 
         deserialized_property = object['dhcpOptions']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::DhcpOptions.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::DhcpOptions.deserialize_object(deserialized_property)
         end
         output_object.dhcp_options = deserialized_property
 
@@ -103,7 +103,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element1|
             if (element1)
-              element1 = AzureNetworkManagement::Models::Subnet.deserialize_object(element1)
+              element1 = Azure::ARM::Network::Models::Subnet.deserialize_object(element1)
             end
             deserializedArray.push(element1);
           end

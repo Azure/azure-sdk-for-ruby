@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Properties of Frontend IP Configuration of the load balancer
     #
     class FrontendIpConfigurationPropertiesFormat
       # @return [String] Gets or sets the IP address of the Load Balancer.This
@@ -70,13 +70,13 @@ module AzureNetworkManagement
 
         serialized_property = object.subnet
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::SubResource.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::SubResource.serialize_object(serialized_property)
         end
         output_object['subnet'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.public_ipaddress
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::SubResource.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::SubResource.serialize_object(serialized_property)
         end
         output_object['publicIPAddress'] = serialized_property unless serialized_property.nil?
 
@@ -85,7 +85,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureNetworkManagement::Models::SubResource.serialize_object(element)
+              element = Azure::ARM::Network::Models::SubResource.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -98,7 +98,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element1|
             if (element1)
-              element1 = AzureNetworkManagement::Models::SubResource.serialize_object(element1)
+              element1 = Azure::ARM::Network::Models::SubResource.serialize_object(element1)
             end
             serializedArray.push(element1);
           end
@@ -125,18 +125,18 @@ module AzureNetworkManagement
         output_object.private_ipaddress = deserialized_property
 
         deserialized_property = object['privateIPAllocationMethod']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::IpAllocationMethod.constants.any? { |e| AzureNetworkManagement::IpAllocationMethod.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::IpAllocationMethod.constants.any? { |e| Azure::ARM::Network::IpAllocationMethod.const_get(e) == deserialized_property })
         output_object.private_ipallocation_method = deserialized_property
 
         deserialized_property = object['subnet']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::SubResource.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::SubResource.deserialize_object(deserialized_property)
         end
         output_object.subnet = deserialized_property
 
         deserialized_property = object['publicIPAddress']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::SubResource.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::SubResource.deserialize_object(deserialized_property)
         end
         output_object.public_ipaddress = deserialized_property
 
@@ -145,7 +145,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element2|
             if (element2)
-              element2 = AzureNetworkManagement::Models::SubResource.deserialize_object(element2)
+              element2 = Azure::ARM::Network::Models::SubResource.deserialize_object(element2)
             end
             deserializedArray.push(element2);
           end
@@ -158,7 +158,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element3|
             if (element3)
-              element3 = AzureNetworkManagement::Models::SubResource.deserialize_object(element3)
+              element3 = Azure::ARM::Network::Models::SubResource.deserialize_object(element3)
             end
             deserializedArray.push(element3);
           end

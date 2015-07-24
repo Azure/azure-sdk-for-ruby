@@ -14,11 +14,13 @@
 #--------------------------------------------------------------------------
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'azure_storage_management/module_definition'
 require 'azure_storage_management/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "azure_storage_management"
-  spec.version       = AzureStorageManagement::VERSION
+  spec.version       = Azure::ARM::Storage::VERSION
   spec.authors       = ['Microsoft Corporation', 'AppFog']
   spec.email         = 'azureruby@microsoft.com'
   spec.description   = 'Microsoft Azure Storage Management Client Library for Ruby'

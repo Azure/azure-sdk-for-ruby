@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   #
   # NetworkSecurityGroups
   #
@@ -173,7 +173,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::NetworkSecurityGroup.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::NetworkSecurityGroup.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -213,7 +213,7 @@ module AzureNetworkManagement
       # Defining deserialization method.
       deserialize_method = lambda do |parsed_response|
         if (parsed_response)
-          parsed_response = AzureNetworkManagement::Models::NetworkSecurityGroup.deserialize_object(parsed_response)
+          parsed_response = Azure::ARM::Network::Models::NetworkSecurityGroup.deserialize_object(parsed_response)
         end
       end
 
@@ -273,7 +273,7 @@ module AzureNetworkManagement
       # Serialize Request
       http_request.add_field('Content-Type', 'application/json')
       if (parameters1)
-        parameters1 = AzureNetworkManagement::Models::NetworkSecurityGroup.serialize_object(parameters1)
+        parameters1 = Azure::ARM::Network::Models::NetworkSecurityGroup.serialize_object(parameters1)
       end
       request_content = parameters1
       http_request.body = JSON.generate(request_content, quirks_mode: true)
@@ -297,7 +297,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::NetworkSecurityGroup.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::NetworkSecurityGroup.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -309,7 +309,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::NetworkSecurityGroup.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::NetworkSecurityGroup.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -380,7 +380,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::NetworkSecurityGroupListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::NetworkSecurityGroupListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -454,7 +454,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::NetworkSecurityGroupListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::NetworkSecurityGroupListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -521,7 +521,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::NetworkSecurityGroupListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::NetworkSecurityGroupListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -588,7 +588,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::NetworkSecurityGroupListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::NetworkSecurityGroupListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e

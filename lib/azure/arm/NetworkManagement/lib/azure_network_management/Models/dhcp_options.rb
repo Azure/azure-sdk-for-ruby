@@ -2,10 +2,12 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # DHCPOptions contains an array of DNS servers available to VMs deployed
+    # in the virtual networkStandard DHCP option for a subnet overrides VNET
+    # DHCP options.
     #
     class DhcpOptions
       # @return [Array<String>] Gets or sets list of DNS servers IP addresses

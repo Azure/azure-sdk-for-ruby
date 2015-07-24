@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # SKU of application gateway
     #
     class ApplicationGatewaySku
       # @return Gets or sets name of application gateway SKU. Possible values
@@ -58,11 +58,11 @@ module AzureNetworkManagement
         output_object = ApplicationGatewaySku.new
 
         deserialized_property = object['name']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::ApplicationGatewaySkuName.constants.any? { |e| AzureNetworkManagement::ApplicationGatewaySkuName.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ApplicationGatewaySkuName.constants.any? { |e| Azure::ARM::Network::ApplicationGatewaySkuName.const_get(e) == deserialized_property })
         output_object.name = deserialized_property
 
         deserialized_property = object['tier']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::ApplicationGatewayTier.constants.any? { |e| AzureNetworkManagement::ApplicationGatewayTier.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ApplicationGatewayTier.constants.any? { |e| Azure::ARM::Network::ApplicationGatewayTier.const_get(e) == deserialized_property })
         output_object.tier = deserialized_property
 
         deserialized_property = object['capacity']

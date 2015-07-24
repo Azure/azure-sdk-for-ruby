@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # VirtualNeworkGatewayConnection properties
     #
     class VirtualNetworkGatewayConnectionPropertiesFormat
       # @return [VirtualNetworkGateway]
@@ -52,19 +52,19 @@ module AzureNetworkManagement
 
         serialized_property = object.virtual_network_gateway1
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::VirtualNetworkGateway.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::VirtualNetworkGateway.serialize_object(serialized_property)
         end
         output_object['virtualNetworkGateway1'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.virtual_network_gateway2
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::VirtualNetworkGateway.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::VirtualNetworkGateway.serialize_object(serialized_property)
         end
         output_object['virtualNetworkGateway2'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.local_network_gateway2
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::LocalNetworkGateway.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::LocalNetworkGateway.serialize_object(serialized_property)
         end
         output_object['localNetworkGateway2'] = serialized_property unless serialized_property.nil?
 
@@ -95,24 +95,24 @@ module AzureNetworkManagement
 
         deserialized_property = object['virtualNetworkGateway1']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::VirtualNetworkGateway.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::VirtualNetworkGateway.deserialize_object(deserialized_property)
         end
         output_object.virtual_network_gateway1 = deserialized_property
 
         deserialized_property = object['virtualNetworkGateway2']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::VirtualNetworkGateway.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::VirtualNetworkGateway.deserialize_object(deserialized_property)
         end
         output_object.virtual_network_gateway2 = deserialized_property
 
         deserialized_property = object['localNetworkGateway2']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::LocalNetworkGateway.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::LocalNetworkGateway.deserialize_object(deserialized_property)
         end
         output_object.local_network_gateway2 = deserialized_property
 
         deserialized_property = object['connectionType']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::VirtualNetworkGatewayConnectionType.constants.any? { |e| AzureNetworkManagement::VirtualNetworkGatewayConnectionType.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::VirtualNetworkGatewayConnectionType.constants.any? { |e| Azure::ARM::Network::VirtualNetworkGatewayConnectionType.const_get(e) == deserialized_property })
         output_object.connection_type = deserialized_property
 
         deserialized_property = object['routingWeight']

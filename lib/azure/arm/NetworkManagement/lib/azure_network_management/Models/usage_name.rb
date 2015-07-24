@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # The Usage Names.
     #
     class UsageName
       # @return [String] Gets or sets a string describing the resource name.
