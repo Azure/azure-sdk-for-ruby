@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Properties of Application Gateway
     #
     class ApplicationGatewayPropertiesFormat
       # @return [ApplicationGatewaySku] Gets or sets sku of application
@@ -90,7 +90,7 @@ module AzureNetworkManagement
 
         serialized_property = object.sku
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::ApplicationGatewaySku.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::ApplicationGatewaySku.serialize_object(serialized_property)
         end
         output_object['sku'] = serialized_property unless serialized_property.nil?
 
@@ -102,7 +102,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureNetworkManagement::Models::ApplicationGatewayIpConfiguration.serialize_object(element)
+              element = Azure::ARM::Network::Models::ApplicationGatewayIpConfiguration.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -115,7 +115,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element1|
             if (element1)
-              element1 = AzureNetworkManagement::Models::ApplicationGatewaySslCertificate.serialize_object(element1)
+              element1 = Azure::ARM::Network::Models::ApplicationGatewaySslCertificate.serialize_object(element1)
             end
             serializedArray.push(element1);
           end
@@ -128,7 +128,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element2|
             if (element2)
-              element2 = AzureNetworkManagement::Models::ApplicationGatewayFrontendIpConfiguration.serialize_object(element2)
+              element2 = Azure::ARM::Network::Models::ApplicationGatewayFrontendIpConfiguration.serialize_object(element2)
             end
             serializedArray.push(element2);
           end
@@ -141,7 +141,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element3|
             if (element3)
-              element3 = AzureNetworkManagement::Models::ApplicationGatewayFrontendPort.serialize_object(element3)
+              element3 = Azure::ARM::Network::Models::ApplicationGatewayFrontendPort.serialize_object(element3)
             end
             serializedArray.push(element3);
           end
@@ -154,7 +154,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element4|
             if (element4)
-              element4 = AzureNetworkManagement::Models::ApplicationGatewayBackendAddressPool.serialize_object(element4)
+              element4 = Azure::ARM::Network::Models::ApplicationGatewayBackendAddressPool.serialize_object(element4)
             end
             serializedArray.push(element4);
           end
@@ -167,7 +167,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element5|
             if (element5)
-              element5 = AzureNetworkManagement::Models::ApplicationGatewayBackendHttpSettings.serialize_object(element5)
+              element5 = Azure::ARM::Network::Models::ApplicationGatewayBackendHttpSettings.serialize_object(element5)
             end
             serializedArray.push(element5);
           end
@@ -180,7 +180,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element6|
             if (element6)
-              element6 = AzureNetworkManagement::Models::ApplicationGatewayHttpListener.serialize_object(element6)
+              element6 = Azure::ARM::Network::Models::ApplicationGatewayHttpListener.serialize_object(element6)
             end
             serializedArray.push(element6);
           end
@@ -193,7 +193,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element7|
             if (element7)
-              element7 = AzureNetworkManagement::Models::ApplicationGatewayRequestRoutingRule.serialize_object(element7)
+              element7 = Azure::ARM::Network::Models::ApplicationGatewayRequestRoutingRule.serialize_object(element7)
             end
             serializedArray.push(element7);
           end
@@ -218,12 +218,12 @@ module AzureNetworkManagement
 
         deserialized_property = object['sku']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::ApplicationGatewaySku.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::ApplicationGatewaySku.deserialize_object(deserialized_property)
         end
         output_object.sku = deserialized_property
 
         deserialized_property = object['operationalState']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::ApplicationGatewayOperationalState.constants.any? { |e| AzureNetworkManagement::ApplicationGatewayOperationalState.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ApplicationGatewayOperationalState.constants.any? { |e| Azure::ARM::Network::ApplicationGatewayOperationalState.const_get(e) == deserialized_property })
         output_object.operational_state = deserialized_property
 
         deserialized_property = object['gatewayIpConfigurations']
@@ -231,7 +231,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element8|
             if (element8)
-              element8 = AzureNetworkManagement::Models::ApplicationGatewayIpConfiguration.deserialize_object(element8)
+              element8 = Azure::ARM::Network::Models::ApplicationGatewayIpConfiguration.deserialize_object(element8)
             end
             deserializedArray.push(element8);
           end
@@ -244,7 +244,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element9|
             if (element9)
-              element9 = AzureNetworkManagement::Models::ApplicationGatewaySslCertificate.deserialize_object(element9)
+              element9 = Azure::ARM::Network::Models::ApplicationGatewaySslCertificate.deserialize_object(element9)
             end
             deserializedArray.push(element9);
           end
@@ -257,7 +257,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element10|
             if (element10)
-              element10 = AzureNetworkManagement::Models::ApplicationGatewayFrontendIpConfiguration.deserialize_object(element10)
+              element10 = Azure::ARM::Network::Models::ApplicationGatewayFrontendIpConfiguration.deserialize_object(element10)
             end
             deserializedArray.push(element10);
           end
@@ -270,7 +270,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element11|
             if (element11)
-              element11 = AzureNetworkManagement::Models::ApplicationGatewayFrontendPort.deserialize_object(element11)
+              element11 = Azure::ARM::Network::Models::ApplicationGatewayFrontendPort.deserialize_object(element11)
             end
             deserializedArray.push(element11);
           end
@@ -283,7 +283,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element12|
             if (element12)
-              element12 = AzureNetworkManagement::Models::ApplicationGatewayBackendAddressPool.deserialize_object(element12)
+              element12 = Azure::ARM::Network::Models::ApplicationGatewayBackendAddressPool.deserialize_object(element12)
             end
             deserializedArray.push(element12);
           end
@@ -296,7 +296,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element13|
             if (element13)
-              element13 = AzureNetworkManagement::Models::ApplicationGatewayBackendHttpSettings.deserialize_object(element13)
+              element13 = Azure::ARM::Network::Models::ApplicationGatewayBackendHttpSettings.deserialize_object(element13)
             end
             deserializedArray.push(element13);
           end
@@ -309,7 +309,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element14|
             if (element14)
-              element14 = AzureNetworkManagement::Models::ApplicationGatewayHttpListener.deserialize_object(element14)
+              element14 = Azure::ARM::Network::Models::ApplicationGatewayHttpListener.deserialize_object(element14)
             end
             deserializedArray.push(element14);
           end
@@ -322,7 +322,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element15|
             if (element15)
-              element15 = AzureNetworkManagement::Models::ApplicationGatewayRequestRoutingRule.deserialize_object(element15)
+              element15 = Azure::ARM::Network::Models::ApplicationGatewayRequestRoutingRule.deserialize_object(element15)
             end
             deserializedArray.push(element15);
           end

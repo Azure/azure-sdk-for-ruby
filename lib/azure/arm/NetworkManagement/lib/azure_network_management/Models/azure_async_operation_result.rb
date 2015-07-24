@@ -2,10 +2,17 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # The response body contains the status of the specified asynchronous
+    # operation, indicating whether it has succeeded, is inprogress, or has
+    # failed. Note that this status is distinct from the HTTP status code
+    # returned for the Get Operation Status operation itself. If the
+    # asynchronous operation succeeded, the response body includes the HTTP
+    # status code for the successful request. If the asynchronous operation
+    # failed, the response body includes the HTTP status code for the failed
+    # request and error information regarding the failure.
     #
     class AzureAsyncOperationResult
       # @return Status of the AzureAsuncOperation. Possible values for this
@@ -36,7 +43,7 @@ module AzureNetworkManagement
 
         serialized_property = object.error
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::Error.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::Error.serialize_object(serialized_property)
         end
         output_object['error'] = serialized_property unless serialized_property.nil?
 
@@ -53,12 +60,12 @@ module AzureNetworkManagement
         output_object = AzureAsyncOperationResult.new
 
         deserialized_property = object['status']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::OperationStatus.constants.any? { |e| AzureNetworkManagement::OperationStatus.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::OperationStatus.constants.any? { |e| Azure::ARM::Network::OperationStatus.const_get(e) == deserialized_property })
         output_object.status = deserialized_property
 
         deserialized_property = object['error']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::Error.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::Error.deserialize_object(deserialized_property)
         end
         output_object.error = deserialized_property
 

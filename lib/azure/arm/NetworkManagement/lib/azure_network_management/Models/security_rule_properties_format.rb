@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
     # Model object.
@@ -122,7 +122,7 @@ module AzureNetworkManagement
         output_object.description = deserialized_property
 
         deserialized_property = object['protocol']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::SecurityRuleProtocol.constants.any? { |e| AzureNetworkManagement::SecurityRuleProtocol.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::SecurityRuleProtocol.constants.any? { |e| Azure::ARM::Network::SecurityRuleProtocol.const_get(e) == deserialized_property })
         output_object.protocol = deserialized_property
 
         deserialized_property = object['sourcePortRange']
@@ -138,7 +138,7 @@ module AzureNetworkManagement
         output_object.destination_address_prefix = deserialized_property
 
         deserialized_property = object['access']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::SecurityRuleAccess.constants.any? { |e| AzureNetworkManagement::SecurityRuleAccess.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::SecurityRuleAccess.constants.any? { |e| Azure::ARM::Network::SecurityRuleAccess.const_get(e) == deserialized_property })
         output_object.access = deserialized_property
 
         deserialized_property = object['priority']
@@ -146,7 +146,7 @@ module AzureNetworkManagement
         output_object.priority = deserialized_property
 
         deserialized_property = object['direction']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::SecurityRuleDirection.constants.any? { |e| AzureNetworkManagement::SecurityRuleDirection.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::SecurityRuleDirection.constants.any? { |e| Azure::ARM::Network::SecurityRuleDirection.const_get(e) == deserialized_property })
         output_object.direction = deserialized_property
 
         deserialized_property = object['provisioningState']

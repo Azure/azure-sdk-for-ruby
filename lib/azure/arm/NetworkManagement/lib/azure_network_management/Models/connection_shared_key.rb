@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Response for GetConnectionSharedKey Api servive call
     #
     class ConnectionSharedKey
       # @return [String] The virtual network connection shared key value

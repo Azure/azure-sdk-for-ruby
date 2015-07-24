@@ -2,10 +2,11 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # AddressSpace contains an array of IP address ranges that can be used by
+    # subnets
     #
     class AddressSpace
       # @return [Array<String>] Gets or sets List of address blocks reserved

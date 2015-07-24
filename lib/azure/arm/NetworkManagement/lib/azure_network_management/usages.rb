@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   #
   # Usages
   #
@@ -77,7 +77,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::UsagesListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::UsagesListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e

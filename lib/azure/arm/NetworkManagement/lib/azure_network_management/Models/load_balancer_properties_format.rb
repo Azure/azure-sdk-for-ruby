@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Properties of Load Balancer
     #
     class LoadBalancerPropertiesFormat
       # @return [Array<FrontendIpConfiguration>] Gets or sets frontend IP
@@ -62,7 +62,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureNetworkManagement::Models::FrontendIpConfiguration.serialize_object(element)
+              element = Azure::ARM::Network::Models::FrontendIpConfiguration.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -75,7 +75,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element1|
             if (element1)
-              element1 = AzureNetworkManagement::Models::BackendAddressPool.serialize_object(element1)
+              element1 = Azure::ARM::Network::Models::BackendAddressPool.serialize_object(element1)
             end
             serializedArray.push(element1);
           end
@@ -88,7 +88,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element2|
             if (element2)
-              element2 = AzureNetworkManagement::Models::LoadBalancingRule.serialize_object(element2)
+              element2 = Azure::ARM::Network::Models::LoadBalancingRule.serialize_object(element2)
             end
             serializedArray.push(element2);
           end
@@ -101,7 +101,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element3|
             if (element3)
-              element3 = AzureNetworkManagement::Models::Probe.serialize_object(element3)
+              element3 = Azure::ARM::Network::Models::Probe.serialize_object(element3)
             end
             serializedArray.push(element3);
           end
@@ -114,7 +114,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element4|
             if (element4)
-              element4 = AzureNetworkManagement::Models::InboundNatRule.serialize_object(element4)
+              element4 = Azure::ARM::Network::Models::InboundNatRule.serialize_object(element4)
             end
             serializedArray.push(element4);
           end
@@ -142,7 +142,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element5|
             if (element5)
-              element5 = AzureNetworkManagement::Models::FrontendIpConfiguration.deserialize_object(element5)
+              element5 = Azure::ARM::Network::Models::FrontendIpConfiguration.deserialize_object(element5)
             end
             deserializedArray.push(element5);
           end
@@ -155,7 +155,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element6|
             if (element6)
-              element6 = AzureNetworkManagement::Models::BackendAddressPool.deserialize_object(element6)
+              element6 = Azure::ARM::Network::Models::BackendAddressPool.deserialize_object(element6)
             end
             deserializedArray.push(element6);
           end
@@ -168,7 +168,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element7|
             if (element7)
-              element7 = AzureNetworkManagement::Models::LoadBalancingRule.deserialize_object(element7)
+              element7 = Azure::ARM::Network::Models::LoadBalancingRule.deserialize_object(element7)
             end
             deserializedArray.push(element7);
           end
@@ -181,7 +181,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element8|
             if (element8)
-              element8 = AzureNetworkManagement::Models::Probe.deserialize_object(element8)
+              element8 = Azure::ARM::Network::Models::Probe.deserialize_object(element8)
             end
             deserializedArray.push(element8);
           end
@@ -194,7 +194,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element9|
             if (element9)
-              element9 = AzureNetworkManagement::Models::InboundNatRule.deserialize_object(element9)
+              element9 = Azure::ARM::Network::Models::InboundNatRule.deserialize_object(element9)
             end
             deserializedArray.push(element9);
           end

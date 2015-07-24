@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Properties of Backend Address Pool of application gateway
     #
     class ApplicationGatewayBackendAddressPoolPropertiesFormat
       # @return [Array<SubResource>] Gets or sets backendIpConfiguration of
@@ -47,7 +47,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureNetworkManagement::Models::SubResource.serialize_object(element)
+              element = Azure::ARM::Network::Models::SubResource.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -60,7 +60,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element1|
             if (element1)
-              element1 = AzureNetworkManagement::Models::ApplicationGatewayBackendAddress.serialize_object(element1)
+              element1 = Azure::ARM::Network::Models::ApplicationGatewayBackendAddress.serialize_object(element1)
             end
             serializedArray.push(element1);
           end
@@ -89,7 +89,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element2|
             if (element2)
-              element2 = AzureNetworkManagement::Models::SubResource.deserialize_object(element2)
+              element2 = Azure::ARM::Network::Models::SubResource.deserialize_object(element2)
             end
             deserializedArray.push(element2);
           end
@@ -102,7 +102,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element3|
             if (element3)
-              element3 = AzureNetworkManagement::Models::ApplicationGatewayBackendAddress.deserialize_object(element3)
+              element3 = Azure::ARM::Network::Models::ApplicationGatewayBackendAddress.deserialize_object(element3)
             end
             deserializedArray.push(element3);
           end

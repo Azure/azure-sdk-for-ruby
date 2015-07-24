@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Network Security Group resource
     #
     class NetworkSecurityGroupPropertiesFormat
       # @return [Array<SecurityRule>] Gets or sets Security rules of network
@@ -58,7 +58,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureNetworkManagement::Models::SecurityRule.serialize_object(element)
+              element = Azure::ARM::Network::Models::SecurityRule.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -71,7 +71,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element1|
             if (element1)
-              element1 = AzureNetworkManagement::Models::SecurityRule.serialize_object(element1)
+              element1 = Azure::ARM::Network::Models::SecurityRule.serialize_object(element1)
             end
             serializedArray.push(element1);
           end
@@ -84,7 +84,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element2|
             if (element2)
-              element2 = AzureNetworkManagement::Models::SubResource.serialize_object(element2)
+              element2 = Azure::ARM::Network::Models::SubResource.serialize_object(element2)
             end
             serializedArray.push(element2);
           end
@@ -97,7 +97,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element3|
             if (element3)
-              element3 = AzureNetworkManagement::Models::SubResource.serialize_object(element3)
+              element3 = Azure::ARM::Network::Models::SubResource.serialize_object(element3)
             end
             serializedArray.push(element3);
           end
@@ -125,7 +125,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element4|
             if (element4)
-              element4 = AzureNetworkManagement::Models::SecurityRule.deserialize_object(element4)
+              element4 = Azure::ARM::Network::Models::SecurityRule.deserialize_object(element4)
             end
             deserializedArray.push(element4);
           end
@@ -138,7 +138,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element5|
             if (element5)
-              element5 = AzureNetworkManagement::Models::SecurityRule.deserialize_object(element5)
+              element5 = Azure::ARM::Network::Models::SecurityRule.deserialize_object(element5)
             end
             deserializedArray.push(element5);
           end
@@ -151,7 +151,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element6|
             if (element6)
-              element6 = AzureNetworkManagement::Models::SubResource.deserialize_object(element6)
+              element6 = Azure::ARM::Network::Models::SubResource.deserialize_object(element6)
             end
             deserializedArray.push(element6);
           end
@@ -164,7 +164,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element7|
             if (element7)
-              element7 = AzureNetworkManagement::Models::SubResource.deserialize_object(element7)
+              element7 = Azure::ARM::Network::Models::SubResource.deserialize_object(element7)
             end
             deserializedArray.push(element7);
           end

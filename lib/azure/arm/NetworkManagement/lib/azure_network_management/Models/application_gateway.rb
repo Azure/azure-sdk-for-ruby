@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # ApplicationGateways resource
     #
     class ApplicationGateway < MsRestAzure::Resource
       # @return [ApplicationGatewayPropertiesFormat]
@@ -48,7 +48,7 @@ module AzureNetworkManagement
 
         serialized_property = object.properties
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::ApplicationGatewayPropertiesFormat.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::ApplicationGatewayPropertiesFormat.serialize_object(serialized_property)
         end
         output_object['properties'] = serialized_property unless serialized_property.nil?
 
@@ -84,7 +84,7 @@ module AzureNetworkManagement
 
         deserialized_property = object['properties']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::ApplicationGatewayPropertiesFormat.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::ApplicationGatewayPropertiesFormat.deserialize_object(deserialized_property)
         end
         output_object.properties = deserialized_property
 

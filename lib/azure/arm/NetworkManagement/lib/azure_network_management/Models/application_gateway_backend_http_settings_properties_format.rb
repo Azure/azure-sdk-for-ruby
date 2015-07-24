@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Properties of Backend address pool settings of application gateway
     #
     class ApplicationGatewayBackendHttpSettingsPropertiesFormat
       # @return [Integer] Gets or sets the port
@@ -68,11 +68,11 @@ module AzureNetworkManagement
         output_object.port = deserialized_property
 
         deserialized_property = object['protocol']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::ApplicationGatewayProtocol.constants.any? { |e| AzureNetworkManagement::ApplicationGatewayProtocol.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ApplicationGatewayProtocol.constants.any? { |e| Azure::ARM::Network::ApplicationGatewayProtocol.const_get(e) == deserialized_property })
         output_object.protocol = deserialized_property
 
         deserialized_property = object['cookieBasedAffinity']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::ApplicationGatewayCookieBasedAffinity.constants.any? { |e| AzureNetworkManagement::ApplicationGatewayCookieBasedAffinity.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ApplicationGatewayCookieBasedAffinity.constants.any? { |e| Azure::ARM::Network::ApplicationGatewayCookieBasedAffinity.const_get(e) == deserialized_property })
         output_object.cookie_based_affinity = deserialized_property
 
         deserialized_property = object['provisioningState']

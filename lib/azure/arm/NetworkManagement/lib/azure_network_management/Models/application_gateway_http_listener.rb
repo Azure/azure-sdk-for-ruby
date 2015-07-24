@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Http listener of application gateway
     #
     class ApplicationGatewayHttpListener < MsRestAzure::SubResource
       # @return [ApplicationGatewayHttpListenerPropertiesFormat]
@@ -40,7 +40,7 @@ module AzureNetworkManagement
 
         serialized_property = object.properties
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::ApplicationGatewayHttpListenerPropertiesFormat.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::ApplicationGatewayHttpListenerPropertiesFormat.serialize_object(serialized_property)
         end
         output_object['properties'] = serialized_property unless serialized_property.nil?
 
@@ -67,7 +67,7 @@ module AzureNetworkManagement
 
         deserialized_property = object['properties']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::ApplicationGatewayHttpListenerPropertiesFormat.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::ApplicationGatewayHttpListenerPropertiesFormat.deserialize_object(deserialized_property)
         end
         output_object.properties = deserialized_property
 

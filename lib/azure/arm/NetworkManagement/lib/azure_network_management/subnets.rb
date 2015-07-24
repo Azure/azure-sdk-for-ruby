@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   #
   # Subnets
   #
@@ -174,7 +174,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::Subnet.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::Subnet.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -214,7 +214,7 @@ module AzureNetworkManagement
       # Defining deserialization method.
       deserialize_method = lambda do |parsed_response|
         if (parsed_response)
-          parsed_response = AzureNetworkManagement::Models::Subnet.deserialize_object(parsed_response)
+          parsed_response = Azure::ARM::Network::Models::Subnet.deserialize_object(parsed_response)
         end
       end
 
@@ -276,7 +276,7 @@ module AzureNetworkManagement
       # Serialize Request
       http_request.add_field('Content-Type', 'application/json')
       if (subnet_parameters1)
-        subnet_parameters1 = AzureNetworkManagement::Models::Subnet.serialize_object(subnet_parameters1)
+        subnet_parameters1 = Azure::ARM::Network::Models::Subnet.serialize_object(subnet_parameters1)
       end
       request_content = subnet_parameters1
       http_request.body = JSON.generate(request_content, quirks_mode: true)
@@ -300,7 +300,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::Subnet.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::Subnet.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -312,7 +312,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::Subnet.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::Subnet.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -388,7 +388,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::SubnetListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::SubnetListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e
@@ -454,7 +454,7 @@ module AzureNetworkManagement
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
-              parsed_response = AzureNetworkManagement::Models::SubnetListResult.deserialize_object(parsed_response)
+              parsed_response = Azure::ARM::Network::Models::SubnetListResult.deserialize_object(parsed_response)
             end
             result.body = parsed_response
           rescue Exception => e

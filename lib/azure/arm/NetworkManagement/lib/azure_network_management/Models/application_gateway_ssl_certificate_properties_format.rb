@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Properties of SSL certificates of application gateway
     #
     class ApplicationGatewaySslCertificatePropertiesFormat
       # @return [String] Gets or sets the certificate data

@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Properties of Inbound NAT rule
     #
     class InboundNatRulePropertiesFormat
       # @return [SubResource] Gets or sets a reference to frontend IP Addresses
@@ -73,13 +73,13 @@ module AzureNetworkManagement
 
         serialized_property = object.frontend_ipconfiguration
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::SubResource.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::SubResource.serialize_object(serialized_property)
         end
         output_object['frontendIPConfiguration'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.backend_ipconfiguration
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::SubResource.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::SubResource.serialize_object(serialized_property)
         end
         output_object['backendIPConfiguration'] = serialized_property unless serialized_property.nil?
 
@@ -115,18 +115,18 @@ module AzureNetworkManagement
 
         deserialized_property = object['frontendIPConfiguration']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::SubResource.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::SubResource.deserialize_object(deserialized_property)
         end
         output_object.frontend_ipconfiguration = deserialized_property
 
         deserialized_property = object['backendIPConfiguration']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::SubResource.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::SubResource.deserialize_object(deserialized_property)
         end
         output_object.backend_ipconfiguration = deserialized_property
 
         deserialized_property = object['protocol']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::TransportProtocol.constants.any? { |e| AzureNetworkManagement::TransportProtocol.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::TransportProtocol.constants.any? { |e| Azure::ARM::Network::TransportProtocol.const_get(e) == deserialized_property })
         output_object.protocol = deserialized_property
 
         deserialized_property = object['frontendPort']

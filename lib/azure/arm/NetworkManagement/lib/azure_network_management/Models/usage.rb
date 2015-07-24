@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # Describes Network Resource Usage.
     #
     class Usage
       # @return Gets or sets an enum describing the unit of measurement.
@@ -48,7 +48,7 @@ module AzureNetworkManagement
 
         serialized_property = object.name
         if (serialized_property)
-          serialized_property = AzureNetworkManagement::Models::UsageName.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Network::Models::UsageName.serialize_object(serialized_property)
         end
         output_object['name'] = serialized_property unless serialized_property.nil?
 
@@ -65,7 +65,7 @@ module AzureNetworkManagement
         output_object = Usage.new
 
         deserialized_property = object['unit']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::UsageUnit.constants.any? { |e| AzureNetworkManagement::UsageUnit.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::UsageUnit.constants.any? { |e| Azure::ARM::Network::UsageUnit.const_get(e) == deserialized_property })
         output_object.unit = deserialized_property
 
         deserialized_property = object['currentValue']
@@ -78,7 +78,7 @@ module AzureNetworkManagement
 
         deserialized_property = object['name']
         if (deserialized_property)
-          deserialized_property = AzureNetworkManagement::Models::UsageName.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Network::Models::UsageName.deserialize_object(deserialized_property)
         end
         output_object.name = deserialized_property
 

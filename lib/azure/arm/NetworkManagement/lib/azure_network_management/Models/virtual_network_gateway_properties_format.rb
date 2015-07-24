@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
-    # Model object.
+    # VirtualNeworkGateay properties
     #
     class VirtualNetworkGatewayPropertiesFormat
       # @return [Array<VirtualNetworkGatewayIpConfiguration>] IpConfigurations
@@ -52,7 +52,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureNetworkManagement::Models::VirtualNetworkGatewayIpConfiguration.serialize_object(element)
+              element = Azure::ARM::Network::Models::VirtualNetworkGatewayIpConfiguration.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -89,7 +89,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element1|
             if (element1)
-              element1 = AzureNetworkManagement::Models::VirtualNetworkGatewayIpConfiguration.deserialize_object(element1)
+              element1 = Azure::ARM::Network::Models::VirtualNetworkGatewayIpConfiguration.deserialize_object(element1)
             end
             deserializedArray.push(element1);
           end
@@ -98,11 +98,11 @@ module AzureNetworkManagement
         output_object.ip_configurations = deserialized_property
 
         deserialized_property = object['gatewayType']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::VirtualNetworkGatewayType.constants.any? { |e| AzureNetworkManagement::VirtualNetworkGatewayType.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::VirtualNetworkGatewayType.constants.any? { |e| Azure::ARM::Network::VirtualNetworkGatewayType.const_get(e) == deserialized_property })
         output_object.gateway_type = deserialized_property
 
         deserialized_property = object['vpnType']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::VpnType.constants.any? { |e| AzureNetworkManagement::VpnType.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::VpnType.constants.any? { |e| Azure::ARM::Network::VpnType.const_get(e) == deserialized_property })
         output_object.vpn_type = deserialized_property
 
         deserialized_property = object['enableBgp']

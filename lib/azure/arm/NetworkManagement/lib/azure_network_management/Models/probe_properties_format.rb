@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureNetworkManagement
+module Azure::ARM::Network
   module Models
     #
     # Model object.
@@ -71,7 +71,7 @@ module AzureNetworkManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureNetworkManagement::Models::SubResource.serialize_object(element)
+              element = Azure::ARM::Network::Models::SubResource.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -114,7 +114,7 @@ module AzureNetworkManagement
           deserializedArray = [];
           deserialized_property.each do |element1|
             if (element1)
-              element1 = AzureNetworkManagement::Models::SubResource.deserialize_object(element1)
+              element1 = Azure::ARM::Network::Models::SubResource.deserialize_object(element1)
             end
             deserializedArray.push(element1);
           end
@@ -123,7 +123,7 @@ module AzureNetworkManagement
         output_object.load_balancing_rules = deserialized_property
 
         deserialized_property = object['protocol']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !AzureNetworkManagement::ProbeProtocol.constants.any? { |e| AzureNetworkManagement::ProbeProtocol.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ProbeProtocol.constants.any? { |e| Azure::ARM::Network::ProbeProtocol.const_get(e) == deserialized_property })
         output_object.protocol = deserialized_property
 
         deserialized_property = object['port']
