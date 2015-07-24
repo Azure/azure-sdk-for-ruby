@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Tag information.
     #
     class TagValue
       # @return [String] Gets or sets the tag ID.
@@ -41,9 +41,10 @@ module AzureResourceManagement
 
         serialized_property = object.count
         if (serialized_property)
-          serialized_property = AzureResourceManagement::Models::TagCount.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Resources::Models::TagCount.serialize_object(serialized_property)
         end
         output_object['count'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -64,10 +65,12 @@ module AzureResourceManagement
 
         deserialized_property = object['count']
         if (deserialized_property)
-          deserialized_property = AzureResourceManagement::Models::TagCount.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Resources::Models::TagCount.deserialize_object(deserialized_property)
         end
         output_object.count = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

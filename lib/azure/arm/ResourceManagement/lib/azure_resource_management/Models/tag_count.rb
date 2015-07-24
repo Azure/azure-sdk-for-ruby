@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Tag count.
     #
     class TagCount
       # @return [String] Type of count.
@@ -35,6 +35,7 @@ module AzureResourceManagement
 
         serialized_property = object.value
         output_object['value'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -52,7 +53,9 @@ module AzureResourceManagement
 
         deserialized_property = object['value']
         output_object.value = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

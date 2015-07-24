@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Resource filter.
     #
     class GenericResourceFilter
       # @return [String] Gets or sets the resource type.
@@ -41,6 +41,7 @@ module AzureResourceManagement
 
         serialized_property = object.tagvalue
         output_object['tagvalue'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -61,7 +62,9 @@ module AzureResourceManagement
 
         deserialized_property = object['tagvalue']
         output_object.tagvalue = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

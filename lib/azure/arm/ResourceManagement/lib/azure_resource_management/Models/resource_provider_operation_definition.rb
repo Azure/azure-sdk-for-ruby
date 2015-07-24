@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Resource provider operation information.
     #
     class ResourceProviderOperationDefinition
       # @return [String] Gets or sets the provider operation name.
@@ -36,9 +36,10 @@ module AzureResourceManagement
 
         serialized_property = object.display
         if (serialized_property)
-          serialized_property = AzureResourceManagement::Models::ResourceProviderOperationDisplayProperties.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Resources::Models::ResourceProviderOperationDisplayProperties.serialize_object(serialized_property)
         end
         output_object['display'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -56,10 +57,12 @@ module AzureResourceManagement
 
         deserialized_property = object['display']
         if (deserialized_property)
-          deserialized_property = AzureResourceManagement::Models::ResourceProviderOperationDisplayProperties.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Resources::Models::ResourceProviderOperationDisplayProperties.deserialize_object(deserialized_property)
         end
         output_object.display = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

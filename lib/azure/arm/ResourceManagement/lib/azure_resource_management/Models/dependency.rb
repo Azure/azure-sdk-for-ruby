@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Deployment dependency information.
     #
     class Dependency
       # @return [Array<BasicDependency>] Gets the list of dependencies.
@@ -45,7 +45,7 @@ module AzureResourceManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureResourceManagement::Models::BasicDependency.serialize_object(element)
+              element = Azure::ARM::Resources::Models::BasicDependency.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -61,6 +61,7 @@ module AzureResourceManagement
 
         serialized_property = object.resource_name
         output_object['resourceName'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -78,7 +79,7 @@ module AzureResourceManagement
           deserializedArray = [];
           deserialized_property.each do |element1|
             if (element1)
-              element1 = AzureResourceManagement::Models::BasicDependency.deserialize_object(element1)
+              element1 = Azure::ARM::Resources::Models::BasicDependency.deserialize_object(element1)
             end
             deserializedArray.push(element1);
           end
@@ -94,7 +95,9 @@ module AzureResourceManagement
 
         deserialized_property = object['resourceName']
         output_object.resource_name = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

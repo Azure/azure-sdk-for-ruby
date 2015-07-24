@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Resource information.
     #
     class GenericResource < MsRestAzure::Resource
       # @return [Plan] Gets or sets the plan of the resource.
@@ -47,12 +47,13 @@ module AzureResourceManagement
 
         serialized_property = object.plan
         if (serialized_property)
-          serialized_property = AzureResourceManagement::Models::Plan.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Resources::Models::Plan.serialize_object(serialized_property)
         end
         output_object['plan'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.properties
         output_object['properties'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -82,13 +83,15 @@ module AzureResourceManagement
 
         deserialized_property = object['plan']
         if (deserialized_property)
-          deserialized_property = AzureResourceManagement::Models::Plan.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Resources::Models::Plan.deserialize_object(deserialized_property)
         end
         output_object.plan = deserialized_property
 
         deserialized_property = object['properties']
         output_object.properties = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

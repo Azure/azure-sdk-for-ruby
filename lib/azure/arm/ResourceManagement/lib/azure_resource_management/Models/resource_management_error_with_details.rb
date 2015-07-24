@@ -2,7 +2,7 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
     # Model object.
@@ -46,7 +46,7 @@ module AzureResourceManagement
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = AzureResourceManagement::Models::ResourceManagementError.serialize_object(element)
+              element = Azure::ARM::Resources::Models::ResourceManagementError.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -62,6 +62,7 @@ module AzureResourceManagement
 
         serialized_property = object.target
         output_object['target'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -79,7 +80,7 @@ module AzureResourceManagement
           deserializedArray = [];
           deserialized_property.each do |element1|
             if (element1)
-              element1 = AzureResourceManagement::Models::ResourceManagementError.deserialize_object(element1)
+              element1 = Azure::ARM::Resources::Models::ResourceManagementError.deserialize_object(element1)
             end
             deserializedArray.push(element1);
           end
@@ -95,7 +96,9 @@ module AzureResourceManagement
 
         deserialized_property = object['target']
         output_object.target = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end

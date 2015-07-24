@@ -2,10 +2,10 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 
 
-module AzureResourceManagement
+module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # Information from validate template deployment response.
     #
     class DeploymentValidateResult
       # @return [ResourceManagementErrorWithDetails] Gets or sets validation
@@ -35,15 +35,16 @@ module AzureResourceManagement
 
         serialized_property = object.error
         if (serialized_property)
-          serialized_property = AzureResourceManagement::Models::ResourceManagementErrorWithDetails.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Resources::Models::ResourceManagementErrorWithDetails.serialize_object(serialized_property)
         end
         output_object['error'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.properties
         if (serialized_property)
-          serialized_property = AzureResourceManagement::Models::DeploymentPropertiesExtended.serialize_object(serialized_property)
+          serialized_property = Azure::ARM::Resources::Models::DeploymentPropertiesExtended.serialize_object(serialized_property)
         end
         output_object['properties'] = serialized_property unless serialized_property.nil?
+
         output_object
       end
 
@@ -58,16 +59,18 @@ module AzureResourceManagement
 
         deserialized_property = object['error']
         if (deserialized_property)
-          deserialized_property = AzureResourceManagement::Models::ResourceManagementErrorWithDetails.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Resources::Models::ResourceManagementErrorWithDetails.deserialize_object(deserialized_property)
         end
         output_object.error = deserialized_property
 
         deserialized_property = object['properties']
         if (deserialized_property)
-          deserialized_property = AzureResourceManagement::Models::DeploymentPropertiesExtended.deserialize_object(deserialized_property)
+          deserialized_property = Azure::ARM::Resources::Models::DeploymentPropertiesExtended.deserialize_object(deserialized_property)
         end
         output_object.properties = deserialized_property
+
         output_object.validate
+
         output_object
       end
     end
