@@ -17,13 +17,31 @@ require 'azure_resource_management'
 require 'ms_rest_azure'
 
 include MsRestAzure
-include AzureResourceManagement
+include Azure::ARM::Resources
+
+def create_resource_group
+  resource_group_name = get_random_name('RubySDKTest_')
+  params = Models::ResourceGroup.new()
+  params.location = 'westus'
+
+  Client.resource_groups.create_or_update(resource_group_name, params).value!.body
+end
+
+def delete_resource_group(name)
+  Client.resource_groups.delete(name).value!
+end
+
+def get_random_name(prefix, length = 1000)
+  prefix + SecureRandom.uuid.downcase.delete('^a-zA-Z0-9')[0...length - prefix.length]
+end
 
 ResourceGroup = 'RubySDKTest'
 
-AccessToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDM3NDk1ODQ4LCJuYmYiOjE0Mzc0OTU4NDgsImV4cCI6MTQzNzQ5OTc0OCwidmVyIjoiMS4wIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3Iiwib2lkIjoiNzdjMWI0NTgtZGFhYS00OWUxLWFlZWYtNmRkNWI1ODU2OTk5IiwiZW1haWwiOiJkbWl0cnkuYmFya2Fsb3ZAYWt2ZWxvbi5jb20iLCJwdWlkIjoiMTAwMzdGRkU5MTY3NTQ0RCIsImlkcCI6ImxpdmUuY29tIiwiYWx0c2VjaWQiOiIxOmxpdmUuY29tOjAwMDNCRkZEQ0UzMjlENUYiLCJzdWIiOiJGZnoyV1VUNTM2XzFiaHJzT2kzOTd5WGhvX0dzUF84ZWZmWXFnTW1DSU9VIiwiZ2l2ZW5fbmFtZSI6IkRtaXRyaXkiLCJmYW1pbHlfbmFtZSI6IkJhcmthbG92IiwibmFtZSI6ImRtaXRyeS5iYXJrYWxvdkBha3ZlbG9uLmNvbSIsImFtciI6WyJwd2QiXSwidW5pcXVlX25hbWUiOiJsaXZlLmNvbSNkbWl0cnkuYmFya2Fsb3ZAYWt2ZWxvbi5jb20iLCJhcHBpZCI6IjA0YjA3Nzk1LThkZGItNDYxYS1iYmVlLTAyZjllMWJmN2I0NiIsImFwcGlkYWNyIjoiMCIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsImFjciI6IjEifQ.TsLLUJ-Bs3ElDc_qyddyiQi0NXPrhcUdqrls0u5_Lxz-JWDk0gZalB2z_h6tTvM-lZj0F-VIZZE9i1TOzxV8gebVWDaaCTMt1J_XgoAYcoPMILrJpSoIOsKiMh3yAVLvKrBh0AVK6kfQZ4iBfhBVJ-OwkNT_Df7OHTrw5kA0D05I8kc1rTQS51yjaq4H7Rg18cT3EHahzp0ynTjCZqUz6f14TJNvcuKde_e-h2BWqWR7ecULLQ_cdgVyccIT138o63aZVzbSde3XsMLkp2QYofWgPkIst7A6ivTxnuHrfE-8dR28aZ8YLg9KeMOVLYJ_j_7_UISqwoiFJbmc4p93mw'
-SubscriptionId = '02286c5c-1f73-4bd4-82b7-761b50edfa78'
+TenantId = ENV['AzureTenantId']
+ClientId = ENV['AzureClientId']
+Secret = ENV['AzureClientSecret']
+SubscriptionId = ENV['AzureSubscriptionId']
 
-token_credential = TokenCloudCredentials.new(SubscriptionId, AccessToken)
-Client = ResourceManagementClient.new(token_credential)
+credential = AzureApplicationCredentials.new(TenantId, ClientId, Secret)
+Client = ResourceManagementClient.new(credential)
 Client.subscription_id = SubscriptionId
