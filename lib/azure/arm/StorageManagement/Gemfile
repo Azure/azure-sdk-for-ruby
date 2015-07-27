@@ -22,4 +22,5 @@ group :development, :local, :test do
   gem 'timeliness'
   gem 'concurrent-ruby-ext'
   gem 'ms_rest_azure'
+  gem 'azure_resource_management'
 end
