@@ -16,31 +16,26 @@
 require_relative 'test_helper'
 
 include MsRestAzure
-include AzureResourceManagement
+include Azure::ARM::Resources
 
 describe ResourceManagementClient do
 
   before(:all) do
     @client = Client.resource_groups
-    @resource_group_name = 'RubySDKTest_' + SecureRandom.uuid
-    @created_groups = [@resource_group_name]
-
-    params = Models::ResourceGroup.new()
-    params.location = 'westus'
-
-    @client.create_or_update(@resource_group_name, params).value!
+    @resource_group = create_resource_group
+    @created_groups = [@resource_group.name]
   end
 
   after(:all) do
     @created_groups.each do |item|
       if @client.check_existence(item).value!.body
-        @client.delete(item).value!
+        delete_resource_group(item)
       end
     end
   end
 
   it 'should create resource group' do
-    name = 'RubySDKTest_' + SecureRandom.uuid
+    name = get_random_name('RubySDKTest_')
     @created_groups.push(name)
 
     params = Models::ResourceGroup.new()
@@ -59,11 +54,11 @@ describe ResourceManagementClient do
   end
 
   it 'should get resource group' do
-    result = @client.get(@resource_group_name).value!
+    result = @client.get(@resource_group.name).value!
 
     expect(result.body).not_to be_nil
     expect(result.body.id).not_to be_nil
-    expect(result.body.name).to eq(@resource_group_name)
+    expect(result.body.name).to eq(@resource_group.name)
     expect(result.body.location).to eq('westus')
     expect(result.body.tags).to be_empty
   end
@@ -73,7 +68,7 @@ describe ResourceManagementClient do
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while result.body.next_link != nil do
+    while result.body.next_link  do
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -81,11 +76,11 @@ describe ResourceManagementClient do
   end
 
   it 'should list resources of resource group' do
-    result = @client.list_resources(@resource_group_name).value!
+    result = @client.list_resources(@resource_group.name).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while result.body.next_link != nil do
+    while result.body.next_link  do
       result = @client.list_resources_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -93,12 +88,12 @@ describe ResourceManagementClient do
   end
 
   it 'should check resource group exists' do
-    result = @client.check_existence(@resource_group_name).value!.body
+    result = @client.check_existence(@resource_group.name).value!.body
     expect(result).to be_truthy
   end
 
   it 'should delete resource group' do
-    result = @client.delete(@resource_group_name).value!
+    result = @client.delete(@resource_group.name).value!
     expect(result.response).to be_an_instance_of(Net::HTTPOK)
   end
 
