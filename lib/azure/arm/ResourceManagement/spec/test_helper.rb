@@ -24,24 +24,22 @@ def create_resource_group
   params = Models::ResourceGroup.new()
   params.location = 'westus'
 
-  Client.resource_groups.create_or_update(resource_group_name, params).value!.body
+  RESOURCES_CLIENT.resource_groups.create_or_update(resource_group_name, params).value!.body
 end
 
 def delete_resource_group(name)
-  Client.resource_groups.delete(name).value!
+  RESOURCES_CLIENT.resource_groups.delete(name).value!
 end
 
 def get_random_name(prefix, length = 1000)
   prefix + SecureRandom.uuid.downcase.delete('^a-zA-Z0-9')[0...length - prefix.length]
 end
 
-ResourceGroup = 'RubySDKTest'
+tenant_id = ENV['azure_tenant_id']
+client_id = ENV['azure_client_id']
+secret = ENV['azure_client_secret']
+subscription_id = ENV['azure_subscription_id']
 
-TenantId = ENV['AzureTenantId']
-ClientId = ENV['AzureClientId']
-Secret = ENV['AzureClientSecret']
-SubscriptionId = ENV['AzureSubscriptionId']
-
-credential = AzureApplicationCredentials.new(TenantId, ClientId, Secret)
-Client = ResourceManagementClient.new(credential)
-Client.subscription_id = SubscriptionId
+credentials = AzureApplicationCredentials.new(tenant_id, client_id, secret)
+RESOURCES_CLIENT = ResourceManagementClient.new(credentials)
+RESOURCES_CLIENT.subscription_id = subscription_id

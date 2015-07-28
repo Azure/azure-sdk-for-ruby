@@ -20,7 +20,7 @@ include Azure::ARM::Storage
 describe StorageManagementClient do
 
   before(:all) do
-    @client = Client.storage_accounts
+    @client = STORAGE_CLIENT.storage_accounts
     @resource_group = create_resource_group
     @storage_type = 'Microsoft.Storage/storageAccounts'
     @account_type = 'Standard_LRS'

@@ -26,25 +26,25 @@ def create_resource_group
   params = Azure::ARM::Resources::Models::ResourceGroup.new()
   params.location = 'westus'
 
-  ResourceClient.resource_groups.create_or_update(resource_group_name, params).value!.body
+  RESOURCES_CLIENT.resource_groups.create_or_update(resource_group_name, params).value!.body
 end
 
 def delete_resource_group(name)
-  ResourceClient.resource_groups.delete(name).value!
+  RESOURCES_CLIENT.resource_groups.delete(name).value!
 end
 
 def get_random_name(prefix, length = 1000)
   prefix + SecureRandom.uuid.downcase.delete('^a-zA-Z0-9')[0...length - prefix.length]
 end
 
-TenantId = ENV['AzureTenantId']
-ClientId = ENV['AzureClientId']
-Secret = ENV['AzureClientSecret']
-SubscriptionId = ENV['AzureSubscriptionId']
+tenant_id = ENV['azure_tenant_id']
+client_id = ENV['azure_client_id']
+secret = ENV['azure_client_secret']
+subscription_id = ENV['azure_subscription_id']
 
-credential = AzureApplicationCredentials.new(TenantId, ClientId, Secret)
-Client = StorageManagementClient.new(credential)
-Client.subscription_id = SubscriptionId
+credentials = AzureApplicationCredentials.new(tenant_id, client_id, secret)
+STORAGE_CLIENT = StorageManagementClient.new(credentials)
+STORAGE_CLIENT.subscription_id = subscription_id
 
-ResourceClient = ResourceManagementClient.new(credential)
-ResourceClient.subscription_id = SubscriptionId
+RESOURCES_CLIENT = ResourceManagementClient.new(credentials)
+RESOURCES_CLIENT.subscription_id = subscription_id

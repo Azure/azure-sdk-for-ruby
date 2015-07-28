@@ -21,7 +21,7 @@ include Azure::ARM::Resources
 describe ResourceManagementClient do
 
   before(:all) do
-    @client = Client.tags
+    @client = RESOURCES_CLIENT.tags
     @created_tags = []
   end
 
