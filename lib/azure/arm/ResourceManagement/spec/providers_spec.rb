@@ -23,7 +23,7 @@ describe ResourceManagementClient do
   before(:all) do
     @registered_providers = []
     @unregistered_providers = []
-    @client = Client.providers
+    @client = RESOURCES_CLIENT.providers
   end
 
   after(:all) do

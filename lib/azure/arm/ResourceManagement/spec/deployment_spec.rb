@@ -22,7 +22,7 @@ include Azure::ARM::Resources
 describe Deployments do
 
   before(:all) do
-    @client = Client.deployments
+    @client = RESOURCES_CLIENT.deployments
     @resource_group = create_resource_group
   end
 

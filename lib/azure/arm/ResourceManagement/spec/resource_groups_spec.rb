@@ -21,7 +21,7 @@ include Azure::ARM::Resources
 describe ResourceManagementClient do
 
   before(:all) do
-    @client = Client.resource_groups
+    @client = RESOURCES_CLIENT.resource_groups
     @resource_group = create_resource_group
     @created_groups = [@resource_group.name]
   end

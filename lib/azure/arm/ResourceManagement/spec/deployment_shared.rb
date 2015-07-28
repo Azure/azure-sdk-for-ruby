@@ -41,14 +41,14 @@ end
 def create_deployment(resource_group_name)
   deployment_name = get_random_name('Deployment_')
   params = build_deployment_params
-  Client.deployments.create_or_update(resource_group_name, deployment_name, params).value!.body
+  RESOURCES_CLIENT.deployments.create_or_update(resource_group_name, deployment_name, params).value!.body
 end
 
 def wait_for_deployment(resource_group_name, deployment_name, params)
   tries = 0
   loop do
     begin
-      Client.deployments.validate(resource_group_name, deployment_name, params).value!
+      RESOURCES_CLIENT.deployments.validate(resource_group_name, deployment_name, params).value!
       break
     rescue Exception
       tries += 1

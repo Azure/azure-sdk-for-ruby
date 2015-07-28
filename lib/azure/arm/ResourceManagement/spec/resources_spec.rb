@@ -21,7 +21,7 @@ include Azure::ARM::Resources
 describe ResourceManagementClient do
 
   before(:all) do
-    @client = Client.resources
+    @client = RESOURCES_CLIENT.resources
     @resource_group = create_resource_group
     @resource_type = 'sites'
     @resource_provider = 'Microsoft.Web'
@@ -153,7 +153,7 @@ describe ResourceManagementClient do
   end
 
   def wait_resource_move
-    while Client.resource_groups.get(@resource_group.name).value!.body.properties.provisioning_state == 'MovingResources'
+    while RESOURCES_CLIENT.resource_groups.get(@resource_group.name).value!.body.properties.provisioning_state == 'MovingResources'
       sleep(1)
     end
   end

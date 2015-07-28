@@ -21,22 +21,22 @@ include Azure::ARM::Resources
 describe ResourceManagementClient do
 
   before(:all) do
-    @client = Client.resource_provider_operation_details
-    @providers_client = Client.providers
+    @client = RESOURCES_CLIENT.resource_provider_operation_details
+    @providers_client = RESOURCES_CLIENT.providers
   end
 
   # it 'should list provider operation details' do
-  #   providers = Client.providers.list().value!.body.value
+  #   providers = RESOURCES_CLIENT.providers.list().value!.body.value
   #   targetProvider = providers.detect {|item| item.registration_state == 'Registered' }
-  #   result = @client.list(targetProvider.namespace, Client.api_version).value!
-  #   # expect(result.body.value).not_to be_nil
-  #   # expect(result.body.value).to be_a(Array)
-  #   #
-  #   # while result.body.next_link  do
-  #   #   result = @client.list_next(result.body.next_link).value!
-  #   #   expect(result.body.value).not_to be_nil
-  #   #   expect(result.body.value).to be_a(Array)
-  #   # end
+  #   result = @client.list(targetProvider.namespace, RESOURCES_CLIENT.api_version).value!
+  #   expect(result.body.value).not_to be_nil
+  #   expect(result.body.value).to be_a(Array)
+  #
+  #   while result.body.next_link  do
+  #     result = @client.list_next(result.body.next_link).value!
+  #     expect(result.body.value).not_to be_nil
+  #     expect(result.body.value).to be_a(Array)
+  #   end
   # end
 
 end
