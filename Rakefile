@@ -49,8 +49,6 @@ namespace :test do
         t.verbose = true
         t.libs = %w(lib test)
       end
-
-      task component => 'test:require_environment'
     end
 
     component_task :affinity_group
