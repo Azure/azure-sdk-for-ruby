@@ -64,6 +64,7 @@ module Azure
 
   module Core
     autoload :Utility,                        'azure/core/utility'
+    autoload :Logger,                         'azure/core/utility'
     autoload :Error,                          'azure/core/error'
     autoload :Service,                        'azure/core/service'
     autoload :FilteredService,                'azure/core/filtered_service'
