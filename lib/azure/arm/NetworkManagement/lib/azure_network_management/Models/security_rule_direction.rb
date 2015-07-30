@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for SecurityRuleDirection
-  #
-  module SecurityRuleDirection
-    Inbound = "Inbound"
-    Outbound = "Outbound"
+  module Models
+    #
+    # Defines values for SecurityRuleDirection
+    #
+    module SecurityRuleDirection
+      Inbound = "Inbound"
+      Outbound = "Outbound"
+    end
   end
 end

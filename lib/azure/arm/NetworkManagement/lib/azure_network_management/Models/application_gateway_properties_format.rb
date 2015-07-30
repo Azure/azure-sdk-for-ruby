@@ -223,7 +223,7 @@ module Azure::ARM::Network
         output_object.sku = deserialized_property
 
         deserialized_property = object['operationalState']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ApplicationGatewayOperationalState.constants.any? { |e| Azure::ARM::Network::ApplicationGatewayOperationalState.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::Models::ApplicationGatewayOperationalState.constants.any? { |e| Azure::ARM::Network::Models::ApplicationGatewayOperationalState.const_get(e) == deserialized_property })
         output_object.operational_state = deserialized_property
 
         deserialized_property = object['gatewayIpConfigurations']

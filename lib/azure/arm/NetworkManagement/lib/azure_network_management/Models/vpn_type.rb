@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for VpnType
-  #
-  module VpnType
-    PolicyBased = "PolicyBased"
-    RouteBased = "RouteBased"
+  module Models
+    #
+    # Defines values for VpnType
+    #
+    module VpnType
+      PolicyBased = "PolicyBased"
+      RouteBased = "RouteBased"
+    end
   end
 end

@@ -3,10 +3,12 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for VirtualNetworkGatewayType
-  #
-  module VirtualNetworkGatewayType
-    Vpn = "Vpn"
+  module Models
+    #
+    # Defines values for VirtualNetworkGatewayType
+    #
+    module VirtualNetworkGatewayType
+      Vpn = "Vpn"
+    end
   end
 end

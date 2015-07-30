@@ -123,7 +123,7 @@ module Azure::ARM::Network
         output_object.load_balancing_rules = deserialized_property
 
         deserialized_property = object['protocol']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ProbeProtocol.constants.any? { |e| Azure::ARM::Network::ProbeProtocol.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::Models::ProbeProtocol.constants.any? { |e| Azure::ARM::Network::Models::ProbeProtocol.const_get(e) == deserialized_property })
         output_object.protocol = deserialized_property
 
         deserialized_property = object['port']

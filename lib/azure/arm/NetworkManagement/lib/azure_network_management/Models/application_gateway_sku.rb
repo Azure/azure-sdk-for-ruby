@@ -58,11 +58,11 @@ module Azure::ARM::Network
         output_object = ApplicationGatewaySku.new
 
         deserialized_property = object['name']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ApplicationGatewaySkuName.constants.any? { |e| Azure::ARM::Network::ApplicationGatewaySkuName.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::Models::ApplicationGatewaySkuName.constants.any? { |e| Azure::ARM::Network::Models::ApplicationGatewaySkuName.const_get(e) == deserialized_property })
         output_object.name = deserialized_property
 
         deserialized_property = object['tier']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ApplicationGatewayTier.constants.any? { |e| Azure::ARM::Network::ApplicationGatewayTier.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::Models::ApplicationGatewayTier.constants.any? { |e| Azure::ARM::Network::Models::ApplicationGatewayTier.const_get(e) == deserialized_property })
         output_object.tier = deserialized_property
 
         deserialized_property = object['capacity']

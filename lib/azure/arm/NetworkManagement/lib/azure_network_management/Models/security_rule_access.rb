@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for SecurityRuleAccess
-  #
-  module SecurityRuleAccess
-    Allow = "Allow"
-    Deny = "Deny"
+  module Models
+    #
+    # Defines values for SecurityRuleAccess
+    #
+    module SecurityRuleAccess
+      Allow = "Allow"
+      Deny = "Deny"
+    end
   end
 end

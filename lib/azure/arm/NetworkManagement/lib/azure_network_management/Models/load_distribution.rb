@@ -3,12 +3,14 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for LoadDistribution
-  #
-  module LoadDistribution
-    Default = "Default"
-    SourceIP = "SourceIP"
-    SourceIPProtocol = "SourceIPProtocol"
+  module Models
+    #
+    # Defines values for LoadDistribution
+    #
+    module LoadDistribution
+      Default = "Default"
+      SourceIP = "SourceIP"
+      SourceIPProtocol = "SourceIPProtocol"
+    end
   end
 end

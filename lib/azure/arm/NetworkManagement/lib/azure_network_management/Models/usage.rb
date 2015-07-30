@@ -65,7 +65,7 @@ module Azure::ARM::Network
         output_object = Usage.new
 
         deserialized_property = object['unit']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::UsageUnit.constants.any? { |e| Azure::ARM::Network::UsageUnit.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::Models::UsageUnit.constants.any? { |e| Azure::ARM::Network::Models::UsageUnit.const_get(e) == deserialized_property })
         output_object.unit = deserialized_property
 
         deserialized_property = object['currentValue']

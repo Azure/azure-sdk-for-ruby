@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for IpAllocationMethod
-  #
-  module IpAllocationMethod
-    Static = "Static"
-    Dynamic = "Dynamic"
+  module Models
+    #
+    # Defines values for IpAllocationMethod
+    #
+    module IpAllocationMethod
+      Static = "Static"
+      Dynamic = "Dynamic"
+    end
   end
 end

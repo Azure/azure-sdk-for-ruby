@@ -3,12 +3,14 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for OperationStatus
-  #
-  module OperationStatus
-    InProgress = "InProgress"
-    Succeeded = "Succeeded"
-    Failed = "Failed"
+  module Models
+    #
+    # Defines values for OperationStatus
+    #
+    module OperationStatus
+      InProgress = "InProgress"
+      Succeeded = "Succeeded"
+      Failed = "Failed"
+    end
   end
 end

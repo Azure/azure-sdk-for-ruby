@@ -51,19 +51,19 @@ module Azure::ARM::Network
 
         serialized_property = object.backend_address_pool
         if (serialized_property)
-          serialized_property = Azure::ARM::Network::Models::SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['backendAddressPool'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.backend_http_settings
         if (serialized_property)
-          serialized_property = Azure::ARM::Network::Models::SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['backendHttpSettings'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.http_listener
         if (serialized_property)
-          serialized_property = Azure::ARM::Network::Models::SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['httpListener'] = serialized_property unless serialized_property.nil?
 
@@ -84,24 +84,24 @@ module Azure::ARM::Network
         output_object = ApplicationGatewayRequestRoutingRulePropertiesFormat.new
 
         deserialized_property = object['ruleType']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ApplicationGatewayRequestRoutingRuleType.constants.any? { |e| Azure::ARM::Network::ApplicationGatewayRequestRoutingRuleType.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::Models::ApplicationGatewayRequestRoutingRuleType.constants.any? { |e| Azure::ARM::Network::Models::ApplicationGatewayRequestRoutingRuleType.const_get(e) == deserialized_property })
         output_object.rule_type = deserialized_property
 
         deserialized_property = object['backendAddressPool']
         if (deserialized_property)
-          deserialized_property = Azure::ARM::Network::Models::SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.backend_address_pool = deserialized_property
 
         deserialized_property = object['backendHttpSettings']
         if (deserialized_property)
-          deserialized_property = Azure::ARM::Network::Models::SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.backend_http_settings = deserialized_property
 
         deserialized_property = object['httpListener']
         if (deserialized_property)
-          deserialized_property = Azure::ARM::Network::Models::SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.http_listener = deserialized_property
 

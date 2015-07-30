@@ -68,11 +68,11 @@ module Azure::ARM::Network
         output_object.port = deserialized_property
 
         deserialized_property = object['protocol']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ApplicationGatewayProtocol.constants.any? { |e| Azure::ARM::Network::ApplicationGatewayProtocol.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::Models::ApplicationGatewayProtocol.constants.any? { |e| Azure::ARM::Network::Models::ApplicationGatewayProtocol.const_get(e) == deserialized_property })
         output_object.protocol = deserialized_property
 
         deserialized_property = object['cookieBasedAffinity']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::ApplicationGatewayCookieBasedAffinity.constants.any? { |e| Azure::ARM::Network::ApplicationGatewayCookieBasedAffinity.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::Models::ApplicationGatewayCookieBasedAffinity.constants.any? { |e| Azure::ARM::Network::Models::ApplicationGatewayCookieBasedAffinity.const_get(e) == deserialized_property })
         output_object.cookie_based_affinity = deserialized_property
 
         deserialized_property = object['provisioningState']

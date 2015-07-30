@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for ApplicationGatewayProtocol
-  #
-  module ApplicationGatewayProtocol
-    Http = "Http"
-    Https = "Https"
+  module Models
+    #
+    # Defines values for ApplicationGatewayProtocol
+    #
+    module ApplicationGatewayProtocol
+      Http = "Http"
+      Https = "Https"
+    end
   end
 end

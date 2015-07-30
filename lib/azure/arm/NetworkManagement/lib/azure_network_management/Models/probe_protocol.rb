@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for ProbeProtocol
-  #
-  module ProbeProtocol
-    Http = "Http"
-    Tcp = "Tcp"
+  module Models
+    #
+    # Defines values for ProbeProtocol
+    #
+    module ProbeProtocol
+      Http = "Http"
+      Tcp = "Tcp"
+    end
   end
 end

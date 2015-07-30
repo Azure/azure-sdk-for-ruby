@@ -3,10 +3,12 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for ApplicationGatewayTier
-  #
-  module ApplicationGatewayTier
-    Standard = "Standard"
+  module Models
+    #
+    # Defines values for ApplicationGatewayTier
+    #
+    module ApplicationGatewayTier
+      Standard = "Standard"
+    end
   end
 end

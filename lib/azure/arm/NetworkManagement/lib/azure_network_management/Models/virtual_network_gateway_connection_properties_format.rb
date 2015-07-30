@@ -112,7 +112,7 @@ module Azure::ARM::Network
         output_object.local_network_gateway2 = deserialized_property
 
         deserialized_property = object['connectionType']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::VirtualNetworkGatewayConnectionType.constants.any? { |e| Azure::ARM::Network::VirtualNetworkGatewayConnectionType.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::Models::VirtualNetworkGatewayConnectionType.constants.any? { |e| Azure::ARM::Network::Models::VirtualNetworkGatewayConnectionType.const_get(e) == deserialized_property })
         output_object.connection_type = deserialized_property
 
         deserialized_property = object['routingWeight']
