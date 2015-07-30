@@ -8,8 +8,8 @@ module Azure::ARM::Resources
     # List of resource groups.
     #
     class ResourceGroupListResult
-      # @return [Array<ResourceGroupExtended>] Gets or sets the list of
-      # resource groups.
+      # @return [Array<ResourceGroup>] Gets or sets the list of resource
+      # groups.
       attr_accessor :value
 
       # @return [String] Gets or sets the URL to get the next set of results.
@@ -40,7 +40,7 @@ module Azure::ARM::Resources
           serializedArray = [];
           serialized_property.each do |element|
             if (element)
-              element = Azure::ARM::Resources::Models::ResourceGroupExtended.serialize_object(element)
+              element = Azure::ARM::Resources::Models::ResourceGroup.serialize_object(element)
             end
             serializedArray.push(element);
           end
@@ -68,7 +68,7 @@ module Azure::ARM::Resources
           deserializedArray = [];
           deserialized_property.each do |element1|
             if (element1)
-              element1 = Azure::ARM::Resources::Models::ResourceGroupExtended.deserialize_object(element1)
+              element1 = Azure::ARM::Resources::Models::ResourceGroup.deserialize_object(element1)
             end
             deserializedArray.push(element1);
           end

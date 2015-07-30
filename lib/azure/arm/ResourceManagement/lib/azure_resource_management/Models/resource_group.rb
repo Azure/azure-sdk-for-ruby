@@ -8,20 +8,23 @@ module Azure::ARM::Resources
     # Resource group information.
     #
     class ResourceGroup
+      # @return [String] Gets the ID of the resource group.
+      attr_accessor :id
+
+      # @return [String] Gets or sets the Name of the resource group.
+      attr_accessor :name
+
+      # @return [ResourceGroupProperties]
+      attr_accessor :properties
+
       # @return [String] Gets or sets the location of the resource group. It
       # cannot be changed after the resource group has been created. Has to
       # be one of the supported Azure Locations, such as West US, East US,
       # West Europe, East Asia, etc.
       attr_accessor :location
 
-      # @return Gets or sets the resource group properties.
-      attr_accessor :properties
-
       # @return Gets or sets the tags attached to the resource group.
       attr_accessor :tags
-
-      # @return [String] Gets or sets resource group provisioning state.
-      attr_accessor :provisioning_state
 
       def initialize
         @tags = {};
@@ -31,6 +34,7 @@ module Azure::ARM::Resources
       # Validate the object. Throws ArgumentError if validation fails.
       #
       def validate
+        @properties.validate unless @properties.nil?
         @tags.each{ |e| e.validate if e.respond_to?(:validate) } unless @tags.nil?
       end
 
@@ -43,17 +47,23 @@ module Azure::ARM::Resources
         object.validate
         output_object = {}
 
+        serialized_property = object.id
+        output_object['id'] = serialized_property unless serialized_property.nil?
+
+        serialized_property = object.name
+        output_object['name'] = serialized_property unless serialized_property.nil?
+
+        serialized_property = object.properties
+        if (serialized_property)
+          serialized_property = Azure::ARM::Resources::Models::ResourceGroupProperties.serialize_object(serialized_property)
+        end
+        output_object['properties'] = serialized_property unless serialized_property.nil?
+
         serialized_property = object.location
         output_object['location'] = serialized_property unless serialized_property.nil?
 
-        serialized_property = object.properties
-        output_object['properties'] = serialized_property unless serialized_property.nil?
-
         serialized_property = object.tags
         output_object['tags'] = serialized_property unless serialized_property.nil?
-
-        serialized_property = object.provisioning_state
-        output_object['provisioningState'] = serialized_property unless serialized_property.nil?
 
         output_object
       end
@@ -67,17 +77,23 @@ module Azure::ARM::Resources
         return if object.nil?
         output_object = ResourceGroup.new
 
+        deserialized_property = object['id']
+        output_object.id = deserialized_property
+
+        deserialized_property = object['name']
+        output_object.name = deserialized_property
+
+        deserialized_property = object['properties']
+        if (deserialized_property)
+          deserialized_property = Azure::ARM::Resources::Models::ResourceGroupProperties.deserialize_object(deserialized_property)
+        end
+        output_object.properties = deserialized_property
+
         deserialized_property = object['location']
         output_object.location = deserialized_property
 
-        deserialized_property = object['properties']
-        output_object.properties = deserialized_property
-
         deserialized_property = object['tags']
         output_object.tags = deserialized_property
-
-        deserialized_property = object['provisioningState']
-        output_object.provisioning_state = deserialized_property
 
         output_object.validate
 

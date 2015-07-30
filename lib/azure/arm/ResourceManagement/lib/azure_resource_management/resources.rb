@@ -48,39 +48,50 @@ module Azure::ARM::Resources
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
 
-      # Create HTTP transport objects
-      http_request = Net::HTTP::Post.new(url.request_uri)
+      connection = Faraday.new(:url => url) do |faraday|
+        faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
+        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
+        faraday.use :cookie_jar
+        faraday.adapter Faraday.default_adapter
+      end
+      request_headers = Hash.new
 
       # Set Headers
-      http_request['x-ms-client-request-id'] = SecureRandom.uuid
-      http_request["accept-language"] = @client.accept_language
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers["accept-language"] = @client.accept_language unless @client.accept_language.nil?
 
       unless custom_headers.nil?
         custom_headers.each do |key, value|
-          http_request[key] = value
+          request_headers[key] = value
         end
       end
 
       # Serialize Request
-      http_request.add_field('Content-Type', 'application/json')
+      request_headers['Content-Type'] = 'application/json'
       if (parameters1)
         parameters1 = Azure::ARM::Resources::Models::ResourcesMoveInfo.serialize_object(parameters1)
       end
       request_content = parameters1
-      http_request.body = JSON.generate(request_content, quirks_mode: true)
+      request_content = JSON.generate(request_content, quirks_mode: true)
 
       # Send Request
-      promise = Concurrent::Promise.new { @client.make_http_request(http_request, url) }
+      promise = Concurrent::Promise.new do
+        connection.post do |request|
+          request.headers = request_headers
+          request.body = request_content
+          @client.credentials.sign_request(request) unless @client.credentials.nil?
+        end
+      end
 
       promise = promise.then do |http_response|
-        status_code = http_response.code.to_i
+        status_code = http_response.status
         response_content = http_response.body
         unless (status_code == 202)
-          fail MsRest::HttpOperationException.new(http_request, http_response)
+          fail MsRest::HttpOperationException.new(http_response, http_response)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_request, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -119,32 +130,42 @@ module Azure::ARM::Resources
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
 
-      # Create HTTP transport objects
-      http_request = Net::HTTP::Get.new(url.request_uri)
+      connection = Faraday.new(:url => url) do |faraday|
+        faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
+        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
+        faraday.use :cookie_jar
+        faraday.adapter Faraday.default_adapter
+      end
+      request_headers = Hash.new
 
       # Set Headers
-      http_request['x-ms-client-request-id'] = SecureRandom.uuid
-      http_request["accept-language"] = @client.accept_language
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers["accept-language"] = @client.accept_language unless @client.accept_language.nil?
 
       unless custom_headers.nil?
         custom_headers.each do |key, value|
-          http_request[key] = value
+          request_headers[key] = value
         end
       end
 
       # Send Request
-      promise = Concurrent::Promise.new { @client.make_http_request(http_request, url) }
+      promise = Concurrent::Promise.new do
+        connection.get do |request|
+          request.headers = request_headers
+          @client.credentials.sign_request(request) unless @client.credentials.nil?
+        end
+      end
 
       promise = promise.then do |http_response|
-        status_code = http_response.code.to_i
+        status_code = http_response.status
         response_content = http_response.body
         unless (status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_request, http_response, error_model)
+          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_request, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -205,32 +226,42 @@ module Azure::ARM::Resources
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
 
-      # Create HTTP transport objects
-      http_request = Net::HTTP::Head.new(url.request_uri)
+      connection = Faraday.new(:url => url) do |faraday|
+        faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
+        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
+        faraday.use :cookie_jar
+        faraday.adapter Faraday.default_adapter
+      end
+      request_headers = Hash.new
 
       # Set Headers
-      http_request['x-ms-client-request-id'] = SecureRandom.uuid
-      http_request["accept-language"] = @client.accept_language
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers["accept-language"] = @client.accept_language unless @client.accept_language.nil?
 
       unless custom_headers.nil?
         custom_headers.each do |key, value|
-          http_request[key] = value
+          request_headers[key] = value
         end
       end
 
       # Send Request
-      promise = Concurrent::Promise.new { @client.make_http_request(http_request, url) }
+      promise = Concurrent::Promise.new do
+        connection.head do |request|
+          request.headers = request_headers
+          @client.credentials.sign_request(request) unless @client.credentials.nil?
+        end
+      end
 
       promise = promise.then do |http_response|
-        status_code = http_response.code.to_i
+        status_code = http_response.status
         response_content = http_response.body
         unless (status_code == 204 || status_code == 404)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_request, http_response, error_model)
+          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_request, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
         result.body = (status_code == 204)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
@@ -280,31 +311,41 @@ module Azure::ARM::Resources
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
 
-      # Create HTTP transport objects
-      http_request = Net::HTTP::Delete.new(url.request_uri)
+      connection = Faraday.new(:url => url) do |faraday|
+        faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
+        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
+        faraday.use :cookie_jar
+        faraday.adapter Faraday.default_adapter
+      end
+      request_headers = Hash.new
 
       # Set Headers
-      http_request['x-ms-client-request-id'] = SecureRandom.uuid
-      http_request["accept-language"] = @client.accept_language
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers["accept-language"] = @client.accept_language unless @client.accept_language.nil?
 
       unless custom_headers.nil?
         custom_headers.each do |key, value|
-          http_request[key] = value
+          request_headers[key] = value
         end
       end
 
       # Send Request
-      promise = Concurrent::Promise.new { @client.make_http_request(http_request, url) }
+      promise = Concurrent::Promise.new do
+        connection.delete do |request|
+          request.headers = request_headers
+          @client.credentials.sign_request(request) unless @client.credentials.nil?
+        end
+      end
 
       promise = promise.then do |http_response|
-        status_code = http_response.code.to_i
+        status_code = http_response.status
         response_content = http_response.body
-        unless (status_code == 204 || status_code == 202 || status_code == 200)
-          fail MsRest::HttpOperationException.new(http_request, http_response)
+        unless (status_code == 200 || status_code == 204 || status_code == 202)
+          fail MsRest::HttpOperationException.new(http_response, http_response)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_request, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -328,10 +369,45 @@ module Azure::ARM::Resources
     # part of the URI for every service call.
     # @param @client.accept_language [String] Gets or sets the preferred language
     # for the response.
+    # @return [TODO: add type] TODO: add text
+    #
+    def create_or_update(resource_group_name1, resource_provider_namespace1, parent_resource_path1, resource_type1, resource_name1, api_version1, parameters1, custom_headers = nil)
+      # Send request
+      response = begin_create_or_update(resource_group_name1, resource_provider_namespace1, parent_resource_path1, resource_type1, resource_name1, api_version1, parameters1, custom_headers = nil).value!
+
+      # Defining polling method.
+      get_method = lambda { self.get(resource_group_name1, resource_provider_namespace1, parent_resource_path1, resource_type1, resource_name1, api_version1, custom_headers = nil) }
+
+      # Defining deserialization method.
+      deserialize_method = lambda do |parsed_response|
+        if (parsed_response)
+          parsed_response = Azure::ARM::Resources::Models::GenericResource.deserialize_object(parsed_response)
+        end
+      end
+
+      # Waiting for response.
+      return @client.get_put_operation_result(response, get_method, nil, deserialize_method)
+    end
+
+    #
+    # Create a resource.
+    # @param resource_group_name1 [String] The name of the resource group. The
+    # name is case insensitive.
+    # @param resource_provider_namespace1 [String] Resource identity.
+    # @param parent_resource_path1 [String] Resource identity.
+    # @param resource_type1 [String] Resource identity.
+    # @param resource_name1 [String] Resource identity.
+    # @param api_version1 [String]
+    # @param parameters1 [GenericResource] Create or update resource parameters.
+    # @param @client.subscription_id [String] Gets subscription credentials which
+    # uniquely identify Microsoft Azure subscription. The subscription ID forms
+    # part of the URI for every service call.
+    # @param @client.accept_language [String] Gets or sets the preferred language
+    # for the response.
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def create_or_update(resource_group_name1, resource_provider_namespace1, parent_resource_path1, resource_type1, resource_name1, api_version1, parameters1, custom_headers = nil)
+    def begin_create_or_update(resource_group_name1, resource_provider_namespace1, parent_resource_path1, resource_type1, resource_name1, api_version1, parameters1, custom_headers = nil)
       fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
       fail ArgumentError, 'resource_provider_namespace1 is nil' if resource_provider_namespace1.nil?
       fail ArgumentError, 'parent_resource_path1 is nil' if parent_resource_path1.nil?
@@ -356,40 +432,51 @@ module Azure::ARM::Resources
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
 
-      # Create HTTP transport objects
-      http_request = Net::HTTP::Put.new(url.request_uri)
+      connection = Faraday.new(:url => url) do |faraday|
+        faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
+        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
+        faraday.use :cookie_jar
+        faraday.adapter Faraday.default_adapter
+      end
+      request_headers = Hash.new
 
       # Set Headers
-      http_request['x-ms-client-request-id'] = SecureRandom.uuid
-      http_request["accept-language"] = @client.accept_language
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers["accept-language"] = @client.accept_language unless @client.accept_language.nil?
 
       unless custom_headers.nil?
         custom_headers.each do |key, value|
-          http_request[key] = value
+          request_headers[key] = value
         end
       end
 
       # Serialize Request
-      http_request.add_field('Content-Type', 'application/json')
+      request_headers['Content-Type'] = 'application/json'
       if (parameters1)
         parameters1 = Azure::ARM::Resources::Models::GenericResource.serialize_object(parameters1)
       end
       request_content = parameters1
-      http_request.body = JSON.generate(request_content, quirks_mode: true)
+      request_content = JSON.generate(request_content, quirks_mode: true)
 
       # Send Request
-      promise = Concurrent::Promise.new { @client.make_http_request(http_request, url) }
+      promise = Concurrent::Promise.new do
+        connection.put do |request|
+          request.headers = request_headers
+          request.body = request_content
+          @client.credentials.sign_request(request) unless @client.credentials.nil?
+        end
+      end
 
       promise = promise.then do |http_response|
-        status_code = http_response.code.to_i
+        status_code = http_response.status
         response_content = http_response.body
-        unless (status_code == 201 || status_code == 200)
+        unless (status_code == 201 || status_code == 202 || status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_request, http_response, error_model)
+          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_request, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 201
@@ -462,35 +549,45 @@ module Azure::ARM::Resources
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
 
-      # Create HTTP transport objects
-      http_request = Net::HTTP::Get.new(url.request_uri)
+      connection = Faraday.new(:url => url) do |faraday|
+        faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
+        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
+        faraday.use :cookie_jar
+        faraday.adapter Faraday.default_adapter
+      end
+      request_headers = Hash.new
 
       # Set Headers
-      http_request['x-ms-client-request-id'] = SecureRandom.uuid
-      http_request["accept-language"] = @client.accept_language
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers["accept-language"] = @client.accept_language unless @client.accept_language.nil?
 
       unless custom_headers.nil?
         custom_headers.each do |key, value|
-          http_request[key] = value
+          request_headers[key] = value
         end
       end
 
       # Send Request
-      promise = Concurrent::Promise.new { @client.make_http_request(http_request, url) }
+      promise = Concurrent::Promise.new do
+        connection.get do |request|
+          request.headers = request_headers
+          @client.credentials.sign_request(request) unless @client.credentials.nil?
+        end
+      end
 
       promise = promise.then do |http_response|
-        status_code = http_response.code.to_i
+        status_code = http_response.status
         response_content = http_response.body
-        unless (status_code == 204 || status_code == 200)
+        unless (status_code == 200 || status_code == 204)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_request, http_response, error_model)
+          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_request, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
-        if status_code == 204
+        if status_code == 200
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
@@ -502,7 +599,7 @@ module Azure::ARM::Resources
           end
         end
         # Deserialize Response
-        if status_code == 200
+        if status_code == 204
           begin
             parsed_response = JSON.load(response_content) unless response_content.to_s.empty?
             if (parsed_response)
@@ -540,32 +637,42 @@ module Azure::ARM::Resources
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
 
-      # Create HTTP transport objects
-      http_request = Net::HTTP::Get.new(url.request_uri)
+      connection = Faraday.new(:url => url) do |faraday|
+        faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
+        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
+        faraday.use :cookie_jar
+        faraday.adapter Faraday.default_adapter
+      end
+      request_headers = Hash.new
 
       # Set Headers
-      http_request['x-ms-client-request-id'] = SecureRandom.uuid
-      http_request["accept-language"] = @client.accept_language
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers["accept-language"] = @client.accept_language unless @client.accept_language.nil?
 
       unless custom_headers.nil?
         custom_headers.each do |key, value|
-          http_request[key] = value
+          request_headers[key] = value
         end
       end
 
       # Send Request
-      promise = Concurrent::Promise.new { @client.make_http_request(http_request, url) }
+      promise = Concurrent::Promise.new do
+        connection.get do |request|
+          request.headers = request_headers
+          @client.credentials.sign_request(request) unless @client.credentials.nil?
+        end
+      end
 
       promise = promise.then do |http_response|
-        status_code = http_response.code.to_i
+        status_code = http_response.status
         response_content = http_response.body
         unless (status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_request, http_response, error_model)
+          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_request, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
