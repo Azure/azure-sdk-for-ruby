@@ -3,12 +3,14 @@
 
 
 module Azure::ARM::Compute
-  #
-  # Defines values for CachingTypes
-  #
-  module CachingTypes
-    None = "None"
-    ReadOnly = "ReadOnly"
-    ReadWrite = "ReadWrite"
+  module Models
+    #
+    # Defines values for CachingTypes
+    #
+    module CachingTypes
+      None = "None"
+      ReadOnly = "ReadOnly"
+      ReadWrite = "ReadWrite"
+    end
   end
 end

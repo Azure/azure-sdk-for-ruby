@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Compute
-  #
-  # Defines values for ProtocolTypes
-  #
-  module ProtocolTypes
-    Http = "Http"
-    Https = "Https"
+  module Models
+    #
+    # Defines values for ProtocolTypes
+    #
+    module ProtocolTypes
+      Http = "Http"
+      Https = "Https"
+    end
   end
 end

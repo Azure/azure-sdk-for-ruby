@@ -47,7 +47,7 @@ module Azure::ARM::Compute
         output_object = HardwareProfile.new
 
         deserialized_property = object['vmSize']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::VirtualMachineSizeTypes.constants.any? { |e| Azure::ARM::Compute::VirtualMachineSizeTypes.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::Models::VirtualMachineSizeTypes.constants.any? { |e| Azure::ARM::Compute::Models::VirtualMachineSizeTypes.const_get(e) == deserialized_property })
         output_object.vm_size = deserialized_property
 
         output_object.validate

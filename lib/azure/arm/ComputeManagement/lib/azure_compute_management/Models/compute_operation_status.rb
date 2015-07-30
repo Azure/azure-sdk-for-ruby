@@ -3,13 +3,15 @@
 
 
 module Azure::ARM::Compute
-  #
-  # Defines values for ComputeOperationStatus
-  #
-  module ComputeOperationStatus
-    InProgress = "InProgress"
-    Failed = "Failed"
-    Succeeded = "Succeeded"
-    Preempted = "Preempted"
+  module Models
+    #
+    # Defines values for ComputeOperationStatus
+    #
+    module ComputeOperationStatus
+      InProgress = "InProgress"
+      Failed = "Failed"
+      Succeeded = "Succeeded"
+      Preempted = "Preempted"
+    end
   end
 end

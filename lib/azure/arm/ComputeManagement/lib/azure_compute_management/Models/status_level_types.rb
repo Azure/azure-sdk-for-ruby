@@ -3,12 +3,14 @@
 
 
 module Azure::ARM::Compute
-  #
-  # Defines values for StatusLevelTypes
-  #
-  module StatusLevelTypes
-    Info = "Info"
-    Warning = "Warning"
-    Error = "Error"
+  module Models
+    #
+    # Defines values for StatusLevelTypes
+    #
+    module StatusLevelTypes
+      Info = "Info"
+      Warning = "Warning"
+      Error = "Error"
+    end
   end
 end

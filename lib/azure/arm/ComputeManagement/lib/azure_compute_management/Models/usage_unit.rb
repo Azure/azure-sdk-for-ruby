@@ -3,10 +3,12 @@
 
 
 module Azure::ARM::Compute
-  #
-  # Defines values for UsageUnit
-  #
-  module UsageUnit
-    Count = "Count"
+  module Models
+    #
+    # Defines values for UsageUnit
+    #
+    module UsageUnit
+      Count = "Count"
+    end
   end
 end

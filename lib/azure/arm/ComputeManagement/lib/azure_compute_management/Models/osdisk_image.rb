@@ -43,7 +43,7 @@ module Azure::ARM::Compute
         output_object = OSDiskImage.new
 
         deserialized_property = object['operatingSystem']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::OperatingSystemTypes.constants.any? { |e| Azure::ARM::Compute::OperatingSystemTypes.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::Models::OperatingSystemTypes.constants.any? { |e| Azure::ARM::Compute::Models::OperatingSystemTypes.const_get(e) == deserialized_property })
         output_object.operating_system = deserialized_property
 
         output_object.validate

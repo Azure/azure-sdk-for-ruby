@@ -3,12 +3,14 @@
 
 
 module Azure::ARM::Compute
-  #
-  # Defines values for DiskCreateOptionTypes
-  #
-  module DiskCreateOptionTypes
-    FromImage = "fromImage"
-    Empty = "empty"
-    Attach = "attach"
+  module Models
+    #
+    # Defines values for DiskCreateOptionTypes
+    #
+    module DiskCreateOptionTypes
+      FromImage = "fromImage"
+      Empty = "empty"
+      Attach = "attach"
+    end
   end
 end
