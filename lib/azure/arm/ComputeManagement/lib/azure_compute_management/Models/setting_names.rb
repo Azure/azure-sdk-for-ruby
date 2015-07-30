@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Compute
-  #
-  # Defines values for SettingNames
-  #
-  module SettingNames
-    AutoLogon = "AutoLogon"
-    FirstLogonCommands = "FirstLogonCommands"
+  module Models
+    #
+    # Defines values for SettingNames
+    #
+    module SettingNames
+      AutoLogon = "AutoLogon"
+      FirstLogonCommands = "FirstLogonCommands"
+    end
   end
 end

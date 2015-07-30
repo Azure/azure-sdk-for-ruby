@@ -3,10 +3,12 @@
 
 
 module Azure::ARM::Compute
-  #
-  # Defines values for ComponentNames
-  #
-  module ComponentNames
-    MicrosoftWindowsShellSetup = "Microsoft-Windows-Shell-Setup"
+  module Models
+    #
+    # Defines values for ComponentNames
+    #
+    module ComponentNames
+      MicrosoftWindowsShellSetup = "Microsoft-Windows-Shell-Setup"
+    end
   end
 end

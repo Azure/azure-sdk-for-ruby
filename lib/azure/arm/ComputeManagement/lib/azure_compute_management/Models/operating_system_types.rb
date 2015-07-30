@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Compute
-  #
-  # Defines values for OperatingSystemTypes
-  #
-  module OperatingSystemTypes
-    Windows = "Windows"
-    Linux = "Linux"
+  module Models
+    #
+    # Defines values for OperatingSystemTypes
+    #
+    module OperatingSystemTypes
+      Windows = "Windows"
+      Linux = "Linux"
+    end
   end
 end

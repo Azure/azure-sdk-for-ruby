@@ -73,7 +73,7 @@ module Azure::ARM::Compute
         output_object.code = deserialized_property
 
         deserialized_property = object['level']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::StatusLevelTypes.constants.any? { |e| Azure::ARM::Compute::StatusLevelTypes.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::Models::StatusLevelTypes.constants.any? { |e| Azure::ARM::Compute::Models::StatusLevelTypes.const_get(e) == deserialized_property })
         output_object.level = deserialized_property
 
         deserialized_property = object['displayStatus']

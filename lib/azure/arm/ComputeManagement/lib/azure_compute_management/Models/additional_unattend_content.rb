@@ -72,15 +72,15 @@ module Azure::ARM::Compute
         output_object = AdditionalUnattendContent.new
 
         deserialized_property = object['passName']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::PassNames.constants.any? { |e| Azure::ARM::Compute::PassNames.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::Models::PassNames.constants.any? { |e| Azure::ARM::Compute::Models::PassNames.const_get(e) == deserialized_property })
         output_object.pass_name = deserialized_property
 
         deserialized_property = object['componentName']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::ComponentNames.constants.any? { |e| Azure::ARM::Compute::ComponentNames.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::Models::ComponentNames.constants.any? { |e| Azure::ARM::Compute::Models::ComponentNames.const_get(e) == deserialized_property })
         output_object.component_name = deserialized_property
 
         deserialized_property = object['settingName']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::SettingNames.constants.any? { |e| Azure::ARM::Compute::SettingNames.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::Models::SettingNames.constants.any? { |e| Azure::ARM::Compute::Models::SettingNames.const_get(e) == deserialized_property })
         output_object.setting_name = deserialized_property
 
         deserialized_property = object['content']

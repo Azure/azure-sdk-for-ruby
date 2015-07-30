@@ -51,7 +51,7 @@ module Azure::ARM::Compute
         output_object = WinRMListener.new
 
         deserialized_property = object['protocol']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::ProtocolTypes.constants.any? { |e| Azure::ARM::Compute::ProtocolTypes.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::Models::ProtocolTypes.constants.any? { |e| Azure::ARM::Compute::Models::ProtocolTypes.const_get(e) == deserialized_property })
         output_object.protocol = deserialized_property
 
         deserialized_property = object['certificateUrl']

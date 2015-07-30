@@ -86,7 +86,7 @@ module Azure::ARM::Compute
         output_object.operation_id = deserialized_property
 
         deserialized_property = object['status']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::ComputeOperationStatus.constants.any? { |e| Azure::ARM::Compute::ComputeOperationStatus.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::Models::ComputeOperationStatus.constants.any? { |e| Azure::ARM::Compute::Models::ComputeOperationStatus.const_get(e) == deserialized_property })
         output_object.status = deserialized_property
 
         deserialized_property = object['startTime']

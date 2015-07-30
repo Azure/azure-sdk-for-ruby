@@ -115,11 +115,11 @@ module Azure::ARM::Compute
         output_object.image = deserialized_property
 
         deserialized_property = object['caching']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::CachingTypes.constants.any? { |e| Azure::ARM::Compute::CachingTypes.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::Models::CachingTypes.constants.any? { |e| Azure::ARM::Compute::Models::CachingTypes.const_get(e) == deserialized_property })
         output_object.caching = deserialized_property
 
         deserialized_property = object['createOption']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::DiskCreateOptionTypes.constants.any? { |e| Azure::ARM::Compute::DiskCreateOptionTypes.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Compute::Models::DiskCreateOptionTypes.constants.any? { |e| Azure::ARM::Compute::Models::DiskCreateOptionTypes.const_get(e) == deserialized_property })
         output_object.create_option = deserialized_property
 
         output_object.validate

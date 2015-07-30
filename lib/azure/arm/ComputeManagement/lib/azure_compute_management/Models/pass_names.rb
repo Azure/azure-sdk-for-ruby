@@ -3,10 +3,12 @@
 
 
 module Azure::ARM::Compute
-  #
-  # Defines values for PassNames
-  #
-  module PassNames
-    OobeSystem = "oobeSystem"
+  module Models
+    #
+    # Defines values for PassNames
+    #
+    module PassNames
+      OobeSystem = "oobeSystem"
+    end
   end
 end
