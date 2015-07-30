@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Storage
-  #
-  # Defines values for AccountStatus
-  #
-  module AccountStatus
-    Available = "Available"
-    Unavailable = "Unavailable"
+  module Models
+    #
+    # Defines values for AccountStatus
+    #
+    module AccountStatus
+      Available = "Available"
+      Unavailable = "Unavailable"
+    end
   end
 end

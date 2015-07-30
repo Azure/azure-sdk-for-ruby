@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Storage
-  #
-  # Defines values for KeyName
-  #
-  module KeyName
-    Key1 = "key1"
-    Key2 = "key2"
+  module Models
+    #
+    # Defines values for KeyName
+    #
+    module KeyName
+      Key1 = "key1"
+      Key2 = "key2"
+    end
   end
 end

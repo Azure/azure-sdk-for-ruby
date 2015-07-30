@@ -19,8 +19,9 @@ gemspec
 group :development, :local, :test do
   gem 'rspec'
   gem 'json'
-  gem 'timeliness'
   gem 'concurrent-ruby-ext'
+  gem 'faraday'
+  gem 'faraday-cookie_jar'
   gem 'ms_rest_azure'
   gem 'azure_resource_management'
 end
