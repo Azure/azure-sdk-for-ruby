@@ -34,6 +34,9 @@ module Azure::ARM::Storage
     # @return storage_accounts
     attr_reader :storage_accounts
 
+    # @return usage_operations
+    attr_reader :usage_operations
+
     #
     # Creates initializes a new instance of the StorageManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -49,6 +52,7 @@ module Azure::ARM::Storage
       @credentials = credentials
 
       @storage_accounts = StorageAccounts.new(self)
+      @usage_operations = UsageOperations.new(self)
       @api_version = "2015-05-01-preview"
       @accept_language = "en-US"
     end

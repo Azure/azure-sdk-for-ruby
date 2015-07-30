@@ -5,16 +5,20 @@
 module Azure::ARM::Storage
   module Models
     #
-    # Model object.
+    # The Usage Names.
     #
-    class StorageAccountRegenerateKeyParameters
-      # @return Possible values for this property include: 'key1', 'key2'
-      attr_accessor :key_name
+    class UsageName
+      # @return [String] Gets a string describing the resource name.
+      attr_accessor :value
+
+      # @return [String] Gets a localized string describing the resource name.
+      attr_accessor :localized_value
 
       #
       # Validate the object. Throws ArgumentError if validation fails.
       #
       def validate
+        # Nothing to validate
       end
 
       #
@@ -26,8 +30,11 @@ module Azure::ARM::Storage
         object.validate
         output_object = {}
 
-        serialized_property = object.key_name
-        output_object['keyName'] = serialized_property unless serialized_property.nil?
+        serialized_property = object.value
+        output_object['value'] = serialized_property unless serialized_property.nil?
+
+        serialized_property = object.localized_value
+        output_object['localizedValue'] = serialized_property unless serialized_property.nil?
 
         output_object
       end
@@ -35,15 +42,17 @@ module Azure::ARM::Storage
       #
       # Deserializes given Ruby Hash into Model object.
       # @param object [Hash] Ruby Hash object to deserialize.
-      # @return [StorageAccountRegenerateKeyParameters] Deserialized object.
+      # @return [UsageName] Deserialized object.
       #
       def self.deserialize_object(object)
         return if object.nil?
-        output_object = StorageAccountRegenerateKeyParameters.new
+        output_object = UsageName.new
 
-        deserialized_property = object['keyName']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Storage::Models::KeyName.constants.any? { |e| Azure::ARM::Storage::Models::KeyName.const_get(e) == deserialized_property })
-        output_object.key_name = deserialized_property
+        deserialized_property = object['value']
+        output_object.value = deserialized_property
+
+        deserialized_property = object['localizedValue']
+        output_object.localized_value = deserialized_property
 
         output_object.validate
 

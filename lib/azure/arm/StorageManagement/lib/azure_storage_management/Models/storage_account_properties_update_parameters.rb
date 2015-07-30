@@ -59,7 +59,7 @@ module Azure::ARM::Storage
         output_object = StorageAccountPropertiesUpdateParameters.new
 
         deserialized_property = object['accountType']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Storage::AccountType.constants.any? { |e| Azure::ARM::Storage::AccountType.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Storage::Models::AccountType.constants.any? { |e| Azure::ARM::Storage::Models::AccountType.const_get(e) == deserialized_property })
         output_object.account_type = deserialized_property
 
         deserialized_property = object['customDomain']

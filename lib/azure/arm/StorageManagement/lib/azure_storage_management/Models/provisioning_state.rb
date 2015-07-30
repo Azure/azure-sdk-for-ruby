@@ -3,12 +3,14 @@
 
 
 module Azure::ARM::Storage
-  #
-  # Defines values for ProvisioningState
-  #
-  module ProvisioningState
-    Creating = "Creating"
-    ResolvingDNS = "ResolvingDNS"
-    Succeeded = "Succeeded"
+  module Models
+    #
+    # Defines values for ProvisioningState
+    #
+    module ProvisioningState
+      Creating = "Creating"
+      ResolvingDNS = "ResolvingDNS"
+      Succeeded = "Succeeded"
+    end
   end
 end
