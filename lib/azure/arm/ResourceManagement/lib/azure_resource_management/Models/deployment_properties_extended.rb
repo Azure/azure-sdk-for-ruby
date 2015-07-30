@@ -201,7 +201,7 @@ module Azure::ARM::Resources
         output_object.parameters_link = deserialized_property
 
         deserialized_property = object['mode']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Resources::DeploymentMode.constants.any? { |e| Azure::ARM::Resources::DeploymentMode.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Resources::Models::DeploymentMode.constants.any? { |e| Azure::ARM::Resources::Models::DeploymentMode.const_get(e) == deserialized_property })
         output_object.mode = deserialized_property
 
         output_object.validate

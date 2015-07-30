@@ -3,10 +3,12 @@
 
 
 module Azure::ARM::Resources
-  #
-  # Defines values for DeploymentMode
-  #
-  module DeploymentMode
-    Incremental = "Incremental"
+  module Models
+    #
+    # Defines values for DeploymentMode
+    #
+    module DeploymentMode
+      Incremental = "Incremental"
+    end
   end
 end
