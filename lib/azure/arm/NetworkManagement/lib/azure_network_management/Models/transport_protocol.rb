@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for TransportProtocol
-  #
-  module TransportProtocol
-    Udp = "Udp"
-    Tcp = "Tcp"
+  module Models
+    #
+    # Defines values for TransportProtocol
+    #
+    module TransportProtocol
+      Udp = "Udp"
+      Tcp = "Tcp"
+    end
   end
 end

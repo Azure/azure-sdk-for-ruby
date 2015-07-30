@@ -83,19 +83,19 @@ module Azure::ARM::Network
 
         serialized_property = object.frontend_ipconfiguration
         if (serialized_property)
-          serialized_property = Azure::ARM::Network::Models::SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['frontendIPConfiguration'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.backend_address_pool
         if (serialized_property)
-          serialized_property = Azure::ARM::Network::Models::SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['backendAddressPool'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.probe
         if (serialized_property)
-          serialized_property = Azure::ARM::Network::Models::SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['probe'] = serialized_property unless serialized_property.nil?
 
@@ -134,28 +134,28 @@ module Azure::ARM::Network
 
         deserialized_property = object['frontendIPConfiguration']
         if (deserialized_property)
-          deserialized_property = Azure::ARM::Network::Models::SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.frontend_ipconfiguration = deserialized_property
 
         deserialized_property = object['backendAddressPool']
         if (deserialized_property)
-          deserialized_property = Azure::ARM::Network::Models::SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.backend_address_pool = deserialized_property
 
         deserialized_property = object['probe']
         if (deserialized_property)
-          deserialized_property = Azure::ARM::Network::Models::SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.probe = deserialized_property
 
         deserialized_property = object['protocol']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::TransportProtocol.constants.any? { |e| Azure::ARM::Network::TransportProtocol.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::Models::TransportProtocol.constants.any? { |e| Azure::ARM::Network::Models::TransportProtocol.const_get(e) == deserialized_property })
         output_object.protocol = deserialized_property
 
         deserialized_property = object['loadDistribution']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::LoadDistribution.constants.any? { |e| Azure::ARM::Network::LoadDistribution.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::Models::LoadDistribution.constants.any? { |e| Azure::ARM::Network::Models::LoadDistribution.const_get(e) == deserialized_property })
         output_object.load_distribution = deserialized_property
 
         deserialized_property = object['frontendPort']

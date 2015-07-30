@@ -3,13 +3,15 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for VirtualNetworkGatewayConnectionType
-  #
-  module VirtualNetworkGatewayConnectionType
-    IPsec = "IPsec"
-    Vnet2Vnet = "Vnet2Vnet"
-    ExpressRoute = "ExpressRoute"
-    VPNClient = "VPNClient"
+  module Models
+    #
+    # Defines values for VirtualNetworkGatewayConnectionType
+    #
+    module VirtualNetworkGatewayConnectionType
+      IPsec = "IPsec"
+      Vnet2Vnet = "Vnet2Vnet"
+      ExpressRoute = "ExpressRoute"
+      VPNClient = "VPNClient"
+    end
   end
 end

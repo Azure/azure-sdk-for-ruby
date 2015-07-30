@@ -3,10 +3,12 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for ApplicationGatewayRequestRoutingRuleType
-  #
-  module ApplicationGatewayRequestRoutingRuleType
-    Basic = "Basic"
+  module Models
+    #
+    # Defines values for ApplicationGatewayRequestRoutingRuleType
+    #
+    module ApplicationGatewayRequestRoutingRuleType
+      Basic = "Basic"
+    end
   end
 end

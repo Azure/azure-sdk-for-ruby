@@ -3,13 +3,15 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for ApplicationGatewayOperationalState
-  #
-  module ApplicationGatewayOperationalState
-    Stopped = "Stopped"
-    Starting = "Starting"
-    Running = "Running"
-    Stopping = "Stopping"
+  module Models
+    #
+    # Defines values for ApplicationGatewayOperationalState
+    #
+    module ApplicationGatewayOperationalState
+      Stopped = "Stopped"
+      Starting = "Starting"
+      Running = "Running"
+      Stopping = "Stopping"
+    end
   end
 end

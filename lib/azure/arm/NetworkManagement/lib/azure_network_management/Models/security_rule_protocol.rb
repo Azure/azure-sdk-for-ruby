@@ -3,12 +3,14 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for SecurityRuleProtocol
-  #
-  module SecurityRuleProtocol
-    Tcp = "Tcp"
-    Udp = "Udp"
-    Asterisk = "*"
+  module Models
+    #
+    # Defines values for SecurityRuleProtocol
+    #
+    module SecurityRuleProtocol
+      Tcp = "Tcp"
+      Udp = "Udp"
+      Asterisk = "*"
+    end
   end
 end

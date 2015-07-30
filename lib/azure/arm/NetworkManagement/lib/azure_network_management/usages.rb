@@ -45,32 +45,42 @@ module Azure::ARM::Network
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
 
-      # Create HTTP transport objects
-      http_request = Net::HTTP::Get.new(url.request_uri)
+      connection = Faraday.new(:url => url) do |faraday|
+        faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
+        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
+        faraday.use :cookie_jar
+        faraday.adapter Faraday.default_adapter
+      end
+      request_headers = Hash.new
 
       # Set Headers
-      http_request['x-ms-client-request-id'] = SecureRandom.uuid
-      http_request["accept-language"] = @client.accept_language
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers["accept-language"] = @client.accept_language unless @client.accept_language.nil?
 
       unless custom_headers.nil?
         custom_headers.each do |key, value|
-          http_request[key] = value
+          request_headers[key] = value
         end
       end
 
       # Send Request
-      promise = Concurrent::Promise.new { @client.make_http_request(http_request, url) }
+      promise = Concurrent::Promise.new do
+        connection.get do |request|
+          request.headers = request_headers
+          @client.credentials.sign_request(request) unless @client.credentials.nil?
+        end
+      end
 
       promise = promise.then do |http_response|
-        status_code = http_response.code.to_i
+        status_code = http_response.status
         response_content = http_response.body
         unless (status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_request, http_response, error_model)
+          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_request, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200

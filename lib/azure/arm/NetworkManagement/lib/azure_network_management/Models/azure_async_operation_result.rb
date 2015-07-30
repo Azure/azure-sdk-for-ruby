@@ -60,7 +60,7 @@ module Azure::ARM::Network
         output_object = AzureAsyncOperationResult.new
 
         deserialized_property = object['status']
-        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::OperationStatus.constants.any? { |e| Azure::ARM::Network::OperationStatus.const_get(e) == deserialized_property })
+        fail MsRest::DeserializationError.new('Error occured in deserializing the enum', nil, nil, nil) if (!deserialized_property.nil? && !deserialized_property.empty? && !Azure::ARM::Network::Models::OperationStatus.constants.any? { |e| Azure::ARM::Network::Models::OperationStatus.const_get(e) == deserialized_property })
         output_object.status = deserialized_property
 
         deserialized_property = object['error']

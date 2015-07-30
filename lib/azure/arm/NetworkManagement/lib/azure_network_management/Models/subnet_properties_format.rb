@@ -49,7 +49,7 @@ module Azure::ARM::Network
 
         serialized_property = object.network_security_group
         if (serialized_property)
-          serialized_property = Azure::ARM::Network::Models::SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['networkSecurityGroup'] = serialized_property unless serialized_property.nil?
 
@@ -86,7 +86,7 @@ module Azure::ARM::Network
 
         deserialized_property = object['networkSecurityGroup']
         if (deserialized_property)
-          deserialized_property = Azure::ARM::Network::Models::SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.network_security_group = deserialized_property
 

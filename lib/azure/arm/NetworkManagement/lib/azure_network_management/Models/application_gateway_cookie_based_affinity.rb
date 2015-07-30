@@ -3,11 +3,13 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for ApplicationGatewayCookieBasedAffinity
-  #
-  module ApplicationGatewayCookieBasedAffinity
-    Enabled = "Enabled"
-    Disabled = "Disabled"
+  module Models
+    #
+    # Defines values for ApplicationGatewayCookieBasedAffinity
+    #
+    module ApplicationGatewayCookieBasedAffinity
+      Enabled = "Enabled"
+      Disabled = "Disabled"
+    end
   end
 end

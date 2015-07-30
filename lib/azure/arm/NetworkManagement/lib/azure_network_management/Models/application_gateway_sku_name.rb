@@ -3,12 +3,14 @@
 
 
 module Azure::ARM::Network
-  #
-  # Defines values for ApplicationGatewaySkuName
-  #
-  module ApplicationGatewaySkuName
-    StandardSmall = "Standard_Small"
-    StandardMedium = "Standard_Medium"
-    StandardLarge = "Standard_Large"
+  module Models
+    #
+    # Defines values for ApplicationGatewaySkuName
+    #
+    module ApplicationGatewaySkuName
+      StandardSmall = "Standard_Small"
+      StandardMedium = "Standard_Medium"
+      StandardLarge = "Standard_Large"
+    end
   end
 end
