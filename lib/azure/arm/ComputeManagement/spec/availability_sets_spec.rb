@@ -35,7 +35,7 @@ describe ComputeManagementClient do
     availabilitySetName = get_random_name("avail")
     params = build_availability_set_parameters
     result = @client.create_or_update(@resource_group.name, availabilitySetName, params).value!
-    expect(result.response).to be_an_instance_of Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.location).to eq(params.location)
     expect(result.body.type).to eq(@resource_identity)
@@ -51,7 +51,7 @@ describe ComputeManagementClient do
         @resource_group.name,
         resource.name,
     ).value!
-    expect(result.response).to be_an_instance_of Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.name).to eq(resource.name)
     expect(result.body.type).to eq(@resource_identity)
@@ -72,13 +72,13 @@ describe ComputeManagementClient do
         @resource_group.name,
         resource.name
     ).value!
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
   end
 
   it 'should list available sizes' do
     resource = create_availability_set(@client, @resource_group)
     result = @client.list_available_sizes(@resource_group.name, resource.name).value!
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a Array
   end

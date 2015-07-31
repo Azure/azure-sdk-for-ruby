@@ -25,7 +25,7 @@ describe UsageOperations do
 
   it 'should list usages' do
     result = @client.list('westus').value!
-    expect(result.response).to be_a Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a Array
   end

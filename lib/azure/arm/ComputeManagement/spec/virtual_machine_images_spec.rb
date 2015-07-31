@@ -33,35 +33,35 @@ describe VirtualMachines do
 
   it 'should list image publishers' do
     result = @client.list_publishers(@location).value!
-    expect(result.response).to be_a Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body).to be_a Array
   end
 
   it 'should list offers' do
     result = @client.list_offers(@location, @publisherName).value!
-    expect(result.response).to be_a Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body).to be_a Array
   end
 
   it 'should list skus' do
     result = @client.list_skus(@location, @publisherName, @offerName).value!
-    expect(result.response).to be_a Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body).to be_a Array
   end
 
   it 'should list all virtual machine images' do
     result = @client.list(@location, @publisherName, @offerName, @skusName).value!
-    expect(result.response).to be_a Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body).to be_a Array
   end
 
   it 'should get virtual machine image' do
     result = @client.get(@location, @publisherName, @offerName, @skusName, @windowsServiceImageVersion).value!
-    expect(result.response).to be_a Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
   end
 

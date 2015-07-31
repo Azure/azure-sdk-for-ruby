@@ -27,7 +27,7 @@ describe VirtualMachineSizes do
 
   it 'should list available virtual machine sizes' do
     result = @client.list(@location).value!
-    expect(result.response).to be_a Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a Array
   end
