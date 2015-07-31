@@ -25,7 +25,7 @@ describe ResourceManagementClient do
     @resource_group = create_resource_group
     @resource_type = 'sites'
     @resource_provider = 'Microsoft.Web'
-    @resource_api_version = '2014-04-01'
+    @resource_api_version = '2015-07-01'
     @resource_identity = 'Microsoft.Web/sites'
   end
 
@@ -68,19 +68,20 @@ describe ResourceManagementClient do
     expect(result.body.type).to eq(@resource_identity)
   end
 
-  # it 'should check existence of resource' do
-  #   resource = create_resource
-  #
-  #   result = @client.check_existence(
-  #       @resource_group.name,
-  #       @resource_provider,
-  #       '',
-  #       @resource_type,
-  #       resource.name,
-  #       @resource_api_version
-  #   ).value!
-  #   expect(result.body).to be_truthy
-  # end
+  it 'should check existence of resource' do
+    pending('Skip for now since this method isn\'t supported by server - HTTP 405 is returned')
+    resource = create_resource
+
+    result = @client.check_existence(
+        @resource_group.name,
+        @resource_provider,
+        '',
+        @resource_type,
+        resource.name,
+        @resource_api_version
+    ).value!
+    expect(result.body).to be_truthy
+  end
 
   it 'should list resources' do
     result = @client.list().value!
@@ -104,7 +105,7 @@ describe ResourceManagementClient do
     params.resources = [resource.id]
 
     result = @client.move_resources(@resource_group.name, params).value!
-    expect(result.response).to be_an_instance_of(Net::HTTPAccepted)
+    expect(result.response.status).to eq(202)
 
     wait_resource_move
     delete_resource_group(target_group.name)
@@ -140,7 +141,7 @@ describe ResourceManagementClient do
 
   def build_resource_params(name)
     params = Models::GenericResource.new()
-    params.location = 'westus'
+    params.location = 'WestUS'
     params.properties = {
         'name' => name,
         'siteMode' => 'Limited',

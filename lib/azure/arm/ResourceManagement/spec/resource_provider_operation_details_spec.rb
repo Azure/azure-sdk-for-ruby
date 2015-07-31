@@ -22,21 +22,17 @@ describe ResourceManagementClient do
 
   before(:all) do
     @client = RESOURCES_CLIENT.resource_provider_operation_details
+    @resource_api_version = '2015-01-01-preview'
     @providers_client = RESOURCES_CLIENT.providers
   end
 
-  # it 'should list provider operation details' do
-  #   providers = RESOURCES_CLIENT.providers.list().value!.body.value
-  #   targetProvider = providers.detect {|item| item.registration_state == 'Registered' }
-  #   result = @client.list(targetProvider.namespace, RESOURCES_CLIENT.api_version).value!
-  #   expect(result.body.value).not_to be_nil
-  #   expect(result.body.value).to be_a(Array)
-  #
-  #   while result.body.next_link  do
-  #     result = @client.list_next(result.body.next_link).value!
-  #     expect(result.body.value).not_to be_nil
-  #     expect(result.body.value).to be_a(Array)
-  #   end
-  # end
+  it 'should list provider operation details' do
+    providers = RESOURCES_CLIENT.providers.list().value!.body.value
+    targetProvider = providers.detect {|item| item.registration_state == 'Registered' }
+
+    result = @client.list(targetProvider.namespace, @resource_api_version).value!
+    expect(result.body.value).not_to be_nil
+    expect(result.body.value).to be_a(Array)
+  end
 
 end

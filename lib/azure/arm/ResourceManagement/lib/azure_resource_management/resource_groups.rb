@@ -41,8 +41,8 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/resources"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1)
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['$filter'] = ERB::Util.url_encode(filter1.to_s) unless filter1.nil?
@@ -127,8 +127,8 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1)
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
@@ -236,8 +236,8 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1)
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
@@ -367,8 +367,8 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1)
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
@@ -438,8 +438,8 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1)
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
@@ -529,8 +529,8 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1)
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
@@ -623,7 +623,7 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups"
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['$filter'] = ERB::Util.url_encode(filter1.to_s) unless filter1.nil?
@@ -702,7 +702,7 @@ module Azure::ARM::Resources
       fail ArgumentError, 'next_page_link1 is nil' if next_page_link1.nil?
       # Construct URL
       path = "{nextLink}"
-      path['{nextLink}'] = next_page_link1
+      path['{nextLink}'] = next_page_link1 if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
       properties.reject!{ |key, value| value.nil? }
@@ -778,7 +778,7 @@ module Azure::ARM::Resources
       fail ArgumentError, 'next_page_link1 is nil' if next_page_link1.nil?
       # Construct URL
       path = "{nextLink}"
-      path['{nextLink}'] = next_page_link1
+      path['{nextLink}'] = next_page_link1 if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
       properties.reject!{ |key, value| value.nil? }

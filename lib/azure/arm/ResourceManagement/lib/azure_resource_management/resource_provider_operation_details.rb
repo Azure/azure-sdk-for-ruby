@@ -36,8 +36,8 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/providers/{resourceProviderNamespace}/operations"
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1)
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(api_version1.to_s) unless api_version1.nil?
