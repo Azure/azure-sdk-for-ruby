@@ -39,8 +39,8 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources"
-      path['{sourceResourceGroupName}'] = ERB::Util.url_encode(source_resource_group_name1)
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{sourceResourceGroupName}'] = ERB::Util.url_encode(source_resource_group_name1) if path.include?('{sourceResourceGroupName}')
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
@@ -120,7 +120,7 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resources"
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['$filter'] = ERB::Util.url_encode(filter1.to_s) unless filter1.nil?
@@ -213,12 +213,12 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1)
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1)
-      path['{parentResourcePath}'] = parent_resource_path1
-      path['{resourceType}'] = resource_type1
-      path['{resourceName}'] = ERB::Util.url_encode(resource_name1)
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
+      path['{parentResourcePath}'] = parent_resource_path1 if path.include?('{parentResourcePath}')
+      path['{resourceType}'] = resource_type1 if path.include?('{resourceType}')
+      path['{resourceName}'] = ERB::Util.url_encode(resource_name1) if path.include?('{resourceName}')
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(api_version1.to_s) unless api_version1.nil?
@@ -298,12 +298,12 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1)
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1)
-      path['{parentResourcePath}'] = parent_resource_path1
-      path['{resourceType}'] = resource_type1
-      path['{resourceName}'] = ERB::Util.url_encode(resource_name1)
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
+      path['{parentResourcePath}'] = parent_resource_path1 if path.include?('{parentResourcePath}')
+      path['{resourceType}'] = resource_type1 if path.include?('{resourceType}')
+      path['{resourceName}'] = ERB::Util.url_encode(resource_name1) if path.include?('{resourceName}')
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(api_version1.to_s) unless api_version1.nil?
@@ -419,12 +419,12 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1)
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1)
-      path['{parentResourcePath}'] = parent_resource_path1
-      path['{resourceType}'] = resource_type1
-      path['{resourceName}'] = ERB::Util.url_encode(resource_name1)
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
+      path['{parentResourcePath}'] = parent_resource_path1 if path.include?('{parentResourcePath}')
+      path['{resourceType}'] = resource_type1 if path.include?('{resourceType}')
+      path['{resourceName}'] = ERB::Util.url_encode(resource_name1) if path.include?('{resourceName}')
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(api_version1.to_s) unless api_version1.nil?
@@ -536,12 +536,12 @@ module Azure::ARM::Resources
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1)
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1)
-      path['{parentResourcePath}'] = parent_resource_path1
-      path['{resourceType}'] = resource_type1
-      path['{resourceName}'] = ERB::Util.url_encode(resource_name1)
-      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id)
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
+      path['{parentResourcePath}'] = parent_resource_path1 if path.include?('{parentResourcePath}')
+      path['{resourceType}'] = resource_type1 if path.include?('{resourceType}')
+      path['{resourceName}'] = ERB::Util.url_encode(resource_name1) if path.include?('{resourceName}')
+      path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(api_version1.to_s) unless api_version1.nil?
@@ -630,7 +630,7 @@ module Azure::ARM::Resources
       fail ArgumentError, 'next_page_link1 is nil' if next_page_link1.nil?
       # Construct URL
       path = "{nextLink}"
-      path['{nextLink}'] = next_page_link1
+      path['{nextLink}'] = next_page_link1 if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
       properties.reject!{ |key, value| value.nil? }
