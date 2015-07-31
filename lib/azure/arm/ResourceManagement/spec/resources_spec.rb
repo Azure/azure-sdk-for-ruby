@@ -46,7 +46,7 @@ describe ResourceManagementClient do
         @resource_api_version,
         params
     ).value!
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.location).to eq(params.location)
     expect(result.body.type).to eq(@resource_identity)
@@ -121,7 +121,7 @@ describe ResourceManagementClient do
         resource.name,
         @resource_api_version
     ).value!
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
   end
 
   def create_resource

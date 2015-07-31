@@ -37,7 +37,7 @@ describe DeploymentOperations do
 
   it 'should get a list of deployment operations' do
     result = @client.list(@resource_group.name, @deployment.name).value!
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
@@ -52,7 +52,7 @@ describe DeploymentOperations do
     operations = @client.list(@resource_group.name, @deployment.name).value!.body.value
 
     result = @client.get(@resource_group.name, @deployment.name, operations[0].operation_id).value!
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
     expect(result.body.operation_id).to eq(operations[0].operation_id)
     expect(result.body.id).not_to be_nil
     expect(result.body.properties).to be_an_instance_of(Models::DeploymentOperationProperties)

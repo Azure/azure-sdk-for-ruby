@@ -94,7 +94,7 @@ describe ResourceManagementClient do
 
   it 'should delete resource group' do
     result = @client.delete(@resource_group.name).value!
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
   end
 
 end

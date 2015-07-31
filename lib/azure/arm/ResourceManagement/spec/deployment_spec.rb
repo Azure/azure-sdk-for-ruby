@@ -44,7 +44,7 @@ describe Deployments do
     result = @client.cancel(@resource_group.name, deployment.name).value!
 
     expect(result.body).to be_nil
-    expect(result.response).to be_an_instance_of(Net::HTTPNoContent)
+    expect(result.response.status).to eq(204)
   end
 
   it 'should get a deployment' do
@@ -60,7 +60,7 @@ describe Deployments do
     wait_for_deployment(@resource_group.name, deployment.name, build_deployment_params)
 
     result = @client.validate(@resource_group.name, deployment.name, build_deployment_params).value!
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
   end
 
   it 'should get a list of deployments' do
