@@ -64,7 +64,7 @@ describe ResourceManagementClient do
 
     result = @client.register(targetProvider.namespace).value!
 
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
     expect(result.body.namespace).to eq(targetProvider.namespace)
     expect(result.body.registration_state).not_to eq('NotRegistered')
   end
@@ -76,7 +76,7 @@ describe ResourceManagementClient do
 
     result = @client.unregister(targetProvider.namespace).value!
 
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
     expect(result.body.namespace).to eq(targetProvider.namespace)
     expect(result.body.registration_state).not_to eq('Registered')
   end

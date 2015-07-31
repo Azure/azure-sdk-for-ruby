@@ -42,7 +42,7 @@ describe StorageManagementClient do
     params.location = @account_location
 
     result = @client.create(@resource_group.name, name, params).value!
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.location).to eq('West US')
     expect(result.body.properties).to be_a(Models::StorageAccountProperties)
@@ -144,7 +144,7 @@ describe StorageManagementClient do
     storage = create_storage_account
 
     result = @client.delete(@resource_group.name, storage).value!
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
   end
 
   def create_storage_account

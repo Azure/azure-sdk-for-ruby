@@ -24,6 +24,7 @@ def build_deployment_params()
   template_link = Models::TemplateLink.new()
   template_link.uri = Good_template_uri
   params.properties.template_link = template_link
+  params.properties.mode = Models::DeploymentMode::Incremental
   params.properties.parameters = {
       'siteName'=> {'value'=> 'mctest0101'},
       'hostingPlanName'=> {'value'=> 'mctest0101'},
@@ -33,7 +34,6 @@ def build_deployment_params()
       'sku'=> {'value'=> 'Free'},
       'workerSize'=> {'value'=> '0'}
   }
-  params.properties.mode = DeploymentMode::Incremental
 
   params
 end

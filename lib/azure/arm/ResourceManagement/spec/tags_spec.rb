@@ -75,7 +75,7 @@ describe ResourceManagementClient do
     tag = create_tag
 
     result = @client.delete(tag.tag_name).value!
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
   end
 
   it 'should delete tag value' do
@@ -85,7 +85,7 @@ describe ResourceManagementClient do
 
     result = @client.delete_value(tag.tag_name, value).value!
 
-    expect(result.response).to be_an_instance_of(Net::HTTPOK)
+    expect(result.response.status).to eq(200)
   end
 
   def create_tag
