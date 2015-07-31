@@ -30,21 +30,21 @@ describe VirtualMachineExtensionImages do
 
   it 'should list virtual machine extension image types' do
     result = @client.list_types(@location, @publisherName).value!
-    expect(result.response).to be_a Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body).to be_a Array
   end
 
   it 'should list virtual machine extension image versions' do
     result = @client.list_versions(@location, @publisherName, @type).value!
-    expect(result.response).to be_a Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body).to be_a Array
   end
 
   it 'should get virtual machine extension image' do
     result = @client.get(@location, @publisherName, @type, @version).value!
-    expect(result.response).to be_a Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
   end
 end

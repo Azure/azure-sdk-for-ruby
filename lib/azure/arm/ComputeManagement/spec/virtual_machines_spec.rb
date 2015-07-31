@@ -38,7 +38,7 @@ describe VirtualMachines do
     vm_name = get_random_name('vm')
     params = build_virtual_machine_parameters
     result = @client.create_or_update(@resource_group.name, vm_name, params).value
-    expect(result.response).to be_a Net::HTTPOK
+    expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.name).to eq vm_name
     expect(result.body.location).to eq @location
