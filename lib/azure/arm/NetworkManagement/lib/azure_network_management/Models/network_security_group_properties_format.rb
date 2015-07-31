@@ -84,7 +84,7 @@ module Azure::ARM::Network
           serializedArray = [];
           serialized_property.each do |element2|
             if (element2)
-              element2 = Azure::ARM::Network::Models::SubResource.serialize_object(element2)
+              element2 = MsRestAzure::SubResource.serialize_object(element2)
             end
             serializedArray.push(element2);
           end
@@ -97,7 +97,7 @@ module Azure::ARM::Network
           serializedArray = [];
           serialized_property.each do |element3|
             if (element3)
-              element3 = Azure::ARM::Network::Models::SubResource.serialize_object(element3)
+              element3 = MsRestAzure::SubResource.serialize_object(element3)
             end
             serializedArray.push(element3);
           end
@@ -151,7 +151,7 @@ module Azure::ARM::Network
           deserializedArray = [];
           deserialized_property.each do |element6|
             if (element6)
-              element6 = Azure::ARM::Network::Models::SubResource.deserialize_object(element6)
+              element6 = MsRestAzure::SubResource.deserialize_object(element6)
             end
             deserializedArray.push(element6);
           end
@@ -164,7 +164,7 @@ module Azure::ARM::Network
           deserializedArray = [];
           deserialized_property.each do |element7|
             if (element7)
-              element7 = Azure::ARM::Network::Models::SubResource.deserialize_object(element7)
+              element7 = MsRestAzure::SubResource.deserialize_object(element7)
             end
             deserializedArray.push(element7);
           end
