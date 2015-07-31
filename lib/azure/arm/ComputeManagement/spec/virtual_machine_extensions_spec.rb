@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# # Copyright (c) Microsoft and contributors. All rights reserved.
+# Copyright 2015 Microsoft Open Technologies, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,17 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-source 'https://rubygems.org'
 
-gemspec
+require_relative 'test_helper'
+require_relative 'availability_sets_shared'
 
-group :development, :local, :test do
-  gem 'rspec'
-  gem 'json'
-  gem 'concurrent-ruby-ext'
-  gem 'faraday'
-  gem 'faraday-cookie_jar'
-  gem 'ms_rest_azure'
-  gem 'azure_resource_management'
-  gem 'azure_storage_management'
-end
+include MsRestAzure
+include Azure::ARM::Compute
+
+describe VirtualMachines do
+
+  before(:all) do
+    @client = COMPUTE_CLIENT.virtual_machine_images
+    @location = 'westus'
+    @publisherName = 'MicrosoftWindowsServer'
+    @offerName = 'WindowsServer'
+    @skusName = '2012-R2-Datacenter'
+    @windowsServiceImageVersion = '4.0.201506'
+  end
