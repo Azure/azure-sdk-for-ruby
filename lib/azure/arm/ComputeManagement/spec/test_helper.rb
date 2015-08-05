@@ -17,12 +17,14 @@ require 'azure_resource_management'
 require 'azure_compute_management'
 require 'ms_rest_azure'
 require 'azure_storage_management'
+require 'azure_network_management'
 
 include Azure::ARM::Storage
 
 include MsRestAzure
 include Azure::ARM::Resources
 include Azure::ARM::Compute
+include Azure::ARM::Network
 
 def create_resource_group
   resource_group_name = get_random_name('RubySDKTest_')
@@ -45,7 +47,7 @@ client_id = ENV['azure_client_id']
 secret = ENV['azure_client_secret']
 subscription_id = ENV['azure_subscription_id']
 
-credentials = AzureApplicationCredentials.new(tenant_id, client_id, secret)
+credentials = AzureApplicationCredentials.new(tenant_id, client_id, secret, ActiveDirectoryServiceSettings.get_azure_settings)
 
 RESOURCES_CLIENT = ResourceManagementClient.new(credentials)
 RESOURCES_CLIENT.subscription_id = subscription_id
@@ -55,3 +57,6 @@ COMPUTE_CLIENT.subscription_id = subscription_id
 
 STORAGE_CLIENT = StorageManagementClient.new(credentials)
 STORAGE_CLIENT.subscription_id = subscription_id
+
+NETWORK_CLIENT = NetworkResourceProviderClient.new(credentials)
+NETWORK_CLIENT.subscription_id = subscription_id
