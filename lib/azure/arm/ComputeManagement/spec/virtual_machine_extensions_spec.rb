@@ -19,7 +19,7 @@ require_relative 'availability_sets_shared'
 include MsRestAzure
 include Azure::ARM::Compute
 
-describe VirtualMachines do
+describe VirtualMachineExtensions do
 
   before(:all) do
     @client = COMPUTE_CLIENT.virtual_machine_images
