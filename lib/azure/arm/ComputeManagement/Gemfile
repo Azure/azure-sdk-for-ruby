@@ -25,4 +25,5 @@ group :development, :local, :test do
   gem 'ms_rest_azure'
   gem 'azure_resource_management'
   gem 'azure_storage_management'
+  gem 'azure_network_management'
 end

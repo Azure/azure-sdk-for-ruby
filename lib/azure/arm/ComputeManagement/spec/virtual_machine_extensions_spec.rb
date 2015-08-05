@@ -23,9 +23,28 @@ describe VirtualMachines do
 
   before(:all) do
     @client = COMPUTE_CLIENT.virtual_machine_images
-    @location = 'westus'
-    @publisherName = 'MicrosoftWindowsServer'
-    @offerName = 'WindowsServer'
-    @skusName = '2012-R2-Datacenter'
-    @windowsServiceImageVersion = '4.0.201506'
+    @resource_group = create_resource_group
+    @name = 'test_extension'
   end
+
+  it 'should create vm extension' do
+    pending('vm extensions feature isn\'t supported by Azure yet')
+
+    vm_extension_properties = VirtualMachineExtensionProperties.new
+    vm_extension_properties.publisher = 'Microsoft.Compute'
+    vm_extension_properties.type = '"Microsoft.Compute/virtualMachines/extensions'
+    vm_extension_properties.type_handler_version = '2.0'
+
+    vm_extension = VirtualMachineExtension.new
+    vm_extension.properties = vm_extension_properties
+    vm_extension.tags = Hash.new
+    vm_extension.tags['extensionTag1'] = '1'
+    vm_extension.tags['extensionTag2'] = '2'
+    vm_extension.location = 'westus'
+
+    result = @client.create_or_update(@resource_group.name, @name, vm_extension).value!
+    expect(result.response.status).to eq(200)
+    expect(result.body.name).to eq(@name)
+  end
+
+end

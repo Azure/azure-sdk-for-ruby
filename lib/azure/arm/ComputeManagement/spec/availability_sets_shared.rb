@@ -1,9 +1,10 @@
 include MsRestAzure
 include Azure::ARM::Compute
+include Azure::ARM::Compute::Models
 
 def build_availability_set_parameters
-  params = Models::AvailabilitySet.new()
-  props = Models::AvailabilitySetProperties.new()
+  params = AvailabilitySet.new()
+  props = AvailabilitySetProperties.new()
   params.properties = props
   params.location = 'westus'
 
