@@ -64,7 +64,7 @@ describe LoadBalancers do
   #   props.frontend_ipconfigurations = [frontend_ip_configuration]
   #   ip_config_name = get_random_name('frontend_ip_config')
   #   frontend_ip_configuration.name = ip_config_name
-  #   frontend_ip_configuration.id = GetChildLbResourceId(NETWORK_CLIENT.subscription_id,@resource_group.name, params.name,'frontendIPConfigurations', ip_config_name)
+  #   frontend_ip_configuration.id = get_child_lb_resource_id(NETWORK_CLIENT.subscription_id,@resource_group.name, params.name,'frontendIPConfigurations', ip_config_name)
   #   frontend_ip_conf_props = Models::FrontendIpConfigurationPropertiesFormat.new
   #   frontend_ip_configuration.properties = frontend_ip_conf_props
   #   frontend_ip_conf_props.private_ipallocation_method = 'Dynamic'
@@ -108,7 +108,7 @@ describe LoadBalancers do
   #   puts ''
   # end
 
-  def GetChildLbResourceId(subscriptionId, resourceGroupName, lbname, childResourceType, childResourceName)
+  def get_child_lb_resource_id(subscriptionId, resourceGroupName, lbname, childResourceType, childResourceName)
       "/subscriptions/#{subscriptionId}/resourceGroups/#{resourceGroupName}/providers/Microsoft.Network/loadBalancers/#{lbname}/#{childResourceType}/#{childResourceName}"
   end
 

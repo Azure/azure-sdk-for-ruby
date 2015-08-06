@@ -21,8 +21,8 @@ include MsRestAzure
 include Azure::ARM::Resources
 include Azure::ARM::Network
 
-def create_resource_group
-  resource_group_name = get_random_name('RubySDKTest_')
+def create_resource_group(name = nil)
+  resource_group_name = name.nil? ? ('RubySDKTest_') :name
   params = Azure::ARM::Resources::Models::ResourceGroup.new()
   params.location = 'westus'
 
@@ -37,12 +37,20 @@ def get_random_name(prefix, length = 1000)
   prefix + SecureRandom.uuid.downcase.delete('^a-zA-Z0-9')[0...length]
 end
 
+class String
+  def to_b?
+    !self.to_i.zero?
+  end
+end
+
 ResourceGroup = 'RubySDKTest'
 
 tenant_id = ENV['azure_tenant_id']
 client_id = ENV['azure_client_id']
 secret = ENV['azure_client_secret']
 subscription_id = ENV['azure_subscription_id']
+run_long_task_value = ENV['run_long_tasks']
+RUN_LONG_TASKS = run_long_task_value.nil? ? false : run_long_task_value.to_b?
 
 credentials = AzureApplicationCredentials.new(tenant_id, client_id, secret)
 
