@@ -41,7 +41,7 @@ describe PublicIpAddresses do
     expect(result.body.name).to eq(public_ip_name)
   end
 
-  it 'should get pubiic ip address' do
+  it 'should get public ip address' do
     address = create_public_ip_address(@location, @resource_group)
     result = @client.get(@resource_group.name, address.name).value!
     expect(result.response.status).to eq(200)
@@ -50,7 +50,7 @@ describe PublicIpAddresses do
   end
 
 
-  it 'should list all the publicIpAddresses in a resource group' do
+  it 'should list all the public ip addresses in a resource group' do
     result = @client.list(@resource_group.name).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
@@ -68,7 +68,7 @@ describe PublicIpAddresses do
     expect(result.response.status).to eq(200)
   end
 
-it 'should list all the publicIpAddresses in a subscription' do
+it 'should list all the public ip addresses in a subscription' do
   result = @client.list_all.value!
   expect(result.response.status).to eq(200)
   expect(result.body).not_to be_nil

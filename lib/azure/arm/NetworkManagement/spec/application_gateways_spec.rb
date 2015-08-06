@@ -56,12 +56,30 @@ describe ApplicationGateways do
     end
   end
 
-  it 'should create application gateway' do
+
+  example 'application gateway api' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
+    # create application gateway
     params = build_application_gateway_params
     result = @client.create_or_update(@resource_group.name, params.name, params).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.name).to eq(params.name)
+    # get application gateway
+    application_gateway = result.body
+    result = @client.get(@resource_group.name, application_gateway.name).value!
+    expect(result.response.status).to eq(200)
+    expect(result.body).not_to be_nil
+    expect(result.body.name).to eq(application_gateway.name)
+    # start application gateway
+    result = @client.start(@resource_group.name, application_gateway.name).value!
+    expect(result.response.status).to eq(200)
+    # stop application gateway
+    result = @client.stop(@resource_group.name, application_gateway.name).value!
+    expect(result.response.status).to eq(200)
+    # delete application gateway
+    result = @client.delete(@resource_group.name, application_gateway.name).value!
+    expect(result.response.status).to eq(200)
   end
 
   def build_application_gateway_params
@@ -88,7 +106,7 @@ describe ApplicationGateways do
     props.frontend_ip_configurations = [frontend_ip_config]
     frontend_ip_config_name = get_random_name('frontend_ip_config')
     frontend_ip_config.name = frontend_ip_config_name
-    frontend_ip_config.id = GetChildAppGwResourceId(NETWORK_CLIENT.subscription_id, @resource_group.name, application_gateway_name, 'frontendIPConfigurations', frontend_ip_config_name)
+    frontend_ip_config.id = get_child_app_gw_resource_id(NETWORK_CLIENT.subscription_id, @resource_group.name, application_gateway_name, 'frontendIPConfigurations', frontend_ip_config_name)
     frontend_ip_config_props = Models::ApplicationGatewayFrontendIpConfigurationPropertiesFormat.new
     frontend_ip_config.properties = frontend_ip_config_props
     frontend_ip_config_props.private_ipallocation_method = 'Dynamic'
@@ -99,13 +117,13 @@ describe ApplicationGateways do
     frontend_port.name = frontend_port_name
     frontend_port_props = Models::ApplicationGatewayFrontendPortPropertiesFormat.new
     frontend_port.properties = frontend_port_props
-    frontend_port.id = GetChildAppGwResourceId(NETWORK_CLIENT.subscription_id, @resource_group.name, application_gateway_name, 'frontendPorts', frontend_port_name)
+    frontend_port.id = get_child_app_gw_resource_id(NETWORK_CLIENT.subscription_id, @resource_group.name, application_gateway_name, 'frontendPorts', frontend_port_name)
     frontend_port_props.port = 80
     backend_address_pool = Models::ApplicationGatewayBackendAddressPool.new
     props.backend_address_pools = [backend_address_pool]
     backend_address_pool_name = get_random_name('backend_address_pool')
     backend_address_pool.name = backend_address_pool_name
-    backend_address_pool.id = GetChildAppGwResourceId(NETWORK_CLIENT.subscription_id, @resource_group.name, application_gateway_name, 'backendAddressPools', backend_address_pool_name)
+    backend_address_pool.id = get_child_app_gw_resource_id(NETWORK_CLIENT.subscription_id, @resource_group.name, application_gateway_name, 'backendAddressPools', backend_address_pool_name)
     backend_address_pool_props = Models::ApplicationGatewayBackendAddressPoolPropertiesFormat.new
     backend_address_pool.properties = backend_address_pool_props
     backend_address = Models::ApplicationGatewayBackendAddress.new
@@ -115,7 +133,7 @@ describe ApplicationGateways do
     props.backend_http_settings_collection = [backend_http_set]
     backend_http_set_name = get_random_name('backend_http_set')
     backend_http_set.name = backend_http_set_name
-    backend_http_set.id = GetChildAppGwResourceId(NETWORK_CLIENT.subscription_id, @resource_group.name, application_gateway_name, 'backendHttpSettingsCollection', backend_http_set_name)
+    backend_http_set.id = get_child_app_gw_resource_id(NETWORK_CLIENT.subscription_id, @resource_group.name, application_gateway_name, 'backendHttpSettingsCollection', backend_http_set_name)
     backend_http_set_props = Models::ApplicationGatewayBackendHttpSettingsPropertiesFormat.new
     backend_http_set.properties = backend_http_set_props
     backend_http_set_props.port = 80
@@ -125,7 +143,7 @@ describe ApplicationGateways do
     props.http_listeners = [http_listener]
     http_listener_name = get_random_name('http_listener')
     http_listener.name = http_listener_name
-    http_listener.id = GetChildAppGwResourceId(NETWORK_CLIENT.subscription_id, @resource_group.name, application_gateway_name, 'httpListeners', http_listener_name)
+    http_listener.id = get_child_app_gw_resource_id(NETWORK_CLIENT.subscription_id, @resource_group.name, application_gateway_name, 'httpListeners', http_listener_name)
     http_listener_props = Models::ApplicationGatewayHttpListenerPropertiesFormat.new
     http_listener.properties = http_listener_props
     http_listener_props.frontend_port = frontend_port
@@ -143,7 +161,7 @@ describe ApplicationGateways do
     params
   end
 
- def GetChildAppGwResourceId(subscriptionId, resourceGroupName, appGwname, childResourceType, childResourceName)
+ def get_child_app_gw_resource_id(subscriptionId, resourceGroupName, appGwname, childResourceType, childResourceName)
       "/subscriptions/#{subscriptionId}/resourceGroups/#{resourceGroupName}/providers/Microsoft.Network/applicationGateways/#{appGwname}/#{childResourceType}/#{childResourceName}"
  end
 

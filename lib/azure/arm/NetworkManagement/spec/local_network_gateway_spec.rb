@@ -14,7 +14,7 @@
 #--------------------------------------------------------------------------
 
 require_relative 'test_helper'
-
+require_relative 'local_network_gateway_shared'
 
 include MsRestAzure
 include Azure::ARM::Resources
@@ -32,7 +32,7 @@ describe LocalNetworkGateways do
   end
 
   it 'should create local network gateway' do
-    params = build_local_network_gateway_params
+    params = build_local_network_gateway_params(@location)
     result = @client.create_or_update(@resource_group.name, params.name, params).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -40,7 +40,7 @@ describe LocalNetworkGateways do
   end
 
   it 'should get local network gateway' do
-    local_network_gateway = create_local_network_gateway
+    local_network_gateway = create_local_network_gateway(@resource_group, @location)
     result = @client.get(@resource_group.name, local_network_gateway.name).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -48,7 +48,7 @@ describe LocalNetworkGateways do
   end
 
   it 'should delete local network gateway' do
-    local_network_gateway = create_local_network_gateway
+    local_network_gateway = create_local_network_gateway(@resource_group, @location)
     result = @client.delete(@resource_group.name, local_network_gateway.name).value!
     expect(result.response.status).to eq(200)
   end
@@ -65,21 +65,5 @@ describe LocalNetworkGateways do
     end
   end
 
-  def create_local_network_gateway
-    params = build_local_network_gateway_params
-    @client.create_or_update(@resource_group.name, params.name, params).value!.body
-  end
 
-  def build_local_network_gateway_params
-    params = Models::LocalNetworkGateway.new
-    params.location = @location
-    params.name = get_random_name('local_gateway')
-    props = Models::LocalNetworkGatewayPropertiesFormat.new
-    params.properties = props
-    props.gateway_ip_address = "192.168.3.#{rand(9)}"
-    address_space = Models::AddressSpace.new
-    props.local_network_address_space = address_space
-    address_space.address_prefixes = %w(192.168.0.0/16)
-    params
-  end
 end
