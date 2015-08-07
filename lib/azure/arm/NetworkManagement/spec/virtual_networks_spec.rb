@@ -53,7 +53,6 @@ describe VirtualNetworks do
   end
 
   it 'should list all virtual networks' do
-    #problem with SubResource
     result = @client.list_all.value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
@@ -66,7 +65,6 @@ describe VirtualNetworks do
   end
 
   it 'should list all virtual networks in resource group' do
-    #uninitialized constant Azure::ARM::Network::Models::SubResource
     result = @client.list(@resource_group.name).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
@@ -79,7 +77,6 @@ describe VirtualNetworks do
     end
 
   it 'should list all Virtual Networks in a subscription' do
-    #uninitialized constant Azure::ARM::Network::Models::SubResource
     result = @client.list_all.value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil

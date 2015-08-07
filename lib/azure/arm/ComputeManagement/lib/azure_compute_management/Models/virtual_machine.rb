@@ -42,7 +42,6 @@ module Azure::ARM::Compute
         output_object = {}
 
         serialized_property = object.location
-        fail ArgumentError, 'property location is nil' if serialized_property.nil?
         output_object['location'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.id

@@ -35,21 +35,26 @@ module Azure::ARM::Compute
     # part of the URI for every service call.
     # @param @client.accept_language [String] Gets or sets the preferred language
     # for the response.
-    # @return [TODO: add type] TODO: add text
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def capture(resource_group_name1, vm_name1, parameters1, custom_headers = nil)
       # Send request
-      response = begin_capture(resource_group_name1, vm_name1, parameters1, custom_headers = nil).value!
+      promise = begin_capture(resource_group_name1, vm_name1, parameters1, custom_headers)
 
-      # Defining deserialization method.
-      deserialize_method = lambda do |parsed_response|
-        unless parsed_response.nil?
-          parsed_response = ComputeLongRunningOperationResult.deserialize_object(parsed_response)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          unless parsed_response.nil?
+            parsed_response = ComputeLongRunningOperationResult.deserialize_object(parsed_response)
+          end
         end
+
+       # Waiting for response.
+       @client.get_post_or_delete_operation_result(response, nil, deserialize_method)
       end
 
-      # Waiting for response.
-      return @client.get_post_or_delete_operation_result(response, nil, deserialize_method)
+      promise
     end
 
     #
@@ -89,7 +94,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -110,8 +114,7 @@ module Azure::ARM::Compute
       unless parameters1.nil?
         parameters1 = VirtualMachineCaptureParameters.serialize_object(parameters1)
       end
-      request_content = parameters1
-      request_content = JSON.generate(request_content, quirks_mode: true)
+      request_content = JSON.generate(parameters1, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -127,11 +130,11 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless (status_code == 200 || status_code == 202)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -164,24 +167,27 @@ module Azure::ARM::Compute
     # part of the URI for every service call.
     # @param @client.accept_language [String] Gets or sets the preferred language
     # for the response.
-    # @return [TODO: add type] TODO: add text
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def create_or_update(resource_group_name1, vm_name1, parameters1, custom_headers = nil)
       # Send request
-      response = begin_create_or_update(resource_group_name1, vm_name1, parameters1, custom_headers = nil).value!
+      promise = begin_create_or_update(resource_group_name1, vm_name1, parameters1, custom_headers)
 
-      # Defining polling method.
-      get_method = lambda { self.get(resource_group_name1, vm_name1, expand1 = nil, custom_headers = nil) }
-
-      # Defining deserialization method.
-      deserialize_method = lambda do |parsed_response|
-        unless parsed_response.nil?
-          parsed_response = VirtualMachine.deserialize_object(parsed_response)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          unless parsed_response.nil?
+            parsed_response = VirtualMachine.deserialize_object(parsed_response)
+          end
         end
+
+        # Waiting for response.
+        @client.get_put_operation_result(response, custom_headers, deserialize_method)
       end
 
-      # Waiting for response.
-      return @client.get_put_operation_result(response, get_method, nil, deserialize_method)
+      promise
     end
 
     #
@@ -220,7 +226,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -241,8 +246,7 @@ module Azure::ARM::Compute
       unless parameters1.nil?
         parameters1 = VirtualMachine.serialize_object(parameters1)
       end
-      request_content = parameters1
-      request_content = JSON.generate(request_content, quirks_mode: true)
+      request_content = JSON.generate(parameters1, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -258,11 +262,11 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless (status_code == 201 || status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 201
@@ -305,18 +309,23 @@ module Azure::ARM::Compute
     # part of the URI for every service call.
     # @param @client.accept_language [String] Gets or sets the preferred language
     # for the response.
-    # @return [TODO: add type] TODO: add text
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def delete(resource_group_name1, vm_name1, custom_headers = nil)
       # Send request
-      response = begin_delete(resource_group_name1, vm_name1, custom_headers = nil).value!
+      promise = begin_delete(resource_group_name1, vm_name1, custom_headers)
 
-      # Defining deserialization method.
-      deserialize_method = lambda do |parsed_response|
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+       # Waiting for response.
+       @client.get_post_or_delete_operation_result(response, nil, deserialize_method)
       end
 
-      # Waiting for response.
-      return @client.get_post_or_delete_operation_result(response, nil, deserialize_method)
+      promise
     end
 
     #
@@ -351,7 +360,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -379,11 +387,11 @@ module Azure::ARM::Compute
         status_code = http_response.status
         response_content = http_response.body
         unless (status_code == 200 || status_code == 204 || status_code == 202)
-          fail MsRest::HttpOperationException.new(http_response, http_response)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -427,7 +435,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -456,11 +463,11 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless (status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -492,18 +499,23 @@ module Azure::ARM::Compute
     # part of the URI for every service call.
     # @param @client.accept_language [String] Gets or sets the preferred language
     # for the response.
-    # @return [TODO: add type] TODO: add text
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def deallocate(resource_group_name1, vm_name1, custom_headers = nil)
       # Send request
-      response = begin_deallocate(resource_group_name1, vm_name1, custom_headers = nil).value!
+      promise = begin_deallocate(resource_group_name1, vm_name1, custom_headers)
 
-      # Defining deserialization method.
-      deserialize_method = lambda do |parsed_response|
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+       # Waiting for response.
+       @client.get_post_or_delete_operation_result(response, nil, deserialize_method)
       end
 
-      # Waiting for response.
-      return @client.get_post_or_delete_operation_result(response, nil, deserialize_method)
+      promise
     end
 
     #
@@ -539,7 +551,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -567,11 +578,11 @@ module Azure::ARM::Compute
         status_code = http_response.status
         response_content = http_response.body
         unless (status_code == 202)
-          fail MsRest::HttpOperationException.new(http_response, http_response)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -612,7 +623,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -640,11 +650,11 @@ module Azure::ARM::Compute
         status_code = http_response.status
         response_content = http_response.body
         unless (status_code == 200)
-          fail MsRest::HttpOperationException.new(http_response, http_response)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -682,7 +692,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -711,11 +720,11 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless (status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -764,7 +773,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -793,11 +801,11 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless (status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -850,7 +858,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -879,11 +886,11 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless (status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -914,18 +921,23 @@ module Azure::ARM::Compute
     # part of the URI for every service call.
     # @param @client.accept_language [String] Gets or sets the preferred language
     # for the response.
-    # @return [TODO: add type] TODO: add text
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def power_off(resource_group_name1, vm_name1, custom_headers = nil)
       # Send request
-      response = begin_power_off(resource_group_name1, vm_name1, custom_headers = nil).value!
+      promise = begin_power_off(resource_group_name1, vm_name1, custom_headers)
 
-      # Defining deserialization method.
-      deserialize_method = lambda do |parsed_response|
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+       # Waiting for response.
+       @client.get_post_or_delete_operation_result(response, nil, deserialize_method)
       end
 
-      # Waiting for response.
-      return @client.get_post_or_delete_operation_result(response, nil, deserialize_method)
+      promise
     end
 
     #
@@ -960,7 +972,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -988,11 +999,11 @@ module Azure::ARM::Compute
         status_code = http_response.status
         response_content = http_response.body
         unless (status_code == 202)
-          fail MsRest::HttpOperationException.new(http_response, http_response)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -1011,18 +1022,23 @@ module Azure::ARM::Compute
     # part of the URI for every service call.
     # @param @client.accept_language [String] Gets or sets the preferred language
     # for the response.
-    # @return [TODO: add type] TODO: add text
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def restart(resource_group_name1, vm_name1, custom_headers = nil)
       # Send request
-      response = begin_restart(resource_group_name1, vm_name1, custom_headers = nil).value!
+      promise = begin_restart(resource_group_name1, vm_name1, custom_headers)
 
-      # Defining deserialization method.
-      deserialize_method = lambda do |parsed_response|
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+       # Waiting for response.
+       @client.get_post_or_delete_operation_result(response, nil, deserialize_method)
       end
 
-      # Waiting for response.
-      return @client.get_post_or_delete_operation_result(response, nil, deserialize_method)
+      promise
     end
 
     #
@@ -1057,7 +1073,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -1085,11 +1100,11 @@ module Azure::ARM::Compute
         status_code = http_response.status
         response_content = http_response.body
         unless (status_code == 202)
-          fail MsRest::HttpOperationException.new(http_response, http_response)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -1108,18 +1123,23 @@ module Azure::ARM::Compute
     # part of the URI for every service call.
     # @param @client.accept_language [String] Gets or sets the preferred language
     # for the response.
-    # @return [TODO: add type] TODO: add text
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def start(resource_group_name1, vm_name1, custom_headers = nil)
       # Send request
-      response = begin_start(resource_group_name1, vm_name1, custom_headers = nil).value!
+      promise = begin_start(resource_group_name1, vm_name1, custom_headers)
 
-      # Defining deserialization method.
-      deserialize_method = lambda do |parsed_response|
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+       # Waiting for response.
+       @client.get_post_or_delete_operation_result(response, nil, deserialize_method)
       end
 
-      # Waiting for response.
-      return @client.get_post_or_delete_operation_result(response, nil, deserialize_method)
+      promise
     end
 
     #
@@ -1154,7 +1174,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -1182,11 +1201,11 @@ module Azure::ARM::Compute
         status_code = http_response.status
         response_content = http_response.body
         unless (status_code == 202)
-          fail MsRest::HttpOperationException.new(http_response, http_response)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -1217,7 +1236,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -1246,11 +1264,11 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless (status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1295,7 +1313,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -1324,11 +1341,11 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless (status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200

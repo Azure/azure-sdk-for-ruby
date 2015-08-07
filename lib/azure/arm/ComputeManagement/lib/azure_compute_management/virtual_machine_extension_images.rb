@@ -60,7 +60,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -89,11 +88,11 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless (status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -157,7 +156,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -186,11 +184,11 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless (status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -250,7 +248,6 @@ module Azure::ARM::Compute
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
-        faraday.use MsRestAzure::TokenRefreshMiddleware, credentials: @client.credentials
         faraday.use :cookie_jar
         faraday.adapter Faraday.default_adapter
       end
@@ -279,11 +276,11 @@ module Azure::ARM::Compute
         response_content = http_response.body
         unless (status_code == 200)
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationException.new(http_response, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(connection, http_response, error_model)
         end
 
         # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(http_response, http_response)
+        result = MsRestAzure::AzureOperationResponse.new(connection, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200

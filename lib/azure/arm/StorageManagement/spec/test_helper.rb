@@ -17,6 +17,7 @@ require 'azure_resource_management'
 require 'azure_storage_management'
 require 'ms_rest_azure'
 
+include MsRest
 include MsRestAzure
 include Azure::ARM::Resources
 include Azure::ARM::Storage
@@ -42,7 +43,9 @@ client_id = ENV['azure_client_id']
 secret = ENV['azure_client_secret']
 subscription_id = ENV['azure_subscription_id']
 
-credentials = AzureApplicationCredentials.new(tenant_id, client_id, secret)
+token_provider = ApplicationTokenProvider.new(tenant_id, client_id, secret)
+credentials = TokenCredentials.new(token_provider)
+
 STORAGE_CLIENT = StorageManagementClient.new(credentials)
 STORAGE_CLIENT.subscription_id = subscription_id
 
