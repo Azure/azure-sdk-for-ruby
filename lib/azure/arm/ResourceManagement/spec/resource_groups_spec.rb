@@ -60,7 +60,7 @@ describe ResourceManagementClient do
     expect(result.body.id).not_to be_nil
     expect(result.body.name).to eq(@resource_group.name)
     expect(result.body.location).to eq('westus')
-    expect(result.body.tags).to be_empty
+    expect(result.body.tags).to be_nil
   end
 
   it 'should list resource groups' do
