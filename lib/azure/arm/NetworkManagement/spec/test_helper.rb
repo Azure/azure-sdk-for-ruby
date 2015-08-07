@@ -17,6 +17,7 @@ require 'azure_resource_management'
 require 'azure_network_management'
 require 'ms_rest_azure'
 
+include MsRest
 include MsRestAzure
 include Azure::ARM::Resources
 include Azure::ARM::Network
@@ -52,7 +53,8 @@ subscription_id = ENV['azure_subscription_id']
 run_long_task_value = ENV['run_long_tasks']
 RUN_LONG_TASKS = run_long_task_value.nil? ? false : run_long_task_value.to_b?
 
-credentials = AzureApplicationCredentials.new(tenant_id, client_id, secret)
+token_provider = ApplicationTokenProvider.new(tenant_id, client_id, secret)
+credentials = TokenCredentials.new(token_provider)
 
 RESOURCE_CLIENT = ResourceManagementClient.new(credentials)
 RESOURCE_CLIENT.subscription_id = subscription_id

@@ -16,6 +16,7 @@
 require 'azure_resource_management'
 require 'ms_rest_azure'
 
+include MsRest
 include MsRestAzure
 include Azure::ARM::Resources
 
@@ -40,6 +41,8 @@ client_id = ENV['azure_client_id']
 secret = ENV['azure_client_secret']
 subscription_id = ENV['azure_subscription_id']
 
-credentials = AzureApplicationCredentials.new(tenant_id, client_id, secret)
+token_provider = ApplicationTokenProvider.new(tenant_id, client_id, secret)
+credentials = TokenCredentials.new(token_provider)
+
 RESOURCES_CLIENT = ResourceManagementClient.new(credentials)
 RESOURCES_CLIENT.subscription_id = subscription_id

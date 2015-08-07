@@ -31,9 +31,11 @@ describe VirtualMachines do
 
   before(:all) do
     @client = COMPUTE_CLIENT.virtual_machines
+    @extensions_client = COMPUTE_CLIENT.virtual_machine_extensions
     @resource_group = create_resource_group
     @location = 'westus'
     @vm_name = get_random_name('vm')
+    @ext_name = get_random_name('extension')
   end
 
   after(:all) do
@@ -41,6 +43,7 @@ describe VirtualMachines do
   end
 
   it 'should create virtual machine' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     params = build_virtual_machine_parameters
     result = @client.create_or_update(@resource_group.name, @vm_name, params).value!
     expect(result.response.status).to eq(200)
@@ -49,12 +52,49 @@ describe VirtualMachines do
     expect(result.body.location).to eq @location
   end
 
+  # Extensions test.
+  it 'should create vm extension' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
+    vm_extension_properties = VirtualMachineExtensionProperties.new
+    vm_extension_properties.publisher = 'Microsoft.Compute'
+    vm_extension_properties.type = 'VMAccessAgent'
+    vm_extension_properties.type_handler_version = '2.0'
+    vm_extension_properties.auto_upgrade_minor_version = true
+
+    vm_extension = VirtualMachineExtension.new
+    vm_extension.properties = vm_extension_properties
+    vm_extension.tags = Hash.new
+    vm_extension.tags['extensionTag1'] = '1'
+    vm_extension.tags['extensionTag2'] = '2'
+    vm_extension.location = 'westus'
+
+    result = @extensions_client.create_or_update(@resource_group.name, @vm_name, @ext_name, vm_extension).value!
+    expect(result.response.status).to eq(200)
+    expect(result.body.name).to eq(@ext_name)
+  end
+
+  it 'should get vm extension' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
+    result = @extensions_client.get(@resource_group.name, @vm_name, @ext_name, nil).value!
+    expect(result.response.status).to eq(200)
+    expect(result.body.name).to eq(@ext_name)
+  end
+
+  it 'should delete vm extension' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
+    result = @extensions_client.delete(@resource_group.name, @vm_name, @ext_name).value!
+    expect(result.response.status).to eq(200)
+  end
+
+  # Back to VM tests.
   it 'should get virtual machine' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.get(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
   end
 
   it 'should list virtual machines' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.list(@resource_group.name).value!
     expect(result.response.status).to eq(200)
 
@@ -63,32 +103,65 @@ describe VirtualMachines do
     expect(result.body.value[0].is_a?(VirtualMachine))
   end
 
+  it 'should list all virtual machines' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
+    result = @client.list_all.value!
+
+    expect(result.body.value.is_a?(Array))
+    expect(result.body.value.count).to be > 0
+  end
+
   it 'should restart virtual machine' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.restart(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
   end
 
   it 'should power off virtual machine' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.power_off(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
   end
 
   it 'should start virtual machine' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.start(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
   end
 
+  it 'should generalize virtual machine' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
+    @client.power_off(@resource_group.name, @vm_name).value!
+
+    # TODO: add loop for checking when VM is stopped.
+    sleep 120
+
+    result = @client.generalize(@resource_group.name, @vm_name).value!
+    expect(result.response.status).to eq(200)
+  end
+
   it 'should deallocate virtual machine' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.deallocate(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
   end
 
-  it 'should delete virtual machine' do
-    result = @client.delete(@resource_group.name, @vm_name).value!
+  it 'should capture virtual machine' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
+    capture_params = VirtualMachineCaptureParameters.new
+    capture_params.vhd_prefix = 'test'
+    capture_params.destination_container_name = 'test'
+    capture_params.overwrite_vhds = true
+
+    result = @client.capture(@resource_group.name, @vm_name, capture_params).value!
     expect(result.response.status).to eq(200)
   end
 
-  # TODO: add tests for capture, generalize and list_all methods.
+  it 'should delete virtual machine' do
+    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
+    result = @client.delete(@resource_group.name, @vm_name).value!
+    expect(result.response.status).to eq(200)
+  end
 
   # VM helpers
   def build_virtual_machine_parameters
