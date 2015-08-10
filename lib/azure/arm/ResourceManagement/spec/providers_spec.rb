@@ -58,7 +58,7 @@ describe ResourceManagementClient do
   it 'should register provider' do
     providers = @client.list().value!.body.value
     targetProvider = providers.detect do |item|
-      (item.registration_state == 'NotRegistered') || (item.registration_state == 'UnRegistered')
+      item.registration_state == 'NotRegistered' || item.registration_state == 'Unregistered'
     end
     @registered_providers.push(targetProvider.namespace)
 

@@ -22,7 +22,7 @@ describe ResourceManagementClient do
 
   before(:all) do
     @client = RESOURCES_CLIENT.resource_provider_operation_details
-    @resource_api_version = '2015-01-01-preview'
+    @resource_api_version = '2015-07-02'
     @providers_client = RESOURCES_CLIENT.providers
   end
 
