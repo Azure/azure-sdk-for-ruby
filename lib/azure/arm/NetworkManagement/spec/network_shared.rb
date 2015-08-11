@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See License.txt in the project root for license information.
+
 def build_virtual_network_params(location)
   params = Models::VirtualNetwork.new
   props = Models::VirtualNetworkPropertiesFormat.new
