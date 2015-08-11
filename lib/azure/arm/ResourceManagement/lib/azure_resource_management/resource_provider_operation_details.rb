@@ -24,27 +24,25 @@ module Azure::ARM::Resources
 
     #
     # Gets a list of resource providers.
-    # @param resource_provider_namespace1 [String] Resource identity.
-    # @param api_version1 [String]
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_provider_namespace [String] Resource identity.
+    # @param api_version [String]
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list(resource_provider_namespace1, api_version1, custom_headers = nil)
-      fail ArgumentError, 'resource_provider_namespace1 is nil' if resource_provider_namespace1.nil?
-      fail ArgumentError, 'api_version1 is nil' if api_version1.nil?
+    def list(resource_provider_namespace, api_version, custom_headers = nil)
+      fail ArgumentError, 'resource_provider_namespace is nil' if resource_provider_namespace.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/providers/{resourceProviderNamespace}/operations"
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace) if path.include?('{resourceProviderNamespace}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
-      properties['api-version'] = ERB::Util.url_encode(api_version1.to_s) unless api_version1.nil?
+      properties['api-version'] = ERB::Util.url_encode(api_version.to_s) unless api_version.nil?
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/

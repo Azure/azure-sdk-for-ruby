@@ -24,26 +24,23 @@ module Azure::ARM::Resources
 
     #
     # Delete a subscription resource tag value.
-    # @param tag_name1 [String] The name of the tag.
-    # @param tag_value1 [String] The value of the tag.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param tag_name [String] The name of the tag.
+    # @param tag_value [String] The value of the tag.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def delete_value(tag_name1, tag_value1, custom_headers = nil)
-      fail ArgumentError, 'tag_name1 is nil' if tag_name1.nil?
-      fail ArgumentError, 'tag_value1 is nil' if tag_value1.nil?
+    def delete_value(tag_name, tag_value, custom_headers = nil)
+      fail ArgumentError, 'tag_name is nil' if tag_name.nil?
+      fail ArgumentError, 'tag_value is nil' if tag_value.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}"
-      path['{tagName}'] = ERB::Util.url_encode(tag_name1) if path.include?('{tagName}')
-      path['{tagValue}'] = ERB::Util.url_encode(tag_value1) if path.include?('{tagValue}')
+      path['{tagName}'] = ERB::Util.url_encode(tag_name) if path.include?('{tagName}')
+      path['{tagValue}'] = ERB::Util.url_encode(tag_value) if path.include?('{tagValue}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -96,26 +93,23 @@ module Azure::ARM::Resources
 
     #
     # Create a subscription resource tag value.
-    # @param tag_name1 [String] The name of the tag.
-    # @param tag_value1 [String] The value of the tag.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param tag_name [String] The name of the tag.
+    # @param tag_value [String] The value of the tag.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def create_or_update_value(tag_name1, tag_value1, custom_headers = nil)
-      fail ArgumentError, 'tag_name1 is nil' if tag_name1.nil?
-      fail ArgumentError, 'tag_value1 is nil' if tag_value1.nil?
+    def create_or_update_value(tag_name, tag_value, custom_headers = nil)
+      fail ArgumentError, 'tag_name is nil' if tag_name.nil?
+      fail ArgumentError, 'tag_value is nil' if tag_value.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}"
-      path['{tagName}'] = ERB::Util.url_encode(tag_name1) if path.include?('{tagName}')
-      path['{tagValue}'] = ERB::Util.url_encode(tag_value1) if path.include?('{tagValue}')
+      path['{tagName}'] = ERB::Util.url_encode(tag_name) if path.include?('{tagName}')
+      path['{tagValue}'] = ERB::Util.url_encode(tag_value) if path.include?('{tagValue}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -193,23 +187,20 @@ module Azure::ARM::Resources
 
     #
     # Create a subscription resource tag.
-    # @param tag_name1 [String] The name of the tag.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param tag_name [String] The name of the tag.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def create_or_update(tag_name1, custom_headers = nil)
-      fail ArgumentError, 'tag_name1 is nil' if tag_name1.nil?
+    def create_or_update(tag_name, custom_headers = nil)
+      fail ArgumentError, 'tag_name is nil' if tag_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/tagNames/{tagName}"
-      path['{tagName}'] = ERB::Util.url_encode(tag_name1) if path.include?('{tagName}')
+      path['{tagName}'] = ERB::Util.url_encode(tag_name) if path.include?('{tagName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -287,23 +278,20 @@ module Azure::ARM::Resources
 
     #
     # Delete a subscription resource tag.
-    # @param tag_name1 [String] The name of the tag.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param tag_name [String] The name of the tag.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def delete(tag_name1, custom_headers = nil)
-      fail ArgumentError, 'tag_name1 is nil' if tag_name1.nil?
+    def delete(tag_name, custom_headers = nil)
+      fail ArgumentError, 'tag_name is nil' if tag_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/tagNames/{tagName}"
-      path['{tagName}'] = ERB::Util.url_encode(tag_name1) if path.include?('{tagName}')
+      path['{tagName}'] = ERB::Util.url_encode(tag_name) if path.include?('{tagName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -356,12 +344,9 @@ module Azure::ARM::Resources
 
     #
     # Get a list of subscription resource tags.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
@@ -435,18 +420,19 @@ module Azure::ARM::Resources
 
     #
     # Get a list of subscription resource tags.
-    # @param next_page_link1 [String] The NextLink from the previous successful
+    # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_next(next_page_link1, custom_headers = nil)
-      fail ArgumentError, 'next_page_link1 is nil' if next_page_link1.nil?
+    def list_next(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
       # Construct URL
       path = "{nextLink}"
-      path['{nextLink}'] = next_page_link1 if path.include?('{nextLink}')
+      path['{nextLink}'] = next_page_link if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
       properties.reject!{ |key, value| value.nil? }

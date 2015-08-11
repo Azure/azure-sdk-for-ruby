@@ -24,21 +24,15 @@ module Azure::ARM::Network
 
     #
     # The delete subnet operation deletes the specified subnet.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_name1 [String] The name of the virtual network.
-    # @param subnet_name1 [String] The name of the subnet.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param subnet_name [String] The name of the subnet.
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete(resource_group_name1, virtual_network_name1, subnet_name1, custom_headers = nil)
+    def delete(resource_group_name, virtual_network_name, subnet_name, custom_headers = nil)
       # Send request
-      promise = begin_delete(resource_group_name1, virtual_network_name1, subnet_name1, custom_headers)
+      promise = begin_delete(resource_group_name, virtual_network_name, subnet_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -54,29 +48,26 @@ module Azure::ARM::Network
 
     #
     # The delete subnet operation deletes the specified subnet.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_name1 [String] The name of the virtual network.
-    # @param subnet_name1 [String] The name of the subnet.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param subnet_name [String] The name of the subnet.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_delete(resource_group_name1, virtual_network_name1, subnet_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'virtual_network_name1 is nil' if virtual_network_name1.nil?
-      fail ArgumentError, 'subnet_name1 is nil' if subnet_name1.nil?
+    def begin_delete(resource_group_name, virtual_network_name, subnet_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
+      fail ArgumentError, 'subnet_name is nil' if subnet_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualnetworks/{virtualNetworkName}/subnets/{subnetName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{virtualNetworkName}'] = ERB::Util.url_encode(virtual_network_name1) if path.include?('{virtualNetworkName}')
-      path['{subnetName}'] = ERB::Util.url_encode(subnet_name1) if path.include?('{subnetName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{virtualNetworkName}'] = ERB::Util.url_encode(virtual_network_name) if path.include?('{virtualNetworkName}')
+      path['{subnetName}'] = ERB::Util.url_encode(subnet_name) if path.include?('{subnetName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -129,29 +120,26 @@ module Azure::ARM::Network
 
     #
     # The Get subnet operation retreives information about the specified subnet.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_name1 [String] The name of the virtual network.
-    # @param subnet_name1 [String] The name of the subnet.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param subnet_name [String] The name of the subnet.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def get(resource_group_name1, virtual_network_name1, subnet_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'virtual_network_name1 is nil' if virtual_network_name1.nil?
-      fail ArgumentError, 'subnet_name1 is nil' if subnet_name1.nil?
+    def get(resource_group_name, virtual_network_name, subnet_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
+      fail ArgumentError, 'subnet_name is nil' if subnet_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualnetworks/{virtualNetworkName}/subnets/{subnetName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{virtualNetworkName}'] = ERB::Util.url_encode(virtual_network_name1) if path.include?('{virtualNetworkName}')
-      path['{subnetName}'] = ERB::Util.url_encode(subnet_name1) if path.include?('{subnetName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{virtualNetworkName}'] = ERB::Util.url_encode(virtual_network_name) if path.include?('{virtualNetworkName}')
+      path['{subnetName}'] = ERB::Util.url_encode(subnet_name) if path.include?('{subnetName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -218,10 +206,10 @@ module Azure::ARM::Network
     #
     # The Put Subnet operation creates/updates a subnet in thespecified virtual
     # network
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_name1 [String] The name of the virtual network.
-    # @param subnet_name1 [String] The name of the subnet.
-    # @param subnet_parameters1 [Subnet] Parameters supplied to the create/update
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param subnet_name [String] The name of the subnet.
+    # @param subnet_parameters [Subnet] Parameters supplied to the create/update
     # Subnet operation
     # @param @client.api_version [String] Client Api Version.
     # @param @client.subscription_id [String] Gets subscription credentials which
@@ -233,9 +221,9 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update(resource_group_name1, virtual_network_name1, subnet_name1, subnet_parameters1, custom_headers = nil)
+    def create_or_update(resource_group_name, virtual_network_name, subnet_name, subnet_parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update(resource_group_name1, virtual_network_name1, subnet_name1, subnet_parameters1, custom_headers)
+      promise = begin_create_or_update(resource_group_name, virtual_network_name, subnet_name, subnet_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -255,33 +243,30 @@ module Azure::ARM::Network
     #
     # The Put Subnet operation creates/updates a subnet in thespecified virtual
     # network
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_name1 [String] The name of the virtual network.
-    # @param subnet_name1 [String] The name of the subnet.
-    # @param subnet_parameters1 [Subnet] Parameters supplied to the create/update
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param subnet_name [String] The name of the subnet.
+    # @param subnet_parameters [Subnet] Parameters supplied to the create/update
     # Subnet operation
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_create_or_update(resource_group_name1, virtual_network_name1, subnet_name1, subnet_parameters1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'virtual_network_name1 is nil' if virtual_network_name1.nil?
-      fail ArgumentError, 'subnet_name1 is nil' if subnet_name1.nil?
-      fail ArgumentError, 'subnet_parameters1 is nil' if subnet_parameters1.nil?
-      subnet_parameters1.validate unless subnet_parameters1.nil?
+    def begin_create_or_update(resource_group_name, virtual_network_name, subnet_name, subnet_parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
+      fail ArgumentError, 'subnet_name is nil' if subnet_name.nil?
+      fail ArgumentError, 'subnet_parameters is nil' if subnet_parameters.nil?
+      subnet_parameters.validate unless subnet_parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualnetworks/{virtualNetworkName}/subnets/{subnetName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{virtualNetworkName}'] = ERB::Util.url_encode(virtual_network_name1) if path.include?('{virtualNetworkName}')
-      path['{subnetName}'] = ERB::Util.url_encode(subnet_name1) if path.include?('{subnetName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{virtualNetworkName}'] = ERB::Util.url_encode(virtual_network_name) if path.include?('{virtualNetworkName}')
+      path['{subnetName}'] = ERB::Util.url_encode(subnet_name) if path.include?('{subnetName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -309,10 +294,10 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_headers['Content-Type'] = 'application/json'
-      unless subnet_parameters1.nil?
-        subnet_parameters1 = Subnet.serialize_object(subnet_parameters1)
+      unless subnet_parameters.nil?
+        subnet_parameters = Subnet.serialize_object(subnet_parameters)
       end
-      request_content = JSON.generate(subnet_parameters1, quirks_mode: true)
+      request_content = JSON.generate(subnet_parameters, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -367,26 +352,23 @@ module Azure::ARM::Network
 
     #
     # The List subnets opertion retrieves all the subnets in a virtual network.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_name1 [String] The name of the virtual network.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list(resource_group_name1, virtual_network_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'virtual_network_name1 is nil' if virtual_network_name1.nil?
+    def list(resource_group_name, virtual_network_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualnetworks/{virtualNetworkName}/subnets"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{virtualNetworkName}'] = ERB::Util.url_encode(virtual_network_name1) if path.include?('{virtualNetworkName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{virtualNetworkName}'] = ERB::Util.url_encode(virtual_network_name) if path.include?('{virtualNetworkName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -452,18 +434,19 @@ module Azure::ARM::Network
 
     #
     # The List subnets opertion retrieves all the subnets in a virtual network.
-    # @param next_page_link1 [String] The NextLink from the previous successful
+    # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_next(next_page_link1, custom_headers = nil)
-      fail ArgumentError, 'next_page_link1 is nil' if next_page_link1.nil?
+    def list_next(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
       # Construct URL
       path = "{nextLink}"
-      path['{nextLink}'] = next_page_link1 if path.include?('{nextLink}')
+      path['{nextLink}'] = next_page_link if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
       properties.reject!{ |key, value| value.nil? }

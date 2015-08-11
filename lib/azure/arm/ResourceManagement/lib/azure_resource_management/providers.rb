@@ -24,24 +24,21 @@ module Azure::ARM::Resources
 
     #
     # Unregisters provider from a subscription.
-    # @param resource_provider_namespace1 [String] Namespace of the resource
+    # @param resource_provider_namespace [String] Namespace of the resource
     # provider.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def unregister(resource_provider_namespace1, custom_headers = nil)
-      fail ArgumentError, 'resource_provider_namespace1 is nil' if resource_provider_namespace1.nil?
+    def unregister(resource_provider_namespace, custom_headers = nil)
+      fail ArgumentError, 'resource_provider_namespace is nil' if resource_provider_namespace.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/unregister"
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace) if path.include?('{resourceProviderNamespace}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -107,24 +104,21 @@ module Azure::ARM::Resources
 
     #
     # Registers provider to be used with a subscription.
-    # @param resource_provider_namespace1 [String] Namespace of the resource
+    # @param resource_provider_namespace [String] Namespace of the resource
     # provider.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def register(resource_provider_namespace1, custom_headers = nil)
-      fail ArgumentError, 'resource_provider_namespace1 is nil' if resource_provider_namespace1.nil?
+    def register(resource_provider_namespace, custom_headers = nil)
+      fail ArgumentError, 'resource_provider_namespace is nil' if resource_provider_namespace.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/register"
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace) if path.include?('{resourceProviderNamespace}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -190,18 +184,15 @@ module Azure::ARM::Resources
 
     #
     # Gets a list of resource providers.
-    # @param top1 [Integer] Query parameters. If null is passed returns all
+    # @param top [Integer] Query parameters. If null is passed returns all
     # deployments.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list(top1 = nil, custom_headers = nil)
+    def list(top = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
@@ -209,7 +200,7 @@ module Azure::ARM::Resources
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
-      properties['$top'] = ERB::Util.url_encode(top1.to_s) unless top1.nil?
+      properties['$top'] = ERB::Util.url_encode(top.to_s) unless top.nil?
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
@@ -272,24 +263,21 @@ module Azure::ARM::Resources
 
     #
     # Gets a resource provider.
-    # @param resource_provider_namespace1 [String] Namespace of the resource
+    # @param resource_provider_namespace [String] Namespace of the resource
     # provider.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def get(resource_provider_namespace1, custom_headers = nil)
-      fail ArgumentError, 'resource_provider_namespace1 is nil' if resource_provider_namespace1.nil?
+    def get(resource_provider_namespace, custom_headers = nil)
+      fail ArgumentError, 'resource_provider_namespace is nil' if resource_provider_namespace.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}"
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace) if path.include?('{resourceProviderNamespace}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -355,18 +343,19 @@ module Azure::ARM::Resources
 
     #
     # Gets a list of resource providers.
-    # @param next_page_link1 [String] The NextLink from the previous successful
+    # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_next(next_page_link1, custom_headers = nil)
-      fail ArgumentError, 'next_page_link1 is nil' if next_page_link1.nil?
+    def list_next(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
       # Construct URL
       path = "{nextLink}"
-      path['{nextLink}'] = next_page_link1 if path.include?('{nextLink}')
+      path['{nextLink}'] = next_page_link if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
       properties.reject!{ |key, value| value.nil? }

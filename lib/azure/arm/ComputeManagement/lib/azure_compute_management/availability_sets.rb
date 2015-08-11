@@ -24,26 +24,23 @@ module Azure::ARM::Compute
 
     #
     # The operation to delete the availability set.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param availability_set_name1 [String] The name of the availability set.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param availability_set_name [String] The name of the availability set.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def delete(resource_group_name1, availability_set_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'availability_set_name1 is nil' if availability_set_name1.nil?
+    def delete(resource_group_name, availability_set_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{availabilitySetName}'] = ERB::Util.url_encode(availability_set_name1) if path.include?('{availabilitySetName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{availabilitySetName}'] = ERB::Util.url_encode(availability_set_name) if path.include?('{availabilitySetName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -96,26 +93,23 @@ module Azure::ARM::Compute
 
     #
     # The operation to get the availability set.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param availability_set_name1 [String] The name of the availability set.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param availability_set_name [String] The name of the availability set.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def get(resource_group_name1, availability_set_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'availability_set_name1 is nil' if availability_set_name1.nil?
+    def get(resource_group_name, availability_set_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{availabilitySetName}'] = ERB::Util.url_encode(availability_set_name1) if path.include?('{availabilitySetName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{availabilitySetName}'] = ERB::Util.url_encode(availability_set_name) if path.include?('{availabilitySetName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -181,23 +175,20 @@ module Azure::ARM::Compute
 
     #
     # The operation to list the availability sets.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list(resource_group_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
+    def list(resource_group_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -263,26 +254,23 @@ module Azure::ARM::Compute
 
     #
     # Lists virtual-machine-sizes available to be used for an availability set.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param availability_set_name1 [String] The name of the availability set.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param availability_set_name [String] The name of the availability set.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_available_sizes(resource_group_name1, availability_set_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'availability_set_name1 is nil' if availability_set_name1.nil?
+    def list_available_sizes(resource_group_name, availability_set_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/vmSizes"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{availabilitySetName}'] = ERB::Util.url_encode(availability_set_name1) if path.include?('{availabilitySetName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{availabilitySetName}'] = ERB::Util.url_encode(availability_set_name) if path.include?('{availabilitySetName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -348,31 +336,28 @@ module Azure::ARM::Compute
 
     #
     # The operation to create or update the availability set.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param name1 [String] Parameters supplied to the Create Availability Set
+    # @param resource_group_name [String] The name of the resource group.
+    # @param name [String] Parameters supplied to the Create Availability Set
     # operation.
-    # @param parameters1 [AvailabilitySet] Parameters supplied to the Create
+    # @param parameters [AvailabilitySet] Parameters supplied to the Create
     # Availability Set operation.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def create_or_update(resource_group_name1, name1, parameters1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'name1 is nil' if name1.nil?
-      fail ArgumentError, 'parameters1 is nil' if parameters1.nil?
-      parameters1.validate unless parameters1.nil?
+    def create_or_update(resource_group_name, name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      parameters.validate unless parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{name}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{name}'] = ERB::Util.url_encode(name1) if path.include?('{name}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{name}'] = ERB::Util.url_encode(name) if path.include?('{name}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -400,10 +385,10 @@ module Azure::ARM::Compute
 
       # Serialize Request
       request_headers['Content-Type'] = 'application/json'
-      unless parameters1.nil?
-        parameters1 = AvailabilitySet.serialize_object(parameters1)
+      unless parameters.nil?
+        parameters = AvailabilitySet.serialize_object(parameters)
       end
-      request_content = JSON.generate(parameters1, quirks_mode: true)
+      request_content = JSON.generate(parameters, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do

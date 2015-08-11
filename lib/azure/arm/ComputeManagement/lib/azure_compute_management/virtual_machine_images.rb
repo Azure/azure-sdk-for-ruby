@@ -24,35 +24,32 @@ module Azure::ARM::Compute
 
     #
     # Gets a virtual machine image.
-    # @param location1 [String]
-    # @param publisher_name1 [String]
-    # @param offer1 [String]
-    # @param skus1 [String]
-    # @param version1 [String]
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param location [String]
+    # @param publisher_name [String]
+    # @param offer [String]
+    # @param skus [String]
+    # @param version [String]
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def get(location1, publisher_name1, offer1, skus1, version1, custom_headers = nil)
-      fail ArgumentError, 'location1 is nil' if location1.nil?
-      fail ArgumentError, 'publisher_name1 is nil' if publisher_name1.nil?
-      fail ArgumentError, 'offer1 is nil' if offer1.nil?
-      fail ArgumentError, 'skus1 is nil' if skus1.nil?
-      fail ArgumentError, 'version1 is nil' if version1.nil?
+    def get(location, publisher_name, offer, skus, version, custom_headers = nil)
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
+      fail ArgumentError, 'offer is nil' if offer.nil?
+      fail ArgumentError, 'skus is nil' if skus.nil?
+      fail ArgumentError, 'version is nil' if version.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}"
-      path['{location}'] = ERB::Util.url_encode(location1) if path.include?('{location}')
-      path['{publisherName}'] = ERB::Util.url_encode(publisher_name1) if path.include?('{publisherName}')
-      path['{offer}'] = ERB::Util.url_encode(offer1) if path.include?('{offer}')
-      path['{skus}'] = ERB::Util.url_encode(skus1) if path.include?('{skus}')
-      path['{version}'] = ERB::Util.url_encode(version1) if path.include?('{version}')
+      path['{location}'] = ERB::Util.url_encode(location) if path.include?('{location}')
+      path['{publisherName}'] = ERB::Util.url_encode(publisher_name) if path.include?('{publisherName}')
+      path['{offer}'] = ERB::Util.url_encode(offer) if path.include?('{offer}')
+      path['{skus}'] = ERB::Util.url_encode(skus) if path.include?('{skus}')
+      path['{version}'] = ERB::Util.url_encode(version) if path.include?('{version}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -118,26 +115,23 @@ module Azure::ARM::Compute
 
     #
     # Gets a list of virtual machine image offers.
-    # @param location1 [String]
-    # @param publisher_name1 [String]
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param location [String]
+    # @param publisher_name [String]
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_offers(location1, publisher_name1, custom_headers = nil)
-      fail ArgumentError, 'location1 is nil' if location1.nil?
-      fail ArgumentError, 'publisher_name1 is nil' if publisher_name1.nil?
+    def list_offers(location, publisher_name, custom_headers = nil)
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers"
-      path['{location}'] = ERB::Util.url_encode(location1) if path.include?('{location}')
-      path['{publisherName}'] = ERB::Util.url_encode(publisher_name1) if path.include?('{publisherName}')
+      path['{location}'] = ERB::Util.url_encode(location) if path.include?('{location}')
+      path['{publisherName}'] = ERB::Util.url_encode(publisher_name) if path.include?('{publisherName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -210,23 +204,20 @@ module Azure::ARM::Compute
 
     #
     # Gets a list of virtual machine image publishers.
-    # @param location1 [String]
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param location [String]
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_publishers(location1, custom_headers = nil)
-      fail ArgumentError, 'location1 is nil' if location1.nil?
+    def list_publishers(location, custom_headers = nil)
+      fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers"
-      path['{location}'] = ERB::Util.url_encode(location1) if path.include?('{location}')
+      path['{location}'] = ERB::Util.url_encode(location) if path.include?('{location}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -299,29 +290,26 @@ module Azure::ARM::Compute
 
     #
     # Gets a list of virtual machine image skus.
-    # @param location1 [String]
-    # @param publisher_name1 [String]
-    # @param offer1 [String]
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param location [String]
+    # @param publisher_name [String]
+    # @param offer [String]
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_skus(location1, publisher_name1, offer1, custom_headers = nil)
-      fail ArgumentError, 'location1 is nil' if location1.nil?
-      fail ArgumentError, 'publisher_name1 is nil' if publisher_name1.nil?
-      fail ArgumentError, 'offer1 is nil' if offer1.nil?
+    def list_skus(location, publisher_name, offer, custom_headers = nil)
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
+      fail ArgumentError, 'offer is nil' if offer.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus"
-      path['{location}'] = ERB::Util.url_encode(location1) if path.include?('{location}')
-      path['{publisherName}'] = ERB::Util.url_encode(publisher_name1) if path.include?('{publisherName}')
-      path['{offer}'] = ERB::Util.url_encode(offer1) if path.include?('{offer}')
+      path['{location}'] = ERB::Util.url_encode(location) if path.include?('{location}')
+      path['{publisherName}'] = ERB::Util.url_encode(publisher_name) if path.include?('{publisherName}')
+      path['{offer}'] = ERB::Util.url_encode(offer) if path.include?('{offer}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -394,43 +382,38 @@ module Azure::ARM::Compute
 
     #
     # Gets a list of virtual machine images.
-    # @param location1 [String]
-    # @param publisher_name1 [String]
-    # @param offer1 [String]
-    # @param skus1 [String]
-    # @param filter1 [VirtualMachineImageResource] The filter to apply on the
-    # operation.
-    # @param top1 [Integer]
-    # @param orderby1 [String]
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param location [String]
+    # @param publisher_name [String]
+    # @param offer [String]
+    # @param skus [String]
+    # @param filter [String] The filter to apply on the operation.
+    # @param top [Integer]
+    # @param orderby [String]
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list(location1, publisher_name1, offer1, skus1, filter1 = nil, top1 = nil, orderby1 = nil, custom_headers = nil)
-      fail ArgumentError, 'location1 is nil' if location1.nil?
-      fail ArgumentError, 'publisher_name1 is nil' if publisher_name1.nil?
-      fail ArgumentError, 'offer1 is nil' if offer1.nil?
-      fail ArgumentError, 'skus1 is nil' if skus1.nil?
-      filter1.validate unless filter1.nil?
+    def list(location, publisher_name, offer, skus, filter = nil, top = nil, orderby = nil, custom_headers = nil)
+      fail ArgumentError, 'location is nil' if location.nil?
+      fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
+      fail ArgumentError, 'offer is nil' if offer.nil?
+      fail ArgumentError, 'skus is nil' if skus.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions"
-      path['{location}'] = ERB::Util.url_encode(location1) if path.include?('{location}')
-      path['{publisherName}'] = ERB::Util.url_encode(publisher_name1) if path.include?('{publisherName}')
-      path['{offer}'] = ERB::Util.url_encode(offer1) if path.include?('{offer}')
-      path['{skus}'] = ERB::Util.url_encode(skus1) if path.include?('{skus}')
+      path['{location}'] = ERB::Util.url_encode(location) if path.include?('{location}')
+      path['{publisherName}'] = ERB::Util.url_encode(publisher_name) if path.include?('{publisherName}')
+      path['{offer}'] = ERB::Util.url_encode(offer) if path.include?('{offer}')
+      path['{skus}'] = ERB::Util.url_encode(skus) if path.include?('{skus}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
-      properties['$filter'] = ERB::Util.url_encode(filter1.to_s) unless filter1.nil?
-      properties['$top'] = ERB::Util.url_encode(top1.to_s) unless top1.nil?
-      properties['$orderby'] = ERB::Util.url_encode(orderby1.to_s) unless orderby1.nil?
+      properties['$filter'] = filter unless filter.nil?
+      properties['$top'] = ERB::Util.url_encode(top.to_s) unless top.nil?
+      properties['$orderby'] = ERB::Util.url_encode(orderby.to_s) unless orderby.nil?
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')

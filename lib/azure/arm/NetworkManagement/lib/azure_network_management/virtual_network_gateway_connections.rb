@@ -26,10 +26,10 @@ module Azure::ARM::Network
     # The Put VirtualNetworkGatewayConnection operation creates/updates a virtual
     # network gateway connection in the specified resource group through Network
     # resource provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name1 [String] The name of the
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The name of the
     # virtual network gateway conenction.
-    # @param parameters1 [VirtualNetworkGatewayConnection] Parameters supplied to
+    # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
     # the Begin Create or update Virtual Network Gateway connection operation
     # through Network resource provider.
     # @param @client.api_version [String] Client Api Version.
@@ -42,9 +42,9 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update(resource_group_name1, virtual_network_gateway_connection_name1, parameters1, custom_headers = nil)
+    def create_or_update(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update(resource_group_name1, virtual_network_gateway_connection_name1, parameters1, custom_headers)
+      promise = begin_create_or_update(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -65,32 +65,29 @@ module Azure::ARM::Network
     # The Put VirtualNetworkGatewayConnection operation creates/updates a virtual
     # network gateway connection in the specified resource group through Network
     # resource provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name1 [String] The name of the
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The name of the
     # virtual network gateway conenction.
-    # @param parameters1 [VirtualNetworkGatewayConnection] Parameters supplied to
+    # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
     # the Begin Create or update Virtual Network Gateway connection operation
     # through Network resource provider.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_create_or_update(resource_group_name1, virtual_network_gateway_connection_name1, parameters1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'virtual_network_gateway_connection_name1 is nil' if virtual_network_gateway_connection_name1.nil?
-      fail ArgumentError, 'parameters1 is nil' if parameters1.nil?
-      parameters1.validate unless parameters1.nil?
+    def begin_create_or_update(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      parameters.validate unless parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{virtualNetworkGatewayConnectionName}'] = ERB::Util.url_encode(virtual_network_gateway_connection_name1) if path.include?('{virtualNetworkGatewayConnectionName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{virtualNetworkGatewayConnectionName}'] = ERB::Util.url_encode(virtual_network_gateway_connection_name) if path.include?('{virtualNetworkGatewayConnectionName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -118,10 +115,10 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_headers['Content-Type'] = 'application/json'
-      unless parameters1.nil?
-        parameters1 = VirtualNetworkGatewayConnection.serialize_object(parameters1)
+      unless parameters.nil?
+        parameters = VirtualNetworkGatewayConnection.serialize_object(parameters)
       end
-      request_content = JSON.generate(parameters1, quirks_mode: true)
+      request_content = JSON.generate(parameters, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -178,27 +175,24 @@ module Azure::ARM::Network
     # The Get VirtualNetworkGatewayConnection operation retrieves information
     # about the specified virtual network gateway connection through Network
     # resource provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name1 [String] The name of the
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The name of the
     # virtual network gateway connection.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def get(resource_group_name1, virtual_network_gateway_connection_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'virtual_network_gateway_connection_name1 is nil' if virtual_network_gateway_connection_name1.nil?
+    def get(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{virtualNetworkGatewayConnectionName}'] = ERB::Util.url_encode(virtual_network_gateway_connection_name1) if path.include?('{virtualNetworkGatewayConnectionName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{virtualNetworkGatewayConnectionName}'] = ERB::Util.url_encode(virtual_network_gateway_connection_name) if path.include?('{virtualNetworkGatewayConnectionName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -265,21 +259,15 @@ module Azure::ARM::Network
     #
     # The Delete VirtualNetworkGatewayConnection operation deletes the specifed
     # virtual network Gateway connection through Network resource provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name1 [String] The name of the
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The name of the
     # virtual network gateway connection.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete(resource_group_name1, virtual_network_gateway_connection_name1, custom_headers = nil)
+    def delete(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
       # Send request
-      promise = begin_delete(resource_group_name1, virtual_network_gateway_connection_name1, custom_headers)
+      promise = begin_delete(resource_group_name, virtual_network_gateway_connection_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -296,27 +284,24 @@ module Azure::ARM::Network
     #
     # The Delete VirtualNetworkGatewayConnection operation deletes the specifed
     # virtual network Gateway connection through Network resource provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name1 [String] The name of the
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The name of the
     # virtual network gateway connection.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_delete(resource_group_name1, virtual_network_gateway_connection_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'virtual_network_gateway_connection_name1 is nil' if virtual_network_gateway_connection_name1.nil?
+    def begin_delete(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{virtualNetworkGatewayConnectionName}'] = ERB::Util.url_encode(virtual_network_gateway_connection_name1) if path.include?('{virtualNetworkGatewayConnectionName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{virtualNetworkGatewayConnectionName}'] = ERB::Util.url_encode(virtual_network_gateway_connection_name) if path.include?('{virtualNetworkGatewayConnectionName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -371,27 +356,24 @@ module Azure::ARM::Network
     # The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves
     # information about the specified virtual network gateway connection shared
     # key through Network resource provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name1 [String] The virtual network
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection shared key name.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def get_shared_key(resource_group_name1, virtual_network_gateway_connection_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'virtual_network_gateway_connection_name1 is nil' if virtual_network_gateway_connection_name1.nil?
+    def get_shared_key(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{virtualNetworkGatewayConnectionName}'] = ERB::Util.url_encode(virtual_network_gateway_connection_name1) if path.include?('{virtualNetworkGatewayConnectionName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{virtualNetworkGatewayConnectionName}'] = ERB::Util.url_encode(virtual_network_gateway_connection_name) if path.include?('{virtualNetworkGatewayConnectionName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -460,11 +442,11 @@ module Azure::ARM::Network
     # network gateway connection shared key for passed virtual network gateway
     # connection in the specified resource group through Network resource
     # provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name1 [String] The virtual network
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
-    # @param parameters1 [ConnectionSharedKey] Parameters supplied to the Begin
-    # Set Virtual Network Gateway conection Shared key operation throughNetwork
+    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
+    # Virtual Network Gateway conection Shared key operation throughNetwork
     # resource provider.
     # @param @client.api_version [String] Client Api Version.
     # @param @client.subscription_id [String] Gets subscription credentials which
@@ -476,9 +458,9 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def set_shared_key(resource_group_name1, virtual_network_gateway_connection_name1, parameters1, custom_headers = nil)
+    def set_shared_key(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_set_shared_key(resource_group_name1, virtual_network_gateway_connection_name1, parameters1, custom_headers)
+      promise = begin_set_shared_key(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -500,32 +482,29 @@ module Azure::ARM::Network
     # network gateway connection shared key for passed virtual network gateway
     # connection in the specified resource group through Network resource
     # provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name1 [String] The virtual network
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
-    # @param parameters1 [ConnectionSharedKey] Parameters supplied to the Begin
-    # Set Virtual Network Gateway conection Shared key operation throughNetwork
+    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
+    # Virtual Network Gateway conection Shared key operation throughNetwork
     # resource provider.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_set_shared_key(resource_group_name1, virtual_network_gateway_connection_name1, parameters1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'virtual_network_gateway_connection_name1 is nil' if virtual_network_gateway_connection_name1.nil?
-      fail ArgumentError, 'parameters1 is nil' if parameters1.nil?
-      parameters1.validate unless parameters1.nil?
+    def begin_set_shared_key(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      parameters.validate unless parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{virtualNetworkGatewayConnectionName}'] = ERB::Util.url_encode(virtual_network_gateway_connection_name1) if path.include?('{virtualNetworkGatewayConnectionName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{virtualNetworkGatewayConnectionName}'] = ERB::Util.url_encode(virtual_network_gateway_connection_name) if path.include?('{virtualNetworkGatewayConnectionName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -553,10 +532,10 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_headers['Content-Type'] = 'application/json'
-      unless parameters1.nil?
-        parameters1 = ConnectionSharedKey.serialize_object(parameters1)
+      unless parameters.nil?
+        parameters = ConnectionSharedKey.serialize_object(parameters)
       end
-      request_content = JSON.generate(parameters1, quirks_mode: true)
+      request_content = JSON.generate(parameters, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -612,23 +591,20 @@ module Azure::ARM::Network
     #
     # The List VirtualNetworkGatewayConnections operation retrieves all the
     # virtual network gateways connections created.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list(resource_group_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
+    def list(resource_group_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -697,24 +673,18 @@ module Azure::ARM::Network
     # virtual network gateway connection shared key for passed virtual network
     # gateway connection in the specified resource group through Network resource
     # provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name1 [String] The virtual network
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection reset shared key Name.
-    # @param parameters1 [ConnectionResetSharedKey] Parameters supplied to the
+    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the
     # Begin Reset Virtual Network Gateway connection shared key operation through
     # Network resource provider.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def reset_shared_key(resource_group_name1, virtual_network_gateway_connection_name1, parameters1, custom_headers = nil)
+    def reset_shared_key(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_reset_shared_key(resource_group_name1, virtual_network_gateway_connection_name1, parameters1, custom_headers)
+      promise = begin_reset_shared_key(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -736,32 +706,29 @@ module Azure::ARM::Network
     # virtual network gateway connection shared key for passed virtual network
     # gateway connection in the specified resource group through Network resource
     # provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name1 [String] The virtual network
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection reset shared key Name.
-    # @param parameters1 [ConnectionResetSharedKey] Parameters supplied to the
+    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the
     # Begin Reset Virtual Network Gateway connection shared key operation through
     # Network resource provider.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_reset_shared_key(resource_group_name1, virtual_network_gateway_connection_name1, parameters1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'virtual_network_gateway_connection_name1 is nil' if virtual_network_gateway_connection_name1.nil?
-      fail ArgumentError, 'parameters1 is nil' if parameters1.nil?
-      parameters1.validate unless parameters1.nil?
+    def begin_reset_shared_key(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      parameters.validate unless parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey/reset"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{virtualNetworkGatewayConnectionName}'] = ERB::Util.url_encode(virtual_network_gateway_connection_name1) if path.include?('{virtualNetworkGatewayConnectionName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{virtualNetworkGatewayConnectionName}'] = ERB::Util.url_encode(virtual_network_gateway_connection_name) if path.include?('{virtualNetworkGatewayConnectionName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -789,10 +756,10 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_headers['Content-Type'] = 'application/json'
-      unless parameters1.nil?
-        parameters1 = ConnectionResetSharedKey.serialize_object(parameters1)
+      unless parameters.nil?
+        parameters = ConnectionResetSharedKey.serialize_object(parameters)
       end
-      request_content = JSON.generate(parameters1, quirks_mode: true)
+      request_content = JSON.generate(parameters, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -836,18 +803,19 @@ module Azure::ARM::Network
     #
     # The List VirtualNetworkGatewayConnections operation retrieves all the
     # virtual network gateways connections created.
-    # @param next_page_link1 [String] The NextLink from the previous successful
+    # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_next(next_page_link1, custom_headers = nil)
-      fail ArgumentError, 'next_page_link1 is nil' if next_page_link1.nil?
+    def list_next(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
       # Construct URL
       path = "{nextLink}"
-      path['{nextLink}'] = next_page_link1 if path.include?('{nextLink}')
+      path['{nextLink}'] = next_page_link if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
       properties.reject!{ |key, value| value.nil? }

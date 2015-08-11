@@ -24,26 +24,23 @@ module Azure::ARM::Resources
 
     #
     # Move resources within or across subscriptions.
-    # @param source_resource_group_name1 [String] Source resource group name.
-    # @param parameters1 [ResourcesMoveInfo] move resources' parameters.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param source_resource_group_name [String] Source resource group name.
+    # @param parameters [ResourcesMoveInfo] move resources' parameters.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def move_resources(source_resource_group_name1, parameters1, custom_headers = nil)
-      fail ArgumentError, 'source_resource_group_name1 is nil' if source_resource_group_name1.nil?
-      fail ArgumentError, 'parameters1 is nil' if parameters1.nil?
-      parameters1.validate unless parameters1.nil?
+    def move_resources(source_resource_group_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'source_resource_group_name is nil' if source_resource_group_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      parameters.validate unless parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources"
-      path['{sourceResourceGroupName}'] = ERB::Util.url_encode(source_resource_group_name1) if path.include?('{sourceResourceGroupName}')
+      path['{sourceResourceGroupName}'] = ERB::Util.url_encode(source_resource_group_name) if path.include?('{sourceResourceGroupName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -71,10 +68,10 @@ module Azure::ARM::Resources
 
       # Serialize Request
       request_headers['Content-Type'] = 'application/json'
-      unless parameters1.nil?
-        parameters1 = ResourcesMoveInfo.serialize_object(parameters1)
+      unless parameters.nil?
+        parameters = ResourcesMoveInfo.serialize_object(parameters)
       end
-      request_content = JSON.generate(parameters1, quirks_mode: true)
+      request_content = JSON.generate(parameters, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -104,20 +101,16 @@ module Azure::ARM::Resources
 
     #
     # Get all of the resources under a subscription.
-    # @param filter1 [GenericResourceFilter] The filter to apply on the operation.
-    # @param top1 [Integer] Query parameters. If null is passed returns all
+    # @param filter [String] The filter to apply on the operation.
+    # @param top [Integer] Query parameters. If null is passed returns all
     # resource groups.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list(filter1 = nil, top1 = nil, custom_headers = nil)
-      filter1.validate unless filter1.nil?
+    def list(filter = nil, top = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
@@ -125,8 +118,8 @@ module Azure::ARM::Resources
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
-      properties['$filter'] = ERB::Util.url_encode(filter1.to_s) unless filter1.nil?
-      properties['$top'] = ERB::Util.url_encode(top1.to_s) unless top1.nil?
+      properties['$filter'] = filter unless filter.nil?
+      properties['$top'] = ERB::Util.url_encode(top.to_s) unless top.nil?
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
@@ -189,40 +182,38 @@ module Azure::ARM::Resources
 
     #
     # Checks whether resource exists.
-    # @param resource_group_name1 [String] The name of the resource group. The
-    # name is case insensitive.
-    # @param resource_provider_namespace1 [String] Resource identity.
-    # @param parent_resource_path1 [String] Resource identity.
-    # @param resource_type1 [String] Resource identity.
-    # @param resource_name1 [String] Resource identity.
-    # @param api_version1 [String]
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param resource_provider_namespace [String] Resource identity.
+    # @param parent_resource_path [String] Resource identity.
+    # @param resource_type [String] Resource identity.
+    # @param resource_name [String] Resource identity.
+    # @param api_version [String]
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def check_existence(resource_group_name1, resource_provider_namespace1, parent_resource_path1, resource_type1, resource_name1, api_version1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'resource_provider_namespace1 is nil' if resource_provider_namespace1.nil?
-      fail ArgumentError, 'parent_resource_path1 is nil' if parent_resource_path1.nil?
-      fail ArgumentError, 'resource_type1 is nil' if resource_type1.nil?
-      fail ArgumentError, 'resource_name1 is nil' if resource_name1.nil?
-      fail ArgumentError, 'api_version1 is nil' if api_version1.nil?
+    def check_existence(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'resource_provider_namespace is nil' if resource_provider_namespace.nil?
+      fail ArgumentError, 'parent_resource_path is nil' if parent_resource_path.nil?
+      fail ArgumentError, 'resource_type is nil' if resource_type.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
-      path['{parentResourcePath}'] = parent_resource_path1 if path.include?('{parentResourcePath}')
-      path['{resourceType}'] = resource_type1 if path.include?('{resourceType}')
-      path['{resourceName}'] = ERB::Util.url_encode(resource_name1) if path.include?('{resourceName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace) if path.include?('{resourceProviderNamespace}')
+      path['{parentResourcePath}'] = parent_resource_path if path.include?('{parentResourcePath}')
+      path['{resourceType}'] = resource_type if path.include?('{resourceType}')
+      path['{resourceName}'] = ERB::Util.url_encode(resource_name) if path.include?('{resourceName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
-      properties['api-version'] = ERB::Util.url_encode(api_version1.to_s) unless api_version1.nil?
+      properties['api-version'] = ERB::Util.url_encode(api_version.to_s) unless api_version.nil?
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
@@ -273,40 +264,38 @@ module Azure::ARM::Resources
 
     #
     # Delete resource and all of its resources.
-    # @param resource_group_name1 [String] The name of the resource group. The
-    # name is case insensitive.
-    # @param resource_provider_namespace1 [String] Resource identity.
-    # @param parent_resource_path1 [String] Resource identity.
-    # @param resource_type1 [String] Resource identity.
-    # @param resource_name1 [String] Resource identity.
-    # @param api_version1 [String]
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param resource_provider_namespace [String] Resource identity.
+    # @param parent_resource_path [String] Resource identity.
+    # @param resource_type [String] Resource identity.
+    # @param resource_name [String] Resource identity.
+    # @param api_version [String]
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def delete(resource_group_name1, resource_provider_namespace1, parent_resource_path1, resource_type1, resource_name1, api_version1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'resource_provider_namespace1 is nil' if resource_provider_namespace1.nil?
-      fail ArgumentError, 'parent_resource_path1 is nil' if parent_resource_path1.nil?
-      fail ArgumentError, 'resource_type1 is nil' if resource_type1.nil?
-      fail ArgumentError, 'resource_name1 is nil' if resource_name1.nil?
-      fail ArgumentError, 'api_version1 is nil' if api_version1.nil?
+    def delete(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'resource_provider_namespace is nil' if resource_provider_namespace.nil?
+      fail ArgumentError, 'parent_resource_path is nil' if parent_resource_path.nil?
+      fail ArgumentError, 'resource_type is nil' if resource_type.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
-      path['{parentResourcePath}'] = parent_resource_path1 if path.include?('{parentResourcePath}')
-      path['{resourceType}'] = resource_type1 if path.include?('{resourceType}')
-      path['{resourceName}'] = ERB::Util.url_encode(resource_name1) if path.include?('{resourceName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace) if path.include?('{resourceProviderNamespace}')
+      path['{parentResourcePath}'] = parent_resource_path if path.include?('{parentResourcePath}')
+      path['{resourceType}'] = resource_type if path.include?('{resourceType}')
+      path['{resourceName}'] = ERB::Util.url_encode(resource_name) if path.include?('{resourceName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
-      properties['api-version'] = ERB::Util.url_encode(api_version1.to_s) unless api_version1.nil?
+      properties['api-version'] = ERB::Util.url_encode(api_version.to_s) unless api_version.nil?
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
@@ -355,14 +344,14 @@ module Azure::ARM::Resources
 
     #
     # Create a resource.
-    # @param resource_group_name1 [String] The name of the resource group. The
-    # name is case insensitive.
-    # @param resource_provider_namespace1 [String] Resource identity.
-    # @param parent_resource_path1 [String] Resource identity.
-    # @param resource_type1 [String] Resource identity.
-    # @param resource_name1 [String] Resource identity.
-    # @param api_version1 [String]
-    # @param parameters1 [GenericResource] Create or update resource parameters.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param resource_provider_namespace [String] Resource identity.
+    # @param parent_resource_path [String] Resource identity.
+    # @param resource_type [String] Resource identity.
+    # @param resource_name [String] Resource identity.
+    # @param api_version [String]
+    # @param parameters [GenericResource] Create or update resource parameters.
     # @param @client.subscription_id [String] Gets subscription credentials which
     # uniquely identify Microsoft Azure subscription. The subscription ID forms
     # part of the URI for every service call.
@@ -372,9 +361,9 @@ module Azure::ARM::Resources
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update(resource_group_name1, resource_provider_namespace1, parent_resource_path1, resource_type1, resource_name1, api_version1, parameters1, custom_headers = nil)
+    def create_or_update(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update(resource_group_name1, resource_provider_namespace1, parent_resource_path1, resource_type1, resource_name1, api_version1, parameters1, custom_headers)
+      promise = begin_create_or_update(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -393,43 +382,41 @@ module Azure::ARM::Resources
 
     #
     # Create a resource.
-    # @param resource_group_name1 [String] The name of the resource group. The
-    # name is case insensitive.
-    # @param resource_provider_namespace1 [String] Resource identity.
-    # @param parent_resource_path1 [String] Resource identity.
-    # @param resource_type1 [String] Resource identity.
-    # @param resource_name1 [String] Resource identity.
-    # @param api_version1 [String]
-    # @param parameters1 [GenericResource] Create or update resource parameters.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param resource_provider_namespace [String] Resource identity.
+    # @param parent_resource_path [String] Resource identity.
+    # @param resource_type [String] Resource identity.
+    # @param resource_name [String] Resource identity.
+    # @param api_version [String]
+    # @param parameters [GenericResource] Create or update resource parameters.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_create_or_update(resource_group_name1, resource_provider_namespace1, parent_resource_path1, resource_type1, resource_name1, api_version1, parameters1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'resource_provider_namespace1 is nil' if resource_provider_namespace1.nil?
-      fail ArgumentError, 'parent_resource_path1 is nil' if parent_resource_path1.nil?
-      fail ArgumentError, 'resource_type1 is nil' if resource_type1.nil?
-      fail ArgumentError, 'resource_name1 is nil' if resource_name1.nil?
-      fail ArgumentError, 'api_version1 is nil' if api_version1.nil?
-      fail ArgumentError, 'parameters1 is nil' if parameters1.nil?
-      parameters1.validate unless parameters1.nil?
+    def begin_create_or_update(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'resource_provider_namespace is nil' if resource_provider_namespace.nil?
+      fail ArgumentError, 'parent_resource_path is nil' if parent_resource_path.nil?
+      fail ArgumentError, 'resource_type is nil' if resource_type.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      parameters.validate unless parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
-      path['{parentResourcePath}'] = parent_resource_path1 if path.include?('{parentResourcePath}')
-      path['{resourceType}'] = resource_type1 if path.include?('{resourceType}')
-      path['{resourceName}'] = ERB::Util.url_encode(resource_name1) if path.include?('{resourceName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace) if path.include?('{resourceProviderNamespace}')
+      path['{parentResourcePath}'] = parent_resource_path if path.include?('{parentResourcePath}')
+      path['{resourceType}'] = resource_type if path.include?('{resourceType}')
+      path['{resourceName}'] = ERB::Util.url_encode(resource_name) if path.include?('{resourceName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
-      properties['api-version'] = ERB::Util.url_encode(api_version1.to_s) unless api_version1.nil?
+      properties['api-version'] = ERB::Util.url_encode(api_version.to_s) unless api_version.nil?
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
@@ -453,10 +440,10 @@ module Azure::ARM::Resources
 
       # Serialize Request
       request_headers['Content-Type'] = 'application/json'
-      unless parameters1.nil?
-        parameters1 = GenericResource.serialize_object(parameters1)
+      unless parameters.nil?
+        parameters = GenericResource.serialize_object(parameters)
       end
-      request_content = JSON.generate(parameters1, quirks_mode: true)
+      request_content = JSON.generate(parameters, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -511,40 +498,38 @@ module Azure::ARM::Resources
 
     #
     # Returns a resource belonging to a resource group.
-    # @param resource_group_name1 [String] The name of the resource group. The
-    # name is case insensitive.
-    # @param resource_provider_namespace1 [String] Resource identity.
-    # @param parent_resource_path1 [String] Resource identity.
-    # @param resource_type1 [String] Resource identity.
-    # @param resource_name1 [String] Resource identity.
-    # @param api_version1 [String]
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param resource_provider_namespace [String] Resource identity.
+    # @param parent_resource_path [String] Resource identity.
+    # @param resource_type [String] Resource identity.
+    # @param resource_name [String] Resource identity.
+    # @param api_version [String]
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def get(resource_group_name1, resource_provider_namespace1, parent_resource_path1, resource_type1, resource_name1, api_version1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'resource_provider_namespace1 is nil' if resource_provider_namespace1.nil?
-      fail ArgumentError, 'parent_resource_path1 is nil' if parent_resource_path1.nil?
-      fail ArgumentError, 'resource_type1 is nil' if resource_type1.nil?
-      fail ArgumentError, 'resource_name1 is nil' if resource_name1.nil?
-      fail ArgumentError, 'api_version1 is nil' if api_version1.nil?
+    def get(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'resource_provider_namespace is nil' if resource_provider_namespace.nil?
+      fail ArgumentError, 'parent_resource_path is nil' if parent_resource_path.nil?
+      fail ArgumentError, 'resource_type is nil' if resource_type.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace1) if path.include?('{resourceProviderNamespace}')
-      path['{parentResourcePath}'] = parent_resource_path1 if path.include?('{parentResourcePath}')
-      path['{resourceType}'] = resource_type1 if path.include?('{resourceType}')
-      path['{resourceName}'] = ERB::Util.url_encode(resource_name1) if path.include?('{resourceName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{resourceProviderNamespace}'] = ERB::Util.url_encode(resource_provider_namespace) if path.include?('{resourceProviderNamespace}')
+      path['{parentResourcePath}'] = parent_resource_path if path.include?('{parentResourcePath}')
+      path['{resourceType}'] = resource_type if path.include?('{resourceType}')
+      path['{resourceName}'] = ERB::Util.url_encode(resource_name) if path.include?('{resourceName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
-      properties['api-version'] = ERB::Util.url_encode(api_version1.to_s) unless api_version1.nil?
+      properties['api-version'] = ERB::Util.url_encode(api_version.to_s) unless api_version.nil?
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
@@ -618,18 +603,19 @@ module Azure::ARM::Resources
 
     #
     # Get all of the resources under a subscription.
-    # @param next_page_link1 [String] The NextLink from the previous successful
+    # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_next(next_page_link1, custom_headers = nil)
-      fail ArgumentError, 'next_page_link1 is nil' if next_page_link1.nil?
+    def list_next(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
       # Construct URL
       path = "{nextLink}"
-      path['{nextLink}'] = next_page_link1 if path.include?('{nextLink}')
+      path['{nextLink}'] = next_page_link if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
       properties.reject!{ |key, value| value.nil? }

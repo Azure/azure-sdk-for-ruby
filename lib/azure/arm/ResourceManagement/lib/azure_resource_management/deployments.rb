@@ -24,27 +24,24 @@ module Azure::ARM::Resources
 
     #
     # Cancel a currently running template deployment.
-    # @param resource_group_name1 [String] The name of the resource group. The
-    # name is case insensitive.
-    # @param deployment_name1 [String] The name of the deployment.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param deployment_name [String] The name of the deployment.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def cancel(resource_group_name1, deployment_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'deployment_name1 is nil' if deployment_name1.nil?
+    def cancel(resource_group_name, deployment_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/deployments/{deploymentName}/cancel"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{deploymentName}'] = ERB::Util.url_encode(deployment_name1) if path.include?('{deploymentName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{deploymentName}'] = ERB::Util.url_encode(deployment_name) if path.include?('{deploymentName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -97,30 +94,27 @@ module Azure::ARM::Resources
 
     #
     # Validate a deployment template.
-    # @param resource_group_name1 [String] The name of the resource group. The
-    # name is case insensitive.
-    # @param deployment_name1 [String] The name of the deployment.
-    # @param parameters1 [Deployment] Deployment to validate.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param deployment_name [String] The name of the deployment.
+    # @param parameters [Deployment] Deployment to validate.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def validate(resource_group_name1, deployment_name1, parameters1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'deployment_name1 is nil' if deployment_name1.nil?
-      fail ArgumentError, 'parameters1 is nil' if parameters1.nil?
-      parameters1.validate unless parameters1.nil?
+    def validate(resource_group_name, deployment_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      parameters.validate unless parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.resources/deployments/{deploymentName}/validate"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{deploymentName}'] = ERB::Util.url_encode(deployment_name1) if path.include?('{deploymentName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{deploymentName}'] = ERB::Util.url_encode(deployment_name) if path.include?('{deploymentName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -148,10 +142,10 @@ module Azure::ARM::Resources
 
       # Serialize Request
       request_headers['Content-Type'] = 'application/json'
-      unless parameters1.nil?
-        parameters1 = Deployment.serialize_object(parameters1)
+      unless parameters.nil?
+        parameters = Deployment.serialize_object(parameters)
       end
-      request_content = JSON.generate(parameters1, quirks_mode: true)
+      request_content = JSON.generate(parameters, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -206,31 +200,28 @@ module Azure::ARM::Resources
 
     #
     # Create a named template deployment using a template.
-    # @param resource_group_name1 [String] The name of the resource group. The
-    # name is case insensitive.
-    # @param deployment_name1 [String] The name of the deployment.
-    # @param parameters1 [Deployment] Additional parameters supplied to the
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param deployment_name [String] The name of the deployment.
+    # @param parameters [Deployment] Additional parameters supplied to the
     # operation.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def create_or_update(resource_group_name1, deployment_name1, parameters1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'deployment_name1 is nil' if deployment_name1.nil?
-      fail ArgumentError, 'parameters1 is nil' if parameters1.nil?
-      parameters1.validate unless parameters1.nil?
+    def create_or_update(resource_group_name, deployment_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      parameters.validate unless parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/deployments/{deploymentName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{deploymentName}'] = ERB::Util.url_encode(deployment_name1) if path.include?('{deploymentName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{deploymentName}'] = ERB::Util.url_encode(deployment_name) if path.include?('{deploymentName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -258,10 +249,10 @@ module Azure::ARM::Resources
 
       # Serialize Request
       request_headers['Content-Type'] = 'application/json'
-      unless parameters1.nil?
-        parameters1 = Deployment.serialize_object(parameters1)
+      unless parameters.nil?
+        parameters = Deployment.serialize_object(parameters)
       end
-      request_content = JSON.generate(parameters1, quirks_mode: true)
+      request_content = JSON.generate(parameters, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -316,27 +307,24 @@ module Azure::ARM::Resources
 
     #
     # Get a deployment.
-    # @param resource_group_name1 [String] The name of the resource group to get.
+    # @param resource_group_name [String] The name of the resource group to get.
     # The name is case insensitive.
-    # @param deployment_name1 [String] The name of the deployment.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param deployment_name [String] The name of the deployment.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def get(resource_group_name1, deployment_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'deployment_name1 is nil' if deployment_name1.nil?
+    def get(resource_group_name, deployment_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'deployment_name is nil' if deployment_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/deployments/{deploymentName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{deploymentName}'] = ERB::Util.url_encode(deployment_name1) if path.include?('{deploymentName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{deploymentName}'] = ERB::Util.url_encode(deployment_name) if path.include?('{deploymentName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -402,34 +390,29 @@ module Azure::ARM::Resources
 
     #
     # Get a list of deployments.
-    # @param resource_group_name1 [String] The name of the resource group to
-    # filter by. The name is case insensitive.
-    # @param filter1 [DeploymentExtendedFilter] The filter to apply on the
-    # operation.
-    # @param top1 [Integer] Query parameters. If null is passed returns all
+    # @param resource_group_name [String] The name of the resource group to filter
+    # by. The name is case insensitive.
+    # @param filter [String] The filter to apply on the operation.
+    # @param top [Integer] Query parameters. If null is passed returns all
     # deployments.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list(resource_group_name1, filter1 = nil, top1 = nil, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      filter1.validate unless filter1.nil?
+    def list(resource_group_name, filter = nil, top = nil, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/deployments/"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
-      properties['$filter'] = ERB::Util.url_encode(filter1.to_s) unless filter1.nil?
-      properties['$top'] = ERB::Util.url_encode(top1.to_s) unless top1.nil?
+      properties['$filter'] = filter unless filter.nil?
+      properties['$top'] = ERB::Util.url_encode(top.to_s) unless top.nil?
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
@@ -492,18 +475,19 @@ module Azure::ARM::Resources
 
     #
     # Get a list of deployments.
-    # @param next_page_link1 [String] The NextLink from the previous successful
+    # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_next(next_page_link1, custom_headers = nil)
-      fail ArgumentError, 'next_page_link1 is nil' if next_page_link1.nil?
+    def list_next(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
       # Construct URL
       path = "{nextLink}"
-      path['{nextLink}'] = next_page_link1 if path.include?('{nextLink}')
+      path['{nextLink}'] = next_page_link if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
       properties.reject!{ |key, value| value.nil? }
