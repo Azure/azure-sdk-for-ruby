@@ -43,6 +43,12 @@ def get_random_name(prefix, length = 1000)
   prefix + SecureRandom.uuid.downcase.delete('^a-zA-Z0-9')[0...length]
 end
 
+class String
+  def to_b?
+    !self.to_i.zero?
+  end
+end
+
 tenant_id = ENV['azure_tenant_id']
 client_id = ENV['azure_client_id']
 secret = ENV['azure_client_secret']
