@@ -28,7 +28,9 @@ describe ResourceManagementClient do
 
   it 'should list provider operation details' do
     providers = RESOURCES_CLIENT.providers.list().value!.body.value
-    targetProvider = providers.detect {|item| item.registration_state == 'Registered' }
+
+    # Selecting specific provider since not all providers might be registered for current subscription.
+    targetProvider = providers.detect {|item| item.registration_state == 'Registered' && item.namespace == 'Microsoft.BingMaps' }
 
     result = @client.list(targetProvider.namespace, @resource_api_version).value!
     expect(result.body.value).not_to be_nil
