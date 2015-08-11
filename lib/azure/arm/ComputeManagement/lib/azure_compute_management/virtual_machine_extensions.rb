@@ -24,12 +24,12 @@ module Azure::ARM::Compute
 
     #
     # The operation to create or update the extension.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param vm_name1 [String] The name of the virtual machine where the extension
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine where the extension
     # should be create or updated.
-    # @param vm_extension_name1 [String] The name of the virtual machine extension.
-    # @param extension_parameters1 [VirtualMachineExtension] Parameters supplied
-    # to the Create Virtual Machine Extension operation.
+    # @param vm_extension_name [String] The name of the virtual machine extension.
+    # @param extension_parameters [VirtualMachineExtension] Parameters supplied to
+    # the Create Virtual Machine Extension operation.
     # @param @client.api_version [String] Client Api Version.
     # @param @client.subscription_id [String] Gets subscription credentials which
     # uniquely identify Microsoft Azure subscription. The subscription ID forms
@@ -40,9 +40,9 @@ module Azure::ARM::Compute
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update(resource_group_name1, vm_name1, vm_extension_name1, extension_parameters1, custom_headers = nil)
+    def create_or_update(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update(resource_group_name1, vm_name1, vm_extension_name1, extension_parameters1, custom_headers)
+      promise = begin_create_or_update(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -61,34 +61,31 @@ module Azure::ARM::Compute
 
     #
     # The operation to create or update the extension.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param vm_name1 [String] The name of the virtual machine where the extension
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine where the extension
     # should be create or updated.
-    # @param vm_extension_name1 [String] The name of the virtual machine extension.
-    # @param extension_parameters1 [VirtualMachineExtension] Parameters supplied
-    # to the Create Virtual Machine Extension operation.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param vm_extension_name [String] The name of the virtual machine extension.
+    # @param extension_parameters [VirtualMachineExtension] Parameters supplied to
+    # the Create Virtual Machine Extension operation.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_create_or_update(resource_group_name1, vm_name1, vm_extension_name1, extension_parameters1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'vm_name1 is nil' if vm_name1.nil?
-      fail ArgumentError, 'vm_extension_name1 is nil' if vm_extension_name1.nil?
-      fail ArgumentError, 'extension_parameters1 is nil' if extension_parameters1.nil?
-      extension_parameters1.validate unless extension_parameters1.nil?
+    def begin_create_or_update(resource_group_name, vm_name, vm_extension_name, extension_parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_name is nil' if vm_name.nil?
+      fail ArgumentError, 'vm_extension_name is nil' if vm_extension_name.nil?
+      fail ArgumentError, 'extension_parameters is nil' if extension_parameters.nil?
+      extension_parameters.validate unless extension_parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{vmName}'] = ERB::Util.url_encode(vm_name1) if path.include?('{vmName}')
-      path['{vmExtensionName}'] = ERB::Util.url_encode(vm_extension_name1) if path.include?('{vmExtensionName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{vmName}'] = ERB::Util.url_encode(vm_name) if path.include?('{vmName}')
+      path['{vmExtensionName}'] = ERB::Util.url_encode(vm_extension_name) if path.include?('{vmExtensionName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -116,10 +113,10 @@ module Azure::ARM::Compute
 
       # Serialize Request
       request_headers['Content-Type'] = 'application/json'
-      unless extension_parameters1.nil?
-        extension_parameters1 = VirtualMachineExtension.serialize_object(extension_parameters1)
+      unless extension_parameters.nil?
+        extension_parameters = VirtualMachineExtension.serialize_object(extension_parameters)
       end
-      request_content = JSON.generate(extension_parameters1, quirks_mode: true)
+      request_content = JSON.generate(extension_parameters, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -174,22 +171,16 @@ module Azure::ARM::Compute
 
     #
     # The operation to delete the extension.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param vm_name1 [String] The name of the virtual machine where the extension
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine where the extension
     # should be deleted.
-    # @param vm_extension_name1 [String] The name of the virtual machine extension.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param vm_extension_name [String] The name of the virtual machine extension.
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete(resource_group_name1, vm_name1, vm_extension_name1, custom_headers = nil)
+    def delete(resource_group_name, vm_name, vm_extension_name, custom_headers = nil)
       # Send request
-      promise = begin_delete(resource_group_name1, vm_name1, vm_extension_name1, custom_headers)
+      promise = begin_delete(resource_group_name, vm_name, vm_extension_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -205,30 +196,27 @@ module Azure::ARM::Compute
 
     #
     # The operation to delete the extension.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param vm_name1 [String] The name of the virtual machine where the extension
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine where the extension
     # should be deleted.
-    # @param vm_extension_name1 [String] The name of the virtual machine extension.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param vm_extension_name [String] The name of the virtual machine extension.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_delete(resource_group_name1, vm_name1, vm_extension_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'vm_name1 is nil' if vm_name1.nil?
-      fail ArgumentError, 'vm_extension_name1 is nil' if vm_extension_name1.nil?
+    def begin_delete(resource_group_name, vm_name, vm_extension_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_name is nil' if vm_name.nil?
+      fail ArgumentError, 'vm_extension_name is nil' if vm_extension_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{vmName}'] = ERB::Util.url_encode(vm_name1) if path.include?('{vmName}')
-      path['{vmExtensionName}'] = ERB::Util.url_encode(vm_extension_name1) if path.include?('{vmExtensionName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{vmName}'] = ERB::Util.url_encode(vm_name) if path.include?('{vmName}')
+      path['{vmExtensionName}'] = ERB::Util.url_encode(vm_extension_name) if path.include?('{vmExtensionName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -281,36 +269,33 @@ module Azure::ARM::Compute
 
     #
     # The operation to get the extension.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param vm_name1 [String] The name of the virtual machine containing the
+    # @param resource_group_name [String] The name of the resource group.
+    # @param vm_name [String] The name of the virtual machine containing the
     # extension.
-    # @param vm_extension_name1 [String] The name of the virtual machine extension.
-    # @param expand1 [String] Name of the property to expand. Allowed value is
-    # null or 'instanceView'.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param vm_extension_name [String] The name of the virtual machine extension.
+    # @param expand [String] Name of the property to expand. Allowed value is null
+    # or 'instanceView'.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def get(resource_group_name1, vm_name1, vm_extension_name1, expand1 = nil, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'vm_name1 is nil' if vm_name1.nil?
-      fail ArgumentError, 'vm_extension_name1 is nil' if vm_extension_name1.nil?
+    def get(resource_group_name, vm_name, vm_extension_name, expand = nil, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vm_name is nil' if vm_name.nil?
+      fail ArgumentError, 'vm_extension_name is nil' if vm_extension_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{vmName}'] = ERB::Util.url_encode(vm_name1) if path.include?('{vmName}')
-      path['{vmExtensionName}'] = ERB::Util.url_encode(vm_extension_name1) if path.include?('{vmExtensionName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{vmName}'] = ERB::Util.url_encode(vm_name) if path.include?('{vmName}')
+      path['{vmExtensionName}'] = ERB::Util.url_encode(vm_extension_name) if path.include?('{vmExtensionName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
-      properties['$expand'] = ERB::Util.url_encode(expand1.to_s) unless expand1.nil?
+      properties['$expand'] = ERB::Util.url_encode(expand.to_s) unless expand.nil?
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')

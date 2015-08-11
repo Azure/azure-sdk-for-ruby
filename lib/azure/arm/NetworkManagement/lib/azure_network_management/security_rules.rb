@@ -25,22 +25,16 @@ module Azure::ARM::Network
     #
     # The delete network security rule operation deletes the specified network
     # security rule.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param network_security_group_name1 [String] The name of the network
-    # security group.
-    # @param security_rule_name1 [String] The name of the security rule.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_security_group_name [String] The name of the network security
+    # group.
+    # @param security_rule_name [String] The name of the security rule.
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete(resource_group_name1, network_security_group_name1, security_rule_name1, custom_headers = nil)
+    def delete(resource_group_name, network_security_group_name, security_rule_name, custom_headers = nil)
       # Send request
-      promise = begin_delete(resource_group_name1, network_security_group_name1, security_rule_name1, custom_headers)
+      promise = begin_delete(resource_group_name, network_security_group_name, security_rule_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -57,30 +51,27 @@ module Azure::ARM::Network
     #
     # The delete network security rule operation deletes the specified network
     # security rule.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param network_security_group_name1 [String] The name of the network
-    # security group.
-    # @param security_rule_name1 [String] The name of the security rule.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_security_group_name [String] The name of the network security
+    # group.
+    # @param security_rule_name [String] The name of the security rule.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_delete(resource_group_name1, network_security_group_name1, security_rule_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'network_security_group_name1 is nil' if network_security_group_name1.nil?
-      fail ArgumentError, 'security_rule_name1 is nil' if security_rule_name1.nil?
+    def begin_delete(resource_group_name, network_security_group_name, security_rule_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'network_security_group_name is nil' if network_security_group_name.nil?
+      fail ArgumentError, 'security_rule_name is nil' if security_rule_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{networkSecurityGroupName}'] = ERB::Util.url_encode(network_security_group_name1) if path.include?('{networkSecurityGroupName}')
-      path['{securityRuleName}'] = ERB::Util.url_encode(security_rule_name1) if path.include?('{securityRuleName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{networkSecurityGroupName}'] = ERB::Util.url_encode(network_security_group_name) if path.include?('{networkSecurityGroupName}')
+      path['{securityRuleName}'] = ERB::Util.url_encode(security_rule_name) if path.include?('{securityRuleName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -134,30 +125,27 @@ module Azure::ARM::Network
     #
     # The Get NetworkSecurityRule operation retreives information about the
     # specified network security rule.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param network_security_group_name1 [String] The name of the network
-    # security group.
-    # @param security_rule_name1 [String] The name of the security rule.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_security_group_name [String] The name of the network security
+    # group.
+    # @param security_rule_name [String] The name of the security rule.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def get(resource_group_name1, network_security_group_name1, security_rule_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'network_security_group_name1 is nil' if network_security_group_name1.nil?
-      fail ArgumentError, 'security_rule_name1 is nil' if security_rule_name1.nil?
+    def get(resource_group_name, network_security_group_name, security_rule_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'network_security_group_name is nil' if network_security_group_name.nil?
+      fail ArgumentError, 'security_rule_name is nil' if security_rule_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{networkSecurityGroupName}'] = ERB::Util.url_encode(network_security_group_name1) if path.include?('{networkSecurityGroupName}')
-      path['{securityRuleName}'] = ERB::Util.url_encode(security_rule_name1) if path.include?('{securityRuleName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{networkSecurityGroupName}'] = ERB::Util.url_encode(network_security_group_name) if path.include?('{networkSecurityGroupName}')
+      path['{securityRuleName}'] = ERB::Util.url_encode(security_rule_name) if path.include?('{securityRuleName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -224,11 +212,11 @@ module Azure::ARM::Network
     #
     # The Put network security rule operation creates/updates a security rule in
     # the specified network security group
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param network_security_group_name1 [String] The name of the network
-    # security group.
-    # @param security_rule_name1 [String] The name of the security rule.
-    # @param security_rule_parameters1 [SecurityRule] Parameters supplied to the
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_security_group_name [String] The name of the network security
+    # group.
+    # @param security_rule_name [String] The name of the security rule.
+    # @param security_rule_parameters [SecurityRule] Parameters supplied to the
     # create/update network security rule operation
     # @param @client.api_version [String] Client Api Version.
     # @param @client.subscription_id [String] Gets subscription credentials which
@@ -240,9 +228,9 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update(resource_group_name1, network_security_group_name1, security_rule_name1, security_rule_parameters1, custom_headers = nil)
+    def create_or_update(resource_group_name, network_security_group_name, security_rule_name, security_rule_parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update(resource_group_name1, network_security_group_name1, security_rule_name1, security_rule_parameters1, custom_headers)
+      promise = begin_create_or_update(resource_group_name, network_security_group_name, security_rule_name, security_rule_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -262,34 +250,31 @@ module Azure::ARM::Network
     #
     # The Put network security rule operation creates/updates a security rule in
     # the specified network security group
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param network_security_group_name1 [String] The name of the network
-    # security group.
-    # @param security_rule_name1 [String] The name of the security rule.
-    # @param security_rule_parameters1 [SecurityRule] Parameters supplied to the
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_security_group_name [String] The name of the network security
+    # group.
+    # @param security_rule_name [String] The name of the security rule.
+    # @param security_rule_parameters [SecurityRule] Parameters supplied to the
     # create/update network security rule operation
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_create_or_update(resource_group_name1, network_security_group_name1, security_rule_name1, security_rule_parameters1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'network_security_group_name1 is nil' if network_security_group_name1.nil?
-      fail ArgumentError, 'security_rule_name1 is nil' if security_rule_name1.nil?
-      fail ArgumentError, 'security_rule_parameters1 is nil' if security_rule_parameters1.nil?
-      security_rule_parameters1.validate unless security_rule_parameters1.nil?
+    def begin_create_or_update(resource_group_name, network_security_group_name, security_rule_name, security_rule_parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'network_security_group_name is nil' if network_security_group_name.nil?
+      fail ArgumentError, 'security_rule_name is nil' if security_rule_name.nil?
+      fail ArgumentError, 'security_rule_parameters is nil' if security_rule_parameters.nil?
+      security_rule_parameters.validate unless security_rule_parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{networkSecurityGroupName}'] = ERB::Util.url_encode(network_security_group_name1) if path.include?('{networkSecurityGroupName}')
-      path['{securityRuleName}'] = ERB::Util.url_encode(security_rule_name1) if path.include?('{securityRuleName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{networkSecurityGroupName}'] = ERB::Util.url_encode(network_security_group_name) if path.include?('{networkSecurityGroupName}')
+      path['{securityRuleName}'] = ERB::Util.url_encode(security_rule_name) if path.include?('{securityRuleName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -317,10 +302,10 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_headers['Content-Type'] = 'application/json'
-      unless security_rule_parameters1.nil?
-        security_rule_parameters1 = SecurityRule.serialize_object(security_rule_parameters1)
+      unless security_rule_parameters.nil?
+        security_rule_parameters = SecurityRule.serialize_object(security_rule_parameters)
       end
-      request_content = JSON.generate(security_rule_parameters1, quirks_mode: true)
+      request_content = JSON.generate(security_rule_parameters, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -376,27 +361,24 @@ module Azure::ARM::Network
     #
     # The List network security rule opertion retrieves all the security rules in
     # a network security group.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param network_security_group_name1 [String] The name of the network
-    # security group.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param network_security_group_name [String] The name of the network security
+    # group.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list(resource_group_name1, network_security_group_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'network_security_group_name1 is nil' if network_security_group_name1.nil?
+    def list(resource_group_name, network_security_group_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'network_security_group_name is nil' if network_security_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{networkSecurityGroupName}'] = ERB::Util.url_encode(network_security_group_name1) if path.include?('{networkSecurityGroupName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{networkSecurityGroupName}'] = ERB::Util.url_encode(network_security_group_name) if path.include?('{networkSecurityGroupName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -463,18 +445,19 @@ module Azure::ARM::Network
     #
     # The List network security rule opertion retrieves all the security rules in
     # a network security group.
-    # @param next_page_link1 [String] The NextLink from the previous successful
+    # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_next(next_page_link1, custom_headers = nil)
-      fail ArgumentError, 'next_page_link1 is nil' if next_page_link1.nil?
+    def list_next(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
       # Construct URL
       path = "{nextLink}"
-      path['{nextLink}'] = next_page_link1 if path.include?('{nextLink}')
+      path['{nextLink}'] = next_page_link if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
       properties.reject!{ |key, value| value.nil? }

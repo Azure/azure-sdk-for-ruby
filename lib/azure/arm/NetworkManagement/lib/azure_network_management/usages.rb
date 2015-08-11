@@ -24,23 +24,20 @@ module Azure::ARM::Network
 
     #
     # Lists compute usages for a subscription.
-    # @param location1 [String] The location upon which resource usage is queried.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param location [String] The location upon which resource usage is queried.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list(location1, custom_headers = nil)
-      fail ArgumentError, 'location1 is nil' if location1.nil?
+    def list(location, custom_headers = nil)
+      fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/usages"
-      path['{location}'] = ERB::Util.url_encode(location1) if path.include?('{location}')
+      path['{location}'] = ERB::Util.url_encode(location) if path.include?('{location}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}

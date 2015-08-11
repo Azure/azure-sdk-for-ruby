@@ -103,29 +103,26 @@ module Azure::ARM::Network
 
     #
     # Checks whether a domain name in the cloudapp.net zone is available for use.
-    # @param location1 [String] The location of the domain name
-    # @param domain_name_label1 [String] The domain name to be verified. It must
+    # @param location [String] The location of the domain name
+    # @param domain_name_label [String] The domain name to be verified. It must
     # conform to the following regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
-    # @param api_version [String] Client Api Version.
-    # @param subscription_id [String] Gets subscription credentials which uniquely
-    # identify Microsoft Azure subscription. The subscription ID forms part of
-    # the URI for every service call.
-    # @param accept_language [String] Gets or sets the preferred language for the
-    # response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def check_dns_name_availability(location1, domain_name_label1 = nil, custom_headers = nil)
-      fail ArgumentError, 'location1 is nil' if location1.nil?
+    def check_dns_name_availability(location, domain_name_label = nil, custom_headers = nil)
+      fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'api_version is nil' if api_version.nil?
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability"
-      path['{location}'] = ERB::Util.url_encode(location1) if path.include?('{location}')
+      path['{location}'] = ERB::Util.url_encode(location) if path.include?('{location}')
       path['{subscriptionId}'] = ERB::Util.url_encode(subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(self.base_url, path)
       properties = {}
-      properties['domainNameLabel'] = ERB::Util.url_encode(domain_name_label1.to_s) unless domain_name_label1.nil?
+      properties['domainNameLabel'] = ERB::Util.url_encode(domain_name_label.to_s) unless domain_name_label.nil?
       properties['api-version'] = ERB::Util.url_encode(api_version.to_s) unless api_version.nil?
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')

@@ -25,20 +25,14 @@ module Azure::ARM::Network
     #
     # The delete applicationgateway operation deletes the specified
     # applicationgateway.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param application_gateway_name1 [String] The name of the applicationgateway.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the applicationgateway.
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete(resource_group_name1, application_gateway_name1, custom_headers = nil)
+    def delete(resource_group_name, application_gateway_name, custom_headers = nil)
       # Send request
-      promise = begin_delete(resource_group_name1, application_gateway_name1, custom_headers)
+      promise = begin_delete(resource_group_name, application_gateway_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -55,26 +49,23 @@ module Azure::ARM::Network
     #
     # The delete applicationgateway operation deletes the specified
     # applicationgateway.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param application_gateway_name1 [String] The name of the applicationgateway.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the applicationgateway.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_delete(resource_group_name1, application_gateway_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'application_gateway_name1 is nil' if application_gateway_name1.nil?
+    def begin_delete(resource_group_name, application_gateway_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'application_gateway_name is nil' if application_gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{applicationGatewayName}'] = ERB::Util.url_encode(application_gateway_name1) if path.include?('{applicationGatewayName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{applicationGatewayName}'] = ERB::Util.url_encode(application_gateway_name) if path.include?('{applicationGatewayName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -128,26 +119,23 @@ module Azure::ARM::Network
     #
     # The Get applicationgateway operation retreives information about the
     # specified applicationgateway.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param application_gateway_name1 [String] The name of the applicationgateway.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the applicationgateway.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def get(resource_group_name1, application_gateway_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'application_gateway_name1 is nil' if application_gateway_name1.nil?
+    def get(resource_group_name, application_gateway_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'application_gateway_name is nil' if application_gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{applicationGatewayName}'] = ERB::Util.url_encode(application_gateway_name1) if path.include?('{applicationGatewayName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{applicationGatewayName}'] = ERB::Util.url_encode(application_gateway_name) if path.include?('{applicationGatewayName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -213,9 +201,9 @@ module Azure::ARM::Network
 
     #
     # The Put ApplicationGateway operation creates/updates a ApplicationGateway
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param application_gateway_name1 [String] The name of the ApplicationGateway.
-    # @param parameters1 [ApplicationGateway] Parameters supplied to the
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the ApplicationGateway.
+    # @param parameters [ApplicationGateway] Parameters supplied to the
     # create/delete ApplicationGateway operation
     # @param @client.api_version [String] Client Api Version.
     # @param @client.subscription_id [String] Gets subscription credentials which
@@ -227,9 +215,9 @@ module Azure::ARM::Network
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update(resource_group_name1, application_gateway_name1, parameters1, custom_headers = nil)
+    def create_or_update(resource_group_name, application_gateway_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update(resource_group_name1, application_gateway_name1, parameters1, custom_headers)
+      promise = begin_create_or_update(resource_group_name, application_gateway_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -248,30 +236,27 @@ module Azure::ARM::Network
 
     #
     # The Put ApplicationGateway operation creates/updates a ApplicationGateway
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param application_gateway_name1 [String] The name of the ApplicationGateway.
-    # @param parameters1 [ApplicationGateway] Parameters supplied to the
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the ApplicationGateway.
+    # @param parameters [ApplicationGateway] Parameters supplied to the
     # create/delete ApplicationGateway operation
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_create_or_update(resource_group_name1, application_gateway_name1, parameters1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'application_gateway_name1 is nil' if application_gateway_name1.nil?
-      fail ArgumentError, 'parameters1 is nil' if parameters1.nil?
-      parameters1.validate unless parameters1.nil?
+    def begin_create_or_update(resource_group_name, application_gateway_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'application_gateway_name is nil' if application_gateway_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      parameters.validate unless parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{applicationGatewayName}'] = ERB::Util.url_encode(application_gateway_name1) if path.include?('{applicationGatewayName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{applicationGatewayName}'] = ERB::Util.url_encode(application_gateway_name) if path.include?('{applicationGatewayName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -299,10 +284,10 @@ module Azure::ARM::Network
 
       # Serialize Request
       request_headers['Content-Type'] = 'application/json'
-      unless parameters1.nil?
-        parameters1 = ApplicationGateway.serialize_object(parameters1)
+      unless parameters.nil?
+        parameters = ApplicationGateway.serialize_object(parameters)
       end
-      request_content = JSON.generate(parameters1, quirks_mode: true)
+      request_content = JSON.generate(parameters, quirks_mode: true)
 
       # Send Request
       promise = Concurrent::Promise.new do
@@ -358,23 +343,20 @@ module Azure::ARM::Network
     #
     # The List ApplicationGateway opertion retrieves all the applicationgateways
     # in a resource group.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list(resource_group_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
+    def list(resource_group_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -441,12 +423,9 @@ module Azure::ARM::Network
     #
     # The List applicationgateway opertion retrieves all the applicationgateways
     # in a subscription.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
@@ -521,21 +500,14 @@ module Azure::ARM::Network
     #
     # The Start ApplicationGateway operation starts application gatewayin the
     # specified resource group through Network resource provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param application_gateway_name1 [String] The name of the application
-    # gateway.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the application gateway.
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def start(resource_group_name1, application_gateway_name1, custom_headers = nil)
+    def start(resource_group_name, application_gateway_name, custom_headers = nil)
       # Send request
-      promise = begin_start(resource_group_name1, application_gateway_name1, custom_headers)
+      promise = begin_start(resource_group_name, application_gateway_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -552,27 +524,23 @@ module Azure::ARM::Network
     #
     # The Start ApplicationGateway operation starts application gatewayin the
     # specified resource group through Network resource provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param application_gateway_name1 [String] The name of the application
-    # gateway.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the application gateway.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_start(resource_group_name1, application_gateway_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'application_gateway_name1 is nil' if application_gateway_name1.nil?
+    def begin_start(resource_group_name, application_gateway_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'application_gateway_name is nil' if application_gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/start"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{applicationGatewayName}'] = ERB::Util.url_encode(application_gateway_name1) if path.include?('{applicationGatewayName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{applicationGatewayName}'] = ERB::Util.url_encode(application_gateway_name) if path.include?('{applicationGatewayName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -626,21 +594,14 @@ module Azure::ARM::Network
     #
     # The STOP ApplicationGateway operation stops application gatewayin the
     # specified resource group through Network resource provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param application_gateway_name1 [String] The name of the application
-    # gateway.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the application gateway.
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def stop(resource_group_name1, application_gateway_name1, custom_headers = nil)
+    def stop(resource_group_name, application_gateway_name, custom_headers = nil)
       # Send request
-      promise = begin_stop(resource_group_name1, application_gateway_name1, custom_headers)
+      promise = begin_stop(resource_group_name, application_gateway_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -657,27 +618,23 @@ module Azure::ARM::Network
     #
     # The STOP ApplicationGateway operation stops application gatewayin the
     # specified resource group through Network resource provider.
-    # @param resource_group_name1 [String] The name of the resource group.
-    # @param application_gateway_name1 [String] The name of the application
-    # gateway.
-    # @param @client.api_version [String] Client Api Version.
-    # @param @client.subscription_id [String] Gets subscription credentials which
-    # uniquely identify Microsoft Azure subscription. The subscription ID forms
-    # part of the URI for every service call.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the application gateway.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def begin_stop(resource_group_name1, application_gateway_name1, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name1 is nil' if resource_group_name1.nil?
-      fail ArgumentError, 'application_gateway_name1 is nil' if application_gateway_name1.nil?
+    def begin_stop(resource_group_name, application_gateway_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'application_gateway_name is nil' if application_gateway_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       # Construct URL
       path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/stop"
-      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name1) if path.include?('{resourceGroupName}')
-      path['{applicationGatewayName}'] = ERB::Util.url_encode(application_gateway_name1) if path.include?('{applicationGatewayName}')
+      path['{resourceGroupName}'] = ERB::Util.url_encode(resource_group_name) if path.include?('{resourceGroupName}')
+      path['{applicationGatewayName}'] = ERB::Util.url_encode(application_gateway_name) if path.include?('{applicationGatewayName}')
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
@@ -731,18 +688,19 @@ module Azure::ARM::Network
     #
     # The List ApplicationGateway opertion retrieves all the applicationgateways
     # in a resource group.
-    # @param next_page_link1 [String] The NextLink from the previous successful
+    # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_next(next_page_link1, custom_headers = nil)
-      fail ArgumentError, 'next_page_link1 is nil' if next_page_link1.nil?
+    def list_next(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
       # Construct URL
       path = "{nextLink}"
-      path['{nextLink}'] = next_page_link1 if path.include?('{nextLink}')
+      path['{nextLink}'] = next_page_link if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
       properties.reject!{ |key, value| value.nil? }
@@ -807,18 +765,19 @@ module Azure::ARM::Network
     #
     # The List applicationgateway opertion retrieves all the applicationgateways
     # in a subscription.
-    # @param next_page_link1 [String] The NextLink from the previous successful
+    # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
-    # @param @client.accept_language [String] Gets or sets the preferred language
-    # for the response.
+    # @param [Hash{String => String}] The hash of custom headers need to be
+    # applied to HTTP request.
+    #
     # @return [Concurrent::Promise] Promise object which allows to get HTTP
     # response.
     #
-    def list_all_next(next_page_link1, custom_headers = nil)
-      fail ArgumentError, 'next_page_link1 is nil' if next_page_link1.nil?
+    def list_all_next(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
       # Construct URL
       path = "{nextLink}"
-      path['{nextLink}'] = next_page_link1 if path.include?('{nextLink}')
+      path['{nextLink}'] = next_page_link if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
       properties.reject!{ |key, value| value.nil? }
