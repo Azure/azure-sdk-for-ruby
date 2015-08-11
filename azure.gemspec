@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Official ruby client library to consume Microsoft Azure services.'
   s.homepage    = 'http://github.com/azure/azure-sdk-for-ruby'
   s.license     = 'Apache License, Version 2.0'
-  s.files       = `git ls-files`.split("\n")
+  s.files       = `git ls-files`.split("\n").reject { |f|  f.start_with?("lib/azure/arm") }
   s.bindir      = 'bin'
   s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
 
