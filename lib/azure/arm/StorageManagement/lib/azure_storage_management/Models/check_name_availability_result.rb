@@ -17,10 +17,10 @@ module Azure::ARM::Storage
       # false, the name has already been taken or invalid and cannot be used.
       attr_accessor :name_available
 
-      # @return Gets the reason that a storage account name could not be used.
-      # The Reason element is only returned if NameAvailable is false.
-      # Possible values for this property include: 'AccountNameInvalid',
-      # 'AlreadyExists'.
+      # @return [Reason] Gets the reason that a storage account name could not
+      # be used. The Reason element is only returned if NameAvailable is
+      # false. Possible values for this property include:
+      # 'AccountNameInvalid', 'AlreadyExists'.
       attr_accessor :reason
 
       # @return [String] Gets an error message explaining the Reason value in

@@ -15,19 +15,19 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return Gets or sets the pass name. Currently, the only allowable
-      # value is oobeSystem. Possible values for this property include:
-      # 'oobeSystem'.
+      # @return [PassNames] Gets or sets the pass name. Currently, the only
+      # allowable value is oobeSystem. Possible values for this property
+      # include: 'oobeSystem'.
       attr_accessor :pass_name
 
-      # @return Gets or sets the component name. Currently, the only allowable
-      # value is Microsoft-Windows-Shell-Setup. Possible values for this
-      # property include: 'Microsoft-Windows-Shell-Setup'.
+      # @return [ComponentNames] Gets or sets the component name. Currently,
+      # the only allowable value is Microsoft-Windows-Shell-Setup. Possible
+      # values for this property include: 'Microsoft-Windows-Shell-Setup'.
       attr_accessor :component_name
 
-      # @return Gets or sets setting name (e.g. FirstLogonCommands, AutoLogon
-      # ). Possible values for this property include: 'AutoLogon',
-      # 'FirstLogonCommands'.
+      # @return [SettingNames] Gets or sets setting name (e.g.
+      # FirstLogonCommands, AutoLogon ). Possible values for this property
+      # include: 'AutoLogon', 'FirstLogonCommands'.
       attr_accessor :setting_name
 
       # @return [String] Gets or sets XML formatted content that is added to

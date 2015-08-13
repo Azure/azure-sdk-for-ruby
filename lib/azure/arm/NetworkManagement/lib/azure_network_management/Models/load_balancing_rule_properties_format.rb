@@ -24,14 +24,14 @@ module Azure::ARM::Network
       # probe used by the Load Balancing rule.
       attr_accessor :probe
 
-      # @return Gets or sets the transport protocol for the external endpoint.
-      # Possible values are Udp or Tcp. Possible values for this property
-      # include: 'Udp', 'Tcp'.
+      # @return [TransportProtocol] Gets or sets the transport protocol for
+      # the external endpoint. Possible values are Udp or Tcp. Possible
+      # values for this property include: 'Udp', 'Tcp'.
       attr_accessor :protocol
 
-      # @return Gets or sets the load distribution policy for this rule.
-      # Possible values for this property include: 'Default', 'SourceIP',
-      # 'SourceIPProtocol'.
+      # @return [LoadDistribution] Gets or sets the load distribution policy
+      # for this rule. Possible values for this property include: 'Default',
+      # 'SourceIP', 'SourceIPProtocol'.
       attr_accessor :load_distribution
 
       # @return [Integer] Gets or sets the port for the external endpoint. You

@@ -12,9 +12,9 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return Gets or sets the Protocol used by WinRM listener. Currently
-      # only Http and Https are supported. Possible values for this property
-      # include: 'Http', 'Https'.
+      # @return [ProtocolTypes] Gets or sets the Protocol used by WinRM
+      # listener. Currently only Http and Https are supported. Possible
+      # values for this property include: 'Http', 'Https'.
       attr_accessor :protocol
 
       # @return [String] Gets or sets the Certificate URL in KMS for Https

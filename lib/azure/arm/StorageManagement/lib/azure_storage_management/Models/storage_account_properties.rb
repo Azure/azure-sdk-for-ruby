@@ -12,14 +12,14 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      # @return Gets the status of the storage account at the time the
-      # operation was called. Possible values for this property include:
-      # 'Creating', 'ResolvingDNS', 'Succeeded'.
+      # @return [ProvisioningState] Gets the status of the storage account at
+      # the time the operation was called. Possible values for this property
+      # include: 'Creating', 'ResolvingDNS', 'Succeeded'.
       attr_accessor :provisioning_state
 
-      # @return Gets the type of the storage account. Possible values for this
-      # property include: 'Standard_LRS', 'Standard_ZRS', 'Standard_GRS',
-      # 'Standard_RAGRS', 'Premium_LRS'.
+      # @return [AccountType] Gets the type of the storage account. Possible
+      # values for this property include: 'Standard_LRS', 'Standard_ZRS',
+      # 'Standard_GRS', 'Standard_RAGRS', 'Premium_LRS'.
       attr_accessor :account_type
 
       # @return [Endpoints] Gets the URLs that are used to perform a retrieval
@@ -31,13 +31,13 @@ module Azure::ARM::Storage
       # account.
       attr_accessor :primary_location
 
-      # @return Gets the status indicating whether the primary location of the
-      # storage account is available or unavailable. Possible values for this
-      # property include: 'Available', 'Unavailable'.
+      # @return [AccountStatus] Gets the status indicating whether the primary
+      # location of the storage account is available or unavailable. Possible
+      # values for this property include: 'Available', 'Unavailable'.
       attr_accessor :status_of_primary
 
-      # @return Gets the timestamp of the most recent instance of a failover
-      # to the secondary location. Only the most recent timestamp is
+      # @return [DateTime] Gets the timestamp of the most recent instance of a
+      # failover to the secondary location. Only the most recent timestamp is
       # retained. This element is not returned if there has never been a
       # failover instance. Only available if the accountType is StandardGRS
       # or StandardRAGRS.
@@ -48,13 +48,15 @@ module Azure::ARM::Storage
       # or StandardRAGRS.
       attr_accessor :secondary_location
 
-      # @return Gets the status indicating whether the secondary location of
-      # the storage account is available or unavailable. Only available if
-      # the accountType is StandardGRS or StandardRAGRS. Possible values for
-      # this property include: 'Available', 'Unavailable'.
+      # @return [AccountStatus] Gets the status indicating whether the
+      # secondary location of the storage account is available or
+      # unavailable. Only available if the accountType is StandardGRS or
+      # StandardRAGRS. Possible values for this property include:
+      # 'Available', 'Unavailable'.
       attr_accessor :status_of_secondary
 
-      # @return Gets the creation date and time of the storage account in UTC.
+      # @return [DateTime] Gets the creation date and time of the storage
+      # account in UTC.
       attr_accessor :creation_time
 
       # @return [CustomDomain] Gets the user assigned custom domain assigned

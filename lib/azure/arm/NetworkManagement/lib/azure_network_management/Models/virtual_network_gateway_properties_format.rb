@@ -16,12 +16,12 @@ module Azure::ARM::Network
       # for Virtual network gateway.
       attr_accessor :ip_configurations
 
-      # @return The type of this virtual network gateway. Possible values for
-      # this property include: 'Vpn'.
+      # @return [VirtualNetworkGatewayType] The type of this virtual network
+      # gateway. Possible values for this property include: 'Vpn'.
       attr_accessor :gateway_type
 
-      # @return The type of this virtual network gateway. Possible values for
-      # this property include: 'PolicyBased', 'RouteBased'.
+      # @return [VpnType] The type of this virtual network gateway. Possible
+      # values for this property include: 'PolicyBased', 'RouteBased'.
       attr_accessor :vpn_type
 
       # @return [Boolean] EnableBgp Flag

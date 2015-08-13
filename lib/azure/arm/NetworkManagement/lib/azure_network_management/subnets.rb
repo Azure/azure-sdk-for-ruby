@@ -75,6 +75,8 @@ module Azure::ARM::Network
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
+      corrected_url = url.to_s.gsub(/([^:])\/\//, '\1/')
+      url = URI.parse(corrected_url)
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
@@ -147,6 +149,8 @@ module Azure::ARM::Network
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
+      corrected_url = url.to_s.gsub(/([^:])\/\//, '\1/')
+      url = URI.parse(corrected_url)
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
@@ -274,6 +278,8 @@ module Azure::ARM::Network
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
+      corrected_url = url.to_s.gsub(/([^:])\/\//, '\1/')
+      url = URI.parse(corrected_url)
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
@@ -376,6 +382,8 @@ module Azure::ARM::Network
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
+      corrected_url = url.to_s.gsub(/([^:])\/\//, '\1/')
+      url = URI.parse(corrected_url)
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02
@@ -452,6 +460,8 @@ module Azure::ARM::Network
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
+      corrected_url = url.to_s.gsub(/([^:])\/\//, '\1/')
+      url = URI.parse(corrected_url)
 
       connection = Faraday.new(:url => url) do |faraday|
         faraday.use MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02

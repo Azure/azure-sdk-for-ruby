@@ -15,12 +15,13 @@ module Azure::ARM::Network
       # @return [Integer] Gets or sets the port
       attr_accessor :port
 
-      # @return Gets or sets the protocol. Possible values for this property
-      # include: 'Http', 'Https'.
+      # @return [ApplicationGatewayProtocol] Gets or sets the protocol.
+      # Possible values for this property include: 'Http', 'Https'.
       attr_accessor :protocol
 
-      # @return Gets or sets the cookie affinity. Possible values for this
-      # property include: 'Enabled', 'Disabled'.
+      # @return [ApplicationGatewayCookieBasedAffinity] Gets or sets the
+      # cookie affinity. Possible values for this property include:
+      # 'Enabled', 'Disabled'.
       attr_accessor :cookie_based_affinity
 
       # @return [String] Gets or sets Provisioning state of the backend http

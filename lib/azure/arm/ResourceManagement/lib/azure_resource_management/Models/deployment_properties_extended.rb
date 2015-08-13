@@ -18,7 +18,8 @@ module Azure::ARM::Resources
       # @return [String] Gets or sets the correlation ID of the deployment.
       attr_accessor :correlation_id
 
-      # @return Gets or sets the timestamp of the template deployment.
+      # @return [DateTime] Gets or sets the timestamp of the template
+      # deployment.
       attr_accessor :timestamp
 
       # @return Gets or sets key/value pairs that represent deploymentoutput.
@@ -47,8 +48,8 @@ module Azure::ARM::Resources
       # parameters. Use only one of Parameters or ParametersLink.
       attr_accessor :parameters_link
 
-      # @return Gets or sets the deployment mode. Possible values for this
-      # property include: 'Incremental'.
+      # @return [DeploymentMode] Gets or sets the deployment mode. Possible
+      # values for this property include: 'Incremental'.
       attr_accessor :mode
 
       #

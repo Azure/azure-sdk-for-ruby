@@ -21,9 +21,9 @@ module Azure::ARM::Network
       # @return [LocalNetworkGateway]
       attr_accessor :local_network_gateway2
 
-      # @return Gateway connection type -Ipsec/Dedicated/VpnClient/Vnet2Vnet.
-      # Possible values for this property include: 'IPsec', 'Vnet2Vnet',
-      # 'ExpressRoute', 'VPNClient'.
+      # @return [VirtualNetworkGatewayConnectionType] Gateway connection type
+      # -Ipsec/Dedicated/VpnClient/Vnet2Vnet. Possible values for this
+      # property include: 'IPsec', 'Vnet2Vnet', 'ExpressRoute', 'VPNClient'.
       attr_accessor :connection_type
 
       # @return [Integer] The Routing weight.

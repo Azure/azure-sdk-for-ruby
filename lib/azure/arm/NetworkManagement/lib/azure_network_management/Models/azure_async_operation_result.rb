@@ -19,8 +19,8 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return Status of the AzureAsuncOperation. Possible values for this
-      # property include: 'InProgress', 'Succeeded', 'Failed'.
+      # @return [OperationStatus] Status of the AzureAsuncOperation. Possible
+      # values for this property include: 'InProgress', 'Succeeded', 'Failed'.
       attr_accessor :status
 
       # @return [Error]

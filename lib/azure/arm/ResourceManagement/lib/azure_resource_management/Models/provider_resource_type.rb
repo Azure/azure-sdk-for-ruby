@@ -22,7 +22,7 @@ module Azure::ARM::Resources
       # @return [Array<String>] Gets or sets the api version.
       attr_accessor :api_versions
 
-      # @return Gets or sets the properties.
+      # @return [Hash{String => String}] Gets or sets the properties.
       attr_accessor :properties
 
       #

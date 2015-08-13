@@ -15,8 +15,8 @@ module Azure::ARM::Compute
       # @return [String] Gets or sets the status Code.
       attr_accessor :code
 
-      # @return Gets or sets the level Code. Possible values for this property
-      # include: 'Info', 'Warning', 'Error'.
+      # @return [StatusLevelTypes] Gets or sets the level Code. Possible
+      # values for this property include: 'Info', 'Warning', 'Error'.
       attr_accessor :level
 
       # @return [String] Gets or sets the short localizable label for the
@@ -27,7 +27,7 @@ module Azure::ARM::Compute
       # for alerts and error messages.
       attr_accessor :message
 
-      # @return Gets or sets the time of the status.
+      # @return [DateTime] Gets or sets the time of the status.
       attr_accessor :time
 
       #

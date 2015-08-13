@@ -28,8 +28,8 @@ module Azure::ARM::Resources
       # parameters. Use only one of Parameters or ParametersLink.
       attr_accessor :parameters_link
 
-      # @return Gets or sets the deployment mode. Possible values for this
-      # property include: 'Incremental'.
+      # @return [DeploymentMode] Gets or sets the deployment mode. Possible
+      # values for this property include: 'Incremental'.
       attr_accessor :mode
 
       #

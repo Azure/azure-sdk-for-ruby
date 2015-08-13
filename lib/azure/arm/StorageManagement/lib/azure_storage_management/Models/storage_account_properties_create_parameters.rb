@@ -12,9 +12,9 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      # @return Gets or sets the account type. Possible values for this
-      # property include: 'Standard_LRS', 'Standard_ZRS', 'Standard_GRS',
-      # 'Standard_RAGRS', 'Premium_LRS'.
+      # @return [AccountType] Gets or sets the account type. Possible values
+      # for this property include: 'Standard_LRS', 'Standard_ZRS',
+      # 'Standard_GRS', 'Standard_RAGRS', 'Premium_LRS'.
       attr_accessor :account_type
 
       #
