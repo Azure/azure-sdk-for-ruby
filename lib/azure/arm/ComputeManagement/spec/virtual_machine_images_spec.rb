@@ -12,10 +12,10 @@ describe VirtualMachines do
   before(:all) do
     @client = COMPUTE_CLIENT.virtual_machine_images
     @location = 'westus'
-    @publisherName = 'MicrosoftWindowsServer'
-    @offerName = 'WindowsServer'
-    @skusName = '2012-R2-Datacenter'
-    @windowsServiceImageVersion = '4.0.201506'
+    @publisher_name = 'MicrosoftWindowsServer'
+    @offer_name = 'WindowsServer'
+    @skus_name = '2012-R2-Datacenter'
+    @windows_service_image_version = '4.0.201506'
   end
 
 
@@ -27,28 +27,28 @@ describe VirtualMachines do
   end
 
   it 'should list offers' do
-    result = @client.list_offers(@location, @publisherName).value!
+    result = @client.list_offers(@location, @publisher_name).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body).to be_a Array
   end
 
   it 'should list skus' do
-    result = @client.list_skus(@location, @publisherName, @offerName).value!
+    result = @client.list_skus(@location, @publisher_name, @offer_name).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body).to be_a Array
   end
 
   it 'should list all virtual machine images' do
-    result = @client.list(@location, @publisherName, @offerName, @skusName).value!
+    result = @client.list(@location, @publisher_name, @offer_name, @skus_name).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body).to be_a Array
   end
 
   it 'should get virtual machine image' do
-    result = @client.get(@location, @publisherName, @offerName, @skusName, @windowsServiceImageVersion).value!
+    result = @client.get(@location, @publisher_name, @offer_name, @skus_name, @windows_service_image_version).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
   end

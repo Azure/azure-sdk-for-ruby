@@ -8,9 +8,6 @@ include MsRestAzure
 include Azure::ARM::Resources
 include Azure::ARM::Network
 
-### WARNING use different virtual networks as a parameter, because of fixed address_prefix
-### from build_subnet_params method, all subnet's address_prefixes from one virtual network
-### should be different
 def create_subnet(virtual_network, resource_group, subnet_client)
   subnet_name = get_random_name('subnet')
   params = build_subnet_params

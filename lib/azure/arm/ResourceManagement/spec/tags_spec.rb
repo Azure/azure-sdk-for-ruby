@@ -76,6 +76,12 @@ describe ResourceManagementClient do
     expect(result.response.status).to eq(200)
   end
 
+  it 'should raise an exception creating value for not existing tag' do
+    tag_name = get_random_name('tag_name')
+    tag_value = get_random_name('tag_value')
+    expect{@client.create_or_update_value(tag_name, tag_value).value!}.to raise_error(MsRestAzure::AzureOperationError)
+  end
+
   def create_tag
     name = get_random_name('RubySDKTest_')
     @created_tags.push(name)

@@ -190,11 +190,6 @@ describe VirtualMachines do
   end
 
   def get_image_reference
-    # publisherName = 'MicrosoftWindowsServer'
-    # offerName = 'WindowsServer'
-    # skusName = '2012-R2-Datacenter'
-    # windowsServiceImageVersion = '4.0.201506'
-    #@client.get(@location, publisherName, offerName, skusName, windowsServiceImageVersion).value!.body
     ref = ImageReference.new
     ref.publisher = 'MicrosoftWindowsServer'
     ref.offer = 'WindowsServer'

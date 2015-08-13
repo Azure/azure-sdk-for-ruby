@@ -83,6 +83,20 @@ describe ResourceManagementClient do
     end
   end
 
+  it 'should filter resources' do
+    filter = "tagName eq 'tagName' and tagValue eq 'tagValue'"
+
+    result = @client.list().value!
+    expect(result.body.value).not_to be_nil
+    expect(result.body.value).to be_a(Array)
+
+    while result.body.next_link  do
+      result = @client.list_next(result.body.next_link).value!
+      expect(result.body.value).not_to be_nil
+      expect(result.body.value).to be_a(Array)
+    end
+  end
+
   it 'should move resources' do
     target_group = create_resource_group
 
