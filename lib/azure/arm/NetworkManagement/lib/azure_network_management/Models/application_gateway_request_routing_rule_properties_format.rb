@@ -12,8 +12,8 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return Gets or sets the rule type. Possible values for this property
-      # include: 'Basic'.
+      # @return [ApplicationGatewayRequestRoutingRuleType] Gets or sets the
+      # rule type. Possible values for this property include: 'Basic'.
       attr_accessor :rule_type
 
       # @return [SubResource] Gets or sets backend address pool resource of

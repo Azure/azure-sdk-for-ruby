@@ -16,9 +16,9 @@ module Azure::ARM::Network
       # to 140 chars.
       attr_accessor :description
 
-      # @return Gets or sets Network protocol this rule applies to. Can be
-      # Tcp, Udp or All(*). Possible values for this property include: 'Tcp',
-      # 'Udp', '*'.
+      # @return [SecurityRuleProtocol] Gets or sets Network protocol this rule
+      # applies to. Can be Tcp, Udp or All(*). Possible values for this
+      # property include: 'Tcp', 'Udp', '*'.
       attr_accessor :protocol
 
       # @return [String] Gets or sets Source Port or Range. Integer or range
@@ -44,9 +44,9 @@ module Azure::ARM::Network
       # â€˜AzureLoadBalancerâ€™ and â€˜Internetâ€™ can also be used.
       attr_accessor :destination_address_prefix
 
-      # @return Gets or sets network traffic is allowed or denied. Possible
-      # values are â€œAllowâ€ and â€œDenyâ€. Possible values for this
-      # property include: 'Allow', 'Deny'.
+      # @return [SecurityRuleAccess] Gets or sets network traffic is allowed
+      # or denied. Possible values are â€œAllowâ€ and â€œDenyâ€. Possible
+      # values for this property include: 'Allow', 'Deny'.
       attr_accessor :access
 
       # @return [Integer] Gets or sets the priority of the rule. The value can
@@ -55,10 +55,10 @@ module Azure::ARM::Network
       # priority of the rule.
       attr_accessor :priority
 
-      # @return Gets or sets the direction of the rule.InBound or Outbound.
-      # The direction specifies if rule will be evaluated on incoming or
-      # outcoming traffic. Possible values for this property include:
-      # 'Inbound', 'Outbound'.
+      # @return [SecurityRuleDirection] Gets or sets the direction of the
+      # rule.InBound or Outbound. The direction specifies if rule will be
+      # evaluated on incoming or outcoming traffic. Possible values for this
+      # property include: 'Inbound', 'Outbound'.
       attr_accessor :direction
 
       # @return [String] Gets or sets Provisioning state of the PublicIP

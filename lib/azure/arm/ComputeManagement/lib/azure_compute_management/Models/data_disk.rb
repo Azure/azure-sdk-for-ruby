@@ -31,12 +31,13 @@ module Azure::ARM::Compute
       # destination VirtualHardDisk should not exist.
       attr_accessor :image
 
-      # @return Gets or sets the caching type. Possible values for this
-      # property include: 'None', 'ReadOnly', 'ReadWrite'.
+      # @return [CachingTypes] Gets or sets the caching type. Possible values
+      # for this property include: 'None', 'ReadOnly', 'ReadWrite'.
       attr_accessor :caching
 
-      # @return Gets or sets the create option. Possible values for this
-      # property include: 'fromImage', 'empty', 'attach'.
+      # @return [DiskCreateOptionTypes] Gets or sets the create option.
+      # Possible values for this property include: 'fromImage', 'empty',
+      # 'attach'.
       attr_accessor :create_option
 
       #

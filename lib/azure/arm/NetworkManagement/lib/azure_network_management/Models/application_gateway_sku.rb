@@ -12,13 +12,13 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return Gets or sets name of application gateway SKU. Possible values
-      # for this property include: 'Standard_Small', 'Standard_Medium',
-      # 'Standard_Large'.
+      # @return [ApplicationGatewaySkuName] Gets or sets name of application
+      # gateway SKU. Possible values for this property include:
+      # 'Standard_Small', 'Standard_Medium', 'Standard_Large'.
       attr_accessor :name
 
-      # @return Gets or sets tier of application gateway. Possible values for
-      # this property include: 'Standard'.
+      # @return [ApplicationGatewayTier] Gets or sets tier of application
+      # gateway. Possible values for this property include: 'Standard'.
       attr_accessor :tier
 
       # @return [Integer] Gets or sets capacity (instance count) of

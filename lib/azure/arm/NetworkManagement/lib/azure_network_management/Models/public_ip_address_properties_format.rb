@@ -12,8 +12,9 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return Gets or sets PublicIP allocation method (Static/Dynamic).
-      # Possible values for this property include: 'Static', 'Dynamic'.
+      # @return [IpAllocationMethod] Gets or sets PublicIP allocation method
+      # (Static/Dynamic). Possible values for this property include:
+      # 'Static', 'Dynamic'.
       attr_accessor :public_ipallocation_method
 
       # @return [SubResource] Gets a reference to the network interface IP

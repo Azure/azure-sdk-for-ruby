@@ -15,14 +15,15 @@ module Azure::ARM::Compute
       # @return [String] Gets the operation identifier.
       attr_accessor :operation_id
 
-      # @return Gets the operation status. Possible values for this property
-      # include: 'InProgress', 'Failed', 'Succeeded', 'Preempted'.
+      # @return [ComputeOperationStatus] Gets the operation status. Possible
+      # values for this property include: 'InProgress', 'Failed',
+      # 'Succeeded', 'Preempted'.
       attr_accessor :status
 
-      # @return Gets the operation start time
+      # @return [DateTime] Gets the operation start time
       attr_accessor :start_time
 
-      # @return Gets the operation end time
+      # @return [DateTime] Gets the operation end time
       attr_accessor :end_time
 
       # @return [ComputeLongRunningOperationProperties]

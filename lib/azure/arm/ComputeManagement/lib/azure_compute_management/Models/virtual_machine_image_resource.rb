@@ -18,7 +18,8 @@ module Azure::ARM::Compute
       # @return [String] Gets or sets the location of the resource.
       attr_accessor :location
 
-      # @return Gets or sets the tags attached to the resource.
+      # @return [Hash{String => String}] Gets or sets the tags attached to the
+      # resource.
       attr_accessor :tags
 
       #

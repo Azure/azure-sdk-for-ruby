@@ -12,8 +12,8 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return Gets or sets an enum describing the unit of measurement.
-      # Possible values for this property include: 'Count'.
+      # @return [UsageUnit] Gets or sets an enum describing the unit of
+      # measurement. Possible values for this property include: 'Count'.
       attr_accessor :unit
 
       # @return [Integer] Gets or sets the current value of the usage.

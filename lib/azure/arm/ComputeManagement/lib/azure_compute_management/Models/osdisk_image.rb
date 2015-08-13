@@ -12,8 +12,9 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return Gets or sets the operating system of the osDiskImage. Possible
-      # values for this property include: 'Windows', 'Linux'.
+      # @return [OperatingSystemTypes] Gets or sets the operating system of
+      # the osDiskImage. Possible values for this property include:
+      # 'Windows', 'Linux'.
       attr_accessor :operating_system
 
       #

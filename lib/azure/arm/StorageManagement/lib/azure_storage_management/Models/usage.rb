@@ -12,8 +12,8 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      # @return Gets the unit of measurement. Possible values for this
-      # property include: 'Count', 'Bytes', 'Seconds', 'Percent',
+      # @return [UsageUnit] Gets the unit of measurement. Possible values for
+      # this property include: 'Count', 'Bytes', 'Seconds', 'Percent',
       # 'CountsPerSecond', 'BytesPerSecond'.
       attr_accessor :unit
 

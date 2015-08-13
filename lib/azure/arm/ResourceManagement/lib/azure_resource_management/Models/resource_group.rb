@@ -27,7 +27,8 @@ module Azure::ARM::Resources
       # West Europe, East Asia, etc.
       attr_accessor :location
 
-      # @return Gets or sets the tags attached to the resource group.
+      # @return [Hash{String => String}] Gets or sets the tags attached to the
+      # resource group.
       attr_accessor :tags
 
       #

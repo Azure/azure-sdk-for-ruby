@@ -20,9 +20,9 @@ module Azure::ARM::Network
       # of each of the frontendIPConfigurations is forwarded to the backed IP
       attr_accessor :backend_ipconfiguration
 
-      # @return Gets or sets the transport potocol for the external endpoint.
-      # Possible values are Udp or Tcp. Possible values for this property
-      # include: 'Udp', 'Tcp'.
+      # @return [TransportProtocol] Gets or sets the transport potocol for the
+      # external endpoint. Possible values are Udp or Tcp. Possible values
+      # for this property include: 'Udp', 'Tcp'.
       attr_accessor :protocol
 
       # @return [Integer] Gets or sets the port for the external endpoint. You

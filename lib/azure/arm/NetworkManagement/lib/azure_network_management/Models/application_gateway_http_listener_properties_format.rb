@@ -20,8 +20,8 @@ module Azure::ARM::Network
       # application gateway
       attr_accessor :frontend_port
 
-      # @return Gets or sets the protocol. Possible values for this property
-      # include: 'Http', 'Https'.
+      # @return [ApplicationGatewayProtocol] Gets or sets the protocol.
+      # Possible values for this property include: 'Http', 'Https'.
       attr_accessor :protocol
 
       # @return [SubResource] Gets or sets ssl certificate resource of

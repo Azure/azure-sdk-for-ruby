@@ -12,7 +12,8 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      # @return Possible values for this property include: 'key1', 'key2'.
+      # @return [KeyName] Possible values for this property include: 'key1',
+      # 'key2'.
       attr_accessor :key_name
 
       #

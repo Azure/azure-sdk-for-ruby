@@ -12,12 +12,13 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return The virtual machine size name. Possible values for this
-      # property include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
-      # 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2',
-      # 'Standard_A3', 'Standard_A4', 'Standard_A5', 'Standard_A6',
-      # 'Standard_A7', 'Standard_A8', 'Standard_A9', 'Standard_G1',
-      # 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5'.
+      # @return [VirtualMachineSizeTypes] The virtual machine size name.
+      # Possible values for this property include: 'Basic_A0', 'Basic_A1',
+      # 'Basic_A2', 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1',
+      # 'Standard_A2', 'Standard_A3', 'Standard_A4', 'Standard_A5',
+      # 'Standard_A6', 'Standard_A7', 'Standard_A8', 'Standard_A9',
+      # 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4',
+      # 'Standard_G5'.
       attr_accessor :vm_size
 
       #

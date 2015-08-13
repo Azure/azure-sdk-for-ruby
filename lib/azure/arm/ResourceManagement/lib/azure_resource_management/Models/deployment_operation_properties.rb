@@ -15,7 +15,7 @@ module Azure::ARM::Resources
       # @return [String] Gets or sets the state of the provisioning.
       attr_accessor :provisioning_state
 
-      # @return Gets or sets the date and time of the operation.
+      # @return [DateTime] Gets or sets the date and time of the operation.
       attr_accessor :timestamp
 
       # @return [String] Gets or sets operation status code.

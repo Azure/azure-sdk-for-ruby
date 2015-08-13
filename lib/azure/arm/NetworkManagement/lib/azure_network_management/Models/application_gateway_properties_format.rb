@@ -16,9 +16,9 @@ module Azure::ARM::Network
       # gateway resource
       attr_accessor :sku
 
-      # @return Gets operational state of application gateway resource.
-      # Possible values for this property include: 'Stopped', 'Starting',
-      # 'Running', 'Stopping'.
+      # @return [ApplicationGatewayOperationalState] Gets operational state of
+      # application gateway resource. Possible values for this property
+      # include: 'Stopped', 'Starting', 'Running', 'Stopping'.
       attr_accessor :operational_state
 
       # @return [Array<ApplicationGatewayIpConfiguration>] Gets or sets

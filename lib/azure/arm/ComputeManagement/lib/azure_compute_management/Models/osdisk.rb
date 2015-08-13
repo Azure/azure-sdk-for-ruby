@@ -12,8 +12,8 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return Gets or sets the Operating System type. Possible values for
-      # this property include: 'Windows', 'Linux'.
+      # @return [OperatingSystemTypes] Gets or sets the Operating System type.
+      # Possible values for this property include: 'Windows', 'Linux'.
       attr_accessor :os_type
 
       # @return [String] Gets or sets the disk name.
@@ -28,12 +28,13 @@ module Azure::ARM::Compute
       # destination VirtualHardDisk should not exist.
       attr_accessor :image
 
-      # @return Gets or sets the caching type. Possible values for this
-      # property include: 'None', 'ReadOnly', 'ReadWrite'.
+      # @return [CachingTypes] Gets or sets the caching type. Possible values
+      # for this property include: 'None', 'ReadOnly', 'ReadWrite'.
       attr_accessor :caching
 
-      # @return Gets or sets the create option. Possible values for this
-      # property include: 'fromImage', 'empty', 'attach'.
+      # @return [DiskCreateOptionTypes] Gets or sets the create option.
+      # Possible values for this property include: 'fromImage', 'empty',
+      # 'attach'.
       attr_accessor :create_option
 
       #
