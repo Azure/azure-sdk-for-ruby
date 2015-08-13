@@ -45,7 +45,7 @@ module Azure::ARM::Resources
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
-      properties['$filter'] = filter unless filter.nil?
+      properties['$filter'] = ERB::Util.url_encode(filter.to_s) unless filter.nil?
       properties['$top'] = ERB::Util.url_encode(top.to_s) unless top.nil?
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
       properties.reject!{ |key, value| value.nil? }
@@ -601,7 +601,7 @@ module Azure::ARM::Resources
       path['{subscriptionId}'] = ERB::Util.url_encode(@client.subscription_id) if path.include?('{subscriptionId}')
       url = URI.join(@client.base_url, path)
       properties = {}
-      properties['$filter'] = filter unless filter.nil?
+      properties['$filter'] = ERB::Util.url_encode(filter.to_s) unless filter.nil?
       properties['$top'] = ERB::Util.url_encode(top.to_s) unless top.nil?
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
       properties.reject!{ |key, value| value.nil? }
