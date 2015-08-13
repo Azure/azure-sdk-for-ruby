@@ -6,7 +6,7 @@ require_relative 'public_ip_addresses_shared'
 
 def create_virtual_network_gateway(location, resource_group,name = nil)
   params = build_virtual_network_gateway_params(location, resource_group)
-  params.name = name.nil? ? params.name : name
+  params.name = name || params.name
   NETWORK_CLIENT.virtual_network_gateways.create_or_update(resource_group.name, params.name, params).value!.body
 end
 

@@ -11,7 +11,7 @@ include Azure::ARM::Resources
 include Azure::ARM::Network
 
 def create_resource_group(name = nil)
-  resource_group_name = name.nil? ? ('RubySDKTest_') :name
+  resource_group_name = name || get_random_name('RubySDKTest_')
   params = Azure::ARM::Resources::Models::ResourceGroup.new()
   params.location = 'westus'
 
