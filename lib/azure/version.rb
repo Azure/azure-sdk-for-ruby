@@ -18,7 +18,7 @@ module Azure
     MAJOR = 0 unless defined? MAJOR
     MINOR = 7 unless defined? MINOR
     UPDATE = 0 unless defined? UPDATE
-    PRE = 'pre3' unless defined? PRE
+    PRE = nil unless defined? PRE
 
     class << self
 
