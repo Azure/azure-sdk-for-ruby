@@ -2,7 +2,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-
 module Azure::ARM::Network
   #
   # A service client - single point of access to the REST API.
@@ -124,6 +123,12 @@ module Azure::ARM::Network
       properties = {}
       properties['domainNameLabel'] = ERB::Util.url_encode(domain_name_label.to_s) unless domain_name_label.nil?
       properties['api-version'] = ERB::Util.url_encode(api_version.to_s) unless api_version.nil?
+      unless url.query.nil?
+        url.query.split('&').each do |url_item|
+          url_items_parts = url_item.split('=')
+          properties[url_items_parts[0]] = url_items_parts[1]
+        end
+      end
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
