@@ -2,7 +2,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-
 module Azure::ARM::Resources
   #
   # Resources
@@ -45,6 +44,12 @@ module Azure::ARM::Resources
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
+      unless url.query.nil?
+        url.query.split('&').each do |url_item|
+          url_items_parts = url_item.split('=')
+          properties[url_items_parts[0]] = url_items_parts[1]
+        end
+      end
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
@@ -123,6 +128,12 @@ module Azure::ARM::Resources
       properties['$filter'] = ERB::Util.url_encode(filter.to_s) unless filter.nil?
       properties['$top'] = ERB::Util.url_encode(top.to_s) unless top.nil?
       properties['api-version'] = ERB::Util.url_encode(@client.api_version.to_s) unless @client.api_version.nil?
+      unless url.query.nil?
+        url.query.split('&').each do |url_item|
+          url_items_parts = url_item.split('=')
+          properties[url_items_parts[0]] = url_items_parts[1]
+        end
+      end
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
@@ -218,6 +229,12 @@ module Azure::ARM::Resources
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(api_version.to_s) unless api_version.nil?
+      unless url.query.nil?
+        url.query.split('&').each do |url_item|
+          url_items_parts = url_item.split('=')
+          properties[url_items_parts[0]] = url_items_parts[1]
+        end
+      end
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
@@ -302,6 +319,12 @@ module Azure::ARM::Resources
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(api_version.to_s) unless api_version.nil?
+      unless url.query.nil?
+        url.query.split('&').each do |url_item|
+          url_items_parts = url_item.split('=')
+          properties[url_items_parts[0]] = url_items_parts[1]
+        end
+      end
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
@@ -425,6 +448,12 @@ module Azure::ARM::Resources
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(api_version.to_s) unless api_version.nil?
+      unless url.query.nil?
+        url.query.split('&').each do |url_item|
+          url_items_parts = url_item.split('=')
+          properties[url_items_parts[0]] = url_items_parts[1]
+        end
+      end
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
@@ -540,6 +569,12 @@ module Azure::ARM::Resources
       url = URI.join(@client.base_url, path)
       properties = {}
       properties['api-version'] = ERB::Util.url_encode(api_version.to_s) unless api_version.nil?
+      unless url.query.nil?
+        url.query.split('&').each do |url_item|
+          url_items_parts = url_item.split('=')
+          properties[url_items_parts[0]] = url_items_parts[1]
+        end
+      end
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/
@@ -630,6 +665,12 @@ module Azure::ARM::Resources
       path['{nextLink}'] = next_page_link if path.include?('{nextLink}')
       url = URI.parse(path)
       properties = {}
+      unless url.query.nil?
+        url.query.split('&').each do |url_item|
+          url_items_parts = url_item.split('=')
+          properties[url_items_parts[0]] = url_items_parts[1]
+        end
+      end
       properties.reject!{ |key, value| value.nil? }
       url.query = properties.map{ |key, value| "#{key}=#{value}" }.compact.join('&')
       fail URI::Error unless url.to_s =~ /\A#{URI::regexp}\z/

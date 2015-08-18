@@ -2,7 +2,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-
 module Azure::ARM::Storage
   #
   # A service client - single point of access to the REST API.
