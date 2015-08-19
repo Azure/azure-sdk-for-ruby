@@ -5,8 +5,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-group :development, :local, :test do
-  gem 'rspec'
+group :development do
   gem 'json'
   gem 'concurrent-ruby-ext'
   gem 'faraday'
@@ -15,4 +14,8 @@ group :development, :local, :test do
   gem 'azure_resource_management'
   gem 'azure_storage_management'
   gem 'azure_network_management'
+end
+
+group :test do
+  gem 'rspec'
 end
