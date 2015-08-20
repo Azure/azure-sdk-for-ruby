@@ -53,7 +53,7 @@ describe ResourceManagementClient do
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while result.body.next_link  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)

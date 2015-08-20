@@ -36,7 +36,7 @@ describe VirtualNetworkGatewayConnections do
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
-    until result.body.next_link.to_s.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty? do
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)

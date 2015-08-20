@@ -48,6 +48,15 @@ describe VirtualMachines do
     expect(result.body).to be_a Array
   end
 
+  it 'should list virtual machine images with filter and top' do
+    pending('no filters allowed (see response from server for more details)')
+    filter = "startswith(name,'1.1')"
+    result = @client.list(@location, @publisher_name, @offer_name, @skus_name, filter, 1).value!
+    expect(result.response.status).to eq(200)
+    expect(result.body).not_to be_nil
+    expect(result.body).to be_a Array
+  end
+
   it 'should get virtual machine image' do
     result = @client.get(@location, @publisher_name, @offer_name, @skus_name, @windows_service_image_version).value!
     expect(result.response.status).to eq(200)

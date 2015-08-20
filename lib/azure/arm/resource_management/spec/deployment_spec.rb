@@ -80,20 +80,20 @@ describe Deployments do
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while result.body.next_link  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
     end
   end
 
-  it 'should list filtered results' do
+  it 'should list filtered results restricted with top parameter' do
     filter = "provisioningState eq 'Running'"
-    result = @client.list(@resource_group.name, filter).value!
+    result = @client.list(@resource_group.name, filter, 1).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while result.body.next_link  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?.empty?  do
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)

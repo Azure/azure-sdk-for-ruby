@@ -7,7 +7,7 @@ require_relative 'test_helper'
 include MsRestAzure
 include Azure::ARM::Storage
 
-describe StorageManagementClient do
+describe StorageAccounts do
 
   before(:all) do
     @client = STORAGE_CLIENT.storage_accounts
@@ -44,7 +44,7 @@ describe StorageManagementClient do
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty? do
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -56,7 +56,7 @@ describe StorageManagementClient do
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while !result.body.next_link.empty? do
+    while !result.body.next_link.nil? && !result.body.next_link.empty? do
       result = @client.list_by_resource_group_next(result.body.next_link).value!
       expect(result.body).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -100,14 +100,6 @@ describe StorageManagementClient do
     storage_keys2 = @client.regenerate_key(@resource_group.name, storage, params).value!
     expect(storage_keys2.body.key1).to eq(storage_keys1.body.key1)
     expect(storage_keys2.body.key2).not_to eq(storage_keys1.body.key2)
-  end
-
-  it 'should get storage account keys' do
-    storage = create_storage_account
-
-    result = @client.list_keys(@resource_group.name, storage).value!
-    expect(result.body.key1).not_to be_nil
-    expect(result.body.key2).not_to be_nil
   end
 
   it 'should get storage account keys' do

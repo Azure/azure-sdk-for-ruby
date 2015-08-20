@@ -23,15 +23,15 @@ describe ResourceManagementClient do
   end
 
   it 'should create resource' do
-    resourceName = get_random_name('res', 20)
-    params = build_resource_params(resourceName)
+    resource_name = get_random_name('res', 20)
+    params = build_resource_params(resource_name)
 
     result = @client.create_or_update(
         @resource_group.name,
         @resource_provider,
         '',
         @resource_type,
-        resourceName,
+        resource_name,
         @resource_api_version,
         params
     ).value!
@@ -57,6 +57,10 @@ describe ResourceManagementClient do
     expect(result.body.type).to eq(@resource_identity)
   end
 
+  it 'should raise an error when attempting to get resource without any parameters' do
+    expect{@client.get(nil, nil, nil, nil, nil, nil)}.to raise_error(ArgumentError)
+  end
+
   it 'should check existence of resource' do
     pending('Skip for now since this method isn\'t supported by server - HTTP 405 is returned')
     resource = create_resource
@@ -72,26 +76,67 @@ describe ResourceManagementClient do
     expect(result.body).to be_truthy
   end
 
+  it 'should raise an error when attempting invoke get, create_or_update, check_existence or delete without api version' do
+    resource_name = get_random_name('res', 20)
+    params = build_resource_params(resource_name)
+
+    expect{@client.create_or_update(
+        @resource_group.name,
+        @resource_provider,
+        '',
+        @resource_type,
+        resource_name,
+        nil,
+        params)}.to raise_error(ArgumentError)
+
+    expect{@client.get(
+        @resource_group.name,
+        @resource_provider,
+        '',
+        @resource_type,
+        resource_name,
+        nil
+    )}.to raise_error(ArgumentError)
+
+    expect{@client.check_existence(
+        @resource_group.name,
+        @resource_provider,
+        '',
+        @resource_type,
+        resource_name,
+        nil
+    )}.to raise_error(ArgumentError)
+
+    expect{@client.delete(
+        @resource_group.name,
+        @resource_provider,
+        '',
+        @resource_type,
+        resource_name,
+        nil
+    )}.to raise_error(ArgumentError)
+  end
+
   it 'should list resources' do
     result = @client.list().value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while result.body.next_link  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
     end
   end
 
-  it 'should filter resources' do
+  it 'should filter resources and work with top parameter' do
     filter = "tagName eq 'tagName' and tagValue eq 'tagValue'"
 
-    result = @client.list().value!
+    result = @client.list(filter, 1).value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while result.body.next_link  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?.empty? do
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
