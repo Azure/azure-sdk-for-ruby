@@ -31,6 +31,15 @@ describe VirtualMachineExtensionImages do
     expect(result.body).to be_a Array
   end
 
+  it 'should list virtual machine extension image versions with filters, orderby and top' do
+    filter = "startswith(name,'1.1')"
+    orderby = 'name'
+    result = @client.list_versions(@location, @publisher_name, @type, filter, 1, orderby).value!
+    expect(result.response.status).to eq(200)
+    expect(result.body).not_to be_nil
+    expect(result.body).to be_a Array
+  end
+
   it 'should get virtual machine extension image' do
     result = @client.get(@location, @publisher_name, @type, @version).value!
     expect(result.response.status).to eq(200)

@@ -9,7 +9,7 @@ include MsRest
 include MsRestAzure
 include Azure::ARM::Resources
 
-def create_resource_group(name: nil, location: nil)
+def create_resource_group(name = nil, location = nil)
   resource_group_name = name || get_random_name('RubySDKTest_')
   params = Models::ResourceGroup.new()
   params.location = location||'westus'

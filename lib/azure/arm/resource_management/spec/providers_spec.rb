@@ -37,7 +37,19 @@ describe ResourceManagementClient do
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
-    while result.body.next_link  do
+    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
+      result = @client.list_next(result.body.next_link).value!
+      expect(result.body.value).not_to be_nil
+      expect(result.body.value).to be_a(Array)
+    end
+  end
+
+  it 'should list providers with top restriction parameter' do
+    result = @client.list(1).value!
+    expect(result.body.value).not_to be_nil
+    expect(result.body.value).to be_a(Array)
+
+    while !result.body.next_link.nil? && !result.body.next_link.empty?  do
       result = @client.list_next(result.body.next_link).value!
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
@@ -58,6 +70,10 @@ describe ResourceManagementClient do
     expect(result.body.registration_state).not_to eq('NotRegistered')
   end
 
+  it 'should raise an error when attempting register provider with nil parameter' do
+    expect{@client.register(nil)}.to raise_error(ArgumentError)
+  end
+
   it 'should unregister provider' do
     providers = @client.list().value!.body.value
     targetProvider = providers.detect {|item| item.registration_state == 'Registered' }
@@ -70,6 +86,10 @@ describe ResourceManagementClient do
     expect(result.body.registration_state).not_to eq('Registered')
   end
 
+  it 'should raise an error when attempting unregister provider with nil parameter' do
+    expect{@client.unregister(nil)}.to raise_error(ArgumentError)
+  end
+
   it 'should get provider' do
     providers = @client.list().value!.body.value
 
@@ -77,6 +97,10 @@ describe ResourceManagementClient do
 
     expect(result.body).not_to be_nil
     expect(result.body.namespace).to eq(providers[0].namespace)
+  end
+
+  it 'should raise error when attempting get provider with nil parameter' do
+    expect{@client.get(nil)}.to raise_error(ArgumentError)
   end
 
 end
