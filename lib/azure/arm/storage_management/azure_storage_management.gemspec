@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.name          = "azure_storage_management"
   spec.version       = Azure::ARM::Storage::VERSION
   spec.authors       = 'Microsoft Corporation'
-  spec.email         = 'azureruby@microsoft.com'
+  spec.email         = 'azsdkteam@microsoft.com'
   spec.description   = 'Microsoft Azure Storage Management Client Library for Ruby'
   spec.summary       = 'Official ruby client library to consume Microsoft Azure Storage Management services.'
   spec.homepage      = 'http://github.com/azure/azure-sdk-for-ruby'
