@@ -12,6 +12,8 @@ include Azure::ARM::Network
 describe ApplicationGateways do
 
   before(:all) do
+    skip('application gateways aren\'t properly supported yet')
+
     @client = NETWORK_CLIENT.application_gateways
     @location = 'westus'
     @resource_group = create_resource_group

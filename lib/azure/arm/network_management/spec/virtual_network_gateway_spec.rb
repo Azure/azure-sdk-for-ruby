@@ -14,6 +14,8 @@ include Azure::ARM::Network
 describe VirtualNetworkGateways do
 
   before(:all) do
+    skip('virtual network gateways aren\'t properly supported yet')
+
     @client = NETWORK_CLIENT.virtual_network_gateways
     @location = 'westus'
     @resource_group = create_resource_group
