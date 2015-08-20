@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'azure_compute_management'
   spec.version       = Azure::ARM::Compute::VERSION
   spec.authors       = 'Microsoft Corporation'
-  spec.email         = 'azureruby@microsoft.com'
+  spec.email         = 'azsdkteam@microsoft.com'
   spec.description   = 'Microsoft Azure Compute Management Client Library for Ruby'
   spec.summary       = 'Official ruby client library to consume Microsoft Azure Compute Management services.'
   spec.homepage      = 'http://github.com/azure/azure-sdk-for-ruby'
