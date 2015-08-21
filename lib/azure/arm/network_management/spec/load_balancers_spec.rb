@@ -29,6 +29,106 @@ describe LoadBalancers do
     expect(result.body.name).to eq(params.name)
   end
 
+  it 'should create load balancer with complex parameter structure' do
+    #create public ip address
+    lb_public_ip_name = get_random_name('ip')
+    lb_domain_name_label = get_random_name('domain')
+    public_ip = Models::PublicIpAddress.new
+    public_ip.location = @location
+    public_ip_props = Models::PublicIpAddressPropertiesFormat.new
+    public_ip.properties = public_ip_props
+    public_ip_props.public_ipallocation_method = 'Dynamic'
+    dns_settings = Models::PublicIpAddressDnsSettings.new
+    public_ip_props.dns_settings = dns_settings
+    dns_settings.domain_name_label = lb_domain_name_label
+    public_ip = NETWORK_CLIENT.public_ip_addresses.create_or_update(@resource_group.name, lb_public_ip_name, public_ip).value!.body
+    #create virtual network
+    vnet = create_virtual_network(@resource_group.name)
+    #create the load balancer
+    lb_name = get_random_name('lb_name')
+    frontend_ip_config_name = get_random_name('frontend_ip_config_name')
+    backend_address_pool_name = get_random_name('backend_address_pool_name')
+    load_balancing_rule_name = get_random_name('load_balancing_rule_name')
+    probe_name = get_random_name('probe_name')
+    inbound_nat_rule1_name = get_random_name('inbound_nat_rule')
+    inbound_nat_rule2_name = get_random_name('inbound_nat_rule')
+    #populate load_balancer create_or_update parameter
+    load_balancer = Models::LoadBalancer.new
+    load_balancer.location = @location
+    load_balancer_props = Models::LoadBalancerPropertiesFormat.new
+    load_balancer.properties = load_balancer_props
+    frontend_ip_configuration = Models::FrontendIpConfiguration.new
+    load_balancer_props.frontend_ipconfigurations = [frontend_ip_configuration]
+    frontend_ip_configuration.name = frontend_ip_config_name
+    frontend_ip_configuration_props = Models::FrontendIpConfigurationPropertiesFormat.new
+    frontend_ip_configuration.properties = frontend_ip_configuration_props
+    frontend_ip_configuration_props.public_ipaddress = public_ip
+    backend_address_pool = Models::BackendAddressPool.new
+    load_balancer_props.backend_address_pools = [backend_address_pool]
+    backend_address_pool.name = backend_address_pool_name
+    load_balancing_rule = Models::LoadBalancingRule.new
+    load_balancer_props.load_balancing_rules = [load_balancing_rule]
+    load_balancing_rule.name = load_balancing_rule_name
+    load_balancing_rule_props = Models::LoadBalancingRulePropertiesFormat.new
+    load_balancing_rule.properties = load_balancing_rule_props
+    frontend_ip_configuration_sub_resource = MsRestAzure::SubResource.new
+    frontend_ip_configuration_sub_resource.id =
+        get_child_lb_resource_id(NETWORK_CLIENT.subscription_id, @resource_group.name,
+        lb_name, 'FrontendIPConfigurations', frontend_ip_config_name)
+    load_balancing_rule_props.frontend_ipconfiguration = frontend_ip_configuration_sub_resource
+    load_balancing_rule_props.protocol = 'Tcp'
+    load_balancing_rule_props.frontend_port = 80
+    load_balancing_rule_props.backend_port = 80
+    load_balancing_rule_props.enable_floating_ip = false
+    load_balancing_rule_props.idle_timeout_in_minutes = 15
+    backend_address_pool_sub_resource = MsRestAzure::SubResource.new
+    load_balancing_rule_props.backend_address_pool = backend_address_pool_sub_resource
+    backend_address_pool_sub_resource.id =
+        get_child_lb_resource_id(NETWORK_CLIENT.subscription_id, @resource_group.name,
+        lb_name, 'backendAddressPools', backend_address_pool_name)
+    probe_sub_resource = MsRestAzure::SubResource.new
+    load_balancing_rule_props.probe = probe_sub_resource
+    probe_sub_resource.id =
+        get_child_lb_resource_id(NETWORK_CLIENT.subscription_id, @resource_group.name,
+        lb_name, 'probes', probe_name)
+    probe = Models::Probe.new
+    load_balancer_props.probes = [probe]
+    probe.name = probe_name
+    probe_props = Models::ProbePropertiesFormat.new
+    probe.properties = probe_props
+    probe_props.protocol = 'Http'
+    probe_props.port = 80
+    probe_props.request_path = 'healthcheck.aspx'
+    probe_props.interval_in_seconds = 10
+    probe_props.number_of_probes = 2
+    inbound_nat_rule1 = Models::InboundNatRule.new
+    inbound_nat_rule2 = Models::InboundNatRule.new
+    load_balancer_props.inbound_nat_rules = [inbound_nat_rule1, inbound_nat_rule2]
+    inbound_nat_rule1.name = inbound_nat_rule1_name
+    inbound_nat_rule2.name = inbound_nat_rule2_name
+    inbound_rule1_props = Models::InboundNatRulePropertiesFormat.new
+    inbound_rule2_props = Models::InboundNatRulePropertiesFormat.new
+    inbound_nat_rule1.properties = inbound_rule1_props
+    inbound_nat_rule2.properties = inbound_rule2_props
+    inbound_rule1_props.frontend_ipconfiguration = frontend_ip_configuration_sub_resource
+    inbound_rule2_props.frontend_ipconfiguration = frontend_ip_configuration_sub_resource
+    inbound_rule1_props.protocol = 'Tcp'
+    inbound_rule2_props.protocol = 'Tcp'
+    inbound_rule1_props.frontend_port = 3389
+    inbound_rule2_props.frontend_port = 3390
+    inbound_rule1_props.backend_port = 3389
+    inbound_rule2_props.backend_port = 3389
+    inbound_rule1_props.idle_timeout_in_minutes = 15
+    inbound_rule2_props.idle_timeout_in_minutes = 15
+    inbound_rule1_props.enable_floating_ip = false
+    inbound_rule2_props.enable_floating_ip = false
+    #create load balancer
+    result = @client.create_or_update(@resource_group.name, lb_name, load_balancer).value!
+    expect(result.response.status).to eq(201)
+    expect(result.body).not_to be_nil
+    expect(result.body.name).to eq(lb_name)
+  end
+
   it 'should get load balancer' do
     load_balancer = create_load_balancer
     result = @client.get(@resource_group.name, load_balancer.name).value!
@@ -94,7 +194,7 @@ describe LoadBalancers do
     inbound_tcp_props.backend_port = 32900
     @client.create_or_update(@resource_group.name, params.name, params).value!
     result = @client.list_all.value!
-    puts ''
+    expect(result.response.status).to eq(200)
   end
 
   def get_child_lb_resource_id(subscriptionId, resourceGroupName, lbname, childResourceType, childResourceName)
