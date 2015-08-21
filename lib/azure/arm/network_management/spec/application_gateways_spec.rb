@@ -20,10 +20,10 @@ describe ApplicationGateways do
     @resource_group = create_resource_group
   end
   after(:all) do
-    delete_resource_group(@resource_group.name)
+    delete_resource_group(@resource_group.name) unless @resource_group.nil?
   end
 
-  it 'should list all the applicationgateways in a subscription' do
+  it 'should list all the application gateways in a subscription' do
     result = @client.list_all.value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -35,7 +35,7 @@ describe ApplicationGateways do
     end
   end
 
-  it 'should list all the applicationgateways in a resource group' do
+  it 'should list all the application gateways in a resource group' do
     result = @client.list(@resource_group.name).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil

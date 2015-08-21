@@ -1,6 +1,6 @@
 # Intro
 
-This project provides a Ruby gem for easy access to the Azure ARM Network API. With this gem you can create/update/list/delete virtual networks, subnets, load balancers and network interfaces. Application and network gateways aren't properlty supported yet - it's a known issue that will be resolved soon.
+This project provides a Ruby gem for easy access to the Azure ARM Network API. With this gem you can create/update/list/delete virtual networks, subnets, load balancers and network interfaces. Application gateways, virtual network gateways and virtual network gateway connections aren't properly supported yet - it's a known issue that will be resolved soon.
 
 # Supported Ruby Versions
 

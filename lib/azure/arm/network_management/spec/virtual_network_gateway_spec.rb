@@ -22,7 +22,7 @@ describe VirtualNetworkGateways do
     @resource_group = create_resource_group
   end
   after(:all) do
-    delete_resource_group(@resource_group.name)
+    delete_resource_group(@resource_group.name) unless @resource_group.nil?
   end
 
   example 'virtual network gateway api' do
