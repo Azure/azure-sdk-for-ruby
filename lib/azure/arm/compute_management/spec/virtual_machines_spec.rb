@@ -142,8 +142,13 @@ describe 'Virtual machine and vm extension api' do
     skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     @client.power_off(@resource_group.name, @vm_name).value!
 
-    # TODO: add loop for checking when VM is stopped.
-    sleep 120
+    # To generalize VM it should be started. But sometimes even after API method
+    # starts it - the API still says that it cannot be generalized because it is
+    # turned off. Also there is no property provided by API which can be polled
+    # to find out whether VM is turned on or not. So the timeout is added here.
+    # todo: add VM polling until VM is started if API method appear which provides
+    # such info.
+    sleep 300
 
     result = @client.generalize(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)

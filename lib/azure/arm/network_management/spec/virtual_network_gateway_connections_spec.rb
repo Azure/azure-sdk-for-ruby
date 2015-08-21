@@ -28,7 +28,7 @@ describe VirtualNetworkGatewayConnections do
     @localnet_gateway = create_local_network_gateway(@resource_group, @location) if RUN_LONG_TASKS
   end
   after(:all) do
-    delete_resource_group(@resource_group.name)
+    delete_resource_group(@resource_group.name) unless @resource_group.nil?
   end
 
   it 'should list virtual network gateway connections' do
