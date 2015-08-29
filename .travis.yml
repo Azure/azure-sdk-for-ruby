@@ -9,6 +9,6 @@ rvm:
 
 script:
 - cd service_management/azure && bundle install && bundle exec rake test:unit
-- cd ../../resource_management && bundle install && bundle exec rake spec
+- cd ../../resource_management && bundle install
 - if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ] ; then rake test:integration ; fi
 
