@@ -5,11 +5,6 @@
 source 'https://rubygems.org'
 
 group :development do
-  gem 'json'
-  gem 'concurrent-ruby-ext'
-  gem 'faraday'
-  gem 'faraday-cookie_jar'
-  gem 'ms_rest_azure'
   gem 'azure_mgmt_resources', path: 'azure_mgmt_resources'
   gem 'azure_mgmt_storage', path: 'azure_mgmt_storage'
   gem 'azure_mgmt_network', path: 'azure_mgmt_network'
