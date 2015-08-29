@@ -110,10 +110,10 @@ For advanced SDK usage please reference to the spec files.
 
 To run the tests you would need to set the following environment variables with your real Azure data:
 
-* azure_tenant_id
-* azure_client_id
-* azure_client_secret
-* subscription_id
+* AZURE_TENANT_ID="your tenant id or domain"
+* AZURE_CLIENT_ID="your client id / application id"
+* AZURE_CLIENT_SECRET="your service principal secret"
+* AZURE_SUBSCRIPTION_ID="your subscription id"
 
 * run_long_tasks - set this to '1' only if you would like to run time consuming tests like VM creation.
 
