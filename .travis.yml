@@ -1,13 +1,14 @@
 ---
+sudo: false
 language: ruby
 
 rvm:
-- 1.9.3
 - 2.0.0
 - 2.1.5
 - 2.2.0
 
 script:
-- bundle exec rake test:unit
+- cd service_management/azure && bundle install && bundle exec rake test:unit
+- cd ../../resource_management && bundle install
 - if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ] ; then rake test:integration ; fi
 
