@@ -2,43 +2,78 @@
 # Microsoft Azure SDK for Ruby
 [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=dev)](https://travis-ci.org/Azure/azure-sdk-for-ruby) [![Code Climate](https://codeclimate.com/github/Azure/azure-sdk-for-ruby/badges/gpa.svg)](https://codeclimate.com/github/Azure/azure-sdk-for-ruby)
 
-
 This project provides a Ruby package that makes it easy to access and manage Microsoft Azure Services like Storage, Service Bus and Virtual Machines.
 
-# Library Features
+## Azure Resource Management (preview)
+* Compute (Virtual Machines, Images, Extensions, Availability Sets, etc...)
+* Network (Load Balancers, Network Gateways, Security Groups, etc...)
+* Storage Accounts (Account Creation, Usage Operations, etc...)
+* Resources (Resource Groups, Resource Providers, Template Deployments, Operations, etc...)
 
+## Azure Service Management
+* Cloud Service Management
+* [SQL Database Server Management](#sql)
+* Storage Account Management
+* [Virtual Network Management](#vnets)
+
+## Azure Services
 * [Storage](#storage)
     * [Blobs](#blobs)
     * [Tables](#tables)
     * [Queues](#queues)
-* Storage Account Management
 * [Service Bus](#service-bus)
     * [relays](#relays)
     * [Queues](#sb-queues)
     * [Topics](#topics)
-* [Base Management](#base-mgmt)
-    * [Locations](#locations)
-    * [Affinity Groups](#affinity)
-* [Virtual Machine Management](#vms)
-    * list, delete Disks
-    * manage virtual machines
-    * [list images](#images)
-* Cloud Service Management
-* [SQL Database Server Management](#sql)
-* [Virtual Network Management](#vnets)
-    * List VNet
-    * Create VNet via parameters or xml file
 
 # Supported Ruby Versions
 
-* Ruby 1.9.3
-* Ruby 2.0
-* Ruby 2.1
-* Ruby 2.2
+* Ruby 2+
 
 Note: x64 Ruby for Windows is known to have some compatibility issues.
 
-# Getting Started
+# Getting Started with Azure Resource Manager Usage (Preview)
+
+## Install the rubygem packages
+
+You can install the azure rubygem packages directly.
+
+```bash
+gem install azure_mgmt_compute
+gem install azure_mgmt_storage
+gem install azure_mgmt_resources
+gem install azure_mgmt_storage
+```
+
+Or use them in your Gemfile.
+
+```Ruby
+require 'azure_mgmt_storage'
+require 'azure_mgmt_compute'
+require 'azure_mgmt_resources'
+require 'azure_mgmt_storage'
+```
+
+Be aware the Azure Resource Manager Java SDK is in preview and will likely have breaking interface changes in upcoming 
+releases.
+
+### Authentication
+
+The first step to using the SDK is authentication and permissioning. For people unfamilar with Azure this may be one of 
+the more difficult concepts. For a reference on setting up a service principal from the command line see 
+[Authenticating a service principal with Azure Resource Manager](http://aka.ms/cli-service-principal) or 
+[Unattended Authentication](http://aka.ms/auth-unattended). For a more robust explanation of authentication in Azure, 
+see [Developer’s guide to auth with Azure Resource Manager API](http://aka.ms/arm-auth-dev-guide).
+
+After creating the service principal, you should have three pieces of information, a client id (GUID), client secret 
+(string) and tenant id (GUID) or domain name (string).
+
+### Getting Started Samples
+The tests for the libraries should provide a good example of how to get started with the clients. You can also see the
+readme for each of the libraries [Compute](resource_management/azure_mgmt_compute), 
+[Network](resource_management/azure_mgmt_network), [Storage](resource_management/azure_mgmt_storage), or [Resources](resource_management/azure_mgmt_resources).
+
+# Getting Started with Azure Service Management
 
 ## Install the rubygem package
 
