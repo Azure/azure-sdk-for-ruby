@@ -7,7 +7,7 @@ rvm:
 - 2.2.0
 
 script:
-- cd service_management/azure && bundle exec rake test:unit
-- cd ../../resource_management && bundle install && rake spec
+- cd service_management/azure && bundle install && bundle exec rake test:unit
+- cd ../../resource_management && bundle install && bundle exec rake spec
 - if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ] ; then rake test:integration ; fi
 
