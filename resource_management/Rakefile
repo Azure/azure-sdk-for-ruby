@@ -33,7 +33,7 @@ def each_child
   dirs = Dir.entries('./').select { |f| File.directory?(f) and !(f =='.' || f == '..') }
   dirs.each do |dir|
     Dir.chdir(dir) do
-      yield
+      yield(dir)
     end
   end
 end
@@ -50,6 +50,18 @@ namespace :bundle do
     each_child do
       execute_and_stream('bundle update')
     end
+  end
+end
+
+task :build do
+  each_child do
+    execute_and_stream('rake build')
+  end
+end
+
+task :push, [:key, :version] do |_, args|
+  each_child do |child|
+    execute_and_stream("gem push pkg/#{child}-#{args[:version]}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
   end
 end
 
