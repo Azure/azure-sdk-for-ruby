@@ -660,7 +660,7 @@ Currently the sdk supports *.pem or *.pfx (passwordless pfx) for service managem
 
 * To create a pfx from the publishsettings, simply download the publishsettings file for your subscription 
 [https://manage.windowsazure.com/publishsettings](https://manage.windowsazure.com/publishsettings/index?client=powershell). Make sure you have this gem installed and
- run `pfxer --in [path to your .publishsettings file]`. This will create a .pfx from your publish settings file which can 
+ run `pfxer transform --in [path to your .publishsettings file]`. This will create a .pfx from your publish settings file which can 
  be supplied as a cert parameter for Service Management Commands.
  
 ## Get Started with OpenSSL
