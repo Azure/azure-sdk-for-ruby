@@ -54,7 +54,7 @@ require 'azure_mgmt_resources'
 require 'azure_mgmt_storage'
 ```
 
-Be aware the Azure Resource Manager Java SDK is in preview and will likely have breaking interface changes in upcoming
+Be aware the Azure Resource Manager Ruby SDK is in preview and will likely have breaking interface changes in upcoming
 releases.
 
 ### Authentication
