@@ -1367,14 +1367,19 @@ module Azure
       end
 
       def call(method, uri, body=nil, headers=nil)
-        # Force the request.body to the content encoding of specified in the header
-        # (content encoding probably shouldn't be used this way)
+        # Synchronize body and header encoding; header['Content-Encoding'] takes precedence. 
         if headers && !body.nil?
           if headers['Content-Encoding'].nil?
-            headers['Content-Encoding'] = body.encoding.to_s
+            headers['Content-Encoding'] = body.encoding.to_s if body.respond_to? :encoding # String
+            headers['Content-Encoding'] = body.external_encoding.to_s if body.respond_to? :external_encoding # IO
           else
-            body.force_encoding(headers['Content-Encoding'])
+            body.force_encoding(headers['Content-Encoding']) if body.respond_to? :force_encoding # String
+            body.set_encoding(headers['Content-Encoding']) if body.respond_to? :set_encoding # IO
           end
+
+          # Azure Storage Service expects content-encoding to be lowercase.
+          # Authentication will fail otherwise.  
+          headers['Content-Encoding'].downcase!
         end
 
         response = super
