@@ -12,6 +12,8 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
+      attr_accessor :id
+      
       # @return [NetworkInterfaceReferenceProperties]
       attr_accessor :properties
 
