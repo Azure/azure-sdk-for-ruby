@@ -106,6 +106,25 @@ describe Azure do
           end
         end
       end
+
+      describe 'using a publishsettings' do
+
+        describe 'loaded as a file' do
+          before do
+            Azure.management_certificate = Fixtures['management_certificate.publishsettings']
+          end
+
+          it 'should populate the private key' do
+            refute_nil(private_key)
+            private_key.must_be_kind_of(OpenSSL::PKey::RSA)
+          end
+
+          it 'should populate the public key' do
+            refute_nil(public_key)
+            public_key.must_be_kind_of(OpenSSL::X509::Certificate)
+          end
+        end
+      end
     end
   end
 
