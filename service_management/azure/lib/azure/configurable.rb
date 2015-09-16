@@ -269,9 +269,17 @@ module Azure
     def read_cert_from_file(cert_file_path)
       if File.extname(cert_file_path).downcase == '.pem'
         File.read(cert_file_path)
+      elsif File.extname(cert_file_path).downcase == '.publishsettings'
+        management_cert = parse_publishsettings(cert_file_path)['ManagementCertificate']
+        Base64.decode64(management_cert)
       else
         File.binread(cert_file_path)
       end
+    end
+
+    def parse_publishsettings(pub_file_path)
+      pub_xml = Nokogiri::XML.parse(File.read(pub_file_path))
+      pub_xml.css('PublishData PublishProfile Subscription')[0]
     end
 
     def normalize_endpoint
