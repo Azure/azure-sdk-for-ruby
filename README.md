@@ -42,16 +42,16 @@ You can install the azure rubygem packages directly.
 gem install azure_mgmt_compute
 gem install azure_mgmt_storage
 gem install azure_mgmt_resources
-gem install azure_mgmt_storage
+gem install azure_mgmt_network
 ```
 
 Or use them in your Gemfile.
 
 ```Ruby
-require 'azure_mgmt_storage'
-require 'azure_mgmt_compute'
-require 'azure_mgmt_resources'
-require 'azure_mgmt_storage'
+gem 'azure_mgmt_storage'
+gem 'azure_mgmt_compute'
+gem 'azure_mgmt_resources'
+gem 'azure_mgmt_network'
 ```
 
 Be aware the Azure Resource Manager Ruby SDK is in preview and will likely have breaking interface changes in upcoming
