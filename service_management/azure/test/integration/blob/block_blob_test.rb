@@ -18,19 +18,68 @@ require 'base64'
 
 describe Azure::Blob::BlobService do
   subject { Azure::Blob::BlobService.new }
-  after { TableNameHelper.clean }
 
   let(:container_name) { ContainerNameHelper.name }
   let(:blob_name) { "blobname" }
   let(:content) { content = ""; 512.times.each{|i| content << "@" }; content }
-  before {
-    subject.create_container container_name
-  }
+  let(:file_path) { "/tmp/azure-sdk-for-ruby-blob.txt" }
+
+  before { subject.create_container container_name }
+  after { ContainerNameHelper.clean }
 
   describe '#create_block_blob' do
-    it 'creates a page blob' do
-      blob = subject.create_block_blob container_name, blob_name, content
+    it 'creates a block blob with String body (default encoding)' do
+      subject.create_block_blob container_name, blob_name, content
+      blob = subject.get_blob_properties container_name, blob_name
       blob.name.must_equal blob_name
+      blob.properties[:content_encoding].must_equal content.encoding.to_s.downcase
+    end
+
+    it 'creates a block blob with String body (content-encoding)' do
+      options = {
+        :content_encoding=>"ascii"
+      }
+
+      subject.create_block_blob container_name, blob_name, content, options
+      blob = subject.get_blob_properties container_name, blob_name
+      blob.name.must_equal blob_name
+      blob.properties[:content_encoding].must_equal options[:content_encoding]
+    end  
+
+    it 'creates a block blob with IO body (default encoding)' do
+      begin 
+        File.delete(file_path) if File.exist?(file_path)
+        File.write(file_path, content);         
+        file = File.open(file_path)
+
+        subject.create_block_blob container_name, blob_name, file
+        blob = subject.get_blob_properties container_name, blob_name
+        blob.name.must_equal blob_name
+        blob.properties[:content_encoding].must_equal file.external_encoding.to_s.downcase
+      ensure 
+        file.close if file
+        File.delete(file_path) if File.exist?(file_path)
+      end 
+    end
+
+    it 'creates a block blob with IO body (content-encoding)' do
+      begin 
+        options = {
+          :content_encoding=>"ascii"
+        }
+        
+        File.delete(file_path) if File.exist?(file_path)
+        File.write(file_path, content); 
+        file = File.open(file_path)
+
+        subject.create_block_blob container_name, blob_name, file, options
+        blob = subject.get_blob_properties container_name, blob_name
+        blob.name.must_equal blob_name
+        blob.properties[:content_encoding].must_equal options[:content_encoding]
+      ensure 
+        file.close if file
+        File.delete(file_path) if File.exist?(file_path)
+      end 
     end
 
     it 'sets additional properties when the options hash is used' do
