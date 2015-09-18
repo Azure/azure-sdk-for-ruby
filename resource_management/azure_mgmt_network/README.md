@@ -48,7 +48,7 @@ include Azure::ARM::Network
 include Azure::ARM::Network::Models
 
 # Create a client - a point of access to the API and set the subscription id
-client = NetworkManagementClient.new(credentials)
+client = NetworkResourceProviderClient.new(credentials)
 client.subscription_id = subscription_id
 
 # Create a model for new virtual network
