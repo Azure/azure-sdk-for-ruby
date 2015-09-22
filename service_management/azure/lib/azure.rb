@@ -106,6 +106,7 @@ module Azure
 
   module VirtualMachineImageManagement
     autoload :VirtualMachineImageManagementService, 'azure/virtual_machine_image_management/virtual_machine_image_management_service'
+    autoload :VirtualMachineDiskManagementService,  'azure/virtual_machine_image_management/virtual_machine_image_management_service'
     autoload :Serialization,                        'azure/virtual_machine_image_management/serialization'
     autoload :VirtualMachineImage,                  'azure/virtual_machine_image_management/virtual_machine_image'
     autoload :VirtualMachineDisk,                   'azure/virtual_machine_image_management/virtual_machine_disk'
