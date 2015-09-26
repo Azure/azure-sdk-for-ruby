@@ -174,8 +174,8 @@ module Azure
         image = get_image(params[:image])
         options[:os_type] = image.os_type
         validate_deployment_params(params, options, true)
-        cloud_service = client.cloud_service_management
-        cloud_service = cloud_service.get_cloud_service_properties(params[:cloud_service_name])
+        cloud_services = client.cloud_service_management
+        cloud_service = cloud_services.get_cloud_service_properties(params[:cloud_service_name])
         deployment_name = cloud_service.deployment_name
         Azure::Loggerx.error_with_exit "Deployment doesn't exists." if cloud_service && deployment_name.empty?
         others = {}
@@ -195,6 +195,7 @@ module Azure
             existing_ports << endpoint[:public_port]
           end
         end
+        cloud_services.upload_certificate(options[:cloud_service_name], params[:certificate]) unless params[:certificate].empty?
         options[:existing_ports] = existing_ports
         body = Serialization.role_to_xml(params, image, options).to_xml
         path = "/services/hostedservices/#{cloud_service.name}/deployments/#{deployment_name}/roles"
