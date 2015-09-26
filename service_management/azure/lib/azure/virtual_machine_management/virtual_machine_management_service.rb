@@ -236,10 +236,10 @@ module Azure
           # Wait for 180s for disk to be released.
           disk = nil
           18.times do
-            print '# '
+            Azure::Loggerx.info '# '
             disk = disk_management_service.get_virtual_machine_disk(disk_name)
             unless disk.attached
-              print "Disk released.\n"
+              Azure::Loggerx.info "Disk released.\n"
               break
             end
             sleep 10
