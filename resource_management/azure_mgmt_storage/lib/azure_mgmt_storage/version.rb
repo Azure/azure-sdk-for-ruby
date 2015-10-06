@@ -2,5 +2,5 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 module Azure::ARM::Storage
-  VERSION = '0.1.0'
+  VERSION = '0.1.1'
 end
