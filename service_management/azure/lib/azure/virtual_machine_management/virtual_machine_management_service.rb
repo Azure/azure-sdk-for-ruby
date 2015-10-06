@@ -433,20 +433,18 @@ module Azure
       # ==== Options
       #
       # Accepted key/value pairs in options parameter are:
-      # * +:import+        - Boolean. if true, then allows to use an existing
-      #  disk by disk name. if false, then create and attach new data disk.
-      # * +:disk_name+     - String. Specifies the name of the disk.
-      #   Reqruied if using existing disk.
-      # * +:host_caching+  - String. Specifies the caching behavior of data disk
+      # * +:disk_name+         - String. Specifies the name of the disk.
+      #   Required if using existing disk.
+      # * +:host_caching+      - String. Specifies the caching behavior of data disk
       #   The default is ReadOnly. Possible values are: None, ReadOnly, ReadWrite
-      # * +:disk_label+    - String. Specifies the description of the data disk.
-      # * +:disk_size+     - String. Specifies the size of disk in GB
+      # * +:disk_label+        - String. Specifies the description of the data disk.
+      # * +:disk_size+         - String. Specifies the size of disk in GB
+      # * +:source_media_link+ - String. Specifies the location of an existing vhd
       #
       # See http://msdn.microsoft.com/en-us/library/azure/jj157199.aspx
       #
       # Returns None
       def add_data_disk(vm_name, cloud_service_name, options = {})
-        options[:import] ||= false
         vm = get_virtual_machine(vm_name, cloud_service_name)
         if vm
           path = "/services/hostedservices/#{cloud_service_name}/deployments/#{vm.deployment_name}/roles/#{vm_name}/DataDisks"

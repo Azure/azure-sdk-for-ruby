@@ -409,24 +409,20 @@ module Azure
       end
 
       def self.add_data_disk_to_xml(vm, options)
-        if options[:import] && options[:disk_name].nil?
-          Azure::Loggerx.error_with_exit "The data disk name is not valid."
-        end
         media_link = vm.media_link
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.DataVirtualHardDisk(
             'xmlns' => 'http://schemas.microsoft.com/windowsazure',
             'xmlns:i' => 'http://www.w3.org/2001/XMLSchema-instance'
           ) do
-            xml.HostCaching options[:host_caching] || 'ReadOnly'
+            xml.HostCaching options[:host_caching] || 'None'
             xml.DiskLabel options[:disk_label]
-            xml.DiskName options[:disk_name] if options[:import]
+            xml.DiskName options[:disk_name]
             xml.LogicalDiskSizeInGB options[:disk_size] || 100
-            unless options[:import]
-              disk_name = media_link[/([^\/]+)$/]
-              media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk_%Y_%m_%d_%H_%M_%S')) + '.vhd')
-              xml.MediaLink media_link
-            end
+            disk_name = media_link[/([^\/]+)$/]
+            media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk_%Y_%m_%d_%H_%M_%S')) + '.vhd')
+            xml.MediaLink media_link
+            xml.SourceMediaLink options[:source_media_link]
           end
         end
         builder.doc.to_xml
