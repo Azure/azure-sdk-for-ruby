@@ -34,7 +34,7 @@ describe StorageAccounts do
     result = @client.create(@resource_group.name, name, params).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
-    expect(result.body.location).to eq('West US')
+    expect(result.body.location).to eq('westus')
     expect(result.body.properties).to be_a(Models::StorageAccountProperties)
     expect(result.body.properties.account_type).to eq(props.account_type)
   end
