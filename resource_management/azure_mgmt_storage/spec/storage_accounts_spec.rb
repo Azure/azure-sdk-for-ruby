@@ -79,7 +79,7 @@ describe StorageAccounts do
     result = @client.get_properties(@resource_group.name, storage).value!
 
     expect(result.body).not_to be_nil
-    expect(result.body.location).to eq('westus')
+    expect(result.body.location).to eq('West US')
     expect(result.body.name).to eq(storage)
     expect(result.body.type).to eq(@storage_type)
     expect(result.body.properties).to be_a(Models::StorageAccountProperties)
