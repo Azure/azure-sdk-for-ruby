@@ -14,6 +14,7 @@
 #--------------------------------------------------------------------------
 
 require 'socket'
+require 'net/http'
 require 'azure/sql_database_management/sql_server'
 require 'azure/sql_database_management/firewall_rule'
 require 'azure/sql_database_management/serialization'
@@ -201,7 +202,7 @@ module Azure
       end
 
       def public_ipv4
-        @public_ip ||= `curl -s whatismyip.akamai.com`
+        @public_ip ||= Net::HTTP.get('whatismyip.akamai.com', '/')
       end
 
     end
