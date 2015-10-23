@@ -106,6 +106,14 @@ module Azure
                   end
                   xml.StaticVirtualNetworkIPAddress options[:static_virtual_network_ipaddress] if options[:static_virtual_network_ipaddress]
                 end
+                if options[:instance_ip]
+                  xml.PublicIPs do
+                    xml.PublicIP do
+                      xml.Name options[:deployment_name]
+                      xml.DomainNameLabel options[:deployment_name]
+                    end
+                  end
+                end
               end
             end
             xml.VMImageName image.name if image.image_type == 'VM'
@@ -272,6 +280,10 @@ module Azure
               deployXML.css('Deployment'),
               'VirtualNetworkName'
             )
+            instance_ip =  xml_content(instance,
+              'PublicIPs PublicIP Address'
+            )
+            vm.instance_ip = instance_ip unless instance_ip.empty?
             roles.each do |role|
               if xml_content(role, 'RoleName') == role_name
                 vm.availability_set_name = xml_content(role, 'AvailabilitySetName')
@@ -281,7 +293,9 @@ module Azure
                   'ConfigurationSets ConfigurationSet SubnetNames SubnetName'
                 )
                 vm.subnet = subnet unless subnet.empty?
-                static_virtual_network_ipaddress =  xml_content(role,'ConfigurationSets ConfigurationSet StaticVirtualNetworkIPAddress')
+                static_virtual_network_ipaddress =  xml_content(role,
+                  'ConfigurationSets ConfigurationSet StaticVirtualNetworkIPAddress'
+                )
                 vm.static_virtual_network_ipaddress = static_virtual_network_ipaddress unless static_virtual_network_ipaddress.empty?
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
