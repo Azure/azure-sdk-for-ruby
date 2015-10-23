@@ -11,7 +11,7 @@ tags
 Gemfile.lock
 nbproject/*
 *.gem
-.idea/*
+.idea
 .project
 .bundle
 .config
