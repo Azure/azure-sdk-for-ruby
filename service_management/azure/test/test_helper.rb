@@ -18,7 +18,7 @@ Dotenv.load
 require 'minitest/autorun'
 require 'mocha/mini_test'
 require 'minitest/reporters'
-Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
+# Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require 'timecop'
 require 'logger'
 require 'stringio'

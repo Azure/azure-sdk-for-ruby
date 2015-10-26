@@ -14,22 +14,23 @@
 #--------------------------------------------------------------------------
 require 'test_helper'
 
-describe Azure::Client do
+describe Azure::ClientServices do
 
   describe 'default configuration for a client instance' do
     subject { Azure.client }
 
-    Azure::Configurable.keys.each do |key|
-      it "should have the same value as its parent for #{key}" do
-        subject.send(key.to_sym).must_equal Azure.send(key.to_sym)
+    describe 'overriding configuration in child client' do
+      it 'should have the overridden value rather than the parents value' do
+        subject.base_management(storage_access_key: 'blah').client.storage_access_key.must_equal 'blah'
       end
 
-      unless key == :management_certificate ## TODO: generate another pem and pfx for file / string tests then remove this
-        it "should have a different value as its parent after changing the client for #{key}" do
-          subject.send("#{key}=".to_sym, 'blah')
-          subject.send(key.to_sym).wont_equal Azure.send(key.to_sym)
-        end
+      it 'should have the default after requesting an overridden client' do
+        overridden = subject.base_management(storage_access_key: 'blah').client
+        default = subject.base_management.client
+        refute_equal(overridden.storage_access_key, default.storage_access_key)
       end
     end
+
   end
+
 end
