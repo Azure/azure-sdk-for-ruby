@@ -254,7 +254,7 @@ tables = Azure.tables
 tables.create_table("testtable")
 
 # Insert an entity
-entity = { "content" => "test entity", :partition_key => "test-partition-key", :row_key => "1" }
+entity = { "content" => "test entity", "PartitionKey" => "test-partition-key", "RowKey" => "1" }
 tables.insert_entity("testtable", entity)
 
 # Get an entity
