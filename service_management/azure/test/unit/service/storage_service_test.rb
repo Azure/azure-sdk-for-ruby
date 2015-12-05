@@ -267,6 +267,13 @@ describe Azure::Service::StorageService do
       end
     end
 
+    describe 'when passed non uri encoded path' do
+      it 'correctly generates encoded uri' do
+        non_uri_encoded_path = 'host/path/фбаф.jpg'
+        subject.generate_uri(non_uri_encoded_path).to_s.must_equal 'http://dumyhost.uri/host/path/%D1%84%D0%B1%D0%B0%D1%84.jpg'
+      end
+    end
+
     describe 'when passed an Hash of query parameters' do
 
       it 'encodes the keys' do
