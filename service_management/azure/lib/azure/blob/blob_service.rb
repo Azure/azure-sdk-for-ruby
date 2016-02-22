@@ -1379,16 +1379,16 @@ module Azure
 
           # Azure Storage Service expects content-encoding to be lowercase.
           # Authentication will fail otherwise.  
-          headers['Content-Encoding'].downcase!
+          # headers['Content-Encoding'].downcase!
         end
 
         response = super
 
         # Force the response.body to the content encoding of specified in the header.
         # content-encoding is echo'd back for the blob and is used to store the encoding of the octet stream
-        if !response.nil? && !response.body.nil? && response.headers['content-encoding']
-          response.body.force_encoding(response.headers['content-encoding'])
-        end
+        # if !response.nil? && !response.body.nil? && response.headers['content-encoding']
+        #   response.body.force_encoding(response.headers['content-encoding'])
+        # end
 
         response
       end
