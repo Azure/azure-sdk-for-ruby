@@ -1378,8 +1378,8 @@ module Azure
           end
 
           # Azure Storage Service expects content-encoding to be lowercase.
-          # Authentication will fail otherwise.  
-          headers['Content-Encoding'].downcase!
+          # Authentication will fail otherwise.
+          headers['Content-Encoding'] = headers['Content-Encoding'].downcase
         end
 
         response = super
