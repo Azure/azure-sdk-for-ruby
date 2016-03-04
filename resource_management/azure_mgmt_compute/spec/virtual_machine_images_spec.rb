@@ -13,10 +13,10 @@ describe VirtualMachines do
   before(:all) do
     @client = COMPUTE_CLIENT.virtual_machine_images
     @location = 'westus'
-    @publisher_name = 'MicrosoftWindowsServer'
-    @offer_name = 'WindowsServer'
-    @skus_name = '2012-R2-Datacenter'
-    @windows_service_image_version = '4.0.201506'
+    @publisher_name = 'canonical'
+    @offer_name = 'UbuntuServer'
+    @skus_name = '14.04.4-LTS'
+    @version = '14.04.201602220'
   end
 
 
@@ -58,7 +58,7 @@ describe VirtualMachines do
   end
 
   it 'should get virtual machine image' do
-    result = @client.get(@location, @publisher_name, @offer_name, @skus_name, @windows_service_image_version).value!
+    result = @client.get(@location, @publisher_name, @offer_name, @skus_name, @version).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
   end

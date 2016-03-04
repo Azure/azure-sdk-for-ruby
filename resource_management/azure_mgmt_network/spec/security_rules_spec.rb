@@ -72,7 +72,7 @@ describe SecurityRules do
     props.destination_address_prefix = '*'
     props.destination_port_range = '123-3500'
     props.direction = 'Outbound'
-    props.priority = rand(999)
+    props.priority = rand(100..4096)
     props.protocol = 'Udp'
     props.source_address_prefix = '*'
     props.source_port_range = '656'

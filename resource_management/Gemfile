@@ -9,6 +9,9 @@ group :development do
   gem 'azure_mgmt_storage', path: 'azure_mgmt_storage'
   gem 'azure_mgmt_network', path: 'azure_mgmt_network'
   gem 'azure_mgmt_compute', path: 'azure_mgmt_compute'
+  gem 'ms_rest_azure', path: '../../autorest/ClientRuntimes/Ruby/ms-rest-azure'
+  gem 'ms_rest', path: '../../autorest/ClientRuntimes/Ruby/ms-rest'
+  gem 'rake'
 end
 
 group :test do

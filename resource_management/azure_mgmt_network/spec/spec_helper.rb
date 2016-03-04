@@ -51,5 +51,5 @@ credentials = TokenCredentials.new(token_provider)
 
 RESOURCE_CLIENT = ResourceManagementClient.new(credentials)
 RESOURCE_CLIENT.subscription_id = subscription_id
-NETWORK_CLIENT = NetworkResourceProviderClient.new(credentials)
+NETWORK_CLIENT = NetworkManagementClient.new(credentials)
 NETWORK_CLIENT.subscription_id = subscription_id

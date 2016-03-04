@@ -10,9 +10,9 @@ include Azure::ARM::Resources
 include Azure::ARM::Network
 
 
-describe PublicIpAddresses do
+describe PublicIPAddresses do
   before(:all) do
-    @client = NETWORK_CLIENT.public_ip_addresses
+    @client = NETWORK_CLIENT.public_ipaddresses
     @resource_group = create_resource_group
     @location = 'westus'
   end

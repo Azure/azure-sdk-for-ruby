@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azsdkteam@microsoft.com'
   spec.description   = 'Microsoft Azure Network Management Client Library for Ruby'
-  spec.summary       = 'Official ruby client library to consume Microsoft Azure Network Management services.'
+  spec.summary       = 'Official Ruby client library to consume Microsoft Azure Network Management services.'
   spec.homepage      = 'http://github.com/azure/azure-sdk-for-ruby'
   spec.license       = 'MIT'
 
@@ -29,12 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10'
   spec.add_development_dependency 'rspec', '~> 3'
   spec.add_development_dependency 'dotenv', '~> 2'
-  spec.add_development_dependency 'azure_mgmt_resources', '~> 0.1'
+  spec.add_development_dependency 'azure_mgmt_resources', '~> 0.2'
 
-  spec.add_runtime_dependency 'json', '~> 1.8'
-  spec.add_runtime_dependency 'concurrent-ruby', ['>= 1.0.0.pre1', '<2']
-  spec.add_runtime_dependency 'faraday', '~> 0.9'
-  spec.add_runtime_dependency 'faraday-cookie_jar', '~> 0.0.6'
-  spec.add_runtime_dependency 'ms_rest_azure', '~> 0.1.0'
-  spec.add_runtime_dependency 'ms_rest', '~> 0.1.0'
+  spec.add_runtime_dependency 'ms_rest_azure', '~> 0.2'
 end

@@ -60,5 +60,5 @@ COMPUTE_CLIENT.subscription_id = subscription_id
 STORAGE_CLIENT = StorageManagementClient.new(credentials)
 STORAGE_CLIENT.subscription_id = subscription_id
 
-NETWORK_CLIENT = NetworkResourceProviderClient.new(credentials)
+NETWORK_CLIENT = NetworkManagementClient.new(credentials)
 NETWORK_CLIENT.subscription_id = subscription_id
