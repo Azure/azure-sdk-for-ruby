@@ -5,14 +5,14 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'azure_mgmt_cdn/module_definition'
-require 'azure_mgmt_cdn/version'
+require 'azure_mgmt_authorization/module_definition'
+require 'azure_mgmt_authorization/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'azure_mgmt_cdn'
+  spec.name          = 'azure_mgmt_authorization'
   spec.version       = Azure::ARM::Authorization::VERSION
   spec.authors       = 'Microsoft Corporation'
-  spec.email         = 'azsdkteam@microsoft.com'
+  spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Role Based Authorization Management Client Library for Ruby'
   spec.summary       = 'Official Ruby client library to consume Microsoft Azure Role Based Authorization Management services.'
   spec.homepage      = 'http://github.com/azure/azure-sdk-for-ruby'

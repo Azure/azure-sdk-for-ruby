@@ -8,7 +8,7 @@ require_relative 'deployment_shared'
 include MsRestAzure
 include Azure::ARM::Resources
 
-describe Deployments do
+describe 'Template Deployments' do
 
   before(:all) do
     @client = RESOURCES_CLIENT.deployments
@@ -35,7 +35,7 @@ describe Deployments do
   end
 
   it 'should cancel running template deployment' do
-    deployment = create_deployment(@resource_group.name)
+    deployment = begin_create_deployment(@resource_group.name)
     result = @client.cancel(@resource_group.name, deployment.name).value!
 
     expect(result.body).to be_nil

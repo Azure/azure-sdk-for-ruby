@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_compute'
   spec.version       = Azure::ARM::Compute::VERSION
   spec.authors       = 'Microsoft Corporation'
-  spec.email         = 'azsdkteam@microsoft.com'
+  spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Compute Management Client Library for Ruby'
   spec.summary       = 'Official Ruby client library to consume Microsoft Azure Compute Management services.'
   spec.homepage      = 'http://github.com/azure/azure-sdk-for-ruby'
@@ -27,9 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10'
   spec.add_development_dependency 'rspec', '~> 3'
   spec.add_development_dependency 'dotenv', '~> 2'
-  spec.add_development_dependency 'azure_mgmt_resources', '~> 0.1'
-  spec.add_development_dependency 'azure_mgmt_storage', '~> 0.2'
-  spec.add_development_dependency 'azure_mgmt_network', '~> 0.2'
 
   spec.add_runtime_dependency 'ms_rest_azure', '~> 0.2'
 end

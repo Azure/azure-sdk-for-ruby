@@ -35,7 +35,7 @@ REGEN_METADATA = {
   },
   azure_mgmt_features: {
       spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/features/2015-12-01/swagger/features.json',
-      ns: 'Azure::ARM::Feature',
+      ns: 'Azure::ARM::Features',
       version: '0.2.0'
   },
   azure_mgmt_subscriptions: {
@@ -117,6 +117,7 @@ def each_child
   dirs = Dir.entries('./').select { |f| File.directory?(f) and !(f =='.' || f == '..') }
   dirs.each do |dir|
     Dir.chdir(dir) do
+      puts "Executing within #{dir}"
       yield(dir)
     end
   end
@@ -139,13 +140,18 @@ end
 
 task :build do
   each_child do
-    execute_and_stream('rake build')
+    if REGEN_METADATA.has_key?(dir.to_sym)
+      execute_and_stream('rake build')
+    end
   end
 end
 
-task :push, [:key, :version] do |_, args|
+task :push, [:key] do |_, args|
   each_child do |child|
-    execute_and_stream("gem push pkg/#{child}-#{args[:version]}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
+    if REGEN_METADATA.has_key?(dir.to_sym)
+      md = REGEN_METADATA[dir.to_sym]
+      execute_and_stream("gem push pkg/#{child}-#{args[md[:version]]}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
+    end
   end
 end
 

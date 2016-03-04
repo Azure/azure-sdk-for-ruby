@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_search'
   spec.version       = Azure::ARM::Search::VERSION
   spec.authors       = 'Microsoft Corporation'
-  spec.email         = 'azsdkteam@microsoft.com'
+  spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Search Management Client Library for Ruby'
   spec.summary       = 'Official Ruby client library to consume Microsoft Azure Search Management services.'
   spec.homepage      = 'http://github.com/azure/azure-sdk-for-ruby'

@@ -40,31 +40,19 @@ describe StorageAccounts do
   end
 
   it 'list storage accounts' do
-    result = @client.list().value!
+    result = @client.list.value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
-
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
-      result = @client.list_next(result.body.next_link).value!
-      expect(result.body.value).not_to be_nil
-      expect(result.body.value).to be_a(Array)
-    end
   end
 
   it 'list storage accounts by resource group' do
     result = @client.list_by_resource_group(@resource_group.name).value!
     expect(result.body).not_to be_nil
     expect(result.body.value).to be_a(Array)
-
-    while !result.body.next_link.nil? && !result.body.next_link.empty? do
-      result = @client.list_by_resource_group_next(result.body.next_link).value!
-      expect(result.body).not_to be_nil
-      expect(result.body.value).to be_a(Array)
-    end
   end
 
   it 'should send true if name is available' do
-    acc_name = Models::StorageAccountCheckNameAvailabilityParameters.new()
+    acc_name = Models::StorageAccountCheckNameAvailabilityParameters.new
     acc_name.name = get_random_name('storage', 24)
     acc_name.type = @storage_type
 
@@ -79,7 +67,7 @@ describe StorageAccounts do
     result = @client.get_properties(@resource_group.name, storage).value!
 
     expect(result.body).not_to be_nil
-    expect(result.body.location).to eq('West US')
+    expect(result.body.location).to eq('westus')
     expect(result.body.name).to eq(storage)
     expect(result.body.type).to eq(@storage_type)
     expect(result.body.properties).to be_a(Models::StorageAccountProperties)

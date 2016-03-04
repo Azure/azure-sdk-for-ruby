@@ -8,7 +8,7 @@ require_relative 'deployment_shared'
 include MsRestAzure
 include Azure::ARM::Resources
 
-describe DeploymentOperations do
+describe 'Deployment Operations' do
 
   before(:all) do
     @client = RESOURCES_CLIENT.deployment_operations

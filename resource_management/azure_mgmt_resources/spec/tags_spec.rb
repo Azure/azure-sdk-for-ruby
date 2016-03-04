@@ -7,7 +7,7 @@ require_relative 'spec_helper'
 include MsRestAzure
 include Azure::ARM::Resources
 
-describe ResourceManagementClient do
+describe 'Tags' do
 
   before(:all) do
     @client = RESOURCES_CLIENT.tags

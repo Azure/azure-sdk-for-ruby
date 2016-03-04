@@ -7,7 +7,7 @@ require_relative 'spec_helper'
 include MsRestAzure
 include Azure::ARM::Resources
 
-describe ResourceManagementClient do
+describe 'Resources' do
 
   before(:all) do
     @client = RESOURCES_CLIENT.resources
@@ -118,7 +118,7 @@ describe ResourceManagementClient do
   end
 
   it 'should list resources' do
-    result = @client.list().value!
+    result = @client.list.value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 
@@ -148,12 +148,12 @@ describe ResourceManagementClient do
 
     resource = create_resource
 
-    params = Models::ResourcesMoveInfo.new()
+    params = Models::ResourcesMoveInfo.new
     params.target_resource_group = target_group.id
     params.resources = [resource.id]
 
     result = @client.move_resources(@resource_group.name, params).value!
-    expect(result.response.status).to eq(202)
+    expect(result.response.status).to eq(204)
 
     wait_resource_move
     delete_resource_group(target_group.name)
@@ -202,8 +202,11 @@ describe ResourceManagementClient do
   end
 
   def wait_resource_move
+    count = 30
     while RESOURCES_CLIENT.resource_groups.get(@resource_group.name).value!.body.properties.provisioning_state == 'MovingResources'
       sleep(1)
+      fail 'Waiting for resources to move took more than 30 requests. This seems broken' if count <= 0
+      count -= 1
     end
   end
 end

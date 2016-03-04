@@ -2,14 +2,5 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-source 'https://rubygems.org'
-
-gemspec
-
-group :development do
-  gem 'azure_mgmt_resources', path: '../azure_mgmt_resources'
-end
-
-group :test do
-  gem 'rspec'
-end
+require 'dotenv'
+Dotenv.load(File.join(File.dirname(__FILE__), '../../.env'))

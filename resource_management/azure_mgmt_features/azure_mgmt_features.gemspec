@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_features'
   spec.version       = Azure::ARM::Features::VERSION
   spec.authors       = 'Microsoft Corporation'
-  spec.email         = 'azsdkteam@microsoft.com'
+  spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Resource Provider Feature Management Client Library for Ruby'
   spec.summary       = 'Official Ruby client library to consume Microsoft Azure Resource Provider Feature Management services.'
   spec.homepage      = 'http://github.com/azure/azure-sdk-for-ruby'

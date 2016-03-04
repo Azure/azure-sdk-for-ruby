@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'azure_mgmt_scheduler'
   spec.version       = Azure::ARM::Scheduler::VERSION
   spec.authors       = 'Microsoft Corporation'
-  spec.email         = 'azsdkteam@microsoft.com'
+  spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Scheduler Management Client Library for Ruby'
   spec.summary       = 'Official Ruby client library to consume Microsoft Azure Scheduler Management services.'
   spec.homepage      = 'http://github.com/azure/azure-sdk-for-ruby'

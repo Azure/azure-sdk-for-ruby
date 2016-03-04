@@ -7,7 +7,7 @@ require_relative 'spec_helper'
 include MsRestAzure
 include Azure::ARM::Resources
 
-describe ResourceManagementClient do
+describe 'Providers' do
 
   before(:all) do
     @registered_providers = []
