@@ -182,6 +182,7 @@ module Azure
               end
             end
             xml.AdminUsername params[:vm_user]
+            xml.CustomData params[:custom_data] if params[:custom_data]
           end
         end
       end
