@@ -7,7 +7,7 @@ require_relative 'spec_helper'
 include MsRestAzure
 include Azure::ARM::Storage
 
-describe StorageManagementClient do
+describe 'Usage Operations' do
   before(:all) do
     @client = STORAGE_CLIENT.usage_operations
   end
