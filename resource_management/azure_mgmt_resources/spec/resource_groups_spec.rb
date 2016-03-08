@@ -7,7 +7,7 @@ require_relative 'spec_helper'
 include MsRestAzure
 include Azure::ARM::Resources
 
-describe ResourceManagementClient do
+describe 'Resource Groups' do
 
   before(:all) do
     @client = RESOURCES_CLIENT.resource_groups
@@ -27,7 +27,7 @@ describe ResourceManagementClient do
     name = get_random_name('RubySDKTest_')
     @created_groups.push(name)
 
-    params = Models::ResourceGroup.new()
+    params = Models::ResourceGroup.new
     params.location = 'westus'
     params.tags = { 'tag1' => 'val1', 'tag2' => 'val2' }
 
@@ -43,7 +43,7 @@ describe ResourceManagementClient do
   end
 
   it 'should throw exception when create or update with nil parameters' do
-    params = Models::ResourceGroup.new()
+    params = Models::ResourceGroup.new
     expect{@client.create_or_update(nil, params)}.to raise_error(ArgumentError)
     expect{@client.create_or_update('foo', nil)}.to raise_error(ArgumentError)
   end
@@ -52,7 +52,7 @@ describe ResourceManagementClient do
     params = Models::ResourceGroup.new
     expect{@client.patch(nil, params)}.to raise_error(ArgumentError)
     expect{@client.patch('foo', nil)}.to raise_error(ArgumentError)
-    expect{@client.patch('~`123', params).value!}.to raise_error(MsRestAzure::AzureOperationError)
+    expect{@client.patch('~`123', params).value!}.to raise_error(MsRest::ValidationError)
   end
 
   it 'should get resource group' do
@@ -71,7 +71,7 @@ describe ResourceManagementClient do
   end
 
   it 'should list resource groups' do
-    result = @client.list().value!
+    result = @client.list.value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
 

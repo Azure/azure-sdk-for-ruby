@@ -33,15 +33,15 @@ describe LoadBalancers do
     #create public ip address
     lb_public_ip_name = get_random_name('ip')
     lb_domain_name_label = get_random_name('domain')
-    public_ip = Models::PublicIpAddress.new
+    public_ip = Models::PublicIPAddress.new
     public_ip.location = @location
-    public_ip_props = Models::PublicIpAddressPropertiesFormat.new
+    public_ip_props = Models::PublicIPAddressPropertiesFormat.new
     public_ip.properties = public_ip_props
     public_ip_props.public_ipallocation_method = 'Dynamic'
-    dns_settings = Models::PublicIpAddressDnsSettings.new
+    dns_settings = Models::PublicIPAddressDnsSettings.new
     public_ip_props.dns_settings = dns_settings
     dns_settings.domain_name_label = lb_domain_name_label
-    public_ip = NETWORK_CLIENT.public_ip_addresses.create_or_update(@resource_group.name, lb_public_ip_name, public_ip).value!.body
+    public_ip = NETWORK_CLIENT.public_ipaddresses.create_or_update(@resource_group.name, lb_public_ip_name, public_ip).value!.body
     #create virtual network
     vnet = create_virtual_network(@resource_group.name)
     #create the load balancer
@@ -57,10 +57,10 @@ describe LoadBalancers do
     load_balancer.location = @location
     load_balancer_props = Models::LoadBalancerPropertiesFormat.new
     load_balancer.properties = load_balancer_props
-    frontend_ip_configuration = Models::FrontendIpConfiguration.new
+    frontend_ip_configuration = Models::FrontendIPConfiguration.new
     load_balancer_props.frontend_ipconfigurations = [frontend_ip_configuration]
     frontend_ip_configuration.name = frontend_ip_config_name
-    frontend_ip_configuration_props = Models::FrontendIpConfigurationPropertiesFormat.new
+    frontend_ip_configuration_props = Models::FrontendIPConfigurationPropertiesFormat.new
     frontend_ip_configuration.properties = frontend_ip_configuration_props
     frontend_ip_configuration_props.public_ipaddress = public_ip
     backend_address_pool = Models::BackendAddressPool.new
@@ -149,12 +149,12 @@ describe LoadBalancers do
     params = build_load_balancer_params
     props = Models::LoadBalancerPropertiesFormat.new
     params.properties = props
-    frontend_ip_configuration = Models::FrontendIpConfiguration.new
+    frontend_ip_configuration = Models::FrontendIPConfiguration.new
     props.frontend_ipconfigurations = [frontend_ip_configuration]
     ip_config_name = get_random_name('frontend_ip_config')
     frontend_ip_configuration.name = ip_config_name
     frontend_ip_configuration.id = get_child_lb_resource_id(NETWORK_CLIENT.subscription_id,@resource_group.name, params.name,'frontendIPConfigurations', ip_config_name)
-    frontend_ip_conf_props = Models::FrontendIpConfigurationPropertiesFormat.new
+    frontend_ip_conf_props = Models::FrontendIPConfigurationPropertiesFormat.new
     frontend_ip_configuration.properties = frontend_ip_conf_props
     frontend_ip_conf_props.private_ipallocation_method = 'Dynamic'
     frontend_ip_conf_props.subnet = subnet

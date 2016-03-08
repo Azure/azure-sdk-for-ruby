@@ -83,10 +83,10 @@ describe NetworkInterfaces do
     ip_config_name = get_random_name('ip_name')
     params.name = network_interface_name
     props = Models::NetworkInterfacePropertiesFormat.new
-    ip_configuration = Models::NetworkInterfaceIpConfiguration.new
+    ip_configuration = Models::NetworkInterfaceIPConfiguration.new
     params.properties = props
     props.ip_configurations = [ip_configuration]
-    ip_configuration_properties = Models::NetworkInterfaceIpConfigurationPropertiesFormat.new
+    ip_configuration_properties = Models::NetworkInterfaceIPConfigurationPropertiesFormat.new
     ip_configuration.properties = ip_configuration_properties
     ip_configuration.name = ip_config_name
     ip_configuration_properties.private_ipallocation_method = 'Dynamic'

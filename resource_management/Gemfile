@@ -4,14 +4,25 @@
 
 source 'https://rubygems.org'
 
-group :development do
-  gem 'azure_mgmt_resources', path: 'azure_mgmt_resources'
-  gem 'azure_mgmt_storage', path: 'azure_mgmt_storage'
-  gem 'azure_mgmt_network', path: 'azure_mgmt_network'
-  gem 'azure_mgmt_compute', path: 'azure_mgmt_compute'
-end
-
-group :test do
+group :development, :test do
   gem 'rspec'
+  gem 'rake'
   gem 'dotenv'
 end
+
+gem 'azure_mgmt_authorization',         path: 'azure_mgmt_authorization'
+gem 'azure_mgmt_cdn',                   path: 'azure_mgmt_cdn'
+gem 'azure_mgmt_compute',               path: 'azure_mgmt_compute'
+gem 'azure_mgmt_features',              path: 'azure_mgmt_features'
+gem 'azure_mgmt_graph',                 path: 'azure_mgmt_graph'
+gem 'azure_mgmt_locks',                 path: 'azure_mgmt_locks'
+gem 'azure_mgmt_network',               path: 'azure_mgmt_network'
+gem 'azure_mgmt_notification_hubs',     path: 'azure_mgmt_notification_hubs'
+gem 'azure_mgmt_redis',                 path: 'azure_mgmt_redis'
+gem 'azure_mgmt_resources',             path: 'azure_mgmt_resources'
+gem 'azure_mgmt_scheduler',             path: 'azure_mgmt_scheduler'
+gem 'azure_mgmt_search',                path: 'azure_mgmt_search'
+gem 'azure_mgmt_sql',                   path: 'azure_mgmt_sql'
+gem 'azure_mgmt_storage',               path: 'azure_mgmt_storage'
+gem 'azure_mgmt_subscriptions',         path: 'azure_mgmt_subscriptions'
+gem 'azure_mgmt_web',                   path: 'azure_mgmt_web'
