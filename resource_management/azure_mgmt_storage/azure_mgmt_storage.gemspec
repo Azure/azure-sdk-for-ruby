@@ -31,9 +31,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'dotenv', '~> 2'
   spec.add_development_dependency 'azure_mgmt_resources', '~> 0.2'
 
-  spec.add_runtime_dependency 'json', '~> 1.8'
-  spec.add_runtime_dependency 'concurrent-ruby', ['>= 1.0.0.pre1', '<2']
-  spec.add_runtime_dependency 'faraday', '~> 0.9'
-  spec.add_runtime_dependency 'faraday-cookie_jar', '~> 0.0.6'
-  spec.add_runtime_dependency 'ms_rest_azure', '~> 0.2'
+  spec.add_runtime_dependency 'ms_rest_azure', '~> 0.2.0'
 end
