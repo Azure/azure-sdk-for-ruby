@@ -29,6 +29,5 @@ module Azure::ARM::Features
     autoload :FeatureProperties,                                  'azure_mgmt_features/models/feature_properties.rb'
     autoload :FeatureResult,                                      'azure_mgmt_features/models/feature_result.rb'
     autoload :FeatureOperationsListResult,                        'azure_mgmt_features/models/feature_operations_list_result.rb'
-    autoload :SubResource,                                        'azure_mgmt_features/models/sub_resource.rb'
   end
 end

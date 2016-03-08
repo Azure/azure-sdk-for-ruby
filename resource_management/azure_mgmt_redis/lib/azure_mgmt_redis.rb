@@ -31,7 +31,6 @@ module Azure::ARM::Redis
     autoload :RedisListResult,                                    'azure_mgmt_redis/models/redis_list_result.rb'
     autoload :RedisListKeysResult,                                'azure_mgmt_redis/models/redis_list_keys_result.rb'
     autoload :RedisRegenerateKeyParameters,                       'azure_mgmt_redis/models/redis_regenerate_key_parameters.rb'
-    autoload :SubResource,                                        'azure_mgmt_redis/models/sub_resource.rb'
     autoload :RedisCreateOrUpdateParameters,                      'azure_mgmt_redis/models/redis_create_or_update_parameters.rb'
     autoload :RedisResourceWithAccessKey,                         'azure_mgmt_redis/models/redis_resource_with_access_key.rb'
     autoload :RedisResource,                                      'azure_mgmt_redis/models/redis_resource.rb'

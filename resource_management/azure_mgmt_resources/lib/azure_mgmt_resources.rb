@@ -70,7 +70,6 @@ module Azure::ARM::Resources
     autoload :ResourceProviderOperationDisplayProperties,         'azure_mgmt_resources/models/resource_provider_operation_display_properties.rb'
     autoload :ResourceProviderOperationDefinition,                'azure_mgmt_resources/models/resource_provider_operation_definition.rb'
     autoload :ResourceProviderOperationDetailListResult,          'azure_mgmt_resources/models/resource_provider_operation_detail_list_result.rb'
-    autoload :SubResource,                                        'azure_mgmt_resources/models/sub_resource.rb'
     autoload :ResourceManagementErrorWithDetails,                 'azure_mgmt_resources/models/resource_management_error_with_details.rb'
     autoload :GenericResource,                                    'azure_mgmt_resources/models/generic_resource.rb'
     autoload :DeploymentMode,                                     'azure_mgmt_resources/models/deployment_mode.rb'

@@ -54,7 +54,7 @@ module Azure::ARM::Compute
           serializedArray = []
           serialized_property.each do |element|
             unless element.nil?
-              element = SubResource.serialize_object(element)
+              element = MsRestAzure::SubResource.serialize_object(element)
             end
             serializedArray.push(element)
           end
@@ -100,7 +100,7 @@ module Azure::ARM::Compute
           deserialized_array = []
           deserialized_property.each do |element2|
             unless element2.nil?
-              element2 = SubResource.deserialize_object(element2)
+              element2 = MsRestAzure::SubResource.deserialize_object(element2)
             end
             deserialized_array.push(element2)
           end

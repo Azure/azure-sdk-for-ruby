@@ -51,7 +51,6 @@ module Azure::ARM::NotificationHubs
     autoload :NotificationHubCreateOrUpdateParameters,            'azure_mgmt_notification_hubs/models/notification_hub_create_or_update_parameters.rb'
     autoload :NotificationHubResource,                            'azure_mgmt_notification_hubs/models/notification_hub_resource.rb'
     autoload :NotificationHubListResult,                          'azure_mgmt_notification_hubs/models/notification_hub_list_result.rb'
-    autoload :SubResource,                                        'azure_mgmt_notification_hubs/models/sub_resource.rb'
     autoload :NamespaceType,                                      'azure_mgmt_notification_hubs/models/namespace_type.rb'
     autoload :AccessRights,                                       'azure_mgmt_notification_hubs/models/access_rights.rb'
   end

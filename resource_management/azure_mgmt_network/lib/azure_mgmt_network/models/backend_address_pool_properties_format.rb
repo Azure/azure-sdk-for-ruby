@@ -64,7 +64,7 @@ module Azure::ARM::Network
           serializedArray = []
           serialized_property.each do |element1|
             unless element1.nil?
-              element1 = SubResource.serialize_object(element1)
+              element1 = MsRestAzure::SubResource.serialize_object(element1)
             end
             serializedArray.push(element1)
           end
@@ -74,7 +74,7 @@ module Azure::ARM::Network
 
         serialized_property = object.outbound_nat_rule
         unless serialized_property.nil?
-          serialized_property = SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['outboundNatRule'] = serialized_property unless serialized_property.nil?
 
@@ -111,7 +111,7 @@ module Azure::ARM::Network
           deserialized_array = []
           deserialized_property.each do |element3|
             unless element3.nil?
-              element3 = SubResource.deserialize_object(element3)
+              element3 = MsRestAzure::SubResource.deserialize_object(element3)
             end
             deserialized_array.push(element3)
           end
@@ -121,7 +121,7 @@ module Azure::ARM::Network
 
         deserialized_property = object['outboundNatRule']
         unless deserialized_property.nil?
-          deserialized_property = SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.outbound_nat_rule = deserialized_property
 

@@ -33,7 +33,6 @@ module Azure::ARM::Compute
   module Models
     autoload :InstanceViewStatus,                                 'azure_mgmt_compute/models/instance_view_status.rb'
     autoload :AvailabilitySetProperties,                          'azure_mgmt_compute/models/availability_set_properties.rb'
-    autoload :SubResource,                                        'azure_mgmt_compute/models/sub_resource.rb'
     autoload :AvailabilitySetListResult,                          'azure_mgmt_compute/models/availability_set_list_result.rb'
     autoload :VirtualMachineSize,                                 'azure_mgmt_compute/models/virtual_machine_size.rb'
     autoload :VirtualMachineSizeListResult,                       'azure_mgmt_compute/models/virtual_machine_size_list_result.rb'

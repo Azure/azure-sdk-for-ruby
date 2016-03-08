@@ -73,7 +73,7 @@ module Azure::ARM::Network
           serializedArray = []
           serialized_property.each do |element|
             unless element.nil?
-              element = SubResource.serialize_object(element)
+              element = MsRestAzure::SubResource.serialize_object(element)
             end
             serializedArray.push(element)
           end
@@ -86,7 +86,7 @@ module Azure::ARM::Network
           serializedArray = []
           serialized_property.each do |element1|
             unless element1.nil?
-              element1 = SubResource.serialize_object(element1)
+              element1 = MsRestAzure::SubResource.serialize_object(element1)
             end
             serializedArray.push(element1)
           end
@@ -99,7 +99,7 @@ module Azure::ARM::Network
           serializedArray = []
           serialized_property.each do |element2|
             unless element2.nil?
-              element2 = SubResource.serialize_object(element2)
+              element2 = MsRestAzure::SubResource.serialize_object(element2)
             end
             serializedArray.push(element2)
           end
@@ -112,7 +112,7 @@ module Azure::ARM::Network
           serializedArray = []
           serialized_property.each do |element3|
             unless element3.nil?
-              element3 = SubResource.serialize_object(element3)
+              element3 = MsRestAzure::SubResource.serialize_object(element3)
             end
             serializedArray.push(element3)
           end
@@ -158,7 +158,7 @@ module Azure::ARM::Network
           deserialized_array = []
           deserialized_property.each do |element4|
             unless element4.nil?
-              element4 = SubResource.deserialize_object(element4)
+              element4 = MsRestAzure::SubResource.deserialize_object(element4)
             end
             deserialized_array.push(element4)
           end
@@ -171,7 +171,7 @@ module Azure::ARM::Network
           deserialized_array = []
           deserialized_property.each do |element5|
             unless element5.nil?
-              element5 = SubResource.deserialize_object(element5)
+              element5 = MsRestAzure::SubResource.deserialize_object(element5)
             end
             deserialized_array.push(element5)
           end
@@ -184,7 +184,7 @@ module Azure::ARM::Network
           deserialized_array = []
           deserialized_property.each do |element6|
             unless element6.nil?
-              element6 = SubResource.deserialize_object(element6)
+              element6 = MsRestAzure::SubResource.deserialize_object(element6)
             end
             deserialized_array.push(element6)
           end
@@ -197,7 +197,7 @@ module Azure::ARM::Network
           deserialized_array = []
           deserialized_property.each do |element7|
             unless element7.nil?
-              element7 = SubResource.deserialize_object(element7)
+              element7 = MsRestAzure::SubResource.deserialize_object(element7)
             end
             deserialized_array.push(element7)
           end

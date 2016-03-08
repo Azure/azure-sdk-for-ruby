@@ -29,7 +29,6 @@ module Azure::ARM::Locks
     autoload :ManagementLockProperties,                           'azure_mgmt_locks/models/management_lock_properties.rb'
     autoload :ManagementLockObject,                               'azure_mgmt_locks/models/management_lock_object.rb'
     autoload :ManagementLockListResult,                           'azure_mgmt_locks/models/management_lock_list_result.rb'
-    autoload :SubResource,                                        'azure_mgmt_locks/models/sub_resource.rb'
     autoload :LockLevel,                                          'azure_mgmt_locks/models/lock_level.rb'
   end
 end

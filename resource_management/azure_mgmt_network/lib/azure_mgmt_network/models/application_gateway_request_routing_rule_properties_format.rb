@@ -60,25 +60,25 @@ module Azure::ARM::Network
 
         serialized_property = object.backend_address_pool
         unless serialized_property.nil?
-          serialized_property = SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['backendAddressPool'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.backend_http_settings
         unless serialized_property.nil?
-          serialized_property = SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['backendHttpSettings'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.http_listener
         unless serialized_property.nil?
-          serialized_property = SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['httpListener'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.url_path_map
         unless serialized_property.nil?
-          serialized_property = SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['urlPathMap'] = serialized_property unless serialized_property.nil?
 
@@ -107,25 +107,25 @@ module Azure::ARM::Network
 
         deserialized_property = object['backendAddressPool']
         unless deserialized_property.nil?
-          deserialized_property = SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.backend_address_pool = deserialized_property
 
         deserialized_property = object['backendHttpSettings']
         unless deserialized_property.nil?
-          deserialized_property = SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.backend_http_settings = deserialized_property
 
         deserialized_property = object['httpListener']
         unless deserialized_property.nil?
-          deserialized_property = SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.http_listener = deserialized_property
 
         deserialized_property = object['urlPathMap']
         unless deserialized_property.nil?
-          deserialized_property = SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.url_path_map = deserialized_property
 

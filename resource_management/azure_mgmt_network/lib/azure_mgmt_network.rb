@@ -42,7 +42,6 @@ module Azure::ARM::Network
   module Models
     autoload :ApplicationGatewaySku,                              'azure_mgmt_network/models/application_gateway_sku.rb'
     autoload :ApplicationGatewayIPConfigurationPropertiesFormat,  'azure_mgmt_network/models/application_gateway_ipconfiguration_properties_format.rb'
-    autoload :SubResource,                                        'azure_mgmt_network/models/sub_resource.rb'
     autoload :ApplicationGatewaySslCertificatePropertiesFormat,   'azure_mgmt_network/models/application_gateway_ssl_certificate_properties_format.rb'
     autoload :ApplicationGatewayFrontendIPConfigurationPropertiesFormat, 'azure_mgmt_network/models/application_gateway_frontend_ipconfiguration_properties_format.rb'
     autoload :ApplicationGatewayFrontendPortPropertiesFormat,     'azure_mgmt_network/models/application_gateway_frontend_port_properties_format.rb'

@@ -48,13 +48,13 @@ module Azure::ARM::Network
 
         serialized_property = object.default_backend_address_pool
         unless serialized_property.nil?
-          serialized_property = SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['defaultBackendAddressPool'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.default_backend_http_settings
         unless serialized_property.nil?
-          serialized_property = SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['defaultBackendHttpSettings'] = serialized_property unless serialized_property.nil?
 
@@ -89,13 +89,13 @@ module Azure::ARM::Network
 
         deserialized_property = object['defaultBackendAddressPool']
         unless deserialized_property.nil?
-          deserialized_property = SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.default_backend_address_pool = deserialized_property
 
         deserialized_property = object['defaultBackendHttpSettings']
         unless deserialized_property.nil?
-          deserialized_property = SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.default_backend_http_settings = deserialized_property
 

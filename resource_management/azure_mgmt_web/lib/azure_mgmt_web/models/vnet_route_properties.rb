@@ -31,7 +31,7 @@ module Azure::ARM::Web
       # INHERITED - Routes inherited from the real Virtual Network
       # routes
       # STATIC - Static route set on the web app only
-      #
+      # 
       # These values will be used for syncing a Web App's routes
       # with those from a Virtual Network. This operation will clear all
       # DEFAULT and INHERITED routes and replace them

@@ -49,7 +49,7 @@ module Azure::ARM::Network
 
         serialized_property = object.backend_address_pool
         unless serialized_property.nil?
-          serialized_property = SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['backendAddressPool'] = serialized_property unless serialized_property.nil?
 
@@ -61,7 +61,7 @@ module Azure::ARM::Network
           serializedArray = []
           serialized_property.each do |element|
             unless element.nil?
-              element = SubResource.serialize_object(element)
+              element = MsRestAzure::SubResource.serialize_object(element)
             end
             serializedArray.push(element)
           end
@@ -86,7 +86,7 @@ module Azure::ARM::Network
 
         deserialized_property = object['backendAddressPool']
         unless deserialized_property.nil?
-          deserialized_property = SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.backend_address_pool = deserialized_property
 
@@ -99,7 +99,7 @@ module Azure::ARM::Network
           deserialized_array = []
           deserialized_property.each do |element1|
             unless element1.nil?
-              element1 = SubResource.deserialize_object(element1)
+              element1 = MsRestAzure::SubResource.deserialize_object(element1)
             end
             deserialized_array.push(element1)
           end

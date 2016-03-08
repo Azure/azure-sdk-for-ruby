@@ -59,13 +59,13 @@ module Azure::ARM::Network
 
         serialized_property = object.frontend_ipconfiguration
         unless serialized_property.nil?
-          serialized_property = SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['frontendIPConfiguration'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.frontend_port
         unless serialized_property.nil?
-          serialized_property = SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['frontendPort'] = serialized_property unless serialized_property.nil?
 
@@ -77,7 +77,7 @@ module Azure::ARM::Network
 
         serialized_property = object.ssl_certificate
         unless serialized_property.nil?
-          serialized_property = SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['sslCertificate'] = serialized_property unless serialized_property.nil?
 
@@ -102,13 +102,13 @@ module Azure::ARM::Network
 
         deserialized_property = object['frontendIPConfiguration']
         unless deserialized_property.nil?
-          deserialized_property = SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.frontend_ipconfiguration = deserialized_property
 
         deserialized_property = object['frontendPort']
         unless deserialized_property.nil?
-          deserialized_property = SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.frontend_port = deserialized_property
 
@@ -124,7 +124,7 @@ module Azure::ARM::Network
 
         deserialized_property = object['sslCertificate']
         unless deserialized_property.nil?
-          deserialized_property = SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.ssl_certificate = deserialized_property
 

@@ -94,7 +94,7 @@ module Azure::ARM::Network
 
         serialized_property = object.gateway_default_site
         unless serialized_property.nil?
-          serialized_property = SubResource.serialize_object(serialized_property)
+          serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['gatewayDefaultSite'] = serialized_property unless serialized_property.nil?
 
@@ -160,7 +160,7 @@ module Azure::ARM::Network
 
         deserialized_property = object['gatewayDefaultSite']
         unless deserialized_property.nil?
-          deserialized_property = SubResource.deserialize_object(deserialized_property)
+          deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.gateway_default_site = deserialized_property
 
