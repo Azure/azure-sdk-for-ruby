@@ -209,14 +209,19 @@ module Azure
       #
       # ==== Attributes
       #
-      # * +vm_name+  - String. Virtual machine name.
+      # * +vm_name+             - String. Virtual machine name.
       # * +cloud_service_name+  - String. Cloud service name.
+      #
+      #  ==== Options
+      #
+      # Accepted key/value pairs are:
+      # * +delete_vhd+          - Boolean. To delete the associated VHD from the blob storage location.
       #
       # See http://msdn.microsoft.com/en-us/library/azure/gg441305.aspx
       # See http://msdn.microsoft.com/en-us/library/azure/jj157179.aspx
       #
       # Returns NONE
-      def delete_virtual_machine(vm_name, cloud_service_name)
+      def delete_virtual_machine(vm_name, cloud_service_name, options={})
         virtual_machines = list_virtual_machines(cloud_service_name)
         vm = virtual_machines.select { |x| x.vm_name == vm_name }.first
         if vm
@@ -247,7 +252,7 @@ module Azure
           if disk.attached
             Azure::Loggerx.error "\nCannot delete disk #{disk_name}."
           else
-            disk_management_service.delete_virtual_machine_disk(disk_name)
+            disk_management_service.delete_virtual_machine_disk(disk_name, options)
           end
         else
           Azure::Loggerx.error "Cannot find virtual machine #{vm_name} under cloud service #{cloud_service_name}"
