@@ -43,6 +43,9 @@ module Azure::ARM::Network
       # configurations.
       attr_accessor :vpn_client_configuration
 
+      # @return [BgpSettings] Virtual network gateway's BGP speaker settings
+      attr_accessor :bgp_settings
+
       # @return [String] Gets or sets resource guid property of the
       # VirtualNetworkGateway resource
       attr_accessor :resource_guid
@@ -59,6 +62,7 @@ module Azure::ARM::Network
         @gateway_default_site.validate unless @gateway_default_site.nil?
         @sku.validate unless @sku.nil?
         @vpn_client_configuration.validate unless @vpn_client_configuration.nil?
+        @bgp_settings.validate unless @bgp_settings.nil?
       end
 
       #
@@ -109,6 +113,12 @@ module Azure::ARM::Network
           serialized_property = VpnClientConfiguration.serialize_object(serialized_property)
         end
         output_object['vpnClientConfiguration'] = serialized_property unless serialized_property.nil?
+
+        serialized_property = object.bgp_settings
+        unless serialized_property.nil?
+          serialized_property = BgpSettings.serialize_object(serialized_property)
+        end
+        output_object['bgpSettings'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.resource_guid
         output_object['resourceGuid'] = serialized_property unless serialized_property.nil?
@@ -175,6 +185,12 @@ module Azure::ARM::Network
           deserialized_property = VpnClientConfiguration.deserialize_object(deserialized_property)
         end
         output_object.vpn_client_configuration = deserialized_property
+
+        deserialized_property = object['bgpSettings']
+        unless deserialized_property.nil?
+          deserialized_property = BgpSettings.deserialize_object(deserialized_property)
+        end
+        output_object.bgp_settings = deserialized_property
 
         deserialized_property = object['resourceGuid']
         output_object.resource_guid = deserialized_property

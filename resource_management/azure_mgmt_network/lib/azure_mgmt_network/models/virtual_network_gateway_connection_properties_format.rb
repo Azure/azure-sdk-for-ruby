@@ -49,6 +49,9 @@ module Azure::ARM::Network
       # @return [SubResource] The reference to peerings resource.
       attr_accessor :peer
 
+      # @return [Boolean] EnableBgp Flag
+      attr_accessor :enable_bgp
+
       # @return [String] Gets or sets resource guid property of the
       # VirtualNetworkGatewayConnection resource
       attr_accessor :resource_guid
@@ -120,6 +123,9 @@ module Azure::ARM::Network
           serialized_property = MsRestAzure::SubResource.serialize_object(serialized_property)
         end
         output_object['peer'] = serialized_property unless serialized_property.nil?
+
+        serialized_property = object.enable_bgp
+        output_object['enableBgp'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.resource_guid
         output_object['resourceGuid'] = serialized_property unless serialized_property.nil?
@@ -195,6 +201,9 @@ module Azure::ARM::Network
           deserialized_property = MsRestAzure::SubResource.deserialize_object(deserialized_property)
         end
         output_object.peer = deserialized_property
+
+        deserialized_property = object['enableBgp']
+        output_object.enable_bgp = deserialized_property
 
         deserialized_property = object['resourceGuid']
         output_object.resource_guid = deserialized_property

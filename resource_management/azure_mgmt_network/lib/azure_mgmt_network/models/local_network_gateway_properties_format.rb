@@ -18,6 +18,9 @@ module Azure::ARM::Network
       # @return [String] IP address of local network gateway.
       attr_accessor :gateway_ip_address
 
+      # @return [BgpSettings] Local network gateway's BGP speaker settings
+      attr_accessor :bgp_settings
+
       # @return [String] Gets or sets resource guid property of the
       # LocalNetworkGateway resource
       attr_accessor :resource_guid
@@ -31,6 +34,7 @@ module Azure::ARM::Network
       #
       def validate
         @local_network_address_space.validate unless @local_network_address_space.nil?
+        @bgp_settings.validate unless @bgp_settings.nil?
       end
 
       #
@@ -50,6 +54,12 @@ module Azure::ARM::Network
 
         serialized_property = object.gateway_ip_address
         output_object['gatewayIpAddress'] = serialized_property unless serialized_property.nil?
+
+        serialized_property = object.bgp_settings
+        unless serialized_property.nil?
+          serialized_property = BgpSettings.serialize_object(serialized_property)
+        end
+        output_object['bgpSettings'] = serialized_property unless serialized_property.nil?
 
         serialized_property = object.resource_guid
         output_object['resourceGuid'] = serialized_property unless serialized_property.nil?
@@ -77,6 +87,12 @@ module Azure::ARM::Network
 
         deserialized_property = object['gatewayIpAddress']
         output_object.gateway_ip_address = deserialized_property
+
+        deserialized_property = object['bgpSettings']
+        unless deserialized_property.nil?
+          deserialized_property = BgpSettings.deserialize_object(deserialized_property)
+        end
+        output_object.bgp_settings = deserialized_property
 
         deserialized_property = object['resourceGuid']
         output_object.resource_guid = deserialized_property

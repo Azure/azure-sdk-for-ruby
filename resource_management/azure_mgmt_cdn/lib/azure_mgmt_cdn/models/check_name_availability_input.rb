@@ -15,7 +15,8 @@ module Azure::ARM::CDN
       # @return [String] The resource name to validate
       attr_accessor :name
 
-      # @return [String] The type of the resource whose name is to be validated
+      # @return [ResourceType] The type of the resource whose name is to be
+      # validated. Possible values include: 'Microsoft.Cdn/Profiles/Endpoints'
       attr_accessor :type
 
       #
@@ -57,6 +58,10 @@ module Azure::ARM::CDN
         output_object.name = deserialized_property
 
         deserialized_property = object['type']
+        if (!deserialized_property.nil? && !deserialized_property.empty?)
+          enum_is_valid = ResourceType.constants.any? { |e| ResourceType.const_get(e).to_s.downcase == deserialized_property.downcase }
+          warn 'Enum ResourceType does not contain ' + deserialized_property.downcase + ', but was received from the server.' unless enum_is_valid
+        end
         output_object.type = deserialized_property
 
         output_object

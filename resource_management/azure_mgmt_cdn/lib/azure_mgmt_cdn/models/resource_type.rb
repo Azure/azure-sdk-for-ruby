@@ -3,13 +3,13 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Network
+module Azure::ARM::CDN
   module Models
     #
-    # Defines values for UsageUnit
+    # Defines values for ResourceType
     #
-    module UsageUnit
-      Count = "Count"
+    module ResourceType
+      MicrosoftCdnProfilesEndpoints = "Microsoft.Cdn/Profiles/Endpoints"
     end
   end
 end

@@ -1,4 +1,7 @@
-## 2016.03.11
+## 2016.03.11 Azure::ARM Gems @version 0.2.1
+* fix the require for module_definition via [#327](https://github.com/Azure/azure-sdk-for-ruby/issues/327)
+
+## 2016.03.11 Azure::ARM Gems @version 0.2.0
 * azure_mgmt_compute version 0.2.0
   * http://www.rubydoc.info/gems/azure_mgmt_compute
   * added scale sets
