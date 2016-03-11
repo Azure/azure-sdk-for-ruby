@@ -19,14 +19,14 @@ require 'open3'
 desc 'Azure Resource Manager related tasks which often traverse each of the arm gems'
 namespace :arm do
   desc 'Delete ./pkg for each of the Azure Resource Manager projects'
-  task :clean_build do
+  task :clean do
     each_gem do
       execute_and_stream('rm -rf ./pkg')
     end
   end
 
   desc 'Build gems for each of the Azure Resource Manager projects'
-  task :build => :clean_build do
+  task :build => :clean do
     each_gem do
       execute_and_stream('rake build')
     end
