@@ -16,6 +16,7 @@ require 'faraday'
 require 'faraday-cookie_jar'
 require 'concurrent'
 require 'ms_rest'
+require 'azure_mgmt_cdn/module_definition'
 require 'ms_rest_azure'
 
 module Azure::ARM::CDN
@@ -73,5 +74,6 @@ module Azure::ARM::CDN
     autoload :EndpointResourceState,                              'azure_mgmt_cdn/models/endpoint_resource_state.rb'
     autoload :OriginResourceState,                                'azure_mgmt_cdn/models/origin_resource_state.rb'
     autoload :CustomDomainResourceState,                          'azure_mgmt_cdn/models/custom_domain_resource_state.rb'
+    autoload :ResourceType,                                       'azure_mgmt_cdn/models/resource_type.rb'
   end
 end

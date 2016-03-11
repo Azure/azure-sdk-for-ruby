@@ -16,6 +16,7 @@ require 'faraday'
 require 'faraday-cookie_jar'
 require 'concurrent'
 require 'ms_rest'
+require 'azure_mgmt_network/module_definition'
 require 'ms_rest_azure'
 
 module Azure::ARM::Network
@@ -94,6 +95,7 @@ module Azure::ARM::Network
     autoload :LoadBalancerPropertiesFormat,                       'azure_mgmt_network/models/load_balancer_properties_format.rb'
     autoload :LoadBalancerListResult,                             'azure_mgmt_network/models/load_balancer_list_result.rb'
     autoload :AddressSpace,                                       'azure_mgmt_network/models/address_space.rb'
+    autoload :BgpSettings,                                        'azure_mgmt_network/models/bgp_settings.rb'
     autoload :LocalNetworkGatewayPropertiesFormat,                'azure_mgmt_network/models/local_network_gateway_properties_format.rb'
     autoload :LocalNetworkGatewayListResult,                      'azure_mgmt_network/models/local_network_gateway_list_result.rb'
     autoload :NetworkInterfaceListResult,                         'azure_mgmt_network/models/network_interface_list_result.rb'
@@ -187,7 +189,6 @@ module Azure::ARM::Network
     autoload :TransportProtocol,                                  'azure_mgmt_network/models/transport_protocol.rb'
     autoload :LoadDistribution,                                   'azure_mgmt_network/models/load_distribution.rb'
     autoload :ProbeProtocol,                                      'azure_mgmt_network/models/probe_protocol.rb'
-    autoload :UsageUnit,                                          'azure_mgmt_network/models/usage_unit.rb'
     autoload :VirtualNetworkGatewayType,                          'azure_mgmt_network/models/virtual_network_gateway_type.rb'
     autoload :VpnType,                                            'azure_mgmt_network/models/vpn_type.rb'
     autoload :VirtualNetworkGatewaySkuName,                       'azure_mgmt_network/models/virtual_network_gateway_sku_name.rb'

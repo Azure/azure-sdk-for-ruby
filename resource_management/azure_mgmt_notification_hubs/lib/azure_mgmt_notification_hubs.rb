@@ -16,6 +16,7 @@ require 'faraday'
 require 'faraday-cookie_jar'
 require 'concurrent'
 require 'ms_rest'
+require 'azure_mgmt_notification_hubs/module_definition'
 require 'ms_rest_azure'
 
 module Azure::ARM::NotificationHubs

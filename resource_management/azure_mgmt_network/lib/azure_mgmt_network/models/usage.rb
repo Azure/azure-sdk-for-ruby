@@ -12,8 +12,8 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [UsageUnit] Gets or sets an enum describing the unit of
-      # measurement. Possible values include: 'Count'
+      # @return [String] Gets or sets an enum describing the unit of
+      # measurement.
       attr_accessor :unit
 
       # @return [Integer] Gets or sets the current value of the usage.
@@ -73,10 +73,6 @@ module Azure::ARM::Network
         output_object = Usage.new
 
         deserialized_property = object['unit']
-        if (!deserialized_property.nil? && !deserialized_property.empty?)
-          enum_is_valid = UsageUnit.constants.any? { |e| UsageUnit.const_get(e).to_s.downcase == deserialized_property.downcase }
-          warn 'Enum UsageUnit does not contain ' + deserialized_property.downcase + ', but was received from the server.' unless enum_is_valid
-        end
         output_object.unit = deserialized_property
 
         deserialized_property = object['currentValue']
