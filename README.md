@@ -5,10 +5,22 @@
 This project provides a Ruby package that makes it easy to access and manage Microsoft Azure Services like Storage, Service Bus and Virtual Machines.
 
 ## Azure Resource Management (preview)
-* Compute (Virtual Machines, Images, Extensions, Availability Sets, etc...)
-* Network (Load Balancers, Network Gateways, Security Groups, etc...)
-* Storage Accounts (Account Creation, Usage Operations, etc...)
-* Resources (Resource Groups, Resource Providers, Template Deployments, Operations, etc...)
+* [Authorization](https://rubygems.org/gems/azure_mgmt_authorization) Azure Resource Manager role based authorization
+* [CDN](https://rubygems.org/gems/azure_mgmt_cdn) Azure Content Delivery Network
+* [Compute](https://rubygems.org/gems/azure_mgmt_compute) Virtual Machines, Images, Extensions, Availability Sets, etc...
+* [Features](https://rubygems.org/gems/azure_mgmt_features) Feature Exposure Controls
+* [Graph](https://rubygems.org/gems/azure_mgmt_graph) Azure Active Directory Applications, Users, etc...
+* [Locks](https://rubygems.org/gems/azure_mgmt_locks) Management locks for Azure Resources
+* [Network](https://rubygems.org/gems/azure_mgmt_network) Load Balancers, Network Gateways, Security Groups, etc...
+* [Notification Hubs](https://rubygems.org/gems/azure_mgmt_notification_hubs) Notification Hubs management
+* [Redis](https://rubygems.org/gems/azure_mgmt_redis) Redis resource management
+* [Resources](https://rubygems.org/gems/azure_mgmt_resources) Resource Groups, Resource Providers, Template Deployments, Operations, etc...
+* [Scheduler](https://rubygems.org/gems/azure_mgmt_scheduler) Manage scheduled jobs in Azure
+* [Search](https://rubygems.org/gems/azure_mgmt_search) Manage Search resources
+* [SQL](https://rubygems.org/gems/azure_mgmt_sql) Manage Azure SQL resources
+* [Storage](https://rubygems.org/gems/azure_mgmt_storage) Account Creation, Usage Operations, etc...
+* [Subscriptions](https://rubygems.org/gems/azure_mgmt_subscriptions) Manage Azure subscriptions
+* [WebApps](https://rubygems.org/gems/azure_mgmt_web) Manage WebApps, formally known as WebSites
 
 ## Azure Service Management
 * Cloud Service Management
