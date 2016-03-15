@@ -146,6 +146,9 @@ There are two ways you can set up the connections:
   Azure.storage_queue_host   = "http://127.0.0.1:10001/devstoreaccount1"
   Azure.storage_table_host   = "http://127.0.0.1:10002/devstoreaccount1"
 
+  # For Azure Government make sure to provide the full URI to the endpoint
+  # End point mapping at https://azure.microsoft.com/en-us/documentation/articles/azure-government-developer-guide/
+
   # Local Service Bus Emulator is not supported
   # Local Service Management emulation is not supported
 
