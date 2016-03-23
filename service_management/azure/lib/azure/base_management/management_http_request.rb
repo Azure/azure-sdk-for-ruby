@@ -51,6 +51,11 @@ module Azure
         res = conn.run_request(method.to_sym, uri, nil, nil) do  |req|
           req.body = body if body
           req.headers = headers if headers
+          unless headers.nil?
+            keep_alive = headers['Keep-Alive'] || headers['keep-alive']
+            req.options[:timeout] = keep_alive.split('=').last.to_i unless keep_alive.nil?
+          end
+          req.options[:open_timeout] ||= 60
         end
         response = wait_for_completion(Azure::Core::Http::HttpResponse.new(res))
         Nokogiri::XML response.body unless response.nil?
@@ -119,6 +124,11 @@ module Azure
           res = conn.run_request(method.to_sym, URI(request_path), nil, nil) do  |req|
             req.body = body if body
             req.headers = headers if headers
+            unless headers.nil?
+              keep_alive = headers['Keep-Alive'] || headers['keep-alive']
+              req.options[:timeout] = keep_alive.split('=').last.to_i unless keep_alive.nil?
+            end
+            req.options[:open_timeout] ||= 60
           end
           response = Azure::Core::Http::HttpResponse.new(res)
           ret_val = Nokogiri::XML response.body
@@ -153,6 +163,11 @@ module Azure
         res = conn.run_request(method.to_sym, host_uri, nil, nil) do  |req|
           req.body = body if body
           req.headers = headers if headers
+          unless headers.nil?
+            keep_alive = headers['Keep-Alive'] || headers['keep-alive']
+            req.options[:timeout] = keep_alive.split('=').last.to_i unless keep_alive.nil?
+          end
+          req.options[:open_timeout] ||= 60
         end
         wait_for_completion(HttpResponse.new(res))
       end

@@ -120,14 +120,7 @@ module Azure
         end
 
         def http_setup
-          http = @client.agents(uri)
-
-          unless headers.nil?
-            keep_alive = headers['Keep-Alive'] || headers['keep-alive']
-            http.read_timeout = keep_alive.split('=').last.to_i unless keep_alive.nil?
-          end
-
-          http
+          @client.agents(uri)
         end
 
         def body=(body)
@@ -143,6 +136,11 @@ module Azure
           res = conn.run_request(method.to_sym, uri, nil, nil) do |req|
             req.body = body if body
             req.headers = headers if headers
+            unless headers.nil?
+              keep_alive = headers['Keep-Alive'] || headers['keep-alive']
+              req.options[:timeout] = keep_alive.split('=').last.to_i unless keep_alive.nil?
+            end
+            req.options[:open_timeout] ||= 60
           end
 
           response = HttpResponse.new(res)
