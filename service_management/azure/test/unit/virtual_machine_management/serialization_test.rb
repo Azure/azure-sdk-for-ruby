@@ -70,6 +70,17 @@ describe Azure::VirtualMachineManagement::Serialization do
       )
     end
 
+    it "returns a virtual_machine, with it's udp_endpoints attribute" do
+      virtual_machine = subject.virtual_machines_from_xml(vm_xml, csn).first
+      virtual_machine.udp_endpoints.must_be_kind_of Array
+      virtual_machine.udp_endpoints.must_include(
+          name: 'udp-port-3889',
+          vip: '137.116.17.187',
+          public_port: '3889',
+          local_port: '3889',
+          protocol: 'udp'
+      )
+    end
   end
 
   describe '#shutdown_virtual_machine_to_xml' do
@@ -123,6 +134,7 @@ describe Azure::VirtualMachineManagement::Serialization do
           storage_account_name: 'storageaccountname',
           cloud_service_name: 'cloud-service-name',
           tcp_endpoints: '80,3389:3390,85:85',
+          udp_endpoints: '80,3389:3390,85:85',
           availability_set_name: 'aval-set',
           winrm_https_port: '5988',
           winrm_transport: %w(http https),
@@ -145,35 +157,50 @@ describe Azure::VirtualMachineManagement::Serialization do
       result = subject.deployment_to_xml params, image, options
       doc = Nokogiri::XML(result)
       endpoints = doc.css('Deployment RoleList ConfigurationSet InputEndpoints InputEndpoint')
-      tcp_endpoints = []
+      all_endpoints = []
       endpoints.each do |endpoint|
         ep = {}
         ep[:name] = xml_content(endpoint, 'Name')
         ep[:public_port] = xml_content(endpoint, 'Port')
         ep[:local_port] = xml_content(endpoint, 'LocalPort')
-        tcp_endpoints << ep
+        all_endpoints << ep
       end
       doc.css('Deployment RoleList AvailabilitySetName').text.must_equal 'aval-set'
       result.must_be_kind_of String
-      tcp_endpoints.must_include(
+      all_endpoints.must_include(
           name: 'TCP-PORT-80',
           public_port: '80',
           local_port: '80'
       )
-      tcp_endpoints.must_include(
+      all_endpoints.must_include(
           name: 'TCP-PORT-3390',
           public_port: '3390',
           local_port: '3389'
       )
-      tcp_endpoints.must_include(
+      all_endpoints.must_include(
           name: 'TCP-PORT-85',
           public_port: '85',
           local_port: '85'
       )
-      tcp_endpoints.must_include(
+      all_endpoints.must_include(
           name: 'PowerShell',
           public_port: '5988',
           local_port: '5986'
+      )
+      all_endpoints.must_include(
+          name: 'UDP-PORT-80',
+          public_port: '80',
+          local_port: '80'
+      )
+      all_endpoints.must_include(
+          name: 'UDP-PORT-3390',
+          public_port: '3390',
+          local_port: '3389'
+      )
+      all_endpoints.must_include(
+          name: 'UDP-PORT-85',
+          public_port: '85',
+          local_port: '85'
       )
     end
 
