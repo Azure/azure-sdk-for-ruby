@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/affinitygroups
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Wed, 30 Mar 2016 18:39:50 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '119'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.344 (rd_rdfe_stable.160323-1803) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 129dd76575188d7ca615d800add6435f
+      date:
+      - Wed, 30 Mar 2016 18:39:50 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <AffinityGroups xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 18:39:51 GMT
+recorded_with: VCR 3.0.1

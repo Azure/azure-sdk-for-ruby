@@ -18,47 +18,65 @@ describe Azure::BaseManagementService do
   include Azure::Core::Utility
 
   subject { Azure::BaseManagementService.new }
-  let(:affinity_group_name) { random_string('affinity-group-', 10) }
+  let(:affinity_group_names) { ['testaffinitygroup0', 'testaffinitygroup1'] }
   let(:image_location) { WindowsImageLocation }
-
-  before do
-    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
-  end
-
-  let(:label) { 'Label Name' }
-  let(:options) { { description: 'sample description' } }
+  let(:label) { 'Label' }
+  let(:options) { {description: 'Some Description'} }
 
   describe '#create_affinity_group' do
+    before do
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+      VCR.insert_cassette "affinity_group/#{name}"
+    end
+
+    after do
+      VCR.eject_cassette
+    end
 
     it 'create new affinity group with valid params' do
-      subject.create_affinity_group(affinity_group_name,
+      subject.create_affinity_group(affinity_group_names[0],
                                     image_location,
                                     label,
                                     options)
-      affinity_group = subject.get_affinity_group(affinity_group_name)
+      affinity_group = subject.get_affinity_group(affinity_group_names[0])
+
       affinity_group.must_be_kind_of Azure::BaseManagement::AffinityGroup
       affinity_group.name.wont_be_nil
       affinity_group.location.must_equal image_location
-      affinity_group.name.must_equal affinity_group_name
+      affinity_group.name.must_equal affinity_group_names[0]
       affinity_group.label.must_equal label
       affinity_group.description.must_equal options[:description]
+
+      subject.delete_affinity_group affinity_group_names[0]
     end
 
     it 'errors if the affinity group location is not valid' do
       exception = assert_raises(RuntimeError) do
-        subject.create_affinity_group(affinity_group_name, 'North West', label)
+        subject.create_affinity_group(affinity_group_names[0], 'North West', label)
+        assert_match(/Allowed values are /i, exception.message)
       end
-      assert_match(/Allowed values are /i, exception.message)
     end
 
     it 'create new affinity group without optional params' do
-      subject.create_affinity_group(affinity_group_name, image_location, label)
-      affinity_group = subject.get_affinity_group(affinity_group_name)
+      subject.create_affinity_group(affinity_group_names[1], image_location, label)
+      affinity_group = subject.get_affinity_group(affinity_group_names[1])
+
       affinity_group.must_be_kind_of Azure::BaseManagement::AffinityGroup
       affinity_group.name.wont_be_nil
       affinity_group.location.must_equal image_location
-      affinity_group.name.must_equal affinity_group_name
+      affinity_group.name.must_equal affinity_group_names[1]
       affinity_group.label.must_equal label
+
+      subject.delete_affinity_group affinity_group_names[1]
+    end
+
+    it 'gets properties for an non existing affinity group name' do
+      begin
+        subject.get_affinity_group('unknown')
+      rescue Azure::Error::Error => error
+        error.status_code.must_equal 404
+        error.type.must_equal 'AffinityGroupNotFound'
+      end
     end
   end
 end

@@ -1,0 +1,564 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/affinitygroups
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Wed, 30 Mar 2016 18:40:17 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '119'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.344 (rd_rdfe_stable.160323-1803) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - fa4c7d3170a292b5a6207d86bbcb761e
+      date:
+      - Wed, 30 Mar 2016 18:40:16 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <AffinityGroups xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 18:40:17 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/locations
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Wed, 30 Mar 2016 18:40:17 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '17263'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.344 (rd_rdfe_stable.160323-1803) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - e77ebc1075108191ba8ca064451cf060
+      date:
+      - Wed, 30 Mar 2016 18:40:17 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <Locations xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Location><Name>East
+        US</Name><DisplayName>East US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Premium_LRS</StorageAccountType><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>South
+        Central US</Name><DisplayName>South Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Premium_LRS</StorageAccountType><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>Central
+        US</Name><DisplayName>Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>West
+        Europe</Name><DisplayName>West Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A10</RoleSize><RoleSize>A11</RoleSize><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>A8</RoleSize><RoleSize>A9</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS1_v2</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS11_v2</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS12_v2</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS13_v2</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS14_v2</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS2_v2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS3_v2</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_DS4_v2</RoleSize><RoleSize>Standard_DS5_v2</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location><Location><Name>Southeast
+        Asia</Name><DisplayName>Southeast Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService><AvailableService>HighMemory</AvailableService></AvailableServices><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities><StorageCapabilities><StorageAccountTypes><StorageAccountType>Standard_LRS</StorageAccountType><StorageAccountType>Standard_ZRS</StorageAccountType><StorageAccountType>Standard_GRS</StorageAccountType><StorageAccountType>Standard_RAGRS</StorageAccountType><StorageAccountType>Premium_LRS</StorageAccountType></StorageAccountTypes></StorageCapabilities></Location></Locations>
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 18:40:18 GMT
+- request:
+    method: post
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/affinitygroups
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <CreateAffinityGroup xmlns="http://schemas.microsoft.com/windowsazure">
+          <Name>testaffinitygroup</Name>
+          <Label>TGFiZWw=</Label>
+          <Description/>
+          <Location>Southeast Asia</Location>
+        </CreateAffinityGroup>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Wed, 30 Mar 2016 18:40:18 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '231'
+      Content-MD5:
+      - o/7UUm34v20qqlPMC8hq2A==
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '0'
+      location:
+      - https://management.core.windows.net/subscriptions/<SUBSCRIPTION_ID>/affinitygroup/testaffinitygroup
+      server:
+      - 1.0.6198.344 (rd_rdfe_stable.160323-1803) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 3f2d57e7413f8f118fe69d0b92942b88
+      date:
+      - Wed, 30 Mar 2016 18:40:18 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 18:40:19 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/affinitygroups
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Wed, 30 Mar 2016 18:40:19 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '2873'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.344 (rd_rdfe_stable.160323-1803) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 6926787a01c9994eb21da34ae433655d
+      date:
+      - Wed, 30 Mar 2016 18:40:19 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <AffinityGroups xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AffinityGroup><Name>testaffinitygroup</Name><Label>TGFiZWw=</Label><Description/><Location>Southeast
+        Asia</Location><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities><CreatedTime>2016-03-30T18:40:18Z</CreatedTime><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities></AffinityGroup></AffinityGroups>
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 18:40:20 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/affinitygroups/testaffinitygroup
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Wed, 30 Mar 2016 18:40:20 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '422'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.344 (rd_rdfe_stable.160323-1803) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - fd7c849c81bb95e28c052c97a2f7d979
+      date:
+      - Wed, 30 Mar 2016 18:40:25 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <AffinityGroup xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Name>testaffinitygroup</Name><Label>TGFiZWw=</Label><Description/><Location>Southeast
+        Asia</Location><HostedServices/><StorageServices/><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities><CreatedTime>2016-03-30T18:40:18Z</CreatedTime></AffinityGroup>
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 18:40:26 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/affinitygroups
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Wed, 30 Mar 2016 18:40:26 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '2873'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.344 (rd_rdfe_stable.160323-1803) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - b2a2757af9bc95b2ad3ab1e1f3ea496c
+      date:
+      - Wed, 30 Mar 2016 18:40:26 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <AffinityGroups xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AffinityGroup><Name>testaffinitygroup</Name><Label>TGFiZWw=</Label><Description/><Location>Southeast
+        Asia</Location><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities><CreatedTime>2016-03-30T18:40:18Z</CreatedTime><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities></AffinityGroup></AffinityGroups>
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 18:40:26 GMT
+- request:
+    method: put
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/affinitygroups/testaffinitygroup
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <UpdateAffinityGroup xmlns="http://schemas.microsoft.com/windowsazure">
+          <Label>VXBkYXRlZCBMYWJlbA==</Label>
+        </UpdateAffinityGroup>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Wed, 30 Mar 2016 18:40:26 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '155'
+      Content-MD5:
+      - ZoPbnvTyw1wLMrSPrmrHdA==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '0'
+      server:
+      - 1.0.6198.344 (rd_rdfe_stable.160323-1803) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 8da3c762f9909b78b6ae8ae82246dd69
+      date:
+      - Wed, 30 Mar 2016 18:40:27 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 18:40:28 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/affinitygroups
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Wed, 30 Mar 2016 18:40:28 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '2885'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.344 (rd_rdfe_stable.160323-1803) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 4416681bd6549515ae7abcd93d46f605
+      date:
+      - Wed, 30 Mar 2016 18:40:27 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <AffinityGroups xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AffinityGroup><Name>testaffinitygroup</Name><Label>VXBkYXRlZCBMYWJlbA==</Label><Description/><Location>Southeast
+        Asia</Location><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities><CreatedTime>2016-03-30T18:40:18Z</CreatedTime><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities></AffinityGroup></AffinityGroups>
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 18:40:28 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/affinitygroups/testaffinitygroup
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Wed, 30 Mar 2016 18:40:28 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '434'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.344 (rd_rdfe_stable.160323-1803) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 41a12bec776b82f2a88d8e072cf00378
+      date:
+      - Wed, 30 Mar 2016 18:40:28 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <AffinityGroup xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Name>testaffinitygroup</Name><Label>VXBkYXRlZCBMYWJlbA==</Label><Description/><Location>Southeast
+        Asia</Location><HostedServices/><StorageServices/><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities><CreatedTime>2016-03-30T18:40:18Z</CreatedTime></AffinityGroup>
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 18:40:29 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/affinitygroups
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Wed, 30 Mar 2016 18:40:29 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '2885'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.344 (rd_rdfe_stable.160323-1803) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 92da57e83066955f8b4e8dad544c0627
+      date:
+      - Wed, 30 Mar 2016 18:40:29 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <AffinityGroups xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AffinityGroup><Name>testaffinitygroup</Name><Label>VXBkYXRlZCBMYWJlbA==</Label><Description/><Location>Southeast
+        Asia</Location><Capabilities><Capability>PersistentVMRole</Capability><Capability>HighMemory</Capability></Capabilities><CreatedTime>2016-03-30T18:40:18Z</CreatedTime><ComputeCapabilities><WebWorkerRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize></WebWorkerRoleSizes><VirtualMachinesRoleSizes><RoleSize>A5</RoleSize><RoleSize>A6</RoleSize><RoleSize>A7</RoleSize><RoleSize>Basic_A0</RoleSize><RoleSize>Basic_A1</RoleSize><RoleSize>Basic_A2</RoleSize><RoleSize>Basic_A3</RoleSize><RoleSize>Basic_A4</RoleSize><RoleSize>ExtraLarge</RoleSize><RoleSize>ExtraSmall</RoleSize><RoleSize>Large</RoleSize><RoleSize>Medium</RoleSize><RoleSize>Small</RoleSize><RoleSize>Standard_D1</RoleSize><RoleSize>Standard_D1_v2</RoleSize><RoleSize>Standard_D11</RoleSize><RoleSize>Standard_D11_v2</RoleSize><RoleSize>Standard_D12</RoleSize><RoleSize>Standard_D12_v2</RoleSize><RoleSize>Standard_D13</RoleSize><RoleSize>Standard_D13_v2</RoleSize><RoleSize>Standard_D14</RoleSize><RoleSize>Standard_D14_v2</RoleSize><RoleSize>Standard_D2</RoleSize><RoleSize>Standard_D2_v2</RoleSize><RoleSize>Standard_D3</RoleSize><RoleSize>Standard_D3_v2</RoleSize><RoleSize>Standard_D4</RoleSize><RoleSize>Standard_D4_v2</RoleSize><RoleSize>Standard_D5_v2</RoleSize><RoleSize>Standard_DS1</RoleSize><RoleSize>Standard_DS11</RoleSize><RoleSize>Standard_DS12</RoleSize><RoleSize>Standard_DS13</RoleSize><RoleSize>Standard_DS14</RoleSize><RoleSize>Standard_DS2</RoleSize><RoleSize>Standard_DS3</RoleSize><RoleSize>Standard_DS4</RoleSize><RoleSize>Standard_G1</RoleSize><RoleSize>Standard_G2</RoleSize><RoleSize>Standard_G3</RoleSize><RoleSize>Standard_G4</RoleSize><RoleSize>Standard_G5</RoleSize><RoleSize>Standard_GS1</RoleSize><RoleSize>Standard_GS2</RoleSize><RoleSize>Standard_GS3</RoleSize><RoleSize>Standard_GS4</RoleSize><RoleSize>Standard_GS5</RoleSize></VirtualMachinesRoleSizes></ComputeCapabilities></AffinityGroup></AffinityGroups>
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 18:40:30 GMT
+- request:
+    method: delete
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/affinitygroups/testaffinitygroup
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Wed, 30 Mar 2016 18:40:30 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '0'
+      server:
+      - 1.0.6198.344 (rd_rdfe_stable.160323-1803) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 1c059231054a8f10afe2d30462c50004
+      date:
+      - Wed, 30 Mar 2016 18:40:31 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 18:40:32 GMT
+recorded_with: VCR 3.0.1

@@ -18,10 +18,9 @@ require "azure/service/signed_identifier"
 
 describe Azure::Blob::BlobService do
   subject { Azure::Blob::BlobService.new }
-  after { TableNameHelper.clean }
 
   describe '#set/get_container_acl' do
-    let(:container_name) { ContainerNameHelper.name }
+    let(:container_name) { 'testcontainer' }
     let(:public_access_level) { :container.to_s }
     let(:identifiers) {
       identifier = Azure::Service::SignedIdentifier.new
@@ -32,11 +31,16 @@ describe Azure::Blob::BlobService do
       [identifier]
     }
     before {
-      subject.create_container container_name
+        VCR.use_cassette("create_container") do
+            subject.create_container container_name
+        end
     }
-
+    
     it 'sets and gets the ACL for the container' do
-      container, acl = subject.set_container_acl container_name, public_access_level, { :signed_identifiers => identifiers }
+      container, acl = nil
+      VCR.use_cassette("set_container_acl") do
+        container, acl = subject.set_container_acl container_name, public_access_level, { :signed_identifiers => identifiers }
+      end
       container.wont_be_nil
       container.name.must_equal container_name
       container.public_access_level.must_equal public_access_level.to_s
@@ -46,7 +50,10 @@ describe Azure::Blob::BlobService do
       acl.first.access_policy.expiry.must_equal identifiers.first.access_policy.expiry
       acl.first.access_policy.permission.must_equal identifiers.first.access_policy.permission
 
-      container, acl = subject.get_container_acl container_name
+      container, acl = nil
+      VCR.use_cassette("get_container_acl") do
+        container, acl = subject.get_container_acl container_name
+      end
       container.wont_be_nil
       container.name.must_equal container_name
       container.public_access_level.must_equal public_access_level.to_s
@@ -58,11 +65,16 @@ describe Azure::Blob::BlobService do
     end
 
     it 'errors if the container does not exist' do
-      assert_raises(Azure::Core::Http::HTTPError) do
-        subject.get_container_acl ContainerNameHelper.name
+      VCR.use_cassette("container_not_exists_get_container_acl") do
+        assert_raises(Azure::Core::Http::HTTPError) do
+          subject.get_container_acl 'container_not_exists'
+        end
       end
-      assert_raises(Azure::Core::Http::HTTPError) do
-        subject.set_container_acl ContainerNameHelper.name, public_access_level, { :identifiers => identifiers }
+
+      VCR.use_cassette("container_not_exists_set_container_acl") do
+        assert_raises(Azure::Core::Http::HTTPError) do
+          subject.set_container_acl 'container_not_exists', public_access_level, { :identifiers => identifiers }
+        end
       end
     end
   end
