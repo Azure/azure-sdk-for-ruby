@@ -30,6 +30,7 @@ module Azure
   autoload :Default,                          'azure/default'
   autoload :HttpClient,                       'azure/http_client'
   autoload :Version,                          'azure/version'
+  autoload :HttpResponseHelper,               'azure/http_response_helper'
 
   # helpers because the naming is far too verbose
   autoload :BaseManagementService,                    'azure/base_management/base_management_service'

@@ -26,7 +26,7 @@ module Azure
       # Represents a HTTP request can perform synchronous queries to a
       # HTTP server, returning a HttpResponse
       class HttpRequest
-
+        include Azure::HttpResponseHelper
         alias_method :_method, :method
 
         # The HTTP method to use (:get, :post, :put, :delete, etc...)
@@ -133,16 +133,7 @@ module Azure
         # @return [HttpResponse]
         def call
           conn = http_setup
-          res = conn.run_request(method.to_sym, uri, nil, nil) do |req|
-            req.body = body if body
-            req.headers = headers if headers
-            unless headers.nil?
-              keep_alive = headers['Keep-Alive'] || headers['keep-alive']
-              req.options[:timeout] = keep_alive.split('=').last.to_i unless keep_alive.nil?
-            end
-            req.options[:open_timeout] ||= 60
-          end
-
+          res = set_up_response(method.to_sym, uri, conn, headers ,body)
           response = HttpResponse.new(res)
           response.uri = uri
           raise response.error unless response.success?

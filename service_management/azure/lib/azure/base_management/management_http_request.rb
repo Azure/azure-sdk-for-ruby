@@ -48,15 +48,7 @@ module Azure
       # Returns a Nokogiri::XML instance of HttpResponse body
       def call
         conn = http_setup
-        res = conn.run_request(method.to_sym, uri, nil, nil) do  |req|
-          req.body = body if body
-          req.headers = headers if headers
-          unless headers.nil?
-            keep_alive = headers['Keep-Alive'] || headers['keep-alive']
-            req.options[:timeout] = keep_alive.split('=').last.to_i unless keep_alive.nil?
-          end
-          req.options[:open_timeout] ||= 60
-        end
+        res = set_up_response(method.to_sym, uri, conn, headers ,body)
         response = wait_for_completion(Azure::Core::Http::HttpResponse.new(res))
         Nokogiri::XML response.body unless response.nil?
       end
@@ -121,15 +113,7 @@ module Azure
         done = false
         until done
           Azure::Loggerx.info('# ')
-          res = conn.run_request(method.to_sym, URI(request_path), nil, nil) do  |req|
-            req.body = body if body
-            req.headers = headers if headers
-            unless headers.nil?
-              keep_alive = headers['Keep-Alive'] || headers['keep-alive']
-              req.options[:timeout] = keep_alive.split('=').last.to_i unless keep_alive.nil?
-            end
-            req.options[:open_timeout] ||= 60
-          end
+          res = set_up_response(method.to_sym, URI(request_path), conn, headers ,body)
           response = Azure::Core::Http::HttpResponse.new(res)
           ret_val = Nokogiri::XML response.body
           status = xml_content(ret_val, 'Operation Status')
@@ -160,15 +144,7 @@ module Azure
       def rebuild_request(response)
         host_uri = URI.parse(response.headers['location'])
         conn = http_setup
-        res = conn.run_request(method.to_sym, host_uri, nil, nil) do  |req|
-          req.body = body if body
-          req.headers = headers if headers
-          unless headers.nil?
-            keep_alive = headers['Keep-Alive'] || headers['keep-alive']
-            req.options[:timeout] = keep_alive.split('=').last.to_i unless keep_alive.nil?
-          end
-          req.options[:open_timeout] ||= 60
-        end
+        res = set_up_response(method.to_sym, host_uri, conn, headers ,body)
         wait_for_completion(HttpResponse.new(res))
       end
 
