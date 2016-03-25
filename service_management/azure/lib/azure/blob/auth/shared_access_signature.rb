@@ -62,6 +62,8 @@ module Azure
         def signable_string(path, options)
           # Order is significant
           # The newlines from empty strings here are required
+          options[:start] = Time.parse(options[:start]).utc.iso8601 if options[:start]
+          options[:expiry] = Time.parse(options[:expiry]).utc.iso8601 if options[:expiry]
           [
               options[:permissions],
               options[:start],
@@ -106,6 +108,8 @@ module Azure
         def signed_uri(uri, options)
           parsed_query = CGI::parse(uri.query || '').inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
+          options[:start] = Time.parse(options[:start]).utc.iso8601 if options[:start]
+          options[:expiry] = Time.parse(options[:expiry]).utc.iso8601 if options[:expiry]
           options[:expiry] ||= (Time.now + 60*30).utc.iso8601
 
           if parsed_query.has_key?(:restype)
