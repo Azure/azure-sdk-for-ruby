@@ -41,7 +41,7 @@ describe Azure::Blob::Auth::SharedAccessSignature do
 
     it 'constructs a string in the required format' do
       subject.signable_string(path, options).must_equal(
-        "rwd\n\n2013-12-11\n/account-name/example/path\n\n2014-02-14\n\ninline, filename=nyan.cat\n\n\n"
+        "rwd\n\n#{Time.parse("2013-12-11").utc.iso8601}\n/account-name/example/path\n\n2014-02-14\n\ninline, filename=nyan.cat\n\n\n"
       )
     end
   end
@@ -58,7 +58,7 @@ describe Azure::Blob::Auth::SharedAccessSignature do
 
     it 'maps options to the abbreviated API versions' do
       query_hash['sp'].must_equal 'rwd'
-      query_hash['se'].must_equal '2013-12-11'
+      query_hash['se'].must_equal Time.parse("2013-12-11").utc.iso8601
       query_hash['sr'].must_equal 'b'
       query_hash['rscd'].must_equal 'inline, filename=nyan.cat'
     end
