@@ -9,21 +9,23 @@ include Azure::ARM::Storage
 
 describe StorageAccounts do
 
-  before(:all) do
-    @client = STORAGE_CLIENT.storage_accounts
-    @resource_group = create_resource_group
+  before(:each) do
+    @resource_helper = ResourceHelper.new
+    @storage_client = @resource_helper.storage_client
+    @resource_client = @resource_helper.resource_client
+    @client = @storage_client.storage_accounts
+    @resource_group = @resource_helper.create_resource_group
     @storage_type = 'Microsoft.Storage/storageAccounts'
     @account_type = 'Standard_LRS'
     @account_location = 'westus'
   end
 
-  after(:all) do
-    delete_resource_group(@resource_group.name)
+  after(:each) do
+    @resource_helper.delete_resource_group(@resource_group.name)
   end
 
   it 'create storage account' do
-    name = get_random_name('storage', 24)
-
+    name = 'storage56e236d65ef043378'
     props = Models::StorageAccountPropertiesCreateParameters.new
     props.account_type = @account_type
 
@@ -53,7 +55,7 @@ describe StorageAccounts do
 
   it 'should send true if name is available' do
     acc_name = Models::StorageAccountCheckNameAvailabilityParameters.new
-    acc_name.name = get_random_name('storage', 24)
+    acc_name.name = 'storage4db9202c66274d529'
     acc_name.type = @storage_type
 
     result = @client.check_name_availability(acc_name).value!
@@ -62,7 +64,7 @@ describe StorageAccounts do
   end
 
   it 'should get storage account properties' do
-    storage = create_storage_account
+    storage = create_storage_account('storage8acbcd443ca040968')
 
     result = @client.get_properties(@resource_group.name, storage).value!
 
@@ -75,7 +77,7 @@ describe StorageAccounts do
   end
 
   it 'should regenerate storage account keys' do
-    storage = create_storage_account
+    storage = create_storage_account('storagec38683a7fd6445a68')
 
     params = Models::StorageAccountRegenerateKeyParameters.new
     params.key_name = 'key1'
@@ -91,7 +93,7 @@ describe StorageAccounts do
   end
 
   it 'should get storage account keys' do
-    storage = create_storage_account
+    storage = create_storage_account('storage8cfc02401d3d40129')
 
     result = @client.list_keys(@resource_group.name, storage).value!
     expect(result.body.key1).not_to be_nil
@@ -99,7 +101,7 @@ describe StorageAccounts do
   end
 
   it 'should update storage' do
-    storage = create_storage_account
+    storage = create_storage_account('storage3b8b8f628a1c4d868')
 
     params = Models::StorageAccountUpdateParameters.new
     params.tags = { 'tag1' => 'val1' }
@@ -111,14 +113,14 @@ describe StorageAccounts do
   end
 
   it 'should delete storage' do
-    storage = create_storage_account
+    storage = create_storage_account('storage92a0dc05385c4eef9')
 
     result = @client.delete(@resource_group.name, storage).value!
     expect(result.response.status).to eq(200)
   end
 
-  def create_storage_account
-    name = get_random_name('storage', 24)
+  def create_storage_account(acc_name)
+    name = acc_name
 
     props = Models::StorageAccountPropertiesCreateParameters.new
     props.account_type = @account_type

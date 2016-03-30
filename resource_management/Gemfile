@@ -5,9 +5,10 @@
 source 'https://rubygems.org'
 
 group :development, :test do
-  gem 'rspec'
-  gem 'rake'
   gem 'dotenv'
+  gem 'rake'
+  gem 'rspec'
+  gem 'vcr'
 end
 
 gem 'azure_mgmt_authorization',         path: 'azure_mgmt_authorization'
