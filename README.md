@@ -483,7 +483,7 @@ vm_management.delete_endpoint('vm_name', 'cloud_service_name', 'endpoint_name')
 options = {
   :delete_vhd => true
 }
-vm_management.delete_virtual_machine('vm_name', 'cloud_service_name')
+vm_management.delete_virtual_machine('vm_name', 'cloud_service_name', options)
 
 # API to start deployment
 params = {
