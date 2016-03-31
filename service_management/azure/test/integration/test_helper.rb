@@ -35,12 +35,27 @@ VCR.configure do |config|
   config.default_cassette_options = {:record => :once}
   config.cassette_library_dir = "vcr/vcr_cassettes"
   config.hook_into :faraday
+  config.allow_http_connections_when_no_cassette = false
   config.filter_sensitive_data('<SUBSCRIPTION_ID>') { Azure.subscription_id }
   config.filter_sensitive_data('<STORAGE_ACCESS_KEY>') { Azure.storage_access_key }
   config.filter_sensitive_data('<STORAGE_ACCOUNT_NAME>') { Azure.storage_account_name }
   config.filter_sensitive_data('<SB_NAMESPACE>') { Azure.sb_namespace }
   config.filter_sensitive_data('<SB_ACCESS_KEY>') { Azure.sb_access_key }
   config.filter_sensitive_data('<MANAGEMENT_CERTIFICATE>') { Azure.management_certificate }
+
+  config.before_record do |interaction|
+    # Reduce number of interaction by ignoring 'InProgress' operations
+    if interaction.request.uri =~ /^https:\/\/management.core.windows.net\/<SUBSCRIPTION_ID>\/operations\/.*/ then
+      if interaction.response.body.include? ('InProgress') then
+        interaction.ignore!
+      end
+      # Reduce number of interaction by ignoring waiting for disk detach operations
+    elsif interaction.request.uri =~ /^https:\/\/management.core.windows.net\/<SUBSCRIPTION_ID>\/services\/disks$/ then
+      if interaction.response.body =~ /.*<AttachedTo>.*<\/AttachedTo>.*/ then
+        interaction.ignore!
+      end
+    end
+  end
 end
 
 VCR.use_cassette("support/VirtualMachineImageManagementService") do
