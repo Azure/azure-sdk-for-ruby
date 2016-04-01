@@ -77,6 +77,13 @@ kZS1mYWNlNSI+DQogICAgPEluc3RhbmNlcyBjb3VudD0iMSIgLz4NCiAgPC9Sb2xlPg0KPC9TZXJ2aWN
               <Protocol>tcp</Protocol>
               <Vip>137.117.17.187</Vip>
             </InputEndpoint>
+            <InputEndpoint>
+              <LocalPort>3889</LocalPort>
+              <Name>udp-port-3889</Name>
+              <Port>3889</Port>
+              <Protocol>udp</Protocol>
+              <Vip>137.116.17.187</Vip>
+            </InputEndpoint>
           </InputEndpoints>
            <SubnetNames>
             <SubnetName>test-subnet</SubnetName>

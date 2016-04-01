@@ -94,11 +94,18 @@ module Azure
                 xml.ConfigurationSetType 'NetworkConfiguration'
                 xml.InputEndpoints do
                   default_endpoints_to_xml(xml, options)
-                  tcp_endpoints_to_xml(
+                  specified_endpoints_to_xml(
                     xml,
+                    'TCP',
                     options[:tcp_endpoints],
                     options[:existing_ports]
                   ) if options[:tcp_endpoints]
+                  specified_endpoints_to_xml(
+                      xml,
+                      'UDP',
+                      options[:udp_endpoints],
+                      options[:existing_ports]
+                  ) if options[:udp_endpoints]
                 end
                 if options[:virtual_network_name] && options[:subnet_name]
                   xml.SubnetNames do
@@ -225,33 +232,34 @@ module Azure
         endpoints_to_xml(xml, endpoints)
       end
 
-      def self.tcp_endpoints_to_xml(xml, tcp_endpoints, existing_ports = [])
+      def self.specified_endpoints_to_xml(xml, protocol, specified_endpoints, existing_ports = [])
         endpoints = []
+        protocol_up = protocol.upcase
 
-        tcp_endpoints.split(',').each do |endpoint|
+        specified_endpoints.split(',').each do |endpoint|
           ports = endpoint.split(':')
-          tcp_ep = {}
+          specified_ep = {}
 
           if ports.length > 1
             port_already_opened?(existing_ports, ports[1])
 
-            tcp_ep[:name] = "TCP-PORT-#{ports[1]}"
-            tcp_ep[:public_port] = ports[1]
+            specified_ep[:name] = "#{protocol_up}-PORT-#{ports[1]}"
+            specified_ep[:public_port] = ports[1]
           else
             port_already_opened?(existing_ports, ports[0])
 
-            tcp_ep[:name] = "TCP-PORT-#{ports[0]}"
-            tcp_ep[:public_port] = ports[0]
+            specified_ep[:name] = "#{protocol_up}-PORT-#{ports[0]}"
+            specified_ep[:public_port] = ports[0]
           end
 
-          tcp_ep[:local_port] = ports[0]
-          tcp_ep[:protocol] = 'TCP'
+          specified_ep[:local_port] = ports[0]
+          specified_ep[:protocol] = protocol_up
 
-          endpoints << tcp_ep
+          endpoints << specified_ep
         end
         endpoints_to_xml(xml, endpoints)
       end
-
+      
       def self.virtual_machines_from_xml(deployXML, cloud_service_name)
         unless deployXML.nil? or deployXML.at_css('Deployment Name').nil?
           instances = deployXML.css('Deployment RoleInstanceList RoleInstance')
