@@ -48,4 +48,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency('rake',                '~> 10.0')
   s.add_development_dependency('timecop',             '~> 0.7')
   s.add_development_dependency('yard',                '~> 0.8')
+  s.add_development_dependency('vcr',                 '~> 3.0.0')
 end

@@ -12,36 +12,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+
 require 'integration/test_helper'
 
 describe Azure::BaseManagementService do
-  util = Class.new.extend(Azure::Core::Utility)
-  AffinityGroupName = util.random_string('affinity-group-', 10)
-
-  Azure::BaseManagementService.new.create_affinity_group(
-      AffinityGroupName,
-      WindowsImageLocation,
-      'Label'
-  )
-
-  before do
-
-  end
-
-  before do
-    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
-  end
 
   subject { Azure::BaseManagementService.new }
-  let(:affinity_group_name) { AffinityGroupName }
+  let(:options) { {description: 'sample description'} }
+  let(:affinity_group_name) { 'testaffinitygroup' }
 
   describe '#update_affinity_group' do
-    let(:options) { {description: 'sample description'} }
+    before do
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+      VCR.insert_cassette "affinity_group/#{name}"
+      subject.create_affinity_group(affinity_group_name,
+                                    WindowsImageLocation,
+                                    'Label')
+    end
+
+    after do
+      subject.delete_affinity_group affinity_group_name
+      VCR.eject_cassette
+    end
 
     it 'update affinity group' do
       label = 'updated label'
       subject.update_affinity_group(affinity_group_name, label)
       affinity_group = subject.get_affinity_group(affinity_group_name)
+
       affinity_group.wont_be_nil
       affinity_group.label.must_equal label
     end
@@ -50,6 +48,7 @@ describe Azure::BaseManagementService do
       label = 'Updated Label'
       subject.update_affinity_group(affinity_group_name, label, options)
       affinity_group = subject.get_affinity_group(affinity_group_name)
+
       affinity_group.wont_be_nil
       affinity_group.description.must_equal options[:description]
       affinity_group.label.must_equal label
@@ -60,6 +59,7 @@ describe Azure::BaseManagementService do
       affinity_group1 = subject.get_affinity_group(affinity_group_name)
       subject.update_affinity_group(affinity_group_name, label)
       affinity_group = subject.get_affinity_group(affinity_group_name)
+
       affinity_group.wont_be_nil
       affinity_group.description.must_equal affinity_group1.description
       affinity_group.label.must_equal label
@@ -67,6 +67,7 @@ describe Azure::BaseManagementService do
 
     it 'error if description content exceeds allowed limit of 1024 chars' do
       options = {description: 'a' * 1025}
+
       exception = assert_raises(RuntimeError) do
         subject.update_affinity_group(affinity_group_name,
                                       'this is update operation',
@@ -77,9 +78,9 @@ describe Azure::BaseManagementService do
     end
 
     it 'error in case of updating non existing affinity group' do
-      affinity_name = 'unkown-affinity-group'
+
       exception = assert_raises(Azure::Error::Error) do
-        subject.update_affinity_group(affinity_name, 'updated label', options)
+        subject.update_affinity_group('unkown-affinity-group', 'updated label', options)
       end
       assert_match(/The affinity group does not exist./i, exception.message)
     end

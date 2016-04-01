@@ -15,22 +15,26 @@
 require 'integration/test_helper'
 
 describe Azure::BaseManagementService do
-
   subject { Azure::BaseManagementService.new }
-  let(:affinity_group_name) { AffinityGroupNameHelper.name }
-
-  before do
-    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
-    subject.create_affinity_group(affinity_group_name,
-                                  WindowsImageLocation,
-                                  'Label Name')
-  end
-
-  after { AffinityGroupNameHelper.clean }
+  let(:affinity_group_name) { 'testaffinitygroup' }
 
   describe '#list_affinity_groups' do
+    before do
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+      VCR.insert_cassette "affinity_group/#{name}"
+      subject.create_affinity_group(affinity_group_name,
+                                    WindowsImageLocation,
+                                    'Label Name')
+    end
+
+    after do
+      subject.delete_affinity_group affinity_group_name
+      VCR.eject_cassette
+    end
+
     it 'list affinity groups' do
       affinity_groups = subject.list_affinity_groups
+
       affinity_group = affinity_groups.first
       affinity_groups.wont_be_nil
       affinity_groups.must_be_kind_of Array

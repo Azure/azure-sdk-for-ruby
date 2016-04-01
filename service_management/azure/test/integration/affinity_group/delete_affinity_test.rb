@@ -15,41 +15,42 @@
 require 'integration/test_helper'
 
 describe Azure::BaseManagementService do
-
   subject { Azure::BaseManagementService.new }
-  let(:affinity_group_name) { AffinityGroupNameHelper.name }
+  let(:affinity_group_name) { 'testaffinitygroup' }
+  let(:image_location) { WindowsImageLocation }
+  let(:label) { 'Label Name' }
 
-  describe '#affinity_group' do
-    let(:label_name)  { 'Label' }
-    let(:options) { { description: 'Some Description' } }
-
+  describe '#delete_affinity_group' do
     before do
       Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+      VCR.insert_cassette "affinity_group/#{name}"
     end
 
-    it 'get affinity group properties for an existing group' do
-      subject.create_affinity_group(affinity_group_name,
-                                    WindowsImageLocation,
-                                    label_name,
-                                    options)
-      affinity = subject.get_affinity_group(affinity_group_name)
-      affinity.must_be_kind_of Azure::BaseManagement::AffinityGroup
-      affinity.name.must_equal affinity_group_name
-      affinity.label.must_equal label_name
-      affinity.description.must_equal options[:description]
-      affinity.capability.wont_be_nil
-      affinity.capability.wont_equal []
-      AffinityGroupNameHelper.clean
+    after do
+      VCR.eject_cassette
     end
 
-    it 'gets properties for an non existing affinity group name' do
-      affinity_group_name = 'unknown'
+    it 'delete affinity group' do
+      subject.create_affinity_group(affinity_group_name, image_location, label)
+      subject.delete_affinity_group(affinity_group_name)
+      affinity_list = subject.list_affinity_groups
+      assert_equal affinity_list, []
+    end
+
+    it 'errors if the affinity group does not exist' do
       begin
-        subject.get_affinity_group(affinity_group_name)
+        subject.delete_affinity_group('unknown-server')
       rescue Azure::Error::Error => error
         error.status_code.must_equal 404
         error.type.must_equal 'AffinityGroupNotFound'
       end
     end
+
+# Pending Test Case.
+#    it 'errors while deleting an affinity group associated with services' do
+#      skip('Need API to associate hosted services and'\
+# =>        ' storage account with affinity group.')
+#    end
+
   end
 end
