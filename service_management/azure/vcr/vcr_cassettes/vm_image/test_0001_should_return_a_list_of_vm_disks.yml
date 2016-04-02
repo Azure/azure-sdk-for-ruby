@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/services/disks
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Sat, 02 Apr 2016 21:01:12 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '1621'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.348 (rd_rdfe_stable.160330-1613) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 6a94021ca5819ad68274cb567099d930
+      date:
+      - Sat, 02 Apr 2016 21:01:23 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <Disks xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Disk><OS>Linux</OS><Location>Southeast
+        Asia</Location><LogicalDiskSizeInGB>30</LogicalDiskSizeInGB><MediaLink>http://sa4375943275.blob.core.windows.net/vhds/disk_2016_03_31_21_21_21_634.vhd</MediaLink><Name>testcloudservice2321-add-testvm2321-0-201604010421300357</Name><SourceImageName>03f55de797f546a1b29d1b8d66be687a__CoreCLR-x64-Beta5-Linux-PartsUnlimited-Demo-App-201504.29</SourceImageName><IsPremium>false</IsPremium><CreatedTime>2016-04-01T04:21:30Z</CreatedTime><IOType>Standard</IOType></Disk><Disk><OS>Linux</OS><Location>Southeast
+        Asia</Location><LogicalDiskSizeInGB>30</LogicalDiskSizeInGB><MediaLink>http://sa4375943275.blob.core.windows.net/vhds/disk_2016_03_31_18_40_59_721.vhd</MediaLink><Name>testcloudservice2321-testvm2321-0-201604010141130872</Name><SourceImageName>03f55de797f546a1b29d1b8d66be687a__CoreCLR-x64-Beta5-Linux-PartsUnlimited-Demo-App-201504.29</SourceImageName><IsPremium>false</IsPremium><CreatedTime>2016-04-01T01:41:13Z</CreatedTime><IOType>Standard</IOType></Disk><Disk><OS>Linux</OS><Location>Southeast
+        Asia</Location><LogicalDiskSizeInGB>30</LogicalDiskSizeInGB><MediaLink>http://sa4375943275.blob.core.windows.net/vhds/disk_2016_03_31_21_20_29_324.vhd</MediaLink><Name>testcloudservice2321-testvm2321-0-201604010420380807</Name><SourceImageName>03f55de797f546a1b29d1b8d66be687a__CoreCLR-x64-Beta5-Linux-PartsUnlimited-Demo-App-201504.29</SourceImageName><IsPremium>false</IsPremium><CreatedTime>2016-04-01T04:20:38Z</CreatedTime><IOType>Standard</IOType></Disk></Disks>
+    http_version: 
+  recorded_at: Sat, 02 Apr 2016 21:01:24 GMT
+recorded_with: VCR 3.0.1
