@@ -17,14 +17,22 @@ require "integration/test_helper"
 describe Azure::BaseManagement::BaseManagementService do
   subject { Azure::BaseManagement::BaseManagementService.new }
 
-  describe "#locations" do
+  before do
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+    VCR.insert_cassette "location/#{name}"
+  end
 
-    it "check locations list present" do
+  after do
+    VCR.eject_cassette
+  end
+
+  describe "location" do
+    it "should be present" do
       result = subject.list_locations
       result.wont_be_nil
     end
 
-    it "returns a list of locations" do
+    it "should return a list of locations" do
       locations = subject.list_locations
       locations.must_be_kind_of Array
       location = locations.first
@@ -33,6 +41,5 @@ describe Azure::BaseManagement::BaseManagementService do
       location.name.wont_be_nil
       location.available_services.wont_be_nil
     end
-
-  end #locations
+  end
 end
