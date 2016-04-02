@@ -21,6 +21,7 @@ describe Azure::VirtualMachineManagementService do
   let(:virtual_machine_name) { names.first }
   let(:csn) { names.last }
   let(:username) { 'admin' }
+
   before do
     Azure::Loggerx.expects(:puts).at_least_once.returns(nil)
     params = {
@@ -40,7 +41,10 @@ describe Azure::VirtualMachineManagementService do
   describe '#delete_virtual_machine' do
 
     it 'delete existing virtual machine and cloud service' do
-      subject.delete_virtual_machine(virtual_machine_name, csn)
+      options = {
+        delete_vhd: true,
+      }    
+      subject.delete_virtual_machine(virtual_machine_name, csn, options)
       vm = subject.get_virtual_machine(virtual_machine_name, csn)
       vm.must_be_nil
       cloud_service = Azure::CloudServiceManagementService.new

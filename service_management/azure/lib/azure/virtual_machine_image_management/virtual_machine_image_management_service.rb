@@ -70,9 +70,9 @@ module Azure
       # Public: Deletes the specified data or operating system disk from the image repository.
       #
       # Returns None
-      def delete_virtual_machine_disk(disk_name)
+      def delete_virtual_machine_disk(disk_name, options={})
         Azure::Loggerx.info "Deleting Disk \"#{disk_name}\". "
-        path = "/services/disks/#{disk_name}"
+        path = "/services/disks/#{disk_name}#{ '?comp=media' if options[:delete_vhd] }"
         request = client.management_request(:delete, path)
         request.call
       end
