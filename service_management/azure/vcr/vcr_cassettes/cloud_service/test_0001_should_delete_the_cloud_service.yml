@@ -1,0 +1,207 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/services/hostedservices
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Sat, 02 Apr 2016 21:40:00 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '119'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.348 (rd_rdfe_stable.160330-1613) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 74c598ec688b8285a754e84a7e7df1ef
+      date:
+      - Sat, 02 Apr 2016 21:40:11 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <HostedServices xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+    http_version: 
+  recorded_at: Sat, 02 Apr 2016 21:40:13 GMT
+- request:
+    method: post
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/services/hostedservices
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <CreateHostedService xmlns="http://schemas.microsoft.com/windowsazure">
+          <ServiceName>testcloudservice2375</ServiceName>
+          <Label>dGVzdGNsb3Vkc2VydmljZTIzNzU=
+        </Label>
+          <Description>Cloud service test description</Description>
+          <Location>East US</Location>
+        </CreateHostedService>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Sat, 02 Apr 2016 21:40:13 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '305'
+      Content-MD5:
+      - y+qDMbrvQ3Y5KdfOFnyQZg==
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '0'
+      location:
+      - https://management.core.windows.net/subscriptions/<SUBSCRIPTION_ID>/compute/testcloudservice2375
+      server:
+      - 1.0.6198.348 (rd_rdfe_stable.160330-1613) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - b7928eb9edca91bab87b736fa2a1058f
+      date:
+      - Sat, 02 Apr 2016 21:40:13 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 02 Apr 2016 21:40:14 GMT
+- request:
+    method: delete
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/services/hostedservices/testcloudservice2375
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Sat, 02 Apr 2016 21:40:14 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '0'
+      server:
+      - 1.0.6198.348 (rd_rdfe_stable.160330-1613) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - ef68588ca27b9d3a98db8daa7478294a
+      date:
+      - Sat, 02 Apr 2016 21:40:15 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 02 Apr 2016 21:40:16 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/services/hostedservices
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Sat, 02 Apr 2016 21:40:16 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '119'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.348 (rd_rdfe_stable.160330-1613) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 5ae5aca007439eedac5f19e72472283e
+      date:
+      - Sat, 02 Apr 2016 21:40:15 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <HostedServices xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+    http_version: 
+  recorded_at: Sat, 02 Apr 2016 21:40:17 GMT
+recorded_with: VCR 3.0.1

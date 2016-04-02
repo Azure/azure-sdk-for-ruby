@@ -15,29 +15,30 @@
 require 'integration/test_helper'
 
 describe Azure::CloudServiceManagementService do
-  include Azure::Core::Utility
-
   subject { Azure::CloudServiceManagementService.new }
+  let(:cloud_service_name) { 'testcloudservice2375' }
   let(:options) do
     {
-      location: 'West US',
-      description: 'Test'
+      location: 'East US',
+      description: 'Cloud service test description'
     }
   end
 
   before do
     Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+    VCR.insert_cassette "cloud_service/#{name}"
   end
 
-  describe '#create_cloud_service' do
-    before do
-      @cloud_name = random_string('test-service-cloud', 10)
-      subject.create_cloud_service(@cloud_name, options)
-    end
+  after do
+    subject.delete_cloud_service(cloud_service_name)
+    VCR.eject_cassette
+  end
 
-    it 'Creates a new cloud service in Microsoft Azure.' do
-      cloud_service = subject.get_cloud_service_properties(@cloud_name)
-      assert cloud_service.name, @cloud_name
+  describe 'cloud service' do
+    it 'should create a new cloud service' do
+      subject.create_cloud_service(cloud_service_name, options)
+      cloud_service = subject.get_cloud_service_properties(cloud_service_name)
+      assert cloud_service.name, cloud_service_name
       assert cloud_service.location, options[:location]
       assert cloud_service.virtual_machines, Hash.new
     end

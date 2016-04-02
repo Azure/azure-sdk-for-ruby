@@ -88,6 +88,7 @@ namespace :test do
 
     component_task :affinity_group
     component_task :blob
+    component_task :cloud_service
     component_task :database
     component_task :location
     component_task :queue
@@ -103,7 +104,7 @@ namespace :test do
     t.test_files = Dir['test/integration/**/*_test.rb'].reject do |path|
       # reject the test paths those are not yet VCR recorded
       # we'll unlock these as we have recordings
-      path.include?('blob') || path.include?('cloud_service') || path.include?('database') ||
+      path.include?('blob') || path.include?('database') ||
           path.include?('location') || path.include?('queue') || path.include?('service_bus') ||
           path.include?('storage_management') || path.include?('table')
     end
@@ -121,6 +122,7 @@ namespace :test do
     end
 
     component_task :affinity_group
+    component_task :cloud_service
     component_task :vm
     component_task :vm_image
     component_task :vnet
