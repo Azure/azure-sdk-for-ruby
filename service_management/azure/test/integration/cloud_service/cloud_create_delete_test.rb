@@ -27,6 +27,7 @@ describe Azure::CloudServiceManagementService do
   before do
     Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
     VCR.insert_cassette "cloud_service/#{name}"
+    subject.create_cloud_service(cloud_service_name, options)
   end
 
   after do
@@ -35,8 +36,7 @@ describe Azure::CloudServiceManagementService do
   end
 
   describe 'cloud service' do
-    it 'should create a new cloud service' do
-      subject.create_cloud_service(cloud_service_name, options)
+    it 'should create and delete cloud service' do
       cloud_service = subject.get_cloud_service_properties(cloud_service_name)
       assert cloud_service.name, cloud_service_name
       assert cloud_service.location, options[:location]
