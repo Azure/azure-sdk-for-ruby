@@ -1,0 +1,242 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/services/networking/virtualnetwork
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Sat, 02 Apr 2016 03:17:41 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '124'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.348 (rd_rdfe_stable.160330-1613) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - d9d30046a7629cfeafdcb8854d66ec2b
+      date:
+      - Sat, 02 Apr 2016 03:17:53 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <VirtualNetworkSites xmlns="http://schemas.microsoft.com/windowsazure"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+    http_version: 
+  recorded_at: Sat, 02 Apr 2016 03:17:54 GMT
+- request:
+    method: put
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/services/networking/media
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <NetworkConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+          <VirtualNetworkConfiguration>
+            <Dns>
+              <DnsServers/>
+            </Dns>
+            <VirtualNetworkSites>
+              <VirtualNetworkSite name="testvnet" AffinityGroup="" Location="East US">
+                <DnsServersRef/>
+                <Subnets/>
+                <AddressSpace>
+                  <AddressPrefix>172.16.0.0/12</AddressPrefix>
+                  <AddressPrefix>10.0.0.0/8</AddressPrefix>
+                  <AddressPrefix>192.168.0.0/24</AddressPrefix>
+                </AddressSpace>
+              </VirtualNetworkSite>
+            </VirtualNetworkSites>
+          </VirtualNetworkConfiguration>
+        </NetworkConfiguration>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Sat, 02 Apr 2016 03:17:54 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - text/plain
+      Content-Length:
+      - '670'
+      Content-MD5:
+      - 85Sf99SI9F+WyHA6l5FhPw==
+  response:
+    status:
+      code: 202
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '0'
+      server:
+      - 1.0.6198.348 (rd_rdfe_stable.160330-1613) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 565967bbfcb29e66bc014ac6ffeeef46
+      date:
+      - Sat, 02 Apr 2016 03:17:54 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 02 Apr 2016 03:17:54 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/operations/565967bbfcb29e66bc014ac6ffeeef46
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <NetworkConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+          <VirtualNetworkConfiguration>
+            <Dns>
+              <DnsServers/>
+            </Dns>
+            <VirtualNetworkSites>
+              <VirtualNetworkSite name="testvnet" AffinityGroup="" Location="East US">
+                <DnsServersRef/>
+                <Subnets/>
+                <AddressSpace>
+                  <AddressPrefix>172.16.0.0/12</AddressPrefix>
+                  <AddressPrefix>10.0.0.0/8</AddressPrefix>
+                  <AddressPrefix>192.168.0.0/24</AddressPrefix>
+                </AddressSpace>
+              </VirtualNetworkSite>
+            </VirtualNetworkSites>
+          </VirtualNetworkConfiguration>
+        </NetworkConfiguration>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Sat, 02 Apr 2016 03:17:54 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - text/plain
+      Content-Length:
+      - '0'
+      Content-MD5:
+      - 85Sf99SI9F+WyHA6l5FhPw==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '232'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.348 (rd_rdfe_stable.160330-1613) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 47659b0cb79c9c56a095e45b55c2d456
+      date:
+      - Sat, 02 Apr 2016 03:17:59 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <Operation xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><ID>565967bb-fcb2-9e66-bc01-4ac6ffeeef46</ID><Status>Succeeded</Status><HttpStatusCode>200</HttpStatusCode></Operation>
+    http_version: 
+  recorded_at: Sat, 02 Apr 2016 03:18:01 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/services/networking/virtualnetwork
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Sat, 02 Apr 2016 03:18:01 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '506'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.348 (rd_rdfe_stable.160330-1613) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - ae954c491d3d9fa4bcf22e0852c92381
+      date:
+      - Sat, 02 Apr 2016 03:18:01 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <VirtualNetworkSites xmlns="http://schemas.microsoft.com/windowsazure"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><VirtualNetworkSite><Name>testvnet</Name><Id>f7f2dcdb-334f-4bf8-bf26-1502bfe969fd</Id><State>Created</State><AddressSpace><AddressPrefixes><AddressPrefix>172.16.0.0/12</AddressPrefix><AddressPrefix>10.0.0.0/8</AddressPrefix><AddressPrefix>192.168.0.0/24</AddressPrefix></AddressPrefixes></AddressSpace><Subnets/><Location>East
+        US</Location></VirtualNetworkSite></VirtualNetworkSites>
+    http_version: 
+  recorded_at: Sat, 02 Apr 2016 03:18:01 GMT
+recorded_with: VCR 3.0.1

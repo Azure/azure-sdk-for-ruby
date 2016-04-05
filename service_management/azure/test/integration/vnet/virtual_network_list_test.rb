@@ -15,33 +15,28 @@
 require 'integration/test_helper'
 
 describe Azure::VirtualNetworkManagement::VirtualNetwork do
-
   subject { Azure::VirtualNetworkManagementService.new }
+  let(:affinity_group_name) { 'testaffinitygroup' }
+  let(:geo_location) { 'East US' }
+  let(:vnet_name) { 'testvnet' }
 
-  let(:affinity_group_name) { 'my-affinity-group' }
-  let(:geo_location) { 'West US' }
-  let(:vnet_name) { 'vnet-integration-test' }
-
-  before do
-    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
-    address_space = %w(172.16.0.0/12 10.0.0.0/8 192.168.0.0/24)
-    unless subject.list_virtual_networks.map(&:name).include?(vnet_name)
-      subject.set_network_configuration(
-        vnet_name,
-        geo_location,
-        address_space
-      )
+  describe 'virtual networks' do
+    before do
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+      VCR.insert_cassette "vnet/#{name}"
+      address_space = %w(172.16.0.0/12 10.0.0.0/8 192.168.0.0/24)
+      subject.set_network_configuration(vnet_name, geo_location, address_space)
     end
-  end
 
-  describe '#list_virtual_networks' do
-    it 'Gets a list of virtual networks for the current subscription.' do
+    after do
+      VCR.eject_cassette
+    end
+
+    it 'should list virtual networks' do
       virtual_networks = subject.list_virtual_networks
       virtual_networks.wont_be_nil
       virtual_networks.must_be_kind_of Array
-      virtual_networks.first.must_be_kind_of(
-          Azure::VirtualNetworkManagement::VirtualNetwork
-      )
+      virtual_networks.first.must_be_kind_of(Azure::VirtualNetworkManagement::VirtualNetwork)
       assert_operator virtual_networks.size, :>=, 1
     end
   end
