@@ -13,25 +13,87 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'integration/test_helper'
-require 'integration/service_bus/scenario_test'
+require 'integration/service_bus/scenario_helper'
 
-require 'azure/service_bus/brokered_message'
-
-describe "ServiceBus Topics Scenario" do
-  let(:topic_name){ ServiceBusTopicNameHelper.name }
+describe Azure::ServiceBus::ServiceBusService do
+  subject { Azure::ServiceBus::ServiceBusService.new }
+  let(:topic_name){ 'test-topic' }
   let(:subscription_name1){ 'noRules' }
   let(:subscription_name2){ 'intRuleSub' }
   let(:subscription_name3){ 'strAndBoolRuleSub' }
   let(:subscription_name4){ 'tripleMsgRuleSub' }
 
-  subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
+  describe "Service bus topic scenario" do
+    before do
+      VCR.insert_cassette "service_bus/#{name}"
+    end
+
+    after do
+      subject.delete_topic topic_name
+      VCR.eject_cassette
+    end
+
+    it 'should upload many messages to a topic and read them back from all subscriptions' do
+      setup_topic
+      setup_subscriptions
+      setup_rules
+
+      messages = send_messages
+
+      get_message_counts
+
+      exp_sub1_messages = messages
+      exp_sub2_messages = [messages[0], messages[1]]
+      exp_sub3_messages = [messages[1], messages[2], messages[3]]
+
+      # The rules for subscription 4 add and remove custom properties.
+      exp_custom_props4 = []
+      exp_sub4_messages = []
+      for i in 1..4 do
+        tmp = ScenarioHelper.get_custom_properties i
+        tmp['trueRuleA']    = true
+        tmp['actionGuid']   = 'GUID'
+        tmp['actionDouble'] = 3.5
+        tmp['rulename']     = '$Default'
+        tmp.delete 'int'
+        exp_custom_props4[2*i-2] = tmp
+        exp_sub4_messages[2*i-2] = messages[i-1].dup
+
+        tmp = ScenarioHelper.get_custom_properties i
+        tmp['trueRuleB']                  = true
+        tmp['actionString']               = 'hello'
+        tmp['actionStringSingleQuote']    = '\''
+        tmp['actionStringDoubleQuote']    = '"'
+        tmp['actionStringReverseSolidus'] = '\\'
+        tmp['actionStringSlashN']         = "\n"
+        tmp['actionStringTab']            = "\t"
+        # Null valued properties are not returned
+
+        # "test" was originally a date, so this is a date.
+        # This has to be GMT, because the updating string
+        # had no timezone information.
+        tmp['test'] = Time.gm(1999, 12, 25)
+        # There was no "actionNewDate" defined
+        # before, so this is a string.
+        tmp['actionNewDate'] = '1999-12-25'
+        tmp['rulename']      = 'trueRuleB'
+        tmp.delete 'float'
+        exp_custom_props4[2*i-1] = tmp
+        exp_sub4_messages[2*i-1] = messages[i-1].dup
+      end
+
+      get_message_from_sub exp_sub1_messages, subscription_name1
+      get_message_from_sub exp_sub2_messages, subscription_name2
+      get_message_from_sub exp_sub3_messages, subscription_name3
+      get_message_from_sub exp_sub4_messages, subscription_name4, exp_custom_props4
+    end
+  end
 
   def setup_topic()
     topics = subject.list_topics({ :skip => 20, :top => 2 })
-    topics.each { |t|
+    topics.each do |t|
       ScenarioHelper.out "Topic name is " + t.title
-    }
+    end
 
     ScenarioHelper.out "checking if topic already exists " + topic_name
     begin
@@ -346,61 +408,5 @@ describe "ServiceBus Topics Scenario" do
     message_count = (subject.get_subscription topic_name, subscription_name).message_count
     ScenarioHelper.out 'Got all messages, Message count: ' + message_count.to_s
     message_count.must_equal 0
-  end
-
-  it 'should be able to upload many messages to a topic and read them back from all subscriptions' do
-    setup_topic
-    setup_subscriptions
-    setup_rules
-
-    messages = send_messages
-
-    get_message_counts
-
-    exp_sub1_messages = messages
-    exp_sub2_messages = [messages[0], messages[1]]
-    exp_sub3_messages = [messages[1], messages[2], messages[3]]
-
-    # The rules for subscription 4 add and remove custom properties.
-    exp_custom_props4 = []
-    exp_sub4_messages = []
-    for i in 1..4 do
-        tmp = ScenarioHelper.get_custom_properties i
-        tmp['trueRuleA']    = true
-        tmp['actionGuid']   = 'GUID'
-        tmp['actionDouble'] = 3.5
-        tmp['rulename']     = '$Default'
-        tmp.delete 'int'
-        exp_custom_props4[2*i-2] = tmp
-        exp_sub4_messages[2*i-2] = messages[i-1].dup
-
-        tmp = ScenarioHelper.get_custom_properties i
-        tmp['trueRuleB']                  = true
-        tmp['actionString']               = 'hello'
-        tmp['actionStringSingleQuote']    = '\''
-        tmp['actionStringDoubleQuote']    = '"'
-        tmp['actionStringReverseSolidus'] = '\\'
-        tmp['actionStringSlashN']         = "\n"
-        tmp['actionStringTab']            = "\t"
-        # Null valued properties are not returned
-
-        # "test" was originally a date, so this is a date.
-        # This has to be GMT, because the updating string
-        # had no timezone information.
-        tmp['test'] = Time.gm(1999, 12, 25)
-        # There was no "actionNewDate" defined
-        # before, so this is a string.
-        tmp['actionNewDate'] = '1999-12-25'
-        tmp['rulename']      = 'trueRuleB'
-        tmp.delete 'float'
-        exp_custom_props4[2*i-1] = tmp
-        exp_sub4_messages[2*i-1] = messages[i-1].dup
-    end
-
-
-    get_message_from_sub exp_sub1_messages, subscription_name1
-    get_message_from_sub exp_sub2_messages, subscription_name2
-    get_message_from_sub exp_sub3_messages, subscription_name3
-    get_message_from_sub exp_sub4_messages, subscription_name4, exp_custom_props4
   end
 end

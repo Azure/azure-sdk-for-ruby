@@ -1,0 +1,552 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-topic0&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 05 Apr 2016 00:35:27 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '155'
+      Content-MD5:
+      - Z62o3g6V7XUjAafTTAn/YA==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - a0733daa-9ede-4a6f-ae9f-6906563080c1
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Tue, 05 Apr 2016 00:35:26 GMT
+      connection:
+      - close
+      content-length:
+      - '554'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-topic0%26ExpiresOn%3d1459827327%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dVzGG4MxGabxq%252bQVKZA0jyDBYuHUQLk5hf8lAgWMv5vo%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 00:35:27 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-topic0
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <TopicDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - 8iV12Q1Xgu61d5s5Q0PhpA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/atom+xml;type=entry;charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 00:35:29 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <entry xmlns="http://www.w3.org/2005/Atom"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-topic0</id><title
+        type="text">test-topic0</title><published>2016-04-05T00:35:28Z</published><updated>2016-04-05T00:35:29Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/test-topic0"/><content
+        type="application/xml"><TopicDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><CreatedAt>2016-04-05T00:35:28.323</CreatedAt><UpdatedAt>2016-04-05T00:35:29.693</UpdatedAt></TopicDescription></content></entry>
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 00:35:29 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-topic1&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 05 Apr 2016 00:35:29 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '155'
+      Content-MD5:
+      - "/Imvxh/Rm2bIqGMRUvL3zA=="
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - c9cd6314-a54f-4c11-9b66-adbdc7ffe53b
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Tue, 05 Apr 2016 00:35:29 GMT
+      connection:
+      - close
+      content-length:
+      - '554'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-topic1%26ExpiresOn%3d1459827329%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dXOnF9DPAb4o4iqFJImzE4KzLBygqRdRHFxMm%252fwnHFfE%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 00:35:29 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-topic1
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <TopicDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - 8iV12Q1Xgu61d5s5Q0PhpA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/atom+xml;type=entry;charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 00:35:30 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <entry xmlns="http://www.w3.org/2005/Atom"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-topic1</id><title
+        type="text">test-topic1</title><published>2016-04-05T00:35:30Z</published><updated>2016-04-05T00:35:30Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/test-topic1"/><content
+        type="application/xml"><TopicDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><CreatedAt>2016-04-05T00:35:30.51</CreatedAt><UpdatedAt>2016-04-05T00:35:30.57</UpdatedAt></TopicDescription></content></entry>
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 00:35:30 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-topic2&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 05 Apr 2016 00:35:30 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '155'
+      Content-MD5:
+      - D4hXmR/LGmGR5cBwbU8Ezg==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - eed3519b-04cf-4ae9-9a86-42e663772a85
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Tue, 05 Apr 2016 00:35:29 GMT
+      connection:
+      - close
+      content-length:
+      - '554'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-topic2%26ExpiresOn%3d1459827330%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d6b%252biudx7UaYNrAgBESIfvfQiP75CA4qj8Vvh9Rl2Huc%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 00:35:30 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-topic2
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <TopicDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - 8iV12Q1Xgu61d5s5Q0PhpA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/atom+xml;type=entry;charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 00:35:30 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <entry xmlns="http://www.w3.org/2005/Atom"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-topic2</id><title
+        type="text">test-topic2</title><published>2016-04-05T00:35:31Z</published><updated>2016-04-05T00:35:31Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/test-topic2"/><content
+        type="application/xml"><TopicDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><CreatedAt>2016-04-05T00:35:31.41</CreatedAt><UpdatedAt>2016-04-05T00:35:31.45</UpdatedAt></TopicDescription></content></entry>
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 00:35:31 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2F%24Resources%2FTopics&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 05 Apr 2016 00:35:31 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '165'
+      Content-MD5:
+      - Ib0P7f8ZaJU9fDay77gXAQ==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - d628fe0d-ecc8-4fca-8aad-7416cac91ba9
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Tue, 05 Apr 2016 00:35:31 GMT
+      connection:
+      - close
+      content-length:
+      - '572'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252f%2524Resources%252fTopics%26ExpiresOn%3d1459827331%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dQ5kNKZrGN2jLPEpzXP4D%252b7HFBsSfexfb%252fJD1mWz7erg%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 00:35:31 GMT
+- request:
+    method: get
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Topics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '0'
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/atom+xml;type=feed;charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 00:35:32 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Topics</title><id>https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Topics</id><updated>2016-04-05T00:35:32Z</updated><link
+        rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Topics"/><entry
+        xml:base="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Topics"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-topic0</id><title
+        type="text">test-topic0</title><published>2016-04-05T00:35:28Z</published><updated>2016-04-05T00:35:29Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="../test-topic0"/><content type="application/xml"><TopicDescription
+        xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes></TopicDescription></content></entry><entry
+        xml:base="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Topics"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-topic1</id><title
+        type="text">test-topic1</title><published>2016-04-05T00:35:30Z</published><updated>2016-04-05T00:35:30Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="../test-topic1"/><content type="application/xml"><TopicDescription
+        xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes></TopicDescription></content></entry><entry
+        xml:base="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Topics"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-topic2</id><title
+        type="text">test-topic2</title><published>2016-04-05T00:35:31Z</published><updated>2016-04-05T00:35:31Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="../test-topic2"/><content type="application/xml"><TopicDescription
+        xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes></TopicDescription></content></entry></feed>
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 00:35:32 GMT
+- request:
+    method: get
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Topics?%24skip=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '0'
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/atom+xml;type=feed;charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 00:35:31 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Topics</title><id>https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Topics?%24skip=1</id><updated>2016-04-05T00:35:32Z</updated><link
+        rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Topics?%24skip=1"/><entry
+        xml:base="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Topics?%24skip=1"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-topic1</id><title
+        type="text">test-topic1</title><published>2016-04-05T00:35:30Z</published><updated>2016-04-05T00:35:30Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="../test-topic1"/><content type="application/xml"><TopicDescription
+        xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes></TopicDescription></content></entry><entry
+        xml:base="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Topics?%24skip=1"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-topic2</id><title
+        type="text">test-topic2</title><published>2016-04-05T00:35:31Z</published><updated>2016-04-05T00:35:31Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="../test-topic2"/><content type="application/xml"><TopicDescription
+        xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes></TopicDescription></content></entry></feed>
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 00:35:32 GMT
+- request:
+    method: delete
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-topic0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '0'
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-length:
+      - '0'
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 00:35:32 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 00:35:33 GMT
+- request:
+    method: delete
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-topic1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '0'
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-length:
+      - '0'
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 00:35:32 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 00:35:34 GMT
+- request:
+    method: delete
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-topic2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '0'
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-length:
+      - '0'
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 00:35:32 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 00:35:34 GMT
+recorded_with: VCR 3.0.1

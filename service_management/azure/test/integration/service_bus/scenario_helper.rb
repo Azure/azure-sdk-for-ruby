@@ -13,7 +13,6 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'integration/test_helper'
-
 require 'azure/service_bus/brokered_message'
 
 class ScenarioHelper

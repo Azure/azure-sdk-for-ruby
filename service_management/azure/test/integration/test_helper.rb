@@ -16,7 +16,7 @@ require 'test_helper'
 require 'azure'
 require 'vcr'
 
-if (ENV['TRAVIS_ASM_INTEG_RECORDED'].nil? || ENV['TRAVIS_ASM_INTEG_RECORDED'] == false) then
+if ENV['TRAVIS_ASM_INTEG_RECORDED'].nil? || ENV['TRAVIS_ASM_INTEG_RECORDED'] == false
   Azure.configure do |config|
     config.storage_access_key       = ENV.fetch('AZURE_STORAGE_ACCESS_KEY')
     config.storage_account_name     = ENV.fetch('AZURE_STORAGE_ACCOUNT')
@@ -24,6 +24,11 @@ if (ENV['TRAVIS_ASM_INTEG_RECORDED'].nil? || ENV['TRAVIS_ASM_INTEG_RECORDED'] ==
     config.sb_access_key            = ENV.fetch('AZURE_SERVICEBUS_ACCESS_KEY')
     config.management_certificate   = ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE')
     config.subscription_id          = ENV.fetch('AZURE_SUBSCRIPTION_ID')
+  end
+else
+  Azure.configure do |config|
+    config.sb_namespace             = 'test'
+    config.sb_access_key            = 'test123'
   end
 end
 
@@ -40,10 +45,14 @@ VCR.configure do |config|
   config.filter_sensitive_data('<STORAGE_ACCESS_KEY>') { Azure.storage_access_key }
   config.filter_sensitive_data('<STORAGE_ACCOUNT_NAME>') { Azure.storage_account_name }
   config.filter_sensitive_data('<SB_NAMESPACE>') { Azure.sb_namespace }
-  config.filter_sensitive_data('<SB_ACCESS_KEY>') { Azure.sb_access_key }
+  config.filter_sensitive_data('<SB_ACCESS_KEY>') { CGI.escape(Azure.sb_access_key) }
   config.filter_sensitive_data('<MANAGEMENT_CERTIFICATE>') { Azure.management_certificate }
 
   config.before_record do |interaction|
+    # Remove authorization headers and cookies
+    interaction.response.headers.delete('Set-Cookie')
+    interaction.request.headers.delete('Authorization')
+
     # Reduce number of interaction by ignoring 'InProgress' operations
     if interaction.request.uri =~ /^https:\/\/management.core.windows.net\/<SUBSCRIPTION_ID>\/operations\/.*/ then
       if interaction.response.body.include? ('InProgress') then
