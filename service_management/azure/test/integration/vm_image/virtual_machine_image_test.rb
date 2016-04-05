@@ -15,12 +15,19 @@
 require "integration/test_helper"
 
 describe Azure::VirtualMachineImageManagementService do
-
   subject { Azure::VirtualMachineImageManagementService.new }
 
-  describe "#virtual_machine_images" do
+  before do
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+    VCR.insert_cassette "vm_image/#{name}"
+  end
 
-    it "returns a list of virtual machine images" do
+  after do
+    VCR.eject_cassette
+  end
+
+  describe "virtual machine images" do
+    it "should return a list of vm images" do
       virtualImages = subject.list_virtual_machine_images
       virtualImages.wont_be_nil
       virtualImages.must_be_kind_of Array
@@ -31,7 +38,5 @@ describe Azure::VirtualMachineImageManagementService do
       image.name.wont_be_nil
       refute_equal virtualImages.length, 0
     end
-
   end
-
 end

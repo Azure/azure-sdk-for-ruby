@@ -17,22 +17,25 @@ require "integration/test_helper"
 describe Azure::BaseManagement::BaseManagementService do
   subject { Azure::BaseManagement::BaseManagementService.new }
 
-  describe "#locations" do
+  before do
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+    VCR.insert_cassette "location/#{name}"
+  end
 
-    it "check locations list present" do
-      result = subject.list_locations
+  after do
+    VCR.eject_cassette
+  end
+
+  describe "role size" do
+    it "should be present" do
+      result = subject.list_role_sizes
       result.wont_be_nil
     end
 
-    it "returns a list of locations" do
-      locations = subject.list_locations
-      locations.must_be_kind_of Array
-      location = locations.first
-      location.must_be_kind_of Azure::BaseManagement::Location
-      refute_equal locations.length, 0
-      location.name.wont_be_nil
-      location.available_services.wont_be_nil
+    it "should return a list of role sizes" do
+      role_sizes = subject.list_role_sizes
+      role_sizes.must_be_kind_of Array
+      refute_equal role_sizes.length, 0
     end
-
-  end #locations
+  end
 end

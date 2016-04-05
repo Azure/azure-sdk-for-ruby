@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------
-# Copyright 2013 Microsoft Open Technologies, Inc.
+# # Copyright (c) Microsoft and contributors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,34 +12,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'integration/test_helper'
+require "integration/test_helper"
 
-describe Azure::CloudServiceManagementService do
-  include Azure::Core::Utility
-
-  subject { Azure::CloudServiceManagementService.new }
-  let(:options) do
-    {
-      location: 'West US',
-      description: 'Test'
-    }
-  end
+describe Azure::BaseManagement::BaseManagementService do
+  subject { Azure::BaseManagement::BaseManagementService.new }
 
   before do
     Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+    VCR.insert_cassette "location/#{name}"
   end
 
-  describe '#create_cloud_service' do
-    before do
-      @cloud_name = random_string('test-service-cloud', 10)
-      subject.create_cloud_service(@cloud_name, options)
+  after do
+    VCR.eject_cassette
+  end
+
+  describe "location" do
+    it "should be present" do
+      result = subject.list_locations
+      result.wont_be_nil
     end
 
-    it 'Creates a new cloud service in Microsoft Azure.' do
-      cloud_service = subject.get_cloud_service_properties(@cloud_name)
-      assert cloud_service.name, @cloud_name
-      assert cloud_service.location, options[:location]
-      assert cloud_service.virtual_machines, Hash.new
+    it "should return a list of locations" do
+      locations = subject.list_locations
+      locations.must_be_kind_of Array
+      location = locations.first
+      location.must_be_kind_of Azure::BaseManagement::Location
+      refute_equal locations.length, 0
+      location.name.wont_be_nil
+      location.available_services.wont_be_nil
     end
   end
 end

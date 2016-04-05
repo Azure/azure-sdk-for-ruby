@@ -15,14 +15,21 @@
 require "integration/test_helper"
 
 describe Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService do
-
   subject {
     Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService.new
   }
 
-  describe "#list_virtual_machine_disks" do
+  before do
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+    VCR.insert_cassette "vm_image/#{name}"
+  end
 
-    it "returns a list of virtual machine disks" do
+  after do
+    VCR.eject_cassette
+  end
+
+  describe "vm image disk" do
+    it "should return a list of vm disks" do
       vm_disks = subject.list_virtual_machine_disks
       vm_disks.wont_be_nil
       vm_disks.must_be_kind_of Array
@@ -31,7 +38,5 @@ describe Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementServi
       disk.name.wont_be_nil
       [true, false].must_include disk.attached
     end
-
   end
-
 end
