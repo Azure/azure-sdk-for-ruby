@@ -176,7 +176,7 @@ describe Azure::StorageManagementService do
       storage = subject.update_storage_account(storage_name, options)
       error_msg = "Storage Account 'storage_nonexistent' does not exist"
       assert_match(/#{error_msg}/, storage)
-      end
+    end
 
     it 'delete storage account that does not exist' do
       msg = subject.delete_storage_account('invalidstorageaccount')
