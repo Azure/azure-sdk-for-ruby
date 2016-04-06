@@ -17,22 +17,25 @@ require 'integration/test_helper'
 describe Azure::StorageManagementService do
 
   subject { Azure::StorageManagementService.new }
-  affinity_name = 'testaffinitygroup44938'
+  let(:affinity_name) { 'testaffinitygroup44938' }
+  let(:storage_name) { "storagename2341" }
 
-  opts = {
+  let(:opts)  {
+    {
       affinity_group_name: affinity_name,
       label: 'storagelabel',
       description: 'This is a storage account',
       geo_replication_enabled: 'true'
+    }
   }
 
-  let(:affinity_group_name) { affinity_name }
-  let(:storage_name) { "storagename2341" }
+  before do
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+  end
 
   describe 'storage management' do
 
     before do
-      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       VCR.insert_cassette "storage_management/#{name}"
 
       Azure::BaseManagementService.new.create_affinity_group(
@@ -41,7 +44,7 @@ describe Azure::StorageManagementService do
           'Storage management test description'
       )
       # Test storage account creation
-      Azure::StorageManagementService.new.create_storage_account(storage_name, opts)
+      subject.create_storage_account(storage_name, opts)
     end
 
     after do
@@ -104,7 +107,6 @@ describe Azure::StorageManagementService do
   describe 'storage management errors' do
 
     before do
-      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
       VCR.insert_cassette "storage_management/#{name}"
     end
 
