@@ -105,7 +105,7 @@ namespace :test do
       # reject the test paths those are not yet VCR recorded
       # we'll unlock these as we have recordings
       path.include?('blob') || path.include?('database') || path.include?('queue') ||
-          path.include?('service_bus') || path.include?('storage_management') || path.include?('table')
+          path.include?('service_bus') || path.include?('table')
     end
     t.verbose = true
     t.libs = %w(lib test)
@@ -123,6 +123,7 @@ namespace :test do
     component_task :affinity_group
     component_task :cloud_service
     component_task :location
+    component_task :storage_management
     component_task :vm
     component_task :vm_image
     component_task :vnet

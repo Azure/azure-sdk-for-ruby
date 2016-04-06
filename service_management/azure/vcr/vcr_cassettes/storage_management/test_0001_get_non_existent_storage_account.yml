@@ -1,0 +1,119 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 05 Apr 2016 22:57:05 GMT
+      x-ms-version:
+      - '2015-04-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '20549'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.348 (rd_rdfe_stable.160330-1613) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 2c5285e4dfe29b8e81ffb1d746d8dfdd
+      date:
+      - Tue, 05 Apr 2016 22:57:06 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <StorageServices xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/mattevogf1</Url><ServiceName>mattevogf1</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>North Central US</Location><Label>bWF0dGV2b2dmMQ==</Label><Status>Created</Status><Endpoints><Endpoint>https://mattevogf1.blob.core.windows.net/</Endpoint><Endpoint>https://mattevogf1.queue.core.windows.net/</Endpoint><Endpoint>https://mattevogf1.table.core.windows.net/</Endpoint><Endpoint>https://mattevogf1.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>North
+        Central US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>South
+        Central US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-05-12T21:42:52Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-NorthCentralUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>North
+        Central US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/mattevogf2</Url><ServiceName>mattevogf2</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>North Central US</Location><Label>bWF0dGV2b2dmMg==</Label><Status>Created</Status><Endpoints><Endpoint>https://mattevogf2.blob.core.windows.net/</Endpoint><Endpoint>https://mattevogf2.queue.core.windows.net/</Endpoint><Endpoint>https://mattevogf2.table.core.windows.net/</Endpoint><Endpoint>https://mattevogf2.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>North
+        Central US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>South
+        Central US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2014-05-29T15:46:17Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-NorthCentralUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>North
+        Central US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/portalvhds1454377433253</Url><ServiceName>portalvhds1454377433253</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>West US</Location><Label>cG9ydGFsdmhkczE0NTQzNzc0MzMyNTM=</Label><Status>Created</Status><Endpoints><Endpoint>https://portalvhds1454377433253.blob.core.windows.net/</Endpoint><Endpoint>https://portalvhds1454377433253.queue.core.windows.net/</Endpoint><Endpoint>https://portalvhds1454377433253.table.core.windows.net/</Endpoint><Endpoint>https://portalvhds1454377433253.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion/><StatusOfSecondary/><CreationTime>2016-02-02T01:43:54Z</CreationTime><CustomDomains/><AccountType>Standard_LRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/storagename234</Url><ServiceName>storagename234</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><AffinityGroup>testaffinitygroup44935</AffinityGroup><Label>c3RvcmFnZWxhYmVs</Label><Status>Created</Status><Endpoints><Endpoint>https://storagename234.blob.core.windows.net/</Endpoint><Endpoint>https://storagename234.queue.core.windows.net/</Endpoint><Endpoint>https://storagename234.table.core.windows.net/</Endpoint><Endpoint>https://storagename234.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2016-04-05T00:59:21Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/storagetest345324</Url><ServiceName>storagetest345324</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><AffinityGroup>testaffinitygroup4493</AffinityGroup><Label>c3RvcmFnZWxhYmVs</Label><Status>Created</Status><Endpoints><Endpoint>https://storagetest345324.blob.core.windows.net/</Endpoint><Endpoint>https://storagetest345324.queue.core.windows.net/</Endpoint><Endpoint>https://storagetest345324.table.core.windows.net/</Endpoint><Endpoint>https://storagetest345324.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2016-04-04T22:47:03Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/tmp1019710210account</Url><ServiceName>tmp1019710210account</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>West US</Location><Label>ZEcxd01UQXhPVGN4TURJeE1HRmpZMjkxYm5RPQ==</Label><Status>Created</Status><Endpoints><Endpoint>https://tmp1019710210account.blob.core.windows.net/</Endpoint><Endpoint>https://tmp1019710210account.queue.core.windows.net/</Endpoint><Endpoint>https://tmp1019710210account.table.core.windows.net/</Endpoint><Endpoint>https://tmp1019710210account.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-29T21:54:07Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/tmp1490939875account</Url><ServiceName>tmp1490939875account</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>West US</Location><Label>dG1wMTQ5MDkzOTg3NWFjY291bnQ=</Label><Status>Created</Status><Endpoints><Endpoint>https://tmp1490939875account.blob.core.windows.net/</Endpoint><Endpoint>https://tmp1490939875account.queue.core.windows.net/</Endpoint><Endpoint>https://tmp1490939875account.table.core.windows.net/</Endpoint><Endpoint>https://tmp1490939875account.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-28T17:59:43Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/tmp1636175598account</Url><ServiceName>tmp1636175598account</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>West US</Location><Label>dG1wMTYzNjE3NTU5OGFjY291bnQ=</Label><Status>Created</Status><Endpoints><Endpoint>https://tmp1636175598account.blob.core.windows.net/</Endpoint><Endpoint>https://tmp1636175598account.queue.core.windows.net/</Endpoint><Endpoint>https://tmp1636175598account.table.core.windows.net/</Endpoint><Endpoint>https://tmp1636175598account.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-29T02:29:03Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/tmp1898359260account</Url><ServiceName>tmp1898359260account</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>West US</Location><Label>ZEcxd01UZzVPRE0xT1RJMk1HRmpZMjkxYm5RPQ==</Label><Status>Created</Status><Endpoints><Endpoint>https://tmp1898359260account.blob.core.windows.net/</Endpoint><Endpoint>https://tmp1898359260account.queue.core.windows.net/</Endpoint><Endpoint>https://tmp1898359260account.table.core.windows.net/</Endpoint><Endpoint>https://tmp1898359260account.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-30T02:02:10Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/tmp2046878228account</Url><ServiceName>tmp2046878228account</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>West US</Location><Label>ZEcxd01qQTBOamczT0RJeU9HRmpZMjkxYm5RPQ==</Label><Status>Created</Status><Endpoints><Endpoint>https://tmp2046878228account.blob.core.windows.net/</Endpoint><Endpoint>https://tmp2046878228account.queue.core.windows.net/</Endpoint><Endpoint>https://tmp2046878228account.table.core.windows.net/</Endpoint><Endpoint>https://tmp2046878228account.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-29T21:51:12Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/tmp2053528300account</Url><ServiceName>tmp2053528300account</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>West US</Location><Label>ZEcxd01qQTFNelV5T0RNd01HRmpZMjkxYm5RPQ==</Label><Status>Created</Status><Endpoints><Endpoint>https://tmp2053528300account.blob.core.windows.net/</Endpoint><Endpoint>https://tmp2053528300account.queue.core.windows.net/</Endpoint><Endpoint>https://tmp2053528300account.table.core.windows.net/</Endpoint><Endpoint>https://tmp2053528300account.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-30T17:24:09Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/tmp220651570account</Url><ServiceName>tmp220651570account</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>West US</Location><Label>dG1wMjIwNjUxNTcwYWNjb3VudA==</Label><Status>Created</Status><Endpoints><Endpoint>https://tmp220651570account.blob.core.windows.net/</Endpoint><Endpoint>https://tmp220651570account.queue.core.windows.net/</Endpoint><Endpoint>https://tmp220651570account.table.core.windows.net/</Endpoint><Endpoint>https://tmp220651570account.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-28T01:52:33Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/tmp590050328account</Url><ServiceName>tmp590050328account</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>West US</Location><Label>dG1wNTkwMDUwMzI4YWNjb3VudA==</Label><Status>Created</Status><Endpoints><Endpoint>https://tmp590050328account.blob.core.windows.net/</Endpoint><Endpoint>https://tmp590050328account.queue.core.windows.net/</Endpoint><Endpoint>https://tmp590050328account.table.core.windows.net/</Endpoint><Endpoint>https://tmp590050328account.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-28T01:55:59Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/tmpaccount</Url><ServiceName>tmpaccount</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>West US</Location><Label>ZEcxd1lXTmpiM1Z1ZEE9PQ==</Label><Status>Created</Status><Endpoints><Endpoint>https://tmpaccount.blob.core.windows.net/</Endpoint><Endpoint>https://tmpaccount.queue.core.windows.net/</Endpoint><Endpoint>https://tmpaccount.table.core.windows.net/</Endpoint><Endpoint>https://tmpaccount.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-30T00:08:14Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/<STORAGE_ACCOUNT_NAME></Url><ServiceName><STORAGE_ACCOUNT_NAME></ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>East US</Location><Label>dm1kZXBsb3ltZW50dGVzdA==</Label><Status>Created</Status><Endpoints><Endpoint>https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/</Endpoint><Endpoint>https://<STORAGE_ACCOUNT_NAME>.queue.core.windows.net/</Endpoint><Endpoint>https://<STORAGE_ACCOUNT_NAME>.table.core.windows.net/</Endpoint><Endpoint>https://<STORAGE_ACCOUNT_NAME>.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>East
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>West
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2016-03-18T21:48:27Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-EastUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>East
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/<STORAGE_ACCOUNT_NAME>1</Url><ServiceName><STORAGE_ACCOUNT_NAME>1</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>West US</Location><Label>dGVzdC03OS1qaXp4c3ctc2VydmljZS04MC1wb3M1ZXE=</Label><Status>Created</Status><Endpoints><Endpoint>https://<STORAGE_ACCOUNT_NAME>1.blob.core.windows.net/</Endpoint><Endpoint>https://<STORAGE_ACCOUNT_NAME>1.queue.core.windows.net/</Endpoint><Endpoint>https://<STORAGE_ACCOUNT_NAME>1.table.core.windows.net/</Endpoint><Endpoint>https://<STORAGE_ACCOUNT_NAME>1.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2016-03-22T00:45:28Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService><StorageService><Url>https://management.core.windows.net/<SUBSCRIPTION_ID>/services/storageservices/yc5151storage</Url><ServiceName>yc5151storage</ServiceName><StorageServiceProperties><Description
+        i:nil="true"/><Location>West US</Location><Label>eWM1MTUxc3RvcmFnZQ==</Label><Status>Created</Status><Endpoints><Endpoint>https://yc5151storage.blob.core.windows.net/</Endpoint><Endpoint>https://yc5151storage.queue.core.windows.net/</Endpoint><Endpoint>https://yc5151storage.table.core.windows.net/</Endpoint><Endpoint>https://yc5151storage.file.core.windows.net/</Endpoint></Endpoints><GeoPrimaryRegion>West
+        US</GeoPrimaryRegion><StatusOfPrimary>Available</StatusOfPrimary><GeoSecondaryRegion>East
+        US</GeoSecondaryRegion><StatusOfSecondary>Available</StatusOfSecondary><CreationTime>2015-01-28T01:21:29Z</CreationTime><CustomDomains/><AccountType>Standard_GRS</AccountType></StorageServiceProperties><ExtendedProperties><ExtendedProperty><Name>ResourceGroup</Name><Value>Default-Storage-WestUS</Value></ExtendedProperty><ExtendedProperty><Name>ResourceLocation</Name><Value>West
+        US</Value></ExtendedProperty></ExtendedProperties></StorageService></StorageServices>
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 22:57:07 GMT
+recorded_with: VCR 3.0.1
