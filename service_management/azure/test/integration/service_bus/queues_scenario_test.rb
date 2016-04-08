@@ -31,9 +31,7 @@ describe Azure::ServiceBus::ServiceBusService do
 
     it 'should upload many messages and read them back' do
       setup_queue
-
       messages = send_messages
-
       get_message_from_queue messages
     end
   end

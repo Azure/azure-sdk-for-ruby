@@ -93,9 +93,6 @@ describe Azure::ServiceBus::ServiceBusService do
       result = subject.send_topic_message topic, message
       result.must_be_nil
     end
-
-    it 'should be able to delete the topic' do
-    end
   end
 
   describe 'when topics exists' do

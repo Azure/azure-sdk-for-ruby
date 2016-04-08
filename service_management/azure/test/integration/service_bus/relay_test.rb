@@ -83,6 +83,16 @@ describe Azure::ServiceBus::ServiceBusService do
       response = subject.delete_relay name_alternative
       response.must_equal nil
     end
+  end
+
+  describe "when a relay does not exists" do
+    before do
+      VCR.insert_cassette "service_bus/#{name}"
+    end
+
+    after do
+        VCR.eject_cassette
+    end
 
     it "should throw if trying to get non existing relay" do
       assert_raises(Azure::Core::Http::HTTPError) do

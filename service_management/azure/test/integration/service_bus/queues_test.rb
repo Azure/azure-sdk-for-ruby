@@ -122,12 +122,6 @@ describe Azure::ServiceBus::ServiceBusService do
       result.must_be_kind_of Azure::ServiceBus::Queue
       result.name.must_equal queue_name
     end
-
-    it "should be able to delete the queue" do
-      subject.create_queue name_alternative
-      response = subject.delete_queue name_alternative
-      response.must_equal nil
-    end
   end
 
   describe 'when a queue does not exists' do
