@@ -47,6 +47,10 @@ module Azure
       end
 
       def self.server_name_from_xml(response_xml, login, location, version)
+        if response_xml.css('Error').css('Message').to_s != ''
+          raise Azure::SqlDatabaseManagement::Error.new(response_xml.css('Error').css('Message').to_s)
+        end
+
         server_name = xml_content(response_xml, 'ServerName')
         SqlServer.new do |db|
           db.name = server_name

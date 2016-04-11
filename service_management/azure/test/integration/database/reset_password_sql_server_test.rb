@@ -15,29 +15,24 @@
 require 'integration/test_helper'
 
 describe Azure::SqlDatabaseManagementService do
-
   subject { Azure::SqlDatabaseManagementService.new }
-  let(:login_name) {'test_login'}
-  let(:sql_server) { subject.create_server(login_name, 'User1@123', WindowsImageLocation) }
+  let(:login_name) { 'test_login' }
+  let(:sql_server) { subject.create_server(login_name, 'User1@123', geo_location) }
+  let(:geo_location) { 'Southeast Asia' }
 
-  describe '#reset_password' do
-
-    before {
+  describe 'Sql database management service' do
+    before do
       Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
-    }
-
-    after {
-      subject.delete_server(sql_server.name)
-    }
-
-    it 'should be able to reset password of sql database server.' do
-      subject.reset_password(sql_server.name, 'User2@123')
+      VCR.insert_cassette "database/#{name}"
     end
 
-    it 'raise if the sql server does not exist' do
-      assert_raises(Azure::SqlDatabaseManagement::ServerDoesNotExist) do
-        subject.reset_password('unknown-server', 'User2@123')
-      end
+    after do
+      subject.delete_server(sql_server.name)
+      VCR.eject_cassette
+    end
+
+    it 'should be able to reset password of sql database server' do
+      subject.reset_password(sql_server.name, 'User2@123')
     end
 
     it 'error if the sql server password is invalid' do
@@ -45,9 +40,22 @@ describe Azure::SqlDatabaseManagementService do
       exception = assert_raises(RuntimeError) do
         subject.reset_password(sql_server.name, password)
       end
-      assert_match(/Password validation failed/i, exception.message)
     end
-
   end
 
+  describe 'Sql server management service throws' do
+    before do
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+      VCR.insert_cassette "database/#{name}"
+    end
+
+    after do
+      VCR.eject_cassette
+    end
+    it 'when sql server does not exist' do
+      assert_raises(Azure::SqlDatabaseManagement::ServerDoesNotExist) do
+        subject.reset_password('unknown-server', 'User2@123')
+      end
+    end
+  end
 end

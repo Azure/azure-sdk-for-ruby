@@ -1,0 +1,486 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 12 Apr 2016 00:03:21 GMT
+      x-ms-version:
+      - '2012-03-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '65'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.353 (rd_rdfe_stable.160407-1306) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      x-ms-request-id:
+      - 21dad16be05d95a4a4d97369aa3c8b56
+      date:
+      - Tue, 12 Apr 2016 00:03:18 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"/>
+    http_version: 
+  recorded_at: Tue, 12 Apr 2016 00:03:22 GMT
+- request:
+    method: post
+    uri: https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <Server xmlns="http://schemas.microsoft.com/sqlazure/2010/12/">
+          <AdministratorLogin>test_login</AdministratorLogin>
+          <AdministratorLoginPassword>User1@123</AdministratorLoginPassword>
+          <Location>Southeast Asia</Location>
+          <Version>12.0</Version>
+        </Server>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 12 Apr 2016 00:03:22 GMT
+      x-ms-version:
+      - '2012-03-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '283'
+      Content-MD5:
+      - nv4hateMeNoCm9rN23PlhA==
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '149'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.353 (rd_rdfe_stable.160407-1306) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      x-ms-request-id:
+      - f24fbd64fd9c96e8be0c9cc3a1494e77
+      date:
+      - Tue, 12 Apr 2016 00:03:52 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <ServerName FullyQualifiedDomainName="tw2c4uytog.database.windows.net"
+        xmlns="http://schemas.microsoft.com/sqlazure/2010/12/">tw2c4uytog</ServerName>
+    http_version: 
+  recorded_at: Tue, 12 Apr 2016 00:03:56 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 12 Apr 2016 00:03:56 GMT
+      x-ms-version:
+      - '2012-03-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '364'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.353 (rd_rdfe_stable.160407-1306) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      x-ms-request-id:
+      - 360babab0a619408a8ee9326d6d6a52d
+      date:
+      - Tue, 12 Apr 2016 00:03:52 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |-
+        <Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/">
+          <Server>
+            <Name>tw2c4uytog</Name>
+            <AdministratorLogin>test_login</AdministratorLogin>
+            <Location>Southeast Asia</Location>
+            <FullyQualifiedDomainName>tw2c4uytog.database.windows.net</FullyQualifiedDomainName>
+            <Version>12.0</Version>
+            <State>Ready</State>
+          </Server>
+        </Servers>
+    http_version: 
+  recorded_at: Tue, 12 Apr 2016 00:03:56 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers/tw2c4uytog/firewallrules
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 12 Apr 2016 00:03:56 GMT
+      x-ms-version:
+      - '2012-03-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-store,no-cache
+      content-length:
+      - '121'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.353 (rd_rdfe_stable.160407-1306) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - dbc93e5376729822839efa2f8f7ee64e
+      date:
+      - Tue, 12 Apr 2016 00:03:55 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <ServiceResources xmlns="http://schemas.microsoft.com/windowsazure"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+    http_version: 
+  recorded_at: Tue, 12 Apr 2016 00:03:59 GMT
+- request:
+    method: post
+    uri: https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers/tw2c4uytog/firewallrules/
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <ServiceResource xmlns="http://schemas.microsoft.com/windowsazure">
+          <Name>rule1</Name>
+          <StartIPAddress>0.0.0.0</StartIPAddress>
+          <EndIPAddress>255.255.255.255</EndIPAddress>
+        </ServiceResource>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 12 Apr 2016 00:03:59 GMT
+      x-ms-version:
+      - '2012-03-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '220'
+      Content-MD5:
+      - J4WWPyyW2/OpOT9JKvwDNQ==
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      cache-control:
+      - no-store,no-cache
+      content-length:
+      - '602'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.353 (rd_rdfe_stable.160407-1306) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - c097eaf5db9a91d9962240848a00951d
+      date:
+      - Tue, 12 Apr 2016 00:03:57 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <ServiceResource xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Name>rule1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers/tw2c4uytog/firewallrules/rule1</SelfLink><ParentLink>https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers/tw2c4uytog</ParentLink><StartIPAddress>0.0.0.0</StartIPAddress><EndIPAddress>255.255.255.255</EndIPAddress></ServiceResource>
+    http_version: 
+  recorded_at: Tue, 12 Apr 2016 00:04:01 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 12 Apr 2016 00:04:01 GMT
+      x-ms-version:
+      - '2012-03-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '364'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.353 (rd_rdfe_stable.160407-1306) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      x-ms-request-id:
+      - 6a9fd9c8e9489c8abc1cd122131cfc4b
+      date:
+      - Tue, 12 Apr 2016 00:03:58 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |-
+        <Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/">
+          <Server>
+            <Name>tw2c4uytog</Name>
+            <AdministratorLogin>test_login</AdministratorLogin>
+            <Location>Southeast Asia</Location>
+            <FullyQualifiedDomainName>tw2c4uytog.database.windows.net</FullyQualifiedDomainName>
+            <Version>12.0</Version>
+            <State>Ready</State>
+          </Server>
+        </Servers>
+    http_version: 
+  recorded_at: Tue, 12 Apr 2016 00:04:01 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers/tw2c4uytog/firewallrules
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 12 Apr 2016 00:04:01 GMT
+      x-ms-version:
+      - '2012-03-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-store,no-cache
+      content-length:
+      - '639'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.353 (rd_rdfe_stable.160407-1306) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-request-id:
+      - 580e15a911679708959971c322312235
+      date:
+      - Tue, 12 Apr 2016 00:03:59 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <ServiceResources xmlns="http://schemas.microsoft.com/windowsazure"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><ServiceResource><Name>rule1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers/tw2c4uytog/firewallrules/rule1</SelfLink><ParentLink>https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers/tw2c4uytog</ParentLink><StartIPAddress>0.0.0.0</StartIPAddress><EndIPAddress>255.255.255.255</EndIPAddress></ServiceResource></ServiceResources>
+    http_version: 
+  recorded_at: Tue, 12 Apr 2016 00:04:03 GMT
+- request:
+    method: get
+    uri: https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 12 Apr 2016 00:04:03 GMT
+      x-ms-version:
+      - '2012-03-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '364'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.353 (rd_rdfe_stable.160407-1306) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      x-ms-request-id:
+      - 4b0954f9370693a4bbc7440017d498dc
+      date:
+      - Tue, 12 Apr 2016 00:04:00 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |-
+        <Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/">
+          <Server>
+            <Name>tw2c4uytog</Name>
+            <AdministratorLogin>test_login</AdministratorLogin>
+            <Location>Southeast Asia</Location>
+            <FullyQualifiedDomainName>tw2c4uytog.database.windows.net</FullyQualifiedDomainName>
+            <Version>12.0</Version>
+            <State>Ready</State>
+          </Server>
+        </Servers>
+    http_version: 
+  recorded_at: Tue, 12 Apr 2016 00:04:04 GMT
+- request:
+    method: delete
+    uri: https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers/tw2c4uytog
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 12 Apr 2016 00:04:04 GMT
+      x-ms-version:
+      - '2012-03-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      server:
+      - 1.0.6198.353 (rd_rdfe_stable.160407-1306) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      x-ms-request-id:
+      - 175e32fe3de3903c99b6d2a4501a6486
+      date:
+      - Tue, 12 Apr 2016 00:04:03 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 12 Apr 2016 00:04:07 GMT
+recorded_with: VCR 3.0.1

@@ -15,39 +15,43 @@
 require 'integration/test_helper'
 
 describe Azure::SqlDatabaseManagementService do
-
   subject { Azure::SqlDatabaseManagementService.new }
   let(:login_name) {'test_login'}
-  describe '#create_server' do
+  let(:geo_location) { 'Southeast Asia' }
 
-    before {
+  describe 'Sql database management service' do
+    before do
       Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
-    }
-
-    it 'should be able to create a new sql database server.' do
-      sql_server = subject.create_server(login_name, 'User@123', WindowsImageLocation)
-      sql_server.name.wont_be_nil
-      sql_server.location.must_equal WindowsImageLocation
-      sql_server.administrator_login.must_equal login_name
-      subject.delete_server sql_server.name
+      VCR.insert_cassette "database/#{name}"
     end
 
-    it 'errors if the sql server location does not exist' do
+    after do
+      VCR.eject_cassette
+    end
+
+    it 'should be able to create and delete sql database server' do
+      sql_server = subject.create_server(login_name, 'User@123', geo_location)
+      sql_server.name.wont_be_nil
+      sql_server.location.must_equal geo_location
+      sql_server.administrator_login.must_equal login_name
+
+      subject.delete_server(sql_server.name)
+      sql_server = subject.list_servers.select { |x| x.name == sql_server.name }.first
+      sql_server.must_be_nil
+    end
+
+    it 'throws errors if the sql server location does not exist' do
       location = 'unknown-location'
-      exception = assert_raises(RuntimeError) do
+      exception = assert_raises(Azure::SqlDatabaseManagement::Error) do
         subject.create_server(login_name, 'User@123', location)
       end
       assert_match(/Location \'#{location}\' cannot be found/i, exception.message)
     end
 
-    it 'errors if the sql server passsword is invalid' do
-      password = 'weak'
-      exception = assert_raises(RuntimeError) do
-        subject.create_server(login_name, password, WindowsImageLocation)
+    it 'throws if the sql server does not exist' do
+      assert_raises(Azure::SqlDatabaseManagement::ServerDoesNotExist) do
+        subject.delete_server('unknown-server')
       end
-      assert_match(/Password validation failed/i, exception.message)
     end
-
   end
-
 end
