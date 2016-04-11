@@ -46,7 +46,8 @@ describe Azure::ServiceBus::ServiceBusService do
     end
 
     after do
-      subject.delete_queue queue_name
+      response = subject.delete_queue queue_name
+      response.must_equal nil
       VCR.eject_cassette
     end
 
@@ -69,7 +70,8 @@ describe Azure::ServiceBus::ServiceBusService do
     end
 
     after do
-      subject.delete_queue name_alternative
+      response = subject.delete_queue name_alternative
+      response.must_equal nil
       VCR.eject_cassette
     end
     it "should create a new queue from a string and description hash" do
@@ -112,7 +114,8 @@ describe Azure::ServiceBus::ServiceBusService do
     end
 
     after do
-      subject.delete_queue queue_name
+      response = subject.delete_queue queue_name
+      response.must_equal nil
       VCR.eject_cassette
     end
 
@@ -157,9 +160,12 @@ describe Azure::ServiceBus::ServiceBusService do
     end
 
     after do
-      subject.delete_queue queue_name
-      subject.delete_queue name1
-      subject.delete_queue name2
+      response = subject.delete_queue queue_name
+      response.must_equal nil
+      response1 = subject.delete_queue name1
+      response1.must_equal nil
+      response2 = subject.delete_queue name2
+      response2.must_equal nil
       VCR.eject_cassette
     end
 
@@ -233,7 +239,8 @@ describe Azure::ServiceBus::ServiceBusService do
     end
 
     after do
-      subject.delete_queue queue_name
+      response = subject.delete_queue queue_name
+      response.must_equal nil
       VCR.eject_cassette
     end
 
