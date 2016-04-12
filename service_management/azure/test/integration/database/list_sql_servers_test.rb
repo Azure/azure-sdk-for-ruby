@@ -15,17 +15,21 @@
 require "integration/test_helper"
 
 describe Azure::SqlDatabaseManagementService do
-
   subject { Azure::SqlDatabaseManagementService.new }
-  let(:login_name) {'test_login'}
-  describe '#list_servers' do
+  let(:login_name) { 'test_login' }
 
-    before {
-      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
-    }
+  before do
+    Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+    VCR.insert_cassette "database/#{name}"
+  end
 
-    it 'returns a list of SQL databse servers' do
-      server1 = subject.create_server(login_name, 'User1@123', WindowsImageLocation)
+  after do
+    VCR.eject_cassette
+  end
+
+  describe 'Sql database management service' do
+    it 'should list sql database servers' do
+      server1 = subject.create_server(login_name, 'User1@123', 'Southeast Asia')
       server2 = subject.create_server(login_name, 'User2@123', 'East US')
 
       sql_servers = subject.list_servers
@@ -38,7 +42,5 @@ describe Azure::SqlDatabaseManagementService do
       subject.delete_server(server1.name)
       subject.delete_server(server2.name)
     end
-
   end
-
 end

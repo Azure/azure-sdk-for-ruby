@@ -16,24 +16,25 @@
 require 'integration/test_helper'
 
 describe Azure::SqlDatabaseManagementService do
-
   subject { Azure::SqlDatabaseManagementService.new }
-  let(:login_name) {'test_login_user'}
-  let(:sql_server) { subject.create_server(login_name, 'User1@123', WindowsImageLocation) }
+  let(:login_name) { 'test_login' }
+  let(:sql_server) { subject.create_server(login_name, 'User1@123', geo_location) }
   let(:start_ip_address) { '0.0.0.0' }
   let(:end_ip_address) { '255.255.255.255' }
+  let(:geo_location) { 'Southeast Asia' }
 
-  describe '#set_sql_server_firewall_rule' do
-
-    before {
+  describe 'Sql database management service' do
+    before do
       Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
-    }
+      VCR.insert_cassette "database/#{name}"
+    end
 
-    after {
+    after do
       subject.delete_server(sql_server.name)
-    }
+      VCR.eject_cassette
+    end
 
-    it "should adds a new server-level firewall rule for a SQL Database server with requester's IP address." do
+    it "should add a new server-level firewall rule with requester's IP address" do
       subject.set_sql_server_firewall_rule(sql_server.name, 'rule1', start_ip_address, end_ip_address)
       sql_server_firewalls = subject.list_sql_server_firewall_rules(sql_server.name)
       sql_server_firewalls.must_be_kind_of Array
@@ -45,7 +46,7 @@ describe Azure::SqlDatabaseManagementService do
       firewall.start_ip_address.wont_be_nil
     end
 
-    it 'should adds a new server-level firewall rule for a SQL Database server with given IP range.' do
+    it 'should add a new server-level firewall rule with given IP range' do
       subject.set_sql_server_firewall_rule(sql_server.name, 'rule2', '10.20.30.0', '10.20.30.255')
       sql_server_firewalls = subject.list_sql_server_firewall_rules(sql_server.name)
       sql_server_firewalls.must_be_kind_of Array
@@ -58,7 +59,7 @@ describe Azure::SqlDatabaseManagementService do
       firewall.start_ip_address.must_equal '10.20.30.0'
     end
 
-    it 'should updates an existing server-level firewall rule for a SQL Database server.' do
+    it 'should update an existing server-level firewall rule' do
       subject.set_sql_server_firewall_rule(sql_server.name, 'rule2', '10.20.30.100', '10.20.30.150')
       sql_server_firewalls = subject.list_sql_server_firewall_rules(sql_server.name)
       sql_server_firewalls.must_be_kind_of Array
@@ -71,11 +72,48 @@ describe Azure::SqlDatabaseManagementService do
       firewall.start_ip_address.must_equal '10.20.30.100'
     end
 
-    it 'errors if the sql server does not exist' do
-      assert_raises(Azure::SqlDatabaseManagement::ServerDoesNotExist) do
-        subject.set_sql_server_firewall_rule('unknown-server', 'rule1')
+    it 'should delete sql database server firewall' do
+      subject.set_sql_server_firewall_rule(sql_server.name, 'rule1', '0.0.0.0', '255.255.255.255')
+      subject.set_sql_server_firewall_rule(sql_server.name, 'rule2', '10.20.30.0', '10.20.30.255')
+      subject.delete_sql_server_firewall_rule(sql_server.name, 'rule1')
+
+      sql_server_firewalls = subject.list_sql_server_firewall_rules(sql_server.name)
+      sql_server_firewalls.must_be_kind_of Array
+      sql_server_firewalls.first.must_be_kind_of Azure::SqlDatabaseManagement::FirewallRule
+      sql_server_firewalls.size.must_equal 1
+      firewall = sql_server_firewalls.first
+      firewall.name.must_equal 'rule2'
+      firewall.end_ip_address.must_equal '10.20.30.255'
+      firewall.start_ip_address.must_equal '10.20.30.0'
+    end
+
+    it 'returns false when deleting unknown firewall rule' do
+      assert_raises(Azure::SqlDatabaseManagement::RuleDoesNotExist) do
+        subject.delete_sql_server_firewall_rule(sql_server.name, 'rule10')
       end
     end
   end
 
+  describe 'Sql database management service' do
+    before do
+      Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
+      VCR.insert_cassette "database/#{name}"
+    end
+
+    after do
+      VCR.eject_cassette
+    end
+
+    it 'throws when setting firewall of unknown sql server' do
+      assert_raises(Azure::SqlDatabaseManagement::ServerDoesNotExist) do
+        subject.set_sql_server_firewall_rule('unknown-server', 'rule1')
+      end
+    end
+
+    it 'throws when deleting firewall of unknown sql server' do
+      assert_raises(Azure::SqlDatabaseManagement::ServerDoesNotExist) do
+        subject.delete_sql_server_firewall_rule('unknown-server', 'rule1')
+      end
+    end
+  end
 end

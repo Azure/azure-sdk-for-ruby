@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Mon, 11 Apr 2016 22:01:23 GMT
+      x-ms-version:
+      - '2012-03-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '65'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.353 (rd_rdfe_stable.160407-1306) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      x-ms-request-id:
+      - 1980d10fa0d092fc887922ca15e16a6d
+      date:
+      - Mon, 11 Apr 2016 22:01:20 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"/>
+    http_version: 
+  recorded_at: Mon, 11 Apr 2016 22:01:23 GMT
+recorded_with: VCR 3.0.1

@@ -96,7 +96,7 @@ module Azure
       def reset_password(name, password)
         ensure_server_exists!(name)
         body = Serialization.reset_password_to_xml(password)
-        request_path = servers_path + "#{name}?op=ResetPassword"
+        request_path = servers_path "#{name}?op=ResetPassword"
         request = client.sql_management_request(:post, request_path, body)
         request.call
         Azure::Loggerx.info "Password for server #{name} changed successfully."

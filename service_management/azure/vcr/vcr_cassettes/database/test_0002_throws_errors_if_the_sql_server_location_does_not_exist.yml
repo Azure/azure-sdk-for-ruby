@@ -1,0 +1,132 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Mon, 11 Apr 2016 22:20:11 GMT
+      x-ms-version:
+      - '2012-03-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '0'
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '935'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - 1.0.6198.353 (rd_rdfe_stable.160407-1306) Microsoft-HTTPAPI/2.0
+      x-ms-servedbyregion:
+      - ussouth3
+      x-ms-request-id:
+      - 6a8a9c8bca1f9e5b9d0b343bbbca19c3
+      date:
+      - Mon, 11 Apr 2016 22:20:08 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |-
+        <Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/">
+          <Server>
+            <Name>snqin6j9j0</Name>
+            <AdministratorLogin>test_login</AdministratorLogin>
+            <Location>Southeast Asia</Location>
+            <FullyQualifiedDomainName>snqin6j9j0.database.windows.net</FullyQualifiedDomainName>
+            <Version>12.0</Version>
+            <State>Ready</State>
+          </Server>
+          <Server>
+            <Name>uneadfjti9</Name>
+            <AdministratorLogin>test_login</AdministratorLogin>
+            <Location>Southeast Asia</Location>
+            <FullyQualifiedDomainName>uneadfjti9.database.windows.net</FullyQualifiedDomainName>
+            <Version>12.0</Version>
+            <State>Ready</State>
+          </Server>
+          <Server>
+            <Name>zonqeuzhev</Name>
+            <AdministratorLogin>test_login</AdministratorLogin>
+            <Location>East US</Location>
+            <FullyQualifiedDomainName>zonqeuzhev.database.windows.net</FullyQualifiedDomainName>
+            <Version>12.0</Version>
+            <State>Ready</State>
+          </Server>
+        </Servers>
+    http_version: 
+  recorded_at: Mon, 11 Apr 2016 22:20:12 GMT
+- request:
+    method: post
+    uri: https://management.core.windows.net:8443/<SUBSCRIPTION_ID>/services/sqlservers/servers
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <Server xmlns="http://schemas.microsoft.com/sqlazure/2010/12/">
+          <AdministratorLogin>test_login</AdministratorLogin>
+          <AdministratorLoginPassword>User@123</AdministratorLoginPassword>
+          <Location>unknown-location</Location>
+          <Version>12.0</Version>
+        </Server>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Mon, 11 Apr 2016 22:20:12 GMT
+      x-ms-version:
+      - '2012-03-01'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '284'
+      Content-MD5:
+      - LrPmooq9Goh9R/XQG27t4w==
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      content-length:
+      - '203'
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Mon, 11 Apr 2016 22:20:08 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |-
+        <Error xmlns="http://schemas.microsoft.com/sqlazure/2010/12/">
+          <Code>40641</Code>
+          <Message>Location 'unknown-location' cannot be found.</Message>
+          <Severity>16</Severity>
+          <State>1</State>
+        </Error>
+    http_version: 
+  recorded_at: Mon, 11 Apr 2016 22:20:12 GMT
+recorded_with: VCR 3.0.1
