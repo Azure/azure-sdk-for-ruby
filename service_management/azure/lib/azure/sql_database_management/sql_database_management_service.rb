@@ -27,7 +27,7 @@ module Azure
 
       # Gets a list of database servers available under the current subscription.
       #
-      # @see http://msdn.microsoft.com/en-us/library/azure/gg715269.aspx
+      # @see http://msdn.microsoft.com/en-us/library/azure/dn505702.aspx
       #
       # @return Array<Azure::SqlDatabaseManagement::SqlServer>
       def list_servers
@@ -42,7 +42,7 @@ module Azure
       # @param location   [String] The location where the database server will be created.
       # @param version    [String|Integer] The version of the SQL server (default 12.0)
       #
-      # @see https://msdn.microsoft.com/en-us/library/azure/dn505699.aspx
+      # @see http://msdn.microsoft.com/en-us/library/azure/dn505699.aspx
       #
       # @return [Azure::SqlDatabaseManagement::SqlServer]
       def create_server(login, password, location, version = 12.0)
@@ -75,7 +75,7 @@ module Azure
       #
       # @param name     [String] SqlServer name.
       #
-      # @see http://msdn.microsoft.com/en-us/library/azure/gg715285.aspx
+      # @see http://msdn.microsoft.com/en-us/library/azure/dn505695.aspx
       #
       # @return  [void]
       def delete_server(name)
@@ -90,7 +90,7 @@ module Azure
       # @param name       [String] SqlServer name.
       # @param password   [String] SqlServer new password.
       #
-      # @see http://msdn.microsoft.com/en-us/library/azure/gg715272.aspx
+      # @see http://msdn.microsoft.com/en-us/library/azure/dn505696.aspx
       #
       # @return [void]
       def reset_password(name, password)
@@ -113,7 +113,7 @@ module Azure
       #                                addresses equal to or less than this can attempt to connect to the server. The
       #                                highest possible IP address is 255.255.255.255. (default: first local public ip)
       #
-      # @see http://msdn.microsoft.com/en-us/library/azure/gg715280.aspx
+      # @see http://msdn.microsoft.com/en-us/library/azure/dn505707.aspx
       #
       # @return  [void]
       def set_sql_server_firewall_rule(server_name, rule_name, start_ip = public_ipv4, end_ip = public_ipv4)
@@ -146,7 +146,7 @@ module Azure
       #
       # @param server_name   [String] Database server name.
       #
-      # @see http://msdn.microsoft.com/en-us/library/azure/gg715278.aspx
+      # @see http://msdn.microsoft.com/en-us/library/azure/dn505715.aspx
       #
       # @return [Array<Azure::SqlDatabaseManagement::FirewallRule>]
       def list_sql_server_firewall_rules(server_name)
@@ -161,7 +161,7 @@ module Azure
       # @param server_name  [String] SQL database server name.
       # @param rule_name    [String] SQL database server firewall rule name.
       #
-      # @see http://msdn.microsoft.com/en-us/library/azure/gg715277.aspx
+      # @see http://msdn.microsoft.com/en-us/library/azure/dn505706.aspx
       #
       # @return  [void]
       def delete_sql_server_firewall_rule(server_name, rule_name)
