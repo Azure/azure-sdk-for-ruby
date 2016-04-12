@@ -10,6 +10,6 @@ rvm:
 
 script:
 - cd service_management/azure && bundle install && bundle exec rake test:unit
-- if [ "$TRAVIS_ASM_INTEG_RECORDED" == "true" ] ; then bundle exec rake test:recorded ; fi
+- if [ "$INTEG_RECORDED" == "true" ] ; then bundle exec rake test:recorded ; fi
 - cd ../../resource_management && bundle install
 - if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ] ; then rake test:integration ; fi
