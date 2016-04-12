@@ -14,12 +14,10 @@
 #--------------------------------------------------------------------------
 require 'integration/test_helper'
 
-describe 'ServiceBus Topics' do
+describe Azure::ServiceBus::ServiceBusService do
   subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
-  let(:topic_alternative){ ServiceBusTopicNameHelper.name }
-  let(:description_alternative) {{
+  let(:topic){ 'test-topic' }
+  let(:description) {{
     :default_message_time_to_live => 'PT30M',
     :maximum_number_of_subscriptions => 3,
     :max_size_in_megabytes => 2048,
@@ -29,32 +27,47 @@ describe 'ServiceBus Topics' do
     :enable_batched_operations => true,
   }}
 
-  it 'should be able to create a new topic' do
-    result = subject.create_topic topic, { :max_size_in_megabytes => 2048 }
-    result.must_be :kind_of?, Azure::ServiceBus::Topic
-    result.name.must_equal topic
-    result.max_size_in_megabytes.must_equal 2048
-  end
+  describe 'Service bus topic' do
+    before do
+      VCR.insert_cassette "service_bus/#{name}"
+    end
 
-  it 'should be able to create a new topic from a string and description Hash' do
-    result = subject.create_topic topic_alternative, description_alternative
-    result.must_be :kind_of?, Azure::ServiceBus::Topic
-    result.name.must_equal topic_alternative
+    after do
+      subject.delete_topic topic
+      VCR.eject_cassette
+    end
 
-    result.default_message_time_to_live.must_equal 1800.0
-    #result.maximum_number_of_subscriptions.must_equal description_alternative[:maximum_number_of_subscriptions]
-    result.max_size_in_megabytes.must_equal description_alternative[:max_size_in_megabytes]
-    result.requires_duplicate_detection.must_equal description_alternative[:requires_duplicate_detection]
-    result.dead_lettering_on_filter_evaluation_exceptions.must_equal description_alternative[:dead_lettering_on_filter_evaluation_exceptions]
-    result.duplicate_detection_history_time_window.must_equal 1200.0
-    result.enable_batched_operations.must_equal description_alternative[:enable_batched_operations]
+    it 'should create a new topic' do
+      result = subject.create_topic topic, { :max_size_in_megabytes => 2048 }
+      result.must_be :kind_of?, Azure::ServiceBus::Topic
+      result.name.must_equal topic
+      result.max_size_in_megabytes.must_equal 2048
+    end
+
+    it 'should create a new topic from a string and description hash' do
+      result = subject.create_topic topic, description
+      result.must_be :kind_of?, Azure::ServiceBus::Topic
+      result.name.must_equal topic
+
+      result.default_message_time_to_live.must_equal 1800.0
+      result.maximum_number_of_subscriptions.must_equal description[:maximum_number_of_subscriptions]
+      result.max_size_in_megabytes.must_equal description[:max_size_in_megabytes]
+      result.requires_duplicate_detection.must_equal description[:requires_duplicate_detection]
+      result.dead_lettering_on_filter_evaluation_exceptions.must_equal description[:dead_lettering_on_filter_evaluation_exceptions]
+      result.duplicate_detection_history_time_window.must_equal 1200.0
+      result.enable_batched_operations.must_equal description[:enable_batched_operations]
+    end
   end
 
   describe 'when a topic exists' do
-    before { subject.create_topic topic }
+    before do
+      VCR.insert_cassette "service_bus/#{name}"
+      subject.create_topic topic
+    end
 
-    it 'should be able to delete the topic' do
+    after do
       subject.delete_topic topic
+      VCR.eject_cassette
     end
 
     it 'should be able to get the topic' do
@@ -66,9 +79,9 @@ describe 'ServiceBus Topics' do
     it 'should be able to list topics' do
       result = subject.list_topics
       topic_found = false
-      result.each { |t|
+      result.each do |t|
         topic_found = true if t.name == topic
-      }
+      end
       assert topic_found, "list_topics didn't include the expected topic"
     end
 
@@ -80,50 +93,59 @@ describe 'ServiceBus Topics' do
       result = subject.send_topic_message topic, message
       result.must_be_nil
     end
+  end
 
-    describe 'when there are multiple topics' do
-      let(:topic1) { ServiceBusTopicNameHelper.name }
-      let(:topic2) { ServiceBusTopicNameHelper.name }
+  describe 'when topics exists' do
+    let(:topic) { 'test-topic0' }
+    let(:topic1) { 'test-topic1' }
+    let(:topic2) { 'test-topic2' }
+    before do
+      VCR.insert_cassette "service_bus/#{name}"
+      subject.create_topic topic
+      subject.create_topic topic1
+      subject.create_topic topic2
+    end
 
-      before {
-        subject.create_topic topic1
-        subject.create_topic topic2
-      }
+    after do
+      subject.delete_topic topic
+      subject.delete_topic topic1
+      subject.delete_topic topic2
+      VCR.eject_cassette
+    end
 
-      it 'should be able to list topics' do
-        result = subject.list_topics
-        topic_found = false
-        topic1_found = false
-        topic2_found = false
-        result.each { |t|
-          topic_found = true if t.name == topic
-          topic1_found = true if t.name == topic1
-          topic2_found = true if t.name == topic2
-        }
-        assert (topic_found and topic1_found and topic2_found), "list_topics didn't include the expected topic"
+    it 'should be able to list topics' do
+      result = subject.list_topics
+      topic_found = false
+      topic1_found = false
+      topic2_found = false
+      result.each do |t|
+        topic_found = true if t.name == topic
+        topic1_found = true if t.name == topic1
+        topic2_found = true if t.name == topic2
       end
+      assert (topic_found and topic1_found and topic2_found), "list_topics didn't include the expected topic"
+    end
 
-      it 'should be able to use $skip token with list_topics' do
-        result = subject.list_topics
-        result2 = subject.list_topics({ :skip => 1 })
-        result2.length.must_equal result.length - 1
-        result2[0].id.must_equal result[1].id
-      end
+    it 'should be able to use $skip token with list_topics' do
+      result = subject.list_topics
+      result2 = subject.list_topics({:skip => 1})
+      result2.length.must_equal result.length - 1
+      result2[0].id.must_equal result[1].id
+    end
 
-      it 'should be able to use $top token with list_topics' do
-        result = subject.list_topics
-        result.length.wont_equal 1
+    it 'should be able to use $top token with list_topics' do
+      result = subject.list_topics
+      result.length.wont_equal 1
 
-        result2 = subject.list_topics({ :top => 1 })
-        result2.length.must_equal 1
-      end
+      result2 = subject.list_topics({:top => 1})
+      result2.length.must_equal 1
+    end
 
-      it 'should be able to use $skip and $top token together with list_topics' do
-        result = subject.list_topics
-        result2 = subject.list_topics({ :skip => 1, :top => 1 })
-        result2.length.must_equal 1
-        result2[0].id.must_equal result[1].id
-      end
+    it 'should be able to use $skip and $top token together with list_topics' do
+      result = subject.list_topics
+      result2 = subject.list_topics({:skip => 1, :top => 1})
+      result2.length.must_equal 1
+      result2[0].id.must_equal result[1].id
     end
   end
 end

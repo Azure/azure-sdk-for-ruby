@@ -1,0 +1,1411 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:43 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '154'
+      Content-MD5:
+      - 8lU17B/Ay6s+gdDfIgj88g==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - e627e81e-4026-4f01-8e2d-5ad70ceccaa2
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:43 GMT
+      connection:
+      - close
+      content-length:
+      - '553'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%26ExpiresOn%3d1460015383%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dccRJlp0sBMKMhSp%252f0BVOPtrF4dA1ON6JHmSV7ahECdQ%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:44 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/atom+xml;type=entry;charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:44 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <entry xmlns="http://www.w3.org/2005/Atom"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-queue</id><title
+        type="text">test-queue</title><published>2016-04-07T04:49:44Z</published><updated>2016-04-07T04:49:44Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/test-queue"/><content
+        type="application/xml"><QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><CreatedAt>2016-04-07T04:49:44.827</CreatedAt><UpdatedAt>2016-04-07T04:49:44.89</UpdatedAt></QueueDescription></content></entry>
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:44 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%25A2%25B1%25A2%25D9%25A2%25FC%25A8%25E8%25A8%25E9&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:45 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '204'
+      Content-MD5:
+      - FghZVDae9xZGa6hi8NbeCw==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - 48e253be-8c76-4fd5-ac7d-b219858cfe53
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:44 GMT
+      connection:
+      - close
+      content-length:
+      - '619'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%2525A2%2525B1%2525A2%2525D9%2525A2%2525FC%2525A8%2525E8%2525A8%2525E9%26ExpiresOn%3d1460015385%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3df7mpZN79FvbEylvSKKo1BVL7y5t6MTeP4dDCyoqvCkY%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:45 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%A2%B1%A2%D9%A2%FC%A8%E8%A8%E9
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:45 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<Error><Code>400</Code><Detail>Incorrect request Uri format. TrackingId:abfa650d-a78d-4dd2-94f7-72f09185ec45_G6,TimeStamp:4/7/2016
+        4:49:45 AM</Detail></Error>"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:46 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%25B0%25A1%25B0%25A2%25F7%25FD%25F7%25FE&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:46 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '194'
+      Content-MD5:
+      - Yn3VJw/EgzaDCpUOkKaA5g==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - ab1c22bb-4e60-476a-9daa-9122eb3115ff
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:46 GMT
+      connection:
+      - close
+      content-length:
+      - '605'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%2525B0%2525A1%2525B0%2525A2%2525F7%2525FD%2525F7%2525FE%26ExpiresOn%3d1460015386%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dqzgCXPcubTiUuG95mZCRKApfxcp7FFqEzKLWmKNXaMs%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:46 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%B0%A1%B0%A2%F7%FD%F7%FE
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:46 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<Error><Code>400</Code><Detail>Incorrect request Uri format. TrackingId:2bd6c2ee-ffe9-46ad-988a-ccbe4cfac68a_G31,TimeStamp:4/7/2016
+        4:49:47 AM</Detail></Error>"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:47 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%2581%2540%2581%2541%25A0%25FD%25A0%25FE&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:47 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '194'
+      Content-MD5:
+      - kPau+2iZRFbJ+eBTsYeGDA==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - e748d054-d88d-4a13-a77b-ef777614a385
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:47 GMT
+      connection:
+      - close
+      content-length:
+      - '609'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%252581%252540%252581%252541%2525A0%2525FD%2525A0%2525FE%26ExpiresOn%3d1460015387%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dU6KQxKDvqUYzBjEeMo0gKlOd%252btnZehymOKy36CDq4nk%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:47 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%81%40%81%41%A0%FD%A0%FE
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      content-type:
+      - text/html; charset=us-ascii
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:47 GMT
+      connection:
+      - close
+      content-length:
+      - '324'
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\"http://www.w3.org/TR/html4/strict.dtd\">\r\n<HTML><HEAD><TITLE>Bad
+        Request</TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text/html;
+        charset=us-ascii\"></HEAD>\r\n<BODY><h2>Bad Request - Invalid URL</h2>\r\n<hr><p>HTTP
+        Error 400. The request URL is invalid.</p>\r\n</BODY></HTML>\r\n"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:47 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%25AA%2540%25AA%2541%25FE%254E%25FE%254F&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:47 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '194'
+      Content-MD5:
+      - A+X6L1qmli2j8Dz5ad8GGw==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - 6bf3354a-a7ec-48c6-9d53-604da89f01f7
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:47 GMT
+      connection:
+      - close
+      content-length:
+      - '613'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%2525AA%252540%2525AA%252541%2525FE%25254E%2525FE%25254F%26ExpiresOn%3d1460015387%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d14w7sq%252bBhEEk9vhQ4wbnbQD1XCy7d4%252fd8y07T28hJvc%253d&wrap_access_token_expires_in=10799
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:47 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%AA%40%AA%41%FE%4E%FE%4F
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:47 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<Error><Code>400</Code><Detail>Incorrect request Uri format. TrackingId:d2d06d71-8f00-4c25-923d-6cab4df6b05a_G15,TimeStamp:4/7/2016
+        4:49:47 AM</Detail></Error>"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:48 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%25A8%2540%25A8%2541%25A8%2542%25A8%2543%2583%2536%25C9%2533%25A9%2596&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:48 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '224'
+      Content-MD5:
+      - vvuVr3bgFVvAZZIXPK7Z0w==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - ebe8d978-2636-49cc-9088-2669250f2996
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:48 GMT
+      connection:
+      - close
+      content-length:
+      - '659'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%2525A8%252540%2525A8%252541%2525A8%252542%2525A8%252543%252583%252536%2525C9%252533%2525A9%252596%26ExpiresOn%3d1460015388%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dTf%252fJlaZoPJ%252ffAtf9nwxGg3e0P%252bcVu95qkfNEpl62bj4%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:48 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%A8%40%A8%41%A8%42%A8%43%83%36%C9%33%A9%96
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:47 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<Error><Code>400</Code><Detail>Incorrect request Uri format. TrackingId:42ceffc3-5d88-4666-b704-fe993c989e0a_G37,TimeStamp:4/7/2016
+        4:49:47 AM</Detail></Error>"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:49 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%2581%2539%25EE%2539%2581%2539%25EF%2530%2582%2535%2587%2537%2582%2535%2587%2538&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:49 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '234'
+      Content-MD5:
+      - WdhzywKmHmPUWGM8v0+RPQ==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - 7a1cd9a3-992c-4bd7-8570-bad44ea07bb4
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:49 GMT
+      connection:
+      - close
+      content-length:
+      - '665'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%252581%252539%2525EE%252539%252581%252539%2525EF%252530%252582%252535%252587%252537%252582%252535%252587%252538%26ExpiresOn%3d1460015389%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dRC0XnoWeTtB%252bImfZW1bld4CPYawz3YGELK7KR88fFhY%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:49 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%81%39%EE%39%81%39%EF%30%82%35%87%37%82%35%87%38
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      content-type:
+      - text/html; charset=us-ascii
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:49 GMT
+      connection:
+      - close
+      content-length:
+      - '324'
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\"http://www.w3.org/TR/html4/strict.dtd\">\r\n<HTML><HEAD><TITLE>Bad
+        Request</TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text/html;
+        charset=us-ascii\"></HEAD>\r\n<BODY><h2>Bad Request - Invalid URL</h2>\r\n<hr><p>HTTP
+        Error 400. The request URL is invalid.</p>\r\n</BODY></HTML>\r\n"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:50 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%2595%2532%2582%2536%2595%2532%2582%2537%2598%2535%25F3%2535%2598%2535%25F3%2536&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:50 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '234'
+      Content-MD5:
+      - 9ygVeiHdop0l6NloODsElQ==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - 6a2cd032-58cb-4f41-9d59-1d15c50b33be
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:50 GMT
+      connection:
+      - close
+      content-length:
+      - '669'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%252595%252532%252582%252536%252595%252532%252582%252537%252598%252535%2525F3%252535%252598%252535%2525F3%252536%26ExpiresOn%3d1460015390%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dtXWe4rw%252bUQfVVD0xmN%252bnui8yc6PWyxztw02XjFiAoD0%253d&wrap_access_token_expires_in=10799
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:50 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%95%32%82%36%95%32%82%37%98%35%F3%35%98%35%F3%36
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:49 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<Error><Code>400</Code><Detail>Incorrect request Uri format. TrackingId:06f1f489-50d6-409a-95a0-b561aae92660_G28,TimeStamp:4/7/2016
+        4:49:50 AM</Detail></Error>"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:50 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%2581%2532%25F1%2530%2581%2532%25F4%2538%2581%2532%25F0%2535%2581%2532%25E9%2535%2581%2532%25F2%2531%2581%2532%25F3%2538%2581%2532%25EF%2530%2520%2520%2520%2581%2532%25E8%2534%2581%2532%25E8%2535%2581%2532%25E8%2536%2581%2532%25E8%2537%2581%2532%25E8%2538%2581%2532%25E8%2539%2581%2532%25F8%2536%2581%2532%25F8%2537%2581%2532%25F8%2538%2581%2532%25F8%2539&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:50 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '509'
+      Content-MD5:
+      - xy51NK8yiHA/oSgeTyCAmw==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - 80763855-81c3-4b00-8d11-8fa58f8759c4
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:50 GMT
+      connection:
+      - close
+      content-length:
+      - '1050'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%252581%252532%2525F1%252530%252581%252532%2525F4%252538%252581%252532%2525F0%252535%252581%252532%2525E9%252535%252581%252532%2525F2%252531%252581%252532%2525F3%252538%252581%252532%2525EF%252530%252520%252520%252520%252581%252532%2525E8%252534%252581%252532%2525E8%252535%252581%252532%2525E8%252536%252581%252532%2525E8%252537%252581%252532%2525E8%252538%252581%252532%2525E8%252539%252581%252532%2525F8%252536%252581%252532%2525F8%252537%252581%252532%2525F8%252538%252581%252532%2525F8%252539%26ExpiresOn%3d1460015391%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dM2mtRBAdPLrIwPZ8BuI46ZaetxEAV7kuXE%252fQweBDo44%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:51 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%81%32%F1%30%81%32%F4%38%81%32%F0%35%81%32%E9%35%81%32%F2%31%81%32%F3%38%81%32%EF%30%20%20%20%81%32%E8%34%81%32%E8%35%81%32%E8%36%81%32%E8%37%81%32%E8%38%81%32%E8%39%81%32%F8%36%81%32%F8%37%81%32%F8%38%81%32%F8%39
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      content-type:
+      - text/html; charset=us-ascii
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:50 GMT
+      connection:
+      - close
+      content-length:
+      - '324'
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\"http://www.w3.org/TR/html4/strict.dtd\">\r\n<HTML><HEAD><TITLE>Bad
+        Request</TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text/html;
+        charset=us-ascii\"></HEAD>\r\n<BODY><h2>Bad Request - Invalid URL</h2>\r\n<hr><p>HTTP
+        Error 400. The request URL is invalid.</p>\r\n</BODY></HTML>\r\n"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:51 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%2581%2531%2583%2538%2581%2531%2593%2539%2581%2531%2587%2534%2581%2531%2585%2538%2581%2531%2593%2539%2581%2531%2584%2539%2520%2581%2531%2584%2532%2581%2531%2587%2533%2581%2531%2586%2538%2581%2531%2587%2533%2520%2520%2520%3B%2581%2531%2581%2531%2520%2581%2531%2581%2532%2520%2581%2531%2581%2533%2520%2581%2531%2581%2534%2520%2581%2531%2581%2535%2581%2531%2581%2536%2520%2520%2520%2584%2531%2594%2530%2520%2584%2531%2594%2531%2520%2584%2531%2594%2532%2520%2584%2531%2594%2533%2520%2584%2531%2594%2534%2520%2584%2531%2594%2535%2520%2584%2531%2594%2536%2520%2584%2531%2594%2537%2520%2584%2531%2594%2538%2520%2584%2531%2594%2539&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:51 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '777'
+      Content-MD5:
+      - "/qV0zxCenM9MFGtaoBqRaw=="
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - ac45bbd4-ce4b-4e05-8899-537272a96923
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:50 GMT
+      connection:
+      - close
+      content-length:
+      - '1426'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%252581%252531%252583%252538%252581%252531%252593%252539%252581%252531%252587%252534%252581%252531%252585%252538%252581%252531%252593%252539%252581%252531%252584%252539%252520%252581%252531%252584%252532%252581%252531%252587%252533%252581%252531%252586%252538%252581%252531%252587%252533%252520%252520%252520%253b%252581%252531%252581%252531%252520%252581%252531%252581%252532%252520%252581%252531%252581%252533%252520%252581%252531%252581%252534%252520%252581%252531%252581%252535%252581%252531%252581%252536%252520%252520%252520%252584%252531%252594%252530%252520%252584%252531%252594%252531%252520%252584%252531%252594%252532%252520%252584%252531%252594%252533%252520%252584%252531%252594%252534%252520%252584%252531%252594%252535%252520%252584%252531%252594%252536%252520%252584%252531%252594%252537%252520%252584%252531%252594%252538%252520%252584%252531%252594%252539%26ExpiresOn%3d1460015391%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dwk%252fYITMnAjrrGENtJ7GfZ5xrlP26jr4dGAKiNUreRCk%253d&wrap_access_token_expires_in=10799
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:51 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%81%31%83%38%81%31%93%39%81%31%87%34%81%31%85%38%81%31%93%39%81%31%84%39%20%81%31%84%32%81%31%87%33%81%31%86%38%81%31%87%33%20%20%20;%81%31%81%31%20%81%31%81%32%20%81%31%81%33%20%81%31%81%34%20%81%31%81%35%81%31%81%36%20%20%20%84%31%94%30%20%84%31%94%31%20%84%31%94%32%20%84%31%94%33%20%84%31%94%34%20%84%31%94%35%20%84%31%94%36%20%84%31%94%37%20%84%31%94%38%20%84%31%94%39
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      content-type:
+      - text/html; charset=us-ascii
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:51 GMT
+      connection:
+      - close
+      content-length:
+      - '324'
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\"http://www.w3.org/TR/html4/strict.dtd\">\r\n<HTML><HEAD><TITLE>Bad
+        Request</TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text/html;
+        charset=us-ascii\"></HEAD>\r\n<BODY><h2>Bad Request - Invalid URL</h2>\r\n<hr><p>HTTP
+        Error 400. The request URL is invalid.</p>\r\n</BODY></HTML>\r\n"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:51 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%2581%2534%25D7%2534%2581%2534%25D6%2533%2581%2534%25D6%2539%2581%2534%25D7%2533%2581%2534%25D6%2533%2581%2534%25D7%2535%2520%2520%2581%2534%25D6%2536%2581%2534%25D7%2536%2581%2534%25D6%2536%2581%2534%25D7%2533%3B%2520%2581%2534%25D2%2530%2581%2534%25D2%2531%2520%2581%2534%25E1%2530%2581%2534%25E1%2531%2581%2534%25E1%2532%2581%2534%25E1%2533%2581%2534%25E1%2534%2581%2534%25E1%2535%2581%2534%25E1%2536%2581%2534%25E1%2537%2581%2534%25E1%2538%2581%2534%25E1%2539&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:51 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '617'
+      Content-MD5:
+      - LcGsj1ClHrpYRKgRKv9ydw==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - f25bdcf4-a32d-4571-bfe5-c1723ce15e06
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:51 GMT
+      connection:
+      - close
+      content-length:
+      - '1206'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%252581%252534%2525D7%252534%252581%252534%2525D6%252533%252581%252534%2525D6%252539%252581%252534%2525D7%252533%252581%252534%2525D6%252533%252581%252534%2525D7%252535%252520%252520%252581%252534%2525D6%252536%252581%252534%2525D7%252536%252581%252534%2525D6%252536%252581%252534%2525D7%252533%253b%252520%252581%252534%2525D2%252530%252581%252534%2525D2%252531%252520%252581%252534%2525E1%252530%252581%252534%2525E1%252531%252581%252534%2525E1%252532%252581%252534%2525E1%252533%252581%252534%2525E1%252534%252581%252534%2525E1%252535%252581%252534%2525E1%252536%252581%252534%2525E1%252537%252581%252534%2525E1%252538%252581%252534%2525E1%252539%26ExpiresOn%3d1460015392%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dBjWZTFI90MrHFuo%252bKPJVm%252fDKI3YqrrMi24imuZjqOFw%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:52 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%81%34%D7%34%81%34%D6%33%81%34%D6%39%81%34%D7%33%81%34%D6%33%81%34%D7%35%20%20%81%34%D6%36%81%34%D7%36%81%34%D6%36%81%34%D7%33;%20%81%34%D2%30%81%34%D2%31%20%81%34%E1%30%81%34%E1%31%81%34%E1%32%81%34%E1%33%81%34%E1%34%81%34%E1%35%81%34%E1%36%81%34%E1%37%81%34%E1%38%81%34%E1%39
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      content-type:
+      - text/html; charset=us-ascii
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:50 GMT
+      connection:
+      - close
+      content-length:
+      - '324'
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\"http://www.w3.org/TR/html4/strict.dtd\">\r\n<HTML><HEAD><TITLE>Bad
+        Request</TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text/html;
+        charset=us-ascii\"></HEAD>\r\n<BODY><h2>Bad Request - Invalid URL</h2>\r\n<hr><p>HTTP
+        Error 400. The request URL is invalid.</p>\r\n</BODY></HTML>\r\n"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:52 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%2582%2535%25BF%2535%2582%2535%25E8%2533%2582%2535%25A3%2536%2582%2535%25AA%2536%3B%2582%2535%2598%2533%2582%2535%2598%2534%2582%2535%2598%2535%2582%2535%2598%2536%2582%2535%2598%2537%2582%2535%2598%2538%2582%2535%2598%2539%2582%2536%2594%2530%2582%2536%2594%2531%2582%2536%2594%2532%2582%2536%2594%2533%2582%2536%2594%2534%2582%2536%2594%2535&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:52 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '497'
+      Content-MD5:
+      - fdNIvsXAzP9u8n2WcUVuUQ==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - 3259a904-e330-4102-8180-578c46b5a871
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:51 GMT
+      connection:
+      - close
+      content-length:
+      - '1038'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%252582%252535%2525BF%252535%252582%252535%2525E8%252533%252582%252535%2525A3%252536%252582%252535%2525AA%252536%253b%252582%252535%252598%252533%252582%252535%252598%252534%252582%252535%252598%252535%252582%252535%252598%252536%252582%252535%252598%252537%252582%252535%252598%252538%252582%252535%252598%252539%252582%252536%252594%252530%252582%252536%252594%252531%252582%252536%252594%252532%252582%252536%252594%252533%252582%252536%252594%252534%252582%252536%252594%252535%26ExpiresOn%3d1460015392%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dVESXDs%252bCt%252bpijq7d09dN9UuTAxtn71CDWUpR6wEm8n8%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:52 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%82%35%BF%35%82%35%E8%33%82%35%A3%36%82%35%AA%36;%82%35%98%33%82%35%98%34%82%35%98%35%82%35%98%36%82%35%98%37%82%35%98%38%82%35%98%39%82%36%94%30%82%36%94%31%82%36%94%32%82%36%94%33%82%36%94%34%82%36%94%35
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:53 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "<Error><Code>400</Code><Detail>Incorrect request Uri format. TrackingId:d590719f-c1c1-4a54-a1bd-dc1be77a85bd_G35,TimeStamp:4/7/2016
+        4:49:53 AM</Detail></Error>"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:53 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%2581%2534%25F5%2532%2581%2534%25F6%2533%2581%2534%25F7%2533%2581%2534%25F7%2536%2520%2581%2534%25F5%2530%2581%2534%25F7%2533%2581%2534%25F7%2536%2520%2581%2534%25F5%2530%2581%2534%25F7%2532%2581%2534%25F7%2538%2581%2534%25F4%2535%2581%2534%25F6%2538%2581%2534%25F4%2536%2581%2534%25F7%2536&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:53 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '444'
+      Content-MD5:
+      - bHan/GJMTUrr3LFuyebt9Q==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - d54c39b8-7a18-46b6-a163-8787f0df68d5
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:53 GMT
+      connection:
+      - close
+      content-length:
+      - '963'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%252581%252534%2525F5%252532%252581%252534%2525F6%252533%252581%252534%2525F7%252533%252581%252534%2525F7%252536%252520%252581%252534%2525F5%252530%252581%252534%2525F7%252533%252581%252534%2525F7%252536%252520%252581%252534%2525F5%252530%252581%252534%2525F7%252532%252581%252534%2525F7%252538%252581%252534%2525F4%252535%252581%252534%2525F6%252538%252581%252534%2525F4%252536%252581%252534%2525F7%252536%26ExpiresOn%3d1460015393%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d6B%252f8Iq9kr%252bNcDj4gBBuyjg0dR0j0wQqqjclxuWKtZOo%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:53 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%81%34%F5%32%81%34%F6%33%81%34%F7%33%81%34%F7%36%20%81%34%F5%30%81%34%F7%33%81%34%F7%36%20%81%34%F5%30%81%34%F7%32%81%34%F7%38%81%34%F4%35%81%34%F6%38%81%34%F4%36%81%34%F7%36
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      content-type:
+      - text/html; charset=us-ascii
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:53 GMT
+      connection:
+      - close
+      content-length:
+      - '324'
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\"http://www.w3.org/TR/html4/strict.dtd\">\r\n<HTML><HEAD><TITLE>Bad
+        Request</TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text/html;
+        charset=us-ascii\"></HEAD>\r\n<BODY><h2>Bad Request - Invalid URL</h2>\r\n<hr><p>HTTP
+        Error 400. The request URL is invalid.</p>\r\n</BODY></HTML>\r\n"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:53 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-queue%2581%2534%25FA%2536%2581%2534%25FE%2537%2581%2534%25FA%2539%2581%2535%2581%2530%2581%2534%25FB%2534%2581%2535%2581%2530%2581%2535%2582%2534%2581%2534%25FA%2531%2581%2534%25FE%2532%2581%2535%2582%2533%2581%2534%25FA%2531%2581%2534%25FE%2538%2581%2535%2581%2538%2581%2534%25FB%2535%2581%2535%2581%2539%2581%2534%25FB%2531%2581%2534%25FE%2531&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Thu, 07 Apr 2016 04:49:53 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '494'
+      Content-MD5:
+      - iCMDDjBP8FWBZsiiJWnMbA==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - bcc2310c-18ff-4d54-a629-36dc7f90a8b5
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Thu, 07 Apr 2016 04:49:53 GMT
+      connection:
+      - close
+      content-length:
+      - '1037'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-queue%252581%252534%2525FA%252536%252581%252534%2525FE%252537%252581%252534%2525FA%252539%252581%252535%252581%252530%252581%252534%2525FB%252534%252581%252535%252581%252530%252581%252535%252582%252534%252581%252534%2525FA%252531%252581%252534%2525FE%252532%252581%252535%252582%252533%252581%252534%2525FA%252531%252581%252534%2525FE%252538%252581%252535%252581%252538%252581%252534%2525FB%252535%252581%252535%252581%252539%252581%252534%2525FB%252531%252581%252534%2525FE%252531%26ExpiresOn%3d1460015393%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d6XA9tGXCAdYSjqSkq%252fa%252fKHWn7vK5gd%252fOP4QmnPGkvyQ%253d&wrap_access_token_expires_in=10799
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:53 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue%81%34%FA%36%81%34%FE%37%81%34%FA%39%81%35%81%30%81%34%FB%34%81%35%81%30%81%35%82%34%81%34%FA%31%81%34%FE%32%81%35%82%33%81%34%FA%31%81%34%FE%38%81%35%81%38%81%34%FB%35%81%35%81%39%81%34%FB%31%81%34%FE%31
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '292'
+      Content-MD5:
+      - vaLvr2ekNcLflBbVGnG2HA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      content-type:
+      - text/html; charset=us-ascii
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:53 GMT
+      connection:
+      - close
+      content-length:
+      - '324'
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\"http://www.w3.org/TR/html4/strict.dtd\">\r\n<HTML><HEAD><TITLE>Bad
+        Request</TITLE>\r\n<META HTTP-EQUIV=\"Content-Type\" Content=\"text/html;
+        charset=us-ascii\"></HEAD>\r\n<BODY><h2>Bad Request - Invalid URL</h2>\r\n<hr><p>HTTP
+        Error 400. The request URL is invalid.</p>\r\n</BODY></HTML>\r\n"
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:54 GMT
+- request:
+    method: delete
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '0'
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-length:
+      - '0'
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Thu, 07 Apr 2016 04:49:54 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 07 Apr 2016 04:49:54 GMT
+recorded_with: VCR 3.0.1

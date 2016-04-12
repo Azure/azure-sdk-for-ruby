@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Funknown-relay&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Fri, 08 Apr 2016 21:07:43 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '157'
+      Content-MD5:
+      - LeylY8vjhLyNO2A6hZ6AAQ==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - '-1'
+      request-id:
+      - 15088096-cb55-4ac3-a18b-4ac3e9a5988d
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Fri, 08 Apr 2016 21:07:39 GMT
+      connection:
+      - close
+      content-length:
+      - '560'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252funknown-relay%26ExpiresOn%3d1460160459%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3ddcXv2oz%252bWOkAFbspKMiiWdLI%252bxsOm7TyZOJi8VzYUyI%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Fri, 08 Apr 2016 21:07:43 GMT
+- request:
+    method: delete
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/unknown-relay?api-version=2013-10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '0'
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 404
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/xml; charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Fri, 08 Apr 2016 21:07:39 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <Error><Code>404</Code><Detail>No service is hosted at the specified
+        address. TrackingId:fa7a4ae9-410e-4415-8cc0-310f96959c5c_G26,TimeStamp:4/8/2016
+        9:07:39 PM</Detail></Error>
+    http_version: 
+  recorded_at: Fri, 08 Apr 2016 21:07:43 GMT
+recorded_with: VCR 3.0.1

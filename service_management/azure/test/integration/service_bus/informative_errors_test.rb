@@ -13,18 +13,23 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require "integration/test_helper"
-require "azure/blob/blob_service"
 require "azure/core/http/http_error"
 
-describe "ServiceBus errors" do
+describe Azure::ServiceBus::ServiceBusService do
   subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusTopicNameHelper.clean }
-  let(:topic){ ServiceBusTopicNameHelper.name }
+  let(:topic){ 'test-topic' }
 
-  it "exception message should be valid" do
+  before do
+    VCR.insert_cassette "service_bus/#{name}"
     subject.create_topic topic
+  end
 
-    # creating the same topic again should throw
+  after do
+    subject.delete_topic topic
+    VCR.eject_cassette
+  end
+
+  it "should throw exception when topic conflicts" do
     begin
       subject.create_topic topic
       flunk "No exception"

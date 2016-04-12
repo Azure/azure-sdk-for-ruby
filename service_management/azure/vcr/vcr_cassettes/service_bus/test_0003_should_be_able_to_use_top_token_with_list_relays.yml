@@ -1,0 +1,560 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-relay&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 05 Apr 2016 23:35:13 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '154'
+      Content-MD5:
+      - ZudPwD5sCNF72NbF5iiL4g==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - a2956c30-af49-4394-88cf-dd98b19a9edc
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Tue, 05 Apr 2016 23:35:13 GMT
+      connection:
+      - close
+      content-length:
+      - '553'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-relay%26ExpiresOn%3d1459910114%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d8LBuhHvrYyROaM1k89AMTGb6%252fZUy1YSdTjWvs2mEzXw%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 23:35:14 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-relay?api-version=2013-10
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <RelayDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+              <RelayType>Http</RelayType>
+              <RequiresClientAuthorization>true</RequiresClientAuthorization>
+              <RequiresTransportSecurity>true</RequiresTransportSecurity>
+            </RelayDescription>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '485'
+      Content-MD5:
+      - XhX4qXZCrCQO9cgQ5BSeFA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/atom+xml;type=entry;charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 23:35:13 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <entry xmlns="http://www.w3.org/2005/Atom"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-relay?api-version=2013-10</id><title
+        type="text">test-relay</title><published>2016-04-05T23:35:14Z</published><updated>2016-04-05T23:35:14Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/test-relay?api-version=2013-10"/><content
+        type="application/xml"><RelayDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><ListenerType>RelayedHttp</ListenerType><CreatedAt>2016-04-05T23:35:14.5617037Z</CreatedAt><UpdatedAt>2016-04-05T23:35:14.5617037Z</UpdatedAt><RelayType>Http</RelayType><RequiresClientAuthorization>true</RequiresClientAuthorization><RequiresTransportSecurity>true</RequiresTransportSecurity><PublishToRegistry>false</PublishToRegistry><AuthorizationRules></AuthorizationRules><IsDynamic>false</IsDynamic></RelayDescription></content></entry>
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 23:35:14 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-relay1&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 05 Apr 2016 23:35:14 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '155'
+      Content-MD5:
+      - SwG0v6XmJUHMLNKwQCD+Og==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - 08da791b-75e0-440e-bbfe-1241cc852e2c
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Tue, 05 Apr 2016 23:35:14 GMT
+      connection:
+      - close
+      content-length:
+      - '554'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-relay1%26ExpiresOn%3d1459910114%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dg4oYh1GncIFQouA%252fg33TrW5kG0I3yp96xRIQLplqCeE%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 23:35:14 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-relay1?api-version=2013-10
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <RelayDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+              <RelayType>Http</RelayType>
+              <RequiresClientAuthorization>true</RequiresClientAuthorization>
+              <RequiresTransportSecurity>true</RequiresTransportSecurity>
+            </RelayDescription>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '485'
+      Content-MD5:
+      - XhX4qXZCrCQO9cgQ5BSeFA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/atom+xml;type=entry;charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 23:35:13 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <entry xmlns="http://www.w3.org/2005/Atom"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-relay1?api-version=2013-10</id><title
+        type="text">test-relay1</title><published>2016-04-05T23:35:15Z</published><updated>2016-04-05T23:35:15Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/test-relay1?api-version=2013-10"/><content
+        type="application/xml"><RelayDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><ListenerType>RelayedHttp</ListenerType><CreatedAt>2016-04-05T23:35:14.3598315Z</CreatedAt><UpdatedAt>2016-04-05T23:35:14.3598315Z</UpdatedAt><RelayType>Http</RelayType><RequiresClientAuthorization>true</RequiresClientAuthorization><RequiresTransportSecurity>true</RequiresTransportSecurity><PublishToRegistry>false</PublishToRegistry><AuthorizationRules></AuthorizationRules><IsDynamic>false</IsDynamic></RelayDescription></content></entry>
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 23:35:15 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2Ftest-relay2&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 05 Apr 2016 23:35:15 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '155'
+      Content-MD5:
+      - YEoomOokB1RmgLGJyhr9qw==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - 6d6434b3-f073-4a5f-b13d-a2ae0160adf8
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Tue, 05 Apr 2016 23:35:15 GMT
+      connection:
+      - close
+      content-length:
+      - '554'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252ftest-relay2%26ExpiresOn%3d1459910115%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d60GH2e8UxGGfzmX8STgqUZ5zyrBLvi3YBRjX%252bXwOXx8%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 23:35:15 GMT
+- request:
+    method: put
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-relay2?api-version=2013-10
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <entry xmlns="http://www.w3.org/2005/Atom">
+          <content type="application/xml">
+            <RelayDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+              <RelayType>NetTcp</RelayType>
+              <RequiresClientAuthorization>false</RequiresClientAuthorization>
+              <RequiresTransportSecurity>false</RequiresTransportSecurity>
+            </RelayDescription>
+          </content>
+        </entry>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '489'
+      Content-MD5:
+      - u7rK85NjNGdEv0j9iUiYOA==
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/atom+xml;type=entry;charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 23:35:13 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <entry xmlns="http://www.w3.org/2005/Atom"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-relay2?api-version=2013-10</id><title
+        type="text">test-relay2</title><published>2016-04-05T23:35:16Z</published><updated>2016-04-05T23:35:16Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/test-relay2?api-version=2013-10"/><content
+        type="application/xml"><RelayDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><ListenerType>RelayedConnection</ListenerType><CreatedAt>2016-04-05T23:35:14.5654581Z</CreatedAt><UpdatedAt>2016-04-05T23:35:14.5654581Z</UpdatedAt><RelayType>NetTcp</RelayType><RequiresClientAuthorization>false</RequiresClientAuthorization><RequiresTransportSecurity>false</RequiresTransportSecurity><PublishToRegistry>false</PublishToRegistry><AuthorizationRules></AuthorizationRules><IsDynamic>false</IsDynamic></RelayDescription></content></entry>
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 23:35:16 GMT
+- request:
+    method: post
+    uri: https://<SB_NAMESPACE>-sb.accesscontrol.windows.net/WRAPv0.9
+    body:
+      encoding: US-ASCII
+      string: wrap_scope=http%3A%2F%2F<SB_NAMESPACE>.servicebus.windows.net%2F%24Resources%2FRelays&wrap_name=owner&wrap_password=<SB_ACCESS_KEY>
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      x-ms-date:
+      - Tue, 05 Apr 2016 23:35:16 GMT
+      x-ms-version:
+      - '2014-02-14'
+      DataServiceVersion:
+      - 1.0;NetFx
+      MaxDataServiceVersion:
+      - 2.0;NetFx
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '165'
+      Content-MD5:
+      - aHlDYvkLTuJcZrLy/e11/A==
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/x-www-form-urlencoded; charset=us-ascii
+      expires:
+      - "-1"
+      request-id:
+      - 4acceb0f-817a-4e9b-9ad8-97af21e98499
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Tue, 05 Apr 2016 23:35:16 GMT
+      connection:
+      - close
+      content-length:
+      - '576'
+    body:
+      encoding: UTF-8
+      string: wrap_access_token=net.windows.servicebus.action%3dListen%252cSend%252cManage%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252f<SB_NAMESPACE>.servicebus.windows.net%252f%2524Resources%252fRelays%26ExpiresOn%3d1459910116%26Issuer%3dhttps%253a%252f%252f<SB_NAMESPACE>-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dDLsIqPqzwq7FBe%252fmVIWWf7IG%252fWL9xyd95YS61Xo2%252fFY%253d&wrap_access_token_expires_in=10800
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 23:35:16 GMT
+- request:
+    method: get
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Relays
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '0'
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/atom+xml;type=feed;charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 23:35:16 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Relays</title><id>https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Relays</id><updated>2016-04-05T23:35:17Z</updated><link
+        rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Relays"/><entry
+        xml:base="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Relays"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-relay</id><title
+        type="text">test-relay</title><published>2016-04-05T23:35:14Z</published><updated>2016-04-05T23:35:14Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="../test-relay"/><content type="application/xml"><RelayDescription
+        xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><ListenerType>RelayedHttp</ListenerType><ListenerCount>0</ListenerCount><CreatedAt>2016-04-05T23:35:14.5617037Z</CreatedAt><UpdatedAt>2016-04-05T23:35:14.5617037Z</UpdatedAt></RelayDescription></content></entry><entry
+        xml:base="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Relays"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-relay1</id><title
+        type="text">test-relay1</title><published>2016-04-05T23:35:15Z</published><updated>2016-04-05T23:35:15Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="../test-relay1"/><content type="application/xml"><RelayDescription
+        xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><ListenerType>RelayedHttp</ListenerType><ListenerCount>0</ListenerCount><CreatedAt>2016-04-05T23:35:14.3598315Z</CreatedAt><UpdatedAt>2016-04-05T23:35:14.3598315Z</UpdatedAt></RelayDescription></content></entry><entry
+        xml:base="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Relays"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-relay2</id><title
+        type="text">test-relay2</title><published>2016-04-05T23:35:16Z</published><updated>2016-04-05T23:35:16Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="../test-relay2"/><content type="application/xml"><RelayDescription
+        xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><ListenerType>RelayedConnection</ListenerType><ListenerCount>0</ListenerCount><CreatedAt>2016-04-05T23:35:14.5654581Z</CreatedAt><UpdatedAt>2016-04-05T23:35:14.5654581Z</UpdatedAt></RelayDescription></content></entry></feed>
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 23:35:17 GMT
+- request:
+    method: get
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Relays?%24top=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '0'
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/atom+xml;type=feed;charset=utf-8
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 23:35:15 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Relays</title><id>https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Relays?%24top=1</id><updated>2016-04-05T23:35:15Z</updated><link
+        rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Relays?%24top=1"/><link
+        rel="next" href="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Relays?%24top=1&amp;%24skip=1"/><entry
+        xml:base="https://<SB_NAMESPACE>.servicebus.windows.net/$Resources/Relays?%24top=1"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-relay</id><title
+        type="text">test-relay</title><published>2016-04-05T23:35:14Z</published><updated>2016-04-05T23:35:14Z</updated><author><name><SB_NAMESPACE></name></author><link
+        rel="self" href="../test-relay"/><content type="application/xml"><RelayDescription
+        xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><ListenerType>RelayedHttp</ListenerType><ListenerCount>0</ListenerCount><CreatedAt>2016-04-05T23:35:14.5617037Z</CreatedAt><UpdatedAt>2016-04-05T23:35:14.5617037Z</UpdatedAt></RelayDescription></content></entry></feed>
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 23:35:17 GMT
+- request:
+    method: delete
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-relay?api-version=2013-10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '0'
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-length:
+      - '0'
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 23:35:16 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 23:35:18 GMT
+- request:
+    method: delete
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-relay1?api-version=2013-10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '0'
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-length:
+      - '0'
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 23:35:18 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 23:35:19 GMT
+- request:
+    method: delete
+    uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-relay2?api-version=2013-10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.7.1
+      Content-Type:
+      - application/atom+xml; charset=utf-8
+      Content-Length:
+      - '0'
+      X-Process-At:
+      - servicebus
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-length:
+      - '0'
+      server:
+      - Microsoft-HTTPAPI/2.0
+      date:
+      - Tue, 05 Apr 2016 23:35:19 GMT
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 05 Apr 2016 23:35:19 GMT
+recorded_with: VCR 3.0.1

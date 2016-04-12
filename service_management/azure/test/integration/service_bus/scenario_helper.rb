@@ -13,7 +13,6 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'integration/test_helper'
-
 require 'azure/service_bus/brokered_message'
 
 class ScenarioHelper
@@ -24,7 +23,7 @@ class ScenarioHelper
   def self.get_custom_properties(i)
     custom_properties             = {}
     custom_properties['i']        = i
-    custom_properties['test']     = Time.local(2001, i, 1)
+    custom_properties['test']     = Time.gm(2015, i, 1)
     custom_properties['name']     = 'Test' + i.to_s
     custom_properties['meanname'] = "'\"Me`\\'&*<>!@#%^*)\n" + i.to_s
     custom_properties['int']      = 50 + i

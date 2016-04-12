@@ -13,18 +13,34 @@
 # limitations under the License.
 #--------------------------------------------------------------------------
 require 'integration/test_helper'
+require 'integration/service_bus/scenario_helper'
 
-describe 'ServiceBus Queues Scenario' do
-  let(:queue_name) { ServiceBusQueueNameHelper.name }
-
+describe Azure::ServiceBus::ServiceBusService do
   subject { Azure::ServiceBus::ServiceBusService.new }
-  after { ServiceBusQueueNameHelper.clean }
+  let(:queue_name) { 'test-queue' }
+
+  describe 'Service bus queue scenario' do
+    before do
+      VCR.insert_cassette "service_bus/#{name}"
+    end
+
+    after do
+      subject.delete_queue queue_name
+      VCR.eject_cassette
+    end
+
+    it 'should upload many messages and read them back' do
+      setup_queue
+      messages = send_messages
+      get_message_from_queue messages
+    end
+  end
 
   def setup_queue()
     queues = subject.list_queues({ :skip => 20, :top => 2 })
-    queues.each { |q|
+    queues.each do |q|
       ScenarioHelper.out 'Queue name is ' + q.name
-    }
+    end
 
     ScenarioHelper.out 'checking if queue already exists ' + queue_name
     begin
@@ -37,12 +53,13 @@ describe 'ServiceBus Queues Scenario' do
       error.type.must_equal 'ResourceNotFound'
     end
 
-    q = Azure::ServiceBus::Queue.new(queue_name, {
-      :max_size_in_megabytes => 2048,
-      :requires_duplicate_detection => true,
-      :enable_batched_operations => true,
-      :max_delivery_count => 13
-    })
+    options = {
+        :max_size_in_megabytes => 2048,
+        :requires_duplicate_detection => true,
+        :enable_batched_operations => true,
+        :max_delivery_count => 13
+    }
+    q = Azure::ServiceBus::Queue.new(queue_name, options)
 
     ScenarioHelper.out 'Creating queue ' + queue_name
     q2 = subject.create_queue q
@@ -60,7 +77,7 @@ describe 'ServiceBus Queues Scenario' do
     expected_messages[1] = ScenarioHelper.create_issue_message '2', 'Second message information', 'label2'
     expected_messages[2] = ScenarioHelper.create_issue_message '3', 'Third  message information', 'label3'
     expected_messages[3] = ScenarioHelper.create_issue_message '4', 'Fourth message information', 'label4'
-    expected_messages.each { |message|
+    expected_messages.each do |message|
       success = false
       retry_counter = 0
       while !success
@@ -76,7 +93,7 @@ describe 'ServiceBus Queues Scenario' do
         end
       end
       ScenarioHelper.out 'Message sent with id: ' + message.message_id + ' Body of $message ' + message.body
-    }
+    end
     expected_messages
   end
 
@@ -90,9 +107,8 @@ describe 'ServiceBus Queues Scenario' do
     end
 
     ScenarioHelper.out '=============================================='
-    ScenarioHelper.out 'Getting messages from ' +
-            'queue ' + queue_name +
-            ', expecting ' + expected_count.to_s + ' messages'
+    ScenarioHelper.out 'Getting messages from queue ' + queue_name +
+                           ', expecting ' + expected_count.to_s + ' messages'
 
     message_count = (subject.get_queue queue_name).message_count
     ScenarioHelper.out 'Before getting any messages, Message count: ' + message_count.to_s
@@ -187,14 +203,5 @@ describe 'ServiceBus Queues Scenario' do
     message_count = (subject.get_queue queue_name).message_count
     ScenarioHelper.out 'Got all messages, Message count: ' + message_count.to_s
     message_count.must_equal 0
-  end
-
-  it 'should be able to upload many messages and read them back' do
-
-    setup_queue
-
-    messages = send_messages
-
-    get_message_from_queue messages
   end
 end
