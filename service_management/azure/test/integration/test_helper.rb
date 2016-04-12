@@ -38,7 +38,7 @@ StorageAccountName = util.random_string('storagetest',10)
 
 VCR.configure do |config|
   config.default_cassette_options = {:record => :once}
-  config.cassette_library_dir = "vcr/vcr_cassettes"
+  config.cassette_library_dir = "test/vcr/vcr_cassettes"
   config.hook_into :faraday
   config.allow_http_connections_when_no_cassette = false
   config.filter_sensitive_data('<SUBSCRIPTION_ID>') { Azure.subscription_id }
