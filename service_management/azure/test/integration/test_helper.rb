@@ -14,6 +14,7 @@
 #--------------------------------------------------------------------------
 require 'test_helper'
 require 'azure'
+require 'azure/core'
 require 'vcr'
 
 if (ENV['TRAVIS_ASM_INTEG_RECORDED'].nil? || ENV['TRAVIS_ASM_INTEG_RECORDED'] == false) then
