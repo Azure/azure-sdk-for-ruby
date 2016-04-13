@@ -16,7 +16,7 @@ require 'test_helper'
 require 'azure'
 require 'vcr'
 
-if ENV['TRAVIS_ASM_INTEG_RECORDED'].nil? || ENV['TRAVIS_ASM_INTEG_RECORDED'] == false
+if ENV['INTEG_RECORDED'].nil? || ENV['INTEG_RECORDED'] == false
   Azure.configure do |config|
     config.storage_access_key       = ENV.fetch('AZURE_STORAGE_ACCESS_KEY')
     config.storage_account_name     = ENV.fetch('AZURE_STORAGE_ACCOUNT')
