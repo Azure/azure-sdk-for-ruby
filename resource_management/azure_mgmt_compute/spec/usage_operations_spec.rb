@@ -8,8 +8,9 @@ include MsRestAzure
 include Azure::ARM::Compute
 
 describe UsageOperations do
-  before(:all) do
-    @client = COMPUTE_CLIENT.usage_operations
+  before(:each) do
+    @resource_helper = ResourceHelper.new
+    @client = @resource_helper.compute_client.usage_operations
   end
 
   it 'should list usages' do

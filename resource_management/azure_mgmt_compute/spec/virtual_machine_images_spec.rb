@@ -3,22 +3,20 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'spec_helper'
-require_relative 'availability_sets_shared'
 
 include MsRestAzure
 include Azure::ARM::Compute
 
 describe VirtualMachines do
-
-  before(:all) do
-    @client = COMPUTE_CLIENT.virtual_machine_images
+  before(:each) do
+    @resource_helper = ResourceHelper.new
+    @client = @resource_helper.compute_client.virtual_machine_images
     @location = 'westus'
     @publisher_name = 'canonical'
     @offer_name = 'UbuntuServer'
     @skus_name = '14.04.4-LTS'
     @version = '14.04.201602220'
   end
-
 
   it 'should list image publishers' do
     result = @client.list_publishers(@location).value!
@@ -62,5 +60,4 @@ describe VirtualMachines do
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
   end
-
 end

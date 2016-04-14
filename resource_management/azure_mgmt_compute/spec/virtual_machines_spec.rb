@@ -3,7 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'spec_helper'
-require_relative 'availability_sets_shared'
 
 include MsRestAzure
 include Azure::ARM::Resources
@@ -16,21 +15,21 @@ include Azure::ARM::Network
 include Azure::ARM::Network::Models
 
 describe 'Virtual machine and vm extension creation' do
-  before(:all) do
+  before(:each) do
+    @resource_helper = ResourceHelper.new
     @location = 'westus'
-    @resource_group = create_resource_group
-    @client = COMPUTE_CLIENT.virtual_machines
-    @extensions_client = COMPUTE_CLIENT.virtual_machine_extensions
+    @resource_group = @resource_helper.create_resource_group
+    @client = @resource_helper.compute_client.virtual_machines
+    @extensions_client = @resource_helper.compute_client.virtual_machine_extensions
   end
 
-  after(:all) do
-    delete_resource_group(@resource_group.name)
+  after(:each) do
+    @resource_helper.delete_resource_group(@resource_group.name)
   end
 
   it 'should create virtual machine and vm extension' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     params = build_virtual_machine_parameters
-    vm_name = get_random_name('vm')
+    vm_name = 'testvm'
     result = @client.create_or_update(@resource_group.name, vm_name, params).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -38,7 +37,7 @@ describe 'Virtual machine and vm extension creation' do
     expect(result.body.location).to eq @location
 
     vm_extension = build_extension_parameter
-    ext_name = get_random_name('extension')
+    ext_name = 'testextension'
     result = @extensions_client.create_or_update(@resource_group.name, vm_name, ext_name, vm_extension).value!
     expect(result.response.status).to eq(200)
     expect(result.body.name).to eq(ext_name)
@@ -46,53 +45,61 @@ describe 'Virtual machine and vm extension creation' do
 end
 
 describe 'Virtual machine and vm extension api' do
-
-  before(:all) do
-    @client = COMPUTE_CLIENT.virtual_machines
-    @extensions_client = COMPUTE_CLIENT.virtual_machine_extensions
-    @resource_group = create_resource_group
+  before(:each) do
+    @resource_helper = ResourceHelper.new
+    @client = @resource_helper.compute_client.virtual_machines
+    @extensions_client = @resource_helper.compute_client.virtual_machine_extensions
+    @resource_group = @resource_helper.create_resource_group
     @location = 'westus'
-    @vm_name = get_random_name('vm')
-    @client.create_or_update(@resource_group.name, @vm_name, build_virtual_machine_parameters()).value! if RUN_LONG_TASKS
-    @ext_name = get_random_name('extension')
-    @extensions_client.create_or_update(@resource_group.name, @vm_name, @ext_name, build_extension_parameter()).value! if RUN_LONG_TASKS
+    @vm_name = 'testvm'
+    @client.create_or_update(@resource_group.name, @vm_name, build_virtual_machine_parameters()).value!
+    @ext_name = 'testextension'
+    @extensions_client.create_or_update(@resource_group.name, @vm_name, @ext_name, build_extension_parameter()).value!
   end
 
-  after(:all) do
-    delete_resource_group(@resource_group.name)
+  after(:each) do
+    @resource_helper.delete_resource_group(@resource_group.name)
   end
 
-  # Extensions test.
   it 'should get vm extension' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @extensions_client.get(@resource_group.name, @vm_name, @ext_name, nil).value!
     expect(result.response.status).to eq(200)
     expect(result.body.name).to eq(@ext_name)
   end
 
   it 'should get vm extension with expand parameter' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @extensions_client.get(@resource_group.name, @vm_name, @ext_name, 'instanceView').value!
     expect(result.response.status).to eq(200)
     expect(result.body.name).to eq(@ext_name)
   end
 
   it 'should delete vm extension' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @extensions_client.delete(@resource_group.name, @vm_name, @ext_name).value!
     expect(result.response.status).to eq(200)
   end
+end
 
-  # Back to VM tests.
+describe 'Virtual machine api' do
+  before(:each) do
+    @resource_helper = ResourceHelper.new
+    @client = @resource_helper.compute_client.virtual_machines
+    @resource_group = @resource_helper.create_resource_group
+    @location = 'westus'
+    @vm_name = 'testvm'
+    @client.create_or_update(@resource_group.name, @vm_name, build_virtual_machine_parameters()).value!
+  end
+
+  after(:each) do
+    @resource_helper.delete_resource_group(@resource_group.name)
+  end
+
   it 'should get virtual machine' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.get(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
     expect(result.body.name).to eq(@vm_name)
   end
 
   it 'should get virtual machine with expand parameter' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.get(@resource_group.name, @vm_name, 'instanceView').value!
     expect(result.response.status).to eq(200)
     expect(result.body.name).to eq(@vm_name)
@@ -113,7 +120,6 @@ describe 'Virtual machine and vm extension api' do
   end
 
   it 'should list available sizes' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.list_available_sizes(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
     expect(result.body.value).not_to be_nil
@@ -121,25 +127,21 @@ describe 'Virtual machine and vm extension api' do
   end
 
   it 'should restart virtual machine' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.restart(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
   end
 
   it 'should power off virtual machine' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.power_off(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
   end
 
   it 'should start virtual machine' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.start(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
   end
 
-  it 'should generalize virtual machine' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
+  it 'should generalize and capture virtual machine' do
     @client.power_off(@resource_group.name, @vm_name).value!
 
     # To generalize VM it should be started. But sometimes even after API method
@@ -148,20 +150,12 @@ describe 'Virtual machine and vm extension api' do
     # to find out whether VM is turned on or not. So the timeout is added here.
     # todo: add VM polling until VM is started if API method appear which provides
     # such info.
-    sleep 300
+    # sleep 300
 
     result = @client.generalize(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
-  end
 
-  it 'should deallocate virtual machine' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
-    result = @client.deallocate(@resource_group.name, @vm_name).value!
-    expect(result.response.status).to eq(200)
-  end
-
-  it 'should capture virtual machine' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
+    #campuring VM requires VM to be generalized
     capture_params = VirtualMachineCaptureParameters.new
     capture_params.vhd_prefix = 'test'
     capture_params.destination_container_name = 'test'
@@ -171,13 +165,16 @@ describe 'Virtual machine and vm extension api' do
     expect(result.response.status).to eq(200)
   end
 
+  it 'should deallocate virtual machine' do
+    result = @client.deallocate(@resource_group.name, @vm_name).value!
+    expect(result.response.status).to eq(200)
+  end
+
   it 'should delete virtual machine' do
-    skip('no long running tasks should be performed') unless RUN_LONG_TASKS
     result = @client.delete(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
   end
 end
-
 
 # VM helpers
 def build_virtual_machine_parameters
@@ -227,9 +224,9 @@ def build_extension_parameter
 end
 
 def generate_os_vhd_uri(storage_name)
-  container_name = get_random_name 'cont'
+  container_name = 'testcontainer'
   vhd_container = "https://#{storage_name}.blob.core.windows.net/#{container_name}"
-  os_vhduri = "#{vhd_container}/os#{get_random_name 'test'}.vhd"
+  os_vhduri = "#{vhd_container}/os#{'test'}.vhd"
   os_vhduri
 end
 
@@ -238,7 +235,7 @@ def get_image_reference
   ref.publisher = 'MicrosoftWindowsServer'
   ref.offer = 'WindowsServer'
   ref.sku = '2012-R2-Datacenter'
-  ref.version = '4.0.201506'
+  ref.version = 'latest'
   ref
 end
 
@@ -246,7 +243,6 @@ end
 def build_storage_account_create_parameters(name)
   params = Azure::ARM::Storage::Models::StorageAccountCreateParameters.new
   params.location = @location
-  params.name = name
   props = Azure::ARM::Storage::Models::StorageAccountPropertiesCreateParameters.new
   params.properties = props
   props.account_type = 'Standard_GRS'
@@ -254,9 +250,9 @@ def build_storage_account_create_parameters(name)
 end
 
 def create_storage_account
-  storage_name = get_random_name('storage')[0, 24]
+  storage_name = 'teststorage53464'
   params = build_storage_account_create_parameters storage_name
-  result = STORAGE_CLIENT.storage_accounts.create(@resource_group.name, storage_name, params).value!.body
+  result = @resource_helper.storage_client.storage_accounts.create(@resource_group.name, storage_name, params).value!.body
   result.name = storage_name #similar problem in dot net tests
   result
 end
@@ -278,22 +274,22 @@ end
 
 # Network helpers
 def build_public_ip_params(location)
-  public_ip = PublicIpAddress.new
+  public_ip = PublicIPAddress.new
   public_ip.location = location
-  props = PublicIpAddressPropertiesFormat.new
+  props = PublicIPAddressPropertiesFormat.new
   props.public_ipallocation_method = 'Dynamic'
   public_ip.properties = props
-  domain_name = get_random_name 'domain'
-  dns_settings = PublicIpAddressDnsSettings.new
+  domain_name = 'testdomain53464'
+  dns_settings = PublicIPAddressDnsSettings.new
   dns_settings.domain_name_label = domain_name
   props.dns_settings = dns_settings
   public_ip
 end
 
 def create_public_ip_address(location, resource_group)
-  public_ip_address_name = get_random_name('ip_name')
+  public_ip_address_name = 'test_ip_name'
   params = build_public_ip_params(location)
-  NETWORK_CLIENT.public_ip_addresses.create_or_update(resource_group.name, public_ip_address_name, params).value!.body
+  @resource_helper.network_client.public_ipaddresses.create_or_update(resource_group.name, public_ip_address_name, params).value!.body
 end
 
 def build_virtual_network_params(location)
@@ -308,7 +304,7 @@ def build_virtual_network_params(location)
   props.dhcp_options = dhcp_options
   sub2 = Subnet.new
   sub2_prop = SubnetPropertiesFormat.new
-  sub2.name = get_random_name('subnet')
+  sub2.name = 'subnet253464'
   sub2_prop.address_prefix = '10.0.2.0/24'
   sub2.properties = sub2_prop
   props.subnets = [sub2]
@@ -317,9 +313,9 @@ def build_virtual_network_params(location)
 end
 
 def create_virtual_network(resource_group_name)
-  virtualNetworkName = get_random_name("vnet")
+  virtualNetworkName = "testvnet53464"
   params = build_virtual_network_params('westus')
-  NETWORK_CLIENT.virtual_networks.create_or_update(resource_group_name, virtualNetworkName, params).value!.body
+  @resource_helper.network_client.virtual_networks.create_or_update(resource_group_name, virtualNetworkName, params).value!.body
 end
 
 def build_subnet_params
@@ -331,7 +327,7 @@ def build_subnet_params
 end
 
 def create_subnet(virtual_network, resource_group, subnet_client)
-  subnet_name = get_random_name('subnet')
+  subnet_name = 'testsubnet53464'
   params = build_subnet_params
 
   subnet_client.create_or_update(resource_group.name, virtual_network.name, subnet_name, params).value!.body
@@ -339,20 +335,20 @@ end
 
 def create_network_interface
   params = build_network_interface_param
-  NETWORK_CLIENT.network_interfaces.create_or_update(@resource_group.name, params.name, params).value!.body
+  @resource_helper.network_client.network_interfaces.create_or_update(@resource_group.name, params.name, params).value!.body
 end
 
 def build_network_interface_param
   params = NetworkInterface.new
   params.location = @location
-  network_interface_name = get_random_name('nic')
-  ip_config_name = get_random_name('ip_name')
+  network_interface_name = 'testnic53464'
+  ip_config_name = 'ip_name53464'
   params.name = network_interface_name
   props = NetworkInterfacePropertiesFormat.new
-  ip_configuration = NetworkInterfaceIpConfiguration.new
+  ip_configuration = NetworkInterfaceIPConfiguration.new
   params.properties = props
   props.ip_configurations = [ip_configuration]
-  ip_configuration_properties = NetworkInterfaceIpConfigurationPropertiesFormat.new
+  ip_configuration_properties = NetworkInterfaceIPConfigurationPropertiesFormat.new
   ip_configuration.properties = ip_configuration_properties
   ip_configuration.name = ip_config_name
   ip_configuration_properties.private_ipallocation_method = 'Dynamic'
@@ -363,7 +359,7 @@ end
 
 def create_network_profile
   vn = create_virtual_network(@resource_group.name)
-  @subnet = create_subnet(vn, @resource_group, NETWORK_CLIENT.subnets)
+  @subnet = create_subnet(vn, @resource_group, @resource_helper.network_client.subnets)
   network_interface = create_network_interface
 
   profile = NetworkProfile.new
