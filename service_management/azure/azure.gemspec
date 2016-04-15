@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('systemu',                 '~> 2.6')
   s.add_runtime_dependency('thor',                    '~> 0.19')
   s.add_runtime_dependency('uuid',                    '~> 2.0')
+  s.add_runtime_dependency('azure-core',              '~> 0.1')
 
   s.add_development_dependency('dotenv',              '~> 2.0')
   s.add_development_dependency('minitest',            '~> 5')
