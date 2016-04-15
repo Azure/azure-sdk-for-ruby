@@ -28,8 +28,8 @@ describe Azure::Blob::BlobService do
       subject.create_container container_name
     }
 
-    it 'creates a page blob' do
-      blob = subject.create_page_blob container_name, blob_name, length
+    it 'creates page blob with non uri encoded path' do
+      blob = subject.create_page_blob container_name, 'фбаф.jpg', length
       blob.name.must_equal blob_name
     end
 
@@ -78,6 +78,30 @@ describe Azure::Blob::BlobService do
       assert_raises(Azure::Core::Http::HTTPError) do
         subject.create_page_blob container_name, blob_name, length + 1
       end
+    end
+  end
+
+  describe '#create block blob' do
+    let(:container_name) { 'testcontainer' }
+
+    before do
+      subject.create_container container_name
+    end
+
+    after do
+      subject.delete_container container_name
+    end
+
+    it 'should create a block blob with spaces in name' do
+      blob_name = 'blob with spaces'
+      blob = subject.create_block_blob container_name, blob_name, 'content'
+      blob.name.must_equal blob_name
+    end
+
+    it 'should create block blob with complex in name' do
+      blob_name = 'with фбаф.txt'
+      blob = subject.create_block_blob container_name, blob_name, 'content'
+      blob.name.must_equal blob_name
     end
   end
 end
