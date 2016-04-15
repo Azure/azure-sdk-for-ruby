@@ -49,6 +49,4 @@ describe Azure::ClientServices do
         table.client.storage_account_name.must_equal azure_storage_account
     end
   end
-
-
 end
