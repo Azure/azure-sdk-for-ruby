@@ -104,7 +104,7 @@ namespace :test do
     t.test_files = Dir['test/integration/**/*_test.rb'].reject do |path|
       # Reject the test paths those are not yet VCR recorded
       # Following three are Azure-Storage gem features and need to be removed when we take dependency on azure-storage gem
-      path.include?('blob') || path.include?('queue') || path.include?('table')
+      path.include?('/blob/') || path.include?('/queue/') || path.include?('/table/')
     end
     t.verbose = true
     t.libs = %w(lib test)
