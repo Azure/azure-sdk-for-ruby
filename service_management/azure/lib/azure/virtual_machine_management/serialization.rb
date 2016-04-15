@@ -113,6 +113,14 @@ module Azure
                   end
                   xml.StaticVirtualNetworkIPAddress options[:static_virtual_network_ipaddress] if options[:static_virtual_network_ipaddress]
                 end
+                if options[:instance_ip]
+                  xml.PublicIPs do
+                    xml.PublicIP do
+                      xml.Name options[:deployment_name]
+                      xml.DomainNameLabel options[:deployment_name]
+                    end
+                  end
+                end
               end
             end
             xml.VMImageName image.name if image.image_type == 'VM'
@@ -281,6 +289,10 @@ module Azure
               deployXML.css('Deployment'),
               'VirtualNetworkName'
             )
+            instance_ip =  xml_content(instance,
+              'PublicIPs PublicIP Address'
+            )
+            vm.instance_ip = instance_ip unless instance_ip.empty?
             roles.each do |role|
               if xml_content(role, 'RoleName') == role_name
                 vm.availability_set_name = xml_content(role, 'AvailabilitySetName')
@@ -290,7 +302,9 @@ module Azure
                   'ConfigurationSets ConfigurationSet SubnetNames SubnetName'
                 )
                 vm.subnet = subnet unless subnet.empty?
-                static_virtual_network_ipaddress =  xml_content(role,'ConfigurationSets ConfigurationSet StaticVirtualNetworkIPAddress')
+                static_virtual_network_ipaddress =  xml_content(role,
+                  'ConfigurationSets ConfigurationSet StaticVirtualNetworkIPAddress'
+                )
                 vm.static_virtual_network_ipaddress = static_virtual_network_ipaddress unless static_virtual_network_ipaddress.empty?
                 vm.os_type = xml_content(role, 'OSVirtualHardDisk OS')
                 vm.disk_name = xml_content(role, 'OSVirtualHardDisk DiskName')
@@ -418,24 +432,20 @@ module Azure
       end
 
       def self.add_data_disk_to_xml(vm, options)
-        if options[:import] && options[:disk_name].nil?
-          Azure::Loggerx.error_with_exit "The data disk name is not valid."
-        end
         media_link = vm.media_link
         builder = Nokogiri::XML::Builder.new do |xml|
           xml.DataVirtualHardDisk(
             'xmlns' => 'http://schemas.microsoft.com/windowsazure',
             'xmlns:i' => 'http://www.w3.org/2001/XMLSchema-instance'
           ) do
-            xml.HostCaching options[:host_caching] || 'ReadOnly'
+            xml.HostCaching options[:host_caching] || 'None'
             xml.DiskLabel options[:disk_label]
-            xml.DiskName options[:disk_name] if options[:import]
+            xml.DiskName options[:disk_name]
             xml.LogicalDiskSizeInGB options[:disk_size] || 100
-            unless options[:import]
-              disk_name = media_link[/([^\/]+)$/]
-              media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk_%Y_%m_%d_%H_%M_%S')) + '.vhd')
-              xml.MediaLink media_link
-            end
+            disk_name = media_link[/([^\/]+)$/]
+            media_link = media_link.gsub(/#{disk_name}/, (Time.now.strftime('disk_%Y_%m_%d_%H_%M_%S')) + '.vhd')
+            xml.MediaLink media_link
+            xml.SourceMediaLink options[:source_media_link]
           end
         end
         builder.doc.to_xml

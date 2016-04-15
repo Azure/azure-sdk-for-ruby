@@ -254,7 +254,6 @@ describe Azure::VirtualMachineManagement::Serialization do
     end
 
     it 'returns an xml for existing data disk' do
-      options[:import] = true
       options[:disk_name] = 'disk_name'
       result = subject.add_data_disk_to_xml(@vm, options)
       doc = Nokogiri::XML(result)
@@ -266,7 +265,6 @@ describe Azure::VirtualMachineManagement::Serialization do
     end
 
     it 'raise error when disk name is empty' do
-      options[:import] = true
       exception = assert_raises(RuntimeError) do
         subject.add_data_disk_to_xml(@vm, options)
       end

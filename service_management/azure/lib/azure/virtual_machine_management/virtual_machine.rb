@@ -39,6 +39,7 @@ module Azure
       attr_accessor :data_disks
       attr_accessor :subnet
       attr_accessor :static_virtual_network_ipaddress
+      attr_accessor :instance_ip
     end
   end
 end
