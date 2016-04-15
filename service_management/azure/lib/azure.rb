@@ -30,7 +30,6 @@ module Azure
   autoload :Default,                          'azure/default'
   autoload :HttpClient,                       'azure/http_client'
   autoload :Version,                          'azure/version'
-  autoload :HttpResponseHelper,               'azure/http_response_helper'
 
   # helpers because the naming is far too verbose
   autoload :BaseManagementService,                    'azure/base_management/base_management_service'
@@ -61,15 +60,6 @@ module Azure
   module CloudServiceManagement
     autoload :CloudServiceManagementService,    'azure/cloud_service_management/cloud_service_management_service'
     autoload :CloudService,                     'azure/cloud_service_management/cloud_service'
-  end
-
-  module Core
-    autoload :Utility,                        'azure/core/utility'
-    autoload :Logger,                         'azure/core/utility'
-    autoload :Error,                          'azure/core/error'
-    autoload :Service,                        'azure/core/service'
-    autoload :FilteredService,                'azure/core/filtered_service'
-    autoload :SignedService,                  'azure/core/signed_service'
   end
 
   module Queue

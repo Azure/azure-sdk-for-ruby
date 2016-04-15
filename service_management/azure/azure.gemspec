@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9.3'
 
   s.add_runtime_dependency('addressable',             '~> 2.3')
+  s.add_runtime_dependency('azure-core',              '~> 0.1')
   s.add_runtime_dependency('faraday',                 '~> 0.9')
   s.add_runtime_dependency('faraday_middleware',      '~> 0.10')
   s.add_runtime_dependency('json',                    '~> 1.8')
