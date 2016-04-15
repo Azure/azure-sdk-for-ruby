@@ -30,7 +30,25 @@ describe Azure::ClientServices do
         refute_equal(overridden.storage_access_key, default.storage_access_key)
       end
     end
-
   end
+
+  describe 'create client with options' do
+    let(:azure_storage_account) {"testStorageAccount"}
+    let(:azure_storage_access_key) {"testKey1"}
+    subject {Azure.client(storage_account_name: azure_storage_account, storage_access_key: azure_storage_access_key)}
+
+    it 'should create a blob' do
+      subject.storage_blob_host = "https://#{azure_storage_account}.blob.core.windows.net"
+      blob = subject.blobs
+      blob.client.storage_account_name.must_equal azure_storage_account
+    end
+
+    it 'sould create a table' do
+        subject.storage_table_host = "https://#{azure_storage_account}.blob.core.windows.net"
+        table = subject.tables
+        table.client.storage_account_name.must_equal azure_storage_account
+    end
+  end
+
 
 end
