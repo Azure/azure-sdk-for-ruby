@@ -14,6 +14,7 @@
 #--------------------------------------------------------------------------
 require 'test_helper'
 require 'azure'
+require 'azure/core'
 require 'vcr'
 
 if ENV['INTEG_RECORDED'].nil? || ENV['INTEG_RECORDED'] == false
