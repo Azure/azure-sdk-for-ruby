@@ -147,7 +147,7 @@ You can use the following commands to run:
 * one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
 
 To run ASM VCR tests:
-* ``rake test:recorded``
+* Set the following environment variable ``INTEG_RECORDED = true``, then run ``rake test:recorded``
 
 ### Generate Documentation
 
