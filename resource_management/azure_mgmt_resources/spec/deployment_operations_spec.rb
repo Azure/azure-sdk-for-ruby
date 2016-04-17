@@ -3,25 +3,21 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'spec_helper'
-require_relative 'deployment_shared'
 
 include MsRestAzure
 include Azure::ARM::Resources
 
 describe 'Deployment Operations' do
-
-  before(:all) do
-    @client = RESOURCES_CLIENT.deployment_operations
-    @resource_group = create_resource_group
+  before(:each) do
+    @resource_helper = ResourceHelper.new()
+    @client = @resource_helper.resource_client.deployment_operations
+    @resource_group = @resource_helper.create_resource_group
+    @deployment = @resource_helper.create_deployment(@resource_group.name)
+    @resource_helper.wait_for_deployment(@resource_group.name, @deployment.name, @resource_helper.build_deployment_params)
   end
 
-  before do
-    @deployment = create_deployment(@resource_group.name)
-    wait_for_deployment(@resource_group.name, @deployment.name, build_deployment_params)
-  end
-
-  after(:all) do
-    delete_resource_group(@resource_group.name)
+  after(:each) do
+    @resource_helper.delete_resource_group(@resource_group.name)
   end
 
   it 'should get a list of deployment operations' do
@@ -59,5 +55,4 @@ describe 'Deployment Operations' do
     expect(result.body.id).not_to be_nil
     expect(result.body.properties).to be_an_instance_of(Models::DeploymentOperationProperties)
   end
-
 end

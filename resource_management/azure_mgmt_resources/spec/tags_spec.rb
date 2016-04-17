@@ -8,47 +8,45 @@ include MsRestAzure
 include Azure::ARM::Resources
 
 describe 'Tags' do
+  let(:tag_name) { 'testtagname' }
+  let(:tag_value) { 'testtagvalue' }
 
-  before(:all) do
-    @client = RESOURCES_CLIENT.tags
-    @created_tags = []
+  before(:each) do
+    @resource_help = ResourceHelper.new()
+    @client = @resource_help.resource_client.tags
   end
 
-  after(:all) do
-    @created_tags.each do |item|
-      begin
-        @client.delete(item).value!.body
-      rescue Exception
-      end
-    end
+  after(:each) do
+    result = @client.delete(tag_name).value!
+    expect(result.response.status).to eq(200)
   end
 
-  it 'should create tag' do
-    name = get_random_name('RubySDKTest_')
-    @created_tags.push(name)
-
-    result = @client.create_or_update(name).value!
+  it 'should create and delete tag' do
+    result = @client.create_or_update(tag_name).value!
 
     expect(result.body).not_to be_nil
     expect(result.body.id).not_to be_nil
-    expect(result.body.tag_name).to eq(name)
+    expect(result.body.tag_name).to eq(tag_name)
     expect(result.body.values).to be_a(Array)
     expect(result.body.count).to be_a(Models::TagCount)
   end
 
-  it 'should create tag value' do
-    tag = create_tag
-    value = 'Val1'
-
-    result = @client.create_or_update_value(tag.tag_name, value).value!
+  it 'should create and delete tag with value' do
+    tag = @client.create_or_update(tag_name).value!.body
+    result = @client.create_or_update_value(tag.tag_name, tag_value).value!
 
     expect(result.body).not_to be_nil
     expect(result.body.id).not_to be_nil
-    expect(result.body.tag_value).to eq(value)
+    expect(result.body.tag_value).to eq(tag_value)
     expect(result.body.count).to be_a(Models::TagCount)
+
+    result = @client.delete_value(tag.tag_name, tag_value).value!
+    expect(result.response.status).to eq(200)
   end
 
   it 'should list tags' do
+    @client.create_or_update(tag_name).value!
+
     result = @client.list().value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
@@ -59,33 +57,17 @@ describe 'Tags' do
       expect(result.body.value).to be_a(Array)
     end
   end
+end
 
-  it 'should delete tag' do
-    tag = create_tag
-
-    result = @client.delete(tag.tag_name).value!
-    expect(result.response.status).to eq(200)
+describe 'Tag raises' do
+  before(:each) do
+    @resource_help = ResourceHelper.new()
+    @client = @resource_help.resource_client.tags
   end
 
-  it 'should delete tag value' do
-    tag = create_tag
-    value = 'Val1'
-    @client.create_or_update_value(tag.tag_name, value).value!
-
-    result = @client.delete_value(tag.tag_name, value).value!
-
-    expect(result.response.status).to eq(200)
-  end
-
-  it 'should raise an exception creating value for not existing tag' do
-    tag_name = get_random_name('tag_name')
-    tag_value = get_random_name('tag_value')
-    expect{@client.create_or_update_value(tag_name, tag_value).value!}.to raise_error(MsRestAzure::AzureOperationError)
-  end
-
-  def create_tag
-    name = get_random_name('RubySDKTest_')
-    @created_tags.push(name)
-    @client.create_or_update(name).value!.body
+  it 'an exception creating value for not existing tag' do
+    tag_name = 'unknown_tag_name'
+    tag_value = 'unknown_tag_value'
+    expect {@client.create_or_update_value(tag_name, tag_value).value!}.to raise_error(MsRestAzure::AzureOperationError)
   end
 end

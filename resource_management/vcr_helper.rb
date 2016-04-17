@@ -18,7 +18,7 @@ end
 VCR.configure do |config|
   config.default_cassette_options = {:record => :once, :allow_playback_repeats => true }
   config.hook_into :faraday
-  config.allow_http_connections_when_no_cassette = false
+  config.allow_http_connections_when_no_cassette = true
   config.cassette_library_dir = "spec/vcr_cassettes"
   config.configure_rspec_metadata!
 
@@ -31,15 +31,6 @@ VCR.configure do |config|
     interaction.request.headers.delete('authorization')
     interaction.response.body.sub!(/\"access_token\":\".*\"}$/, '"access_token":"<ACCESS_TOKEN>"}')
 
-    # Override the 'Retry-After' header before recording cassette to speed-up
-    if !interaction.response.nil?
-      if !interaction.response.headers['Retry-After'].nil?
-        interaction.response.headers['Retry-After'] = '1'
-      elsif !interaction.response.headers['retry-after'].nil?
-        interaction.response.headers['retry-after'] = '1'
-      end
-    end
-
     # Reduce number of interaction by ignoring 'InProgress' operations
     if interaction.request.uri =~ /^https:\/\/management.azure.com\/subscriptions\/<AZURE_SUBSCRIPTION_ID>\/operationresults\/.*/
       if interaction.response.status.code == 202
@@ -48,6 +39,15 @@ VCR.configure do |config|
     elsif interaction.request.uri =~ /^https:\/\/management.azure.com\/subscriptions\/<AZURE_SUBSCRIPTION_ID>\/providers\/Microsoft.Storage\/operations\/.*/ then
       if interaction.response.status.code == 202
         interaction.ignore!
+      end
+    end
+
+    # Override the 'Retry-After' header before recording cassette to speed-up
+    if !interaction.response.nil?
+      if !interaction.response.headers['Retry-After'].nil?
+        interaction.response.headers['Retry-After'] = '1'
+      elsif !interaction.response.headers['retry-after'].nil?
+        interaction.response.headers['retry-after'] = '1'
       end
     end
   end

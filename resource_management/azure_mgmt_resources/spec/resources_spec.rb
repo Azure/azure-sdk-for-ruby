@@ -8,30 +8,30 @@ include MsRestAzure
 include Azure::ARM::Resources
 
 describe 'Resources' do
-
-  before(:all) do
-    @client = RESOURCES_CLIENT.resources
-    @resource_group = create_resource_group
+  before(:each) do
+    @resource_helper = ResourceHelper.new()
+    @client = @resource_helper.resource_client.resources
+    @resource_group = @resource_helper.create_resource_group
     @resource_type = 'sites'
     @resource_provider = 'Microsoft.Web'
     @resource_api_version = '2015-07-01'
     @resource_identity = 'Microsoft.Web/sites'
+    @resource_name = 'testresource'
   end
 
-  after(:all) do
-    delete_resource_group(@resource_group.name)
+  after(:each) do
+    @resource_helper.delete_resource_group(@resource_group.name)
   end
 
   it 'should create resource' do
-    resource_name = get_random_name('res', 20)
-    params = build_resource_params(resource_name)
+    params = build_resource_params(@resource_name)
 
     result = @client.create_or_update(
         @resource_group.name,
         @resource_provider,
         '',
         @resource_type,
-        resource_name,
+        @resource_name,
         @resource_api_version,
         params
     ).value!
@@ -77,15 +77,14 @@ describe 'Resources' do
   end
 
   it 'should raise an error when attempting invoke get, create_or_update, check_existence or delete without api version' do
-    resource_name = get_random_name('res', 20)
-    params = build_resource_params(resource_name)
+    params = build_resource_params(@resource_name)
 
     expect{@client.create_or_update(
         @resource_group.name,
         @resource_provider,
         '',
         @resource_type,
-        resource_name,
+        @resource_name,
         nil,
         params)}.to raise_error(ArgumentError)
 
@@ -94,7 +93,7 @@ describe 'Resources' do
         @resource_provider,
         '',
         @resource_type,
-        resource_name,
+        @resource_name,
         nil
     )}.to raise_error(ArgumentError)
 
@@ -103,7 +102,7 @@ describe 'Resources' do
         @resource_provider,
         '',
         @resource_type,
-        resource_name,
+        @resource_name,
         nil
     )}.to raise_error(ArgumentError)
 
@@ -112,7 +111,7 @@ describe 'Resources' do
         @resource_provider,
         '',
         @resource_type,
-        resource_name,
+        @resource_name,
         nil
     )}.to raise_error(ArgumentError)
   end
@@ -144,19 +143,22 @@ describe 'Resources' do
   end
 
   it 'should move resources' do
-    target_group = create_resource_group
+    target_resource_group_name = 'RubySDKTest_azure_mgmt_resources1'
+    params = Azure::ARM::Resources::Models::ResourceGroup.new()
+    params.location = 'westus'
 
+    target_rg = @resource_helper.resource_client.resource_groups.create_or_update(target_resource_group_name, params).value!.body
     resource = create_resource
 
     params = Models::ResourcesMoveInfo.new
-    params.target_resource_group = target_group.id
+    params.target_resource_group = target_rg.id
     params.resources = [resource.id]
 
     result = @client.move_resources(@resource_group.name, params).value!
     expect(result.response.status).to eq(204)
 
     wait_resource_move
-    delete_resource_group(target_group.name)
+    @resource_helper.delete_resource_group(target_resource_group_name)
   end
 
   it 'should delete resource' do
@@ -174,16 +176,14 @@ describe 'Resources' do
   end
 
   def create_resource
-    resourceName = get_random_name('res', 20)
-
     @client.create_or_update(
         @resource_group.name,
         @resource_provider,
         '',
         @resource_type,
-        resourceName,
+        @resource_name,
         @resource_api_version,
-        build_resource_params(resourceName)
+        build_resource_params(@resource_name)
     ).value!.body
   end
 
@@ -203,7 +203,7 @@ describe 'Resources' do
 
   def wait_resource_move
     count = 30
-    while RESOURCES_CLIENT.resource_groups.get(@resource_group.name).value!.body.properties.provisioning_state == 'MovingResources'
+    while @resource_helper.resource_client.resource_groups.get(@resource_group.name).value!.body.properties.provisioning_state == 'MovingResources'
       sleep(1)
       fail 'Waiting for resources to move took more than 30 requests. This seems broken' if count <= 0
       count -= 1
