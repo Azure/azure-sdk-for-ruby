@@ -1,3 +1,8 @@
+## 2016.4.18 - Azure Gems @version 0.7.4
+* Signing key must be provided (ArgumentError) [#367](https://github.com/Azure/azure-sdk-for-ruby/issues/367)
+* Can not upload file with spaces [#360](https://github.com/Azure/azure-sdk-for-ruby/issues/360)
+* Updating gem to consume 'azure-core' [gem](https://rubygems.org/gems/azure-core), [Git repo](https://github.com/Azure/azure-ruby-asm-core) 
+
 ## 2016.4.12 - Azure Gems @version 0.7.3
 * Support for VCR recorded test enabled
 * Following Issues were addressed [April Release Closed Issues](https://github.com/Azure/azure-sdk-for-ruby/issues?q=milestone%3A%22April+Release%22+is%3Aclosed)
