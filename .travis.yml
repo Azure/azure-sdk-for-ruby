@@ -3,6 +3,13 @@ language: ruby
 rvm:
 - 2.0.0
 script:
-- cd service_management/azure && bundle install && bundle exec rake test:unit
-- cd ../../resource_management && bundle install
 - pwd
+deploy:
+  provider: rubygems
+  api_key:
+    secure: itsthewrongsecret
+  gemspec: /home/travis/build/Azure/azure-sdk-for-ruby/service_management/azure/azure.gemspec
+  gem:
+    master: azure
+  on:
+    repo: Azure/azure-sdk-for-ruby
