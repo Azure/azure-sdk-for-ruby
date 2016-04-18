@@ -15,8 +15,7 @@ deploy:
   api_key:
     secure: h1O/CbvwR2fsS013v7QAlW8qLIXrMDED9+HPDi5fM5o/Q/PU7uJTRI3Aold76xzXJj0eDloNIXlocdiYaJ3fh4u4UYv1HjTIW5yz9L30fjhuuWw7lMvBUHz0eYUTPWwWEZvp2aJY07C5KVRn+0sjZs9aKTUUIfFtHsW3uSZZpfY=
   gemspec: service_management/azure/azure.gemspec
-  gem:
-    master: azure
   on:
+    branch: master
     tags: true
     repo: Azure/azure-sdk-for-ruby
