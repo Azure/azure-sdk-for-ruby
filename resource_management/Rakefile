@@ -42,6 +42,10 @@ namespace :arm do
       execute_and_stream("gem push ./pkg/#{dir}-#{md[:version]}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
       execute_and_stream("git tag #{tag} && git push upstream #{tag}")
     end
+    md = REGEN_METADATA[:azure_arm]
+    tag = "#{md[:tag]}-v#{md[:version]}"
+    execute_and_stream("gem push ./azure_arm-#{md[:version]}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
+    execute_and_stream("git tag #{tag} && git push upstream #{tag}")
   end
 
   desc 'Regen code for each of the Azure Resource Manager projects'
@@ -111,6 +115,10 @@ end
 version = File.read(File.expand_path('../ARM_VERSION', __FILE__)).strip
 REGEN_METADATA = {
     autorest_loc: '../../../autorest/binaries/net45/AutoRest.exe',
+    azure_arm: {
+        version: version,
+        tag: 'azure_arm'
+    },
     azure_mgmt_authorization: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-authorization/2015-07-01/swagger/authorization.json',
         ns: 'Azure::ARM::Authorization',
