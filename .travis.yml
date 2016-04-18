@@ -10,6 +10,7 @@ script:
 - if [ "$INTEG_RECORDED" == "true" ] ; then bundle exec rake test:recorded ; fi
 - cd ../../resource_management && bundle install
 - if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ] ; then rake test:integration ; fi
+- cd ..
 deploy:
   provider: rubygems
   api_key:
