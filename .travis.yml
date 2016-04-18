@@ -9,7 +9,6 @@ deploy:
   api_key:
     secure: itsthewrongsecret
   gemspec: /home/travis/build/Azure/azure-sdk-for-ruby/service_management/azure/azure.gemspec
-  gem:
-    master: azure
   on:
-    repo: Azure/azure-sdk-for-ruby
+    repo: vishrutshah/azure-sdk-for-ruby
+    branch: rubygem-test
