@@ -92,7 +92,8 @@ module Azure
     private
 
     def default_client(opts)
-      {client: Azure.client(opts || {})}
+      !opts.empty? ? {client: Azure.client(opts)} : {client: self}
     end
+
   end
 end
