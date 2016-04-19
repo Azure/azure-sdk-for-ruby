@@ -10,12 +10,11 @@ script:
 - if [ "$INTEG_RECORDED" == "true" ] ; then bundle exec rake test:recorded ; fi
 - cd ../../resource_management && bundle install
 - if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ] ; then rake test:integration ; fi
-- cd ..
+- cd ../service_management/azure
 deploy:
   provider: rubygems
   api_key:
     secure: VXi28DFUnQ7tYuvOwwfs4Og0/Wkfq4GWMtU9Wjgn6VuYMuRMzMD34acIpgqCDW4dVLlsCtvx1MIZLvaHe0F5nOJP1LZ88IW8bDEa2dSRMhXXKGf/CF9sOhMxK9uoThMp7FHMSttfasudooIsrQn9FExdCs5s7ndDQ+gOD/QHKjk=
-  gemspec: service_management/azure/azure.gemspec
   gem: azure
   on:
     tags: true
