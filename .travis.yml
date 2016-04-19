@@ -13,6 +13,9 @@ script:
 - cd ..
 deploy:
   provider: rubygems
+  edge:
+    source: vishrutshah/dpl
+    branch: gemspec_with_path
   api_key:
     secure: VXi28DFUnQ7tYuvOwwfs4Og0/Wkfq4GWMtU9Wjgn6VuYMuRMzMD34acIpgqCDW4dVLlsCtvx1MIZLvaHe0F5nOJP1LZ88IW8bDEa2dSRMhXXKGf/CF9sOhMxK9uoThMp7FHMSttfasudooIsrQn9FExdCs5s7ndDQ+gOD/QHKjk=
   gemspec: service_management/azure/azure.gemspec
