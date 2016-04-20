@@ -70,6 +70,14 @@ namespace :arm do
       execute_and_stream('bundle exec rspec')
     end
   end
+
+  desc 'run recorded specs for each of the Azure Resource Manager projects'
+  task :recorded => :dotenv do
+    each_gem ('spec/vcr_cassettes') do
+      execute_and_stream('bundle install')
+      execute_and_stream('bundle exec rspec')
+    end
+  end
 end
 
 task :default => :spec
@@ -88,18 +96,26 @@ def execute_and_stream(cmd)
   end
 end
 
-def each_child
+def each_child (dir_filter = nil)
   dirs = Dir.entries('./').select { |f| File.directory?(f) and !(f =='.' || f == '..') }
   dirs.each do |dir|
     Dir.chdir(dir) do
-      puts "./#{dir}"
-      yield(dir)
+      # consider the dir if the dir contains dir_filter
+      if !dir_filter.nil?
+        if  Dir.exist?(dir_filter)
+          puts "./#{dir}"
+          yield(dir)
+        end
+      else
+        puts "./#{dir}"
+        yield(dir)
+      end
     end
   end
 end
 
-def each_gem
-  each_child do |dir|
+def each_gem (dir_filter = nil)
+  each_child (dir_filter) do |dir|
     if REGEN_METADATA.has_key?(dir.to_sym)
       yield dir
     end
