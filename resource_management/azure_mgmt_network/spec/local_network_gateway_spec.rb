@@ -3,25 +3,25 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'spec_helper'
-require_relative 'local_network_gateway_shared'
 
 include MsRestAzure
 include Azure::ARM::Resources
 include Azure::ARM::Network
 
-describe LocalNetworkGateways do
-
-  before(:all) do
-    @client = NETWORK_CLIENT.local_network_gateways
+describe 'Local Network Gateways' do
+  before(:each) do
+    @resource_helper = ResourceHelper.new()
+    @client = @resource_helper.network_client.local_network_gateways
     @location = 'westus'
-    @resource_group = create_resource_group
+    @resource_group = @resource_helper.create_resource_group
   end
-  after(:all) do
-    delete_resource_group(@resource_group.name)
+
+  after(:each) do
+    @resource_helper.delete_resource_group(@resource_group.name)
   end
 
   it 'should create local network gateway' do
-    params = build_local_network_gateway_params(@location)
+    params = @resource_helper.build_local_network_gateway_params(@location)
     result = @client.create_or_update(@resource_group.name, params.name, params).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -29,7 +29,7 @@ describe LocalNetworkGateways do
   end
 
   it 'should get local network gateway' do
-    local_network_gateway = create_local_network_gateway(@resource_group, @location)
+    local_network_gateway = @resource_helper.create_local_network_gateway(@resource_group, @location)
     result = @client.get(@resource_group.name, local_network_gateway.name).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -37,7 +37,7 @@ describe LocalNetworkGateways do
   end
 
   it 'should delete local network gateway' do
-    local_network_gateway = create_local_network_gateway(@resource_group, @location)
+    local_network_gateway = @resource_helper.create_local_network_gateway(@resource_group, @location)
     result = @client.delete(@resource_group.name, local_network_gateway.name).value!
     expect(result.response.status).to eq(200)
   end
@@ -53,6 +53,4 @@ describe LocalNetworkGateways do
       expect(result.body.value).to be_a(Array)
     end
   end
-
-
 end

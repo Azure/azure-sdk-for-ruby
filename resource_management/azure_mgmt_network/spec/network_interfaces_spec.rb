@@ -3,26 +3,23 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'spec_helper'
-require_relative 'network_shared'
-require_relative 'subnet_shared'
-require_relative 'public_ip_addresses_shared'
 
 include MsRestAzure
 include Azure::ARM::Resources
 include Azure::ARM::Network
 
-
-describe NetworkInterfaces do
-  before(:all) do
-    @client = NETWORK_CLIENT.network_interfaces
-    @resource_group = create_resource_group
+describe 'Network Interfaces' do
+  before(:each) do
+    @resource_helper = ResourceHelper.new()
+    @client = @resource_helper.network_client.network_interfaces
+    @resource_group = @resource_helper.create_resource_group
     @location = 'westus'
-    @virtual_network = create_virtual_network @resource_group.name
-    @subnet = create_subnet(@virtual_network, @resource_group, NETWORK_CLIENT.subnets)
+    @virtual_network = @resource_helper.create_virtual_network(@resource_group.name)
+    @subnet = @resource_helper.create_subnet(@virtual_network, @resource_group, @resource_helper.network_client.subnets)
   end
 
-  after(:all) do
-    delete_resource_group(@resource_group.name)
+  after(:each) do
+    @resource_helper.delete_resource_group(@resource_group.name)
   end
 
   it 'should create network interface' do
@@ -47,7 +44,7 @@ describe NetworkInterfaces do
     expect(result.response.status).to eq(200)
   end
 
-  it 'should list all the networkInterfaces in a subscription' do
+  it 'should list all the network interfaces in a subscription' do
     result = @client.list_all.value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -59,7 +56,7 @@ describe NetworkInterfaces do
     end
   end
 
-  it 'should list all the networkInterfaces in a resource group' do
+  it 'should list all the network interfaces in a resource group' do
     result = @client.list(@resource_group.name).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -77,20 +74,20 @@ describe NetworkInterfaces do
   end
 
   def build_network_interface_param
-    params = Models::NetworkInterface.new
+    params = NetworkInterface.new
     params.location = @location
-    network_interface_name = get_random_name('nic')
-    ip_config_name = get_random_name('ip_name')
+    network_interface_name = 'nic8474'
+    ip_config_name = 'ip_name_36282'
     params.name = network_interface_name
-    props = Models::NetworkInterfacePropertiesFormat.new
-    ip_configuration = Models::NetworkInterfaceIPConfiguration.new
+    props = NetworkInterfacePropertiesFormat.new
+    ip_configuration = NetworkInterfaceIPConfiguration.new
     params.properties = props
     props.ip_configurations = [ip_configuration]
-    ip_configuration_properties = Models::NetworkInterfaceIPConfigurationPropertiesFormat.new
+    ip_configuration_properties = NetworkInterfaceIPConfigurationPropertiesFormat.new
     ip_configuration.properties = ip_configuration_properties
     ip_configuration.name = ip_config_name
     ip_configuration_properties.private_ipallocation_method = 'Dynamic'
-    ip_configuration_properties.public_ipaddress = create_public_ip_address(@location, @resource_group)
+    ip_configuration_properties.public_ipaddress = @resource_helper.create_public_ip_address(@location, @resource_group)
     ip_configuration_properties.subnet = @subnet
     params
   end

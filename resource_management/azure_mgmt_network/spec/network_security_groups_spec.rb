@@ -3,26 +3,25 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'spec_helper'
-require_relative 'security_groups_shared'
 
 include MsRestAzure
 include Azure::ARM::Resources
 include Azure::ARM::Network
 
-
-describe NetworkSecurityGroups do
-  before(:all) do
-    @client = NETWORK_CLIENT.network_security_groups
-    @resource_group = create_resource_group
+describe 'Network Security Groups' do
+  before(:each) do
+    @resource_helper = ResourceHelper.new()
+    @client = @resource_helper.network_client.network_security_groups
+    @resource_group = @resource_helper.create_resource_group
     @location = 'westus'
   end
 
-  after(:all) do
-    delete_resource_group(@resource_group.name)
+  after(:each) do
+    @resource_helper.delete_resource_group(@resource_group.name)
   end
 
   it 'should create security group' do
-    params = build_network_security_group_params(@location)
+    params = @resource_helper.build_network_security_group_params(@location)
     result = @client.create_or_update(@resource_group.name, params.name, params).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -31,7 +30,7 @@ describe NetworkSecurityGroups do
   end
 
   it 'should get security group' do
-    security_group = create_network_security_group(@resource_group, @location)
+    security_group = @resource_helper.create_network_security_group(@resource_group, @location)
     result = @client.get(@resource_group.name, security_group.name).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -39,7 +38,7 @@ describe NetworkSecurityGroups do
   end
 
   it 'should delete security group' do
-    security_group = create_network_security_group(@resource_group, @location)
+    security_group = @resource_helper.create_network_security_group(@resource_group, @location)
     result = @client.delete(@resource_group.name, security_group.name).value!
     expect(result.response.status).to eq(200)
   end
