@@ -18,35 +18,52 @@ include Azure::ARM::Resources
 include Azure::ARM::Storage
 
 class ResourceHelper
-  attr_accessor :compute_client
-  attr_accessor :network_client
-  attr_accessor :resource_client
-  attr_accessor :storage_client
+  attr_reader :compute_client, :network_client, :resource_client, :storage_client
 
   def initialize
     tenant_id = ENV['AZURE_TENANT_ID']
     client_id = ENV['AZURE_CLIENT_ID']
     secret = ENV['AZURE_CLIENT_SECRET']
-    subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
+    @subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
 
     token_provider = ApplicationTokenProvider.new(tenant_id, client_id, secret)
-    credentials = TokenCredentials.new(token_provider)
+    @credentials = TokenCredentials.new(token_provider)
+  end
 
-    @compute_client = ComputeManagementClient.new(credentials)
-    @compute_client.long_running_operation_retry_timeout = ENV['RETRY_TIMEOUT'].to_i || 30
-    @compute_client.subscription_id = subscription_id
+  def compute_client
+    if @compute_client.nil?
+      @compute_client = ComputeManagementClient.new(@credentials)
+      @compute_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
+      @compute_client.subscription_id = @subscription_id
+    end
+    @compute_client
+  end
 
-    @network_client = NetworkManagementClient.new(credentials)
-    @network_client.long_running_operation_retry_timeout = ENV['RETRY_TIMEOUT'].to_i || 30
-    @network_client.subscription_id = subscription_id
+  def network_client
+    if @network_client.nil?
+      @network_client = NetworkManagementClient.new(@credentials)
+      @network_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
+      @network_client.subscription_id = @subscription_id
+    end
+    @network_client
+  end
 
-    @resource_client = ResourceManagementClient.new(credentials)
-    @resource_client.subscription_id = subscription_id
-    @resource_client.long_running_operation_retry_timeout = ENV['RETRY_TIMEOUT'].to_i || 30
+  def resource_client
+    if @resource_client.nil?
+      @resource_client = ResourceManagementClient.new(@credentials)
+      @resource_client.subscription_id = @subscription_id
+      @resource_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
+    end
+    @resource_client
+  end
 
-    @storage_client = StorageManagementClient.new(credentials)
-    @storage_client.long_running_operation_retry_timeout = ENV['RETRY_TIMEOUT'].to_i || 30
-    @storage_client.subscription_id = subscription_id
+  def storage_client
+    if @storage_client.nil?
+      @storage_client = StorageManagementClient.new(@credentials)
+      @storage_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
+      @storage_client.subscription_id = @subscription_id
+    end
+    @storage_client
   end
 
   def create_resource_group
@@ -54,11 +71,11 @@ class ResourceHelper
     params = Azure::ARM::Resources::Models::ResourceGroup.new()
     params.location = 'westus'
 
-    @resource_client.resource_groups.create_or_update(resource_group_name, params).value!.body
+    resource_client.resource_groups.create_or_update(resource_group_name, params).value!.body
   end
 
   def delete_resource_group(name)
-    @resource_client.resource_groups.delete(name).value!
+    resource_client.resource_groups.delete(name).value!
   end
 
   def create_availability_set(client, resource_group)

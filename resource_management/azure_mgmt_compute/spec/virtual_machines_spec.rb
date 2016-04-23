@@ -150,12 +150,12 @@ describe 'Virtual machine api' do
     # to find out whether VM is turned on or not. So the timeout is added here.
     # todo: add VM polling until VM is started if API method appear which provides
     # such info.
-    # sleep 300
+    sleep ENV.fetch('RETRY_TIMEOUT', 300).to_i
 
     result = @client.generalize(@resource_group.name, @vm_name).value!
     expect(result.response.status).to eq(200)
 
-    #campuring VM requires VM to be generalized
+    #capturing VM requires VM to be generalized
     capture_params = VirtualMachineCaptureParameters.new
     capture_params.vhd_prefix = 'test'
     capture_params.destination_container_name = 'test'
