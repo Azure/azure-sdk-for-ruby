@@ -14,6 +14,7 @@ describe 'Tags' do
   before(:each) do
     @resource_help = ResourceHelper.new()
     @client = @resource_help.resource_client.tags
+    @tag = @client.create_or_update(tag_name).value!
   end
 
   after(:each) do
@@ -22,7 +23,7 @@ describe 'Tags' do
   end
 
   it 'should create and delete tag' do
-    result = @client.create_or_update(tag_name).value!
+    result = @tag
 
     expect(result.body).not_to be_nil
     expect(result.body.id).not_to be_nil
@@ -32,7 +33,7 @@ describe 'Tags' do
   end
 
   it 'should create and delete tag with value' do
-    tag = @client.create_or_update(tag_name).value!.body
+    tag = @tag.body
     result = @client.create_or_update_value(tag.tag_name, tag_value).value!
 
     expect(result.body).not_to be_nil
@@ -45,8 +46,6 @@ describe 'Tags' do
   end
 
   it 'should list tags' do
-    @client.create_or_update(tag_name).value!
-
     result = @client.list().value!
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
