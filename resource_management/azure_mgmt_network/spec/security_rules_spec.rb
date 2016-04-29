@@ -3,24 +3,22 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'spec_helper'
-require_relative 'network_shared'
-require_relative 'subnet_shared'
-require_relative 'security_groups_shared'
 
 include MsRestAzure
 include Azure::ARM::Resources
 include Azure::ARM::Network
 
-describe SecurityRules do
-
-  before(:all) do
-    @client = NETWORK_CLIENT.security_rules
+describe 'Security Rules' do
+  before(:each) do
+    @resource_helper = ResourceHelper.new()
+    @client = @resource_helper.network_client.security_rules
     @location = 'westus'
-    @resource_group = create_resource_group
-    @security_group = create_network_security_group(@resource_group, @location)
+    @resource_group = @resource_helper.create_resource_group
+    @security_group = @resource_helper.create_network_security_group(@resource_group, @location)
   end
-  after(:all) do
-    delete_resource_group(@resource_group.name)
+
+  after(:each) do
+    @resource_helper.delete_resource_group(@resource_group.name)
   end
 
   it 'should create security rule' do
@@ -29,7 +27,6 @@ describe SecurityRules do
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
     expect(result.body.name).to eq(params.name)
-
   end
 
   it 'should get security rule' do
@@ -64,19 +61,18 @@ describe SecurityRules do
   end
 
   def build_security_rule_params
-    params = Models::SecurityRule.new
-    params.name = get_random_name('sec_rule')
-    props = Models::SecurityRulePropertiesFormat.new
+    params = SecurityRule.new
+    params.name = 'sec_rule_7428'
+    props = SecurityRulePropertiesFormat.new
     params.properties = props
     props.access = 'Deny'
     props.destination_address_prefix = '*'
     props.destination_port_range = '123-3500'
     props.direction = 'Outbound'
-    props.priority = rand(100..4096)
+    props.priority = 4095
     props.protocol = 'Udp'
     props.source_address_prefix = '*'
     props.source_port_range = '656'
     params
   end
-
 end

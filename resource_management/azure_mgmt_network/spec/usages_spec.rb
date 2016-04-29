@@ -3,17 +3,17 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'spec_helper'
-require 'faraday'
 
 include MsRestAzure
 include Azure::ARM::Network
 
-
-describe Usages do
-  before(:all) do
+describe 'Usages' do
+  before(:each) do
+    @resource_helper = ResourceHelper.new()
     @location = 'westus'
-    @client = NETWORK_CLIENT.usages
+    @client = @resource_helper.network_client.usages
   end
+
   it 'should list compute usages for subscription' do
     result = @client.list(@location).value!
     expect(result.response.status).to eq(200)

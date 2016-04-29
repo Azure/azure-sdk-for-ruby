@@ -3,28 +3,26 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'spec_helper'
-require_relative 'network_shared'
 
 include MsRestAzure
 include Azure::ARM::Resources
 include Azure::ARM::Network
 
-describe VirtualNetworks do
-
-  before(:all) do
-    @client = NETWORK_CLIENT.virtual_networks
-    @resource_group = create_resource_group
+describe 'Virtual Networks' do
+  before(:each) do
+    @resource_helper = ResourceHelper.new()
+    @client = @resource_helper.network_client.virtual_networks
+    @resource_group = @resource_helper.create_resource_group
     @location = 'westus'
   end
 
-  after(:all) do
-    delete_resource_group(@resource_group.name)
+  after(:each) do
+    @resource_helper.delete_resource_group(@resource_group.name)
   end
 
-
   it 'should create virtual network' do
-    virtualNetworkName = get_random_name("vnet")
-    params = build_virtual_network_params(@location)
+    virtualNetworkName = "vnet7384"
+    params = @resource_helper.build_virtual_network_params(@location)
     result = @client.create_or_update(@resource_group.name, virtualNetworkName, params).value!
 
     expect(result.response.status).to eq(200)
@@ -34,7 +32,7 @@ describe VirtualNetworks do
   end
 
   it 'should get virtual network' do
-    vnet = create_virtual_network(@resource_group.name)
+    vnet = @resource_helper.create_virtual_network(@resource_group.name)
     result = @client.get(@resource_group.name, vnet.name).value!
     expect(result.response.status).to eq(200)
     expect(result.body).not_to be_nil
@@ -63,7 +61,7 @@ describe VirtualNetworks do
       expect(result.body.value).not_to be_nil
       expect(result.body.value).to be_a(Array)
     end
-    end
+  end
 
   it 'should list all Virtual Networks in a subscription' do
     result = @client.list_all.value!
@@ -78,9 +76,8 @@ describe VirtualNetworks do
   end
 
   it 'should delete virtual network' do
-    vnet = create_virtual_network @resource_group.name
+    vnet = @resource_helper.create_virtual_network(@resource_group.name)
     result = @client.delete(@resource_group.name, vnet.name).value!
     expect(result.response.status).to eq(200)
   end
-
 end

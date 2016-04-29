@@ -63,16 +63,8 @@ namespace :arm do
     end
   end
 
-  desc 'run specs for each of the Azure Resource Manager projects'
-  task :spec => :dotenv do
-    each_gem do
-      execute_and_stream('bundle install')
-      execute_and_stream('bundle exec rspec')
-    end
-  end
-
   desc 'run recorded specs for each of the Azure Resource Manager projects'
-  task :recorded => :dotenv do
+  task :spec => :dotenv do
     each_gem ('spec/vcr_cassettes') do
       execute_and_stream('bundle install')
       execute_and_stream('bundle exec rspec')

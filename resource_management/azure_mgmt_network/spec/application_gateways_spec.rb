@@ -3,8 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'spec_helper'
-require_relative 'network_shared'
-require_relative 'subnet_shared'
 
 include MsRestAzure
 include Azure::ARM::Resources
