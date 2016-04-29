@@ -9,13 +9,14 @@ include Azure::ARM::Resources
 
 describe 'Providers' do
 
-  before(:all) do
+  before(:each) do
     @registered_providers = []
     @unregistered_providers = []
-    @client = RESOURCES_CLIENT.providers
+    @resource_helper = ResourceHelper.new()
+    @client = @resource_helper.resource_client.providers
   end
 
-  after(:all) do
+  after(:each) do
     @registered_providers.each do |namespace|
       begin
         @client.unregister(namespace).value!
@@ -29,7 +30,6 @@ describe 'Providers' do
       rescue Exception
       end
     end
-
   end
 
   it 'should list providers' do
