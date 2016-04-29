@@ -3,15 +3,15 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'spec_helper'
-require_relative 'availability_sets_shared'
 
 include MsRestAzure
 include Azure::ARM::Compute
 
 describe VirtualMachineSizes do
-  before(:all) do
+  before(:each) do
+    @resource_helper = ResourceHelper.new
     @location = 'westus'
-    @client = COMPUTE_CLIENT.virtual_machine_sizes
+    @client = @resource_helper.compute_client.virtual_machine_sizes
   end
 
   it 'should list available virtual machine sizes' do

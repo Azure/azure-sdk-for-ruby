@@ -3,18 +3,18 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 require_relative 'spec_helper'
-require_relative 'availability_sets_shared'
 
 include MsRestAzure
 include Azure::ARM::Compute
 
 describe VirtualMachineExtensionImages do
-  before(:all) do
+  before(:each) do
+    @resource_helper = ResourceHelper.new
     @location = 'westus'
     @publisher_name = 'Microsoft.WindowsAzure.Compute'
     @type = 'AzureLogCollector'
     @version = '1.0.0.7'
-    @client = COMPUTE_CLIENT.virtual_machine_extension_images
+    @client = @resource_helper.compute_client.virtual_machine_extension_images
   end
 
   it 'should list virtual machine extension image types' do
