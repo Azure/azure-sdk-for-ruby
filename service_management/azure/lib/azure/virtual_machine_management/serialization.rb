@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
+require 'azure/core'
 require 'azure/virtual_machine_management/virtual_machine'
 require 'base64'
 
