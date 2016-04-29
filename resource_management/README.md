@@ -21,6 +21,7 @@ bundle install
 ### Run Recorded Integration Tests
  * Set the environment variable ``INTEG_RECORDED = true``
  * Run ``rake arm:spec``
+
 ### Re-Record Integration Tests
  * Set the environment variable ``INTEG_RECORDED = false`` or un-set it
  * Move into ``resource_management`` folder
