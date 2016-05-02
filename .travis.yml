@@ -2,20 +2,20 @@ sudo: false
 language: ruby
 rvm:
 - 2.0.0
-- 2.1.5
-- 2.2.0
-- 2.3.0
 script:
 - cd service_management/azure && bundle install && bundle exec rake test:unit
 - if [ "$INTEG_RECORDED" == "true" ] ; then bundle exec rake test:recorded ; fi
 - cd ../../resource_management && bundle install
 - if [ "$INTEG_RECORDED" == "true" ] ; then rake arm:spec ; fi
-- cd ../service_management/azure
+- cd ..
 deploy:
   provider: rubygems
+  edge:
+    source: vishrutshah/dpl
+    branch: gemspec_with_path
   api_key:
-    secure: VXi28DFUnQ7tYuvOwwfs4Og0/Wkfq4GWMtU9Wjgn6VuYMuRMzMD34acIpgqCDW4dVLlsCtvx1MIZLvaHe0F5nOJP1LZ88IW8bDEa2dSRMhXXKGf/CF9sOhMxK9uoThMp7FHMSttfasudooIsrQn9FExdCs5s7ndDQ+gOD/QHKjk=
-  gem: azure
+    secure: dummysecretkey
+  gemspec: service_management/azure/azure.gemspec
   on:
     tags: true
-    repo: Azure/azure-sdk-for-ruby
+    repo: vishrutshah/azure-sdk-for-ruby
