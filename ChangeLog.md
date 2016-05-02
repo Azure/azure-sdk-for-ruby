@@ -1,3 +1,6 @@
+## 2016.5.2 - Azure Gems @version 0.7.5
+* Require azure/core before extending serialization class with it [#383](https://github.com/Azure/azure-sdk-for-ruby/pull/383)
+
 ## 2016.4.18 - Azure Gems @version 0.7.4
 * Signing key must be provided (ArgumentError) [#367](https://github.com/Azure/azure-sdk-for-ruby/issues/367)
 * Can not upload file with spaces [#360](https://github.com/Azure/azure-sdk-for-ruby/issues/360)
