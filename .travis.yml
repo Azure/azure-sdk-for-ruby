@@ -8,9 +8,6 @@ rvm:
 script:
 - cd service_management/azure && bundle install && bundle exec rake test:unit
 - if [ "$INTEG_RECORDED" == "true" ] ; then bundle exec rake test:recorded ; fi
-- cd ../../resource_management && bundle install
-- if [ "$INTEG_RECORDED" == "true" ] ; then rake arm:spec ; fi
-- cd ../service_management/azure
 deploy:
   provider: rubygems
   api_key:
