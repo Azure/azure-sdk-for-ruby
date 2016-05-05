@@ -1,31 +1,13 @@
 
-# Microsoft Azure SDK for Ruby
+# Microsoft Azure SDK for Ruby - Service Management
 [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=dev)](https://travis-ci.org/Azure/azure-sdk-for-ruby) [![Code Climate](https://codeclimate.com/github/Azure/azure-sdk-for-ruby/badges/gpa.svg)](https://codeclimate.com/github/Azure/azure-sdk-for-ruby)
 
-This project provides a Ruby package that makes it easy to access and manage Microsoft Azure Services like Storage, Service Bus and Virtual Machines.
-All Azure resources support one or both of the following deployment models:
-* **Azure Resource Management (ARM)**: Preview version of the Ruby SDK available.
-* **Azure Service Management (ASM) or Classic**: Supported by most existing Azure resources. SDK documentation at
+This project provides a Ruby package for Azure Service Management, which makes it easy to access and manage Microsoft Azure Services like Storage, Service Bus and Virtual Machines.
+* **Azure Service Management (ASM) or Classic**: Supported by most existing Azure resources.
 
-Additional info on Azure deployment models [https://azure.microsoft.com/en-us/documentation/articles/azure-classic-rm/](https://azure.microsoft.com/en-us/documentation/articles/azure-classic-rm/)
+If you're looking for **Azure Resource Management (ARM)**, preview version of the Ruby SDK is available [here](https://github.com/Azure/azure-sdk-ruby)
 
-## Azure Resource Management (preview)
-* [Authorization](https://rubygems.org/gems/azure_mgmt_authorization) Azure Resource Manager role based authorization
-* [CDN](https://rubygems.org/gems/azure_mgmt_cdn) Azure Content Delivery Network
-* [Compute](https://rubygems.org/gems/azure_mgmt_compute) Virtual Machines, Images, Extensions, Availability Sets, etc...
-* [Features](https://rubygems.org/gems/azure_mgmt_features) Feature Exposure Controls
-* [Graph](https://rubygems.org/gems/azure_mgmt_graph) Azure Active Directory Applications, Users, etc...
-* [Locks](https://rubygems.org/gems/azure_mgmt_locks) Management locks for Azure Resources
-* [Network](https://rubygems.org/gems/azure_mgmt_network) Load Balancers, Network Gateways, Security Groups, etc...
-* [Notification Hubs](https://rubygems.org/gems/azure_mgmt_notification_hubs) Notification Hubs management
-* [Redis](https://rubygems.org/gems/azure_mgmt_redis) Redis resource management
-* [Resources](https://rubygems.org/gems/azure_mgmt_resources) Resource Groups, Resource Providers, Template Deployments, Operations, etc...
-* [Scheduler](https://rubygems.org/gems/azure_mgmt_scheduler) Manage scheduled jobs in Azure
-* [Search](https://rubygems.org/gems/azure_mgmt_search) Manage Search resources
-* [SQL](https://rubygems.org/gems/azure_mgmt_sql) Manage Azure SQL resources
-* [Storage](https://rubygems.org/gems/azure_mgmt_storage) Account Creation, Usage Operations, etc...
-* [Subscriptions](https://rubygems.org/gems/azure_mgmt_subscriptions) Manage Azure subscriptions
-* [WebApps](https://rubygems.org/gems/azure_mgmt_web) Manage WebApps, formally known as WebSites
+Information on Azure deployment models: [https://azure.microsoft.com/en-us/documentation/articles/azure-classic-rm/](https://azure.microsoft.com/en-us/documentation/articles/azure-classic-rm/)
 
 ## Azure Service Management
 * Cloud Service Management
@@ -47,46 +29,9 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 
 Note: x64 Ruby for Windows is known to have some compatibility issues.
 
-# Getting Started with Azure Resource Manager Usage (Preview)
+# Getting Started with Azure Service Management
 
-## Install the rubygem packages
-
-You can install the azure rubygem packages directly.
-
-```bash
-gem install azure_mgmt_compute
-gem install azure_mgmt_storage
-gem install azure_mgmt_resources
-gem install azure_mgmt_network
-```
-
-Or use them in your Gemfile.
-
-```Ruby
-gem 'azure_mgmt_storage'
-gem 'azure_mgmt_compute'
-gem 'azure_mgmt_resources'
-gem 'azure_mgmt_network'
-```
-
-Be aware the Azure Resource Manager Ruby SDK is in preview and will likely have breaking interface changes in upcoming
-releases.
-
-### Authentication
-
-The first step to using the SDK is authentication and permissions. For people unfamilar with Azure this may be one of
-the more difficult concepts. For a reference on setting up a service principal from the command line see
-[Authenticating a service principal with Azure Resource Manager](http://aka.ms/cli-service-principal) or
-[Unattended Authentication](http://aka.ms/auth-unattended). For a more robust explanation of authentication in Azure,
-see [Developer’s guide to auth with Azure Resource Manager API](http://aka.ms/arm-auth-dev-guide).
-
-After creating the service principal, you should have three pieces of information, a client id (GUID), client secret
-(string) and tenant id (GUID) or domain name (string).
-
-### Getting Started Samples
-The tests for the libraries should provide a good example of how to get started with the clients. You can also see the
-readme for each of the libraries [Compute](resource_management/azure_mgmt_compute),
-[Network](resource_management/azure_mgmt_network), [Storage](resource_management/azure_mgmt_storage), or [Resources](resource_management/azure_mgmt_resources).
+Please take a look [here](https://github.com/Azure/azure-sdk-for-ruby/blob/master/service_management/README.md)
 
 # Contribute Code or Provide Feedback
 
@@ -95,7 +40,6 @@ readme for each of the libraries [Compute](resource_management/azure_mgmt_comput
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
-
 
 ## Development Environment Setup
 
@@ -108,10 +52,6 @@ git clone https://github.com/Azure/azure-sdk-for-ruby.git
 cd ./azure-sdk-for-ruby
 ```
 Move to the folder containing Gemfile
-```bash
-cd resource_management
-```
-or
 ```bash
 cd service_management/azure
 ```
@@ -136,7 +76,7 @@ Do the following to prepare your environment for integration tests:
 * Update .env with your credentials **.env is in the .gitignore, so should only reside locally**
 
 Azure Service Management integration tests use VCR, so they are recorded and can be easily played back without
-consuming any Azure live resources. ARM tests will be converted soon.
+consuming any Azure live resources.
 
 ### Run Tests
 
@@ -146,7 +86,7 @@ You can use the following commands to run:
 * A specific suite of tests: ``rake test:unit``, ``rake test:integration``, ``rake test:integration:blob``, etc.
 * one particular test file: ``ruby -I"lib:test" "<path of the test file>"``
 
-To run ASM VCR tests:
+To run VCR tests:
 * Set the following environment variable ``INTEG_RECORDED = true``, then run ``rake test:recorded``
 
 ### Generate Documentation
