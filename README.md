@@ -1,6 +1,5 @@
-
-# Microsoft Azure SDK for Ruby - Service Management
-[![Build Status](https://travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=dev)](https://travis-ci.org/Azure/azure-sdk-for-ruby) [![Code Climate](https://codeclimate.com/github/Azure/azure-sdk-for-ruby/badges/gpa.svg)](https://codeclimate.com/github/Azure/azure-sdk-for-ruby)
+# Microsoft Azure SDK for Ruby
+[![Build Status](https://travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-ruby) [![Code Climate](https://codeclimate.com/github/Azure/azure-sdk-for-ruby/badges/gpa.svg)](https://codeclimate.com/github/Azure/azure-sdk-for-ruby)
 
 This project provides a Ruby package for Azure Service Management, which makes it easy to access and manage Microsoft Azure Services like Storage, Service Bus and Virtual Machines.
 * **Azure Service Management (ASM) or Classic**: Supported by most existing Azure resources.
