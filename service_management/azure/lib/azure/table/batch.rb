@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'uuid'
+require 'securerandom'
 
 require 'azure/table/serialization'
 require 'azure/table/table_service'
@@ -54,9 +54,8 @@ module Azure
         @operations = []
         @entity_keys = []
         @table_service = Azure::Table::TableService.new
-        uuid = UUID.new
-        @batch_id = "batch_" + uuid.generate
-        @changeset_id = "changeset_" + uuid.generate
+        @batch_id = "batch_" + SecureRandom.uuid
+        @changeset_id = "changeset_" + SecureRandom.uuid
 
         self.instance_eval(&block) if block_given?
       end
