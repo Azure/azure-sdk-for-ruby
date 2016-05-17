@@ -6,7 +6,7 @@ rvm:
 - 2.2.0
 - 2.3.0
 script:
-- cd service_management/azure && bundle install && bundle exec rake test:unit
+- bundle install && bundle exec rake test:unit
 - if [ "$INTEG_RECORDED" == "true" ] ; then bundle exec rake test:recorded ; fi
 deploy:
   provider: rubygems
