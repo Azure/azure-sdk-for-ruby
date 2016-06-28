@@ -93,6 +93,7 @@ module Azure
             connection
             content-type
             content-length
+            strict-transport-security
           )
 
           props = response.headers.reject do |k, _|
