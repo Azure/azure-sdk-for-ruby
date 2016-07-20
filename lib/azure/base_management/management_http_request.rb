@@ -48,6 +48,8 @@ module Azure
       # Returns a Nokogiri::XML instance of HttpResponse body
       def call
         conn = http_setup
+        # Sets an output stream for debugging. Do not use in production.
+        # conn.set_debug_output(Logger.new('/path/to/log/http.log'))
         res = set_up_response(method.to_sym, uri, conn, headers ,body)
         response = wait_for_completion(Azure::Core::Http::HttpResponse.new(res))
         Nokogiri::XML response.body unless response.nil?
