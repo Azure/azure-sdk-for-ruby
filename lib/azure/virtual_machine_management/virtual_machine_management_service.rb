@@ -505,6 +505,14 @@ module Azure
 
         if errors.empty?
           validate_location(params[:location]) unless add_role
+          aliases = {
+            'A0' => 'ExtraSmall',
+            'A1' => 'Small',
+            'A2' => 'Medium',
+            'A3' => 'Large',
+            'A4' => 'ExtraLarge',
+          }
+          options[:vm_size] = aliases[options[:vm_size]] if aliases.include?(options[:vm_size])
           validate_role_size(options[:vm_size])
           params[:certificate] = {}
           if certificate_required?(params, options)
