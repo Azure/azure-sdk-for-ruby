@@ -1,0 +1,292 @@
+PATH
+  remote: azure_mgmt_authorization
+  specs:
+    azure_mgmt_authorization (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_batch
+  specs:
+    azure_mgmt_batch (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_cdn
+  specs:
+    azure_mgmt_cdn (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_cognitive_services
+  specs:
+    azure_mgmt_cognitive_services (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_commerce
+  specs:
+    azure_mgmt_commerce (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_compute
+  specs:
+    azure_mgmt_compute (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_datalake_analytics
+  specs:
+    azure_mgmt_datalake_analytics (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_datalake_store
+  specs:
+    azure_mgmt_datalake_store (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_devtestlabs
+  specs:
+    azure_mgmt_devtestlabs (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_dns
+  specs:
+    azure_mgmt_dns (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_features
+  specs:
+    azure_mgmt_features (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_graph
+  specs:
+    azure_mgmt_graph (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_key_vault
+  specs:
+    azure_mgmt_key_vault (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_locks
+  specs:
+    azure_mgmt_locks (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_logic
+  specs:
+    azure_mgmt_logic (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_machine_learning
+  specs:
+    azure_mgmt_machine_learning (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_media_services
+  specs:
+    azure_mgmt_media_services (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_mobile_engagement
+  specs:
+    azure_mgmt_mobile_engagement (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_network
+  specs:
+    azure_mgmt_network (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_notification_hubs
+  specs:
+    azure_mgmt_notification_hubs (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_policy
+  specs:
+    azure_mgmt_policy (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_powerbi_embedded
+  specs:
+    azure_mgmt_powerbi_embedded (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_redis
+  specs:
+    azure_mgmt_redis (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_resources
+  specs:
+    azure_mgmt_resources (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_scheduler
+  specs:
+    azure_mgmt_scheduler (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_search
+  specs:
+    azure_mgmt_search (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_server_management
+  specs:
+    azure_mgmt_server_management (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_service_bus
+  specs:
+    azure_mgmt_service_bus (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_sql
+  specs:
+    azure_mgmt_sql (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_storage
+  specs:
+    azure_mgmt_storage (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_subscriptions
+  specs:
+    azure_mgmt_subscriptions (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_traffic_manager
+  specs:
+    azure_mgmt_traffic_manager (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+PATH
+  remote: azure_mgmt_web
+  specs:
+    azure_mgmt_web (0.4.0)
+      ms_rest_azure (~> 0.3.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    concurrent-ruby (1.0.2)
+    diff-lcs (1.2.5)
+    domain_name (0.5.20160615)
+      unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.1.1)
+    faraday (0.9.2)
+      multipart-post (>= 1.2, < 3)
+    faraday-cookie_jar (0.0.6)
+      faraday (>= 0.7.4)
+      http-cookie (~> 1.0.0)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
+    json (1.8.3)
+    ms_rest (0.3.1)
+      concurrent-ruby (~> 1.0)
+      faraday (~> 0.9)
+      json (~> 1.7)
+      timeliness (~> 0.3)
+    ms_rest_azure (0.3.1)
+      concurrent-ruby (~> 1.0)
+      faraday (~> 0.9)
+      faraday-cookie_jar (~> 0.0.6)
+      json (~> 1.7)
+      ms_rest (~> 0.3.0)
+    multipart-post (2.0.0)
+    os (0.9.6)
+    rake (11.2.2)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.1)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
+    timeliness (0.3.8)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
+    vcr (3.0.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  azure_mgmt_authorization!
+  azure_mgmt_batch!
+  azure_mgmt_cdn!
+  azure_mgmt_cognitive_services!
+  azure_mgmt_commerce!
+  azure_mgmt_compute!
+  azure_mgmt_datalake_analytics!
+  azure_mgmt_datalake_store!
+  azure_mgmt_devtestlabs!
+  azure_mgmt_dns!
+  azure_mgmt_features!
+  azure_mgmt_graph!
+  azure_mgmt_key_vault!
+  azure_mgmt_locks!
+  azure_mgmt_logic!
+  azure_mgmt_machine_learning!
+  azure_mgmt_media_services!
+  azure_mgmt_mobile_engagement!
+  azure_mgmt_network!
+  azure_mgmt_notification_hubs!
+  azure_mgmt_policy!
+  azure_mgmt_powerbi_embedded!
+  azure_mgmt_redis!
+  azure_mgmt_resources!
+  azure_mgmt_scheduler!
+  azure_mgmt_search!
+  azure_mgmt_server_management!
+  azure_mgmt_service_bus!
+  azure_mgmt_sql!
+  azure_mgmt_storage!
+  azure_mgmt_subscriptions!
+  azure_mgmt_traffic_manager!
+  azure_mgmt_web!
+  dotenv
+  os
+  rake
+  rspec
+  vcr
+
+BUNDLED WITH
+   1.12.5

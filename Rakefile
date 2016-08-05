@@ -12,141 +12,373 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'rake/testtask'
-require 'rubygems/package_task'
+require 'bundler/gem_tasks'
 require 'dotenv/tasks'
+require 'rspec/core/rake_task'
+require 'open3'
+require 'os'
 
-gem_spec = eval(File.read('./azure.gemspec'))
-Gem::PackageTask.new(gem_spec) do |pkg|
-  pkg.need_zip = false
-  pkg.need_tar = false
-end
+version = File.read(File.expand_path('../ARM_VERSION', __FILE__)).strip
 
-namespace :test do
-  task :require_environment => :dotenv do
-    unset_environment = [
-      ENV.fetch('AZURE_STORAGE_ACCOUNT',  nil),
-      ENV.fetch('AZURE_STORAGE_ACCESS_KEY',    nil),
-      ENV.fetch('AZURE_SERVICEBUS_NAMESPACE', nil),
-      ENV.fetch('AZURE_SERVICEBUS_ACCESS_KEY', nil),
-      ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE', nil),
-      ENV.fetch('AZURE_SUBSCRIPTION_ID', nil)
-    ].include?(nil)
-
-    abort '[ABORTING] Configure your environment to run the integration tests' if unset_environment
+desc 'Azure Resource Manager related tasks which often traverse each of the arm gems'
+namespace :arm do
+  desc 'Delete ./pkg for each of the Azure Resource Manager projects'
+  task :clean do
+    each_gem do
+      execute_and_stream(OS.windows? ? 'del /S /Q pkg 2>nul' : 'rm -rf ./pkg')
+    end
+    execute_and_stream(OS.windows? ? 'del /S /Q pkg 2>nul' : 'rm -rf ./pkg')
   end
 
-  Rake::TestTask.new :unit do |t|
-    t.pattern = 'test/unit/**/*_test.rb'
-    t.verbose = true
-    t.libs = %w(lib test)
+  desc 'Delete ./lib/generated for each of the Azure Resource Manager projects'
+  task :clean_generated do
+    each_gem do
+      execute_and_stream(OS.windows? ? 'del /S /Q lib\generated 2>nul' : 'rm -rf lib/generated')
+    end
   end
 
-  namespace :unit do
-    def component_task(component)
-      Rake::TestTask.new component do |t|
-        t.pattern = "test/unit/#{component}/**/*_test.rb"
-        t.verbose = true
-        t.libs = %w(lib test)
+  desc 'Build gems for each of the Azure Resource Manager projects'
+  task :build => :clean do
+    each_gem do
+      execute_and_stream('rake build')
+    end
+    execute_and_stream('rake build')
+  end
+
+  desc 'Push gem for each of the Azure Resource Manager projects'
+  task :release, [:key] => :build do |_, args|
+    each_gem do |dir|
+      md = REGEN_METADATA[dir.to_sym]
+      # Using execute method so that keys are not logged onto console
+      execute("gem push ./pkg/#{dir}-#{version}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
+    end
+    # TODO: Uncomment this when we decide to publish azure_arm gem
+    # md = REGEN_METADATA[:azure_arm]
+    # Using execute method so that keys are not logged onto console
+    # execute("gem push ./pkg/azure_arm-#{md[:version]}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
+  end
+
+  desc 'Regen code for each of the Azure Resource Manager projects'
+  task :regen => :clean_generated do
+    each_gem do |dir|
+      puts "\nGenerating #{dir}\n"
+      md = REGEN_METADATA[dir.to_sym]
+      ar_base_command = "#{OS.windows? ? '' : 'mono '} #{REGEN_METADATA[:autorest_loc]}"
+
+      if md.is_a?(Array)
+        md.each do |sub_md|
+          if sub_md[:version].nil?
+            execute_and_stream("#{ar_base_command} -i #{sub_md[:spec_uri]} -n #{sub_md[:ns]} -pn #{sub_md[:pn].nil? ? dir : sub_md[:pn]} -g Azure.Ruby -o lib")
+          else
+            execute_and_stream("#{ar_base_command} -i #{sub_md[:spec_uri]} -pv #{sub_md[:version]} -n #{sub_md[:ns]} -pn #{sub_md[:pn].nil? ? dir : sub_md[:pn]} -g Azure.Ruby -o lib")
+          end
+        end
+      else
+        if md[:version].nil?
+          execute_and_stream("#{ar_base_command} -i #{md[:spec_uri]} -n #{md[:ns]} -pn #{md[:pn].nil? ? dir : md[:pn]} -g Azure.Ruby -o lib")
+        else
+          execute_and_stream("#{ar_base_command} -i #{md[:spec_uri]} -pv #{md[:version]} -n #{md[:ns]} -pn #{md[:pn].nil? ? dir : md[:pn]} -g Azure.Ruby -o lib")
+        end
+
+      end
+
+    end
+  end
+
+  desc 'Bundler related helper'
+  namespace :bundle do
+    desc 'bundle update for each of the Azure Resource Manager projects'
+    task :update do
+      each_gem do
+        execute_and_stream('bundle update')
       end
     end
-
-    component_task :affinity_group
-    component_task :base_management
-    component_task :blob
-    component_task :cloud_service_management
-    component_task :core
-    component_task :database
-    component_task :service
-    component_task :storage_management
-    component_task :table
-    component_task :virtual_machine_image_management
-    component_task :virtual_machine_management
-    component_task :vnet
   end
 
-  Rake::TestTask.new :integration do |t|
-    t.test_files = Dir['test/integration/**/*_test.rb'].reject do |path|
-      path.include?('database')
-    end
-    t.verbose = true
-    t.libs = %w(lib test)
-  end
-
-  task :integration => :require_environment
-
-  namespace :integration do
-    def component_task(component)
-      Rake::TestTask.new component do |t|
-        t.pattern = "test/integration/#{component}/**/*_test.rb"
-        t.verbose = true
-        t.libs = %w(lib test)
-      end
-
-      task component => 'test:require_environment'
-    end
-
-    component_task :affinity_group
-    component_task :blob
-    component_task :cloud_service
-    component_task :database
-    component_task :location
-    component_task :queue
-    component_task :service_bus
-    component_task :storage_management
-    component_task :table
-    component_task :vm
-    component_task :vm_image
-    component_task :vnet
-  end
-
-  Rake::TestTask.new :recorded do |t|
-    t.test_files = Dir['test/integration/**/*_test.rb'].reject do |path|
-      # Reject the test paths those are not yet VCR recorded
-      # Following three are Azure-Storage gem features and need to be removed when we take dependency on azure-storage gem
-      path.include?('/blob/') || path.include?('/queue/') || path.include?('/table/')
-    end
-    t.verbose = true
-    t.libs = %w(lib test)
-  end
-
-  namespace :recorded do
-    def component_task(component)
-      Rake::TestTask.new component do |t|
-        t.pattern = "test/integration/#{component}/**/*_test.rb"
-        t.verbose = true
-        t.libs = %w(lib test)
-      end
-    end
-
-    component_task :affinity_group
-    component_task :cloud_service
-    component_task :database
-    component_task :location
-    component_task :service_bus
-    component_task :storage_management
-    component_task :vm
-    component_task :vm_image
-    component_task :vnet
-  end
-
-  task :cleanup => :require_environment do
-    $:.unshift 'lib'
-    require 'azure'
-
-    Azure.configure do |config|
-      config.access_key     = ENV.fetch('AZURE_STORAGE_ACCESS_KEY')
-      config.account_name   = ENV.fetch('AZURE_STORAGE_ACCOUNT')
-      config.acs_namespace  = ENV.fetch('AZURE_SERVICEBUS_NAMESPACE')
-      config.sb_access_key  = ENV.fetch('AZURE_SERVICEBUS_ACCESS_KEY')
-      config.management_certificate  = ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE')
-      config.management_endpoint  = ENV.fetch('AZURE_MANAGEMENT_ENDPOINT')
-      config.sql_database_management_endpoint = ENV.fetch('AZURE_SQL_DATABASE_MANAGEMENT_ENDPOINT')
-      config.subscription_id  = ENV.fetch('AZURE_SUBSCRIPTION_ID')
+  desc 'run specs for each of the Azure Resource Manager projects'
+  task :spec => :dotenv do
+    each_gem do
+      execute_and_stream('bundle install')
+      execute_and_stream('bundle exec rspec')
     end
   end
 end
 
-task :test => %w(test:unit test:integration)
+task :default => :spec
 
-task :default => :test
+def execute_and_stream(cmd)
+  puts "running: #{cmd}"
+  execute(cmd)
+end
+
+def execute(cmd)
+  Open3.popen2e(cmd) do |_, stdout_err, wait_thr|
+    while line = stdout_err.gets
+      puts line
+    end
+
+    exit_status = wait_thr.value
+    unless exit_status.success?
+      abort "FAILED !!!"
+    end
+  end
+end
+
+def each_child
+  dirs = Dir.entries('./').select { |f| File.directory?(f) and !(f =='.' || f == '..') }
+  dirs.each do |dir|
+    Dir.chdir(dir) do
+      puts "./#{dir}"
+      yield(dir)
+    end
+  end
+end
+
+def each_gem
+  each_child do |dir|
+    if REGEN_METADATA.has_key?(dir.to_sym)
+      yield dir
+    end
+  end
+end
+
+REGEN_METADATA = {
+    autorest_loc: ENV.fetch('AUTOREST_LOC', '../../../autorest/binaries/net45/AutoRest.exe'),
+    azure_arm: {
+        version: version,
+        tag: 'azure_arm'
+    },
+    azure_mgmt_authorization: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-authorization/2015-07-01/swagger/authorization.json',
+        ns: 'Azure::ARM::Authorization',
+        version: version,
+        tag: 'arm_auth'
+    },
+    azure_mgmt_batch: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-batch/2015-12-01/swagger/BatchManagement.json',
+        ns: 'Azure::ARM::Batch',
+        version: version,
+        tag: 'arm_batch'
+    },
+    azure_mgmt_cdn: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-cdn/2016-04-02/swagger/cdn.json',
+        ns: 'Azure::ARM::CDN',
+        version: version,
+        tag: 'arm_cdn'
+    },
+    azure_mgmt_cognitive_services: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-cognitiveservices/2016-02-01-preview/swagger/cognitiveservices.json',
+        ns: 'Azure::ARM::CognitiveServices',
+        version: version,
+        tag: 'arm_cogn'
+    },
+    azure_mgmt_commerce: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-commerce/2015-06-01-preview/swagger/commerce.json',
+        ns: 'Azure::ARM::Commerce',
+        version: version,
+        tag: 'arm_commerce'
+    },
+    azure_mgmt_compute: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/2016-03-30/swagger/compute.json',
+        ns: 'Azure::ARM::Compute',
+        version: version,
+        tag: 'arm_comp'
+    },
+    azure_mgmt_datalake_analytics: [
+        {
+            spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-analytics/catalog/2015-10-01-preview/swagger/catalog.json',
+            ns: 'Azure::ARM::DataLakeAnalytics::Catalog',
+            pn: 'azure_mgmt_datalake_analytics_catalog',
+            tag: 'arm_datalake_analytics'
+        },
+        {
+            spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-analytics/job/2016-03-20-preview/swagger/job.json',
+            ns: 'Azure::ARM::DataLakeAnalytics::Job',
+            pn: 'azure_mgmt_datalake_analytics_job',
+            tag: 'arm_datalake_analytics'
+        },
+        {
+            spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-analytics/account/2015-10-01-preview/swagger/account.json',
+            ns: 'Azure::ARM::DataLakeAnalytics::Account',
+            pn: 'azure_mgmt_datalake_analytics_account',
+            # Only the last generated swagger requires version parameter so that we do not override it on AutoRest regeneration code
+            version: version,
+            tag: 'arm_datalake_analytics'
+        }
+    ],
+    azure_mgmt_datalake_store: [
+        {
+            spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json',
+            ns: 'Azure::ARM::DataLakeStore::FileSystem',
+            pn: 'azure_mgmt_datalake_store_filesystem',
+            tag: 'arm_datalake_store'
+        },
+        {
+            spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-store/account/2015-10-01-preview/swagger/account.json',
+            ns: 'Azure::ARM::DataLakeStore::Account',
+            pn: 'azure_mgmt_datalake_store_account',
+            # Only the last generated swagger requires version parameter so that we do not override it on AutoRest regeneration code
+            version: version,
+            tag: 'arm_datalake_store'
+        }
+    ],
+    azure_mgmt_devtestlabs: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-devtestlabs/2016-05-15/swagger/DTL.json',
+        ns: 'Azure::ARM::DevTestLabs',
+        version: version,
+        tag: 'arm_dtl'
+    },
+    azure_mgmt_dns: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-dns/2016-04-01/swagger/dns.json',
+        ns: 'Azure::ARM::Dns',
+        version: version,
+        tag: 'arm_dns'
+    },
+    azure_mgmt_features: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/features/2015-12-01/swagger/features.json',
+        ns: 'Azure::ARM::Features',
+        version: version,
+        tag: 'arm_feat'
+    },
+    azure_mgmt_graph: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-graphrbac/1.6/swagger/graphrbac.json',
+        ns: 'Azure::ARM::Graph',
+        version: version,
+        tag: 'arm_grap'
+    },
+    # Not generating this gem due to known issue in swagger
+    # azure_mgmt_intune: {
+    #     spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-intune/2015-01-14-preview/swagger/intune.json',
+    #     ns: 'Azure::ARM::Intune',
+    #     version: version,
+    #     tag: 'arm_intune'
+    # },
+    azure_mgmt_key_vault: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-keyvault/2015-06-01/swagger/keyvault.json',
+        ns: 'Azure::ARM::KeyVault',
+        version: version,
+        tag: 'arm_key_vault'
+    },
+    azure_mgmt_locks: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/locks/2015-01-01/swagger/locks.json',
+        ns: 'Azure::ARM::Locks',
+        version: version,
+        tag: 'arm_lock'
+    },
+    azure_mgmt_logic: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-logic/2015-08-01-preview/swagger/logic.json',
+        ns: 'Azure::ARM::Logic',
+        version: version,
+        tag: 'arm_logic'
+    },
+    azure_mgmt_machine_learning: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-machinelearning/2016-05-01-preview/swagger/webservices.json',
+        ns: 'Azure::ARM::MachineLearning',
+        version: version,
+        tag: 'arm_mach'
+    },
+    azure_mgmt_media_services: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-mediaservices/2015-10-01/swagger/media.json',
+        ns: 'Azure::ARM::MediaServices',
+        version: version,
+        tag: 'arm_media'
+    },
+    # Not releasing this gem due to known issue in swagger
+    # azure_mgmt_mobile_engagement: {
+    #     spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json',
+    #     ns: 'Azure::ARM::MobileEngagement',
+    #     version: version,
+    #     tag: 'arm_mobile'
+    # },
+    azure_mgmt_network: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-network/2016-06-01/swagger/network.json',
+        ns: 'Azure::ARM::Network',
+        version: version,
+        tag: 'arm_netw'
+    },
+    azure_mgmt_notification_hubs: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-notificationhubs/2014-09-01/swagger/notificationhubs.json',
+        ns: 'Azure::ARM::NotificationHubs',
+        version: version,
+        tag: 'arm_noti'
+    },
+    azure_mgmt_policy: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/policy/2016-04-01/swagger/policy.json',
+        ns: 'Azure::ARM::Policy',
+        version: version,
+        tag: 'arm_policy'
+    },
+    azure_mgmt_powerbi_embedded: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json',
+        ns: 'Azure::ARM::PowerBiEmbedded',
+        version: version,
+        tag: 'arm_powerbi'
+    },
+    azure_mgmt_redis: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-redis/2016-04-01/swagger/redis.json',
+        ns: 'Azure::ARM::Redis',
+        version: version,
+        tag: 'arm_redi'
+    },
+    azure_mgmt_resources: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/resources/2016-02-01/swagger/resources.json',
+        ns: 'Azure::ARM::Resources',
+        version: version,
+        tag: 'arm_reso'
+    },
+    azure_mgmt_scheduler: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-scheduler/2016-03-01/swagger/scheduler.json',
+        ns: 'Azure::ARM::Scheduler',
+        version: version,
+        tag: 'arm_sche'
+    },
+    azure_mgmt_search: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-search/2015-02-28/swagger/search.json',
+        ns: 'Azure::ARM::Search',
+        version: version,
+        tag: 'arm_sear'
+    },
+    azure_mgmt_server_management: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servermanagement/2015-07-01-preview/servermanagement.json',
+        ns: 'Azure::ARM::ServerManagement',
+        version: version,
+        tag: 'arm_server'
+    },
+    # Not releasing this gem due to known issue in swagger
+    # azure_mgmt_service_bus: {
+    #     spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servicebus/2014-09-01/swagger/servicebus.json',
+    #     ns: 'Azure::ARM::ServiceBus',
+    #     version: version,
+    #     tag: 'arm_servicebus'
+    # },
+    azure_mgmt_sql: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-sql/2015-05-01/swagger/sql.json',
+        ns: 'Azure::ARM::SQL',
+        version: version,
+        tag: 'arm_sql'
+    },
+    azure_mgmt_storage: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-storage/2016-01-01/swagger/storage.json',
+        ns: 'Azure::ARM::Storage',
+        version: version,
+        tag: 'arm_stor'
+    },
+    azure_mgmt_subscriptions: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/subscriptions/2015-11-01/swagger/subscriptions.json',
+        ns: 'Azure::ARM::Subscriptions',
+        version: version,
+        tag: 'arm_subs'
+    },
+    azure_mgmt_traffic_manager: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-trafficmanager/2015-11-01/trafficmanager.json',
+        ns: 'Azure::ARM::TrafficManager',
+        version: version,
+        tag: 'arm_trafficmgr'
+    },
+    azure_mgmt_web: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-web/2015-08-01/swagger/service.json',
+        ns: 'Azure::ARM::Web',
+        version: version,
+        tag: 'arm_web'
+    },
+}

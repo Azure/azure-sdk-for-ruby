@@ -1,0 +1,381 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "language": "Ruby",
+    "autorest": "latest"
+  },
+  "projects": {
+    "azure_mgmt_authorization": {
+      "swagger": "arm-authorization/2015-07-01/swagger/authorization.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Authorization",
+        "PackageName": "azure_mgmt_authorization",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_authorization/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_authorization.rb"
+      ]
+    },
+    "azure_mgmt_batch": {
+      "swagger": "arm-batch/2015-12-01/swagger/BatchManagement.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Batch",
+        "PackageName": "azure_mgmt_batch",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_batch/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_batch.rb"
+      ]
+    },
+    "azure_mgmt_cdn": {
+      "swagger": "arm-cdn/2016-04-02/swagger/cdn.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::CDN",
+        "PackageName": "azure_mgmt_cdn",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_cdn/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_cdn.rb"
+      ]
+    },
+    "azure_mgmt_cognitive_services": {
+      "swagger": "arm-cognitiveservices/2016-02-01-preview/swagger/cognitiveservices.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::CognitiveServices",
+        "PackageName": "azure_mgmt_cognitive_services",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_cognitive_services/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_cognitive_services.rb"
+      ]
+    },
+    "azure_mgmt_commerce": {
+      "swagger": "arm-commerce/2015-06-01-preview/swagger/commerce.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Commerce",
+        "PackageName": "azure_mgmt_commerce",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_commerce/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_commerce.rb"
+      ]
+    },
+    "azure_mgmt_compute": {
+      "swagger": "arm-compute/2016-03-30/swagger/compute.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Compute",
+        "PackageName": "azure_mgmt_compute",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_compute/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_compute.rb"
+      ]
+    },
+    "azure_mgmt_devtestlabs": {
+      "swagger": "arm-devtestlabs/2016-05-15/swagger/DTL.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::DevTestLabs",
+        "PackageName": "azure_mgmt_devtestlabs",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_devtestlabs/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_devtestlabs.rb"
+      ]
+    },
+    "azure_mgmt_dns": {
+      "swagger": "arm-dns/2016-04-01/swagger/dns.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Dns",
+        "PackageName": "azure_mgmt_dns",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_dns/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_dns.rb"
+      ]
+    },
+    "azure_mgmt_features": {
+      "swagger": "arm-resources/features/2015-12-01/swagger/features.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Features",
+        "PackageName": "azure_mgmt_features",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_features/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_features.rb"
+      ]
+    },
+    "azure_mgmt_graph": {
+      "swagger": "arm-graphrbac/1.6/swagger/graphrbac.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Graph",
+        "PackageName": "azure_mgmt_graph",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_graph/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_graph.rb"
+      ]
+    },
+    "azure_mgmt_key_vault": {
+      "swagger": "arm-keyvault/2015-06-01/swagger/keyvault.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::KeyVault",
+        "PackageName": "azure_mgmt_key_vault",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_key_vault/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_key_vault.rb"
+      ]
+    },
+    "azure_mgmt_locks": {
+      "swagger": "arm-resources/locks/2015-01-01/swagger/locks.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Locks",
+        "PackageName": "azure_mgmt_locks",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_locks/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_locks.rb"
+      ]
+    },
+    "azure_mgmt_logic": {
+      "swagger": "arm-logic/2015-08-01-preview/swagger/logic.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Logic",
+        "PackageName": "azure_mgmt_logic",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_logic/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_logic.rb"
+      ]
+    },
+    "azure_mgmt_machine_learning": {
+      "swagger": "arm-machinelearning/2016-05-01-preview/swagger/webservices.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::MachineLearning",
+        "PackageName": "azure_mgmt_machine_learning",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_machine_learning/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_machine_learning.rb"
+      ]
+    },
+    "azure_mgmt_media_services": {
+      "swagger": "arm-mediaservices/2015-10-01/swagger/media.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::MediaServices",
+        "PackageName": "azure_mgmt_media_services",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_media_services/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_media_services.rb"
+      ]
+    },
+    "azure_mgmt_mobile_engagement": {
+      "swagger": "arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::MobileEngagement",
+        "PackageName": "azure_mgmt_mobile_engagement",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_mobile_engagement/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_mobile_engagement.rb"
+      ]
+    },
+    "azure_mgmt_network": {
+      "swagger": "arm-network/2016-06-01/swagger/network.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Network",
+        "PackageName": "azure_mgmt_network",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_network/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_network.rb"
+      ]
+    },
+    "azure_mgmt_notification_hubs": {
+      "swagger": "arm-notificationhubs/2014-09-01/swagger/notificationhubs.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::NotificationHubs",
+        "PackageName": "azure_mgmt_notification_hubs",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_notification_hubs/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_notification_hubs.rb"
+      ]
+    },
+    "azure_mgmt_policy": {
+      "swagger": "arm-resources/policy/2016-04-01/swagger/policy.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Policy",
+        "PackageName": "azure_mgmt_policy",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_policy/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_policy.rb"
+      ]
+    },
+    "azure_mgmt_powerbi_embedded": {
+      "swagger": "arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::PowerBiEmbedded",
+        "PackageName": "azure_mgmt_powerbi_embedded",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_powerbi_embedded/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_powerbi_embedded.rb"
+      ]
+    },
+    "azure_mgmt_redis": {
+      "swagger": "arm-redis/2016-04-01/swagger/redis.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Redis",
+        "PackageName": "azure_mgmt_redis",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_redis/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_redis.rb"
+      ]
+    },
+    "azure_mgmt_resources": {
+      "swagger": "arm-resources/resources/2016-02-01/swagger/resources.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Resources",
+        "PackageName": "azure_mgmt_resources",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_resources/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_resources.rb"
+      ]
+    },
+    "azure_mgmt_scheduler": {
+      "swagger": "arm-scheduler/2016-03-01/swagger/scheduler.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Scheduler",
+        "PackageName": "azure_mgmt_scheduler",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_scheduler/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_scheduler.rb"
+      ]
+    },
+    "azure_mgmt_search": {
+      "swagger": "arm-search/2015-02-28/swagger/search.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Search",
+        "PackageName": "azure_mgmt_search",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_search/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_search.rb"
+      ]
+    },
+    "azure_mgmt_server_management": {
+      "swagger": "arm-servermanagement/2015-07-01-preview/servermanagement.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::ServerManagement",
+        "PackageName": "azure_mgmt_server_management",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_server_management/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_server_management.rb"
+      ]
+    },
+    "azure_mgmt_service_bus": {
+      "swagger": "arm-servicebus/2014-09-01/swagger/servicebus.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::ServiceBus",
+        "PackageName": "azure_mgmt_service_bus",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_service_bus/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_servicebus.rb"
+      ]
+    },
+    "azure_mgmt_sql": {
+      "swagger": "arm-sql/2015-05-01/swagger/sql.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::SQL",
+        "PackageName": "azure_mgmt_sql",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_sql/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_sql.rb"
+      ]
+    },
+    "azure_mgmt_storage": {
+      "swagger": "arm-storage/2016-01-01/swagger/storage.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Storage",
+        "PackageName": "azure_mgmt_storage",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_storage/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_storage.rb"
+      ]
+    },
+    "azure_mgmt_subscriptions": {
+      "swagger": "arm-resources/subscriptions/2015-11-01/swagger/subscriptions.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Subscriptions",
+        "PackageName": "azure_mgmt_subscriptions",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_subscriptions/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_subscriptions.rb"
+      ]
+    },
+    "azure_mgmt_traffic_manager": {
+      "swagger": "arm-trafficmanager/2015-11-01/trafficmanager.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::TrafficManager",
+        "PackageName": "azure_mgmt_traffic_manager",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_traffic_manager/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_traffic_manager.rb"
+      ]
+    },
+    "azure_mgmt_web": {
+      "swagger": "arm-web/2015-08-01/swagger/service.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Web",
+        "PackageName": "azure_mgmt_web",
+        "PackageVersion": "0.4.0"
+      },
+      "output_dir": "azure_mgmt_web/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_web.rb"
+      ]
+    }
+  }
+}

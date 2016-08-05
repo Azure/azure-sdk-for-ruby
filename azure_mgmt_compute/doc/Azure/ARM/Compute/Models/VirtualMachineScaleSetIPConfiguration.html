@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Azure::ARM::Compute::Models::VirtualMachineScaleSetIPConfiguration
+  
+    &mdash; Documentation by YARD 0.9.2
+  
+</title>
+
+  <link rel="stylesheet" href="../../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Azure::ARM::Compute::Models::VirtualMachineScaleSetIPConfiguration";
+  relpath = '../../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../../class_list.html"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../../_index.html">Index (V)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../../Azure.html" title="Azure (module)">Azure</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../ARM.html" title="Azure::ARM (module)">ARM</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Compute.html" title="Azure::ARM::Compute (module)">Compute</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Models.html" title="Azure::ARM::Compute::Models (module)">Models</a></span></span>
+     &raquo; 
+    <span class="title">VirtualMachineScaleSetIPConfiguration</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <iframe id="search_frame" src="../../../../class_list.html"></iframe>
+
+      <div id="content"><h1>Class: Azure::ARM::Compute::Models::VirtualMachineScaleSetIPConfiguration
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">MsRestAzure::SubResource</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">MsRestAzure::SubResource</li>
+          
+            <li class="next">Azure::ARM::Compute::Models::VirtualMachineScaleSetIPConfiguration</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd>MsRestAzure</dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/generated/azure_mgmt_compute/models/virtual_machine_scale_set_ipconfiguration.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Describes a virtual machine scale set network profile&#39;s IP
+configuration.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#application_gateway_backend_address_pools-instance_method" title="#application_gateway_backend_address_pools (instance method)">#<strong>application_gateway_backend_address_pools</strong>  &#x21d2; Array&lt;SubResource&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>pools.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#load_balancer_backend_address_pools-instance_method" title="#load_balancer_backend_address_pools (instance method)">#<strong>load_balancer_backend_address_pools</strong>  &#x21d2; Array&lt;SubResource&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The load balancer backend address pools.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#load_balancer_inbound_nat_pools-instance_method" title="#load_balancer_inbound_nat_pools (instance method)">#<strong>load_balancer_inbound_nat_pools</strong>  &#x21d2; Array&lt;SubResource&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The load balancer inbound nat pools.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">#<strong>name</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The IP configuration name.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subnet-instance_method" title="#subnet (instance method)">#<strong>subnet</strong>  &#x21d2; ApiEntityReference </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The subnet.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mapper-class_method" title="mapper (class method)">.<strong>mapper</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Mapper for VirtualMachineScaleSetIPConfiguration class as Ruby Hash.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="application_gateway_backend_address_pools=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="application_gateway_backend_address_pools-instance_method">
+  
+    #<strong>application_gateway_backend_address_pools</strong>  &#x21d2; <tt>Array&lt;SubResource&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>pools.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;SubResource&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the application gateway backend address</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/generated/azure_mgmt_compute/models/virtual_machine_scale_set_ipconfiguration.rb', line 23</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_application_gateway_backend_address_pools'>application_gateway_backend_address_pools</span>
+  <span class='ivar'>@application_gateway_backend_address_pools</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="load_balancer_backend_address_pools=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="load_balancer_backend_address_pools-instance_method">
+  
+    #<strong>load_balancer_backend_address_pools</strong>  &#x21d2; <tt>Array&lt;SubResource&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the load balancer backend address pools.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;SubResource&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the load balancer backend address pools.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/generated/azure_mgmt_compute/models/virtual_machine_scale_set_ipconfiguration.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_load_balancer_backend_address_pools'>load_balancer_backend_address_pools</span>
+  <span class='ivar'>@load_balancer_backend_address_pools</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="load_balancer_inbound_nat_pools=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="load_balancer_inbound_nat_pools-instance_method">
+  
+    #<strong>load_balancer_inbound_nat_pools</strong>  &#x21d2; <tt>Array&lt;SubResource&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the load balancer inbound nat pools.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;SubResource&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the load balancer inbound nat pools.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/generated/azure_mgmt_compute/models/virtual_machine_scale_set_ipconfiguration.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_load_balancer_inbound_nat_pools'>load_balancer_inbound_nat_pools</span>
+  <span class='ivar'>@load_balancer_inbound_nat_pools</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="name=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="name-instance_method">
+  
+    #<strong>name</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the IP configuration name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the IP configuration name.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/generated/azure_mgmt_compute/models/virtual_machine_scale_set_ipconfiguration.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='ivar'>@name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="subnet=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="subnet-instance_method">
+  
+    #<strong>subnet</strong>  &#x21d2; <tt><span class='object_link'><a href="ApiEntityReference.html" title="Azure::ARM::Compute::Models::ApiEntityReference (class)">ApiEntityReference</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the subnet.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ApiEntityReference.html" title="Azure::ARM::Compute::Models::ApiEntityReference (class)">ApiEntityReference</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the subnet.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/generated/azure_mgmt_compute/models/virtual_machine_scale_set_ipconfiguration.rb', line 19</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_subnet'>subnet</span>
+  <span class='ivar'>@subnet</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="mapper-class_method">
+  
+    .<strong>mapper</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Mapper for VirtualMachineScaleSetIPConfiguration class as Ruby Hash. This
+will be used for serialization/deserialization.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/generated/azure_mgmt_compute/models/virtual_machine_scale_set_ipconfiguration.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mapper'>mapper</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span>
+    <span class='label'>required:</span> <span class='kw'>false</span><span class='comma'>,</span>
+    <span class='label'>serialized_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>VirtualMachineScaleSetIPConfiguration</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+    <span class='label'>type:</span> <span class='lbrace'>{</span>
+      <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Composite</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>class_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>VirtualMachineScaleSetIPConfiguration</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='label'>model_properties:</span> <span class='lbrace'>{</span>
+        <span class='label'>id:</span> <span class='lbrace'>{</span>
+          <span class='label'>required:</span> <span class='kw'>false</span><span class='comma'>,</span>
+          <span class='label'>serialized_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+          <span class='label'>type:</span> <span class='lbrace'>{</span>
+            <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>String</span><span class='tstring_end'>&#39;</span></span>
+          <span class='rbrace'>}</span>
+        <span class='rbrace'>}</span><span class='comma'>,</span>
+        <span class='label'>name:</span> <span class='lbrace'>{</span>
+          <span class='label'>required:</span> <span class='kw'>true</span><span class='comma'>,</span>
+          <span class='label'>serialized_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+          <span class='label'>type:</span> <span class='lbrace'>{</span>
+            <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>String</span><span class='tstring_end'>&#39;</span></span>
+          <span class='rbrace'>}</span>
+        <span class='rbrace'>}</span><span class='comma'>,</span>
+        <span class='label'>subnet:</span> <span class='lbrace'>{</span>
+          <span class='label'>required:</span> <span class='kw'>true</span><span class='comma'>,</span>
+          <span class='label'>serialized_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>properties.subnet</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+          <span class='label'>type:</span> <span class='lbrace'>{</span>
+            <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Composite</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+            <span class='label'>class_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ApiEntityReference</span><span class='tstring_end'>&#39;</span></span>
+          <span class='rbrace'>}</span>
+        <span class='rbrace'>}</span><span class='comma'>,</span>
+        <span class='label'>application_gateway_backend_address_pools:</span> <span class='lbrace'>{</span>
+          <span class='label'>required:</span> <span class='kw'>false</span><span class='comma'>,</span>
+          <span class='label'>serialized_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>properties.applicationGatewayBackendAddressPools</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+          <span class='label'>type:</span> <span class='lbrace'>{</span>
+            <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Sequence</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+            <span class='label'>element:</span> <span class='lbrace'>{</span>
+                <span class='label'>required:</span> <span class='kw'>false</span><span class='comma'>,</span>
+                <span class='label'>serialized_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SubResourceElementType</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                <span class='label'>type:</span> <span class='lbrace'>{</span>
+                  <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Composite</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                  <span class='label'>class_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SubResource</span><span class='tstring_end'>&#39;</span></span>
+                <span class='rbrace'>}</span>
+            <span class='rbrace'>}</span>
+          <span class='rbrace'>}</span>
+        <span class='rbrace'>}</span><span class='comma'>,</span>
+        <span class='label'>load_balancer_backend_address_pools:</span> <span class='lbrace'>{</span>
+          <span class='label'>required:</span> <span class='kw'>false</span><span class='comma'>,</span>
+          <span class='label'>serialized_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>properties.loadBalancerBackendAddressPools</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+          <span class='label'>type:</span> <span class='lbrace'>{</span>
+            <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Sequence</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+            <span class='label'>element:</span> <span class='lbrace'>{</span>
+                <span class='label'>required:</span> <span class='kw'>false</span><span class='comma'>,</span>
+                <span class='label'>serialized_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SubResourceElementType</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                <span class='label'>type:</span> <span class='lbrace'>{</span>
+                  <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Composite</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                  <span class='label'>class_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SubResource</span><span class='tstring_end'>&#39;</span></span>
+                <span class='rbrace'>}</span>
+            <span class='rbrace'>}</span>
+          <span class='rbrace'>}</span>
+        <span class='rbrace'>}</span><span class='comma'>,</span>
+        <span class='label'>load_balancer_inbound_nat_pools:</span> <span class='lbrace'>{</span>
+          <span class='label'>required:</span> <span class='kw'>false</span><span class='comma'>,</span>
+          <span class='label'>serialized_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>properties.loadBalancerInboundNatPools</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+          <span class='label'>type:</span> <span class='lbrace'>{</span>
+            <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Sequence</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+            <span class='label'>element:</span> <span class='lbrace'>{</span>
+                <span class='label'>required:</span> <span class='kw'>false</span><span class='comma'>,</span>
+                <span class='label'>serialized_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SubResourceElementType</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                <span class='label'>type:</span> <span class='lbrace'>{</span>
+                  <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Composite</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                  <span class='label'>class_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SubResource</span><span class='tstring_end'>&#39;</span></span>
+                <span class='rbrace'>}</span>
+            <span class='rbrace'>}</span>
+          <span class='rbrace'>}</span>
+        <span class='rbrace'>}</span>
+      <span class='rbrace'>}</span>
+    <span class='rbrace'>}</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Thu Jul 21 16:09:42 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.2 (ruby-2.3.0).
+</div>
+
+    </div>
+  </body>
+</html>

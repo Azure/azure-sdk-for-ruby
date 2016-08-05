@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://login.windows.net/<AZURE_TENANT_ID>/oauth2/token
+    body:
+      encoding: UTF-8
+      string: resource=https%3A%2F%2Fmanagement.core.windows.net%2F&client_id=<AZURE_CLIENT_ID>&client_secret=<AZURE_CLIENT_SECRET>&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      content-type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/json; charset=utf-8
+      expires:
+      - "-1"
+      server:
+      - Microsoft-IIS/8.5
+      x-ms-request-id:
+      - 34a98310-20d8-4dec-a9a0-f0d95e1e8fe8
+      client-request-id:
+      - f38f2fe0-6f02-46f2-a2a4-92d383b5241f
+      x-ms-gateway-service-instanceid:
+      - ESTSFE_IN_299
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      p3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      set-cookie:
+      - flight-uxoptin=true; path=/; secure; HttpOnly, esctx=AAABAAAAiL9Kn2Z27UubvWFPbm0gLVzigTyrf1MfoYgPgEQjHWvRDIv97NZ9uenhdpQUelEJMergdlPQp0QeKGhv0IrjQTFwImnPoGoQFWqKTHAayOgc9fniHPxolU-V61owaQr65aZUYN94MzdO4RD5T63_XkXXfBlXDx7LQPNxjXdiTR3Zt-Ht0U27lcFSl_NBGIREIAA;
+        domain=.login.windows.net; path=/; secure; HttpOnly, x-ms-gateway-slice=productiona;
+        path=/; secure; HttpOnly, stsservicecookie=ests; path=/; secure; HttpOnly
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Wed, 18 May 2016 21:02:03 GMT
+      connection:
+      - close
+      content-length:
+      - '1234'
+    body:
+      encoding: UTF-8
+      string: '{"token_type":"Bearer","expires_in":"3600","expires_on":"1463608923","not_before":"1463605023","resource":"https://management.core.windows.net/","access_token":"<ACCESS_TOKEN>"}'
+    http_version: 
+  recorded_at: Wed, 18 May 2016 21:02:07 GMT
+- request:
+    method: get
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/providers/Microsoft.Compute/locations/westus/usages?api-version=2016-03-30
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.2.1/
+      x-ms-client-request-id:
+      - 8cd1fb44-da1c-486e-90b2-3db2858866a0
+      accept-language:
+      - en-US
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      pragma:
+      - no-cache
+      content-type:
+      - application/json; charset=utf-8
+      expires:
+      - "-1"
+      vary:
+      - Accept-Encoding
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-ms-served-by:
+      - 50c963eb-7d77-4c4e-ab86-9dc675b00637_131075311778962152
+      x-ms-request-id:
+      - ff71400e-6450-4562-8839-5e1bfc50f386
+      server:
+      - Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0
+      x-ms-ratelimit-remaining-subscription-reads:
+      - '14999'
+      x-ms-correlation-request-id:
+      - b27c9cfb-bdfb-4605-aeef-aea480b9481a
+      x-ms-routing-request-id:
+      - WESTUS:20160518T210203Z:b27c9cfb-bdfb-4605-aeef-aea480b9481a
+      date:
+      - Wed, 18 May 2016 21:02:03 GMT
+      connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: "{\r\n  \"value\": [\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\":
+        0,\r\n      \"limit\": 2000,\r\n      \"name\": {\r\n        \"value\": \"availabilitySets\",\r\n
+        \       \"localizedValue\": \"Availability Sets\"\r\n      }\r\n    },\r\n
+        \   {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\":
+        100,\r\n      \"name\": {\r\n        \"value\": \"cores\",\r\n        \"localizedValue\":
+        \"Total Regional Cores\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\":
+        \"Count\",\r\n      \"currentValue\": 0,\r\n      \"limit\": 10000,\r\n      \"name\":
+        {\r\n        \"value\": \"virtualMachines\",\r\n        \"localizedValue\":
+        \"Virtual Machines\"\r\n      }\r\n    },\r\n    {\r\n      \"unit\": \"Count\",\r\n
+        \     \"currentValue\": 0,\r\n      \"limit\": 50,\r\n      \"name\": {\r\n
+        \       \"value\": \"virtualMachineScaleSets\",\r\n        \"localizedValue\":
+        \"Virtual Machine Scale Sets\"\r\n      }\r\n    }\r\n  ]\r\n}"
+    http_version: 
+  recorded_at: Wed, 18 May 2016 21:02:07 GMT
+recorded_with: VCR 3.0.1
