@@ -33,6 +33,10 @@ describe Azure::Blob::Auth::SharedAccessSignature do
 
   subject { Azure::Blob::Auth::SharedAccessSignature.new(access_account_name, access_key_base64) }
 
+  it 'decodes the base64 encoded access_key' do
+    subject.access_key.must_equal 'access-key'
+  end
+
   describe '#signable_string' do
 
     it 'constructs a string in the required format' do
