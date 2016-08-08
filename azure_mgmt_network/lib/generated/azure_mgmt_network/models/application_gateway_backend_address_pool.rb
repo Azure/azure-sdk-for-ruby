@@ -12,20 +12,19 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [Array<NetworkInterfaceIPConfiguration>] Gets collection of
+      # @return [Array<NetworkInterfaceIPConfiguration>] Collection of
       # references to IPs defined in NICs
       attr_accessor :backend_ipconfigurations
 
-      # @return [Array<ApplicationGatewayBackendAddress>] Gets or sets the
-      # backend addresses
+      # @return [Array<ApplicationGatewayBackendAddress>] Backend addresses
       attr_accessor :backend_addresses
 
-      # @return [String] Gets provisioning state of the backend address pool
+      # @return [String] Provisioning state of the backend address pool
       # resource Updating/Deleting/Failed
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] Resource that is unique within a resource group. This
+      # name can be used to access the resource
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the

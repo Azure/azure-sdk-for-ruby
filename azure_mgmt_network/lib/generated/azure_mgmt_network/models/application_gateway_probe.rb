@@ -12,31 +12,31 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [ApplicationGatewayProtocol] Gets or sets the protocol.
-      # Possible values include: 'Http', 'Https'
+      # @return [ApplicationGatewayProtocol] Protocol. Possible values
+      # include: 'Http', 'Https'
       attr_accessor :protocol
 
-      # @return [String] Gets or sets the host to send probe to
+      # @return [String] Host to send probe to
       attr_accessor :host
 
-      # @return [String] Gets or sets the relative path of probe
+      # @return [String] Relative path of probe
       attr_accessor :path
 
-      # @return [Integer] Gets or sets probing interval in seconds
+      # @return [Integer] Probing interval in seconds
       attr_accessor :interval
 
-      # @return [Integer] Gets or sets probing timeout in seconds
+      # @return [Integer] Probing timeout in seconds
       attr_accessor :timeout
 
-      # @return [Integer] Gets or sets probing unhealthy threshold
+      # @return [Integer] Probing unhealthy threshold
       attr_accessor :unhealthy_threshold
 
-      # @return [String] Gets or sets Provisioning state of the backend http
-      # settings resource Updating/Deleting/Failed
+      # @return [String] Provisioning state of the backend http settings
+      # resource Updating/Deleting/Failed
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] Name of the resource that is unique within a resource
+      # group. This name can be used to access the resource
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the

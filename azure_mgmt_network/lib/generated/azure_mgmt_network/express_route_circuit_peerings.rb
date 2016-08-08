@@ -22,7 +22,7 @@ module Azure::ARM::Network
       @client = client
     end
 
-    # @return reference to the NetworkManagementClient
+    # @return [NetworkManagementClient] reference to the NetworkManagementClient
     attr_reader :client
 
     #

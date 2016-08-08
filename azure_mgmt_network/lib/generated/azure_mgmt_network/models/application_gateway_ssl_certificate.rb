@@ -12,21 +12,21 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the certificate data
+      # @return [String] SSL Certificate data
       attr_accessor :data
 
-      # @return [String] Gets or sets the certificate password
+      # @return [String] SSL Certificate password
       attr_accessor :password
 
-      # @return [String] Gets or sets the certificate public data
+      # @return [String] SSL Certificate public data
       attr_accessor :public_cert_data
 
-      # @return [String] Gets or sets Provisioning state of the ssl
-      # certificate resource Updating/Deleting/Failed
+      # @return [String] Provisioning state of the ssl certificate resource
+      # Updating/Deleting/Failed
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] Name of the resource that is unique within a resource
+      # group. This name can be used to access the resource
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the

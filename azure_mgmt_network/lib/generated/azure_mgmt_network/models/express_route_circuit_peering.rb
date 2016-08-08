@@ -56,6 +56,13 @@ module Azure::ARM::Network
       # Updating/Deleting/Failed
       attr_accessor :provisioning_state
 
+      # @return [String] Gets or sets the GatewayManager Etag
+      attr_accessor :gateway_manager_etag
+
+      # @return [String] Gets whether the provider or the customer last
+      # modified the peering
+      attr_accessor :last_modified_by
+
       # @return [String] Gets name of the resource that is unique within a
       # resource group. This name can be used to access the resource
       attr_accessor :name
@@ -173,6 +180,20 @@ module Azure::ARM::Network
               provisioning_state: {
                 required: false,
                 serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              gateway_manager_etag: {
+                required: false,
+                serialized_name: 'properties.gatewayManagerEtag',
+                type: {
+                  name: 'String'
+                }
+              },
+              last_modified_by: {
+                required: false,
+                serialized_name: 'properties.lastModifiedBy',
                 type: {
                   name: 'String'
                 }

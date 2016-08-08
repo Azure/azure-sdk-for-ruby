@@ -22,7 +22,7 @@ module Azure::ARM::Network
       @client = client
     end
 
-    # @return reference to the NetworkManagementClient
+    # @return [NetworkManagementClient] reference to the NetworkManagementClient
     attr_reader :client
 
     #
@@ -417,7 +417,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -438,7 +438,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -452,7 +452,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -465,7 +465,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -527,7 +527,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -549,7 +549,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -564,7 +564,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -578,7 +578,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -642,7 +642,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -658,7 +658,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -673,7 +673,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -735,7 +735,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -751,7 +751,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -766,7 +766,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
     # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful

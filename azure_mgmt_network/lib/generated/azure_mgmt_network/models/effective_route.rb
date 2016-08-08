@@ -8,13 +8,13 @@ module Azure::ARM::Network
     #
     # Effective Route
     #
-    class EffectiveRoute < MsRestAzure::SubResource
+    class EffectiveRoute
 
       include MsRestAzure
 
-      # @return [SubResource] Gets the Id of the effective route. This is
-      # optional, only user defined routes have the name.
-      attr_accessor :user_defined_route
+      # @return [String] Gets the name of the user defined route. This is
+      # optional.
+      attr_accessor :name
 
       # @return [EffectiveRouteSource] Gets who created the route. Possible
       # values include: 'Unknown', 'User', 'VirtualNetworkGateway', 'Default'
@@ -51,19 +51,11 @@ module Azure::ARM::Network
             name: 'Composite',
             class_name: 'EffectiveRoute',
             model_properties: {
-              id: {
+              name: {
                 required: false,
-                serialized_name: 'id',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
-                }
-              },
-              user_defined_route: {
-                required: false,
-                serialized_name: 'userDefinedRoute',
-                type: {
-                  name: 'Composite',
-                  class_name: 'SubResource'
                 }
               },
               source: {

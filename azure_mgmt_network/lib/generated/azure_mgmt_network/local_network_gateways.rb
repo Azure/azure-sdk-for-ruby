@@ -22,7 +22,7 @@ module Azure::ARM::Network
       @client = client
     end
 
-    # @return reference to the NetworkManagementClient
+    # @return [NetworkManagementClient] reference to the NetworkManagementClient
     attr_reader :client
 
     #
@@ -436,7 +436,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -458,7 +458,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -473,7 +473,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -487,7 +487,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -551,7 +551,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -567,7 +567,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -582,7 +582,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways opertion retrieves all the local network
+    # The List LocalNetworkGateways operation retrieves all the local network
     # gateways stored.
     #
     # @param next_page_link [String] The NextLink from the previous successful
