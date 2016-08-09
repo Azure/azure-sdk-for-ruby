@@ -7,7 +7,7 @@ rvm:
 - 2.3.0
 script:
 - bundle install
-- if [ "$INTEG_RECORDED" == "true" ] ; then rake arm:spec ; fi
+- if [ "$INTEG_RECORDED" == "true" ] ; then bundle exec rake arm:spec ; fi
 deploy:
   provider: script
   script: ./scripts/release.sh
