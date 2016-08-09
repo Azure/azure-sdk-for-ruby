@@ -12,32 +12,29 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [ApplicationGatewayRequestRoutingRuleType] Gets or sets the
-      # rule type. Possible values include: 'Basic', 'PathBasedRouting'
+      # @return [ApplicationGatewayRequestRoutingRuleType] Rule type. Possible
+      # values include: 'Basic', 'PathBasedRouting'
       attr_accessor :rule_type
 
-      # @return [SubResource] Gets or sets backend address pool resource of
-      # application gateway
+      # @return [SubResource] Backend address pool resource of application
+      # gateway
       attr_accessor :backend_address_pool
 
-      # @return [SubResource] Gets or sets frontend port resource of
-      # application gateway
+      # @return [SubResource] Frontend port resource of application gateway
       attr_accessor :backend_http_settings
 
-      # @return [SubResource] Gets or sets http listener resource of
-      # application gateway
+      # @return [SubResource] Http listener resource of application gateway
       attr_accessor :http_listener
 
-      # @return [SubResource] Gets or sets url path map resource of
-      # application gateway
+      # @return [SubResource] Url path map resource of application gateway
       attr_accessor :url_path_map
 
-      # @return [String] Gets provisioning state of the request routing rule
+      # @return [String] Provisioning state of the request routing rule
       # resource Updating/Deleting/Failed
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] Name of the resource that is unique within a resource
+      # group. This name can be used to access the resource
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the

@@ -12,10 +12,10 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the dns name
+      # @return [String] Dns name
       attr_accessor :fqdn
 
-      # @return [String] Gets or sets the ip address
+      # @return [String] Ip address
       attr_accessor :ip_address
 
 

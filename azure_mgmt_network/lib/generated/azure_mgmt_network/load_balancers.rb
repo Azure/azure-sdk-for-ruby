@@ -22,7 +22,7 @@ module Azure::ARM::Network
       @client = client
     end
 
-    # @return reference to the NetworkManagementClient
+    # @return [NetworkManagementClient] reference to the NetworkManagementClient
     attr_reader :client
 
     #
@@ -413,7 +413,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the loadbalancers in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -434,7 +434,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the loadbalancers in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -448,7 +448,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the loadbalancers in a
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -461,7 +461,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the loadbalancers in a
     # subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -523,8 +523,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -545,8 +545,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -560,8 +560,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -574,8 +574,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -638,7 +638,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the loadbalancers in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -654,7 +654,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the loadbalancers in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -669,7 +669,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a
+    # The List loadBalancer operation retrieves all the loadbalancers in a
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -731,8 +731,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -747,8 +747,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -762,8 +762,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer opertion retrieves all the loadbalancers in a resource
-    # group.
+    # The List loadBalancer operation retrieves all the loadbalancers in a
+    # resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.

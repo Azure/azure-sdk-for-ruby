@@ -22,7 +22,7 @@ module Azure::ARM::Network
       @client = client
     end
 
-    # @return reference to the NetworkManagementClient
+    # @return [NetworkManagementClient] reference to the NetworkManagementClient
     attr_reader :client
 
     #
@@ -426,7 +426,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -448,7 +448,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -464,7 +464,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -479,7 +479,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -545,7 +545,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -561,7 +561,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -576,7 +576,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule opertion retrieves all the routes in a route
+    # The List network security rule operation retrieves all the routes in a route
     # table.
     #
     # @param next_page_link [String] The NextLink from the previous successful

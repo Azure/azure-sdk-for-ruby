@@ -12,65 +12,72 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [ApplicationGatewaySku] Gets or sets sku of application
-      # gateway resource
+      # @return [ApplicationGatewaySku] Sku of application gateway resource
       attr_accessor :sku
 
-      # @return [ApplicationGatewayOperationalState] Gets operational state of
+      # @return [ApplicationGatewaySslPolicy] SSL policy of application
+      # gateway resource
+      attr_accessor :ssl_policy
+
+      # @return [ApplicationGatewayOperationalState] Operational state of
       # application gateway resource. Possible values include: 'Stopped',
       # 'Starting', 'Running', 'Stopping'
       attr_accessor :operational_state
 
-      # @return [Array<ApplicationGatewayIPConfiguration>] Gets or sets
-      # subnets of application gateway resource
+      # @return [Array<ApplicationGatewayIPConfiguration>] Subnets of
+      # application gateway resource
       attr_accessor :gateway_ipconfigurations
 
-      # @return [Array<ApplicationGatewaySslCertificate>] Gets or sets ssl
-      # certificates of application gateway resource
+      # @return [Array<ApplicationGatewayAuthenticationCertificate>]
+      # Authentication certificates of application gateway resource
+      attr_accessor :authentication_certificates
+
+      # @return [Array<ApplicationGatewaySslCertificate>] SSL certificates of
+      # application gateway resource
       attr_accessor :ssl_certificates
 
-      # @return [Array<ApplicationGatewayFrontendIPConfiguration>] Gets or
-      # sets frontend IP addresses of application gateway resource
+      # @return [Array<ApplicationGatewayFrontendIPConfiguration>] Frontend IP
+      # addresses of application gateway resource
       attr_accessor :frontend_ipconfigurations
 
-      # @return [Array<ApplicationGatewayFrontendPort>] Gets or sets frontend
-      # ports of application gateway resource
+      # @return [Array<ApplicationGatewayFrontendPort>] Frontend ports of
+      # application gateway resource
       attr_accessor :frontend_ports
 
-      # @return [Array<ApplicationGatewayProbe>] Gets or sets probes of
-      # application gateway resource
+      # @return [Array<ApplicationGatewayProbe>] Probes of application gateway
+      # resource
       attr_accessor :probes
 
-      # @return [Array<ApplicationGatewayBackendAddressPool>] Gets or sets
-      # backend address pool of application gateway resource
+      # @return [Array<ApplicationGatewayBackendAddressPool>] Backend address
+      # pool of application gateway resource
       attr_accessor :backend_address_pools
 
-      # @return [Array<ApplicationGatewayBackendHttpSettings>] Gets or sets
-      # backend http settings of application gateway resource
+      # @return [Array<ApplicationGatewayBackendHttpSettings>] Backend http
+      # settings of application gateway resource
       attr_accessor :backend_http_settings_collection
 
-      # @return [Array<ApplicationGatewayHttpListener>] Gets or sets HTTP
-      # listeners of application gateway resource
+      # @return [Array<ApplicationGatewayHttpListener>] HTTP listeners of
+      # application gateway resource
       attr_accessor :http_listeners
 
-      # @return [Array<ApplicationGatewayUrlPathMap>] Gets or sets URL path
-      # map of application gateway resource
+      # @return [Array<ApplicationGatewayUrlPathMap>] URL path map of
+      # application gateway resource
       attr_accessor :url_path_maps
 
-      # @return [Array<ApplicationGatewayRequestRoutingRule>] Gets or sets
-      # request routing rules of application gateway resource
+      # @return [Array<ApplicationGatewayRequestRoutingRule>] Request routing
+      # rules of application gateway resource
       attr_accessor :request_routing_rules
 
-      # @return [String] Gets or sets resource guid property of the
-      # ApplicationGateway resource
+      # @return [String] Resource guid property of the ApplicationGateway
+      # resource
       attr_accessor :resource_guid
 
-      # @return [String] Gets provisioning state of the ApplicationGateway
-      # resource Updating/Deleting/Failed
+      # @return [String] Provisioning state of the ApplicationGateway resource
+      # Updating/Deleting/Failed
       attr_accessor :provisioning_state
 
-      # @return [String] Gets a unique read-only string that changes whenever
-      # the resource is updated
+      # @return [String] A unique read-only string that changes whenever the
+      # resource is updated
       attr_accessor :etag
 
 
@@ -138,6 +145,14 @@ module Azure::ARM::Network
                   class_name: 'ApplicationGatewaySku'
                 }
               },
+              ssl_policy: {
+                required: false,
+                serialized_name: 'properties.sslPolicy',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ApplicationGatewaySslPolicy'
+                }
+              },
               operational_state: {
                 required: false,
                 read_only: true,
@@ -157,6 +172,21 @@ module Azure::ARM::Network
                       type: {
                         name: 'Composite',
                         class_name: 'ApplicationGatewayIPConfiguration'
+                      }
+                  }
+                }
+              },
+              authentication_certificates: {
+                required: false,
+                serialized_name: 'properties.authenticationCertificates',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ApplicationGatewayAuthenticationCertificateElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ApplicationGatewayAuthenticationCertificate'
                       }
                   }
                 }

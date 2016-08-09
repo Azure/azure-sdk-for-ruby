@@ -22,7 +22,7 @@ module Azure::ARM::Network
       @client = client
     end
 
-    # @return reference to the NetworkManagementClient
+    # @return [NetworkManagementClient] reference to the NetworkManagementClient
     attr_reader :client
 
     #
@@ -438,7 +438,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings opertion retrieves all the peerings in a
+    # The List virtual network peerings operation retrieves all the peerings in a
     # virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -461,7 +461,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings opertion retrieves all the peerings in a
+    # The List virtual network peerings operation retrieves all the peerings in a
     # virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -477,7 +477,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings opertion retrieves all the peerings in a
+    # The List virtual network peerings operation retrieves all the peerings in a
     # virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -492,7 +492,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings opertion retrieves all the peerings in a
+    # The List virtual network peerings operation retrieves all the peerings in a
     # virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -558,7 +558,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings opertion retrieves all the peerings in a
+    # The List virtual network peerings operation retrieves all the peerings in a
     # virtual network.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -574,7 +574,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings opertion retrieves all the peerings in a
+    # The List virtual network peerings operation retrieves all the peerings in a
     # virtual network.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -589,7 +589,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings opertion retrieves all the peerings in a
+    # The List virtual network peerings operation retrieves all the peerings in a
     # virtual network.
     #
     # @param next_page_link [String] The NextLink from the previous successful

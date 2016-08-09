@@ -19,7 +19,7 @@ module Azure::ARM::Network
       # @return [EffectiveNetworkSecurityGroupAssociation]
       attr_accessor :association
 
-      # @return [Array<EffectiveNetworkSecurityRules>] Gets collection of
+      # @return [Array<EffectiveNetworkSecurityRule>] Gets collection of
       # effective security rules
       attr_accessor :effective_security_rules
 
@@ -59,10 +59,10 @@ module Azure::ARM::Network
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'EffectiveNetworkSecurityRulesElementType',
+                      serialized_name: 'EffectiveNetworkSecurityRuleElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'EffectiveNetworkSecurityRules'
+                        class_name: 'EffectiveNetworkSecurityRule'
                       }
                   }
                 }

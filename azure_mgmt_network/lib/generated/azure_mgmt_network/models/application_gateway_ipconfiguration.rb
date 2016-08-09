@@ -12,17 +12,16 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [SubResource] Gets or sets the reference of the subnet
-      # resource.A subnet from where appliation gateway gets its private
-      # address
+      # @return [SubResource] Reference of the subnet resource. A subnet from
+      # where appliation gateway gets its private address
       attr_accessor :subnet
 
-      # @return [String] Gets provisioning state of the application gateway
-      # subnet resource Updating/Deleting/Failed
+      # @return [String] Provisioning state of the application gateway subnet
+      # resource Updating/Deleting/Failed
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] Name of the resource that is unique within a resource
+      # group. This name can be used to access the resource
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the

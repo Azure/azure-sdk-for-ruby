@@ -6,17 +6,17 @@
 module Azure::ARM::Network
   module Models
     #
-    # Frontend Port of application gateway
+    # Authentication certificates of application gateway
     #
-    class ApplicationGatewayFrontendPort < MsRestAzure::SubResource
+    class ApplicationGatewayAuthenticationCertificate < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [Integer] Frontend port
-      attr_accessor :port
+      # @return [String] Certificate public data
+      attr_accessor :data
 
-      # @return [String] Provisioning state of the frontend port resource
-      # Updating/Deleting/Failed
+      # @return [String] Provisioning state of the authentication certificate
+      # resource Updating/Deleting/Failed
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
@@ -29,16 +29,17 @@ module Azure::ARM::Network
 
 
       #
-      # Mapper for ApplicationGatewayFrontendPort class as Ruby Hash.
+      # Mapper for ApplicationGatewayAuthenticationCertificate class as Ruby
+      # Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ApplicationGatewayFrontendPort',
+          serialized_name: 'ApplicationGatewayAuthenticationCertificate',
           type: {
             name: 'Composite',
-            class_name: 'ApplicationGatewayFrontendPort',
+            class_name: 'ApplicationGatewayAuthenticationCertificate',
             model_properties: {
               id: {
                 required: false,
@@ -47,11 +48,11 @@ module Azure::ARM::Network
                   name: 'String'
                 }
               },
-              port: {
+              data: {
                 required: false,
-                serialized_name: 'properties.port',
+                serialized_name: 'properties.data',
                 type: {
-                  name: 'Number'
+                  name: 'String'
                 }
               },
               provisioning_state: {

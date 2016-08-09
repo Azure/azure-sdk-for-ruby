@@ -12,24 +12,24 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [SubResource] Gets or sets default backend address pool
-      # resource of URL path map
+      # @return [SubResource] Default backend address pool resource of URL
+      # path map
       attr_accessor :default_backend_address_pool
 
-      # @return [SubResource] Gets or sets default backend http settings
-      # resource of URL path map
+      # @return [SubResource] Default backend http settings resource of URL
+      # path map
       attr_accessor :default_backend_http_settings
 
-      # @return [Array<ApplicationGatewayPathRule>] Gets or sets path rule of
-      # URL path map resource
+      # @return [Array<ApplicationGatewayPathRule>] Path rule of URL path map
+      # resource
       attr_accessor :path_rules
 
-      # @return [String] Gets provisioning state of the backend http settings
+      # @return [String] Provisioning state of the backend http settings
       # resource Updating/Deleting/Failed
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] Name of the resource that is unique within a resource
+      # group. This name can be used to access the resource
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the

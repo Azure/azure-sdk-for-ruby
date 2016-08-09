@@ -12,27 +12,26 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the privateIPAddress of the Network
-      # Interface IP Configuration
+      # @return [String] PrivateIPAddress of the Network Interface IP
+      # Configuration
       attr_accessor :private_ipaddress
 
-      # @return [IPAllocationMethod] Gets or sets PrivateIP allocation method
+      # @return [IPAllocationMethod] PrivateIP allocation method
       # (Static/Dynamic). Possible values include: 'Static', 'Dynamic'
       attr_accessor :private_ipallocation_method
 
-      # @return [SubResource] Gets or sets the reference of the subnet resource
+      # @return [SubResource] Reference of the subnet resource
       attr_accessor :subnet
 
-      # @return [SubResource] Gets or sets the reference of the PublicIP
-      # resource
+      # @return [SubResource] Reference of the PublicIP resource
       attr_accessor :public_ipaddress
 
-      # @return [String] Gets or sets Provisioning state of the PublicIP
-      # resource Updating/Deleting/Failed
+      # @return [String] Provisioning state of the PublicIP resource
+      # Updating/Deleting/Failed
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] Name of the resource that is unique within a resource
+      # group. This name can be used to access the resource
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the

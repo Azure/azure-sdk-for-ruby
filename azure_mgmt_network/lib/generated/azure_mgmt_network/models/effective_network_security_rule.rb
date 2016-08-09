@@ -8,7 +8,7 @@ module Azure::ARM::Network
     #
     # Effective NetworkSecurityRules
     #
-    class EffectiveNetworkSecurityRules
+    class EffectiveNetworkSecurityRule
 
       include MsRestAzure
 
@@ -51,16 +51,16 @@ module Azure::ARM::Network
 
 
       #
-      # Mapper for EffectiveNetworkSecurityRules class as Ruby Hash.
+      # Mapper for EffectiveNetworkSecurityRule class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'EffectiveNetworkSecurityRules',
+          serialized_name: 'EffectiveNetworkSecurityRule',
           type: {
             name: 'Composite',
-            class_name: 'EffectiveNetworkSecurityRules',
+            class_name: 'EffectiveNetworkSecurityRule',
             model_properties: {
               name: {
                 required: false,

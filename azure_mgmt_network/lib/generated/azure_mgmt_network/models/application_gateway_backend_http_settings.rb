@@ -12,30 +12,33 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [Integer] Gets or sets the port
+      # @return [Integer] Port
       attr_accessor :port
 
-      # @return [ApplicationGatewayProtocol] Gets or sets the protocol.
-      # Possible values include: 'Http', 'Https'
+      # @return [ApplicationGatewayProtocol] Protocol. Possible values
+      # include: 'Http', 'Https'
       attr_accessor :protocol
 
-      # @return [ApplicationGatewayCookieBasedAffinity] Gets or sets the
-      # cookie affinity. Possible values include: 'Enabled', 'Disabled'
+      # @return [ApplicationGatewayCookieBasedAffinity] Cookie affinity.
+      # Possible values include: 'Enabled', 'Disabled'
       attr_accessor :cookie_based_affinity
 
-      # @return [Integer] Gets or sets request timeout
+      # @return [Integer] Request timeout
       attr_accessor :request_timeout
 
-      # @return [SubResource] Gets or sets probe resource of application
-      # gateway
+      # @return [SubResource] Probe resource of application gateway
       attr_accessor :probe
 
-      # @return [String] Gets or sets Provisioning state of the backend http
-      # settings resource Updating/Deleting/Failed
+      # @return [Array<SubResource>] Array of references to Application
+      # Gateway Authentication Certificates
+      attr_accessor :authentication_certificates
+
+      # @return [String] Provisioning state of the backend http settings
+      # resource Updating/Deleting/Failed
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] Name of the resource that is unique within a resource
+      # group. This name can be used to access the resource
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
@@ -96,6 +99,21 @@ module Azure::ARM::Network
                 type: {
                   name: 'Composite',
                   class_name: 'SubResource'
+                }
+              },
+              authentication_certificates: {
+                required: false,
+                serialized_name: 'properties.authenticationCertificates',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'SubResourceElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SubResource'
+                      }
+                  }
                 }
               },
               provisioning_state: {
