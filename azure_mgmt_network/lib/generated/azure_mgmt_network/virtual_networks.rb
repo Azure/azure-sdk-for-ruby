@@ -634,6 +634,103 @@ module Azure::ARM::Network
     end
 
     #
+    # Checks whether a private Ip address is available for use.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param ip_address [String] The private IP address to be verified.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IPAddressAvailabilityResult] operation results.
+    #
+    def check_ipaddress_availability(resource_group_name, virtual_network_name, ip_address = nil, custom_headers = nil)
+      response = check_ipaddress_availability_async(resource_group_name, virtual_network_name, ip_address, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Checks whether a private Ip address is available for use.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param ip_address [String] The private IP address to be verified.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def check_ipaddress_availability_with_http_info(resource_group_name, virtual_network_name, ip_address = nil, custom_headers = nil)
+      check_ipaddress_availability_async(resource_group_name, virtual_network_name, ip_address, custom_headers).value!
+    end
+
+    #
+    # Checks whether a private Ip address is available for use.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_name [String] The name of the virtual network.
+    # @param ip_address [String] The private IP address to be verified.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def check_ipaddress_availability_async(resource_group_name, virtual_network_name, ip_address = nil, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_name is nil' if virtual_network_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/CheckIPAddressAvailability'
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkName' => virtual_network_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'ipAddress' => ip_address,'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {})
+      }
+
+      request_url = @base_url || @client.base_url
+
+      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
+      promise = request.run_promise do |req|
+        @client.credentials.sign_request(req) unless @client.credentials.nil?
+      end
+
+      promise = promise.then do |http_response|
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+        end
+
+        # Create Result
+        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = IPAddressAvailabilityResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # The list VirtualNetwork returns all Virtual Networks in a subscription
     #
     # @param next_page_link [String] The NextLink from the previous successful

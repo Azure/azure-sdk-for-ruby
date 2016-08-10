@@ -95,6 +95,7 @@ module Azure::ARM::Network
     autoload :DhcpOptions,                                        'generated/azure_mgmt_network/models/dhcp_options.rb'
     autoload :VirtualNetworkListResult,                           'generated/azure_mgmt_network/models/virtual_network_list_result.rb'
     autoload :DnsNameAvailabilityResult,                          'generated/azure_mgmt_network/models/dns_name_availability_result.rb'
+    autoload :IPAddressAvailabilityResult,                        'generated/azure_mgmt_network/models/ipaddress_availability_result.rb'
     autoload :ErrorDetails,                                       'generated/azure_mgmt_network/models/error_details.rb'
     autoload :Error,                                              'generated/azure_mgmt_network/models/error.rb'
     autoload :AzureAsyncOperationResult,                          'generated/azure_mgmt_network/models/azure_async_operation_result.rb'
