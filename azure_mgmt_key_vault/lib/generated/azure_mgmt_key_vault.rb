@@ -31,7 +31,8 @@ module Azure::ARM::KeyVault
     autoload :VaultCreateOrUpdateParameters,                      'generated/azure_mgmt_key_vault/models/vault_create_or_update_parameters.rb'
     autoload :VaultListResult,                                    'generated/azure_mgmt_key_vault/models/vault_list_result.rb'
     autoload :Vault,                                              'generated/azure_mgmt_key_vault/models/vault.rb'
-    autoload :SkuFamily,                                          'generated/azure_mgmt_key_vault/models/sku_family.rb'
     autoload :SkuName,                                            'generated/azure_mgmt_key_vault/models/sku_name.rb'
+    autoload :KeyPermissions,                                     'generated/azure_mgmt_key_vault/models/key_permissions.rb'
+    autoload :SecretPermissions,                                  'generated/azure_mgmt_key_vault/models/secret_permissions.rb'
   end
 end

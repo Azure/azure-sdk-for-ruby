@@ -12,10 +12,10 @@ module Azure::ARM::KeyVault
 
       include MsRestAzure
 
-      # @return [Array<String>] Permissions to keys
+      # @return [Array<KeyPermissions>] Permissions to keys
       attr_accessor :keys
 
-      # @return [Array<String>] Permissions to secrets
+      # @return [Array<SecretPermissions>] Permissions to secrets
       attr_accessor :secrets
 
 
@@ -38,7 +38,7 @@ module Azure::ARM::KeyVault
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'StringElementType',
+                      serialized_name: 'KeyPermissionsElementType',
                       type: {
                         name: 'String'
                       }
@@ -52,7 +52,7 @@ module Azure::ARM::KeyVault
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'StringElementType',
+                      serialized_name: 'SecretPermissionsElementType',
                       type: {
                         name: 'String'
                       }

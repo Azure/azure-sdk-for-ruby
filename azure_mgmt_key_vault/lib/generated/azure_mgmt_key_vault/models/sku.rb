@@ -12,7 +12,7 @@ module Azure::ARM::KeyVault
 
       include MsRestAzure
 
-      # @return [SkuFamily] SKU family name. Possible values include: 'A'
+      # @return [String] SKU family name. Default value: 'A' .
       attr_accessor :family
 
       # @return [SkuName] SKU name to specify whether the key vault is a
@@ -34,8 +34,10 @@ module Azure::ARM::KeyVault
             class_name: 'Sku',
             model_properties: {
               family: {
-                required: false,
+                required: true,
+                is_constant: true,
                 serialized_name: 'family',
+                default_value: 'A',
                 type: {
                   name: 'String'
                 }
