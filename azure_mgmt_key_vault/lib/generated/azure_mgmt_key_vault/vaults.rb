@@ -20,7 +20,7 @@ module Azure::ARM::KeyVault
       @client = client
     end
 
-    # @return reference to the KeyVaultManagementClient
+    # @return [KeyVaultManagementClient] reference to the KeyVaultManagementClient
     attr_reader :client
 
     #

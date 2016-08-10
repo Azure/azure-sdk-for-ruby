@@ -71,6 +71,7 @@ module Azure::ARM::KeyVault
               sku: {
                 required: true,
                 serialized_name: 'sku',
+                default_value: {},
                 type: {
                   name: 'Composite',
                   class_name: 'Sku'

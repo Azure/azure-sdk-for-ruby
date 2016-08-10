@@ -6,10 +6,14 @@
 module Azure::ARM::KeyVault
   module Models
     #
-    # Defines values for SkuFamily
+    # Defines values for SecretPermissions
     #
-    module SkuFamily
-      A = "A"
+    module SecretPermissions
+      All = "all"
+      Get = "get"
+      List = "list"
+      Set = "set"
+      Delete = "delete"
     end
   end
 end

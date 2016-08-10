@@ -60,6 +60,7 @@ module Azure::ARM::KeyVault
               properties: {
                 required: true,
                 serialized_name: 'properties',
+                default_value: {},
                 type: {
                   name: 'Composite',
                   class_name: 'VaultProperties'

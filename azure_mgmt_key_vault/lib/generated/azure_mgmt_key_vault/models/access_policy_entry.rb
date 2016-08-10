@@ -19,7 +19,8 @@ module Azure::ARM::KeyVault
       attr_accessor :tenant_id
 
       # @return The object ID of a user or service principal in the Azure
-      # Active Directory tenant for the vault.
+      # Active Directory tenant for the vault. The object ID must be unique
+      # for the list of access policies.
       attr_accessor :object_id
 
       # @return  Application ID of the client making request on behalf of a
@@ -43,14 +44,14 @@ module Azure::ARM::KeyVault
             class_name: 'AccessPolicyEntry',
             model_properties: {
               tenant_id: {
-                required: false,
+                required: true,
                 serialized_name: 'tenantId',
                 type: {
                   name: 'String'
                 }
               },
               object_id: {
-                required: false,
+                required: true,
                 serialized_name: 'objectId',
                 type: {
                   name: 'String'
@@ -64,7 +65,7 @@ module Azure::ARM::KeyVault
                 }
               },
               permissions: {
-                required: false,
+                required: true,
                 serialized_name: 'permissions',
                 type: {
                   name: 'Composite',
