@@ -370,7 +370,7 @@ REGEN_METADATA = {
         tag: 'arm_subs'
     },
     azure_mgmt_traffic_manager: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-trafficmanager/2015-11-01/trafficmanager.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-trafficmanager/2015-11-01/swagger/trafficmanager.json',
         ns: 'Azure::ARM::TrafficManager',
         version: version,
         tag: 'arm_trafficmgr'
