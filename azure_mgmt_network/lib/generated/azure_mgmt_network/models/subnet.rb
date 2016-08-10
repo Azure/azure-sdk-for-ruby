@@ -27,6 +27,10 @@ module Azure::ARM::Network
       # network interface IP configurations using subnet
       attr_accessor :ip_configurations
 
+      # @return [Array<ResourceNavigationLink>] Gets array of references to
+      # the external resources using subnet
+      attr_accessor :resource_navigation_links
+
       # @return [String] Gets provisioning state of the resource
       attr_accessor :provisioning_state
 
@@ -93,6 +97,21 @@ module Azure::ARM::Network
                       type: {
                         name: 'Composite',
                         class_name: 'IPConfiguration'
+                      }
+                  }
+                }
+              },
+              resource_navigation_links: {
+                required: false,
+                serialized_name: 'properties.resourceNavigationLinks',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ResourceNavigationLinkElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ResourceNavigationLink'
                       }
                   }
                 }

@@ -116,6 +116,7 @@ module Azure::ARM::Network
     autoload :Route,                                              'generated/azure_mgmt_network/models/route.rb'
     autoload :IPConfiguration,                                    'generated/azure_mgmt_network/models/ipconfiguration.rb'
     autoload :PublicIPAddress,                                    'generated/azure_mgmt_network/models/public_ipaddress.rb'
+    autoload :ResourceNavigationLink,                             'generated/azure_mgmt_network/models/resource_navigation_link.rb'
     autoload :ApplicationGatewayBackendHttpSettings,              'generated/azure_mgmt_network/models/application_gateway_backend_http_settings.rb'
     autoload :ApplicationGatewayHttpListener,                     'generated/azure_mgmt_network/models/application_gateway_http_listener.rb'
     autoload :ApplicationGatewayPathRule,                         'generated/azure_mgmt_network/models/application_gateway_path_rule.rb'
