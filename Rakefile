@@ -284,12 +284,12 @@ REGEN_METADATA = {
         tag: 'arm_media'
     },
     # Not releasing this gem due to known issue in swagger
-    # azure_mgmt_mobile_engagement: {
-    #     spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json',
-    #     ns: 'Azure::ARM::MobileEngagement',
-    #     version: version,
-    #     tag: 'arm_mobile'
-    # },
+    azure_mgmt_mobile_engagement: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json',
+        ns: 'Azure::ARM::MobileEngagement',
+        version: version,
+        tag: 'arm_mobile'
+    },
     azure_mgmt_network: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-network/2016-06-01/swagger/network.json',
         ns: 'Azure::ARM::Network',
@@ -345,12 +345,12 @@ REGEN_METADATA = {
         tag: 'arm_server'
     },
     # Not releasing this gem due to known issue in swagger
-    # azure_mgmt_service_bus: {
-    #     spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servicebus/2014-09-01/swagger/servicebus.json',
-    #     ns: 'Azure::ARM::ServiceBus',
-    #     version: version,
-    #     tag: 'arm_servicebus'
-    # },
+    azure_mgmt_service_bus: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servicebus/2015-08-01/swagger/servicebus.json',
+        ns: 'Azure::ARM::ServiceBus',
+        version: version,
+        tag: 'arm_servicebus'
+    },
     azure_mgmt_sql: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-sql/2015-05-01/swagger/sql.json',
         ns: 'Azure::ARM::SQL',
