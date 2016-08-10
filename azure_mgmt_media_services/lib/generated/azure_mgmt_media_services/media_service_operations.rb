@@ -19,7 +19,7 @@ module Azure::ARM::MediaServices
       @client = client
     end
 
-    # @return reference to the MediaServicesManagementClient
+    # @return [MediaServicesManagementClient] reference to the MediaServicesManagementClient
     attr_reader :client
 
     #

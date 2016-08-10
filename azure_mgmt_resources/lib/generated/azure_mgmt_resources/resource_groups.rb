@@ -19,7 +19,7 @@ module Azure::ARM::Resources
       @client = client
     end
 
-    # @return reference to the ResourceManagementClient
+    # @return [ResourceManagementClient] reference to the ResourceManagementClient
     attr_reader :client
 
     #

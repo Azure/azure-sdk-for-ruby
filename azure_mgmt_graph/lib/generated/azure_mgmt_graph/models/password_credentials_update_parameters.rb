@@ -3,42 +3,42 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::ServiceBus
+module Azure::ARM::Graph
   module Models
     #
-    # SharedAccessAuthorizationRule properties.
+    # Request paramters for PasswordCredentials update operation
     #
-    class SharedAccessAuthorizationRuleProperties
+    class PasswordCredentialsUpdateParameters
 
       include MsRestAzure
 
-      # @return [Array<AccessRights>] The rights associated with the rule.
-      attr_accessor :rights
+      # @return [Array<PasswordCredential>] PasswordCredential list.
+      attr_accessor :value
 
 
       #
-      # Mapper for SharedAccessAuthorizationRuleProperties class as Ruby Hash.
+      # Mapper for PasswordCredentialsUpdateParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SharedAccessAuthorizationRuleProperties',
+          serialized_name: 'PasswordCredentialsUpdateParameters',
           type: {
             name: 'Composite',
-            class_name: 'SharedAccessAuthorizationRuleProperties',
+            class_name: 'PasswordCredentialsUpdateParameters',
             model_properties: {
-              rights: {
+              value: {
                 required: false,
-                serialized_name: 'rights',
+                serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'AccessRightsElementType',
+                      serialized_name: 'PasswordCredentialElementType',
                       type: {
-                        name: 'Enum',
-                        module: 'AccessRights'
+                        name: 'Composite',
+                        class_name: 'PasswordCredential'
                       }
                   }
                 }

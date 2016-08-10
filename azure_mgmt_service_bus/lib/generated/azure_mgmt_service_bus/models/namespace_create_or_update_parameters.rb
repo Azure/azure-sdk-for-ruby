@@ -12,14 +12,42 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      # @return [String] Namespace data center location.
+      # @return [String] Namespace location.
       attr_accessor :location
+
+      # @return [Sku]
+      attr_accessor :sku
 
       # @return [Hash{String => String}] Namespace tags.
       attr_accessor :tags
 
-      # @return [NamespaceProperties]
-      attr_accessor :properties
+      # @return [Kind] Specifies the namespace type; for example: Messaging.
+      # Possible values include: 'Messaging'
+      attr_accessor :kind
+
+      # @return [String] Provisioning state of the Namespace.
+      attr_accessor :provisioning_state
+
+      # @return [NamespaceState] State of the namespace. Possible values
+      # include: 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling',
+      # 'Active', 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted',
+      # 'Removing', 'Removed', 'Failed'
+      attr_accessor :status
+
+      # @return [DateTime] The time the namespace was created.
+      attr_accessor :created_at
+
+      # @return [DateTime] The time the namespace was updated.
+      attr_accessor :updated_at
+
+      # @return [String] Endpoint you can use to perform ServiceBus operations.
+      attr_accessor :service_bus_endpoint
+
+      # @return [Boolean] Indicates whether to create ACS namespace.
+      attr_accessor :create_acsnamespace
+
+      # @return [Boolean] Specifies whether this instance is enabled.
+      attr_accessor :enabled
 
 
       #
@@ -41,6 +69,14 @@ module Azure::ARM::ServiceBus
                   name: 'String'
                 }
               },
+              sku: {
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Sku'
+                }
+              },
               tags: {
                 required: false,
                 serialized_name: 'tags',
@@ -55,12 +91,61 @@ module Azure::ARM::ServiceBus
                   }
                 }
               },
-              properties: {
-                required: true,
-                serialized_name: 'properties',
+              kind: {
+                required: false,
+                serialized_name: 'kind',
                 type: {
-                  name: 'Composite',
-                  class_name: 'NamespaceProperties'
+                  name: 'String'
+                }
+              },
+              provisioning_state: {
+                required: false,
+                serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              status: {
+                required: false,
+                serialized_name: 'properties.status',
+                type: {
+                  name: 'Enum',
+                  module: 'NamespaceState'
+                }
+              },
+              created_at: {
+                required: false,
+                serialized_name: 'properties.createdAt',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              updated_at: {
+                required: false,
+                serialized_name: 'properties.updatedAt',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              service_bus_endpoint: {
+                required: false,
+                serialized_name: 'properties.serviceBusEndpoint',
+                type: {
+                  name: 'String'
+                }
+              },
+              create_acsnamespace: {
+                required: false,
+                serialized_name: 'properties.createACSNamespace',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              enabled: {
+                required: false,
+                serialized_name: 'properties.enabled',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

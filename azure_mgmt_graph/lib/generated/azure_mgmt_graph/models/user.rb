@@ -12,22 +12,22 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      # @return [String] Gets or sets object Id
+      # @return [String] object Id
       attr_accessor :object_id
 
-      # @return [String] Gets or sets object type
+      # @return [String] object type
       attr_accessor :object_type
 
-      # @return [String] Gets or sets user principal name
+      # @return [String] user principal name
       attr_accessor :user_principal_name
 
-      # @return [String] Gets or sets user display name
+      # @return [String] user display name
       attr_accessor :display_name
 
-      # @return [String] Gets or sets user signIn name
+      # @return [String] user signIn name
       attr_accessor :sign_in_name
 
-      # @return [String] Gets or sets user mail
+      # @return [String] user mail
       attr_accessor :mail
 
       # @return [String] The mail alias for the user

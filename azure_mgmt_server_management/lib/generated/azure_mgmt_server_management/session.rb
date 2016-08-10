@@ -19,7 +19,7 @@ module Azure::ARM::ServerManagement
       @client = client
     end
 
-    # @return reference to the ServerManagement
+    # @return [ServerManagement] reference to the ServerManagement
     attr_reader :client
 
     #

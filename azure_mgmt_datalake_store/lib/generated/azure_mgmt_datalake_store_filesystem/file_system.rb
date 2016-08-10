@@ -19,7 +19,7 @@ module Azure::ARM::DataLakeStore::FileSystem
       @client = client
     end
 
-    # @return reference to the DataLakeStoreFileSystemManagementClient
+    # @return [DataLakeStoreFileSystemManagementClient] reference to the DataLakeStoreFileSystemManagementClient
     attr_reader :client
 
     #

@@ -19,7 +19,7 @@ module Azure::ARM::Authorization
       @client = client
     end
 
-    # @return reference to the AuthorizationManagementClient
+    # @return [AuthorizationManagementClient] reference to the AuthorizationManagementClient
     attr_reader :client
 
     #

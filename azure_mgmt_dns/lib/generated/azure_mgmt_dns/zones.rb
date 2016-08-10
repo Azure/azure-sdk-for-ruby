@@ -19,7 +19,7 @@ module Azure::ARM::Dns
       @client = client
     end
 
-    # @return reference to the DnsManagementClient
+    # @return [DnsManagementClient] reference to the DnsManagementClient
     attr_reader :client
 
     #

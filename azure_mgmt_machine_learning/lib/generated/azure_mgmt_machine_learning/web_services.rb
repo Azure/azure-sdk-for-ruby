@@ -24,7 +24,7 @@ module Azure::ARM::MachineLearning
       @client = client
     end
 
-    # @return reference to the AzureMLWebServicesManagementClient
+    # @return [AzureMLWebServicesManagementClient] reference to the AzureMLWebServicesManagementClient
     attr_reader :client
 
     #

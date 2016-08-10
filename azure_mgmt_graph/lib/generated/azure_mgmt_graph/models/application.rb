@@ -12,29 +12,29 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      # @return [String] Gets or sets object Id
+      # @return [String] object Id
       attr_accessor :object_id
 
-      # @return [String] Gets or sets object type
+      # @return [String] object type
       attr_accessor :object_type
 
-      # @return [String] Gets or sets application Id
+      # @return [String] application Id
       attr_accessor :app_id
 
-      # @return [Array<String>] Gets or sets application permissions
+      # @return [Array<String>] application permissions
       attr_accessor :app_permissions
 
       # @return [Boolean] Indicates if the application will be available to
       # other tenants
       attr_accessor :available_to_other_tenants
 
-      # @return [String] Gets or sets the displayName
+      # @return [String] the displayName
       attr_accessor :display_name
 
-      # @return [Array<String>] Gets or sets the application identifier Uris
+      # @return [Array<String>] the application identifier Uris
       attr_accessor :identifier_uris
 
-      # @return [Array<String>] Gets or sets the application reply Urls
+      # @return [Array<String>] the application reply Urls
       attr_accessor :reply_urls
 
       # @return [String] Application homepage

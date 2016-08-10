@@ -6,12 +6,14 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Defines values for Name
+    # Defines values for AvailabilityStatus
     #
-    module Name
-      Basic = "Basic"
-      Standard = "Standard"
-      Premium = "Premium"
+    module AvailabilityStatus
+      Available = "Available"
+      Limited = "Limited"
+      Renaming = "Renaming"
+      Restoring = "Restoring"
+      Unknown = "Unknown"
     end
   end
 end

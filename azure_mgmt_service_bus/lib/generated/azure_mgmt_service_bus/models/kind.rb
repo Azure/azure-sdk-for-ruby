@@ -10,7 +10,6 @@ module Azure::ARM::ServiceBus
     #
     module Kind
       Messaging = "Messaging"
-      EventHub = "EventHub"
     end
   end
 end

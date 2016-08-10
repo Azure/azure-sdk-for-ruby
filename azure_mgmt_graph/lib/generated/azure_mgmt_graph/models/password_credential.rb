@@ -6,22 +6,22 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Active Directory service principal Password Credential information
+    # Active Directory PasswordCredential information
     #
     class PasswordCredential
 
       include MsRestAzure
 
-      # @return [DateTime] Gets or sets start date
+      # @return [DateTime] start date
       attr_accessor :start_date
 
-      # @return [DateTime] Gets or sets end date
+      # @return [DateTime] end date
       attr_accessor :end_date
 
-      # @return [String] Gets or sets key Id
+      # @return [String] key Id
       attr_accessor :key_id
 
-      # @return [String] Gets or sets value
+      # @return [String] value
       attr_accessor :value
 
 

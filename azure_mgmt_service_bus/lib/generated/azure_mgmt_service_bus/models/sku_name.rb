@@ -6,12 +6,12 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Defines values for NamespaceType
+    # Defines values for SkuName
     #
-    module NamespaceType
-      Messaging = "Messaging"
-      NotificationHub = "NotificationHub"
-      EventHub = "EventHub"
+    module SkuName
+      Basic = "Basic"
+      Standard = "Standard"
+      Premium = "Premium"
     end
   end
 end

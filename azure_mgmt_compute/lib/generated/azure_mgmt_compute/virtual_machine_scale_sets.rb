@@ -19,7 +19,7 @@ module Azure::ARM::Compute
       @client = client
     end
 
-    # @return reference to the ComputeManagementClient
+    # @return [ComputeManagementClient] reference to the ComputeManagementClient
     attr_reader :client
 
     #

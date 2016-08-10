@@ -6,20 +6,20 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Parameters supplied to the CreateOrUpdate Namespace AuthorizationRules.
+    # Parameters supplied to the CreateOrUpdate  AuthorizationRules.
     #
     class SharedAccessAuthorizationRuleCreateOrUpdateParameters
 
       include MsRestAzure
 
-      # @return [String] Namespace data center location.
+      # @return [String] data center location.
       attr_accessor :location
 
-      # @return [String] Name of the Namespace AuthorizationRule.
+      # @return [String] Name of the AuthorizationRule.
       attr_accessor :name
 
-      # @return [SharedAccessAuthorizationRuleProperties]
-      attr_accessor :properties
+      # @return [Array<AccessRights>] The rights associated with the rule.
+      attr_accessor :rights
 
 
       #
@@ -49,12 +49,19 @@ module Azure::ARM::ServiceBus
                   name: 'String'
                 }
               },
-              properties: {
-                required: true,
-                serialized_name: 'properties',
+              rights: {
+                required: false,
+                serialized_name: 'properties.rights',
                 type: {
-                  name: 'Composite',
-                  class_name: 'SharedAccessAuthorizationRuleProperties'
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'AccessRightsElementType',
+                      type: {
+                        name: 'Enum',
+                        module: 'AccessRights'
+                      }
+                  }
                 }
               }
             }

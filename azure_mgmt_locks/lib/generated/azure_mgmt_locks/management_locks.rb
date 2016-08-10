@@ -19,7 +19,7 @@ module Azure::ARM::Locks
       @client = client
     end
 
-    # @return reference to the ManagementLockClient
+    # @return [ManagementLockClient] reference to the ManagementLockClient
     attr_reader :client
 
     #

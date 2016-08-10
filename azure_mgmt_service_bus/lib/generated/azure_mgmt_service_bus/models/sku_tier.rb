@@ -6,9 +6,9 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Defines values for Tier
+    # Defines values for SkuTier
     #
-    module Tier
+    module SkuTier
       Basic = "Basic"
       Standard = "Standard"
       Premium = "Premium"

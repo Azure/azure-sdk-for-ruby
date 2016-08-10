@@ -8,8 +8,8 @@ module Azure::ARM::NotificationHubs
   # A service client - single point of access to the REST API.
   #
   class NotificationHubsManagementClient < MsRestAzure::AzureServiceClient
-    include MsRest::Serialization
     include MsRestAzure
+    include MsRestAzure::Serialization
 
     # @return [String] the base URI of the service.
     attr_accessor :base_url

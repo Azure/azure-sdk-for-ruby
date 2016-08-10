@@ -8,15 +8,15 @@ module Azure::ARM::ServiceBus
     #
     # Sku of the Namespace.
     #
-    class ARMSku
+    class Sku
 
       include MsRestAzure
 
-      # @return [Name] The resource type that this object applies to. Eg:
+      # @return [SkuName] The resource type that this object applies to. Eg:
       # NamespaceType. Possible values include: 'Basic', 'Standard', 'Premium'
       attr_accessor :name
 
-      # @return [Tier] The tier of this particular SKU. Possible values
+      # @return [SkuTier] The tier of this particular SKU. Possible values
       # include: 'Basic', 'Standard', 'Premium'
       attr_accessor :tier
 
@@ -25,34 +25,34 @@ module Azure::ARM::ServiceBus
 
 
       #
-      # Mapper for ARMSku class as Ruby Hash.
+      # Mapper for Sku class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ARMSku',
+          serialized_name: 'Sku',
           type: {
             name: 'Composite',
-            class_name: 'ARMSku',
+            class_name: 'Sku',
             model_properties: {
               name: {
                 required: false,
-                serialized_name: 'Name',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
               tier: {
                 required: false,
-                serialized_name: 'Tier',
+                serialized_name: 'tier',
                 type: {
                   name: 'String'
                 }
               },
               capacity: {
                 required: false,
-                serialized_name: 'Capacity',
+                serialized_name: 'capacity',
                 type: {
                   name: 'Number'
                 }

@@ -19,7 +19,7 @@ module Azure::ARM::DataLakeStore::Account
       @client = client
     end
 
-    # @return reference to the DataLakeStoreAccountManagementClient
+    # @return [DataLakeStoreAccountManagementClient] reference to the DataLakeStoreAccountManagementClient
     attr_reader :client
 
     #

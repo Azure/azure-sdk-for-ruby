@@ -19,7 +19,7 @@ module Azure::ARM::CognitiveServices
       @client = client
     end
 
-    # @return reference to the CognitiveServicesManagementClient
+    # @return [CognitiveServicesManagementClient] reference to the CognitiveServicesManagementClient
     attr_reader :client
 
     #

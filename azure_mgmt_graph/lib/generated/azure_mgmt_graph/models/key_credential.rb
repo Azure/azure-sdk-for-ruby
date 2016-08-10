@@ -6,28 +6,29 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Active Directory service principal Key Credential information
+    # Active Directory Key Credential information
     #
     class KeyCredential
 
       include MsRestAzure
 
-      # @return [DateTime] Gets or sets start date
+      # @return [DateTime] start date
       attr_accessor :start_date
 
-      # @return [DateTime] Gets or sets end date
+      # @return [DateTime] end date
       attr_accessor :end_date
 
-      # @return [String] Gets or sets value
+      # @return [String] value
       attr_accessor :value
 
-      # @return [String] Gets or sets key Id
+      # @return [String] key Id
       attr_accessor :key_id
 
-      # @return [String] Gets or sets usage
+      # @return [String] usage. Acceptable values are 'Verify' and 'Sign'.
       attr_accessor :usage
 
-      # @return [String] Gets or sets type
+      # @return [String] type. Acceptable values are 'AsymmetricX509Cert' and
+      # 'Symmetric'.
       attr_accessor :type
 
 

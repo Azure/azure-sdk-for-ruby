@@ -23,7 +23,7 @@ module Azure::ARM::CDN
       @client = client
     end
 
-    # @return reference to the CdnManagementClient
+    # @return [CdnManagementClient] reference to the CdnManagementClient
     attr_reader :client
 
     #

@@ -19,7 +19,7 @@ module Azure::ARM::Logic
       @client = client
     end
 
-    # @return reference to the LogicManagementClient
+    # @return [LogicManagementClient] reference to the LogicManagementClient
     attr_reader :client
 
     #

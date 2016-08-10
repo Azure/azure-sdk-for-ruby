@@ -19,7 +19,7 @@ module Azure::ARM::DataLakeAnalytics::Job
       @client = client
     end
 
-    # @return reference to the DataLakeAnalyticsJobManagementClient
+    # @return [DataLakeAnalyticsJobManagementClient] reference to the DataLakeAnalyticsJobManagementClient
     attr_reader :client
 
     #

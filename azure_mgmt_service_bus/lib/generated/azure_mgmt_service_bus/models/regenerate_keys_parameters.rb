@@ -6,7 +6,7 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Parameters supplied to the Regenerate Namespace Auth Rule.
+    # Parameters supplied to the Regenerate Auth Rule.
     #
     class RegenerateKeysParameters
 

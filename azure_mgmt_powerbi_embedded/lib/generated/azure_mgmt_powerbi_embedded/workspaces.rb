@@ -20,7 +20,7 @@ module Azure::ARM::PowerBiEmbedded
       @client = client
     end
 
-    # @return reference to the PowerBIEmbeddedManagementClient
+    # @return [PowerBIEmbeddedManagementClient] reference to the PowerBIEmbeddedManagementClient
     attr_reader :client
 
     #

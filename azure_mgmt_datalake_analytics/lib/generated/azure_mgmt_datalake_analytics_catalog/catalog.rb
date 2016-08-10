@@ -19,7 +19,7 @@ module Azure::ARM::DataLakeAnalytics::Catalog
       @client = client
     end
 
-    # @return reference to the DataLakeAnalyticsCatalogManagementClient
+    # @return [DataLakeAnalyticsCatalogManagementClient] reference to the DataLakeAnalyticsCatalogManagementClient
     attr_reader :client
 
     #

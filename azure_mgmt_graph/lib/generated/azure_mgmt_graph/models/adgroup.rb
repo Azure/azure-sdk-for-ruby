@@ -12,19 +12,19 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      # @return [String] Gets or sets object Id
+      # @return [String] object Id
       attr_accessor :object_id
 
-      # @return [String] Gets or sets object type
+      # @return [String] object type
       attr_accessor :object_type
 
-      # @return [String] Gets or sets group display name
+      # @return [String] group display name
       attr_accessor :display_name
 
-      # @return [Boolean] Gets or sets security enabled field
+      # @return [Boolean] security enabled field
       attr_accessor :security_enabled
 
-      # @return [String] Gets or sets mail field
+      # @return [String] mail field
       attr_accessor :mail
 
 
