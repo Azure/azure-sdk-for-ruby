@@ -12,6 +12,10 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
+      # @return [Boolean] Indicates if the application will be available to
+      # other tenants
+      attr_accessor :available_to_other_tenants
+
       # @return [String] Application display name
       attr_accessor :display_name
 
@@ -24,12 +28,11 @@ module Azure::ARM::Graph
       # @return [Array<String>] Application reply Urls
       attr_accessor :reply_urls
 
-      # @return [Array<KeyCredential>] Gets or sets the list of KeyCredential
-      # objects
+      # @return [Array<KeyCredential>] the list of KeyCredential objects
       attr_accessor :key_credentials
 
-      # @return [Array<PasswordCredential>] Gets or sets the list of
-      # PasswordCredential objects
+      # @return [Array<PasswordCredential>] the list of PasswordCredential
+      # objects
       attr_accessor :password_credentials
 
 
@@ -45,6 +48,13 @@ module Azure::ARM::Graph
             name: 'Composite',
             class_name: 'ApplicationUpdateParameters',
             model_properties: {
+              available_to_other_tenants: {
+                required: false,
+                serialized_name: 'availableToOtherTenants',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               display_name: {
                 required: false,
                 serialized_name: 'displayName',

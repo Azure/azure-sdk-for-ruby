@@ -19,7 +19,7 @@ module Azure::ARM::DataLakeAnalytics::Account
       @client = client
     end
 
-    # @return reference to the DataLakeAnalyticsAccountManagementClient
+    # @return [DataLakeAnalyticsAccountManagementClient] reference to the DataLakeAnalyticsAccountManagementClient
     attr_reader :client
 
     #

@@ -19,7 +19,7 @@ module Azure::ARM::Graph
       @client = client
     end
 
-    # @return reference to the GraphRbacManagementClient
+    # @return [GraphRbacManagementClient] reference to the GraphRbacManagementClient
     attr_reader :client
 
     #
@@ -101,7 +101,7 @@ module Azure::ARM::Graph
         response_content = http_response.body
         unless status_code == 201
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -153,7 +153,7 @@ module Azure::ARM::Graph
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [UserListResult] operation results.
+    # @return [Array<User>] operation results.
     #
     def list(filter = nil, custom_headers = nil)
       first_page = list_as_lazy(filter, custom_headers)
@@ -214,7 +214,7 @@ module Azure::ARM::Graph
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -311,7 +311,7 @@ module Azure::ARM::Graph
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -423,7 +423,7 @@ module Azure::ARM::Graph
         response_content = http_response.body
         unless status_code == 204
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -506,7 +506,7 @@ module Azure::ARM::Graph
         response_content = http_response.body
         unless status_code == 204
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -603,7 +603,7 @@ module Azure::ARM::Graph
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -633,7 +633,7 @@ module Azure::ARM::Graph
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [UserListResult] operation results.
+    # @return [Array<User>] operation results.
     #
     def list_next(next_link, custom_headers = nil)
       response = list_next_async(next_link, custom_headers).value!
@@ -694,7 +694,7 @@ module Azure::ARM::Graph
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(request, http_response, error_model)
         end
 
         # Create Result

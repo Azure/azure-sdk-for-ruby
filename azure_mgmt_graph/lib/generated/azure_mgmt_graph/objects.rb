@@ -19,7 +19,7 @@ module Azure::ARM::Graph
       @client = client
     end
 
-    # @return reference to the GraphRbacManagementClient
+    # @return [GraphRbacManagementClient] reference to the GraphRbacManagementClient
     attr_reader :client
 
     #
@@ -85,7 +85,7 @@ module Azure::ARM::Graph
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(request, http_response, error_model)
         end
 
         # Create Result

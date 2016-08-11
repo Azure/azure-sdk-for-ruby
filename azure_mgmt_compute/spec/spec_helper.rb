@@ -9,8 +9,6 @@ require 'ms_rest_azure'
 require 'azure_mgmt_storage'
 require 'azure_mgmt_network'
 
-include MsRest
-include MsRestAzure
 include Azure::ARM::Compute
 include Azure::ARM::Compute::Models
 include Azure::ARM::Network
@@ -26,8 +24,8 @@ class ResourceHelper
     secret = ENV['AZURE_CLIENT_SECRET']
     @subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
 
-    token_provider = ApplicationTokenProvider.new(tenant_id, client_id, secret)
-    @credentials = TokenCredentials.new(token_provider)
+    token_provider = MsRestAzure::ApplicationTokenProvider.new(tenant_id, client_id, secret)
+    @credentials = MsRest::TokenCredentials.new(token_provider)
   end
 
   def compute_client

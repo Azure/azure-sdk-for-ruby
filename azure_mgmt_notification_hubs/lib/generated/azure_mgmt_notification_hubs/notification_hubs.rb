@@ -19,7 +19,7 @@ module Azure::ARM::NotificationHubs
       @client = client
     end
 
-    # @return reference to the NotificationHubsManagementClient
+    # @return [NotificationHubsManagementClient] reference to the NotificationHubsManagementClient
     attr_reader :client
 
     #

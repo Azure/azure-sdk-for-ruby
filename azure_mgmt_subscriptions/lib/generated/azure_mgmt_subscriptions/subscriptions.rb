@@ -19,7 +19,7 @@ module Azure::ARM::Subscriptions
       @client = client
     end
 
-    # @return reference to the SubscriptionClient
+    # @return [SubscriptionClient] reference to the SubscriptionClient
     attr_reader :client
 
     #

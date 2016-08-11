@@ -19,7 +19,7 @@ module Azure::ARM::Storage
       @client = client
     end
 
-    # @return reference to the StorageManagementClient
+    # @return [StorageManagementClient] reference to the StorageManagementClient
     attr_reader :client
 
     #

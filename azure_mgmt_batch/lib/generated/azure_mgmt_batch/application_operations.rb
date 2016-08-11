@@ -19,7 +19,7 @@ module Azure::ARM::Batch
       @client = client
     end
 
-    # @return reference to the BatchManagementClient
+    # @return [BatchManagementClient] reference to the BatchManagementClient
     attr_reader :client
 
     #

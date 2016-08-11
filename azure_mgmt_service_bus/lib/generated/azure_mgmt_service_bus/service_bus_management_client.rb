@@ -8,8 +8,8 @@ module Azure::ARM::ServiceBus
   # A service client - single point of access to the REST API.
   #
   class ServiceBusManagementClient < MsRestAzure::AzureServiceClient
-    include MsRest::Serialization
     include MsRestAzure
+    include MsRestAzure::Serialization
 
     # @return [String] the base URI of the service.
     attr_accessor :base_url
@@ -17,7 +17,7 @@ module Azure::ARM::ServiceBus
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Gets subscription credentials which uniquely identify
+    # @return [String] Subscription credentials which uniquely identify
     # Microsoft Azure subscription. The subscription ID forms part of the URI
     # for every service call.
     attr_accessor :subscription_id
@@ -43,6 +43,15 @@ module Azure::ARM::ServiceBus
     # @return [Namespaces] namespaces
     attr_reader :namespaces
 
+    # @return [Queues] queues
+    attr_reader :queues
+
+    # @return [Topics] topics
+    attr_reader :topics
+
+    # @return [Subscriptions] subscriptions
+    attr_reader :subscriptions
+
     #
     # Creates initializes a new instance of the ServiceBusManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -58,7 +67,10 @@ module Azure::ARM::ServiceBus
       @credentials = credentials
 
       @namespaces = Namespaces.new(self)
-      @api_version = '2014-09-01'
+      @queues = Queues.new(self)
+      @topics = Topics.new(self)
+      @subscriptions = Subscriptions.new(self)
+      @api_version = '2015-08-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

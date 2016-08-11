@@ -19,7 +19,7 @@ module Azure::ARM::TrafficManager
       @client = client
     end
 
-    # @return reference to the TrafficManagerManagementClient
+    # @return [TrafficManagerManagementClient] reference to the TrafficManagerManagementClient
     attr_reader :client
 
     #

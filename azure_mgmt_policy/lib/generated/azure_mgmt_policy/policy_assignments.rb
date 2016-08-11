@@ -19,7 +19,7 @@ module Azure::ARM::Policy
       @client = client
     end
 
-    # @return reference to the PolicyClient
+    # @return [PolicyClient] reference to the PolicyClient
     attr_reader :client
 
     #

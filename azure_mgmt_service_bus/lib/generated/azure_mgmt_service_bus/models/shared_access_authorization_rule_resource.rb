@@ -12,8 +12,8 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      # @return [SharedAccessAuthorizationRuleProperties]
-      attr_accessor :properties
+      # @return [Array<AccessRights>] The rights associated with the rule.
+      attr_accessor :rights
 
 
       #
@@ -73,12 +73,19 @@ module Azure::ARM::ServiceBus
                   }
                 }
               },
-              properties: {
+              rights: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.rights',
                 type: {
-                  name: 'Composite',
-                  class_name: 'SharedAccessAuthorizationRuleProperties'
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'AccessRightsElementType',
+                      type: {
+                        name: 'Enum',
+                        module: 'AccessRights'
+                      }
+                  }
                 }
               }
             }

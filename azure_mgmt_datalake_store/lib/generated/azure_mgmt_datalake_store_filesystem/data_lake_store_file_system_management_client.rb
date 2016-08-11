@@ -8,8 +8,8 @@ module Azure::ARM::DataLakeStore::FileSystem
   # A service client - single point of access to the REST API.
   #
   class DataLakeStoreFileSystemManagementClient < MsRestAzure::AzureServiceClient
-    include MsRest::Serialization
     include MsRestAzure
+    include MsRestAzure::Serialization
 
     # @return [String] the base URI of the service.
     attr_reader :base_url

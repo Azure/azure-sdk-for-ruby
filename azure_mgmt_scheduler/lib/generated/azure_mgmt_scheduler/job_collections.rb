@@ -19,7 +19,7 @@ module Azure::ARM::Scheduler
       @client = client
     end
 
-    # @return reference to the SchedulerManagementClient
+    # @return [SchedulerManagementClient] reference to the SchedulerManagementClient
     attr_reader :client
 
     #

@@ -12,11 +12,10 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      # @return [Array<ServicePrincipal>] Gets or sets the list of service
-      # principals.
+      # @return [Array<ServicePrincipal>] the list of service principals.
       attr_accessor :value
 
-      # @return [String] Gets or sets the URL to get the next set of results.
+      # @return [String] the URL to get the next set of results.
       attr_accessor :odatanext_link
 
       # return [Proc] with next page method call.

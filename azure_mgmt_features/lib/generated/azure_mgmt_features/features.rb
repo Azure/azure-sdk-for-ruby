@@ -19,7 +19,7 @@ module Azure::ARM::Features
       @client = client
     end
 
-    # @return reference to the FeatureClient
+    # @return [FeatureClient] reference to the FeatureClient
     attr_reader :client
 
     #

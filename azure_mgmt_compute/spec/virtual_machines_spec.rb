@@ -4,7 +4,6 @@
 
 require_relative 'spec_helper'
 
-include MsRestAzure
 include Azure::ARM::Resources
 include Azure::ARM::Resources::Models
 
@@ -105,11 +104,16 @@ describe 'Virtual machine api' do
     expect(result.body.name).to eq(@vm_name)
   end
 
-  it 'should list virtual machines' do
+  it 'should list virtual machines and interfaces' do
     result = @client.list_async(@resource_group.name).value!
     expect(result.response.status).to eq(200)
     expect(result.body.value).not_to be_nil
     expect(result.body.value).to be_a(Array)
+
+    result = @resource_helper.network_client.network_interfaces.list_all
+    result.each do |network_interface|
+      expect(network_interface.virtual_machine).to be_an_instance_of(MsRestAzure::SubResource)
+    end
   end
 
   it 'should list all virtual machines' do

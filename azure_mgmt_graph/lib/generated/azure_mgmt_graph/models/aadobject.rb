@@ -12,35 +12,34 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      # @return [String] Gets or sets object Id
+      # @return [String] object Id
       attr_accessor :object_id
 
-      # @return [String] Gets or sets object type
+      # @return [String] object type
       attr_accessor :object_type
 
-      # @return [String] Gets or sets object display name
+      # @return [String] object display name
       attr_accessor :display_name
 
-      # @return [String] Gets or sets principal name
+      # @return [String] principal name
       attr_accessor :user_principal_name
 
-      # @return [String] Gets or sets mail
+      # @return [String] mail
       attr_accessor :mail
 
-      # @return [Boolean] Gets or sets MailEnabled field
+      # @return [Boolean] MailEnabled field
       attr_accessor :mail_enabled
 
-      # @return [Boolean] Gets or sets SecurityEnabled field
+      # @return [Boolean] SecurityEnabled field
       attr_accessor :security_enabled
 
-      # @return [String] Gets or sets signIn name
+      # @return [String] signIn name
       attr_accessor :sign_in_name
 
-      # @return [Array<String>] Gets or sets the list of service principal
-      # names.
+      # @return [Array<String>] the list of service principal names.
       attr_accessor :service_principal_names
 
-      # @return [String] Gets or sets the user type
+      # @return [String] the user type
       attr_accessor :user_type
 
 

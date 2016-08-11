@@ -15,7 +15,7 @@ module Azure::ARM::Graph
       # @return [Array<AADObject>] Collection of Active Directory object
       attr_accessor :value
 
-      # @return [String] Gets or sets the URL to get the next set of results.
+      # @return [String] the URL to get the next set of results.
       attr_accessor :odatanext_link
 
       # return [Proc] with next page method call.

@@ -1,3 +1,7 @@
+## 2016.08.10 - Azure ARM version 0.5.0
+* Regenerated ARM sdk with Autorest [autorest.0.17.0](https://github.com/Azure/autorest/commit/1953ece83181dbee16e715bb0d506c803d4b8452)
+* Releasing azure_mgmt_iot_hub & azure_mgmt_mobile_engagement sdk
+
 ## 2016.07.21 - Azure ARM version 0.4.0
 * Regenerated ARM sdk with Autorest [autorest.0.17.0](https://github.com/Azure/autorest/commit/b54f66a4f6ddbe5d733b2e995ed29dac696c135e) along with new available swagger spec from [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs)
 * Releasing following new azure_mgmt_* gems

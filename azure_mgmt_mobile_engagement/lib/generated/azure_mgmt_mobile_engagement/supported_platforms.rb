@@ -19,7 +19,7 @@ module Azure::ARM::MobileEngagement
       @client = client
     end
 
-    # @return reference to the EngagementManagementClient
+    # @return [EngagementManagementClient] reference to the EngagementManagementClient
     attr_reader :client
 
     #

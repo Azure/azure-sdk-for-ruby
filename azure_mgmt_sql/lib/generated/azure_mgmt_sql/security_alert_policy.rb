@@ -22,7 +22,7 @@ module Azure::ARM::SQL
       @client = client
     end
 
-    # @return reference to the SqlManagementClient
+    # @return [SqlManagementClient] reference to the SqlManagementClient
     attr_reader :client
 
     #

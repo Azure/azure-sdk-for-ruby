@@ -19,7 +19,7 @@ module Azure::ARM::Search
       @client = client
     end
 
-    # @return reference to the SearchManagementClient
+    # @return [SearchManagementClient] reference to the SearchManagementClient
     attr_reader :client
 
     #

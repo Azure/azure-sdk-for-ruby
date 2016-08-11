@@ -253,6 +253,12 @@ REGEN_METADATA = {
     #     version: version,
     #     tag: 'arm_intune'
     # },
+    azure_mgmt_iot_hub: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-iothub/2016-02-03/swagger/iothub.json',
+        ns: 'Azure::ARM::IotHub',
+        version: version,
+        tag: 'arm_iothub'
+    },
     azure_mgmt_key_vault: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-keyvault/2015-06-01/swagger/keyvault.json',
         ns: 'Azure::ARM::KeyVault',
@@ -266,7 +272,7 @@ REGEN_METADATA = {
         tag: 'arm_lock'
     },
     azure_mgmt_logic: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-logic/2015-08-01-preview/swagger/logic.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-logic/2016-06-01/swagger/logic.json',
         ns: 'Azure::ARM::Logic',
         version: version,
         tag: 'arm_logic'
@@ -283,13 +289,12 @@ REGEN_METADATA = {
         version: version,
         tag: 'arm_media'
     },
-    # Not releasing this gem due to known issue in swagger
-    # azure_mgmt_mobile_engagement: {
-    #     spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json',
-    #     ns: 'Azure::ARM::MobileEngagement',
-    #     version: version,
-    #     tag: 'arm_mobile'
-    # },
+    azure_mgmt_mobile_engagement: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json',
+        ns: 'Azure::ARM::MobileEngagement',
+        version: version,
+        tag: 'arm_mobile'
+    },
     azure_mgmt_network: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-network/2016-06-01/swagger/network.json',
         ns: 'Azure::ARM::Network',
@@ -346,7 +351,7 @@ REGEN_METADATA = {
     },
     # Not releasing this gem due to known issue in swagger
     # azure_mgmt_service_bus: {
-    #     spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servicebus/2014-09-01/swagger/servicebus.json',
+    #     spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servicebus/2015-08-01/swagger/servicebus.json',
     #     ns: 'Azure::ARM::ServiceBus',
     #     version: version,
     #     tag: 'arm_servicebus'

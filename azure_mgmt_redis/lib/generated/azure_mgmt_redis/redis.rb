@@ -19,7 +19,7 @@ module Azure::ARM::Redis
       @client = client
     end
 
-    # @return reference to the RedisManagementClient
+    # @return [RedisManagementClient] reference to the RedisManagementClient
     attr_reader :client
 
     #

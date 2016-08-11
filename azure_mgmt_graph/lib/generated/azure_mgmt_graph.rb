@@ -28,12 +28,17 @@ module Azure::ARM::Graph
   autoload :GraphRbacManagementClient,                          'generated/azure_mgmt_graph/graph_rbac_management_client.rb'
 
   module Models
+    autoload :GraphError,                                         'generated/azure_mgmt_graph/models/graph_error.rb'
     autoload :KeyCredential,                                      'generated/azure_mgmt_graph/models/key_credential.rb'
     autoload :PasswordCredential,                                 'generated/azure_mgmt_graph/models/password_credential.rb'
     autoload :ApplicationCreateParameters,                        'generated/azure_mgmt_graph/models/application_create_parameters.rb'
     autoload :ApplicationUpdateParameters,                        'generated/azure_mgmt_graph/models/application_update_parameters.rb'
     autoload :Application,                                        'generated/azure_mgmt_graph/models/application.rb'
     autoload :ApplicationListResult,                              'generated/azure_mgmt_graph/models/application_list_result.rb'
+    autoload :KeyCredentialListResult,                            'generated/azure_mgmt_graph/models/key_credential_list_result.rb'
+    autoload :KeyCredentialsUpdateParameters,                     'generated/azure_mgmt_graph/models/key_credentials_update_parameters.rb'
+    autoload :PasswordCredentialListResult,                       'generated/azure_mgmt_graph/models/password_credential_list_result.rb'
+    autoload :PasswordCredentialsUpdateParameters,                'generated/azure_mgmt_graph/models/password_credentials_update_parameters.rb'
     autoload :AADObject,                                          'generated/azure_mgmt_graph/models/aadobject.rb'
     autoload :GetObjectsResult,                                   'generated/azure_mgmt_graph/models/get_objects_result.rb'
     autoload :GroupAddMemberParameters,                           'generated/azure_mgmt_graph/models/group_add_member_parameters.rb'

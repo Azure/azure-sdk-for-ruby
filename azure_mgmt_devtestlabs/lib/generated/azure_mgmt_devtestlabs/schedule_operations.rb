@@ -19,7 +19,7 @@ module Azure::ARM::DevTestLabs
       @client = client
     end
 
-    # @return reference to the DevTestLabsClient
+    # @return [DevTestLabsClient] reference to the DevTestLabsClient
     attr_reader :client
 
     #

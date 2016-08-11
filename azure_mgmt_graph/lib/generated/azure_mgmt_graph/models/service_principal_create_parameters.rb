@@ -12,11 +12,18 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      # @return [String] Gets or sets application Id
+      # @return [String] application Id
       attr_accessor :app_id
 
       # @return [Boolean] Specifies if the account is enabled
       attr_accessor :account_enabled
+
+      # @return [Array<KeyCredential>] the list of KeyCredential objects
+      attr_accessor :key_credentials
+
+      # @return [Array<PasswordCredential>] the list of PasswordCredential
+      # objects
+      attr_accessor :password_credentials
 
 
       #
@@ -43,6 +50,36 @@ module Azure::ARM::Graph
                 serialized_name: 'accountEnabled',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              key_credentials: {
+                required: false,
+                serialized_name: 'keyCredentials',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'KeyCredentialElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'KeyCredential'
+                      }
+                  }
+                }
+              },
+              password_credentials: {
+                required: false,
+                serialized_name: 'passwordCredentials',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'PasswordCredentialElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'PasswordCredential'
+                      }
+                  }
                 }
               }
             }

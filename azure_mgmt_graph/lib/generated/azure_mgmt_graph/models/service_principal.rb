@@ -12,19 +12,19 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      # @return [String] Gets or sets object Id
+      # @return [String] object Id
       attr_accessor :object_id
 
-      # @return [String] Gets or sets object type
+      # @return [String] object type
       attr_accessor :object_type
 
-      # @return [String] Gets or sets service principal display name
+      # @return [String] service principal display name
       attr_accessor :display_name
 
-      # @return [String] Gets or sets app id
+      # @return [String] app id
       attr_accessor :app_id
 
-      # @return [Array<String>] Gets or sets the list of names.
+      # @return [Array<String>] the list of names.
       attr_accessor :service_principal_names
 
 

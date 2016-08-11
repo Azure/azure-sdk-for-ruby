@@ -16,6 +16,11 @@ module Azure::ARM::MobileEngagement
       # properties.
       attr_accessor :value
 
+      # @return [String] When the results are paged, the nextLink is the URI
+      # for the next page of results. This property is empty when there are
+      # no additional pages.
+      attr_accessor :next_link
+
       # return [Proc] with next page method call.
       attr_accessor :next_method
 
@@ -73,6 +78,13 @@ module Azure::ARM::MobileEngagement
                         class_name: 'AppCollection'
                       }
                   }
+                }
+              },
+              next_link: {
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }

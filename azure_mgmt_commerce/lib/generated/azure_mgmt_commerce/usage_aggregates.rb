@@ -19,7 +19,7 @@ module Azure::ARM::Commerce
       @client = client
     end
 
-    # @return reference to the UsageManagementClient
+    # @return [UsageManagementClient] reference to the UsageManagementClient
     attr_reader :client
 
     #

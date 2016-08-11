@@ -15,8 +15,8 @@ module Azure::ARM::CDN
       # @return [String] The resource name to validate.
       attr_accessor :name
 
-      # @return [ResourceType] The type of the resource whose name is to be
-      # validated. Possible values include: 'Microsoft.Cdn/Profiles/Endpoints'
+      # @return [String] The type of the resource whose name is to be
+      # validated. Default value: 'Microsoft.Cdn/Profiles/Endpoints' .
       attr_accessor :type
 
 
@@ -41,10 +41,11 @@ module Azure::ARM::CDN
               },
               type: {
                 required: true,
+                is_constant: true,
                 serialized_name: 'type',
+                default_value: 'Microsoft.Cdn/Profiles/Endpoints',
                 type: {
-                  name: 'Enum',
-                  module: 'ResourceType'
+                  name: 'String'
                 }
               }
             }

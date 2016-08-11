@@ -8,8 +8,8 @@ module Azure::ARM::Graph
   # A service client - single point of access to the REST API.
   #
   class GraphRbacManagementClient < MsRestAzure::AzureServiceClient
-    include MsRest::Serialization
     include MsRestAzure
+    include MsRestAzure::Serialization
 
     # @return [String] the base URI of the service.
     attr_accessor :base_url
@@ -20,7 +20,7 @@ module Azure::ARM::Graph
     # @return [String] Client Api Version.
     attr_reader :api_version
 
-    # @return [String] Gets or sets the tenant Id.
+    # @return [String] the tenant Id.
     attr_accessor :tenant_id
 
     # @return [String] Gets or sets the preferred language for the response.
