@@ -71,6 +71,12 @@ PATH
       ms_rest_azure (~> 0.4.0)
 
 PATH
+  remote: azure_mgmt_iot_hub
+  specs:
+    azure_mgmt_iot_hub (0.5.0)
+      ms_rest_azure (~> 0.4.0)
+
+PATH
   remote: azure_mgmt_key_vault
   specs:
     azure_mgmt_key_vault (0.5.0)
@@ -230,7 +236,7 @@ GEM
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
       rspec-mocks (~> 3.5.0)
-    rspec-core (3.5.1)
+    rspec-core (3.5.2)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -261,6 +267,7 @@ DEPENDENCIES
   azure_mgmt_dns!
   azure_mgmt_features!
   azure_mgmt_graph!
+  azure_mgmt_iot_hub!
   azure_mgmt_key_vault!
   azure_mgmt_locks!
   azure_mgmt_logic!
