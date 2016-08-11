@@ -272,7 +272,7 @@ REGEN_METADATA = {
         tag: 'arm_lock'
     },
     azure_mgmt_logic: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-logic/2015-08-01-preview/swagger/logic.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-logic/2016-06-01/swagger/logic.json',
         ns: 'Azure::ARM::Logic',
         version: version,
         tag: 'arm_logic'

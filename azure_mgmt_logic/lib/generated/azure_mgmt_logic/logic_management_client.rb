@@ -38,23 +38,23 @@ module Azure::ARM::Logic
     # subscription.
     attr_accessor :credentials
 
-    # @return [IntegrationAccounts] integration_accounts
-    attr_reader :integration_accounts
+    # @return [Workflows] workflows
+    attr_reader :workflows
 
-    # @return [IntegrationAccountSchemas] integration_account_schemas
-    attr_reader :integration_account_schemas
+    # @return [WorkflowVersions] workflow_versions
+    attr_reader :workflow_versions
 
-    # @return [IntegrationAccountMaps] integration_account_maps
-    attr_reader :integration_account_maps
+    # @return [WorkflowTriggers] workflow_triggers
+    attr_reader :workflow_triggers
 
-    # @return [IntegrationAccountPartners] integration_account_partners
-    attr_reader :integration_account_partners
+    # @return [WorkflowTriggerHistories] workflow_trigger_histories
+    attr_reader :workflow_trigger_histories
 
-    # @return [IntegrationAccountAgreements] integration_account_agreements
-    attr_reader :integration_account_agreements
+    # @return [WorkflowRuns] workflow_runs
+    attr_reader :workflow_runs
 
-    # @return [IntegrationAccountCertificates] integration_account_certificates
-    attr_reader :integration_account_certificates
+    # @return [WorkflowRunActions] workflow_run_actions
+    attr_reader :workflow_run_actions
 
     #
     # Creates initializes a new instance of the LogicManagementClient class.
@@ -70,13 +70,13 @@ module Azure::ARM::Logic
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials)
       @credentials = credentials
 
-      @integration_accounts = IntegrationAccounts.new(self)
-      @integration_account_schemas = IntegrationAccountSchemas.new(self)
-      @integration_account_maps = IntegrationAccountMaps.new(self)
-      @integration_account_partners = IntegrationAccountPartners.new(self)
-      @integration_account_agreements = IntegrationAccountAgreements.new(self)
-      @integration_account_certificates = IntegrationAccountCertificates.new(self)
-      @api_version = '2015-08-01-preview'
+      @workflows = Workflows.new(self)
+      @workflow_versions = WorkflowVersions.new(self)
+      @workflow_triggers = WorkflowTriggers.new(self)
+      @workflow_trigger_histories = WorkflowTriggerHistories.new(self)
+      @workflow_runs = WorkflowRuns.new(self)
+      @workflow_run_actions = WorkflowRunActions.new(self)
+      @api_version = '2016-06-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
