@@ -253,6 +253,12 @@ REGEN_METADATA = {
     #     version: version,
     #     tag: 'arm_intune'
     # },
+    azure_mgmt_iot_hub: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-iothub/2016-02-03/swagger/iothub.json',
+        ns: 'Azure::ARM::IotHub',
+        version: version,
+        tag: 'arm_iothub'
+    },
     azure_mgmt_key_vault: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-keyvault/2015-06-01/swagger/keyvault.json',
         ns: 'Azure::ARM::KeyVault',

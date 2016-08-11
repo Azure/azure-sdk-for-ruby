@@ -4143,40 +4143,18 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteCollection] operation results.
+    # @return [SiteCollection] which provide lazy access to pages of the response.
     #
-    def suspend_hosting_environment(resource_group_name, name, custom_headers = nil)
-      first_page = suspend_hosting_environment_as_lazy(resource_group_name, name, custom_headers)
-      first_page.get_all_items
-    end
-
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of hostingEnvironment (App Service Environment)
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def suspend_hosting_environment_async(resource_group_name, name, custom_headers = nil)
-      # Send request
-      promise = begin_suspend_hosting_environment_async(resource_group_name, name, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = SiteCollection.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+    def suspend_hosting_environment_as_lazy(resource_group_name, name, custom_headers = nil)
+      response = suspend_hosting_environment_async(resource_group_name, name, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_link|
+          suspend_hosting_environment_next_async(next_link, custom_headers)
         end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        page
       end
-
-      promise
     end
-
     #
     # Suspends the hostingEnvironment.
     #
@@ -4352,40 +4330,18 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteCollection] operation results.
+    # @return [SiteCollection] which provide lazy access to pages of the response.
     #
-    def resume_hosting_environment(resource_group_name, name, custom_headers = nil)
-      first_page = resume_hosting_environment_as_lazy(resource_group_name, name, custom_headers)
-      first_page.get_all_items
-    end
-
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of hostingEnvironment (App Service Environment)
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def resume_hosting_environment_async(resource_group_name, name, custom_headers = nil)
-      # Send request
-      promise = begin_resume_hosting_environment_async(resource_group_name, name, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = SiteCollection.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+    def resume_hosting_environment_as_lazy(resource_group_name, name, custom_headers = nil)
+      response = resume_hosting_environment_async(resource_group_name, name, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_link|
+          resume_hosting_environment_next_async(next_link, custom_headers)
         end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
+        page
       end
-
-      promise
     end
-
     #
     # Resumes the hostingEnvironment.
     #

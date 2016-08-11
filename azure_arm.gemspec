@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_dns', version
   spec.add_runtime_dependency 'azure_mgmt_features', version
   spec.add_runtime_dependency 'azure_mgmt_graph', version
+  spec.add_runtime_dependency 'azure_mgmt_iot_hub', version
   spec.add_runtime_dependency 'azure_mgmt_key_vault', version
   spec.add_runtime_dependency 'azure_mgmt_locks', version
   spec.add_runtime_dependency 'azure_mgmt_logic', version
