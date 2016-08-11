@@ -1,9 +1,9 @@
 
 # Microsoft Azure SDK for Ruby - Resource Management (preview)
-[![Build Status](https://travis-ci.org/Azure/azure-sdk-ruby.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-ruby) [![Code Climate](https://codeclimate.com/github/Azure/azure-sdk-ruby/badges/gpa.svg)](https://codeclimate.com/github/Azure/azure-sdk-ruby)
+[![Build Status](https://api.travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=master)](https://api.travis-ci.org/Azure/azure-sdk-for-ruby) [![Code Climate](https://codeclimate.com/github/Azure/azure-sdk-for-ruby/badges/gpa.svg)](https://codeclimate.com/github/Azure/azure-sdk-for-ruby)
 
 This project provides a Ruby package for Azure Resource Management (ARM).
-If you're looking for Azure Service Management (ASM) please refer to this [repo](https://github.com/Azure/azure-sdk-for-ruby)
+If you're looking for Azure Service Management (ASM) please refer to this [repo](https://github.com/Azure/azure-sdk-for-ruby/tree/asm)
 
 Additional info on Azure deployment models [https://azure.microsoft.com/en-us/documentation/articles/azure-classic-rm/](https://azure.microsoft.com/en-us/documentation/articles/azure-classic-rm/)
 
@@ -20,16 +20,18 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 * [DNS](https://rubygems.org/gems/azure_mgmt_dns) Azure DNS Record Set and Zone management
 * [Features](https://rubygems.org/gems/azure_mgmt_features) Feature Exposure Controls
 * [Graph](https://rubygems.org/gems/azure_mgmt_graph) Azure Active Directory Applications, Users, etc...
+* [IoTHub](https://rubygems.org/gems/azure_mgmt_iot_hub) Azure IoTHub's Resource Management
 * [Key Vault](https://rubygems.org/gems/azure_mgmt_key_vault) Azure Key Vault's vault management
 * [Locks](https://rubygems.org/gems/azure_mgmt_locks) Management locks for Azure Resources
 * [Logic](https://rubygems.org/gems/azure_mgmt_logic) Integration Accounts, AccountSchemas, AccountMaps, AccountPartners etc... 
 * [Machine Learning](https://rubygems.org/gems/azure_mgmt_machine_learning) Azure Machine Learning web services management
 * [Media Services](https://rubygems.org/gems/azure_mgmt_media_services) Media Services resource management APIs
+* [Mobile Engagement](https://rubygems.org/gems/azure_mgmt_mobile_engagement) Azure Mobile Engagement's Apps, App Collections, Devices management APIs  
 * [Network](https://rubygems.org/gems/azure_mgmt_network) Load Balancers, Network Gateways, Security Groups, etc...
 * [Notification Hubs](https://rubygems.org/gems/azure_mgmt_notification_hubs) Notification Hubs management
-* [Redis](https://rubygems.org/gems/azure_mgmt_redis) Redis resource management
 * [Policy](https://rubygems.org/gems/azure_mgmt_policy) Policy Assignment & Policy definition operations
-* [Powerbi Embedded](https://rubygems.org/gems/azure_mgmt_powerbi_embedded) Azure Powerbi Embedded Workspace & WorkspaceCollection management 
+* [Powerbi Embedded](https://rubygems.org/gems/azure_mgmt_powerbi_embedded) Azure Powerbi Embedded Workspace & WorkspaceCollection management
+* [Redis](https://rubygems.org/gems/azure_mgmt_redis) Redis resource management
 * [Resources](https://rubygems.org/gems/azure_mgmt_resources) Resource Groups, Resource Providers, Template Deployments, Operations, etc...
 * [Scheduler](https://rubygems.org/gems/azure_mgmt_scheduler) Manage scheduled jobs in Azure
 * [Search](https://rubygems.org/gems/azure_mgmt_search) Manage Search resources
@@ -41,11 +43,11 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 * [WebApps](https://rubygems.org/gems/azure_mgmt_web) Manage WebApps, formally known as WebSites
 
 ## Azure Services
-* [Storage](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md#storage)
+* [Storage](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#storage)
  Azure Storage is now availabe in its own preview gem and GitHub [repo](https://github.com/Azure/azure-storage-ruby)
-* [Service Bus](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md#usage)
-    * [Relays](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md#relays)
-    * [Topics](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md#topics)
+* [Service Bus](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#usage)
+    * [Relays](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#relays)
+    * [Topics](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#topics)
     * Queues
 
 # Supported Ruby Versions
@@ -113,8 +115,8 @@ For more getting started samples go to [Azure-Samples](https://github.com/Azure-
 To get the source code of the SDK via **git** just type:
 
 ```bash
-git clone https://github.com/Azure/azure-sdk-ruby.git
-cd ./azure-sdk-ruby
+git clone https://github.com/Azure/azure-sdk-for-ruby.git
+cd ./azure-sdk-for-ruby
 ```
 Then, run bundler to install all the gem dependencies:
 
@@ -144,7 +146,8 @@ Running the command ``yard`` will generate the API documentation in the `./doc` 
 
 ## Provide Feedback
 
-If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-ruby/issues) section of the project.
+If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-ruby/issues) section of the project. Please make sure to label the
+issues with either arm or asm to help us expedite the process.
 
 # Maintainers
 
@@ -155,5 +158,5 @@ If you encounter any bugs with the library please file an issue in the [Issues](
 For documentation on [Azure PowerShell](http://github.com/azure/azure-powershell).
 For documentation on [Azure CLI](http://github.com/azure/azure-xplat-cli).
 
-# Code of Conduct 
+---
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
