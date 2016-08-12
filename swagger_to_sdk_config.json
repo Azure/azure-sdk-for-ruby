@@ -136,7 +136,7 @@
       "wrapper_filesOrDirs": [
         "azure_mgmt_iot_hub.rb"
       ]
-    }
+    },
     "azure_mgmt_key_vault": {
       "swagger": "arm-keyvault/2015-06-01/swagger/keyvault.json",
       "autorest_options": {
