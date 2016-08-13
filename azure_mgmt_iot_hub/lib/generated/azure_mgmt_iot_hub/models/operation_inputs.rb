@@ -29,7 +29,7 @@ module Azure::ARM::IotHub
             class_name: 'OperationInputs',
             model_properties: {
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'Name',
                 type: {
                   name: 'String'
