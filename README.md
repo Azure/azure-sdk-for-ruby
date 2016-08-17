@@ -1,26 +1,26 @@
-# Microsoft Azure SDK for Ruby
-[![Build Status](https://travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-ruby) [![Code Climate](https://codeclimate.com/github/Azure/azure-sdk-for-ruby/badges/gpa.svg)](https://codeclimate.com/github/Azure/azure-sdk-for-ruby)
+# Microsoft Azure SDK for Ruby - ASM
+[![Build Status](https://travis-ci.org/Azure/azure-sdk-for-ruby.png?branch=asm)](https://travis-ci.org/Azure/azure-sdk-for-ruby) [![Gem Version](https://badge.fury.io/rb/azure.svg)](https://badge.fury.io/rb/azure)
 
 This project provides a Ruby package for Azure Service Management, which makes it easy to access and manage Microsoft Azure Services like Storage, Service Bus and Virtual Machines.
 * **Azure Service Management (ASM) or Classic**: Supported by most existing Azure resources.
 
-If you're looking for **Azure Resource Management (ARM)**, preview version of the Ruby SDK is available [here](https://github.com/Azure/azure-sdk-ruby)
+If you're looking for **Azure Resource Management (ARM)**, preview version of the Ruby SDK is available [here](https://github.com/Azure/azure-sdk-for-ruby)
 
 Information on Azure deployment models: [https://azure.microsoft.com/en-us/documentation/articles/azure-classic-rm/](https://azure.microsoft.com/en-us/documentation/articles/azure-classic-rm/)
 
 ## Azure Service Management
 * Cloud Service Management
-* [SQL Database Server Management](https://github.com/Azure/azure-sdk-for-ruby/blob/master/service_management/README.md#sql)
+* [SQL Database Server Management](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#sql)
 * Storage Account Management
-* [Virtual Network Management](https://github.com/Azure/azure-sdk-for-ruby/blob/master/service_management/README.md#vnets)
+* [Virtual Network Management](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#vnets)
 
 ## Azure Services
-* [Storage](https://github.com/Azure/azure-sdk-for-ruby/blob/master/service_management/README.md#storage)
+* [Storage](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#storage)
  Azure Storage is now availabe in its own preview gem and GitHub [repo](https://github.com/Azure/azure-storage-ruby)
-* [Service Bus](https://github.com/Azure/azure-sdk-for-ruby/blob/master/service_management/README.md#service-bus)
-    * [Relays](https://github.com/Azure/azure-sdk-for-ruby/blob/master/service_management/README.md#relays)
-    * [Queues](https://github.com/Azure/azure-sdk-for-ruby/blob/master/service_management/README.md#sb-queues)
-    * [Topics](https://github.com/Azure/azure-sdk-for-ruby/blob/master/service_management/README.md#topics)
+* [Service Bus](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#usage)
+    * [Relays](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#relays)
+    * [Topics](https://github.com/Azure/azure-sdk-for-ruby/tree/asm#topics)
+    * Queues
 
 # Supported Ruby Versions
 
@@ -37,7 +37,7 @@ You can install the azure rubygem package directly.
 ```bash
 gem install azure
 ```
-Azure storage is in its own azure-storage [gem](https://rubygems.org/gems/azure-storage) and [GitHub repo](https://github.com/Azure/azure-storage-ruby)
+:warning: Azure storage is moving into its own azure-storage [gem](https://rubygems.org/gems/azure-storage) and [GitHub repo](https://github.com/Azure/azure-storage-ruby). It's in preview today.
 
 ## Setup Connection
 
@@ -509,6 +509,8 @@ To get the source code of the SDK via **git** just type:
 ```bash
 git clone https://github.com/Azure/azure-sdk-for-ruby.git
 cd ./azure-sdk-for-ruby
+git remote add upstream https://github.com/Azure/azure-sdk-for-ruby.git
+git checkout -b asm upstream/asm
 ```
 Run bundler to install all the gem dependencies:
 
@@ -550,7 +552,7 @@ Running the command ``yard`` will generate the API documentation in the `./doc` 
 
 ## Provide Feedback
 
-If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-ruby/issues) section of the project.
+If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-ruby/issues) section of the project. Please make sure to label the issues with either arm or asm to help us expedite the process.
 
 # Maintainers
 
@@ -561,5 +563,5 @@ If you encounter any bugs with the library please file an issue in the [Issues](
 For documentation on [Azure PowerShell](http://github.com/azure/azure-powershell).
 For documentation on [Azure CLI](http://github.com/azure/azure-xplat-cli).
 
-# Code of Conduct 
+---
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
