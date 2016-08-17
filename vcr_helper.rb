@@ -24,7 +24,9 @@ VCR.configure do |config|
 
   config.filter_sensitive_data('<AZURE_TENANT_ID>') { ENV['AZURE_TENANT_ID'] }
   config.filter_sensitive_data('<AZURE_CLIENT_ID>') { ENV['AZURE_CLIENT_ID'] }
+  config.filter_sensitive_data('<AZURE_CLIENT_ID>') { ERB::Util.url_encode(ENV['AZURE_CLIENT_ID']) }
   config.filter_sensitive_data('<AZURE_CLIENT_SECRET>') { ENV['AZURE_CLIENT_SECRET'] }
+  config.filter_sensitive_data('<AZURE_CLIENT_SECRET>') { ERB::Util.url_encode(ENV['AZURE_CLIENT_SECRET']) }
   config.filter_sensitive_data('<AZURE_SUBSCRIPTION_ID>') { ENV['AZURE_SUBSCRIPTION_ID'] }
 
   config.before_record do |interaction|
