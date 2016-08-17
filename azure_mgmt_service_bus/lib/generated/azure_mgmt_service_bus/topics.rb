@@ -389,8 +389,8 @@ module Azure::ARM::ServiceBus
     #
     # @return [TopicResource] operation results.
     #
-    def get_topic(resource_group_name, namespace_name, topic_name, custom_headers = nil)
-      response = get_topic_async(resource_group_name, namespace_name, topic_name, custom_headers).value!
+    def get(resource_group_name, namespace_name, topic_name, custom_headers = nil)
+      response = get_async(resource_group_name, namespace_name, topic_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -405,8 +405,8 @@ module Azure::ARM::ServiceBus
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_topic_with_http_info(resource_group_name, namespace_name, topic_name, custom_headers = nil)
-      get_topic_async(resource_group_name, namespace_name, topic_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, namespace_name, topic_name, custom_headers = nil)
+      get_async(resource_group_name, namespace_name, topic_name, custom_headers).value!
     end
 
     #
@@ -420,7 +420,7 @@ module Azure::ARM::ServiceBus
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_topic_async(resource_group_name, namespace_name, topic_name, custom_headers = nil)
+    def get_async(resource_group_name, namespace_name, topic_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
@@ -720,15 +720,15 @@ module Azure::ARM::ServiceBus
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] Authorization rule name.
     # @param topic_name [String] The topic name.
+    # @param authorization_rule_name [String] Authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SharedAccessAuthorizationRuleResource] operation results.
     #
-    def get_authorization_rule(resource_group_name, namespace_name, authorization_rule_name, topic_name, custom_headers = nil)
-      response = get_authorization_rule_async(resource_group_name, namespace_name, authorization_rule_name, topic_name, custom_headers).value!
+    def get_authorization_rule(resource_group_name, namespace_name, topic_name, authorization_rule_name, custom_headers = nil)
+      response = get_authorization_rule_async(resource_group_name, namespace_name, topic_name, authorization_rule_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -737,15 +737,15 @@ module Azure::ARM::ServiceBus
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] Authorization rule name.
     # @param topic_name [String] The topic name.
+    # @param authorization_rule_name [String] Authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_authorization_rule_with_http_info(resource_group_name, namespace_name, authorization_rule_name, topic_name, custom_headers = nil)
-      get_authorization_rule_async(resource_group_name, namespace_name, authorization_rule_name, topic_name, custom_headers).value!
+    def get_authorization_rule_with_http_info(resource_group_name, namespace_name, topic_name, authorization_rule_name, custom_headers = nil)
+      get_authorization_rule_async(resource_group_name, namespace_name, topic_name, authorization_rule_name, custom_headers).value!
     end
 
     #
@@ -753,18 +753,18 @@ module Azure::ARM::ServiceBus
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name
-    # @param authorization_rule_name [String] Authorization rule name.
     # @param topic_name [String] The topic name.
+    # @param authorization_rule_name [String] Authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_authorization_rule_async(resource_group_name, namespace_name, authorization_rule_name, topic_name, custom_headers = nil)
+    def get_authorization_rule_async(resource_group_name, namespace_name, topic_name, authorization_rule_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
+      fail ArgumentError, 'authorization_rule_name is nil' if authorization_rule_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -777,7 +777,7 @@ module Azure::ARM::ServiceBus
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/authorizationRules/{authorizationRuleName}'
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'authorizationRuleName' => authorization_rule_name,'topicName' => topic_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'namespaceName' => namespace_name,'topicName' => topic_name,'authorizationRuleName' => authorization_rule_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {})
       }

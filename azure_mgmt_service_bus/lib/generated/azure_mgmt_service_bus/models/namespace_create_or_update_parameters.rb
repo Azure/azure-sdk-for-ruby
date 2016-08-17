@@ -21,10 +21,6 @@ module Azure::ARM::ServiceBus
       # @return [Hash{String => String}] Namespace tags.
       attr_accessor :tags
 
-      # @return [Kind] Specifies the namespace type; for example: Messaging.
-      # Possible values include: 'Messaging'
-      attr_accessor :kind
-
       # @return [String] Provisioning state of the Namespace.
       attr_accessor :provisioning_state
 
@@ -89,13 +85,6 @@ module Azure::ARM::ServiceBus
                         name: 'String'
                       }
                   }
-                }
-              },
-              kind: {
-                required: false,
-                serialized_name: 'kind',
-                type: {
-                  name: 'String'
                 }
               },
               provisioning_state: {
