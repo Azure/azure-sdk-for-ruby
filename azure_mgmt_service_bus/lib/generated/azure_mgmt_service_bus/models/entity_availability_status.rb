@@ -6,10 +6,14 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Defines values for Kind
+    # Defines values for EntityAvailabilityStatus
     #
-    module Kind
-      Messaging = "Messaging"
+    module EntityAvailabilityStatus
+      Available = "Available"
+      Limited = "Limited"
+      Renaming = "Renaming"
+      Restoring = "Restoring"
+      Unknown = "Unknown"
     end
   end
 end
