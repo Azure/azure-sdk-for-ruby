@@ -13,7 +13,7 @@ module Azure::ARM::ServiceBus
       include MsRestAzure
 
       # @return [Policykey] Key that needs to be regenerated . Possible values
-      # include: 'PrimaryKey', 'SecondayKey'
+      # include: 'PrimaryKey', 'SecondaryKey'
       attr_accessor :policykey
 
 

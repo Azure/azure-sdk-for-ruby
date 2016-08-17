@@ -10,7 +10,7 @@ module Azure::ARM::ServiceBus
     #
     module Policykey
       PrimaryKey = "PrimaryKey"
-      SecondayKey = "SecondayKey"
+      SecondaryKey = "SecondaryKey"
     end
   end
 end
