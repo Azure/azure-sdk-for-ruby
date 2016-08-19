@@ -6,5 +6,6 @@ require_relative 'spec_helper'
 describe ComputeManagementClient do
   it 'should create sample samnple set' do
     expect(ENV['TEST']).to eq('abcd')
+    expect(ENV['TEST123']).to eq('abcd')
   end
 end

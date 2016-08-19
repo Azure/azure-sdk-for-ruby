@@ -249,10 +249,12 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
+    unf_ext (0.0.7.2-x64-mingw32)
     vcr (3.0.3)
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   azure_mgmt_authorization!
