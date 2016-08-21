@@ -26,13 +26,16 @@ module Azure::ARM::ServiceBus
       # automatically deleted. The minimum duration is 5 minutes.
       attr_accessor :auto_delete_on_idle
 
-      # @return [AvailabilityStatus] Entity availability status for the topic.
-      # Possible values include: 'Available', 'Limited', 'Renaming',
+      # @return [EntityAvailabilityStatus] Entity availability status for the
+      # topic. Possible values include: 'Available', 'Limited', 'Renaming',
       # 'Restoring', 'Unknown'
-      attr_accessor :availability_status
+      attr_accessor :entity_availability_status
 
       # @return [DateTime] Exact time the message was created.
       attr_accessor :created_at
+
+      # @return [MessageCountDetails]
+      attr_accessor :count_details
 
       # @return [Duration] Default message time to live value. This is the
       # duration after which the message expires, starting from when the
@@ -53,27 +56,28 @@ module Azure::ARM::ServiceBus
       # before writing it to persistent storage.
       attr_accessor :enable_express
 
-      # @return [Boolean] Whether messages should be filtered before
-      # publishing.
-      attr_accessor :enable_filtering_messages_before_publishing
-
       # @return [Boolean] Value that indicates whether the topic to be
       # partitioned across multiple message brokers is enabled.
       attr_accessor :enable_partitioning
+
+      # @return [Boolean] Value that indicates whether partitioning is enabled
+      # or disabled..
+      attr_accessor :enable_subscription_partitioning
+
+      # @return [Boolean] Whether messages should be filtered before
+      # publishing.
+      attr_accessor :filtering_messages_before_publishing
 
       # @return [Boolean] Value that indicates whether the message is
       # anonymous accessible.
       attr_accessor :is_anonymous_accessible
 
+      # @return [Boolean]
+      attr_accessor :is_express
+
       # @return [Integer] Maximum size of the topic in megabytes, which is the
       # size of memory allocated for the topic.
       attr_accessor :max_size_in_megabytes
-
-      # @return [MessageCountDetails]
-      attr_accessor :message_count_details
-
-      # @return [String] Name of the topic.
-      attr_accessor :path
 
       # @return [Boolean] Value indicating if this topic requires duplicate
       # detection.
@@ -97,9 +101,6 @@ module Azure::ARM::ServiceBus
 
       # @return [DateTime] The exact time the message has been updated.
       attr_accessor :updated_at
-
-      # @return [String] Represents the metadata description of the topic
-      attr_accessor :user_metadata
 
 
       #
@@ -130,121 +131,128 @@ module Azure::ARM::ServiceBus
               },
               accessed_at: {
                 required: false,
-                serialized_name: 'properties.AccessedAt',
+                serialized_name: 'properties.accessedAt',
                 type: {
                   name: 'DateTime'
                 }
               },
               auto_delete_on_idle: {
                 required: false,
-                serialized_name: 'properties.AutoDeleteOnIdle',
+                serialized_name: 'properties.autoDeleteOnIdle',
                 type: {
                   name: 'TimeSpan'
                 }
               },
-              availability_status: {
+              entity_availability_status: {
                 required: false,
-                serialized_name: 'properties.AvailabilityStatus ',
+                serialized_name: 'properties.entityAvailabilityStatus ',
                 type: {
                   name: 'Enum',
-                  module: 'AvailabilityStatus'
+                  module: 'EntityAvailabilityStatus'
                 }
               },
               created_at: {
                 required: false,
-                serialized_name: 'properties.CreatedAt',
+                serialized_name: 'properties.createdAt',
                 type: {
                   name: 'DateTime'
                 }
               },
+              count_details: {
+                required: false,
+                serialized_name: 'properties.countDetails',
+                type: {
+                  name: 'Composite',
+                  class_name: 'MessageCountDetails'
+                }
+              },
               default_message_time_to_live: {
                 required: false,
-                serialized_name: 'properties.DefaultMessageTimeToLive',
+                serialized_name: 'properties.defaultMessageTimeToLive',
                 type: {
                   name: 'TimeSpan'
                 }
               },
               duplicate_detection_history_time_window: {
                 required: false,
-                serialized_name: 'properties.DuplicateDetectionHistoryTimeWindow ',
+                serialized_name: 'properties.duplicateDetectionHistoryTimeWindow ',
                 type: {
                   name: 'TimeSpan'
                 }
               },
               enable_batched_operations: {
                 required: false,
-                serialized_name: 'properties.EnableBatchedOperations',
+                serialized_name: 'properties.enableBatchedOperations',
                 type: {
                   name: 'Boolean'
                 }
               },
               enable_express: {
                 required: false,
-                serialized_name: 'properties.EnableExpress',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              enable_filtering_messages_before_publishing: {
-                required: false,
-                serialized_name: 'properties.EnableFilteringMessagesBeforePublishing',
+                serialized_name: 'properties.enableExpress',
                 type: {
                   name: 'Boolean'
                 }
               },
               enable_partitioning: {
                 required: false,
-                serialized_name: 'properties.EnablePartitioning',
+                serialized_name: 'properties.enablePartitioning',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              enable_subscription_partitioning: {
+                required: false,
+                serialized_name: 'properties.enableSubscriptionPartitioning',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              filtering_messages_before_publishing: {
+                required: false,
+                serialized_name: 'properties.filteringMessagesBeforePublishing',
                 type: {
                   name: 'Boolean'
                 }
               },
               is_anonymous_accessible: {
                 required: false,
-                serialized_name: 'properties.IsAnonymousAccessible',
+                serialized_name: 'properties.isAnonymousAccessible',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              is_express: {
+                required: false,
+                serialized_name: 'properties.isExpress',
                 type: {
                   name: 'Boolean'
                 }
               },
               max_size_in_megabytes: {
                 required: false,
-                serialized_name: 'properties.MaxSizeInMegabytes ',
+                serialized_name: 'properties.maxSizeInMegabytes',
                 type: {
                   name: 'Number'
                 }
               },
-              message_count_details: {
-                required: false,
-                serialized_name: 'properties.MessageCountDetails',
-                type: {
-                  name: 'Composite',
-                  class_name: 'MessageCountDetails'
-                }
-              },
-              path: {
-                required: false,
-                serialized_name: 'properties.Path',
-                type: {
-                  name: 'String'
-                }
-              },
               requires_duplicate_detection: {
                 required: false,
-                serialized_name: 'properties.RequiresDuplicateDetection',
+                serialized_name: 'properties.requiresDuplicateDetection',
                 type: {
                   name: 'Boolean'
                 }
               },
               size_in_bytes: {
                 required: false,
-                serialized_name: 'properties.SizeInBytes ',
+                serialized_name: 'properties.sizeInBytes',
                 type: {
                   name: 'Number'
                 }
               },
               status: {
                 required: false,
-                serialized_name: 'properties.Status',
+                serialized_name: 'properties.status',
                 type: {
                   name: 'Enum',
                   module: 'EntityStatus'
@@ -252,30 +260,23 @@ module Azure::ARM::ServiceBus
               },
               subscription_count: {
                 required: false,
-                serialized_name: 'properties.SubscriptionCount',
+                serialized_name: 'properties.subscriptionCount',
                 type: {
                   name: 'Number'
                 }
               },
               support_ordering: {
                 required: false,
-                serialized_name: 'properties.SupportOrdering',
+                serialized_name: 'properties.supportOrdering',
                 type: {
                   name: 'Boolean'
                 }
               },
               updated_at: {
                 required: false,
-                serialized_name: 'properties.UpdatedAt',
+                serialized_name: 'properties.updatedAt',
                 type: {
                   name: 'DateTime'
-                }
-              },
-              user_metadata: {
-                required: false,
-                serialized_name: 'properties.UserMetadata',
-                type: {
-                  name: 'String'
                 }
               }
             }

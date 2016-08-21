@@ -20,10 +20,8 @@ module Azure::ARM::ServiceBus
       # automatically deleted. The minimum duration is 5 minutes.
       attr_accessor :auto_delete_on_idle
 
-      # @return [AvailabilityStatus] Entity availability status for the topic.
-      # Possible values include: 'Available', 'Limited', 'Renaming',
-      # 'Restoring', 'Unknown'
-      attr_accessor :availability_status
+      # @return [MessageCountDetails]
+      attr_accessor :count_details
 
       # @return [DateTime] Exact time the message was created.
       attr_accessor :created_at
@@ -34,25 +32,22 @@ module Azure::ARM::ServiceBus
       # TimeToLive is not set on a message itself.
       attr_accessor :default_message_time_to_live
 
+      # @return [Boolean] Value that indicates if a subscription has dead
+      # letter support on Filter evaluation exceptions.
+      attr_accessor :dead_lettering_on_filter_evaluation_exceptions
+
+      # @return [Boolean] Value that indicates if a subscription has dead
+      # letter support when a message expires.
+      attr_accessor :dead_lettering_on_message_expiration
+
       # @return [Boolean] Value that indicates whether server-side batched
       # operations are enabled..
       attr_accessor :enable_batched_operations
 
-      # @return [Boolean] Value that indicates if a subscription has dead
-      # letter support on Filter evaluation exceptions.
-      attr_accessor :enable_dead_lettering_on_filter_evaluation_exceptions
-
-      # @return [Boolean] Value that indicates if a subscription has dead
-      # letter support when a message expires.
-      attr_accessor :enable_dead_lettering_on_message_expiration
-
-      # @return [String] Path to the recipient to which the dead lettered
-      # messages are forwarded.
-      attr_accessor :forward_dead_lettered_messages_to
-
-      # @return [String] Path to the recipient to which the message is
-      # forwarded.
-      attr_accessor :forward_to
+      # @return [EntityAvailabilityStatus] Entity availability status for the
+      # topic. Possible values include: 'Available', 'Limited', 'Renaming',
+      # 'Restoring', 'Unknown'
+      attr_accessor :entity_availability_status
 
       # @return [Boolean] Value that indicates whether the entity description
       # is read-only.
@@ -67,9 +62,6 @@ module Azure::ARM::ServiceBus
       # @return [Integer] Number of messages.
       attr_accessor :message_count
 
-      # @return [MessageCountDetails]
-      attr_accessor :message_count_details
-
       # @return [Boolean] Value indicating if a subscription supports the
       # concept of session.
       attr_accessor :requires_session
@@ -80,16 +72,8 @@ module Azure::ARM::ServiceBus
       # 'SendDisabled', 'Unknown'
       attr_accessor :status
 
-      # @return [String] Path of the topic that this subscription description
-      # belongs to.
-      attr_accessor :topic_path
-
       # @return [DateTime] The exact time the message has been updated.
       attr_accessor :updated_at
-
-      # @return [String] Represents the metadata description of the
-      # Subscription.
-      attr_accessor :user_metadata
 
 
       #
@@ -151,145 +135,117 @@ module Azure::ARM::ServiceBus
               },
               accessed_at: {
                 required: false,
-                serialized_name: 'properties.AccessedAt',
+                serialized_name: 'properties.accessedAt',
                 type: {
                   name: 'DateTime'
                 }
               },
               auto_delete_on_idle: {
                 required: false,
-                serialized_name: 'properties.AutoDeleteOnIdle',
+                serialized_name: 'properties.autoDeleteOnIdle',
                 type: {
                   name: 'TimeSpan'
                 }
               },
-              availability_status: {
+              count_details: {
                 required: false,
-                serialized_name: 'properties.AvailabilityStatus ',
+                serialized_name: 'properties.countDetails',
                 type: {
-                  name: 'Enum',
-                  module: 'AvailabilityStatus'
+                  name: 'Composite',
+                  class_name: 'MessageCountDetails'
                 }
               },
               created_at: {
                 required: false,
-                serialized_name: 'properties.CreatedAt',
+                serialized_name: 'properties.createdAt',
                 type: {
                   name: 'DateTime'
                 }
               },
               default_message_time_to_live: {
                 required: false,
-                serialized_name: 'properties.DefaultMessageTimeToLive',
+                serialized_name: 'properties.defaultMessageTimeToLive',
                 type: {
                   name: 'TimeSpan'
                 }
               },
+              dead_lettering_on_filter_evaluation_exceptions: {
+                required: false,
+                serialized_name: 'properties.deadLetteringOnFilterEvaluationExceptions',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              dead_lettering_on_message_expiration: {
+                required: false,
+                serialized_name: 'properties.deadLetteringOnMessageExpiration',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               enable_batched_operations: {
                 required: false,
-                serialized_name: 'properties.EnableBatchedOperations',
+                serialized_name: 'properties.enableBatchedOperations',
                 type: {
                   name: 'Boolean'
                 }
               },
-              enable_dead_lettering_on_filter_evaluation_exceptions: {
+              entity_availability_status: {
                 required: false,
-                serialized_name: 'properties.EnableDeadLetteringOnFilterEvaluationExceptions',
+                serialized_name: 'properties.entityAvailabilityStatus',
                 type: {
-                  name: 'Boolean'
-                }
-              },
-              enable_dead_lettering_on_message_expiration: {
-                required: false,
-                serialized_name: 'properties.EnableDeadLetteringOnMessageExpiration',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              forward_dead_lettered_messages_to: {
-                required: false,
-                serialized_name: 'properties.ForwardDeadLetteredMessagesTo',
-                type: {
-                  name: 'String'
-                }
-              },
-              forward_to: {
-                required: false,
-                serialized_name: 'properties.ForwardTo',
-                type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'EntityAvailabilityStatus'
                 }
               },
               is_read_only: {
                 required: false,
-                serialized_name: 'properties.IsReadOnly',
+                serialized_name: 'properties.isReadOnly',
                 type: {
                   name: 'Boolean'
                 }
               },
               lock_duration: {
                 required: false,
-                serialized_name: 'properties.LockDuration',
+                serialized_name: 'properties.lockDuration',
                 type: {
                   name: 'TimeSpan'
                 }
               },
               max_delivery_count: {
                 required: false,
-                serialized_name: 'properties.MaxDeliveryCount',
+                serialized_name: 'properties.maxDeliveryCount',
                 type: {
                   name: 'Number'
                 }
               },
               message_count: {
                 required: false,
-                serialized_name: 'properties.MessageCount',
+                serialized_name: 'properties.messageCount',
                 type: {
                   name: 'Number'
                 }
               },
-              message_count_details: {
-                required: false,
-                serialized_name: 'properties.MessageCountDetails',
-                type: {
-                  name: 'Composite',
-                  class_name: 'MessageCountDetails'
-                }
-              },
               requires_session: {
                 required: false,
-                serialized_name: 'properties.RequiresSession',
+                serialized_name: 'properties.requiresSession',
                 type: {
                   name: 'Boolean'
                 }
               },
               status: {
                 required: false,
-                serialized_name: 'properties.Status',
+                serialized_name: 'properties.status',
                 type: {
                   name: 'Enum',
                   module: 'EntityStatus'
                 }
               },
-              topic_path: {
-                required: false,
-                serialized_name: 'properties.TopicPath',
-                type: {
-                  name: 'String'
-                }
-              },
               updated_at: {
                 required: false,
-                serialized_name: 'properties.UpdatedAt',
+                serialized_name: 'properties.updatedAt',
                 type: {
                   name: 'DateTime'
-                }
-              },
-              user_metadata: {
-                required: false,
-                serialized_name: 'properties.UserMetadata',
-                type: {
-                  name: 'String'
                 }
               }
             }

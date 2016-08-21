@@ -12,10 +12,6 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      # @return [Kind] Kind of the Namespace. Possible values include:
-      # 'Messaging'
-      attr_accessor :kind
-
       # @return [Sku]
       attr_accessor :sku
 
@@ -99,13 +95,6 @@ module Azure::ARM::ServiceBus
                         name: 'String'
                       }
                   }
-                }
-              },
-              kind: {
-                required: false,
-                serialized_name: 'kind',
-                type: {
-                  name: 'String'
                 }
               },
               sku: {
