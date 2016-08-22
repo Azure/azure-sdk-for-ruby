@@ -219,7 +219,7 @@ describe Azure::ServiceBus::ServiceBusService do
     before do
       VCR.insert_cassette "service_bus/#{name}"
       sb_host = "https://#{Azure.sb_namespace}.servicebus.windows.net"
-      signer = Azure::ServiceBus::Auth::SharedAccessSigner.new(Azure.sb_sas_key_name, Azure.sb_sas_key)
+      signer = Azure::ServiceBus::Auth::SharedAccessSigner.new
       @servicebus = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer })
       @servicebus.create_queue queue_name
     end

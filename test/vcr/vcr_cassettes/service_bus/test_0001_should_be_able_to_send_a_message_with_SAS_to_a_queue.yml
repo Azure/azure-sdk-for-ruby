@@ -14,7 +14,7 @@ http_interactions:
         </entry>
     headers:
       User-Agent:
-      - Azure-Core/0.1.0
+      - Azure-Core/0.1.4
       Content-Type:
       - application/atom+xml; charset=utf-8
       Content-Length:
@@ -34,19 +34,21 @@ http_interactions:
       - application/atom+xml;type=entry;charset=utf-8
       server:
       - Microsoft-HTTPAPI/2.0
+      strict-transport-security:
+      - max-age=31536000
       date:
-      - Fri, 27 May 2016 19:09:37 GMT
+      - Mon, 22 Aug 2016 22:18:54 GMT
       connection:
       - close
     body:
       encoding: UTF-8
       string: <entry xmlns="http://www.w3.org/2005/Atom"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-queue</id><title
-        type="text">test-queue</title><published>2016-05-27T19:09:37Z</published><updated>2016-05-27T19:09:38Z</updated><author><name><SB_NAMESPACE></name></author><link
+        type="text">test-queue</title><published>2016-08-22T22:18:53Z</published><updated>2016-08-22T22:18:53Z</updated><author><name><SB_NAMESPACE></name></author><link
         rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/test-queue"/><content
         type="application/xml"><QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
-        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><CreatedAt>2016-05-27T19:09:37.997</CreatedAt><UpdatedAt>2016-05-27T19:09:38.053</UpdatedAt></QueueDescription></content></entry>
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><CreatedAt>2016-08-22T22:18:53.84</CreatedAt><UpdatedAt>2016-08-22T22:18:53.937</UpdatedAt></QueueDescription></content></entry>
     http_version: 
-  recorded_at: Fri, 27 May 2016 19:09:53 GMT
+  recorded_at: Mon, 22 Aug 2016 22:18:55 GMT
 - request:
     method: post
     uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue/messages
@@ -55,7 +57,7 @@ http_interactions:
       string: some text
     headers:
       User-Agent:
-      - Azure-Core/0.1.0
+      - Azure-Core/0.1.4
       Content-Type:
       - text/plain
       BrokerProperties:
@@ -77,15 +79,17 @@ http_interactions:
       - application/xml; charset=utf-8
       server:
       - Microsoft-HTTPAPI/2.0
+      strict-transport-security:
+      - max-age=31536000
       date:
-      - Fri, 27 May 2016 19:09:39 GMT
+      - Mon, 22 Aug 2016 22:19:20 GMT
       connection:
       - close
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 27 May 2016 19:09:53 GMT
+  recorded_at: Mon, 22 Aug 2016 22:19:21 GMT
 - request:
     method: get
     uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue
@@ -94,7 +98,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Azure-Core/0.1.0
+      - Azure-Core/0.1.4
       Content-Type:
       - application/atom+xml; charset=utf-8
       Content-Length:
@@ -112,19 +116,21 @@ http_interactions:
       - application/atom+xml;type=entry;charset=utf-8
       server:
       - Microsoft-HTTPAPI/2.0
+      strict-transport-security:
+      - max-age=31536000
       date:
-      - Fri, 27 May 2016 19:09:38 GMT
+      - Mon, 22 Aug 2016 22:20:05 GMT
       connection:
       - close
     body:
       encoding: UTF-8
       string: <entry xmlns="http://www.w3.org/2005/Atom"><id>https://<SB_NAMESPACE>.servicebus.windows.net/test-queue</id><title
-        type="text">test-queue</title><published>2016-05-27T19:09:37Z</published><updated>2016-05-27T19:09:38Z</updated><author><name><SB_NAMESPACE></name></author><link
+        type="text">test-queue</title><published>2016-08-22T22:18:53Z</published><updated>2016-08-22T22:18:53Z</updated><author><name><SB_NAMESPACE></name></author><link
         rel="self" href="https://<SB_NAMESPACE>.servicebus.windows.net/test-queue"/><content
         type="application/xml"><QueueDescription xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"
         xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>182</SizeInBytes><MessageCount>1</MessageCount></QueueDescription></content></entry>
     http_version: 
-  recorded_at: Fri, 27 May 2016 19:09:53 GMT
+  recorded_at: Mon, 22 Aug 2016 22:20:06 GMT
 - request:
     method: delete
     uri: https://<SB_NAMESPACE>.servicebus.windows.net/test-queue
@@ -133,7 +139,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Azure-Core/0.1.0
+      - Azure-Core/0.1.4
       Content-Type:
       - application/atom+xml; charset=utf-8
       Content-Length:
@@ -149,13 +155,15 @@ http_interactions:
       - '0'
       server:
       - Microsoft-HTTPAPI/2.0
+      strict-transport-security:
+      - max-age=31536000
       date:
-      - Fri, 27 May 2016 19:09:39 GMT
+      - Mon, 22 Aug 2016 22:20:08 GMT
       connection:
       - close
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 27 May 2016 19:09:54 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Mon, 22 Aug 2016 22:20:09 GMT
+recorded_with: VCR 3.0.3
