@@ -241,7 +241,7 @@ describe Azure::ServiceBus::ServiceBusService do
     end
   end
 
-    describe "when the queue has messages" do
+  describe "when the queue has messages" do
     let(:message_content) { 'messagecontent' }
     let(:to) { 'yo' }
     let(:label) { 'my_label' }
