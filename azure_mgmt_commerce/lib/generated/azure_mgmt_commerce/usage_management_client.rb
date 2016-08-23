@@ -17,8 +17,8 @@ module Azure::ARM::Commerce
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] It uniquely identifes Microsoft Azure subscription. The
-    # subscription ID forms part of the URI for every service call.
+    # @return [String] It uniquely identifies Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
     attr_accessor :subscription_id
 
     # @return [String] Client Api Version.
