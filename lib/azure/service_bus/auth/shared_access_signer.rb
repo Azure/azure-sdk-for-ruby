@@ -3,7 +3,7 @@ require 'cgi'
 module Azure
   module ServiceBus
     module Auth
-      class SharedAccessSigner
+      class SharedAccessSigner < Azure::Core::Auth::Signer
 
         # The number of seconds from the time of signature that the SAS token will expire
         attr_accessor :expiry_offset, :key_name, :access_key
@@ -37,16 +37,6 @@ module Azure
 
         def signature(url_encoded_resource, expiry)
           sign([url_encoded_resource, expiry].join("\n"))
-        end
-
-        # Generate an HMAC signature.
-        #
-        # @param body [String] The string to sign.
-        #
-        # @return [String] a Base64 String signed with HMAC.
-        def sign(body)
-          signed = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), access_key, body)
-          Base64.strict_encode64(signed)
         end
       end
     end
