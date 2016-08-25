@@ -6,7 +6,7 @@ module Azure
       class SharedAccessSigner < Azure::Core::Auth::Signer
 
         # The number of seconds from the time of signature that the SAS token will expire
-        attr_accessor :expiry_offset, :key_name, :access_key
+        attr_accessor :expiry_offset, :key_name
 
         # Public: Initialize the Signer.
         #
