@@ -14,7 +14,7 @@ module Azure
         # @param key      [String] The service bus SAS key encoded in Base64. Defaults to the one in the global configuration.
         # @param expiry_offset [Integer] The number of seconds from the time of signature that the SAS token will expire. Defaults to 30 minutes.
         def initialize(key_name=Azure.sb_sas_key_name, key=Azure.sb_sas_key, expiry_offset = 60*5)
-          super(key)
+          @access_key = key
           @key_name, @expiry_offset = key_name, expiry_offset
         end
 

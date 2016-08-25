@@ -23,6 +23,8 @@ if ENV['INTEG_RECORDED'].nil? || ENV['INTEG_RECORDED'] == false
     config.storage_account_name     = ENV.fetch('AZURE_STORAGE_ACCOUNT')
     config.sb_namespace             = ENV.fetch('AZURE_SERVICEBUS_NAMESPACE')
     config.sb_access_key            = ENV.fetch('AZURE_SERVICEBUS_ACCESS_KEY')
+    config.sb_sas_key_name          = ENV.fetch('AZURE_SERVICEBUS_SAS_KEY_NAME')
+    config.sb_sas_key               = ENV.fetch('AZURE_SERVICEBUS_SAS_KEY')
     config.management_certificate   = ENV.fetch('AZURE_MANAGEMENT_CERTIFICATE')
     config.subscription_id          = ENV.fetch('AZURE_SUBSCRIPTION_ID')
   end
@@ -30,6 +32,8 @@ else
   Azure.configure do |config|
     config.sb_namespace             = 'test'
     config.sb_access_key            = 'test123'
+    config.sb_sas_key_name          = 'testpolicyname'
+    config.sb_sas_key               = 'testsaskey'
   end
 end
 
@@ -47,6 +51,8 @@ VCR.configure do |config|
   config.filter_sensitive_data('<STORAGE_ACCOUNT_NAME>') { Azure.storage_account_name }
   config.filter_sensitive_data('<SB_NAMESPACE>') { Azure.sb_namespace }
   config.filter_sensitive_data('<SB_ACCESS_KEY>') { CGI.escape(Azure.sb_access_key) }
+  config.filter_sensitive_data('<SB_SAS_KEY_NAME>') { Azure.sb_sas_key_name }
+  config.filter_sensitive_data('<SB_SAS_KEY>') { CGI.escape(Azure.sb_sas_key) }
   config.filter_sensitive_data('<MANAGEMENT_CERTIFICATE>') { Azure.management_certificate }
 
   config.before_record do |interaction|

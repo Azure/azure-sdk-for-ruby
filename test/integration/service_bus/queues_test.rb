@@ -215,6 +215,32 @@ describe Azure::ServiceBus::ServiceBusService do
     end
   end
 
+  describe "when using SAS" do
+    before do
+      VCR.insert_cassette "service_bus/#{name}"
+      sb_host = "https://#{Azure.sb_namespace}.servicebus.windows.net"
+      signer = Azure::ServiceBus::Auth::SharedAccessSigner.new
+      @servicebus = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer })
+      @servicebus.create_queue queue_name
+    end
+
+    after do
+      response = @servicebus.delete_queue queue_name
+      response.must_equal nil
+      VCR.eject_cassette
+    end
+
+    it "should be able to send a message with SAS to a queue" do
+      msg = Azure::ServiceBus::BrokeredMessage.new("some text") do |m|
+        m.to = "yo"
+      end
+      res = @servicebus.send_queue_message(queue_name, msg)
+      res.must_be_nil
+      q = @servicebus.get_queue(queue_name)
+      q.message_count.must_equal 1
+    end
+  end
+
   describe "when the queue has messages" do
     let(:message_content) { 'messagecontent' }
     let(:to) { 'yo' }
