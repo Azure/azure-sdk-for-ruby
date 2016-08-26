@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for CheckDnsNameAvailability Api servive call
+    # Response for CheckDnsNameAvailability Api service call
     #
     class DnsNameAvailabilityResult
 

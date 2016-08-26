@@ -7,7 +7,7 @@ module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
   # services that interact with Microsoft Azure Networks service to manage
-  # your network resrources. The API has entities that capture the
+  # your network resources. The API has entities that capture the
   # relationship between an end user and the Microsoft Azure Networks service.
   #
   class ExpressRouteCircuits
@@ -151,7 +151,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get ExpressRouteCircuit operation retreives information about the
+    # The Get ExpressRouteCircuit operation retrieves information about the
     # specified ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -167,7 +167,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get ExpressRouteCircuit operation retreives information about the
+    # The Get ExpressRouteCircuit operation retrieves information about the
     # specified ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -182,7 +182,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get ExpressRouteCircuit operation retreives information about the
+    # The Get ExpressRouteCircuit operation retrieves information about the
     # specified ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -882,7 +882,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Liststats ExpressRouteCircuit operation retrieves all the stats from a
+    # The List stats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -898,7 +898,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Liststats ExpressRouteCircuit operation retrieves all the stats from a
+    # The List stats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -913,7 +913,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Liststats ExpressRouteCircuit operation retrieves all the stats from a
+    # The List stats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -979,7 +979,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Liststats ExpressRouteCircuit operation retrieves all the stats from a
+    # The List stats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -996,7 +996,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Liststats ExpressRouteCircuit operation retrieves all the stats from a
+    # The List stats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -1012,7 +1012,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Liststats ExpressRouteCircuit operation retrieves all the stats from a
+    # The List stats ExpressRouteCircuit operation retrieves all the stats from a
     # ExpressRouteCircuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
