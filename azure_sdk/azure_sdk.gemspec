@@ -15,8 +15,13 @@ Gem::Specification.new do |spec|
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure SDK - Azure Client Library for Ruby'
   spec.summary       = 'Official Ruby client library to consume Microsoft Azure services.'
-  spec.homepage      = 'http://github.com/azure/azure-sdk-ruby'
+  spec.homepage      = 'https://aka.ms/azure-sdk-for-ruby'
   spec.license       = 'MIT'
+
+  spec.files         = Dir["LICENSE.txt", "lib/**/*"]
+  spec.bindir        = 'bin'
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ['lib']
 
   spec.required_ruby_version = '>= 1.9.3'
 
