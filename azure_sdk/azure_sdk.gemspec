@@ -2,15 +2,19 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-version = File.read(File.expand_path('../ARM_VERSION', __FILE__)).strip
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+version = File.read(File.expand_path('../../ARM_VERSION', __FILE__)).strip
+require 'azure_sdk/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'azure_arm'
-  spec.version       = version
+  spec.name          = 'azure_sdk'
+  spec.version       = Azure::VERSION
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
-  spec.description   = 'Microsoft Azure ARM Client Library for Ruby'
-  spec.summary       = 'Official Ruby client library to consume Microsoft Azure ARM services.'
+  spec.description   = 'Microsoft Azure SDK - Azure Client Library for Ruby'
+  spec.summary       = 'Official Ruby client library to consume Microsoft Azure services.'
   spec.homepage      = 'http://github.com/azure/azure-sdk-ruby'
   spec.license       = 'MIT'
 
@@ -55,4 +59,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_subscriptions', version
   spec.add_runtime_dependency 'azure_mgmt_traffic_manager', version
   spec.add_runtime_dependency 'azure_mgmt_web', version
+  spec.add_runtime_dependency 'azure-storage', '0.10.2.preview'
 end
