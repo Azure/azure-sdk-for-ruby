@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::IotHub
-    VERSION = '0.5.0'
+    VERSION = '0.4.0'
 end
