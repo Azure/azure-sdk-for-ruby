@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListNetworkSecurityGroups Api servive call
+    # Response for ListNetworkSecurityGroups Api service call
     #
     class NetworkSecurityGroupListResult
 

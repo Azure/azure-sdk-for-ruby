@@ -7,7 +7,7 @@ module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
   # services that interact with Microsoft Azure Networks service to manage
-  # your network resrources. The API has entities that capture the
+  # your network resources. The API has entities that capture the
   # relationship between an end user and the Microsoft Azure Networks service.
   #
   class NetworkInterfaces
@@ -147,7 +147,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get ntework interface operation retreives information about the
+    # The Get network interface operation retrieves information about the
     # specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -164,7 +164,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get ntework interface operation retreives information about the
+    # The Get network interface operation retrieves information about the
     # specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -180,7 +180,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get ntework interface operation retreives information about the
+    # The Get network interface operation retrieves information about the
     # specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -666,7 +666,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get ntework interface operation retreives information about the
+    # The Get network interface operation retrieves information about the
     # specified network interface in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -686,7 +686,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get ntework interface operation retreives information about the
+    # The Get network interface operation retrieves information about the
     # specified network interface in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -705,7 +705,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get ntework interface operation retreives information about the
+    # The Get network interface operation retrieves information about the
     # specified network interface in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.

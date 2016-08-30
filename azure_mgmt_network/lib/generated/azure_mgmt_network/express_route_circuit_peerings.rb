@@ -7,7 +7,7 @@ module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
   # services that interact with Microsoft Azure Networks service to manage
-  # your network resrources. The API has entities that capture the
+  # your network resources. The API has entities that capture the
   # relationship between an end user and the Microsoft Azure Networks service.
   #
   class ExpressRouteCircuitPeerings
@@ -258,7 +258,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Pering operation creates/updates an peering in the specified
+    # The Put Peering operation creates/updates an peering in the specified
     # ExpressRouteCircuits
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -307,7 +307,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Pering operation creates/updates an peering in the specified
+    # The Put Peering operation creates/updates an peering in the specified
     # ExpressRouteCircuits
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -326,7 +326,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Pering operation creates/updates an peering in the specified
+    # The Put Peering operation creates/updates an peering in the specified
     # ExpressRouteCircuits
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -344,7 +344,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Pering operation creates/updates an peering in the specified
+    # The Put Peering operation creates/updates an peering in the specified
     # ExpressRouteCircuits
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -438,7 +438,7 @@ module Azure::ARM::Network
     # ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the curcuit.
+    # @param circuit_name [String] The name of the circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -461,7 +461,7 @@ module Azure::ARM::Network
     # ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the curcuit.
+    # @param circuit_name [String] The name of the circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -477,7 +477,7 @@ module Azure::ARM::Network
     # ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the curcuit.
+    # @param circuit_name [String] The name of the circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -492,7 +492,7 @@ module Azure::ARM::Network
     # ExpressRouteCircuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the curcuit.
+    # @param circuit_name [String] The name of the circuit.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

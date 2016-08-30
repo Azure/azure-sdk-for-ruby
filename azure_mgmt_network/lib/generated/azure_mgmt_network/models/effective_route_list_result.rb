@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for list effective route api servive call
+    # Response for list effective route api service call
     #
     class EffectiveRouteListResult
 

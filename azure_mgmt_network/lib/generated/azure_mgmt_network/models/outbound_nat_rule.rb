@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Outbound NAT pool of the loadbalancer
+    # Outbound NAT pool of the load balancer
     #
     class OutboundNatRule < MsRestAzure::SubResource
 

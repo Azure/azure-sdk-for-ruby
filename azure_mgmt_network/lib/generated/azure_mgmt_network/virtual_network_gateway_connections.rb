@@ -7,7 +7,7 @@ module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
   # services that interact with Microsoft Azure Networks service to manage
-  # your network resrources. The API has entities that capture the
+  # your network resources. The API has entities that capture the
   # relationship between an end user and the Microsoft Azure Networks service.
   #
   class VirtualNetworkGatewayConnections
@@ -32,7 +32,7 @@ module Azure::ARM::Network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway conenction.
+    # virtual network gateway connection.
     # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
     # the Begin Create or update Virtual Network Gateway connection operation
     # through Network resource provider.
@@ -49,7 +49,7 @@ module Azure::ARM::Network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway conenction.
+    # virtual network gateway connection.
     # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
     # the Begin Create or update Virtual Network Gateway connection operation
     # through Network resource provider.
@@ -84,7 +84,7 @@ module Azure::ARM::Network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway conenction.
+    # virtual network gateway connection.
     # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
     # the Begin Create or update Virtual Network Gateway connection operation
     # through Network resource provider.
@@ -105,7 +105,7 @@ module Azure::ARM::Network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway conenction.
+    # virtual network gateway connection.
     # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
     # the Begin Create or update Virtual Network Gateway connection operation
     # through Network resource provider.
@@ -125,7 +125,7 @@ module Azure::ARM::Network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The name of the
-    # virtual network gateway conenction.
+    # virtual network gateway connection.
     # @param parameters [VirtualNetworkGatewayConnection] Parameters supplied to
     # the Begin Create or update Virtual Network Gateway connection operation
     # through Network resource provider.
@@ -313,7 +313,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete VirtualNetworkGatewayConnection operation deletes the specifed
+    # The Delete VirtualNetworkGatewayConnection operation deletes the specified
     # virtual network Gateway connection through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -354,7 +354,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete VirtualNetworkGatewayConnection operation deletes the specifed
+    # The Delete VirtualNetworkGatewayConnection operation deletes the specified
     # virtual network Gateway connection through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -370,7 +370,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete VirtualNetworkGatewayConnection operation deletes the specifed
+    # The Delete VirtualNetworkGatewayConnection operation deletes the specified
     # virtual network Gateway connection through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -386,7 +386,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete VirtualNetworkGatewayConnection operation deletes the specifed
+    # The Delete VirtualNetworkGatewayConnection operation deletes the specified
     # virtual network Gateway connection through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -848,7 +848,7 @@ module Azure::ARM::Network
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
     # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway conection Shared key operation throughNetwork
+    # Virtual Network Gateway connection Shared key operation throughNetwork
     # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -865,7 +865,7 @@ module Azure::ARM::Network
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
     # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway conection Shared key operation throughNetwork
+    # Virtual Network Gateway connection Shared key operation throughNetwork
     # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -901,7 +901,7 @@ module Azure::ARM::Network
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
     # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway conection Shared key operation throughNetwork
+    # Virtual Network Gateway connection Shared key operation throughNetwork
     # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -923,7 +923,7 @@ module Azure::ARM::Network
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
     # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway conection Shared key operation throughNetwork
+    # Virtual Network Gateway connection Shared key operation throughNetwork
     # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -944,7 +944,7 @@ module Azure::ARM::Network
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection name.
     # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway conection Shared key operation throughNetwork
+    # Virtual Network Gateway connection Shared key operation throughNetwork
     # resource provider.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

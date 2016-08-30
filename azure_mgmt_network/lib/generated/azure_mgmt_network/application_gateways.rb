@@ -7,7 +7,7 @@ module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
   # services that interact with Microsoft Azure Networks service to manage
-  # your network resrources. The API has entities that capture the
+  # your network resources. The API has entities that capture the
   # relationship between an end user and the Microsoft Azure Networks service.
   #
   class ApplicationGateways
@@ -26,11 +26,11 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The delete applicationgateway operation deletes the specified
-    # applicationgateway.
+    # The delete ApplicationGateway operation deletes the specified application
+    # gateway.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param application_gateway_name [String] The name of the applicationgateway.
+    # @param application_gateway_name [String] The name of the application gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -41,7 +41,7 @@ module Azure::ARM::Network
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param application_gateway_name [String] The name of the applicationgateway.
+    # @param application_gateway_name [String] The name of the application gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -65,11 +65,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete applicationgateway operation deletes the specified
-    # applicationgateway.
+    # The delete ApplicationGateway operation deletes the specified application
+    # gateway.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param application_gateway_name [String] The name of the applicationgateway.
+    # @param application_gateway_name [String] The name of the application gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -80,11 +80,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete applicationgateway operation deletes the specified
-    # applicationgateway.
+    # The delete ApplicationGateway operation deletes the specified application
+    # gateway.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param application_gateway_name [String] The name of the applicationgateway.
+    # @param application_gateway_name [String] The name of the application gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -95,11 +95,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete applicationgateway operation deletes the specified
-    # applicationgateway.
+    # The delete ApplicationGateway operation deletes the specified application
+    # gateway.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param application_gateway_name [String] The name of the applicationgateway.
+    # @param application_gateway_name [String] The name of the application gateway.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -151,11 +151,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get applicationgateway operation retreives information about the
-    # specified applicationgateway.
+    # The Get ApplicationGateway operation retrieves information about the
+    # specified application gateway.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param application_gateway_name [String] The name of the applicationgateway.
+    # @param application_gateway_name [String] The name of the application gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -167,11 +167,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get applicationgateway operation retreives information about the
-    # specified applicationgateway.
+    # The Get ApplicationGateway operation retrieves information about the
+    # specified application gateway.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param application_gateway_name [String] The name of the applicationgateway.
+    # @param application_gateway_name [String] The name of the application gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -182,11 +182,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get applicationgateway operation retreives information about the
-    # specified applicationgateway.
+    # The Get ApplicationGateway operation retrieves information about the
+    # specified application gateway.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param application_gateway_name [String] The name of the applicationgateway.
+    # @param application_gateway_name [String] The name of the application gateway.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -414,7 +414,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ApplicationGateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -436,7 +436,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ApplicationGateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -451,7 +451,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ApplicationGateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -465,7 +465,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ApplicationGateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -529,7 +529,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List applicationgateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -550,7 +550,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List applicationgateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -564,7 +564,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List applicationgateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -577,7 +577,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List applicationgateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -639,7 +639,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Start ApplicationGateway operation starts application gatewayin the
+    # The Start ApplicationGateway operation starts application gateway in the
     # specified resource group through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -678,7 +678,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Start ApplicationGateway operation starts application gatewayin the
+    # The Start ApplicationGateway operation starts application gateway in the
     # specified resource group through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -693,7 +693,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Start ApplicationGateway operation starts application gatewayin the
+    # The Start ApplicationGateway operation starts application gateway in the
     # specified resource group through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -708,7 +708,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Start ApplicationGateway operation starts application gatewayin the
+    # The Start ApplicationGateway operation starts application gateway in the
     # specified resource group through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -764,7 +764,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The STOP ApplicationGateway operation stops application gatewayin the
+    # The STOP ApplicationGateway operation stops application gateway in the
     # specified resource group through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -803,7 +803,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The STOP ApplicationGateway operation stops application gatewayin the
+    # The STOP ApplicationGateway operation stops application gateway in the
     # specified resource group through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -818,7 +818,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The STOP ApplicationGateway operation stops application gatewayin the
+    # The STOP ApplicationGateway operation stops application gateway in the
     # specified resource group through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -833,7 +833,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The STOP ApplicationGateway operation stops application gatewayin the
+    # The STOP ApplicationGateway operation stops application gateway in the
     # specified resource group through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -889,7 +889,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ApplicationGateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -905,7 +905,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ApplicationGateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -920,7 +920,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ApplicationGateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -982,7 +982,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List applicationgateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -998,7 +998,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List applicationgateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -1013,7 +1013,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List applicationgateway operation retrieves all the applicationgateways
+    # The List ApplicationGateway operation retrieves all the application gateways
     # in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful

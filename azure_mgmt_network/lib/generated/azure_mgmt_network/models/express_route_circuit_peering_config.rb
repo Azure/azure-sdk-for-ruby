@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Specfies the peering config
+    # Specifies the peering config
     #
     class ExpressRouteCircuitPeeringConfig
 
