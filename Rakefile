@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #--------------------------------------------------------------------------
-require 'bundler/gem_tasks'
 require 'dotenv/tasks'
 require 'rspec/core/rake_task'
 require 'open3'
@@ -27,7 +26,6 @@ namespace :arm do
     each_gem do
       execute_and_stream(OS.windows? ? 'del /S /Q pkg 2>nul' : 'rm -rf ./pkg')
     end
-    execute_and_stream(OS.windows? ? 'del /S /Q pkg 2>nul' : 'rm -rf ./pkg')
   end
 
   desc 'Delete ./lib/generated for each of the Azure Resource Manager projects'
@@ -42,7 +40,6 @@ namespace :arm do
     each_gem do
       execute_and_stream('rake build')
     end
-    execute_and_stream('rake build')
   end
 
   desc 'Push gem for each of the Azure Resource Manager projects'
@@ -52,10 +49,6 @@ namespace :arm do
       # Using execute method so that keys are not logged onto console
       execute("gem push ./pkg/#{dir}-#{version}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
     end
-    # TODO: Uncomment this when we decide to publish azure_arm gem
-    # md = REGEN_METADATA[:azure_arm]
-    # Using execute method so that keys are not logged onto console
-    # execute("gem push ./pkg/azure_arm-#{md[:version]}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
   end
 
   desc 'Regen code for each of the Azure Resource Manager projects'
@@ -144,9 +137,9 @@ end
 
 REGEN_METADATA = {
     autorest_loc: ENV.fetch('AUTOREST_LOC', '../../../autorest/binaries/net45/AutoRest.exe'),
-    azure_arm: {
+    azure_sdk: {
         version: version,
-        tag: 'azure_arm'
+        tag: 'azure_sdk'
     },
     azure_mgmt_authorization: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-authorization/2015-07-01/swagger/authorization.json',
