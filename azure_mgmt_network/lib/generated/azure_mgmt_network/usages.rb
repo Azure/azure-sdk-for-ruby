@@ -7,7 +7,7 @@ module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
   # services that interact with Microsoft Azure Networks service to manage
-  # your network resrources. The API has entities that capture the
+  # your network resources. The API has entities that capture the
   # relationship between an end user and the Microsoft Azure Networks service.
   #
   class Usages

@@ -7,7 +7,7 @@ module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
   # services that interact with Microsoft Azure Networks service to manage
-  # your network resrources. The API has entities that capture the
+  # your network resources. The API has entities that capture the
   # relationship between an end user and the Microsoft Azure Networks service.
   #
   class RouteTables
@@ -26,7 +26,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The Delete RouteTable operation deletes the specifed Route Table
+    # The Delete RouteTable operation deletes the specified Route Table
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -64,7 +64,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete RouteTable operation deletes the specifed Route Table
+    # The Delete RouteTable operation deletes the specified Route Table
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -78,7 +78,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete RouteTable operation deletes the specifed Route Table
+    # The Delete RouteTable operation deletes the specified Route Table
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -92,7 +92,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete RouteTable operation deletes the specifed Route Table
+    # The Delete RouteTable operation deletes the specified Route Table
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -247,7 +247,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put RouteTable operation creates/updates a route tablein the specified
+    # The Put RouteTable operation creates/updates a route table in the specified
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -294,7 +294,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put RouteTable operation creates/updates a route tablein the specified
+    # The Put RouteTable operation creates/updates a route table in the specified
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -312,7 +312,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put RouteTable operation creates/updates a route tablein the specified
+    # The Put RouteTable operation creates/updates a route table in the specified
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -329,7 +329,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put RouteTable operation creates/updates a route tablein the specified
+    # The Put RouteTable operation creates/updates a route table in the specified
     # resource group.
     #
     # @param resource_group_name [String] The name of the resource group.

@@ -21,22 +21,22 @@ module Azure::ARM::Network
       # forwarded to the backed IP
       attr_accessor :backend_ipconfiguration
 
-      # @return [TransportProtocol] Gets or sets the transport potocol for the
-      # endpoint. Possible values are Udp or Tcp. Possible values include:
-      # 'Udp', 'Tcp'
+      # @return [TransportProtocol] Gets or sets the transport protocol for
+      # the endpoint. Possible values are Udp or Tcp. Possible values
+      # include: 'Udp', 'Tcp'
       attr_accessor :protocol
 
       # @return [Integer] Gets or sets the port for the external endpoint. You
-      # can spcify any port number you choose, but the port numbers specified
-      # for each role in the service must be unique. Possible values range
-      # between 1 and 65535, inclusive
+      # can specify any port number you choose, but the port numbers
+      # specified for each role in the service must be unique. Possible
+      # values range between 1 and 65535, inclusive
       attr_accessor :frontend_port
 
       # @return [Integer] Gets or sets a port used for internal connections on
       # the endpoint. The localPort attribute maps the eternal port of the
       # endpoint to an internal port on a role. This is useful in scenarios
-      # where a role must communicate to an internal compotnent on a port
-      # that is different from the one that is exposed externally. If not
+      # where a role must communicate to an internal component on a port that
+      # is different from the one that is exposed externally. If not
       # specified, the value of localPort is the same as the port attribute.
       # Set the value of localPort to '*' to automatically assign an
       # unallocated port that is discoverable using the runtime API
@@ -44,7 +44,7 @@ module Azure::ARM::Network
 
       # @return [Integer] Gets or sets the timeout for the Tcp idle
       # connection. The value can be set between 4 and 30 minutes. The
-      # default value is 4 minutes. This emlement is only used when the
+      # default value is 4 minutes. This element is only used when the
       # protocol is set to Tcp
       attr_accessor :idle_timeout_in_minutes
 
