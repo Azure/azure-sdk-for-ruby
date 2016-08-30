@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for CheckConnectionSharedKey Api servive call
+    # Response for CheckConnectionSharedKey Api service call
     #
     class ConnectionSharedKeyResult
 

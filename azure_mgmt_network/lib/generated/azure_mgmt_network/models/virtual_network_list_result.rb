@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListVirtualNetworks Api servive call
+    # Response for ListVirtualNetworks Api service call
     #
     class VirtualNetworkListResult
 

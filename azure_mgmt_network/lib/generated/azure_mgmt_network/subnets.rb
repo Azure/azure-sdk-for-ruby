@@ -7,7 +7,7 @@ module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
   # services that interact with Microsoft Azure Networks service to manage
-  # your network resrources. The API has entities that capture the
+  # your network resources. The API has entities that capture the
   # relationship between an end user and the Microsoft Azure Networks service.
   #
   class Subnets
@@ -153,7 +153,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get subnet operation retreives information about the specified subnet.
+    # The Get subnet operation retrieves information about the specified subnet.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -170,7 +170,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get subnet operation retreives information about the specified subnet.
+    # The Get subnet operation retrieves information about the specified subnet.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -186,7 +186,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get subnet operation retreives information about the specified subnet.
+    # The Get subnet operation retrieves information about the specified subnet.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -254,7 +254,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Subnet operation creates/updates a subnet in thespecified virtual
+    # The Put Subnet operation creates/updates a subnet in the specified virtual
     # network
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -303,7 +303,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Subnet operation creates/updates a subnet in thespecified virtual
+    # The Put Subnet operation creates/updates a subnet in the specified virtual
     # network
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -322,7 +322,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Subnet operation creates/updates a subnet in thespecified virtual
+    # The Put Subnet operation creates/updates a subnet in the specified virtual
     # network
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -340,7 +340,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Subnet operation creates/updates a subnet in thespecified virtual
+    # The Put Subnet operation creates/updates a subnet in the specified virtual
     # network
     #
     # @param resource_group_name [String] The name of the resource group.

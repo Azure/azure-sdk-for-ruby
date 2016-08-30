@@ -17,7 +17,7 @@ module Azure::ARM::Network
       attr_accessor :load_balancing_rules
 
       # @return [ProbeProtocol] Gets or sets the protocol of the end point.
-      # Possible values are http pr Tcp. If Tcp is specified, a received ACK
+      # Possible values are http or Tcp. If Tcp is specified, a received ACK
       # is required for the probe to be successful. If http is specified,a
       # 200 OK response from the specifies URI is required for the probe to
       # be successful. Possible values include: 'Http', 'Tcp'
@@ -36,7 +36,7 @@ module Azure::ARM::Network
 
       # @return [Integer] Gets or sets the number of probes where if no
       # response, will result in stopping further traffic from being
-      # delivered to the endpoint. This values allows endponints to be taken
+      # delivered to the endpoint. This values allows endpoints to be taken
       # out of rotation faster or slower than the typical times used in
       # Azure.
       attr_accessor :number_of_probes
