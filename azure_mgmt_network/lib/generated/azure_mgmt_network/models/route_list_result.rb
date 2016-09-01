@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListRoute Api servive call
+    # Response for ListRoute Api service call
     #
     class RouteListResult
 

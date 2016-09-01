@@ -13,13 +13,13 @@ module Azure::ARM::Network
       include MsRestAzure
 
       # @return [VirtualNetworkGatewaySkuName] Gateway sku name
-      # -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-      # 'HighPerformance', 'Standard'
+      # -Basic/HighPerformance/Standard/UltraPerformance. Possible values
+      # include: 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
       attr_accessor :name
 
       # @return [VirtualNetworkGatewaySkuTier] Gateway sku tier
-      # -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-      # 'HighPerformance', 'Standard'
+      # -Basic/HighPerformance/Standard/UltraPerformance. Possible values
+      # include: 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
       attr_accessor :tier
 
       # @return [Integer] The capacity

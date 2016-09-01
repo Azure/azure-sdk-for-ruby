@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Pool of backend IP addresseses
+    # Pool of backend IP addresses
     #
     class BackendAddressPool < MsRestAzure::SubResource
 

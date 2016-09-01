@@ -7,7 +7,7 @@ module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
   # services that interact with Microsoft Azure Networks service to manage
-  # your network resrources. The API has entities that capture the
+  # your network resources. The API has entities that capture the
   # relationship between an end user and the Microsoft Azure Networks service.
   #
   class VirtualNetworks
@@ -26,7 +26,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The Delete VirtualNetwork operation deletes the specifed virtual network
+    # The Delete VirtualNetwork operation deletes the specified virtual network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -64,7 +64,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete VirtualNetwork operation deletes the specifed virtual network
+    # The Delete VirtualNetwork operation deletes the specified virtual network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -78,7 +78,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete VirtualNetwork operation deletes the specifed virtual network
+    # The Delete VirtualNetwork operation deletes the specified virtual network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -92,7 +92,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete VirtualNetwork operation deletes the specifed virtual network
+    # The Delete VirtualNetwork operation deletes the specified virtual network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.

@@ -21,7 +21,7 @@ module Azure::ARM::Resources
       # @return [String] The kind of the resource.
       attr_accessor :kind
 
-      # @return [String] The managedBy property of the resource.
+      # @return [String] Id of the resource that manages this resource.
       attr_accessor :managed_by
 
       # @return [Sku] The sku of the resource.

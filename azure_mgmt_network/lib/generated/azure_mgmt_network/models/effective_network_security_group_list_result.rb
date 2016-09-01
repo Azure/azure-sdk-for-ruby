@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for list effective network security groups api servive call
+    # Response for list effective network security groups api service call
     #
     class EffectiveNetworkSecurityGroupListResult
 
