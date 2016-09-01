@@ -1,3 +1,9 @@
+## 2016.9.1 - Azure Gems @version 0.7.6
+* Fixing Service Bus authorization with SAS [#425](https://github.com/Azure/azure-sdk-for-ruby/commit/09ab24e511889d41a1fef4755217baa595a279f5)
+* Adding require for azure/core and autoload Auth::SharedAccessSigner [#443](https://github.com/Azure/azure-sdk-for-ruby/pull/443)
+* Blacklist strict-transport-security, it crashes the JSON parser when receiving Service Bus messages [#432](https://github.com/Azure/azure-sdk-for-ruby/pull/432)
+* Replace uuid gem with SecureRandom [#394](https://github.com/Azure/azure-sdk-for-ruby/commit/1d25e563c6c21aaa42cb77ce08bba1303656700b)
+
 ## 2016.5.2 - Azure Gems @version 0.7.5
 * Require azure/core before extending serialization class with it [#383](https://github.com/Azure/azure-sdk-for-ruby/pull/383)
 
