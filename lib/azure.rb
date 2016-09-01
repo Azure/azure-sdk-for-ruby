@@ -76,9 +76,11 @@ module Azure
     autoload :SqlFilter,                'azure/service_bus/sql_filter'
     autoload :TrueFilter,               'azure/service_bus/true_filter'
     autoload :CorrelationFilter,        'azure/service_bus/correlation_filter'
+
     module Auth
       autoload :SharedAccessSigner,     'azure/service_bus/auth/shared_access_signer'
     end
+
   end
 
   module SqlDatabaseManagement
