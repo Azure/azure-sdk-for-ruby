@@ -12,6 +12,7 @@ module Azure::ARM::Network
       Basic = "Basic"
       HighPerformance = "HighPerformance"
       Standard = "Standard"
+      UltraPerformance = "UltraPerformance"
     end
   end
 end
