@@ -157,6 +157,7 @@ module Azure::ARM
           return instance_variable_get("@#{name}") if instance_variable_defined?("@#{name}") && !instance_variable_get("@#{name}").nil?
           arm_client = instance_variable_set("@#{name}", Object.const_get("#{client}").new(credentials, base_url, options))
           arm_client.subscription_id = self.subscription_id if arm_client.respond_to?(:subscription_id)
+          arm_client.tenant_id = self.tenant_id if arm_client.respond_to?(:tenant_id)
           arm_client
         end
       end
