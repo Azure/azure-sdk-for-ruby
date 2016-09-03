@@ -77,7 +77,7 @@ module Azure::ARM::ServiceBus
                 }
               },
               location: {
-                required: false,
+                required: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'

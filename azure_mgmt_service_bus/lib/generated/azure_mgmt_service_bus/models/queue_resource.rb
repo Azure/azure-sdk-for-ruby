@@ -12,7 +12,7 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      # @return [Duration] the duration of a peek lock; that is, the amount of
+      # @return [String] the duration of a peek lock; that is, the amount of
       # time that the message is locked for other receivers. The maximum
       # value for LockDuration is 5 minutes; the default value is 1 minute.
       attr_accessor :lock_duration
@@ -21,7 +21,7 @@ module Azure::ARM::ServiceBus
       # there was a receive request to this queue.
       attr_accessor :accessed_at
 
-      # @return [Duration] the TimeSpan idle interval after which the queue is
+      # @return [String] the TimeSpan idle interval after which the queue is
       # automatically deleted. The minimum duration is 5 minutes.
       attr_accessor :auto_delete_on_idle
 
@@ -33,13 +33,13 @@ module Azure::ARM::ServiceBus
       # @return [DateTime] the exact time the message was created.
       attr_accessor :created_at
 
-      # @return [Duration] the default message time to live value. This is the
+      # @return [String] the default message time to live value. This is the
       # duration after which the message expires, starting from when the
       # message is sent to Service Bus. This is the default value used when
       # TimeToLive is not set on a message itself.
       attr_accessor :default_message_time_to_live
 
-      # @return [Duration] TimeSpan structure that defines the duration of the
+      # @return [String] TimeSpan structure that defines the duration of the
       # duplicate detection history. The default value is 10 minutes..
       attr_accessor :duplicate_detection_history_time_window
 
@@ -140,7 +140,7 @@ module Azure::ARM::ServiceBus
                 }
               },
               location: {
-                required: false,
+                required: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -164,7 +164,7 @@ module Azure::ARM::ServiceBus
                 required: false,
                 serialized_name: 'properties.lockDuration ',
                 type: {
-                  name: 'TimeSpan'
+                  name: 'String'
                 }
               },
               accessed_at: {
@@ -178,7 +178,7 @@ module Azure::ARM::ServiceBus
                 required: false,
                 serialized_name: 'properties.autoDeleteOnIdle',
                 type: {
-                  name: 'TimeSpan'
+                  name: 'String'
                 }
               },
               entity_availability_status: {
@@ -200,14 +200,14 @@ module Azure::ARM::ServiceBus
                 required: false,
                 serialized_name: 'properties.defaultMessageTimeToLive',
                 type: {
-                  name: 'TimeSpan'
+                  name: 'String'
                 }
               },
               duplicate_detection_history_time_window: {
                 required: false,
                 serialized_name: 'properties.duplicateDetectionHistoryTimeWindow ',
                 type: {
-                  name: 'TimeSpan'
+                  name: 'String'
                 }
               },
               enable_batched_operations: {
