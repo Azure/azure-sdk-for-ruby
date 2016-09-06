@@ -50,7 +50,7 @@ module Azure::ARM::ServiceBus
                 }
               },
               rights: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.rights',
                 type: {
                   name: 'Sequence',

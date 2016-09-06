@@ -53,7 +53,7 @@ module Azure::ARM::ServiceBus
                 }
               },
               location: {
-                required: false,
+                required: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -74,7 +74,7 @@ module Azure::ARM::ServiceBus
                 }
               },
               rights: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.rights',
                 type: {
                   name: 'Sequence',

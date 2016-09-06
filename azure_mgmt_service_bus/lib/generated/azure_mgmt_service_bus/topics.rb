@@ -260,49 +260,9 @@ module Azure::ARM::ServiceBus
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    #
     def delete(resource_group_name, namespace_name, topic_name, custom_headers = nil)
       response = delete_async(resource_group_name, namespace_name, topic_name, custom_headers).value!
-      nil
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The topics name.
-    # @param topic_name [String] The topics name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def delete_async(resource_group_name, namespace_name, topic_name, custom_headers = nil)
-      # Send request
-      promise = begin_delete_async(resource_group_name, namespace_name, topic_name, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Deletes a topic from the specified namespace and resource group.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The topics name.
-    # @param topic_name [String] The topics name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    #
-    def begin_delete(resource_group_name, namespace_name, topic_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, namespace_name, topic_name, custom_headers).value!
       nil
     end
 
@@ -317,8 +277,8 @@ module Azure::ARM::ServiceBus
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, namespace_name, topic_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, namespace_name, topic_name, custom_headers).value!
+    def delete_with_http_info(resource_group_name, namespace_name, topic_name, custom_headers = nil)
+      delete_async(resource_group_name, namespace_name, topic_name, custom_headers).value!
     end
 
     #
@@ -332,7 +292,7 @@ module Azure::ARM::ServiceBus
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, namespace_name, topic_name, custom_headers = nil)
+    def delete_async(resource_group_name, namespace_name, topic_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
       fail ArgumentError, 'topic_name is nil' if topic_name.nil?
@@ -363,7 +323,7 @@ module Azure::ARM::ServiceBus
       promise = promise.then do |http_response|
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
         end
@@ -893,7 +853,7 @@ module Azure::ARM::ServiceBus
       promise = promise.then do |http_response|
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
         end
