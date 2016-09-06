@@ -16,4 +16,3 @@ deploy:
   on:
     tags: true
     repo: Azure/azure-sdk-for-ruby
-    branch: asm
