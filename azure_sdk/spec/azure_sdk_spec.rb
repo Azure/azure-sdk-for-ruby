@@ -120,9 +120,9 @@ describe 'Azure Sdk' do
     it 'should create a storage client' do
       storage_client = Azure::Storage::Client.new(:storage_account_name => @storage_account_name, :storage_access_key => @storage_access_key)
       expect(storage_client).not_to be_nil
-      expect(storage_client.blobClient).not_to be_nil
-      expect(storage_client.queueClient).not_to be_nil
-      expect(storage_client.tableClient).not_to be_nil
+      expect(storage_client.blob_client).not_to be_nil
+      expect(storage_client.queue_client).not_to be_nil
+      expect(storage_client.table_client).not_to be_nil
     end
   end
 end
