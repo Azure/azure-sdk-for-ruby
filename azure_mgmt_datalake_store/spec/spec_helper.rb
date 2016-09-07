@@ -13,7 +13,7 @@ include Azure::ARM::Resources
 include Azure::ARM::DataLakeStore
 
 class ResourceHelper
-  attr_reader :resource_client, :dls_acc_client, :dls_fs_client
+  attr_reader :resource_client, :dls_acc_client
 
   def initialize
     tenant_id = ENV['AZURE_TENANT_ID']
@@ -41,14 +41,6 @@ class ResourceHelper
       @dls_acc_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
     end
     @dls_acc_client
-  end
-
-  def dls_fs_client
-    if @dls_fs_client.nil?
-      @dls_fs_client = FileSystem::DataLakeStoreFileSystemManagementClient.new(@credentials)
-      @dls_fs_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
-    end
-    @dls_fs_client
   end
 
   def create_resource_group
