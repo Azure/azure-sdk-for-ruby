@@ -12,15 +12,15 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      # @return [SkuName] The resource type that this object applies to. Eg:
-      # NamespaceType. Possible values include: 'Basic', 'Standard', 'Premium'
+      # @return [SkuName] Name of this Sku. Possible values include: 'Basic',
+      # 'Standard', 'Premium'
       attr_accessor :name
 
       # @return [SkuTier] The tier of this particular SKU. Possible values
       # include: 'Basic', 'Standard', 'Premium'
       attr_accessor :tier
 
-      # @return [Integer] The messaging units or eventhub throughput units
+      # @return [Integer] The messaging units for the tier specified
       attr_accessor :capacity
 
 
@@ -44,7 +44,7 @@ module Azure::ARM::ServiceBus
                 }
               },
               tier: {
-                required: false,
+                required: true,
                 serialized_name: 'tier',
                 type: {
                   name: 'String'

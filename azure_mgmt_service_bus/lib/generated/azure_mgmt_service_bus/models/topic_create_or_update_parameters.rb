@@ -22,7 +22,7 @@ module Azure::ARM::ServiceBus
       # received for this topic.
       attr_accessor :accessed_at
 
-      # @return [Duration] TimeSpan idle interval after which the topic is
+      # @return [String] TimeSpan idle interval after which the topic is
       # automatically deleted. The minimum duration is 5 minutes.
       attr_accessor :auto_delete_on_idle
 
@@ -37,13 +37,13 @@ module Azure::ARM::ServiceBus
       # @return [MessageCountDetails]
       attr_accessor :count_details
 
-      # @return [Duration] Default message time to live value. This is the
+      # @return [String] Default message time to live value. This is the
       # duration after which the message expires, starting from when the
       # message is sent to Service Bus. This is the default value used when
       # TimeToLive is not set on a message itself.
       attr_accessor :default_message_time_to_live
 
-      # @return [Duration] TimeSpan structure that defines the duration of the
+      # @return [String] TimeSpan structure that defines the duration of the
       # duplicate detection history. The default value is 10 minutes..
       attr_accessor :duplicate_detection_history_time_window
 
@@ -140,7 +140,7 @@ module Azure::ARM::ServiceBus
                 required: false,
                 serialized_name: 'properties.autoDeleteOnIdle',
                 type: {
-                  name: 'TimeSpan'
+                  name: 'String'
                 }
               },
               entity_availability_status: {
@@ -170,14 +170,14 @@ module Azure::ARM::ServiceBus
                 required: false,
                 serialized_name: 'properties.defaultMessageTimeToLive',
                 type: {
-                  name: 'TimeSpan'
+                  name: 'String'
                 }
               },
               duplicate_detection_history_time_window: {
                 required: false,
                 serialized_name: 'properties.duplicateDetectionHistoryTimeWindow ',
                 type: {
-                  name: 'TimeSpan'
+                  name: 'String'
                 }
               },
               enable_batched_operations: {

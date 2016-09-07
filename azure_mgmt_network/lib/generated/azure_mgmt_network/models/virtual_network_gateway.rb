@@ -27,6 +27,9 @@ module Azure::ARM::Network
       # @return [Boolean] EnableBgp Flag
       attr_accessor :enable_bgp
 
+      # @return [Boolean] ActiveActive flag
+      attr_accessor :active_active
+
       # @return [SubResource] Gets or sets the reference of the
       # LocalNetworkGateway resource which represents Local network site
       # having default routes. Assign Null value in case of removing existing
@@ -147,6 +150,13 @@ module Azure::ARM::Network
               enable_bgp: {
                 required: false,
                 serialized_name: 'properties.enableBgp',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              active_active: {
+                required: false,
+                serialized_name: 'properties.activeActive',
                 type: {
                   name: 'Boolean'
                 }

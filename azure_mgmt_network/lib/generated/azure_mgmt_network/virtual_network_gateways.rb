@@ -7,7 +7,7 @@ module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
   # services that interact with Microsoft Azure Networks service to manage
-  # your network resrources. The API has entities that capture the
+  # your network resources. The API has entities that capture the
   # relationship between an end user and the Microsoft Azure Networks service.
   #
   class VirtualNetworkGateways
@@ -306,7 +306,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete VirtualNetworkGateway operation deletes the specifed virtual
+    # The Delete VirtualNetworkGateway operation deletes the specified virtual
     # network Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -347,7 +347,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete VirtualNetworkGateway operation deletes the specifed virtual
+    # The Delete VirtualNetworkGateway operation deletes the specified virtual
     # network Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -363,7 +363,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete VirtualNetworkGateway operation deletes the specifed virtual
+    # The Delete VirtualNetworkGateway operation deletes the specified virtual
     # network Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -379,7 +379,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete VirtualNetworkGateway operation deletes the specifed virtual
+    # The Delete VirtualNetworkGateway operation deletes the specified virtual
     # network Gateway through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.

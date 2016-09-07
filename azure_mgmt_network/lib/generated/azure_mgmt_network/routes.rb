@@ -7,7 +7,7 @@ module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
   # services that interact with Microsoft Azure Networks service to manage
-  # your network resrources. The API has entities that capture the
+  # your network resources. The API has entities that capture the
   # relationship between an end user and the Microsoft Azure Networks service.
   #
   class Routes
@@ -153,7 +153,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get route operation retreives information about the specified route from
+    # The Get route operation retrieves information about the specified route from
     # the route table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -170,7 +170,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get route operation retreives information about the specified route from
+    # The Get route operation retrieves information about the specified route from
     # the route table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -186,7 +186,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get route operation retreives information about the specified route from
+    # The Get route operation retrieves information about the specified route from
     # the route table.
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -260,7 +260,7 @@ module Azure::ARM::Network
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
     # @param route_parameters [Route] Parameters supplied to the create/update
-    # routeoperation
+    # route operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -276,7 +276,7 @@ module Azure::ARM::Network
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
     # @param route_parameters [Route] Parameters supplied to the create/update
-    # routeoperation
+    # route operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -308,7 +308,7 @@ module Azure::ARM::Network
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
     # @param route_parameters [Route] Parameters supplied to the create/update
-    # routeoperation
+    # route operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -326,7 +326,7 @@ module Azure::ARM::Network
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
     # @param route_parameters [Route] Parameters supplied to the create/update
-    # routeoperation
+    # route operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -343,7 +343,7 @@ module Azure::ARM::Network
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
     # @param route_parameters [Route] Parameters supplied to the create/update
-    # routeoperation
+    # route operation
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

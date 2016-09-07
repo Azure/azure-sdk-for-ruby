@@ -13,7 +13,7 @@ module Azure::ARM::Network
       include MsRestAzure
 
       # @return [SubResource] Reference of the subnet resource. A subnet from
-      # where appliation gateway gets its private address
+      # where application gateway gets its private address
       attr_accessor :subnet
 
       # @return [String] Provisioning state of the application gateway subnet

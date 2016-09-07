@@ -16,7 +16,7 @@ module Azure::ARM::ServiceBus
       # subscription.
       attr_accessor :accessed_at
 
-      # @return [Duration] TimeSpan idle interval after which the topic is
+      # @return [String] TimeSpan idle interval after which the topic is
       # automatically deleted. The minimum duration is 5 minutes.
       attr_accessor :auto_delete_on_idle
 
@@ -26,7 +26,7 @@ module Azure::ARM::ServiceBus
       # @return [DateTime] Exact time the message was created.
       attr_accessor :created_at
 
-      # @return [Duration] Default message time to live value. This is the
+      # @return [String] Default message time to live value. This is the
       # duration after which the message expires, starting from when the
       # message is sent to Service Bus. This is the default value used when
       # TimeToLive is not set on a message itself.
@@ -53,7 +53,7 @@ module Azure::ARM::ServiceBus
       # is read-only.
       attr_accessor :is_read_only
 
-      # @return [Duration] The lock duration time span for the subscription.
+      # @return [String] The lock duration time span for the subscription.
       attr_accessor :lock_duration
 
       # @return [Integer] Number of maximum deliveries.
@@ -113,7 +113,7 @@ module Azure::ARM::ServiceBus
                 }
               },
               location: {
-                required: false,
+                required: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -144,7 +144,7 @@ module Azure::ARM::ServiceBus
                 required: false,
                 serialized_name: 'properties.autoDeleteOnIdle',
                 type: {
-                  name: 'TimeSpan'
+                  name: 'String'
                 }
               },
               count_details: {
@@ -166,7 +166,7 @@ module Azure::ARM::ServiceBus
                 required: false,
                 serialized_name: 'properties.defaultMessageTimeToLive',
                 type: {
-                  name: 'TimeSpan'
+                  name: 'String'
                 }
               },
               dead_lettering_on_filter_evaluation_exceptions: {
@@ -209,7 +209,7 @@ module Azure::ARM::ServiceBus
                 required: false,
                 serialized_name: 'properties.lockDuration',
                 type: {
-                  name: 'TimeSpan'
+                  name: 'String'
                 }
               },
               max_delivery_count: {

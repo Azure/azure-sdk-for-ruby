@@ -7,7 +7,7 @@ module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
   # services that interact with Microsoft Azure Networks service to manage
-  # your network resrources. The API has entities that capture the
+  # your network resources. The API has entities that capture the
   # relationship between an end user and the Microsoft Azure Networks service.
   #
   class NetworkSecurityGroups
@@ -26,7 +26,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The Delete NetworkSecurityGroup operation deletes the specifed network
+    # The Delete NetworkSecurityGroup operation deletes the specified network
     # security group
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -67,7 +67,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete NetworkSecurityGroup operation deletes the specifed network
+    # The Delete NetworkSecurityGroup operation deletes the specified network
     # security group
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -83,7 +83,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete NetworkSecurityGroup operation deletes the specifed network
+    # The Delete NetworkSecurityGroup operation deletes the specified network
     # security group
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -99,7 +99,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete NetworkSecurityGroup operation deletes the specifed network
+    # The Delete NetworkSecurityGroup operation deletes the specified network
     # security group
     #
     # @param resource_group_name [String] The name of the resource group.
@@ -260,7 +260,7 @@ module Azure::ARM::Network
 
     #
     # The Put NetworkSecurityGroup operation creates/updates a network security
-    # groupin the specified resource group.
+    # group in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -309,7 +309,7 @@ module Azure::ARM::Network
 
     #
     # The Put NetworkSecurityGroup operation creates/updates a network security
-    # groupin the specified resource group.
+    # group in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -328,7 +328,7 @@ module Azure::ARM::Network
 
     #
     # The Put NetworkSecurityGroup operation creates/updates a network security
-    # groupin the specified resource group.
+    # group in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -346,7 +346,7 @@ module Azure::ARM::Network
 
     #
     # The Put NetworkSecurityGroup operation creates/updates a network security
-    # groupin the specified resource group.
+    # group in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
