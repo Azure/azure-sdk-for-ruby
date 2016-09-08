@@ -29,6 +29,7 @@ module Azure::ARM::Compute
   autoload :VirtualMachines,                                    'generated/azure_mgmt_compute/virtual_machines.rb'
   autoload :VirtualMachineScaleSets,                            'generated/azure_mgmt_compute/virtual_machine_scale_sets.rb'
   autoload :VirtualMachineScaleSetVMs,                          'generated/azure_mgmt_compute/virtual_machine_scale_set_vms.rb'
+  autoload :ContainerServiceOperations,                         'generated/azure_mgmt_compute/container_service_operations.rb'
   autoload :ComputeManagementClient,                            'generated/azure_mgmt_compute/compute_management_client.rb'
 
   module Models
@@ -99,6 +100,16 @@ module Azure::ARM::Compute
     autoload :InnerError,                                         'generated/azure_mgmt_compute/models/inner_error.rb'
     autoload :ApiError,                                           'generated/azure_mgmt_compute/models/api_error.rb'
     autoload :ComputeLongRunningOperationProperties,              'generated/azure_mgmt_compute/models/compute_long_running_operation_properties.rb'
+    autoload :ContainerServiceOrchestratorProfile,                'generated/azure_mgmt_compute/models/container_service_orchestrator_profile.rb'
+    autoload :ContainerServiceMasterProfile,                      'generated/azure_mgmt_compute/models/container_service_master_profile.rb'
+    autoload :ContainerServiceAgentPoolProfile,                   'generated/azure_mgmt_compute/models/container_service_agent_pool_profile.rb'
+    autoload :ContainerServiceWindowsProfile,                     'generated/azure_mgmt_compute/models/container_service_windows_profile.rb'
+    autoload :ContainerServiceLinuxProfile,                       'generated/azure_mgmt_compute/models/container_service_linux_profile.rb'
+    autoload :ContainerServiceSshConfiguration,                   'generated/azure_mgmt_compute/models/container_service_ssh_configuration.rb'
+    autoload :ContainerServiceSshPublicKey,                       'generated/azure_mgmt_compute/models/container_service_ssh_public_key.rb'
+    autoload :ContainerServiceDiagnosticsProfile,                 'generated/azure_mgmt_compute/models/container_service_diagnostics_profile.rb'
+    autoload :ContainerServiceVMDiagnostics,                      'generated/azure_mgmt_compute/models/container_service_vmdiagnostics.rb'
+    autoload :ContainerServiceListResult,                         'generated/azure_mgmt_compute/models/container_service_list_result.rb'
     autoload :AvailabilitySet,                                    'generated/azure_mgmt_compute/models/availability_set.rb'
     autoload :VirtualMachineExtensionImage,                       'generated/azure_mgmt_compute/models/virtual_machine_extension_image.rb'
     autoload :VirtualMachineImageResource,                        'generated/azure_mgmt_compute/models/virtual_machine_image_resource.rb'
@@ -111,6 +122,7 @@ module Azure::ARM::Compute
     autoload :VirtualMachineScaleSetExtension,                    'generated/azure_mgmt_compute/models/virtual_machine_scale_set_extension.rb'
     autoload :VirtualMachineScaleSet,                             'generated/azure_mgmt_compute/models/virtual_machine_scale_set.rb'
     autoload :VirtualMachineScaleSetVM,                           'generated/azure_mgmt_compute/models/virtual_machine_scale_set_vm.rb'
+    autoload :ContainerService,                                   'generated/azure_mgmt_compute/models/container_service.rb'
     autoload :VirtualMachineImage,                                'generated/azure_mgmt_compute/models/virtual_machine_image.rb'
     autoload :StatusLevelTypes,                                   'generated/azure_mgmt_compute/models/status_level_types.rb'
     autoload :OperatingSystemTypes,                               'generated/azure_mgmt_compute/models/operating_system_types.rb'
@@ -124,5 +136,7 @@ module Azure::ARM::Compute
     autoload :UpgradeMode,                                        'generated/azure_mgmt_compute/models/upgrade_mode.rb'
     autoload :VirtualMachineScaleSetSkuScaleType,                 'generated/azure_mgmt_compute/models/virtual_machine_scale_set_sku_scale_type.rb'
     autoload :InstanceViewTypes,                                  'generated/azure_mgmt_compute/models/instance_view_types.rb'
+    autoload :ContainerServiceOchestratorTypes,                   'generated/azure_mgmt_compute/models/container_service_ochestrator_types.rb'
+    autoload :ContainerServiceVMSizeTypes,                        'generated/azure_mgmt_compute/models/container_service_vmsize_types.rb'
   end
 end
