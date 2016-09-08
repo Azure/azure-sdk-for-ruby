@@ -17,9 +17,6 @@ module Azure::ARM::Graph
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Client Api Version.
-    attr_reader :api_version
-
     # @return [String] the tenant Id.
     attr_accessor :tenant_id
 
@@ -72,7 +69,6 @@ module Azure::ARM::Graph
       @groups = Groups.new(self)
       @service_principals = ServicePrincipals.new(self)
       @users = Users.new(self)
-      @api_version = '1.6'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
