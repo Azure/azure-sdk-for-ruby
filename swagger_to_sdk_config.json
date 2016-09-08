@@ -77,6 +77,30 @@
         "azure_mgmt_compute.rb"
       ]
     },
+    "azure_mgmt_datalake_analytics": {
+      "swagger": "arm-datalake-analytics/account/2015-10-01-preview/swagger/account.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::DataLakeAnalytics",
+        "PackageName": "azure_mgmt_datalake_analytics",
+        "PackageVersion": "0.5.0"
+      },
+      "output_dir": "azure_mgmt_datalake_analytics/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_datalake_analytics.rb"
+      ]
+    },
+    "azure_mgmt_datalake_store": {
+      "swagger": "arm-datalake-store/account/2015-10-01-preview/swagger/account.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::DataLakeStore",
+        "PackageName": "azure_mgmt_datalake_store",
+        "PackageVersion": "0.5.0"
+      },
+      "output_dir": "azure_mgmt_datalake_store/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_datalake_store.rb"
+      ]
+    },
     "azure_mgmt_devtestlabs": {
       "swagger": "arm-devtestlabs/2016-05-15/swagger/DTL.json",
       "autorest_options": {

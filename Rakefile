@@ -58,23 +58,7 @@ namespace :arm do
       md = REGEN_METADATA[dir.to_sym]
       ar_base_command = "#{OS.windows? ? '' : 'mono '} #{REGEN_METADATA[:autorest_loc]}"
 
-      if md.is_a?(Array)
-        md.each do |sub_md|
-          if sub_md[:version].nil?
-            execute_and_stream("#{ar_base_command} -i #{sub_md[:spec_uri]} -n #{sub_md[:ns]} -pn #{sub_md[:pn].nil? ? dir : sub_md[:pn]} -g Azure.Ruby -o lib")
-          else
-            execute_and_stream("#{ar_base_command} -i #{sub_md[:spec_uri]} -pv #{sub_md[:version]} -n #{sub_md[:ns]} -pn #{sub_md[:pn].nil? ? dir : sub_md[:pn]} -g Azure.Ruby -o lib")
-          end
-        end
-      else
-        if md[:version].nil?
-          execute_and_stream("#{ar_base_command} -i #{md[:spec_uri]} -n #{md[:ns]} -pn #{md[:pn].nil? ? dir : md[:pn]} -g Azure.Ruby -o lib")
-        else
-          execute_and_stream("#{ar_base_command} -i #{md[:spec_uri]} -pv #{md[:version]} -n #{md[:ns]} -pn #{md[:pn].nil? ? dir : md[:pn]} -g Azure.Ruby -o lib")
-        end
-
-      end
-
+      execute_and_stream("#{ar_base_command} -i #{md[:spec_uri]} -pv #{md[:version]} -n #{md[:ns]} -pn #{md[:pn].nil? ? dir : md[:pn]} -g Azure.Ruby -o lib")
     end
   end
 
@@ -177,44 +161,18 @@ REGEN_METADATA = {
         version: version,
         tag: 'arm_comp'
     },
-    azure_mgmt_datalake_analytics: [
-        {
-            spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-analytics/catalog/2015-10-01-preview/swagger/catalog.json',
-            ns: 'Azure::ARM::DataLakeAnalytics::Catalog',
-            pn: 'azure_mgmt_datalake_analytics_catalog',
-            tag: 'arm_datalake_analytics'
-        },
-        {
-            spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-analytics/job/2016-03-20-preview/swagger/job.json',
-            ns: 'Azure::ARM::DataLakeAnalytics::Job',
-            pn: 'azure_mgmt_datalake_analytics_job',
-            tag: 'arm_datalake_analytics'
-        },
-        {
-            spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-analytics/account/2015-10-01-preview/swagger/account.json',
-            ns: 'Azure::ARM::DataLakeAnalytics::Account',
-            pn: 'azure_mgmt_datalake_analytics_account',
-            # Only the last generated swagger requires version parameter so that we do not override it on AutoRest regeneration code
-            version: version,
-            tag: 'arm_datalake_analytics'
-        }
-    ],
-    azure_mgmt_datalake_store: [
-        {
-            spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json',
-            ns: 'Azure::ARM::DataLakeStore::FileSystem',
-            pn: 'azure_mgmt_datalake_store_filesystem',
-            tag: 'arm_datalake_store'
-        },
-        {
-            spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-store/account/2015-10-01-preview/swagger/account.json',
-            ns: 'Azure::ARM::DataLakeStore::Account',
-            pn: 'azure_mgmt_datalake_store_account',
-            # Only the last generated swagger requires version parameter so that we do not override it on AutoRest regeneration code
-            version: version,
-            tag: 'arm_datalake_store'
-        }
-    ],
+    azure_mgmt_datalake_analytics: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-analytics/account/2015-10-01-preview/swagger/account.json',
+        ns: 'Azure::ARM::DataLakeAnalytics',
+        version: version,
+        tag: 'arm_datalake_analytics'
+    },
+    azure_mgmt_datalake_store: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-store/account/2015-10-01-preview/swagger/account.json',
+        ns: 'Azure::ARM::DataLakeStore',
+        version: version,
+        tag: 'arm_datalake_store'
+    },
     azure_mgmt_devtestlabs: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-devtestlabs/2016-05-15/swagger/DTL.json',
         ns: 'Azure::ARM::DevTestLabs',

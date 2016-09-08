@@ -6,7 +6,7 @@ require_relative 'spec_helper'
 
 include MsRestAzure
 include Azure::ARM::Resources
-include Azure::ARM::DataLakeStore::Account
+include Azure::ARM::DataLakeStore
 
 describe 'DataLakeStoreClient Account' do
   before(:each) do

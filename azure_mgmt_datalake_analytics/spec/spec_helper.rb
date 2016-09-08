@@ -17,7 +17,7 @@ include Azure::ARM::DataLakeAnalytics
 class ResourceHelper
   @@resource_group_name = 'RubySDKTest_azure_mgmt_dl_analytics'
 
-  attr_reader :resource_client, :dls_acc_client, :dla_acc_client, :dla_cat_client, :dla_job_client
+  attr_reader :resource_client, :dls_acc_client, :dla_acc_client
 
   def initialize
     tenant_id = ENV['AZURE_TENANT_ID']
@@ -40,7 +40,7 @@ class ResourceHelper
 
   def dls_acc_client
     if @dls_acc_client.nil?
-      @dls_acc_client = Azure::ARM::DataLakeStore::Account::DataLakeStoreAccountManagementClient.new(@credentials)
+      @dls_acc_client = Azure::ARM::DataLakeStore::DataLakeStoreAccountManagementClient.new(@credentials)
       @dls_acc_client.subscription_id = @subscription_id
       @dls_acc_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
     end
@@ -49,31 +49,15 @@ class ResourceHelper
 
   def dla_acc_client
     if @dla_acc_client.nil?
-      @dla_acc_client = Azure::ARM::DataLakeAnalytics::Account::DataLakeAnalyticsAccountManagementClient.new(@credentials)
+      @dla_acc_client = Azure::ARM::DataLakeAnalytics::DataLakeAnalyticsAccountManagementClient.new(@credentials)
       @dla_acc_client.subscription_id = @subscription_id
       @dla_acc_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
     end
     @dla_acc_client
   end
 
-  def dla_cat_client
-    if @dla_cat_client.nil?
-      @dla_cat_client = Azure::ARM::DataLakeAnalytics::Catalog::DataLakeAnalyticsCatalogManagementClient.new(@credentials)
-      @dla_cat_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
-    end
-    @dla_cat_client
-  end
-
-  def dla_job_client
-    if @dla_job_client.nil?
-      @dla_job_client = Azure::ARM::DataLakeAnalytics::Job::DataLakeAnalyticsJobManagementClient.new(@credentials)
-      @dla_job_client.long_running_operation_retry_timeout = ENV.fetch('RETRY_TIMEOUT', 30).to_i
-    end
-    @dla_job_client
-  end
-
   def create_resource_group
-    params = Resources::Models::ResourceGroup.new()
+    params = Azure::ARM::Resources::Models::ResourceGroup.new()
     params.location = 'East US 2'
 
     resource_client.resource_groups.create_or_update(@@resource_group_name, params)
@@ -84,20 +68,20 @@ class ResourceHelper
   end
 
   def create_datalake_store_account(name)
-    dsl_acc = Azure::ARM::DataLakeStore::Account::Models::DataLakeStoreAccount.new
+    dsl_acc = Azure::ARM::DataLakeStore::Models::DataLakeStoreAccount.new
     dsl_acc.name = name
     dsl_acc.location = 'East US 2'
     dls_acc_client.account.create(@@resource_group_name, name, dsl_acc)
   end
 
   def create_datalake_analysis_account(analytics_acc_name, store_acc_name)
-    analytics_acc = Account::Models::DataLakeAnalyticsAccount.new
+    analytics_acc = Models::DataLakeAnalyticsAccount.new
     analytics_acc.name = analytics_acc_name
     analytics_acc.location = 'East US 2'
 
-    dla_acc_prop = Account::Models::DataLakeAnalyticsAccountProperties.new
+    dla_acc_prop = Models::DataLakeAnalyticsAccountProperties.new
     dla_acc_prop.default_data_lake_store_account = store_acc_name
-    dla_acc_info = Account::Models::DataLakeStoreAccountInfo.new
+    dla_acc_info = Models::DataLakeStoreAccountInfo.new
     dla_acc_info.name = store_acc_name
 
     dla_acc_prop.data_lake_store_accounts = [dla_acc_info]
