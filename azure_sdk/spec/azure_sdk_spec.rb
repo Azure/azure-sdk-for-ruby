@@ -73,6 +73,7 @@ describe 'Azure Sdk' do
     def verify_management_clients(arm_client)
       expect(arm_client).not_to be_nil
       expect(arm_client.authorization).to be_instance_of(Azure::ARM::Authorization::AuthorizationManagementClient)
+      expect(arm_client.authorization.subscription_id).not_to be_nil
       expect(arm_client.batch).to be_instance_of(Azure::ARM::Batch::BatchManagementClient)
       expect(arm_client.cdn).to be_instance_of(Azure::ARM::CDN::CdnManagementClient)
       expect(arm_client.cognitive_services).to be_instance_of(Azure::ARM::CognitiveServices::CognitiveServicesManagementClient)
@@ -84,6 +85,7 @@ describe 'Azure Sdk' do
       expect(arm_client.dns).to be_instance_of(Azure::ARM::Dns::DnsManagementClient)
       expect(arm_client.features).to be_instance_of(Azure::ARM::Features::FeatureClient)
       expect(arm_client.graph_rbac).to be_instance_of(Azure::ARM::Graph::GraphRbacManagementClient)
+      expect(arm_client.graph_rbac.tenant_id).not_to be_nil
       expect(arm_client.iot_hub).to be_instance_of(Azure::ARM::IotHub::IotHubClient)
       expect(arm_client.key_vault).to be_instance_of(Azure::ARM::KeyVault::KeyVaultManagementClient)
       expect(arm_client.locks).to be_instance_of(Azure::ARM::Locks::ManagementLockClient)
@@ -118,9 +120,9 @@ describe 'Azure Sdk' do
     it 'should create a storage client' do
       storage_client = Azure::Storage::Client.new(:storage_account_name => @storage_account_name, :storage_access_key => @storage_access_key)
       expect(storage_client).not_to be_nil
-      expect(storage_client.blobClient).not_to be_nil
-      expect(storage_client.queueClient).not_to be_nil
-      expect(storage_client.tableClient).not_to be_nil
+      expect(storage_client.blob_client).not_to be_nil
+      expect(storage_client.queue_client).not_to be_nil
+      expect(storage_client.table_client).not_to be_nil
     end
   end
 end
