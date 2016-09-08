@@ -66,10 +66,11 @@
       ]
     },
     "azure_mgmt_compute": {
-      "swagger": "arm-compute/2016-03-30/swagger/compute.json",
+      "swagger": "arm-compute/compositeComputeClient.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Compute",
         "PackageName": "azure_mgmt_compute",
+        "Modeler": "CompositeSwagger",
         "PackageVersion": "0.5.0"
       },
       "output_dir": "azure_mgmt_compute/lib",
@@ -138,10 +139,11 @@
       ]
     },
     "azure_mgmt_graph": {
-      "swagger": "arm-graphrbac/1.6/swagger/graphrbac.json",
+      "swagger": "arm-graphrbac/compositeGraphRbacManagementClient.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Graph",
         "PackageName": "azure_mgmt_graph",
+        "Modeler": "CompositeSwagger",
         "PackageVersion": "0.5.0"
       },
       "output_dir": "azure_mgmt_graph/lib",
