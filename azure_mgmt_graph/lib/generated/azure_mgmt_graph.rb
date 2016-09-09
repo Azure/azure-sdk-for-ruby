@@ -59,5 +59,6 @@ module Azure::ARM::Graph
     autoload :UserGetMemberGroupsParameters,                      'generated/azure_mgmt_graph/models/user_get_member_groups_parameters.rb'
     autoload :UserGetMemberGroupsResult,                          'generated/azure_mgmt_graph/models/user_get_member_groups_result.rb'
     autoload :UserListResult,                                     'generated/azure_mgmt_graph/models/user_list_result.rb'
+    autoload :GetObjectsParameters,                               'generated/azure_mgmt_graph/models/get_objects_parameters.rb'
   end
 end

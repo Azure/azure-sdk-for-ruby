@@ -7,12 +7,12 @@ module Azure::ARM::Compute
   #
   # Composite Swagger for Compute Client
   #
-  class AvailabilitySets
+  class ContainerServiceOperations
     include Azure::ARM::Compute::Models
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the AvailabilitySets class.
+    # Creates and initializes a new instance of the ContainerServiceOperations class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -23,56 +23,106 @@ module Azure::ARM::Compute
     attr_reader :client
 
     #
-    # The operation to create or update the availability set.
+    # The operation to create or update a container service.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] Parameters supplied to the Create Availability Set
-    # operation.
-    # @param parameters [AvailabilitySet] Parameters supplied to the Create
-    # Availability Set operation.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
+    # @param parameters [ContainerService] Parameters supplied to the Create
+    # Container Service operation.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AvailabilitySet] operation results.
+    # @return [ContainerService] operation results.
     #
-    def create_or_update(resource_group_name, name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def create_or_update(resource_group_name, container_service_name, parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, container_service_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # The operation to create or update the availability set.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
+    # @param parameters [ContainerService] Parameters supplied to the Create
+    # Container Service operation.
+    # @param api_version [String] Client Api Version.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_or_update_async(resource_group_name, container_service_name, parameters, custom_headers = nil)
+      # Send request
+      promise = begin_create_or_update_async(resource_group_name, container_service_name, parameters, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = ContainerService.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # The operation to create or update a container service.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] Parameters supplied to the Create Availability Set
-    # operation.
-    # @param parameters [AvailabilitySet] Parameters supplied to the Create
-    # Availability Set operation.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
+    # @param parameters [ContainerService] Parameters supplied to the Create
+    # Container Service operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ContainerService] operation results.
+    #
+    def begin_create_or_update(resource_group_name, container_service_name, parameters, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, container_service_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # The operation to create or update a container service.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
+    # @param parameters [ContainerService] Parameters supplied to the Create
+    # Container Service operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
-      create_or_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, container_service_name, parameters, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, container_service_name, parameters, custom_headers).value!
     end
 
     #
-    # The operation to create or update the availability set.
+    # The operation to create or update a container service.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] Parameters supplied to the Create Availability Set
-    # operation.
-    # @param parameters [AvailabilitySet] Parameters supplied to the Create
-    # Availability Set operation.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
+    # @param parameters [ContainerService] Parameters supplied to the Create
+    # Container Service operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, name, parameters, custom_headers = nil)
+    def begin_create_or_update_async(resource_group_name, container_service_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'container_service_name is nil' if container_service_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -87,14 +137,14 @@ module Azure::ARM::Compute
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = AvailabilitySet.mapper()
+      request_mapper = ContainerService.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{name}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}'
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'containerServiceName' => container_service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
@@ -110,7 +160,7 @@ module Azure::ARM::Compute
       promise = promise.then do |http_response|
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 201 || status_code == 202
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
         end
@@ -122,7 +172,27 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AvailabilitySet.mapper()
+            result_mapper = ContainerService.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ContainerService.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 202
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ContainerService.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -136,130 +206,50 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to delete the availability set.
+    # The operation to get a container service.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param availability_set_name [String] The name of the availability set.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [ContainerService] operation results.
     #
-    def delete(resource_group_name, availability_set_name, custom_headers = nil)
-      response = delete_async(resource_group_name, availability_set_name, custom_headers).value!
-      nil
-    end
-
-    #
-    # The operation to delete the availability set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param availability_set_name [String] The name of the availability set.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def delete_with_http_info(resource_group_name, availability_set_name, custom_headers = nil)
-      delete_async(resource_group_name, availability_set_name, custom_headers).value!
-    end
-
-    #
-    # The operation to delete the availability set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param availability_set_name [String] The name of the availability set.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def delete_async(resource_group_name, availability_set_name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
-      api_version = '2016-03-30'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'availabilitySetName' => availability_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {})
-      }
-
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :delete, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 204
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
-        end
-
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # The operation to get the availability set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param availability_set_name [String] The name of the availability set.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [AvailabilitySet] operation results.
-    #
-    def get(resource_group_name, availability_set_name, custom_headers = nil)
-      response = get_async(resource_group_name, availability_set_name, custom_headers).value!
+    def get(resource_group_name, container_service_name, custom_headers = nil)
+      response = get_async(resource_group_name, container_service_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # The operation to get the availability set.
+    # The operation to get a container service.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param availability_set_name [String] The name of the availability set.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, availability_set_name, custom_headers = nil)
-      get_async(resource_group_name, availability_set_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, container_service_name, custom_headers = nil)
+      get_async(resource_group_name, container_service_name, custom_headers).value!
     end
 
     #
-    # The operation to get the availability set.
+    # The operation to get a container service.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param availability_set_name [String] The name of the availability set.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, availability_set_name, custom_headers = nil)
+    def get_async(resource_group_name, container_service_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
+      fail ArgumentError, 'container_service_name is nil' if container_service_name.nil?
       api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -269,10 +259,10 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}'
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'availabilitySetName' => availability_set_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'containerServiceName' => container_service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
@@ -299,7 +289,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AvailabilitySet.mapper()
+            result_mapper = ContainerService.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -313,13 +303,141 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list the availability sets.
+    # The operation to delete a container service.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
+    # @param api_version [String] Client Api Version.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    def delete(resource_group_name, container_service_name, custom_headers = nil)
+      response = delete_async(resource_group_name, container_service_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
+    # @param api_version [String] Client Api Version.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def delete_async(resource_group_name, container_service_name, custom_headers = nil)
+      # Send request
+      promise = begin_delete_async(resource_group_name, container_service_name, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # The operation to delete a container service.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_delete(resource_group_name, container_service_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, container_service_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # The operation to delete a container service.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_delete_with_http_info(resource_group_name, container_service_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, container_service_name, custom_headers).value!
+    end
+
+    #
+    # The operation to delete a container service.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param container_service_name [String] The name of the container service
+    # within the given subscription and resource group.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_delete_async(resource_group_name, container_service_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'container_service_name is nil' if container_service_name.nil?
+      api_version = '2016-03-30'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}'
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'containerServiceName' => container_service_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {})
+      }
+
+      request_url = @base_url || @client.base_url
+
+      request = MsRest::HttpOperationRequest.new(request_url, path_template, :delete, options)
+      promise = request.run_promise do |req|
+        @client.credentials.sign_request(req) unless @client.credentials.nil?
+      end
+
+      promise = promise.then do |http_response|
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+        end
+
+        # Create Result
+        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # The operation to list container services.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AvailabilitySetListResult] operation results.
+    # @return [ContainerServiceListResult] operation results.
     #
     def list(resource_group_name, custom_headers = nil)
       response = list_async(resource_group_name, custom_headers).value!
@@ -327,7 +445,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list the availability sets.
+    # The operation to list container services.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -340,7 +458,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list the availability sets.
+    # The operation to list container services.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -359,7 +477,7 @@ module Azure::ARM::Compute
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices'
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
@@ -389,104 +507,7 @@ module Azure::ARM::Compute
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AvailabilitySetListResult.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Lists all available virtual machine sizes that can be used to create a new
-    # virtual machine in an existing availability set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param availability_set_name [String] The name of the availability set.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualMachineSizeListResult] operation results.
-    #
-    def list_available_sizes(resource_group_name, availability_set_name, custom_headers = nil)
-      response = list_available_sizes_async(resource_group_name, availability_set_name, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Lists all available virtual machine sizes that can be used to create a new
-    # virtual machine in an existing availability set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param availability_set_name [String] The name of the availability set.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_available_sizes_with_http_info(resource_group_name, availability_set_name, custom_headers = nil)
-      list_available_sizes_async(resource_group_name, availability_set_name, custom_headers).value!
-    end
-
-    #
-    # Lists all available virtual machine sizes that can be used to create a new
-    # virtual machine in an existing availability set.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param availability_set_name [String] The name of the availability set.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_available_sizes_async(resource_group_name, availability_set_name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
-      api_version = '2016-03-30'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/vmSizes'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'availabilitySetName' => availability_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {})
-      }
-
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
-        end
-
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualMachineSizeListResult.mapper()
+            result_mapper = ContainerServiceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

@@ -22,9 +22,6 @@ module Azure::ARM::Compute
     # for every service call.
     attr_accessor :subscription_id
 
-    # @return [String] Client Api Version.
-    attr_reader :api_version
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -67,6 +64,9 @@ module Azure::ARM::Compute
     # @return [VirtualMachineScaleSetVMs] virtual_machine_scale_set_vms
     attr_reader :virtual_machine_scale_set_vms
 
+    # @return [ContainerServiceOperations] container_service_operations
+    attr_reader :container_service_operations
+
     #
     # Creates initializes a new instance of the ComputeManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -90,7 +90,7 @@ module Azure::ARM::Compute
       @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_scale_sets = VirtualMachineScaleSets.new(self)
       @virtual_machine_scale_set_vms = VirtualMachineScaleSetVMs.new(self)
-      @api_version = '2016-03-30'
+      @container_service_operations = ContainerServiceOperations.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

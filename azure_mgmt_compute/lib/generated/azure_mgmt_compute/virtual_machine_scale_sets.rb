@@ -5,7 +5,7 @@
 
 module Azure::ARM::Compute
   #
-  # The Compute Management Client.
+  # Composite Swagger for Compute Client
   #
   class VirtualMachineScaleSets
     include Azure::ARM::Compute::Models
@@ -31,6 +31,7 @@ module Azure::ARM::Compute
     # Set operation.
     # @param parameters [VirtualMachineScaleSet] Parameters supplied to the Create
     # Virtual Machine Scale Set operation.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -47,6 +48,7 @@ module Azure::ARM::Compute
     # Set operation.
     # @param parameters [VirtualMachineScaleSet] Parameters supplied to the Create
     # Virtual Machine Scale Set operation.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -126,7 +128,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -147,7 +149,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
       }
@@ -205,6 +207,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
     # virtual machine scale set instance IDs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -218,6 +221,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
     # virtual machine scale set instance IDs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -298,7 +302,7 @@ module Azure::ARM::Compute
     def begin_deallocate_async(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -319,7 +323,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
       }
@@ -354,6 +358,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -365,6 +370,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -428,7 +434,7 @@ module Azure::ARM::Compute
     def begin_delete_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -441,7 +447,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -512,7 +518,7 @@ module Azure::ARM::Compute
     def get_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -525,7 +531,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -571,6 +577,7 @@ module Azure::ARM::Compute
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
     # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
     # list of virtual machine scale set instance IDs.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -584,6 +591,7 @@ module Azure::ARM::Compute
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
     # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
     # list of virtual machine scale set instance IDs.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -654,7 +662,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, 'vm_instance_ids is nil' if vm_instance_ids.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -675,7 +683,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
       }
@@ -747,7 +755,7 @@ module Azure::ARM::Compute
     def get_instance_view_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -760,7 +768,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -803,6 +811,7 @@ module Azure::ARM::Compute
     # Lists all virtual machine scale sets under a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -858,7 +867,7 @@ module Azure::ARM::Compute
     #
     def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -871,7 +880,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -916,6 +925,7 @@ module Azure::ARM::Compute
     # Sets. Do this till nextLink is not null to fetch all the Virtual Machine
     # Scale Sets.
     #
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -976,7 +986,7 @@ module Azure::ARM::Compute
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_all_async(custom_headers = nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -989,7 +999,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -1034,6 +1044,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1096,7 +1107,7 @@ module Azure::ARM::Compute
     def list_skus_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1109,7 +1120,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -1155,6 +1166,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
     # virtual machine scale set instance IDs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1168,6 +1180,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
     # virtual machine scale set instance IDs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1245,7 +1258,7 @@ module Azure::ARM::Compute
     def begin_power_off_async(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1266,7 +1279,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
       }
@@ -1301,6 +1314,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
     # virtual machine scale set instance IDs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1314,6 +1328,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
     # virtual machine scale set instance IDs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1385,7 +1400,7 @@ module Azure::ARM::Compute
     def begin_restart_async(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1406,7 +1421,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
       }
@@ -1441,6 +1456,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
     # virtual machine scale set instance IDs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1454,6 +1470,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
     # virtual machine scale set instance IDs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1525,7 +1542,7 @@ module Azure::ARM::Compute
     def begin_start_async(resource_group_name, vm_scale_set_name, vm_instance_ids = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1546,7 +1563,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
       }
@@ -1584,6 +1601,7 @@ module Azure::ARM::Compute
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
     # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
     # list of virtual machine scale set instance IDs.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1597,6 +1615,7 @@ module Azure::ARM::Compute
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
     # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
     # list of virtual machine scale set instance IDs.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1670,7 +1689,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
       fail ArgumentError, 'vm_instance_ids is nil' if vm_instance_ids.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1691,7 +1710,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
       }
@@ -1727,6 +1746,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1738,6 +1758,7 @@ module Azure::ARM::Compute
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1804,7 +1825,7 @@ module Azure::ARM::Compute
     def begin_reimage_async(resource_group_name, vm_scale_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_scale_set_name is nil' if vm_scale_set_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -1817,7 +1838,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmScaleSetName' => vm_scale_set_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 

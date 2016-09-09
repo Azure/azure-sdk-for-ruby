@@ -5,7 +5,7 @@
 
 module Azure::ARM::Graph
   #
-  # The Graph RBAC Management Client
+  # Composite Swagger for GraphRbac Management Client
   #
   class Applications
     include Azure::ARM::Graph::Models
@@ -66,7 +66,7 @@ module Azure::ARM::Graph
     #
     def create_async(parameters, custom_headers = nil)
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '1.6'
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
@@ -87,7 +87,7 @@ module Azure::ARM::Graph
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
       }
@@ -167,7 +167,7 @@ module Azure::ARM::Graph
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(filter = nil, custom_headers = nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '1.6'
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
@@ -180,7 +180,7 @@ module Azure::ARM::Graph
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
-          query_params: {'$filter' => filter,'api-version' => @client.api_version},
+          query_params: {'$filter' => filter,'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -259,7 +259,7 @@ module Azure::ARM::Graph
     #
     def delete_async(application_object_id, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '1.6'
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
@@ -273,7 +273,7 @@ module Azure::ARM::Graph
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           skip_encoding_path_params: {'applicationObjectId' => application_object_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -343,7 +343,7 @@ module Azure::ARM::Graph
     #
     def get_async(application_object_id, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '1.6'
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
@@ -357,7 +357,7 @@ module Azure::ARM::Graph
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           skip_encoding_path_params: {'applicationObjectId' => application_object_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -443,7 +443,7 @@ module Azure::ARM::Graph
     def patch_async(application_object_id, parameters, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '1.6'
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
@@ -465,7 +465,7 @@ module Azure::ARM::Graph
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           skip_encoding_path_params: {'applicationObjectId' => application_object_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
       }
@@ -536,7 +536,7 @@ module Azure::ARM::Graph
     #
     def list_key_credentials_async(application_object_id, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '1.6'
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
@@ -550,7 +550,7 @@ module Azure::ARM::Graph
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           skip_encoding_path_params: {'applicationObjectId' => application_object_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -636,7 +636,7 @@ module Azure::ARM::Graph
     def update_key_credentials_async(application_object_id, parameters, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '1.6'
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
@@ -658,7 +658,7 @@ module Azure::ARM::Graph
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           skip_encoding_path_params: {'applicationObjectId' => application_object_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
       }
@@ -729,7 +729,7 @@ module Azure::ARM::Graph
     #
     def list_password_credentials_async(application_object_id, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '1.6'
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
@@ -743,7 +743,7 @@ module Azure::ARM::Graph
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           skip_encoding_path_params: {'applicationObjectId' => application_object_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -832,7 +832,7 @@ module Azure::ARM::Graph
     def update_password_credentials_async(application_object_id, parameters, custom_headers = nil)
       fail ArgumentError, 'application_object_id is nil' if application_object_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '1.6'
       fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
 
 
@@ -854,7 +854,7 @@ module Azure::ARM::Graph
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           skip_encoding_path_params: {'applicationObjectId' => application_object_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
       }

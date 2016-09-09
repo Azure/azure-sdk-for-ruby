@@ -5,7 +5,7 @@
 
 module Azure::ARM::Compute
   #
-  # The Compute Management Client.
+  # Composite Swagger for Compute Client
   #
   class UsageOperations
     include Azure::ARM::Compute::Models
@@ -26,6 +26,7 @@ module Azure::ARM::Compute
     # Lists compute usages for a subscription.
     #
     # @param location [String] The location upon which resource usage is queried.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -81,7 +82,7 @@ module Azure::ARM::Compute
     #
     def list_async(location, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -94,7 +95,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'location' => location,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 

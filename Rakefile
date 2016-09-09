@@ -45,7 +45,6 @@ namespace :arm do
   desc 'Push gem for each of the Azure Resource Manager projects'
   task :release, [:key] => :build do |_, args|
     each_gem do |dir|
-      md = REGEN_METADATA[dir.to_sym]
       # Using execute method so that keys are not logged onto console
       execute("gem push ./pkg/#{dir}-#{version}.gem" + (args[:key].nil? ? '' : " -k #{args[:key]}"))
     end
@@ -58,7 +57,10 @@ namespace :arm do
       md = REGEN_METADATA[dir.to_sym]
       ar_base_command = "#{OS.windows? ? '' : 'mono '} #{REGEN_METADATA[:autorest_loc]}"
 
-      execute_and_stream("#{ar_base_command} -i #{md[:spec_uri]} -pv #{md[:version]} -n #{md[:ns]} -pn #{md[:pn].nil? ? dir : md[:pn]} -g Azure.Ruby -o lib")
+      command = "#{ar_base_command} -i #{md[:spec_uri]} -pv #{md[:version]} -n #{md[:ns]} -pn #{md[:pn].nil? ? dir : md[:pn]} -g Azure.Ruby -o lib"
+      command += " -m #{md[:modeler]}" unless md[:modeler].nil?
+
+      execute_and_stream(command)
     end
   end
 
@@ -156,9 +158,10 @@ REGEN_METADATA = {
         tag: 'arm_commerce'
     },
     azure_mgmt_compute: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/2016-03-30/swagger/compute.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/compositeComputeClient.json',
         ns: 'Azure::ARM::Compute',
         version: version,
+        modeler: "CompositeSwagger",
         tag: 'arm_comp'
     },
     azure_mgmt_datalake_analytics: {
@@ -192,9 +195,10 @@ REGEN_METADATA = {
         tag: 'arm_feat'
     },
     azure_mgmt_graph: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-graphrbac/1.6/swagger/graphrbac.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-graphrbac/compositeGraphRbacManagementClient.json',
         ns: 'Azure::ARM::Graph',
         version: version,
+        modeler: "CompositeSwagger",
         tag: 'arm_grap'
     },
     # Not generating this gem due to known issue in swagger

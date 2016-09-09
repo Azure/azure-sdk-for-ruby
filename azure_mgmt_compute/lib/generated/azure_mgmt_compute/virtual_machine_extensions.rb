@@ -5,7 +5,7 @@
 
 module Azure::ARM::Compute
   #
-  # The Compute Management Client.
+  # Composite Swagger for Compute Client
   #
   class VirtualMachineExtensions
     include Azure::ARM::Compute::Models
@@ -31,6 +31,7 @@ module Azure::ARM::Compute
     # @param vm_extension_name [String] The name of the virtual machine extension.
     # @param extension_parameters [VirtualMachineExtension] Parameters supplied to
     # the Create Virtual Machine Extension operation.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -48,6 +49,7 @@ module Azure::ARM::Compute
     # @param vm_extension_name [String] The name of the virtual machine extension.
     # @param extension_parameters [VirtualMachineExtension] Parameters supplied to
     # the Create Virtual Machine Extension operation.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -128,7 +130,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
       fail ArgumentError, 'vm_extension_name is nil' if vm_extension_name.nil?
       fail ArgumentError, 'extension_parameters is nil' if extension_parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -149,7 +151,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmName' => vm_name,'vmExtensionName' => vm_extension_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
       }
@@ -206,6 +208,7 @@ module Azure::ARM::Compute
     # @param vm_name [String] The name of the virtual machine where the extension
     # should be deleted.
     # @param vm_extension_name [String] The name of the virtual machine extension.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -219,6 +222,7 @@ module Azure::ARM::Compute
     # @param vm_name [String] The name of the virtual machine where the extension
     # should be deleted.
     # @param vm_extension_name [String] The name of the virtual machine extension.
+    # @param api_version [String] Client Api Version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -289,7 +293,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
       fail ArgumentError, 'vm_extension_name is nil' if vm_extension_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -302,7 +306,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmName' => vm_name,'vmExtensionName' => vm_extension_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -383,7 +387,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
       fail ArgumentError, 'vm_extension_name is nil' if vm_extension_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -396,7 +400,7 @@ module Azure::ARM::Compute
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'vmName' => vm_name,'vmExtensionName' => vm_extension_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'$expand' => expand,'api-version' => @client.api_version},
+          query_params: {'$expand' => expand,'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {})
       }
 
