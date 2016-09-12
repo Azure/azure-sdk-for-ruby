@@ -16,6 +16,9 @@ module Azure::ARM::IotHub
       # authorization rules.
       attr_accessor :authorization_policies
 
+      # @return [Array<IpFilterRule>] The IP filter rules.
+      attr_accessor :ip_filter_rules
+
       # @return [String] The name of the host.
       attr_accessor :host_name
 
@@ -75,6 +78,21 @@ module Azure::ARM::IotHub
                       type: {
                         name: 'Composite',
                         class_name: 'SharedAccessSignatureAuthorizationRule'
+                      }
+                  }
+                }
+              },
+              ip_filter_rules: {
+                required: false,
+                serialized_name: 'ipFilterRules',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'IpFilterRuleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'IpFilterRule'
                       }
                   }
                 }

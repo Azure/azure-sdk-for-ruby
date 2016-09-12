@@ -26,6 +26,7 @@ module Azure::ARM::IotHub
   module Models
     autoload :SharedAccessSignatureAuthorizationRule,             'generated/azure_mgmt_iot_hub/models/shared_access_signature_authorization_rule.rb'
     autoload :IotHubProperties,                                   'generated/azure_mgmt_iot_hub/models/iot_hub_properties.rb'
+    autoload :IpFilterRule,                                       'generated/azure_mgmt_iot_hub/models/ip_filter_rule.rb'
     autoload :EventHubProperties,                                 'generated/azure_mgmt_iot_hub/models/event_hub_properties.rb'
     autoload :SharedAccessAuthorizationRule,                      'generated/azure_mgmt_iot_hub/models/shared_access_authorization_rule.rb'
     autoload :StorageEndpointProperties,                          'generated/azure_mgmt_iot_hub/models/storage_endpoint_properties.rb'
@@ -53,6 +54,7 @@ module Azure::ARM::IotHub
     autoload :ImportDevicesRequest,                               'generated/azure_mgmt_iot_hub/models/import_devices_request.rb'
     autoload :IotHubDescription,                                  'generated/azure_mgmt_iot_hub/models/iot_hub_description.rb'
     autoload :AccessRights,                                       'generated/azure_mgmt_iot_hub/models/access_rights.rb'
+    autoload :IpFilterActionType,                                 'generated/azure_mgmt_iot_hub/models/ip_filter_action_type.rb'
     autoload :SBAccessRights,                                     'generated/azure_mgmt_iot_hub/models/sbaccess_rights.rb'
     autoload :OperationMonitoringLevel,                           'generated/azure_mgmt_iot_hub/models/operation_monitoring_level.rb'
     autoload :Capabilities,                                       'generated/azure_mgmt_iot_hub/models/capabilities.rb'
