@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://login.windows.net/<AZURE_TENANT_ID>/oauth2/token
+    uri: https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/token
     body:
       encoding: UTF-8
       string: resource=https%3A%2F%2Fmanagement.core.windows.net%2F&client_id=<AZURE_CLIENT_ID>&client_secret=<AZURE_CLIENT_SECRET>&grant_type=client_credentials
@@ -40,7 +40,7 @@ http_interactions:
       - CP="DSP CUR OTPi IND OTRi ONL FIN"
       set-cookie:
       - flight-uxoptin=true; path=/; secure; HttpOnly, esctx=AAABAAAAiL9Kn2Z27UubvWFPbm0gLSo5U5xQsoqEh5IG7_n1NcubwHNzDFX3qrvVPdWs8D2Uj077dU-FUEpxt1GE79Kk5sffW4KhNlZ4GpllZ9XfkgR9m7V3Cf_esqowtOBWlJWayQfwf9ocOJf2JY-u1oEm7bH8cYT5IqfPEbV2Ry7wF-xD5hPrYyUFz7eteTFUb1_hIAA;
-        domain=.login.windows.net; path=/; secure; HttpOnly, x-ms-gateway-slice=productiona;
+        domain=.login.microsoftonline.com; path=/; secure; HttpOnly, x-ms-gateway-slice=productiona;
         path=/; secure; HttpOnly, stsservicecookie=ests; path=/; secure; HttpOnly
       x-powered-by:
       - ASP.NET
