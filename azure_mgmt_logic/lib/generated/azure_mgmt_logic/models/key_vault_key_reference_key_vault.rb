@@ -3,53 +3,56 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::MediaServices
+module Azure::ARM::Logic
   module Models
     #
-    # The request body for CheckNameAvailability API.
+    # The key vault reference.
     #
-    class CheckNameAvailabilityInput
+    class KeyVaultKeyReferenceKeyVault
 
       include MsRestAzure
 
-      # @return [String] The name of the resource. A name must be globally
-      # unique.
+      # @return [String] The resource id.
+      attr_accessor :id
+
+      # @return [String] The resource name.
       attr_accessor :name
 
-      # @return [String] Specifies the type of the resource. Default value:
-      # 'mediaservices' .
+      # @return [String] The resource type.
       attr_accessor :type
 
 
       #
-      # Mapper for CheckNameAvailabilityInput class as Ruby Hash.
+      # Mapper for KeyVaultKeyReferenceKeyVault class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'CheckNameAvailabilityInput',
+          serialized_name: 'KeyVaultKeyReference_keyVault',
           type: {
             name: 'Composite',
-            class_name: 'CheckNameAvailabilityInput',
+            class_name: 'KeyVaultKeyReferenceKeyVault',
             model_properties: {
+              id: {
+                required: false,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'name',
-                constraints: {
-                  MaxLength: 24,
-                  MinLength: 3,
-                  Pattern: '^[a-z0-9]'
-                },
                 type: {
                   name: 'String'
                 }
               },
               type: {
-                required: true,
-                is_constant: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'type',
-                default_value: 'mediaservices',
                 type: {
                   name: 'String'
                 }

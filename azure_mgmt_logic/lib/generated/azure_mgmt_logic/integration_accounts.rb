@@ -3,71 +3,85 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::MediaServices
+module Azure::ARM::Logic
   #
-  # Media Services resource management APIs.
+  # IntegrationAccounts
   #
-  class MediaServiceOperations
-    include Azure::ARM::MediaServices::Models
+  class IntegrationAccounts
+    include Azure::ARM::Logic::Models
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the MediaServiceOperations class.
+    # Creates and initializes a new instance of the IntegrationAccounts class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
       @client = client
     end
 
-    # @return [MediaServicesManagementClient] reference to the MediaServicesManagementClient
+    # @return [LogicManagementClient] reference to the LogicManagementClient
     attr_reader :client
 
     #
-    # Check whether the Media Service resource name is available. The name must be
-    # globally unique.
+    # Gets a list of integration accounts by subscription.
     #
-    # @param check_name_availability_input [CheckNameAvailabilityInput] Properties
-    # needed to check the availability of a name.
+    # @param top [Integer] The number of items to be included in the result.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [CheckNameAvailabilityOutput] operation results.
+    # @return [IntegrationAccountListResult] which provide lazy access to pages of
+    # the response.
     #
-    def check_name_availability(check_name_availability_input, custom_headers = nil)
-      response = check_name_availability_async(check_name_availability_input, custom_headers).value!
-      response.body unless response.nil?
+    def list_by_subscription_as_lazy(top = nil, custom_headers = nil)
+      response = list_by_subscription_async(top, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_link|
+          list_by_subscription_next_async(next_link, custom_headers)
+        end
+        page
+      end
     end
 
     #
-    # Check whether the Media Service resource name is available. The name must be
-    # globally unique.
+    # Gets a list of integration accounts by subscription.
     #
-    # @param check_name_availability_input [CheckNameAvailabilityInput] Properties
-    # needed to check the availability of a name.
+    # @param top [Integer] The number of items to be included in the result.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<IntegrationAccount>] operation results.
+    #
+    def list_by_subscription(top = nil, custom_headers = nil)
+      first_page = list_by_subscription_as_lazy(top, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Gets a list of integration accounts by subscription.
+    #
+    # @param top [Integer] The number of items to be included in the result.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availability_with_http_info(check_name_availability_input, custom_headers = nil)
-      check_name_availability_async(check_name_availability_input, custom_headers).value!
+    def list_by_subscription_with_http_info(top = nil, custom_headers = nil)
+      list_by_subscription_async(top, custom_headers).value!
     end
 
     #
-    # Check whether the Media Service resource name is available. The name must be
-    # globally unique.
+    # Gets a list of integration accounts by subscription.
     #
-    # @param check_name_availability_input [CheckNameAvailabilityInput] Properties
-    # needed to check the availability of a name.
+    # @param top [Integer] The number of items to be included in the result.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availability_async(check_name_availability_input, custom_headers = nil)
+    def list_by_subscription_async(top = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'check_name_availability_input is nil' if check_name_availability_input.nil?
 
 
       request_headers = {}
@@ -75,26 +89,17 @@ module Azure::ARM::MediaServices
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = CheckNameAvailabilityInput.mapper()
-      request_content = @client.serialize(request_mapper,  check_name_availability_input, 'check_name_availability_input')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Media/CheckNameAvailability'
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Logic/integrationAccounts'
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
+          query_params: {'api-version' => @client.api_version,'$top' => top},
           headers: request_headers.merge(custom_headers || {})
       }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
+      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
       promise = request.run_promise do |req|
         @client.credentials.sign_request(req) unless @client.credentials.nil?
       end
@@ -104,7 +109,7 @@ module Azure::ARM::MediaServices
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -114,7 +119,7 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = CheckNameAvailabilityOutput.mapper()
+            result_mapper = IntegrationAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -128,48 +133,70 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # List all of the Media Services in a resource group.
+    # Gets a list of integration accounts by resource group.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param resource_group_name [String] The resource group name.
+    # @param top [Integer] The number of items to be included in the result.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MediaServiceCollection] operation results.
+    # @return [IntegrationAccountListResult] which provide lazy access to pages of
+    # the response.
     #
-    def list_by_resource_group(resource_group_name, custom_headers = nil)
-      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
-      response.body unless response.nil?
+    def list_by_resource_group_as_lazy(resource_group_name, top = nil, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, top, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_link|
+          list_by_resource_group_next_async(next_link, custom_headers)
+        end
+        page
+      end
     end
 
     #
-    # List all of the Media Services in a resource group.
+    # Gets a list of integration accounts by resource group.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param resource_group_name [String] The resource group name.
+    # @param top [Integer] The number of items to be included in the result.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<IntegrationAccount>] operation results.
+    #
+    def list_by_resource_group(resource_group_name, top = nil, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, top, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Gets a list of integration accounts by resource group.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param top [Integer] The number of items to be included in the result.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
-      list_by_resource_group_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, top = nil, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, top, custom_headers).value!
     end
 
     #
-    # List all of the Media Services in a resource group.
+    # Gets a list of integration accounts by resource group.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param resource_group_name [String] The resource group name.
+    # @param top [Integer] The number of items to be included in the result.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_async(resource_group_name, top = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -177,11 +204,11 @@ module Azure::ARM::MediaServices
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts'
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => @client.api_version,'$top' => top},
           headers: request_headers.merge(custom_headers || {})
       }
 
@@ -197,7 +224,7 @@ module Azure::ARM::MediaServices
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -207,7 +234,7 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MediaServiceCollection.mapper()
+            result_mapper = IntegrationAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -221,52 +248,49 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Get a Media Service.
+    # Gets an integration account.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MediaService] operation results.
+    # @return [IntegrationAccount] operation results.
     #
-    def get(resource_group_name, media_service_name, custom_headers = nil)
-      response = get_async(resource_group_name, media_service_name, custom_headers).value!
+    def get(resource_group_name, integration_account_name, custom_headers = nil)
+      response = get_async(resource_group_name, integration_account_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get a Media Service.
+    # Gets an integration account.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, media_service_name, custom_headers = nil)
-      get_async(resource_group_name, media_service_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, integration_account_name, custom_headers = nil)
+      get_async(resource_group_name, integration_account_name, custom_headers).value!
     end
 
     #
-    # Get a Media Service.
+    # Gets an integration account.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, media_service_name, custom_headers = nil)
+    def get_async(resource_group_name, integration_account_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
+      fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -274,10 +298,10 @@ module Azure::ARM::MediaServices
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}'
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'mediaServiceName' => media_service_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'integrationAccountName' => integration_account_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {})
       }
@@ -294,7 +318,7 @@ module Azure::ARM::MediaServices
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -304,7 +328,7 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MediaService.mapper()
+            result_mapper = IntegrationAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -318,59 +342,53 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Create a Media Service.
+    # Creates or updates an integration account.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param media_service [MediaService] Media Service properties needed for
-    # creation.
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param integration_account [IntegrationAccount] The integration account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MediaService] operation results.
+    # @return [IntegrationAccount] operation results.
     #
-    def create(resource_group_name, media_service_name, media_service, custom_headers = nil)
-      response = create_async(resource_group_name, media_service_name, media_service, custom_headers).value!
+    def create_or_update(resource_group_name, integration_account_name, integration_account, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, integration_account_name, integration_account, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Create a Media Service.
+    # Creates or updates an integration account.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param media_service [MediaService] Media Service properties needed for
-    # creation.
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param integration_account [IntegrationAccount] The integration account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(resource_group_name, media_service_name, media_service, custom_headers = nil)
-      create_async(resource_group_name, media_service_name, media_service, custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, integration_account_name, integration_account, custom_headers = nil)
+      create_or_update_async(resource_group_name, integration_account_name, integration_account, custom_headers).value!
     end
 
     #
-    # Create a Media Service.
+    # Creates or updates an integration account.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param media_service [MediaService] Media Service properties needed for
-    # creation.
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param integration_account [IntegrationAccount] The integration account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(resource_group_name, media_service_name, media_service, custom_headers = nil)
+    def create_or_update_async(resource_group_name, integration_account_name, integration_account, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, 'media_service is nil' if media_service.nil?
+      fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'integration_account is nil' if integration_account.nil?
 
 
       request_headers = {}
@@ -382,14 +400,14 @@ module Azure::ARM::MediaServices
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = MediaService.mapper()
-      request_content = @client.serialize(request_mapper,  media_service, 'media_service')
+      request_mapper = IntegrationAccount.mapper()
+      request_content = @client.serialize(request_mapper,  integration_account, 'integration_account')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}'
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'mediaServiceName' => media_service_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'integrationAccountName' => integration_account_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
@@ -407,7 +425,7 @@ module Azure::ARM::MediaServices
         response_content = http_response.body
         unless status_code == 200 || status_code == 201
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -417,7 +435,7 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MediaService.mapper()
+            result_mapper = IntegrationAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -427,7 +445,7 @@ module Azure::ARM::MediaServices
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MediaService.mapper()
+            result_mapper = IntegrationAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -441,145 +459,53 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Delete a Media Service.
+    # Updates an integration account.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param integration_account [IntegrationAccount] The integration account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [IntegrationAccount] operation results.
     #
-    def delete(resource_group_name, media_service_name, custom_headers = nil)
-      response = delete_async(resource_group_name, media_service_name, custom_headers).value!
-      nil
-    end
-
-    #
-    # Delete a Media Service.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def delete_with_http_info(resource_group_name, media_service_name, custom_headers = nil)
-      delete_async(resource_group_name, media_service_name, custom_headers).value!
-    end
-
-    #
-    # Delete a Media Service.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def delete_async(resource_group_name, media_service_name, custom_headers = nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'mediaServiceName' => media_service_name},
-          query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
-      }
-
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :delete, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
-        end
-
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Update a Media Service.
-    #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param media_service [MediaService] Media Service properties needed for
-    # update.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MediaService] operation results.
-    #
-    def update(resource_group_name, media_service_name, media_service, custom_headers = nil)
-      response = update_async(resource_group_name, media_service_name, media_service, custom_headers).value!
+    def update(resource_group_name, integration_account_name, integration_account, custom_headers = nil)
+      response = update_async(resource_group_name, integration_account_name, integration_account, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Update a Media Service.
+    # Updates an integration account.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param media_service [MediaService] Media Service properties needed for
-    # update.
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param integration_account [IntegrationAccount] The integration account.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(resource_group_name, media_service_name, media_service, custom_headers = nil)
-      update_async(resource_group_name, media_service_name, media_service, custom_headers).value!
+    def update_with_http_info(resource_group_name, integration_account_name, integration_account, custom_headers = nil)
+      update_async(resource_group_name, integration_account_name, integration_account, custom_headers).value!
     end
 
     #
-    # Update a Media Service.
+    # Updates an integration account.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param media_service [MediaService] Media Service properties needed for
-    # update.
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param integration_account [IntegrationAccount] The integration account.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(resource_group_name, media_service_name, media_service, custom_headers = nil)
+    def update_async(resource_group_name, integration_account_name, integration_account, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, 'media_service is nil' if media_service.nil?
+      fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'integration_account is nil' if integration_account.nil?
 
 
       request_headers = {}
@@ -591,14 +517,14 @@ module Azure::ARM::MediaServices
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = MediaService.mapper()
-      request_content = @client.serialize(request_mapper,  media_service, 'media_service')
+      request_mapper = IntegrationAccount.mapper()
+      request_content = @client.serialize(request_mapper,  integration_account, 'integration_account')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}'
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'mediaServiceName' => media_service_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'integrationAccountName' => integration_account_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
@@ -616,7 +542,7 @@ module Azure::ARM::MediaServices
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -626,7 +552,7 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MediaService.mapper()
+            result_mapper = IntegrationAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -640,59 +566,136 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Regenerate the key for a Media Service.
+    # Deletes an integration account.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param regenerate_key_input [RegenerateKeyInput] Properties needed to
-    # regenerate the Media Service key.
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RegenerateKeyOutput] operation results.
     #
-    def regenerate_key(resource_group_name, media_service_name, regenerate_key_input, custom_headers = nil)
-      response = regenerate_key_async(resource_group_name, media_service_name, regenerate_key_input, custom_headers).value!
-      response.body unless response.nil?
+    def delete(resource_group_name, integration_account_name, custom_headers = nil)
+      response = delete_async(resource_group_name, integration_account_name, custom_headers).value!
+      nil
     end
 
     #
-    # Regenerate the key for a Media Service.
+    # Deletes an integration account.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param regenerate_key_input [RegenerateKeyInput] Properties needed to
-    # regenerate the Media Service key.
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def regenerate_key_with_http_info(resource_group_name, media_service_name, regenerate_key_input, custom_headers = nil)
-      regenerate_key_async(resource_group_name, media_service_name, regenerate_key_input, custom_headers).value!
+    def delete_with_http_info(resource_group_name, integration_account_name, custom_headers = nil)
+      delete_async(resource_group_name, integration_account_name, custom_headers).value!
     end
 
     #
-    # Regenerate the key for a Media Service.
+    # Deletes an integration account.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param regenerate_key_input [RegenerateKeyInput] Properties needed to
-    # regenerate the Media Service key.
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def regenerate_key_async(resource_group_name, media_service_name, regenerate_key_input, custom_headers = nil)
+    def delete_async(resource_group_name, integration_account_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, 'regenerate_key_input is nil' if regenerate_key_input.nil?
+      fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}'
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'integrationAccountName' => integration_account_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {})
+      }
+
+      request_url = @base_url || @client.base_url
+
+      request = MsRest::HttpOperationRequest.new(request_url, path_template, :delete, options)
+      promise = request.run_promise do |req|
+        @client.credentials.sign_request(req) unless @client.credentials.nil?
+      end
+
+      promise = promise.then do |http_response|
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+        end
+
+        # Create Result
+        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Lists the integration account callback URL.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param parameters [ListCallbackUrlParameters] The callback URL parameters.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CallbackUrl] operation results.
+    #
+    def list_callback_url(resource_group_name, integration_account_name, parameters, custom_headers = nil)
+      response = list_callback_url_async(resource_group_name, integration_account_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Lists the integration account callback URL.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param parameters [ListCallbackUrlParameters] The callback URL parameters.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_callback_url_with_http_info(resource_group_name, integration_account_name, parameters, custom_headers = nil)
+      list_callback_url_async(resource_group_name, integration_account_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Lists the integration account callback URL.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param parameters [ListCallbackUrlParameters] The callback URL parameters.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_callback_url_async(resource_group_name, integration_account_name, parameters, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
 
 
       request_headers = {}
@@ -704,14 +707,14 @@ module Azure::ARM::MediaServices
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = RegenerateKeyInput.mapper()
-      request_content = @client.serialize(request_mapper,  regenerate_key_input, 'regenerate_key_input')
+      request_mapper = ListCallbackUrlParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}/regenerateKey'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/listCallbackUrl'
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'mediaServiceName' => media_service_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'integrationAccountName' => integration_account_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {})
@@ -727,9 +730,9 @@ module Azure::ARM::MediaServices
       promise = promise.then do |http_response|
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -739,7 +742,7 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RegenerateKeyOutput.mapper()
+            result_mapper = CallbackUrl.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -753,52 +756,46 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # List the keys for a Media Service.
+    # Gets a list of integration accounts by subscription.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ServiceKeys] operation results.
+    # @return [IntegrationAccountListResult] operation results.
     #
-    def list_keys(resource_group_name, media_service_name, custom_headers = nil)
-      response = list_keys_async(resource_group_name, media_service_name, custom_headers).value!
+    def list_by_subscription_next(next_page_link, custom_headers = nil)
+      response = list_by_subscription_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # List the keys for a Media Service.
+    # Gets a list of integration accounts by subscription.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_keys_with_http_info(resource_group_name, media_service_name, custom_headers = nil)
-      list_keys_async(resource_group_name, media_service_name, custom_headers).value!
+    def list_by_subscription_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_subscription_next_async(next_page_link, custom_headers).value!
     end
 
     #
-    # List the keys for a Media Service.
+    # Gets a list of integration accounts by subscription.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_keys_async(resource_group_name, media_service_name, custom_headers = nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
+    def list_by_subscription_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
@@ -806,17 +803,16 @@ module Azure::ARM::MediaServices
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}/listKeys'
+      path_template = '{nextLink}'
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'mediaServiceName' => media_service_name},
-          query_params: {'api-version' => @client.api_version},
+          skip_encoding_path_params: {'nextLink' => next_page_link},
           headers: request_headers.merge(custom_headers || {})
       }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
+      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
       promise = request.run_promise do |req|
         @client.credentials.sign_request(req) unless @client.credentials.nil?
       end
@@ -824,9 +820,9 @@ module Azure::ARM::MediaServices
       promise = promise.then do |http_response|
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -836,7 +832,7 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ServiceKeys.mapper()
+            result_mapper = IntegrationAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -850,59 +846,46 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Synchronize the keys for a storage account to the Media Service.
+    # Gets a list of integration accounts by resource group.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param sync_storage_keys_input [SyncStorageKeysInput] Properties needed to
-    # sycnronize the keys for a storage account to the Media Service.
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MediaService] operation results.
+    # @return [IntegrationAccountListResult] operation results.
     #
-    def sync_storage_keys(resource_group_name, media_service_name, sync_storage_keys_input, custom_headers = nil)
-      response = sync_storage_keys_async(resource_group_name, media_service_name, sync_storage_keys_input, custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers = nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Synchronize the keys for a storage account to the Media Service.
+    # Gets a list of integration accounts by resource group.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param sync_storage_keys_input [SyncStorageKeysInput] Properties needed to
-    # sycnronize the keys for a storage account to the Media Service.
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def sync_storage_keys_with_http_info(resource_group_name, media_service_name, sync_storage_keys_input, custom_headers = nil)
-      sync_storage_keys_async(resource_group_name, media_service_name, sync_storage_keys_input, custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers).value!
     end
 
     #
-    # Synchronize the keys for a storage account to the Media Service.
+    # Gets a list of integration accounts by resource group.
     #
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
-    # @param media_service_name [String] Name of the Media Service.
-    # @param sync_storage_keys_input [SyncStorageKeysInput] Properties needed to
-    # sycnronize the keys for a storage account to the Media Service.
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def sync_storage_keys_async(resource_group_name, media_service_name, sync_storage_keys_input, custom_headers = nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'media_service_name is nil' if media_service_name.nil?
-      fail ArgumentError, 'sync_storage_keys_input is nil' if sync_storage_keys_input.nil?
+    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
       request_headers = {}
@@ -910,26 +893,16 @@ module Azure::ARM::MediaServices
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = SyncStorageKeysInput.mapper()
-      request_content = @client.serialize(request_mapper,  sync_storage_keys_input, 'sync_storage_keys_input')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaservices/{mediaServiceName}/syncStorageKeys'
+      path_template = '{nextLink}'
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'mediaServiceName' => media_service_name},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
+          skip_encoding_path_params: {'nextLink' => next_page_link},
           headers: request_headers.merge(custom_headers || {})
       }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
+      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
       promise = request.run_promise do |req|
         @client.credentials.sign_request(req) unless @client.credentials.nil?
       end
@@ -937,9 +910,9 @@ module Azure::ARM::MediaServices
       promise = promise.then do |http_response|
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
         end
 
         # Create Result
@@ -949,7 +922,7 @@ module Azure::ARM::MediaServices
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MediaService.mapper()
+            result_mapper = IntegrationAccountListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
