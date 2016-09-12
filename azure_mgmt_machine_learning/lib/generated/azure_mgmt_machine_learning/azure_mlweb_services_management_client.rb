@@ -20,7 +20,7 @@ module Azure::ARM::MachineLearning
     # @return [String] Azure subscription id.
     attr_accessor :subscription_id
 
-    # @return [String] The versiong of the Microsoft.MachineLearning resource
+    # @return [String] The version of the Microsoft.MachineLearning resource
     # provider API to be used.
     attr_reader :api_version
 
