@@ -52,15 +52,18 @@ namespace :arm do
 
   desc 'Regen code for each of the Azure Resource Manager projects'
   task :regen => :clean_generated do
+    REGEN_EXCLUDES = ['azure_sdk']
     each_gem do |dir|
-      puts "\nGenerating #{dir}\n"
-      md = REGEN_METADATA[dir.to_sym]
-      ar_base_command = "#{OS.windows? ? '' : 'mono '} #{REGEN_METADATA[:autorest_loc]}"
+      unless REGEN_EXCLUDES.include?(dir.to_s)
+        puts "\nGenerating #{dir}\n"
+        md = REGEN_METADATA[dir.to_sym]
+        ar_base_command = "#{OS.windows? ? '' : 'mono '} #{REGEN_METADATA[:autorest_loc]}"
 
-      command = "#{ar_base_command} -i #{md[:spec_uri]} -pv #{md[:version]} -n #{md[:ns]} -pn #{md[:pn].nil? ? dir : md[:pn]} -g Azure.Ruby -o lib"
-      command += " -m #{md[:modeler]}" unless md[:modeler].nil?
+        command = "#{ar_base_command} -i #{md[:spec_uri]} -pv #{md[:version]} -n #{md[:ns]} -pn #{md[:pn].nil? ? dir : md[:pn]} -g Azure.Ruby -o lib"
+        command += " -m #{md[:modeler]}" unless md[:modeler].nil?
 
-      execute_and_stream(command)
+        execute_and_stream(command)
+      end
     end
   end
 
