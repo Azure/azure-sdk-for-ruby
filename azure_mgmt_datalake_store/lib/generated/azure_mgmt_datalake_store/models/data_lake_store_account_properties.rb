@@ -90,7 +90,6 @@ module Azure::ARM::DataLakeStore
               },
               encryption_state: {
                 required: false,
-                read_only: true,
                 serialized_name: 'encryptionState',
                 type: {
                   name: 'Enum',
