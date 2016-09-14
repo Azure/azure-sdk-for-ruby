@@ -15,6 +15,10 @@ module Azure::ARM::Authorization
       # @return [Array<Permission>] Gets or sets permissions.
       attr_accessor :value
 
+      # @return [String] Gets or sets the URL to get the next set of
+      # permissions results.
+      attr_accessor :next_link
+
       # return [Proc] with next page method call.
       attr_accessor :next_method
 
@@ -72,6 +76,13 @@ module Azure::ARM::Authorization
                         class_name: 'Permission'
                       }
                   }
+                }
+              },
+              next_link: {
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }

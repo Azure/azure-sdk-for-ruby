@@ -15,6 +15,10 @@ module Azure::ARM::Authorization
       # @return [Array<RoleDefinition>] Role definition list.
       attr_accessor :value
 
+      # @return [String] Gets or sets the URL to get the next set of role
+      # definitions results.
+      attr_accessor :next_link
+
       # return [Proc] with next page method call.
       attr_accessor :next_method
 
@@ -72,6 +76,13 @@ module Azure::ARM::Authorization
                         class_name: 'RoleDefinition'
                       }
                   }
+                }
+              },
+              next_link: {
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }
