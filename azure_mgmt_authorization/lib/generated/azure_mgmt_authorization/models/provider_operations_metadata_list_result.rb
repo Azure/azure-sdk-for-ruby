@@ -16,6 +16,10 @@ module Azure::ARM::Authorization
       # providers.
       attr_accessor :value
 
+      # @return [String] Gets or sets the URL to get the next set of provider
+      # operations metadata results.
+      attr_accessor :next_link
+
       # return [Proc] with next page method call.
       attr_accessor :next_method
 
@@ -73,6 +77,13 @@ module Azure::ARM::Authorization
                         class_name: 'ProviderOperationsMetadata'
                       }
                   }
+                }
+              },
+              next_link: {
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }
