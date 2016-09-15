@@ -36,7 +36,6 @@ module Azure::ARM::MediaServices
     autoload :SyncStorageKeysInput,                               'generated/azure_mgmt_media_services/models/sync_storage_keys_input.rb'
     autoload :TrackedResource,                                    'generated/azure_mgmt_media_services/models/tracked_resource.rb'
     autoload :MediaService,                                       'generated/azure_mgmt_media_services/models/media_service.rb'
-    autoload :ResourceType,                                       'generated/azure_mgmt_media_services/models/resource_type.rb'
     autoload :EntityNameUnavailabilityReason,                     'generated/azure_mgmt_media_services/models/entity_name_unavailability_reason.rb'
     autoload :KeyType,                                            'generated/azure_mgmt_media_services/models/key_type.rb'
   end
