@@ -1,4 +1,4 @@
-## 2016.08.10 - Azure ARM version 0.6.0
+## 2016.09.15 - Azure ARM version 0.6.0
 * Regenerated ARM sdk with Autorest [autorest.0.17.0](https://github.com/Azure/autorest/commit/0968b9c70382d3d50709fe5fc6cccd22491c2c4c)
 * Releasing new azure_sdk top level gem 
 * Bug fixes and updated swagger specs
