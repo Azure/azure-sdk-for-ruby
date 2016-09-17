@@ -4,5 +4,12 @@
 # regenerated.
 
 module Azure::ARM::MediaServices
-    VERSION = '0.5.0'
+  module Models
+    #
+    # Defines values for ResourceType
+    #
+    module ResourceType
+      Mediaservices = "mediaservices"
+    end
+  end
 end
