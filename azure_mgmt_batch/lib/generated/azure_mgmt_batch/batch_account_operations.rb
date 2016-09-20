@@ -5,14 +5,14 @@
 
 module Azure::ARM::Batch
   #
-  # Account
+  # BatchAccountOperations
   #
-  class Account
+  class BatchAccountOperations
     include Azure::ARM::Batch::Models
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Account class.
+    # Creates and initializes a new instance of the BatchAccountOperations class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -40,7 +40,7 @@ module Azure::ARM::Batch
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AccountResource] operation results.
+    # @return [BatchAccount] operation results.
     #
     def create(resource_group_name, account_name, parameters, custom_headers = nil)
       response = create_async(resource_group_name, account_name, parameters, custom_headers).value!
@@ -71,7 +71,7 @@ module Azure::ARM::Batch
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = AccountResource.mapper()
+          result_mapper = BatchAccount.mapper()
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -100,7 +100,7 @@ module Azure::ARM::Batch
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AccountResource] operation results.
+    # @return [BatchAccount] operation results.
     #
     def begin_create(resource_group_name, account_name, parameters, custom_headers = nil)
       response = begin_create_async(resource_group_name, account_name, parameters, custom_headers).value!
@@ -203,7 +203,7 @@ module Azure::ARM::Batch
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AccountResource.mapper()
+            result_mapper = BatchAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -227,7 +227,7 @@ module Azure::ARM::Batch
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AccountResource] operation results.
+    # @return [BatchAccount] operation results.
     #
     def update(resource_group_name, account_name, parameters, custom_headers = nil)
       response = update_async(resource_group_name, account_name, parameters, custom_headers).value!
@@ -316,7 +316,7 @@ module Azure::ARM::Batch
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AccountResource.mapper()
+            result_mapper = BatchAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -464,7 +464,7 @@ module Azure::ARM::Batch
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [AccountResource] operation results.
+    # @return [BatchAccount] operation results.
     #
     def get(resource_group_name, account_name, custom_headers = nil)
       response = get_async(resource_group_name, account_name, custom_headers).value!
@@ -539,7 +539,7 @@ module Azure::ARM::Batch
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AccountResource.mapper()
+            result_mapper = BatchAccount.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -578,7 +578,7 @@ module Azure::ARM::Batch
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<AccountResource>] operation results.
+    # @return [Array<BatchAccount>] operation results.
     #
     def list(custom_headers = nil)
       first_page = list_as_lazy(custom_headers)
@@ -690,7 +690,7 @@ module Azure::ARM::Batch
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<AccountResource>] operation results.
+    # @return [Array<BatchAccount>] operation results.
     #
     def list_by_resource_group(resource_group_name, custom_headers = nil)
       first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
@@ -877,7 +877,7 @@ module Azure::ARM::Batch
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [BatchAccountRegenerateKeyResult] operation results.
+    # @return [BatchAccountKeys] operation results.
     #
     def regenerate_key(resource_group_name, account_name, parameters, custom_headers = nil)
       response = regenerate_key_async(resource_group_name, account_name, parameters, custom_headers).value!
@@ -966,7 +966,7 @@ module Azure::ARM::Batch
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = BatchAccountRegenerateKeyResult.mapper()
+            result_mapper = BatchAccountKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -980,7 +980,7 @@ module Azure::ARM::Batch
     end
 
     #
-    # Lists the account keys for the specified Batch account.
+    # Gets the account keys for the specified Batch account.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
@@ -988,15 +988,15 @@ module Azure::ARM::Batch
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [BatchAccountListKeyResult] operation results.
+    # @return [BatchAccountKeys] operation results.
     #
-    def list_keys(resource_group_name, account_name, custom_headers = nil)
-      response = list_keys_async(resource_group_name, account_name, custom_headers).value!
+    def get_keys(resource_group_name, account_name, custom_headers = nil)
+      response = get_keys_async(resource_group_name, account_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Lists the account keys for the specified Batch account.
+    # Gets the account keys for the specified Batch account.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
@@ -1006,12 +1006,12 @@ module Azure::ARM::Batch
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_keys_with_http_info(resource_group_name, account_name, custom_headers = nil)
-      list_keys_async(resource_group_name, account_name, custom_headers).value!
+    def get_keys_with_http_info(resource_group_name, account_name, custom_headers = nil)
+      get_keys_async(resource_group_name, account_name, custom_headers).value!
     end
 
     #
-    # Lists the account keys for the specified Batch account.
+    # Gets the account keys for the specified Batch account.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
@@ -1021,7 +1021,7 @@ module Azure::ARM::Batch
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_keys_async(resource_group_name, account_name, custom_headers = nil)
+    def get_keys_async(resource_group_name, account_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1063,7 +1063,7 @@ module Azure::ARM::Batch
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = BatchAccountListKeyResult.mapper()
+            result_mapper = BatchAccountKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

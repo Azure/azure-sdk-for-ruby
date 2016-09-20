@@ -6,9 +6,9 @@
 module Azure::ARM::Batch
   module Models
     #
-    # Defines values for AccountProvisioningState
+    # Defines values for ProvisioningState
     #
-    module AccountProvisioningState
+    module ProvisioningState
       Invalid = "Invalid"
       Creating = "Creating"
       Deleting = "Deleting"
