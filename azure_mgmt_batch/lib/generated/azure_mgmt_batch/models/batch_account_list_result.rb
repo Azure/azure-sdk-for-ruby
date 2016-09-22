@@ -12,8 +12,8 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
-      # @return [Array<AccountResource>] The collection of returned account
-      # resources.
+      # @return [Array<BatchAccount>] The collection of returned Batch
+      # accounts.
       attr_accessor :value
 
       # @return [String] The continuation token.
@@ -25,7 +25,7 @@ module Azure::ARM::Batch
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<AccountResource>] operation results.
+      # @return [Array<BatchAccount>] operation results.
       #
       def get_all_items
         items = @value
@@ -70,10 +70,10 @@ module Azure::ARM::Batch
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'AccountResourceElementType',
+                      serialized_name: 'BatchAccountElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'AccountResource'
+                        class_name: 'BatchAccount'
                       }
                   }
                 }

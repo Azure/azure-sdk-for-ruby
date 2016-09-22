@@ -6,9 +6,9 @@
 module Azure::ARM::Batch
   module Models
     #
-    # Values returned by the Get Subscription Quotas operation.
+    # Quotas associated with a Batch region for a particular subscription.
     #
-    class SubscriptionQuotasGetResult
+    class BatchLocationQuota
 
       include MsRestAzure
 
@@ -18,16 +18,16 @@ module Azure::ARM::Batch
 
 
       #
-      # Mapper for SubscriptionQuotasGetResult class as Ruby Hash.
+      # Mapper for BatchLocationQuota class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SubscriptionQuotasGetResult',
+          serialized_name: 'BatchLocationQuota',
           type: {
             name: 'Composite',
-            class_name: 'SubscriptionQuotasGetResult',
+            class_name: 'BatchLocationQuota',
             model_properties: {
               account_quota: {
                 required: false,

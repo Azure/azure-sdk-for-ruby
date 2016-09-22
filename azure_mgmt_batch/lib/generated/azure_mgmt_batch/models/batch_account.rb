@@ -8,7 +8,7 @@ module Azure::ARM::Batch
     #
     # Contains information about an Azure Batch account.
     #
-    class AccountResource < MsRestAzure::Resource
+    class BatchAccount < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -16,8 +16,8 @@ module Azure::ARM::Batch
       # the Batch services.
       attr_accessor :account_endpoint
 
-      # @return [AccountProvisioningState] The provisioned state of the
-      # resource. Possible values include: 'Invalid', 'Creating', 'Deleting',
+      # @return [ProvisioningState] The provisioned state of the resource.
+      # Possible values include: 'Invalid', 'Creating', 'Deleting',
       # 'Succeeded', 'Failed', 'Cancelled'
       attr_accessor :provisioning_state
 
@@ -37,16 +37,16 @@ module Azure::ARM::Batch
 
 
       #
-      # Mapper for AccountResource class as Ruby Hash.
+      # Mapper for BatchAccount class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'AccountResource',
+          serialized_name: 'BatchAccount',
           type: {
             name: 'Composite',
-            class_name: 'AccountResource',
+            class_name: 'BatchAccount',
             model_properties: {
               id: {
                 required: false,
@@ -95,6 +95,7 @@ module Azure::ARM::Batch
               },
               account_endpoint: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.accountEndpoint',
                 type: {
                   name: 'String'
@@ -105,7 +106,7 @@ module Azure::ARM::Batch
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'Enum',
-                  module: 'AccountProvisioningState'
+                  module: 'ProvisioningState'
                 }
               },
               auto_storage: {
