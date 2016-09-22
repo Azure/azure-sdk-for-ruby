@@ -6,9 +6,9 @@
 module Azure::ARM::Batch
   module Models
     #
-    # Values returned by the GetKeys operation.
+    # A set of Azure Batch account keys.
     #
-    class BatchAccountListKeyResult
+    class BatchAccountKeys
 
       include MsRestAzure
 
@@ -20,16 +20,16 @@ module Azure::ARM::Batch
 
 
       #
-      # Mapper for BatchAccountListKeyResult class as Ruby Hash.
+      # Mapper for BatchAccountKeys class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'BatchAccountListKeyResult',
+          serialized_name: 'BatchAccountKeys',
           type: {
             name: 'Composite',
-            class_name: 'BatchAccountListKeyResult',
+            class_name: 'BatchAccountKeys',
             model_properties: {
               primary: {
                 required: false,

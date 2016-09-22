@@ -5,14 +5,14 @@
 
 module Azure::ARM::Batch
   #
-  # Subscription
+  # Location
   #
-  class Subscription
+  class Location
     include Azure::ARM::Batch::Models
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Subscription class.
+    # Creates and initializes a new instance of the Location class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -23,21 +23,23 @@ module Azure::ARM::Batch
     attr_reader :client
 
     #
-    # Gets the Batch service quotas for the specified suscription.
+    # Gets the Batch service quotas for the specified subscription at the given
+    # location.
     #
     # @param location_name [String] The desired region for the quotas.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SubscriptionQuotasGetResult] operation results.
+    # @return [BatchLocationQuota] operation results.
     #
-    def get_subscription_quotas(location_name, custom_headers = nil)
-      response = get_subscription_quotas_async(location_name, custom_headers).value!
+    def get_quotas(location_name, custom_headers = nil)
+      response = get_quotas_async(location_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets the Batch service quotas for the specified suscription.
+    # Gets the Batch service quotas for the specified subscription at the given
+    # location.
     #
     # @param location_name [String] The desired region for the quotas.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -45,12 +47,13 @@ module Azure::ARM::Batch
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_subscription_quotas_with_http_info(location_name, custom_headers = nil)
-      get_subscription_quotas_async(location_name, custom_headers).value!
+    def get_quotas_with_http_info(location_name, custom_headers = nil)
+      get_quotas_async(location_name, custom_headers).value!
     end
 
     #
-    # Gets the Batch service quotas for the specified suscription.
+    # Gets the Batch service quotas for the specified subscription at the given
+    # location.
     #
     # @param location_name [String] The desired region for the quotas.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -58,7 +61,7 @@ module Azure::ARM::Batch
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_subscription_quotas_async(location_name, custom_headers = nil)
+    def get_quotas_async(location_name, custom_headers = nil)
       fail ArgumentError, 'location_name is nil' if location_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -99,7 +102,7 @@ module Azure::ARM::Batch
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SubscriptionQuotasGetResult.mapper()
+            result_mapper = BatchLocationQuota.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

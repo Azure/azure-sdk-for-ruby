@@ -39,14 +39,17 @@ module Azure::ARM::Batch
     # subscription.
     attr_accessor :credentials
 
-    # @return [Account] account
-    attr_reader :account
+    # @return [BatchAccountOperations] batch_account_operations
+    attr_reader :batch_account_operations
+
+    # @return [ApplicationPackageOperations] application_package_operations
+    attr_reader :application_package_operations
 
     # @return [ApplicationOperations] application_operations
     attr_reader :application_operations
 
-    # @return [Subscription] subscription
-    attr_reader :subscription
+    # @return [Location] location
+    attr_reader :location
 
     #
     # Creates initializes a new instance of the BatchManagementClient class.
@@ -62,9 +65,10 @@ module Azure::ARM::Batch
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials)
       @credentials = credentials
 
-      @account = Account.new(self)
+      @batch_account_operations = BatchAccountOperations.new(self)
+      @application_package_operations = ApplicationPackageOperations.new(self)
       @application_operations = ApplicationOperations.new(self)
-      @subscription = Subscription.new(self)
+      @location = Location.new(self)
       @api_version = '2015-12-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
