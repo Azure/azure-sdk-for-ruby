@@ -6,19 +6,11 @@
 module Azure::ARM::Redis
   module Models
     #
-    # A redis item in CreateOrUpdate Operation response.
+    # Parameters supplied to the Create Redis operation.
     #
-    class RedisResourceWithAccessKey < MsRestAzure::Resource
+    class RedisCreateParameters < MsRestAzure::Resource
 
       include MsRestAzure
-
-      # @return [String] RedisVersion parameter has been deprecated. As such,
-      # it is no longer necessary to provide this parameter and any value
-      # specified is ignored.
-      attr_accessor :redis_version
-
-      # @return [Sku] What sku of redis cache to deploy.
-      attr_accessor :sku
 
       # @return [Hash{String => String}] All Redis Settings. Few possible
       # keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
@@ -45,33 +37,21 @@ module Azure::ARM::Redis
       # existing Azure Virtual Network.
       attr_accessor :static_ip
 
-      # @return [String] Redis instance provisioning status
-      attr_accessor :provisioning_state
-
-      # @return [String] Redis host name
-      attr_accessor :host_name
-
-      # @return [Integer] Redis non-ssl port
-      attr_accessor :port
-
-      # @return [Integer] Redis ssl port
-      attr_accessor :ssl_port
-
-      # @return [RedisAccessKeys] Redis cache access keys.
-      attr_accessor :access_keys
+      # @return [Sku] What sku of redis cache to deploy.
+      attr_accessor :sku
 
 
       #
-      # Mapper for RedisResourceWithAccessKey class as Ruby Hash.
+      # Mapper for RedisCreateParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'RedisResourceWithAccessKey',
+          serialized_name: 'RedisCreateParameters',
           type: {
             name: 'Composite',
-            class_name: 'RedisResourceWithAccessKey',
+            class_name: 'RedisCreateParameters',
             model_properties: {
               id: {
                 required: false,
@@ -116,21 +96,6 @@ module Azure::ARM::Redis
                         name: 'String'
                       }
                   }
-                }
-              },
-              redis_version: {
-                required: false,
-                serialized_name: 'properties.redisVersion',
-                type: {
-                  name: 'String'
-                }
-              },
-              sku: {
-                required: true,
-                serialized_name: 'properties.sku',
-                type: {
-                  name: 'Composite',
-                  class_name: 'Sku'
                 }
               },
               redis_configuration: {
@@ -195,40 +160,12 @@ module Azure::ARM::Redis
                   name: 'String'
                 }
               },
-              provisioning_state: {
-                required: false,
-                serialized_name: 'properties.provisioningState',
-                type: {
-                  name: 'String'
-                }
-              },
-              host_name: {
-                required: false,
-                serialized_name: 'properties.hostName',
-                type: {
-                  name: 'String'
-                }
-              },
-              port: {
-                required: false,
-                serialized_name: 'properties.port',
-                type: {
-                  name: 'Number'
-                }
-              },
-              ssl_port: {
-                required: false,
-                serialized_name: 'properties.sslPort',
-                type: {
-                  name: 'Number'
-                }
-              },
-              access_keys: {
-                required: false,
-                serialized_name: 'properties.accessKeys',
+              sku: {
+                required: true,
+                serialized_name: 'properties.sku',
                 type: {
                   name: 'Composite',
-                  class_name: 'RedisAccessKeys'
+                  class_name: 'Sku'
                 }
               }
             }

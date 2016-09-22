@@ -27,12 +27,12 @@ module Azure::ARM::Redis
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the redis cache.
-    # @param parameters [RedisPatchSchedulesRequest] Parameters to set patch
-    # schedules for redis cache.
+    # @param parameters [RedisPatchSchedule] Parameters to set patch schedules for
+    # redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RedisPatchSchedulesResponse] operation results.
+    # @return [RedisPatchSchedule] operation results.
     #
     def create_or_update(resource_group_name, name, parameters, custom_headers = nil)
       response = create_or_update_async(resource_group_name, name, parameters, custom_headers).value!
@@ -44,8 +44,8 @@ module Azure::ARM::Redis
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the redis cache.
-    # @param parameters [RedisPatchSchedulesRequest] Parameters to set patch
-    # schedules for redis cache.
+    # @param parameters [RedisPatchSchedule] Parameters to set patch schedules for
+    # redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -60,8 +60,8 @@ module Azure::ARM::Redis
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the redis cache.
-    # @param parameters [RedisPatchSchedulesRequest] Parameters to set patch
-    # schedules for redis cache.
+    # @param parameters [RedisPatchSchedule] Parameters to set patch schedules for
+    # redis cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -84,7 +84,7 @@ module Azure::ARM::Redis
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = RedisPatchSchedulesRequest.mapper()
+      request_mapper = RedisPatchSchedule.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -119,7 +119,7 @@ module Azure::ARM::Redis
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RedisPatchSchedulesResponse.mapper()
+            result_mapper = RedisPatchSchedule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -223,7 +223,7 @@ module Azure::ARM::Redis
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RedisPatchSchedulesResponse] operation results.
+    # @return [RedisPatchSchedule] operation results.
     #
     def get(resource_group_name, name, custom_headers = nil)
       response = get_async(resource_group_name, name, custom_headers).value!
@@ -284,7 +284,7 @@ module Azure::ARM::Redis
       promise = promise.then do |http_response|
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
         end
@@ -296,7 +296,7 @@ module Azure::ARM::Redis
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RedisPatchSchedulesResponse.mapper()
+            result_mapper = RedisPatchSchedule.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
