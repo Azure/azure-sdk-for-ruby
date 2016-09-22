@@ -37,14 +37,14 @@ module Azure::ARM::IotHub
             class_name: 'IpFilterRule',
             model_properties: {
               filter_name: {
-                required: false,
+                required: true,
                 serialized_name: 'filterName',
                 type: {
                   name: 'String'
                 }
               },
               action: {
-                required: false,
+                required: true,
                 serialized_name: 'action',
                 type: {
                   name: 'Enum',
@@ -52,7 +52,7 @@ module Azure::ARM::IotHub
                 }
               },
               ip_mask: {
-                required: false,
+                required: true,
                 serialized_name: 'ipMask',
                 type: {
                   name: 'String'
