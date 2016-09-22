@@ -29,7 +29,7 @@ module Azure::ARM::Graph
             class_name: 'PasswordCredentialsUpdateParameters',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
