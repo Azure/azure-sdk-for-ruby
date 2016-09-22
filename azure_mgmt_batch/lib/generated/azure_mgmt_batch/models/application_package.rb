@@ -6,11 +6,15 @@
 module Azure::ARM::Batch
   module Models
     #
-    # Contains information about an application package.
+    # An application package which represents a particular version of an
+    # application.
     #
     class ApplicationPackage
 
       include MsRestAzure
+
+      # @return [String] The id of the application.
+      attr_accessor :id
 
       # @return [String] The version of the application package.
       attr_accessor :version
@@ -20,8 +24,15 @@ module Azure::ARM::Batch
       attr_accessor :state
 
       # @return [String] The format of the application package, if the package
-      # has been activated.
+      # is active.
       attr_accessor :format
+
+      # @return [String] The storage URL at which the application package is
+      # stored.
+      attr_accessor :storage_url
+
+      # @return [DateTime] The UTC time at which the storage URL will expire.
+      attr_accessor :storage_url_expiry
 
       # @return [DateTime] The time at which the package was last activated,
       # if the package is active.
@@ -40,6 +51,13 @@ module Azure::ARM::Batch
             name: 'Composite',
             class_name: 'ApplicationPackage',
             model_properties: {
+              id: {
+                required: false,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               version: {
                 required: false,
                 serialized_name: 'version',
@@ -60,6 +78,20 @@ module Azure::ARM::Batch
                 serialized_name: 'format',
                 type: {
                   name: 'String'
+                }
+              },
+              storage_url: {
+                required: false,
+                serialized_name: 'storageUrl',
+                type: {
+                  name: 'String'
+                }
+              },
+              storage_url_expiry: {
+                required: false,
+                serialized_name: 'storageUrlExpiry',
+                type: {
+                  name: 'DateTime'
                 }
               },
               last_activation_time: {

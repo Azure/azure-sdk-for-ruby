@@ -12,7 +12,7 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
-      # @return [String] The region in which the account is created.
+      # @return [String] The region in which to create the account.
       attr_accessor :location
 
       # @return [Hash{String => String}] The user specified tags associated
@@ -37,7 +37,7 @@ module Azure::ARM::Batch
             class_name: 'BatchAccountCreateParameters',
             model_properties: {
               location: {
-                required: false,
+                required: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
