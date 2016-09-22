@@ -33,8 +33,8 @@ module Azure::ARM::MediaServices
     #
     # @return [CheckNameAvailabilityOutput] operation results.
     #
-    def check_name_availabilty(check_name_availability_input, custom_headers = nil)
-      response = check_name_availabilty_async(check_name_availability_input, custom_headers).value!
+    def check_name_availability(check_name_availability_input, custom_headers = nil)
+      response = check_name_availability_async(check_name_availability_input, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -49,8 +49,8 @@ module Azure::ARM::MediaServices
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def check_name_availabilty_with_http_info(check_name_availability_input, custom_headers = nil)
-      check_name_availabilty_async(check_name_availability_input, custom_headers).value!
+    def check_name_availability_with_http_info(check_name_availability_input, custom_headers = nil)
+      check_name_availability_async(check_name_availability_input, custom_headers).value!
     end
 
     #
@@ -64,7 +64,7 @@ module Azure::ARM::MediaServices
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def check_name_availabilty_async(check_name_availability_input, custom_headers = nil)
+    def check_name_availability_async(check_name_availability_input, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'check_name_availability_input is nil' if check_name_availability_input.nil?

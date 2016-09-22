@@ -16,7 +16,8 @@ module Azure::ARM::MediaServices
       # unique.
       attr_accessor :name
 
-      # @return [String] Specifies the type of the resource.
+      # @return [String] Specifies the type of the resource. Default value:
+      # 'mediaservices' .
       attr_accessor :type
 
 
@@ -33,7 +34,7 @@ module Azure::ARM::MediaServices
             class_name: 'CheckNameAvailabilityInput',
             model_properties: {
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 constraints: {
                   MaxLength: 24,
@@ -45,8 +46,10 @@ module Azure::ARM::MediaServices
                 }
               },
               type: {
-                required: false,
+                required: true,
+                is_constant: true,
                 serialized_name: 'type',
+                default_value: 'mediaservices',
                 type: {
                   name: 'String'
                 }
