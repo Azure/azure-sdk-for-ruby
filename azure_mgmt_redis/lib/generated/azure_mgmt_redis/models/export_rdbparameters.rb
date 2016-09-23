@@ -15,7 +15,7 @@ module Azure::ARM::Redis
       # @return [String] File format.
       attr_accessor :format
 
-      # @return [String] Prifix to use for exported files.
+      # @return [String] Prefix to use for exported files.
       attr_accessor :prefix
 
       # @return [String] Container name to export to.

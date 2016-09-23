@@ -35,6 +35,7 @@ module Azure::ARM::Redis
             model_properties: {
               primary_key: {
                 required: false,
+                read_only: true,
                 serialized_name: 'primaryKey',
                 type: {
                   name: 'String'
@@ -42,6 +43,7 @@ module Azure::ARM::Redis
               },
               secondary_key: {
                 required: false,
+                read_only: true,
                 serialized_name: 'secondaryKey',
                 type: {
                   name: 'String'
