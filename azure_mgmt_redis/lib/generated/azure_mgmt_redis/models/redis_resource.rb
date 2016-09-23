@@ -12,13 +12,20 @@ module Azure::ARM::Redis
 
       include MsRestAzure
 
-      # @return [String] RedisVersion parameter has been deprecated. As such,
-      # it is no longer necessary to provide this parameter and any value
-      # specified is ignored.
+      # @return [String] Redis Version.
       attr_accessor :redis_version
 
-      # @return [Sku] What sku of redis cache to deploy.
-      attr_accessor :sku
+      # @return [String] Redis instance provisioning status
+      attr_accessor :provisioning_state
+
+      # @return [String] Redis host name
+      attr_accessor :host_name
+
+      # @return [Integer] Redis non-ssl port
+      attr_accessor :port
+
+      # @return [Integer] Redis ssl port
+      attr_accessor :ssl_port
 
       # @return [Hash{String => String}] All Redis Settings. Few possible
       # keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
@@ -45,17 +52,8 @@ module Azure::ARM::Redis
       # existing Azure Virtual Network.
       attr_accessor :static_ip
 
-      # @return [String] Redis instance provisioning status
-      attr_accessor :provisioning_state
-
-      # @return [String] Redis host name
-      attr_accessor :host_name
-
-      # @return [Integer] Redis non-ssl port
-      attr_accessor :port
-
-      # @return [Integer] Redis ssl port
-      attr_accessor :ssl_port
+      # @return [Sku] What sku of redis cache to deploy.
+      attr_accessor :sku
 
 
       #
@@ -117,17 +115,42 @@ module Azure::ARM::Redis
               },
               redis_version: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.redisVersion',
                 type: {
                   name: 'String'
                 }
               },
-              sku: {
-                required: true,
-                serialized_name: 'properties.sku',
+              provisioning_state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.provisioningState',
                 type: {
-                  name: 'Composite',
-                  class_name: 'Sku'
+                  name: 'String'
+                }
+              },
+              host_name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.hostName',
+                type: {
+                  name: 'String'
+                }
+              },
+              port: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.port',
+                type: {
+                  name: 'Number'
+                }
+              },
+              ssl_port: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.sslPort',
+                type: {
+                  name: 'Number'
                 }
               },
               redis_configuration: {
@@ -192,32 +215,12 @@ module Azure::ARM::Redis
                   name: 'String'
                 }
               },
-              provisioning_state: {
-                required: false,
-                serialized_name: 'properties.provisioningState',
+              sku: {
+                required: true,
+                serialized_name: 'properties.sku',
                 type: {
-                  name: 'String'
-                }
-              },
-              host_name: {
-                required: false,
-                serialized_name: 'properties.hostName',
-                type: {
-                  name: 'String'
-                }
-              },
-              port: {
-                required: false,
-                serialized_name: 'properties.port',
-                type: {
-                  name: 'Number'
-                }
-              },
-              ssl_port: {
-                required: false,
-                serialized_name: 'properties.sslPort',
-                type: {
-                  name: 'Number'
+                  name: 'Composite',
+                  class_name: 'Sku'
                 }
               }
             }

@@ -6,7 +6,7 @@
 module Azure::ARM::Redis
   module Models
     #
-    # Model object.
+    # Patch schedule entry for Premium Redis Cache.
     #
     class ScheduleEntry
 
@@ -41,7 +41,8 @@ module Azure::ARM::Redis
                 required: true,
                 serialized_name: 'dayOfWeek',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'DayOfWeek'
                 }
               },
               start_hour_utc: {
