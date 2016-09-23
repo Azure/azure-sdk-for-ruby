@@ -6,24 +6,22 @@
 module Azure::ARM::KeyVault
   module Models
     #
-    # Defines values for KeyPermissions
+    # Defines values for CertificatePermissions
     #
-    module KeyPermissions
+    module CertificatePermissions
       All = "all"
-      Encrypt = "encrypt"
-      Decrypt = "decrypt"
-      WrapKey = "wrapKey"
-      UnwrapKey = "unwrapKey"
-      Sign = "sign"
-      Verify = "verify"
       Get = "get"
       List = "list"
-      Create = "create"
-      Update = "update"
-      Import = "import"
       Delete = "delete"
-      Backup = "backup"
-      Restore = "restore"
+      Create = "create"
+      Import = "import"
+      Update = "update"
+      Managecontacts = "managecontacts"
+      Getissuers = "getissuers"
+      Listissuers = "listissuers"
+      Setissuers = "setissuers"
+      Deleteissuers = "deleteissuers"
+      Manageissuers = "manageissuers"
     end
   end
 end

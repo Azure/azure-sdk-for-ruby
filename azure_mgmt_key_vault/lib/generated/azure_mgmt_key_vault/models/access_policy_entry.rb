@@ -6,9 +6,8 @@
 module Azure::ARM::KeyVault
   module Models
     #
-    # An array of 0 to 16 identities that have access to the key vault. All
-    # identities in the array must use the same tenant ID as the key vault's
-    # tenant ID.
+    # An identity that have access to the key vault. All identities in the
+    # array must use the same tenant ID as the key vault's tenant ID.
     #
     class AccessPolicyEntry
 
@@ -18,16 +17,17 @@ module Azure::ARM::KeyVault
       # authenticating requests to the key vault.
       attr_accessor :tenant_id
 
-      # @return The object ID of a user or service principal in the Azure
-      # Active Directory tenant for the vault. The object ID must be unique
-      # for the list of access policies.
+      # @return The object ID of a user, service principal or security group
+      # in the Azure Active Directory tenant for the vault. The object ID
+      # must be unique for the list of access policies.
       attr_accessor :object_id
 
       # @return  Application ID of the client making request on behalf of a
       # principal
       attr_accessor :application_id
 
-      # @return [Permissions] Permissions the identity has for keys and secrets
+      # @return [Permissions] Permissions the identity has for keys, secrets
+      # and certificates.
       attr_accessor :permissions
 
 

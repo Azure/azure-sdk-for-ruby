@@ -34,5 +34,6 @@ module Azure::ARM::KeyVault
     autoload :SkuName,                                            'generated/azure_mgmt_key_vault/models/sku_name.rb'
     autoload :KeyPermissions,                                     'generated/azure_mgmt_key_vault/models/key_permissions.rb'
     autoload :SecretPermissions,                                  'generated/azure_mgmt_key_vault/models/secret_permissions.rb'
+    autoload :CertificatePermissions,                             'generated/azure_mgmt_key_vault/models/certificate_permissions.rb'
   end
 end
