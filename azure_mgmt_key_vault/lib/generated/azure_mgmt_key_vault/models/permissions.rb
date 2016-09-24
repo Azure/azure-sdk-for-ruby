@@ -6,7 +6,7 @@
 module Azure::ARM::KeyVault
   module Models
     #
-    # Permissions the identity has for keys and secrets
+    # Permissions the identity has for keys, secrets and certificates.
     #
     class Permissions
 
@@ -17,6 +17,9 @@ module Azure::ARM::KeyVault
 
       # @return [Array<SecretPermissions>] Permissions to secrets
       attr_accessor :secrets
+
+      # @return [Array<CertificatePermissions>] Permissions to certificates
+      attr_accessor :certificates
 
 
       #
@@ -53,6 +56,20 @@ module Azure::ARM::KeyVault
                   element: {
                       required: false,
                       serialized_name: 'SecretPermissionsElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              certificates: {
+                required: false,
+                serialized_name: 'certificates',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'CertificatePermissionsElementType',
                       type: {
                         name: 'String'
                       }
