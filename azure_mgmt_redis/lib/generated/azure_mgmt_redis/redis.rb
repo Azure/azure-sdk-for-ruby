@@ -23,54 +23,101 @@ module Azure::ARM::Redis
     attr_reader :client
 
     #
-    # Create a redis cache, or replace (overwrite/recreate, with potential
-    # downtime) an existing cache
+    # Create or replace (overwrite/recreate, with potential downtime) an existing
+    # redis cache
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the redis cache.
-    # @param parameters [RedisCreateOrUpdateParameters] Parameters supplied to the
-    # CreateOrUpdate redis operation.
+    # @param parameters [RedisCreateParameters] Parameters supplied to the Create
+    # redis operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RedisResourceWithAccessKey] operation results.
+    # @return [RedisResource] operation results.
     #
-    def create_or_update(resource_group_name, name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def create(resource_group_name, name, parameters, custom_headers = nil)
+      response = create_async(resource_group_name, name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Create a redis cache, or replace (overwrite/recreate, with potential
-    # downtime) an existing cache
+    # @param resource_group_name [String] The name of the resource group.
+    # @param name [String] The name of the redis cache.
+    # @param parameters [RedisCreateParameters] Parameters supplied to the Create
+    # redis operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def create_async(resource_group_name, name, parameters, custom_headers = nil)
+      # Send request
+      promise = begin_create_async(resource_group_name, name, parameters, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = RedisResource.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Create or replace (overwrite/recreate, with potential downtime) an existing
+    # redis cache
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the redis cache.
-    # @param parameters [RedisCreateOrUpdateParameters] Parameters supplied to the
-    # CreateOrUpdate redis operation.
+    # @param parameters [RedisCreateParameters] Parameters supplied to the Create
+    # redis operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RedisResource] operation results.
+    #
+    def begin_create(resource_group_name, name, parameters, custom_headers = nil)
+      response = begin_create_async(resource_group_name, name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Create or replace (overwrite/recreate, with potential downtime) an existing
+    # redis cache
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param name [String] The name of the redis cache.
+    # @param parameters [RedisCreateParameters] Parameters supplied to the Create
+    # redis operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
-      create_or_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def begin_create_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
+      begin_create_async(resource_group_name, name, parameters, custom_headers).value!
     end
 
     #
-    # Create a redis cache, or replace (overwrite/recreate, with potential
-    # downtime) an existing cache
+    # Create or replace (overwrite/recreate, with potential downtime) an existing
+    # redis cache
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the redis cache.
-    # @param parameters [RedisCreateOrUpdateParameters] Parameters supplied to the
-    # CreateOrUpdate redis operation.
+    # @param parameters [RedisCreateParameters] Parameters supplied to the Create
+    # redis operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, name, parameters, custom_headers = nil)
+    def begin_create_async(resource_group_name, name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -87,7 +134,7 @@ module Azure::ARM::Redis
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = RedisCreateOrUpdateParameters.mapper()
+      request_mapper = RedisCreateParameters.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -119,20 +166,166 @@ module Azure::ARM::Redis
         result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
-        if status_code == 201
+        if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RedisResourceWithAccessKey.mapper()
+            result_mapper = RedisResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
         end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Update an existing Redis cache
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param name [String] The name of the redis cache.
+    # @param parameters [RedisUpdateParameters] Parameters supplied to the Update
+    # redis operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RedisResource] operation results.
+    #
+    def update(resource_group_name, name, parameters, custom_headers = nil)
+      response = update_async(resource_group_name, name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param name [String] The name of the redis cache.
+    # @param parameters [RedisUpdateParameters] Parameters supplied to the Update
+    # redis operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_async(resource_group_name, name, parameters, custom_headers = nil)
+      # Send request
+      promise = begin_update_async(resource_group_name, name, parameters, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = RedisResource.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Update an existing Redis cache
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param name [String] The name of the redis cache.
+    # @param parameters [RedisUpdateParameters] Parameters supplied to the Update
+    # redis operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RedisResource] operation results.
+    #
+    def begin_update(resource_group_name, name, parameters, custom_headers = nil)
+      response = begin_update_async(resource_group_name, name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Update an existing Redis cache
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param name [String] The name of the redis cache.
+    # @param parameters [RedisUpdateParameters] Parameters supplied to the Update
+    # redis operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_update_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
+      begin_update_async(resource_group_name, name, parameters, custom_headers).value!
+    end
+
+    #
+    # Update an existing Redis cache
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param name [String] The name of the redis cache.
+    # @param parameters [RedisUpdateParameters] Parameters supplied to the Update
+    # redis operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_update_async(resource_group_name, name, parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = RedisUpdateParameters.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}'
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {})
+      }
+
+      request_url = @base_url || @client.base_url
+
+      request = MsRest::HttpOperationRequest.new(request_url, path_template, :patch, options)
+      promise = request.run_promise do |req|
+        @client.credentials.sign_request(req) unless @client.credentials.nil?
+      end
+
+      promise = promise.then do |http_response|
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+        end
+
+        # Create Result
+        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RedisResourceWithAccessKey.mapper()
+            result_mapper = RedisResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -153,9 +346,47 @@ module Azure::ARM::Redis
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    #
     def delete(resource_group_name, name, custom_headers = nil)
       response = delete_async(resource_group_name, name, custom_headers).value!
+      nil
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param name [String] The name of the redis cache.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def delete_async(resource_group_name, name, custom_headers = nil)
+      # Send request
+      promise = begin_delete_async(resource_group_name, name, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Deletes a redis cache. This operation takes a while to complete.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param name [String] The name of the redis cache.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_delete(resource_group_name, name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, name, custom_headers).value!
       nil
     end
 
@@ -169,8 +400,8 @@ module Azure::ARM::Redis
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, name, custom_headers = nil)
-      delete_async(resource_group_name, name, custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, name, custom_headers = nil)
+      begin_delete_async(resource_group_name, name, custom_headers).value!
     end
 
     #
@@ -183,7 +414,7 @@ module Azure::ARM::Redis
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, name, custom_headers = nil)
+    def begin_delete_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -546,7 +777,7 @@ module Azure::ARM::Redis
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RedisListKeysResult] operation results.
+    # @return [RedisAccessKeys] operation results.
     #
     def list_keys(resource_group_name, name, custom_headers = nil)
       response = list_keys_async(resource_group_name, name, custom_headers).value!
@@ -621,7 +852,7 @@ module Azure::ARM::Redis
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RedisListKeysResult.mapper()
+            result_mapper = RedisAccessKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -645,7 +876,7 @@ module Azure::ARM::Redis
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RedisListKeysResult] operation results.
+    # @return [RedisAccessKeys] operation results.
     #
     def regenerate_key(resource_group_name, name, parameters, custom_headers = nil)
       response = regenerate_key_async(resource_group_name, name, parameters, custom_headers).value!
@@ -734,7 +965,7 @@ module Azure::ARM::Redis
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = RedisListKeysResult.mapper()
+            result_mapper = RedisAccessKeys.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -859,8 +1090,8 @@ module Azure::ARM::Redis
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def import(resource_group_name, name, parameters, custom_headers = nil)
-      response = import_async(resource_group_name, name, parameters, custom_headers).value!
+    def import_data(resource_group_name, name, parameters, custom_headers = nil)
+      response = import_data_async(resource_group_name, name, parameters, custom_headers).value!
       nil
     end
 
@@ -875,9 +1106,9 @@ module Azure::ARM::Redis
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def import_async(resource_group_name, name, parameters, custom_headers = nil)
+    def import_data_async(resource_group_name, name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_import_async(resource_group_name, name, parameters, custom_headers)
+      promise = begin_import_data_async(resource_group_name, name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -902,8 +1133,8 @@ module Azure::ARM::Redis
     # will be added to the HTTP request.
     #
     #
-    def begin_import(resource_group_name, name, parameters, custom_headers = nil)
-      response = begin_import_async(resource_group_name, name, parameters, custom_headers).value!
+    def begin_import_data(resource_group_name, name, parameters, custom_headers = nil)
+      response = begin_import_data_async(resource_group_name, name, parameters, custom_headers).value!
       nil
     end
 
@@ -919,8 +1150,8 @@ module Azure::ARM::Redis
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_import_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
-      begin_import_async(resource_group_name, name, parameters, custom_headers).value!
+    def begin_import_data_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
+      begin_import_data_async(resource_group_name, name, parameters, custom_headers).value!
     end
 
     #
@@ -935,7 +1166,7 @@ module Azure::ARM::Redis
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_import_async(resource_group_name, name, parameters, custom_headers = nil)
+    def begin_import_data_async(resource_group_name, name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -1000,8 +1231,8 @@ module Azure::ARM::Redis
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def export(resource_group_name, name, parameters, custom_headers = nil)
-      response = export_async(resource_group_name, name, parameters, custom_headers).value!
+    def export_data(resource_group_name, name, parameters, custom_headers = nil)
+      response = export_data_async(resource_group_name, name, parameters, custom_headers).value!
       nil
     end
 
@@ -1016,9 +1247,9 @@ module Azure::ARM::Redis
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def export_async(resource_group_name, name, parameters, custom_headers = nil)
+    def export_data_async(resource_group_name, name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_export_async(resource_group_name, name, parameters, custom_headers)
+      promise = begin_export_data_async(resource_group_name, name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -1043,8 +1274,8 @@ module Azure::ARM::Redis
     # will be added to the HTTP request.
     #
     #
-    def begin_export(resource_group_name, name, parameters, custom_headers = nil)
-      response = begin_export_async(resource_group_name, name, parameters, custom_headers).value!
+    def begin_export_data(resource_group_name, name, parameters, custom_headers = nil)
+      response = begin_export_data_async(resource_group_name, name, parameters, custom_headers).value!
       nil
     end
 
@@ -1060,8 +1291,8 @@ module Azure::ARM::Redis
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_export_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
-      begin_export_async(resource_group_name, name, parameters, custom_headers).value!
+    def begin_export_data_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
+      begin_export_data_async(resource_group_name, name, parameters, custom_headers).value!
     end
 
     #
@@ -1076,7 +1307,7 @@ module Azure::ARM::Redis
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_export_async(resource_group_name, name, parameters, custom_headers = nil)
+    def begin_export_data_async(resource_group_name, name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?

@@ -8,7 +8,7 @@ module Azure::ARM::Redis
     #
     # Response to put/get patch schedules for redis cache.
     #
-    class RedisPatchSchedulesResponse
+    class RedisPatchSchedule
 
       include MsRestAzure
 
@@ -29,16 +29,16 @@ module Azure::ARM::Redis
 
 
       #
-      # Mapper for RedisPatchSchedulesResponse class as Ruby Hash.
+      # Mapper for RedisPatchSchedule class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'RedisPatchSchedulesResponse',
+          serialized_name: 'RedisPatchSchedule',
           type: {
             name: 'Composite',
-            class_name: 'RedisPatchSchedulesResponse',
+            class_name: 'RedisPatchSchedule',
             model_properties: {
               id: {
                 required: false,
@@ -66,6 +66,7 @@ module Azure::ARM::Redis
               },
               location: {
                 required: false,
+                read_only: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
