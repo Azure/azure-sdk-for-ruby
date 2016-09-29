@@ -131,15 +131,38 @@ module Azure::ARM::Graph
     # Lists applications by filter parameters. Reference:
     # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
     #
+    # @param api_version [String] Client Api Version.
     # @param filter [String] The filters to apply on the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ApplicationListResult] operation results.
+    # @return [ApplicationListResult] which provide lazy access to pages of the
+    # response.
+    #
+    def list_as_lazy(filter = nil, custom_headers = nil)
+      response = list_async(filter, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_link|
+          list_next_async(next_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Lists applications by filter parameters. Reference:
+    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    #
+    # @param filter [String] The filters to apply on the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<Application>] operation results.
     #
     def list(filter = nil, custom_headers = nil)
-      response = list_async(filter, custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_as_lazy(filter, custom_headers)
+      first_page.get_all_items
     end
 
     #
@@ -877,6 +900,97 @@ module Azure::ARM::Graph
         # Create Result
         result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets list of applications from the current tenant.
+    #
+    # @param next_link [String] Next link for list operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<Application>] operation results.
+    #
+    def list_next(next_link, custom_headers = nil)
+      response = list_next_async(next_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets list of applications from the current tenant.
+    #
+    # @param next_link [String] Next link for list operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_next_with_http_info(next_link, custom_headers = nil)
+      list_next_async(next_link, custom_headers).value!
+    end
+
+    #
+    # Gets list of applications from the current tenant.
+    #
+    # @param next_link [String] Next link for list operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_next_async(next_link, custom_headers = nil)
+      fail ArgumentError, 'next_link is nil' if next_link.nil?
+      api_version = '1.6'
+      fail ArgumentError, '@client.tenant_id is nil' if @client.tenant_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/{tenantID}/{nextLink}'
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'tenantID' => @client.tenant_id},
+          skip_encoding_path_params: {'nextLink' => next_link},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {})
+      }
+
+      request_url = @base_url || @client.base_url
+
+      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
+      promise = request.run_promise do |req|
+        @client.credentials.sign_request(req) unless @client.credentials.nil?
+      end
+
+      promise = promise.then do |http_response|
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+        end
+
+        # Create Result
+        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ApplicationListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end

@@ -31,10 +31,6 @@ module Azure::ARM::Graph
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return Subscription credentials which uniquely identify client
-    # subscription.
-    attr_accessor :credentials
-
     # @return [Objects] objects
     attr_reader :objects
 

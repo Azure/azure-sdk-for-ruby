@@ -15,6 +15,40 @@ module Azure::ARM::Graph
       # @return [Array<Application>] Application list.
       attr_accessor :value
 
+      # @return [String] the URL to get the next set of results.
+      attr_accessor :odatanext_link
+
+      # return [Proc] with next page method call.
+      attr_accessor :next_method
+
+      #
+      # Gets the rest of the items for the request, enabling auto-pagination.
+      #
+      # @return [Array<Application>] operation results.
+      #
+      def get_all_items
+        items = @value
+        page = self
+        while page.odatanext_link != nil do
+          page = page.get_next_page
+          items.concat(page.value)
+        end
+        items
+      end
+
+      #
+      # Gets the next page of results.
+      #
+      # @return [ApplicationListResult] with next page content.
+      #
+      def get_next_page
+        response = @next_method.call(@odatanext_link).value! unless @next_method.nil?
+        unless response.nil?
+          @odatanext_link = response.body.odatanext_link
+          @value = response.body.value
+          self
+        end
+      end
 
       #
       # Mapper for ApplicationListResult class as Ruby Hash.
@@ -41,6 +75,13 @@ module Azure::ARM::Graph
                         class_name: 'Application'
                       }
                   }
+                }
+              },
+              odatanext_link: {
+                required: false,
+                serialized_name: 'odata\\.nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }
