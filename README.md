@@ -22,6 +22,7 @@ Additional info on Azure deployment models [https://azure.microsoft.com/en-us/do
 * [Graph](https://rubygems.org/gems/azure_mgmt_graph) Azure Active Directory Applications, Users, etc...
 * [IoTHub](https://rubygems.org/gems/azure_mgmt_iot_hub) Azure IoTHub's Resource Management
 * [Key Vault](https://rubygems.org/gems/azure_mgmt_key_vault) Azure Key Vault's vault management
+* [Key Vault](https://rubygems.org/gems/azure_data_key_vault) Azure Key Vault's vault data
 * [Locks](https://rubygems.org/gems/azure_mgmt_locks) Management locks for Azure Resources
 * [Logic](https://rubygems.org/gems/azure_mgmt_logic) Integration Accounts, AccountSchemas, AccountMaps, AccountPartners etc... 
 * [Machine Learning](https://rubygems.org/gems/azure_mgmt_machine_learning) Azure Machine Learning web services management
