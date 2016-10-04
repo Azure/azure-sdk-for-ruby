@@ -175,6 +175,18 @@
         "azure_mgmt_key_vault.rb"
       ]
     },
+    "azure_data_key_vault": {
+      "swagger": "keyvault/2015-06-01/swagger/keyvault.json",
+      "autorest_options": {
+        "Namespace": "Azure::Data::KeyVault",
+        "PackageName": "azure_data_key_vault",
+        "PackageVersion": "0.6.0"
+      },
+      "output_dir": "azure_data_key_vault/lib",
+      "wrapper_filesOrDirs": [
+        "azure_data_key_vault.rb"
+      ]
+    },
     "azure_mgmt_locks": {
       "swagger": "arm-resources/locks/2015-01-01/swagger/locks.json",
       "autorest_options": {

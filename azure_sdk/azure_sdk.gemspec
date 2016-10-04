@@ -44,6 +44,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_graph', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_iot_hub', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_key_vault', "~>#{version}"
+  spec.add_runtime_dependency 'azure_data_key_vault', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_locks', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_logic', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_machine_learning', "~>#{version}"

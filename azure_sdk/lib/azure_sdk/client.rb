@@ -16,6 +16,7 @@ require 'azure_mgmt_features'
 require 'azure_mgmt_graph'
 require 'azure_mgmt_iot_hub'
 require 'azure_mgmt_key_vault'
+require 'azure_data_key_vault'
 require 'azure_mgmt_locks'
 require 'azure_mgmt_logic'
 require 'azure_mgmt_machine_learning'
@@ -60,6 +61,7 @@ module Azure::ARM
         :graph_rbac => 'Azure::ARM::Graph::GraphRbacManagementClient',
         :iot_hub => 'Azure::ARM::IotHub::IotHubClient',
         :key_vault => 'Azure::ARM::KeyVault::KeyVaultManagementClient',
+        :key_vault_data => 'Azure::Data::KeyVault::KeyVaultDataClient',
         :locks => 'Azure::ARM::Locks::ManagementLockClient',
         :logic => 'Azure::ARM::Logic::LogicManagementClient',
         :machine_learning => 'Azure::ARM::MachineLearning::AzureMLWebServicesManagementClient',
