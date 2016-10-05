@@ -81,30 +81,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -236,31 +233,28 @@ module Azure::ARM::Web
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:put, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :put, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200 || status_code == 202 || status_code == 400 || status_code == 404 || status_code == 409
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -399,30 +393,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'forceDelete' => force_delete,'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:delete, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :delete, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200 || status_code == 202 || status_code == 400 || status_code == 404 || status_code == 409
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -483,30 +474,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/diagnostics'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -595,30 +583,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/diagnostics/{diagnosticsName}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'diagnosticsName' => diagnostics_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -653,8 +638,8 @@ module Azure::ARM::Web
       response = get_hosting_environment_capacities_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environment_capacities_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environment_capacities_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -715,30 +700,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/capacities/compute'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -812,30 +794,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/capacities/virtualip'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -868,8 +847,8 @@ module Azure::ARM::Web
       response = get_hosting_environments_async(resource_group_name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environments_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environments_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -923,30 +902,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1017,30 +993,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/reboot'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202 || status_code == 400 || status_code == 404 || status_code == 409
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -1104,30 +1077,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/operations'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -1192,30 +1162,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/operations/{operationId}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'operationId' => operation_id,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200 || status_code == 202 || status_code == 404 || status_code == 500
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -1245,8 +1212,8 @@ module Azure::ARM::Web
       response = get_hosting_environment_metrics_async(resource_group_name, name, details, filter, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environment_metrics_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environment_metrics_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1322,30 +1289,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/metrics'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'details' => details,'$filter' => filter,'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1419,30 +1383,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/metricdefinitions'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1481,8 +1442,8 @@ module Azure::ARM::Web
       response = get_hosting_environment_usages_async(resource_group_name, name, filter, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environment_usages_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environment_usages_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1555,30 +1516,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/usages'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'$filter' => filter,'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1622,8 +1580,8 @@ module Azure::ARM::Web
       response = get_hosting_environment_multi_role_metrics_async(resource_group_name, name, start_time, end_time, time_grain, details, filter, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environment_multi_role_metrics_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environment_multi_role_metrics_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1711,30 +1669,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/metrics'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'startTime' => start_time,'endTime' => end_time,'timeGrain' => time_grain,'details' => details,'$filter' => filter,'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1776,8 +1731,8 @@ module Azure::ARM::Web
       response = get_hosting_environment_web_worker_metrics_async(resource_group_name, name, worker_pool_name, details, filter, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environment_web_worker_metrics_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environment_web_worker_metrics_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1860,30 +1815,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/metrics'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'workerPoolName' => worker_pool_name,'subscriptionId' => @client.subscription_id},
           query_params: {'details' => details,'$filter' => filter,'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1918,8 +1870,8 @@ module Azure::ARM::Web
       response = get_hosting_environment_multi_role_metric_definitions_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environment_multi_role_metric_definitions_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environment_multi_role_metric_definitions_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1980,30 +1932,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/metricdefinitions'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2039,8 +1988,8 @@ module Azure::ARM::Web
       response = get_hosting_environment_web_worker_metric_definitions_async(resource_group_name, name, worker_pool_name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environment_web_worker_metric_definitions_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environment_web_worker_metric_definitions_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -2105,30 +2054,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/metricdefinitions'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'workerPoolName' => worker_pool_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2162,8 +2108,8 @@ module Azure::ARM::Web
       response = get_hosting_environment_multi_role_usages_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environment_multi_role_usages_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environment_multi_role_usages_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -2224,30 +2170,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/usages'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2282,8 +2225,8 @@ module Azure::ARM::Web
       response = get_hosting_environment_web_worker_usages_async(resource_group_name, name, worker_pool_name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environment_web_worker_usages_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environment_web_worker_usages_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -2348,30 +2291,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/usages'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'workerPoolName' => worker_pool_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2406,8 +2346,8 @@ module Azure::ARM::Web
       response = get_hosting_environment_sites_async(resource_group_name, name, properties_to_include, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environment_sites_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environment_sites_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -2471,30 +2411,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/sites'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'propertiesToInclude' => properties_to_include,'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2529,8 +2466,8 @@ module Azure::ARM::Web
       response = get_hosting_environment_web_hosting_plans_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environment_web_hosting_plans_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environment_web_hosting_plans_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -2591,30 +2528,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/webhostingplans'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2649,8 +2583,8 @@ module Azure::ARM::Web
       response = get_hosting_environment_server_farms_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_hosting_environment_server_farms_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_hosting_environment_server_farms_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -2711,30 +2645,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/serverfarms'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2768,8 +2699,8 @@ module Azure::ARM::Web
       response = get_multi_role_pools_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_multi_role_pools_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_multi_role_pools_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -2827,30 +2758,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2921,30 +2849,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -3071,31 +2996,28 @@ module Azure::ARM::Web
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:put, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :put, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200 || status_code == 202 || status_code == 400 || status_code == 404 || status_code == 409
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -3139,8 +3061,8 @@ module Azure::ARM::Web
       response = get_multi_role_pool_skus_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_multi_role_pool_skus_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_multi_role_pool_skus_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3198,30 +3120,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/skus'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -3255,8 +3174,8 @@ module Azure::ARM::Web
       response = get_worker_pools_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_worker_pools_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_worker_pools_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3314,30 +3233,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -3412,30 +3328,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'workerPoolName' => worker_pool_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -3568,31 +3481,28 @@ module Azure::ARM::Web
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'workerPoolName' => worker_pool_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:put, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :put, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200 || status_code == 202 || status_code == 400 || status_code == 404 || status_code == 409
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -3637,8 +3547,8 @@ module Azure::ARM::Web
       response = get_worker_pool_skus_async(resource_group_name, name, worker_pool_name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_worker_pool_skus_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_worker_pool_skus_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -3700,30 +3610,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/skus'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'workerPoolName' => worker_pool_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -3823,30 +3730,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/instances/{instance}/metrics'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'workerPoolName' => worker_pool_name,'instance' => instance,'subscriptionId' => @client.subscription_id},
           query_params: {'details' => details,'$filter' => filter,'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -3918,30 +3822,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/instances/{instance}/metricdefinitions'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'workerPoolName' => worker_pool_name,'instance' => instance,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -4012,30 +3913,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/instances/{instance}/metrics'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'instance' => instance,'subscriptionId' => @client.subscription_id},
           query_params: {'details' => details,'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -4103,30 +4001,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/instances/{instance}/metricdefinitions'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'instance' => instance,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -4149,8 +4044,8 @@ module Azure::ARM::Web
       response = suspend_hosting_environment_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          suspend_hosting_environment_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          suspend_hosting_environment_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -4211,8 +4106,8 @@ module Azure::ARM::Web
       response = begin_suspend_hosting_environment_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          begin_suspend_hosting_environment_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          begin_suspend_hosting_environment_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -4270,30 +4165,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/suspend'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -4336,8 +4228,8 @@ module Azure::ARM::Web
       response = resume_hosting_environment_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          resume_hosting_environment_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          resume_hosting_environment_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -4398,8 +4290,8 @@ module Azure::ARM::Web
       response = begin_resume_hosting_environment_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          begin_resume_hosting_environment_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          begin_resume_hosting_environment_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -4457,30 +4349,27 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/resume'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -4561,29 +4450,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -4651,29 +4537,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -4741,29 +4624,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -4831,29 +4711,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -4924,29 +4801,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -5017,29 +4891,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -5110,29 +4981,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -5203,29 +5071,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -5296,29 +5161,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -5389,29 +5251,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -5479,29 +5338,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -5572,29 +5428,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -5665,29 +5518,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -5755,29 +5605,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -5845,29 +5692,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -5935,29 +5779,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -6025,29 +5866,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -6157,29 +5995,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -6299,29 +6134,26 @@ module Azure::ARM::Web
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(request, http_response, error_model)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
