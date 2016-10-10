@@ -107,10 +107,12 @@ def execute(cmd)
 end
 
 def each_child
-  dirs = Dir.entries('./').select { |f| File.directory?(f) and !(f =='.' || f == '..') }
+  top_level_dirs = Dir.entries('./').select { |f| File.directory?(f) and !(f =='.' || f == '..') }
+  management_level_dirs = Dir.entries('management/.').select { |f| File.directory?("management/#{f}") and !(f =='.' || f == '..') }
+  management_level_dirs.map! {|management_level_dir| "management/#{management_level_dir}"}
+  dirs = top_level_dirs.concat(management_level_dirs)
   dirs.each do |dir|
     Dir.chdir(dir) do
-      puts "./#{dir}"
       yield(dir)
     end
   end
@@ -120,6 +122,11 @@ def each_gem
   each_child do |dir|
     if REGEN_METADATA.has_key?(dir.to_sym)
       yield dir
+    end
+    if dir.include?('/')
+      if REGEN_METADATA.has_key?(dir.split('/').last.to_sym)
+        yield dir
+      end
     end
   end
 end
