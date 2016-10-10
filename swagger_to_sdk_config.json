@@ -12,7 +12,7 @@
         "PackageName": "azure_mgmt_authorization",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_authorization/lib",
+      "output_dir": "management/azure_mgmt_authorization/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_authorization.rb"
       ]
@@ -24,7 +24,7 @@
         "PackageName": "azure_mgmt_batch",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_batch/lib",
+      "output_dir": "management/azure_mgmt_batch/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_batch.rb"
       ]
@@ -36,7 +36,7 @@
         "PackageName": "azure_mgmt_cdn",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_cdn/lib",
+      "output_dir": "management/azure_mgmt_cdn/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_cdn.rb"
       ]
@@ -48,7 +48,7 @@
         "PackageName": "azure_mgmt_cognitive_services",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_cognitive_services/lib",
+      "output_dir": "management/azure_mgmt_cognitive_services/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_cognitive_services.rb"
       ]
@@ -60,7 +60,7 @@
         "PackageName": "azure_mgmt_commerce",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_commerce/lib",
+      "output_dir": "management/azure_mgmt_commerce/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_commerce.rb"
       ]
@@ -73,7 +73,7 @@
         "Modeler": "CompositeSwagger",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_compute/lib",
+      "output_dir": "management/azure_mgmt_compute/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_compute.rb"
       ]
@@ -85,7 +85,7 @@
         "PackageName": "azure_mgmt_datalake_analytics",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_datalake_analytics/lib",
+      "output_dir": "management/azure_mgmt_datalake_analytics/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_datalake_analytics.rb"
       ]
@@ -97,7 +97,7 @@
         "PackageName": "azure_mgmt_datalake_store",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_datalake_store/lib",
+      "output_dir": "management/azure_mgmt_datalake_store/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_datalake_store.rb"
       ]
@@ -109,7 +109,7 @@
         "PackageName": "azure_mgmt_devtestlabs",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_devtestlabs/lib",
+      "output_dir": "management/azure_mgmt_devtestlabs/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_devtestlabs.rb"
       ]
@@ -121,7 +121,7 @@
         "PackageName": "azure_mgmt_dns",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_dns/lib",
+      "output_dir": "management/azure_mgmt_dns/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_dns.rb"
       ]
@@ -133,7 +133,7 @@
         "PackageName": "azure_mgmt_features",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_features/lib",
+      "output_dir": "management/azure_mgmt_features/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_features.rb"
       ]
@@ -146,7 +146,7 @@
         "Modeler": "CompositeSwagger",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_graph/lib",
+      "output_dir": "management/azure_mgmt_graph/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_graph.rb"
       ]
@@ -158,7 +158,7 @@
         "PackageName": "azure_mgmt_iot_hub",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_iot_hub/lib",
+      "output_dir": "management/azure_mgmt_iot_hub/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_iot_hub.rb"
       ]
@@ -170,7 +170,7 @@
         "PackageName": "azure_mgmt_key_vault",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_key_vault/lib",
+      "output_dir": "management/azure_mgmt_key_vault/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_key_vault.rb"
       ]
@@ -182,7 +182,7 @@
         "PackageName": "azure_mgmt_locks",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_locks/lib",
+      "output_dir": "management/azure_mgmt_locks/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_locks.rb"
       ]
@@ -194,7 +194,7 @@
         "PackageName": "azure_mgmt_logic",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_logic/lib",
+      "output_dir": "management/azure_mgmt_logic/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_logic.rb"
       ]
@@ -206,7 +206,7 @@
         "PackageName": "azure_mgmt_machine_learning",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_machine_learning/lib",
+      "output_dir": "management/azure_mgmt_machine_learning/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_machine_learning.rb"
       ]
@@ -218,7 +218,7 @@
         "PackageName": "azure_mgmt_media_services",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_media_services/lib",
+      "output_dir": "management/azure_mgmt_media_services/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_media_services.rb"
       ]
@@ -230,7 +230,7 @@
         "PackageName": "azure_mgmt_mobile_engagement",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_mobile_engagement/lib",
+      "output_dir": "management/azure_mgmt_mobile_engagement/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_mobile_engagement.rb"
       ]
@@ -242,7 +242,7 @@
         "PackageName": "azure_mgmt_network",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_network/lib",
+      "output_dir": "management/azure_mgmt_network/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_network.rb"
       ]
@@ -254,7 +254,7 @@
         "PackageName": "azure_mgmt_notification_hubs",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_notification_hubs/lib",
+      "output_dir": "management/azure_mgmt_notification_hubs/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_notification_hubs.rb"
       ]
@@ -266,7 +266,7 @@
         "PackageName": "azure_mgmt_policy",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_policy/lib",
+      "output_dir": "management/azure_mgmt_policy/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_policy.rb"
       ]
@@ -278,7 +278,7 @@
         "PackageName": "azure_mgmt_powerbi_embedded",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_powerbi_embedded/lib",
+      "output_dir": "management/azure_mgmt_powerbi_embedded/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_powerbi_embedded.rb"
       ]
@@ -290,7 +290,7 @@
         "PackageName": "azure_mgmt_redis",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_redis/lib",
+      "output_dir": "management/azure_mgmt_redis/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_redis.rb"
       ]
@@ -302,7 +302,7 @@
         "PackageName": "azure_mgmt_resources",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_resources/lib",
+      "output_dir": "management/azure_mgmt_resources/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_resources.rb"
       ]
@@ -314,7 +314,7 @@
         "PackageName": "azure_mgmt_scheduler",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_scheduler/lib",
+      "output_dir": "management/azure_mgmt_scheduler/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_scheduler.rb"
       ]
@@ -326,7 +326,7 @@
         "PackageName": "azure_mgmt_search",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_search/lib",
+      "output_dir": "management/azure_mgmt_search/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_search.rb"
       ]
@@ -338,7 +338,7 @@
         "PackageName": "azure_mgmt_server_management",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_server_management/lib",
+      "output_dir": "management/azure_mgmt_server_management/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_server_management.rb"
       ]
@@ -350,7 +350,7 @@
         "PackageName": "azure_mgmt_service_bus",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_service_bus/lib",
+      "output_dir": "management/azure_mgmt_service_bus/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_service_bus.rb"
       ]
@@ -362,7 +362,7 @@
         "PackageName": "azure_mgmt_sql",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_sql/lib",
+      "output_dir": "management/azure_mgmt_sql/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_sql.rb"
       ]
@@ -374,7 +374,7 @@
         "PackageName": "azure_mgmt_storage",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_storage/lib",
+      "output_dir": "management/azure_mgmt_storage/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_storage.rb"
       ]
@@ -386,7 +386,7 @@
         "PackageName": "azure_mgmt_subscriptions",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_subscriptions/lib",
+      "output_dir": "management/azure_mgmt_subscriptions/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_subscriptions.rb"
       ]
@@ -398,7 +398,7 @@
         "PackageName": "azure_mgmt_traffic_manager",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_traffic_manager/lib",
+      "output_dir": "management/azure_mgmt_traffic_manager/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_traffic_manager.rb"
       ]
@@ -410,7 +410,7 @@
         "PackageName": "azure_mgmt_web",
         "PackageVersion": "0.6.0"
       },
-      "output_dir": "azure_mgmt_web/lib",
+      "output_dir": "management/azure_mgmt_web/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_web.rb"
       ]
