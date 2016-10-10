@@ -94,8 +94,8 @@ After creating the service principal, you should have three pieces of informatio
 
 ### Getting Started Samples
 The tests for the libraries should provide a good example of how to get started with the clients. You can also see the
-readme for each of the libraries [Compute](azure_mgmt_compute),
-[Network](azure_mgmt_network), [Storage](azure_mgmt_storage), or [Resources](azure_mgmt_resources).
+readme for each of the libraries [Compute](management/azure_mgmt_compute),
+[Network](management/azure_mgmt_network), [Storage](management/azure_mgmt_storage), or [Resources](management/azure_mgmt_resources).
 
 For more getting started samples go to [Azure-Samples](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=ruby). Please make sure to look for the azure_mgmt_* gem versions for samples.
 
