@@ -135,7 +135,7 @@ bundle install
  * Run specific test using ``rspec``
  example:
 ```bash
- cd ./azure_mgmt_compute
+ cd ./management/azure_mgmt_compute
  rspec spec/virtual_machines_spec.rb
 ```
 **If vcr cassette exist then it'll replay the test otherwise it'll record it.**
