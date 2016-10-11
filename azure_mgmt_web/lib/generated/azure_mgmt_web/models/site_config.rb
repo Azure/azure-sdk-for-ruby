@@ -90,6 +90,9 @@ module Azure::ARM::Web
       # @return [String] Java container version
       attr_accessor :java_container_version
 
+      # @return [String] App Command Line to launch
+      attr_accessor :app_command_line
+
       # @return [ManagedPipelineMode] Managed pipeline mode. Possible values
       # include: 'Integrated', 'Classic'
       attr_accessor :managed_pipeline_mode
@@ -415,6 +418,13 @@ module Azure::ARM::Web
               java_container_version: {
                 required: false,
                 serialized_name: 'properties.javaContainerVersion',
+                type: {
+                  name: 'String'
+                }
+              },
+              app_command_line: {
+                required: false,
+                serialized_name: 'properties.appCommandLine',
                 type: {
                   name: 'String'
                 }
