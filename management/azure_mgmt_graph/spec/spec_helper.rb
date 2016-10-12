@@ -10,6 +10,8 @@ include Azure::ARM::Graph
 class ResourceHelper
   attr_reader :graph_client
 
+  # Please refer to https://msdn.microsoft.com/en-us/library/azure/hh974476.aspx#AppPrereqs for creating and adding
+  # new app in Azure Active Directory with correct permissions using your regular Azure subscription
   def initialize
     tenant_id = ENV['AZURE_TENANT_ID']
     client_id = ENV['AZURE_CLIENT_ID']
