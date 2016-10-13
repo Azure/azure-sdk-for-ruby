@@ -51,6 +51,9 @@ module Azure::ARM::Web
       # @return [String] Resource group of the serverfarm
       attr_accessor :resource_group
 
+      # @return [Boolean] Enables creation of a Linux App Service Plan
+      attr_accessor :reserved
+
       # @return [SkuDescription]
       attr_accessor :sku
 
@@ -198,6 +201,13 @@ module Azure::ARM::Web
                 serialized_name: 'properties.resourceGroup',
                 type: {
                   name: 'String'
+                }
+              },
+              reserved: {
+                required: false,
+                serialized_name: 'properties.reserved',
+                type: {
+                  name: 'Boolean'
                 }
               },
               sku: {
