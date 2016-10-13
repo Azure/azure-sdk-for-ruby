@@ -1,0 +1,124 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/token
+    body:
+      encoding: UTF-8
+      string: resource=https%3A%2F%2Fgraph.windows.net%2F&client_id=<AZURE_CLIENT_ID>&client_secret=<AZURE_CLIENT_SECRET>&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      content-type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store
+      pragma:
+      - no-cache
+      content-type:
+      - application/json; charset=utf-8
+      expires:
+      - "-1"
+      server:
+      - Microsoft-IIS/8.5
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      client-request-id:
+      - be986049-0db4-4449-962f-ca18e8226440
+      x-ms-request-id:
+      - c45185e0-a519-475b-8a1c-a9378de52098
+      p3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      set-cookie:
+      - esctx=AQABAAAAAADRNYRQ3dhRSrm-4K-adpCJXztSReWLY8FqQSiVKRL8ReEOP5UNKfh8qowGib4dOKP7qZ_xzmqtpPHD8UtJt3ygkDuCVWbPNGbUCWZ7KyeuhVVgNVKt4boAs1AMchEkvdksygyonlkVPbiyDUWINIpP22KsVTdttZ7m8TveM0M1seRW3Omdj9p-mAWHGm3bZ1IgAA;
+        domain=.login.microsoftonline.com; path=/; secure; HttpOnly, x-ms-gateway-slice=productionb;
+        path=/; secure; HttpOnly, stsservicecookie=ests; path=/; secure; HttpOnly
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Tue, 20 Sep 2016 21:44:45 GMT
+      connection:
+      - close
+      content-length:
+      - '1273'
+    body:
+      encoding: UTF-8
+      string: '{"token_type":"Bearer","expires_in":"3600","ext_expires_in":"0","expires_on":"1474411486","not_before":"1474407586","resource":"https://graph.windows.net/","access_token":"<ACCESS_TOKEN>"}'
+    http_version: 
+  recorded_at: Tue, 20 Sep 2016 21:44:49 GMT
+- request:
+    method: post
+    uri: https://graph.windows.net/<AZURE_TENANT_ID>/users?api-version=1.6
+    body:
+      encoding: UTF-8
+      string: '{"accountEnabled":true,"displayName":"Sample User","passwordProfile":{"password":"$ample!Password"},"userPrincipalName":"sampleuser@student7.onmicrosoft.com","mailNickname":"sampleuser"}'
+    headers:
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.5.0/
+      x-ms-client-request-id:
+      - c43f255b-707e-4e0b-b69e-cf0b60931662
+      accept-language:
+      - en-US
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      pragma:
+      - no-cache
+      content-type:
+      - application/json;odata=minimalmetadata;streaming=true;charset=utf-8
+      expires:
+      - "-1"
+      location:
+      - https://graph.windows.net/<AZURE_TENANT_ID>/directoryObjects/fe7bba2e-faae-44ae-8d01-9998d806566d/Microsoft.DirectoryServices.User
+      server:
+      - Microsoft-IIS/8.5
+      ocp-aad-diagnostics-server-name:
+      - 11iwt901UN/FNchIH/Wpv/gMabTDDEDeFFgUOM8Kv5w=
+      request-id:
+      - 0162eff4-a5b1-4940-af6a-b872505d4e3a
+      client-request-id:
+      - 6e0c6c27-5f7c-4a02-960e-7a762f6ab1ab
+      x-ms-dirapi-data-contract-version:
+      - '1.6'
+      ocp-aad-session-key:
+      - 7H6Tf9TU72h3uw0Fef0sTftrjqKR1dKXYDLhQ6DRej51qifajPVlH4TZsxetpAGnqf7d7a2gLBaIPFrRfq-7_r2Zc3Pw-GklGRcfa-PXl5tw1_IyPnJbJ3PwarBr3oStJVh4G6X0x5eb6jag9cIc0w.huBV-GzNqE63QRask4IEQrEQHa_-3e6wdroNXTFa78k
+      x-content-type-options:
+      - nosniff
+      dataserviceversion:
+      - 3.0;
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      access-control-allow-origin:
+      - "*"
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET, ASP.NET
+      duration:
+      - '17386606'
+      date:
+      - Tue, 20 Sep 2016 21:44:48 GMT
+      connection:
+      - close
+      content-length:
+      - '1276'
+    body:
+      encoding: UTF-8
+      string: '{"odata.metadata":"https://graph.windows.net/<AZURE_TENANT_ID>/$metadata#directoryObjects/Microsoft.DirectoryServices.User/@Element","odata.type":"Microsoft.DirectoryServices.User","objectType":"User","objectId":"fe7bba2e-faae-44ae-8d01-9998d806566d","deletionTimestamp":null,"accountEnabled":true,"signInNames":[],"assignedLicenses":[],"assignedPlans":[],"city":null,"companyName":null,"country":null,"creationType":null,"department":null,"dirSyncEnabled":null,"displayName":"Sample
+        User","facsimileTelephoneNumber":null,"givenName":null,"immutableId":null,"isCompromised":null,"jobTitle":null,"lastDirSyncTime":null,"mail":null,"mailNickname":"sampleuser","mobile":null,"onPremisesSecurityIdentifier":null,"otherMails":[],"passwordPolicies":null,"passwordProfile":{"password":null,"forceChangePasswordNextLogin":true,"enforceChangePasswordPolicy":false},"physicalDeliveryOfficeName":null,"postalCode":null,"preferredLanguage":null,"provisionedPlans":[],"provisioningErrors":[],"proxyAddresses":[],"refreshTokensValidFromDateTime":"2016-09-20T21:44:47.3109223Z","sipProxyAddress":null,"state":null,"streetAddress":null,"surname":null,"telephoneNumber":null,"usageLocation":null,"userPrincipalName":"sampleuser@student7.onmicrosoft.com","userType":"Member"}'
+    http_version: 
+  recorded_at: Tue, 20 Sep 2016 21:44:51 GMT
+recorded_with: VCR 3.0.3
