@@ -81,31 +81,28 @@ module Azure::ARM::Graph
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/{tenantID}/users'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           query_params: {'api-version' => api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 201
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 201
@@ -128,7 +125,6 @@ module Azure::ARM::Graph
     # Gets list of users for the current tenant. Reference
     # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#GetUsers
     #
-    # @param api_version [String] Client Api Version.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -196,30 +192,27 @@ module Azure::ARM::Graph
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/{tenantID}/users'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           query_params: {'$filter' => filter,'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -292,31 +285,28 @@ module Azure::ARM::Graph
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/{tenantID}/users/{upnOrObjectId}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           skip_encoding_path_params: {'upnOrObjectId' => upn_or_object_id},
           query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -403,32 +393,29 @@ module Azure::ARM::Graph
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/{tenantID}/users/{upnOrObjectId}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           skip_encoding_path_params: {'upnOrObjectId' => upn_or_object_id},
           query_params: {'api-version' => api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:patch, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :patch, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 204
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -487,31 +474,28 @@ module Azure::ARM::Graph
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/{tenantID}/users/{upnOrObjectId}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           skip_encoding_path_params: {'upnOrObjectId' => upn_or_object_id},
           query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:delete, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :delete, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 204
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -583,32 +567,29 @@ module Azure::ARM::Graph
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/{tenantID}/users/{objectId}/getMemberGroups'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           skip_encoding_path_params: {'objectId' => object_id},
           query_params: {'api-version' => api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -675,31 +656,28 @@ module Azure::ARM::Graph
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/{tenantID}/{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'tenantID' => @client.tenant_id},
           skip_encoding_path_params: {'nextLink' => next_link},
           query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200

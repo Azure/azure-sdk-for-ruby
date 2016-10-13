@@ -19,7 +19,7 @@ module Azure::ARM::Compute
       attr_accessor :path
 
       # @return [String] Certificate public key used to authenticate with VM
-      # through SSH.The certificate must be in Pem format with or without
+      # through SSH. The certificate must be in Pem format with or without
       # headers.
       attr_accessor :key_data
 
