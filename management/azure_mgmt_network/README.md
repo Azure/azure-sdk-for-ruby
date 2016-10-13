@@ -69,7 +69,6 @@ sub.address_prefix = '10.0.2.0/24'
 params.subnets = [sub]
 
 params.location = 'westus'
-params.properties = props
 
 promise = client.virtual_networks.create_or_update_async('existing_resource_group', 'new_vn', params)
 ```

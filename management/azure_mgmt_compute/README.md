@@ -51,9 +51,6 @@ include Azure::ARM::Compute::Models
 client = ComputeManagementClient.new(credentials)
 client.subscription_id = subscription_id
 
-# Create a model for new virtual machine
-props = VirtualMachineProperties.new
-
 windows_config = WindowsConfiguration.new
 windows_config.provision_vmagent = true
 windows_config.enable_automatic_updates = true
@@ -68,11 +65,11 @@ os_profile.secrets = []
 hardware_profile = HardwareProfile.new
 hardware_profile.vm_size = 'Standard_A0'
 
-# create_storage_profile is hypotetical helper method which creates storage
+# create_storage_profile is hypothetical helper method which creates storage
 # profile by means of ARM Storage SDK.
 params.storage_profile = create_storage_profile
 
-# create_network_profile is hypotetical helper method which creates network
+# create_network_profile is hypothetical helper method which creates network
 # profile my means of ARM Network SDK.
 params.network_profile = create_network_profile
 
