@@ -4,5 +4,5 @@
 # regenerated.
 
 module Azure::ARM::Locks
-    VERSION = '0.6.0'
+    VERSION = '0.7.0'
 end
