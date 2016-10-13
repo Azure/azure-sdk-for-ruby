@@ -66,8 +66,7 @@ module Azure::ARM::Compute
             class_name: 'VirtualMachineScaleSetListSkusResult',
             model_properties: {
               value: {
-                required: false,
-                read_only: true,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',

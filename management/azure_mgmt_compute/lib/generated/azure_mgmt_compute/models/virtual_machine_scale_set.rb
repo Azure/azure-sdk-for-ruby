@@ -27,7 +27,7 @@ module Azure::ARM::Compute
 
       # @return [Boolean] Specifies whether the Virtual Machine Scale Set
       # should be overprovisioned.
-      attr_accessor :over_provision
+      attr_accessor :overprovision
 
 
       #
@@ -119,9 +119,9 @@ module Azure::ARM::Compute
                   name: 'String'
                 }
               },
-              over_provision: {
+              overprovision: {
                 required: false,
-                serialized_name: 'properties.overProvision',
+                serialized_name: 'properties.overprovision',
                 type: {
                   name: 'Boolean'
                 }

@@ -64,7 +64,7 @@ module Azure::ARM::Compute
             class_name: 'VirtualMachineListResult',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
