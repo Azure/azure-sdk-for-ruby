@@ -7,6 +7,8 @@ rvm:
 - 2.3.0
 - jruby-9.1.5.0
 script:
+- cd $TRAVIS_BUILD_DIR/management/ms_rest && bundle install && bundle exec rspec
+- cd $TRAVIS_BUILD_DIR/management/ms_rest_azure && bundle install && bundle exec rspec
 - bundle install
 - if [ "$INTEG_RECORDED" == "true" ] ; then bundle exec rake arm:spec ; fi
 - bundle exec rake arm:build
