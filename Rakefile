@@ -120,13 +120,9 @@ end
 
 def each_gem
   each_child do |dir|
-    if REGEN_METADATA.has_key?(dir.to_sym)
-      yield dir
-    end
-    if dir.include?('/')
-      if REGEN_METADATA.has_key?(dir.split('/').last.to_sym)
-        yield dir
-      end
+    gem_dir = dir.split('/').last.to_sym
+    if REGEN_METADATA.has_key?(gem_dir)
+      yield gem_dir
     end
   end
 end
