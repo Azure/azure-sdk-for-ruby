@@ -80,30 +80,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -238,31 +235,28 @@ module Azure::ARM::IotHub
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:put, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :put, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 201
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 201
@@ -383,30 +377,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:delete, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :delete, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 202
@@ -440,8 +431,8 @@ module Azure::ARM::IotHub
       response = list_by_subscription_async(custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          list_by_subscription_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          list_by_subscription_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -497,30 +488,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Devices/IotHubs'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -555,8 +543,8 @@ module Azure::ARM::IotHub
       response = list_by_resource_group_async(resource_group_name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          list_by_resource_group_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          list_by_resource_group_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -616,30 +604,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -716,30 +701,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubStats'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -775,8 +757,8 @@ module Azure::ARM::IotHub
       response = get_valid_skus_async(resource_group_name, resource_name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_valid_skus_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_valid_skus_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -840,30 +822,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/skus'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -900,8 +879,8 @@ module Azure::ARM::IotHub
       response = list_event_hub_consumer_groups_async(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          list_event_hub_consumer_groups_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          list_event_hub_consumer_groups_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -969,30 +948,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'eventHubEndpointName' => event_hub_endpoint_name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1077,30 +1053,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups/{name}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'eventHubEndpointName' => event_hub_endpoint_name,'name' => name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1185,30 +1158,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups/{name}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'eventHubEndpointName' => event_hub_endpoint_name,'name' => name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:put, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :put, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1292,30 +1262,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups/{name}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'eventHubEndpointName' => event_hub_endpoint_name,'name' => name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:delete, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :delete, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
 
         result
@@ -1341,8 +1308,8 @@ module Azure::ARM::IotHub
       response = list_jobs_async(resource_group_name, resource_name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          list_jobs_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          list_jobs_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1406,30 +1373,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1510,30 +1474,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs/{jobId}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'jobId' => job_id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1569,8 +1530,8 @@ module Azure::ARM::IotHub
       response = get_quota_metrics_async(resource_group_name, resource_name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          get_quota_metrics_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          get_quota_metrics_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1634,30 +1595,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/quotaMetrics'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1741,31 +1699,28 @@ module Azure::ARM::IotHub
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Devices/checkNameAvailability'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1801,8 +1756,8 @@ module Azure::ARM::IotHub
       response = list_keys_async(resource_group_name, resource_name, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          list_keys_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          list_keys_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -1866,30 +1821,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/listkeys'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -1970,30 +1922,27 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubKeys/{keyName}/listkeys'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name,'keyName' => key_name},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2085,31 +2034,28 @@ module Azure::ARM::IotHub
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/exportDevices'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2201,31 +2147,28 @@ module Azure::ARM::IotHub
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/importDevices'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'resourceName' => resource_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2299,29 +2242,26 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2395,29 +2335,26 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2491,29 +2428,26 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2587,29 +2521,26 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2683,29 +2614,26 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2779,29 +2707,26 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -2875,29 +2800,26 @@ module Azure::ARM::IotHub
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200

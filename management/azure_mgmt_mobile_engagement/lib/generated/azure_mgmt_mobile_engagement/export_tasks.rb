@@ -52,8 +52,8 @@ module Azure::ARM::MobileEngagement
       response = list_async(skip, top, orderby, custom_headers).value!
       unless response.nil?
         page = response.body
-        page.next_method = Proc.new do |next_link|
-          list_next_async(next_link, custom_headers)
+        page.next_method = Proc.new do |next_page_link|
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -157,30 +157,27 @@ module Azure::ARM::MobileEngagement
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
           query_params: {'api-version' => @client.api_version,'$skip' => skip,'$top' => top,'$orderby' => orderby},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -250,30 +247,27 @@ module Azure::ARM::MobileEngagement
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/{id}'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name,'id' => id},
           query_params: {'api-version' => @client.api_version},
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
@@ -351,31 +345,28 @@ module Azure::ARM::MobileEngagement
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/activities'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 202
@@ -453,31 +444,28 @@ module Azure::ARM::MobileEngagement
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/crashes'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 202
@@ -555,31 +543,28 @@ module Azure::ARM::MobileEngagement
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/errors'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 202
@@ -657,31 +642,28 @@ module Azure::ARM::MobileEngagement
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/events'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 202
@@ -759,31 +741,28 @@ module Azure::ARM::MobileEngagement
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/jobs'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 202
@@ -861,31 +840,28 @@ module Azure::ARM::MobileEngagement
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/sessions'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 202
@@ -963,31 +939,28 @@ module Azure::ARM::MobileEngagement
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/tags'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 202
@@ -1065,31 +1038,28 @@ module Azure::ARM::MobileEngagement
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/tokens'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 202
@@ -1167,31 +1137,28 @@ module Azure::ARM::MobileEngagement
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/feedbackByDate'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 202
@@ -1269,31 +1236,28 @@ module Azure::ARM::MobileEngagement
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileEngagement/appcollections/{appCollection}/apps/{appName}/devices/exportTasks/feedbackByCampaign'
+
+      request_url = @base_url || @client.base_url
+
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
-          headers: request_headers.merge(custom_headers || {})
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
       }
+      promise = @client.make_request_async(:post, path_template, options)
 
-      request_url = @base_url || @client.base_url
-
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :post, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
-
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 202
@@ -1361,29 +1325,26 @@ module Azure::ARM::MobileEngagement
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
       path_template = '{nextLink}'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || @client.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        @client.credentials.sign_request(req) unless @client.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200

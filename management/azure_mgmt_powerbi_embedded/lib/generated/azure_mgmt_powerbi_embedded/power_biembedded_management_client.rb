@@ -36,10 +36,6 @@ module Azure::ARM::PowerBiEmbedded
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return Subscription credentials which uniquely identify client
-    # subscription.
-    attr_accessor :credentials
-
     # @return [WorkspaceCollections] workspace_collections
     attr_reader :workspace_collections
 
@@ -66,6 +62,61 @@ module Azure::ARM::PowerBiEmbedded
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
+    end
+
+    #
+    # Makes a request and returns the body of the response.
+    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete. 
+    # @param path [String] the path, relative to {base_url}.
+    # @param options [Hash{String=>String}] specifying any request options like :body.
+    # @return [Hash{String=>String}] containing the body of the response.
+    # Example:
+    #
+    #  request_content = "{'location':'westus','tags':{'tag1':'val1','tag2':'val2'}}"
+    #  path = "/path"
+    #  options = {
+    #    body: request_content,
+    #    query_params: {'api-version' => '2016-02-01'}
+    #  }
+    #  result = @client.make_request(:put, path, options)
+    #
+    def make_request(method, path, options = {})
+      result = make_request_with_http_info(method, path, options)
+      result.body unless result.nil?
+    end
+
+    #
+    # Makes a request and returns the operation response.
+    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
+    # @param path [String] the path, relative to {base_url}.
+    # @param options [Hash{String=>String}] specifying any request options like :body.
+    # @return [MsRestAzure::AzureOperationResponse] Operation response containing the request, response and status.
+    #
+    def make_request_with_http_info(method, path, options = {})
+      result = make_request_async(method, path, options).value!
+      result.body = result.response.body.to_s.empty? ? nil : JSON.load(result.response.body)
+      result
+    end
+
+    #
+    # Makes a request asynchronously.
+    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
+    # @param path [String] the path, relative to {base_url}.
+    # @param options [Hash{String=>String}] specifying any request options like :body.
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def make_request_async(method, path, options = {})
+      fail ArgumentError, 'method is nil' if method.nil?
+      fail ArgumentError, 'path is nil' if path.nil?
+
+      request_url = options[:base_url] || @base_url
+
+      request_headers = @request_headers
+      request_headers.merge!({'accept-language' => @accept_language}) unless @accept_language.nil?
+      options.merge!({headers: request_headers.merge(options[:headers] || {})})
+      options.merge!({credentials: @credentials}) unless @credentials.nil?
+
+      super(request_url, method, path, options)
     end
 
     #
@@ -114,29 +165,26 @@ module Azure::ARM::PowerBiEmbedded
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = accept_language unless accept_language.nil?
       path_template = '/providers/Microsoft.PowerBI/operations'
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {})
-      }
 
       request_url = @base_url || self.base_url
 
-      request = MsRest::HttpOperationRequest.new(request_url, path_template, :get, options)
-      promise = request.run_promise do |req|
-        self.credentials.sign_request(req) unless self.credentials.nil?
-      end
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
 
-      promise = promise.then do |http_response|
+      promise = promise.then do |result|
+        http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
-        # Create Result
-        result = MsRestAzure::AzureOperationResponse.new(request, http_response)
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 200
