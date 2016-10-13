@@ -98,6 +98,29 @@ describe 'Virtual machine api' do
     expect(result.body.name).to eq(@vm_name)
   end
 
+  it 'should get ip address for virtual machine using generic request' do
+    result = @client.get_async(@resource_group.name, @vm_name).value!
+    # retrieve network interface and public IP address for the virtual machine
+    # using generic request on network client
+    network_client = @resource_helper.network_client
+
+    # get first network interface of the network profile
+    ni_path = result.body.network_profile.network_interfaces[0].id
+    # ni_path "/subscriptions/#{subscription_id}/resourceGroups/RubySDKTest_azure_mgmt_compute/providers/Microsoft.Network/networkInterfaces/testnic53464"
+    options = {
+        query_params: {'api-version' => '2016-06-01'}
+    }
+    ni = network_client.make_request(:get, ni_path, options)
+    expect(ni).not_to be_nil
+    # user NetworkInterface mapper to deserialize object
+    ni_instance  = network_client.deserialize(NetworkInterface.mapper(), ni, 'ni_instance')
+    # retrieve first IP address for first IP configuration
+    ip_address_path = ni_instance.ip_configurations[0].public_ipaddress.id
+    ip_address = network_client.make_request(:get, ip_address_path, options)
+    ip_address_instance = network_client.deserialize(PublicIPAddress.mapper(), ip_address, 'ip_address_instance')
+    expect(ip_address_instance.dns_settings.fqdn).to eq("testdomain53464.westus.cloudapp.azure.com")
+  end
+
   it 'should get virtual machine with expand parameter' do
     result = @client.get_async(@resource_group.name, @vm_name, 'instanceView').value!
     expect(result.response.status).to eq(200)

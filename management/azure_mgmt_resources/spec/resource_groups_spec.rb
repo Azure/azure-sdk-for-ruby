@@ -35,6 +35,29 @@ describe 'Resource Groups' do
     expect(result.response.status).to eq(200)
   end
 
+  it 'should create resource group - using generic request' do
+    resource_client = @resource_helper.resource_client
+    name = 'RubySDKTest_azure_mgmt_resources'
+
+    request_content = "{'location':'westus','tags':{'tag1':'val1','tag2':'val2'}}"
+    subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
+
+    path = "/subscriptions/#{subscription_id}/resourcegroups/#{name}?api-version=2016-02-01"
+
+    options = {
+        body: request_content
+    }
+
+    result = resource_client.make_request(:put, path, options)
+
+    expect(result['id']).not_to be_nil
+    expect(result['name']).to eq(name)
+    expect(result['location']).to eq('westus')
+    expect(result['tags']).not_to be_nil
+    expect(result['tags']['tag1']).to eq('val1')
+    expect(result['tags']['tag2']).to eq('val2')
+  end
+
   it 'should throw exception when create or update with nil parameters' do
     params = Models::ResourceGroup.new
     expect{@client.create_or_update_async(nil, params)}.to raise_error(ArgumentError)
