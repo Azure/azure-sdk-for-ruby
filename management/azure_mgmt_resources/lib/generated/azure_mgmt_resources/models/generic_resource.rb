@@ -68,7 +68,7 @@ module Azure::ARM::Resources
                 }
               },
               location: {
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'

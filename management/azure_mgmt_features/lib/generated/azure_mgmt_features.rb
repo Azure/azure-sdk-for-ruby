@@ -24,9 +24,6 @@ module Azure::ARM::Features
   autoload :FeatureClient,                                      'generated/azure_mgmt_features/feature_client.rb'
 
   module Models
-    autoload :DeploymentExtendedFilter,                           'generated/azure_mgmt_features/models/deployment_extended_filter.rb'
-    autoload :GenericResourceFilter,                              'generated/azure_mgmt_features/models/generic_resource_filter.rb'
-    autoload :ResourceGroupFilter,                                'generated/azure_mgmt_features/models/resource_group_filter.rb'
     autoload :FeatureProperties,                                  'generated/azure_mgmt_features/models/feature_properties.rb'
     autoload :FeatureResult,                                      'generated/azure_mgmt_features/models/feature_result.rb'
     autoload :FeatureOperationsListResult,                        'generated/azure_mgmt_features/models/feature_operations_list_result.rb'
