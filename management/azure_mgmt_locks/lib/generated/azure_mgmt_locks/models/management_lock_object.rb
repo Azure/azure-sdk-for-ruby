@@ -12,21 +12,20 @@ module Azure::ARM::Locks
 
       include MsRestAzure
 
-      # @return [LockLevel] Gets or sets the lock level of the management
-      # lock. Possible values include: 'NotSpecified', 'CanNotDelete',
-      # 'ReadOnly'
+      # @return [LockLevel] The lock level of the management lock. Possible
+      # values include: 'NotSpecified', 'CanNotDelete', 'ReadOnly'
       attr_accessor :level
 
-      # @return [String] Gets or sets the notes of the management lock.
+      # @return [String] The notes of the management lock.
       attr_accessor :notes
 
-      # @return [String] Gets or sets the Id of the lock.
+      # @return [String] The Id of the lock.
       attr_accessor :id
 
-      # @return [String] Gets or sets the type of the lock.
+      # @return [String] The type of the lock.
       attr_accessor :type
 
-      # @return [String] Gets or sets the name of the lock.
+      # @return [String] The name of the lock.
       attr_accessor :name
 
 
