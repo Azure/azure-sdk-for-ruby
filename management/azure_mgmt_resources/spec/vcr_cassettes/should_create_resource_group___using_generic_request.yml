@@ -55,7 +55,7 @@ http_interactions:
   recorded_at: Wed, 12 Oct 2016 20:22:44 GMT
 - request:
     method: put
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: "{'location':'westus','tags':{'tag1':'val1','tag2':'val2'}}"
@@ -102,7 +102,7 @@ http_interactions:
   recorded_at: Wed, 12 Oct 2016 20:22:44 GMT
 - request:
     method: put
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: "{'location':'westus','tags':{'tag1':'val1','tag2':'val2'}}"

@@ -57,7 +57,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 04:47:56 GMT
 - request:
     method: put
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/tagNames/testtagname?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/tagNames/testtagname?api-version=2016-09-01
     body:
       encoding: US-ASCII
       string: ''
@@ -104,7 +104,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 04:47:57 GMT
 - request:
     method: delete
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/tagNames/testtagname?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/tagNames/testtagname?api-version=2016-09-01
     body:
       encoding: US-ASCII
       string: ''

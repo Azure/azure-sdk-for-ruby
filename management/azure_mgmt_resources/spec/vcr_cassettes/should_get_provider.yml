@@ -57,7 +57,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:27:42 GMT
 - request:
     method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/providers?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/providers?api-version=2016-09-01
     body:
       encoding: US-ASCII
       string: ''
@@ -825,7 +825,7 @@ http_interactions:
         Central US","Central US","North Europe","West Europe","Japan East","Japan
         West","Brazil South","Australia East","Australia Southeast","Central India","West
         India","South India"],"apiVersions":["2015-06-15"]}],"registrationState":"NotRegistered"},{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/providers/Microsoft.CognitiveServices","namespace":"Microsoft.CognitiveServices","resourceTypes":[{"resourceType":"accounts","locations":["West
-        US"],"apiVersions":["2016-02-01-preview"],"capabilities":"CrossResourceGroupResourceMove,
+        US"],"apiVersions":["2016-09-01-preview"],"capabilities":"CrossResourceGroupResourceMove,
         CrossSubscriptionResourceMove"}],"registrationState":"NotRegistered"},{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/providers/Microsoft.ContainerService","namespace":"Microsoft.ContainerService","authorization":{"applicationId":"7319c514-987d-4e9b-ac3d-d38c4f427f4c","roleDefinitionId":"1b4a0c7f-2217-416f-acfa-cf73452fdc1c"},"resourceTypes":[{"resourceType":"containerServices","locations":["Japan
         East","Central US","East US 2","Japan West","East Asia","South Central US","Australia
         East","Australia Southeast","Brazil South","Southeast Asia","West US","North
@@ -931,7 +931,7 @@ http_interactions:
         US","East Asia","Southeast Asia","East US","East US 2","West US","North Central
         US","South Central US","North Europe","West Europe","Japan East","Japan West","Brazil
         South","Australia Southeast","Australia East","West India","South India","Central
-        India","Canada Central","Canada East"],"apiVersions":["2015-01-01","2014-04-01-preview"]},{"resourceType":"subscriptions/resourcegroups/resources","locations":[],"apiVersions":["2015-01-01","2014-04-01-preview"]},{"resourceType":"subscriptions/locations","locations":[],"apiVersions":["2015-01-01","2014-04-01-preview"]},{"resourceType":"subscriptions/tagnames","locations":[],"apiVersions":["2015-01-01","2014-04-01-preview"]},{"resourceType":"subscriptions/tagNames/tagValues","locations":[],"apiVersions":["2015-01-01","2014-04-01-preview"]},{"resourceType":"deployments","locations":[],"apiVersions":["2016-02-01","2015-11-01","2015-01-01","2014-04-01-preview"]},{"resourceType":"deployments/operations","locations":[],"apiVersions":["2016-02-01","2015-11-01","2015-01-01","2014-04-01-preview"]},{"resourceType":"links","locations":[],"apiVersions":["2015-01-01","2014-04-01-preview"]},{"resourceType":"operations","locations":[],"apiVersions":["2015-01-01"]}],"registrationState":"Registered"},{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/providers/Microsoft.Scheduler","namespace":"Microsoft.Scheduler","resourceTypes":[{"resourceType":"jobcollections","locations":["North
+        India","Canada Central","Canada East"],"apiVersions":["2015-01-01","2014-04-01-preview"]},{"resourceType":"subscriptions/resourcegroups/resources","locations":[],"apiVersions":["2015-01-01","2014-04-01-preview"]},{"resourceType":"subscriptions/locations","locations":[],"apiVersions":["2015-01-01","2014-04-01-preview"]},{"resourceType":"subscriptions/tagnames","locations":[],"apiVersions":["2015-01-01","2014-04-01-preview"]},{"resourceType":"subscriptions/tagNames/tagValues","locations":[],"apiVersions":["2015-01-01","2014-04-01-preview"]},{"resourceType":"deployments","locations":[],"apiVersions":["2016-09-01","2015-11-01","2015-01-01","2014-04-01-preview"]},{"resourceType":"deployments/operations","locations":[],"apiVersions":["2016-09-01","2015-11-01","2015-01-01","2014-04-01-preview"]},{"resourceType":"links","locations":[],"apiVersions":["2015-01-01","2014-04-01-preview"]},{"resourceType":"operations","locations":[],"apiVersions":["2015-01-01"]}],"registrationState":"Registered"},{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/providers/Microsoft.Scheduler","namespace":"Microsoft.Scheduler","resourceTypes":[{"resourceType":"jobcollections","locations":["North
         Central US","South Central US","North Europe","West Europe","East Asia","Southeast
         Asia","West US","East US","Japan West","Japan East","Brazil South","Central
         US","East US 2","Australia East","Australia Southeast","South India","Central
@@ -1036,7 +1036,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:27:42 GMT
 - request:
     method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/providers/Aspera.Transfers?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/providers/Aspera.Transfers?api-version=2016-09-01
     body:
       encoding: US-ASCII
       string: ''

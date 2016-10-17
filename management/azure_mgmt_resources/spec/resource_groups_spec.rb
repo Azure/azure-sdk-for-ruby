@@ -42,7 +42,7 @@ describe 'Resource Groups' do
     request_content = "{'location':'westus','tags':{'tag1':'val1','tag2':'val2'}}"
     subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
 
-    path = "/subscriptions/#{subscription_id}/resourcegroups/#{name}?api-version=2016-02-01"
+    path = "/subscriptions/#{subscription_id}/resourcegroups/#{name}?api-version=2016-09-01"
 
     options = {
         body: request_content
