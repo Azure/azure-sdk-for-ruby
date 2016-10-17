@@ -5,6 +5,18 @@
     "autorest": "latest"
   },
   "projects": {
+    "azure_mgmt_analysis_services": {
+      "swagger": "arm-asazure/2016-05-16/swagger/asazure.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::AnalysisServices",
+        "PackageName": "azure_mgmt_analysis_services",
+        "PackageVersion": "0.7.0"
+      },
+      "output_dir": "management/azure_mgmt_analysis_services/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_analysis_services.rb"
+      ]
+    },
     "azure_mgmt_authorization": {
       "swagger": "arm-authorization/2015-07-01/swagger/authorization.json",
       "autorest_options": {
@@ -126,6 +138,18 @@
         "azure_mgmt_dns.rb"
       ]
     },
+    "azure_mgmt_event_hub": {
+      "swagger": "arm-eventhub/2015-08-01/swagger/EventHub.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::EventHub",
+        "PackageName": "azure_mgmt_event_hub",
+        "PackageVersion": "0.7.0"
+      },
+      "output_dir": "management/azure_mgmt_event_hub/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_event_hub.rb"
+      ]
+    },
     "azure_mgmt_features": {
       "swagger": "arm-resources/features/2015-12-01/swagger/features.json",
       "autorest_options": {
@@ -149,6 +173,19 @@
       "output_dir": "management/azure_mgmt_graph/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_graph.rb"
+      ]
+    },
+    "azure_mgmt_insights": {
+      "swagger": "arm-insights/compositeInsightsManagementClient.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::Insights",
+        "PackageName": "azure_mgmt_insights",
+        "Modeler": "CompositeSwagger",
+        "PackageVersion": "0.7.0"
+      },
+      "output_dir": "management/azure_mgmt_insights/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_insights.rb"
       ]
     },
     "azure_mgmt_iot_hub": {
@@ -282,6 +319,30 @@
       "output_dir": "management/azure_mgmt_powerbi_embedded/lib",
       "wrapper_filesOrDirs": [
         "azure_mgmt_powerbi_embedded.rb"
+      ]
+    },
+    "azure_mgmt_recovery_services": {
+      "swagger": "arm-recoveryservices/2016-06-01/swagger/recoveryservices.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::RecoveryServices",
+        "PackageName": "azure_mgmt_recovery_services",
+        "PackageVersion": "0.7.0"
+      },
+      "output_dir": "management/azure_mgmt_recovery_services/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_recovery_services.rb"
+      ]
+    },
+    "azure_mgmt_recovery_services_backup": {
+      "swagger": "arm-recoveryservicesbackup/2016-06-01/swagger/recoveryservicesbackup.json",
+      "autorest_options": {
+        "Namespace": "Azure::ARM::RecoveryServicesBackup",
+        "PackageName": "azure_mgmt_recovery_services_backup",
+        "PackageVersion": "0.7.0"
+      },
+      "output_dir": "management/azure_mgmt_recovery_services_backup/lib",
+      "wrapper_filesOrDirs": [
+        "azure_mgmt_recovery_services_backup.rb"
       ]
     },
     "azure_mgmt_redis": {

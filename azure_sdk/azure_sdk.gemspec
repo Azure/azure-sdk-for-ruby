@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3'
   spec.add_development_dependency 'dotenv', '~> 2'
 
+  spec.add_runtime_dependency 'azure_mgmt_analysis_services', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_authorization', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_batch', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_cdn', "~>#{version}"
@@ -40,8 +41,10 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_datalake_store', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_devtestlabs', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_dns', "~>#{version}"
+  spec.add_runtime_dependency 'azure_mgmt_event_hub', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_features', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_graph', "~>#{version}"
+  spec.add_runtime_dependency 'azure_mgmt_insights', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_iot_hub', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_key_vault', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_locks', "~>#{version}"
@@ -53,6 +56,8 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_notification_hubs', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_policy', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_powerbi_embedded', "~>#{version}"
+  spec.add_runtime_dependency 'azure_mgmt_recovery_services', "~>#{version}"
+  spec.add_runtime_dependency 'azure_mgmt_recovery_services_backup', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_redis', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_resources', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_scheduler', "~>#{version}"
