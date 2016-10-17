@@ -68,7 +68,7 @@ module Azure::ARM::Resources
                 }
               },
               location: {
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -106,6 +106,9 @@ module Azure::ARM::Resources
               kind: {
                 required: false,
                 serialized_name: 'kind',
+                constraints: {
+                  Pattern: '^[-\w\._,\(\)]+$'
+                },
                 type: {
                   name: 'String'
                 }

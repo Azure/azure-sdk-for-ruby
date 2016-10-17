@@ -296,7 +296,7 @@
       ]
     },
     "azure_mgmt_resources": {
-      "swagger": "arm-resources/resources/2016-02-01/swagger/resources.json",
+      "swagger": "arm-resources/resources/2016-09-01/swagger/resources.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Resources",
         "PackageName": "azure_mgmt_resources",

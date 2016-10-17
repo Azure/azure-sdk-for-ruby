@@ -6,7 +6,7 @@
 module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # The alias type.
     #
     class AliasType
 

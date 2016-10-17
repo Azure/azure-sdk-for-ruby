@@ -40,6 +40,7 @@ module Azure::ARM::Resources
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -54,6 +55,7 @@ module Azure::ARM::Resources
               },
               registration_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'registrationState',
                 type: {
                   name: 'String'
@@ -61,6 +63,7 @@ module Azure::ARM::Resources
               },
               resource_types: {
                 required: false,
+                read_only: true,
                 serialized_name: 'resourceTypes',
                 type: {
                   name: 'Sequence',

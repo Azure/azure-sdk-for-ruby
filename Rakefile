@@ -287,7 +287,7 @@ REGEN_METADATA = {
         tag: 'arm_redi'
     },
     azure_mgmt_resources: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/resources/2016-02-01/swagger/resources.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/resources/2016-09-01/swagger/resources.json',
         ns: 'Azure::ARM::Resources',
         version: version,
         tag: 'arm_reso'

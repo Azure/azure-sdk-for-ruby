@@ -68,6 +68,7 @@ module Azure::ARM::Resources
             model_properties: {
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'provisioningState',
                 type: {
                   name: 'String'
@@ -75,6 +76,7 @@ module Azure::ARM::Resources
               },
               correlation_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'correlationId',
                 type: {
                   name: 'String'
@@ -82,6 +84,7 @@ module Azure::ARM::Resources
               },
               timestamp: {
                 required: false,
+                read_only: true,
                 serialized_name: 'timestamp',
                 type: {
                   name: 'DateTime'

@@ -51,6 +51,7 @@ module Azure::ARM::Resources
             model_properties: {
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'provisioningState',
                 type: {
                   name: 'String'
@@ -58,6 +59,7 @@ module Azure::ARM::Resources
               },
               timestamp: {
                 required: false,
+                read_only: true,
                 serialized_name: 'timestamp',
                 type: {
                   name: 'DateTime'
@@ -65,6 +67,7 @@ module Azure::ARM::Resources
               },
               service_request_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'serviceRequestId',
                 type: {
                   name: 'String'
@@ -72,6 +75,7 @@ module Azure::ARM::Resources
               },
               status_code: {
                 required: false,
+                read_only: true,
                 serialized_name: 'statusCode',
                 type: {
                   name: 'String'
@@ -79,6 +83,7 @@ module Azure::ARM::Resources
               },
               status_message: {
                 required: false,
+                read_only: true,
                 serialized_name: 'statusMessage',
                 type: {
                   name: 'Object'
@@ -86,6 +91,7 @@ module Azure::ARM::Resources
               },
               target_resource: {
                 required: false,
+                read_only: true,
                 serialized_name: 'targetResource',
                 type: {
                   name: 'Composite',
@@ -94,6 +100,7 @@ module Azure::ARM::Resources
               },
               request: {
                 required: false,
+                read_only: true,
                 serialized_name: 'request',
                 type: {
                   name: 'Composite',
@@ -102,6 +109,7 @@ module Azure::ARM::Resources
               },
               response: {
                 required: false,
+                read_only: true,
                 serialized_name: 'response',
                 type: {
                   name: 'Composite',

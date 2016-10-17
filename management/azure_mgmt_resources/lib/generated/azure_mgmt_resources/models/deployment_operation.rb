@@ -36,6 +36,7 @@ module Azure::ARM::Resources
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -43,6 +44,7 @@ module Azure::ARM::Resources
               },
               operation_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'operationId',
                 type: {
                   name: 'String'
