@@ -108,7 +108,7 @@ describe 'Virtual machine api' do
     ni_path = result.body.network_profile.network_interfaces[0].id
     # ni_path "/subscriptions/#{subscription_id}/resourceGroups/RubySDKTest_azure_mgmt_compute/providers/Microsoft.Network/networkInterfaces/testnic53464"
     options = {
-        query_params: {'api-version' => '2016-06-01'}
+        query_params: {'api-version' => '2016-09-01'}
     }
     ni = network_client.make_request(:get, ni_path, options)
     expect(ni).not_to be_nil
