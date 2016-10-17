@@ -257,7 +257,7 @@ REGEN_METADATA = {
         tag: 'arm_mobile'
     },
     azure_mgmt_network: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-network/2016-06-01/swagger/network.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-network/2016-09-01/swagger/network.json',
         ns: 'Azure::ARM::Network',
         version: version,
         tag: 'arm_netw'

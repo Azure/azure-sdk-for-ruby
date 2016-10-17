@@ -6,11 +6,13 @@
 module Azure::ARM::Network
   module Models
     #
-    # Defines values for ApplicationGatewayTier
+    # Defines values for ApplicationGatewayBackendHealthServerHealth
     #
-    module ApplicationGatewayTier
-      Standard = "Standard"
-      WAF = "WAF"
+    module ApplicationGatewayBackendHealthServerHealth
+      Unknown = "Unknown"
+      Up = "Up"
+      Down = "Down"
+      Partial = "Partial"
     end
   end
 end

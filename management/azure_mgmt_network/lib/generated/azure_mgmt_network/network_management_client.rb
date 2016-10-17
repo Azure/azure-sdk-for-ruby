@@ -128,7 +128,7 @@ module Azure::ARM::Network
       @virtual_network_gateway_connections = VirtualNetworkGatewayConnections.new(self)
       @virtual_network_gateways = VirtualNetworkGateways.new(self)
       @virtual_networks = VirtualNetworks.new(self)
-      @api_version = '2016-06-01'
+      @api_version = '2016-09-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

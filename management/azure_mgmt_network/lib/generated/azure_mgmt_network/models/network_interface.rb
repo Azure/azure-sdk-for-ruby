@@ -34,6 +34,10 @@ module Azure::ARM::Network
       # machine
       attr_accessor :primary
 
+      # @return [Boolean] Gets or sets if the network interface is accelerated
+      # networking enabled
+      attr_accessor :enable_accelerated_networking
+
       # @return [Boolean] Gets or sets whether IPForwarding is enabled on the
       # NIC
       attr_accessor :enable_ipforwarding
@@ -156,6 +160,13 @@ module Azure::ARM::Network
               primary: {
                 required: false,
                 serialized_name: 'properties.primary',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              enable_accelerated_networking: {
+                required: false,
+                serialized_name: 'properties.enableAcceleratedNetworking',
                 type: {
                   name: 'Boolean'
                 }

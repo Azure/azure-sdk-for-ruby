@@ -14,11 +14,11 @@ module Azure::ARM::Network
 
       # @return [ApplicationGatewaySkuName] Name of application gateway SKU.
       # Possible values include: 'Standard_Small', 'Standard_Medium',
-      # 'Standard_Large'
+      # 'Standard_Large', 'WAF_Medium', 'WAF_Large'
       attr_accessor :name
 
       # @return [ApplicationGatewayTier] Tier of application gateway. Possible
-      # values include: 'Standard'
+      # values include: 'Standard', 'WAF'
       attr_accessor :tier
 
       # @return [Integer] Capacity (instance count) of application gateway

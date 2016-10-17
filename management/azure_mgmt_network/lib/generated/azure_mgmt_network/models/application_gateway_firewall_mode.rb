@@ -6,11 +6,11 @@
 module Azure::ARM::Network
   module Models
     #
-    # Defines values for ApplicationGatewayTier
+    # Defines values for ApplicationGatewayFirewallMode
     #
-    module ApplicationGatewayTier
-      Standard = "Standard"
-      WAF = "WAF"
+    module ApplicationGatewayFirewallMode
+      Detection = "Detection"
+      Prevention = "Prevention"
     end
   end
 end
