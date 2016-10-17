@@ -305,7 +305,7 @@ REGEN_METADATA = {
         tag: 'arm_sear'
     },
     azure_mgmt_server_management: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servermanagement/2015-07-01-preview/servermanagement.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servermanagement/2016-07-01-preview/swagger/servermanagement.json',
         ns: 'Azure::ARM::ServerManagement',
         version: version,
         tag: 'arm_server'

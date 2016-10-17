@@ -50,6 +50,37 @@ module Azure::ARM::ServerManagement
       # updated
       attr_accessor :status_updated
 
+      # @return [String] The group policy error
+      attr_accessor :group_policy_error
+
+      # @return [Boolean] Status of the allowGatewayGroupPolicy setting
+      attr_accessor :allow_gateway_group_policy_status
+
+      # @return [Boolean] Status of the requireMfaGroupPolicy setting
+      attr_accessor :require_mfa_group_policy_status
+
+      # @return [String] Thumbprint of the encryption certificate
+      attr_accessor :encryption_certificate_thumbprint
+
+      # @return [String] Secondary thumbprint of the encryption certificate
+      attr_accessor :secondary_encryption_certificate_thumbprint
+
+      # @return [EncryptionJwkResource] The encryption cerfiticate key
+      attr_accessor :encryption_jwk
+
+      # @return [EncryptionJwkResource] The secondary encryption cerfiticate
+      # key
+      attr_accessor :secondary_encryption_jwk
+
+      # @return [Integer] active message count
+      attr_accessor :active_message_count
+
+      # @return [String] latest published version of the gateway install msi
+      attr_accessor :latest_published_msi_version
+
+      # @return [DateTime] gateway install msi published time
+      attr_accessor :published_time_utc
+
 
       #
       # Mapper for GatewayStatus class as Ruby Hash.
@@ -140,6 +171,78 @@ module Azure::ARM::ServerManagement
               status_updated: {
                 required: false,
                 serialized_name: 'statusUpdated',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              group_policy_error: {
+                required: false,
+                serialized_name: 'groupPolicyError',
+                type: {
+                  name: 'String'
+                }
+              },
+              allow_gateway_group_policy_status: {
+                required: false,
+                serialized_name: 'allowGatewayGroupPolicyStatus',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              require_mfa_group_policy_status: {
+                required: false,
+                serialized_name: 'requireMfaGroupPolicyStatus',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              encryption_certificate_thumbprint: {
+                required: false,
+                serialized_name: 'encryptionCertificateThumbprint',
+                type: {
+                  name: 'String'
+                }
+              },
+              secondary_encryption_certificate_thumbprint: {
+                required: false,
+                serialized_name: 'secondaryEncryptionCertificateThumbprint',
+                type: {
+                  name: 'String'
+                }
+              },
+              encryption_jwk: {
+                required: false,
+                serialized_name: 'encryptionJwk',
+                type: {
+                  name: 'Composite',
+                  class_name: 'EncryptionJwkResource'
+                }
+              },
+              secondary_encryption_jwk: {
+                required: false,
+                serialized_name: 'secondaryEncryptionJwk',
+                type: {
+                  name: 'Composite',
+                  class_name: 'EncryptionJwkResource'
+                }
+              },
+              active_message_count: {
+                required: false,
+                serialized_name: 'activeMessageCount',
+                type: {
+                  name: 'Number'
+                }
+              },
+              latest_published_msi_version: {
+                required: false,
+                serialized_name: 'latestPublishedMsiVersion',
+                type: {
+                  name: 'String'
+                }
+              },
+              published_time_utc: {
+                required: false,
+                serialized_name: 'publishedTimeUtc',
                 type: {
                   name: 'DateTime'
                 }

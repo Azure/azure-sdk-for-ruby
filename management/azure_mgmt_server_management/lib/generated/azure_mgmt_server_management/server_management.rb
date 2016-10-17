@@ -66,7 +66,7 @@ module Azure::ARM::ServerManagement
       @node = Node.new(self)
       @session = Session.new(self)
       @power_shell = PowerShell.new(self)
-      @api_version = '2015-07-01-preview'
+      @api_version = '2016-07-01-preview'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

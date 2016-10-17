@@ -29,15 +29,21 @@ module Azure::ARM::ServerManagement
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
     # @param session [String] The sessionId from the user
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] encrypted User name to be used to connect to node
+    # @param password [String] encrypted Password associated with user name
+    # @param retention_period [RetentionPeriod] session retention period. Possible
+    # values include: 'Session', 'Persistent'
+    # @param credential_data_format [CredentialDataFormat] credential data format.
+    # Possible values include: 'RsaEncrypted'
+    # @param encryption_certificate_thumbprint [String] encryption certificate
+    # thumbprint
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SessionResource] operation results.
     #
-    def create(resource_group_name, node_name, session, user_name = nil, password = nil, custom_headers = nil)
-      response = create_async(resource_group_name, node_name, session, user_name, password, custom_headers).value!
+    def create(resource_group_name, node_name, session, user_name = nil, password = nil, retention_period = nil, credential_data_format = nil, encryption_certificate_thumbprint = nil, custom_headers = nil)
+      response = create_async(resource_group_name, node_name, session, user_name, password, retention_period, credential_data_format, encryption_certificate_thumbprint, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -46,17 +52,23 @@ module Azure::ARM::ServerManagement
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
     # @param session [String] The sessionId from the user
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] encrypted User name to be used to connect to node
+    # @param password [String] encrypted Password associated with user name
+    # @param retention_period [RetentionPeriod] session retention period. Possible
+    # values include: 'Session', 'Persistent'
+    # @param credential_data_format [CredentialDataFormat] credential data format.
+    # Possible values include: 'RsaEncrypted'
+    # @param encryption_certificate_thumbprint [String] encryption certificate
+    # thumbprint
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(resource_group_name, node_name, session, user_name = nil, password = nil, custom_headers = nil)
+    def create_async(resource_group_name, node_name, session, user_name = nil, password = nil, retention_period = nil, credential_data_format = nil, encryption_certificate_thumbprint = nil, custom_headers = nil)
       # Send request
-      promise = begin_create_async(resource_group_name, node_name, session, user_name, password, custom_headers)
+      promise = begin_create_async(resource_group_name, node_name, session, user_name, password, retention_period, credential_data_format, encryption_certificate_thumbprint, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -79,15 +91,21 @@ module Azure::ARM::ServerManagement
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
     # @param session [String] The sessionId from the user
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] encrypted User name to be used to connect to node
+    # @param password [String] encrypted Password associated with user name
+    # @param retention_period [RetentionPeriod] session retention period. Possible
+    # values include: 'Session', 'Persistent'
+    # @param credential_data_format [CredentialDataFormat] credential data format.
+    # Possible values include: 'RsaEncrypted'
+    # @param encryption_certificate_thumbprint [String] encryption certificate
+    # thumbprint
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SessionResource] operation results.
     #
-    def begin_create(resource_group_name, node_name, session, user_name = nil, password = nil, custom_headers = nil)
-      response = begin_create_async(resource_group_name, node_name, session, user_name, password, custom_headers).value!
+    def begin_create(resource_group_name, node_name, session, user_name = nil, password = nil, retention_period = nil, credential_data_format = nil, encryption_certificate_thumbprint = nil, custom_headers = nil)
+      response = begin_create_async(resource_group_name, node_name, session, user_name, password, retention_period, credential_data_format, encryption_certificate_thumbprint, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -98,15 +116,21 @@ module Azure::ARM::ServerManagement
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
     # @param session [String] The sessionId from the user
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] encrypted User name to be used to connect to node
+    # @param password [String] encrypted Password associated with user name
+    # @param retention_period [RetentionPeriod] session retention period. Possible
+    # values include: 'Session', 'Persistent'
+    # @param credential_data_format [CredentialDataFormat] credential data format.
+    # Possible values include: 'RsaEncrypted'
+    # @param encryption_certificate_thumbprint [String] encryption certificate
+    # thumbprint
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(resource_group_name, node_name, session, user_name = nil, password = nil, custom_headers = nil)
-      begin_create_async(resource_group_name, node_name, session, user_name, password, custom_headers).value!
+    def begin_create_with_http_info(resource_group_name, node_name, session, user_name = nil, password = nil, retention_period = nil, credential_data_format = nil, encryption_certificate_thumbprint = nil, custom_headers = nil)
+      begin_create_async(resource_group_name, node_name, session, user_name, password, retention_period, credential_data_format, encryption_certificate_thumbprint, custom_headers).value!
     end
 
     #
@@ -116,14 +140,20 @@ module Azure::ARM::ServerManagement
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
     # @param session [String] The sessionId from the user
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] encrypted User name to be used to connect to node
+    # @param password [String] encrypted Password associated with user name
+    # @param retention_period [RetentionPeriod] session retention period. Possible
+    # values include: 'Session', 'Persistent'
+    # @param credential_data_format [CredentialDataFormat] credential data format.
+    # Possible values include: 'RsaEncrypted'
+    # @param encryption_certificate_thumbprint [String] encryption certificate
+    # thumbprint
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(resource_group_name, node_name, session, user_name = nil, password = nil, custom_headers = nil)
+    def begin_create_async(resource_group_name, node_name, session, user_name = nil, password = nil, retention_period = nil, credential_data_format = nil, encryption_certificate_thumbprint = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
@@ -131,9 +161,12 @@ module Azure::ARM::ServerManagement
       fail ArgumentError, 'session is nil' if session.nil?
 
       session_parameters = SessionParameters.new
-      unless user_name.nil? && password.nil?
+      unless user_name.nil? && password.nil? && retention_period.nil? && credential_data_format.nil? && encryption_certificate_thumbprint.nil?
         session_parameters.user_name = user_name
         session_parameters.password = password
+        session_parameters.retention_period = retention_period
+        session_parameters.credential_data_format = credential_data_format
+        session_parameters.encryption_certificate_thumbprint = encryption_certificate_thumbprint
       end
 
       request_headers = {}

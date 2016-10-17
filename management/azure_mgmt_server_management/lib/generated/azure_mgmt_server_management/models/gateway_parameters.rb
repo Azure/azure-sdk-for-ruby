@@ -6,7 +6,7 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # Model object.
+    # collection of parameters for operations on a gateway resource
     #
     class GatewayParameters
 
@@ -18,10 +18,11 @@ module Azure::ARM::ServerManagement
       # @return resource tags
       attr_accessor :tags
 
-      # @return [AutoUpgrade] The autoUpgrade property gives the flexibility
+      # @return [UpgradeMode] The upgradeMode property gives the flexibility
       # to gateway to auto upgrade itself. If properties value not specified,
-      # then we assume autoUpgrade = Off. Possible values include: 'On', 'Off'
-      attr_accessor :auto_upgrade
+      # then we assume upgradeMode = Automatic. Possible values include:
+      # 'Manual', 'Automatic'
+      attr_accessor :upgrade_mode
 
 
       #
@@ -50,12 +51,12 @@ module Azure::ARM::ServerManagement
                   name: 'Object'
                 }
               },
-              auto_upgrade: {
+              upgrade_mode: {
                 required: false,
-                serialized_name: 'properties.autoUpgrade',
+                serialized_name: 'properties.upgradeMode',
                 type: {
                   name: 'Enum',
-                  module: 'AutoUpgrade'
+                  module: 'UpgradeMode'
                 }
               }
             }

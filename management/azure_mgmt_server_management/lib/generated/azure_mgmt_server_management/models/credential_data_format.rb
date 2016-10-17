@@ -6,11 +6,10 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # Defines values for AutoUpgrade
+    # Defines values for CredentialDataFormat
     #
-    module AutoUpgrade
-      On = "On"
-      Off = "Off"
+    module CredentialDataFormat
+      RsaEncrypted = "RsaEncrypted"
     end
   end
 end

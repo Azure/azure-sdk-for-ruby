@@ -332,7 +332,7 @@
       ]
     },
     "azure_mgmt_server_management": {
-      "swagger": "arm-servermanagement/2015-07-01-preview/servermanagement.json",
+      "swagger": "arm-servermanagement/2016-07-01-preview/servermanagement.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::ServerManagement",
         "PackageName": "azure_mgmt_server_management",
