@@ -330,7 +330,7 @@ REGEN_METADATA = {
         tag: 'arm_stor'
     },
     azure_mgmt_subscriptions: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/subscriptions/2015-11-01/swagger/subscriptions.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json',
         ns: 'Azure::ARM::Subscriptions',
         version: version,
         tag: 'arm_subs'

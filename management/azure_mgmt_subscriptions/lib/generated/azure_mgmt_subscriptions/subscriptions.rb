@@ -195,7 +195,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the subscriptionIds.
+    # Gets a list of subscriptions.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -215,7 +215,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the subscriptionIds.
+    # Gets a list of subscriptions.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -228,7 +228,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the subscriptionIds.
+    # Gets a list of subscriptions.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -240,7 +240,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the subscriptionIds.
+    # Gets a list of subscriptions.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -296,7 +296,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the subscriptionIds.
+    # Gets a list of subscriptions.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -311,7 +311,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the subscriptionIds.
+    # Gets a list of subscriptions.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -325,7 +325,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the subscriptionIds.
+    # Gets a list of subscriptions.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.

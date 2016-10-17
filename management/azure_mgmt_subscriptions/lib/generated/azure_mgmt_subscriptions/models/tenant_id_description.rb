@@ -6,16 +6,18 @@
 module Azure::ARM::Subscriptions
   module Models
     #
-    # Tenant Id information
+    # Tenant Id information.
     #
     class TenantIdDescription
 
       include MsRestAzure
 
-      # @return [String] Gets or sets Id
+      # @return [String] The fully qualified Id. For example,
+      # /tenants/00000000-0000-0000-0000-000000000000.
       attr_accessor :id
 
-      # @return [String] Gets or sets tenantId
+      # @return [String] The tenantId. For example,
+      # 00000000-0000-0000-0000-000000000000.
       attr_accessor :tenant_id
 
 
@@ -33,6 +35,7 @@ module Azure::ARM::Subscriptions
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -40,6 +43,7 @@ module Azure::ARM::Subscriptions
               },
               tenant_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'tenantId',
                 type: {
                   name: 'String'
