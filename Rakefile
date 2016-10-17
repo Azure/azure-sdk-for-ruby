@@ -146,7 +146,7 @@ REGEN_METADATA = {
         tag: 'arm_batch'
     },
     azure_mgmt_cdn: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-cdn/2016-04-02/swagger/cdn.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-cdn/2016-10-02/swagger/cdn.json',
         ns: 'Azure::ARM::CDN',
         version: version,
         tag: 'arm_cdn'
