@@ -263,7 +263,7 @@ REGEN_METADATA = {
         tag: 'arm_netw'
     },
     azure_mgmt_notification_hubs: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-notificationhubs/2014-09-01/swagger/notificationhubs.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-notificationhubs/2016-03-01/swagger/notificationhubs.json',
         ns: 'Azure::ARM::NotificationHubs',
         version: version,
         tag: 'arm_noti'

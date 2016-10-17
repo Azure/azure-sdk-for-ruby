@@ -12,9 +12,14 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      # @return [AdmCredentialProperties] Gets or sets properties of
-      # NotificationHub AdmCredential.
-      attr_accessor :properties
+      # @return [String] The client identifier.
+      attr_accessor :client_id
+
+      # @return [String] The credential secret access key.
+      attr_accessor :client_secret
+
+      # @return [String] The URL of the authorization token.
+      attr_accessor :auth_token_url
 
 
       #
@@ -29,12 +34,25 @@ module Azure::ARM::NotificationHubs
             name: 'Composite',
             class_name: 'AdmCredential',
             model_properties: {
-              properties: {
+              client_id: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.clientId',
                 type: {
-                  name: 'Composite',
-                  class_name: 'AdmCredentialProperties'
+                  name: 'String'
+                }
+              },
+              client_secret: {
+                required: false,
+                serialized_name: 'properties.clientSecret',
+                type: {
+                  name: 'String'
+                }
+              },
+              auth_token_url: {
+                required: false,
+                serialized_name: 'properties.authTokenUrl',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -8,32 +8,12 @@ module Azure::ARM::NotificationHubs
     #
     # Description of a Namespace AuthorizationRules.
     #
-    class SharedAccessAuthorizationRuleResource
+    class SharedAccessAuthorizationRuleResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the id of the created Namespace
-      # AuthorizationRules.
-      attr_accessor :id
-
-      # @return [String] Gets or sets datacenter location of the Namespace
-      # AuthorizationRules.
-      attr_accessor :location
-
-      # @return [String] Gets or sets name of the Namespace AuthorizationRules.
-      attr_accessor :name
-
-      # @return [String] Gets or sets resource type of the Namespace
-      # AuthorizationRules.
-      attr_accessor :type
-
-      # @return [Hash{String => String}] Gets or sets tags of the Namespace
-      # AuthorizationRules.
-      attr_accessor :tags
-
-      # @return [SharedAccessAuthorizationRuleProperties] Gets or sets
-      # properties of the Namespace.
-      attr_accessor :properties
+      # @return [Array<AccessRights>] The rights associated with the rule.
+      attr_accessor :rights
 
 
       #
@@ -50,20 +30,15 @@ module Azure::ARM::NotificationHubs
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -71,7 +46,15 @@ module Azure::ARM::NotificationHubs
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
@@ -90,12 +73,27 @@ module Azure::ARM::NotificationHubs
                   }
                 }
               },
-              properties: {
+              sku: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'sku',
                 type: {
                   name: 'Composite',
-                  class_name: 'SharedAccessAuthorizationRuleProperties'
+                  class_name: 'Sku'
+                }
+              },
+              rights: {
+                required: false,
+                serialized_name: 'properties.rights',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'AccessRightsElementType',
+                      type: {
+                        name: 'Enum',
+                        module: 'AccessRights'
+                      }
+                  }
                 }
               }
             }

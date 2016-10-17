@@ -248,7 +248,7 @@
       ]
     },
     "azure_mgmt_notification_hubs": {
-      "swagger": "arm-notificationhubs/2014-09-01/swagger/notificationhubs.json",
+      "swagger": "arm-notificationhubs/2016-03-01/swagger/notificationhubs.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::NotificationHubs",
         "PackageName": "azure_mgmt_notification_hubs",

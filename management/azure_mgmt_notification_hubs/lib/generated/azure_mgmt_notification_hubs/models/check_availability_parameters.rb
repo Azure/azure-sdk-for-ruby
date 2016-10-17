@@ -13,17 +13,26 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      # @return [String] Gets or sets name
+      # @return [String] Resource Id
+      attr_accessor :id
+
+      # @return [String] Resource name
       attr_accessor :name
 
-      # @return [String] Gets or sets location.
+      # @return [String] Resource type
+      attr_accessor :type
+
+      # @return [String] Resource location
       attr_accessor :location
 
-      # @return [Hash{String => String}] Gets or sets tags.
+      # @return [Hash{String => String}] Resource tags
       attr_accessor :tags
 
-      # @return [Boolean] Gets or sets true if the name is available and can
-      # be used to create new Namespace/NotificationHub. Otherwise false.
+      # @return [Sku] The sku of the created namespace
+      attr_accessor :sku
+
+      # @return [Boolean] True if the name is available and can be used to
+      # create new Namespace/NotificationHub. Otherwise false.
       attr_accessor :is_availiable
 
 
@@ -39,6 +48,14 @@ module Azure::ARM::NotificationHubs
             name: 'Composite',
             class_name: 'CheckAvailabilityParameters',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: true,
                 serialized_name: 'name',
@@ -46,8 +63,16 @@ module Azure::ARM::NotificationHubs
                   name: 'String'
                 }
               },
-              location: {
+              type: {
                 required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -65,6 +90,14 @@ module Azure::ARM::NotificationHubs
                         name: 'String'
                       }
                   }
+                }
+              },
+              sku: {
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Sku'
                 }
               },
               is_availiable: {

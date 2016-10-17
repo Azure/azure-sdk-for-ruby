@@ -8,18 +8,12 @@ module Azure::ARM::NotificationHubs
     #
     # Parameters supplied to the CreateOrUpdate Namespace AuthorizationRules.
     #
-    class SharedAccessAuthorizationRuleCreateOrUpdateParameters
+    class SharedAccessAuthorizationRuleCreateOrUpdateParameters < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Gets or sets Namespace data center location.
-      attr_accessor :location
-
-      # @return [String] Gets or sets Name of the Namespace AuthorizationRule.
-      attr_accessor :name
-
-      # @return [SharedAccessAuthorizationRuleProperties] Gets or sets
-      # properties of the Namespace AuthorizationRules.
+      # @return [SharedAccessAuthorizationRuleProperties] Properties of the
+      # Namespace AuthorizationRules.
       attr_accessor :properties
 
 
@@ -36,18 +30,57 @@ module Azure::ARM::NotificationHubs
             name: 'Composite',
             class_name: 'SharedAccessAuthorizationRuleCreateOrUpdateParameters',
             model_properties: {
-              location: {
+              id: {
                 required: false,
-                serialized_name: 'location',
+                read_only: true,
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              sku: {
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Sku'
                 }
               },
               properties: {

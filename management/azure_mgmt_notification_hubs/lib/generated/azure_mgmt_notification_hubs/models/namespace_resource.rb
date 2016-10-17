@@ -8,27 +8,50 @@ module Azure::ARM::NotificationHubs
     #
     # Description of a Namespace resource.
     #
-    class NamespaceResource
+    class NamespaceResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the id of the created Namespace.
-      attr_accessor :id
+      # @return [String] The name of the namespace.
+      attr_accessor :namespace_resource_name
 
-      # @return [String] Gets or sets datacenter location of the Namespace.
-      attr_accessor :location
+      # @return [String] Provisioning state of the Namespace.
+      attr_accessor :provisioning_state
 
-      # @return [String] Gets or sets name of the Namespace.
-      attr_accessor :name
+      # @return [String] Specifies the targeted region in which the namespace
+      # should be created. It can be any of the following values: Australia
+      # EastAustralia SoutheastCentral USEast USEast US 2West USNorth Central
+      # USSouth Central USEast AsiaSoutheast AsiaBrazil SouthJapan EastJapan
+      # WestNorth EuropeWest Europe
+      attr_accessor :region
 
-      # @return [String] Gets or sets resource type of the Namespace.
-      attr_accessor :type
+      # @return [String] Status of the namespace. It can be any of these
+      # values:1 = Created/Active2 = Creating3 = Suspended4 = Deleting
+      attr_accessor :status
 
-      # @return [Hash{String => String}] Gets or sets tags of the Namespace.
-      attr_accessor :tags
+      # @return [DateTime] The time the namespace was created.
+      attr_accessor :created_at
 
-      # @return [NamespaceProperties] Gets or sets properties of the Namespace.
-      attr_accessor :properties
+      # @return [String] Endpoint you can use to perform NotificationHub
+      # operations.
+      attr_accessor :service_bus_endpoint
+
+      # @return [String] The Id of the Azure subscription associated with the
+      # namespace.
+      attr_accessor :subscription_id
+
+      # @return [String] ScaleUnit where the namespace gets created
+      attr_accessor :scale_unit
+
+      # @return [Boolean] Whether or not the namespace is currently enabled.
+      attr_accessor :enabled
+
+      # @return [Boolean] Whether or not the namespace is set as Critical.
+      attr_accessor :critical
+
+      # @return [NamespaceType] The namespace type. Possible values include:
+      # 'Messaging', 'NotificationHub'
+      attr_accessor :namespace_type
 
 
       #
@@ -45,20 +68,15 @@ module Azure::ARM::NotificationHubs
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -66,7 +84,15 @@ module Azure::ARM::NotificationHubs
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
@@ -85,12 +111,90 @@ module Azure::ARM::NotificationHubs
                   }
                 }
               },
-              properties: {
+              sku: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'sku',
                 type: {
                   name: 'Composite',
-                  class_name: 'NamespaceProperties'
+                  class_name: 'Sku'
+                }
+              },
+              namespace_resource_name: {
+                required: false,
+                serialized_name: 'properties.name',
+                type: {
+                  name: 'String'
+                }
+              },
+              provisioning_state: {
+                required: false,
+                serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              region: {
+                required: false,
+                serialized_name: 'properties.region',
+                type: {
+                  name: 'String'
+                }
+              },
+              status: {
+                required: false,
+                serialized_name: 'properties.status',
+                type: {
+                  name: 'String'
+                }
+              },
+              created_at: {
+                required: false,
+                serialized_name: 'properties.createdAt',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              service_bus_endpoint: {
+                required: false,
+                serialized_name: 'properties.serviceBusEndpoint',
+                type: {
+                  name: 'String'
+                }
+              },
+              subscription_id: {
+                required: false,
+                serialized_name: 'properties.subscriptionId',
+                type: {
+                  name: 'String'
+                }
+              },
+              scale_unit: {
+                required: false,
+                serialized_name: 'properties.scaleUnit',
+                type: {
+                  name: 'String'
+                }
+              },
+              enabled: {
+                required: false,
+                serialized_name: 'properties.enabled',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              critical: {
+                required: false,
+                serialized_name: 'properties.critical',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              namespace_type: {
+                required: false,
+                serialized_name: 'properties.namespaceType',
+                type: {
+                  name: 'Enum',
+                  module: 'NamespaceType'
                 }
               }
             }

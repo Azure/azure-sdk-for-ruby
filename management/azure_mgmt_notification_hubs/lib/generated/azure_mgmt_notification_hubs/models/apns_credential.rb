@@ -12,9 +12,17 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      # @return [ApnsCredentialProperties] Gets or sets properties of
-      # NotificationHub ApnsCredential.
-      attr_accessor :properties
+      # @return [String] The APNS certificate.
+      attr_accessor :apns_certificate
+
+      # @return [String] The certificate key.
+      attr_accessor :certificate_key
+
+      # @return [String] The endpoint of this credential.
+      attr_accessor :endpoint
+
+      # @return [String] The Apns certificate Thumbprint
+      attr_accessor :thumbprint
 
 
       #
@@ -29,12 +37,32 @@ module Azure::ARM::NotificationHubs
             name: 'Composite',
             class_name: 'ApnsCredential',
             model_properties: {
-              properties: {
+              apns_certificate: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.apnsCertificate',
                 type: {
-                  name: 'Composite',
-                  class_name: 'ApnsCredentialProperties'
+                  name: 'String'
+                }
+              },
+              certificate_key: {
+                required: false,
+                serialized_name: 'properties.certificateKey',
+                type: {
+                  name: 'String'
+                }
+              },
+              endpoint: {
+                required: false,
+                serialized_name: 'properties.endpoint',
+                type: {
+                  name: 'String'
+                }
+              },
+              thumbprint: {
+                required: false,
+                serialized_name: 'properties.thumbprint',
+                type: {
+                  name: 'String'
                 }
               }
             }

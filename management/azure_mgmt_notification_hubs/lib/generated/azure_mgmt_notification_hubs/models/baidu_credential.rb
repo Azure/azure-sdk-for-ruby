@@ -12,9 +12,14 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      # @return [BaiduCredentialProperties] Gets or sets properties of
-      # NotificationHub BaiduCredential.
-      attr_accessor :properties
+      # @return [String] Baidu Api Key.
+      attr_accessor :baidu_api_key
+
+      # @return [String] Baidu Endpoint.
+      attr_accessor :baidu_end_point
+
+      # @return [String] Baidu Secret Key
+      attr_accessor :baidu_secret_key
 
 
       #
@@ -29,12 +34,25 @@ module Azure::ARM::NotificationHubs
             name: 'Composite',
             class_name: 'BaiduCredential',
             model_properties: {
-              properties: {
+              baidu_api_key: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.baiduApiKey',
                 type: {
-                  name: 'Composite',
-                  class_name: 'BaiduCredentialProperties'
+                  name: 'String'
+                }
+              },
+              baidu_end_point: {
+                required: false,
+                serialized_name: 'properties.baiduEndPoint',
+                type: {
+                  name: 'String'
+                }
+              },
+              baidu_secret_key: {
+                required: false,
+                serialized_name: 'properties.baiduSecretKey',
+                type: {
+                  name: 'String'
                 }
               }
             }

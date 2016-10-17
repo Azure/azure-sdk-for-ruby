@@ -12,12 +12,12 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      # @return [Array<NotificationHubResource>] Gets or sets result of the
-      # List NotificationHub operation.
+      # @return [Array<NotificationHubResource>] Result of the List
+      # NotificationHub operation.
       attr_accessor :value
 
-      # @return [String] Gets or sets link to the next set of results. Not
-      # empty if Value contains incomplete list of NotificationHub
+      # @return [String] Link to the next set of results. Not empty if Value
+      # contains incomplete list of NotificationHub
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

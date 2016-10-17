@@ -6,21 +6,11 @@
 module Azure::ARM::NotificationHubs
   module Models
     #
-    # NotificationHub properties.
+    # Description of a NotificationHub PNS Credentials.
     #
-    class NotificationHubProperties
+    class PnsCredentialsResource < MsRestAzure::Resource
 
       include MsRestAzure
-
-      # @return [String] The NotificationHub name.
-      attr_accessor :name
-
-      # @return [String] The RegistrationTtl of the created NotificationHub
-      attr_accessor :registration_ttl
-
-      # @return [Array<SharedAccessAuthorizationRuleProperties>] The
-      # AuthorizationRules of the created NotificationHub
-      attr_accessor :authorization_rules
 
       # @return [ApnsCredential] The ApnsCredential of the created
       # NotificationHub
@@ -48,49 +38,73 @@ module Azure::ARM::NotificationHubs
 
 
       #
-      # Mapper for NotificationHubProperties class as Ruby Hash.
+      # Mapper for PnsCredentialsResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'NotificationHubProperties',
+          serialized_name: 'PnsCredentialsResource',
           type: {
             name: 'Composite',
-            class_name: 'NotificationHubProperties',
+            class_name: 'PnsCredentialsResource',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              registration_ttl: {
+              type: {
                 required: false,
-                serialized_name: 'registrationTtl',
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              authorization_rules: {
-                required: false,
-                serialized_name: 'authorizationRules',
+              location: {
+                required: true,
+                serialized_name: 'location',
                 type: {
-                  name: 'Sequence',
-                  element: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
                       required: false,
-                      serialized_name: 'SharedAccessAuthorizationRulePropertiesElementType',
+                      serialized_name: 'StringElementType',
                       type: {
-                        name: 'Composite',
-                        class_name: 'SharedAccessAuthorizationRuleProperties'
+                        name: 'String'
                       }
                   }
                 }
               },
+              sku: {
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Sku'
+                }
+              },
               apns_credential: {
                 required: false,
-                serialized_name: 'apnsCredential',
+                serialized_name: 'properties.apnsCredential',
                 type: {
                   name: 'Composite',
                   class_name: 'ApnsCredential'
@@ -98,7 +112,7 @@ module Azure::ARM::NotificationHubs
               },
               wns_credential: {
                 required: false,
-                serialized_name: 'wnsCredential',
+                serialized_name: 'properties.wnsCredential',
                 type: {
                   name: 'Composite',
                   class_name: 'WnsCredential'
@@ -106,7 +120,7 @@ module Azure::ARM::NotificationHubs
               },
               gcm_credential: {
                 required: false,
-                serialized_name: 'gcmCredential',
+                serialized_name: 'properties.gcmCredential',
                 type: {
                   name: 'Composite',
                   class_name: 'GcmCredential'
@@ -114,7 +128,7 @@ module Azure::ARM::NotificationHubs
               },
               mpns_credential: {
                 required: false,
-                serialized_name: 'mpnsCredential',
+                serialized_name: 'properties.mpnsCredential',
                 type: {
                   name: 'Composite',
                   class_name: 'MpnsCredential'
@@ -122,7 +136,7 @@ module Azure::ARM::NotificationHubs
               },
               adm_credential: {
                 required: false,
-                serialized_name: 'admCredential',
+                serialized_name: 'properties.admCredential',
                 type: {
                   name: 'Composite',
                   class_name: 'AdmCredential'
@@ -130,7 +144,7 @@ module Azure::ARM::NotificationHubs
               },
               baidu_credential: {
                 required: false,
-                serialized_name: 'baiduCredential',
+                serialized_name: 'properties.baiduCredential',
                 type: {
                   name: 'Composite',
                   class_name: 'BaiduCredential'

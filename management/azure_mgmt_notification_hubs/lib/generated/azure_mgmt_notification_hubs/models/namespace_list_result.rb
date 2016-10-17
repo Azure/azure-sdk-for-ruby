@@ -12,12 +12,12 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      # @return [Array<NamespaceResource>] Gets or sets result of the List
-      # Namespace operation.
+      # @return [Array<NamespaceResource>] Result of the List Namespace
+      # operation.
       attr_accessor :value
 
-      # @return [String] Gets or sets link to the next set of results. Not
-      # empty if Value contains incomplete list of Namespaces
+      # @return [String] Link to the next set of results. Not empty if Value
+      # contains incomplete list of Namespaces
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

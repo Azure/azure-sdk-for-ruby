@@ -8,58 +8,38 @@ module Azure::ARM::NotificationHubs
     #
     # Description of a CheckAvailibility resource.
     #
-    class CheckAvailabilityResource
+    class CheckAvailabilityResult < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the id
-      attr_accessor :id
-
-      # @return [String] Gets or sets datacenter location
-      attr_accessor :location
-
-      # @return [String] Gets or sets name
-      attr_accessor :name
-
-      # @return [String] Gets or sets resource type
-      attr_accessor :type
-
-      # @return [Hash{String => String}] Gets or sets tags
-      attr_accessor :tags
-
-      # @return [Boolean] Gets or sets true if the name is available and can
-      # be used to create new Namespace/NotificationHub. Otherwise false.
+      # @return [Boolean] True if the name is available and can be used to
+      # create new Namespace/NotificationHub. Otherwise false.
       attr_accessor :is_availiable
 
 
       #
-      # Mapper for CheckAvailabilityResource class as Ruby Hash.
+      # Mapper for CheckAvailabilityResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'CheckAvailabilityResource',
+          serialized_name: 'CheckAvailabilityResult',
           type: {
             name: 'Composite',
-            class_name: 'CheckAvailabilityResource',
+            class_name: 'CheckAvailabilityResult',
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -67,7 +47,15 @@ module Azure::ARM::NotificationHubs
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
@@ -84,6 +72,14 @@ module Azure::ARM::NotificationHubs
                         name: 'String'
                       }
                   }
+                }
+              },
+              sku: {
+                required: false,
+                serialized_name: 'sku',
+                type: {
+                  name: 'Composite',
+                  class_name: 'Sku'
                 }
               },
               is_availiable: {
