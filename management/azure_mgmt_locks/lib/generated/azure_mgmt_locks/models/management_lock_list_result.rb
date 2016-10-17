@@ -6,16 +6,16 @@
 module Azure::ARM::Locks
   module Models
     #
-    # List of management locks.
+    # The list of locks.
     #
     class ManagementLockListResult
 
       include MsRestAzure
 
-      # @return [Array<ManagementLockObject>] Gets or sets the list of locks.
+      # @return [Array<ManagementLockObject>] The list of locks.
       attr_accessor :value
 
-      # @return [String] Gets or sets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

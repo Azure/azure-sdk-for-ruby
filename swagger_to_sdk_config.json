@@ -176,7 +176,7 @@
       ]
     },
     "azure_mgmt_locks": {
-      "swagger": "arm-resources/locks/2015-01-01/swagger/locks.json",
+      "swagger": "arm-resources/locks/2016-09-01/swagger/locks.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Locks",
         "PackageName": "azure_mgmt_locks",

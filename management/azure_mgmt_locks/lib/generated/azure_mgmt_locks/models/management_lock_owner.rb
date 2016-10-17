@@ -6,31 +6,31 @@
 module Azure::ARM::Locks
   module Models
     #
-    # Deployment filter.
+    # Model object.
     #
-    class DeploymentExtendedFilter
+    class ManagementLockOwner
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the provisioning state.
-      attr_accessor :provisioning_state
+      # @return [String] The application Id of the lock owner.
+      attr_accessor :application_id
 
 
       #
-      # Mapper for DeploymentExtendedFilter class as Ruby Hash.
+      # Mapper for ManagementLockOwner class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'DeploymentExtendedFilter',
+          serialized_name: 'ManagementLockOwner',
           type: {
             name: 'Composite',
-            class_name: 'DeploymentExtendedFilter',
+            class_name: 'ManagementLockOwner',
             model_properties: {
-              provisioning_state: {
+              application_id: {
                 required: false,
-                serialized_name: 'provisioningState',
+                serialized_name: 'applicationId',
                 type: {
                   name: 'String'
                 }

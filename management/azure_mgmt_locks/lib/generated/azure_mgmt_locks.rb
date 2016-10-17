@@ -24,9 +24,7 @@ module Azure::ARM::Locks
   autoload :ManagementLockClient,                               'generated/azure_mgmt_locks/management_lock_client.rb'
 
   module Models
-    autoload :DeploymentExtendedFilter,                           'generated/azure_mgmt_locks/models/deployment_extended_filter.rb'
-    autoload :GenericResourceFilter,                              'generated/azure_mgmt_locks/models/generic_resource_filter.rb'
-    autoload :ResourceGroupFilter,                                'generated/azure_mgmt_locks/models/resource_group_filter.rb'
+    autoload :ManagementLockOwner,                                'generated/azure_mgmt_locks/models/management_lock_owner.rb'
     autoload :ManagementLockObject,                               'generated/azure_mgmt_locks/models/management_lock_object.rb'
     autoload :ManagementLockListResult,                           'generated/azure_mgmt_locks/models/management_lock_list_result.rb'
     autoload :LockLevel,                                          'generated/azure_mgmt_locks/models/lock_level.rb'

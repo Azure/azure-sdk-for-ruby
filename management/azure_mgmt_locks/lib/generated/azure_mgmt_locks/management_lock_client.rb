@@ -54,7 +54,7 @@ module Azure::ARM::Locks
       @credentials = credentials
 
       @management_locks = ManagementLocks.new(self)
-      @api_version = '2015-01-01'
+      @api_version = '2016-09-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

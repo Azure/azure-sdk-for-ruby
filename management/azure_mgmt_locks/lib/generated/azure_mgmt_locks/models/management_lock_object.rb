@@ -6,27 +6,29 @@
 module Azure::ARM::Locks
   module Models
     #
-    # Management lock information.
+    # The lock information.
     #
     class ManagementLockObject
 
       include MsRestAzure
 
-      # @return [LockLevel] Gets or sets the lock level of the management
-      # lock. Possible values include: 'NotSpecified', 'CanNotDelete',
-      # 'ReadOnly'
+      # @return [LockLevel] The lock level of the lock. Possible values
+      # include: 'NotSpecified', 'CanNotDelete', 'ReadOnly'
       attr_accessor :level
 
-      # @return [String] Gets or sets the notes of the management lock.
+      # @return [String] The notes of the lock.
       attr_accessor :notes
 
-      # @return [String] Gets or sets the Id of the lock.
+      # @return [Array<ManagementLockOwner>] The owners of the lock.
+      attr_accessor :owners
+
+      # @return [String] The Id of the lock.
       attr_accessor :id
 
-      # @return [String] Gets or sets the type of the lock.
+      # @return [String] The type of the lock.
       attr_accessor :type
 
-      # @return [String] Gets or sets the name of the lock.
+      # @return [String] The name of the lock.
       attr_accessor :name
 
 
@@ -43,7 +45,7 @@ module Azure::ARM::Locks
             class_name: 'ManagementLockObject',
             model_properties: {
               level: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.level',
                 type: {
                   name: 'String'
@@ -56,8 +58,24 @@ module Azure::ARM::Locks
                   name: 'String'
                 }
               },
+              owners: {
+                required: false,
+                serialized_name: 'properties.owners',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ManagementLockOwnerElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ManagementLockOwner'
+                      }
+                  }
+                }
+              },
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -65,6 +83,7 @@ module Azure::ARM::Locks
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'

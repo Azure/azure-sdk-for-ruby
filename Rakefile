@@ -227,7 +227,7 @@ REGEN_METADATA = {
         tag: 'arm_key_vault'
     },
     azure_mgmt_locks: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/locks/2015-01-01/swagger/locks.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/locks/2016-09-01/swagger/locks.json',
         ns: 'Azure::ARM::Locks',
         version: version,
         tag: 'arm_lock'
