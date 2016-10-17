@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Azure Client Library for Ruby.}
   spec.description   = %q{Azure Client Library for Ruby.}
-  spec.homepage      = 'https://aka.ms/azure-sdk-for-ruby'
+  spec.homepage      = 'https://aka.ms/ms_rest_azure'
   spec.license       = 'MIT'
 
   spec.files         = Dir["CHANGELOG.md", "README.md", "LICENSE.txt", "lib/**/*"]
