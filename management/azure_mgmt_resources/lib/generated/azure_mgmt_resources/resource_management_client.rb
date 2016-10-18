@@ -74,7 +74,7 @@ module Azure::ARM::Resources
       @resources = Resources.new(self)
       @tags = Tags.new(self)
       @deployment_operations = DeploymentOperations.new(self)
-      @api_version = '2016-02-01'
+      @api_version = '2016-09-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

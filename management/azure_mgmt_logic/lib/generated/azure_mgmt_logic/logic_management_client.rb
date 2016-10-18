@@ -20,9 +20,6 @@ module Azure::ARM::Logic
     # @return [String] The subscription id.
     attr_accessor :subscription_id
 
-    # @return [String] The API version.
-    attr_reader :api_version
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -52,6 +49,24 @@ module Azure::ARM::Logic
     # @return [WorkflowRunActions] workflow_run_actions
     attr_reader :workflow_run_actions
 
+    # @return [IntegrationAccounts] integration_accounts
+    attr_reader :integration_accounts
+
+    # @return [IntegrationAccountSchemas] integration_account_schemas
+    attr_reader :integration_account_schemas
+
+    # @return [IntegrationAccountMaps] integration_account_maps
+    attr_reader :integration_account_maps
+
+    # @return [IntegrationAccountPartners] integration_account_partners
+    attr_reader :integration_account_partners
+
+    # @return [IntegrationAccountAgreements] integration_account_agreements
+    attr_reader :integration_account_agreements
+
+    # @return [IntegrationAccountCertificates] integration_account_certificates
+    attr_reader :integration_account_certificates
+
     #
     # Creates initializes a new instance of the LogicManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -72,7 +87,12 @@ module Azure::ARM::Logic
       @workflow_trigger_histories = WorkflowTriggerHistories.new(self)
       @workflow_runs = WorkflowRuns.new(self)
       @workflow_run_actions = WorkflowRunActions.new(self)
-      @api_version = '2016-06-01'
+      @integration_accounts = IntegrationAccounts.new(self)
+      @integration_account_schemas = IntegrationAccountSchemas.new(self)
+      @integration_account_maps = IntegrationAccountMaps.new(self)
+      @integration_account_partners = IntegrationAccountPartners.new(self)
+      @integration_account_agreements = IntegrationAccountAgreements.new(self)
+      @integration_account_certificates = IntegrationAccountCertificates.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

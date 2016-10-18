@@ -20,9 +20,6 @@ module Azure::ARM::Web
     # @return [String] Subscription Id
     attr_accessor :subscription_id
 
-    # @return [String] API Version
-    attr_reader :api_version
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -34,53 +31,29 @@ module Azure::ARM::Web
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [CertificateOrders] certificate_orders
-    attr_reader :certificate_orders
+    # @return [AppServiceCertificateOrders] app_service_certificate_orders
+    attr_reader :app_service_certificate_orders
+
+    # @return [AppServiceEnvironments] app_service_environments
+    attr_reader :app_service_environments
+
+    # @return [AppServicePlans] app_service_plans
+    attr_reader :app_service_plans
 
     # @return [Certificates] certificates
     attr_reader :certificates
 
-    # @return [ClassicMobileServices] classic_mobile_services
-    attr_reader :classic_mobile_services
-
     # @return [Domains] domains
     attr_reader :domains
-
-    # @return [Global] global
-    attr_reader :global
-
-    # @return [GlobalCertificateOrder] global_certificate_order
-    attr_reader :global_certificate_order
-
-    # @return [GlobalDomainRegistration] global_domain_registration
-    attr_reader :global_domain_registration
-
-    # @return [GlobalResourceGroups] global_resource_groups
-    attr_reader :global_resource_groups
-
-    # @return [HostingEnvironments] hosting_environments
-    attr_reader :hosting_environments
-
-    # @return [ManagedHostingEnvironments] managed_hosting_environments
-    attr_reader :managed_hosting_environments
-
-    # @return [Provider] provider
-    attr_reader :provider
 
     # @return [Recommendations] recommendations
     attr_reader :recommendations
 
-    # @return [ServerFarms] server_farms
-    attr_reader :server_farms
-
-    # @return [Sites] sites
-    attr_reader :sites
-
     # @return [TopLevelDomains] top_level_domains
     attr_reader :top_level_domains
 
-    # @return [UsageOperations] usage_operations
-    attr_reader :usage_operations
+    # @return [WebApps] web_apps
+    attr_reader :web_apps
 
     #
     # Creates initializes a new instance of the WebSiteManagementClient class.
@@ -96,23 +69,14 @@ module Azure::ARM::Web
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials)
       @credentials = credentials
 
-      @certificate_orders = CertificateOrders.new(self)
+      @app_service_certificate_orders = AppServiceCertificateOrders.new(self)
+      @app_service_environments = AppServiceEnvironments.new(self)
+      @app_service_plans = AppServicePlans.new(self)
       @certificates = Certificates.new(self)
-      @classic_mobile_services = ClassicMobileServices.new(self)
       @domains = Domains.new(self)
-      @global = Global.new(self)
-      @global_certificate_order = GlobalCertificateOrder.new(self)
-      @global_domain_registration = GlobalDomainRegistration.new(self)
-      @global_resource_groups = GlobalResourceGroups.new(self)
-      @hosting_environments = HostingEnvironments.new(self)
-      @managed_hosting_environments = ManagedHostingEnvironments.new(self)
-      @provider = Provider.new(self)
       @recommendations = Recommendations.new(self)
-      @server_farms = ServerFarms.new(self)
-      @sites = Sites.new(self)
       @top_level_domains = TopLevelDomains.new(self)
-      @usage_operations = UsageOperations.new(self)
-      @api_version = '2015-08-01'
+      @web_apps = WebApps.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -171,6 +135,1474 @@ module Azure::ARM::Web
       options.merge!({credentials: @credentials}) unless @credentials.nil?
 
       super(request_url, method, path, options)
+    end
+
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SourceControlCollection] operation results.
+    #
+    def list_source_controls(custom_headers = nil)
+      first_page = list_source_controls_as_lazy(custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_source_controls_with_http_info(custom_headers = nil)
+      list_source_controls_async(custom_headers).value!
+    end
+
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_source_controls_async(custom_headers = nil)
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '/providers/Microsoft.Web/sourcecontrols'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = SourceControlCollection.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<SourceControl>] operation results.
+    #
+    def list_source_controls(custom_headers = nil)
+      first_page = list_source_controls_as_lazy(custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_source_controls_with_http_info(custom_headers = nil)
+      list_source_controls_async(custom_headers).value!
+    end
+
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_source_controls_async(custom_headers = nil)
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '/providers/Microsoft.Web/sourcecontrols'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = SourceControlCollection.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Check if resource name is available
+    #
+    # Check if resource name is available
+    #
+    # @param request [ResourceNameAvailabilityRequest] Name availability request
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ResourceNameAvailability] operation results.
+    #
+    def check_name_availability(request, custom_headers = nil)
+      response = check_name_availability_async(request, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Check if resource name is available
+    #
+    # Check if resource name is available
+    #
+    # @param request [ResourceNameAvailabilityRequest] Name availability request
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def check_name_availability_with_http_info(request, custom_headers = nil)
+      check_name_availability_async(request, custom_headers).value!
+    end
+
+    #
+    # Check if resource name is available
+    #
+    # Check if resource name is available
+    #
+    # @param request [ResourceNameAvailabilityRequest] Name availability request
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def check_name_availability_async(request, custom_headers = nil)
+      fail ArgumentError, 'request is nil' if request.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = ResourceNameAvailabilityRequest.mapper()
+      request_content = self.serialize(request_mapper,  request, 'request')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/checknameavailability'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ResourceNameAvailability.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets list of available geo regions
+    #
+    # Gets list of available geo regions
+    #
+    # @param sku [String] Filter only to regions that support this sku
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [GeoRegionCollection] operation results.
+    #
+    def get_subscription_geo_regions(sku = nil, custom_headers = nil)
+      first_page = get_subscription_geo_regions_as_lazy(sku, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Gets list of available geo regions
+    #
+    # Gets list of available geo regions
+    #
+    # @param sku [String] Filter only to regions that support this sku
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_subscription_geo_regions_with_http_info(sku = nil, custom_headers = nil)
+      get_subscription_geo_regions_async(sku, custom_headers).value!
+    end
+
+    #
+    # Gets list of available geo regions
+    #
+    # Gets list of available geo regions
+    #
+    # @param sku [String] Filter only to regions that support this sku
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_subscription_geo_regions_async(sku = nil, custom_headers = nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/geoRegions'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'sku' => sku,'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = GeoRegionCollection.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets list of available geo regions
+    #
+    # Gets list of available geo regions
+    #
+    # @param sku [String] Filter only to regions that support this sku
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<GeoRegion>] operation results.
+    #
+    def get_subscription_geo_regions(sku = nil, custom_headers = nil)
+      first_page = get_subscription_geo_regions_as_lazy(sku, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Gets list of available geo regions
+    #
+    # Gets list of available geo regions
+    #
+    # @param sku [String] Filter only to regions that support this sku
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_subscription_geo_regions_with_http_info(sku = nil, custom_headers = nil)
+      get_subscription_geo_regions_async(sku, custom_headers).value!
+    end
+
+    #
+    # Gets list of available geo regions
+    #
+    # Gets list of available geo regions
+    #
+    # @param sku [String] Filter only to regions that support this sku
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_subscription_geo_regions_async(sku = nil, custom_headers = nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/geoRegions'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'sku' => sku,'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = GeoRegionCollection.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Whether hosting environment name is available
+    #
+    # Whether hosting environment name is available
+    #
+    # @param name [String] Hosting environment name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def is_hosting_environment_name_available(name, custom_headers = nil)
+      response = is_hosting_environment_name_available_async(name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Whether hosting environment name is available
+    #
+    # Whether hosting environment name is available
+    #
+    # @param name [String] Hosting environment name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def is_hosting_environment_name_available_with_http_info(name, custom_headers = nil)
+      is_hosting_environment_name_available_async(name, custom_headers).value!
+    end
+
+    #
+    # Whether hosting environment name is available
+    #
+    # Whether hosting environment name is available
+    #
+    # @param name [String] Hosting environment name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def is_hosting_environment_name_available_async(name, custom_headers = nil)
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/ishostingenvironmentnameavailable'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'name' => name,'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Whether hosting environment name is available
+    #
+    # Whether hosting environment name is available
+    #
+    # @param name [String] Hosting environment name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def is_hosting_environment_with_legacy_name_available(name, custom_headers = nil)
+      response = is_hosting_environment_with_legacy_name_available_async(name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Whether hosting environment name is available
+    #
+    # Whether hosting environment name is available
+    #
+    # @param name [String] Hosting environment name
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def is_hosting_environment_with_legacy_name_available_with_http_info(name, custom_headers = nil)
+      is_hosting_environment_with_legacy_name_available_async(name, custom_headers).value!
+    end
+
+    #
+    # Whether hosting environment name is available
+    #
+    # Whether hosting environment name is available
+    #
+    # @param name [String] Hosting environment name
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def is_hosting_environment_with_legacy_name_available_async(name, custom_headers = nil)
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/ishostingenvironmentnameavailable/{name}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'name' => name,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List premier add on offers
+    #
+    # List premier add on offers
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def list_premier_add_on_offers(custom_headers = nil)
+      response = list_premier_add_on_offers_async(custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # List premier add on offers
+    #
+    # List premier add on offers
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_premier_add_on_offers_with_http_info(custom_headers = nil)
+      list_premier_add_on_offers_async(custom_headers).value!
+    end
+
+    #
+    # List premier add on offers
+    #
+    # List premier add on offers
+    #
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_premier_add_on_offers_async(custom_headers = nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/premieraddonoffers'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets publishing credentials for the subscription owner
+    #
+    # Gets publishing credentials for the subscription owner
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [User] operation results.
+    #
+    def get_publishing_credentials(custom_headers = nil)
+      response = get_publishing_credentials_async(custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets publishing credentials for the subscription owner
+    #
+    # Gets publishing credentials for the subscription owner
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_publishing_credentials_with_http_info(custom_headers = nil)
+      get_publishing_credentials_async(custom_headers).value!
+    end
+
+    #
+    # Gets publishing credentials for the subscription owner
+    #
+    # Gets publishing credentials for the subscription owner
+    #
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_publishing_credentials_async(custom_headers = nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/publishingCredentials'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = User.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Updates publishing credentials for the subscription owner
+    #
+    # Updates publishing credentials for the subscription owner
+    #
+    # @param request_message [User] requestMessage with new publishing credentials
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [User] operation results.
+    #
+    def update_publishing_credentials(request_message, custom_headers = nil)
+      response = update_publishing_credentials_async(request_message, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates publishing credentials for the subscription owner
+    #
+    # Updates publishing credentials for the subscription owner
+    #
+    # @param request_message [User] requestMessage with new publishing credentials
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_publishing_credentials_with_http_info(request_message, custom_headers = nil)
+      update_publishing_credentials_async(request_message, custom_headers).value!
+    end
+
+    #
+    # Updates publishing credentials for the subscription owner
+    #
+    # Updates publishing credentials for the subscription owner
+    #
+    # @param request_message [User] requestMessage with new publishing credentials
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_publishing_credentials_async(request_message, custom_headers = nil)
+      fail ArgumentError, 'request_message is nil' if request_message.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = User.mapper()
+      request_content = self.serialize(request_mapper,  request_message, 'request_message')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/publishingCredentials'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = User.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get skus
+    #
+    # Get skus
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def list_skus(custom_headers = nil)
+      response = list_skus_async(custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get skus
+    #
+    # Get skus
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_skus_with_http_info(custom_headers = nil)
+      list_skus_async(custom_headers).value!
+    end
+
+    #
+    # Get skus
+    #
+    # Get skus
+    #
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_skus_async(custom_headers = nil)
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/skus'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Move resources between resource groups
+    #
+    # Move resources between resource groups
+    #
+    # @param resource_group_name [String] Resource group
+    # @param move_resource_envelope [CsmMoveResourceEnvelope] Object representing
+    # resource to move
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def move_resources(resource_group_name, move_resource_envelope, custom_headers = nil)
+      response = move_resources_async(resource_group_name, move_resource_envelope, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Move resources between resource groups
+    #
+    # Move resources between resource groups
+    #
+    # @param resource_group_name [String] Resource group
+    # @param move_resource_envelope [CsmMoveResourceEnvelope] Object representing
+    # resource to move
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def move_resources_with_http_info(resource_group_name, move_resource_envelope, custom_headers = nil)
+      move_resources_async(resource_group_name, move_resource_envelope, custom_headers).value!
+    end
+
+    #
+    # Move resources between resource groups
+    #
+    # Move resources between resource groups
+    #
+    # @param resource_group_name [String] Resource group
+    # @param move_resource_envelope [CsmMoveResourceEnvelope] Object representing
+    # resource to move
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def move_resources_async(resource_group_name, move_resource_envelope, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'move_resource_envelope is nil' if move_resource_envelope.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = CsmMoveResourceEnvelope.mapper()
+      request_content = self.serialize(request_mapper,  move_resource_envelope, 'move_resource_envelope')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/moveResources'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Validates if a resource can be created
+    #
+    # Validates if a resource can be created
+    #
+    # @param resource_group_name [String] Resource group
+    # @param validate_request [ValidateRequest] Object representing resources to
+    # validate
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ValidateResponse] operation results.
+    #
+    def validate(resource_group_name, validate_request, custom_headers = nil)
+      response = validate_async(resource_group_name, validate_request, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Validates if a resource can be created
+    #
+    # Validates if a resource can be created
+    #
+    # @param resource_group_name [String] Resource group
+    # @param validate_request [ValidateRequest] Object representing resources to
+    # validate
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def validate_with_http_info(resource_group_name, validate_request, custom_headers = nil)
+      validate_async(resource_group_name, validate_request, custom_headers).value!
+    end
+
+    #
+    # Validates if a resource can be created
+    #
+    # Validates if a resource can be created
+    #
+    # @param resource_group_name [String] Resource group
+    # @param validate_request [ValidateRequest] Object representing resources to
+    # validate
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def validate_async(resource_group_name, validate_request, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'validate_request is nil' if validate_request.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = ValidateRequest.mapper()
+      request_content = self.serialize(request_mapper,  validate_request, 'validate_request')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/validate'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ValidateResponse.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Validate specified resources can be moved
+    #
+    # Validate specified resources can be moved
+    #
+    # @param resource_group_name [String] Resource group
+    # @param move_resource_envelope [CsmMoveResourceEnvelope] Object representing
+    # resource to move
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Object] operation results.
+    #
+    def validate_move_resources(resource_group_name, move_resource_envelope, custom_headers = nil)
+      response = validate_move_resources_async(resource_group_name, move_resource_envelope, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Validate specified resources can be moved
+    #
+    # Validate specified resources can be moved
+    #
+    # @param resource_group_name [String] Resource group
+    # @param move_resource_envelope [CsmMoveResourceEnvelope] Object representing
+    # resource to move
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def validate_move_resources_with_http_info(resource_group_name, move_resource_envelope, custom_headers = nil)
+      validate_move_resources_async(resource_group_name, move_resource_envelope, custom_headers).value!
+    end
+
+    #
+    # Validate specified resources can be moved
+    #
+    # Validate specified resources can be moved
+    #
+    # @param resource_group_name [String] Resource group
+    # @param move_resource_envelope [CsmMoveResourceEnvelope] Object representing
+    # resource to move
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def validate_move_resources_async(resource_group_name, move_resource_envelope, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'move_resource_envelope is nil' if move_resource_envelope.nil?
+      fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = CsmMoveResourceEnvelope.mapper()
+      request_content = self.serialize(request_mapper,  move_resource_envelope, 'move_resource_envelope')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/validateMoveResources'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SourceControlCollection] operation results.
+    #
+    def list_source_controls_next(next_page_link, custom_headers = nil)
+      response = list_source_controls_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_source_controls_next_with_http_info(next_page_link, custom_headers = nil)
+      list_source_controls_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # Gets the source controls available for Azure websites
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_source_controls_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = SourceControlCollection.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets list of available geo regions
+    #
+    # Gets list of available geo regions
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [GeoRegionCollection] operation results.
+    #
+    def get_subscription_geo_regions_next(next_page_link, custom_headers = nil)
+      response = get_subscription_geo_regions_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets list of available geo regions
+    #
+    # Gets list of available geo regions
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_subscription_geo_regions_next_with_http_info(next_page_link, custom_headers = nil)
+      get_subscription_geo_regions_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Gets list of available geo regions
+    #
+    # Gets list of available geo regions
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_subscription_geo_regions_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = GeoRegionCollection.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
     end
 
   end

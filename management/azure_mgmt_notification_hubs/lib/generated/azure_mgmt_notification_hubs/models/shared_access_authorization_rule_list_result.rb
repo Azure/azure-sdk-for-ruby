@@ -12,12 +12,12 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      # @return [Array<SharedAccessAuthorizationRuleResource>] Gets or sets
-      # result of the List AuthorizationRules operation.
+      # @return [Array<SharedAccessAuthorizationRuleResource>] Result of the
+      # List AuthorizationRules operation.
       attr_accessor :value
 
-      # @return [String] Gets or sets link to the next set of results. Not
-      # empty if Value contains incomplete list of AuthorizationRules
+      # @return [String] Link to the next set of results. Not empty if Value
+      # contains incomplete list of AuthorizationRules
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

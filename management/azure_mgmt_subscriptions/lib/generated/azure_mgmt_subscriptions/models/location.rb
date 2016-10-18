@@ -12,23 +12,23 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the ID of the resource
-      # (/subscriptions/SubscriptionId).
+      # @return [String] The fully qualified Id of the location. For example,
+      # /subscriptions/00000000-0000-0000-0000-000000000000/locations/westus.
       attr_accessor :id
 
-      # @return [String] Gets or sets the subscription Id.
+      # @return [String] The subscription Id.
       attr_accessor :subscription_id
 
-      # @return [String] Gets or sets the location name
+      # @return [String] The location name.
       attr_accessor :name
 
-      # @return [String] Gets or sets the display name of the location
+      # @return [String] The display name of the location.
       attr_accessor :display_name
 
-      # @return [String] Gets or sets the latitude of the location
+      # @return [String] The latitude of the location.
       attr_accessor :latitude
 
-      # @return [String] Gets or sets the longitude of the location
+      # @return [String] The longitude of the location.
       attr_accessor :longitude
 
 
@@ -46,6 +46,7 @@ module Azure::ARM::Subscriptions
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -53,6 +54,7 @@ module Azure::ARM::Subscriptions
               },
               subscription_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'subscriptionId',
                 type: {
                   name: 'String'
@@ -60,6 +62,7 @@ module Azure::ARM::Subscriptions
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -67,6 +70,7 @@ module Azure::ARM::Subscriptions
               },
               display_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'displayName',
                 type: {
                   name: 'String'
@@ -74,6 +78,7 @@ module Azure::ARM::Subscriptions
               },
               latitude: {
                 required: false,
+                read_only: true,
                 serialized_name: 'latitude',
                 type: {
                   name: 'String'
@@ -81,6 +86,7 @@ module Azure::ARM::Subscriptions
               },
               longitude: {
                 required: false,
+                read_only: true,
                 serialized_name: 'longitude',
                 type: {
                   name: 'String'

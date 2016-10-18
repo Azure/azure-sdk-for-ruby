@@ -18,6 +18,7 @@ module Azure::ARM::Web
       KeyVaultDoesNotExist = "KeyVaultDoesNotExist"
       KeyVaultSecretDoesNotExist = "KeyVaultSecretDoesNotExist"
       UnknownError = "UnknownError"
+      ExternalPrivateKey = "ExternalPrivateKey"
       Unknown = "Unknown"
     end
   end

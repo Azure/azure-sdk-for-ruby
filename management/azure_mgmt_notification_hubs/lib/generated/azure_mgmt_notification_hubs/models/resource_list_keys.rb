@@ -12,13 +12,21 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the primaryConnectionString of the
-      # created Namespace AuthorizationRule.
+      # @return [String] PrimaryConnectionString of the AuthorizationRule.
       attr_accessor :primary_connection_string
 
-      # @return [String] Gets or sets the secondaryConnectionString of the
-      # created Namespace AuthorizationRule
+      # @return [String] SecondaryConnectionString of the created
+      # AuthorizationRule
       attr_accessor :secondary_connection_string
+
+      # @return [String] PrimaryKey of the created AuthorizationRule.
+      attr_accessor :primary_key
+
+      # @return [String] SecondaryKey of the created AuthorizationRule
+      attr_accessor :secondary_key
+
+      # @return [String] KeyName of the created AuthorizationRule
+      attr_accessor :key_name
 
 
       #
@@ -43,6 +51,27 @@ module Azure::ARM::NotificationHubs
               secondary_connection_string: {
                 required: false,
                 serialized_name: 'secondaryConnectionString',
+                type: {
+                  name: 'String'
+                }
+              },
+              primary_key: {
+                required: false,
+                serialized_name: 'primaryKey',
+                type: {
+                  name: 'String'
+                }
+              },
+              secondary_key: {
+                required: false,
+                serialized_name: 'secondaryKey',
+                type: {
+                  name: 'String'
+                }
+              },
+              key_name: {
+                required: false,
+                serialized_name: 'keyName',
                 type: {
                   name: 'String'
                 }

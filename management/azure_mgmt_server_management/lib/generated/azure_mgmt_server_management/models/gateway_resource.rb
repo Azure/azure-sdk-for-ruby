@@ -6,7 +6,7 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # Model object.
+    # data model for an arm gateway resource
     #
     class GatewayResource < MsRestAzure::Resource
 
@@ -19,9 +19,11 @@ module Azure::ARM::ServerManagement
       # @return [DateTime] UTC date and time when node was last updated
       attr_accessor :updated
 
-      # @return [AutoUpgrade] setting of the autoupgrade. Possible values
-      # include: 'On', 'Off'
-      attr_accessor :auto_upgrade
+      # @return [UpgradeMode] The upgradeMode property gives the flexibility
+      # to gateway to auto upgrade itself. If properties value not specified,
+      # then we assume upgradeMode = Automatic. Possible values include:
+      # 'Manual', 'Automatic'
+      attr_accessor :upgrade_mode
 
       # @return [String] latest available msi version
       attr_accessor :desired_version
@@ -118,12 +120,12 @@ module Azure::ARM::ServerManagement
                   name: 'DateTime'
                 }
               },
-              auto_upgrade: {
+              upgrade_mode: {
                 required: false,
-                serialized_name: 'properties.autoUpgrade',
+                serialized_name: 'properties.upgradeMode',
                 type: {
                   name: 'Enum',
-                  module: 'AutoUpgrade'
+                  module: 'UpgradeMode'
                 }
               },
               desired_version: {

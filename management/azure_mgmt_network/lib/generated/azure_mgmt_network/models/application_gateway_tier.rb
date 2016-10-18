@@ -10,6 +10,7 @@ module Azure::ARM::Network
     #
     module ApplicationGatewayTier
       Standard = "Standard"
+      WAF = "WAF"
     end
   end
 end

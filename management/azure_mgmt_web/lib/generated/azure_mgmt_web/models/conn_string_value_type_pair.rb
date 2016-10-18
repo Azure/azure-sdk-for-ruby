@@ -15,8 +15,10 @@ module Azure::ARM::Web
       # @return [String] Value of pair
       attr_accessor :value
 
-      # @return [DatabaseServerType] Type of database. Possible values
-      # include: 'MySql', 'SQLServer', 'SQLAzure', 'Custom'
+      # @return [ConnectionStringType] Type of database. Possible values
+      # include: 'MySql', 'SQLServer', 'SQLAzure', 'Custom',
+      # 'NotificationHub', 'ServiceBus', 'EventHub', 'ApiHub', 'DocDb',
+      # 'RedisCache'
       attr_accessor :type
 
 
@@ -44,7 +46,7 @@ module Azure::ARM::Web
                 serialized_name: 'type',
                 type: {
                   name: 'Enum',
-                  module: 'DatabaseServerType'
+                  module: 'ConnectionStringType'
                 }
               }
             }

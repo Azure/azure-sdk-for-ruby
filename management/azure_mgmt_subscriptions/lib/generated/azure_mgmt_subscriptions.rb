@@ -32,5 +32,7 @@ module Azure::ARM::Subscriptions
     autoload :SubscriptionListResult,                             'generated/azure_mgmt_subscriptions/models/subscription_list_result.rb'
     autoload :TenantIdDescription,                                'generated/azure_mgmt_subscriptions/models/tenant_id_description.rb'
     autoload :TenantListResult,                                   'generated/azure_mgmt_subscriptions/models/tenant_list_result.rb'
+    autoload :SubscriptionState,                                  'generated/azure_mgmt_subscriptions/models/subscription_state.rb'
+    autoload :SpendingLimit,                                      'generated/azure_mgmt_subscriptions/models/spending_limit.rb'
   end
 end

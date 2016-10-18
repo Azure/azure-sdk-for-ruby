@@ -868,6 +868,153 @@ module Azure::ARM::Network
     end
 
     #
+    # The BackendHealth operation gets the backend health of application gateway
+    # in the specified resource group through Network resource provider.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the application gateway.
+    # @param expand [String] Expands BackendAddressPool and BackendHttpSettings
+    # referenced in backend health.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ApplicationGatewayBackendHealth] operation results.
+    #
+    def backend_health(resource_group_name, application_gateway_name, expand = nil, custom_headers = nil)
+      response = backend_health_async(resource_group_name, application_gateway_name, expand, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the application gateway.
+    # @param expand [String] Expands BackendAddressPool and BackendHttpSettings
+    # referenced in backend health.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def backend_health_async(resource_group_name, application_gateway_name, expand = nil, custom_headers = nil)
+      # Send request
+      promise = begin_backend_health_async(resource_group_name, application_gateway_name, expand, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = ApplicationGatewayBackendHealth.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # The BackendHealth operation gets the backend health of application gateway
+    # in the specified resource group through Network resource provider.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the application gateway.
+    # @param expand [String] Expands BackendAddressPool and BackendHttpSettings
+    # referenced in backend health.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ApplicationGatewayBackendHealth] operation results.
+    #
+    def begin_backend_health(resource_group_name, application_gateway_name, expand = nil, custom_headers = nil)
+      response = begin_backend_health_async(resource_group_name, application_gateway_name, expand, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # The BackendHealth operation gets the backend health of application gateway
+    # in the specified resource group through Network resource provider.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the application gateway.
+    # @param expand [String] Expands BackendAddressPool and BackendHttpSettings
+    # referenced in backend health.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_backend_health_with_http_info(resource_group_name, application_gateway_name, expand = nil, custom_headers = nil)
+      begin_backend_health_async(resource_group_name, application_gateway_name, expand, custom_headers).value!
+    end
+
+    #
+    # The BackendHealth operation gets the backend health of application gateway
+    # in the specified resource group through Network resource provider.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param application_gateway_name [String] The name of the application gateway.
+    # @param expand [String] Expands BackendAddressPool and BackendHttpSettings
+    # referenced in backend health.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_backend_health_async(resource_group_name, application_gateway_name, expand = nil, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'application_gateway_name is nil' if application_gateway_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendhealth'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'applicationGatewayName' => application_gateway_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version,'$expand' => expand},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ApplicationGatewayBackendHealth.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # The List ApplicationGateway operation retrieves all the application gateways
     # in a resource group.
     #

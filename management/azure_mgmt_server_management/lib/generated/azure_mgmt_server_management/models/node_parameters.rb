@@ -6,7 +6,7 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # Model object.
+    # parameter collection for operations on arm node resource
     #
     class NodeParameters
 

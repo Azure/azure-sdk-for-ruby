@@ -12,10 +12,10 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
-      # @return [Array<TenantIdDescription>] Gets or sets tenant Ids.
+      # @return [Array<TenantIdDescription>] The tenant Ids.
       attr_accessor :value
 
-      # @return [String] Gets or sets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

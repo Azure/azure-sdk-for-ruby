@@ -12,9 +12,11 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      # @return [GcmCredentialProperties] Gets or sets properties of
-      # NotificationHub GcmCredential.
-      attr_accessor :properties
+      # @return [String] The GCM endpoint.
+      attr_accessor :gcm_endpoint
+
+      # @return [String] The Google API key.
+      attr_accessor :google_api_key
 
 
       #
@@ -29,12 +31,18 @@ module Azure::ARM::NotificationHubs
             name: 'Composite',
             class_name: 'GcmCredential',
             model_properties: {
-              properties: {
+              gcm_endpoint: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.gcmEndpoint',
                 type: {
-                  name: 'Composite',
-                  class_name: 'GcmCredentialProperties'
+                  name: 'String'
+                }
+              },
+              google_api_key: {
+                required: false,
+                serialized_name: 'properties.googleApiKey',
+                type: {
+                  name: 'String'
                 }
               }
             }

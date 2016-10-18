@@ -6,17 +6,28 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # Model object.
+    # parameter collection for creation and other operations on sessions
     #
     class SessionParameters
 
       include MsRestAzure
 
-      # @return [String] User name to be used to connect to node
+      # @return [String] encrypted User name to be used to connect to node
       attr_accessor :user_name
 
-      # @return [String] Password associated with user name
+      # @return [String] encrypted Password associated with user name
       attr_accessor :password
+
+      # @return [RetentionPeriod] session retention period. Possible values
+      # include: 'Session', 'Persistent'
+      attr_accessor :retention_period
+
+      # @return [CredentialDataFormat] credential data format. Possible values
+      # include: 'RsaEncrypted'
+      attr_accessor :credential_data_format
+
+      # @return [String] encryption certificate thumbprint
+      attr_accessor :encryption_certificate_thumbprint
 
 
       #
@@ -41,6 +52,29 @@ module Azure::ARM::ServerManagement
               password: {
                 required: false,
                 serialized_name: 'properties.password',
+                type: {
+                  name: 'String'
+                }
+              },
+              retention_period: {
+                required: false,
+                serialized_name: 'properties.retentionPeriod',
+                type: {
+                  name: 'Enum',
+                  module: 'RetentionPeriod'
+                }
+              },
+              credential_data_format: {
+                required: false,
+                serialized_name: 'properties.credentialDataFormat',
+                type: {
+                  name: 'Enum',
+                  module: 'CredentialDataFormat'
+                }
+              },
+              encryption_certificate_thumbprint: {
+                required: false,
+                serialized_name: 'properties.EncryptionCertificateThumbprint',
                 type: {
                   name: 'String'
                 }

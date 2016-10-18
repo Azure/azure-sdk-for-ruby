@@ -15,7 +15,8 @@ module Azure::ARM::Web
       # @return [String] Resource name to verify
       attr_accessor :name
 
-      # @return [String] Resource type used for verification
+      # @return [CheckNameResourceTypes] Resource type used for verification.
+      # Possible values include: 'Site', 'Slot', 'HostingEnvironment'
       attr_accessor :type
 
       # @return [Boolean] Is fully qualified domain name

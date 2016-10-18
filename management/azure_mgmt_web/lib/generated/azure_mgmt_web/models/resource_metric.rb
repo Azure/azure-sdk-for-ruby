@@ -30,10 +30,13 @@ module Azure::ARM::Web
       # @return [String] Metric resource Id
       attr_accessor :resource_id
 
+      # @return [String] Resource Id
+      attr_accessor :id
+
       # @return [Array<ResourceMetricValue>] Metric values
       attr_accessor :metric_values
 
-      # @return [Array<KeyValuePairStringString>] Properties
+      # @return [Array<ResourceMetricProperty>] Properties
       attr_accessor :properties
 
 
@@ -51,6 +54,7 @@ module Azure::ARM::Web
             model_properties: {
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'Composite',
@@ -59,6 +63,7 @@ module Azure::ARM::Web
               },
               unit: {
                 required: false,
+                read_only: true,
                 serialized_name: 'unit',
                 type: {
                   name: 'String'
@@ -66,6 +71,7 @@ module Azure::ARM::Web
               },
               time_grain: {
                 required: false,
+                read_only: true,
                 serialized_name: 'timeGrain',
                 type: {
                   name: 'String'
@@ -73,6 +79,7 @@ module Azure::ARM::Web
               },
               start_time: {
                 required: false,
+                read_only: true,
                 serialized_name: 'startTime',
                 type: {
                   name: 'DateTime'
@@ -80,6 +87,7 @@ module Azure::ARM::Web
               },
               end_time: {
                 required: false,
+                read_only: true,
                 serialized_name: 'endTime',
                 type: {
                   name: 'DateTime'
@@ -87,13 +95,23 @@ module Azure::ARM::Web
               },
               resource_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'resourceId',
+                type: {
+                  name: 'String'
+                }
+              },
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
               metric_values: {
                 required: false,
+                read_only: true,
                 serialized_name: 'metricValues',
                 type: {
                   name: 'Sequence',
@@ -109,15 +127,16 @@ module Azure::ARM::Web
               },
               properties: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'KeyValuePairStringStringElementType',
+                      serialized_name: 'ResourceMetricPropertyElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'KeyValuePairStringString'
+                        class_name: 'ResourceMetricProperty'
                       }
                   }
                 }

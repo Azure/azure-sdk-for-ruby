@@ -19,6 +19,13 @@ module Azure::ARM::Web
       # the new certificate is issued
       attr_accessor :delay_existing_revoke_in_hours
 
+      # @return [String] Csr to be used for re-key operation
+      attr_accessor :csr
+
+      # @return [Boolean] Should we change the ASC type (from managed private
+      # key to external private key and vice versa)
+      attr_accessor :is_private_key_external
+
 
       #
       # Mapper for ReissueCertificateOrderRequest class as Ruby Hash.
@@ -34,13 +41,14 @@ module Azure::ARM::Web
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -93,6 +101,20 @@ module Azure::ARM::Web
                 serialized_name: 'properties.delayExistingRevokeInHours',
                 type: {
                   name: 'Number'
+                }
+              },
+              csr: {
+                required: false,
+                serialized_name: 'properties.csr',
+                type: {
+                  name: 'String'
+                }
+              },
+              is_private_key_external: {
+                required: false,
+                serialized_name: 'properties.isPrivateKeyExternal',
+                type: {
+                  name: 'Boolean'
                 }
               }
             }

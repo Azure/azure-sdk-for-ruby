@@ -27,6 +27,9 @@ module Azure::ARM::Web
       # @return [String] Version of Python
       attr_accessor :python_version
 
+      # @return [String] Version of Node
+      attr_accessor :node_version
+
       # @return [Boolean] Enable request tracing
       attr_accessor :request_tracing_enabled
 
@@ -51,17 +54,8 @@ module Azure::ARM::Web
       # @return [String] Publishing user name
       attr_accessor :publishing_username
 
-      # @return [String] Publishing password
-      attr_accessor :publishing_password
-
-      # @return [Array<NameValuePair>] Application Settings
-      attr_accessor :app_settings
-
-      # @return [Array<NameValuePair>] Site Metadata
-      attr_accessor :metadata
-
-      # @return [Array<ConnStringInfo>] Connection strings
-      attr_accessor :connection_strings
+      # @return [SiteMachineKey] Site MachineKey
+      attr_accessor :machine_key
 
       # @return [Array<HandlerMapping>] Handler mappings
       attr_accessor :handler_mappings
@@ -126,6 +120,9 @@ module Azure::ARM::Web
       # @return [CorsSettings] Cross-Origin Resource Sharing (CORS) settings.
       attr_accessor :cors
 
+      # @return [PushSettings] Push endpoint settings.
+      attr_accessor :push
+
       # @return [ApiDefinitionInfo] Information about the formal API
       # definition for the web app.
       attr_accessor :api_definition
@@ -154,13 +151,14 @@ module Azure::ARM::Web
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -243,6 +241,13 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
+              node_version: {
+                required: false,
+                serialized_name: 'properties.nodeVersion',
+                type: {
+                  name: 'String'
+                }
+              },
               request_tracing_enabled: {
                 required: false,
                 serialized_name: 'properties.requestTracingEnabled',
@@ -299,56 +304,12 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              publishing_password: {
+              machine_key: {
                 required: false,
-                serialized_name: 'properties.publishingPassword',
+                serialized_name: 'properties.machineKey',
                 type: {
-                  name: 'String'
-                }
-              },
-              app_settings: {
-                required: false,
-                serialized_name: 'properties.appSettings',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'NameValuePairElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'NameValuePair'
-                      }
-                  }
-                }
-              },
-              metadata: {
-                required: false,
-                serialized_name: 'properties.metadata',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'NameValuePairElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'NameValuePair'
-                      }
-                  }
-                }
-              },
-              connection_strings: {
-                required: false,
-                serialized_name: 'properties.connectionStrings',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'ConnStringInfoElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'ConnStringInfo'
-                      }
-                  }
+                  name: 'Composite',
+                  class_name: 'SiteMachineKey'
                 }
               },
               handler_mappings: {
@@ -511,6 +472,14 @@ module Azure::ARM::Web
                 type: {
                   name: 'Composite',
                   class_name: 'CorsSettings'
+                }
+              },
+              push: {
+                required: false,
+                serialized_name: 'properties.push',
+                type: {
+                  name: 'Composite',
+                  class_name: 'PushSettings'
                 }
               },
               api_definition: {

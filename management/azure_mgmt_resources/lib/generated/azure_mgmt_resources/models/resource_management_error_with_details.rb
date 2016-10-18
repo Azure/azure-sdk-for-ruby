@@ -38,14 +38,16 @@ module Azure::ARM::Resources
             class_name: 'ResourceManagementErrorWithDetails',
             model_properties: {
               code: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'code',
                 type: {
                   name: 'String'
                 }
               },
               message: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'message',
                 type: {
                   name: 'String'
@@ -53,6 +55,7 @@ module Azure::ARM::Resources
               },
               target: {
                 required: false,
+                read_only: true,
                 serialized_name: 'target',
                 type: {
                   name: 'String'
@@ -60,6 +63,7 @@ module Azure::ARM::Resources
               },
               details: {
                 required: false,
+                read_only: true,
                 serialized_name: 'details',
                 type: {
                   name: 'Sequence',

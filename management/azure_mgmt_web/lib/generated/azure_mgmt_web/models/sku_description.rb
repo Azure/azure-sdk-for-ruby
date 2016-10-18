@@ -27,6 +27,16 @@ module Azure::ARM::Web
       # @return [Integer] Current number of instances assigned to the resource
       attr_accessor :capacity
 
+      # @return [SkuCapacity] Min, max, and default scale values of the sku
+      attr_accessor :sku_capacity
+
+      # @return [Array<String>] Locations of the sku
+      attr_accessor :locations
+
+      # @return [Array<Capability>] Capabilities of the sku, eg., is traffic
+      # manager enabled?
+      attr_accessor :capabilities
+
 
       #
       # Mapper for SkuDescription class as Ruby Hash.
@@ -73,6 +83,43 @@ module Azure::ARM::Web
                 serialized_name: 'capacity',
                 type: {
                   name: 'Number'
+                }
+              },
+              sku_capacity: {
+                required: false,
+                serialized_name: 'skuCapacity',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SkuCapacity'
+                }
+              },
+              locations: {
+                required: false,
+                serialized_name: 'locations',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              capabilities: {
+                required: false,
+                serialized_name: 'capabilities',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'CapabilityElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'Capability'
+                      }
+                  }
                 }
               }
             }

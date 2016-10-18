@@ -79,6 +79,7 @@ module Azure::ARM::Resources
               },
               next_link: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'

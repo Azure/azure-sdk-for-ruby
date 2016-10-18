@@ -6,7 +6,7 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # Model object.
+    # result status from invoking a powershell command
     #
     class PowerShellCommandStatus < MsRestAzure::Resource
 

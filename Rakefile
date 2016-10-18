@@ -146,7 +146,7 @@ REGEN_METADATA = {
         tag: 'arm_batch'
     },
     azure_mgmt_cdn: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-cdn/2016-04-02/swagger/cdn.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-cdn/2016-10-02/swagger/cdn.json',
         ns: 'Azure::ARM::CDN',
         version: version,
         tag: 'arm_cdn'
@@ -227,15 +227,16 @@ REGEN_METADATA = {
         tag: 'arm_key_vault'
     },
     azure_mgmt_locks: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/locks/2015-01-01/swagger/locks.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/locks/2016-09-01/swagger/locks.json',
         ns: 'Azure::ARM::Locks',
         version: version,
         tag: 'arm_lock'
     },
     azure_mgmt_logic: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-logic/2016-06-01/swagger/logic.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-logic/CompositeLogicClient.json',
         ns: 'Azure::ARM::Logic',
         version: version,
+        modeler: "CompositeSwagger",
         tag: 'arm_logic'
     },
     azure_mgmt_machine_learning: {
@@ -257,13 +258,13 @@ REGEN_METADATA = {
         tag: 'arm_mobile'
     },
     azure_mgmt_network: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-network/2016-06-01/swagger/network.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-network/2016-09-01/swagger/network.json',
         ns: 'Azure::ARM::Network',
         version: version,
         tag: 'arm_netw'
     },
     azure_mgmt_notification_hubs: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-notificationhubs/2014-09-01/swagger/notificationhubs.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-notificationhubs/2016-03-01/swagger/notificationhubs.json',
         ns: 'Azure::ARM::NotificationHubs',
         version: version,
         tag: 'arm_noti'
@@ -287,7 +288,7 @@ REGEN_METADATA = {
         tag: 'arm_redi'
     },
     azure_mgmt_resources: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/resources/2016-02-01/swagger/resources.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/resources/2016-09-01/swagger/resources.json',
         ns: 'Azure::ARM::Resources',
         version: version,
         tag: 'arm_reso'
@@ -305,7 +306,7 @@ REGEN_METADATA = {
         tag: 'arm_sear'
     },
     azure_mgmt_server_management: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servermanagement/2015-07-01-preview/servermanagement.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servermanagement/2016-07-01-preview/swagger/servermanagement.json',
         ns: 'Azure::ARM::ServerManagement',
         version: version,
         tag: 'arm_server'
@@ -330,7 +331,7 @@ REGEN_METADATA = {
         tag: 'arm_stor'
     },
     azure_mgmt_subscriptions: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/subscriptions/2015-11-01/swagger/subscriptions.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json',
         ns: 'Azure::ARM::Subscriptions',
         version: version,
         tag: 'arm_subs'
@@ -342,9 +343,10 @@ REGEN_METADATA = {
         tag: 'arm_trafficmgr'
     },
     azure_mgmt_web: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-web/2015-08-01/swagger/service.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-web/compositeWebAppClient.json',
         ns: 'Azure::ARM::Web',
         version: version,
+        modeler: "CompositeSwagger",
         tag: 'arm_web'
     },
 }

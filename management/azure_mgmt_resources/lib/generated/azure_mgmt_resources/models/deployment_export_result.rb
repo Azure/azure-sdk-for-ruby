@@ -6,7 +6,7 @@
 module Azure::ARM::Resources
   module Models
     #
-    # Model object.
+    # The deployment export result.
     #
     class DeploymentExportResult
 

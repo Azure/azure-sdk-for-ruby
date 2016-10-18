@@ -33,6 +33,7 @@ module Azure::ARM::Web
             model_properties: {
               value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'value',
                 type: {
                   name: 'String'
@@ -40,6 +41,7 @@ module Azure::ARM::Web
               },
               localized_value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'localizedValue',
                 type: {
                   name: 'String'

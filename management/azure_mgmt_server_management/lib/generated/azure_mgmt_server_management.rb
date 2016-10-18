@@ -28,6 +28,7 @@ module Azure::ARM::ServerManagement
 
   module Models
     autoload :GatewayStatus,                                      'generated/azure_mgmt_server_management/models/gateway_status.rb'
+    autoload :EncryptionJwkResource,                              'generated/azure_mgmt_server_management/models/encryption_jwk_resource.rb'
     autoload :GatewayResources,                                   'generated/azure_mgmt_server_management/models/gateway_resources.rb'
     autoload :GatewayProfile,                                     'generated/azure_mgmt_server_management/models/gateway_profile.rb'
     autoload :GatewayParameters,                                  'generated/azure_mgmt_server_management/models/gateway_parameters.rb'
@@ -49,7 +50,9 @@ module Azure::ARM::ServerManagement
     autoload :SessionResource,                                    'generated/azure_mgmt_server_management/models/session_resource.rb'
     autoload :PowerShellSessionResource,                          'generated/azure_mgmt_server_management/models/power_shell_session_resource.rb'
     autoload :PowerShellCommandStatus,                            'generated/azure_mgmt_server_management/models/power_shell_command_status.rb'
-    autoload :AutoUpgrade,                                        'generated/azure_mgmt_server_management/models/auto_upgrade.rb'
+    autoload :UpgradeMode,                                        'generated/azure_mgmt_server_management/models/upgrade_mode.rb'
+    autoload :RetentionPeriod,                                    'generated/azure_mgmt_server_management/models/retention_period.rb'
+    autoload :CredentialDataFormat,                               'generated/azure_mgmt_server_management/models/credential_data_format.rb'
     autoload :PromptFieldType,                                    'generated/azure_mgmt_server_management/models/prompt_field_type.rb'
     autoload :GatewayExpandOption,                                'generated/azure_mgmt_server_management/models/gateway_expand_option.rb'
     autoload :PowerShellExpandOption,                             'generated/azure_mgmt_server_management/models/power_shell_expand_option.rb'

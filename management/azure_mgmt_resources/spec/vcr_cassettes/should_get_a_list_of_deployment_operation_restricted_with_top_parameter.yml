@@ -57,7 +57,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:04:50 GMT
 - request:
     method: put
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"location":"westus"}'
@@ -106,7 +106,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:04:50 GMT
 - request:
     method: put
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"properties":{"templateLink":{"uri":"https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json"},"parameters":{"databaseAccountName":{"value":"mydocs-test"}},"mode":"Incremental"}}'
@@ -133,7 +133,7 @@ http_interactions:
       expires:
       - "-1"
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/operationStatuses/08587379797961339495?api-version=2016-02-01
+      - https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/operationStatuses/08587379797961339495?api-version=2016-09-01
       x-ms-ratelimit-remaining-subscription-writes:
       - '1197'
       x-ms-request-id:
@@ -157,7 +157,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:04:51 GMT
 - request:
     method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/operationStatuses/08587379797961339495?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/operationStatuses/08587379797961339495?api-version=2016-09-01
     body:
       encoding: US-ASCII
       string: ''
@@ -208,7 +208,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:05:22 GMT
 - request:
     method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/operationStatuses/08587379797961339495?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/operationStatuses/08587379797961339495?api-version=2016-09-01
     body:
       encoding: US-ASCII
       string: ''
@@ -259,7 +259,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:05:52 GMT
 - request:
     method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test?api-version=2016-09-01
     body:
       encoding: US-ASCII
       string: ''
@@ -308,7 +308,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:05:52 GMT
 - request:
     method: post
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"properties":{"templateLink":{"uri":"https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json"},"parameters":{"databaseAccountName":{"value":"mydocs-test"}},"mode":"Incremental"}}'
@@ -359,7 +359,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:05:53 GMT
 - request:
     method: post
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"properties":{"templateLink":{"uri":"https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json"},"parameters":{"databaseAccountName":{"value":"mydocs-test"}},"mode":"Incremental"}}'
@@ -410,7 +410,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:05:55 GMT
 - request:
     method: post
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"properties":{"templateLink":{"uri":"https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json"},"parameters":{"databaseAccountName":{"value":"mydocs-test"}},"mode":"Incremental"}}'
@@ -461,7 +461,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:05:57 GMT
 - request:
     method: post
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"properties":{"templateLink":{"uri":"https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json"},"parameters":{"databaseAccountName":{"value":"mydocs-test"}},"mode":"Incremental"}}'
@@ -512,7 +512,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:05:58 GMT
 - request:
     method: post
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"properties":{"templateLink":{"uri":"https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json"},"parameters":{"databaseAccountName":{"value":"mydocs-test"}},"mode":"Incremental"}}'
@@ -563,7 +563,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:06:00 GMT
 - request:
     method: post
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"properties":{"templateLink":{"uri":"https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json"},"parameters":{"databaseAccountName":{"value":"mydocs-test"}},"mode":"Incremental"}}'
@@ -614,7 +614,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:06:02 GMT
 - request:
     method: post
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"properties":{"templateLink":{"uri":"https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json"},"parameters":{"databaseAccountName":{"value":"mydocs-test"}},"mode":"Incremental"}}'
@@ -665,7 +665,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:06:04 GMT
 - request:
     method: post
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"properties":{"templateLink":{"uri":"https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json"},"parameters":{"databaseAccountName":{"value":"mydocs-test"}},"mode":"Incremental"}}'
@@ -716,7 +716,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:06:06 GMT
 - request:
     method: post
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"properties":{"templateLink":{"uri":"https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json"},"parameters":{"databaseAccountName":{"value":"mydocs-test"}},"mode":"Incremental"}}'
@@ -767,7 +767,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:06:07 GMT
 - request:
     method: post
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"properties":{"templateLink":{"uri":"https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json"},"parameters":{"databaseAccountName":{"value":"mydocs-test"}},"mode":"Incremental"}}'
@@ -818,7 +818,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:06:09 GMT
 - request:
     method: post
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/validate?api-version=2016-09-01
     body:
       encoding: UTF-8
       string: '{"properties":{"templateLink":{"uri":"https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-documentdb-account-create/azuredeploy.json"},"parameters":{"databaseAccountName":{"value":"mydocs-test"}},"mode":"Incremental"}}'
@@ -869,7 +869,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:06:11 GMT
 - request:
     method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/deployments/Deployment_test/operations?%24top=1&api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/deployments/Deployment_test/operations?%24top=1&api-version=2016-09-01
     body:
       encoding: US-ASCII
       string: ''
@@ -913,12 +913,12 @@ http_interactions:
       - '1077'
     body:
       encoding: ASCII-8BIT
-      string: '{"value":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/operations/D7909EE321144901","operationId":"D7909EE321144901","properties":{"provisioningOperation":"Create","provisioningState":"Succeeded","timestamp":"2016-05-19T03:05:44.1953285Z","duration":"PT53.1702406S","trackingId":"23d4a5df-0b36-47a8-9f57-0b854322c5ad","serviceRequestId":"76429486-d645-470c-9e00-cf0789f7affc","statusCode":"OK","targetResource":{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.DocumentDB/databaseAccounts/mydocs-test","resourceType":"Microsoft.DocumentDB/databaseAccounts","resourceName":"mydocs-test"}}}],"nextLink":"https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/deployments/Deployment_test/operations?%24top=1&api-version=2016-02-01&%24skiptoken=eyJuZXh0UGFydGl0aW9uS2V5IjoiMSE4IVFVRkNRVFEtIiwibmV4dFJvd0tleSI6IjEhMjI0IU9EZ3lOekZCUWpBNVFVWTBORFF5UTBGQ1FqQTVNREZFT1VaQk1EWkRRVGhmUkVWUVRFOVpUVVZPVkVsT1JFVllMVkpWUWxsVFJFdFVSVk5VT2pWR1FWcFZVa1U2TlVaTlIwMVVPalZHVWtWVFQxVlNRMFZUTFVSRlVFeFBXVTFGVGxRNk5VWlVSVk5VTFRBNE5UZzNNemM1TnprM09UWXhNek01TkRrMUxUQTROVGczTXpjNU56azNPVFl4TXpNNU5EazFMVEE0TlRnM016YzVOemszT1RZeE16TTVORGsxIn0%3d"}'
+      string: '{"value":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.Resources/deployments/Deployment_test/operations/D7909EE321144901","operationId":"D7909EE321144901","properties":{"provisioningOperation":"Create","provisioningState":"Succeeded","timestamp":"2016-05-19T03:05:44.1953285Z","duration":"PT53.1702406S","trackingId":"23d4a5df-0b36-47a8-9f57-0b854322c5ad","serviceRequestId":"76429486-d645-470c-9e00-cf0789f7affc","statusCode":"OK","targetResource":{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/RubySDKTest_azure_mgmt_resources/providers/Microsoft.DocumentDB/databaseAccounts/mydocs-test","resourceType":"Microsoft.DocumentDB/databaseAccounts","resourceName":"mydocs-test"}}}],"nextLink":"https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/deployments/Deployment_test/operations?%24top=1&api-version=2016-09-01&%24skiptoken=eyJuZXh0UGFydGl0aW9uS2V5IjoiMSE4IVFVRkNRVFEtIiwibmV4dFJvd0tleSI6IjEhMjI0IU9EZ3lOekZCUWpBNVFVWTBORFF5UTBGQ1FqQTVNREZFT1VaQk1EWkRRVGhmUkVWUVRFOVpUVVZPVkVsT1JFVllMVkpWUWxsVFJFdFVSVk5VT2pWR1FWcFZVa1U2TlVaTlIwMVVPalZHVWtWVFQxVlNRMFZUTFVSRlVFeFBXVTFGVGxRNk5VWlVSVk5VTFRBNE5UZzNNemM1TnprM09UWXhNek01TkRrMUxUQTROVGczTXpjNU56azNPVFl4TXpNNU5EazFMVEE0TlRnM016YzVOemszT1RZeE16TTVORGsxIn0%3d"}'
     http_version: 
   recorded_at: Thu, 19 May 2016 03:06:12 GMT
 - request:
     method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/deployments/Deployment_test/operations?%24skiptoken=eyJuZXh0UGFydGl0aW9uS2V5IjoiMSE4IVFVRkNRVFEtIiwibmV4dFJvd0tleSI6IjEhMjI0IU9EZ3lOekZCUWpBNVFVWTBORFF5UTBGQ1FqQTVNREZFT1VaQk1EWkRRVGhmUkVWUVRFOVpUVVZPVkVsT1JFVllMVkpWUWxsVFJFdFVSVk5VT2pWR1FWcFZVa1U2TlVaTlIwMVVPalZHVWtWVFQxVlNRMFZUTFVSRlVFeFBXVTFGVGxRNk5VWlVSVk5VTFRBNE5UZzNNemM1TnprM09UWXhNek01TkRrMUxUQTROVGczTXpjNU56azNPVFl4TXpNNU5EazFMVEE0TlRnM016YzVOemszT1RZeE16TTVORGsxIn0%3D&%24top=1&api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources/deployments/Deployment_test/operations?%24skiptoken=eyJuZXh0UGFydGl0aW9uS2V5IjoiMSE4IVFVRkNRVFEtIiwibmV4dFJvd0tleSI6IjEhMjI0IU9EZ3lOekZCUWpBNVFVWTBORFF5UTBGQ1FqQTVNREZFT1VaQk1EWkRRVGhmUkVWUVRFOVpUVVZPVkVsT1JFVllMVkpWUWxsVFJFdFVSVk5VT2pWR1FWcFZVa1U2TlVaTlIwMVVPalZHVWtWVFQxVlNRMFZUTFVSRlVFeFBXVTFGVGxRNk5VWlVSVk5VTFRBNE5UZzNNemM1TnprM09UWXhNek01TkRrMUxUQTROVGczTXpjNU56azNPVFl4TXpNNU5EazFMVEE0TlRnM016YzVOemszT1RZeE16TTVORGsxIn0%3D&%24top=1&api-version=2016-09-01
     body:
       encoding: US-ASCII
       string: ''
@@ -967,7 +967,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:06:12 GMT
 - request:
     method: delete
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/RubySDKTest_azure_mgmt_resources?api-version=2016-09-01
     body:
       encoding: US-ASCII
       string: ''
@@ -990,7 +990,7 @@ http_interactions:
       expires:
       - "-1"
       location:
-      - https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SVUJZU0RLVEVTVDo1RkFaVVJFOjVGTUdNVDo1RlJFU09VUkNFUy1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-02-01
+      - https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SVUJZU0RLVEVTVDo1RkFaVVJFOjVGTUdNVDo1RlJFU09VUkNFUy1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01
       retry-after: '1'
       x-ms-ratelimit-remaining-subscription-writes:
       - '1196'
@@ -1015,7 +1015,7 @@ http_interactions:
   recorded_at: Thu, 19 May 2016 03:06:12 GMT
 - request:
     method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SVUJZU0RLVEVTVDo1RkFaVVJFOjVGTUdNVDo1RlJFU09VUkNFUy1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SVUJZU0RLVEVTVDo1RkFaVVJFOjVGTUdNVDo1RlJFU09VUkNFUy1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-09-01
     body:
       encoding: US-ASCII
       string: ''

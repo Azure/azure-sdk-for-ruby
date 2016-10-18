@@ -8,30 +8,43 @@ module Azure::ARM::NotificationHubs
     #
     # Description of a NotificationHub Resource.
     #
-    class NotificationHubResource
+    class NotificationHubResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the id of the created NotificationHub.
-      attr_accessor :id
+      # @return [String] The NotificationHub name.
+      attr_accessor :notification_hub_resource_name
 
-      # @return [String] Gets or sets datacenter location of the
-      # NotificationHub.
-      attr_accessor :location
+      # @return [String] The RegistrationTtl of the created NotificationHub
+      attr_accessor :registration_ttl
 
-      # @return [String] Gets or sets name of the NotificationHub.
-      attr_accessor :name
+      # @return [Array<SharedAccessAuthorizationRuleProperties>] The
+      # AuthorizationRules of the created NotificationHub
+      attr_accessor :authorization_rules
 
-      # @return [String] Gets or sets resource type of the NotificationHub.
-      attr_accessor :type
+      # @return [ApnsCredential] The ApnsCredential of the created
+      # NotificationHub
+      attr_accessor :apns_credential
 
-      # @return [Hash{String => String}] Gets or sets tags of the
-      # NotificationHub.
-      attr_accessor :tags
+      # @return [WnsCredential] The WnsCredential of the created
+      # NotificationHub
+      attr_accessor :wns_credential
 
-      # @return [NotificationHubProperties] Gets or sets properties of the
-      # NotificationHub.
-      attr_accessor :properties
+      # @return [GcmCredential] The GcmCredential of the created
+      # NotificationHub
+      attr_accessor :gcm_credential
+
+      # @return [MpnsCredential] The MpnsCredential of the created
+      # NotificationHub
+      attr_accessor :mpns_credential
+
+      # @return [AdmCredential] The AdmCredential of the created
+      # NotificationHub
+      attr_accessor :adm_credential
+
+      # @return [BaiduCredential] The BaiduCredential of the created
+      # NotificationHub
+      attr_accessor :baidu_credential
 
 
       #
@@ -48,20 +61,15 @@ module Azure::ARM::NotificationHubs
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -69,7 +77,15 @@ module Azure::ARM::NotificationHubs
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
+                type: {
+                  name: 'String'
+                }
+              },
+              location: {
+                required: true,
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
@@ -88,12 +104,89 @@ module Azure::ARM::NotificationHubs
                   }
                 }
               },
-              properties: {
+              sku: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'sku',
                 type: {
                   name: 'Composite',
-                  class_name: 'NotificationHubProperties'
+                  class_name: 'Sku'
+                }
+              },
+              notification_hub_resource_name: {
+                required: false,
+                serialized_name: 'properties.name',
+                type: {
+                  name: 'String'
+                }
+              },
+              registration_ttl: {
+                required: false,
+                serialized_name: 'properties.registrationTtl',
+                type: {
+                  name: 'String'
+                }
+              },
+              authorization_rules: {
+                required: false,
+                serialized_name: 'properties.authorizationRules',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'SharedAccessAuthorizationRulePropertiesElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'SharedAccessAuthorizationRuleProperties'
+                      }
+                  }
+                }
+              },
+              apns_credential: {
+                required: false,
+                serialized_name: 'properties.apnsCredential',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ApnsCredential'
+                }
+              },
+              wns_credential: {
+                required: false,
+                serialized_name: 'properties.wnsCredential',
+                type: {
+                  name: 'Composite',
+                  class_name: 'WnsCredential'
+                }
+              },
+              gcm_credential: {
+                required: false,
+                serialized_name: 'properties.gcmCredential',
+                type: {
+                  name: 'Composite',
+                  class_name: 'GcmCredential'
+                }
+              },
+              mpns_credential: {
+                required: false,
+                serialized_name: 'properties.mpnsCredential',
+                type: {
+                  name: 'Composite',
+                  class_name: 'MpnsCredential'
+                }
+              },
+              adm_credential: {
+                required: false,
+                serialized_name: 'properties.admCredential',
+                type: {
+                  name: 'Composite',
+                  class_name: 'AdmCredential'
+                }
+              },
+              baidu_credential: {
+                required: false,
+                serialized_name: 'properties.baiduCredential',
+                type: {
+                  name: 'Composite',
+                  class_name: 'BaiduCredential'
                 }
               }
             }

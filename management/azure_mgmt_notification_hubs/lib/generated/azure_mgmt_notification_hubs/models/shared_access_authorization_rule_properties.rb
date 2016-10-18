@@ -12,33 +12,8 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      # @return [String] The primary key that was used.
-      attr_accessor :primary_key
-
-      # @return [String] The secondary key that was used.
-      attr_accessor :secondary_key
-
-      # @return [String] The name of the key that was used.
-      attr_accessor :key_name
-
-      # @return [String] The type of the claim.
-      attr_accessor :claim_type
-
-      # @return [String] The value of the claim.
-      attr_accessor :claim_value
-
       # @return [Array<AccessRights>] The rights associated with the rule.
       attr_accessor :rights
-
-      # @return [DateTime] The time at which the authorization rule was
-      # created.
-      attr_accessor :created_time
-
-      # @return [DateTime] The most recent time the rule was updated.
-      attr_accessor :modified_time
-
-      # @return [Integer] The revision number for the rule.
-      attr_accessor :revision
 
 
       #
@@ -53,41 +28,6 @@ module Azure::ARM::NotificationHubs
             name: 'Composite',
             class_name: 'SharedAccessAuthorizationRuleProperties',
             model_properties: {
-              primary_key: {
-                required: false,
-                serialized_name: 'primaryKey',
-                type: {
-                  name: 'String'
-                }
-              },
-              secondary_key: {
-                required: false,
-                serialized_name: 'secondaryKey',
-                type: {
-                  name: 'String'
-                }
-              },
-              key_name: {
-                required: false,
-                serialized_name: 'keyName',
-                type: {
-                  name: 'String'
-                }
-              },
-              claim_type: {
-                required: false,
-                serialized_name: 'claimType',
-                type: {
-                  name: 'String'
-                }
-              },
-              claim_value: {
-                required: false,
-                serialized_name: 'claimValue',
-                type: {
-                  name: 'String'
-                }
-              },
               rights: {
                 required: false,
                 serialized_name: 'rights',
@@ -101,27 +41,6 @@ module Azure::ARM::NotificationHubs
                         module: 'AccessRights'
                       }
                   }
-                }
-              },
-              created_time: {
-                required: false,
-                serialized_name: 'createdTime',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              modified_time: {
-                required: false,
-                serialized_name: 'modifiedTime',
-                type: {
-                  name: 'DateTime'
-                }
-              },
-              revision: {
-                required: false,
-                serialized_name: 'revision',
-                type: {
-                  name: 'Number'
                 }
               }
             }

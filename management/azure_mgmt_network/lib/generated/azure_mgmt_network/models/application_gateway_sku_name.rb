@@ -12,6 +12,8 @@ module Azure::ARM::Network
       StandardSmall = "Standard_Small"
       StandardMedium = "Standard_Medium"
       StandardLarge = "Standard_Large"
+      WAFMedium = "WAF_Medium"
+      WAFLarge = "WAF_Large"
     end
   end
 end

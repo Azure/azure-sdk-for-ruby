@@ -12,21 +12,30 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the ID of the resource
-      # (/subscriptions/SubscriptionId).
+      # @return [String] The fully qualified Id. For example,
+      # /subscriptions/00000000-0000-0000-0000-000000000000.
       attr_accessor :id
 
-      # @return [String] Gets or sets the subscription Id.
+      # @return [String] The subscription Id.
       attr_accessor :subscription_id
 
-      # @return [String] Gets or sets the subscription display name
+      # @return [String] The tenant Id.
+      attr_accessor :tenant_id
+
+      # @return [String] The subscription display name.
       attr_accessor :display_name
 
-      # @return [String] Gets or sets the subscription state
+      # @return [SubscriptionState] The subscription state. Possible values
+      # include: 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted'
       attr_accessor :state
 
-      # @return [SubscriptionPolicies] Gets or sets the subscription policies.
+      # @return [SubscriptionPolicies] The subscription policies.
       attr_accessor :subscription_policies
+
+      # @return [String] The authorization source of the request. Valid values
+      # are one or more combinations of Legacy, RoleBased, Bypassed, Direct
+      # and Management. For example, 'Legacy, RoleBased'.
+      attr_accessor :authorization_source
 
 
       #
@@ -43,6 +52,7 @@ module Azure::ARM::Subscriptions
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
@@ -50,13 +60,23 @@ module Azure::ARM::Subscriptions
               },
               subscription_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'subscriptionId',
+                type: {
+                  name: 'String'
+                }
+              },
+              tenant_id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'tenantId',
                 type: {
                   name: 'String'
                 }
               },
               display_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'displayName',
                 type: {
                   name: 'String'
@@ -64,9 +84,11 @@ module Azure::ARM::Subscriptions
               },
               state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'state',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'SubscriptionState'
                 }
               },
               subscription_policies: {
@@ -75,6 +97,13 @@ module Azure::ARM::Subscriptions
                 type: {
                   name: 'Composite',
                   class_name: 'SubscriptionPolicies'
+                }
+              },
+              authorization_source: {
+                required: false,
+                serialized_name: 'authorizationSource',
+                type: {
+                  name: 'String'
                 }
               }
             }

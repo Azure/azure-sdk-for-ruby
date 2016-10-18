@@ -58,7 +58,7 @@ module Azure::ARM::NotificationHubs
 
       @namespaces = Namespaces.new(self)
       @notification_hubs = NotificationHubs.new(self)
-      @api_version = '2014-09-01'
+      @api_version = '2016-03-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

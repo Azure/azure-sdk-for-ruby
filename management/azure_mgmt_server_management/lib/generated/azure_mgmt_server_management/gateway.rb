@@ -30,17 +30,17 @@ module Azure::ARM::ServerManagement
     # @param gateway_name [String] The gateway name (256 characters maximum).
     # @param location [String] location of the resource
     # @param tags resource tags
-    # @param auto_upgrade [AutoUpgrade] The autoUpgrade property gives the
+    # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
-    # specified, then we assume autoUpgrade = Off. Possible values include: 'On',
-    # 'Off'
+    # specified, then we assume upgradeMode = Automatic. Possible values include:
+    # 'Manual', 'Automatic'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [GatewayResource] operation results.
     #
-    def create(resource_group_name, gateway_name, location = nil, tags = nil, auto_upgrade = nil, custom_headers = nil)
-      response = create_async(resource_group_name, gateway_name, location, tags, auto_upgrade, custom_headers).value!
+    def create(resource_group_name, gateway_name, location = nil, tags = nil, upgrade_mode = nil, custom_headers = nil)
+      response = create_async(resource_group_name, gateway_name, location, tags, upgrade_mode, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -50,19 +50,19 @@ module Azure::ARM::ServerManagement
     # @param gateway_name [String] The gateway name (256 characters maximum).
     # @param location [String] location of the resource
     # @param tags resource tags
-    # @param auto_upgrade [AutoUpgrade] The autoUpgrade property gives the
+    # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
-    # specified, then we assume autoUpgrade = Off. Possible values include: 'On',
-    # 'Off'
+    # specified, then we assume upgradeMode = Automatic. Possible values include:
+    # 'Manual', 'Automatic'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(resource_group_name, gateway_name, location = nil, tags = nil, auto_upgrade = nil, custom_headers = nil)
+    def create_async(resource_group_name, gateway_name, location = nil, tags = nil, upgrade_mode = nil, custom_headers = nil)
       # Send request
-      promise = begin_create_async(resource_group_name, gateway_name, location, tags, auto_upgrade, custom_headers)
+      promise = begin_create_async(resource_group_name, gateway_name, location, tags, upgrade_mode, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -86,17 +86,17 @@ module Azure::ARM::ServerManagement
     # @param gateway_name [String] The gateway name (256 characters maximum).
     # @param location [String] location of the resource
     # @param tags resource tags
-    # @param auto_upgrade [AutoUpgrade] The autoUpgrade property gives the
+    # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
-    # specified, then we assume autoUpgrade = Off. Possible values include: 'On',
-    # 'Off'
+    # specified, then we assume upgradeMode = Automatic. Possible values include:
+    # 'Manual', 'Automatic'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [GatewayResource] operation results.
     #
-    def begin_create(resource_group_name, gateway_name, location = nil, tags = nil, auto_upgrade = nil, custom_headers = nil)
-      response = begin_create_async(resource_group_name, gateway_name, location, tags, auto_upgrade, custom_headers).value!
+    def begin_create(resource_group_name, gateway_name, location = nil, tags = nil, upgrade_mode = nil, custom_headers = nil)
+      response = begin_create_async(resource_group_name, gateway_name, location, tags, upgrade_mode, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -108,17 +108,17 @@ module Azure::ARM::ServerManagement
     # @param gateway_name [String] The gateway name (256 characters maximum).
     # @param location [String] location of the resource
     # @param tags resource tags
-    # @param auto_upgrade [AutoUpgrade] The autoUpgrade property gives the
+    # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
-    # specified, then we assume autoUpgrade = Off. Possible values include: 'On',
-    # 'Off'
+    # specified, then we assume upgradeMode = Automatic. Possible values include:
+    # 'Manual', 'Automatic'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(resource_group_name, gateway_name, location = nil, tags = nil, auto_upgrade = nil, custom_headers = nil)
-      begin_create_async(resource_group_name, gateway_name, location, tags, auto_upgrade, custom_headers).value!
+    def begin_create_with_http_info(resource_group_name, gateway_name, location = nil, tags = nil, upgrade_mode = nil, custom_headers = nil)
+      begin_create_async(resource_group_name, gateway_name, location, tags, upgrade_mode, custom_headers).value!
     end
 
     #
@@ -129,26 +129,26 @@ module Azure::ARM::ServerManagement
     # @param gateway_name [String] The gateway name (256 characters maximum).
     # @param location [String] location of the resource
     # @param tags resource tags
-    # @param auto_upgrade [AutoUpgrade] The autoUpgrade property gives the
+    # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
-    # specified, then we assume autoUpgrade = Off. Possible values include: 'On',
-    # 'Off'
+    # specified, then we assume upgradeMode = Automatic. Possible values include:
+    # 'Manual', 'Automatic'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(resource_group_name, gateway_name, location = nil, tags = nil, auto_upgrade = nil, custom_headers = nil)
+    def begin_create_async(resource_group_name, gateway_name, location = nil, tags = nil, upgrade_mode = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
 
       gateway_parameters = GatewayParameters.new
-      unless location.nil? && tags.nil? && auto_upgrade.nil?
+      unless location.nil? && tags.nil? && upgrade_mode.nil?
         gateway_parameters.location = location
         gateway_parameters.tags = tags
-        gateway_parameters.auto_upgrade = auto_upgrade
+        gateway_parameters.upgrade_mode = upgrade_mode
       end
 
       request_headers = {}
@@ -223,17 +223,17 @@ module Azure::ARM::ServerManagement
     # @param gateway_name [String] The gateway name (256 characters maximum).
     # @param location [String] location of the resource
     # @param tags resource tags
-    # @param auto_upgrade [AutoUpgrade] The autoUpgrade property gives the
+    # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
-    # specified, then we assume autoUpgrade = Off. Possible values include: 'On',
-    # 'Off'
+    # specified, then we assume upgradeMode = Automatic. Possible values include:
+    # 'Manual', 'Automatic'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [GatewayResource] operation results.
     #
-    def update(resource_group_name, gateway_name, location = nil, tags = nil, auto_upgrade = nil, custom_headers = nil)
-      response = update_async(resource_group_name, gateway_name, location, tags, auto_upgrade, custom_headers).value!
+    def update(resource_group_name, gateway_name, location = nil, tags = nil, upgrade_mode = nil, custom_headers = nil)
+      response = update_async(resource_group_name, gateway_name, location, tags, upgrade_mode, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -243,19 +243,19 @@ module Azure::ARM::ServerManagement
     # @param gateway_name [String] The gateway name (256 characters maximum).
     # @param location [String] location of the resource
     # @param tags resource tags
-    # @param auto_upgrade [AutoUpgrade] The autoUpgrade property gives the
+    # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
-    # specified, then we assume autoUpgrade = Off. Possible values include: 'On',
-    # 'Off'
+    # specified, then we assume upgradeMode = Automatic. Possible values include:
+    # 'Manual', 'Automatic'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_async(resource_group_name, gateway_name, location = nil, tags = nil, auto_upgrade = nil, custom_headers = nil)
+    def update_async(resource_group_name, gateway_name, location = nil, tags = nil, upgrade_mode = nil, custom_headers = nil)
       # Send request
-      promise = begin_update_async(resource_group_name, gateway_name, location, tags, auto_upgrade, custom_headers)
+      promise = begin_update_async(resource_group_name, gateway_name, location, tags, upgrade_mode, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -279,17 +279,17 @@ module Azure::ARM::ServerManagement
     # @param gateway_name [String] The gateway name (256 characters maximum).
     # @param location [String] location of the resource
     # @param tags resource tags
-    # @param auto_upgrade [AutoUpgrade] The autoUpgrade property gives the
+    # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
-    # specified, then we assume autoUpgrade = Off. Possible values include: 'On',
-    # 'Off'
+    # specified, then we assume upgradeMode = Automatic. Possible values include:
+    # 'Manual', 'Automatic'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [GatewayResource] operation results.
     #
-    def begin_update(resource_group_name, gateway_name, location = nil, tags = nil, auto_upgrade = nil, custom_headers = nil)
-      response = begin_update_async(resource_group_name, gateway_name, location, tags, auto_upgrade, custom_headers).value!
+    def begin_update(resource_group_name, gateway_name, location = nil, tags = nil, upgrade_mode = nil, custom_headers = nil)
+      response = begin_update_async(resource_group_name, gateway_name, location, tags, upgrade_mode, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -301,17 +301,17 @@ module Azure::ARM::ServerManagement
     # @param gateway_name [String] The gateway name (256 characters maximum).
     # @param location [String] location of the resource
     # @param tags resource tags
-    # @param auto_upgrade [AutoUpgrade] The autoUpgrade property gives the
+    # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
-    # specified, then we assume autoUpgrade = Off. Possible values include: 'On',
-    # 'Off'
+    # specified, then we assume upgradeMode = Automatic. Possible values include:
+    # 'Manual', 'Automatic'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_with_http_info(resource_group_name, gateway_name, location = nil, tags = nil, auto_upgrade = nil, custom_headers = nil)
-      begin_update_async(resource_group_name, gateway_name, location, tags, auto_upgrade, custom_headers).value!
+    def begin_update_with_http_info(resource_group_name, gateway_name, location = nil, tags = nil, upgrade_mode = nil, custom_headers = nil)
+      begin_update_async(resource_group_name, gateway_name, location, tags, upgrade_mode, custom_headers).value!
     end
 
     #
@@ -322,26 +322,26 @@ module Azure::ARM::ServerManagement
     # @param gateway_name [String] The gateway name (256 characters maximum).
     # @param location [String] location of the resource
     # @param tags resource tags
-    # @param auto_upgrade [AutoUpgrade] The autoUpgrade property gives the
+    # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
-    # specified, then we assume autoUpgrade = Off. Possible values include: 'On',
-    # 'Off'
+    # specified, then we assume upgradeMode = Automatic. Possible values include:
+    # 'Manual', 'Automatic'
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_async(resource_group_name, gateway_name, location = nil, tags = nil, auto_upgrade = nil, custom_headers = nil)
+    def begin_update_async(resource_group_name, gateway_name, location = nil, tags = nil, upgrade_mode = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'gateway_name is nil' if gateway_name.nil?
 
       gateway_parameters = GatewayParameters.new
-      unless location.nil? && tags.nil? && auto_upgrade.nil?
+      unless location.nil? && tags.nil? && upgrade_mode.nil?
         gateway_parameters.location = location
         gateway_parameters.tags = tags
-        gateway_parameters.auto_upgrade = auto_upgrade
+        gateway_parameters.upgrade_mode = upgrade_mode
       end
 
       request_headers = {}

@@ -33,7 +33,7 @@ module Azure::ARM::Web
             class_name: 'IpSecurityRestriction',
             model_properties: {
               ip_address: {
-                required: false,
+                required: true,
                 serialized_name: 'ipAddress',
                 type: {
                   name: 'String'

@@ -30,7 +30,7 @@
       ]
     },
     "azure_mgmt_cdn": {
-      "swagger": "arm-cdn/2016-04-02/swagger/cdn.json",
+      "swagger": "arm-cdn/2016-10-02/swagger/cdn.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::CDN",
         "PackageName": "azure_mgmt_cdn",
@@ -176,7 +176,7 @@
       ]
     },
     "azure_mgmt_locks": {
-      "swagger": "arm-resources/locks/2015-01-01/swagger/locks.json",
+      "swagger": "arm-resources/locks/2016-09-01/swagger/locks.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Locks",
         "PackageName": "azure_mgmt_locks",
@@ -188,10 +188,11 @@
       ]
     },
     "azure_mgmt_logic": {
-      "swagger": "arm-logic/2015-08-01-preview/swagger/logic.json",
+      "swagger": "arm-logic/CompositeLogicClient.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Logic",
         "PackageName": "azure_mgmt_logic",
+        "Modeler": "CompositeSwagger",
         "PackageVersion": "0.7.0"
       },
       "output_dir": "management/azure_mgmt_logic/lib",
@@ -236,7 +237,7 @@
       ]
     },
     "azure_mgmt_network": {
-      "swagger": "arm-network/2016-06-01/swagger/network.json",
+      "swagger": "arm-network/2016-09-01/swagger/network.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Network",
         "PackageName": "azure_mgmt_network",
@@ -248,7 +249,7 @@
       ]
     },
     "azure_mgmt_notification_hubs": {
-      "swagger": "arm-notificationhubs/2014-09-01/swagger/notificationhubs.json",
+      "swagger": "arm-notificationhubs/2016-03-01/swagger/notificationhubs.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::NotificationHubs",
         "PackageName": "azure_mgmt_notification_hubs",
@@ -296,7 +297,7 @@
       ]
     },
     "azure_mgmt_resources": {
-      "swagger": "arm-resources/resources/2016-02-01/swagger/resources.json",
+      "swagger": "arm-resources/resources/2016-09-01/swagger/resources.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Resources",
         "PackageName": "azure_mgmt_resources",
@@ -332,7 +333,7 @@
       ]
     },
     "azure_mgmt_server_management": {
-      "swagger": "arm-servermanagement/2015-07-01-preview/servermanagement.json",
+      "swagger": "arm-servermanagement/2016-07-01-preview/servermanagement.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::ServerManagement",
         "PackageName": "azure_mgmt_server_management",
@@ -380,7 +381,7 @@
       ]
     },
     "azure_mgmt_subscriptions": {
-      "swagger": "arm-resources/subscriptions/2015-11-01/swagger/subscriptions.json",
+      "swagger": "arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Subscriptions",
         "PackageName": "azure_mgmt_subscriptions",
@@ -404,10 +405,11 @@
       ]
     },
     "azure_mgmt_web": {
-      "swagger": "arm-web/2015-08-01/swagger/service.json",
+      "swagger": "arm-web/compositeWebAppClient.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Web",
         "PackageName": "azure_mgmt_web",
+        "Modeler": "CompositeSwagger",
         "PackageVersion": "0.7.0"
       },
       "output_dir": "management/azure_mgmt_web/lib",

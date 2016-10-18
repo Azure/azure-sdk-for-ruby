@@ -68,6 +68,10 @@ module Azure::ARM::Network
       # rules of application gateway resource
       attr_accessor :request_routing_rules
 
+      # @return [ApplicationGatewayWebApplicationFirewallConfiguration] Web
+      # application firewall configuration
+      attr_accessor :web_application_firewall_configuration
+
       # @return [String] Resource guid property of the ApplicationGateway
       # resource
       attr_accessor :resource_guid
@@ -324,6 +328,14 @@ module Azure::ARM::Network
                         class_name: 'ApplicationGatewayRequestRoutingRule'
                       }
                   }
+                }
+              },
+              web_application_firewall_configuration: {
+                required: false,
+                serialized_name: 'properties.webApplicationFirewallConfiguration',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ApplicationGatewayWebApplicationFirewallConfiguration'
                 }
               },
               resource_guid: {

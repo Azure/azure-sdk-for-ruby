@@ -27,6 +27,9 @@ module Azure::ARM::Resources
       # East Asia, etc.
       attr_accessor :location
 
+      # @return [String] Id of the resource that manages this resource group.
+      attr_accessor :managed_by
+
       # @return [Hash{String => String}] The tags attached to the resource
       # group.
       attr_accessor :tags
@@ -70,6 +73,13 @@ module Azure::ARM::Resources
               location: {
                 required: true,
                 serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              managed_by: {
+                required: false,
+                serialized_name: 'managedBy',
                 type: {
                   name: 'String'
                 }

@@ -23,7 +23,7 @@ module Azure::ARM::Subscriptions
     attr_reader :client
 
     #
-    # Gets a list of the tenantIds.
+    # Gets a list of tenants.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -43,7 +43,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the tenantIds.
+    # Gets a list of tenants.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -56,7 +56,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the tenantIds.
+    # Gets a list of tenants.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -68,7 +68,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the tenantIds.
+    # Gets a list of tenants.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -124,7 +124,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the tenantIds.
+    # Gets a list of tenants.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -139,7 +139,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the tenantIds.
+    # Gets a list of tenants.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -153,7 +153,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the tenantIds.
+    # Gets a list of tenants.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.

@@ -5,7 +5,7 @@
 
 module Azure::ARM::Logic
   #
-  # WorkflowVersions
+  # Composite Swagger for Logic Management Client
   #
   class WorkflowVersions
     include Azure::ARM::Logic::Models
@@ -91,7 +91,7 @@ module Azure::ARM::Logic
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-06-01'
 
 
       request_headers = {}
@@ -106,7 +106,7 @@ module Azure::ARM::Logic
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workflowName' => workflow_name},
-          query_params: {'api-version' => @client.api_version,'$top' => top},
+          query_params: {'api-version' => api_version,'$top' => top},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -186,7 +186,7 @@ module Azure::ARM::Logic
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
       fail ArgumentError, 'version_id is nil' if version_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-06-01'
 
 
       request_headers = {}
@@ -201,7 +201,7 @@ module Azure::ARM::Logic
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workflowName' => workflow_name,'versionId' => version_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }

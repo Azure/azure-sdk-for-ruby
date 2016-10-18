@@ -12,9 +12,14 @@ module Azure::ARM::NotificationHubs
 
       include MsRestAzure
 
-      # @return [WnsCredentialProperties] Gets or sets properties of
-      # NotificationHub WnsCredential.
-      attr_accessor :properties
+      # @return [String] The package ID for this credential.
+      attr_accessor :package_sid
+
+      # @return [String] The secret key.
+      attr_accessor :secret_key
+
+      # @return [String] The Windows Live endpoint.
+      attr_accessor :windows_live_endpoint
 
 
       #
@@ -29,12 +34,25 @@ module Azure::ARM::NotificationHubs
             name: 'Composite',
             class_name: 'WnsCredential',
             model_properties: {
-              properties: {
+              package_sid: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.packageSid',
                 type: {
-                  name: 'Composite',
-                  class_name: 'WnsCredentialProperties'
+                  name: 'String'
+                }
+              },
+              secret_key: {
+                required: false,
+                serialized_name: 'properties.secretKey',
+                type: {
+                  name: 'String'
+                }
+              },
+              windows_live_endpoint: {
+                required: false,
+                serialized_name: 'properties.windowsLiveEndpoint',
+                type: {
+                  name: 'String'
                 }
               }
             }

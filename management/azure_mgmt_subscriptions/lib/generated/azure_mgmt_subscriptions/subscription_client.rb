@@ -53,7 +53,7 @@ module Azure::ARM::Subscriptions
 
       @subscriptions = Subscriptions.new(self)
       @tenants = Tenants.new(self)
-      @api_version = '2015-11-01'
+      @api_version = '2016-06-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
