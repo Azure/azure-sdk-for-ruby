@@ -5,14 +5,7 @@
 
 module Azure::ARM::Web
   #
-  # Use these APIs to manage Azure Websites resources through the Azure
-  # Resource Manager. All task operations conform to the HTTP/1.1 protocol
-  # specification and each operation returns an x-ms-request-id header that
-  # can be used to obtain information about the request. You must make sure
-  # that requests made to these resources are secure. For more information,
-  # see <a
-  # href="https://msdn.microsoft.com/en-us/library/azure/dn790557.aspx">Authenticating
-  # Azure Resource Manager requests.</a>
+  # Composite Swagger for WebSite Management Client
   #
   class Certificates
     include Azure::ARM::Web::Models
@@ -30,6 +23,119 @@ module Azure::ARM::Web
     attr_reader :client
 
     #
+    # Get all certificates for a subscription
+    #
+    # Get all certificates for a subscription
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CertificateCollection] which provide lazy access to pages of the
+    # response.
+    #
+    def list_as_lazy(custom_headers = nil)
+      response = list_async(custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Get all certificates for a subscription
+    #
+    # Get all certificates for a subscription
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<Certificate>] operation results.
+    #
+    def list(custom_headers = nil)
+      first_page = list_as_lazy(custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Get all certificates for a subscription
+    #
+    # Get all certificates for a subscription
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
+    end
+
+    #
+    # Get all certificates for a subscription
+    #
+    # Get all certificates for a subscription
+    #
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_async(custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-03-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Web/certificates'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = CertificateCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get certificates for a subscription in the specified resource group.
+    #
     # Get certificates for a subscription in the specified resource group.
     #
     # @param resource_group_name [String] Name of the resource group
@@ -39,17 +145,19 @@ module Azure::ARM::Web
     # @return [CertificateCollection] which provide lazy access to pages of the
     # response.
     #
-    def get_certificates_as_lazy(resource_group_name, custom_headers = nil)
-      response = get_certificates_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          get_certificates_next_async(next_page_link, custom_headers)
+          list_by_resource_group_next_async(next_page_link, custom_headers)
         end
         page
       end
     end
 
+    #
+    # Get certificates for a subscription in the specified resource group.
     #
     # Get certificates for a subscription in the specified resource group.
     #
@@ -59,11 +167,13 @@ module Azure::ARM::Web
     #
     # @return [Array<Certificate>] operation results.
     #
-    def get_certificates(resource_group_name, custom_headers = nil)
-      first_page = get_certificates_as_lazy(resource_group_name, custom_headers)
+    def list_by_resource_group(resource_group_name, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
       first_page.get_all_items
     end
 
+    #
+    # Get certificates for a subscription in the specified resource group.
     #
     # Get certificates for a subscription in the specified resource group.
     #
@@ -73,10 +183,12 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_certificates_with_http_info(resource_group_name, custom_headers = nil)
-      get_certificates_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, custom_headers).value!
     end
 
+    #
+    # Get certificates for a subscription in the specified resource group.
     #
     # Get certificates for a subscription in the specified resource group.
     #
@@ -86,10 +198,10 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_certificates_async(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -104,7 +216,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -141,6 +253,9 @@ module Azure::ARM::Web
     # Get a certificate by certificate name for a subscription in the specified
     # resource group.
     #
+    # Get a certificate by certificate name for a subscription in the specified
+    # resource group.
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -148,11 +263,14 @@ module Azure::ARM::Web
     #
     # @return [Certificate] operation results.
     #
-    def get_certificate(resource_group_name, name, custom_headers = nil)
-      response = get_certificate_async(resource_group_name, name, custom_headers).value!
+    def get(resource_group_name, name, custom_headers = nil)
+      response = get_async(resource_group_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
+    #
+    # Get a certificate by certificate name for a subscription in the specified
+    # resource group.
     #
     # Get a certificate by certificate name for a subscription in the specified
     # resource group.
@@ -164,10 +282,13 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_certificate_with_http_info(resource_group_name, name, custom_headers = nil)
-      get_certificate_async(resource_group_name, name, custom_headers).value!
+    def get_with_http_info(resource_group_name, name, custom_headers = nil)
+      get_async(resource_group_name, name, custom_headers).value!
     end
 
+    #
+    # Get a certificate by certificate name for a subscription in the specified
+    # resource group.
     #
     # Get a certificate by certificate name for a subscription in the specified
     # resource group.
@@ -179,11 +300,11 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_certificate_async(resource_group_name, name, custom_headers = nil)
+    def get_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -198,7 +319,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -234,6 +355,8 @@ module Azure::ARM::Web
     #
     # Creates or modifies an existing certificate.
     #
+    # Creates or modifies an existing certificate.
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the certificate.
     # @param certificate_envelope [Certificate] Details of certificate if it
@@ -243,11 +366,13 @@ module Azure::ARM::Web
     #
     # @return [Certificate] operation results.
     #
-    def create_or_update_certificate(resource_group_name, name, certificate_envelope, custom_headers = nil)
-      response = create_or_update_certificate_async(resource_group_name, name, certificate_envelope, custom_headers).value!
+    def create_or_update(resource_group_name, name, certificate_envelope, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, name, certificate_envelope, custom_headers).value!
       response.body unless response.nil?
     end
 
+    #
+    # Creates or modifies an existing certificate.
     #
     # Creates or modifies an existing certificate.
     #
@@ -260,10 +385,12 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_certificate_with_http_info(resource_group_name, name, certificate_envelope, custom_headers = nil)
-      create_or_update_certificate_async(resource_group_name, name, certificate_envelope, custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, name, certificate_envelope, custom_headers = nil)
+      create_or_update_async(resource_group_name, name, certificate_envelope, custom_headers).value!
     end
 
+    #
+    # Creates or modifies an existing certificate.
     #
     # Creates or modifies an existing certificate.
     #
@@ -276,12 +403,12 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_certificate_async(resource_group_name, name, certificate_envelope, custom_headers = nil)
+    def create_or_update_async(resource_group_name, name, certificate_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'certificate_envelope is nil' if certificate_envelope.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -304,7 +431,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -341,6 +468,8 @@ module Azure::ARM::Web
     #
     # Delete a certificate by name in a specificed subscription and resourcegroup.
     #
+    # Delete a certificate by name in a specificed subscription and resourcegroup.
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the certificate to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -348,11 +477,13 @@ module Azure::ARM::Web
     #
     # @return [Object] operation results.
     #
-    def delete_certificate(resource_group_name, name, custom_headers = nil)
-      response = delete_certificate_async(resource_group_name, name, custom_headers).value!
+    def delete(resource_group_name, name, custom_headers = nil)
+      response = delete_async(resource_group_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
+    #
+    # Delete a certificate by name in a specificed subscription and resourcegroup.
     #
     # Delete a certificate by name in a specificed subscription and resourcegroup.
     #
@@ -363,10 +494,12 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_certificate_with_http_info(resource_group_name, name, custom_headers = nil)
-      delete_certificate_async(resource_group_name, name, custom_headers).value!
+    def delete_with_http_info(resource_group_name, name, custom_headers = nil)
+      delete_async(resource_group_name, name, custom_headers).value!
     end
 
+    #
+    # Delete a certificate by name in a specificed subscription and resourcegroup.
     #
     # Delete a certificate by name in a specificed subscription and resourcegroup.
     #
@@ -377,11 +510,11 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_certificate_async(resource_group_name, name, custom_headers = nil)
+    def delete_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -396,7 +529,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -422,6 +555,8 @@ module Azure::ARM::Web
     #
     # Creates or modifies an existing certificate.
     #
+    # Creates or modifies an existing certificate.
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the certificate.
     # @param certificate_envelope [Certificate] Details of certificate if it
@@ -431,11 +566,13 @@ module Azure::ARM::Web
     #
     # @return [Certificate] operation results.
     #
-    def update_certificate(resource_group_name, name, certificate_envelope, custom_headers = nil)
-      response = update_certificate_async(resource_group_name, name, certificate_envelope, custom_headers).value!
+    def update(resource_group_name, name, certificate_envelope, custom_headers = nil)
+      response = update_async(resource_group_name, name, certificate_envelope, custom_headers).value!
       response.body unless response.nil?
     end
 
+    #
+    # Creates or modifies an existing certificate.
     #
     # Creates or modifies an existing certificate.
     #
@@ -448,10 +585,12 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_certificate_with_http_info(resource_group_name, name, certificate_envelope, custom_headers = nil)
-      update_certificate_async(resource_group_name, name, certificate_envelope, custom_headers).value!
+    def update_with_http_info(resource_group_name, name, certificate_envelope, custom_headers = nil)
+      update_async(resource_group_name, name, certificate_envelope, custom_headers).value!
     end
 
+    #
+    # Creates or modifies an existing certificate.
     #
     # Creates or modifies an existing certificate.
     #
@@ -464,12 +603,12 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_certificate_async(resource_group_name, name, certificate_envelope, custom_headers = nil)
+    def update_async(resource_group_name, name, certificate_envelope, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'certificate_envelope is nil' if certificate_envelope.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -492,7 +631,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -530,17 +669,23 @@ module Azure::ARM::Web
     # Gets the certificate signing requests for a subscription in the specified
     # resource group
     #
+    # Gets the certificate signing requests for a subscription in the specified
+    # resource group
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def get_csrs(resource_group_name, custom_headers = nil)
-      response = get_csrs_async(resource_group_name, custom_headers).value!
+    def list_csrs(resource_group_name, custom_headers = nil)
+      response = list_csrs_async(resource_group_name, custom_headers).value!
       response.body unless response.nil?
     end
 
+    #
+    # Gets the certificate signing requests for a subscription in the specified
+    # resource group
     #
     # Gets the certificate signing requests for a subscription in the specified
     # resource group
@@ -551,10 +696,13 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_csrs_with_http_info(resource_group_name, custom_headers = nil)
-      get_csrs_async(resource_group_name, custom_headers).value!
+    def list_csrs_with_http_info(resource_group_name, custom_headers = nil)
+      list_csrs_async(resource_group_name, custom_headers).value!
     end
 
+    #
+    # Gets the certificate signing requests for a subscription in the specified
+    # resource group
     #
     # Gets the certificate signing requests for a subscription in the specified
     # resource group
@@ -565,10 +713,10 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_csrs_async(resource_group_name, custom_headers = nil)
+    def list_csrs_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -583,7 +731,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -634,6 +782,9 @@ module Azure::ARM::Web
     # Gets a certificate signing request by certificate name for a subscription in
     # the specified resource group
     #
+    # Gets a certificate signing request by certificate name for a subscription in
+    # the specified resource group
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -646,6 +797,9 @@ module Azure::ARM::Web
       response.body unless response.nil?
     end
 
+    #
+    # Gets a certificate signing request by certificate name for a subscription in
+    # the specified resource group
     #
     # Gets a certificate signing request by certificate name for a subscription in
     # the specified resource group
@@ -665,6 +819,9 @@ module Azure::ARM::Web
     # Gets a certificate signing request by certificate name for a subscription in
     # the specified resource group
     #
+    # Gets a certificate signing request by certificate name for a subscription in
+    # the specified resource group
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the certificate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -676,7 +833,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -691,7 +848,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -727,6 +884,8 @@ module Azure::ARM::Web
     #
     # Creates or modifies an existing certificate signing request.
     #
+    # Creates or modifies an existing certificate signing request.
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the certificate.
     # @param csr_envelope [Csr] Details of certificate signing request if it
@@ -741,6 +900,8 @@ module Azure::ARM::Web
       response.body unless response.nil?
     end
 
+    #
+    # Creates or modifies an existing certificate signing request.
     #
     # Creates or modifies an existing certificate signing request.
     #
@@ -760,6 +921,8 @@ module Azure::ARM::Web
     #
     # Creates or modifies an existing certificate signing request.
     #
+    # Creates or modifies an existing certificate signing request.
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the certificate.
     # @param csr_envelope [Csr] Details of certificate signing request if it
@@ -774,7 +937,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'csr_envelope is nil' if csr_envelope.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -797,7 +960,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -834,6 +997,8 @@ module Azure::ARM::Web
     #
     # Delete the certificate signing request.
     #
+    # Delete the certificate signing request.
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the certificate signing request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -846,6 +1011,8 @@ module Azure::ARM::Web
       response.body unless response.nil?
     end
 
+    #
+    # Delete the certificate signing request.
     #
     # Delete the certificate signing request.
     #
@@ -863,6 +1030,8 @@ module Azure::ARM::Web
     #
     # Delete the certificate signing request.
     #
+    # Delete the certificate signing request.
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the certificate signing request.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -874,7 +1043,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -889,7 +1058,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -915,6 +1084,8 @@ module Azure::ARM::Web
     #
     # Creates or modifies an existing certificate signing request.
     #
+    # Creates or modifies an existing certificate signing request.
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the certificate.
     # @param csr_envelope [Csr] Details of certificate signing request if it
@@ -929,6 +1100,8 @@ module Azure::ARM::Web
       response.body unless response.nil?
     end
 
+    #
+    # Creates or modifies an existing certificate signing request.
     #
     # Creates or modifies an existing certificate signing request.
     #
@@ -948,6 +1121,8 @@ module Azure::ARM::Web
     #
     # Creates or modifies an existing certificate signing request.
     #
+    # Creates or modifies an existing certificate signing request.
+    #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the certificate.
     # @param csr_envelope [Csr] Details of certificate signing request if it
@@ -962,7 +1137,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'csr_envelope is nil' if csr_envelope.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -985,7 +1160,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1020,6 +1195,101 @@ module Azure::ARM::Web
     end
 
     #
+    # Get all certificates for a subscription
+    #
+    # Get all certificates for a subscription
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CertificateCollection] operation results.
+    #
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get all certificates for a subscription
+    #
+    # Get all certificates for a subscription
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Get all certificates for a subscription
+    #
+    # Get all certificates for a subscription
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = CertificateCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get certificates for a subscription in the specified resource group.
+    #
     # Get certificates for a subscription in the specified resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -1029,11 +1299,13 @@ module Azure::ARM::Web
     #
     # @return [CertificateCollection] operation results.
     #
-    def get_certificates_next(next_page_link, custom_headers = nil)
-      response = get_certificates_next_async(next_page_link, custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers = nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
+    #
+    # Get certificates for a subscription in the specified resource group.
     #
     # Get certificates for a subscription in the specified resource group.
     #
@@ -1044,10 +1316,12 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_certificates_next_with_http_info(next_page_link, custom_headers = nil)
-      get_certificates_next_async(next_page_link, custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers).value!
     end
 
+    #
+    # Get certificates for a subscription in the specified resource group.
     #
     # Get certificates for a subscription in the specified resource group.
     #
@@ -1058,7 +1332,7 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_certificates_next_async(next_page_link, custom_headers = nil)
+    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 

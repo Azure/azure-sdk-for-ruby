@@ -343,9 +343,10 @@ REGEN_METADATA = {
         tag: 'arm_trafficmgr'
     },
     azure_mgmt_web: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-web/2015-08-01/swagger/service.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-web/compositeWebAppClient.json',
         ns: 'Azure::ARM::Web',
         version: version,
+        modeler: "CompositeSwagger",
         tag: 'arm_web'
     },
 }

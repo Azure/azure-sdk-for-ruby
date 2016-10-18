@@ -12,9 +12,6 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [String] Name of web app
-      attr_accessor :site_name
-
       # @return [String] State of the web app
       attr_accessor :state
 
@@ -56,6 +53,9 @@ module Azure::ARM::Web
       # @return [String]
       attr_accessor :server_farm_id
 
+      # @return [Boolean] Reserved
+      attr_accessor :reserved
+
       # @return [DateTime] Last time web app was modified in UTC
       attr_accessor :last_modified_time_utc
 
@@ -82,7 +82,7 @@ module Azure::ARM::Web
       # environment (App Service Environment) to use for the web app
       attr_accessor :hosting_environment_profile
 
-      # @return [String]
+      # @return [String] Micro services like WebSites, Logic Apps
       attr_accessor :micro_service
 
       # @return [String] Name of gateway app associated with web app
@@ -109,6 +109,14 @@ module Azure::ARM::Web
 
       # @return [Integer] Size of a function container
       attr_accessor :container_size
+
+      # @return [Integer] Maximum allowed daily memory-time quota (applicable
+      # on dynamic sites only)
+      attr_accessor :daily_memory_time_quota
+
+      # @return [DateTime] Site suspended till in case memory-time quota is
+      # exceeded
+      attr_accessor :suspended_till
 
       # @return [Integer] Maximum number of workers
       # This only applies to function container
@@ -143,13 +151,14 @@ module Azure::ARM::Web
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -190,16 +199,8 @@ module Azure::ARM::Web
                   }
                 }
               },
-              site_name: {
-                required: false,
-                serialized_name: 'properties.name',
-                type: {
-                  name: 'String'
-                }
-              },
               state: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.state',
                 type: {
                   name: 'String'
@@ -207,7 +208,6 @@ module Azure::ARM::Web
               },
               host_names: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.hostNames',
                 type: {
                   name: 'Sequence',
@@ -222,7 +222,6 @@ module Azure::ARM::Web
               },
               repository_site_name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.repositorySiteName',
                 type: {
                   name: 'String'
@@ -230,7 +229,6 @@ module Azure::ARM::Web
               },
               usage_state: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.usageState',
                 type: {
                   name: 'Enum',
@@ -246,7 +244,6 @@ module Azure::ARM::Web
               },
               enabled_host_names: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.enabledHostNames',
                 type: {
                   name: 'Sequence',
@@ -261,7 +258,6 @@ module Azure::ARM::Web
               },
               availability_state: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.availabilityState',
                 type: {
                   name: 'Enum',
@@ -290,9 +286,15 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
+              reserved: {
+                required: false,
+                serialized_name: 'properties.reserved',
+                type: {
+                  name: 'Boolean'
+                }
+              },
               last_modified_time_utc: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.lastModifiedTimeUtc',
                 type: {
                   name: 'DateTime'
@@ -308,7 +310,6 @@ module Azure::ARM::Web
               },
               traffic_manager_host_names: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.trafficManagerHostNames',
                 type: {
                   name: 'Sequence',
@@ -323,7 +324,6 @@ module Azure::ARM::Web
               },
               premium_app_deployed: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.premiumAppDeployed',
                 type: {
                   name: 'Boolean'
@@ -338,7 +338,6 @@ module Azure::ARM::Web
               },
               target_swap_slot: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.targetSwapSlot',
                 type: {
                   name: 'String'
@@ -389,7 +388,6 @@ module Azure::ARM::Web
               },
               outbound_ip_addresses: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.outboundIpAddresses',
                 type: {
                   name: 'String'
@@ -400,6 +398,20 @@ module Azure::ARM::Web
                 serialized_name: 'properties.containerSize',
                 type: {
                   name: 'Number'
+                }
+              },
+              daily_memory_time_quota: {
+                required: false,
+                serialized_name: 'properties.dailyMemoryTimeQuota',
+                type: {
+                  name: 'Number'
+                }
+              },
+              suspended_till: {
+                required: false,
+                serialized_name: 'properties.suspendedTill',
+                type: {
+                  name: 'DateTime'
                 }
               },
               max_number_of_workers: {
@@ -419,7 +431,6 @@ module Azure::ARM::Web
               },
               resource_group: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.resourceGroup',
                 type: {
                   name: 'String'
@@ -427,7 +438,6 @@ module Azure::ARM::Web
               },
               is_default_container: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.isDefaultContainer',
                 type: {
                   name: 'Boolean'
@@ -435,7 +445,6 @@ module Azure::ARM::Web
               },
               default_host_name: {
                 required: false,
-                read_only: true,
                 serialized_name: 'properties.defaultHostName',
                 type: {
                   name: 'String'

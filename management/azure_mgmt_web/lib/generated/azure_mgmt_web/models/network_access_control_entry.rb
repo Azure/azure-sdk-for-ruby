@@ -6,7 +6,7 @@
 module Azure::ARM::Web
   module Models
     #
-    # Model object.
+    # Network Access control entry
     #
     class NetworkAccessControlEntry
 

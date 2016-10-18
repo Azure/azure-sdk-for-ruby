@@ -21,9 +21,11 @@ module Azure::ARM::Web
       # @return [String] Password used for publishing
       attr_accessor :publishing_password
 
-      # @return [String] Service Control Manager URI, including username and
-      # password
-      attr_accessor :scm_uri
+      # @return [String] PasswordHash used for publishing
+      attr_accessor :publishing_password_hash
+
+      # @return [String] PasswordHashSalt used for publishing
+      attr_accessor :publishing_password_hash_salt
 
 
       #
@@ -40,13 +42,14 @@ module Azure::ARM::Web
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -108,9 +111,16 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              scm_uri: {
+              publishing_password_hash: {
                 required: false,
-                serialized_name: 'properties.scmUri',
+                serialized_name: 'properties.publishingPasswordHash',
+                type: {
+                  name: 'String'
+                }
+              },
+              publishing_password_hash_salt: {
+                required: false,
+                serialized_name: 'properties.publishingPasswordHashSalt',
                 type: {
                   name: 'String'
                 }

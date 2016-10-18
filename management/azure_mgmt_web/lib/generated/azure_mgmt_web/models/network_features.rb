@@ -24,6 +24,10 @@ module Azure::ARM::Web
       # Summary view
       attr_accessor :hybrid_connections
 
+      # @return [Array<HybridConnection>] The Hybrid Connection V2 (service
+      # bus) view
+      attr_accessor :hybrid_connections_v2
+
 
       #
       # Mapper for NetworkFeatures class as Ruby Hash.
@@ -39,13 +43,14 @@ module Azure::ARM::Web
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -112,6 +117,21 @@ module Azure::ARM::Web
                       type: {
                         name: 'Composite',
                         class_name: 'RelayServiceConnectionEntity'
+                      }
+                  }
+                }
+              },
+              hybrid_connections_v2: {
+                required: false,
+                serialized_name: 'properties.hybridConnectionsV2',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'HybridConnectionElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'HybridConnection'
                       }
                   }
                 }

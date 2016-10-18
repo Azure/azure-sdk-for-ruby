@@ -6,7 +6,7 @@
 module Azure::ARM::Web
   module Models
     #
-    # Model object.
+    # Request representing premier add-on
     #
     class PremierAddOnRequest
 

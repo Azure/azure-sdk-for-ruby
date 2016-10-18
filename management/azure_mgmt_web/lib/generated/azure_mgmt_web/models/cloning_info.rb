@@ -99,7 +99,7 @@ module Azure::ARM::Web
                 }
               },
               source_web_app_id: {
-                required: false,
+                required: true,
                 serialized_name: 'sourceWebAppId',
                 type: {
                   name: 'String'

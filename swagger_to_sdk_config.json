@@ -405,10 +405,11 @@
       ]
     },
     "azure_mgmt_web": {
-      "swagger": "arm-web/2015-08-01/swagger/service.json",
+      "swagger": "arm-web/compositeWebAppClient.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Web",
         "PackageName": "azure_mgmt_web",
+        "Modeler": "CompositeSwagger",
         "PackageVersion": "0.7.0"
       },
       "output_dir": "management/azure_mgmt_web/lib",

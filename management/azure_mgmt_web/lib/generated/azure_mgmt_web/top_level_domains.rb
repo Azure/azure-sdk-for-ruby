@@ -5,14 +5,7 @@
 
 module Azure::ARM::Web
   #
-  # Use these APIs to manage Azure Websites resources through the Azure
-  # Resource Manager. All task operations conform to the HTTP/1.1 protocol
-  # specification and each operation returns an x-ms-request-id header that
-  # can be used to obtain information about the request. You must make sure
-  # that requests made to these resources are secure. For more information,
-  # see <a
-  # href="https://msdn.microsoft.com/en-us/library/azure/dn790557.aspx">Authenticating
-  # Azure Resource Manager requests.</a>
+  # Composite Swagger for WebSite Management Client
   #
   class TopLevelDomains
     include Azure::ARM::Web::Models
@@ -32,18 +25,20 @@ module Azure::ARM::Web
     #
     # Lists all top level domains supported for registration
     #
+    # Lists all top level domains supported for registration
+    #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TopLevelDomainCollection] which provide lazy access to pages of the
     # response.
     #
-    def get_get_top_level_domains_as_lazy(custom_headers = nil)
-      response = get_get_top_level_domains_async(custom_headers).value!
+    def list_as_lazy(custom_headers = nil)
+      response = list_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          get_get_top_level_domains_next_async(next_page_link, custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -52,16 +47,20 @@ module Azure::ARM::Web
     #
     # Lists all top level domains supported for registration
     #
+    # Lists all top level domains supported for registration
+    #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<TopLevelDomain>] operation results.
     #
-    def get_get_top_level_domains(custom_headers = nil)
-      first_page = get_get_top_level_domains_as_lazy(custom_headers)
+    def list(custom_headers = nil)
+      first_page = list_as_lazy(custom_headers)
       first_page.get_all_items
     end
 
+    #
+    # Lists all top level domains supported for registration
     #
     # Lists all top level domains supported for registration
     #
@@ -70,10 +69,12 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_get_top_level_domains_with_http_info(custom_headers = nil)
-      get_get_top_level_domains_async(custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
+    #
+    # Lists all top level domains supported for registration
     #
     # Lists all top level domains supported for registration
     #
@@ -82,9 +83,9 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_get_top_level_domains_async(custom_headers = nil)
+    def list_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -99,7 +100,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -135,17 +136,21 @@ module Azure::ARM::Web
     #
     # Gets details of a top level domain
     #
+    # Gets details of a top level domain
+    #
     # @param name [String] Name of the top level domain
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [TopLevelDomain] operation results.
     #
-    def get_top_level_domain(name, custom_headers = nil)
-      response = get_top_level_domain_async(name, custom_headers).value!
+    def get(name, custom_headers = nil)
+      response = get_async(name, custom_headers).value!
       response.body unless response.nil?
     end
 
+    #
+    # Gets details of a top level domain
     #
     # Gets details of a top level domain
     #
@@ -155,10 +160,12 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_top_level_domain_with_http_info(name, custom_headers = nil)
-      get_top_level_domain_async(name, custom_headers).value!
+    def get_with_http_info(name, custom_headers = nil)
+      get_async(name, custom_headers).value!
     end
 
+    #
+    # Gets details of a top level domain
     #
     # Gets details of a top level domain
     #
@@ -168,10 +175,10 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_top_level_domain_async(name, custom_headers = nil)
+    def get_async(name, custom_headers = nil)
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -186,7 +193,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -222,6 +229,8 @@ module Azure::ARM::Web
     #
     # Lists legal agreements that user needs to accept before purchasing domain
     #
+    # Lists legal agreements that user needs to accept before purchasing domain
+    #
     # @param name [String] Name of the top level domain
     # @param agreement_option [TopLevelDomainAgreementOption] Domain agreement
     # options
@@ -231,17 +240,19 @@ module Azure::ARM::Web
     # @return [TldLegalAgreementCollection] which provide lazy access to pages of
     # the response.
     #
-    def list_top_level_domain_agreements_as_lazy(name, agreement_option, custom_headers = nil)
-      response = list_top_level_domain_agreements_async(name, agreement_option, custom_headers).value!
+    def list_agreements_as_lazy(name, agreement_option, custom_headers = nil)
+      response = list_agreements_async(name, agreement_option, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_top_level_domain_agreements_next_async(next_page_link, custom_headers)
+          list_agreements_next_async(next_page_link, custom_headers)
         end
         page
       end
     end
 
+    #
+    # Lists legal agreements that user needs to accept before purchasing domain
     #
     # Lists legal agreements that user needs to accept before purchasing domain
     #
@@ -253,11 +264,13 @@ module Azure::ARM::Web
     #
     # @return [Array<TldLegalAgreement>] operation results.
     #
-    def list_top_level_domain_agreements(name, agreement_option, custom_headers = nil)
-      first_page = list_top_level_domain_agreements_as_lazy(name, agreement_option, custom_headers)
+    def list_agreements(name, agreement_option, custom_headers = nil)
+      first_page = list_agreements_as_lazy(name, agreement_option, custom_headers)
       first_page.get_all_items
     end
 
+    #
+    # Lists legal agreements that user needs to accept before purchasing domain
     #
     # Lists legal agreements that user needs to accept before purchasing domain
     #
@@ -269,10 +282,12 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_top_level_domain_agreements_with_http_info(name, agreement_option, custom_headers = nil)
-      list_top_level_domain_agreements_async(name, agreement_option, custom_headers).value!
+    def list_agreements_with_http_info(name, agreement_option, custom_headers = nil)
+      list_agreements_async(name, agreement_option, custom_headers).value!
     end
 
+    #
+    # Lists legal agreements that user needs to accept before purchasing domain
     #
     # Lists legal agreements that user needs to accept before purchasing domain
     #
@@ -284,11 +299,11 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_top_level_domain_agreements_async(name, agreement_option, custom_headers = nil)
+    def list_agreements_async(name, agreement_option, custom_headers = nil)
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'agreement_option is nil' if agreement_option.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-03-01'
 
 
       request_headers = {}
@@ -311,7 +326,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -348,6 +363,8 @@ module Azure::ARM::Web
     #
     # Lists all top level domains supported for registration
     #
+    # Lists all top level domains supported for registration
+    #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -355,11 +372,13 @@ module Azure::ARM::Web
     #
     # @return [TopLevelDomainCollection] operation results.
     #
-    def get_get_top_level_domains_next(next_page_link, custom_headers = nil)
-      response = get_get_top_level_domains_next_async(next_page_link, custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
+    #
+    # Lists all top level domains supported for registration
     #
     # Lists all top level domains supported for registration
     #
@@ -370,10 +389,12 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_get_top_level_domains_next_with_http_info(next_page_link, custom_headers = nil)
-      get_get_top_level_domains_next_async(next_page_link, custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
+    #
+    # Lists all top level domains supported for registration
     #
     # Lists all top level domains supported for registration
     #
@@ -384,7 +405,7 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_get_top_level_domains_next_async(next_page_link, custom_headers = nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -435,6 +456,8 @@ module Azure::ARM::Web
     #
     # Lists legal agreements that user needs to accept before purchasing domain
     #
+    # Lists legal agreements that user needs to accept before purchasing domain
+    #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -442,11 +465,13 @@ module Azure::ARM::Web
     #
     # @return [TldLegalAgreementCollection] operation results.
     #
-    def list_top_level_domain_agreements_next(next_page_link, custom_headers = nil)
-      response = list_top_level_domain_agreements_next_async(next_page_link, custom_headers).value!
+    def list_agreements_next(next_page_link, custom_headers = nil)
+      response = list_agreements_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
+    #
+    # Lists legal agreements that user needs to accept before purchasing domain
     #
     # Lists legal agreements that user needs to accept before purchasing domain
     #
@@ -457,10 +482,12 @@ module Azure::ARM::Web
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_top_level_domain_agreements_next_with_http_info(next_page_link, custom_headers = nil)
-      list_top_level_domain_agreements_next_async(next_page_link, custom_headers).value!
+    def list_agreements_next_with_http_info(next_page_link, custom_headers = nil)
+      list_agreements_next_async(next_page_link, custom_headers).value!
     end
 
+    #
+    # Lists legal agreements that user needs to accept before purchasing domain
     #
     # Lists legal agreements that user needs to accept before purchasing domain
     #
@@ -471,7 +498,7 @@ module Azure::ARM::Web
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_top_level_domain_agreements_next_async(next_page_link, custom_headers = nil)
+    def list_agreements_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 

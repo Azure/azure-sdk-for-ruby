@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Model object.
+    # Directory for virtual application
     #
     class VirtualDirectory
 
       include MsRestAzure
 
-      # @return [String]
+      # @return [String] Path to virtual application
       attr_accessor :virtual_path
 
-      # @return [String]
+      # @return [String] Physical path
       attr_accessor :physical_path
 
 

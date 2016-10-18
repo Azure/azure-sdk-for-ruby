@@ -13,7 +13,7 @@ module Azure::ARM::Web
       include MsRestAzure
 
       # @return [String] Value timestamp
-      attr_accessor :time_stamp
+      attr_accessor :timestamp
 
       # @return [Float] Value average
       attr_accessor :average
@@ -30,6 +30,9 @@ module Azure::ARM::Web
       # @return [Float] Value count
       attr_accessor :count
 
+      # @return [Array<ResourceMetricProperty>] Properties
+      attr_accessor :properties
+
 
       #
       # Mapper for ResourceMetricValue class as Ruby Hash.
@@ -43,15 +46,17 @@ module Azure::ARM::Web
             name: 'Composite',
             class_name: 'ResourceMetricValue',
             model_properties: {
-              time_stamp: {
+              timestamp: {
                 required: false,
-                serialized_name: 'timeStamp',
+                read_only: true,
+                serialized_name: 'timestamp',
                 type: {
                   name: 'String'
                 }
               },
               average: {
                 required: false,
+                read_only: true,
                 serialized_name: 'average',
                 type: {
                   name: 'Double'
@@ -59,6 +64,7 @@ module Azure::ARM::Web
               },
               minimum: {
                 required: false,
+                read_only: true,
                 serialized_name: 'minimum',
                 type: {
                   name: 'Double'
@@ -66,6 +72,7 @@ module Azure::ARM::Web
               },
               maximum: {
                 required: false,
+                read_only: true,
                 serialized_name: 'maximum',
                 type: {
                   name: 'Double'
@@ -73,6 +80,7 @@ module Azure::ARM::Web
               },
               total: {
                 required: false,
+                read_only: true,
                 serialized_name: 'total',
                 type: {
                   name: 'Double'
@@ -80,9 +88,26 @@ module Azure::ARM::Web
               },
               count: {
                 required: false,
+                read_only: true,
                 serialized_name: 'count',
                 type: {
                   name: 'Double'
+                }
+              },
+              properties: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'ResourceMetricPropertyElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'ResourceMetricProperty'
+                      }
+                  }
                 }
               }
             }
