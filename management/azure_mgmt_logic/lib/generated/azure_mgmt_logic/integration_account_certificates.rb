@@ -7,12 +7,12 @@ module Azure::ARM::Logic
   #
   # Composite Swagger for Logic Management Client
   #
-  class WorkflowTriggers
+  class IntegrationAccountCertificates
     include Azure::ARM::Logic::Models
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the WorkflowTriggers class.
+    # Creates and initializes a new instance of the IntegrationAccountCertificates class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -23,20 +23,19 @@ module Azure::ARM::Logic
     attr_reader :client
 
     #
-    # Gets a list of workflow triggers.
+    # Gets a list of integration account certificates.
     #
     # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
+    # @param integration_account_name [String] The integration account name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WorkflowTriggerListResult] which provide lazy access to pages of
-    # the response.
+    # @return [IntegrationAccountCertificateListResult] which provide lazy access
+    # to pages of the response.
     #
-    def list_as_lazy(resource_group_name, workflow_name, top = nil, filter = nil, custom_headers = nil)
-      response = list_async(resource_group_name, workflow_name, top, filter, custom_headers).value!
+    def list_as_lazy(resource_group_name, integration_account_name, top = nil, custom_headers = nil)
+      response = list_async(resource_group_name, integration_account_name, top, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
@@ -47,55 +46,52 @@ module Azure::ARM::Logic
     end
 
     #
-    # Gets a list of workflow triggers.
+    # Gets a list of integration account certificates.
     #
     # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
+    # @param integration_account_name [String] The integration account name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<WorkflowTrigger>] operation results.
+    # @return [Array<IntegrationAccountCertificate>] operation results.
     #
-    def list(resource_group_name, workflow_name, top = nil, filter = nil, custom_headers = nil)
-      first_page = list_as_lazy(resource_group_name, workflow_name, top, filter, custom_headers)
+    def list(resource_group_name, integration_account_name, top = nil, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, integration_account_name, top, custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Gets a list of workflow triggers.
+    # Gets a list of integration account certificates.
     #
     # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
+    # @param integration_account_name [String] The integration account name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, workflow_name, top = nil, filter = nil, custom_headers = nil)
-      list_async(resource_group_name, workflow_name, top, filter, custom_headers).value!
+    def list_with_http_info(resource_group_name, integration_account_name, top = nil, custom_headers = nil)
+      list_async(resource_group_name, integration_account_name, top, custom_headers).value!
     end
 
     #
-    # Gets a list of workflow triggers.
+    # Gets a list of integration account certificates.
     #
     # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
+    # @param integration_account_name [String] The integration account name.
     # @param top [Integer] The number of items to be included in the result.
-    # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, workflow_name, top = nil, filter = nil, custom_headers = nil)
+    def list_async(resource_group_name, integration_account_name, top = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
-      api_version = '2016-06-01'
+      fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
+      api_version = '2015-08-01-preview'
 
 
       request_headers = {}
@@ -103,14 +99,14 @@ module Azure::ARM::Logic
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/certificates'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workflowName' => workflow_name},
-          query_params: {'api-version' => api_version,'$top' => top,'$filter' => filter},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'integrationAccountName' => integration_account_name},
+          query_params: {'api-version' => api_version,'$top' => top},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -130,7 +126,7 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkflowTriggerListResult.mapper()
+            result_mapper = IntegrationAccountCertificateListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -144,53 +140,53 @@ module Azure::ARM::Logic
     end
 
     #
-    # Gets a workflow trigger.
+    # Gets an integration account certificate.
     #
     # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
-    # @param trigger_name [String] The workflow trigger name.
+    # @param integration_account_name [String] The integration account name.
+    # @param certificate_name [String] The integration account certificate name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WorkflowTrigger] operation results.
+    # @return [IntegrationAccountCertificate] operation results.
     #
-    def get(resource_group_name, workflow_name, trigger_name, custom_headers = nil)
-      response = get_async(resource_group_name, workflow_name, trigger_name, custom_headers).value!
+    def get(resource_group_name, integration_account_name, certificate_name, custom_headers = nil)
+      response = get_async(resource_group_name, integration_account_name, certificate_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a workflow trigger.
+    # Gets an integration account certificate.
     #
     # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
-    # @param trigger_name [String] The workflow trigger name.
+    # @param integration_account_name [String] The integration account name.
+    # @param certificate_name [String] The integration account certificate name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, workflow_name, trigger_name, custom_headers = nil)
-      get_async(resource_group_name, workflow_name, trigger_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, integration_account_name, certificate_name, custom_headers = nil)
+      get_async(resource_group_name, integration_account_name, certificate_name, custom_headers).value!
     end
 
     #
-    # Gets a workflow trigger.
+    # Gets an integration account certificate.
     #
     # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
-    # @param trigger_name [String] The workflow trigger name.
+    # @param integration_account_name [String] The integration account name.
+    # @param certificate_name [String] The integration account certificate name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, workflow_name, trigger_name, custom_headers = nil)
+    def get_async(resource_group_name, integration_account_name, certificate_name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
-      fail ArgumentError, 'trigger_name is nil' if trigger_name.nil?
-      api_version = '2016-06-01'
+      fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
+      fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
+      api_version = '2015-08-01-preview'
 
 
       request_headers = {}
@@ -198,13 +194,13 @@ module Azure::ARM::Logic
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/certificates/{certificateName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workflowName' => workflow_name,'triggerName' => trigger_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'integrationAccountName' => integration_account_name,'certificateName' => certificate_name},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -225,7 +221,7 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkflowTrigger.mapper()
+            result_mapper = IntegrationAccountCertificate.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -239,53 +235,60 @@ module Azure::ARM::Logic
     end
 
     #
-    # Runs a workflow trigger.
+    # Creates or updates an integration account certificate.
     #
     # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
-    # @param trigger_name [String] The workflow trigger name.
+    # @param integration_account_name [String] The integration account name.
+    # @param certificate_name [String] The integration account certificate name.
+    # @param certificate [IntegrationAccountCertificate] The integration account
+    # certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [IntegrationAccountCertificate] operation results.
     #
-    def run(resource_group_name, workflow_name, trigger_name, custom_headers = nil)
-      response = run_async(resource_group_name, workflow_name, trigger_name, custom_headers).value!
+    def create_or_update(resource_group_name, integration_account_name, certificate_name, certificate, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, integration_account_name, certificate_name, certificate, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Runs a workflow trigger.
+    # Creates or updates an integration account certificate.
     #
     # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
-    # @param trigger_name [String] The workflow trigger name.
+    # @param integration_account_name [String] The integration account name.
+    # @param certificate_name [String] The integration account certificate name.
+    # @param certificate [IntegrationAccountCertificate] The integration account
+    # certificate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def run_with_http_info(resource_group_name, workflow_name, trigger_name, custom_headers = nil)
-      run_async(resource_group_name, workflow_name, trigger_name, custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, integration_account_name, certificate_name, certificate, custom_headers = nil)
+      create_or_update_async(resource_group_name, integration_account_name, certificate_name, certificate, custom_headers).value!
     end
 
     #
-    # Runs a workflow trigger.
+    # Creates or updates an integration account certificate.
     #
     # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
-    # @param trigger_name [String] The workflow trigger name.
+    # @param integration_account_name [String] The integration account name.
+    # @param certificate_name [String] The integration account certificate name.
+    # @param certificate [IntegrationAccountCertificate] The integration account
+    # certificate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def run_async(resource_group_name, workflow_name, trigger_name, custom_headers = nil)
+    def create_or_update_async(resource_group_name, integration_account_name, certificate_name, certificate, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
-      fail ArgumentError, 'trigger_name is nil' if trigger_name.nil?
-      api_version = '2016-06-01'
+      fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
+      fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
+      api_version = '2015-08-01-preview'
+      fail ArgumentError, 'certificate is nil' if certificate.nil?
 
 
       request_headers = {}
@@ -293,109 +296,33 @@ module Azure::ARM::Logic
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/run'
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = IntegrationAccountCertificate.mapper()
+      request_content = @client.serialize(request_mapper,  certificate, 'certificate')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/certificates/{certificateName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workflowName' => workflow_name,'triggerName' => trigger_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'integrationAccountName' => integration_account_name,'certificateName' => certificate_name},
           query_params: {'api-version' => api_version},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:post, path_template, options)
+      promise = @client.make_request_async(:put, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code >= 200 && status_code < 300
-          error_model = JSON.load(response_content)
-          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets the callback URL for a workflow trigger.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
-    # @param trigger_name [String] The workflow trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [WorkflowTriggerCallbackUrl] operation results.
-    #
-    def list_callback_url(resource_group_name, workflow_name, trigger_name, custom_headers = nil)
-      response = list_callback_url_async(resource_group_name, workflow_name, trigger_name, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets the callback URL for a workflow trigger.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
-    # @param trigger_name [String] The workflow trigger name.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_callback_url_with_http_info(resource_group_name, workflow_name, trigger_name, custom_headers = nil)
-      list_callback_url_async(resource_group_name, workflow_name, trigger_name, custom_headers).value!
-    end
-
-    #
-    # Gets the callback URL for a workflow trigger.
-    #
-    # @param resource_group_name [String] The resource group name.
-    # @param workflow_name [String] The workflow name.
-    # @param trigger_name [String] The workflow trigger name.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_callback_url_async(resource_group_name, workflow_name, trigger_name, custom_headers = nil)
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'workflow_name is nil' if workflow_name.nil?
-      fail ArgumentError, 'trigger_name is nil' if trigger_name.nil?
-      api_version = '2016-06-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'workflowName' => workflow_name,'triggerName' => trigger_name},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:post, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 201
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -405,7 +332,17 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkflowTriggerCallbackUrl.mapper()
+            result_mapper = IntegrationAccountCertificate.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = IntegrationAccountCertificate.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -419,14 +356,98 @@ module Azure::ARM::Logic
     end
 
     #
-    # Gets a list of workflow triggers.
+    # Deletes an integration account certificate.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param certificate_name [String] The integration account certificate name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete(resource_group_name, integration_account_name, certificate_name, custom_headers = nil)
+      response = delete_async(resource_group_name, integration_account_name, certificate_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes an integration account certificate.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param certificate_name [String] The integration account certificate name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_with_http_info(resource_group_name, integration_account_name, certificate_name, custom_headers = nil)
+      delete_async(resource_group_name, integration_account_name, certificate_name, custom_headers).value!
+    end
+
+    #
+    # Deletes an integration account certificate.
+    #
+    # @param resource_group_name [String] The resource group name.
+    # @param integration_account_name [String] The integration account name.
+    # @param certificate_name [String] The integration account certificate name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_async(resource_group_name, integration_account_name, certificate_name, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'integration_account_name is nil' if integration_account_name.nil?
+      fail ArgumentError, 'certificate_name is nil' if certificate_name.nil?
+      api_version = '2015-08-01-preview'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/certificates/{certificateName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'integrationAccountName' => integration_account_name,'certificateName' => certificate_name},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets a list of integration account certificates.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WorkflowTriggerListResult] operation results.
+    # @return [IntegrationAccountCertificateListResult] operation results.
     #
     def list_next(next_page_link, custom_headers = nil)
       response = list_next_async(next_page_link, custom_headers).value!
@@ -434,7 +455,7 @@ module Azure::ARM::Logic
     end
 
     #
-    # Gets a list of workflow triggers.
+    # Gets a list of integration account certificates.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -448,7 +469,7 @@ module Azure::ARM::Logic
     end
 
     #
-    # Gets a list of workflow triggers.
+    # Gets a list of integration account certificates.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -492,7 +513,7 @@ module Azure::ARM::Logic
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = WorkflowTriggerListResult.mapper()
+            result_mapper = IntegrationAccountCertificateListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
