@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Event Hub Library for Ruby'
-  spec.summary       = 'Official Ruby client library to consume Microsoft Event Hub services.'
+  spec.summary       = 'Official Ruby client library to consume Microsoft Azure Event Hub services.'
   spec.homepage      = 'https://aka.ms/azure-sdk-for-ruby'
   spec.license       = 'MIT'
 

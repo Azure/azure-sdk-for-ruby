@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.authors       = 'Microsoft Corporation'
   spec.email         = 'azrubyteam@microsoft.com'
   spec.description   = 'Microsoft Azure Recovery Services Backup Library for Ruby'
-  spec.summary       = 'Official Ruby client library to consume Microsoft Recovery Services Backup.'
+  spec.summary       = 'Official Ruby client library to consume Microsoft Azure Recovery Services Backup.'
   spec.homepage      = 'https://aka.ms/azure-sdk-for-ruby'
   spec.license       = 'MIT'
 
