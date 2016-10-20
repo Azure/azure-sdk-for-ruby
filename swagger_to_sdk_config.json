@@ -2,7 +2,7 @@
   "meta": {
     "version": "0.1.0",
     "language": "Ruby",
-    "autorest": "latest"
+    "autorest": "0.17.0-Nightly20161018"
   },
   "projects": {
     "azure_mgmt_analysis_services": {
