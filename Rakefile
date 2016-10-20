@@ -133,6 +133,12 @@ REGEN_METADATA = {
         version: version,
         tag: 'azure_sdk'
     },
+    azure_mgmt_analysis_services: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-asazure/2016-05-16/swagger/asazure.json',
+        ns: 'Azure::ARM::AnalysisServices',
+        version: version,
+        tag: 'arm_as'
+    },
     azure_mgmt_authorization: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-authorization/2015-07-01/swagger/authorization.json',
         ns: 'Azure::ARM::Authorization',
@@ -194,6 +200,12 @@ REGEN_METADATA = {
         version: version,
         tag: 'arm_dns'
     },
+    azure_mgmt_event_hub: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-eventhub/2015-08-01/swagger/EventHub.json',
+        ns: 'Azure::ARM::EventHub',
+        version: version,
+        tag: 'arm_event_hub'
+    },
     azure_mgmt_features: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/features/2015-12-01/swagger/features.json',
         ns: 'Azure::ARM::Features',
@@ -206,6 +218,13 @@ REGEN_METADATA = {
         version: version,
         modeler: "CompositeSwagger",
         tag: 'arm_grap'
+    },
+    azure_mgmt_insights: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-insights/compositeInsightsManagementClient.json',
+        ns: 'Azure::ARM::Insights',
+        version: version,
+        modeler: "CompositeSwagger",
+        tag: 'arm_insights'
     },
     # Not generating this gem due to known issue in swagger
     # azure_mgmt_intune: {
@@ -280,6 +299,18 @@ REGEN_METADATA = {
         ns: 'Azure::ARM::PowerBiEmbedded',
         version: version,
         tag: 'arm_powerbi'
+    },
+    azure_mgmt_recovery_services: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-recoveryservices/2016-06-01/swagger/recoveryservices.json',
+        ns: 'Azure::ARM::RecoveryServices',
+        version: version,
+        tag: 'arm_recovery'
+    },
+    azure_mgmt_recovery_services_backup: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-recoveryservicesbackup/2016-06-01/swagger/recoveryservicesbackup.json',
+        ns: 'Azure::ARM::RecoveryServicesBackup',
+        version: version,
+        tag: 'arm_recovery_backup'
     },
     azure_mgmt_redis: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-redis/2016-04-01/swagger/redis.json',
