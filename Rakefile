@@ -134,7 +134,7 @@ REGEN_METADATA = {
         tag: 'azure_sdk'
     },
     azure_mgmt_analysis_services: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-asazure/2016-05-16/swagger/asazure.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-analysisservices/2016-05-16/swagger/analysisservices.json',
         ns: 'Azure::ARM::AnalysisServices',
         version: version,
         tag: 'arm_as'
