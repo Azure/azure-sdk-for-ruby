@@ -13,6 +13,7 @@ module Azure::ARM::CDN
       PremiumVerizon = "Premium_Verizon"
       CustomVerizon = "Custom_Verizon"
       StandardAkamai = "Standard_Akamai"
+      StandardChinaCdn = "Standard_ChinaCdn"
     end
   end
 end

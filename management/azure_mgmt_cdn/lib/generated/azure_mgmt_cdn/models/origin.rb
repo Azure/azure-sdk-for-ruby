@@ -31,8 +31,7 @@ module Azure::ARM::CDN
       # values include: 'Creating', 'Active', 'Deleting'
       attr_accessor :resource_state
 
-      # @return [ProvisioningState] Provisioning status of the origin.
-      # Possible values include: 'Creating', 'Succeeded', 'Failed'
+      # @return [String] Provisioning status of the origin.
       attr_accessor :provisioning_state
 
 
@@ -72,6 +71,27 @@ module Azure::ARM::CDN
                   name: 'String'
                 }
               },
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
+                required: false,
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
               host_name: {
                 required: true,
                 serialized_name: 'properties.hostName',
@@ -98,16 +118,15 @@ module Azure::ARM::CDN
                 read_only: true,
                 serialized_name: 'properties.resourceState',
                 type: {
-                  name: 'Enum',
-                  module: 'OriginResourceState'
+                  name: 'String'
                 }
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
-                  name: 'Enum',
-                  module: 'ProvisioningState'
+                  name: 'String'
                 }
               }
             }

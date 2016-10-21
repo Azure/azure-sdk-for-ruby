@@ -50,6 +50,10 @@ module Azure::ARM::CDN
       # 'BypassCaching', 'UseQueryString', 'NotSet'
       attr_accessor :query_string_caching_behavior
 
+      # @return [Array<GeoFilter>] The list of geo filters for the CDN
+      # endpoint.
+      attr_accessor :geo_filters
+
 
       #
       # Mapper for EndpointUpdateParameters class as Ruby Hash.
@@ -132,6 +136,21 @@ module Azure::ARM::CDN
                 type: {
                   name: 'Enum',
                   module: 'QueryStringCachingBehavior'
+                }
+              },
+              geo_filters: {
+                required: false,
+                serialized_name: 'properties.geoFilters',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'GeoFilterElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'GeoFilter'
+                      }
+                  }
                 }
               }
             }
