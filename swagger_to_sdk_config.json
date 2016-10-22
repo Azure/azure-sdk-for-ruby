@@ -6,7 +6,7 @@
   },
   "projects": {
     "azure_mgmt_analysis_services": {
-      "swagger": "arm-asazure/2016-05-16/swagger/asazure.json",
+      "swagger": "arm-analysisservices/2016-05-16/swagger/analysisservices.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::AnalysisServices",
         "PackageName": "azure_mgmt_analysis_services",
