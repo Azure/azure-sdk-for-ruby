@@ -22,7 +22,7 @@ module Azure::ARM::EventHub
       # @return [Integer] Number of partitions created for EventHub.
       attr_accessor :partition_count
 
-      # @return [Array<Integer>] Current number of shards on the Event Hub.
+      # @return [Array<String>] Current number of shards on the Event Hub.
       attr_accessor :partition_ids
 
       # @return [EntityStatus] Enumerates the possible values for the status
@@ -75,9 +75,9 @@ module Azure::ARM::EventHub
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'NumberElementType',
+                      serialized_name: 'StringElementType',
                       type: {
-                        name: 'Number'
+                        name: 'String'
                       }
                   }
                 }
