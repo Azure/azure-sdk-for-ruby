@@ -35,8 +35,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('azure-core',              '~> 0.1')
   s.add_runtime_dependency('faraday',                 '~> 0.9')
   s.add_runtime_dependency('faraday_middleware',      '~> 0.10')
-  s.add_runtime_dependency('json',                    '~> 1.8')
-  s.add_runtime_dependency('mime-types',              ['>= 1', '< 3.0'])  # vagrant-share and other stuff relies on 1
+  s.add_runtime_dependency('mime-types',              ['>= 1', '< 4.0'])  # vagrant-share and other stuff relies on 1
   s.add_runtime_dependency('nokogiri',                '~> 1.6')
   s.add_runtime_dependency('systemu',                 '~> 2.6')
   s.add_runtime_dependency('thor',                    '~> 0.19')
@@ -50,3 +49,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency('yard',                '~> 0.8')
   s.add_development_dependency('vcr',                 '~> 3.0')
 end
+
