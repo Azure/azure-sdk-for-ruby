@@ -29,7 +29,7 @@ module Azure::ARM::Compute
   autoload :VirtualMachines,                                    'generated/azure_mgmt_compute/virtual_machines.rb'
   autoload :VirtualMachineScaleSets,                            'generated/azure_mgmt_compute/virtual_machine_scale_sets.rb'
   autoload :VirtualMachineScaleSetVMs,                          'generated/azure_mgmt_compute/virtual_machine_scale_set_vms.rb'
-  autoload :ContainerServiceOperations,                         'generated/azure_mgmt_compute/container_service_operations.rb'
+  autoload :ContainerServices,                                  'generated/azure_mgmt_compute/container_services.rb'
   autoload :ComputeManagementClient,                            'generated/azure_mgmt_compute/compute_management_client.rb'
 
   module Models

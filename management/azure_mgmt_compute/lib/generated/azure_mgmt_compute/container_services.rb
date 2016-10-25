@@ -7,12 +7,12 @@ module Azure::ARM::Compute
   #
   # Composite Swagger for Compute Client
   #
-  class ContainerServiceOperations
+  class ContainerServices
     include Azure::ARM::Compute::Models
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the ContainerServiceOperations class.
+    # Creates and initializes a new instance of the ContainerServices class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -23,7 +23,90 @@ module Azure::ARM::Compute
     attr_reader :client
 
     #
-    # The operation to create or update a container service.
+    # Lists all container services in a subscription
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ContainerServiceListResult] operation results.
+    #
+    def list(custom_headers = nil)
+      response = list_async(custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Lists all container services in a subscription
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
+    end
+
+    #
+    # Lists all container services in a subscription
+    #
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_async(custom_headers = nil)
+      api_version = '2016-03-30'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/containerServices'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ContainerServiceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates or updates a container service.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service
@@ -71,7 +154,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to create or update a container service.
+    # Creates or updates a container service.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service
@@ -89,7 +172,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to create or update a container service.
+    # Creates or updates a container service.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service
@@ -106,7 +189,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to create or update a container service.
+    # Creates or updates a container service.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service
@@ -201,7 +284,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to get a container service.
+    # Gets the specified container service.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service
@@ -217,7 +300,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to get a container service.
+    # Gets the specified container service.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service
@@ -232,7 +315,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to get a container service.
+    # Gets the specified container service.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service
@@ -426,8 +509,8 @@ module Azure::ARM::Compute
     #
     # @return [ContainerServiceListResult] operation results.
     #
-    def list(resource_group_name, custom_headers = nil)
-      response = list_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group(resource_group_name, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -440,8 +523,8 @@ module Azure::ARM::Compute
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, custom_headers = nil)
-      list_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, custom_headers).value!
     end
 
     #
@@ -453,7 +536,7 @@ module Azure::ARM::Compute
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       api_version = '2016-03-30'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?

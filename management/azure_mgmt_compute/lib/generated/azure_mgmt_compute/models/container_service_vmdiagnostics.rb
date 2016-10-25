@@ -12,12 +12,12 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Boolean] whether VM Diagnostic Agent should be provisioned on
+      # @return [Boolean] Whether VM Diagnostic Agent should be provisioned on
       # the Virtual Machine.
       attr_accessor :enabled
 
-      # @return [String] whether VM Diagnostic Agent should be provisioned on
-      # the Virtual Machine.
+      # @return [String] The URI of the storage account where diagnostics will
+      # be stored.
       attr_accessor :storage_uri
 
 
@@ -34,7 +34,7 @@ module Azure::ARM::Compute
             class_name: 'ContainerServiceVMDiagnostics',
             model_properties: {
               enabled: {
-                required: false,
+                required: true,
                 serialized_name: 'enabled',
                 type: {
                   name: 'Boolean'

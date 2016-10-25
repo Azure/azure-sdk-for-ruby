@@ -30,7 +30,7 @@ module Azure::ARM::Compute
             class_name: 'ContainerServiceSshConfiguration',
             model_properties: {
               public_keys: {
-                required: false,
+                required: true,
                 serialized_name: 'publicKeys',
                 type: {
                   name: 'Sequence',

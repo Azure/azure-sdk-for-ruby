@@ -17,7 +17,7 @@ module Azure::ARM::Compute
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] subscription credentials which uniquely identify
+    # @return [String] Subscription credentials which uniquely identify
     # Microsoft Azure subscription. The subscription ID forms part of the URI
     # for every service call.
     attr_accessor :subscription_id
@@ -60,8 +60,8 @@ module Azure::ARM::Compute
     # @return [VirtualMachineScaleSetVMs] virtual_machine_scale_set_vms
     attr_reader :virtual_machine_scale_set_vms
 
-    # @return [ContainerServiceOperations] container_service_operations
-    attr_reader :container_service_operations
+    # @return [ContainerServices] container_services
+    attr_reader :container_services
 
     #
     # Creates initializes a new instance of the ComputeManagementClient class.
@@ -86,7 +86,7 @@ module Azure::ARM::Compute
       @virtual_machines = VirtualMachines.new(self)
       @virtual_machine_scale_sets = VirtualMachineScaleSets.new(self)
       @virtual_machine_scale_set_vms = VirtualMachineScaleSetVMs.new(self)
-      @container_service_operations = ContainerServiceOperations.new(self)
+      @container_services = ContainerServices.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

@@ -114,6 +114,7 @@ module Azure::ARM::Compute
               },
               statuses: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.statuses',
                 type: {
                   name: 'Sequence',

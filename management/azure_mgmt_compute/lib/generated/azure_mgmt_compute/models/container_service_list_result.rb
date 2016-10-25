@@ -6,7 +6,7 @@
 module Azure::ARM::Compute
   module Models
     #
-    # The List Container Service operation response
+    # The List Container Service operation response.
     #
     class ContainerServiceListResult
 
