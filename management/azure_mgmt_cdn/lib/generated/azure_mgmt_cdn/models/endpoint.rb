@@ -11,12 +11,9 @@ module Azure::ARM::CDN
     # is exposed using the URL format <endpointname>.azureedge.net by
     # default, but custom domains can also be created.
     #
-    class Endpoint < TrackedResource
+    class Endpoint < MsRestAzure::Resource
 
       include MsRestAzure
-
-      # @return [String] The host name of the endpoint {endpointName}.{DNSZone}
-      attr_accessor :host_name
 
       # @return [String] The host header the CDN provider will send along with
       # content requests to origins. The default value is the host name of
@@ -31,10 +28,11 @@ module Azure::ARM::CDN
       # type.
       attr_accessor :content_types_to_compress
 
-      # @return [Boolean] Indicates whether the compression is enabled.
+      # @return [Boolean] Indicates whether content compression is enabled.
       # Default value is false. If compression is enabled, the content
-      # transferred from cdn endpoint to end user will be compressed. The
-      # requested content must be larger than 1 byte and smaller than 1 MB.
+      # transferred from the CDN endpoint to the end user will be compressed.
+      # The requested content must be larger than 1 byte and smaller than 1
+      # MB.
       attr_accessor :is_compression_enabled
 
       # @return [Boolean] Indicates whether HTTP traffic is allowed on the
@@ -42,7 +40,7 @@ module Azure::ARM::CDN
       # HTTPS) must be allowed.
       attr_accessor :is_http_allowed
 
-      # @return [Boolean] Indicates whether https traffic is allowed on the
+      # @return [Boolean] Indicates whether HTTPS traffic is allowed on the
       # endpoint. Default value is true. At least one protocol (HTTP or
       # HTTPS) must be allowed.
       attr_accessor :is_https_allowed
@@ -51,6 +49,13 @@ module Azure::ARM::CDN
       # behavior. Possible values include: 'IgnoreQueryString',
       # 'BypassCaching', 'UseQueryString', 'NotSet'
       attr_accessor :query_string_caching_behavior
+
+      # @return [Array<GeoFilter>] The list of geo filters for the CDN
+      # endpoint.
+      attr_accessor :geo_filters
+
+      # @return [String] The host name of the endpoint {endpointName}.{DNSZone}
+      attr_accessor :host_name
 
       # @return [Array<DeepCreatedOrigin>] The set of origins for the CDN
       # endpoint. When multiple origins exist, the first origin will be used
@@ -62,8 +67,7 @@ module Azure::ARM::CDN
       # 'Starting', 'Stopped', 'Stopping'
       attr_accessor :resource_state
 
-      # @return [ProvisioningState] Provisioning status of the endpoint.
-      # Possible values include: 'Creating', 'Succeeded', 'Failed'
+      # @return [String] Provisioning status of the endpoint.
       attr_accessor :provisioning_state
 
 
@@ -111,7 +115,7 @@ module Azure::ARM::CDN
                 }
               },
               tags: {
-                required: true,
+                required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
@@ -122,14 +126,6 @@ module Azure::ARM::CDN
                         name: 'String'
                       }
                   }
-                }
-              },
-              host_name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.hostName',
-                type: {
-                  name: 'String'
                 }
               },
               origin_host_header: {
@@ -189,8 +185,31 @@ module Azure::ARM::CDN
                   module: 'QueryStringCachingBehavior'
                 }
               },
-              origins: {
+              geo_filters: {
                 required: false,
+                serialized_name: 'properties.geoFilters',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'GeoFilterElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'GeoFilter'
+                      }
+                  }
+                }
+              },
+              host_name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.hostName',
+                type: {
+                  name: 'String'
+                }
+              },
+              origins: {
+                required: true,
                 serialized_name: 'properties.origins',
                 type: {
                   name: 'Sequence',
@@ -209,16 +228,15 @@ module Azure::ARM::CDN
                 read_only: true,
                 serialized_name: 'properties.resourceState',
                 type: {
-                  name: 'Enum',
-                  module: 'EndpointResourceState'
+                  name: 'String'
                 }
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
-                  name: 'Enum',
-                  module: 'ProvisioningState'
+                  name: 'String'
                 }
               }
             }

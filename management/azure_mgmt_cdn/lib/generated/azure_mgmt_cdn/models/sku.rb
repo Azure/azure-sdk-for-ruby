@@ -14,7 +14,7 @@ module Azure::ARM::CDN
 
       # @return [SkuName] Name of the pricing tier. Possible values include:
       # 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
-      # 'Standard_Akamai'
+      # 'Standard_Akamai', 'Standard_ChinaCdn'
       attr_accessor :name
 
 
@@ -34,8 +34,7 @@ module Azure::ARM::CDN
                 required: false,
                 serialized_name: 'name',
                 type: {
-                  name: 'Enum',
-                  module: 'SkuName'
+                  name: 'String'
                 }
               }
             }

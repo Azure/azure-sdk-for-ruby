@@ -27,39 +27,59 @@ module Azure::ARM::CDN
     attr_reader :client
 
     #
-    # Lists the CDN profiles within an Azure subscitption.
+    # Lists the CDN profiles within an Azure subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ProfileListResult] operation results.
+    # @return [ProfileListResult] which provide lazy access to pages of the
+    # response.
     #
-    def list_by_subscription_id(custom_headers = nil)
-      response = list_by_subscription_id_async(custom_headers).value!
-      response.body unless response.nil?
+    def list_as_lazy(custom_headers = nil)
+      response = list_async(custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
     end
 
     #
-    # Lists the CDN profiles within an Azure subscitption.
+    # Lists the CDN profiles within an Azure subscription.
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<Profile>] operation results.
+    #
+    def list(custom_headers = nil)
+      first_page = list_as_lazy(custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Lists the CDN profiles within an Azure subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_subscription_id_with_http_info(custom_headers = nil)
-      list_by_subscription_id_async(custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
-    # Lists the CDN profiles within an Azure subscitption.
+    # Lists the CDN profiles within an Azure subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_subscription_id_async(custom_headers = nil)
+    def list_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -112,22 +132,44 @@ module Azure::ARM::CDN
     #
     # Lists the CDN profiles within a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group within the
+    # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ProfileListResult] operation results.
+    # @return [ProfileListResult] which provide lazy access to pages of the
+    # response.
     #
-    def list_by_resource_group(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
       response = list_by_resource_group_async(resource_group_name, custom_headers).value!
-      response.body unless response.nil?
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_by_resource_group_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
     end
 
     #
     # Lists the CDN profiles within a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group within the
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<Profile>] operation results.
+    #
+    def list_by_resource_group(resource_group_name, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Lists the CDN profiles within a resource group.
+    #
+    # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -141,7 +183,7 @@ module Azure::ARM::CDN
     #
     # Lists the CDN profiles within a resource group.
     #
-    # @param resource_group_name [String] Name of the resource group within the
+    # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -202,51 +244,51 @@ module Azure::ARM::CDN
     #
     # Gets a CDN profile with the specified parameters.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Profile] operation results.
     #
-    def get(profile_name, resource_group_name, custom_headers = nil)
-      response = get_async(profile_name, resource_group_name, custom_headers).value!
+    def get(resource_group_name, profile_name, custom_headers = nil)
+      response = get_async(resource_group_name, profile_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Gets a CDN profile with the specified parameters.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(profile_name, resource_group_name, custom_headers = nil)
-      get_async(profile_name, resource_group_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, profile_name, custom_headers = nil)
+      get_async(resource_group_name, profile_name, custom_headers).value!
     end
 
     #
     # Gets a CDN profile with the specified parameters.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(profile_name, resource_group_name, custom_headers = nil)
-      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
+    def get_async(resource_group_name, profile_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -262,7 +304,7 @@ module Azure::ARM::CDN
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'profileName' => profile_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'profileName' => profile_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -299,38 +341,36 @@ module Azure::ARM::CDN
     #
     # Creates a new CDN profile with the specified parameters.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param profile_properties [ProfileCreateParameters] Profile properties
-    # needed for creation.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param profile [Profile] Profile properties needed for creation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Profile] operation results.
     #
-    def create(profile_name, profile_properties, resource_group_name, custom_headers = nil)
-      response = create_async(profile_name, profile_properties, resource_group_name, custom_headers).value!
+    def create(resource_group_name, profile_name, profile, custom_headers = nil)
+      response = create_async(resource_group_name, profile_name, profile, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param profile_properties [ProfileCreateParameters] Profile properties
-    # needed for creation.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param profile [Profile] Profile properties needed for creation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(profile_name, profile_properties, resource_group_name, custom_headers = nil)
+    def create_async(resource_group_name, profile_name, profile, custom_headers = nil)
       # Send request
-      promise = begin_create_async(profile_name, profile_properties, resource_group_name, custom_headers)
+      promise = begin_create_async(resource_group_name, profile_name, profile, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -349,58 +389,55 @@ module Azure::ARM::CDN
     #
     # Creates a new CDN profile with the specified parameters.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param profile_properties [ProfileCreateParameters] Profile properties
-    # needed for creation.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param profile [Profile] Profile properties needed for creation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Profile] operation results.
     #
-    def begin_create(profile_name, profile_properties, resource_group_name, custom_headers = nil)
-      response = begin_create_async(profile_name, profile_properties, resource_group_name, custom_headers).value!
+    def begin_create(resource_group_name, profile_name, profile, custom_headers = nil)
+      response = begin_create_async(resource_group_name, profile_name, profile, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates a new CDN profile with the specified parameters.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param profile_properties [ProfileCreateParameters] Profile properties
-    # needed for creation.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param profile [Profile] Profile properties needed for creation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(profile_name, profile_properties, resource_group_name, custom_headers = nil)
-      begin_create_async(profile_name, profile_properties, resource_group_name, custom_headers).value!
+    def begin_create_with_http_info(resource_group_name, profile_name, profile, custom_headers = nil)
+      begin_create_async(resource_group_name, profile_name, profile, custom_headers).value!
     end
 
     #
     # Creates a new CDN profile with the specified parameters.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param profile_properties [ProfileCreateParameters] Profile properties
-    # needed for creation.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param profile [Profile] Profile properties needed for creation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(profile_name, profile_properties, resource_group_name, custom_headers = nil)
-      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
-      fail ArgumentError, 'profile_properties is nil' if profile_properties.nil?
+    def begin_create_async(resource_group_name, profile_name, profile, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
+      fail ArgumentError, 'profile is nil' if profile.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -414,8 +451,8 @@ module Azure::ARM::CDN
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = ProfileCreateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  profile_properties, 'profile_properties')
+      request_mapper = Profile.mapper()
+      request_content = @client.serialize(request_mapper,  profile, 'profile')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}'
@@ -424,7 +461,7 @@ module Azure::ARM::CDN
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'profileName' => profile_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'profileName' => profile_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -482,38 +519,38 @@ module Azure::ARM::CDN
     #
     # Updates an existing CDN profile with the specified parameters.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param profile_properties [ProfileUpdateParameters] Profile properties
-    # needed for update.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param profile_update_parameters [ProfileUpdateParameters] Profile
+    # properties needed for update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Profile] operation results.
     #
-    def update(profile_name, profile_properties, resource_group_name, custom_headers = nil)
-      response = update_async(profile_name, profile_properties, resource_group_name, custom_headers).value!
+    def update(resource_group_name, profile_name, profile_update_parameters, custom_headers = nil)
+      response = update_async(resource_group_name, profile_name, profile_update_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param profile_properties [ProfileUpdateParameters] Profile properties
-    # needed for update.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param profile_update_parameters [ProfileUpdateParameters] Profile
+    # properties needed for update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_async(profile_name, profile_properties, resource_group_name, custom_headers = nil)
+    def update_async(resource_group_name, profile_name, profile_update_parameters, custom_headers = nil)
       # Send request
-      promise = begin_update_async(profile_name, profile_properties, resource_group_name, custom_headers)
+      promise = begin_update_async(resource_group_name, profile_name, profile_update_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -532,58 +569,58 @@ module Azure::ARM::CDN
     #
     # Updates an existing CDN profile with the specified parameters.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param profile_properties [ProfileUpdateParameters] Profile properties
-    # needed for update.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param profile_update_parameters [ProfileUpdateParameters] Profile
+    # properties needed for update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Profile] operation results.
     #
-    def begin_update(profile_name, profile_properties, resource_group_name, custom_headers = nil)
-      response = begin_update_async(profile_name, profile_properties, resource_group_name, custom_headers).value!
+    def begin_update(resource_group_name, profile_name, profile_update_parameters, custom_headers = nil)
+      response = begin_update_async(resource_group_name, profile_name, profile_update_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Updates an existing CDN profile with the specified parameters.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param profile_properties [ProfileUpdateParameters] Profile properties
-    # needed for update.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param profile_update_parameters [ProfileUpdateParameters] Profile
+    # properties needed for update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_with_http_info(profile_name, profile_properties, resource_group_name, custom_headers = nil)
-      begin_update_async(profile_name, profile_properties, resource_group_name, custom_headers).value!
+    def begin_update_with_http_info(resource_group_name, profile_name, profile_update_parameters, custom_headers = nil)
+      begin_update_async(resource_group_name, profile_name, profile_update_parameters, custom_headers).value!
     end
 
     #
     # Updates an existing CDN profile with the specified parameters.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param profile_properties [ProfileUpdateParameters] Profile properties
-    # needed for update.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
+    # @param profile_update_parameters [ProfileUpdateParameters] Profile
+    # properties needed for update.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_async(profile_name, profile_properties, resource_group_name, custom_headers = nil)
-      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
-      fail ArgumentError, 'profile_properties is nil' if profile_properties.nil?
+    def begin_update_async(resource_group_name, profile_name, profile_update_parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
+      fail ArgumentError, 'profile_update_parameters is nil' if profile_update_parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -598,7 +635,7 @@ module Azure::ARM::CDN
 
       # Serialize Request
       request_mapper = ProfileUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  profile_properties, 'profile_properties')
+      request_content = @client.serialize(request_mapper,  profile_update_parameters, 'profile_update_parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}'
@@ -607,7 +644,7 @@ module Azure::ARM::CDN
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'profileName' => profile_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'profileName' => profile_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -657,32 +694,32 @@ module Azure::ARM::CDN
     # profile will result in the deletion of all subresources including
     # endpoints, origins and custom domains.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete_if_exists(profile_name, resource_group_name, custom_headers = nil)
-      response = delete_if_exists_async(profile_name, resource_group_name, custom_headers).value!
+    def delete(resource_group_name, profile_name, custom_headers = nil)
+      response = delete_async(resource_group_name, profile_name, custom_headers).value!
       nil
     end
 
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_if_exists_async(profile_name, resource_group_name, custom_headers = nil)
+    def delete_async(resource_group_name, profile_name, custom_headers = nil)
       # Send request
-      promise = begin_delete_if_exists_async(profile_name, resource_group_name, custom_headers)
+      promise = begin_delete_async(resource_group_name, profile_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -701,16 +738,16 @@ module Azure::ARM::CDN
     # profile will result in the deletion of all subresources including
     # endpoints, origins and custom domains.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_delete_if_exists(profile_name, resource_group_name, custom_headers = nil)
-      response = begin_delete_if_exists_async(profile_name, resource_group_name, custom_headers).value!
+    def begin_delete(resource_group_name, profile_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, profile_name, custom_headers).value!
       nil
     end
 
@@ -719,17 +756,17 @@ module Azure::ARM::CDN
     # profile will result in the deletion of all subresources including
     # endpoints, origins and custom domains.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_if_exists_with_http_info(profile_name, resource_group_name, custom_headers = nil)
-      begin_delete_if_exists_async(profile_name, resource_group_name, custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, profile_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, profile_name, custom_headers).value!
     end
 
     #
@@ -737,18 +774,18 @@ module Azure::ARM::CDN
     # profile will result in the deletion of all subresources including
     # endpoints, origins and custom domains.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_if_exists_async(profile_name, resource_group_name, custom_headers = nil)
-      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
+    def begin_delete_async(resource_group_name, profile_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -764,7 +801,7 @@ module Azure::ARM::CDN
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'profileName' => profile_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'profileName' => profile_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -794,17 +831,17 @@ module Azure::ARM::CDN
     # HTTP Reports, and Real-time Stats and Alerts. The SSO URI changes
     # approximately every 10 minutes.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SsoUri] operation results.
     #
-    def generate_sso_uri(profile_name, resource_group_name, custom_headers = nil)
-      response = generate_sso_uri_async(profile_name, resource_group_name, custom_headers).value!
+    def generate_sso_uri(resource_group_name, profile_name, custom_headers = nil)
+      response = generate_sso_uri_async(resource_group_name, profile_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -814,17 +851,17 @@ module Azure::ARM::CDN
     # HTTP Reports, and Real-time Stats and Alerts. The SSO URI changes
     # approximately every 10 minutes.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def generate_sso_uri_with_http_info(profile_name, resource_group_name, custom_headers = nil)
-      generate_sso_uri_async(profile_name, resource_group_name, custom_headers).value!
+    def generate_sso_uri_with_http_info(resource_group_name, profile_name, custom_headers = nil)
+      generate_sso_uri_async(resource_group_name, profile_name, custom_headers).value!
     end
 
     #
@@ -833,18 +870,18 @@ module Azure::ARM::CDN
     # HTTP Reports, and Real-time Stats and Alerts. The SSO URI changes
     # approximately every 10 minutes.
     #
+    # @param resource_group_name [String] Name of the Resource group within the
+    # Azure subscription.
     # @param profile_name [String] Name of the CDN profile within the resource
     # group.
-    # @param resource_group_name [String] Name of the resource group within the
-    # Azure subscription.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def generate_sso_uri_async(profile_name, resource_group_name, custom_headers = nil)
-      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
+    def generate_sso_uri_async(resource_group_name, profile_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -860,7 +897,7 @@ module Azure::ARM::CDN
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'profileName' => profile_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'profileName' => profile_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -882,6 +919,180 @@ module Azure::ARM::CDN
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = SsoUri.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Lists the CDN profiles within an Azure subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ProfileListResult] operation results.
+    #
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Lists the CDN profiles within an Azure subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Lists the CDN profiles within an Azure subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ProfileListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Lists the CDN profiles within a resource group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ProfileListResult] operation results.
+    #
+    def list_by_resource_group_next(next_page_link, custom_headers = nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Lists the CDN profiles within a resource group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Lists the CDN profiles within a resource group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ProfileListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

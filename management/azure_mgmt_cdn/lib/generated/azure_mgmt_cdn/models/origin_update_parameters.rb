@@ -8,7 +8,7 @@ module Azure::ARM::CDN
     #
     # Origin properties needed for origin creation or update.
     #
-    class OriginParameters
+    class OriginUpdateParameters
 
       include MsRestAzure
 
@@ -26,19 +26,19 @@ module Azure::ARM::CDN
 
 
       #
-      # Mapper for OriginParameters class as Ruby Hash.
+      # Mapper for OriginUpdateParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'OriginParameters',
+          serialized_name: 'OriginUpdateParameters',
           type: {
             name: 'Composite',
-            class_name: 'OriginParameters',
+            class_name: 'OriginUpdateParameters',
             model_properties: {
               host_name: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.hostName',
                 type: {
                   name: 'String'

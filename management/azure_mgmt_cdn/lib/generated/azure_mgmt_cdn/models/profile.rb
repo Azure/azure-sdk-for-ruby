@@ -11,7 +11,7 @@ module Azure::ARM::CDN
     # endpoints in addition to creating shared configuration settings and
     # selecting pricing tiers and providers.
     #
-    class Profile < TrackedResource
+    class Profile < MsRestAzure::Resource
 
       include MsRestAzure
 
@@ -22,8 +22,7 @@ module Azure::ARM::CDN
       # Possible values include: 'Creating', 'Active', 'Deleting', 'Disabled'
       attr_accessor :resource_state
 
-      # @return [ProvisioningState] Provisioning status of the profile.
-      # Possible values include: 'Creating', 'Succeeded', 'Failed'
+      # @return [String] Provisioning status of the profile.
       attr_accessor :provisioning_state
 
 
@@ -71,7 +70,7 @@ module Azure::ARM::CDN
                 }
               },
               tags: {
-                required: true,
+                required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
@@ -97,16 +96,15 @@ module Azure::ARM::CDN
                 read_only: true,
                 serialized_name: 'properties.resourceState',
                 type: {
-                  name: 'Enum',
-                  module: 'ProfileResourceState'
+                  name: 'String'
                 }
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
-                  name: 'Enum',
-                  module: 'ProvisioningState'
+                  name: 'String'
                 }
               }
             }

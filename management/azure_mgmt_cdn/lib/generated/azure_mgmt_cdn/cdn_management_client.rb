@@ -21,7 +21,7 @@ module Azure::ARM::CDN
     attr_accessor :subscription_id
 
     # @return [String] Version of the API to be used with the client request.
-    # Current version is 2016-04-02
+    # Current version is 2016-10-02
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.
@@ -47,12 +47,6 @@ module Azure::ARM::CDN
     # @return [CustomDomains] custom_domains
     attr_reader :custom_domains
 
-    # @return [NameAvailability] name_availability
-    attr_reader :name_availability
-
-    # @return [Operations] operations
-    attr_reader :operations
-
     #
     # Creates initializes a new instance of the CdnManagementClient class.
     # @param credentials [MsRest::ServiceClientCredentials] credentials to authorize HTTP requests made by the service client.
@@ -71,9 +65,7 @@ module Azure::ARM::CDN
       @endpoints = Endpoints.new(self)
       @origins = Origins.new(self)
       @custom_domains = CustomDomains.new(self)
-      @name_availability = NameAvailability.new(self)
-      @operations = Operations.new(self)
-      @api_version = '2016-04-02'
+      @api_version = '2016-10-02'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -132,6 +124,358 @@ module Azure::ARM::CDN
       options.merge!({credentials: @credentials}) unless @credentials.nil?
 
       super(request_url, method, path, options)
+    end
+
+    #
+    # Check the availability of a resource name without creating the resource.
+    # This is needed for resources where name is globally unique, such as a CDN
+    # endpoint.
+    #
+    # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
+    # check.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CheckNameAvailabilityOutput] operation results.
+    #
+    def check_name_availability(check_name_availability_input, custom_headers = nil)
+      response = check_name_availability_async(check_name_availability_input, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Check the availability of a resource name without creating the resource.
+    # This is needed for resources where name is globally unique, such as a CDN
+    # endpoint.
+    #
+    # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
+    # check.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def check_name_availability_with_http_info(check_name_availability_input, custom_headers = nil)
+      check_name_availability_async(check_name_availability_input, custom_headers).value!
+    end
+
+    #
+    # Check the availability of a resource name without creating the resource.
+    # This is needed for resources where name is globally unique, such as a CDN
+    # endpoint.
+    #
+    # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
+    # check.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def check_name_availability_async(check_name_availability_input, custom_headers = nil)
+      fail ArgumentError, 'check_name_availability_input is nil' if check_name_availability_input.nil?
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = CheckNameAvailabilityInput.mapper()
+      request_content = self.serialize(request_mapper,  check_name_availability_input, 'check_name_availability_input')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/providers/Microsoft.Cdn/checkNameAvailability'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = CheckNameAvailabilityOutput.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Lists all of the available CDN REST API operations.
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [OperationListResult] operation results.
+    #
+    def list_operations(custom_headers = nil)
+      first_page = list_operations_as_lazy(custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Lists all of the available CDN REST API operations.
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_operations_with_http_info(custom_headers = nil)
+      list_operations_async(custom_headers).value!
+    end
+
+    #
+    # Lists all of the available CDN REST API operations.
+    #
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_operations_async(custom_headers = nil)
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '/providers/Microsoft.Cdn/operations'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = OperationListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Lists all of the available CDN REST API operations.
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<Operation>] operation results.
+    #
+    def list_operations(custom_headers = nil)
+      first_page = list_operations_as_lazy(custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Lists all of the available CDN REST API operations.
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_operations_with_http_info(custom_headers = nil)
+      list_operations_async(custom_headers).value!
+    end
+
+    #
+    # Lists all of the available CDN REST API operations.
+    #
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_operations_async(custom_headers = nil)
+      fail ArgumentError, 'api_version is nil' if api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '/providers/Microsoft.Cdn/operations'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = OperationListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Lists all of the available CDN REST API operations.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [OperationListResult] operation results.
+    #
+    def list_operations_next(next_page_link, custom_headers = nil)
+      response = list_operations_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Lists all of the available CDN REST API operations.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_operations_next_with_http_info(next_page_link, custom_headers = nil)
+      list_operations_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Lists all of the available CDN REST API operations.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful
+    # call to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_operations_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = accept_language unless accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || self.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = self.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = OperationListResult.mapper()
+            result.body = self.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
     end
 
   end
