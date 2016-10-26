@@ -84,7 +84,7 @@ module Azure::ARM::CDN
                 }
               },
               sku: {
-                required: false,
+                required: true,
                 serialized_name: 'sku',
                 type: {
                   name: 'Composite',
