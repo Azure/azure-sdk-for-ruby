@@ -12,7 +12,8 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Integer] Number of masters (VMs) in the container cluster
+      # @return [Integer] Number of masters (VMs) in the container cluster.
+      # Default value: 1 .
       attr_accessor :count
 
       # @return [String] DNS prefix to be used to create FQDN for master
@@ -37,6 +38,7 @@ module Azure::ARM::Compute
               count: {
                 required: false,
                 serialized_name: 'count',
+                default_value: 1,
                 type: {
                   name: 'Number'
                 }

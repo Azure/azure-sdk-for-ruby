@@ -16,7 +16,8 @@ module Azure::ARM::Compute
       # context of the subscription and resource group
       attr_accessor :name
 
-      # @return [Integer] No. of agents (VMs) that will host docker containers
+      # @return [Integer] Number of agents (VMs) that will host docker
+      # containers
       attr_accessor :count
 
       # @return [ContainerServiceVMSizeTypes] Size of agent VMs. Possible
@@ -63,7 +64,7 @@ module Azure::ARM::Compute
                 }
               },
               count: {
-                required: false,
+                required: true,
                 serialized_name: 'count',
                 constraints: {
                   InclusiveMaximum: 100,
@@ -74,7 +75,7 @@ module Azure::ARM::Compute
                 }
               },
               vm_size: {
-                required: false,
+                required: true,
                 serialized_name: 'vmSize',
                 type: {
                   name: 'String'

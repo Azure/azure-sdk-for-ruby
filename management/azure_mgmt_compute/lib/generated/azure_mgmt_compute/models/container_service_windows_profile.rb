@@ -34,6 +34,9 @@ module Azure::ARM::Compute
               admin_username: {
                 required: true,
                 serialized_name: 'adminUsername',
+                constraints: {
+                  Pattern: '^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$'
+                },
                 type: {
                   name: 'String'
                 }
@@ -41,6 +44,9 @@ module Azure::ARM::Compute
               admin_password: {
                 required: true,
                 serialized_name: 'adminPassword',
+                constraints: {
+                  Pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\^&\*\(\)])[a-zA-Z\d!@#$%\^&\*\(\)]{12,123}$'
+                },
                 type: {
                   name: 'String'
                 }

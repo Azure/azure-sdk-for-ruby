@@ -30,7 +30,7 @@ module Azure::ARM::Compute
             class_name: 'ContainerServiceDiagnosticsProfile',
             model_properties: {
               vm_diagnostics: {
-                required: false,
+                required: true,
                 serialized_name: 'vmDiagnostics',
                 type: {
                   name: 'Composite',

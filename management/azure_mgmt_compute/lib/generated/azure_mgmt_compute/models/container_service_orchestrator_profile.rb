@@ -31,7 +31,7 @@ module Azure::ARM::Compute
             class_name: 'ContainerServiceOrchestratorProfile',
             model_properties: {
               orchestrator_type: {
-                required: false,
+                required: true,
                 serialized_name: 'orchestratorType',
                 type: {
                   name: 'Enum',

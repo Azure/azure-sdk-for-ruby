@@ -35,6 +35,9 @@ module Azure::ARM::Compute
               admin_username: {
                 required: true,
                 serialized_name: 'adminUsername',
+                constraints: {
+                  Pattern: '^[a-z][a-z0-9_-]*$'
+                },
                 type: {
                   name: 'String'
                 }
