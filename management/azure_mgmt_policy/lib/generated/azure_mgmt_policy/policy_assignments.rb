@@ -65,7 +65,6 @@ module Azure::ARM::Policy
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'policy_assignment_name is nil' if policy_assignment_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -79,7 +78,7 @@ module Azure::ARM::Policy
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'policyAssignmentName' => policy_assignment_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'policyAssignmentName' => policy_assignment_name},
           skip_encoding_path_params: {'scope' => scope},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
@@ -161,7 +160,6 @@ module Azure::ARM::Policy
       fail ArgumentError, 'policy_assignment_name is nil' if policy_assignment_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -183,7 +181,7 @@ module Azure::ARM::Policy
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'policyAssignmentName' => policy_assignment_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'policyAssignmentName' => policy_assignment_name},
           skip_encoding_path_params: {'scope' => scope},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
@@ -262,7 +260,6 @@ module Azure::ARM::Policy
       fail ArgumentError, 'scope is nil' if scope.nil?
       fail ArgumentError, 'policy_assignment_name is nil' if policy_assignment_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -276,7 +273,7 @@ module Azure::ARM::Policy
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'policyAssignmentName' => policy_assignment_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'policyAssignmentName' => policy_assignment_name},
           skip_encoding_path_params: {'scope' => scope},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
@@ -707,7 +704,6 @@ module Azure::ARM::Policy
     def delete_by_id_async(policy_assignment_id, custom_headers = nil)
       fail ArgumentError, 'policy_assignment_id is nil' if policy_assignment_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -721,7 +717,6 @@ module Azure::ARM::Policy
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id},
           skip_encoding_path_params: {'policyAssignmentId' => policy_assignment_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
@@ -799,7 +794,6 @@ module Azure::ARM::Policy
       fail ArgumentError, 'policy_assignment_id is nil' if policy_assignment_id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -821,7 +815,6 @@ module Azure::ARM::Policy
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id},
           skip_encoding_path_params: {'policyAssignmentId' => policy_assignment_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
@@ -896,7 +889,6 @@ module Azure::ARM::Policy
     def get_by_id_async(policy_assignment_id, custom_headers = nil)
       fail ArgumentError, 'policy_assignment_id is nil' if policy_assignment_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
       request_headers = {}
@@ -910,7 +902,6 @@ module Azure::ARM::Policy
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id},
           skip_encoding_path_params: {'policyAssignmentId' => policy_assignment_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
