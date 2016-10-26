@@ -65,7 +65,7 @@ module Azure::ARM::Compute
             class_name: 'ListUsagesResult',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
