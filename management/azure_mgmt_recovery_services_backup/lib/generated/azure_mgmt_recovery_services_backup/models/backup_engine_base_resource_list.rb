@@ -12,7 +12,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [Array<BackupEngineBase>] List of resources.
+      # @return [Array<BackupEngineBaseResource>] List of resources.
       attr_accessor :value
 
       # return [Proc] with next page method call.
@@ -21,7 +21,7 @@ module Azure::ARM::RecoveryServicesBackup
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<BackupEngineBase>] operation results.
+      # @return [Array<BackupEngineBaseResource>] operation results.
       #
       def get_all_items
         items = @value
@@ -73,12 +73,10 @@ module Azure::ARM::RecoveryServicesBackup
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'BackupEngineBaseElementType',
+                      serialized_name: 'BackupEngineBaseResourceElementType',
                       type: {
                         name: 'Composite',
-                        polymorphic_discriminator: 'backupEngineType',
-                        uber_parent: 'Resource',
-                        class_name: 'BackupEngineBase'
+                        class_name: 'BackupEngineBaseResource'
                       }
                   }
                 }

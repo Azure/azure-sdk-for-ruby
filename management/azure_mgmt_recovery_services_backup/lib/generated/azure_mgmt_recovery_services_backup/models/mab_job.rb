@@ -19,7 +19,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :jobType
 
-      # @return [String] Time taken by job to run.
+      # @return [Duration] Time taken by job to run.
       attr_accessor :duration
 
       # @return [Array<JobSupportedAction>] The state/actions applicable on
@@ -29,18 +29,16 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [String] Name of server protecting the DS.
       attr_accessor :mab_server_name
 
-      # @return [MabServerType] Server type of MAB container. Possible values:
-      # IaasVMContainer, MABContainer, AzureSqlContainer, WindowsServer.
-      # Possible values include: 'Invalid', 'Unknown', 'IaasVMContainer',
+      # @return [MabServerType] Server type of MAB container. Possible values
+      # include: 'Invalid', 'Unknown', 'IaasVMContainer',
       # 'IaasVMServiceContainer', 'DPMContainer', 'DPMVenusContainer',
       # 'MABContainer', 'ClusterResource', 'AzureSqlContainer',
       # 'WindowsServer', 'Windows'
       attr_accessor :mab_server_type
 
-      # @return [WorkloadType] Workload type of backup item. Possible values:
-      # VM, FileFolder, AzureSqlDb. Possible values include: 'Invalid', 'VM',
-      # 'FileFolder', 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint',
-      # 'DPMUnknown'
+      # @return [WorkloadType] Workload type of backup item. Possible values
+      # include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb', 'SQLDB',
+      # 'Exchange', 'Sharepoint', 'DPMUnknown'
       attr_accessor :workload_type
 
       # @return [Array<MabErrorInfo>] The errors.
@@ -62,55 +60,6 @@ module Azure::ARM::RecoveryServicesBackup
             name: 'Composite',
             class_name: 'MabJob',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               entity_friendly_name: {
                 required: false,
                 serialized_name: 'entityFriendlyName',
@@ -172,7 +121,7 @@ module Azure::ARM::RecoveryServicesBackup
                 required: false,
                 serialized_name: 'duration',
                 type: {
-                  name: 'String'
+                  name: 'TimeSpan'
                 }
               },
               actions_info: {

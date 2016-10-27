@@ -16,9 +16,8 @@ module Azure::ARM::RecoveryServicesBackup
       attr_accessor :last_refreshed_at
 
       # @return [BackupItemType] Type of backup items associated with this
-      # container. Possible values: VM, FileFolder, AzureSqlDb. Possible
-      # values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb', 'SQLDB',
-      # 'Exchange', 'Sharepoint', 'DPMUnknown'
+      # container. Possible values include: 'Invalid', 'VM', 'FileFolder',
+      # 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'DPMUnknown'
       attr_accessor :backup_item_type
 
       # @return [Array<String>] List of backup items associated with this

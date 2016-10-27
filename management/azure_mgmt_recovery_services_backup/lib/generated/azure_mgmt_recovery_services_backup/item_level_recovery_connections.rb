@@ -106,7 +106,7 @@ module Azure::ARM::RecoveryServicesBackup
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/revokeInstantItemRecovery'
+      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/revokeInstantItemRecovery'
 
       request_url = @base_url || @client.base_url
 
@@ -152,7 +152,7 @@ module Azure::ARM::RecoveryServicesBackup
     # are to be restored.
     # @param recovery_point_id [String] Recovery point ID which represents backed
     # up data. iSCSI connection will be provisioned for this backed up data.
-    # @param resource_ilrrequest [ILRRequest] resource ILR request
+    # @param resource_ilrrequest [ILRRequestResource] resource ILR request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -178,7 +178,7 @@ module Azure::ARM::RecoveryServicesBackup
     # are to be restored.
     # @param recovery_point_id [String] Recovery point ID which represents backed
     # up data. iSCSI connection will be provisioned for this backed up data.
-    # @param resource_ilrrequest [ILRRequest] resource ILR request
+    # @param resource_ilrrequest [ILRRequestResource] resource ILR request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -204,7 +204,7 @@ module Azure::ARM::RecoveryServicesBackup
     # are to be restored.
     # @param recovery_point_id [String] Recovery point ID which represents backed
     # up data. iSCSI connection will be provisioned for this backed up data.
-    # @param resource_ilrrequest [ILRRequest] resource ILR request
+    # @param resource_ilrrequest [ILRRequestResource] resource ILR request
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -231,11 +231,11 @@ module Azure::ARM::RecoveryServicesBackup
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = ILRRequest.mapper()
+      request_mapper = ILRRequestResource.mapper()
       request_content = @client.serialize(request_mapper,  resource_ilrrequest, 'resource_ilrrequest')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/provisionInstantItemRecovery'
+      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/provisionInstantItemRecovery'
 
       request_url = @base_url || @client.base_url
 

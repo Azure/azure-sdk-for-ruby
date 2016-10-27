@@ -8,10 +8,13 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Base class for operation result info.
     #
-    class OperationResultInfoBase < OperationWorkerResponse
+    class OperationResultInfoBase
 
       include MsRestAzure
 
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["OperationResultInfo"] = "OperationResultInfo"
+      @@discriminatorMap["ExportJobsOperationResultInfo"] = "ExportJobsOperationResultInfo"
 
       def initialize
         @objectType = "OperationResultInfoBase"
@@ -31,38 +34,9 @@ module Azure::ARM::RecoveryServicesBackup
           type: {
             name: 'Composite',
             polymorphic_discriminator: 'objectType',
-            uber_parent: 'OperationWorkerResponse',
+            uber_parent: 'OperationResultInfoBase',
             class_name: 'OperationResultInfoBase',
             model_properties: {
-              status_code: {
-                required: false,
-                serialized_name: 'statusCode',
-                type: {
-                  name: 'Enum',
-                  module: 'HttpStatusCode'
-                }
-              },
-              headers: {
-                required: false,
-                serialized_name: 'Headers',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'ArrayElementType',
-                      type: {
-                        name: 'Sequence',
-                        element: {
-                            required: false,
-                            serialized_name: 'StringElementType',
-                            type: {
-                              name: 'String'
-                            }
-                        }
-                      }
-                  }
-                }
-              }
             }
           }
         }

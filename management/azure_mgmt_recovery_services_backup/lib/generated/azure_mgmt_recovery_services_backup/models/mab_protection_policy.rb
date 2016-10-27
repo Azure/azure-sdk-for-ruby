@@ -19,10 +19,10 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :backupManagementType
 
-      # @return Backup schedule of backup policy.
+      # @return [SchedulePolicy] Backup schedule of backup policy.
       attr_accessor :schedule_policy
 
-      # @return Retention policy details.
+      # @return [RetentionPolicy] Retention policy details.
       attr_accessor :retention_policy
 
 
@@ -38,55 +38,6 @@ module Azure::ARM::RecoveryServicesBackup
             name: 'Composite',
             class_name: 'MabProtectionPolicy',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               protected_items_count: {
                 required: false,
                 serialized_name: 'protectedItemsCount',
@@ -105,14 +56,20 @@ module Azure::ARM::RecoveryServicesBackup
                 required: false,
                 serialized_name: 'schedulePolicy',
                 type: {
-                  name: 'Object'
+                  name: 'Composite',
+                  polymorphic_discriminator: 'schedulePolicyType',
+                  uber_parent: 'SchedulePolicy',
+                  class_name: 'SchedulePolicy'
                 }
               },
               retention_policy: {
                 required: false,
                 serialized_name: 'retentionPolicy',
                 type: {
-                  name: 'Object'
+                  name: 'Composite',
+                  polymorphic_discriminator: 'retentionPolicyType',
+                  uber_parent: 'RetentionPolicy',
+                  class_name: 'RetentionPolicy'
                 }
               }
             }

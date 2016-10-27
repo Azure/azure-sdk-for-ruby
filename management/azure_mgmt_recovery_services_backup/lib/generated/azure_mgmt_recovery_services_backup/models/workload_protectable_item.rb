@@ -9,21 +9,29 @@ module Azure::ARM::RecoveryServicesBackup
     # Base class for backup item. Workload-specific backup items are derived
     # from this class.
     #
-    class WorkloadProtectableItem < MsRestAzure::Resource
+    class WorkloadProtectableItem
 
       include MsRestAzure
+
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["IaaSVMProtectableItem"] = "IaaSVMProtectableItem"
+      @@discriminatorMap["Microsoft.Compute/virtualMachines"] = "AzureIaaSComputeVMProtectableItem"
+      @@discriminatorMap["Microsoft.ClassicCompute/virtualMachines"] = "AzureIaaSClassicComputeVMProtectableItem"
+
+      def initialize
+        @protectableItemType = "WorkloadProtectableItem"
+      end
+
+      attr_accessor :protectableItemType
 
       # @return [String] Type of backup managemenent to backup an item.
       attr_accessor :backup_management_type
 
-      # @return [String] Type of the backup item.
-      attr_accessor :protectable_item_type
-
       # @return [String] Friendly name of the backup item.
       attr_accessor :friendly_name
 
-      # @return [String] State of the back up item. Possible values:
-      # Protected, NotProtected.
+      # @return [ProtectionStatus] State of the back up item. Possible values
+      # include: 'Invalid', 'NotProtected', 'Protecting', 'Protected'
       attr_accessor :protection_state
 
 
@@ -37,67 +45,13 @@ module Azure::ARM::RecoveryServicesBackup
           serialized_name: 'WorkloadProtectableItem',
           type: {
             name: 'Composite',
+            polymorphic_discriminator: 'protectableItemType',
+            uber_parent: 'WorkloadProtectableItem',
             class_name: 'WorkloadProtectableItem',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               backup_management_type: {
                 required: false,
                 serialized_name: 'backupManagementType',
-                type: {
-                  name: 'String'
-                }
-              },
-              protectable_item_type: {
-                required: false,
-                serialized_name: 'protectableItemType',
                 type: {
                   name: 'String'
                 }
@@ -113,7 +67,8 @@ module Azure::ARM::RecoveryServicesBackup
                 required: false,
                 serialized_name: 'protectionState',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'ProtectionStatus'
                 }
               }
             }

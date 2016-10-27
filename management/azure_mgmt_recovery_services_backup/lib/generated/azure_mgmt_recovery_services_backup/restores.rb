@@ -35,7 +35,8 @@ module Azure::ARM::RecoveryServicesBackup
     # @param protected_item_name [String] Backed up item to be restored.
     # @param recovery_point_id [String] Recovery point ID which represents the
     # backed up data to be restored.
-    # @param resource_restore_request [RestoreRequest] resource restore request
+    # @param resource_restore_request [RestoreRequestResource] resource restore
+    # request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -58,7 +59,8 @@ module Azure::ARM::RecoveryServicesBackup
     # @param protected_item_name [String] Backed up item to be restored.
     # @param recovery_point_id [String] Recovery point ID which represents the
     # backed up data to be restored.
-    # @param resource_restore_request [RestoreRequest] resource restore request
+    # @param resource_restore_request [RestoreRequestResource] resource restore
+    # request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -81,7 +83,8 @@ module Azure::ARM::RecoveryServicesBackup
     # @param protected_item_name [String] Backed up item to be restored.
     # @param recovery_point_id [String] Recovery point ID which represents the
     # backed up data to be restored.
-    # @param resource_restore_request [RestoreRequest] resource restore request
+    # @param resource_restore_request [RestoreRequestResource] resource restore
+    # request
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -108,11 +111,11 @@ module Azure::ARM::RecoveryServicesBackup
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = RestoreRequest.mapper()
+      request_mapper = RestoreRequestResource.mapper()
       request_content = @client.serialize(request_mapper,  resource_restore_request, 'resource_restore_request')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore'
+      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore'
 
       request_url = @base_url || @client.base_url
 

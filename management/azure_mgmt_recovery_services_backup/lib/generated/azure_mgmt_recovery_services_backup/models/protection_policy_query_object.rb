@@ -12,8 +12,9 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [String] Backup management type for the backup policy.
-      # Possible values: AzureIaasVM, MAB, DPM.
+      # @return [BackupManagementType] Backup management type for the backup
+      # policy. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
+      # 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
 
@@ -33,7 +34,8 @@ module Azure::ARM::RecoveryServicesBackup
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'BackupManagementType'
                 }
               }
             }

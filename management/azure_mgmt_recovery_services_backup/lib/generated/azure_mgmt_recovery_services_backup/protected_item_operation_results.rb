@@ -38,7 +38,7 @@ module Azure::ARM::RecoveryServicesBackup
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ProtectedItem] operation results.
+    # @return [ProtectedItemResource] operation results.
     #
     def get(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, operation_id, custom_headers = nil)
       response = get_async(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, operation_id, custom_headers).value!
@@ -101,7 +101,7 @@ module Azure::ARM::RecoveryServicesBackup
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/operationResults/{operationId}'
+      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/operationResults/{operationId}'
 
       request_url = @base_url || @client.base_url
 
@@ -128,7 +128,7 @@ module Azure::ARM::RecoveryServicesBackup
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ProtectedItem.mapper()
+            result_mapper = ProtectedItemResource.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

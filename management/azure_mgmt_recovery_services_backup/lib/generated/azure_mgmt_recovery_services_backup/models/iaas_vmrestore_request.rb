@@ -22,9 +22,8 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [String] ID of the backup copy to be recovered.
       attr_accessor :recovery_point_id
 
-      # @return [String] Type of this recovery.
-      # Possible values: OriginalLocation, AlternateLocation,
-      # RestoreDisks.
+      # @return [RecoveryType] Type of this recovery. Possible values include:
+      # 'Invalid', 'OriginalLocation', 'AlternateLocation', 'RestoreDisks'
       attr_accessor :recovery_type
 
       # @return [String] Fully qualified ARM ID of the VM which is being
@@ -92,55 +91,6 @@ module Azure::ARM::RecoveryServicesBackup
             name: 'Composite',
             class_name: 'IaasVMRestoreRequest',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               objectType: {
                 required: true,
                 serialized_name: 'objectType',
@@ -159,7 +109,8 @@ module Azure::ARM::RecoveryServicesBackup
                 required: false,
                 serialized_name: 'recoveryType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'RecoveryType'
                 }
               },
               source_resource_id: {

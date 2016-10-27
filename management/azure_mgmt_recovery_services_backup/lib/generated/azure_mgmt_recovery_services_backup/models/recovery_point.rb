@@ -9,10 +9,13 @@ module Azure::ARM::RecoveryServicesBackup
     # Base class for backup copies. Workload-specific backup copies are
     # derived from this class.
     #
-    class RecoveryPoint < MsRestAzure::Resource
+    class RecoveryPoint
 
       include MsRestAzure
 
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["IaasVMRecoveryPoint"] = "IaasVMRecoveryPoint"
+      @@discriminatorMap["GenericRecoveryPoint"] = "GenericRecoveryPoint"
 
       def initialize
         @objectType = "RecoveryPoint"
@@ -32,58 +35,9 @@ module Azure::ARM::RecoveryServicesBackup
           type: {
             name: 'Composite',
             polymorphic_discriminator: 'objectType',
-            uber_parent: 'Resource',
+            uber_parent: 'RecoveryPoint',
             class_name: 'RecoveryPoint',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              }
             }
           }
         }

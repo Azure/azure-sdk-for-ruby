@@ -23,8 +23,7 @@ module Azure::ARM::RecoveryServicesBackup
       # Backup engine to contact Recovery Services.
       attr_accessor :protected_item_data_id
 
-      # @return [ProtectionState] Backup state of the backed up item. Possible
-      # values: Protected, ProtectionStopped, IRPending or ProtectionError.
+      # @return [ProtectedItemState] Backup state of the backed up item.
       # Possible values include: 'Invalid', 'IRPending', 'Protected',
       # 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
       attr_accessor :protection_state
@@ -46,67 +45,20 @@ module Azure::ARM::RecoveryServicesBackup
             name: 'Composite',
             class_name: 'AzureSqlProtectedItem',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               backup_management_type: {
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'BackupManagementType'
                 }
               },
               workload_type: {
                 required: false,
                 serialized_name: 'workloadType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'DataSourceType'
                 }
               },
               source_resource_id: {
@@ -149,7 +101,7 @@ module Azure::ARM::RecoveryServicesBackup
                 serialized_name: 'protectionState',
                 type: {
                   name: 'Enum',
-                  module: 'ProtectionState'
+                  module: 'ProtectedItemState'
                 }
               },
               extended_info: {

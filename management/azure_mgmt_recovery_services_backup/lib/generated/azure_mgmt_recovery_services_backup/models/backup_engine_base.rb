@@ -9,10 +9,13 @@ module Azure::ARM::RecoveryServicesBackup
     # The base backup engine class. All workload specific backup engines
     # derive from this class.
     #
-    class BackupEngineBase < MsRestAzure::Resource
+    class BackupEngineBase
 
       include MsRestAzure
 
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureBackupServerEngine"] = "AzureBackupServerEngine"
+      @@discriminatorMap["DpmBackupEngine"] = "DpmBackupEngine"
 
       def initialize
         @backupEngineType = "BackupEngineBase"
@@ -23,8 +26,9 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [String] Friendly name of the backup engine.
       attr_accessor :friendly_name
 
-      # @return [String] Type of backup management for the backup engine.
-      # Possible values: AzureIaasVM, DPM or MAB.
+      # @return [BackupManagementType] Type of backup management for the
+      # backup engine. Possible values include: 'Invalid', 'AzureIaasVM',
+      # 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
       # @return [String] Registration status of the backup engine with the
@@ -53,58 +57,9 @@ module Azure::ARM::RecoveryServicesBackup
           type: {
             name: 'Composite',
             polymorphic_discriminator: 'backupEngineType',
-            uber_parent: 'Resource',
+            uber_parent: 'BackupEngineBase',
             class_name: 'BackupEngineBase',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               friendly_name: {
                 required: false,
                 serialized_name: 'friendlyName',
@@ -116,7 +71,8 @@ module Azure::ARM::RecoveryServicesBackup
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'BackupManagementType'
                 }
               },
               registration_status: {

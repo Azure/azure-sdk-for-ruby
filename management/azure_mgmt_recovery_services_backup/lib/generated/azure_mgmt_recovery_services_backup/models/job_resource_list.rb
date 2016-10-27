@@ -12,7 +12,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [Array<Job>] List of resources.
+      # @return [Array<JobResource>] List of resources.
       attr_accessor :value
 
       # return [Proc] with next page method call.
@@ -21,7 +21,7 @@ module Azure::ARM::RecoveryServicesBackup
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<Job>] operation results.
+      # @return [Array<JobResource>] operation results.
       #
       def get_all_items
         items = @value
@@ -73,12 +73,10 @@ module Azure::ARM::RecoveryServicesBackup
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'JobElementType',
+                      serialized_name: 'JobResourceElementType',
                       type: {
                         name: 'Composite',
-                        polymorphic_discriminator: 'jobType',
-                        uber_parent: 'Resource',
-                        class_name: 'Job'
+                        class_name: 'JobResource'
                       }
                   }
                 }

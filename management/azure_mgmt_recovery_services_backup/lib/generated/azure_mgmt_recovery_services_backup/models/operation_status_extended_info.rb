@@ -13,9 +13,9 @@ module Azure::ARM::RecoveryServicesBackup
       include MsRestAzure
 
       @@discriminatorMap = Hash.new
+      @@discriminatorMap["OperationStatusJobExtendedInfo"] = "OperationStatusJobExtendedInfo"
       @@discriminatorMap["OperationStatusProvisionILRExtendedInfo"] = "OperationStatusProvisionILRExtendedInfo"
       @@discriminatorMap["OperationStatusJobsExtendedInfo"] = "OperationStatusJobsExtendedInfo"
-      @@discriminatorMap["OperationStatusJobExtendedInfo"] = "OperationStatusJobExtendedInfo"
 
       def initialize
         @objectType = "OperationStatusExtendedInfo"
