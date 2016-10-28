@@ -64,7 +64,7 @@ module Azure::ARM::Compute
                 }
               },
               count: {
-                required: true,
+                required: false,
                 serialized_name: 'count',
                 constraints: {
                   InclusiveMaximum: 100,
