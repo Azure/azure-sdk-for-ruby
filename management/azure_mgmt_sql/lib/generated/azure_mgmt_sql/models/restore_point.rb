@@ -6,53 +6,50 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Server Security Alert Policy.
+    # Represents an Azure SQL Database restore point.
     #
-    class ServerSecurityAlertPolicy < MsRestAzure::Resource
+    class RestorePoint < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [State] The state of the Azure SQL Security alert policy (New,
-      # Enabled or Disabled). Possible values include: 'Enabled', 'Disabled',
-      # 'New'
-      attr_accessor :state
+      # @return [RestorePointTypes] The restore point type of the Azure SQL
+      # Database restore point. Possible values include: 'DISCRETE',
+      # 'CONTINUOUS'
+      attr_accessor :restore_point_type
 
-      # @return [String] The disable alerts of the Azure SQL Security alert
-      # policy.
-      attr_accessor :disabled_alerts
+      # @return [DateTime] Restore point creation time (ISO8601 format).
+      # Populated when restorePointType = CONTINUOUS. Null otherwise.
+      attr_accessor :restore_point_creation_date
 
-      # @return [String] The list of email addresses to send the alert.
-      attr_accessor :email_addresses
-
-      # @return [EmailAccountAdmins] Value that indicated whether to email the
-      # azure account admins. Possible values include: 'Enabled', 'Disabled'
-      attr_accessor :email_account_admins
+      # @return [DateTime] Earliest restore time (ISO8601 format). Populated
+      # when restorePointType = DISCRETE. Null otherwise.
+      attr_accessor :earliest_restore_date
 
 
       #
-      # Mapper for ServerSecurityAlertPolicy class as Ruby Hash.
+      # Mapper for RestorePoint class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ServerSecurityAlertPolicy',
+          serialized_name: 'RestorePoint',
           type: {
             name: 'Composite',
-            class_name: 'ServerSecurityAlertPolicy',
+            class_name: 'RestorePoint',
             model_properties: {
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
               name: {
                 required: false,
                 read_only: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
@@ -86,38 +83,29 @@ module Azure::ARM::SQL
                   }
                 }
               },
-              state: {
+              restore_point_type: {
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.state',
+                serialized_name: 'properties.restorePointType',
                 type: {
                   name: 'Enum',
-                  module: 'State'
+                  module: 'RestorePointTypes'
                 }
               },
-              disabled_alerts: {
+              restore_point_creation_date: {
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.disabledAlerts',
+                serialized_name: 'properties.restorePointCreationDate',
                 type: {
-                  name: 'String'
+                  name: 'DateTime'
                 }
               },
-              email_addresses: {
+              earliest_restore_date: {
                 required: false,
                 read_only: true,
-                serialized_name: 'properties.emailAddresses',
+                serialized_name: 'properties.earliestRestoreDate',
                 type: {
-                  name: 'String'
-                }
-              },
-              email_account_admins: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.emailAccountAdmins',
-                type: {
-                  name: 'Enum',
-                  module: 'EmailAccountAdmins'
+                  name: 'DateTime'
                 }
               }
             }

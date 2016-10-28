@@ -6,11 +6,12 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for EmailAccountAdmins
+    # Defines values for RecommendedIndexActions
     #
-    module EmailAccountAdmins
-      Enabled = "Enabled"
-      Disabled = "Disabled"
+    module RecommendedIndexActions
+      Create = "Create"
+      Drop = "Drop"
+      Rebuild = "Rebuild"
     end
   end
 end
