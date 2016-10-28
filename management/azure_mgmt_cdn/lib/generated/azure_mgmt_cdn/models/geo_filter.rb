@@ -12,13 +12,15 @@ module Azure::ARM::CDN
 
       include MsRestAzure
 
-      # @return [String] Relative path applicable to geo filter.
+      # @return [String] Relative path applicable to geo filter. (e.g.
+      # '/mypictures', '/mypicture/kitty.jpg', and etc.)
       attr_accessor :relative_path
 
       # @return [String] Action of the geo filter.
       attr_accessor :action
 
-      # @return [Array<String>] Country codes of the geo filter.
+      # @return [Array<String>] Two letter country codes of the geo filter.
+      # (e.g. AU, MX, and etc.)
       attr_accessor :country_codes
 
 

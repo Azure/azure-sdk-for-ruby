@@ -269,14 +269,14 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint within the CDN profile.
     # @param origin_name [String] Name of the origin, an arbitrary value but it
     # needs to be unique under endpoint
-    # @param origin [Origin] Origin properties
+    # @param origin_create_properties [Origin] Origin properties
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Origin] operation results.
     #
-    def create(resource_group_name, profile_name, endpoint_name, origin_name, origin, custom_headers = nil)
-      response = create_async(resource_group_name, profile_name, endpoint_name, origin_name, origin, custom_headers).value!
+    def create(resource_group_name, profile_name, endpoint_name, origin_name, origin_create_properties, custom_headers = nil)
+      response = create_async(resource_group_name, profile_name, endpoint_name, origin_name, origin_create_properties, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -288,16 +288,16 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint within the CDN profile.
     # @param origin_name [String] Name of the origin, an arbitrary value but it
     # needs to be unique under endpoint
-    # @param origin [Origin] Origin properties
+    # @param origin_create_properties [Origin] Origin properties
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(resource_group_name, profile_name, endpoint_name, origin_name, origin, custom_headers = nil)
+    def create_async(resource_group_name, profile_name, endpoint_name, origin_name, origin_create_properties, custom_headers = nil)
       # Send request
-      promise = begin_create_async(resource_group_name, profile_name, endpoint_name, origin_name, origin, custom_headers)
+      promise = begin_create_async(resource_group_name, profile_name, endpoint_name, origin_name, origin_create_properties, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -323,14 +323,14 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint within the CDN profile.
     # @param origin_name [String] Name of the origin, an arbitrary value but it
     # needs to be unique under endpoint
-    # @param origin [Origin] Origin properties
+    # @param origin_create_properties [Origin] Origin properties
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Origin] operation results.
     #
-    def begin_create(resource_group_name, profile_name, endpoint_name, origin_name, origin, custom_headers = nil)
-      response = begin_create_async(resource_group_name, profile_name, endpoint_name, origin_name, origin, custom_headers).value!
+    def begin_create(resource_group_name, profile_name, endpoint_name, origin_name, origin_create_properties, custom_headers = nil)
+      response = begin_create_async(resource_group_name, profile_name, endpoint_name, origin_name, origin_create_properties, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -344,14 +344,14 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint within the CDN profile.
     # @param origin_name [String] Name of the origin, an arbitrary value but it
     # needs to be unique under endpoint
-    # @param origin [Origin] Origin properties
+    # @param origin_create_properties [Origin] Origin properties
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(resource_group_name, profile_name, endpoint_name, origin_name, origin, custom_headers = nil)
-      begin_create_async(resource_group_name, profile_name, endpoint_name, origin_name, origin, custom_headers).value!
+    def begin_create_with_http_info(resource_group_name, profile_name, endpoint_name, origin_name, origin_create_properties, custom_headers = nil)
+      begin_create_async(resource_group_name, profile_name, endpoint_name, origin_name, origin_create_properties, custom_headers).value!
     end
 
     #
@@ -364,18 +364,18 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint within the CDN profile.
     # @param origin_name [String] Name of the origin, an arbitrary value but it
     # needs to be unique under endpoint
-    # @param origin [Origin] Origin properties
+    # @param origin_create_properties [Origin] Origin properties
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(resource_group_name, profile_name, endpoint_name, origin_name, origin, custom_headers = nil)
+    def begin_create_async(resource_group_name, profile_name, endpoint_name, origin_name, origin_create_properties, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'profile_name is nil' if profile_name.nil?
       fail ArgumentError, 'endpoint_name is nil' if endpoint_name.nil?
       fail ArgumentError, 'origin_name is nil' if origin_name.nil?
-      fail ArgumentError, 'origin is nil' if origin.nil?
+      fail ArgumentError, 'origin_create_properties is nil' if origin_create_properties.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
@@ -390,7 +390,7 @@ module Azure::ARM::CDN
 
       # Serialize Request
       request_mapper = Origin.mapper()
-      request_content = @client.serialize(request_mapper,  origin, 'origin')
+      request_content = @client.serialize(request_mapper,  origin_create_properties, 'origin_create_properties')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}'

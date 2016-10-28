@@ -47,6 +47,10 @@ module Azure::ARM::CDN
               http_port: {
                 required: false,
                 serialized_name: 'properties.httpPort',
+                constraints: {
+                  InclusiveMaximum: 65535,
+                  InclusiveMinimum: 1
+                },
                 type: {
                   name: 'Number'
                 }
@@ -54,6 +58,10 @@ module Azure::ARM::CDN
               https_port: {
                 required: false,
                 serialized_name: 'properties.httpsPort',
+                constraints: {
+                  InclusiveMaximum: 65535,
+                  InclusiveMinimum: 1
+                },
                 type: {
                   name: 'Number'
                 }
