@@ -546,15 +546,15 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_name [String] The name of the virtual network
     # gateway.
-    # @param parameters [VirtualNetworkGateway] Parameters supplied to the Begin
-    # Reset Virtual Network Gateway operation through Network resource provider.
+    # @param gateway_vip [String] Virtual network gateway vip address supplied to
+    # the Begin Reset of Active-Active feature enabled Gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [VirtualNetworkGateway] operation results.
     #
-    def reset(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
-      response = reset_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
+    def reset(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
+      response = reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -562,17 +562,17 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_name [String] The name of the virtual network
     # gateway.
-    # @param parameters [VirtualNetworkGateway] Parameters supplied to the Begin
-    # Reset Virtual Network Gateway operation through Network resource provider.
+    # @param gateway_vip [String] Virtual network gateway vip address supplied to
+    # the Begin Reset of Active-Active feature enabled Gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def reset_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
+    def reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
       # Send request
-      promise = begin_reset_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers)
+      promise = begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -596,15 +596,15 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_name [String] The name of the virtual network
     # gateway.
-    # @param parameters [VirtualNetworkGateway] Parameters supplied to the Begin
-    # Reset Virtual Network Gateway operation through Network resource provider.
+    # @param gateway_vip [String] Virtual network gateway vip address supplied to
+    # the Begin Reset of Active-Active feature enabled Gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [VirtualNetworkGateway] operation results.
     #
-    def begin_reset(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
-      response = begin_reset_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
+    def begin_reset(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
+      response = begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -616,15 +616,15 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_name [String] The name of the virtual network
     # gateway.
-    # @param parameters [VirtualNetworkGateway] Parameters supplied to the Begin
-    # Reset Virtual Network Gateway operation through Network resource provider.
+    # @param gateway_vip [String] Virtual network gateway vip address supplied to
+    # the Begin Reset of Active-Active feature enabled Gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_reset_with_http_info(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
-      begin_reset_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
+    def begin_reset_with_http_info(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
+      begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip, custom_headers).value!
     end
 
     #
@@ -635,17 +635,16 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_name [String] The name of the virtual network
     # gateway.
-    # @param parameters [VirtualNetworkGateway] Parameters supplied to the Begin
-    # Reset Virtual Network Gateway operation through Network resource provider.
+    # @param gateway_vip [String] Virtual network gateway vip address supplied to
+    # the Begin Reset of Active-Active feature enabled Gateway.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_reset_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
+    def begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -655,14 +654,6 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = VirtualNetworkGateway.mapper()
-      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/reset'
 
       request_url = @base_url || @client.base_url
@@ -670,8 +661,7 @@ module Azure::ARM::Network
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayName' => virtual_network_gateway_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
+          query_params: {'gatewayVip' => gateway_vip,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }

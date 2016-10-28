@@ -48,7 +48,7 @@ module Azure::ARM::Network
                 }
               },
               public_cert_data: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.publicCertData',
                 type: {
                   name: 'String'
@@ -56,6 +56,7 @@ module Azure::ARM::Network
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'

@@ -92,7 +92,7 @@ module Azure::ARM::Network
     autoload :VirtualNetworkGatewaySku,                           'generated/azure_mgmt_network/models/virtual_network_gateway_sku.rb'
     autoload :VpnClientConfiguration,                             'generated/azure_mgmt_network/models/vpn_client_configuration.rb'
     autoload :VpnClientParameters,                                'generated/azure_mgmt_network/models/vpn_client_parameters.rb'
-    autoload :ConnectionSharedKeyResult,                          'generated/azure_mgmt_network/models/connection_shared_key_result.rb'
+    autoload :TunnelConnectionHealth,                             'generated/azure_mgmt_network/models/tunnel_connection_health.rb'
     autoload :VirtualNetworkGatewayConnectionListResult,          'generated/azure_mgmt_network/models/virtual_network_gateway_connection_list_result.rb'
     autoload :ConnectionResetSharedKey,                           'generated/azure_mgmt_network/models/connection_reset_shared_key.rb'
     autoload :ConnectionSharedKey,                                'generated/azure_mgmt_network/models/connection_shared_key.rb'
@@ -180,8 +180,8 @@ module Azure::ARM::Network
     autoload :VirtualNetworkGatewaySkuName,                       'generated/azure_mgmt_network/models/virtual_network_gateway_sku_name.rb'
     autoload :VirtualNetworkGatewaySkuTier,                       'generated/azure_mgmt_network/models/virtual_network_gateway_sku_tier.rb'
     autoload :ProcessorArchitecture,                              'generated/azure_mgmt_network/models/processor_architecture.rb'
-    autoload :VirtualNetworkGatewayConnectionType,                'generated/azure_mgmt_network/models/virtual_network_gateway_connection_type.rb'
     autoload :VirtualNetworkGatewayConnectionStatus,              'generated/azure_mgmt_network/models/virtual_network_gateway_connection_status.rb'
+    autoload :VirtualNetworkGatewayConnectionType,                'generated/azure_mgmt_network/models/virtual_network_gateway_connection_type.rb'
     autoload :NetworkOperationStatus,                             'generated/azure_mgmt_network/models/network_operation_status.rb'
   end
 end
