@@ -13,7 +13,7 @@ module Azure::ARM::Network
       include MsRestAzure
 
       # @return [Integer] The virtual network connection reset shared key
-      # length
+      # length, should between 1 and 128.
       attr_accessor :key_length
 
 
@@ -30,8 +30,12 @@ module Azure::ARM::Network
             class_name: 'ConnectionResetSharedKey',
             model_properties: {
               key_length: {
-                required: false,
+                required: true,
                 serialized_name: 'keyLength',
+                constraints: {
+                  InclusiveMaximum: 128,
+                  InclusiveMinimum: 1
+                },
                 type: {
                   name: 'Number'
                 }

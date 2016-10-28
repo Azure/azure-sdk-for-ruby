@@ -434,56 +434,122 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves
-    # information about the specified virtual network gateway connection shared
-    # key through Network resource provider.
+    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
+    # network gateway connection shared key for passed virtual network gateway
+    # connection in the specified resource group through Network resource
+    # provider.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param connection_shared_key_name [String] The virtual network gateway
-    # connection shared key name.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
+    # gateway connection name.
+    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
+    # Virtual Network Gateway connection Shared key operation throughNetwork
+    # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ConnectionSharedKeyResult] operation results.
+    # @return [ConnectionSharedKey] operation results.
     #
-    def get_shared_key(resource_group_name, connection_shared_key_name, custom_headers = nil)
-      response = get_shared_key_async(resource_group_name, connection_shared_key_name, custom_headers).value!
+    def set_shared_key(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      response = set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves
-    # information about the specified virtual network gateway connection shared
-    # key through Network resource provider.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
+    # gateway connection name.
+    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
+    # Virtual Network Gateway connection Shared key operation throughNetwork
+    # resource provider.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      # Send request
+      promise = begin_set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = ConnectionSharedKey.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
+    # network gateway connection shared key for passed virtual network gateway
+    # connection in the specified resource group through Network resource
+    # provider.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param connection_shared_key_name [String] The virtual network gateway
-    # connection shared key name.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
+    # gateway connection name.
+    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
+    # Virtual Network Gateway connection Shared key operation throughNetwork
+    # resource provider.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ConnectionSharedKey] operation results.
+    #
+    def begin_set_shared_key(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      response = begin_set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
+    # network gateway connection shared key for passed virtual network gateway
+    # connection in the specified resource group through Network resource
+    # provider.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
+    # gateway connection name.
+    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
+    # Virtual Network Gateway connection Shared key operation throughNetwork
+    # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_shared_key_with_http_info(resource_group_name, connection_shared_key_name, custom_headers = nil)
-      get_shared_key_async(resource_group_name, connection_shared_key_name, custom_headers).value!
+    def begin_set_shared_key_with_http_info(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
+      begin_set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
     end
 
     #
-    # The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves
-    # information about the specified virtual network gateway connection shared
-    # key through Network resource provider.
+    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
+    # network gateway connection shared key for passed virtual network gateway
+    # connection in the specified resource group through Network resource
+    # provider.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param connection_shared_key_name [String] The virtual network gateway
-    # connection shared key name.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
+    # gateway connection name.
+    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
+    # Virtual Network Gateway connection Shared key operation throughNetwork
+    # resource provider.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_shared_key_async(resource_group_name, connection_shared_key_name, custom_headers = nil)
+    def begin_set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'connection_shared_key_name is nil' if connection_shared_key_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -493,13 +559,132 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{connectionSharedKeyName}/sharedkey'
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = ConnectionSharedKey.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'connectionSharedKeyName' => connection_shared_key_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayConnectionName' => virtual_network_gateway_connection_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 201 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ConnectionSharedKey.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ConnectionSharedKey.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves
+    # information about the specified virtual network gateway connection shared
+    # key through Network resource provider.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
+    # gateway connection shared key name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ConnectionSharedKey] operation results.
+    #
+    def get_shared_key(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
+      response = get_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves
+    # information about the specified virtual network gateway connection shared
+    # key through Network resource provider.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
+    # gateway connection shared key name.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_shared_key_with_http_info(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
+      get_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, custom_headers).value!
+    end
+
+    #
+    # The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves
+    # information about the specified virtual network gateway connection shared
+    # key through Network resource provider.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param virtual_network_gateway_connection_name [String] The virtual network
+    # gateway connection shared key name.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayConnectionName' => virtual_network_gateway_connection_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -520,7 +705,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ConnectionSharedKeyResult.mapper()
+            result_mapper = ConnectionSharedKey.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -808,191 +993,6 @@ module Azure::ARM::Network
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = ConnectionResetSharedKey.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
-    # network gateway connection shared key for passed virtual network gateway
-    # connection in the specified resource group through Network resource
-    # provider.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The virtual network
-    # gateway connection name.
-    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway connection Shared key operation throughNetwork
-    # resource provider.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ConnectionSharedKey] operation results.
-    #
-    def set_shared_key(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      response = set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The virtual network
-    # gateway connection name.
-    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway connection Shared key operation throughNetwork
-    # resource provider.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      # Send request
-      promise = begin_set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = ConnectionSharedKey.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
-    # network gateway connection shared key for passed virtual network gateway
-    # connection in the specified resource group through Network resource
-    # provider.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The virtual network
-    # gateway connection name.
-    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway connection Shared key operation throughNetwork
-    # resource provider.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [ConnectionSharedKey] operation results.
-    #
-    def begin_set_shared_key(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      response = begin_set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
-    # network gateway connection shared key for passed virtual network gateway
-    # connection in the specified resource group through Network resource
-    # provider.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The virtual network
-    # gateway connection name.
-    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway connection Shared key operation throughNetwork
-    # resource provider.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_set_shared_key_with_http_info(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      begin_set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers).value!
-    end
-
-    #
-    # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
-    # network gateway connection shared key for passed virtual network gateway
-    # connection in the specified resource group through Network resource
-    # provider.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_connection_name [String] The virtual network
-    # gateway connection name.
-    # @param parameters [ConnectionSharedKey] Parameters supplied to the Begin Set
-    # Virtual Network Gateway connection Shared key operation throughNetwork
-    # resource provider.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_set_shared_key_async(resource_group_name, virtual_network_gateway_connection_name, parameters, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_network_gateway_connection_name is nil' if virtual_network_gateway_connection_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = ConnectionSharedKey.mapper()
-      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayConnectionName' => virtual_network_gateway_connection_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 201 || status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ConnectionSharedKey.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ConnectionSharedKey.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

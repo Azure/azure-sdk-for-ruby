@@ -40,6 +40,10 @@ module Azure::ARM::Network
       # 'Connecting', 'Connected', 'NotConnected'
       attr_accessor :connection_status
 
+      # @return [Array<TunnelConnectionHealth>] Collection of all tunnels'
+      # connection health status.
+      attr_accessor :tunnel_connection_status
+
       # @return [Integer] The Egress Bytes Transferred in this connection
       attr_accessor :egress_bytes_transferred
 
@@ -129,7 +133,7 @@ module Azure::ARM::Network
                 }
               },
               virtual_network_gateway1: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.virtualNetworkGateway1',
                 type: {
                   name: 'Composite',
@@ -153,7 +157,7 @@ module Azure::ARM::Network
                 }
               },
               connection_type: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.connectionType',
                 type: {
                   name: 'String'
@@ -175,13 +179,31 @@ module Azure::ARM::Network
               },
               connection_status: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.connectionStatus',
                 type: {
                   name: 'String'
                 }
               },
+              tunnel_connection_status: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.tunnelConnectionStatus',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'TunnelConnectionHealthElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'TunnelConnectionHealth'
+                      }
+                  }
+                }
+              },
               egress_bytes_transferred: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.egressBytesTransferred',
                 type: {
                   name: 'Number'
@@ -189,6 +211,7 @@ module Azure::ARM::Network
               },
               ingress_bytes_transferred: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.ingressBytesTransferred',
                 type: {
                   name: 'Number'
@@ -218,6 +241,7 @@ module Azure::ARM::Network
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'

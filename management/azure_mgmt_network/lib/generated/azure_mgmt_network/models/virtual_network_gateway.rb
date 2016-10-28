@@ -119,7 +119,7 @@ module Azure::ARM::Network
                 }
               },
               ip_configurations: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.ipConfigurations',
                 type: {
                   name: 'Sequence',
@@ -134,14 +134,14 @@ module Azure::ARM::Network
                 }
               },
               gateway_type: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.gatewayType',
                 type: {
                   name: 'String'
                 }
               },
               vpn_type: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.vpnType',
                 type: {
                   name: 'String'
@@ -202,6 +202,7 @@ module Azure::ARM::Network
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
