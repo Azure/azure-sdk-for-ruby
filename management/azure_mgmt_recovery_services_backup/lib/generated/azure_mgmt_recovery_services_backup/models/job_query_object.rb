@@ -12,18 +12,19 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [JobStatus] Status of the job. Possible values: InProgress,
-      # Completed, Failed, CompletedWithWarnings, Cancelling, Cancelled.
-      # Possible values include: 'Invalid', 'InProgress', 'Completed',
-      # 'Failed', 'CompletedWithWarnings', 'Cancelled', 'Cancelling'
+      # @return [JobStatus] Status of the job. Possible values include:
+      # 'Invalid', 'InProgress', 'Completed', 'Failed',
+      # 'CompletedWithWarnings', 'Cancelled', 'Cancelling'
       attr_accessor :status
 
-      # @return [String] Type of backup managmenent for the job. Possible
-      # value: AzureIaasVM.
+      # @return [BackupManagementType] Type of backup managmenent for the job.
+      # Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
+      # 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
-      # @return [String] Type of operation. Possible values: ConfigureBackup,
-      # Backup, Restore, Unprotect, DeleteBackupData.
+      # @return [JobOperationType] Type of operation. Possible values include:
+      # 'Invalid', 'ConfigureBackup', 'Backup', 'Restore', 'DisableBackup',
+      # 'DeleteBackupData'
       attr_accessor :operation
 
       # @return [String] JobID represents the job uniquely.
@@ -60,14 +61,16 @@ module Azure::ARM::RecoveryServicesBackup
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'BackupManagementType'
                 }
               },
               operation: {
                 required: false,
                 serialized_name: 'operation',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'JobOperationType'
                 }
               },
               job_id: {

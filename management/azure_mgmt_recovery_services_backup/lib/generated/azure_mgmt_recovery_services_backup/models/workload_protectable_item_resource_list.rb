@@ -12,7 +12,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [Array<WorkloadProtectableItem>] List of resources.
+      # @return [Array<WorkloadProtectableItemResource>] List of resources.
       attr_accessor :value
 
       # return [Proc] with next page method call.
@@ -21,7 +21,7 @@ module Azure::ARM::RecoveryServicesBackup
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<WorkloadProtectableItem>] operation results.
+      # @return [Array<WorkloadProtectableItemResource>] operation results.
       #
       def get_all_items
         items = @value
@@ -73,10 +73,10 @@ module Azure::ARM::RecoveryServicesBackup
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'WorkloadProtectableItemElementType',
+                      serialized_name: 'WorkloadProtectableItemResourceElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'WorkloadProtectableItem'
+                        class_name: 'WorkloadProtectableItemResource'
                       }
                   }
                 }

@@ -8,10 +8,16 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Base class for backup items.
     #
-    class ProtectedItem < MsRestAzure::Resource
+    class ProtectedItem
 
       include MsRestAzure
 
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureIaaSVMProtectedItem"] = "AzureIaaSVMProtectedItem"
+      @@discriminatorMap["MabFileFolderProtectedItem"] = "MabFileFolderProtectedItem"
+      @@discriminatorMap["Microsoft.Sql/servers/databases"] = "AzureSqlProtectedItem"
+      @@discriminatorMap["Microsoft.Compute/virtualMachines"] = "AzureIaaSComputeVMProtectedItem"
+      @@discriminatorMap["Microsoft.ClassicCompute/virtualMachines"] = "AzureIaaSClassicComputeVMProtectedItem"
 
       def initialize
         @protectedItemType = "ProtectedItem"
@@ -19,12 +25,14 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :protectedItemType
 
-      # @return [String] Type of backup managemenent for the backed up item.
-      # Possible values: AzureIaasVM, DPM or MAB.
+      # @return [BackupManagementType] Type of backup managemenent for the
+      # backed up item. Possible values include: 'Invalid', 'AzureIaasVM',
+      # 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
-      # @return [String] Type of workload this item represents. Possible
-      # values: VM, FileFolder.
+      # @return [DataSourceType] Type of workload this item represents.
+      # Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
+      # 'SQLDB', 'Exchange', 'Sharepoint', 'DPMUnknown'
       attr_accessor :workload_type
 
       # @return [String] ARM ID of the resource to be backed up.
@@ -50,70 +58,23 @@ module Azure::ARM::RecoveryServicesBackup
           type: {
             name: 'Composite',
             polymorphic_discriminator: 'protectedItemType',
-            uber_parent: 'Resource',
+            uber_parent: 'ProtectedItem',
             class_name: 'ProtectedItem',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               backup_management_type: {
                 required: false,
                 serialized_name: 'backupManagementType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'BackupManagementType'
                 }
               },
               workload_type: {
                 required: false,
                 serialized_name: 'workloadType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'DataSourceType'
                 }
               },
               source_resource_id: {

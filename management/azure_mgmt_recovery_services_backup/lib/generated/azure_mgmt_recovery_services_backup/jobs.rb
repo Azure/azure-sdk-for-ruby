@@ -81,7 +81,7 @@ module Azure::ARM::RecoveryServicesBackup
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/RecoveryServices/vaults/{vaultName}/backupJobsExport'
+      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobsExport'
 
       request_url = @base_url || @client.base_url
 
@@ -146,7 +146,7 @@ module Azure::ARM::RecoveryServicesBackup
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<Job>] operation results.
+    # @return [Array<JobResource>] operation results.
     #
     def list(vault_name, resource_group_name, filter = nil, skip_token = nil, custom_headers = nil)
       first_page = list_as_lazy(vault_name, resource_group_name, filter, skip_token, custom_headers)
@@ -195,7 +195,7 @@ module Azure::ARM::RecoveryServicesBackup
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/RecoveryServices/vaults/{vaultName}/backupJobs'
+      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs'
 
       request_url = @base_url || @client.base_url
 

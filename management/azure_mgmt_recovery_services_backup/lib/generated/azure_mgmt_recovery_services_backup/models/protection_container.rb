@@ -9,24 +9,29 @@ module Azure::ARM::RecoveryServicesBackup
     # Base class for container with backup items. Containers with specific
     # workloads are derived from this class.
     #
-    class ProtectionContainer < MsRestAzure::Resource
+    class ProtectionContainer
 
       include MsRestAzure
 
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureSqlContainer"] = "AzureSqlContainer"
+      @@discriminatorMap["IaaSVMContainer"] = "IaaSVMContainer"
+      @@discriminatorMap["MABWindowsContainer"] = "MabContainer"
+      @@discriminatorMap["Microsoft.Compute/virtualMachines"] = "AzureIaaSComputeVMContainer"
+      @@discriminatorMap["Microsoft.ClassicCompute/virtualMachines"] = "AzureIaaSClassicComputeVMContainer"
 
       def initialize
-        @containerType = "ProtectionContainer"
+        @protectableObjectType = "ProtectionContainer"
       end
 
-      attr_accessor :containerType
+      attr_accessor :protectableObjectType
 
       # @return [String] Friendly name of the container.
       attr_accessor :friendly_name
 
       # @return [BackupManagementType] Type of backup managemenent for the
-      # container. Possible values: AzureIaasVM, DPM or MAB. Possible values
-      # include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer',
-      # 'AzureSql'
+      # container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
+      # 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
       # @return [String] Status of registration of the container with the
@@ -36,10 +41,12 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [String] Status of health of the container.
       attr_accessor :health_status
 
-      # @return [String] Type of the protectable object associated with this
-      # container. Possible values: IaasVMContainer, MABWindowsContainer,
-      # AzureSqlContainer.
-      attr_accessor :protectable_object_type
+      # @return [String] Type of the container. The value of this property
+      # for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+      # Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines
+      # 3. Windows machines (like MAB, DPM etc) is Windows 4. Azure SQL
+      # instance is AzureSqlContainer.
+      attr_accessor :container_type
 
 
       #
@@ -52,59 +59,10 @@ module Azure::ARM::RecoveryServicesBackup
           serialized_name: 'ProtectionContainer',
           type: {
             name: 'Composite',
-            polymorphic_discriminator: 'containerType',
-            uber_parent: 'Resource',
+            polymorphic_discriminator: 'protectableObjectType',
+            uber_parent: 'ProtectionContainer',
             class_name: 'ProtectionContainer',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               friendly_name: {
                 required: false,
                 serialized_name: 'friendlyName',
@@ -134,9 +92,10 @@ module Azure::ARM::RecoveryServicesBackup
                   name: 'String'
                 }
               },
-              protectable_object_type: {
+              container_type: {
                 required: false,
-                serialized_name: 'protectableObjectType',
+                read_only: true,
+                serialized_name: 'containerType',
                 type: {
                   name: 'String'
                 }

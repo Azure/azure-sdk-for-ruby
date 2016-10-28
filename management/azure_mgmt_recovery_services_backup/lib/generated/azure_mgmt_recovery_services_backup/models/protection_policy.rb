@@ -9,10 +9,14 @@ module Azure::ARM::RecoveryServicesBackup
     # Base class for backup policy. Workload-specific backup policies are
     # derived from this class.
     #
-    class ProtectionPolicy < MsRestAzure::Resource
+    class ProtectionPolicy
 
       include MsRestAzure
 
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureIaasVM"] = "AzureIaaSVMProtectionPolicy"
+      @@discriminatorMap["MAB"] = "MabProtectionPolicy"
+      @@discriminatorMap["AzureSql"] = "AzureSqlProtectionPolicy"
 
       def initialize
         @backupManagementType = "ProtectionPolicy"
@@ -35,58 +39,9 @@ module Azure::ARM::RecoveryServicesBackup
           type: {
             name: 'Composite',
             polymorphic_discriminator: 'backupManagementType',
-            uber_parent: 'Resource',
+            uber_parent: 'ProtectionPolicy',
             class_name: 'ProtectionPolicy',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               protected_items_count: {
                 required: false,
                 serialized_name: 'protectedItemsCount',

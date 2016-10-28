@@ -14,10 +14,10 @@ module Azure::ARM::RecoveryServicesBackup
 
 
       def initialize
-        @containerType = "IaaSVMContainer"
+        @protectableObjectType = "IaaSVMContainer"
       end
 
-      attr_accessor :containerType
+      attr_accessor :protectableObjectType
 
       # @return [String] Fully qualified ARM url of the virtual machine
       # represented by this Azure IaaS VM container.
@@ -43,55 +43,6 @@ module Azure::ARM::RecoveryServicesBackup
             name: 'Composite',
             class_name: 'IaaSVMContainer',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               friendly_name: {
                 required: false,
                 serialized_name: 'friendlyName',
@@ -121,16 +72,17 @@ module Azure::ARM::RecoveryServicesBackup
                   name: 'String'
                 }
               },
-              protectable_object_type: {
+              container_type: {
                 required: false,
-                serialized_name: 'protectableObjectType',
+                read_only: true,
+                serialized_name: 'containerType',
                 type: {
                   name: 'String'
                 }
               },
-              containerType: {
+              protectableObjectType: {
                 required: true,
-                serialized_name: 'containerType',
+                serialized_name: 'protectableObjectType',
                 type: {
                   name: 'String'
                 }

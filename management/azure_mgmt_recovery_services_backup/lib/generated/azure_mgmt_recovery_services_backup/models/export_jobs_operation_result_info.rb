@@ -39,35 +39,6 @@ module Azure::ARM::RecoveryServicesBackup
             name: 'Composite',
             class_name: 'ExportJobsOperationResultInfo',
             model_properties: {
-              status_code: {
-                required: false,
-                serialized_name: 'statusCode',
-                type: {
-                  name: 'Enum',
-                  module: 'HttpStatusCode'
-                }
-              },
-              headers: {
-                required: false,
-                serialized_name: 'Headers',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'ArrayElementType',
-                      type: {
-                        name: 'Sequence',
-                        element: {
-                            required: false,
-                            serialized_name: 'StringElementType',
-                            type: {
-                              name: 'String'
-                            }
-                        }
-                      }
-                  }
-                }
-              },
               objectType: {
                 required: true,
                 serialized_name: 'objectType',

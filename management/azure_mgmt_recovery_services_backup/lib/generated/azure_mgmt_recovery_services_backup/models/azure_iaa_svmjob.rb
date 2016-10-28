@@ -19,7 +19,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :jobType
 
-      # @return [String] Time elapsed during the execution of this job.
+      # @return [Duration] Time elapsed during the execution of this job.
       attr_accessor :duration
 
       # @return [Array<JobSupportedAction>] Gets or sets the state/actions
@@ -51,55 +51,6 @@ module Azure::ARM::RecoveryServicesBackup
             name: 'Composite',
             class_name: 'AzureIaaSVMJob',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               entity_friendly_name: {
                 required: false,
                 serialized_name: 'entityFriendlyName',
@@ -161,7 +112,7 @@ module Azure::ARM::RecoveryServicesBackup
                 required: false,
                 serialized_name: 'duration',
                 type: {
-                  name: 'String'
+                  name: 'TimeSpan'
                 }
               },
               actions_info: {

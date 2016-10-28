@@ -12,7 +12,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [Array<ProtectionPolicy>] List of resources.
+      # @return [Array<ProtectionPolicyResource>] List of resources.
       attr_accessor :value
 
       # return [Proc] with next page method call.
@@ -21,7 +21,7 @@ module Azure::ARM::RecoveryServicesBackup
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<ProtectionPolicy>] operation results.
+      # @return [Array<ProtectionPolicyResource>] operation results.
       #
       def get_all_items
         items = @value
@@ -73,12 +73,10 @@ module Azure::ARM::RecoveryServicesBackup
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ProtectionPolicyElementType',
+                      serialized_name: 'ProtectionPolicyResourceElementType',
                       type: {
                         name: 'Composite',
-                        polymorphic_discriminator: 'backupManagementType',
-                        uber_parent: 'Resource',
-                        class_name: 'ProtectionPolicy'
+                        class_name: 'ProtectionPolicyResource'
                       }
                   }
                 }

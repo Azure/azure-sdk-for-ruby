@@ -13,13 +13,13 @@ module Azure::ARM::RecoveryServicesBackup
       include MsRestAzure
 
       # @return [BackupManagementType] Backup management type for the backed
-      # up item. Possible values: AzureIaasVM, MAB, DPM. Possible values
-      # include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer',
-      # 'AzureSql'
+      # up item. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
+      # 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
-      # @return [String] Type of workload this item represents. Possible
-      # values: VM, FileFolder.
+      # @return [DataSourceType] Type of workload this item represents.
+      # Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
+      # 'SQLDB', 'Exchange', 'Sharepoint', 'DPMUnknown'
       attr_accessor :item_type
 
       # @return [String] Backup policy name associated with the backup item.
@@ -53,7 +53,8 @@ module Azure::ARM::RecoveryServicesBackup
                 required: false,
                 serialized_name: 'itemType',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'DataSourceType'
                 }
               },
               policy_name: {

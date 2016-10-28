@@ -12,6 +12,13 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
+
+      def initialize
+        @protectableItemType = "IaaSVMProtectableItem"
+      end
+
+      attr_accessor :protectableItemType
+
       # @return [String] Fully qualified ARM ID of the virtual machine.
       attr_accessor :virtual_machine_id
 
@@ -28,65 +35,9 @@ module Azure::ARM::RecoveryServicesBackup
             name: 'Composite',
             class_name: 'IaaSVMProtectableItem',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               backup_management_type: {
                 required: false,
                 serialized_name: 'backupManagementType',
-                type: {
-                  name: 'String'
-                }
-              },
-              protectable_item_type: {
-                required: false,
-                serialized_name: 'protectableItemType',
                 type: {
                   name: 'String'
                 }
@@ -101,6 +52,14 @@ module Azure::ARM::RecoveryServicesBackup
               protection_state: {
                 required: false,
                 serialized_name: 'protectionState',
+                type: {
+                  name: 'Enum',
+                  module: 'ProtectionStatus'
+                }
+              },
+              protectableItemType: {
+                required: true,
+                serialized_name: 'protectableItemType',
                 type: {
                   name: 'String'
                 }

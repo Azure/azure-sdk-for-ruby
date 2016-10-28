@@ -35,7 +35,8 @@ module Azure::ARM::RecoveryServicesBackup
     # item.
     # @param protected_item_name [String] Backup item for which backup needs to be
     # triggered.
-    # @param resource_backup_request [BackupRequest] resource backup request
+    # @param resource_backup_request [BackupRequestResource] resource backup
+    # request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -58,7 +59,8 @@ module Azure::ARM::RecoveryServicesBackup
     # item.
     # @param protected_item_name [String] Backup item for which backup needs to be
     # triggered.
-    # @param resource_backup_request [BackupRequest] resource backup request
+    # @param resource_backup_request [BackupRequestResource] resource backup
+    # request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -81,7 +83,8 @@ module Azure::ARM::RecoveryServicesBackup
     # item.
     # @param protected_item_name [String] Backup item for which backup needs to be
     # triggered.
-    # @param resource_backup_request [BackupRequest] resource backup request
+    # @param resource_backup_request [BackupRequestResource] resource backup
+    # request
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -107,11 +110,11 @@ module Azure::ARM::RecoveryServicesBackup
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = BackupRequest.mapper()
+      request_mapper = BackupRequestResource.mapper()
       request_content = @client.serialize(request_mapper,  resource_backup_request, 'resource_backup_request')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup'
+      path_template = '/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup'
 
       request_url = @base_url || @client.base_url
 

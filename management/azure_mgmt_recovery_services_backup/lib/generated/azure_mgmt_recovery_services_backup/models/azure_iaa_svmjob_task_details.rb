@@ -24,7 +24,7 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [String] The instanceId.
       attr_accessor :instance_id
 
-      # @return [String] Time elapsed for task.
+      # @return [Duration] Time elapsed for task.
       attr_accessor :duration
 
       # @return [String] The status.
@@ -78,7 +78,7 @@ module Azure::ARM::RecoveryServicesBackup
                 required: false,
                 serialized_name: 'duration',
                 type: {
-                  name: 'String'
+                  name: 'TimeSpan'
                 }
               },
               status: {

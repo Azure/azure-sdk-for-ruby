@@ -18,9 +18,8 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [String] Name of the operation.
       attr_accessor :name
 
-      # @return [OperationStatusValues] Operation status. Possible values:
-      # InProgress, Succeeded, Failed, Canceled. Possible values include:
-      # 'Invalid', 'InProgress', 'Succeeded', 'Failed', 'Canceled'
+      # @return [OperationStatusValues] Operation status. Possible values
+      # include: 'Invalid', 'InProgress', 'Succeeded', 'Failed', 'Canceled'
       attr_accessor :status
 
       # @return [DateTime] Operation start time. Format: ISO-8601.

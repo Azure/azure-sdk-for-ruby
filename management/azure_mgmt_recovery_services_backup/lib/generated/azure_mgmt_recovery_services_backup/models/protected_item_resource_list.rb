@@ -12,7 +12,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [Array<ProtectedItem>] List of resources.
+      # @return [Array<ProtectedItemResource>] List of resources.
       attr_accessor :value
 
       # return [Proc] with next page method call.
@@ -21,7 +21,7 @@ module Azure::ARM::RecoveryServicesBackup
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<ProtectedItem>] operation results.
+      # @return [Array<ProtectedItemResource>] operation results.
       #
       def get_all_items
         items = @value
@@ -73,12 +73,10 @@ module Azure::ARM::RecoveryServicesBackup
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ProtectedItemElementType',
+                      serialized_name: 'ProtectedItemResourceElementType',
                       type: {
                         name: 'Composite',
-                        polymorphic_discriminator: 'protectedItemType',
-                        uber_parent: 'Resource',
-                        class_name: 'ProtectedItem'
+                        class_name: 'ProtectedItemResource'
                       }
                   }
                 }

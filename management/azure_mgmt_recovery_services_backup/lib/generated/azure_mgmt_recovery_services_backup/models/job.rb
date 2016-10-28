@@ -8,10 +8,14 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Defines workload agnostic properties for a job.
     #
-    class Job < MsRestAzure::Resource
+    class Job
 
       include MsRestAzure
 
+      @@discriminatorMap = Hash.new
+      @@discriminatorMap["AzureIaaSVMJob"] = "AzureIaaSVMJob"
+      @@discriminatorMap["DpmJob"] = "DpmJob"
+      @@discriminatorMap["MabJob"] = "MabJob"
 
       def initialize
         @jobType = "Job"
@@ -24,9 +28,8 @@ module Azure::ARM::RecoveryServicesBackup
       attr_accessor :entity_friendly_name
 
       # @return [BackupManagementType] Backup management type to execute the
-      # current job. Possible values: IaasVM, DPM, MAB. Possible values
-      # include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer',
-      # 'AzureSql'
+      # current job. Possible values include: 'Invalid', 'AzureIaasVM',
+      # 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
       # @return [String] The operation name.
@@ -56,58 +59,9 @@ module Azure::ARM::RecoveryServicesBackup
           type: {
             name: 'Composite',
             polymorphic_discriminator: 'jobType',
-            uber_parent: 'Resource',
+            uber_parent: 'Job',
             class_name: 'Job',
             model_properties: {
-              id: {
-                required: false,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: false,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
-              e_tag: {
-                required: false,
-                serialized_name: 'eTag',
-                type: {
-                  name: 'String'
-                }
-              },
               entity_friendly_name: {
                 required: false,
                 serialized_name: 'entityFriendlyName',
