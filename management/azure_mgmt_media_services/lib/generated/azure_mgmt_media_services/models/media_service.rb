@@ -64,7 +64,7 @@ module Azure::ARM::MediaServices
                 }
               },
               tags: {
-                required: true,
+                required: false,
                 serialized_name: 'tags',
                 type: {
                   name: 'Dictionary',
