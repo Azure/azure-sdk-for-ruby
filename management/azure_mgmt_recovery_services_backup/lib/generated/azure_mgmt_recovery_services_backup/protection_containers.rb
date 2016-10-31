@@ -5,7 +5,7 @@
 
 module Azure::ARM::RecoveryServicesBackup
   #
-  # ProtectionContainers
+  # Composite Swagger for Recovery Services Backup Client
   #
   class ProtectionContainers
     include Azure::ARM::RecoveryServicesBackup::Models
@@ -77,7 +77,7 @@ module Azure::ARM::RecoveryServicesBackup
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_async(vault_name, resource_group_name, fabric_name, container_name, custom_headers = nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-06-01'
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -97,7 +97,7 @@ module Azure::ARM::RecoveryServicesBackup
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'vaultName' => vault_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id,'fabricName' => fabric_name,'containerName' => container_name},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -200,7 +200,7 @@ module Azure::ARM::RecoveryServicesBackup
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def list_async(vault_name, resource_group_name, filter = nil, custom_headers = nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-06-01'
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -218,7 +218,7 @@ module Azure::ARM::RecoveryServicesBackup
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'vaultName' => vault_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => @client.api_version,'$filter' => filter},
+          query_params: {'api-version' => api_version,'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -302,7 +302,7 @@ module Azure::ARM::RecoveryServicesBackup
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def refresh_async(vault_name, resource_group_name, fabric_name, custom_headers = nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-06-01'
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -321,7 +321,7 @@ module Azure::ARM::RecoveryServicesBackup
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'vaultName' => vault_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id,'fabricName' => fabric_name},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -332,6 +332,93 @@ module Azure::ARM::RecoveryServicesBackup
         status_code = http_response.status
         response_content = http_response.body
         unless status_code == 202
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Unregisters the given container from your Recovery Services Vault.
+    #
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param identity_name [String] Name of the protection container to unregister.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def unregister(resource_group_name, vault_name, identity_name, custom_headers = nil)
+      response = unregister_async(resource_group_name, vault_name, identity_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Unregisters the given container from your Recovery Services Vault.
+    #
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param identity_name [String] Name of the protection container to unregister.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def unregister_with_http_info(resource_group_name, vault_name, identity_name, custom_headers = nil)
+      unregister_async(resource_group_name, vault_name, identity_name, custom_headers).value!
+    end
+
+    #
+    # Unregisters the given container from your Recovery Services Vault.
+    #
+    # @param resource_group_name [String] The name of the resource group where the
+    # recovery services vault is present.
+    # @param vault_name [String] The name of the recovery services vault.
+    # @param identity_name [String] Name of the protection container to unregister.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def unregister_async(resource_group_name, vault_name, identity_name, custom_headers = nil)
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'vault_name is nil' if vault_name.nil?
+      api_version = '2016-06-01'
+      fail ArgumentError, 'identity_name is nil' if identity_name.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/registeredIdentities/{identityName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'vaultName' => vault_name,'identityName' => identity_name},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end

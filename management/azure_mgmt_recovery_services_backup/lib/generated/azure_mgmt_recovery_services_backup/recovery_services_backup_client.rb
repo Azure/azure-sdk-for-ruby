@@ -20,9 +20,6 @@ module Azure::ARM::RecoveryServicesBackup
     # @return [String] The subscription Id.
     attr_accessor :subscription_id
 
-    # @return [String] Client Api Version.
-    attr_reader :api_version
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -141,7 +138,6 @@ module Azure::ARM::RecoveryServicesBackup
       @backup_operation_statuses = BackupOperationStatuses.new(self)
       @backup_operation_results = BackupOperationResults.new(self)
       @backup_engines = BackupEngines.new(self)
-      @api_version = '2016-06-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true

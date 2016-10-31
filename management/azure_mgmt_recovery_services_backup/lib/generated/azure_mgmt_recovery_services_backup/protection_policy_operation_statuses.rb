@@ -5,7 +5,7 @@
 
 module Azure::ARM::RecoveryServicesBackup
   #
-  # ProtectionPolicyOperationStatuses
+  # Composite Swagger for Recovery Services Backup Client
   #
   class ProtectionPolicyOperationStatuses
     include Azure::ARM::RecoveryServicesBackup::Models
@@ -89,7 +89,7 @@ module Azure::ARM::RecoveryServicesBackup
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
     def get_async(vault_name, resource_group_name, policy_name, operation_id, custom_headers = nil)
-      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      api_version = '2016-06-01'
       fail ArgumentError, 'vault_name is nil' if vault_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -109,7 +109,7 @@ module Azure::ARM::RecoveryServicesBackup
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'vaultName' => vault_name,'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id,'policyName' => policy_name,'operationId' => operation_id},
-          query_params: {'api-version' => @client.api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
