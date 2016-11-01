@@ -20,7 +20,7 @@ module Azure::ARM::Dns
       # 'Succeeded', 'Failed'
       attr_accessor :status
 
-      # @return [HtpStatusCode] Possible values include: 'Continue',
+      # @return [HttpStatusCode] Possible values include: 'Continue',
       # 'SwitchingProtocols', 'OK', 'Created', 'Accepted',
       # 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
       # 'PartialContent', 'MultipleChoices', 'Ambiguous', 'MovedPermanently',
@@ -73,7 +73,7 @@ module Azure::ARM::Dns
                 serialized_name: 'statusCode',
                 type: {
                   name: 'Enum',
-                  module: 'HtpStatusCode'
+                  module: 'HttpStatusCode'
                 }
               },
               request_id: {

@@ -41,7 +41,7 @@ module Azure::ARM::Dns
     autoload :ZoneListResult,                                     'generated/azure_mgmt_dns/models/zone_list_result.rb'
     autoload :Zone,                                               'generated/azure_mgmt_dns/models/zone.rb'
     autoload :OperationStatus,                                    'generated/azure_mgmt_dns/models/operation_status.rb'
-    autoload :HtpStatusCode,                                      'generated/azure_mgmt_dns/models/htp_status_code.rb'
+    autoload :HttpStatusCode,                                     'generated/azure_mgmt_dns/models/http_status_code.rb'
     autoload :RecordType,                                         'generated/azure_mgmt_dns/models/record_type.rb'
   end
 end

@@ -6,9 +6,9 @@
 module Azure::ARM::Dns
   module Models
     #
-    # Defines values for HtpStatusCode
+    # Defines values for HttpStatusCode
     #
-    module HtpStatusCode
+    module HttpStatusCode
       Continue = "Continue"
       SwitchingProtocols = "SwitchingProtocols"
       OK = "OK"
