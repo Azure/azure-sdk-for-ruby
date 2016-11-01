@@ -30,7 +30,7 @@ module Azure::ARM::Network
             class_name: 'ConnectionResetSharedKey',
             model_properties: {
               key_length: {
-                required: false,
+                required: true,
                 serialized_name: 'keyLength',
                 type: {
                   name: 'Number'

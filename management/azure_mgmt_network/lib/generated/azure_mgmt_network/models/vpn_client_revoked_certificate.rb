@@ -57,6 +57,7 @@ module Azure::ARM::Network
               },
               provisioning_state: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'

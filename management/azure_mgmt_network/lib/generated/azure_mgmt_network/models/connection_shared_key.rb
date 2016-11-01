@@ -29,7 +29,7 @@ module Azure::ARM::Network
             class_name: 'ConnectionSharedKey',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'String'

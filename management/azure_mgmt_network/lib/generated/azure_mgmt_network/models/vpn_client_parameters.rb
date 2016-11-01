@@ -30,7 +30,7 @@ module Azure::ARM::Network
             class_name: 'VpnClientParameters',
             model_properties: {
               processor_architecture: {
-                required: false,
+                required: true,
                 serialized_name: 'ProcessorArchitecture',
                 type: {
                   name: 'String'
