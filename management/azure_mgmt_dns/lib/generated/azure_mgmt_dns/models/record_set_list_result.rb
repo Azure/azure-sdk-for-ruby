@@ -6,14 +6,14 @@
 module Azure::ARM::Dns
   module Models
     #
-    # The response to a RecordSet List operation.
+    # The response to a Recordset List operation.
     #
     class RecordSetListResult
 
       include MsRestAzure
 
       # @return [Array<RecordSet>] Gets or sets information about the
-      # RecordSets in the response.
+      # Recordsets in the response.
       attr_accessor :value
 
       # @return [String] Gets or sets the continuation token for the next page.

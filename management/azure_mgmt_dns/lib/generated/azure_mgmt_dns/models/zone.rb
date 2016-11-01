@@ -16,11 +16,11 @@ module Azure::ARM::Dns
       # updated, as received from a Get operation.
       attr_accessor :etag
 
-      # @return [Integer] Gets or sets the maximum number of record sets that
+      # @return [Integer] Gets or sets the maximum number of recordsets that
       # can be created in this zone.
       attr_accessor :max_number_of_record_sets
 
-      # @return [Integer] Gets or sets the current number of record sets in
+      # @return [Integer] Gets or sets the current number of recordsets in
       # this zone.
       attr_accessor :number_of_record_sets
 

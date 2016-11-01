@@ -23,11 +23,11 @@ module Azure::ARM::Dns
     attr_reader :client
 
     #
-    # Updates a RecordSet within a DNS zone.
+    # Updates a Recordset within a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
-    # @param relative_record_set_name [String] The name of the RecordSet, relative
+    # @param relative_record_set_name [String] The name of the Recordset, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record. Possible values
     # include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
@@ -46,11 +46,11 @@ module Azure::ARM::Dns
     end
 
     #
-    # Updates a RecordSet within a DNS zone.
+    # Updates a Recordset within a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
-    # @param relative_record_set_name [String] The name of the RecordSet, relative
+    # @param relative_record_set_name [String] The name of the Recordset, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record. Possible values
     # include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
@@ -68,11 +68,11 @@ module Azure::ARM::Dns
     end
 
     #
-    # Updates a RecordSet within a DNS zone.
+    # Updates a Recordset within a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
-    # @param relative_record_set_name [String] The name of the RecordSet, relative
+    # @param relative_record_set_name [String] The name of the Recordset, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record. Possible values
     # include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
@@ -153,11 +153,11 @@ module Azure::ARM::Dns
     end
 
     #
-    # Creates or Updates a RecordSet within a DNS zone.
+    # Creates or Updates a Recordset within a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
-    # @param relative_record_set_name [String] The name of the RecordSet, relative
+    # @param relative_record_set_name [String] The name of the Recordset, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record. Possible values
     # include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
@@ -177,11 +177,11 @@ module Azure::ARM::Dns
     end
 
     #
-    # Creates or Updates a RecordSet within a DNS zone.
+    # Creates or Updates a Recordset within a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
-    # @param relative_record_set_name [String] The name of the RecordSet, relative
+    # @param relative_record_set_name [String] The name of the Recordset, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record. Possible values
     # include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
@@ -200,11 +200,11 @@ module Azure::ARM::Dns
     end
 
     #
-    # Creates or Updates a RecordSet within a DNS zone.
+    # Creates or Updates a Recordset within a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
-    # @param relative_record_set_name [String] The name of the RecordSet, relative
+    # @param relative_record_set_name [String] The name of the Recordset, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record. Possible values
     # include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
@@ -296,11 +296,11 @@ module Azure::ARM::Dns
     end
 
     #
-    # Removes a RecordSet from a DNS zone.
+    # Removes a Recordset from a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
-    # @param relative_record_set_name [String] The name of the RecordSet, relative
+    # @param relative_record_set_name [String] The name of the Recordset, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record. Possible values
     # include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
@@ -320,11 +320,11 @@ module Azure::ARM::Dns
     end
 
     #
-    # Removes a RecordSet from a DNS zone.
+    # Removes a Recordset from a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
-    # @param relative_record_set_name [String] The name of the RecordSet, relative
+    # @param relative_record_set_name [String] The name of the Recordset, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record. Possible values
     # include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
@@ -344,11 +344,11 @@ module Azure::ARM::Dns
     end
 
     #
-    # Removes a RecordSet from a DNS zone.
+    # Removes a Recordset from a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
-    # @param relative_record_set_name [String] The name of the RecordSet, relative
+    # @param relative_record_set_name [String] The name of the Recordset, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record. Possible values
     # include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
@@ -411,11 +411,11 @@ module Azure::ARM::Dns
     end
 
     #
-    # Gets a RecordSet.
+    # Gets a Recordset.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
-    # @param relative_record_set_name [String] The name of the RecordSet, relative
+    # @param relative_record_set_name [String] The name of the Recordset, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record. Possible values
     # include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
@@ -430,11 +430,11 @@ module Azure::ARM::Dns
     end
 
     #
-    # Gets a RecordSet.
+    # Gets a Recordset.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
-    # @param relative_record_set_name [String] The name of the RecordSet, relative
+    # @param relative_record_set_name [String] The name of the Recordset, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record. Possible values
     # include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
@@ -448,11 +448,11 @@ module Azure::ARM::Dns
     end
 
     #
-    # Gets a RecordSet.
+    # Gets a Recordset.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
-    # @param relative_record_set_name [String] The name of the RecordSet, relative
+    # @param relative_record_set_name [String] The name of the Recordset, relative
     # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record. Possible values
     # include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
@@ -517,12 +517,12 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists the RecordSets of a specified type in a DNS zone.
+    # Lists the Recordsets of a specified type in a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the zone.
     # @param zone_name [String] The name of the zone from which to enumerate
-    # RecordsSets.
+    # Recordsets.
     # @param record_type [RecordType] The type of record sets to enumerate.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
@@ -546,12 +546,12 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists the RecordSets of a specified type in a DNS zone.
+    # Lists the Recordsets of a specified type in a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the zone.
     # @param zone_name [String] The name of the zone from which to enumerate
-    # RecordsSets.
+    # Recordsets.
     # @param record_type [RecordType] The type of record sets to enumerate.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
@@ -568,12 +568,12 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists the RecordSets of a specified type in a DNS zone.
+    # Lists the Recordsets of a specified type in a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the zone.
     # @param zone_name [String] The name of the zone from which to enumerate
-    # RecordsSets.
+    # Recordsets.
     # @param record_type [RecordType] The type of record sets to enumerate.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
@@ -589,12 +589,12 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists the RecordSets of a specified type in a DNS zone.
+    # Lists the Recordsets of a specified type in a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the zone.
     # @param zone_name [String] The name of the zone from which to enumerate
-    # RecordsSets.
+    # Recordsets.
     # @param record_type [RecordType] The type of record sets to enumerate.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
@@ -659,12 +659,12 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists all RecordSets in a DNS zone.
+    # Lists all Recordsets in a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the zone.
     # @param zone_name [String] The name of the zone from which to enumerate
-    # RecordSets.
+    # Recordsets.
     # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -685,12 +685,12 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists all RecordSets in a DNS zone.
+    # Lists all Recordsets in a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the zone.
     # @param zone_name [String] The name of the zone from which to enumerate
-    # RecordSets.
+    # Recordsets.
     # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -704,12 +704,12 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists all RecordSets in a DNS zone.
+    # Lists all Recordsets in a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the zone.
     # @param zone_name [String] The name of the zone from which to enumerate
-    # RecordSets.
+    # Recordsets.
     # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -722,12 +722,12 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists all RecordSets in a DNS zone.
+    # Lists all Recordsets in a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the zone.
     # @param zone_name [String] The name of the zone from which to enumerate
-    # RecordSets.
+    # Recordsets.
     # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -788,7 +788,7 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists the RecordSets of a specified type in a DNS zone.
+    # Lists the Recordsets of a specified type in a DNS zone.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -803,7 +803,7 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists the RecordSets of a specified type in a DNS zone.
+    # Lists the Recordsets of a specified type in a DNS zone.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -817,7 +817,7 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists the RecordSets of a specified type in a DNS zone.
+    # Lists the Recordsets of a specified type in a DNS zone.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -875,7 +875,7 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists all RecordSets in a DNS zone.
+    # Lists all Recordsets in a DNS zone.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -890,7 +890,7 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists all RecordSets in a DNS zone.
+    # Lists all Recordsets in a DNS zone.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -904,7 +904,7 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists all RecordSets in a DNS zone.
+    # Lists all Recordsets in a DNS zone.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
