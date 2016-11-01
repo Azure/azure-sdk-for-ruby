@@ -5,7 +5,7 @@
 
 module Azure::ARM::Dns
   #
-  # RecordSets
+  # The DNS Management Client.
   #
   class RecordSets
     include Azure::ARM::Dns::Models
@@ -526,8 +526,8 @@ module Azure::ARM::Dns
     # @param record_type [RecordType] The type of record sets to enumerate.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
-    # @param top [String] Query parameters. If null is passed returns the default
-    # number of zones.
+    # @param top [Integer] Query parameters. If not specified returns the default
+    # number of recordsets.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -555,8 +555,8 @@ module Azure::ARM::Dns
     # @param record_type [RecordType] The type of record sets to enumerate.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
-    # @param top [String] Query parameters. If null is passed returns the default
-    # number of zones.
+    # @param top [Integer] Query parameters. If not specified returns the default
+    # number of recordsets.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -577,8 +577,8 @@ module Azure::ARM::Dns
     # @param record_type [RecordType] The type of record sets to enumerate.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
-    # @param top [String] Query parameters. If null is passed returns the default
-    # number of zones.
+    # @param top [Integer] Query parameters. If not specified returns the default
+    # number of recordsets.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -598,8 +598,8 @@ module Azure::ARM::Dns
     # @param record_type [RecordType] The type of record sets to enumerate.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
-    # @param top [String] Query parameters. If null is passed returns the default
-    # number of zones.
+    # @param top [Integer] Query parameters. If not specified returns the default
+    # number of recordsets.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -665,7 +665,7 @@ module Azure::ARM::Dns
     # contains the zone.
     # @param zone_name [String] The name of the zone from which to enumerate
     # RecordSets.
-    # @param top [String] Query parameters. If null is passed returns the default
+    # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -673,12 +673,12 @@ module Azure::ARM::Dns
     # @return [RecordSetListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_all_in_resource_group_as_lazy(resource_group_name, zone_name, top = nil, custom_headers = nil)
-      response = list_all_in_resource_group_async(resource_group_name, zone_name, top, custom_headers).value!
+    def list_by_dns_zone_as_lazy(resource_group_name, zone_name, top = nil, custom_headers = nil)
+      response = list_by_dns_zone_async(resource_group_name, zone_name, top, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_all_in_resource_group_next_async(next_page_link, custom_headers)
+          list_by_dns_zone_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -691,15 +691,15 @@ module Azure::ARM::Dns
     # contains the zone.
     # @param zone_name [String] The name of the zone from which to enumerate
     # RecordSets.
-    # @param top [String] Query parameters. If null is passed returns the default
+    # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<RecordSet>] operation results.
     #
-    def list_all_in_resource_group(resource_group_name, zone_name, top = nil, custom_headers = nil)
-      first_page = list_all_in_resource_group_as_lazy(resource_group_name, zone_name, top, custom_headers)
+    def list_by_dns_zone(resource_group_name, zone_name, top = nil, custom_headers = nil)
+      first_page = list_by_dns_zone_as_lazy(resource_group_name, zone_name, top, custom_headers)
       first_page.get_all_items
     end
 
@@ -710,15 +710,15 @@ module Azure::ARM::Dns
     # contains the zone.
     # @param zone_name [String] The name of the zone from which to enumerate
     # RecordSets.
-    # @param top [String] Query parameters. If null is passed returns the default
+    # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_all_in_resource_group_with_http_info(resource_group_name, zone_name, top = nil, custom_headers = nil)
-      list_all_in_resource_group_async(resource_group_name, zone_name, top, custom_headers).value!
+    def list_by_dns_zone_with_http_info(resource_group_name, zone_name, top = nil, custom_headers = nil)
+      list_by_dns_zone_async(resource_group_name, zone_name, top, custom_headers).value!
     end
 
     #
@@ -728,14 +728,14 @@ module Azure::ARM::Dns
     # contains the zone.
     # @param zone_name [String] The name of the zone from which to enumerate
     # RecordSets.
-    # @param top [String] Query parameters. If null is passed returns the default
+    # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_all_in_resource_group_async(resource_group_name, zone_name, top = nil, custom_headers = nil)
+    def list_by_dns_zone_async(resource_group_name, zone_name, top = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'zone_name is nil' if zone_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -884,8 +884,8 @@ module Azure::ARM::Dns
     #
     # @return [RecordSetListResult] operation results.
     #
-    def list_all_in_resource_group_next(next_page_link, custom_headers = nil)
-      response = list_all_in_resource_group_next_async(next_page_link, custom_headers).value!
+    def list_by_dns_zone_next(next_page_link, custom_headers = nil)
+      response = list_by_dns_zone_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -899,8 +899,8 @@ module Azure::ARM::Dns
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_all_in_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
-      list_all_in_resource_group_next_async(next_page_link, custom_headers).value!
+    def list_by_dns_zone_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_dns_zone_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -913,7 +913,7 @@ module Azure::ARM::Dns
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_all_in_resource_group_next_async(next_page_link, custom_headers = nil)
+    def list_by_dns_zone_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 

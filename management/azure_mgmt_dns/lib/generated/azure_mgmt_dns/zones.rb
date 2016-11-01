@@ -5,7 +5,7 @@
 
 module Azure::ARM::Dns
   #
-  # Zones
+  # The DNS Management Client.
   #
   class Zones
     include Azure::ARM::Dns::Models
@@ -407,19 +407,19 @@ module Azure::ARM::Dns
     # Lists the DNS zones within a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param top [String] Query parameters. If null is passed returns the default
+    # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ZoneListResult] which provide lazy access to pages of the response.
     #
-    def list_in_resource_group_as_lazy(resource_group_name, top = nil, custom_headers = nil)
-      response = list_in_resource_group_async(resource_group_name, top, custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, top = nil, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, top, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_in_resource_group_next_async(next_page_link, custom_headers)
+          list_by_resource_group_next_async(next_page_link, custom_headers)
         end
         page
       end
@@ -429,15 +429,15 @@ module Azure::ARM::Dns
     # Lists the DNS zones within a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param top [String] Query parameters. If null is passed returns the default
+    # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<Zone>] operation results.
     #
-    def list_in_resource_group(resource_group_name, top = nil, custom_headers = nil)
-      first_page = list_in_resource_group_as_lazy(resource_group_name, top, custom_headers)
+    def list_by_resource_group(resource_group_name, top = nil, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, top, custom_headers)
       first_page.get_all_items
     end
 
@@ -445,29 +445,29 @@ module Azure::ARM::Dns
     # Lists the DNS zones within a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param top [String] Query parameters. If null is passed returns the default
+    # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_in_resource_group_with_http_info(resource_group_name, top = nil, custom_headers = nil)
-      list_in_resource_group_async(resource_group_name, top, custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, top = nil, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, top, custom_headers).value!
     end
 
     #
     # Lists the DNS zones within a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param top [String] Query parameters. If null is passed returns the default
+    # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_in_resource_group_async(resource_group_name, top = nil, custom_headers = nil)
+    def list_by_resource_group_async(resource_group_name, top = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -519,66 +519,66 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists the DNS zones within a resource group.
+    # Lists the DNS zones within subscription.
     #
-    # @param top [String] Query parameters. If null is passed returns the default
+    # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ZoneListResult] which provide lazy access to pages of the response.
     #
-    def list_in_subscription_as_lazy(top = nil, custom_headers = nil)
-      response = list_in_subscription_async(top, custom_headers).value!
+    def list_as_lazy(top = nil, custom_headers = nil)
+      response = list_async(top, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
-          list_in_subscription_next_async(next_page_link, custom_headers)
+          list_next_async(next_page_link, custom_headers)
         end
         page
       end
     end
 
     #
-    # Lists the DNS zones within a resource group.
+    # Lists the DNS zones within subscription.
     #
-    # @param top [String] Query parameters. If null is passed returns the default
+    # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<Zone>] operation results.
     #
-    def list_in_subscription(top = nil, custom_headers = nil)
-      first_page = list_in_subscription_as_lazy(top, custom_headers)
+    def list(top = nil, custom_headers = nil)
+      first_page = list_as_lazy(top, custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Lists the DNS zones within a resource group.
+    # Lists the DNS zones within subscription.
     #
-    # @param top [String] Query parameters. If null is passed returns the default
+    # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_in_subscription_with_http_info(top = nil, custom_headers = nil)
-      list_in_subscription_async(top, custom_headers).value!
+    def list_with_http_info(top = nil, custom_headers = nil)
+      list_async(top, custom_headers).value!
     end
 
     #
-    # Lists the DNS zones within a resource group.
+    # Lists the DNS zones within subscription.
     #
-    # @param top [String] Query parameters. If null is passed returns the default
+    # @param top [Integer] Query parameters. If not specified returns the default
     # number of zones.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_in_subscription_async(top = nil, custom_headers = nil)
+    def list_async(top = nil, custom_headers = nil)
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -638,8 +638,8 @@ module Azure::ARM::Dns
     #
     # @return [ZoneListResult] operation results.
     #
-    def list_in_resource_group_next(next_page_link, custom_headers = nil)
-      response = list_in_resource_group_next_async(next_page_link, custom_headers).value!
+    def list_by_resource_group_next(next_page_link, custom_headers = nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -653,8 +653,8 @@ module Azure::ARM::Dns
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_in_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
-      list_in_resource_group_next_async(next_page_link, custom_headers).value!
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers).value!
     end
 
     #
@@ -667,7 +667,7 @@ module Azure::ARM::Dns
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_in_resource_group_next_async(next_page_link, custom_headers = nil)
+    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
@@ -716,7 +716,7 @@ module Azure::ARM::Dns
     end
 
     #
-    # Lists the DNS zones within a resource group.
+    # Lists the DNS zones within subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -725,13 +725,13 @@ module Azure::ARM::Dns
     #
     # @return [ZoneListResult] operation results.
     #
-    def list_in_subscription_next(next_page_link, custom_headers = nil)
-      response = list_in_subscription_next_async(next_page_link, custom_headers).value!
+    def list_next(next_page_link, custom_headers = nil)
+      response = list_next_async(next_page_link, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Lists the DNS zones within a resource group.
+    # Lists the DNS zones within subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -740,12 +740,12 @@ module Azure::ARM::Dns
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_in_subscription_next_with_http_info(next_page_link, custom_headers = nil)
-      list_in_subscription_next_async(next_page_link, custom_headers).value!
+    def list_next_with_http_info(next_page_link, custom_headers = nil)
+      list_next_async(next_page_link, custom_headers).value!
     end
 
     #
-    # Lists the DNS zones within a resource group.
+    # Lists the DNS zones within subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -754,7 +754,7 @@ module Azure::ARM::Dns
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_in_subscription_next_async(next_page_link, custom_headers = nil)
+    def list_next_async(next_page_link, custom_headers = nil)
       fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
 
 
