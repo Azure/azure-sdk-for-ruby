@@ -6,13 +6,13 @@
 module Azure::ARM::Dns
   module Models
     #
-    # Parameters supplied to update a RecordSet.
+    # Parameters supplied to update a Recordset.
     #
     class RecordSetUpdateParameters
 
       include MsRestAzure
 
-      # @return [RecordSet] Gets or sets information about the RecordSet being
+      # @return [RecordSet] Gets or sets information about the Recordset being
       # updated.
       attr_accessor :record_set
 

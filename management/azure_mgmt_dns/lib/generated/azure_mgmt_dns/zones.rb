@@ -23,7 +23,7 @@ module Azure::ARM::Dns
     attr_reader :client
 
     #
-    # Creates or Updates a DNS zone within a resource group.
+    # Creates or updates a DNS zone within a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
@@ -42,7 +42,7 @@ module Azure::ARM::Dns
     end
 
     #
-    # Creates or Updates a DNS zone within a resource group.
+    # Creates or updates a DNS zone within a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
@@ -60,7 +60,7 @@ module Azure::ARM::Dns
     end
 
     #
-    # Creates or Updates a DNS zone within a resource group.
+    # Creates or updates a DNS zone within a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
