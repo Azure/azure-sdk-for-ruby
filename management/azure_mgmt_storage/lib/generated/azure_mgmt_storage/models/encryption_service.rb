@@ -6,21 +6,20 @@
 module Azure::ARM::Storage
   module Models
     #
-    # An encrypted service.
+    # A service that allows server-side encryption to be used.
     #
     class EncryptionService
 
       include MsRestAzure
 
-      # @return [Boolean] A boolean indicating whether or not the service is
-      # encrypted.
+      # @return [Boolean] A boolean indicating whether or not the service
+      # encrypts the data as it is stored.
       attr_accessor :enabled
 
-      # @return [DateTime] Gets a time value indicating when was the
-      # encryption enabled by the user last time. We return this value only
-      # when encryption is enabled. There might be some unencrypted blobs
-      # which were written after this time. This time is just to give a rough
-      # estimate of when encryption was enabled.
+      # @return [DateTime] Gets a rough estimate of the date/time when the
+      # encryption was last enabled by the user. Only returned when
+      # encryption is enabled. There might be some unencrypted blobs which
+      # were written after this time, as it is just a rough estimate.
       attr_accessor :last_enabled_time
 
 

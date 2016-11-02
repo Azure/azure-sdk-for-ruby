@@ -6,38 +6,40 @@
 module Azure::ARM::Storage
   module Models
     #
-    # The parameters to provide for the account.
+    # The parameters that can be provided when updating the storage account
+    # properties.
     #
     class StorageAccountUpdateParameters
 
       include MsRestAzure
 
-      # @return [Sku] Gets or sets the sku type. Note that sku cannot be
-      # updated to StandardZRS or ProvisionedLRS, nor can accounts of that
-      # sku type be updated to any other value.
+      # @return [Sku] Gets or sets the SKU name. Note that the SKU name cannot
+      # be updated to Standard_ZRS or Premium_LRS, nor can accounts of those
+      # sku names be updated to any other value.
       attr_accessor :sku
 
       # @return [Hash{String => String}] Gets or sets a list of key value
       # pairs that describe the resource. These tags can be used in viewing
       # and grouping this resource (across resource groups). A maximum of 15
       # tags can be provided for a resource. Each tag must have a key no
-      # greater than 128 characters and value no greater than 256 characters.
+      # greater in length than 128 characters and a value no greater in
+      # length than 256 characters.
       attr_accessor :tags
 
-      # @return [CustomDomain] User domain assigned to the storage account.
-      # Name is the CNAME source. Only one custom domain is supported per
-      # storage account at this time. To clear the existing custom domain,
-      # use an empty string for the custom domain name property.
+      # @return [CustomDomain] Custom domain assigned to the storage account
+      # by the user. Name is the CNAME source. Only one custom domain is
+      # supported per storage account at this time. To clear the existing
+      # custom domain, use an empty string for the custom domain name
+      # property.
       attr_accessor :custom_domain
 
       # @return [Encryption] Provides the encryption settings on the account.
       # The default setting is unencrypted.
       attr_accessor :encryption
 
-      # @return [AccessTier] The access tier used for billing. Access tier
-      # cannot be changed more than once every 7 days (168 hours). Access
-      # tier cannot be set for StandardLRS, StandardGRS, StandardRAGRS, or
-      # PremiumLRS account types. Possible values include: 'Hot', 'Cool'
+      # @return [AccessTier] Required for storage accounts where kind =
+      # BlobStorage. The access tier used for billing. Possible values
+      # include: 'Hot', 'Cool'
       attr_accessor :access_tier
 
 

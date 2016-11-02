@@ -15,11 +15,11 @@ module Azure::ARM::Storage
       # @return [String] Name of the key.
       attr_accessor :key_name
 
-      # @return [String] Base 64 encoded value of the key.
+      # @return [String] Base 64-encoded value of the key.
       attr_accessor :value
 
-      # @return [KeyPermission] Permissions for the key. Possible values
-      # include: 'READ', 'FULL'
+      # @return [KeyPermission] Permissions for the key -- read-only or full
+      # permissions. Possible values include: 'READ', 'FULL'
       attr_accessor :permissions
 
 
