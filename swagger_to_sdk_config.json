@@ -419,10 +419,11 @@
       ]
     },
     "azure_mgmt_sql": {
-      "swagger": "arm-sql/2015-05-01/swagger/sql.json",
+      "swagger": "arm-sql/compositeSql.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::SQL",
         "PackageName": "azure_mgmt_sql",
+        "Modeler": "CompositeSwagger",
         "PackageVersion": "0.7.0"
       },
       "output_dir": "management/azure_mgmt_sql/lib",

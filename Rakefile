@@ -351,9 +351,10 @@ REGEN_METADATA = {
     #     tag: 'arm_servicebus'
     # },
     azure_mgmt_sql: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-sql/2015-05-01/swagger/sql.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-sql/compositeSql.json',
         ns: 'Azure::ARM::SQL',
         version: version,
+        modeler: "CompositeSwagger",
         tag: 'arm_sql'
     },
     azure_mgmt_storage: {

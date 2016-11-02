@@ -6,12 +6,11 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for State
+    # Defines values for RestorePointTypes
     #
-    module State
-      Enabled = "Enabled"
-      Disabled = "Disabled"
-      New = "New"
+    module RestorePointTypes
+      DISCRETE = "DISCRETE"
+      CONTINUOUS = "CONTINUOUS"
     end
   end
 end

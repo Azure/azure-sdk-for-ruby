@@ -17,12 +17,10 @@ module Azure::ARM::SQL
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] The subscription credentials which uniquely identify
-    # Microsoft Azure subscription.
+    # @return [String] Gets subscription credentials which uniquely identify
+    # Microsoft Azure subscription. The subscription ID forms part of the URI
+    # for every service call.
     attr_accessor :subscription_id
-
-    # @return [String] Client Api Version.
-    attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
@@ -35,8 +33,17 @@ module Azure::ARM::SQL
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
-    # @return [SecurityAlertPolicy] security_alert_policy
-    attr_reader :security_alert_policy
+    # @return [Databases] databases
+    attr_reader :databases
+
+    # @return [Servers] servers
+    attr_reader :servers
+
+    # @return [ElasticPools] elastic_pools
+    attr_reader :elastic_pools
+
+    # @return [RecommendedElasticPools] recommended_elastic_pools
+    attr_reader :recommended_elastic_pools
 
     #
     # Creates initializes a new instance of the SqlManagementClient class.
@@ -52,8 +59,10 @@ module Azure::ARM::SQL
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials)
       @credentials = credentials
 
-      @security_alert_policy = SecurityAlertPolicy.new(self)
-      @api_version = '2015-05-01-preview'
+      @databases = Databases.new(self)
+      @servers = Servers.new(self)
+      @elastic_pools = ElasticPools.new(self)
+      @recommended_elastic_pools = RecommendedElasticPools.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
