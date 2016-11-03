@@ -6,7 +6,7 @@
 module Azure::ARM::Dns
   module Models
     #
-    # Describes a DNS RecordSet (a set of DNS records with the same name and
+    # Describes a DNS Recordset (a set of DNS records with the same name and
     # type).
     #
     class RecordSet
@@ -22,26 +22,26 @@ module Azure::ARM::Dns
       # @return [String] Gets or sets the type of the resource.
       attr_accessor :type
 
-      # @return [String] Gets or sets the ETag of the RecordSet.
+      # @return [String] Gets or sets the ETag of the Recordset.
       attr_accessor :etag
 
       # @return [Hash{String => String}] Gets or sets the metadata attached to
       # the resource.
       attr_accessor :metadata
 
-      # @return [Integer] Gets or sets the TTL of the records in the RecordSet.
+      # @return [Integer] Gets or sets the TTL of the records in the Recordset.
       attr_accessor :ttl
 
       # @return [Array<ARecord>] Gets or sets the list of A records in the
-      # RecordSet.
+      # Recordset.
       attr_accessor :arecords
 
       # @return [Array<AaaaRecord>] Gets or sets the list of AAAA records in
-      # the RecordSet.
+      # the Recordset.
       attr_accessor :aaaa_records
 
       # @return [Array<MxRecord>] Gets or sets the list of MX records in the
-      # RecordSet.
+      # Recordset.
       attr_accessor :mx_records
 
       # @return [Array<NsRecord>] Gets or sets the list of NS records in the
@@ -49,21 +49,21 @@ module Azure::ARM::Dns
       attr_accessor :ns_records
 
       # @return [Array<PtrRecord>] Gets or sets the list of PTR records in the
-      # RecordSet.
+      # Recordset.
       attr_accessor :ptr_records
 
       # @return [Array<SrvRecord>] Gets or sets the list of SRV records in the
-      # RecordSet.
+      # Recordset.
       attr_accessor :srv_records
 
       # @return [Array<TxtRecord>] Gets or sets the list of TXT records in the
-      # RecordSet.
+      # Recordset.
       attr_accessor :txt_records
 
-      # @return [CnameRecord] Gets or sets the CNAME record in the RecordSet.
+      # @return [CnameRecord] Gets or sets the CNAME record in the Recordset.
       attr_accessor :cname_record
 
-      # @return [SoaRecord] Gets or sets the SOA record in the RecordSet.
+      # @return [SoaRecord] Gets or sets the SOA record in the Recordset.
       attr_accessor :soa_record
 
 
