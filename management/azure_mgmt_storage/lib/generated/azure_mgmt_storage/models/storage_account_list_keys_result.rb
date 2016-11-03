@@ -6,14 +6,14 @@
 module Azure::ARM::Storage
   module Models
     #
-    # The ListKeys operation response.
+    # The response from the ListKeys operation.
     #
     class StorageAccountListKeysResult
 
       include MsRestAzure
 
-      # @return [Array<StorageAccountKey>] Gets the list of account keys and
-      # their properties.
+      # @return [Array<StorageAccountKey>] Gets the list of storage account
+      # keys and their properties for the specified storage account.
       attr_accessor :keys
 
 

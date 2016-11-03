@@ -153,7 +153,7 @@ module Azure::ARM::Dns
     end
 
     #
-    # Creates or updates a Recordset within a DNS zone.
+    # Creates or Updates a Recordset within a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
@@ -177,7 +177,7 @@ module Azure::ARM::Dns
     end
 
     #
-    # Creates or updates a Recordset within a DNS zone.
+    # Creates or Updates a Recordset within a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.
@@ -200,7 +200,7 @@ module Azure::ARM::Dns
     end
 
     #
-    # Creates or updates a Recordset within a DNS zone.
+    # Creates or Updates a Recordset within a DNS zone.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the zone without a terminating dot.

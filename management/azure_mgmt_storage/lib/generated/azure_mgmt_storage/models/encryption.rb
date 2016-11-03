@@ -6,17 +6,17 @@
 module Azure::ARM::Storage
   module Models
     #
-    # The encryption settings on the account.
+    # The encryption settings on the storage account.
     #
     class Encryption
 
       include MsRestAzure
 
-      # @return [EncryptionServices] Gets the services which are encrypted.
+      # @return [EncryptionServices] List of services which support encryption.
       attr_accessor :services
 
-      # @return [String] Gets the encryption keySource(provider). Possible
-      # values (case-insensitive):  Microsoft.Storage. Default value:
+      # @return [String] The encryption keySource (provider). Possible values
+      # (case-insensitive):  Microsoft.Storage. Default value:
       # 'Microsoft.Storage' .
       attr_accessor :key_source
 

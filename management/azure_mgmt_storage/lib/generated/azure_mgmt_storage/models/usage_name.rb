@@ -6,7 +6,7 @@
 module Azure::ARM::Storage
   module Models
     #
-    # The Usage Names.
+    # The usage names that can be used; currently limited to StorageAccount.
     #
     class UsageName
 

@@ -6,13 +6,14 @@
 module Azure::ARM::Storage
   module Models
     #
-    # The encrypted services.
+    # A list of services that support encryption.
     #
     class EncryptionServices
 
       include MsRestAzure
 
-      # @return [EncryptionService] The blob service.
+      # @return [EncryptionService] The encryption function of the blob
+      # storage service.
       attr_accessor :blob
 
 

@@ -6,13 +6,14 @@
 module Azure::ARM::Storage
   module Models
     #
-    # The List Usages operation response.
+    # The response from the List Usages operation.
     #
     class UsageListResult
 
       include MsRestAzure
 
-      # @return [Array<Usage>] Gets or sets the list Storage Resource Usages.
+      # @return [Array<Usage>] Gets or sets the list of Storage Resource
+      # Usages.
       attr_accessor :value
 
 
