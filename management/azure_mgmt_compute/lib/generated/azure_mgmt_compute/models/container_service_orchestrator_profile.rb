@@ -6,15 +6,15 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Profile for Orchestrator
+    # Profile for orchestrator.
     #
     class ContainerServiceOrchestratorProfile
 
       include MsRestAzure
 
-      # @return [ContainerServiceOchestratorTypes] Specifies what orchestrator
-      # will be used to manage container cluster resources. Possible values
-      # include: 'Swarm', 'DCOS'
+      # @return [ContainerServiceOchestratorTypes] Specifies the orchestrator
+      # to use to manage container service cluster resources. Possible values
+      # include: 'Swarm', 'DCOS', 'Custom'
       attr_accessor :orchestrator_type
 
 

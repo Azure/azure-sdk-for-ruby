@@ -12,9 +12,44 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Array<ContainerService>] the list of container services.
+      # @return [Array<ContainerService>] The list of container services.
       attr_accessor :value
 
+      # @return [String] The URL to get the next set of container service
+      # results.
+      attr_accessor :next_link
+
+      # return [Proc] with next page method call.
+      attr_accessor :next_method
+
+      #
+      # Gets the rest of the items for the request, enabling auto-pagination.
+      #
+      # @return [Array<ContainerService>] operation results.
+      #
+      def get_all_items
+        items = @value
+        page = self
+        while page.next_link != nil do
+          page = page.get_next_page
+          items.concat(page.value)
+        end
+        items
+      end
+
+      #
+      # Gets the next page of results.
+      #
+      # @return [ContainerServiceListResult] with next page content.
+      #
+      def get_next_page
+        response = @next_method.call(@next_link).value! unless @next_method.nil?
+        unless response.nil?
+          @next_link = response.body.next_link
+          @value = response.body.value
+          self
+        end
+      end
 
       #
       # Mapper for ContainerServiceListResult class as Ruby Hash.
@@ -41,6 +76,13 @@ module Azure::ARM::Compute
                         class_name: 'ContainerService'
                       }
                   }
+                }
+              },
+              next_link: {
+                required: false,
+                serialized_name: 'nextLink',
+                type: {
+                  name: 'String'
                 }
               }
             }

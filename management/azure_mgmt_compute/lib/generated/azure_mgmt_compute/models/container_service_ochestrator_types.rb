@@ -11,6 +11,7 @@ module Azure::ARM::Compute
     module ContainerServiceOchestratorTypes
       Swarm = "Swarm"
       DCOS = "DCOS"
+      Custom = "Custom"
     end
   end
 end
