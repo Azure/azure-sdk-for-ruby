@@ -25,12 +25,12 @@ module Azure::ARM::Storage
       attr_accessor :provisioning_state
 
       # @return [Endpoints] Gets the URLs that are used to perform a retrieval
-      # of a public blob, queue or table object.Note that StandardZRS and
-      # PremiumLRS accounts only return the blob endpoint.
+      # of a public blob, queue, or table object. Note that Standard_ZRS and
+      # Premium_LRS accounts only return the blob endpoint.
       attr_accessor :primary_endpoints
 
-      # @return [String] Gets the location of the primary for the storage
-      # account.
+      # @return [String] Gets the location of the primary data center for the
+      # storage account.
       attr_accessor :primary_location
 
       # @return [AccountStatus] Gets the status indicating whether the primary
@@ -41,43 +41,42 @@ module Azure::ARM::Storage
       # @return [DateTime] Gets the timestamp of the most recent instance of a
       # failover to the secondary location. Only the most recent timestamp is
       # retained. This element is not returned if there has never been a
-      # failover instance. Only available if the accountType is StandardGRS
-      # or StandardRAGRS.
+      # failover instance. Only available if the accountType is Standard_GRS
+      # or Standard_RAGRS.
       attr_accessor :last_geo_failover_time
 
-      # @return [String] Gets the location of the geo replicated secondary for
-      # the storage account. Only available if the accountType is StandardGRS
-      # or StandardRAGRS.
+      # @return [String] Gets the location of the geo-replicated secondary for
+      # the storage account. Only available if the accountType is
+      # Standard_GRS or Standard_RAGRS.
       attr_accessor :secondary_location
 
       # @return [AccountStatus] Gets the status indicating whether the
       # secondary location of the storage account is available or
-      # unavailable. Only available if the accountType is StandardGRS or
-      # StandardRAGRS. Possible values include: 'Available', 'Unavailable'
+      # unavailable. Only available if the SKU name is Standard_GRS or
+      # Standard_RAGRS. Possible values include: 'Available', 'Unavailable'
       attr_accessor :status_of_secondary
 
       # @return [DateTime] Gets the creation date and time of the storage
       # account in UTC.
       attr_accessor :creation_time
 
-      # @return [CustomDomain] Gets the user assigned custom domain assigned
-      # to this storage account.
+      # @return [CustomDomain] Gets the custom domain the user assigned to
+      # this storage account.
       attr_accessor :custom_domain
 
       # @return [Endpoints] Gets the URLs that are used to perform a retrieval
-      # of a public blob, queue or table object from the secondary location
-      # of the storage account. Only available if the accountType is
-      # StandardRAGRS.
+      # of a public blob, queue, or table object from the secondary location
+      # of the storage account. Only available if the SKU name is
+      # Standard_RAGRS.
       attr_accessor :secondary_endpoints
 
       # @return [Encryption] Gets the encryption settings on the account. If
-      # unspecified the account is unencrypted.
+      # unspecified, the account is unencrypted.
       attr_accessor :encryption
 
-      # @return [AccessTier] The access tier used for billing. Access tier
-      # cannot be changed more than once every 7 days (168 hours). Access
-      # tier cannot be set for StandardLRS, StandardGRS, StandardRAGRS, or
-      # PremiumLRS account types. Possible values include: 'Hot', 'Cool'
+      # @return [AccessTier] Required for storage accounts where kind =
+      # BlobStorage. The access tier used for billing. Possible values
+      # include: 'Hot', 'Cool'
       attr_accessor :access_tier
 
 

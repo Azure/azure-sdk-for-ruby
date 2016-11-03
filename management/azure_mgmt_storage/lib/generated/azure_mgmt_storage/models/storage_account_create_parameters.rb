@@ -6,13 +6,13 @@
 module Azure::ARM::Storage
   module Models
     #
-    # The parameters to provide for the account.
+    # The parameters used when creating a storage account.
     #
     class StorageAccountCreateParameters
 
       include MsRestAzure
 
-      # @return [Sku] Required. Gets or sets the sku type.
+      # @return [Sku] Required. Gets or sets the sku name.
       attr_accessor :sku
 
       # @return [Kind] Required. Indicates the type of storage account.
@@ -23,14 +23,15 @@ module Azure::ARM::Storage
       # This will be one of the supported and registered Azure Geo Regions
       # (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
       # resource cannot be changed once it is created, but if an identical
-      # geo region is specified on update the request will succeed.
+      # geo region is specified on update, the request will succeed.
       attr_accessor :location
 
       # @return [Hash{String => String}] Gets or sets a list of key value
-      # pairs that describe the resource. These tags can be used in viewing
+      # pairs that describe the resource. These tags can be used for viewing
       # and grouping this resource (across resource groups). A maximum of 15
-      # tags can be provided for a resource. Each tag must have a key no
-      # greater than 128 characters and value no greater than 256 characters.
+      # tags can be provided for a resource. Each tag must have a key with a
+      # length no greater than 128 characters and a value with a length no
+      # greater than 256 characters.
       attr_accessor :tags
 
       # @return [CustomDomain] User domain assigned to the storage account.
@@ -40,15 +41,13 @@ module Azure::ARM::Storage
       attr_accessor :custom_domain
 
       # @return [Encryption] Provides the encryption settings on the account.
-      # If left unspecified the account encryption settings will remain. The
-      # default setting is unencrypted.
+      # If left unspecified the account encryption settings will remain the
+      # same. The default setting is unencrypted.
       attr_accessor :encryption
 
-      # @return [AccessTier] Required for StandardBlob accounts. The access
-      # tier used for billing. Access tier cannot be changed more than once
-      # every 7 days (168 hours). Access tier cannot be set for StandardLRS,
-      # StandardGRS, StandardRAGRS, or PremiumLRS account types. Possible
-      # values include: 'Hot', 'Cool'
+      # @return [AccessTier] Required for storage accounts where kind =
+      # BlobStorage. The access tier used for billing. Possible values
+      # include: 'Hot', 'Cool'
       attr_accessor :access_tier
 
 

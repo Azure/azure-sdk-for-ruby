@@ -13,12 +13,12 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the custom domain name. Name is the
-      # CNAME source.
+      # @return [String] Gets or sets the custom domain name assigned to the
+      # storage account. Name is the CNAME source.
       attr_accessor :name
 
       # @return [Boolean] Indicates whether indirect CName validation is
-      # enabled. Default value is false. This should only be set on updates
+      # enabled. Default value is false. This should only be set on updates.
       attr_accessor :use_sub_domain
 
 

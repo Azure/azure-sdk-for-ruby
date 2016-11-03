@@ -6,7 +6,7 @@
 module Azure::ARM::Storage
   module Models
     #
-    # The list storage accounts operation response.
+    # The response from the List Storage Accounts operation.
     #
     class StorageAccountListResult
 
