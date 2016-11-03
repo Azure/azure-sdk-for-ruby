@@ -4,5 +4,13 @@
 # regenerated.
 
 module Azure::ARM::CDN
-    VERSION = '0.7.0'
+  module Models
+    #
+    # Defines values for GeoFilterActions
+    #
+    module GeoFilterActions
+      Block = "Block"
+      Allow = "Allow"
+    end
+  end
 end

@@ -4,5 +4,12 @@
 # regenerated.
 
 module Azure::ARM::CDN
-    VERSION = '0.7.0'
+  module Models
+    #
+    # Defines values for ResourceType
+    #
+    module ResourceType
+      MicrosoftCdnProfilesEndpoints = "Microsoft.Cdn/Profiles/Endpoints"
+    end
+  end
 end

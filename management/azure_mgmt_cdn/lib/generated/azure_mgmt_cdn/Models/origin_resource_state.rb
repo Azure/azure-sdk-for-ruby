@@ -4,5 +4,14 @@
 # regenerated.
 
 module Azure::ARM::CDN
-    VERSION = '0.7.0'
+  module Models
+    #
+    # Defines values for OriginResourceState
+    #
+    module OriginResourceState
+      Creating = "Creating"
+      Active = "Active"
+      Deleting = "Deleting"
+    end
+  end
 end
