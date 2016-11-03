@@ -19,6 +19,8 @@ module MsRestAzure
       @request_headers =  {
           'Content-Type' => 'application/json;charset=utf-8' # This is the current default for Azure services, and content-type supported by Autorest
       }
+      add_user_agent_information("ms_rest_azure/#{MsRestAzure::VERSION}")
+      add_user_agent_information("Azure-SDK-For-Ruby")
     end
 
     #
@@ -40,11 +42,11 @@ module MsRestAzure
         task = Concurrent::TimerTask.new do
           begin
             if !polling_state.azure_async_operation_header_link.nil?
-              update_state_from_azure_async_operation_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri), polling_state)
+              update_state_from_azure_async_operation_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state)
             elsif !polling_state.location_header_link.nil?
-              update_state_from_location_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri), polling_state, custom_deserialization_block)
+              update_state_from_location_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state, custom_deserialization_block)
             elsif http_method === :put
-              get_request = MsRest::HttpOperationRequest.new(request.base_uri, request.build_path.to_s, :get, {query_params: request.query_params, headers: request.headers})
+              get_request = MsRest::HttpOperationRequest.new(request.base_uri, request.build_path.to_s, :get, {query_params: request.query_params, headers: request.headers, user_agent_extended: user_agent_extended})
               update_state_from_get_resource_operation(get_request, polling_state, custom_deserialization_block)
             else
               task.shutdown
@@ -252,7 +254,6 @@ module MsRestAzure
 
       result
     end
-
 
     private
       #

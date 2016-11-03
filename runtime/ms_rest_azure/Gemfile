@@ -8,7 +8,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :development do
-  gem 'ms_rest', path: '../ms-rest'
+  gem 'ms_rest', path: '../ms_rest'
 end
 
 group :test do

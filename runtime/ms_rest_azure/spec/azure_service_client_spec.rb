@@ -104,5 +104,21 @@ module MsRestAzure
         expect { azure_service_client.get_long_running_operation_result(azure_response, nil) }.to raise_error(AzureOperationError)
       end
     end
+
+    it 'should add or update default user agent information' do
+      azure_service_client = AzureServiceClient.new nil
+
+      # Verify default information
+      default_info = 'Azure-SDK-For-Ruby'
+      expect(azure_service_client.user_agent_extended).not_to be_nil
+      expect(azure_service_client.user_agent_extended).to include(default_info)
+
+      # Verify updated information
+      additional_user_agent_information = "fog-azure-rm/0.2.0"
+      azure_service_client.add_user_agent_information(additional_user_agent_information)
+      expect(azure_service_client.user_agent_extended).not_to be_nil
+      expect(azure_service_client.user_agent_extended).to include(default_info)
+      expect(azure_service_client.user_agent_extended).to include(additional_user_agent_information)
+    end
   end
 end

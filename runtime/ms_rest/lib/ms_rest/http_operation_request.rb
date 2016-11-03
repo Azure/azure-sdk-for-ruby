@@ -103,7 +103,7 @@ module MsRest
     end
     
     def user_agent
-      "Azure-SDK-For-Ruby/#{MsRest::VERSION}/#{user_agent_extended.join('/')}"
+      "Ruby/#{RUBY_VERSION} (#{RUBY_PLATFORM}) #{user_agent_extended.join(' ')}"
     end
     
     def to_json(*a)
