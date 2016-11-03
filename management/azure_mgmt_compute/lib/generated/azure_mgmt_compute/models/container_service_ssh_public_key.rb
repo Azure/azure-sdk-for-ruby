@@ -12,8 +12,8 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] Certificate public key used to authenticate with VM
-      # through SSH. The certificate must be in Pem format with or without
+      # @return [String] Certificate public key used to authenticate with VMs
+      # through SSH. The certificate must be in PEM format with or without
       # headers.
       attr_accessor :key_data
 

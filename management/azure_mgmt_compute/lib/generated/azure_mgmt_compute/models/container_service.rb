@@ -6,35 +6,42 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Container service
+    # Container service.
     #
     class ContainerService < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] the provisioning state, which only appears in the
+      # @return [String] The provisioning state, which only appears in the
       # response.
       attr_accessor :provisioning_state
 
-      # @return [ContainerServiceOrchestratorProfile] Properties of
-      # orchestrator
+      # @return [ContainerServiceOrchestratorProfile] Properties of the
+      # orchestrator.
       attr_accessor :orchestrator_profile
 
-      # @return [ContainerServiceMasterProfile] Properties of master agents
+      # @return [ContainerServiceCustomProfile] Properties for custom clusters.
+      attr_accessor :custom_profile
+
+      # @return [ContainerServiceServicePrincipalProfile] Properties for
+      # cluster service principals.
+      attr_accessor :service_principal_profile
+
+      # @return [ContainerServiceMasterProfile] Properties of master agents.
       attr_accessor :master_profile
 
       # @return [Array<ContainerServiceAgentPoolProfile>] Properties of agent
-      # pools
+      # pools.
       attr_accessor :agent_pool_profiles
 
-      # @return [ContainerServiceWindowsProfile] Properties of Windows VMs
+      # @return [ContainerServiceWindowsProfile] Properties of Windows VMs.
       attr_accessor :windows_profile
 
-      # @return [ContainerServiceLinuxProfile] Properties for Linux VMs
+      # @return [ContainerServiceLinuxProfile] Properties of Linux VMs.
       attr_accessor :linux_profile
 
-      # @return [ContainerServiceDiagnosticsProfile] Properties for Diagnostic
-      # Agent
+      # @return [ContainerServiceDiagnosticsProfile] Properties of the
+      # diagnostic agent.
       attr_accessor :diagnostics_profile
 
 
@@ -109,6 +116,22 @@ module Azure::ARM::Compute
                 type: {
                   name: 'Composite',
                   class_name: 'ContainerServiceOrchestratorProfile'
+                }
+              },
+              custom_profile: {
+                required: false,
+                serialized_name: 'properties.customProfile',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ContainerServiceCustomProfile'
+                }
+              },
+              service_principal_profile: {
+                required: false,
+                serialized_name: 'properties.servicePrincipalProfile',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ContainerServiceServicePrincipalProfile'
                 }
               },
               master_profile: {

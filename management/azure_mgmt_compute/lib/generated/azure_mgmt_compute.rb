@@ -100,6 +100,8 @@ module Azure::ARM::Compute
     autoload :InnerError,                                         'generated/azure_mgmt_compute/models/inner_error.rb'
     autoload :ApiError,                                           'generated/azure_mgmt_compute/models/api_error.rb'
     autoload :ComputeLongRunningOperationProperties,              'generated/azure_mgmt_compute/models/compute_long_running_operation_properties.rb'
+    autoload :ContainerServiceCustomProfile,                      'generated/azure_mgmt_compute/models/container_service_custom_profile.rb'
+    autoload :ContainerServiceServicePrincipalProfile,            'generated/azure_mgmt_compute/models/container_service_service_principal_profile.rb'
     autoload :ContainerServiceOrchestratorProfile,                'generated/azure_mgmt_compute/models/container_service_orchestrator_profile.rb'
     autoload :ContainerServiceMasterProfile,                      'generated/azure_mgmt_compute/models/container_service_master_profile.rb'
     autoload :ContainerServiceAgentPoolProfile,                   'generated/azure_mgmt_compute/models/container_service_agent_pool_profile.rb'

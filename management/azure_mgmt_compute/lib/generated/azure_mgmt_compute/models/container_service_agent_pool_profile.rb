@@ -6,7 +6,7 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Profile for container service agent pool
+    # Profile for container service agent pool.
     #
     class ContainerServiceAgentPoolProfile
 
@@ -16,8 +16,7 @@ module Azure::ARM::Compute
       # context of the subscription and resource group
       attr_accessor :name
 
-      # @return [Integer] Number of agents (VMs) that will host docker
-      # containers
+      # @return [Integer] Number of agents (VMs) to host docker containers
       attr_accessor :count
 
       # @return [ContainerServiceVMSizeTypes] Size of agent VMs. Possible
@@ -36,11 +35,11 @@ module Azure::ARM::Compute
       # 'Standard_GS4', 'Standard_GS5'
       attr_accessor :vm_size
 
-      # @return [String] DNS prefix to be used to create FQDN for this agent
-      # pool
+      # @return [String] DNS prefix to be used to create the FQDN for the
+      # agent pool.
       attr_accessor :dns_prefix
 
-      # @return [String] FDQN for the agent pool
+      # @return [String] FDQN for the agent pool.
       attr_accessor :fqdn
 
 
@@ -64,7 +63,7 @@ module Azure::ARM::Compute
                 }
               },
               count: {
-                required: false,
+                required: true,
                 serialized_name: 'count',
                 constraints: {
                   InclusiveMaximum: 100,

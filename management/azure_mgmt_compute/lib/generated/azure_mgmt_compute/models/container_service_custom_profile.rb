@@ -6,35 +6,33 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Model object.
+    # Properties to configure custom clusters.
     #
-    class ContainerServiceDiagnosticsProfile
+    class ContainerServiceCustomProfile
 
       include MsRestAzure
 
-      # @return [ContainerServiceVMDiagnostics] Profile for the container
-      # service VM diagnostic agent.
-      attr_accessor :vm_diagnostics
+      # @return [String] The name of the custom orchestrator to use.
+      attr_accessor :orchestrator
 
 
       #
-      # Mapper for ContainerServiceDiagnosticsProfile class as Ruby Hash.
+      # Mapper for ContainerServiceCustomProfile class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ContainerServiceDiagnosticsProfile',
+          serialized_name: 'ContainerServiceCustomProfile',
           type: {
             name: 'Composite',
-            class_name: 'ContainerServiceDiagnosticsProfile',
+            class_name: 'ContainerServiceCustomProfile',
             model_properties: {
-              vm_diagnostics: {
+              orchestrator: {
                 required: true,
-                serialized_name: 'vmDiagnostics',
+                serialized_name: 'orchestrator',
                 type: {
-                  name: 'Composite',
-                  class_name: 'ContainerServiceVMDiagnostics'
+                  name: 'String'
                 }
               }
             }

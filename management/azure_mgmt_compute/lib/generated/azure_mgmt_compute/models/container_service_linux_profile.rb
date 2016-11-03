@@ -6,17 +6,17 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Profile for Linux VMs
+    # Profile for Linux VMs.
     #
     class ContainerServiceLinuxProfile
 
       include MsRestAzure
 
-      # @return [String] The administrator username to use for all Linux VMs
+      # @return [String] The administrator user name to use for Linux VMs.
       attr_accessor :admin_username
 
-      # @return [ContainerServiceSshConfiguration] Specifies the ssh key
-      # configuration for Linux VMs
+      # @return [ContainerServiceSshConfiguration] The ssh key configuration
+      # for Linux VMs.
       attr_accessor :ssh
 
 
@@ -35,6 +35,9 @@ module Azure::ARM::Compute
               admin_username: {
                 required: true,
                 serialized_name: 'adminUsername',
+                constraints: {
+                  Pattern: '^[a-z][a-z0-9_-]*$'
+                },
                 type: {
                   name: 'String'
                 }

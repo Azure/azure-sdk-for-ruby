@@ -6,16 +6,16 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Profile for Windows VMs
+    # Profile for Windows VMs.
     #
     class ContainerServiceWindowsProfile
 
       include MsRestAzure
 
-      # @return [String] The administrator username to use for Windows VMs
+      # @return [String] The administrator user name to use for Windows VMs.
       attr_accessor :admin_username
 
-      # @return [String] The administrator password to use for Windows VMs
+      # @return [String] The administrator password to use for Windows VMs.
       attr_accessor :admin_password
 
 
@@ -34,6 +34,9 @@ module Azure::ARM::Compute
               admin_username: {
                 required: true,
                 serialized_name: 'adminUsername',
+                constraints: {
+                  Pattern: '^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$'
+                },
                 type: {
                   name: 'String'
                 }
@@ -41,6 +44,9 @@ module Azure::ARM::Compute
               admin_password: {
                 required: true,
                 serialized_name: 'adminPassword',
+                constraints: {
+                  Pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\^&\*\(\)])[a-zA-Z\d!@#$%\^&\*\(\)]{12,123}$'
+                },
                 type: {
                   name: 'String'
                 }
