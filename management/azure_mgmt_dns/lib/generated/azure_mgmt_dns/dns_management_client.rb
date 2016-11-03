@@ -18,8 +18,8 @@ module Azure::ARM::Dns
     attr_reader :credentials
 
     # @return [String] Gets subscription credentials which uniquely identify
-    # Microsoft Azure subscription. The subscription ID forms part of the URI
-    # for every service call.
+    # the Microsoft Azure subscription. The subscription ID forms part of the
+    # URI for every service call.
     attr_accessor :subscription_id
 
     # @return [String] Client Api Version.
