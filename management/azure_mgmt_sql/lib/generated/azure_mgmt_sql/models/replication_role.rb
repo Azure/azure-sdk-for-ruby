@@ -6,11 +6,14 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for TableType
+    # Defines values for ReplicationRole
     #
-    module TableType
-      BaseTable = "BaseTable"
-      View = "View"
+    module ReplicationRole
+      Primary = "Primary"
+      Secondary = "Secondary"
+      NonReadableSecondary = "NonReadableSecondary"
+      Source = "Source"
+      Copy = "Copy"
     end
   end
 end

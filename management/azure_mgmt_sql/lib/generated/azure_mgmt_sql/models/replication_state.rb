@@ -6,11 +6,13 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Defines values for TableType
+    # Defines values for ReplicationState
     #
-    module TableType
-      BaseTable = "BaseTable"
-      View = "View"
+    module ReplicationState
+      PENDING = "PENDING"
+      SEEDING = "SEEDING"
+      CATCHUP = "CATCH_UP"
+      SUSPENDED = "SUSPENDED"
     end
   end
 end

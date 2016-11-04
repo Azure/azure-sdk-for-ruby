@@ -6,40 +6,41 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a List Azure SQL Elastic Pool request.
+    # Represents the response to a List Azure SQL Database Replication Link
+    # request.
     #
-    class ElasticPoolListResult
+    class ReplicationLinkListResult
 
       include MsRestAzure
 
-      # @return [Array<ElasticPool>] The list of Azure SQL Elastic Pools
-      # hosted in the server.
+      # @return [Array<ReplicationLink>] The list of Azure SQL Database
+      # Replication Links housed in the database.
       attr_accessor :value
 
 
       #
-      # Mapper for ElasticPoolListResult class as Ruby Hash.
+      # Mapper for ReplicationLinkListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ElasticPoolListResult',
+          serialized_name: 'ReplicationLinkListResult',
           type: {
             name: 'Composite',
-            class_name: 'ElasticPoolListResult',
+            class_name: 'ReplicationLinkListResult',
             model_properties: {
               value: {
-                required: true,
+                required: false,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ElasticPoolElementType',
+                      serialized_name: 'ReplicationLinkElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ElasticPool'
+                        class_name: 'ReplicationLink'
                       }
                   }
                 }
