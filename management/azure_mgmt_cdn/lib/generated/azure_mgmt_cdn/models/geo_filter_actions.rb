@@ -6,10 +6,11 @@
 module Azure::ARM::CDN
   module Models
     #
-    # Defines values for ResourceType
+    # Defines values for GeoFilterActions
     #
-    module ResourceType
-      MicrosoftCdnProfilesEndpoints = "Microsoft.Cdn/Profiles/Endpoints"
+    module GeoFilterActions
+      Block = "Block"
+      Allow = "Allow"
     end
   end
 end
