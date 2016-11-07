@@ -43,7 +43,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('dotenv',              '~> 2.0')
   s.add_development_dependency('minitest',            '~> 5')
   s.add_development_dependency('minitest-reporters',  '~> 1')
-  s.add_development_dependency('mocha',               '1.1.0')
+  s.add_development_dependency('mocha',               '~> 1.0')
   s.add_development_dependency('rake',                '~> 10.0')
   s.add_development_dependency('timecop',             '~> 0.7')
   s.add_development_dependency('yard',                '~> 0.8')

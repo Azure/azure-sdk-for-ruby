@@ -410,7 +410,7 @@ describe Azure::VirtualMachineManagementService do
     before do
       Azure::Loggerx.stubs(:info).returns(nil)
       Azure::Loggerx.expects(:puts).returns(nil).at_least(0)
-      subject.class.send(:public, *subject.class.private_instance_methods)
+      subject.class.send(:public, *subject.class.private_instance_methods(false))
     end
 
     it 'returns os type of given virtual machine image' do
