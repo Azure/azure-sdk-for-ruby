@@ -11,7 +11,6 @@ script:
 - bundle exec rake arm:build
 - unset BUNDLE_GEMFILE
 - cd $TRAVIS_BUILD_DIR/runtime/ms_rest && bundle install --gemfile=Gemfile && bundle exec rspec
-- unset BUNDLE_GEMFILE
 - cd $TRAVIS_BUILD_DIR/runtime/ms_rest_azure && bundle install --gemfile=Gemfile && bundle exec rspec
 deploy:
   provider: script
