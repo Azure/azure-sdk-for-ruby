@@ -17,12 +17,13 @@ module Azure::ARM::Search
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Gets subscription credentials which uniquely identify
-    # Microsoft Azure subscription. The subscription ID forms part of the URI
-    # for every service call.
+    # @return [String] The unique identifier for a Microsoft Azure
+    # subscription. You can obtain this value from the Azure Resource Manager
+    # API or the portal.
     attr_accessor :subscription_id
 
-    # @return [String] Client Api Version.
+    # @return [String] The API version to use for each request. The current
+    # version is 2015-08-19.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.
@@ -62,7 +63,7 @@ module Azure::ARM::Search
       @admin_keys = AdminKeys.new(self)
       @query_keys = QueryKeys.new(self)
       @services = Services.new(self)
-      @api_version = '2015-02-28'
+      @api_version = '2015-08-19'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
