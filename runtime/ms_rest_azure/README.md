@@ -40,6 +40,15 @@ Reference it in the gemfile and also add this line to your client's gemspec file
 spec.add_runtime_dependency 'ms_rest_azure', '~> 0.6.0'
 ```
 
+# Utilizing Telemetry Extension in your SDK
+
+We encourage the customer of ms_rest_azure library to provide information about their product sent via telemetry extension point as below:
+
+```ruby
+additional_user_agent_information = 'fog-azure-rm/0.2.0' # Refer https://github.com/Azure/azure-sdk-for-ruby/issues/517 for more info.
+azure_service_client.add_user_agent_information(additional_user_agent_information)
+```
+
 Don't forget to correct the version.
 
 # Provide feedback
