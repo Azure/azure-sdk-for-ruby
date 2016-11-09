@@ -46,8 +46,9 @@ module Azure::ARM::Resources
       # one of Parameters or ParametersLink.
       attr_accessor :parameters_link
 
-      # @return [DeploymentMode] The deployment mode. Possible values include:
-      # 'Incremental', 'Complete'
+      # @return [DeploymentMode] The deployment mode. Possible values are
+      # Incremental and Complete. Possible values include: 'Incremental',
+      # 'Complete'
       attr_accessor :mode
 
       # @return [DebugSetting] The debug setting of the deployment.

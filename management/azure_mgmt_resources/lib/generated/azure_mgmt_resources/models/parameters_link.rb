@@ -12,10 +12,10 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
-      # @return [String] URI referencing the template.
+      # @return [String] The URI of the parameters file.
       attr_accessor :uri
 
-      # @return [String] If included it must match the ContentVersion in the
+      # @return [String] If included, must match the ContentVersion in the
       # template.
       attr_accessor :content_version
 

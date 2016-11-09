@@ -18,7 +18,9 @@ module Azure::ARM::Resources
       # @return [String] The tag name.
       attr_accessor :tag_name
 
-      # @return [TagCount] The tag count.
+      # @return [TagCount] The total number of resources that use the resource
+      # tag. When a tag is initially created and has no associated resources,
+      # the value is 0.
       attr_accessor :count
 
       # @return [Array<TagValue>] The list of tag values.
