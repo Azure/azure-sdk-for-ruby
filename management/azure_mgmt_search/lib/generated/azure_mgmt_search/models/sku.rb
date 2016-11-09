@@ -13,8 +13,15 @@ module Azure::ARM::Search
 
       include MsRestAzure
 
-      # @return [SkuType] The SKU of the Search service. Possible values
-      # include: 'free', 'standard', 'standard2'
+      # @return [SkuName] The SKU of the Search service. Valid values include:
+      # 'free': Shared service. 'basic': Dedicated service with up to 3
+      # replicas. 'standard': Dedicated service with up to 12 partitions and
+      # 12 replicas. 'standard2': Similar to standard, but with more capacity
+      # per search unit. 'standard3': Offers maximum capacity per search unit
+      # with up to 12 partitions and 12 replicas (or up to 3 partitions with
+      # more indexes if you also set the hostingMode property to
+      # 'highDensity'). Possible values include: 'free', 'basic', 'standard',
+      # 'standard2', 'standard3'
       attr_accessor :name
 
 
@@ -35,7 +42,7 @@ module Azure::ARM::Search
                 serialized_name: 'name',
                 type: {
                   name: 'Enum',
-                  module: 'SkuType'
+                  module: 'SkuName'
                 }
               }
             }

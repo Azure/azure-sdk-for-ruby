@@ -6,17 +6,17 @@
 module Azure::ARM::Search
   module Models
     #
-    # Response containing the primary and secondary API keys for a given Azure
-    # Search service.
+    # Response containing the primary and secondary admin API keys for a given
+    # Azure Search service.
     #
     class AdminKeyResult
 
       include MsRestAzure
 
-      # @return [String] The primary API key of the Search service.
+      # @return [String] The primary admin API key of the Search service.
       attr_accessor :primary_key
 
-      # @return [String] The secondary API key of the Search service.
+      # @return [String] The secondary admin API key of the Search service.
       attr_accessor :secondary_key
 
 

@@ -332,7 +332,7 @@ REGEN_METADATA = {
         tag: 'arm_sche'
     },
     azure_mgmt_search: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-search/2015-02-28/swagger/search.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-search/2015-08-19/swagger/search.json',
         ns: 'Azure::ARM::Search',
         version: version,
         tag: 'arm_sear'

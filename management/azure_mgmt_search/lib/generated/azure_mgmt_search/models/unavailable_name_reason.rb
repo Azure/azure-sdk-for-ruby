@@ -6,12 +6,11 @@
 module Azure::ARM::Search
   module Models
     #
-    # Defines values for SkuType
+    # Defines values for UnavailableNameReason
     #
-    module SkuType
-      Free = "free"
-      Standard = "standard"
-      Standard2 = "standard2"
+    module UnavailableNameReason
+      Invalid = "Invalid"
+      AlreadyExists = "AlreadyExists"
     end
   end
 end

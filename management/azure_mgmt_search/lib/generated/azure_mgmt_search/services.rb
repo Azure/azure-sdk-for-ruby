@@ -28,18 +28,26 @@ module Azure::ARM::Search
     # given values.
     #
     # @param resource_group_name [String] The name of the resource group within
-    # the current subscription.
-    # @param service_name [String] The name of the Search service to create or
-    # update.
-    # @param parameters [SearchServiceCreateOrUpdateParameters] The properties to
-    # set or update on the Search service.
+    # the current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_service_name [String] The name of the Azure Search service to
+    # create or update. Search service names must only contain lowercase letters,
+    # digits or dashes, cannot use dash as the first two or last one characters,
+    # cannot contain consecutive dashes, and must be between 2 and 60 characters
+    # in length. Search service names must be globally unique since they are part
+    # of the service URI (https://<name>.search.windows.net). You cannot change
+    # the service name after the service is created.
+    # @param service [SearchService] The definition of the Search service to
+    # create or update.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SearchServiceResource] operation results.
+    # @return [SearchService] operation results.
     #
-    def create_or_update(resource_group_name, service_name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, service_name, parameters, custom_headers).value!
+    def create_or_update(resource_group_name, search_service_name, service, search_management_request_options = nil, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -49,18 +57,26 @@ module Azure::ARM::Search
     # given values.
     #
     # @param resource_group_name [String] The name of the resource group within
-    # the current subscription.
-    # @param service_name [String] The name of the Search service to create or
-    # update.
-    # @param parameters [SearchServiceCreateOrUpdateParameters] The properties to
-    # set or update on the Search service.
+    # the current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_service_name [String] The name of the Azure Search service to
+    # create or update. Search service names must only contain lowercase letters,
+    # digits or dashes, cannot use dash as the first two or last one characters,
+    # cannot contain consecutive dashes, and must be between 2 and 60 characters
+    # in length. Search service names must be globally unique since they are part
+    # of the service URI (https://<name>.search.windows.net). You cannot change
+    # the service name after the service is created.
+    # @param service [SearchService] The definition of the Search service to
+    # create or update.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_or_update_with_http_info(resource_group_name, service_name, parameters, custom_headers = nil)
-      create_or_update_async(resource_group_name, service_name, parameters, custom_headers).value!
+    def create_or_update_with_http_info(resource_group_name, search_service_name, service, search_management_request_options = nil, custom_headers = nil)
+      create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options, custom_headers).value!
     end
 
     #
@@ -69,44 +85,57 @@ module Azure::ARM::Search
     # given values.
     #
     # @param resource_group_name [String] The name of the resource group within
-    # the current subscription.
-    # @param service_name [String] The name of the Search service to create or
-    # update.
-    # @param parameters [SearchServiceCreateOrUpdateParameters] The properties to
-    # set or update on the Search service.
+    # the current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_service_name [String] The name of the Azure Search service to
+    # create or update. Search service names must only contain lowercase letters,
+    # digits or dashes, cannot use dash as the first two or last one characters,
+    # cannot contain consecutive dashes, and must be between 2 and 60 characters
+    # in length. Search service names must be globally unique since they are part
+    # of the service URI (https://<name>.search.windows.net). You cannot change
+    # the service name after the service is created.
+    # @param service [SearchService] The definition of the Search service to
+    # create or update.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_or_update_async(resource_group_name, service_name, parameters, custom_headers = nil)
+    def create_or_update_async(resource_group_name, search_service_name, service, search_management_request_options = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'service_name is nil' if service_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, 'search_service_name is nil' if search_service_name.nil?
+      fail ArgumentError, 'service is nil' if service.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
+      client_request_id = nil
+      unless search_management_request_options.nil?
+        client_request_id = search_management_request_options.clientRequestId
+      end
 
       request_headers = {}
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      request_headers['x-ms-client-request-id'] = client_request_id.to_s unless client_request_id.to_s.nil?
 
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = SearchServiceCreateOrUpdateParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_mapper = SearchService.mapper()
+      request_content = @client.serialize(request_mapper,  service, 'service')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{serviceName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'searchServiceName' => search_service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -128,7 +157,7 @@ module Azure::ARM::Search
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SearchServiceResource.mapper()
+            result_mapper = SearchService.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -138,7 +167,118 @@ module Azure::ARM::Search
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SearchServiceResource.mapper()
+            result_mapper = SearchService.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets the Search service with the given name in the given resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group within
+    # the current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_service_name [String] The name of the Azure Search service
+    # associated with the specified resource group.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SearchService] operation results.
+    #
+    def get(resource_group_name, search_service_name, search_management_request_options = nil, custom_headers = nil)
+      response = get_async(resource_group_name, search_service_name, search_management_request_options, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets the Search service with the given name in the given resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group within
+    # the current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_service_name [String] The name of the Azure Search service
+    # associated with the specified resource group.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_with_http_info(resource_group_name, search_service_name, search_management_request_options = nil, custom_headers = nil)
+      get_async(resource_group_name, search_service_name, search_management_request_options, custom_headers).value!
+    end
+
+    #
+    # Gets the Search service with the given name in the given resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group within
+    # the current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_service_name [String] The name of the Azure Search service
+    # associated with the specified resource group.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_async(resource_group_name, search_service_name, search_management_request_options = nil, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'search_service_name is nil' if search_service_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+      client_request_id = nil
+      unless search_management_request_options.nil?
+        client_request_id = search_management_request_options.clientRequestId
+      end
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      request_headers['x-ms-client-request-id'] = client_request_id.to_s unless client_request_id.to_s.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'searchServiceName' => search_service_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = SearchService.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -156,14 +296,18 @@ module Azure::ARM::Search
     # associated resources.
     #
     # @param resource_group_name [String] The name of the resource group within
-    # the current subscription.
-    # @param service_name [String] The name of the Search service to delete.
+    # the current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_service_name [String] The name of the Azure Search service
+    # associated with the specified resource group.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete(resource_group_name, service_name, custom_headers = nil)
-      response = delete_async(resource_group_name, service_name, custom_headers).value!
+    def delete(resource_group_name, search_service_name, search_management_request_options = nil, custom_headers = nil)
+      response = delete_async(resource_group_name, search_service_name, search_management_request_options, custom_headers).value!
       nil
     end
 
@@ -172,15 +316,19 @@ module Azure::ARM::Search
     # associated resources.
     #
     # @param resource_group_name [String] The name of the resource group within
-    # the current subscription.
-    # @param service_name [String] The name of the Search service to delete.
+    # the current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_service_name [String] The name of the Azure Search service
+    # associated with the specified resource group.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(resource_group_name, service_name, custom_headers = nil)
-      delete_async(resource_group_name, service_name, custom_headers).value!
+    def delete_with_http_info(resource_group_name, search_service_name, search_management_request_options = nil, custom_headers = nil)
+      delete_async(resource_group_name, search_service_name, search_management_request_options, custom_headers).value!
     end
 
     #
@@ -188,32 +336,41 @@ module Azure::ARM::Search
     # associated resources.
     #
     # @param resource_group_name [String] The name of the resource group within
-    # the current subscription.
-    # @param service_name [String] The name of the Search service to delete.
+    # the current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_service_name [String] The name of the Azure Search service
+    # associated with the specified resource group.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(resource_group_name, service_name, custom_headers = nil)
+    def delete_async(resource_group_name, search_service_name, search_management_request_options = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'service_name is nil' if service_name.nil?
+      fail ArgumentError, 'search_service_name is nil' if search_service_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
+      client_request_id = nil
+      unless search_management_request_options.nil?
+        client_request_id = search_management_request_options.clientRequestId
+      end
 
       request_headers = {}
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{serviceName}'
+      request_headers['x-ms-client-request-id'] = client_request_id.to_s unless client_request_id.to_s.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'serviceName' => service_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'searchServiceName' => search_service_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -224,7 +381,7 @@ module Azure::ARM::Search
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 404 || status_code == 204
+        unless status_code == 200 || status_code == 204 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -238,55 +395,69 @@ module Azure::ARM::Search
     end
 
     #
-    # Returns a list of all Search services in the given resource group.
+    # Gets a list of all Search services in the given resource group.
     #
     # @param resource_group_name [String] The name of the resource group within
-    # the current subscription.
+    # the current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SearchServiceListResult] operation results.
     #
-    def list(resource_group_name, custom_headers = nil)
-      response = list_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group(resource_group_name, search_management_request_options = nil, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, search_management_request_options, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Returns a list of all Search services in the given resource group.
+    # Gets a list of all Search services in the given resource group.
     #
     # @param resource_group_name [String] The name of the resource group within
-    # the current subscription.
+    # the current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, custom_headers = nil)
-      list_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, search_management_request_options = nil, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, search_management_request_options, custom_headers).value!
     end
 
     #
-    # Returns a list of all Search services in the given resource group.
+    # Gets a list of all Search services in the given resource group.
     #
     # @param resource_group_name [String] The name of the resource group within
-    # the current subscription.
+    # the current subscription. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_async(resource_group_name, search_management_request_options = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
+      client_request_id = nil
+      unless search_management_request_options.nil?
+        client_request_id = search_management_request_options.clientRequestId
+      end
 
       request_headers = {}
 
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      request_headers['x-ms-client-request-id'] = client_request_id.to_s unless client_request_id.to_s.nil?
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices'
 
       request_url = @base_url || @client.base_url
@@ -315,6 +486,132 @@ module Azure::ARM::Search
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = SearchServiceListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Checks whether or not the given Search service name is available for use.
+    # Search service names must be globally unique since they are part of the
+    # service URI (https://<name>.search.windows.net).
+    #
+    # @param name [String] The Search service name to validate. Search service
+    # names must only contain lowercase letters, digits or dashes, cannot use
+    # dash as the first two or last one characters, cannot contain consecutive
+    # dashes, and must be between 2 and 60 characters in length.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [CheckNameAvailabilityOutput] operation results.
+    #
+    def check_name_availability(name, search_management_request_options = nil, custom_headers = nil)
+      response = check_name_availability_async(name, search_management_request_options, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Checks whether or not the given Search service name is available for use.
+    # Search service names must be globally unique since they are part of the
+    # service URI (https://<name>.search.windows.net).
+    #
+    # @param name [String] The Search service name to validate. Search service
+    # names must only contain lowercase letters, digits or dashes, cannot use
+    # dash as the first two or last one characters, cannot contain consecutive
+    # dashes, and must be between 2 and 60 characters in length.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def check_name_availability_with_http_info(name, search_management_request_options = nil, custom_headers = nil)
+      check_name_availability_async(name, search_management_request_options, custom_headers).value!
+    end
+
+    #
+    # Checks whether or not the given Search service name is available for use.
+    # Search service names must be globally unique since they are part of the
+    # service URI (https://<name>.search.windows.net).
+    #
+    # @param name [String] The Search service name to validate. Search service
+    # names must only contain lowercase letters, digits or dashes, cannot use
+    # dash as the first two or last one characters, cannot contain consecutive
+    # dashes, and must be between 2 and 60 characters in length.
+    # @param search_management_request_options [SearchManagementRequestOptions]
+    # Additional parameters for the operation
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def check_name_availability_async(name, search_management_request_options = nil, custom_headers = nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+
+      client_request_id = nil
+      check_name_availability_input = CheckNameAvailabilityInput.new
+      unless search_management_request_options.nil?
+        client_request_id = search_management_request_options.clientRequestId
+      end
+      unless name.nil?
+        check_name_availability_input.name = name
+      end
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      request_headers['x-ms-client-request-id'] = client_request_id.to_s unless client_request_id.to_s.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = CheckNameAvailabilityInput.mapper()
+      request_content = @client.serialize(request_mapper,  check_name_availability_input, 'check_name_availability_input')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Search/checkNameAvailability'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = CheckNameAvailabilityOutput.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

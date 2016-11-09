@@ -383,7 +383,7 @@
       ]
     },
     "azure_mgmt_search": {
-      "swagger": "arm-search/2015-02-28/swagger/search.json",
+      "swagger": "arm-search/2015-08-19/swagger/search.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Search",
         "PackageName": "azure_mgmt_search",

@@ -26,17 +26,18 @@ module Azure::ARM::Search
   autoload :SearchManagementClient,                             'generated/azure_mgmt_search/search_management_client.rb'
 
   module Models
-    autoload :SearchServiceCreateOrUpdateParameters,              'generated/azure_mgmt_search/models/search_service_create_or_update_parameters.rb'
-    autoload :SearchServiceReadableProperties,                    'generated/azure_mgmt_search/models/search_service_readable_properties.rb'
-    autoload :QueryKey,                                           'generated/azure_mgmt_search/models/query_key.rb'
-    autoload :SearchServiceResource,                              'generated/azure_mgmt_search/models/search_service_resource.rb'
     autoload :Sku,                                                'generated/azure_mgmt_search/models/sku.rb'
-    autoload :SearchServiceListResult,                            'generated/azure_mgmt_search/models/search_service_list_result.rb'
+    autoload :CheckNameAvailabilityInput,                         'generated/azure_mgmt_search/models/check_name_availability_input.rb'
+    autoload :SearchManagementRequestOptions,                     'generated/azure_mgmt_search/models/search_management_request_options.rb'
     autoload :AdminKeyResult,                                     'generated/azure_mgmt_search/models/admin_key_result.rb'
-    autoload :SearchServiceProperties,                            'generated/azure_mgmt_search/models/search_service_properties.rb'
-    autoload :ListQueryKeysResult,                                'generated/azure_mgmt_search/models/list_query_keys_result.rb'
-    autoload :SkuType,                                            'generated/azure_mgmt_search/models/sku_type.rb'
+    autoload :QueryKey,                                           'generated/azure_mgmt_search/models/query_key.rb'
+    autoload :CheckNameAvailabilityOutput,                        'generated/azure_mgmt_search/models/check_name_availability_output.rb'
+    autoload :SearchService,                                      'generated/azure_mgmt_search/models/search_service.rb'
+    autoload :UnavailableNameReason,                              'generated/azure_mgmt_search/models/unavailable_name_reason.rb'
+    autoload :SkuName,                                            'generated/azure_mgmt_search/models/sku_name.rb'
+    autoload :HostingMode,                                        'generated/azure_mgmt_search/models/hosting_mode.rb'
     autoload :SearchServiceStatus,                                'generated/azure_mgmt_search/models/search_service_status.rb'
     autoload :ProvisioningState,                                  'generated/azure_mgmt_search/models/provisioning_state.rb'
+    autoload :AdminKeyKind,                                       'generated/azure_mgmt_search/models/admin_key_kind.rb'
   end
 end
