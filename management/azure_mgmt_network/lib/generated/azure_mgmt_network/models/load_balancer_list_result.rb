@@ -6,17 +6,17 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListLoadBalancers Api service call
+    # Response for ListLoadBalancers API service call.
     #
     class LoadBalancerListResult
 
       include MsRestAzure
 
-      # @return [Array<LoadBalancer>] Gets a list of LoadBalancers in a
-      # resource group
+      # @return [Array<LoadBalancer>] A list of load balancers in a resource
+      # group.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

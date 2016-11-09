@@ -6,16 +6,16 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for list effective route api service call
+    # Response for list effective route API service call.
     #
     class EffectiveRouteListResult
 
       include MsRestAzure
 
-      # @return [Array<EffectiveRoute>] Gets list of effective routes
+      # @return [Array<EffectiveRoute>] A list of effective routes.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
 

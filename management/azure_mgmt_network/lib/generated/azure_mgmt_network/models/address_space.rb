@@ -7,14 +7,14 @@ module Azure::ARM::Network
   module Models
     #
     # AddressSpace contains an array of IP address ranges that can be used by
-    # subnets
+    # subnets of the virtual network.
     #
     class AddressSpace
 
       include MsRestAzure
 
-      # @return [Array<String>] Gets or sets list of address blocks reserved
-      # for this virtual network in CIDR notation
+      # @return [Array<String>] A list of address blocks reserved for this
+      # virtual network in CIDR notation.
       attr_accessor :address_prefixes
 
 

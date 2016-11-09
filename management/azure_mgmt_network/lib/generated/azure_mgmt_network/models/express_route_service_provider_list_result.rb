@@ -6,17 +6,17 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListExpressRouteServiceProvider Api service call
+    # Response for the ListExpressRouteServiceProvider API service call.
     #
     class ExpressRouteServiceProviderListResult
 
       include MsRestAzure
 
-      # @return [Array<ExpressRouteServiceProvider>] Gets List of
-      # ExpressRouteResourceProvider
+      # @return [Array<ExpressRouteServiceProvider>] A list of
+      # ExpressRouteResourceProvider resources.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

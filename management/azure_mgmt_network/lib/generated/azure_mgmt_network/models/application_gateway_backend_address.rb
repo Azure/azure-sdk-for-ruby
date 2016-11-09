@@ -6,16 +6,16 @@
 module Azure::ARM::Network
   module Models
     #
-    # Backend Address of application gateway
+    # Backend address of an application gateway.
     #
     class ApplicationGatewayBackendAddress
 
       include MsRestAzure
 
-      # @return [String] Dns name
+      # @return [String] Fully qualified domain name (FQDN).
       attr_accessor :fqdn
 
-      # @return [String] Ip address
+      # @return [String] IP address
       attr_accessor :ip_address
 
 

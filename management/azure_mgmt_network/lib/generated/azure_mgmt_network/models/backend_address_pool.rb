@@ -6,34 +6,34 @@
 module Azure::ARM::Network
   module Models
     #
-    # Pool of backend IP addresses
+    # Pool of backend IP addresses.
     #
     class BackendAddressPool < MsRestAzure::SubResource
 
       include MsRestAzure
 
       # @return [Array<NetworkInterfaceIPConfiguration>] Gets collection of
-      # references to IPs defined in NICs
+      # references to IP addresses defined in network interfaces.
       attr_accessor :backend_ipconfigurations
 
-      # @return [Array<SubResource>] Gets Load Balancing rules that use this
-      # Backend Address Pool
+      # @return [Array<SubResource>] Gets load balancing rules that use this
+      # backend address pool.
       attr_accessor :load_balancing_rules
 
-      # @return [SubResource] Gets outbound rules that use this Backend
-      # Address Pool
+      # @return [SubResource] Gets outbound rules that use this backend
+      # address pool.
       attr_accessor :outbound_nat_rule
 
-      # @return [String] Get provisioning state of the PublicIP resource
-      # Updating/Deleting/Failed
+      # @return [String] Get provisioning state of the public IP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # resource group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

@@ -6,15 +6,15 @@
 module Azure::ARM::Network
   module Models
     #
-    # DHCPOptions contains an array of DNS servers available to VMs deployed
-    # in the virtual networkStandard DHCP option for a subnet overrides VNET
-    # DHCP options.
+    # DhcpOptions contains an array of DNS servers available to VMs deployed
+    # in the virtual network. Standard DHCP option for a subnet overrides
+    # VNET DHCP options.
     #
     class DhcpOptions
 
       include MsRestAzure
 
-      # @return [Array<String>] Gets or sets list of DNS servers IP addresses
+      # @return [Array<String>] The list of DNS servers IP addresses.
       attr_accessor :dns_servers
 
 

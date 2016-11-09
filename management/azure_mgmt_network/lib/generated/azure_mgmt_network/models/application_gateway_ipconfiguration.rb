@@ -6,26 +6,27 @@
 module Azure::ARM::Network
   module Models
     #
-    # IP configuration of application gateway
+    # IP configuration of an application gateway. Currently 1 public and 1
+    # private IP configuration is allowed.
     #
     class ApplicationGatewayIPConfiguration < MsRestAzure::SubResource
 
       include MsRestAzure
 
       # @return [SubResource] Reference of the subnet resource. A subnet from
-      # where application gateway gets its private address
+      # where application gateway gets its private address.
       attr_accessor :subnet
 
       # @return [String] Provisioning state of the application gateway subnet
-      # resource Updating/Deleting/Failed
+      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
-      # group. This name can be used to access the resource
+      # group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

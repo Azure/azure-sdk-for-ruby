@@ -26,7 +26,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The delete virtual network peering operation deletes the specified peering.
+    # Deletes the specified virtual network peering.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -68,8 +68,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get virtual network peering operation retrieves information about the
-    # specified virtual network peering.
+    # Gets the specified virtual network peering.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -86,8 +85,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get virtual network peering operation retrieves information about the
-    # specified virtual network peering.
+    # Gets the specified virtual network peering.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -103,8 +101,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get virtual network peering operation retrieves information about the
-    # specified virtual network peering.
+    # Gets the specified virtual network peering.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -169,14 +166,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put virtual network peering operation creates/updates a peering in the
-    # specified virtual network
+    # Creates or updates a peering in the specified virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
     # @param virtual_network_peering_name [String] The name of the peering.
     # @param virtual_network_peering_parameters [VirtualNetworkPeering] Parameters
-    # supplied to the create/update virtual network peering operation
+    # supplied to the create or update virtual network peering operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -192,7 +188,7 @@ module Azure::ARM::Network
     # @param virtual_network_name [String] The name of the virtual network.
     # @param virtual_network_peering_name [String] The name of the peering.
     # @param virtual_network_peering_parameters [VirtualNetworkPeering] Parameters
-    # supplied to the create/update virtual network peering operation
+    # supplied to the create or update virtual network peering operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -218,8 +214,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings operation retrieves all the peerings in a
-    # virtual network.
+    # Gets all virtual network peerings in a virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -234,8 +229,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings operation retrieves all the peerings in a
-    # virtual network.
+    # Gets all virtual network peerings in a virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -249,8 +243,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings operation retrieves all the peerings in a
-    # virtual network.
+    # Gets all virtual network peerings in a virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -312,7 +305,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete virtual network peering operation deletes the specified peering.
+    # Deletes the specified virtual network peering.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -328,7 +321,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete virtual network peering operation deletes the specified peering.
+    # Deletes the specified virtual network peering.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -344,7 +337,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete virtual network peering operation deletes the specified peering.
+    # Deletes the specified virtual network peering.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
@@ -399,14 +392,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put virtual network peering operation creates/updates a peering in the
-    # specified virtual network
+    # Creates or updates a peering in the specified virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
     # @param virtual_network_peering_name [String] The name of the peering.
     # @param virtual_network_peering_parameters [VirtualNetworkPeering] Parameters
-    # supplied to the create/update virtual network peering operation
+    # supplied to the create or update virtual network peering operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -418,14 +410,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put virtual network peering operation creates/updates a peering in the
-    # specified virtual network
+    # Creates or updates a peering in the specified virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
     # @param virtual_network_peering_name [String] The name of the peering.
     # @param virtual_network_peering_parameters [VirtualNetworkPeering] Parameters
-    # supplied to the create/update virtual network peering operation
+    # supplied to the create or update virtual network peering operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -436,14 +427,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put virtual network peering operation creates/updates a peering in the
-    # specified virtual network
+    # Creates or updates a peering in the specified virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
     # @param virtual_network_peering_name [String] The name of the peering.
     # @param virtual_network_peering_parameters [VirtualNetworkPeering] Parameters
-    # supplied to the create/update virtual network peering operation
+    # supplied to the create or update virtual network peering operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -523,8 +513,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings operation retrieves all the peerings in a
-    # virtual network.
+    # Gets all virtual network peerings in a virtual network.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -539,8 +528,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings operation retrieves all the peerings in a
-    # virtual network.
+    # Gets all virtual network peerings in a virtual network.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -554,8 +542,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings operation retrieves all the peerings in a
-    # virtual network.
+    # Gets all virtual network peerings in a virtual network.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -613,8 +600,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List virtual network peerings operation retrieves all the peerings in a
-    # virtual network.
+    # Gets all virtual network peerings in a virtual network.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.

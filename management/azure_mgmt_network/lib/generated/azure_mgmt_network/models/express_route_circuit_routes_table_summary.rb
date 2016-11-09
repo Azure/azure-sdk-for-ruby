@@ -6,13 +6,13 @@
 module Azure::ARM::Network
   module Models
     #
-    # The routes table associated with the ExpressRouteCircuit
+    # The routes table associated with the ExpressRouteCircuit.
     #
     class ExpressRouteCircuitRoutesTableSummary
 
       include MsRestAzure
 
-      # @return [String] Neighbor.
+      # @return [String] Neighbor
       attr_accessor :neighbor
 
       # @return [Integer] BGP version number spoken to the neighbor.

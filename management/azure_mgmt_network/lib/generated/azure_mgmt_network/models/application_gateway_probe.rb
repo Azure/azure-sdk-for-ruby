@@ -6,41 +6,48 @@
 module Azure::ARM::Network
   module Models
     #
-    # Probe of application gateway
+    # Probe of the application gateway.
     #
     class ApplicationGatewayProbe < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [ApplicationGatewayProtocol] Protocol. Possible values
-      # include: 'Http', 'Https'
+      # @return [ApplicationGatewayProtocol] Protocol. Possible values are:
+      # 'Http' and 'Https'. Possible values include: 'Http', 'Https'
       attr_accessor :protocol
 
-      # @return [String] Host to send probe to
+      # @return [String] Host name to send the probe to.
       attr_accessor :host
 
-      # @return [String] Relative path of probe
+      # @return [String] Relative path of probe. Valid path starts from '/'.
+      # Probe is sent to <Protocol>://<host>:<port><path>
       attr_accessor :path
 
-      # @return [Integer] Probing interval in seconds
+      # @return [Integer] The probing interval in seconds. This is the time
+      # interval between two consecutive probes. Acceptable values are from 1
+      # second to 86400 seconds.
       attr_accessor :interval
 
-      # @return [Integer] Probing timeout in seconds
+      # @return [Integer] the probe timeout in seconds. Probe marked as failed
+      # if valid response is not received with this timeout period.
+      # Acceptable values are from 1 second to 86400 seconds.
       attr_accessor :timeout
 
-      # @return [Integer] Probing unhealthy threshold
+      # @return [Integer] The probe retry count. Backend server is marked down
+      # after consecutive probe failure count reaches UnhealthyThreshold.
+      # Acceptable values are from 1 second to 20.
       attr_accessor :unhealthy_threshold
 
       # @return [String] Provisioning state of the backend http settings
-      # resource Updating/Deleting/Failed
+      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
-      # group. This name can be used to access the resource
+      # group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

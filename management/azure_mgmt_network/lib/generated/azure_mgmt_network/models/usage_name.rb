@@ -6,17 +6,16 @@
 module Azure::ARM::Network
   module Models
     #
-    # The Usage Names.
+    # The usage names.
     #
     class UsageName
 
       include MsRestAzure
 
-      # @return [String] Gets or sets a string describing the resource name.
+      # @return [String] A string describing the resource name.
       attr_accessor :value
 
-      # @return [String] Gets or sets a localized string describing the
-      # resource name.
+      # @return [String] A localized string describing the resource name.
       attr_accessor :localized_value
 
 

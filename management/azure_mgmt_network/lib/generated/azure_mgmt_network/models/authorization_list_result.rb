@@ -6,18 +6,18 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListAuthorizations Api service callRetrieves all
-    # authorizations that belongs to an ExpressRouteCircuit
+    # Response for ListAuthorizations API service call retrieves all
+    # authorizations that belongs to an ExpressRouteCircuit.
     #
     class AuthorizationListResult
 
       include MsRestAzure
 
-      # @return [Array<ExpressRouteCircuitAuthorization>] Gets the
-      # authorizations in an ExpressRoute Circuit
+      # @return [Array<ExpressRouteCircuitAuthorization>] The authorizations
+      # in an ExpressRoute Circuit.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

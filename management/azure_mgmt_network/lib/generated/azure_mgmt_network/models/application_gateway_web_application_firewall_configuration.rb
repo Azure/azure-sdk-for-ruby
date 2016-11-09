@@ -6,17 +6,18 @@
 module Azure::ARM::Network
   module Models
     #
-    # Application gateway web application firewall configuration
+    # Application gateway web application firewall configuration.
     #
     class ApplicationGatewayWebApplicationFirewallConfiguration
 
       include MsRestAzure
 
-      # @return [Boolean] Whether web application firewall is enabled
+      # @return [Boolean] Whether the web application firewall is enabled.
       attr_accessor :enabled
 
       # @return [ApplicationGatewayFirewallMode] Web application firewall
-      # mode. Possible values include: 'Detection', 'Prevention'
+      # mode. Possible values are: 'Detection' and 'Prevention'. Possible
+      # values include: 'Detection', 'Prevention'
       attr_accessor :firewall_mode
 
 

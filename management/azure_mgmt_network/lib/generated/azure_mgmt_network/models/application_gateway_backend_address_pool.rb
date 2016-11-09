@@ -6,29 +6,29 @@
 module Azure::ARM::Network
   module Models
     #
-    # Backend Address Pool of application gateway
+    # Backend Address Pool of an application gateway.
     #
     class ApplicationGatewayBackendAddressPool < MsRestAzure::SubResource
 
       include MsRestAzure
 
       # @return [Array<NetworkInterfaceIPConfiguration>] Collection of
-      # references to IPs defined in NICs
+      # references to IPs defined in network interfaces.
       attr_accessor :backend_ipconfigurations
 
       # @return [Array<ApplicationGatewayBackendAddress>] Backend addresses
       attr_accessor :backend_addresses
 
       # @return [String] Provisioning state of the backend address pool
-      # resource Updating/Deleting/Failed
+      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Resource that is unique within a resource group. This
-      # name can be used to access the resource
+      # name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

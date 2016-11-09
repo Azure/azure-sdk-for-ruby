@@ -26,10 +26,10 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The delete LoadBalancer operation deletes the specified load balancer.
+    # Deletes the specified load balancer.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
+    # @param load_balancer_name [String] The name of the load balancer.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,7 +40,7 @@ module Azure::ARM::Network
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
+    # @param load_balancer_name [String] The name of the load balancer.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -64,12 +64,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get LoadBalancer operation retrieves information about the specified
-    # LoadBalancer.
+    # Gets the specified load balancer.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
-    # @param expand [String] expand references resources.
+    # @param load_balancer_name [String] The name of the load balancer.
+    # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -81,12 +80,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get LoadBalancer operation retrieves information about the specified
-    # LoadBalancer.
+    # Gets the specified load balancer.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
-    # @param expand [String] expand references resources.
+    # @param load_balancer_name [String] The name of the load balancer.
+    # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -97,12 +95,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get LoadBalancer operation retrieves information about the specified
-    # LoadBalancer.
+    # Gets the specified load balancer.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
-    # @param expand [String] expand references resources.
+    # @param load_balancer_name [String] The name of the load balancer.
+    # @param expand [String] Expands referenced resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -161,12 +158,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put LoadBalancer operation creates/updates a LoadBalancer
+    # Creates or updates a load balancer.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
-    # @param parameters [LoadBalancer] Parameters supplied to the create/delete
-    # LoadBalancer operation
+    # @param load_balancer_name [String] The name of the load balancer.
+    # @param parameters [LoadBalancer] Parameters supplied to the create or update
+    # load balancer operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -179,9 +176,9 @@ module Azure::ARM::Network
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
-    # @param parameters [LoadBalancer] Parameters supplied to the create/delete
-    # LoadBalancer operation
+    # @param load_balancer_name [String] The name of the load balancer.
+    # @param parameters [LoadBalancer] Parameters supplied to the create or update
+    # load balancer operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -207,8 +204,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # subscription.
+    # Gets all the load balancers in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -221,8 +217,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # subscription.
+    # Gets all the load balancers in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -234,8 +229,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # subscription.
+    # Gets all the load balancers in a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -293,8 +287,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # resource group.
+    # Gets all the load balancers in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -308,8 +301,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # resource group.
+    # Gets all the load balancers in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -322,8 +314,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # resource group.
+    # Gets all the load balancers in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -383,10 +374,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete LoadBalancer operation deletes the specified load balancer.
+    # Deletes the specified load balancer.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
+    # @param load_balancer_name [String] The name of the load balancer.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -397,10 +388,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete LoadBalancer operation deletes the specified load balancer.
+    # Deletes the specified load balancer.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
+    # @param load_balancer_name [String] The name of the load balancer.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -411,10 +402,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete LoadBalancer operation deletes the specified load balancer.
+    # Deletes the specified load balancer.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
+    # @param load_balancer_name [String] The name of the load balancer.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -463,12 +454,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put LoadBalancer operation creates/updates a LoadBalancer
+    # Creates or updates a load balancer.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
-    # @param parameters [LoadBalancer] Parameters supplied to the create/delete
-    # LoadBalancer operation
+    # @param load_balancer_name [String] The name of the load balancer.
+    # @param parameters [LoadBalancer] Parameters supplied to the create or update
+    # load balancer operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -480,12 +471,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put LoadBalancer operation creates/updates a LoadBalancer
+    # Creates or updates a load balancer.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
-    # @param parameters [LoadBalancer] Parameters supplied to the create/delete
-    # LoadBalancer operation
+    # @param load_balancer_name [String] The name of the load balancer.
+    # @param parameters [LoadBalancer] Parameters supplied to the create or update
+    # load balancer operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -496,12 +487,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put LoadBalancer operation creates/updates a LoadBalancer
+    # Creates or updates a load balancer.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param load_balancer_name [String] The name of the loadBalancer.
-    # @param parameters [LoadBalancer] Parameters supplied to the create/delete
-    # LoadBalancer operation
+    # @param load_balancer_name [String] The name of the load balancer.
+    # @param parameters [LoadBalancer] Parameters supplied to the create or update
+    # load balancer operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -580,8 +571,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # subscription.
+    # Gets all the load balancers in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -596,8 +586,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # subscription.
+    # Gets all the load balancers in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -611,8 +600,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # subscription.
+    # Gets all the load balancers in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -670,8 +658,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # resource group.
+    # Gets all the load balancers in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -686,8 +673,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # resource group.
+    # Gets all the load balancers in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -701,8 +687,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # resource group.
+    # Gets all the load balancers in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -760,8 +745,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # subscription.
+    # Gets all the load balancers in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -781,8 +765,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List loadBalancer operation retrieves all the load balancers in a
-    # resource group.
+    # Gets all the load balancers in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

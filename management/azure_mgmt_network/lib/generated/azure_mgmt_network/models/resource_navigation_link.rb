@@ -6,28 +6,28 @@
 module Azure::ARM::Network
   module Models
     #
-    # ResourceNavigationLink resource
+    # ResourceNavigationLink resource.
     #
     class ResourceNavigationLink < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [String] Resource type of the linked resource
+      # @return [String] Resource type of the linked resource.
       attr_accessor :linked_resource_type
 
       # @return [String] Link to the external resource
       attr_accessor :link
 
       # @return [String] Provisioning state of the ResourceNavigationLink
-      # resource
+      # resource.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
-      # group. This name can be used to access the resource
+      # group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

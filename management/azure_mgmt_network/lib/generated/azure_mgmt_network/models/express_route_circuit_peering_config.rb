@@ -6,26 +6,26 @@
 module Azure::ARM::Network
   module Models
     #
-    # Specifies the peering config
+    # Specifies the peering configuration.
     #
     class ExpressRouteCircuitPeeringConfig
 
       include MsRestAzure
 
-      # @return [Array<String>] Gets or sets the reference of
-      # AdvertisedPublicPrefixes
+      # @return [Array<String>] The reference of AdvertisedPublicPrefixes.
       attr_accessor :advertised_public_prefixes
 
-      # @return [ExpressRouteCircuitPeeringAdvertisedPublicPrefixState] Gets
-      # or sets AdvertisedPublicPrefixState of the Peering resource. Possible
-      # values include: 'NotConfigured', 'Configuring', 'Configured',
-      # 'ValidationNeeded'
+      # @return [ExpressRouteCircuitPeeringAdvertisedPublicPrefixState]
+      # AdvertisedPublicPrefixState of the Peering resource. Possible values
+      # are 'NotConfigured', 'Configuring', 'Configured', and
+      # 'ValidationNeeded'. Possible values include: 'NotConfigured',
+      # 'Configuring', 'Configured', 'ValidationNeeded'
       attr_accessor :advertised_public_prefixes_state
 
-      # @return [Integer] Gets or Sets CustomerAsn of the peering.
+      # @return [Integer] The CustomerASN of the peering.
       attr_accessor :customer_asn
 
-      # @return [String] Gets or Sets RoutingRegistryName of the config.
+      # @return [String] The RoutingRegistryName of the configuration.
       attr_accessor :routing_registry_name
 
 

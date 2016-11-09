@@ -6,23 +6,23 @@
 module Azure::ARM::Network
   module Models
     #
-    # Describes Network Resource Usage.
+    # Describes network resource usage.
     #
     class Usage
 
       include MsRestAzure
 
-      # @return [String] Gets or sets an enum describing the unit of
-      # measurement. Default value: 'Count' .
+      # @return [String] An enum describing the unit of measurement. Default
+      # value: 'Count' .
       attr_accessor :unit
 
-      # @return [Integer] Gets or sets the current value of the usage.
+      # @return [Integer] The current value of the usage.
       attr_accessor :current_value
 
-      # @return [Integer] Gets or sets the limit of usage.
+      # @return [Integer] The limit of usage.
       attr_accessor :limit
 
-      # @return [UsageName] Gets or sets the name of the type of usage.
+      # @return [UsageName] The name of the type of usage.
       attr_accessor :name
 
 

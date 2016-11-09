@@ -6,25 +6,25 @@
 module Azure::ARM::Network
   module Models
     #
-    # Authentication certificates of application gateway
+    # Authentication certificates of an application gateway.
     #
     class ApplicationGatewayAuthenticationCertificate < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [String] Certificate public data
+      # @return [String] Certificate public data.
       attr_accessor :data
 
       # @return [String] Provisioning state of the authentication certificate
-      # resource Updating/Deleting/Failed
+      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
-      # group. This name can be used to access the resource
+      # group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 
