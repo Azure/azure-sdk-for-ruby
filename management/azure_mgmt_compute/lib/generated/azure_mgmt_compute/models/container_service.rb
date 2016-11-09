@@ -12,8 +12,8 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] The provisioning state, which only appears in the
-      # response.
+      # @return [String] The current deployment or provisioning state, which
+      # only appears in the response.
       attr_accessor :provisioning_state
 
       # @return [ContainerServiceOrchestratorProfile] Properties of the
@@ -30,8 +30,8 @@ module Azure::ARM::Compute
       # @return [ContainerServiceMasterProfile] Properties of master agents.
       attr_accessor :master_profile
 
-      # @return [Array<ContainerServiceAgentPoolProfile>] Properties of agent
-      # pools.
+      # @return [Array<ContainerServiceAgentPoolProfile>] Properties of the
+      # agent pool.
       attr_accessor :agent_pool_profiles
 
       # @return [ContainerServiceWindowsProfile] Properties of Windows VMs.

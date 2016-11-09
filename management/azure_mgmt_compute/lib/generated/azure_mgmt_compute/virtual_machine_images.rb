@@ -25,11 +25,11 @@ module Azure::ARM::Compute
     #
     # Gets a virtual machine image.
     #
-    # @param location [String]
-    # @param publisher_name [String]
-    # @param offer [String]
-    # @param skus [String]
-    # @param version [String]
+    # @param location [String] The name of a supported Azure region.
+    # @param publisher_name [String] A valid image publisher.
+    # @param offer [String] A valid image publisher offer.
+    # @param skus [String] A valid image SKU.
+    # @param version [String] A valid image SKU version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -43,11 +43,11 @@ module Azure::ARM::Compute
     #
     # Gets a virtual machine image.
     #
-    # @param location [String]
-    # @param publisher_name [String]
-    # @param offer [String]
-    # @param skus [String]
-    # @param version [String]
+    # @param location [String] The name of a supported Azure region.
+    # @param publisher_name [String] A valid image publisher.
+    # @param offer [String] A valid image publisher offer.
+    # @param skus [String] A valid image SKU.
+    # @param version [String] A valid image SKU version.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -60,11 +60,11 @@ module Azure::ARM::Compute
     #
     # Gets a virtual machine image.
     #
-    # @param location [String]
-    # @param publisher_name [String]
-    # @param offer [String]
-    # @param skus [String]
-    # @param version [String]
+    # @param location [String] The name of a supported Azure region.
+    # @param publisher_name [String] A valid image publisher.
+    # @param offer [String] A valid image publisher offer.
+    # @param skus [String] A valid image SKU.
+    # @param version [String] A valid image SKU version.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -126,12 +126,13 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of virtual machine images.
+    # Gets a list of all virtual machine image versions for the specified
+    # location, publisher, offer, and SKU.
     #
-    # @param location [String]
-    # @param publisher_name [String]
-    # @param offer [String]
-    # @param skus [String]
+    # @param location [String] The name of a supported Azure region.
+    # @param publisher_name [String] A valid image publisher.
+    # @param offer [String] A valid image publisher offer.
+    # @param skus [String] A valid image SKU.
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer]
     # @param orderby [String]
@@ -146,12 +147,13 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of virtual machine images.
+    # Gets a list of all virtual machine image versions for the specified
+    # location, publisher, offer, and SKU.
     #
-    # @param location [String]
-    # @param publisher_name [String]
-    # @param offer [String]
-    # @param skus [String]
+    # @param location [String] The name of a supported Azure region.
+    # @param publisher_name [String] A valid image publisher.
+    # @param offer [String] A valid image publisher offer.
+    # @param skus [String] A valid image SKU.
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer]
     # @param orderby [String]
@@ -165,12 +167,13 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of virtual machine images.
+    # Gets a list of all virtual machine image versions for the specified
+    # location, publisher, offer, and SKU.
     #
-    # @param location [String]
-    # @param publisher_name [String]
-    # @param offer [String]
-    # @param skus [String]
+    # @param location [String] The name of a supported Azure region.
+    # @param publisher_name [String] A valid image publisher.
+    # @param offer [String] A valid image publisher offer.
+    # @param skus [String] A valid image SKU.
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer]
     # @param orderby [String]
@@ -248,10 +251,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of virtual machine image offers.
+    # Gets a list of virtual machine image offers for the specified location and
+    # publisher.
     #
-    # @param location [String]
-    # @param publisher_name [String]
+    # @param location [String] The name of a supported Azure region.
+    # @param publisher_name [String] A valid image publisher.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -263,10 +267,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of virtual machine image offers.
+    # Gets a list of virtual machine image offers for the specified location and
+    # publisher.
     #
-    # @param location [String]
-    # @param publisher_name [String]
+    # @param location [String] The name of a supported Azure region.
+    # @param publisher_name [String] A valid image publisher.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -277,10 +282,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of virtual machine image offers.
+    # Gets a list of virtual machine image offers for the specified location and
+    # publisher.
     #
-    # @param location [String]
-    # @param publisher_name [String]
+    # @param location [String] The name of a supported Azure region.
+    # @param publisher_name [String] A valid image publisher.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -353,9 +359,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of virtual machine image publishers.
+    # Gets a list of virtual machine image publishers for the specified Azure
+    # location.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -367,9 +374,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of virtual machine image publishers.
+    # Gets a list of virtual machine image publishers for the specified Azure
+    # location.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -380,9 +388,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of virtual machine image publishers.
+    # Gets a list of virtual machine image publishers for the specified Azure
+    # location.
     #
-    # @param location [String]
+    # @param location [String] The name of a supported Azure region.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -454,11 +463,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of virtual machine image skus.
+    # Gets a list of virtual machine image SKUs for the specified location,
+    # publisher, and offer.
     #
-    # @param location [String]
-    # @param publisher_name [String]
-    # @param offer [String]
+    # @param location [String] The name of a supported Azure region.
+    # @param publisher_name [String] A valid image publisher.
+    # @param offer [String] A valid image publisher offer.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -470,11 +480,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of virtual machine image skus.
+    # Gets a list of virtual machine image SKUs for the specified location,
+    # publisher, and offer.
     #
-    # @param location [String]
-    # @param publisher_name [String]
-    # @param offer [String]
+    # @param location [String] The name of a supported Azure region.
+    # @param publisher_name [String] A valid image publisher.
+    # @param offer [String] A valid image publisher offer.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -485,11 +496,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of virtual machine image skus.
+    # Gets a list of virtual machine image SKUs for the specified location,
+    # publisher, and offer.
     #
-    # @param location [String]
-    # @param publisher_name [String]
-    # @param offer [String]
+    # @param location [String] The name of a supported Azure region.
+    # @param publisher_name [String] A valid image publisher.
+    # @param offer [String] A valid image publisher offer.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

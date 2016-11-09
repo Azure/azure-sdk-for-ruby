@@ -6,17 +6,19 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Profile for container service agent pool.
+    # Profile for the container service agent pool.
     #
     class ContainerServiceAgentPoolProfile
 
       include MsRestAzure
 
-      # @return [String] Unique name of the agent pool profile within the
-      # context of the subscription and resource group
+      # @return [String] Unique name of the agent pool profile in the context
+      # of the subscription and resource group.
       attr_accessor :name
 
-      # @return [Integer] Number of agents (VMs) to host docker containers
+      # @return [Integer] Number of agents (VMs) to host docker containers.
+      # Allowed values must be in the range of 1 to 100 (inclusive). The
+      # default value is 1.
       attr_accessor :count
 
       # @return [ContainerServiceVMSizeTypes] Size of agent VMs. Possible
