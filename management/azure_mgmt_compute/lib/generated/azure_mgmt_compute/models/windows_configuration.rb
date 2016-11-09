@@ -12,23 +12,24 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Boolean] whether VM Agent should be provisioned on the
-      # Virtual Machine.
+      # @return [Boolean] Indicates whether the virtual machine agent should
+      # be provisioned on the Virtual Machine. If not specified, then the
+      # default behavior is to set it to true.
       attr_accessor :provision_vmagent
 
-      # @return [Boolean] whether Windows updates are automatically installed
-      # on the VM
+      # @return [Boolean] Indicates whether Windows updates are automatically
+      # installed on the VM.
       attr_accessor :enable_automatic_updates
 
-      # @return [String] the Time Zone of the VM
+      # @return [String] The Time Zone of the VM
       attr_accessor :time_zone
 
-      # @return [Array<AdditionalUnattendContent>] the additional base-64
-      # encoded XML formatted information that can be included in the
-      # Unattend.xml file.
+      # @return [Array<AdditionalUnattendContent>] Additional base-64 encoded
+      # XML formatted information that can be included in the Unattend.xml
+      # file.
       attr_accessor :additional_unattend_content
 
-      # @return [WinRMConfiguration] the Windows Remote Management
+      # @return [WinRMConfiguration] The Windows Remote Management
       # configuration of the VM
       attr_accessor :win_rm
 

@@ -12,7 +12,8 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Boolean] whether this is a primary NIC on a virtual machine
+      # @return [Boolean] Specifies the primary network interface in case the
+      # virtual machine has more than 1 network interface.
       attr_accessor :primary
 
 

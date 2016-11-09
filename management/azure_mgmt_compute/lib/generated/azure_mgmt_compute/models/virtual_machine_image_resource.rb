@@ -12,13 +12,13 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the name of the resource.
+      # @return [String] The name of the resource.
       attr_accessor :name
 
-      # @return [String] the location of the resource.
+      # @return [String] The supported Azure location of the resource.
       attr_accessor :location
 
-      # @return [Hash{String => String}] the tags attached to the resource.
+      # @return [Hash{String => String}] The tags attached to the resource.
       attr_accessor :tags
 
 
