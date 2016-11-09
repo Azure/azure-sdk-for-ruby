@@ -12,10 +12,10 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the email address
+      # @return [String] The email address of the administrator.
       attr_accessor :email_address
 
-      # @return [String] Gets or sets the role
+      # @return [String] The role of the administrator.
       attr_accessor :role
 
 
