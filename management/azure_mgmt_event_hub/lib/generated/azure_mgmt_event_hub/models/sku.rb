@@ -6,21 +6,21 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # Sku of the Namespace.
+    # SKU of the namespace.
     #
     class Sku
 
       include MsRestAzure
 
-      # @return [SkuName] Name of this Sku. Possible values include: 'Basic',
+      # @return [SkuName] Name of this SKU. Possible values include: 'Basic',
       # 'Standard', 'Premium'
       attr_accessor :name
 
-      # @return [SkuTier] The tier of this particular SKU. Possible values
-      # include: 'Basic', 'Standard', 'Premium'
+      # @return [SkuTier] The billing tier of this particular SKU. Possible
+      # values include: 'Basic', 'Standard', 'Premium'
       attr_accessor :tier
 
-      # @return [Integer] The eventhub throughput units
+      # @return [Integer] The Event Hubs throughput units.
       attr_accessor :capacity
 
 

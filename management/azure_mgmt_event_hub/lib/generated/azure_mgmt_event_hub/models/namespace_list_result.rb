@@ -17,7 +17,7 @@ module Azure::ARM::EventHub
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of Namespaces
+      # contains incomplete list of namespaces.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

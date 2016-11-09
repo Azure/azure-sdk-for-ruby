@@ -6,7 +6,7 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # Parameters supplied to the CreateOrUpdate Namespace operation.
+    # Parameters supplied to the Create Or Update Namespace operation.
     #
     class NamespaceCreateOrUpdateParameters
 
@@ -21,7 +21,7 @@ module Azure::ARM::EventHub
       # @return [Hash{String => String}] Namespace tags.
       attr_accessor :tags
 
-      # @return [String] Provisioning state of the Namespace.
+      # @return [String] Provisioning state of the namespace.
       attr_accessor :provisioning_state
 
       # @return [NamespaceState] State of the namespace. Possible values
@@ -36,10 +36,11 @@ module Azure::ARM::EventHub
       # @return [DateTime] The time the namespace was updated.
       attr_accessor :updated_at
 
-      # @return [String] Endpoint you can use to perform ServiceBus operations.
+      # @return [String] Endpoint you can use to perform Service Bus
+      # operations.
       attr_accessor :service_bus_endpoint
 
-      # @return [Boolean] Indicates whether to create ACS namespace.
+      # @return [Boolean] Indicates whether to create an ACS namespace.
       attr_accessor :create_acsnamespace
 
       # @return [Boolean] Specifies whether this instance is enabled.

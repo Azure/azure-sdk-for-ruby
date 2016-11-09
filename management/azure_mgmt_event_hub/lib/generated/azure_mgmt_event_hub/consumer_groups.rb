@@ -5,7 +5,7 @@
 
 module Azure::ARM::EventHub
   #
-  # Azure EventHub client
+  # Azure Event Hubs client
   #
   class ConsumerGroups
     include Azure::ARM::EventHub::Models
@@ -23,14 +23,15 @@ module Azure::ARM::EventHub
     attr_reader :client
 
     #
-    # Creates/Updates a consumer group as a nested resource within a namespace.
+    # Creates or updates an Event Hubs consumer group as a nested resource within
+    # a namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
-    # @param consumer_group_name [String] The Consumer Group name.
+    # @param event_hub_name [String] The Event Hub name.
+    # @param consumer_group_name [String] The consumer group name.
     # @param parameters [ConsumerGroupCreateOrUpdateParameters] Parameters
-    # supplied to create a Consumer Group Resource.
+    # supplied to create a consumer group resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -42,14 +43,15 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates/Updates a consumer group as a nested resource within a namespace.
+    # Creates or updates an Event Hubs consumer group as a nested resource within
+    # a namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
-    # @param consumer_group_name [String] The Consumer Group name.
+    # @param event_hub_name [String] The Event Hub name.
+    # @param consumer_group_name [String] The consumer group name.
     # @param parameters [ConsumerGroupCreateOrUpdateParameters] Parameters
-    # supplied to create a Consumer Group Resource.
+    # supplied to create a consumer group resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -60,14 +62,15 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates/Updates a consumer group as a nested resource within a namespace.
+    # Creates or updates an Event Hubs consumer group as a nested resource within
+    # a namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
-    # @param consumer_group_name [String] The Consumer Group name.
+    # @param event_hub_name [String] The Event Hub name.
+    # @param consumer_group_name [String] The consumer group name.
     # @param parameters [ConsumerGroupCreateOrUpdateParameters] Parameters
-    # supplied to create a Consumer Group Resource.
+    # supplied to create a consumer group resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -138,12 +141,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Deletes an ConsumerGroup from the specified EventHub and resource group.
+    # Deletes a consumer group from the specified Event Hub and resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
-    # @param consumer_group_name [String] The Consumer Group name.
+    # @param event_hub_name [String] The Event Hub name.
+    # @param consumer_group_name [String] The Cconsumer group name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -154,12 +157,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Deletes an ConsumerGroup from the specified EventHub and resource group.
+    # Deletes a consumer group from the specified Event Hub and resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
-    # @param consumer_group_name [String] The Consumer Group name.
+    # @param event_hub_name [String] The Event Hub name.
+    # @param consumer_group_name [String] The Cconsumer group name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -170,12 +173,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Deletes an ConsumerGroup from the specified EventHub and resource group.
+    # Deletes a consumer group from the specified Event Hub and resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
-    # @param consumer_group_name [String] The Consumer Group name.
+    # @param event_hub_name [String] The Event Hub name.
+    # @param consumer_group_name [String] The Cconsumer group name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -226,12 +229,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Returns an Consumer Group description for the specified Consumer Group.
+    # Gets a description for the specified consumer group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
-    # @param consumer_group_name [String] The Consumer Group name.
+    # @param event_hub_name [String] The Event Hub name.
+    # @param consumer_group_name [String] The consumer group name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -243,12 +246,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Returns an Consumer Group description for the specified Consumer Group.
+    # Gets a description for the specified consumer group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
-    # @param consumer_group_name [String] The Consumer Group name.
+    # @param event_hub_name [String] The Event Hub name.
+    # @param consumer_group_name [String] The consumer group name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -259,12 +262,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Returns an Consumer Group description for the specified Consumer Group.
+    # Gets a description for the specified consumer group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
-    # @param consumer_group_name [String] The Consumer Group name.
+    # @param event_hub_name [String] The Event Hub name.
+    # @param consumer_group_name [String] The consumer group name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -325,12 +328,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Enumerates the consumer groups in a namespace. An empty feed is returned if
-    # no consumer group exists in the namespace.
+    # Gets all the consumer groups in a namespace. An empty feed is returned if no
+    # consumer group exists in the namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
+    # @param event_hub_name [String] The Event Hub name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -342,12 +345,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Enumerates the consumer groups in a namespace. An empty feed is returned if
-    # no consumer group exists in the namespace.
+    # Gets all the consumer groups in a namespace. An empty feed is returned if no
+    # consumer group exists in the namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
+    # @param event_hub_name [String] The Event Hub name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -358,12 +361,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Enumerates the consumer groups in a namespace. An empty feed is returned if
-    # no consumer group exists in the namespace.
+    # Gets all the consumer groups in a namespace. An empty feed is returned if no
+    # consumer group exists in the namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
+    # @param event_hub_name [String] The Event Hub name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -423,8 +426,8 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Enumerates the consumer groups in a namespace. An empty feed is returned if
-    # no consumer group exists in the namespace.
+    # Gets all the consumer groups in a namespace. An empty feed is returned if no
+    # consumer group exists in the namespace.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -439,8 +442,8 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Enumerates the consumer groups in a namespace. An empty feed is returned if
-    # no consumer group exists in the namespace.
+    # Gets all the consumer groups in a namespace. An empty feed is returned if no
+    # consumer group exists in the namespace.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -454,8 +457,8 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Enumerates the consumer groups in a namespace. An empty feed is returned if
-    # no consumer group exists in the namespace.
+    # Gets all the consumer groups in a namespace. An empty feed is returned if no
+    # consumer group exists in the namespace.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -513,12 +516,12 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Enumerates the consumer groups in a namespace. An empty feed is returned if
-    # no consumer group exists in the namespace.
+    # Gets all the consumer groups in a namespace. An empty feed is returned if no
+    # consumer group exists in the namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param event_hub_name [String] The EventHub name.
+    # @param event_hub_name [String] The Event Hub name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

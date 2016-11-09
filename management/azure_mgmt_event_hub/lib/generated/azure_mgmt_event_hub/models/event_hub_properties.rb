@@ -12,26 +12,26 @@ module Azure::ARM::EventHub
 
       include MsRestAzure
 
-      # @return [DateTime] Exact time the Event was created.
+      # @return [DateTime] Exact time the Event Hub was created.
       attr_accessor :created_at
 
       # @return [Integer] Number of days to retain the events for this Event
       # Hub.
       attr_accessor :message_retention_in_days
 
-      # @return [Integer] Number of partitions created for EventHub.
+      # @return [Integer] Number of partitions created for the Event Hub.
       attr_accessor :partition_count
 
       # @return [Array<String>] Current number of shards on the Event Hub.
       attr_accessor :partition_ids
 
       # @return [EntityStatus] Enumerates the possible values for the status
-      # of the EventHub. Possible values include: 'Active', 'Disabled',
+      # of the Event Hub. Possible values include: 'Active', 'Disabled',
       # 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating',
       # 'Deleting', 'Renaming', 'Unknown'
       attr_accessor :status
 
-      # @return [DateTime] The exact time the message has been updated.
+      # @return [DateTime] The exact time the message was updated.
       attr_accessor :updated_at
 
 

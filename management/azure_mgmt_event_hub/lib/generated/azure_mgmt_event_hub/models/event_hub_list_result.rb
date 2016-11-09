@@ -6,18 +6,18 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # The response of the List EventHub operation.
+    # The response of the List Event Hubs operation.
     #
     class EventHubListResult
 
       include MsRestAzure
 
-      # @return [Array<EventHubResource>] Result of the List EventHub
+      # @return [Array<EventHubResource>] Result of the List Event Hubs
       # operation.
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of EventHub
+      # contains incomplete list of Event Hubs.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

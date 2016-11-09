@@ -6,7 +6,7 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # Parameters supplied to the CreateOrUpdate EventHub operation.
+    # Parameters supplied to the Create Or Update Event Hub operation.
     #
     class EventHubCreateOrUpdateParameters
 

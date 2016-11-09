@@ -6,16 +6,17 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # Parameters supplied to the CreateOrUpdate  AuthorizationRules.
+    # Parameters supplied to the Create Or Update Authorization Rules
+    # operation.
     #
     class SharedAccessAuthorizationRuleCreateOrUpdateParameters
 
       include MsRestAzure
 
-      # @return [String] data center location.
+      # @return [String] Data center location.
       attr_accessor :location
 
-      # @return [String] Name of the AuthorizationRule.
+      # @return [String] Name of the authorization rule.
       attr_accessor :name
 
       # @return [Array<AccessRights>] The rights associated with the rule.
