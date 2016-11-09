@@ -6,7 +6,7 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # The response of the List Subscriptions operation.
+    # The response to the List Subscriptions operation.
     #
     class SubscriptionListResult
 
@@ -17,7 +17,7 @@ module Azure::ARM::ServiceBus
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of Subscriptions
+      # contains incomplete list of subscriptions.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

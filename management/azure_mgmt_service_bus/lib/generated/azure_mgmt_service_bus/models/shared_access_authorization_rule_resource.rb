@@ -6,7 +6,7 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Description of a Namespace AuthorizationRules.
+    # Description of a namespace authorization rule.
     #
     class SharedAccessAuthorizationRuleResource < MsRestAzure::Resource
 

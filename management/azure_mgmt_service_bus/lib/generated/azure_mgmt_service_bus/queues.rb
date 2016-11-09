@@ -23,7 +23,7 @@ module Azure::ARM::ServiceBus
     attr_reader :client
 
     #
-    # Lists the queues within the namespace.
+    # Gets the queues within a namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
@@ -38,7 +38,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lists the queues within the namespace.
+    # Gets the queues within a namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
@@ -52,7 +52,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lists the queues within the namespace.
+    # Gets the queues within a namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
@@ -114,13 +114,13 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Creates/Updates a service Queue. This operation is idempotent.
+    # Creates or updates a Service Bus queue. This operation is idempotent.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
     # @param parameters [QueueCreateOrUpdateParameters] Parameters supplied to
-    # create a Queue Resource.
+    # create or update a queue resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -132,13 +132,13 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Creates/Updates a service Queue. This operation is idempotent.
+    # Creates or updates a Service Bus queue. This operation is idempotent.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
     # @param parameters [QueueCreateOrUpdateParameters] Parameters supplied to
-    # create a Queue Resource.
+    # create or update a queue resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -149,13 +149,13 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Creates/Updates a service Queue. This operation is idempotent.
+    # Creates or updates a Service Bus queue. This operation is idempotent.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
     # @param parameters [QueueCreateOrUpdateParameters] Parameters supplied to
-    # create a Queue Resource.
+    # create or update a queue resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -225,11 +225,11 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Deletes a queue from the specified namespace in resource group.
+    # Deletes a queue from the specified namespace in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param queue_name [String] The queue name.
+    # @param queue_name [String] The name of the queue to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -240,11 +240,11 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Deletes a queue from the specified namespace in resource group.
+    # Deletes a queue from the specified namespace in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param queue_name [String] The queue name.
+    # @param queue_name [String] The name of the queue to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -255,11 +255,11 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Deletes a queue from the specified namespace in resource group.
+    # Deletes a queue from the specified namespace in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param queue_name [String] The queue name.
+    # @param queue_name [String] The name of the queue to be deleted.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -309,7 +309,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Returns the description for the specified queue.
+    # Returns a description for the specified queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
@@ -325,7 +325,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Returns the description for the specified queue.
+    # Returns a description for the specified queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
@@ -340,7 +340,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Returns the description for the specified queue.
+    # Returns a description for the specified queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
@@ -404,7 +404,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Returns all Queue authorizationRules.
+    # Gets all authorization rules for a queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name
@@ -420,7 +420,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Returns all Queue authorizationRules.
+    # Gets all authorization rules for a queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name
@@ -435,7 +435,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Returns all Queue authorizationRules.
+    # Gets all authorization rules for a queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name
@@ -499,12 +499,12 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Creates an authorization rule for a queue
+    # Creates an authorization rule for a queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
-    # @param authorization_rule_name [String] Aauthorization Rule Name.
+    # @param authorization_rule_name [String] Authorization rule name.
     # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
     # The shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -518,12 +518,12 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Creates an authorization rule for a queue
+    # Creates an authorization rule for a queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
-    # @param authorization_rule_name [String] Aauthorization Rule Name.
+    # @param authorization_rule_name [String] Authorization rule name.
     # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
     # The shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -536,12 +536,12 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Creates an authorization rule for a queue
+    # Creates an authorization rule for a queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
-    # @param authorization_rule_name [String] Aauthorization Rule Name.
+    # @param authorization_rule_name [String] Authorization rule name.
     # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
     # The shared access authorization rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -614,12 +614,12 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Deletes a queue authorization rule
+    # Deletes a queue authorization rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
-    # @param authorization_rule_name [String] Authorization Rule Name.
+    # @param authorization_rule_name [String] Authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -630,12 +630,12 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Deletes a queue authorization rule
+    # Deletes a queue authorization rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
-    # @param authorization_rule_name [String] Authorization Rule Name.
+    # @param authorization_rule_name [String] Authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -646,12 +646,12 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Deletes a queue authorization rule
+    # Deletes a queue authorization rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
-    # @param authorization_rule_name [String] Authorization Rule Name.
+    # @param authorization_rule_name [String] Authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -702,10 +702,10 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Queue authorizationRule for a queue by name.
+    # Gets an authorization rule for a queue by rule name.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name
+    # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
     # @param authorization_rule_name [String] Authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -719,10 +719,10 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Queue authorizationRule for a queue by name.
+    # Gets an authorization rule for a queue by rule name.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name
+    # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
     # @param authorization_rule_name [String] Authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -735,10 +735,10 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Queue authorizationRule for a queue by name.
+    # Gets an authorization rule for a queue by rule name.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param namespace_name [String] The namespace name
+    # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
     # @param authorization_rule_name [String] Authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -801,12 +801,12 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Primary and Secondary ConnectionStrings to the queue.
+    # Primary and secondary connection strings to the queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
-    # @param authorization_rule_name [String] The authorizationRule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -818,12 +818,12 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Primary and Secondary ConnectionStrings to the queue.
+    # Primary and secondary connection strings to the queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
-    # @param authorization_rule_name [String] The authorizationRule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -834,12 +834,12 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Primary and Secondary ConnectionStrings to the queue.
+    # Primary and secondary connection strings to the queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
-    # @param authorization_rule_name [String] The authorizationRule name.
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -900,14 +900,14 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Regenerates the Primary or Secondary ConnectionStrings to the Queue
+    # Regenerates the primary or secondary connection strings to the queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
-    # @param authorization_rule_name [String] The authorizationRule name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [RegenerateKeysParameters] Parameters supplied to
-    # regenerate Auth Rule.
+    # regenerate the authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -919,14 +919,14 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Regenerates the Primary or Secondary ConnectionStrings to the Queue
+    # Regenerates the primary or secondary connection strings to the queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
-    # @param authorization_rule_name [String] The authorizationRule name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [RegenerateKeysParameters] Parameters supplied to
-    # regenerate Auth Rule.
+    # regenerate the authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -937,14 +937,14 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Regenerates the Primary or Secondary ConnectionStrings to the Queue
+    # Regenerates the primary or secondary connection strings to the queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
-    # @param authorization_rule_name [String] The authorizationRule name
+    # @param authorization_rule_name [String] The authorization rule name.
     # @param parameters [RegenerateKeysParameters] Parameters supplied to
-    # regenerate Auth Rule.
+    # regenerate the authorization rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1015,7 +1015,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lists the queues within the namespace.
+    # Gets the queues within a namespace.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1030,7 +1030,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lists the queues within the namespace.
+    # Gets the queues within a namespace.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1044,7 +1044,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lists the queues within the namespace.
+    # Gets the queues within a namespace.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1102,7 +1102,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Returns all Queue authorizationRules.
+    # Gets all authorization rules for a queue.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1117,7 +1117,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Returns all Queue authorizationRules.
+    # Gets all authorization rules for a queue.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1131,7 +1131,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Returns all Queue authorizationRules.
+    # Gets all authorization rules for a queue.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1189,7 +1189,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lists the queues within the namespace.
+    # Gets the queues within a namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
@@ -1210,7 +1210,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Returns all Queue authorizationRules.
+    # Gets all authorization rules for a queue.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name

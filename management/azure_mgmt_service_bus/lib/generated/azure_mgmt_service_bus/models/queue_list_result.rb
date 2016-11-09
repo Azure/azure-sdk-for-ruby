@@ -6,7 +6,7 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # The response of the List Queues operation.
+    # The response to the List Queues operation.
     #
     class QueueListResult
 
@@ -16,7 +16,7 @@ module Azure::ARM::ServiceBus
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of Queues
+      # contains incomplete list of queues.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
