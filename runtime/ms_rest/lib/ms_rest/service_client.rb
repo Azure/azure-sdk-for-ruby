@@ -17,6 +17,9 @@ module MsRest
     # @return [Hash{String=>String}] default request headers for requests.
     attr_accessor :request_headers
 
+    # @return [Array] strings to be appended to the user agent in the request
+    attr_accessor :user_agent_extended
+
     #
     # Creates and initialize new instance of the ServiceClient class.
     #
@@ -28,6 +31,8 @@ module MsRest
       @credentials = credentials
       @request_headers = {}
       @middlewares = {middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]]}
+      @user_agent_extended = []
+      @user_agent_extended.push("ms_rest/#{MsRest::VERSION}")
     end
 
     #
@@ -40,6 +45,7 @@ module MsRest
     def make_request_async(base_url, method, path, options = {})
       options = @middlewares.merge(options)
       options[:credentials] = options[:credentials] || @credentials
+      options[:user_agent_extended] = @user_agent_extended
       request  = MsRest::HttpOperationRequest.new(base_url, path, method, options)
       promise = request.run_promise do |req|
         options[:credentials].sign_request(req) unless options[:credentials].nil?
@@ -50,6 +56,20 @@ module MsRest
         create_response(request, http_response, response_content)
       end
       promise.execute
+    end
+
+    #
+    # Add additional information into User-Agent header.
+    # @param [String] additional_user_agent_information additional product information for user agent string.
+    #
+    # Example:
+    #  recommended format is Product/[version]
+    #  please refer https://github.com/Azure/azure-sdk-for-ruby/issues/517 for more information.
+    #
+    #  add_user_agent_information('fog-azure-rm/0.2.0')
+    #
+    def add_user_agent_information(additional_user_agent_information)
+      @user_agent_extended.push(additional_user_agent_information)
     end
 
     private
