@@ -13,8 +13,8 @@ module Azure::ARM::PowerBiEmbedded
       include MsRestAzure
 
       # @return [String] The name of the operation being performed on this
-      # particular object. It should match the action name that appears in
-      # RBAC / the event service.
+      # particular object. This name should match the action name that
+      # appears in RBAC / the event service.
       attr_accessor :name
 
       # @return [Display]
