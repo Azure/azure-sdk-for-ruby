@@ -12,11 +12,11 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
-      # @return [String] The fully qualified Id of the location. For example,
+      # @return [String] The fully qualified ID of the location. For example,
       # /subscriptions/00000000-0000-0000-0000-000000000000/locations/westus.
       attr_accessor :id
 
-      # @return [String] The subscription Id.
+      # @return [String] The subscription ID.
       attr_accessor :subscription_id
 
       # @return [String] The location name.

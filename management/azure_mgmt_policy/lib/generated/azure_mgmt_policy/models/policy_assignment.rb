@@ -12,23 +12,22 @@ module Azure::ARM::Policy
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the policy assignment display name.
+      # @return [String] The display name of the policy assignment.
       attr_accessor :display_name
 
-      # @return [String] Gets or sets the policy definition Id.
+      # @return [String] The ID of the policy definition.
       attr_accessor :policy_definition_id
 
-      # @return [String] Gets or sets the scope at which the policy assignment
-      # exists.
+      # @return [String] The scope for the policy assignment.
       attr_accessor :scope
 
-      # @return [String] Gets or sets the Id of the policy assignment.
+      # @return [String] The ID of the policy assignment.
       attr_accessor :id
 
-      # @return [String] Gets or sets the type of the policy assignment.
+      # @return [String] The type of the policy assignment.
       attr_accessor :type
 
-      # @return [String] Gets or sets the name of the policy assignment.
+      # @return [String] The name of the policy assignment.
       attr_accessor :name
 
 

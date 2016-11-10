@@ -12,11 +12,10 @@ module Azure::ARM::Policy
 
       include MsRestAzure
 
-      # @return [Array<PolicyDefinition>] Gets or sets the list of policy
-      # definitions.
+      # @return [Array<PolicyDefinition>] An array of policy definitions.
       attr_accessor :value
 
-      # @return [String] Gets or sets the URL to get the next set of results.
+      # @return [String] The URL to use for getting the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

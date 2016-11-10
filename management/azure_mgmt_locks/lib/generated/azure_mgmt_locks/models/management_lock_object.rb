@@ -12,20 +12,25 @@ module Azure::ARM::Locks
 
       include MsRestAzure
 
-      # @return [LockLevel] The lock level of the lock. Possible values
-      # include: 'NotSpecified', 'CanNotDelete', 'ReadOnly'
+      # @return [LockLevel] The level of the lock. Possible values are:
+      # NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized
+      # users are able to read and modify the resources, but not delete.
+      # ReadOnly means authorized users can only read from a resource, but
+      # they can't modify or delete it. Possible values include:
+      # 'NotSpecified', 'CanNotDelete', 'ReadOnly'
       attr_accessor :level
 
-      # @return [String] The notes of the lock.
+      # @return [String] Notes about the lock. Maximum of 512 characters.
       attr_accessor :notes
 
       # @return [Array<ManagementLockOwner>] The owners of the lock.
       attr_accessor :owners
 
-      # @return [String] The Id of the lock.
+      # @return [String] The resource ID of the lock.
       attr_accessor :id
 
-      # @return [String] The type of the lock.
+      # @return [String] The resource type of the lock -
+      # Microsoft.Authorization/locks.
       attr_accessor :type
 
       # @return [String] The name of the lock.

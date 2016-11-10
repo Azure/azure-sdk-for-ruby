@@ -6,13 +6,13 @@
 module Azure::ARM::Locks
   module Models
     #
-    # Model object.
+    # Lock owner properties.
     #
     class ManagementLockOwner
 
       include MsRestAzure
 
-      # @return [String] The application Id of the lock owner.
+      # @return [String] The application ID of the lock owner.
       attr_accessor :application_id
 
 

@@ -5,7 +5,10 @@
 
 module Azure::ARM::Subscriptions
   #
-  # Tenants
+  # All resource groups and resources exist within subscriptions. These
+  # operation enable you get information about your subscriptions and
+  # tenants. A tenant is a dedicated instance of Azure Active Directory
+  # (Azure AD) for your organization.
   #
   class Tenants
     include Azure::ARM::Subscriptions::Models
@@ -23,7 +26,7 @@ module Azure::ARM::Subscriptions
     attr_reader :client
 
     #
-    # Gets a list of tenants.
+    # Gets the tenants for your account.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -36,7 +39,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of tenants.
+    # Gets the tenants for your account.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -48,7 +51,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of tenants.
+    # Gets the tenants for your account.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -104,7 +107,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of tenants.
+    # Gets the tenants for your account.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -119,7 +122,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of tenants.
+    # Gets the tenants for your account.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -133,7 +136,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of tenants.
+    # Gets the tenants for your account.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -191,7 +194,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of tenants.
+    # Gets the tenants for your account.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
