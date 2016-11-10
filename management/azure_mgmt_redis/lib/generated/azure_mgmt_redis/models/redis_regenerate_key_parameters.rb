@@ -6,13 +6,13 @@
 module Azure::ARM::Redis
   module Models
     #
-    # Specifies which redis access keys to reset.
+    # Specifies which Redis access keys to reset.
     #
     class RedisRegenerateKeyParameters
 
       include MsRestAzure
 
-      # @return [RedisKeyType] Which redis access key to reset. Possible
+      # @return [RedisKeyType] The Redis access key to regenerate. Possible
       # values include: 'Primary', 'Secondary'
       attr_accessor :key_type
 

@@ -6,13 +6,13 @@
 module Azure::ARM::Redis
   module Models
     #
-    # The response of list redis operation.
+    # The response of list Redis operation.
     #
     class RedisListResult
 
       include MsRestAzure
 
-      # @return [Array<RedisResource>] Results of the list operation
+      # @return [Array<RedisResource>] List of Redis cache instances.
       attr_accessor :value
 
       # @return [String] Link for next set of locations.

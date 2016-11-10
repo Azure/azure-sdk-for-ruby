@@ -5,7 +5,7 @@
 
 module Azure::ARM::Redis
   #
-  # REST API for Azure Redis Cache Service
+  # REST API for Azure Redis Cache Service.
   #
   class Redis
     include Azure::ARM::Redis::Models
@@ -24,12 +24,12 @@ module Azure::ARM::Redis
 
     #
     # Create or replace (overwrite/recreate, with potential downtime) an existing
-    # redis cache
+    # Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisCreateParameters] Parameters supplied to the Create
-    # redis operation.
+    # Redis operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -42,9 +42,9 @@ module Azure::ARM::Redis
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisCreateParameters] Parameters supplied to the Create
-    # redis operation.
+    # Redis operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -70,12 +70,12 @@ module Azure::ARM::Redis
     end
 
     #
-    # Update an existing Redis cache
+    # Update an existing Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisUpdateParameters] Parameters supplied to the Update
-    # redis operation.
+    # Redis operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -88,9 +88,9 @@ module Azure::ARM::Redis
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisUpdateParameters] Parameters supplied to the Update
-    # redis operation.
+    # Redis operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -116,10 +116,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Deletes a redis cache. This operation takes a while to complete.
+    # Deletes a Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -130,7 +130,7 @@ module Azure::ARM::Redis
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -154,10 +154,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets a redis cache (resource description).
+    # Gets a Redis cache (resource description).
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -169,10 +169,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets a redis cache (resource description).
+    # Gets a Redis cache (resource description).
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -183,10 +183,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets a redis cache (resource description).
+    # Gets a Redis cache (resource description).
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -245,7 +245,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in a resource group.
+    # Lists all Redis caches in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -259,7 +259,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in a resource group.
+    # Lists all Redis caches in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -272,7 +272,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in a resource group.
+    # Lists all Redis caches in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -332,7 +332,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in the specified subscription.
+    # Gets all Redis caches in the specified subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -345,7 +345,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in the specified subscription.
+    # Gets all Redis caches in the specified subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -357,7 +357,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in the specified subscription.
+    # Gets all Redis caches in the specified subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -415,11 +415,11 @@ module Azure::ARM::Redis
     end
 
     #
-    # Retrieve a redis cache's access keys. This operation requires write
+    # Retrieve a Redis cache's access keys. This operation requires write
     # permission to the cache resource.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -431,11 +431,11 @@ module Azure::ARM::Redis
     end
 
     #
-    # Retrieve a redis cache's access keys. This operation requires write
+    # Retrieve a Redis cache's access keys. This operation requires write
     # permission to the cache resource.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -446,11 +446,11 @@ module Azure::ARM::Redis
     end
 
     #
-    # Retrieve a redis cache's access keys. This operation requires write
+    # Retrieve a Redis cache's access keys. This operation requires write
     # permission to the cache resource.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -509,13 +509,13 @@ module Azure::ARM::Redis
     end
 
     #
-    # Regenerate redis cache's access keys. This operation requires write
+    # Regenerate Redis cache's access keys. This operation requires write
     # permission to the cache resource.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisRegenerateKeyParameters] Specifies which key to
-    # reset.
+    # regenerate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -527,13 +527,13 @@ module Azure::ARM::Redis
     end
 
     #
-    # Regenerate redis cache's access keys. This operation requires write
+    # Regenerate Redis cache's access keys. This operation requires write
     # permission to the cache resource.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisRegenerateKeyParameters] Specifies which key to
-    # reset.
+    # regenerate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -544,13 +544,13 @@ module Azure::ARM::Redis
     end
 
     #
-    # Regenerate redis cache's access keys. This operation requires write
+    # Regenerate Redis cache's access keys. This operation requires write
     # permission to the cache resource.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisRegenerateKeyParameters] Specifies which key to
-    # reset.
+    # regenerate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -619,12 +619,12 @@ module Azure::ARM::Redis
     end
 
     #
-    # Reboot specified redis node(s). This operation requires write permission to
+    # Reboot specified Redis node(s). This operation requires write permission to
     # the cache resource. There can be potential data loss.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [RedisRebootParameters] Specifies which redis node(s) to
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [RedisRebootParameters] Specifies which Redis node(s) to
     # reboot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -636,12 +636,12 @@ module Azure::ARM::Redis
     end
 
     #
-    # Reboot specified redis node(s). This operation requires write permission to
+    # Reboot specified Redis node(s). This operation requires write permission to
     # the cache resource. There can be potential data loss.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [RedisRebootParameters] Specifies which redis node(s) to
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [RedisRebootParameters] Specifies which Redis node(s) to
     # reboot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -653,12 +653,12 @@ module Azure::ARM::Redis
     end
 
     #
-    # Reboot specified redis node(s). This operation requires write permission to
+    # Reboot specified Redis node(s). This operation requires write permission to
     # the cache resource. There can be potential data loss.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [RedisRebootParameters] Specifies which redis node(s) to
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [RedisRebootParameters] Specifies which Redis node(s) to
     # reboot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -718,11 +718,11 @@ module Azure::ARM::Redis
     end
 
     #
-    # Import data into redis cache.
+    # Import data into Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [ImportRDBParameters] Parameters for redis import
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [ImportRDBParameters] Parameters for Redis import
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -734,8 +734,8 @@ module Azure::ARM::Redis
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [ImportRDBParameters] Parameters for redis import
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [ImportRDBParameters] Parameters for Redis import
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -760,11 +760,11 @@ module Azure::ARM::Redis
     end
 
     #
-    # Import data into redis cache.
+    # Import data into Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [ExportRDBParameters] Parameters for redis export
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [ExportRDBParameters] Parameters for Redis export
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -776,8 +776,8 @@ module Azure::ARM::Redis
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [ExportRDBParameters] Parameters for redis export
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [ExportRDBParameters] Parameters for Redis export
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -803,12 +803,12 @@ module Azure::ARM::Redis
 
     #
     # Create or replace (overwrite/recreate, with potential downtime) an existing
-    # redis cache
+    # Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisCreateParameters] Parameters supplied to the Create
-    # redis operation.
+    # Redis operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -821,12 +821,12 @@ module Azure::ARM::Redis
 
     #
     # Create or replace (overwrite/recreate, with potential downtime) an existing
-    # redis cache
+    # Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisCreateParameters] Parameters supplied to the Create
-    # redis operation.
+    # Redis operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -838,12 +838,12 @@ module Azure::ARM::Redis
 
     #
     # Create or replace (overwrite/recreate, with potential downtime) an existing
-    # redis cache
+    # Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisCreateParameters] Parameters supplied to the Create
-    # redis operation.
+    # Redis operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -895,6 +895,16 @@ module Azure::ARM::Redis
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = RedisResource.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
@@ -912,12 +922,12 @@ module Azure::ARM::Redis
     end
 
     #
-    # Update an existing Redis cache
+    # Update an existing Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisUpdateParameters] Parameters supplied to the Update
-    # redis operation.
+    # Redis operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -929,12 +939,12 @@ module Azure::ARM::Redis
     end
 
     #
-    # Update an existing Redis cache
+    # Update an existing Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisUpdateParameters] Parameters supplied to the Update
-    # redis operation.
+    # Redis operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -945,12 +955,12 @@ module Azure::ARM::Redis
     end
 
     #
-    # Update an existing Redis cache
+    # Update an existing Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisUpdateParameters] Parameters supplied to the Update
-    # redis operation.
+    # Redis operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1019,10 +1029,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Deletes a redis cache. This operation takes a while to complete.
+    # Deletes a Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1033,10 +1043,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Deletes a redis cache. This operation takes a while to complete.
+    # Deletes a Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1047,10 +1057,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Deletes a redis cache. This operation takes a while to complete.
+    # Deletes a Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1099,11 +1109,11 @@ module Azure::ARM::Redis
     end
 
     #
-    # Import data into redis cache.
+    # Import data into Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [ImportRDBParameters] Parameters for redis import
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [ImportRDBParameters] Parameters for Redis import
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1115,11 +1125,11 @@ module Azure::ARM::Redis
     end
 
     #
-    # Import data into redis cache.
+    # Import data into Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [ImportRDBParameters] Parameters for redis import
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [ImportRDBParameters] Parameters for Redis import
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1131,11 +1141,11 @@ module Azure::ARM::Redis
     end
 
     #
-    # Import data into redis cache.
+    # Import data into Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [ImportRDBParameters] Parameters for redis import
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [ImportRDBParameters] Parameters for Redis import
     # operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1195,11 +1205,11 @@ module Azure::ARM::Redis
     end
 
     #
-    # Import data into redis cache.
+    # Import data into Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [ExportRDBParameters] Parameters for redis export
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [ExportRDBParameters] Parameters for Redis export
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1211,11 +1221,11 @@ module Azure::ARM::Redis
     end
 
     #
-    # Import data into redis cache.
+    # Import data into Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [ExportRDBParameters] Parameters for redis export
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [ExportRDBParameters] Parameters for Redis export
     # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1227,11 +1237,11 @@ module Azure::ARM::Redis
     end
 
     #
-    # Import data into redis cache.
+    # Import data into Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
-    # @param parameters [ExportRDBParameters] Parameters for redis export
+    # @param name [String] The name of the Redis cache.
+    # @param parameters [ExportRDBParameters] Parameters for Redis export
     # operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1291,7 +1301,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in a resource group.
+    # Lists all Redis caches in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1306,7 +1316,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in a resource group.
+    # Lists all Redis caches in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1320,7 +1330,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in a resource group.
+    # Lists all Redis caches in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1378,7 +1388,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in the specified subscription.
+    # Gets all Redis caches in the specified subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1393,7 +1403,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in the specified subscription.
+    # Gets all Redis caches in the specified subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1407,7 +1417,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in the specified subscription.
+    # Gets all Redis caches in the specified subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1465,7 +1475,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in a resource group.
+    # Lists all Redis caches in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1485,7 +1495,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets all redis caches in the specified subscription.
+    # Gets all Redis caches in the specified subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
