@@ -12,12 +12,12 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Boolean] whether boot diagnostics should be enabled on the
+      # @return [Boolean] Whether boot diagnostics should be enabled on the
       # Virtual Machine.
       attr_accessor :enabled
 
-      # @return [String] the boot diagnostics storage Uri. It should be a
-      # valid Uri
+      # @return [String] URI of the storage account to use for placing the
+      # console output and screenshot.
       attr_accessor :storage_uri
 
 

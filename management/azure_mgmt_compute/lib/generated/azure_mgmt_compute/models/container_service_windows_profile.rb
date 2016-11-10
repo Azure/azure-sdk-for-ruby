@@ -6,7 +6,7 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Profile for Windows VMs.
+    # Profile for Windows VMs in the container service cluster.
     #
     class ContainerServiceWindowsProfile
 

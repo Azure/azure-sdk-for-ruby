@@ -23,14 +23,11 @@ module Azure::ARM::Compute
     attr_reader :client
 
     #
-    # Allows you to create or update a virtual machine scale set by providing
-    # parameters or a path to pre-configured parameter file.
+    # Create or update a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] Parameters supplied to the Create Virtual Machine Scale
-    # Set operation.
-    # @param parameters [VirtualMachineScaleSet] Parameters supplied to the Create
-    # Virtual Machine Scale Set operation.
+    # @param name [String] The name of the VM scale set to create or update.
+    # @param parameters [VirtualMachineScaleSet] The scale set object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -43,10 +40,8 @@ module Azure::ARM::Compute
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] Parameters supplied to the Create Virtual Machine Scale
-    # Set operation.
-    # @param parameters [VirtualMachineScaleSet] Parameters supplied to the Create
-    # Virtual Machine Scale Set operation.
+    # @param name [String] The name of the VM scale set to create or update.
+    # @param parameters [VirtualMachineScaleSet] The scale set object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -72,15 +67,14 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to deallocate virtual machines in a virtual machine scale set.
-    # Shuts down the virtual machines and releases the compute resources. You are
-    # not billed for the compute resources that this virtual machine scale set
-    # uses.
+    # Deallocates specific virtual machines in a VM scale set. Shuts down the
+    # virtual machines and releases the compute resources. You are not billed for
+    # the compute resources that this virtual machine scale set deallocates.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -91,9 +85,9 @@ module Azure::ARM::Compute
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -117,10 +111,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to delete a virtual machine scale set.
+    # Deletes a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -131,7 +125,7 @@ module Azure::ARM::Compute
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -158,7 +152,7 @@ module Azure::ARM::Compute
     # Display information about a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -173,7 +167,7 @@ module Azure::ARM::Compute
     # Display information about a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -187,7 +181,7 @@ module Azure::ARM::Compute
     # Display information about a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -246,12 +240,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to delete virtual machines in a virtual machine scale set.
+    # Deletes virtual machines in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
-    # list of virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] A list
+    # of virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -262,9 +256,9 @@ module Azure::ARM::Compute
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
-    # list of virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] A list
+    # of virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -288,10 +282,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Displays status of a virtual machine scale set instance.
+    # Gets the status of a VM scale set instance.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -303,10 +297,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Displays status of a virtual machine scale set instance.
+    # Gets the status of a VM scale set instance.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -317,10 +311,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Displays status of a virtual machine scale set instance.
+    # Gets the status of a VM scale set instance.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -379,7 +373,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all virtual machine scale sets under a resource group.
+    # Gets a list of all VM scale sets under a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -393,7 +387,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all virtual machine scale sets under a resource group.
+    # Gets a list of all VM scale sets under a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -406,7 +400,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all virtual machine scale sets under a resource group.
+    # Gets a list of all VM scale sets under a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -466,10 +460,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all Virtual Machine Scale Sets in the subscription. Use nextLink
-    # property in the response to get the next page of Virtual Machine Scale
-    # Sets. Do this till nextLink is not null to fetch all the Virtual Machine
-    # Scale Sets.
+    # Gets a list of all VM Scale Sets in the subscription, regardless of the
+    # associated resource group. Use nextLink property in the response to get the
+    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
+    # the VM Scale Sets.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -482,10 +476,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all Virtual Machine Scale Sets in the subscription. Use nextLink
-    # property in the response to get the next page of Virtual Machine Scale
-    # Sets. Do this till nextLink is not null to fetch all the Virtual Machine
-    # Scale Sets.
+    # Gets a list of all VM Scale Sets in the subscription, regardless of the
+    # associated resource group. Use nextLink property in the response to get the
+    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
+    # the VM Scale Sets.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -497,10 +491,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all Virtual Machine Scale Sets in the subscription. Use nextLink
-    # property in the response to get the next page of Virtual Machine Scale
-    # Sets. Do this till nextLink is not null to fetch all the Virtual Machine
-    # Scale Sets.
+    # Gets a list of all VM Scale Sets in the subscription, regardless of the
+    # associated resource group. Use nextLink property in the response to get the
+    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
+    # the VM Scale Sets.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -558,11 +552,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Displays available skus for your virtual machine scale set including the
-    # minimum and maximum vm instances allowed for a particular sku.
+    # Gets a list of SKUs available for your VM scale set, including the minimum
+    # and maximum VM instances allowed for each SKU.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -574,11 +568,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Displays available skus for your virtual machine scale set including the
-    # minimum and maximum vm instances allowed for a particular sku.
+    # Gets a list of SKUs available for your VM scale set, including the minimum
+    # and maximum VM instances allowed for each SKU.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -589,11 +583,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Displays available skus for your virtual machine scale set including the
-    # minimum and maximum vm instances allowed for a particular sku.
+    # Gets a list of SKUs available for your VM scale set, including the minimum
+    # and maximum VM instances allowed for each SKU.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -652,14 +646,14 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to power off (stop) virtual machines in a virtual machine scale
-    # set. Note that resources are still attached and you are getting charged for
-    # the resources. Use deallocate to release resources.
+    # Power off (stop) one or more virtual machines in a VM scale set. Note that
+    # resources are still attached and you are getting charged for the resources.
+    # Instead, use deallocate to release resources and avoid charges.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -670,9 +664,9 @@ module Azure::ARM::Compute
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -696,12 +690,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to restart virtual machines in a virtual machine scale set.
+    # Restarts one or more virtual machines in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -712,9 +706,9 @@ module Azure::ARM::Compute
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -738,12 +732,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to start virtual machines in a virtual machine scale set.
+    # Starts one or more virtual machines in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -754,9 +748,9 @@ module Azure::ARM::Compute
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -780,13 +774,13 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to manually upgrade virtual machines in a virtual machine scale
-    # set.
+    # Upgrades one or more virtual machines to the latest SKU set in the VM scale
+    # set model.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
-    # list of virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] A list
+    # of virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -797,9 +791,9 @@ module Azure::ARM::Compute
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
-    # list of virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] A list
+    # of virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -823,11 +817,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to re-image(update the version of the installed operating system)
-    # virtual machines in a virtual machine scale set.
+    # Reimages (upgrade the operating system) one or more virtual machines in a VM
+    # scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -838,7 +832,7 @@ module Azure::ARM::Compute
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -862,14 +856,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to create or update a virtual machine scale set by providing
-    # parameters or a path to pre-configured parameter file.
+    # Create or update a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] Parameters supplied to the Create Virtual Machine Scale
-    # Set operation.
-    # @param parameters [VirtualMachineScaleSet] Parameters supplied to the Create
-    # Virtual Machine Scale Set operation.
+    # @param name [String] The name of the VM scale set to create or update.
+    # @param parameters [VirtualMachineScaleSet] The scale set object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -881,14 +872,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to create or update a virtual machine scale set by providing
-    # parameters or a path to pre-configured parameter file.
+    # Create or update a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] Parameters supplied to the Create Virtual Machine Scale
-    # Set operation.
-    # @param parameters [VirtualMachineScaleSet] Parameters supplied to the Create
-    # Virtual Machine Scale Set operation.
+    # @param name [String] The name of the VM scale set to create or update.
+    # @param parameters [VirtualMachineScaleSet] The scale set object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -899,14 +887,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to create or update a virtual machine scale set by providing
-    # parameters or a path to pre-configured parameter file.
+    # Create or update a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] Parameters supplied to the Create Virtual Machine Scale
-    # Set operation.
-    # @param parameters [VirtualMachineScaleSet] Parameters supplied to the Create
-    # Virtual Machine Scale Set operation.
+    # @param name [String] The name of the VM scale set to create or update.
+    # @param parameters [VirtualMachineScaleSet] The scale set object.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -985,15 +970,14 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to deallocate virtual machines in a virtual machine scale set.
-    # Shuts down the virtual machines and releases the compute resources. You are
-    # not billed for the compute resources that this virtual machine scale set
-    # uses.
+    # Deallocates specific virtual machines in a VM scale set. Shuts down the
+    # virtual machines and releases the compute resources. You are not billed for
+    # the compute resources that this virtual machine scale set deallocates.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1004,15 +988,14 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to deallocate virtual machines in a virtual machine scale set.
-    # Shuts down the virtual machines and releases the compute resources. You are
-    # not billed for the compute resources that this virtual machine scale set
-    # uses.
+    # Deallocates specific virtual machines in a VM scale set. Shuts down the
+    # virtual machines and releases the compute resources. You are not billed for
+    # the compute resources that this virtual machine scale set deallocates.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1023,15 +1006,14 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to deallocate virtual machines in a virtual machine scale set.
-    # Shuts down the virtual machines and releases the compute resources. You are
-    # not billed for the compute resources that this virtual machine scale set
-    # uses.
+    # Deallocates specific virtual machines in a VM scale set. Shuts down the
+    # virtual machines and releases the compute resources. You are not billed for
+    # the compute resources that this virtual machine scale set deallocates.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1089,10 +1071,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to delete a virtual machine scale set.
+    # Deletes a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1103,10 +1085,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to delete a virtual machine scale set.
+    # Deletes a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1117,10 +1099,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to delete a virtual machine scale set.
+    # Deletes a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1169,12 +1151,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to delete virtual machines in a virtual machine scale set.
+    # Deletes virtual machines in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
-    # list of virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] A list
+    # of virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1185,12 +1167,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to delete virtual machines in a virtual machine scale set.
+    # Deletes virtual machines in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
-    # list of virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] A list
+    # of virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1201,12 +1183,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to delete virtual machines in a virtual machine scale set.
+    # Deletes virtual machines in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
-    # list of virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] A list
+    # of virtual machine instance IDs from the VM scale set.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1265,14 +1247,14 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to power off (stop) virtual machines in a virtual machine scale
-    # set. Note that resources are still attached and you are getting charged for
-    # the resources. Use deallocate to release resources.
+    # Power off (stop) one or more virtual machines in a VM scale set. Note that
+    # resources are still attached and you are getting charged for the resources.
+    # Instead, use deallocate to release resources and avoid charges.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1283,14 +1265,14 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to power off (stop) virtual machines in a virtual machine scale
-    # set. Note that resources are still attached and you are getting charged for
-    # the resources. Use deallocate to release resources.
+    # Power off (stop) one or more virtual machines in a VM scale set. Note that
+    # resources are still attached and you are getting charged for the resources.
+    # Instead, use deallocate to release resources and avoid charges.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1301,14 +1283,14 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to power off (stop) virtual machines in a virtual machine scale
-    # set. Note that resources are still attached and you are getting charged for
-    # the resources. Use deallocate to release resources.
+    # Power off (stop) one or more virtual machines in a VM scale set. Note that
+    # resources are still attached and you are getting charged for the resources.
+    # Instead, use deallocate to release resources and avoid charges.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1366,12 +1348,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to restart virtual machines in a virtual machine scale set.
+    # Restarts one or more virtual machines in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1382,12 +1364,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to restart virtual machines in a virtual machine scale set.
+    # Restarts one or more virtual machines in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1398,12 +1380,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to restart virtual machines in a virtual machine scale set.
+    # Restarts one or more virtual machines in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1461,12 +1443,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to start virtual machines in a virtual machine scale set.
+    # Starts one or more virtual machines in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1477,12 +1459,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to start virtual machines in a virtual machine scale set.
+    # Starts one or more virtual machines in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1493,12 +1475,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to start virtual machines in a virtual machine scale set.
+    # Starts one or more virtual machines in a VM scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] The list of
-    # virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceIDs] A list of
+    # virtual machine instance IDs from the VM scale set.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1556,13 +1538,13 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to manually upgrade virtual machines in a virtual machine scale
-    # set.
+    # Upgrades one or more virtual machines to the latest SKU set in the VM scale
+    # set model.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
-    # list of virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] A list
+    # of virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1573,13 +1555,13 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to manually upgrade virtual machines in a virtual machine scale
-    # set.
+    # Upgrades one or more virtual machines to the latest SKU set in the VM scale
+    # set model.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
-    # list of virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] A list
+    # of virtual machine instance IDs from the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1590,13 +1572,13 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to manually upgrade virtual machines in a virtual machine scale
-    # set.
+    # Upgrades one or more virtual machines to the latest SKU set in the VM scale
+    # set model.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
-    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] The
-    # list of virtual machine scale set instance IDs.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
+    # @param vm_instance_ids [VirtualMachineScaleSetVMInstanceRequiredIDs] A list
+    # of virtual machine instance IDs from the VM scale set.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1655,11 +1637,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to re-image(update the version of the installed operating system)
-    # virtual machines in a virtual machine scale set.
+    # Reimages (upgrade the operating system) one or more virtual machines in a VM
+    # scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1670,11 +1652,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to re-image(update the version of the installed operating system)
-    # virtual machines in a virtual machine scale set.
+    # Reimages (upgrade the operating system) one or more virtual machines in a VM
+    # scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1685,11 +1667,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Allows you to re-image(update the version of the installed operating system)
-    # virtual machines in a virtual machine scale set.
+    # Reimages (upgrade the operating system) one or more virtual machines in a VM
+    # scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1738,7 +1720,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all virtual machine scale sets under a resource group.
+    # Gets a list of all VM scale sets under a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1753,7 +1735,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all virtual machine scale sets under a resource group.
+    # Gets a list of all VM scale sets under a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1767,7 +1749,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all virtual machine scale sets under a resource group.
+    # Gets a list of all VM scale sets under a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1825,10 +1807,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all Virtual Machine Scale Sets in the subscription. Use nextLink
-    # property in the response to get the next page of Virtual Machine Scale
-    # Sets. Do this till nextLink is not null to fetch all the Virtual Machine
-    # Scale Sets.
+    # Gets a list of all VM Scale Sets in the subscription, regardless of the
+    # associated resource group. Use nextLink property in the response to get the
+    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
+    # the VM Scale Sets.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1843,10 +1825,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all Virtual Machine Scale Sets in the subscription. Use nextLink
-    # property in the response to get the next page of Virtual Machine Scale
-    # Sets. Do this till nextLink is not null to fetch all the Virtual Machine
-    # Scale Sets.
+    # Gets a list of all VM Scale Sets in the subscription, regardless of the
+    # associated resource group. Use nextLink property in the response to get the
+    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
+    # the VM Scale Sets.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1860,10 +1842,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all Virtual Machine Scale Sets in the subscription. Use nextLink
-    # property in the response to get the next page of Virtual Machine Scale
-    # Sets. Do this till nextLink is not null to fetch all the Virtual Machine
-    # Scale Sets.
+    # Gets a list of all VM Scale Sets in the subscription, regardless of the
+    # associated resource group. Use nextLink property in the response to get the
+    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
+    # the VM Scale Sets.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1921,8 +1903,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Displays available skus for your virtual machine scale set including the
-    # minimum and maximum vm instances allowed for a particular sku.
+    # Gets a list of SKUs available for your VM scale set, including the minimum
+    # and maximum VM instances allowed for each SKU.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1937,8 +1919,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Displays available skus for your virtual machine scale set including the
-    # minimum and maximum vm instances allowed for a particular sku.
+    # Gets a list of SKUs available for your VM scale set, including the minimum
+    # and maximum VM instances allowed for each SKU.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1952,8 +1934,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Displays available skus for your virtual machine scale set including the
-    # minimum and maximum vm instances allowed for a particular sku.
+    # Gets a list of SKUs available for your VM scale set, including the minimum
+    # and maximum VM instances allowed for each SKU.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -2011,7 +1993,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all virtual machine scale sets under a resource group.
+    # Gets a list of all VM scale sets under a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -2032,10 +2014,10 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all Virtual Machine Scale Sets in the subscription. Use nextLink
-    # property in the response to get the next page of Virtual Machine Scale
-    # Sets. Do this till nextLink is not null to fetch all the Virtual Machine
-    # Scale Sets.
+    # Gets a list of all VM Scale Sets in the subscription, regardless of the
+    # associated resource group. Use nextLink property in the response to get the
+    # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
+    # the VM Scale Sets.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -2055,11 +2037,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Displays available skus for your virtual machine scale set including the
-    # minimum and maximum vm instances allowed for a particular sku.
+    # Gets a list of SKUs available for your VM scale set, including the minimum
+    # and maximum VM instances allowed for each SKU.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param vm_scale_set_name [String] The name of the virtual machine scale set.
+    # @param vm_scale_set_name [String] The name of the VM scale set.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

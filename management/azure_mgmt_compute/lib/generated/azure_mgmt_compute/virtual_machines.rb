@@ -546,8 +546,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all available virtual machine sizes it can be resized to for a virtual
-    # machine.
+    # Lists all available virtual machine sizes to which the specified virtual
+    # machine can be resized.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -562,8 +562,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all available virtual machine sizes it can be resized to for a virtual
-    # machine.
+    # Lists all available virtual machine sizes to which the specified virtual
+    # machine can be resized.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -577,8 +577,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists all available virtual machine sizes it can be resized to for a virtual
-    # machine.
+    # Lists all available virtual machine sizes to which the specified virtual
+    # machine can be resized.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
