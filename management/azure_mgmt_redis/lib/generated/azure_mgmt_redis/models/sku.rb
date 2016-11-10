@@ -6,23 +6,24 @@
 module Azure::ARM::Redis
   module Models
     #
-    # Sku parameters supplied to the create redis operation.
+    # SKU parameters supplied to the create Redis operation.
     #
     class Sku
 
       include MsRestAzure
 
-      # @return [SkuName] What type of redis cache to deploy. Valid values:
+      # @return [SkuName] The type of Redis cache to deploy. Valid values:
       # (Basic, Standard, Premium). Possible values include: 'Basic',
       # 'Standard', 'Premium'
       attr_accessor :name
 
-      # @return [SkuFamily] Which family to use. Valid values: (C, P).
-      # Possible values include: 'C', 'P'
+      # @return [SkuFamily] The SKU family to use. Valid values: (C, P). (C =
+      # Basic/Standard, P = Premium). Possible values include: 'C', 'P'
       attr_accessor :family
 
-      # @return [Integer] What size of redis cache to deploy. Valid values:
-      # for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
+      # @return [Integer] The size of the Redis cache to deploy. Valid values:
+      # for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium)
+      # family (1, 2, 3, 4).
       attr_accessor :capacity
 
 

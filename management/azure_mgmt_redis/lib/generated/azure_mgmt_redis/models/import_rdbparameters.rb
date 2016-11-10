@@ -6,7 +6,7 @@
 module Azure::ARM::Redis
   module Models
     #
-    # Parameters for redis import operation.
+    # Parameters for Redis import operation.
     #
     class ImportRDBParameters
 
@@ -15,7 +15,7 @@ module Azure::ARM::Redis
       # @return [String] File format.
       attr_accessor :format
 
-      # @return [Array<String>] files to import
+      # @return [Array<String>] files to import.
       attr_accessor :files
 
 

@@ -16,6 +16,8 @@ module Azure::ARM::Redis
       Friday = "Friday"
       Saturday = "Saturday"
       Sunday = "Sunday"
+      Everyday = "Everyday"
+      Weekend = "Weekend"
     end
   end
 end
