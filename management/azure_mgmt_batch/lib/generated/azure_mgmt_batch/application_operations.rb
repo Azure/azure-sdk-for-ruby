@@ -28,7 +28,7 @@ module Azure::ARM::Batch
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
     # @param account_name [String] The name of the Batch account.
-    # @param application_id [String] The id of the application.
+    # @param application_id [String] The ID of the application.
     # @param parameters [AddApplicationParameters] The parameters for the request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -46,7 +46,7 @@ module Azure::ARM::Batch
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
     # @param account_name [String] The name of the Batch account.
-    # @param application_id [String] The id of the application.
+    # @param application_id [String] The ID of the application.
     # @param parameters [AddApplicationParameters] The parameters for the request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -63,7 +63,7 @@ module Azure::ARM::Batch
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
     # @param account_name [String] The name of the Batch account.
-    # @param application_id [String] The id of the application.
+    # @param application_id [String] The ID of the application.
     # @param parameters [AddApplicationParameters] The parameters for the request.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -111,7 +111,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 201
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -138,7 +138,7 @@ module Azure::ARM::Batch
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
     # @param account_name [String] The name of the Batch account.
-    # @param application_id [String] The id of the application.
+    # @param application_id [String] The ID of the application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -154,7 +154,7 @@ module Azure::ARM::Batch
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
     # @param account_name [String] The name of the Batch account.
-    # @param application_id [String] The id of the application.
+    # @param application_id [String] The ID of the application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -170,7 +170,7 @@ module Azure::ARM::Batch
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
     # @param account_name [String] The name of the Batch account.
-    # @param application_id [String] The id of the application.
+    # @param application_id [String] The ID of the application.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -208,7 +208,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 204
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -225,7 +225,7 @@ module Azure::ARM::Batch
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
     # @param account_name [String] The name of the Batch account.
-    # @param application_id [String] The id of the application.
+    # @param application_id [String] The ID of the application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -242,7 +242,7 @@ module Azure::ARM::Batch
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
     # @param account_name [String] The name of the Batch account.
-    # @param application_id [String] The id of the application.
+    # @param application_id [String] The ID of the application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -258,7 +258,7 @@ module Azure::ARM::Batch
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
     # @param account_name [String] The name of the Batch account.
-    # @param application_id [String] The id of the application.
+    # @param application_id [String] The ID of the application.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -296,7 +296,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -323,7 +323,7 @@ module Azure::ARM::Batch
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
     # @param account_name [String] The name of the Batch account.
-    # @param application_id [String] The id of the application.
+    # @param application_id [String] The ID of the application.
     # @param parameters [UpdateApplicationParameters] The parameters for the
     # request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -341,7 +341,7 @@ module Azure::ARM::Batch
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
     # @param account_name [String] The name of the Batch account.
-    # @param application_id [String] The id of the application.
+    # @param application_id [String] The ID of the application.
     # @param parameters [UpdateApplicationParameters] The parameters for the
     # request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -359,7 +359,7 @@ module Azure::ARM::Batch
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
     # @param account_name [String] The name of the Batch account.
-    # @param application_id [String] The id of the application.
+    # @param application_id [String] The ID of the application.
     # @param parameters [UpdateApplicationParameters] The parameters for the
     # request.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -409,7 +409,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 204
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -499,7 +499,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -523,8 +523,8 @@ module Azure::ARM::Batch
     #
     # Lists all of the applications in the specified account.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -538,8 +538,8 @@ module Azure::ARM::Batch
     #
     # Lists all of the applications in the specified account.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -552,8 +552,8 @@ module Azure::ARM::Batch
     #
     # Lists all of the applications in the specified account.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -586,7 +586,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
