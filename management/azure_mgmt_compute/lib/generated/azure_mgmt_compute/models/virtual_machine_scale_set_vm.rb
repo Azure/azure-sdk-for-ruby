@@ -12,10 +12,10 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the virtual machine instance id.
+      # @return [String] The virtual machine instance ID.
       attr_accessor :instance_id
 
-      # @return [Sku] the virtual machine sku.
+      # @return [Sku] The virtual machine SKU.
       attr_accessor :sku
 
       # @return [Boolean] Specifies whether the latest model has been applied
@@ -52,7 +52,7 @@ module Azure::ARM::Compute
       # scenario.
       attr_accessor :license_type
 
-      # @return [Plan] the purchase plan when deploying virtual machine from
+      # @return [Plan] The purchase plan when deploying virtual machine from
       # VM Marketplace images.
       attr_accessor :plan
 
