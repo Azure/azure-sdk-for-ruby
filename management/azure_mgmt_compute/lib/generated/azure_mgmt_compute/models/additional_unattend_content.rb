@@ -6,7 +6,7 @@
 module Azure::ARM::Compute
   module Models
     #
-    # additional XML formatted information that can be included in the
+    # Additional XML formatted information that can be included in the
     # Unattend.xml file, which is used by Windows Setup. Contents are defined
     # by setting name, component name, and the pass in which the content is a
     # applied.
@@ -15,11 +15,11 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [PassNames] the pass name. Currently, the only allowable value
+      # @return [PassNames] The pass name. Currently, the only allowable value
       # is oobeSystem. Possible values include: 'oobeSystem'
       attr_accessor :pass_name
 
-      # @return [ComponentNames] the component name. Currently, the only
+      # @return [ComponentNames] The component name. Currently, the only
       # allowable value is Microsoft-Windows-Shell-Setup. Possible values
       # include: 'Microsoft-Windows-Shell-Setup'
       attr_accessor :component_name

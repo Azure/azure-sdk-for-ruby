@@ -13,12 +13,12 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the full path on the created VM where SSH public key
-      # is stored. If the file already exists, the specified key is appended
-      # to the file.
+      # @return [String] Specifies the full path on the created VM where SSH
+      # public key is stored. If the file already exists, the specified key
+      # is appended to the file.
       attr_accessor :path
 
-      # @return [String] Certificate public key used to authenticate with VM
+      # @return [String] Certificate public key used to authenticate to the VM
       # through SSH. The certificate must be in Pem format with or without
       # headers.
       attr_accessor :key_data

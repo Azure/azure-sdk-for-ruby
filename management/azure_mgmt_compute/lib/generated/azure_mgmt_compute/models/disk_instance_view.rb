@@ -12,10 +12,10 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the disk name.
+      # @return [String] The disk name.
       attr_accessor :name
 
-      # @return [Array<InstanceViewStatus>] the resource status information.
+      # @return [Array<InstanceViewStatus>] The resource status information.
       attr_accessor :statuses
 
 

@@ -12,10 +12,10 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the console screenshot blob Uri.
+      # @return [String] The console screenshot blob URI.
       attr_accessor :console_screenshot_blob_uri
 
-      # @return [String] the Linux serial console log blob Uri.
+      # @return [String] The Linux serial console log blob Uri.
       attr_accessor :serial_console_log_blob_uri
 
 

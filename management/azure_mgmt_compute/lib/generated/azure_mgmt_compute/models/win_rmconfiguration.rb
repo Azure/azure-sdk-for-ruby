@@ -12,7 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Array<WinRMListener>] the list of Windows Remote Management
+      # @return [Array<WinRMListener>] The list of Windows Remote Management
       # listeners
       attr_accessor :listeners
 

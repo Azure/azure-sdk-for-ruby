@@ -12,16 +12,19 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the computer name.
+      # @return [String] Specifies the host OS name of the virtual machine.
       attr_accessor :computer_name
 
-      # @return [String] the admin user name.
+      # @return [String] Specifies the name of the administrator account.
       attr_accessor :admin_username
 
-      # @return [String] the admin user password.
+      # @return [String] Specifies the password of the administrator account.
       attr_accessor :admin_password
 
-      # @return [String] a base-64 encoded string of custom data.
+      # @return [String] Specifies a base-64 encoded string of custom data.
+      # The base-64 encoded string is decoded to a binary array that is saved
+      # as a file on the Virtual Machine. The maximum length of the binary
+      # array is 65535 bytes
       attr_accessor :custom_data
 
       # @return [WindowsConfiguration] the Windows Configuration of the OS

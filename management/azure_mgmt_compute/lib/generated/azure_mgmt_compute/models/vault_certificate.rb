@@ -13,11 +13,11 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the URL referencing a secret in a Key Vault which
+      # @return [String] The URL referencing a secret in a Key Vault which
       # contains a properly formatted certificate.
       attr_accessor :certificate_url
 
-      # @return [String] the Certificate store in LocalMachine to add the
+      # @return [String] The Certificate store in LocalMachine to add the
       # certificate to on Windows, leave empty on Linux.
       attr_accessor :certificate_store
 

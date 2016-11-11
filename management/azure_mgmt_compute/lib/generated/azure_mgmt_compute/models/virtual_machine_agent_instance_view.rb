@@ -12,14 +12,14 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the VM Agent full version.
+      # @return [String] The VM Agent full version.
       attr_accessor :vm_agent_version
 
-      # @return [Array<VirtualMachineExtensionHandlerInstanceView>] the
+      # @return [Array<VirtualMachineExtensionHandlerInstanceView>] The
       # virtual machine extension handler instance view.
       attr_accessor :extension_handlers
 
-      # @return [Array<InstanceViewStatus>] the resource status information.
+      # @return [Array<InstanceViewStatus>] The resource status information.
       attr_accessor :statuses
 
 
