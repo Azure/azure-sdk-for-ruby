@@ -6,13 +6,13 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents an Azure SQL Database Replication Link.
+    # Represents an Azure SQL database replication link.
     #
     class ReplicationLink < SqlSubResource
 
       include MsRestAzure
 
-      # @return [String] The name of the Azure SQL Server hosting the partner
+      # @return [String] The name of the Azure SQL server hosting the partner
       # Azure SQL Database.
       attr_accessor :partner_server
 
@@ -22,14 +22,14 @@ module Azure::ARM::SQL
       # @return [String] The Azure Region of the partner Azure SQL Database.
       attr_accessor :partner_location
 
-      # @return [ReplicationRole] The role of the Azure SQL Database in the
+      # @return [ReplicationRole] The role of the Azure SQL database in the
       # replication link. Possible values include: 'Primary', 'Secondary',
       # 'NonReadableSecondary', 'Source', 'Copy'
       attr_accessor :role
 
-      # @return [ReplicationRole] The role of the partner Azure SQL Database
-      # in the replication link. Possible values include: 'Primary',
-      # 'Secondary', 'NonReadableSecondary', 'Source', 'Copy'
+      # @return [ReplicationRole] The role of the partner Azure SQL Database in
+      # the replication link. Possible values include: 'Primary', 'Secondary',
+      # 'NonReadableSecondary', 'Source', 'Copy'
       attr_accessor :partner_role
 
       # @return [DateTime] The start time for the replication link (ISO8601

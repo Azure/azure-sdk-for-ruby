@@ -13,12 +13,11 @@ module Azure::ARM::SQL
       include MsRestAzure
 
       # @return [TransparentDataEncryptionActivityStates] The status of the
-      # Azure SQL Database. Possible values include: 'Encrypting',
-      # 'Decrypting'
+      # Azure SQL database. Possible values include: 'Encrypting', 'Decrypting'
       attr_accessor :status
 
-      # @return [Float] The percent complete of the transparent data
-      # encryption scan for a Azure SQL Database.
+      # @return [Float] The percent complete of the transparent data encryption
+      # scan for a Azure SQL Database.
       attr_accessor :percent_complete
 
 

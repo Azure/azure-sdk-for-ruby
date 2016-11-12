@@ -6,15 +6,15 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a List Azure SQL Database Replication Link
+    # Represents the response to a List Azure SQL database replication link
     # request.
     #
     class ReplicationLinkListResult
 
       include MsRestAzure
 
-      # @return [Array<ReplicationLink>] The list of Azure SQL Database
-      # Replication Links housed in the database.
+      # @return [Array<ReplicationLink>] The list of Azure SQL database
+      # replication links housed in the database.
       attr_accessor :value
 
 

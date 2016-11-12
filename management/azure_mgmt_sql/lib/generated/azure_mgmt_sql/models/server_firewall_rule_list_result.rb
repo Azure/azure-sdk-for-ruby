@@ -12,7 +12,7 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      # @return [Array<ServerFirewallRule>] The list of Azure SQL Server
+      # @return [Array<ServerFirewallRule>] The list of Azure SQL server
       # firewall rules for the server.
       attr_accessor :value
 

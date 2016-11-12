@@ -15,7 +15,7 @@ module Azure::ARM::SQL
       # @return [String] Resource name
       attr_accessor :name
 
-      # @return [String] Resource Id
+      # @return [String] The resource ID.
       attr_accessor :id
 
 
