@@ -48,10 +48,19 @@ To start working on the gem the only additional dev dependecy is required - rspe
 Reference it in the gemfile and also add this line to your client's gemspec file:
 
 ```ruby
-spec.add_runtime_dependency 'ms_rest', '~> 0.6.0'
+spec.add_runtime_dependency 'ms_rest', '~> 0.6.1'
+```
+Don't forget to correct the version.
+
+# Utilizing Telemetry Extension in your SDK
+
+We encourage the customer of ms_rest library to provide information about their product sent via telemetry extension point as below:
+
+```ruby
+additional_user_agent_information = 'fog-azure-rm/0.2.0' # Refer https://github.com/Azure/azure-sdk-for-ruby/issues/517 for more info.
+service_client.add_user_agent_information(additional_user_agent_information)
 ```
 
-Don't forget to correct the version.
 
 # Provide feedback
 
