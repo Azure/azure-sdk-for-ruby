@@ -6,7 +6,7 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Properties to configure custom clusters.
+    # Properties to configure a custom container service cluster.
     #
     class ContainerServiceCustomProfile
 

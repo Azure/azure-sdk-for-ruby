@@ -12,41 +12,44 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Plan] the purchase plan when deploying virtual machine from
+      # @return [Plan] The purchase plan when deploying virtual machine from
       # VM Marketplace images.
       attr_accessor :plan
 
-      # @return [HardwareProfile] the hardware profile.
+      # @return [HardwareProfile] The hardware profile.
       attr_accessor :hardware_profile
 
-      # @return [StorageProfile] the storage profile.
+      # @return [StorageProfile] The storage profile.
       attr_accessor :storage_profile
 
-      # @return [OSProfile] the OS profile.
+      # @return [OSProfile] The OS profile.
       attr_accessor :os_profile
 
-      # @return [NetworkProfile] the network profile.
+      # @return [NetworkProfile] The network profile.
       attr_accessor :network_profile
 
-      # @return [DiagnosticsProfile] the diagnostics profile.
+      # @return [DiagnosticsProfile] The diagnostics profile.
       attr_accessor :diagnostics_profile
 
-      # @return [SubResource] the reference Id of the availability set to
-      # which this virtual machine belongs.
+      # @return [SubResource] The reference Id of the availability set to
+      # which the virtual machine belongs.
       attr_accessor :availability_set
 
-      # @return [String] the provisioning state, which only appears in the
+      # @return [String] The provisioning state, which only appears in the
       # response.
       attr_accessor :provisioning_state
 
-      # @return [VirtualMachineInstanceView] the virtual machine instance view.
+      # @return [VirtualMachineInstanceView] The virtual machine instance view.
       attr_accessor :instance_view
 
-      # @return [String] the license type, which is for bring your own license
-      # scenario.
+      # @return [String] Specifies that the image or disk that is being used
+      # was licensed on-premises. This element is only used for images that
+      # contain the Windows Server operating system.
       attr_accessor :license_type
 
-      # @return [String] the virtual machine unique id.
+      # @return [String] Specifies the VM unique ID which is a 128-bits
+      # identifier that is encoded and stored in all Azure IaaS VMs SMBIOS
+      # and can be read using platform BIOS commands.
       attr_accessor :vm_id
 
       # @return [Array<VirtualMachineExtension>] the virtual machine child

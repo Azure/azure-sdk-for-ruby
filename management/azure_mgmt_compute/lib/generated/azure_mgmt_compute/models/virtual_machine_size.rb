@@ -12,23 +12,27 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the VM size name.
+      # @return [String] The name of the virtual machine size.
       attr_accessor :name
 
-      # @return [Integer] the Number of cores supported by a VM size.
+      # @return [Integer] The number of cores supported by the virtual machine
+      # size.
       attr_accessor :number_of_cores
 
-      # @return [Integer] the OS disk size allowed by a VM size.
+      # @return [Integer] The OS disk size, in MB, allowed by the virtual
+      # machine size.
       attr_accessor :os_disk_size_in_mb
 
-      # @return [Integer] the Resource disk size allowed by a VM size.
+      # @return [Integer] The resource disk size, in MB, allowed by the
+      # virtual machine size.
       attr_accessor :resource_disk_size_in_mb
 
-      # @return [Integer] the Memory size supported by a VM size.
+      # @return [Integer] The amount of memory, in MB, supported by the
+      # virtual machine size.
       attr_accessor :memory_in_mb
 
-      # @return [Integer] the Maximum number of data disks allowed by a VM
-      # size.
+      # @return [Integer] The maximum number of data disks that can be
+      # attached to the virtual machine size.
       attr_accessor :max_data_disk_count
 
 
