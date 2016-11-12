@@ -12,18 +12,18 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the image publisher.
+      # @return [String] The image publisher.
       attr_accessor :publisher
 
-      # @return [String] the image offer.
+      # @return [String] The image offer.
       attr_accessor :offer
 
-      # @return [String] the image sku.
+      # @return [String] The image SKU.
       attr_accessor :sku
 
-      # @return [String] the image version. The allowed formats are
+      # @return [String] The image version. The allowed formats are
       # Major.Minor.Build or 'latest'. Major, Minor and Build being decimal
-      # numbers. Specify 'latest' to use the latest version of image.
+      # numbers. Specify 'latest' to use the latest version of the image.
       attr_accessor :version
 
 

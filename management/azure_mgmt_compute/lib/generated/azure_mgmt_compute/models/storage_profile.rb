@@ -12,13 +12,13 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [ImageReference] the image reference.
+      # @return [ImageReference] The image reference.
       attr_accessor :image_reference
 
-      # @return [OSDisk] the OS disk.
+      # @return [OSDisk] The OS disk.
       attr_accessor :os_disk
 
-      # @return [Array<DataDisk>] the data disks.
+      # @return [Array<DataDisk>] The data disks.
       attr_accessor :data_disks
 
 
