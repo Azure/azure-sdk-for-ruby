@@ -1,4 +1,4 @@
-##2016.11.09 ms_rest_azure version 0.6.1
+##2016.11.11 ms_rest_azure version 0.6.1
 * Adding telemetry extension point into AzureServiceClient [#543](https://github.com/Azure/azure-sdk-for-ruby/pull/543)
 * Removing explicit json dependency [#523](https://github.com/Azure/azure-sdk-for-ruby/pull/523)
 
