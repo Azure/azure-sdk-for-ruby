@@ -6,7 +6,7 @@
 module Azure::ARM::AnalysisServices
   module Models
     #
-    # Represents an instance of Analysis Services resource
+    # Represents an instance of an Analysis Services resource.
     #
     class AnalysisServicesServer < MsRestAzure::Resource
 
@@ -16,10 +16,10 @@ module Azure::ARM::AnalysisServices
       attr_accessor :as_administrators
 
       # @return [String] The current deployment state of Analysis Services
-      # resource
+      # resource.
       attr_accessor :provisioning_state
 
-      # @return [String] Full name of the Analysis Services resource
+      # @return [String] The full name of the Analysis Services resource.
       attr_accessor :server_full_name
 
 

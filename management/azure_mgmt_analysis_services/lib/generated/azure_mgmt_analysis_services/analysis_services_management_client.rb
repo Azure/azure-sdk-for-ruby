@@ -17,11 +17,11 @@ module Azure::ARM::AnalysisServices
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] A unique identifier of a Microsoft Azure subscription.
-    # The subscription id forms part of the URI for every service call.
+    # @return [String] A unique identifier for a Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
     attr_accessor :subscription_id
 
-    # @return [String] Client API Version.
+    # @return [String] The client API version.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.

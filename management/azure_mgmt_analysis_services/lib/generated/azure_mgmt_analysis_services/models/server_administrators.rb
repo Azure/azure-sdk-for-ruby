@@ -6,13 +6,13 @@
 module Azure::ARM::AnalysisServices
   module Models
     #
-    # Array of administrator user identities
+    # An array of administrator user identities
     #
     class ServerAdministrators
 
       include MsRestAzure
 
-      # @return [Array<String>] Collection of administrator user identities
+      # @return [Array<String>] An array of administrator user identities.
       attr_accessor :members
 
 
