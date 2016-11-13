@@ -1,3 +1,6 @@
+##2016.11.14 ms_rest version 0.6.2
+* Missing default ca-cert for providing ssl options [#580](https://github.com/Azure/azure-sdk-for-ruby/issues/580)
+
 ##2016.11.11 ms_rest version 0.6.1
 * Adding telemetry extension point into ServiceClient [#543](https://github.com/Azure/azure-sdk-for-ruby/pull/543)
 * Removing explicit json dependency [#523](https://github.com/Azure/azure-sdk-for-ruby/pull/523)

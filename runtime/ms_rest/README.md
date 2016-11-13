@@ -41,14 +41,14 @@ MsRest has only unit tests which doesn't require any preparation, just run 'rspe
 
 # Contribution
 
-To start working on the gem the only additional dev dependecy is required - rspec. After you've added a new feature and all specs pass - you're good to go with PR. But before starting any bug/feature - please make sure you've thoroughly discussed it with repository maintainers. This gem already powers a few SDKs and backward compatibility should taken in account.
+To start working on the gem the only additional dev dependency is required - rspec. After you've added a new feature and all specs pass - you're good to go with PR. But before starting any bug/feature - please make sure you've thoroughly discussed it with repository maintainers. This gem already powers a few SDKs and backward compatibility should taken in account.
 
 # Adding gem to you generated SDK
 
 Reference it in the gemfile and also add this line to your client's gemspec file:
 
 ```ruby
-spec.add_runtime_dependency 'ms_rest', '~> 0.6.1'
+spec.add_runtime_dependency 'ms_rest', '~> 0.6.2'
 ```
 Don't forget to correct the version.
 
