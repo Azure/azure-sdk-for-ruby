@@ -7,6 +7,7 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class JobStatus
 
@@ -19,8 +20,7 @@ module Azure::ARM::Scheduler
       attr_accessor :failure_count
 
       # @return [Integer] Gets the number of faulted occurrences (occurrences
-      # that were retried and failed as many times as the retry policy
-      # states).
+      # that were retried and failed as many times as the retry policy states).
       attr_accessor :faulted_count
 
       # @return [DateTime] Gets the time the last occurrence executed in
