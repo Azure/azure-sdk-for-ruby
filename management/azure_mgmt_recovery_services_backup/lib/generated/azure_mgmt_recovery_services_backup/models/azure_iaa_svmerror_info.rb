@@ -15,15 +15,14 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [Integer] Error code.
       attr_accessor :error_code
 
-      # @return [String] Title: Typically, the entity that the error pertains
-      # to.
+      # @return [String] Title: typically, the entity associated the error.
       attr_accessor :error_title
 
       # @return [String] Localized error string.
       attr_accessor :error_string
 
-      # @return [Array<String>] List of localized recommendations for above
-      # error code.
+      # @return [Array<String>] List of localized recommendations for the error
+      # string.
       attr_accessor :recommendations
 
 

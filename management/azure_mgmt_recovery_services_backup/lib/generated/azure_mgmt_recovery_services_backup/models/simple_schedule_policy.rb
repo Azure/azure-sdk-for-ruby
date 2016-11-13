@@ -19,19 +19,20 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :schedulePolicyType
 
-      # @return [ScheduleRunType] Frequency of the schedule operation of this
-      # policy. Possible values include: 'Invalid', 'Daily', 'Weekly'
+      # @return [ScheduleRunType] Defines the frequency interval (daily or
+      # weekly) for the schedule policy. Possible values include: 'Invalid',
+      # 'Daily', 'Weekly'
       attr_accessor :schedule_run_frequency
 
-      # @return [Array<DayOfWeek>] List of days of week this schedule has to
-      # be run.
+      # @return [Array<DayOfWeek>] This list is the days of the week when the
+      # schedule runs.
       attr_accessor :schedule_run_days
 
-      # @return [Array<DateTime>] List of times of day this schedule has to be
-      # run.
+      # @return [Array<DateTime>] List of times, during a day, when the
+      # schedule runs.
       attr_accessor :schedule_run_times
 
-      # @return [Integer] At every number weeks this schedule has to be run.
+      # @return [Integer] The number of times per week the schedule runs.
       attr_accessor :schedule_weekly_frequency
 
 

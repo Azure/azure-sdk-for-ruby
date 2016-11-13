@@ -6,22 +6,23 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # BEK is bitlocker key.
-    # KEK is encryption key for BEK
-    # If the VM was encrypted then we will store follwing details
-    # :
-    # 1. Secret(BEK) - Url + Backup Data + vaultId.
-    # 2. Key(KEK) - Url + Backup Data + vaultId.
-    # BEK and KEK can potentiallty have different vault ids.
+    # BEK stands for Bitlocker Encryption Key.
+    # KEK stands for Key Encryption Key. KEK is the encryption key used to
+    # protect the Secret for the BEK
+    # If the VM is encrypted, then the service stores the following details :
+    # 1. Secret(BEK) - Url + Backup Data + vaultID.
+    # 2. Key(KEK) - Url + Backup Data + vaultID.
+    # It is possible for the BEK and KEK to have different vaultIDs.
     #
     class KeyAndSecretDetails
 
       include MsRestAzure
 
-      # @return [KEKDetails] KEK is encryption key for BEK.
+      # @return [KEKDetails] The Key Encryption Key (KEK) is the encryption key
+      # for the Bitlocker Encryption Key (BEK).
       attr_accessor :kek_details
 
-      # @return [BEKDetails] BEK is bitlocker encrpytion key.
+      # @return [BEKDetails] BEK is Bitlocker Encrpytion Key.
       attr_accessor :bek_details
 
 

@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # IaaS VM workload-specific backup policy.
+    # Azure VM (also known as IaaS VM) workload-specific backup policy.
     #
     class AzureIaaSVMProtectionPolicy < ProtectionPolicy
 
@@ -19,12 +19,12 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :backupManagementType
 
-      # @return [SchedulePolicy] Backup schedule specified as part of backup
-      # policy.
+      # @return [SchedulePolicy] The backup schedule specified as part of
+      # backup policy.
       attr_accessor :schedule_policy
 
-      # @return [RetentionPolicy] Retention policy with the details on backup
-      # copy retention ranges.
+      # @return [RetentionPolicy] The retention policy with the details on
+      # backup copy retention ranges.
       attr_accessor :retention_policy
 
 

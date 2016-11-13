@@ -6,8 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for backup item. Workload-specific backup items are derived
-    # from this class.
+    # The base class for backup item. Workload-specific backup items are
+    # derived from this class.
     #
     class WorkloadProtectableItem
 
@@ -24,14 +24,14 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :protectableItemType
 
-      # @return [String] Type of backup managemenent to backup an item.
+      # @return [String] The backup managemenent type.
       attr_accessor :backup_management_type
 
-      # @return [String] Friendly name of the backup item.
+      # @return [String] The friendly name of the backup item.
       attr_accessor :friendly_name
 
-      # @return [ProtectionStatus] State of the back up item. Possible values
-      # include: 'Invalid', 'NotProtected', 'Protecting', 'Protected'
+      # @return [ProtectionStatus] The state of the back up item. Possible
+      # values include: 'Invalid', 'NotProtected', 'Protecting', 'Protected'
       attr_accessor :protection_state
 
 

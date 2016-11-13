@@ -19,15 +19,16 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :protectableObjectType
 
-      # @return [String] Fully qualified ARM url of the virtual machine
-      # represented by this Azure IaaS VM container.
+      # @return [String] The fully qualified Resource Manager URL of the
+      # virtual machine represented by this Azure IaaS VM container.
       attr_accessor :virtual_machine_id
 
-      # @return [String] Specifies whether the container represents a Classic
-      # or an Azure Resource Manager VM.
+      # @return [String] Specifies whether the container represents a classic
+      # or a Resource Manager-deployed virtual machine.
       attr_accessor :virtual_machine_version
 
-      # @return [String] Resource group name of Recovery Services Vault.
+      # @return [String] The resource group name associated with the Recovery
+      # Services vault.
       attr_accessor :resource_group
 
 

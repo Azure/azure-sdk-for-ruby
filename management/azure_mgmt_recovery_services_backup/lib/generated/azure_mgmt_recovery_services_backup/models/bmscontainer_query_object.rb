@@ -12,16 +12,16 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [BackupManagementType] Backup management type for this
+      # @return [BackupManagementType] The backup management type for this
       # container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
       # 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
-      # @return [String] Status of registration of this container with the
-      # Recovery Services Vault.
+      # @return [String] The status of the container's registration with the
+      # Recovery Services vault.
       attr_accessor :status
 
-      # @return [String] Friendly name of this container.
+      # @return [String] The friendly name of the container.
       attr_accessor :friendly_name
 
 

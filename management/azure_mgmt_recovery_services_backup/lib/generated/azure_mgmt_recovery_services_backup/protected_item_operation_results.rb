@@ -23,18 +23,17 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Fetches the result of any operation on the backup item.
+    # Gets the result of any operation on the backup item.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backup item.
-    # @param container_name [String] Container name associated with the backup
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backup item name whose details are to be
-    # fetched.
-    # @param operation_id [String] OperationID which represents the operation
-    # whose result needs to be fetched.
+    # @param protected_item_name [String] The name of backup item used in this GET
+    # operation.
+    # @param operation_id [String] The OperationID used in this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -46,18 +45,17 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Fetches the result of any operation on the backup item.
+    # Gets the result of any operation on the backup item.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backup item.
-    # @param container_name [String] Container name associated with the backup
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backup item name whose details are to be
-    # fetched.
-    # @param operation_id [String] OperationID which represents the operation
-    # whose result needs to be fetched.
+    # @param protected_item_name [String] The name of backup item used in this GET
+    # operation.
+    # @param operation_id [String] The OperationID used in this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -68,18 +66,17 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Fetches the result of any operation on the backup item.
+    # Gets the result of any operation on the backup item.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backup item.
-    # @param container_name [String] Container name associated with the backup
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backup item name whose details are to be
-    # fetched.
-    # @param operation_id [String] OperationID which represents the operation
-    # whose result needs to be fetched.
+    # @param protected_item_name [String] The name of backup item used in this GET
+    # operation.
+    # @param operation_id [String] The OperationID used in this GET operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

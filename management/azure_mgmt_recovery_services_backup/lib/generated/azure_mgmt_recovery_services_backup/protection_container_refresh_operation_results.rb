@@ -26,12 +26,11 @@ module Azure::ARM::RecoveryServicesBackup
     # Provides the result of the refresh operation triggered by the BeginRefresh
     # operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the container.
-    # @param operation_id [String] Operation ID associated with the operation
-    # whose result needs to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the container.
+    # @param operation_id [String] The operation ID used for this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -45,12 +44,11 @@ module Azure::ARM::RecoveryServicesBackup
     # Provides the result of the refresh operation triggered by the BeginRefresh
     # operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the container.
-    # @param operation_id [String] Operation ID associated with the operation
-    # whose result needs to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the container.
+    # @param operation_id [String] The operation ID used for this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -64,12 +62,11 @@ module Azure::ARM::RecoveryServicesBackup
     # Provides the result of the refresh operation triggered by the BeginRefresh
     # operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the container.
-    # @param operation_id [String] Operation ID associated with the operation
-    # whose result needs to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the container.
+    # @param operation_id [String] The operation ID used for this GET operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

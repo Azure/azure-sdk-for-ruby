@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Container with items backed up using MAB backup engine.
+    # The container associated with items backed up using Azure Backup Server.
     #
     class MabContainer < ProtectionContainer
 
@@ -19,20 +19,20 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :protectableObjectType
 
-      # @return [Boolean] Can the container be registered one more time.
+      # @return [Boolean] The container can be registered one more time.
       attr_accessor :can_re_register
 
-      # @return [Integer] ContainerID represents the container.
+      # @return [Integer] The ID for the container.
       attr_accessor :container_id
 
-      # @return [Integer] Number of items backed up in this container.
+      # @return [Integer] The number of backup items in the container.
       attr_accessor :protected_item_count
 
-      # @return [String] Agent version of this container.
+      # @return [String] The version of the agent used with this container.
       attr_accessor :agent_version
 
-      # @return [MabContainerExtendedInfo] Additional information for this
-      # container
+      # @return [MabContainerExtendedInfo] Additional information for the
+      # container.
       attr_accessor :extended_info
 
 

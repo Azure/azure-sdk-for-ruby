@@ -23,22 +23,21 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Fetches the status of an operation such as triggering a backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
+    # Gets the status of an operation such as triggering a backup or restore. The
+    # status can be: In progress, Completed, or Failed. You can refer to the
     # OperationStatus enum for all the possible states of the operation. Some
-    # operations create jobs. This method returns the list of jobs associated
-    # with the operation.
+    # operations create jobs. This method returns the list of jobs associated with
+    # the operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backup item.
-    # @param container_name [String] Container name associated with the backup
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backup item name whose details are to be
-    # fetched.
-    # @param operation_id [String] OperationID represents the operation whose
-    # status needs to be fetched.
+    # @param protected_item_name [String] The name of backup item used in this GET
+    # operation.
+    # @param operation_id [String] The OperationID used in this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -50,22 +49,21 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Fetches the status of an operation such as triggering a backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
+    # Gets the status of an operation such as triggering a backup or restore. The
+    # status can be: In progress, Completed, or Failed. You can refer to the
     # OperationStatus enum for all the possible states of the operation. Some
-    # operations create jobs. This method returns the list of jobs associated
-    # with the operation.
+    # operations create jobs. This method returns the list of jobs associated with
+    # the operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backup item.
-    # @param container_name [String] Container name associated with the backup
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backup item name whose details are to be
-    # fetched.
-    # @param operation_id [String] OperationID represents the operation whose
-    # status needs to be fetched.
+    # @param protected_item_name [String] The name of backup item used in this GET
+    # operation.
+    # @param operation_id [String] The OperationID used in this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -76,22 +74,21 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Fetches the status of an operation such as triggering a backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
+    # Gets the status of an operation such as triggering a backup or restore. The
+    # status can be: In progress, Completed, or Failed. You can refer to the
     # OperationStatus enum for all the possible states of the operation. Some
-    # operations create jobs. This method returns the list of jobs associated
-    # with the operation.
+    # operations create jobs. This method returns the list of jobs associated with
+    # the operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backup item.
-    # @param container_name [String] Container name associated with the backup
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backup item name whose details are to be
-    # fetched.
-    # @param operation_id [String] OperationID represents the operation whose
-    # status needs to be fetched.
+    # @param protected_item_name [String] The name of backup item used in this GET
+    # operation.
+    # @param operation_id [String] The OperationID used in this GET operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

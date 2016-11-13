@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Target details for file / folder restore.
+    # Target details for the file or folder restore.
     #
     class InstantItemRecoveryTarget
 

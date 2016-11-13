@@ -6,15 +6,15 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Filters the list backup policies API.
+    # This object filters the list of backup policies.
     #
     class ProtectionPolicyQueryObject
 
       include MsRestAzure
 
-      # @return [BackupManagementType] Backup management type for the backup
-      # policy. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
-      # 'DPM', 'AzureBackupServer', 'AzureSql'
+      # @return [BackupManagementType] The backup management type associated
+      # with the backup policy. Possible values include: 'Invalid',
+      # 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
 

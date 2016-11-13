@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Azure SQL workload-specific backup item.
+    # This is an Azure SQL workload-specific backup item.
     #
     class AzureSqlProtectedItem < ProtectedItem
 
@@ -19,11 +19,11 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :protectedItemType
 
-      # @return [String] Internal ID of a backup item. Used by Azure SQL
-      # Backup engine to contact Recovery Services.
+      # @return [String] The internal ID of a backup item. The internal ID is
+      # used by the Azure SQL Backup engine to contact Recovery Services.
       attr_accessor :protected_item_data_id
 
-      # @return [ProtectedItemState] Backup state of the backed up item.
+      # @return [ProtectedItemState] The backup state of the backup item.
       # Possible values include: 'Invalid', 'IRPending', 'Protected',
       # 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
       attr_accessor :protection_state

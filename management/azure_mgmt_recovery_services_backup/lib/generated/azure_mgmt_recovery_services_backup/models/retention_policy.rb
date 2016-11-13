@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for retention policy.
+    # The base class for retention policy.
     #
     class RetentionPolicy
 

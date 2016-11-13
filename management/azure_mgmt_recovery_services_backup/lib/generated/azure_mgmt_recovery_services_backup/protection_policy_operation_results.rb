@@ -25,13 +25,12 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Provides the result of an operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy name whose operation's result
-    # needs to be fetched.
-    # @param operation_id [String] Operation ID which represents the operation
-    # whose result needs to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The backup policy name used in this GET
+    # operation.
+    # @param operation_id [String] The ID associated with this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -45,13 +44,12 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Provides the result of an operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy name whose operation's result
-    # needs to be fetched.
-    # @param operation_id [String] Operation ID which represents the operation
-    # whose result needs to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The backup policy name used in this GET
+    # operation.
+    # @param operation_id [String] The ID associated with this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -64,13 +62,12 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Provides the result of an operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy name whose operation's result
-    # needs to be fetched.
-    # @param operation_id [String] Operation ID which represents the operation
-    # whose result needs to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The backup policy name used in this GET
+    # operation.
+    # @param operation_id [String] The ID associated with this GET operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

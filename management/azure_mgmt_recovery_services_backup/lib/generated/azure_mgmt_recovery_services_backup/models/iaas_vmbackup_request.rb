@@ -6,7 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # IaaS VM workload-specific backup request.
+    # This is an Azure VM (also known as IaaS VM) workload-specific backup
+    # request.
     #
     class IaasVMBackupRequest < BackupRequest
 
@@ -19,8 +20,8 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :objectType
 
-      # @return [DateTime] Backup copy will expire after the time specified
-      # (UTC).
+      # @return [DateTime] The backup copy will expire after the time
+      # specified. The time is in UTC format.
       attr_accessor :recovery_point_expiry_time_in_utc
 
 

@@ -23,14 +23,21 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Provides a pageable list of protectable objects within your subscription
-    # according to the query filter and the pagination parameters.
+    # Based on the query filter and the pagination parameters, this operation
+    # provides a pageable list of objects within the subscription that can be
+    # protected.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] Using the following query filters, you can sort a
+    # specific backup item based on: type of backup item, status, name of the item,
+    # and more.  providerType eq { AzureIaasVM, MAB, DPM, AzureBackupServer,
+    # AzureSql } and status eq { NotProtected , Protecting , Protected } and
+    # friendlyName {name} and skipToken eq {string which provides the next set of
+    # list} and topToken eq {int} and backupManagementType eq { AzureIaasVM, MAB,
+    # DPM, AzureBackupServer, AzureSql }.
+    # @param skip_token [String] The Skip Token filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -42,14 +49,21 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of protectable objects within your subscription
-    # according to the query filter and the pagination parameters.
+    # Based on the query filter and the pagination parameters, this operation
+    # provides a pageable list of objects within the subscription that can be
+    # protected.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] Using the following query filters, you can sort a
+    # specific backup item based on: type of backup item, status, name of the item,
+    # and more.  providerType eq { AzureIaasVM, MAB, DPM, AzureBackupServer,
+    # AzureSql } and status eq { NotProtected , Protecting , Protected } and
+    # friendlyName {name} and skipToken eq {string which provides the next set of
+    # list} and topToken eq {int} and backupManagementType eq { AzureIaasVM, MAB,
+    # DPM, AzureBackupServer, AzureSql }.
+    # @param skip_token [String] The Skip Token filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -60,14 +74,21 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of protectable objects within your subscription
-    # according to the query filter and the pagination parameters.
+    # Based on the query filter and the pagination parameters, this operation
+    # provides a pageable list of objects within the subscription that can be
+    # protected.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] Using the following query filters, you can sort a
+    # specific backup item based on: type of backup item, status, name of the item,
+    # and more.  providerType eq { AzureIaasVM, MAB, DPM, AzureBackupServer,
+    # AzureSql } and status eq { NotProtected , Protecting , Protected } and
+    # friendlyName {name} and skipToken eq {string which provides the next set of
+    # list} and topToken eq {int} and backupManagementType eq { AzureIaasVM, MAB,
+    # DPM, AzureBackupServer, AzureSql }.
+    # @param skip_token [String] The Skip Token filter.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -126,11 +147,12 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of protectable objects within your subscription
-    # according to the query filter and the pagination parameters.
+    # Based on the query filter and the pagination parameters, this operation
+    # provides a pageable list of objects within the subscription that can be
+    # protected.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -142,11 +164,12 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of protectable objects within your subscription
-    # according to the query filter and the pagination parameters.
+    # Based on the query filter and the pagination parameters, this operation
+    # provides a pageable list of objects within the subscription that can be
+    # protected.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -157,11 +180,12 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of protectable objects within your subscription
-    # according to the query filter and the pagination parameters.
+    # Based on the query filter and the pagination parameters, this operation
+    # provides a pageable list of objects within the subscription that can be
+    # protected.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -216,14 +240,21 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of protectable objects within your subscription
-    # according to the query filter and the pagination parameters.
+    # Based on the query filter and the pagination parameters, this operation
+    # provides a pageable list of objects within the subscription that can be
+    # protected.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] Using the following query filters, you can sort a
+    # specific backup item based on: type of backup item, status, name of the item,
+    # and more.  providerType eq { AzureIaasVM, MAB, DPM, AzureBackupServer,
+    # AzureSql } and status eq { NotProtected , Protecting , Protected } and
+    # friendlyName {name} and skipToken eq {string which provides the next set of
+    # list} and topToken eq {int} and backupManagementType eq { AzureIaasVM, MAB,
+    # DPM, AzureBackupServer, AzureSql }.
+    # @param skip_token [String] The Skip Token filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

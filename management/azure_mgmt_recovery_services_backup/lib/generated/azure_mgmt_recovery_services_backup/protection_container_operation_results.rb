@@ -23,16 +23,15 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Fetches the result of any operation on the container.
+    # Gets the result of any operation on the container.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the container.
-    # @param container_name [String] Container name whose information should be
-    # fetched.
-    # @param operation_id [String] Operation ID which represents the operation
-    # whose result needs to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the container.
+    # @param container_name [String] The container name used for this GET
+    # operation.
+    # @param operation_id [String] The operation ID used for this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -44,16 +43,15 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Fetches the result of any operation on the container.
+    # Gets the result of any operation on the container.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the container.
-    # @param container_name [String] Container name whose information should be
-    # fetched.
-    # @param operation_id [String] Operation ID which represents the operation
-    # whose result needs to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the container.
+    # @param container_name [String] The container name used for this GET
+    # operation.
+    # @param operation_id [String] The operation ID used for this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -64,16 +62,15 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Fetches the result of any operation on the container.
+    # Gets the result of any operation on the container.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the container.
-    # @param container_name [String] Container name whose information should be
-    # fetched.
-    # @param operation_id [String] Operation ID which represents the operation
-    # whose result needs to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the container.
+    # @param container_name [String] The container name used for this GET
+    # operation.
+    # @param operation_id [String] The operation ID used for this GET operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

@@ -6,22 +6,22 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Client script details for file / folder restore.
+    # Client script details for the file or folder restore.
     #
     class ClientScriptForConnect
 
       include MsRestAzure
 
-      # @return [String] File content of the client script for file / folder
+      # @return [String] File content of the client script for file or folder
       # restore.
       attr_accessor :script_content
 
-      # @return [String] File extension of the client script for file / folder
-      # restore - .ps1 , .sh , etc.
+      # @return [String] File extension of the client script for the file or
+      # folder restore. Some examples of the extension are: .ps1 and .sh.
       attr_accessor :script_extension
 
-      # @return [String] OS type - Windows, Linux etc. for which this file /
-      # folder restore client script works.
+      # @return [String] The operating system platform ("Windows" or "Linux")
+      # for which this file or folder restore client script works.
       attr_accessor :os_type
 
 

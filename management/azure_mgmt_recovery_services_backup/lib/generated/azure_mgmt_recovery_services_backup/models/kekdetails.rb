@@ -6,19 +6,22 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # KEK is encryption key for BEK.
+    # The Key Encryption Key (KEK) is the encryption key for the Bitlocker
+    # Encryption Key (BEK).
     #
     class KEKDetails
 
       include MsRestAzure
 
-      # @return [String] Key is KEK.
+      # @return [String] Key refers to the Key Encryption Key (KEK). The KEK is
+      # the Key to unlock the Secret.
       attr_accessor :key_url
 
-      # @return [String] Key Vault ID where this Key is stored.
+      # @return [String] Key Vault ID identifies where the KEK is stored.
       attr_accessor :key_vault_id
 
-      # @return [String] KEK data.
+      # @return [String] Key Backup Data refers to Key Encryption Key (KEK)
+      # data.
       attr_accessor :key_backup_data
 
 

@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Long term policy schedule.
+    # Long-term policy schedule.
     #
     class LongTermSchedulePolicy < SchedulePolicy
 

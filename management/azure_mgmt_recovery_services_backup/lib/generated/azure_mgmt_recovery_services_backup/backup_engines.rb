@@ -23,14 +23,16 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Backup management servers registered to Recovery Services Vault. Returns a
-    # pageable list of servers.
+    # The backup management servers registered to a Recovery Services vault. This
+    # returns a pageable list of servers.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] Use this filter to choose the specific backup
+    # management server. backupManagementType { AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql }.
+    # @param skip_token [String] The Skip Token filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -42,14 +44,16 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Backup management servers registered to Recovery Services Vault. Returns a
-    # pageable list of servers.
+    # The backup management servers registered to a Recovery Services vault. This
+    # returns a pageable list of servers.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] Use this filter to choose the specific backup
+    # management server. backupManagementType { AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql }.
+    # @param skip_token [String] The Skip Token filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -60,14 +64,16 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Backup management servers registered to Recovery Services Vault. Returns a
-    # pageable list of servers.
+    # The backup management servers registered to a Recovery Services vault. This
+    # returns a pageable list of servers.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] Use this filter to choose the specific backup
+    # management server. backupManagementType { AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql }.
+    # @param skip_token [String] The Skip Token filter.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -126,11 +132,11 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Backup management servers registered to Recovery Services Vault. Returns a
-    # pageable list of servers.
+    # The backup management servers registered to a Recovery Services vault. This
+    # returns a pageable list of servers.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -142,11 +148,11 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Backup management servers registered to Recovery Services Vault. Returns a
-    # pageable list of servers.
+    # The backup management servers registered to a Recovery Services vault. This
+    # returns a pageable list of servers.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -157,11 +163,11 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Backup management servers registered to Recovery Services Vault. Returns a
-    # pageable list of servers.
+    # The backup management servers registered to a Recovery Services vault. This
+    # returns a pageable list of servers.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -216,14 +222,16 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Backup management servers registered to Recovery Services Vault. Returns a
-    # pageable list of servers.
+    # The backup management servers registered to a Recovery Services vault. This
+    # returns a pageable list of servers.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] Use this filter to choose the specific backup
+    # management server. backupManagementType { AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql }.
+    # @param skip_token [String] The Skip Token filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

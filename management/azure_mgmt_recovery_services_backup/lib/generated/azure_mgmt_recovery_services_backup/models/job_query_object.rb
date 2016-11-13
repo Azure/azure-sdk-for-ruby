@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Filters to list the jobs.
+    # The filters to list the jobs.
     #
     class JobQueryObject
 
@@ -22,18 +22,18 @@ module Azure::ARM::RecoveryServicesBackup
       # 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
-      # @return [JobOperationType] Type of operation. Possible values include:
-      # 'Invalid', 'ConfigureBackup', 'Backup', 'Restore', 'DisableBackup',
-      # 'DeleteBackupData'
+      # @return [JobOperationType] The type of operation. Possible values
+      # include: 'Invalid', 'ConfigureBackup', 'Backup', 'Restore',
+      # 'DisableBackup', 'DeleteBackupData'
       attr_accessor :operation
 
-      # @return [String] JobID represents the job uniquely.
+      # @return [String] The ID of the job. Each jobID is unique.
       attr_accessor :job_id
 
-      # @return [DateTime] Job has started at this time. Value is in UTC.
+      # @return [DateTime] The time when the job starts. The value is in UTC.
       attr_accessor :start_time
 
-      # @return [DateTime] Job has ended at this time. Value is in UTC.
+      # @return [DateTime] The time when the job ends. The value is in UTC.
       attr_accessor :end_time
 
 

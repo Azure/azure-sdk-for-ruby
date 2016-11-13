@@ -6,8 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for container with backup items. Containers with specific
-    # workloads are derived from this class.
+    # The base class for a container with backup items. Containers with
+    # specific workloads are derived from this class.
     #
     class ProtectionContainer
 
@@ -29,23 +29,24 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [String] Friendly name of the container.
       attr_accessor :friendly_name
 
-      # @return [BackupManagementType] Type of backup managemenent for the
+      # @return [BackupManagementType] The backup managemenent type for the
       # container. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
       # 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
-      # @return [String] Status of registration of the container with the
-      # Recovery Services Vault.
+      # @return [String] The container's registration status with the Recovery
+      # Services vault.
       attr_accessor :registration_status
 
-      # @return [String] Status of health of the container.
+      # @return [String] The status of the container's health.
       attr_accessor :health_status
 
-      # @return [String] Type of the container. The value of this property
-      # for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
-      # Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines
-      # 3. Windows machines (like MAB, DPM etc) is Windows 4. Azure SQL
-      # instance is AzureSqlContainer.
+      # @return [String] The type assigned to the container. The values to use
+      # for each of these propertes are:<br/> 1. Compute Azure VM is
+      # Microsoft.Compute/virtualMachines<br/> 2. Classic Compute Azure VM is
+      # Microsoft.ClassicCompute/virtualMachines<br/> 3. Windows machines (like
+      # Azure Backup Server and DPM) is Windows<br/> 4. Azure SQL instance is
+      # AzureSqlContainer.
       attr_accessor :container_type
 
 

@@ -6,16 +6,16 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Error information associated with operation status call.
+    # Error information associated with the operation status call.
     #
     class OperationStatusError
 
       include MsRestAzure
 
-      # @return [String] Error code of the operation failure.
+      # @return [String] The error code for the failed operation.
       attr_accessor :code
 
-      # @return [String] Error message displayed if the operation failure.
+      # @return [String] The error message for the failed operation.
       attr_accessor :message
 
 

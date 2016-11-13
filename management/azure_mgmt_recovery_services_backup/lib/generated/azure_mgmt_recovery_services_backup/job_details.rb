@@ -23,12 +23,12 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Gets exteded information associated with the job.
+    # Gets extended information associated with the job.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param job_name [String] Name of the job whose details are to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param job_name [String] Name of the job associated with this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,12 +40,12 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Gets exteded information associated with the job.
+    # Gets extended information associated with the job.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param job_name [String] Name of the job whose details are to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param job_name [String] Name of the job associated with this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -56,12 +56,12 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Gets exteded information associated with the job.
+    # Gets extended information associated with the job.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param job_name [String] Name of the job whose details are to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param job_name [String] Name of the job associated with this GET operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

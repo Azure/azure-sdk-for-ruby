@@ -6,8 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # IaaS VM workload-specific backup item representing the Azure Resource
-    # Manager VM.
+    # IaaS VM workload-specific backup item representing the Resource Manager
+    # VM.
     #
     class AzureIaaSComputeVMProtectedItem < AzureIaaSVMProtectedItem
 

@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # IaaS VM workload specific backup copy.
+    # Azure VM (also known as IaaS VM) workload-specific backup copy.
     #
     class IaasVMRecoveryPoint < RecoveryPoint
 
@@ -22,14 +22,15 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [String] Type of the backup copy.
       attr_accessor :recovery_point_type
 
-      # @return [DateTime] Time at which this backup copy was created.
+      # @return [DateTime] The date and time when the backup copy was created.
       attr_accessor :recovery_point_time
 
       # @return [String] Additional information associated with this backup
       # copy.
       attr_accessor :recovery_point_additional_info
 
-      # @return [String] Storage type of the VM whose backup copy is created.
+      # @return [String] The storage type for the VM whose backup copy was
+      # created.
       attr_accessor :source_vmstorage_type
 
       # @return [Boolean] Identifies whether the VM was encrypted when the
@@ -40,8 +41,8 @@ module Azure::ARM::RecoveryServicesBackup
       # encrypted VM. Applicable only when IsSourceVMEncrypted is true.
       attr_accessor :key_and_secret
 
-      # @return [Boolean] Is the session to recover items from this backup
-      # copy still active.
+      # @return [Boolean] Answer to the question - Is the session to recover
+      # items from this backup copy still active.
       attr_accessor :is_instant_ilrsession_active
 
 

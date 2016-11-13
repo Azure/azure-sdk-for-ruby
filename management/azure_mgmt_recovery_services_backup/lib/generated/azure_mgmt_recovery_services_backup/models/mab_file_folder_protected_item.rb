@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # MAB workload-specific backup item.
+    # This is a file or folder workload-specific backup item.
     #
     class MabFileFolderProtectedItem < ProtectedItem
 
@@ -19,24 +19,25 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :protectedItemType
 
-      # @return [String] Friendly name of this backup item.
+      # @return [String] The friendly name of this backup item.
       attr_accessor :friendly_name
 
-      # @return [String] Name of the computer associated with this backup item.
+      # @return [String] The name of the computer associated with this backup
+      # item.
       attr_accessor :computer_name
 
-      # @return [String] Status of last backup operation.
+      # @return [String] The status of last backup operation.
       attr_accessor :last_backup_status
 
-      # @return [String] Protected, ProtectionStopped, IRPending or
-      # ProtectionError
+      # @return [String] The states for this property are: Protected,
+      # ProtectionStopped, IRPending, or ProtectionError.
       attr_accessor :protection_state
 
       # @return [Boolean]
       attr_accessor :is_scheduled_for_deferred_delete
 
-      # @return [MabFileFolderProtectedItemExtendedInfo] Additional
-      # information with this backup item.
+      # @return [MabFileFolderProtectedItemExtendedInfo] Additional information
+      # for this backup item.
       attr_accessor :extended_info
 
 

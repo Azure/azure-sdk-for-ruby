@@ -6,16 +6,16 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Filters to list backup copies.
+    # Filters the list of backup copies based on the property.
     #
     class BMSRPQueryObject
 
       include MsRestAzure
 
-      # @return [DateTime] Backup copies created after this time.
+      # @return [DateTime] Use backup copies created after this time.
       attr_accessor :start_date
 
-      # @return [DateTime] Backup copies created before this time.
+      # @return [DateTime] Use backup copies created before this time.
       attr_accessor :end_date
 
 

@@ -6,7 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Operation status extended info for ILR provision action.
+    # Extended information about the Item Level Recovery (ILR) provision
+    # action, operation status.
     #
     class OperationStatusProvisionILRExtendedInfo < OperationStatusExtendedInfo
 
@@ -19,8 +20,8 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :objectType
 
-      # @return [InstantItemRecoveryTarget] Target details for file / folder
-      # restore.
+      # @return [InstantItemRecoveryTarget] Target details for the file or
+      # folder restore.
       attr_accessor :recovery_target
 
 

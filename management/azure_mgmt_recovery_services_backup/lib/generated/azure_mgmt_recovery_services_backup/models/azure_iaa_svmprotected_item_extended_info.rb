@@ -6,7 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Additional information on Azure IaaS VM specific backup item.
+    # Additional information for the Azure VM (also known as IaaS VM)-specific
+    # backup item.
     #
     class AzureIaaSVMProtectedItemExtendedInfo
 
@@ -16,11 +17,11 @@ module Azure::ARM::RecoveryServicesBackup
       # item.
       attr_accessor :oldest_recovery_point
 
-      # @return [Integer] Number of backup copies available for this backup
+      # @return [Integer] The number of backup copies available for this backup
       # item.
       attr_accessor :recovery_point_count
 
-      # @return [Boolean] Specifies if backup policy associated with the
+      # @return [Boolean] Specifies if the backup policy associated with the
       # backup item is inconsistent.
       attr_accessor :policy_inconsistent
 

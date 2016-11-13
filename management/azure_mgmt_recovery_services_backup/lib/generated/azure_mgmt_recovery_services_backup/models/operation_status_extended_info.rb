@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for additional information of operation status.
+    # The base class for additional information about the operation status.
     #
     class OperationStatusExtendedInfo
 

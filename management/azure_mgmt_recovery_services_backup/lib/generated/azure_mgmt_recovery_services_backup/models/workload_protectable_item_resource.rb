@@ -6,8 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for backup item. Workload-specific backup items are derived
-    # from this class.
+    # The base class for the backup item. Workload-specific backup items are
+    # derived from this class.
     #
     class WorkloadProtectableItemResource < MsRestAzure::Resource
 

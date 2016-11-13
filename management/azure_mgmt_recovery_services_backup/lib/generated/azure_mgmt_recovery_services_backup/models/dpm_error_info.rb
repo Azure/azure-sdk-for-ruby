@@ -15,8 +15,8 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [String] Localized error string.
       attr_accessor :error_string
 
-      # @return [Array<String>] List of localized recommendations for above
-      # error code.
+      # @return [Array<String>] The list of localized recommendations for the
+      # error string.
       attr_accessor :recommendations
 
 

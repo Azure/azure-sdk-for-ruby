@@ -6,29 +6,29 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Monthly retention schedule.
+    # The monthly retention schedule.
     #
     class MonthlyRetentionSchedule
 
       include MsRestAzure
 
       # @return [RetentionScheduleFormat] Retention schedule format type for
-      # monthly retention policy. Possible values include: 'Invalid',
-      # 'Daily', 'Weekly'
+      # monthly retention policy. Possible values include: 'Invalid', 'Daily',
+      # 'Weekly'
       attr_accessor :retention_schedule_format_type
 
-      # @return [DailyRetentionFormat] Daily retention format for monthly
+      # @return [DailyRetentionFormat] Daily retention format for the monthly
       # retention policy.
       attr_accessor :retention_schedule_daily
 
-      # @return [WeeklyRetentionFormat] Weekly retention format for monthly
+      # @return [WeeklyRetentionFormat] Weekly retention format for the monthly
       # retention policy.
       attr_accessor :retention_schedule_weekly
 
-      # @return [Array<DateTime>] Retention times of retention policy.
+      # @return [Array<DateTime>] Retention times of the retention policy.
       attr_accessor :retention_times
 
-      # @return [RetentionDuration] Retention duration of retention Policy.
+      # @return [RetentionDuration] Retention duration of the retention policy.
       attr_accessor :retention_duration
 
 

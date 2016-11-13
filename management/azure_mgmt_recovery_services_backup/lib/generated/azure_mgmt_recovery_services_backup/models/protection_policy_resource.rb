@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for backup policy. Workload-specific backup policies are
+    # The base class for backup policy. Workload-specific backup policies are
     # derived from this class.
     #
     class ProtectionPolicyResource < MsRestAzure::Resource

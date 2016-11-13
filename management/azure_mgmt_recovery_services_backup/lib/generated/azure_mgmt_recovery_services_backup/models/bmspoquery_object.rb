@@ -6,21 +6,21 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Filters to list items that can be backed up.
+    # Filters the list of backup items.
     #
     class BMSPOQueryObject
 
       include MsRestAzure
 
-      # @return [BackupManagementType] Backup management type. Possible values
-      # include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer',
-      # 'AzureSql'
+      # @return [BackupManagementType] The backup management type. Possible
+      # values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
+      # 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
-      # @return [String] Backup status query parameter.
+      # @return [String] The backup status query parameter.
       attr_accessor :status
 
-      # @return [String] Friendly name.
+      # @return [String] The friendly name for the item.
       attr_accessor :friendly_name
 
 

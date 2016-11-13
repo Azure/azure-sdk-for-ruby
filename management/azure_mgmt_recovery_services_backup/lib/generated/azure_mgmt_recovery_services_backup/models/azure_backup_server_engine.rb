@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Backup engine type when Azure Backup Server is used to manage the
+    # The backup engine type when Azure Backup Server is used to manage the
     # backups.
     #
     class AzureBackupServerEngine < BackupEngineBase

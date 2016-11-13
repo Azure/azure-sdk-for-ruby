@@ -25,7 +25,7 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [String] Type of the backup copy.
       attr_accessor :recovery_point_type
 
-      # @return [DateTime] Time at which this backup copy was created.
+      # @return [DateTime] The time when this backup copy was created.
       attr_accessor :recovery_point_time
 
       # @return [String] Additional information associated with this backup

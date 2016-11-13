@@ -6,26 +6,27 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Filters to list backup items.
+    # Filters the list of backup items.
     #
     class ProtectedItemQueryObject
 
       include MsRestAzure
 
-      # @return [BackupManagementType] Backup management type for the backed
-      # up item. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
+      # @return [BackupManagementType] The backup management type associated
+      # with an item. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
       # 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
-      # @return [DataSourceType] Type of workload this item represents.
+      # @return [DataSourceType] The workload type associated with an item.
       # Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
       # 'SQLDB', 'Exchange', 'Sharepoint', 'DPMUnknown'
       attr_accessor :item_type
 
-      # @return [String] Backup policy name associated with the backup item.
+      # @return [String] The name of the backup policy associated with the
+      # item.
       attr_accessor :policy_name
 
-      # @return [String] Name of the container.
+      # @return [String] The name of the container.
       attr_accessor :container_name
 
 

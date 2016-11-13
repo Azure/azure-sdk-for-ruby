@@ -23,14 +23,15 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Provides the details of the backup policies associated to Recovery Services
-    # Vault. This is an asynchronous operation. Status of the operation can be
-    # fetched using GetPolicyOperationResult API.
+    # Gets the details of the backup policy associated with the Recovery Services
+    # vault. This is an asynchronous operation. Use the GetPolicyOperationResult
+    # API to Get the operation status.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy information to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The backup policy name used in this GET
+    # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -42,14 +43,15 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides the details of the backup policies associated to Recovery Services
-    # Vault. This is an asynchronous operation. Status of the operation can be
-    # fetched using GetPolicyOperationResult API.
+    # Gets the details of the backup policy associated with the Recovery Services
+    # vault. This is an asynchronous operation. Use the GetPolicyOperationResult
+    # API to Get the operation status.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy information to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The backup policy name used in this GET
+    # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -60,14 +62,15 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides the details of the backup policies associated to Recovery Services
-    # Vault. This is an asynchronous operation. Status of the operation can be
-    # fetched using GetPolicyOperationResult API.
+    # Gets the details of the backup policy associated with the Recovery Services
+    # vault. This is an asynchronous operation. Use the GetPolicyOperationResult
+    # API to Get the operation status.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy information to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The backup policy name used in this GET
+    # operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -127,15 +130,15 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Creates or modifies a backup policy. This is an asynchronous operation.
-    # Status of the operation can be fetched using GetPolicyOperationResult API.
+    # Creates or modifies a backup policy. This is an asynchronous operation. Use
+    # the GetPolicyOperationResult API to Get the operation status.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy to be created.
-    # @param resource_protection_policy [ProtectionPolicyResource] resource backup
-    # policy
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The backup policy to be created.
+    # @param resource_protection_policy [ProtectionPolicyResource] The resource
+    # backup policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -147,15 +150,15 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Creates or modifies a backup policy. This is an asynchronous operation.
-    # Status of the operation can be fetched using GetPolicyOperationResult API.
+    # Creates or modifies a backup policy. This is an asynchronous operation. Use
+    # the GetPolicyOperationResult API to Get the operation status.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy to be created.
-    # @param resource_protection_policy [ProtectionPolicyResource] resource backup
-    # policy
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The backup policy to be created.
+    # @param resource_protection_policy [ProtectionPolicyResource] The resource
+    # backup policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -166,15 +169,15 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Creates or modifies a backup policy. This is an asynchronous operation.
-    # Status of the operation can be fetched using GetPolicyOperationResult API.
+    # Creates or modifies a backup policy. This is an asynchronous operation. Use
+    # the GetPolicyOperationResult API to Get the operation status.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy to be created.
-    # @param resource_protection_policy [ProtectionPolicyResource] resource backup
-    # policy
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The backup policy to be created.
+    # @param resource_protection_policy [ProtectionPolicyResource] The resource
+    # backup policy.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -244,14 +247,14 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Deletes specified backup policy from your Recovery Services Vault. This is
-    # an asynchronous operation. Status of the operation can be fetched using
-    # GetPolicyOperationResult API.
+    # Deletes the specified backup policy from your Recovery Services vault. This
+    # is an asynchronous operation. Use the GetPolicyOperationResult API to Get the
+    # operation status.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy to be deleted.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The name of the backup policy to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -262,14 +265,14 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Deletes specified backup policy from your Recovery Services Vault. This is
-    # an asynchronous operation. Status of the operation can be fetched using
-    # GetPolicyOperationResult API.
+    # Deletes the specified backup policy from your Recovery Services vault. This
+    # is an asynchronous operation. Use the GetPolicyOperationResult API to Get the
+    # operation status.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy to be deleted.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The name of the backup policy to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -280,14 +283,14 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Deletes specified backup policy from your Recovery Services Vault. This is
-    # an asynchronous operation. Status of the operation can be fetched using
-    # GetPolicyOperationResult API.
+    # Deletes the specified backup policy from your Recovery Services vault. This
+    # is an asynchronous operation. Use the GetPolicyOperationResult API to Get the
+    # operation status.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy to be deleted.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The name of the backup policy to be deleted.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -337,13 +340,15 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # Lists the backup policies associated with the Recovery Services vault. The
+    # API provides parameters to Get scoped results.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The following equation can be used to filter the list
+    # of backup policies. backupManagementType eq {AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -355,13 +360,15 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # Lists the backup policies associated with the Recovery Services vault. The
+    # API provides parameters to Get scoped results.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The following equation can be used to filter the list
+    # of backup policies. backupManagementType eq {AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -372,13 +379,15 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # Lists the backup policies associated with the Recovery Services vault. The
+    # API provides parameters to Get scoped results.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The following equation can be used to filter the list
+    # of backup policies. backupManagementType eq {AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql}.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -437,11 +446,11 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # Lists the backup policies associated with the Recovery Services vault. The
+    # API provides parameters to Get scoped results.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -453,11 +462,11 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # Lists the backup policies associated with the Recovery Services vault. The
+    # API provides parameters to Get scoped results.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -468,11 +477,11 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # Lists the backup policies associated with the Recovery Services vault. The
+    # API provides parameters to Get scoped results.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -527,13 +536,15 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists of backup policies associated with Recovery Services Vault. API
-    # provides pagination parameters to fetch scoped results.
+    # Lists the backup policies associated with the Recovery Services vault. The
+    # API provides parameters to Get scoped results.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The following equation can be used to filter the list
+    # of backup policies. backupManagementType eq {AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
