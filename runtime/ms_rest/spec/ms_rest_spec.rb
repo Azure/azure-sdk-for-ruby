@@ -15,6 +15,7 @@ module MsRest
       MsRest.use_ssl_cert
       expect(MsRest.ssl_options).to be_truthy
       expect(MsRest.ssl_options[:ca_file]).to match(/.*ca-cert.pem$/)
+      expect(File.file?(MsRest.ssl_options[:ca_file])).to be_truthy
     end
 
     it 'should use user supplied ssl options' do
