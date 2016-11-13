@@ -12,8 +12,8 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Array<SshPublicKey>] the list of SSH public keys used to
-      # authenticate with linux based VMs
+      # @return [Array<SshPublicKey>] The list of SSH public keys used to
+      # authenticate with linux based VMs.
       attr_accessor :public_keys
 
 

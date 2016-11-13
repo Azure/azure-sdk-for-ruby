@@ -6,8 +6,8 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Information about a service principal identity for the cluster to use
-    # for manipulating Azure APIs.
+    # Information about a service principal identity for the cluster to use for
+    # manipulating Azure APIs.
     #
     class ContainerServiceServicePrincipalProfile
 

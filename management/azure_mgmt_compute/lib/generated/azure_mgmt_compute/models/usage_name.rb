@@ -12,10 +12,10 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] a string describing the resource name.
+      # @return [String] The name of the resource.
       attr_accessor :value
 
-      # @return [String] a localized string describing the resource name.
+      # @return [String] The localized name of the resource.
       attr_accessor :localized_value
 
 

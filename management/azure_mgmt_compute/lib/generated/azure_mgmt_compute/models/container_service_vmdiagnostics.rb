@@ -6,14 +6,14 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Describes VM diagnostics.
+    # Profile for diagnostics on the container service VMs.
     #
     class ContainerServiceVMDiagnostics
 
       include MsRestAzure
 
-      # @return [Boolean] Whether the VM diagnostic agent should be
-      # provisioned on the VM.
+      # @return [Boolean] Whether the VM diagnostic agent is provisioned on the
+      # VM.
       attr_accessor :enabled
 
       # @return [String] The URI of the storage account where diagnostics are

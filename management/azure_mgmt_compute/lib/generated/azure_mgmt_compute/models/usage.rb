@@ -12,17 +12,17 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] an enum describing the unit of measurement. Default
-      # value: 'Count' .
+      # @return [String] An enum describing the unit of usage measurement.
+      # Default value: 'Count' .
       attr_accessor :unit
 
-      # @return [Integer] the current value of the usage.
+      # @return [Integer] The current usage of the resource.
       attr_accessor :current_value
 
-      # @return [Integer] the limit of usage.
+      # @return [Integer] The maximum permitted usage of the resource.
       attr_accessor :limit
 
-      # @return [UsageName] the name of the type of usage.
+      # @return [UsageName] The name of the type of usage.
       attr_accessor :name
 
 

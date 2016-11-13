@@ -23,9 +23,11 @@ module Azure::ARM::Compute
     attr_reader :client
 
     #
-    # Lists compute usages for a subscription.
+    # Gets, for the specified location, the current compute resource usage
+    # information as well as the limits for compute resources under the
+    # subscription.
     #
-    # @param location [String] The location upon which resource usage is queried.
+    # @param location [String] The location for which resource usage is queried.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -37,9 +39,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists compute usages for a subscription.
+    # Gets, for the specified location, the current compute resource usage
+    # information as well as the limits for compute resources under the
+    # subscription.
     #
-    # @param location [String] The location upon which resource usage is queried.
+    # @param location [String] The location for which resource usage is queried.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -50,9 +54,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists compute usages for a subscription.
+    # Gets, for the specified location, the current compute resource usage
+    # information as well as the limits for compute resources under the
+    # subscription.
     #
-    # @param location [String] The location upon which resource usage is queried.
+    # @param location [String] The location for which resource usage is queried.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -110,10 +116,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists compute usages for a subscription.
+    # Gets, for the specified location, the current compute resource usage
+    # information as well as the limits for compute resources under the
+    # subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -125,10 +133,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists compute usages for a subscription.
+    # Gets, for the specified location, the current compute resource usage
+    # information as well as the limits for compute resources under the
+    # subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -139,10 +149,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists compute usages for a subscription.
+    # Gets, for the specified location, the current compute resource usage
+    # information as well as the limits for compute resources under the
+    # subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -197,9 +209,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Lists compute usages for a subscription.
+    # Gets, for the specified location, the current compute resource usage
+    # information as well as the limits for compute resources under the
+    # subscription.
     #
-    # @param location [String] The location upon which resource usage is queried.
+    # @param location [String] The location for which resource usage is queried.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

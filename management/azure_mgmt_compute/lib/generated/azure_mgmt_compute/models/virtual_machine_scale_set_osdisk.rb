@@ -28,9 +28,9 @@ module Azure::ARM::Compute
       attr_accessor :os_type
 
       # @return [VirtualHardDisk] the Source User Image VirtualHardDisk. This
-      # VirtualHardDisk will be copied before using it to attach to the
-      # Virtual Machine. If SourceImage is provided, the destination
-      # VirtualHardDisk should not exist.
+      # VirtualHardDisk will be copied before using it to attach to the Virtual
+      # Machine. If SourceImage is provided, the destination VirtualHardDisk
+      # should not exist.
       attr_accessor :image
 
       # @return [Array<String>] the list of virtual hard disk container uris.

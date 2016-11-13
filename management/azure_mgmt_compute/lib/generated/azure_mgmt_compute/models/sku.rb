@@ -12,13 +12,13 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the sku name.
+      # @return [String] The sku name.
       attr_accessor :name
 
-      # @return [String] the sku tier.
+      # @return [String] The sku tier.
       attr_accessor :tier
 
-      # @return [Integer] the sku capacity.
+      # @return [Integer] The sku capacity.
       attr_accessor :capacity
 
 

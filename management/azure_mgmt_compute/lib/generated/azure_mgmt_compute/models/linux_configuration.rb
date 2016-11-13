@@ -6,17 +6,17 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Describes Windows Configuration of the OS Profile.
+    # Describes Windows configuration of the OS Profile.
     #
     class LinuxConfiguration
 
       include MsRestAzure
 
-      # @return [Boolean] whether Authentication using user name and password
-      # is allowed or not
+      # @return [Boolean] Specifies whether password authentication should be
+      # disabled.
       attr_accessor :disable_password_authentication
 
-      # @return [SshConfiguration] the SSH configuration for linux VMs
+      # @return [SshConfiguration] The SSH configuration for linux VMs.
       attr_accessor :ssh
 
 

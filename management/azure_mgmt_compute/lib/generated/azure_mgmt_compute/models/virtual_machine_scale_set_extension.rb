@@ -24,8 +24,8 @@ module Azure::ARM::Compute
       # @return [String] the type version of the extension handler.
       attr_accessor :type_handler_version
 
-      # @return [Boolean] whether the extension handler should be
-      # automatically upgraded across minor versions.
+      # @return [Boolean] whether the extension handler should be automatically
+      # upgraded across minor versions.
       attr_accessor :auto_upgrade_minor_version
 
       # @return Json formatted public settings for the extension.

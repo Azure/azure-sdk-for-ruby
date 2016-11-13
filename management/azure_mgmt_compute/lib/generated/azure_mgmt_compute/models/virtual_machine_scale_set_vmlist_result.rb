@@ -17,8 +17,8 @@ module Azure::ARM::Compute
       attr_accessor :value
 
       # @return [String] the uri to fetch the next page of Virtual Machine
-      # Scale Set VMs. Call ListNext() with this to fetch the next page of
-      # VMSS VMs
+      # Scale Set VMs. Call ListNext() with this to fetch the next page of VMSS
+      # VMs
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

@@ -12,10 +12,9 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Integer] the LUN number for a data disk. This value is used
-      # to identify data disk image inside the VMImage therefore it must be
-      # unique for each data disk. The allowed character for the value is
-      # digit.
+      # @return [Integer] The LUN number for a data disk. This value is used to
+      # identify data disk image inside the VMImage and therefore it must be
+      # unique for each data disk.
       attr_accessor :lun
 
 

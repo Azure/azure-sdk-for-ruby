@@ -13,13 +13,13 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the publisher ID.
+      # @return [String] The publisher ID.
       attr_accessor :publisher
 
-      # @return [String] the plan ID.
+      # @return [String] The plan ID.
       attr_accessor :name
 
-      # @return [String] the product ID.
+      # @return [String] The product ID.
       attr_accessor :product
 
 

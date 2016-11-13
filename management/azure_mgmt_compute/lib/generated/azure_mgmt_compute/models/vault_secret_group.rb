@@ -12,12 +12,12 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [SubResource] the Relative URL of the Key Vault containing all
+      # @return [SubResource] The Relative URL of the Key Vault containing all
       # of the certificates in VaultCertificates.
       attr_accessor :source_vault
 
-      # @return [Array<VaultCertificate>] the list of key vault references in
-      # SourceVault which contain certificates
+      # @return [Array<VaultCertificate>] The list of key vault references in
+      # SourceVault which contain certificates.
       attr_accessor :vault_certificates
 
 

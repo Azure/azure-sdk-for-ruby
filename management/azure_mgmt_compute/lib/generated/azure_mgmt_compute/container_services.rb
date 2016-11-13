@@ -27,7 +27,7 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription. The
     # operation returns properties of each container service including state,
-    # number of masters and agents, and FQDNs of masters and agents.
+    # orchestrator, number of masters and agents, and FQDNs of masters and agents.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -44,7 +44,7 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription. The
     # operation returns properties of each container service including state,
-    # number of masters and agents, and FQDNs of masters and agents.
+    # orchestrator, number of masters and agents, and FQDNs of masters and agents.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -60,7 +60,7 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription. The
     # operation returns properties of each container service including state,
-    # number of masters and agents, and FQDNs of masters and agents.
+    # orchestrator, number of masters and agents, and FQDNs of masters and agents.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -169,12 +169,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the specified container service.
+    # Gets the properties of the specified container service.
     #
-    # Gets the specified container service in the specified subscription and
-    # resource group. The operation returns the properties for the specified
-    # container service including state, number of masters and agents, and FQDNs
-    # of masters and agents.
+    # Gets the properties of the specified container service in the specified
+    # subscription and resource group. The operation returns the properties
+    # including state, orchestrator, number of masters and agents, and FQDNs of
+    # masters and agents.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service in
@@ -190,12 +190,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the specified container service.
+    # Gets the properties of the specified container service.
     #
-    # Gets the specified container service in the specified subscription and
-    # resource group. The operation returns the properties for the specified
-    # container service including state, number of masters and agents, and FQDNs
-    # of masters and agents.
+    # Gets the properties of the specified container service in the specified
+    # subscription and resource group. The operation returns the properties
+    # including state, orchestrator, number of masters and agents, and FQDNs of
+    # masters and agents.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service in
@@ -210,12 +210,12 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the specified container service.
+    # Gets the properties of the specified container service.
     #
-    # Gets the specified container service in the specified subscription and
-    # resource group. The operation returns the properties for the specified
-    # container service including state, number of masters and agents, and FQDNs
-    # of masters and agents.
+    # Gets the properties of the specified container service in the specified
+    # subscription and resource group. The operation returns the properties
+    # including state, orchestrator, number of masters and agents, and FQDNs of
+    # masters and agents.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service in
@@ -281,10 +281,10 @@ module Azure::ARM::Compute
     # Deletes the specified container service.
     #
     # Deletes the specified container service in the specified subscription and
-    # resource group. The operation does not delete other resources created as
-    # part of creating a container service, including storage accounts, VMs, and
-    # availability sets. All the other resources created with the container
-    # service are part of the same resource group and can be deleted individually.
+    # resource group. The operation does not delete other resources created as part
+    # of creating a container service, including storage accounts, VMs, and
+    # availability sets. All the other resources created with the container service
+    # are part of the same resource group and can be deleted individually.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service in
@@ -328,7 +328,8 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription and resource
     # group. The operation returns properties of each container service including
-    # state, number of masters and agents, and FQDNs of masters and agents.
+    # state, orchestrator, number of masters and agents, and FQDNs of masters and
+    # agents.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -346,7 +347,8 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription and resource
     # group. The operation returns properties of each container service including
-    # state, number of masters and agents, and FQDNs of masters and agents.
+    # state, orchestrator, number of masters and agents, and FQDNs of masters and
+    # agents.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -363,7 +365,8 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription and resource
     # group. The operation returns properties of each container service including
-    # state, number of masters and agents, and FQDNs of masters and agents.
+    # state, orchestrator, number of masters and agents, and FQDNs of masters and
+    # agents.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -565,10 +568,10 @@ module Azure::ARM::Compute
     # Deletes the specified container service.
     #
     # Deletes the specified container service in the specified subscription and
-    # resource group. The operation does not delete other resources created as
-    # part of creating a container service, including storage accounts, VMs, and
-    # availability sets. All the other resources created with the container
-    # service are part of the same resource group and can be deleted individually.
+    # resource group. The operation does not delete other resources created as part
+    # of creating a container service, including storage accounts, VMs, and
+    # availability sets. All the other resources created with the container service
+    # are part of the same resource group and can be deleted individually.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service in
@@ -586,10 +589,10 @@ module Azure::ARM::Compute
     # Deletes the specified container service.
     #
     # Deletes the specified container service in the specified subscription and
-    # resource group. The operation does not delete other resources created as
-    # part of creating a container service, including storage accounts, VMs, and
-    # availability sets. All the other resources created with the container
-    # service are part of the same resource group and can be deleted individually.
+    # resource group. The operation does not delete other resources created as part
+    # of creating a container service, including storage accounts, VMs, and
+    # availability sets. All the other resources created with the container service
+    # are part of the same resource group and can be deleted individually.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service in
@@ -607,10 +610,10 @@ module Azure::ARM::Compute
     # Deletes the specified container service.
     #
     # Deletes the specified container service in the specified subscription and
-    # resource group. The operation does not delete other resources created as
-    # part of creating a container service, including storage accounts, VMs, and
-    # availability sets. All the other resources created with the container
-    # service are part of the same resource group and can be deleted individually.
+    # resource group. The operation does not delete other resources created as part
+    # of creating a container service, including storage accounts, VMs, and
+    # availability sets. All the other resources created with the container service
+    # are part of the same resource group and can be deleted individually.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param container_service_name [String] The name of the container service in
@@ -667,10 +670,10 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription. The
     # operation returns properties of each container service including state,
-    # number of masters and agents, and FQDNs of masters and agents.
+    # orchestrator, number of masters and agents, and FQDNs of masters and agents.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -686,10 +689,10 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription. The
     # operation returns properties of each container service including state,
-    # number of masters and agents, and FQDNs of masters and agents.
+    # orchestrator, number of masters and agents, and FQDNs of masters and agents.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -704,10 +707,10 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription. The
     # operation returns properties of each container service including state,
-    # number of masters and agents, and FQDNs of masters and agents.
+    # orchestrator, number of masters and agents, and FQDNs of masters and agents.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -766,10 +769,11 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription and resource
     # group. The operation returns properties of each container service including
-    # state, number of masters and agents, and FQDNs of masters and agents.
+    # state, orchestrator, number of masters and agents, and FQDNs of masters and
+    # agents.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -785,10 +789,11 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription and resource
     # group. The operation returns properties of each container service including
-    # state, number of masters and agents, and FQDNs of masters and agents.
+    # state, orchestrator, number of masters and agents, and FQDNs of masters and
+    # agents.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -803,10 +808,11 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription and resource
     # group. The operation returns properties of each container service including
-    # state, number of masters and agents, and FQDNs of masters and agents.
+    # state, orchestrator, number of masters and agents, and FQDNs of masters and
+    # agents.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -865,7 +871,7 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription. The
     # operation returns properties of each container service including state,
-    # number of masters and agents, and FQDNs of masters and agents.
+    # orchestrator, number of masters and agents, and FQDNs of masters and agents.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -889,7 +895,8 @@ module Azure::ARM::Compute
     #
     # Gets a list of container services in the specified subscription and resource
     # group. The operation returns properties of each container service including
-    # state, number of masters and agents, and FQDNs of masters and agents.
+    # state, orchestrator, number of masters and agents, and FQDNs of masters and
+    # agents.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

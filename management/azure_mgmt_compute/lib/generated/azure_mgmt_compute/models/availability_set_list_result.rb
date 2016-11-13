@@ -12,7 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Array<AvailabilitySet>] the list of availability sets
+      # @return [Array<AvailabilitySet>] The list of availability sets
       attr_accessor :value
 
 

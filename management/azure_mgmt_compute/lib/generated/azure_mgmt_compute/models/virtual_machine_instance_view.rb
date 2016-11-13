@@ -12,20 +12,20 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Integer] the Update Domain count.
+      # @return [Integer] Specifies the update domain of the virtual machine.
       attr_accessor :platform_update_domain
 
-      # @return [Integer] the Fault Domain count.
+      # @return [Integer] Specifies the fault domain of the virtual machine.
       attr_accessor :platform_fault_domain
 
-      # @return [String] the Remote desktop certificate thumbprint.
+      # @return [String] The Remote desktop certificate thumbprint.
       attr_accessor :rdp_thumb_print
 
-      # @return [VirtualMachineAgentInstanceView] the VM Agent running on the
+      # @return [VirtualMachineAgentInstanceView] The VM Agent running on the
       # virtual machine.
       attr_accessor :vm_agent
 
-      # @return [Array<DiskInstanceView>] the disks information.
+      # @return [Array<DiskInstanceView>] The virtual machine disk information.
       attr_accessor :disks
 
       # @return [Array<VirtualMachineExtensionInstanceView>] the extensions
@@ -35,7 +35,7 @@ module Azure::ARM::Compute
       # @return [BootDiagnosticsInstanceView] the boot diagnostics.
       attr_accessor :boot_diagnostics
 
-      # @return [Array<InstanceViewStatus>] the resource status information.
+      # @return [Array<InstanceViewStatus>] The resource status information.
       attr_accessor :statuses
 
 
