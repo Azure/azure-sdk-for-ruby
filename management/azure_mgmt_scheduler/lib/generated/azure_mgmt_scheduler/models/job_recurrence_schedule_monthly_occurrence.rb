@@ -7,15 +7,16 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class JobRecurrenceScheduleMonthlyOccurrence
 
       include MsRestAzure
 
       # @return [JobScheduleDay] Gets or sets the day. Must be one of monday,
-      # tuesday, wednesday, thursday, friday, saturday, sunday. Possible
-      # values include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
-      # 'Friday', 'Saturday', 'Sunday'
+      # tuesday, wednesday, thursday, friday, saturday, sunday. Possible values
+      # include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
+      # 'Saturday', 'Sunday'
       attr_accessor :day
 
       # @return [Integer] Gets or sets the occurrence. Must be between -5 and

@@ -7,6 +7,7 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class RetryPolicy
 
@@ -16,7 +17,8 @@ module Azure::ARM::Scheduler
       # Possible values include: 'None', 'Fixed'
       attr_accessor :retry_type
 
-      # @return [Duration] Gets or sets the retry interval between retries.
+      # @return [Duration] Gets or sets the retry interval between retries,
+      # specify duration in ISO 8601 format.
       attr_accessor :retry_interval
 
       # @return [Integer] Gets or sets the number of times a retry should be

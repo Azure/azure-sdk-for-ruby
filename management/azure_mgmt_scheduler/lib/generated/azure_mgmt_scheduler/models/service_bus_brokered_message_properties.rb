@@ -7,6 +7,7 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class ServiceBusBrokeredMessageProperties
 
@@ -15,7 +16,7 @@ module Azure::ARM::Scheduler
       # @return [String] Gets or sets the content type.
       attr_accessor :content_type
 
-      # @return [String] Gets or sets the correlation id.
+      # @return [String] Gets or sets the correlation ID.
       attr_accessor :correlation_id
 
       # @return [Boolean] Gets or sets the force persistence.
@@ -24,7 +25,7 @@ module Azure::ARM::Scheduler
       # @return [String] Gets or sets the label.
       attr_accessor :label
 
-      # @return [String] Gets or sets the message id.
+      # @return [String] Gets or sets the message ID.
       attr_accessor :message_id
 
       # @return [String] Gets or sets the partition key.
@@ -33,13 +34,13 @@ module Azure::ARM::Scheduler
       # @return [String] Gets or sets the reply to.
       attr_accessor :reply_to
 
-      # @return [String] Gets or sets the reply to session id.
+      # @return [String] Gets or sets the reply to session ID.
       attr_accessor :reply_to_session_id
 
       # @return [DateTime] Gets or sets the scheduled enqueue time UTC.
       attr_accessor :scheduled_enqueue_time_utc
 
-      # @return [String] Gets or sets the session id.
+      # @return [String] Gets or sets the session ID.
       attr_accessor :session_id
 
       # @return [DateTime] Gets or sets the time to live.

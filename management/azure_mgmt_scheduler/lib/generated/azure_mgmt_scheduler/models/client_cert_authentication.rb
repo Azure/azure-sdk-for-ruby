@@ -7,15 +7,18 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class ClientCertAuthentication < HttpAuthentication
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the password.
+      # @return [String] Gets or sets the certificate password, return value
+      # will always be empty.
       attr_accessor :password
 
-      # @return [String] Gets or sets the pfx.
+      # @return [String] Gets or sets the pfx certificate. Accepts
+      # certification in base64 encoding, return value will always be empty.
       attr_accessor :pfx
 
       # @return [String] Gets or sets the certificate thumbprint.

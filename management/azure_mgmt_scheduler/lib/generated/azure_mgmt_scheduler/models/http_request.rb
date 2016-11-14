@@ -7,15 +7,17 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class HttpRequest
 
       include MsRestAzure
 
-      # @return [HttpAuthentication] Gets or sets the http authentication.
+      # @return [HttpAuthentication] Gets or sets the authentication method of
+      # the request.
       attr_accessor :authentication
 
-      # @return [String] Gets or sets the Uri.
+      # @return [String] Gets or sets the URI of the request.
       attr_accessor :uri
 
       # @return [String] Gets or sets the method of the request.

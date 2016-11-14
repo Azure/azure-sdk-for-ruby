@@ -7,6 +7,7 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class JobRecurrenceSchedule
 
@@ -16,8 +17,8 @@ module Azure::ARM::Scheduler
       # job should execute on.
       attr_accessor :week_days
 
-      # @return [Array<Integer>] Gets or sets the hours of the day that the
-      # job should execute at.
+      # @return [Array<Integer>] Gets or sets the hours of the day that the job
+      # should execute at.
       attr_accessor :hours
 
       # @return [Array<Integer>] Gets or sets the minutes of the hour that the

@@ -7,6 +7,7 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class BasicAuthentication < HttpAuthentication
 
@@ -15,7 +16,8 @@ module Azure::ARM::Scheduler
       # @return [String] Gets or sets the username.
       attr_accessor :username
 
-      # @return [String] Gets or sets the password.
+      # @return [String] Gets or sets the password, return value will always be
+      # empty.
       attr_accessor :password
 
 

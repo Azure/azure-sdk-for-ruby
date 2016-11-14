@@ -7,13 +7,14 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class JobStateFilter
 
       include MsRestAzure
 
-      # @return [JobState] Gets or sets the job state. Possible values
-      # include: 'Enabled', 'Disabled', 'Faulted', 'Completed'
+      # @return [JobState] Gets or sets the job state. Possible values include:
+      # 'Enabled', 'Disabled', 'Faulted', 'Completed'
       attr_accessor :state
 
 
