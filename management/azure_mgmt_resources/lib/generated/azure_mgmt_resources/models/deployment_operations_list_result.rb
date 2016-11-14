@@ -12,10 +12,10 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
-      # @return [Array<DeploymentOperation>] The list of deployments.
+      # @return [Array<DeploymentOperation>] An array of deployment operations.
       attr_accessor :value
 
-      # @return [String] The URL to get the next set of results.
+      # @return [String] The URL to use for getting the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

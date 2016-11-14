@@ -12,10 +12,10 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
-      # @return [String] The principal id of resource identity.
+      # @return [String] The principal ID of resource identity.
       attr_accessor :principal_id
 
-      # @return [String] The tenant id of resource.
+      # @return [String] The tenant ID of resource.
       attr_accessor :tenant_id
 
       # @return [ResourceIdentityType] The identity type. Possible values

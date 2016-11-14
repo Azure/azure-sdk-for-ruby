@@ -15,19 +15,19 @@ module Azure::ARM::Resources
       # @return [String] The ID of the resource group.
       attr_accessor :id
 
-      # @return [String] The Name of the resource group.
+      # @return [String] The name of the resource group.
       attr_accessor :name
 
       # @return [ResourceGroupProperties]
       attr_accessor :properties
 
       # @return [String] The location of the resource group. It cannot be
-      # changed after the resource group has been created. Has to be one of
-      # the supported Azure Locations, such as West US, East US, West Europe,
-      # East Asia, etc.
+      # changed after the resource group has been created. It muct be one of
+      # the supported Azure locations.
       attr_accessor :location
 
-      # @return [String] Id of the resource that manages this resource group.
+      # @return [String] The ID of the resource that manages this resource
+      # group.
       attr_accessor :managed_by
 
       # @return [Hash{String => String}] The tags attached to the resource

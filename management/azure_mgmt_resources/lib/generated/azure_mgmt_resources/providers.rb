@@ -5,7 +5,7 @@
 
 module Azure::ARM::Resources
   #
-  # Providers
+  # Provides operations for working with resources and resource groups.
   #
   class Providers
     include Azure::ARM::Resources::Models
@@ -23,10 +23,10 @@ module Azure::ARM::Resources
     attr_reader :client
 
     #
-    # Unregisters provider from a subscription.
+    # Unregisters a subscription from a resource provider.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
-    # provider.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider to unregister.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -38,10 +38,10 @@ module Azure::ARM::Resources
     end
 
     #
-    # Unregisters provider from a subscription.
+    # Unregisters a subscription from a resource provider.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
-    # provider.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider to unregister.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -52,10 +52,10 @@ module Azure::ARM::Resources
     end
 
     #
-    # Unregisters provider from a subscription.
+    # Unregisters a subscription from a resource provider.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
-    # provider.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider to unregister.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -113,10 +113,10 @@ module Azure::ARM::Resources
     end
 
     #
-    # Registers provider to be used with a subscription.
+    # Registers a subscription with a resource provider.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
-    # provider.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider to register.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -128,10 +128,10 @@ module Azure::ARM::Resources
     end
 
     #
-    # Registers provider to be used with a subscription.
+    # Registers a subscription with a resource provider.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
-    # provider.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider to register.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -142,10 +142,10 @@ module Azure::ARM::Resources
     end
 
     #
-    # Registers provider to be used with a subscription.
+    # Registers a subscription with a resource provider.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
-    # provider.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider to register.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -203,12 +203,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a list of resource providers.
+    # Gets all resource providers for a subscription.
     #
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # deployments.
-    # @param expand [String] The $expand query parameter. e.g. To include property
-    # aliases in response, use $expand=resourceTypes/aliases.
+    # @param top [Integer] The number of results to return. If null is passed
+    # returns all deployments.
+    # @param expand [String] The properties to include in the results. For
+    # example, use &$expand=metadata in the query string to retrieve resource
+    # provider metadata. To include property aliases in response, use
+    # $expand=resourceTypes/aliases.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -220,12 +222,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a list of resource providers.
+    # Gets all resource providers for a subscription.
     #
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # deployments.
-    # @param expand [String] The $expand query parameter. e.g. To include property
-    # aliases in response, use $expand=resourceTypes/aliases.
+    # @param top [Integer] The number of results to return. If null is passed
+    # returns all deployments.
+    # @param expand [String] The properties to include in the results. For
+    # example, use &$expand=metadata in the query string to retrieve resource
+    # provider metadata. To include property aliases in response, use
+    # $expand=resourceTypes/aliases.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -236,12 +240,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a list of resource providers.
+    # Gets all resource providers for a subscription.
     #
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # deployments.
-    # @param expand [String] The $expand query parameter. e.g. To include property
-    # aliases in response, use $expand=resourceTypes/aliases.
+    # @param top [Integer] The number of results to return. If null is passed
+    # returns all deployments.
+    # @param expand [String] The properties to include in the results. For
+    # example, use &$expand=metadata in the query string to retrieve resource
+    # provider metadata. To include property aliases in response, use
+    # $expand=resourceTypes/aliases.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -298,12 +304,12 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a resource provider.
+    # Gets the specified resource provider.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
+    # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
-    # @param expand [String] The $expand query parameter. e.g. To include property
-    # aliases in response, use $expand=resourceTypes/aliases.
+    # @param expand [String] The $expand query parameter. For example, to include
+    # property aliases in response, use $expand=resourceTypes/aliases.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -315,12 +321,12 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a resource provider.
+    # Gets the specified resource provider.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
+    # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
-    # @param expand [String] The $expand query parameter. e.g. To include property
-    # aliases in response, use $expand=resourceTypes/aliases.
+    # @param expand [String] The $expand query parameter. For example, to include
+    # property aliases in response, use $expand=resourceTypes/aliases.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -331,12 +337,12 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a resource provider.
+    # Gets the specified resource provider.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
+    # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
-    # @param expand [String] The $expand query parameter. e.g. To include property
-    # aliases in response, use $expand=resourceTypes/aliases.
+    # @param expand [String] The $expand query parameter. For example, to include
+    # property aliases in response, use $expand=resourceTypes/aliases.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -394,7 +400,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a list of resource providers.
+    # Gets all resource providers for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -409,7 +415,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a list of resource providers.
+    # Gets all resource providers for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -423,7 +429,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a list of resource providers.
+    # Gets all resource providers for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -481,12 +487,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a list of resource providers.
+    # Gets all resource providers for a subscription.
     #
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # deployments.
-    # @param expand [String] The $expand query parameter. e.g. To include property
-    # aliases in response, use $expand=resourceTypes/aliases.
+    # @param top [Integer] The number of results to return. If null is passed
+    # returns all deployments.
+    # @param expand [String] The properties to include in the results. For
+    # example, use &$expand=metadata in the query string to retrieve resource
+    # provider metadata. To include property aliases in response, use
+    # $expand=resourceTypes/aliases.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

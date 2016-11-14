@@ -5,7 +5,7 @@
 
 module Azure::ARM::Resources
   #
-  # Tags
+  # Provides operations for working with resources and resource groups.
   #
   class Tags
     include Azure::ARM::Resources::Models
@@ -23,10 +23,10 @@ module Azure::ARM::Resources
     attr_reader :client
 
     #
-    # Delete a subscription resource tag value.
+    # Deletes a tag value.
     #
     # @param tag_name [String] The name of the tag.
-    # @param tag_value [String] The value of the tag.
+    # @param tag_value [String] The value of the tag to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -37,10 +37,10 @@ module Azure::ARM::Resources
     end
 
     #
-    # Delete a subscription resource tag value.
+    # Deletes a tag value.
     #
     # @param tag_name [String] The name of the tag.
-    # @param tag_value [String] The value of the tag.
+    # @param tag_value [String] The value of the tag to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -51,10 +51,10 @@ module Azure::ARM::Resources
     end
 
     #
-    # Delete a subscription resource tag value.
+    # Deletes a tag value.
     #
     # @param tag_name [String] The name of the tag.
-    # @param tag_value [String] The value of the tag.
+    # @param tag_value [String] The value of the tag to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -103,10 +103,10 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a subscription resource tag value.
+    # Creates a tag value. The name of the tag must already exist.
     #
     # @param tag_name [String] The name of the tag.
-    # @param tag_value [String] The value of the tag.
+    # @param tag_value [String] The value of the tag to create.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -118,10 +118,10 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a subscription resource tag value.
+    # Creates a tag value. The name of the tag must already exist.
     #
     # @param tag_name [String] The name of the tag.
-    # @param tag_value [String] The value of the tag.
+    # @param tag_value [String] The value of the tag to create.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -132,10 +132,10 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a subscription resource tag value.
+    # Creates a tag value. The name of the tag must already exist.
     #
     # @param tag_name [String] The name of the tag.
-    # @param tag_value [String] The value of the tag.
+    # @param tag_value [String] The value of the tag to create.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -204,9 +204,13 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a subscription resource tag.
+    # Creates a tag in the subscription.
     #
-    # @param tag_name [String] The name of the tag.
+    # The tag name can have a maximum of 512 characters and is case insensitive.
+    # Tag names created by Azure have prefixes of microsoft, azure, or windows.
+    # You cannot create tags with one of these prefixes.
+    #
+    # @param tag_name [String] The name of the tag to create.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -218,9 +222,13 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a subscription resource tag.
+    # Creates a tag in the subscription.
     #
-    # @param tag_name [String] The name of the tag.
+    # The tag name can have a maximum of 512 characters and is case insensitive.
+    # Tag names created by Azure have prefixes of microsoft, azure, or windows.
+    # You cannot create tags with one of these prefixes.
+    #
+    # @param tag_name [String] The name of the tag to create.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -231,9 +239,13 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a subscription resource tag.
+    # Creates a tag in the subscription.
     #
-    # @param tag_name [String] The name of the tag.
+    # The tag name can have a maximum of 512 characters and is case insensitive.
+    # Tag names created by Azure have prefixes of microsoft, azure, or windows.
+    # You cannot create tags with one of these prefixes.
+    #
+    # @param tag_name [String] The name of the tag to create.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -301,7 +313,9 @@ module Azure::ARM::Resources
     end
 
     #
-    # Delete a subscription resource tag.
+    # Deletes a tag from the subscription.
+    #
+    # You must remove all values from a resource tag before you can delete it.
     #
     # @param tag_name [String] The name of the tag.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -314,7 +328,9 @@ module Azure::ARM::Resources
     end
 
     #
-    # Delete a subscription resource tag.
+    # Deletes a tag from the subscription.
+    #
+    # You must remove all values from a resource tag before you can delete it.
     #
     # @param tag_name [String] The name of the tag.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -327,7 +343,9 @@ module Azure::ARM::Resources
     end
 
     #
-    # Delete a subscription resource tag.
+    # Deletes a tag from the subscription.
+    #
+    # You must remove all values from a resource tag before you can delete it.
     #
     # @param tag_name [String] The name of the tag.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -377,7 +395,8 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of subscription resource tags.
+    # Gets the names and values of all resource tags that are defined in a
+    # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -390,7 +409,8 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of subscription resource tags.
+    # Gets the names and values of all resource tags that are defined in a
+    # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -402,7 +422,8 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of subscription resource tags.
+    # Gets the names and values of all resource tags that are defined in a
+    # subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -460,7 +481,8 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of subscription resource tags.
+    # Gets the names and values of all resource tags that are defined in a
+    # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -475,7 +497,8 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of subscription resource tags.
+    # Gets the names and values of all resource tags that are defined in a
+    # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -489,7 +512,8 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of subscription resource tags.
+    # Gets the names and values of all resource tags that are defined in a
+    # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -547,7 +571,8 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of subscription resource tags.
+    # Gets the names and values of all resource tags that are defined in a
+    # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

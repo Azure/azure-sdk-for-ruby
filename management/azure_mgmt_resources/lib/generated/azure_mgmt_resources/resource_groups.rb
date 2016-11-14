@@ -5,7 +5,7 @@
 
 module Azure::ARM::Resources
   #
-  # ResourceGroups
+  # Provides operations for working with resources and resource groups.
   #
   class ResourceGroups
     include Azure::ARM::Resources::Models
@@ -23,14 +23,14 @@ module Azure::ARM::Resources
     attr_reader :client
 
     #
-    # Get all of the resources under a subscription.
+    # Get all the resources for a resource group.
     #
-    # @param resource_group_name [String] Query parameters. If null is passed
-    # returns all resource groups.
+    # @param resource_group_name [String] The resource group with the resources to
+    # get.
     # @param filter [String] The filter to apply on the operation.
     # @param expand [String] The $expand query parameter
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # resource groups.
+    # @param top [Integer] The number of results to return. If null is passed,
+    # returns all resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -42,14 +42,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get all of the resources under a subscription.
+    # Get all the resources for a resource group.
     #
-    # @param resource_group_name [String] Query parameters. If null is passed
-    # returns all resource groups.
+    # @param resource_group_name [String] The resource group with the resources to
+    # get.
     # @param filter [String] The filter to apply on the operation.
     # @param expand [String] The $expand query parameter
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # resource groups.
+    # @param top [Integer] The number of results to return. If null is passed,
+    # returns all resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -60,14 +60,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get all of the resources under a subscription.
+    # Get all the resources for a resource group.
     #
-    # @param resource_group_name [String] Query parameters. If null is passed
-    # returns all resource groups.
+    # @param resource_group_name [String] The resource group with the resources to
+    # get.
     # @param filter [String] The filter to apply on the operation.
     # @param expand [String] The $expand query parameter
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # resource groups.
+    # @param top [Integer] The number of results to return. If null is passed,
+    # returns all resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -125,7 +125,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Checks whether resource group exists.
+    # Checks whether a resource group exists.
     #
     # @param resource_group_name [String] The name of the resource group to check.
     # The name is case insensitive.
@@ -140,7 +140,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Checks whether resource group exists.
+    # Checks whether a resource group exists.
     #
     # @param resource_group_name [String] The name of the resource group to check.
     # The name is case insensitive.
@@ -154,7 +154,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Checks whether resource group exists.
+    # Checks whether a resource group exists.
     #
     # @param resource_group_name [String] The name of the resource group to check.
     # The name is case insensitive.
@@ -206,12 +206,12 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a resource group.
+    # Creates a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # created or updated.
+    # @param resource_group_name [String] The name of the resource group to create
+    # or update.
     # @param parameters [ResourceGroup] Parameters supplied to the create or
-    # update resource group service operation.
+    # update a resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -223,12 +223,12 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a resource group.
+    # Creates a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # created or updated.
+    # @param resource_group_name [String] The name of the resource group to create
+    # or update.
     # @param parameters [ResourceGroup] Parameters supplied to the create or
-    # update resource group service operation.
+    # update a resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -239,12 +239,12 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a resource group.
+    # Creates a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # created or updated.
+    # @param resource_group_name [String] The name of the resource group to create
+    # or update.
     # @param parameters [ResourceGroup] Parameters supplied to the create or
-    # update resource group service operation.
+    # update a resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -322,10 +322,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Delete resource group.
+    # Deletes a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # deleted. The name is case insensitive.
+    # When you delete a resource group, all of its resources are also deleted.
+    # Deleting a resource group deletes all of its template deployments and
+    # currently stored operations.
+    #
+    # @param resource_group_name [String] The name of the resource group to
+    # delete. The name is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -335,8 +339,8 @@ module Azure::ARM::Resources
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # deleted. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group to
+    # delete. The name is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -360,7 +364,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a resource group.
+    # Gets a resource group.
     #
     # @param resource_group_name [String] The name of the resource group to get.
     # The name is case insensitive.
@@ -375,7 +379,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a resource group.
+    # Gets a resource group.
     #
     # @param resource_group_name [String] The name of the resource group to get.
     # The name is case insensitive.
@@ -389,7 +393,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a resource group.
+    # Gets a resource group.
     #
     # @param resource_group_name [String] The name of the resource group to get.
     # The name is case insensitive.
@@ -450,15 +454,16 @@ module Azure::ARM::Resources
     end
 
     #
+    # Updates a resource group.
+    #
     # Resource groups can be updated through a simple PATCH operation to a group
     # address. The format of the request is the same as that for creating a
-    # resource groups, though if a field is unspecified current value will be
-    # carried over.
+    # resource group. If a field is unspecified, the current value is retained.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # created or updated. The name is case insensitive.
-    # @param parameters [ResourceGroup] Parameters supplied to the update state
-    # resource group service operation.
+    # @param resource_group_name [String] The name of the resource group to
+    # update. The name is case insensitive.
+    # @param parameters [ResourceGroup] Parameters supplied to update a resource
+    # group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -470,15 +475,16 @@ module Azure::ARM::Resources
     end
 
     #
+    # Updates a resource group.
+    #
     # Resource groups can be updated through a simple PATCH operation to a group
     # address. The format of the request is the same as that for creating a
-    # resource groups, though if a field is unspecified current value will be
-    # carried over.
+    # resource group. If a field is unspecified, the current value is retained.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # created or updated. The name is case insensitive.
-    # @param parameters [ResourceGroup] Parameters supplied to the update state
-    # resource group service operation.
+    # @param resource_group_name [String] The name of the resource group to
+    # update. The name is case insensitive.
+    # @param parameters [ResourceGroup] Parameters supplied to update a resource
+    # group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -489,15 +495,16 @@ module Azure::ARM::Resources
     end
 
     #
+    # Updates a resource group.
+    #
     # Resource groups can be updated through a simple PATCH operation to a group
     # address. The format of the request is the same as that for creating a
-    # resource groups, though if a field is unspecified current value will be
-    # carried over.
+    # resource group. If a field is unspecified, the current value is retained.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # created or updated. The name is case insensitive.
-    # @param parameters [ResourceGroup] Parameters supplied to the update state
-    # resource group service operation.
+    # @param resource_group_name [String] The name of the resource group to
+    # update. The name is case insensitive.
+    # @param parameters [ResourceGroup] Parameters supplied to update a resource
+    # group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -567,10 +574,10 @@ module Azure::ARM::Resources
     #
     # Captures the specified resource group as a template.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # created or updated.
-    # @param parameters [ExportTemplateRequest] Parameters supplied to the export
-    # template resource group operation.
+    # @param resource_group_name [String] The name of the resource group to export
+    # as a template.
+    # @param parameters [ExportTemplateRequest] Parameters for exporting the
+    # template.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -584,10 +591,10 @@ module Azure::ARM::Resources
     #
     # Captures the specified resource group as a template.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # created or updated.
-    # @param parameters [ExportTemplateRequest] Parameters supplied to the export
-    # template resource group operation.
+    # @param resource_group_name [String] The name of the resource group to export
+    # as a template.
+    # @param parameters [ExportTemplateRequest] Parameters for exporting the
+    # template.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -600,10 +607,10 @@ module Azure::ARM::Resources
     #
     # Captures the specified resource group as a template.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # created or updated.
-    # @param parameters [ExportTemplateRequest] Parameters supplied to the export
-    # template resource group operation.
+    # @param resource_group_name [String] The name of the resource group to export
+    # as a template.
+    # @param parameters [ExportTemplateRequest] Parameters for exporting the
+    # template.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -671,11 +678,11 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a collection of resource groups.
+    # Gets all the resource groups for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # resource groups.
+    # @param top [Integer] The number of results to return. If null is passed,
+    # returns all resource groups.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -687,11 +694,11 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a collection of resource groups.
+    # Gets all the resource groups for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # resource groups.
+    # @param top [Integer] The number of results to return. If null is passed,
+    # returns all resource groups.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -702,11 +709,11 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a collection of resource groups.
+    # Gets all the resource groups for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # resource groups.
+    # @param top [Integer] The number of results to return. If null is passed,
+    # returns all resource groups.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -763,10 +770,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Delete resource group.
+    # Deletes a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # deleted. The name is case insensitive.
+    # When you delete a resource group, all of its resources are also deleted.
+    # Deleting a resource group deletes all of its template deployments and
+    # currently stored operations.
+    #
+    # @param resource_group_name [String] The name of the resource group to
+    # delete. The name is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -777,10 +788,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Delete resource group.
+    # Deletes a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # deleted. The name is case insensitive.
+    # When you delete a resource group, all of its resources are also deleted.
+    # Deleting a resource group deletes all of its template deployments and
+    # currently stored operations.
+    #
+    # @param resource_group_name [String] The name of the resource group to
+    # delete. The name is case insensitive.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -791,10 +806,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Delete resource group.
+    # Deletes a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group to be
-    # deleted. The name is case insensitive.
+    # When you delete a resource group, all of its resources are also deleted.
+    # Deleting a resource group deletes all of its template deployments and
+    # currently stored operations.
+    #
+    # @param resource_group_name [String] The name of the resource group to
+    # delete. The name is case insensitive.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -842,7 +861,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get all of the resources under a subscription.
+    # Get all the resources for a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -857,7 +876,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get all of the resources under a subscription.
+    # Get all the resources for a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -871,7 +890,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get all of the resources under a subscription.
+    # Get all the resources for a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -929,7 +948,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a collection of resource groups.
+    # Gets all the resource groups for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -944,7 +963,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a collection of resource groups.
+    # Gets all the resource groups for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -958,7 +977,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a collection of resource groups.
+    # Gets all the resource groups for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1016,14 +1035,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get all of the resources under a subscription.
+    # Get all the resources for a resource group.
     #
-    # @param resource_group_name [String] Query parameters. If null is passed
-    # returns all resource groups.
+    # @param resource_group_name [String] The resource group with the resources to
+    # get.
     # @param filter [String] The filter to apply on the operation.
     # @param expand [String] The $expand query parameter
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # resource groups.
+    # @param top [Integer] The number of results to return. If null is passed,
+    # returns all resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1042,11 +1061,11 @@ module Azure::ARM::Resources
     end
 
     #
-    # Gets a collection of resource groups.
+    # Gets all the resource groups for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # resource groups.
+    # @param top [Integer] The number of results to return. If null is passed,
+    # returns all resource groups.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
