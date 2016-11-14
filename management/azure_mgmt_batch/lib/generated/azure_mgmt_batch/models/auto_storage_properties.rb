@@ -13,7 +13,7 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
-      # @return [String] The resource id of the storage account to be used for
+      # @return [String] The resource ID of the storage account to be used for
       # auto storage account.
       attr_accessor :storage_account_id
 

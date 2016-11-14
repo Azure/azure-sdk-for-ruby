@@ -18,10 +18,10 @@ module Azure::ARM::Batch
     attr_reader :credentials
 
     # @return [String] A unique identifier of a Microsoft Azure subscription.
-    # The subscription id forms part of the URI for every service call.
+    # The subscription ID forms part of the URI for every service call.
     attr_accessor :subscription_id
 
-    # @return [String] Client API Version.
+    # @return [String] The API version to be used with the HTTP request.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.

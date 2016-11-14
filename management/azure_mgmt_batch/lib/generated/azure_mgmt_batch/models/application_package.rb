@@ -13,7 +13,7 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
-      # @return [String] The id of the application.
+      # @return [String] The ID of the application.
       attr_accessor :id
 
       # @return [String] The version of the application package.
@@ -34,8 +34,8 @@ module Azure::ARM::Batch
       # @return [DateTime] The UTC time at which the storage URL will expire.
       attr_accessor :storage_url_expiry
 
-      # @return [DateTime] The time at which the package was last activated,
-      # if the package is active.
+      # @return [DateTime] The time at which the package was last activated, if
+      # the package is active.
       attr_accessor :last_activation_time
 
 

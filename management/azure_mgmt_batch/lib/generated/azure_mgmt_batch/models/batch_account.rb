@@ -12,8 +12,8 @@ module Azure::ARM::Batch
 
       include MsRestAzure
 
-      # @return [String] The endpoint used by this account to interact with
-      # the Batch services.
+      # @return [String] The endpoint used by this account to interact with the
+      # Batch services.
       attr_accessor :account_endpoint
 
       # @return [ProvisioningState] The provisioned state of the resource.
