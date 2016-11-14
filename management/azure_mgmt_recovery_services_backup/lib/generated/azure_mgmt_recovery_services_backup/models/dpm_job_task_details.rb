@@ -21,7 +21,7 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [DateTime] The end time.
       attr_accessor :end_time
 
-      # @return [Duration] Time elapsed for task.
+      # @return [Duration] The time elapsed for task.
       attr_accessor :duration
 
       # @return [String] The status.

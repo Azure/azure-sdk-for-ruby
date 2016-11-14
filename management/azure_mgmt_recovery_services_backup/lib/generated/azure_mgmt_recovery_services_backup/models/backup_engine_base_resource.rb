@@ -6,8 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # The base backup engine class. All workload specific backup engines
-    # derive from this class.
+    # The base backup engine class. All workload-specific backup engines derive
+    # from this class.
     #
     class BackupEngineBaseResource < MsRestAzure::Resource
 

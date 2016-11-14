@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Additional information on Azure SQL specific backup item.
+    # Additional information for the Azure SQL specific backup item.
     #
     class AzureSqlProtectedItemExtendedInfo
 
@@ -16,11 +16,11 @@ module Azure::ARM::RecoveryServicesBackup
       # the service.
       attr_accessor :oldest_recovery_point
 
-      # @return [Integer] Number of available backup copies associated with
-      # this backup item.
+      # @return [Integer] The number of available backup copies for this backup
+      # item.
       attr_accessor :recovery_point_count
 
-      # @return [String] State of the backup policy associated with this
+      # @return [String] The state of the backup policy associated with this
       # backup item.
       attr_accessor :policy_state
 

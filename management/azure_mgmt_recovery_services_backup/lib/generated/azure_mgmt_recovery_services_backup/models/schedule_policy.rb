@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for backup schedule.
+    # The base class for backup schedules.
     #
     class SchedulePolicy
 

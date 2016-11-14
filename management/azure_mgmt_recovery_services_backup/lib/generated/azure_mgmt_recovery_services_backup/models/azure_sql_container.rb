@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Azure Sql workload-specific container.
+    # Azure SQL workload-specific container.
     #
     class AzureSqlContainer < ProtectionContainer
 

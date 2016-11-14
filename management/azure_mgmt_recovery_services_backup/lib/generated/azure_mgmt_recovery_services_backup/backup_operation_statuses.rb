@@ -23,16 +23,16 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Fetches the status of an operation such as triggering a backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
+    # Gets the status of an operation such as triggering a backup or restore. The
+    # status can be In progress, Completed or Failed. You can refer to the
     # OperationStatus enum for all the possible states of an operation. Some
     # operations create jobs. This method returns the list of jobs when the
     # operation is complete.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param operation_id [String] OperationID which represents the operation.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param operation_id [String] The ID of the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -44,16 +44,16 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Fetches the status of an operation such as triggering a backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
+    # Gets the status of an operation such as triggering a backup or restore. The
+    # status can be In progress, Completed or Failed. You can refer to the
     # OperationStatus enum for all the possible states of an operation. Some
     # operations create jobs. This method returns the list of jobs when the
     # operation is complete.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param operation_id [String] OperationID which represents the operation.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param operation_id [String] The ID of the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -64,16 +64,16 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Fetches the status of an operation such as triggering a backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
+    # Gets the status of an operation such as triggering a backup or restore. The
+    # status can be In progress, Completed or Failed. You can refer to the
     # OperationStatus enum for all the possible states of an operation. Some
     # operations create jobs. This method returns the list of jobs when the
     # operation is complete.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param operation_id [String] OperationID which represents the operation.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param operation_id [String] The ID of the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

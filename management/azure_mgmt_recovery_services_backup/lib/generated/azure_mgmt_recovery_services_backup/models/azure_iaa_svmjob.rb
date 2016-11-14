@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Azure IaaS VM workload-specifc job object.
+    # The Azure IaaS VM workload-specifc job object.
     #
     class AzureIaaSVMJob < Job
 
@@ -19,19 +19,19 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :jobType
 
-      # @return [Duration] Time elapsed during the execution of this job.
+      # @return [Duration] The time that elapsed during the execution of this
+      # job.
       attr_accessor :duration
 
-      # @return [Array<JobSupportedAction>] Gets or sets the state/actions
-      # applicable on this job like cancel/retry.
+      # @return [Array<JobSupportedAction>] Gets or sets the state, or actions,
+      # applicable on this job. Examples of the actions are: Cancel or Retry.
       attr_accessor :actions_info
 
-      # @return [Array<AzureIaaSVMErrorInfo>] Error details on execution of
-      # this job.
+      # @return [Array<AzureIaaSVMErrorInfo>] Error details about this job.
       attr_accessor :error_details
 
-      # @return [String] Specifies whether the backup item is a Classic or an
-      # Azure Resource Manager VM.
+      # @return [String] Specifies whether the backup item is a Classic VM or a
+      # Resource Manager VM.
       attr_accessor :virtual_machine_version
 
       # @return [AzureIaaSVMJobExtendedInfo] Additional information for this

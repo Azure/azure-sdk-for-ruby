@@ -12,14 +12,14 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [Array<DayOfWeek>] List of days of week for weekly retention
-      # policy.
+      # @return [Array<DayOfWeek>] List of the days of the week for the weekly
+      # retention policy.
       attr_accessor :days_of_the_week
 
-      # @return [Array<DateTime>] Retention times of retention policy.
+      # @return [Array<DateTime>] Retention times of the retention policy.
       attr_accessor :retention_times
 
-      # @return [RetentionDuration] Retention duration of retention Policy.
+      # @return [RetentionDuration] Retention duration of retention policy.
       attr_accessor :retention_duration
 
 

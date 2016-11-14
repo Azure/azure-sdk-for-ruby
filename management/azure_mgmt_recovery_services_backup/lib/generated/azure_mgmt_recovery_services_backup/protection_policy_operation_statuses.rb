@@ -23,19 +23,18 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Provides the status of the asynchronous operations like backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
-    # Operation Status enum for all the possible states of an operation. Some
-    # operations create jobs. This method returns the list of jobs associated
-    # with operation.
+    # Provides the status of the asynchronous operations like backup or restore.
+    # The status can be: in progress, completed, or failed. You can refer to the
+    # Operation Status enumeration for the possible states of an operation. Some
+    # operations create jobs. This method returns the list of jobs associated with
+    # the operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy name whose operation's status
-    # needs to be fetched.
-    # @param operation_id [String] Operation ID which represents an operation
-    # whose status needs to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The backup policy name used in this GET
+    # operation.
+    # @param operation_id [String] The ID associated with this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -47,19 +46,18 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides the status of the asynchronous operations like backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
-    # Operation Status enum for all the possible states of an operation. Some
-    # operations create jobs. This method returns the list of jobs associated
-    # with operation.
+    # Provides the status of the asynchronous operations like backup or restore.
+    # The status can be: in progress, completed, or failed. You can refer to the
+    # Operation Status enumeration for the possible states of an operation. Some
+    # operations create jobs. This method returns the list of jobs associated with
+    # the operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy name whose operation's status
-    # needs to be fetched.
-    # @param operation_id [String] Operation ID which represents an operation
-    # whose status needs to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The backup policy name used in this GET
+    # operation.
+    # @param operation_id [String] The ID associated with this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -70,19 +68,18 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides the status of the asynchronous operations like backup, restore. The
-    # status can be in progress, completed or failed. You can refer to the
-    # Operation Status enum for all the possible states of an operation. Some
-    # operations create jobs. This method returns the list of jobs associated
-    # with operation.
+    # Provides the status of the asynchronous operations like backup or restore.
+    # The status can be: in progress, completed, or failed. You can refer to the
+    # Operation Status enumeration for the possible states of an operation. Some
+    # operations create jobs. This method returns the list of jobs associated with
+    # the operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param policy_name [String] Backup policy name whose operation's status
-    # needs to be fetched.
-    # @param operation_id [String] Operation ID which represents an operation
-    # whose status needs to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param policy_name [String] The backup policy name used in this GET
+    # operation.
+    # @param operation_id [String] The ID associated with this GET operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

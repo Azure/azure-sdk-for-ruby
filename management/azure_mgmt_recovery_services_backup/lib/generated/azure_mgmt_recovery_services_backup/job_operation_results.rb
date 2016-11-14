@@ -23,15 +23,13 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Fetches the result of any operation.
-    # the operation.
+    # Gets the result of the operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param job_name [String] Job name whose operation result has to be fetched.
-    # @param operation_id [String] OperationID which represents the operation
-    # whose result has to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param job_name [String] Job name associated with this GET operation.
+    # @param operation_id [String] OperationID associated with this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -42,15 +40,13 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Fetches the result of any operation.
-    # the operation.
+    # Gets the result of the operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param job_name [String] Job name whose operation result has to be fetched.
-    # @param operation_id [String] OperationID which represents the operation
-    # whose result has to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param job_name [String] Job name associated with this GET operation.
+    # @param operation_id [String] OperationID associated with this GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -61,15 +57,13 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Fetches the result of any operation.
-    # the operation.
+    # Gets the result of the operation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param job_name [String] Job name whose operation result has to be fetched.
-    # @param operation_id [String] OperationID which represents the operation
-    # whose result has to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param job_name [String] Job name associated with this GET operation.
+    # @param operation_id [String] OperationID associated with this GET operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

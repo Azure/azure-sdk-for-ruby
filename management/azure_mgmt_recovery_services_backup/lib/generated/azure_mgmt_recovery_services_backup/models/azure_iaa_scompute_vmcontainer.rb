@@ -6,8 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # IaaS VM workload-specific backup item representing an Azure Resource
-    # Manager virtual machine.
+    # IaaS VM workload-specific backup item representing a Resource
+    # Manager-deployed virtual machine.
     #
     class AzureIaaSComputeVMContainer < IaaSVMContainer
 

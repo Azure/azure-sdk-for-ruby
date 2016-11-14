@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # DPM workload-specifc job object.
+    # The DPM workload-specifc job object.
     #
     class DpmJob < Job
 
@@ -19,25 +19,25 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :jobType
 
-      # @return [Duration] Time elapsed for job.
+      # @return [Duration] The time elapsed for the job.
       attr_accessor :duration
 
       # @return [String] DPM server name managing the backup item or backup
       # job.
       attr_accessor :dpm_server_name
 
-      # @return [String] Name of cluster/server protecting current backup
-      # item, if any.
+      # @return [String] The name of the cluster or server protecting the
+      # current backup item, if any.
       attr_accessor :container_name
 
-      # @return [String] Type of container.
+      # @return [String] The type of container.
       attr_accessor :container_type
 
-      # @return [String] Type of backup item.
+      # @return [String] The type of backup item.
       attr_accessor :workload_type
 
-      # @return [Array<JobSupportedAction>] The state/actions applicable on
-      # this job like cancel/retry.
+      # @return [Array<JobSupportedAction>] The state or actions applicable on
+      # this job, such as Cancel or Retry.
       attr_accessor :actions_info
 
       # @return [Array<DpmErrorInfo>] The errors.

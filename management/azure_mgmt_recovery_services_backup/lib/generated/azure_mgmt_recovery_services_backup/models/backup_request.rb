@@ -6,8 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for backup request. Workload-specific backup requests are
-    # derived from this class.
+    # The base class for a backup request. Workload-specific backup requests
+    # are derived from this class.
     #
     class BackupRequest
 

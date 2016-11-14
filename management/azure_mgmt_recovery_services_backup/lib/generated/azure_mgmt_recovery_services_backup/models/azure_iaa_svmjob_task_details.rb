@@ -21,16 +21,16 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [DateTime] The end time.
       attr_accessor :end_time
 
-      # @return [String] The instanceId.
+      # @return [String] The instance ID.
       attr_accessor :instance_id
 
-      # @return [Duration] Time elapsed for task.
+      # @return [Duration] The time elapsed for the task.
       attr_accessor :duration
 
       # @return [String] The status.
       attr_accessor :status
 
-      # @return [Float] Progress of the task.
+      # @return [Float] The progress of the task, as a percentage.
       attr_accessor :progress_percentage
 
 

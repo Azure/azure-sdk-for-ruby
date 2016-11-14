@@ -24,14 +24,14 @@ module Azure::ARM::RecoveryServicesBackup
 
     #
     # Gets details of the specific container registered to your Recovery Services
-    # Vault.
+    # vault.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Name of the fabric where the container belongs.
-    # @param container_name [String] Name of the container whose details need to
-    # be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the container.
+    # @param container_name [String] The container name used for this GET
+    # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -44,14 +44,14 @@ module Azure::ARM::RecoveryServicesBackup
 
     #
     # Gets details of the specific container registered to your Recovery Services
-    # Vault.
+    # vault.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Name of the fabric where the container belongs.
-    # @param container_name [String] Name of the container whose details need to
-    # be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the container.
+    # @param container_name [String] The container name used for this GET
+    # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -63,14 +63,14 @@ module Azure::ARM::RecoveryServicesBackup
 
     #
     # Gets details of the specific container registered to your Recovery Services
-    # Vault.
+    # vault.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Name of the fabric where the container belongs.
-    # @param container_name [String] Name of the container whose details need to
-    # be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the container.
+    # @param container_name [String] The container name used for this GET
+    # operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -131,12 +131,16 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the containers registered to Recovery Services Vault.
+    # Lists the containers registered to the Recovery Services vault.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The following equation is used to sort or filter the
+    # containers registered to the vault. providerType eq {AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql} and status eq {Unknown, NotRegistered,
+    # Registered, Registering} and friendlyName eq {containername} and
+    # backupManagementType eq {AzureIaasVM, MAB, DPM, AzureBackupServer, AzureSql}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -148,12 +152,16 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the containers registered to Recovery Services Vault.
+    # Lists the containers registered to the Recovery Services vault.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The following equation is used to sort or filter the
+    # containers registered to the vault. providerType eq {AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql} and status eq {Unknown, NotRegistered,
+    # Registered, Registering} and friendlyName eq {containername} and
+    # backupManagementType eq {AzureIaasVM, MAB, DPM, AzureBackupServer, AzureSql}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -164,12 +172,16 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the containers registered to Recovery Services Vault.
+    # Lists the containers registered to the Recovery Services vault.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The following equation is used to sort or filter the
+    # containers registered to the vault. providerType eq {AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql} and status eq {Unknown, NotRegistered,
+    # Registered, Registering} and friendlyName eq {containername} and
+    # backupManagementType eq {AzureIaasVM, MAB, DPM, AzureBackupServer, AzureSql}.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -228,14 +240,14 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Discovers all the containers in the subscription that can be backed up to
-    # Recovery Services Vault. This is an asynchronous operation. To know the
-    # status of the operation, call GetRefreshOperationResult API.
+    # Discovers the containers in the subscription that can be protected in a
+    # Recovery Services vault. This is an asynchronous operation. To learn the
+    # status of the operation, use the GetRefreshOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated the container.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the container.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -246,14 +258,14 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Discovers all the containers in the subscription that can be backed up to
-    # Recovery Services Vault. This is an asynchronous operation. To know the
-    # status of the operation, call GetRefreshOperationResult API.
+    # Discovers the containers in the subscription that can be protected in a
+    # Recovery Services vault. This is an asynchronous operation. To learn the
+    # status of the operation, use the GetRefreshOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated the container.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the container.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -264,14 +276,14 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Discovers all the containers in the subscription that can be backed up to
-    # Recovery Services Vault. This is an asynchronous operation. To know the
-    # status of the operation, call GetRefreshOperationResult API.
+    # Discovers the containers in the subscription that can be protected in a
+    # Recovery Services vault. This is an asynchronous operation. To learn the
+    # status of the operation, use the GetRefreshOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated the container.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the container.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -321,11 +333,11 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Unregisters the given container from your Recovery Services Vault.
+    # Unregisters the given container from your Recovery Services vault.
     #
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param vault_name [String] The name of the recovery services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param vault_name [String] The name of the Recovery Services vault.
     # @param identity_name [String] Name of the protection container to unregister.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -337,11 +349,11 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Unregisters the given container from your Recovery Services Vault.
+    # Unregisters the given container from your Recovery Services vault.
     #
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param vault_name [String] The name of the recovery services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param vault_name [String] The name of the Recovery Services vault.
     # @param identity_name [String] Name of the protection container to unregister.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -353,11 +365,11 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Unregisters the given container from your Recovery Services Vault.
+    # Unregisters the given container from your Recovery Services vault.
     #
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param vault_name [String] The name of the recovery services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param vault_name [String] The name of the Recovery Services vault.
     # @param identity_name [String] Name of the protection container to unregister.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -408,10 +420,10 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the containers registered to Recovery Services Vault.
+    # Lists the containers registered to the Recovery Services vault.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -423,10 +435,10 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the containers registered to Recovery Services Vault.
+    # Lists the containers registered to the Recovery Services vault.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -437,10 +449,10 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the containers registered to Recovery Services Vault.
+    # Lists the containers registered to the Recovery Services vault.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -495,12 +507,16 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the containers registered to Recovery Services Vault.
+    # Lists the containers registered to the Recovery Services vault.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The following equation is used to sort or filter the
+    # containers registered to the vault. providerType eq {AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql} and status eq {Unknown, NotRegistered,
+    # Registered, Registering} and friendlyName eq {containername} and
+    # backupManagementType eq {AzureIaasVM, MAB, DPM, AzureBackupServer, AzureSql}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

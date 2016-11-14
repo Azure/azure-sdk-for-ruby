@@ -12,10 +12,10 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [Array<DateTime>] Retention times of retention policy.
+      # @return [Array<DateTime>] The retention times of retention policy.
       attr_accessor :retention_times
 
-      # @return [RetentionDuration] Retention duration of retention Policy.
+      # @return [RetentionDuration] The retention duration of retention policy.
       attr_accessor :retention_duration
 
 

@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for backup items.
+    # The base class for backup items.
     #
     class ProtectedItem
 
@@ -25,24 +25,24 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :protectedItemType
 
-      # @return [BackupManagementType] Type of backup managemenent for the
-      # backed up item. Possible values include: 'Invalid', 'AzureIaasVM',
-      # 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql'
+      # @return [BackupManagementType] The backup managemenent type associated
+      # with the backup item. Possible values include: 'Invalid',
+      # 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
-      # @return [DataSourceType] Type of workload this item represents.
-      # Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
-      # 'SQLDB', 'Exchange', 'Sharepoint', 'DPMUnknown'
+      # @return [DataSourceType] The workload type for this item. Possible
+      # values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb', 'SQLDB',
+      # 'Exchange', 'Sharepoint', 'DPMUnknown'
       attr_accessor :workload_type
 
-      # @return [String] ARM ID of the resource to be backed up.
+      # @return [String] The ID of the resource to be backed up.
       attr_accessor :source_resource_id
 
-      # @return [String] ID of the backup policy with which this item is
-      # backed up.
+      # @return [String] The ID of the backup policy associated with this
+      # backup item.
       attr_accessor :policy_id
 
-      # @return [DateTime] Timestamp when the last (latest) backup copy was
+      # @return [DateTime] The timestamp when the most recent backup copy was
       # created for this backup item.
       attr_accessor :last_recovery_point
 

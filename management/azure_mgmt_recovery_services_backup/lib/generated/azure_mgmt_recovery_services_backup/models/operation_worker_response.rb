@@ -6,31 +6,30 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # This is the base class for operation result responses.
+    # The base class for operation result responses.
     #
     class OperationWorkerResponse
 
       include MsRestAzure
 
-      # @return [HttpStatusCode] HTTP Status Code of the operation. Possible
-      # values include: 'Continue', 'SwitchingProtocols', 'OK', 'Created',
-      # 'Accepted', 'NonAuthoritativeInformation', 'NoContent',
+      # @return [HttpStatusCode] The HTTP status code of the operation.
+      # Possible values include: 'Continue', 'SwitchingProtocols', 'OK',
+      # 'Created', 'Accepted', 'NonAuthoritativeInformation', 'NoContent',
       # 'ResetContent', 'PartialContent', 'MultipleChoices', 'Ambiguous',
       # 'MovedPermanently', 'Moved', 'Found', 'Redirect', 'SeeOther',
       # 'RedirectMethod', 'NotModified', 'UseProxy', 'Unused',
-      # 'TemporaryRedirect', 'RedirectKeepVerb', 'BadRequest',
-      # 'Unauthorized', 'PaymentRequired', 'Forbidden', 'NotFound',
-      # 'MethodNotAllowed', 'NotAcceptable', 'ProxyAuthenticationRequired',
-      # 'RequestTimeout', 'Conflict', 'Gone', 'LengthRequired',
-      # 'PreconditionFailed', 'RequestEntityTooLarge', 'RequestUriTooLong',
-      # 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable',
-      # 'ExpectationFailed', 'UpgradeRequired', 'InternalServerError',
-      # 'NotImplemented', 'BadGateway', 'ServiceUnavailable',
-      # 'GatewayTimeout', 'HttpVersionNotSupported'
+      # 'TemporaryRedirect', 'RedirectKeepVerb', 'BadRequest', 'Unauthorized',
+      # 'PaymentRequired', 'Forbidden', 'NotFound', 'MethodNotAllowed',
+      # 'NotAcceptable', 'ProxyAuthenticationRequired', 'RequestTimeout',
+      # 'Conflict', 'Gone', 'LengthRequired', 'PreconditionFailed',
+      # 'RequestEntityTooLarge', 'RequestUriTooLong', 'UnsupportedMediaType',
+      # 'RequestedRangeNotSatisfiable', 'ExpectationFailed', 'UpgradeRequired',
+      # 'InternalServerError', 'NotImplemented', 'BadGateway',
+      # 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported'
       attr_accessor :status_code
 
-      # @return [Hash{String => Array<String>}] HTTP headers associated with
-      # this operation.
+      # @return [Hash{String => Array<String>}] The HTTP headers associated
+      # with this operation.
       attr_accessor :headers
 
 

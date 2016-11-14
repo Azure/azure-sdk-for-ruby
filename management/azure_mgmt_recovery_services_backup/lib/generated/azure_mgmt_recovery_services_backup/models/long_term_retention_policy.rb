@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Long term retention policy.
+    # Long-term retention policy.
     #
     class LongTermRetentionPolicy < RetentionPolicy
 
@@ -19,20 +19,20 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :retentionPolicyType
 
-      # @return [DailyRetentionSchedule] Daily retention schedule of the
-      # protection policy.
+      # @return [DailyRetentionSchedule] Daily retention schedule of the backup
+      # policy.
       attr_accessor :daily_schedule
 
       # @return [WeeklyRetentionSchedule] Weekly retention schedule of the
-      # protection policy.
+      # backup policy.
       attr_accessor :weekly_schedule
 
       # @return [MonthlyRetentionSchedule] Monthly retention schedule of the
-      # protection policy.
+      # backup policy.
       attr_accessor :monthly_schedule
 
       # @return [YearlyRetentionSchedule] Yearly retention schedule of the
-      # protection policy.
+      # backup policy.
       attr_accessor :yearly_schedule
 
 

@@ -6,8 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # IaaS VM workload-specific backup item representing the Classic Compute
-    # VM.
+    # IaaS VM workload-specific backup item representing a classic VM.
     #
     class AzureIaaSClassicComputeVMProtectableItem < IaaSVMProtectableItem
 

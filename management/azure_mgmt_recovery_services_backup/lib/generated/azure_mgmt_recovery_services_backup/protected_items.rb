@@ -23,14 +23,18 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items in a subscription, that can be
+    # protected.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String]  itemType eq { VM , FileFolder , AzureSqlDb , SQLDB ,
+    # Exchange , Sharepoint , DPMUnknown } and providerType eq { AzureIaasVM, MAB,
+    # DPM, AzureBackupServer, AzureSql } and policyName eq {policyname} and
+    # containerName eq {containername} and backupManagementType eq { AzureIaasVM,
+    # MAB, DPM, AzureBackupServer, AzureSql }.
+    # @param skip_token [String]  The Skip Token filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -42,14 +46,18 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items in a subscription, that can be
+    # protected.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String]  itemType eq { VM , FileFolder , AzureSqlDb , SQLDB ,
+    # Exchange , Sharepoint , DPMUnknown } and providerType eq { AzureIaasVM, MAB,
+    # DPM, AzureBackupServer, AzureSql } and policyName eq {policyname} and
+    # containerName eq {containername} and backupManagementType eq { AzureIaasVM,
+    # MAB, DPM, AzureBackupServer, AzureSql }.
+    # @param skip_token [String]  The Skip Token filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -60,14 +68,18 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items in a subscription, that can be
+    # protected.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String]  itemType eq { VM , FileFolder , AzureSqlDb , SQLDB ,
+    # Exchange , Sharepoint , DPMUnknown } and providerType eq { AzureIaasVM, MAB,
+    # DPM, AzureBackupServer, AzureSql } and policyName eq {policyname} and
+    # containerName eq {containername} and backupManagementType eq { AzureIaasVM,
+    # MAB, DPM, AzureBackupServer, AzureSql }.
+    # @param skip_token [String]  The Skip Token filter.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -126,19 +138,19 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides the details of the backed up item. This is an asynchronous
-    # operation. To know the status of the operation, call the
-    # GetItemOperationResult API.
+    # Provides the details of the backup item. This is an asynchronous operation.
+    # To know the status of the operation, call the GetItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up item.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backed up item name whose details are to
-    # be fetched.
-    # @param filter [String] OData filter options.
+    # @param protected_item_name [String] The backup item name used in this GET
+    # operation.
+    # @param filter [String] expand eq {extendedinfo}. This filter enables you to
+    # choose (or filter) specific items in the list of backup items.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -150,19 +162,19 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides the details of the backed up item. This is an asynchronous
-    # operation. To know the status of the operation, call the
-    # GetItemOperationResult API.
+    # Provides the details of the backup item. This is an asynchronous operation.
+    # To know the status of the operation, call the GetItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up item.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backed up item name whose details are to
-    # be fetched.
-    # @param filter [String] OData filter options.
+    # @param protected_item_name [String] The backup item name used in this GET
+    # operation.
+    # @param filter [String] expand eq {extendedinfo}. This filter enables you to
+    # choose (or filter) specific items in the list of backup items.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -173,19 +185,19 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides the details of the backed up item. This is an asynchronous
-    # operation. To know the status of the operation, call the
-    # GetItemOperationResult API.
+    # Provides the details of the backup item. This is an asynchronous operation.
+    # To know the status of the operation, call the GetItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up item.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backed up item name whose details are to
-    # be fetched.
-    # @param filter [String] OData filter options.
+    # @param protected_item_name [String] The backup item name used in this GET
+    # operation.
+    # @param filter [String] expand eq {extendedinfo}. This filter enables you to
+    # choose (or filter) specific items in the list of backup items.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -247,19 +259,20 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Enables backup of an item or to modifies the backup policy information of an
-    # already backed up item. This is an asynchronous operation. To know the
-    # status of the operation, call the GetItemOperationResult API.
+    # This operation enables an item to be backed up, or modifies the existing
+    # backup policy information for an item that has been backed up. This is an
+    # asynchronous operation. To learn the status of the operation, call the
+    # GetItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backup item.
-    # @param container_name [String] Container name associated with the backup
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Item name to be backed up.
-    # @param resource_protected_item [ProtectedItemResource] resource backed up
-    # item
+    # @param protected_item_name [String] The name of the backup item.
+    # @param resource_protected_item [ProtectedItemResource] The resource backup
+    # item.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -270,19 +283,20 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Enables backup of an item or to modifies the backup policy information of an
-    # already backed up item. This is an asynchronous operation. To know the
-    # status of the operation, call the GetItemOperationResult API.
+    # This operation enables an item to be backed up, or modifies the existing
+    # backup policy information for an item that has been backed up. This is an
+    # asynchronous operation. To learn the status of the operation, call the
+    # GetItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backup item.
-    # @param container_name [String] Container name associated with the backup
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Item name to be backed up.
-    # @param resource_protected_item [ProtectedItemResource] resource backed up
-    # item
+    # @param protected_item_name [String] The name of the backup item.
+    # @param resource_protected_item [ProtectedItemResource] The resource backup
+    # item.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -293,19 +307,20 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Enables backup of an item or to modifies the backup policy information of an
-    # already backed up item. This is an asynchronous operation. To know the
-    # status of the operation, call the GetItemOperationResult API.
+    # This operation enables an item to be backed up, or modifies the existing
+    # backup policy information for an item that has been backed up. This is an
+    # asynchronous operation. To learn the status of the operation, call the
+    # GetItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backup item.
-    # @param container_name [String] Container name associated with the backup
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Item name to be backed up.
-    # @param resource_protected_item [ProtectedItemResource] resource backed up
-    # item
+    # @param protected_item_name [String] The name of the backup item.
+    # @param resource_protected_item [ProtectedItemResource] The resource backup
+    # item.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -367,17 +382,17 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Used to disable backup of an item within a container. This is an
-    # asynchronous operation. To know the status of the request, call the
+    # Used to disable the backup job for an item within a container. This is an
+    # asynchronous operation. To learn the status of the request, call the
     # GetItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up item.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String]  The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backed up item to be deleted.
+    # @param protected_item_name [String] The backup item to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -388,17 +403,17 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Used to disable backup of an item within a container. This is an
-    # asynchronous operation. To know the status of the request, call the
+    # Used to disable the backup job for an item within a container. This is an
+    # asynchronous operation. To learn the status of the request, call the
     # GetItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up item.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String]  The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backed up item to be deleted.
+    # @param protected_item_name [String] The backup item to be deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -409,17 +424,17 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Used to disable backup of an item within a container. This is an
-    # asynchronous operation. To know the status of the request, call the
+    # Used to disable the backup job for an item within a container. This is an
+    # asynchronous operation. To learn the status of the request, call the
     # GetItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up item.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String]  The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backed up item to be deleted.
+    # @param protected_item_name [String] The backup item to be deleted.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -471,11 +486,11 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items in a subscription, that can be
+    # protected.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -487,11 +502,11 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items in a subscription, that can be
+    # protected.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -502,11 +517,11 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items in a subscription, that can be
+    # protected.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -561,19 +576,23 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides a pageable list of all items that can be backed up within a
-    # subscription.
+    # Provides a pageable list of all items in a subscription, that can be
+    # protected.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String]  itemType eq { VM , FileFolder , AzureSqlDb , SQLDB ,
+    # Exchange , Sharepoint , DPMUnknown } and providerType eq { AzureIaasVM, MAB,
+    # DPM, AzureBackupServer, AzureSql } and policyName eq {policyname} and
+    # containerName eq {containername} and backupManagementType eq { AzureIaasVM,
+    # MAB, DPM, AzureBackupServer, AzureSql }.
+    # @param skip_token [String]  The Skip Token filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ProtectedItemResourceList] which provide lazy access to pages of
-    # the response.
+    # @return [ProtectedItemResourceList] which provide lazy access to pages of the
+    # response.
     #
     def list_as_lazy(vault_name, resource_group_name, filter = nil, skip_token = nil, custom_headers = nil)
       response = list_async(vault_name, resource_group_name, filter, skip_token, custom_headers).value!

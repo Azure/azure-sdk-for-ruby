@@ -23,19 +23,20 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Provides the information of the backed up data identified using
-    # RecoveryPointID. This is an asynchronous operation. To know the status of
-    # the operation, call the GetProtectedItemOperationResult API.
+    # Provides the backup data for the RecoveryPointID. This is an asynchronous
+    # operation. To learn the status of the operation, call the
+    # GetProtectedItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with backed up item.
-    # @param container_name [String] Container name associated with backed up item.
-    # @param protected_item_name [String] Backed up item name whose backup data
-    # needs to be fetched.
-    # @param recovery_point_id [String] RecoveryPointID represents the backed up
-    # data to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with backup item.
+    # @param container_name [String] The container name associated with backup
+    # item.
+    # @param protected_item_name [String] The name of the backup item used in this
+    # GET operation.
+    # @param recovery_point_id [String] The RecoveryPointID associated with this
+    # GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -47,19 +48,20 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides the information of the backed up data identified using
-    # RecoveryPointID. This is an asynchronous operation. To know the status of
-    # the operation, call the GetProtectedItemOperationResult API.
+    # Provides the backup data for the RecoveryPointID. This is an asynchronous
+    # operation. To learn the status of the operation, call the
+    # GetProtectedItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with backed up item.
-    # @param container_name [String] Container name associated with backed up item.
-    # @param protected_item_name [String] Backed up item name whose backup data
-    # needs to be fetched.
-    # @param recovery_point_id [String] RecoveryPointID represents the backed up
-    # data to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with backup item.
+    # @param container_name [String] The container name associated with backup
+    # item.
+    # @param protected_item_name [String] The name of the backup item used in this
+    # GET operation.
+    # @param recovery_point_id [String] The RecoveryPointID associated with this
+    # GET operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -70,19 +72,20 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Provides the information of the backed up data identified using
-    # RecoveryPointID. This is an asynchronous operation. To know the status of
-    # the operation, call the GetProtectedItemOperationResult API.
+    # Provides the backup data for the RecoveryPointID. This is an asynchronous
+    # operation. To learn the status of the operation, call the
+    # GetProtectedItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with backed up item.
-    # @param container_name [String] Container name associated with backed up item.
-    # @param protected_item_name [String] Backed up item name whose backup data
-    # needs to be fetched.
-    # @param recovery_point_id [String] RecoveryPointID represents the backed up
-    # data to be fetched.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with backup item.
+    # @param container_name [String] The container name associated with backup
+    # item.
+    # @param protected_item_name [String] The name of the backup item used in this
+    # GET operation.
+    # @param recovery_point_id [String] The RecoveryPointID associated with this
+    # GET operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -145,17 +148,18 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the backup copies for the backed up item.
+    # Lists the recovery points, or backup copies, for the specified backup item.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up item.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backed up item whose backup copies are
-    # to be fetched.
-    # @param filter [String] OData filter options.
+    # @param protected_item_name [String] The name of backup item used in this GET
+    # operation.
+    # @param filter [String] startDate eq {yyyy-mm-dd hh:mm:ss PM} and endDate {
+    # yyyy-mm-dd hh:mm:ss PM}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -167,17 +171,18 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the backup copies for the backed up item.
+    # Lists the recovery points, or backup copies, for the specified backup item.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up item.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backed up item whose backup copies are
-    # to be fetched.
-    # @param filter [String] OData filter options.
+    # @param protected_item_name [String] The name of backup item used in this GET
+    # operation.
+    # @param filter [String] startDate eq {yyyy-mm-dd hh:mm:ss PM} and endDate {
+    # yyyy-mm-dd hh:mm:ss PM}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -188,17 +193,18 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the backup copies for the backed up item.
+    # Lists the recovery points, or backup copies, for the specified backup item.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up item.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backed up item whose backup copies are
-    # to be fetched.
-    # @param filter [String] OData filter options.
+    # @param protected_item_name [String] The name of backup item used in this GET
+    # operation.
+    # @param filter [String] startDate eq {yyyy-mm-dd hh:mm:ss PM} and endDate {
+    # yyyy-mm-dd hh:mm:ss PM}.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -260,10 +266,10 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the backup copies for the backed up item.
+    # Lists the recovery points, or backup copies, for the specified backup item.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -275,10 +281,10 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the backup copies for the backed up item.
+    # Lists the recovery points, or backup copies, for the specified backup item.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -289,10 +295,10 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the backup copies for the backed up item.
+    # Lists the recovery points, or backup copies, for the specified backup item.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -347,22 +353,23 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Lists the backup copies for the backed up item.
+    # Lists the recovery points, or backup copies, for the specified backup item.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up item.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backed up item whose backup copies are
-    # to be fetched.
-    # @param filter [String] OData filter options.
+    # @param protected_item_name [String] The name of backup item used in this GET
+    # operation.
+    # @param filter [String] startDate eq {yyyy-mm-dd hh:mm:ss PM} and endDate {
+    # yyyy-mm-dd hh:mm:ss PM}.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [RecoveryPointResourceList] which provide lazy access to pages of
-    # the response.
+    # @return [RecoveryPointResourceList] which provide lazy access to pages of the
+    # response.
     #
     def list_as_lazy(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, filter = nil, custom_headers = nil)
       response = list_async(vault_name, resource_group_name, fabric_name, container_name, protected_item_name, filter, custom_headers).value!

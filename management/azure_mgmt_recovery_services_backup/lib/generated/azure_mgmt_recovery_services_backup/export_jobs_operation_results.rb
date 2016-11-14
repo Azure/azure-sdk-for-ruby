@@ -23,12 +23,12 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Fetches the result of the operation triggered by the Export Job API.
+    # Gets the result of the operation triggered by the ExportJob API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param operation_id [String] OperationID which represents the export job.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param operation_id [String] The ID associated with the export job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,12 +40,12 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Fetches the result of the operation triggered by the Export Job API.
+    # Gets the result of the operation triggered by the ExportJob API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param operation_id [String] OperationID which represents the export job.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param operation_id [String] The ID associated with the export job.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -56,12 +56,12 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Fetches the result of the operation triggered by the Export Job API.
+    # Gets the result of the operation triggered by the ExportJob API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param operation_id [String] OperationID which represents the export job.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param operation_id [String] The ID associated with the export job.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

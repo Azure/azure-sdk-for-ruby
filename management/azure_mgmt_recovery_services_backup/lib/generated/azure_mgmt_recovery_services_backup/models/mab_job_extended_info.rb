@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Additional information for the MAB workload-specific job.
+    # Additional information for the Azure Backup Server workload-specific job.
     #
     class MabJobExtendedInfo
 
@@ -18,7 +18,7 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [Hash{String => String}] The job properties.
       attr_accessor :property_bag
 
-      # @return [String] Non localized error message specific to this job.
+      # @return [String] Non-localized error message specific to this job.
       attr_accessor :dynamic_error_message
 
 

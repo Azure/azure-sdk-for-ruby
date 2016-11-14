@@ -6,8 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # IaaS VM workload-specific backup item representing a classic virtual
-    # machine.
+    # IaaS VM workload-specific backup item representing a classic-deployed
+    # virtual machine.
     #
     class AzureIaaSClassicComputeVMContainer < IaaSVMContainer
 

@@ -22,18 +22,20 @@ module Azure::ARM::RecoveryServicesBackup
       # include: 'Invalid', 'InProgress', 'Succeeded', 'Failed', 'Canceled'
       attr_accessor :status
 
-      # @return [DateTime] Operation start time. Format: ISO-8601.
+      # @return [DateTime] The operation start time. The format of the time is
+      # ISO-8601.
       attr_accessor :start_time
 
-      # @return [DateTime] Operation end time. Format: ISO-8601.
+      # @return [DateTime] The operation end time. The format of the time is
+      # ISO-8601.
       attr_accessor :end_time
 
       # @return [OperationStatusError] Error information related to this
       # operation.
       attr_accessor :error
 
-      # @return [OperationStatusExtendedInfo] Additional information
-      # associated with this operation.
+      # @return [OperationStatusExtendedInfo] Additional information associated
+      # with this operation.
       attr_accessor :properties
 
 

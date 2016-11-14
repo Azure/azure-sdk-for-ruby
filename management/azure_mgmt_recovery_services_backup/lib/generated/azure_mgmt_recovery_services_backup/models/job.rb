@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Defines workload agnostic properties for a job.
+    # Defines workload-agnostic properties for a job.
     #
     class Job
 
@@ -23,19 +23,19 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :jobType
 
-      # @return [String] Friendly name of the entity on which the current job
-      # is executing.
+      # @return [String] The friendly name of the entity on which the current
+      # job is executing.
       attr_accessor :entity_friendly_name
 
-      # @return [BackupManagementType] Backup management type to execute the
-      # current job. Possible values include: 'Invalid', 'AzureIaasVM',
-      # 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql'
+      # @return [BackupManagementType] The backup management type for the
+      # current job. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
+      # 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
       # @return [String] The operation name.
       attr_accessor :operation
 
-      # @return [String] Job status.
+      # @return [String] The job status.
       attr_accessor :status
 
       # @return [DateTime] The start time.

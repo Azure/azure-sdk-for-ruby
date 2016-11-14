@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Filters to list backup items.
+    # This object filters the list of backup items.
     #
     class GetProtectedItemQueryObject
 

@@ -17,7 +17,7 @@ module Azure::ARM::RecoveryServicesBackup
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] The subscription Id.
+    # @return [String] The subscription ID.
     attr_accessor :subscription_id
 
     # @return [String] Gets or sets the preferred language for the response.

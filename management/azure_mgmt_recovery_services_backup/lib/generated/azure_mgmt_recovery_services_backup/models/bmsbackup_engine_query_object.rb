@@ -6,15 +6,15 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Query parameters to fetch list of backup engines.
+    # The query parameters used to GET the list of backup engines.
     #
     class BMSBackupEngineQueryObject
 
       include MsRestAzure
 
-      # @return [BackupManagementType] Backup management type for the backup
-      # engine. Possible values include: 'Invalid', 'AzureIaasVM', 'MAB',
-      # 'DPM', 'AzureBackupServer', 'AzureSql'
+      # @return [BackupManagementType] The backup management type associated
+      # with the backup engine. Possible values include: 'Invalid',
+      # 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
 

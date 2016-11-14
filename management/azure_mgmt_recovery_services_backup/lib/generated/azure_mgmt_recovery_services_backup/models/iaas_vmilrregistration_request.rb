@@ -6,7 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Restore files/folders from a backup copy of IaaS VM.
+    # Restore files or folders from a backup copy, or recovery point, of an
+    # IaaS (or Azure) VM.
     #
     class IaasVMILRRegistrationRequest < ILRRequest
 
@@ -19,18 +20,18 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :objectType
 
-      # @return [String] ID of the IaaS VM backup copy from where the
-      # files/folders have to be restored.
+      # @return [String] The ID of the IaaS VM recovery point used to restore
+      # the files or folders.
       attr_accessor :recovery_point_id
 
-      # @return [String] Fully qualified ARM ID of the virtual machine whose
-      # the files / folders have to be restored.
+      # @return [String] The fully qualified Resource Manager ID of the VM used
+      # to restore the files or folders.
       attr_accessor :virtual_machine_id
 
-      # @return [String] iSCSI initiator name.
+      # @return [String] The iSCSI initiator name.
       attr_accessor :initiator_name
 
-      # @return [Boolean] Whether to renew existing registration with the
+      # @return [Boolean] Whether to renew the existing registration with the
       # iSCSI server.
       attr_accessor :renew_existing_registration
 

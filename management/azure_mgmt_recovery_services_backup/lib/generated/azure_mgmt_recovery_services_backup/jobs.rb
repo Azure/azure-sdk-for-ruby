@@ -23,13 +23,18 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Exports all jobs for a given SAS URL. The SAS URL will expire within 15
-    # minutes of its creation.
+    # Exports all jobs for a given Shared Access Signatures (SAS) URL. The SAS URL
+    # expires within 15 minutes of its creation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The OData filter options. status eq { InProgress ,
+    # Completed , Failed , CompletedWithWarnings , Cancelled , Cancelling } and
+    # backupManagementType eq {AzureIaasVM, MAB, DPM, AzureBackupServer, AzureSql }
+    # and operation eq { ConfigureBackup , Backup , Restore , DisableBackup ,
+    # DeleteBackupData } and jobId eq {guid} and startTime eq { yyyy-mm-dd hh:mm:ss
+    # PM } and endTime eq { yyyy-mm-dd hh:mm:ss PM }.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,13 +45,18 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Exports all jobs for a given SAS URL. The SAS URL will expire within 15
-    # minutes of its creation.
+    # Exports all jobs for a given Shared Access Signatures (SAS) URL. The SAS URL
+    # expires within 15 minutes of its creation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The OData filter options. status eq { InProgress ,
+    # Completed , Failed , CompletedWithWarnings , Cancelled , Cancelling } and
+    # backupManagementType eq {AzureIaasVM, MAB, DPM, AzureBackupServer, AzureSql }
+    # and operation eq { ConfigureBackup , Backup , Restore , DisableBackup ,
+    # DeleteBackupData } and jobId eq {guid} and startTime eq { yyyy-mm-dd hh:mm:ss
+    # PM } and endTime eq { yyyy-mm-dd hh:mm:ss PM }.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -57,13 +67,18 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Exports all jobs for a given SAS URL. The SAS URL will expire within 15
-    # minutes of its creation.
+    # Exports all jobs for a given Shared Access Signatures (SAS) URL. The SAS URL
+    # expires within 15 minutes of its creation.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The OData filter options. status eq { InProgress ,
+    # Completed , Failed , CompletedWithWarnings , Cancelled , Cancelling } and
+    # backupManagementType eq {AzureIaasVM, MAB, DPM, AzureBackupServer, AzureSql }
+    # and operation eq { ConfigureBackup , Backup , Restore , DisableBackup ,
+    # DeleteBackupData } and jobId eq {guid} and startTime eq { yyyy-mm-dd hh:mm:ss
+    # PM } and endTime eq { yyyy-mm-dd hh:mm:ss PM }.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -114,11 +129,18 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Provides a pageable list of jobs.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The following equation can be used to filter the list
+    # of jobs based on status, type, start date, and end date. status eq {
+    # InProgress , Completed , Failed , CompletedWithWarnings , Cancelled ,
+    # Cancelling } and backupManagementType eq {AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql } and operation eq { ConfigureBackup , Backup ,
+    # Restore , DisableBackup , DeleteBackupData } and jobId eq {guid} and
+    # startTime eq { yyyy-mm-dd hh:mm:ss PM } and endTime eq { yyyy-mm-dd hh:mm:ss
+    # PM }.
+    # @param skip_token [String] The Skip Token filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -132,11 +154,18 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Provides a pageable list of jobs.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The following equation can be used to filter the list
+    # of jobs based on status, type, start date, and end date. status eq {
+    # InProgress , Completed , Failed , CompletedWithWarnings , Cancelled ,
+    # Cancelling } and backupManagementType eq {AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql } and operation eq { ConfigureBackup , Backup ,
+    # Restore , DisableBackup , DeleteBackupData } and jobId eq {guid} and
+    # startTime eq { yyyy-mm-dd hh:mm:ss PM } and endTime eq { yyyy-mm-dd hh:mm:ss
+    # PM }.
+    # @param skip_token [String] The Skip Token filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -149,11 +178,18 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Provides a pageable list of jobs.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The following equation can be used to filter the list
+    # of jobs based on status, type, start date, and end date. status eq {
+    # InProgress , Completed , Failed , CompletedWithWarnings , Cancelled ,
+    # Cancelling } and backupManagementType eq {AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql } and operation eq { ConfigureBackup , Backup ,
+    # Restore , DisableBackup , DeleteBackupData } and jobId eq {guid} and
+    # startTime eq { yyyy-mm-dd hh:mm:ss PM } and endTime eq { yyyy-mm-dd hh:mm:ss
+    # PM }.
+    # @param skip_token [String] The Skip Token filter.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -214,8 +250,8 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Provides a pageable list of jobs.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -229,8 +265,8 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Provides a pageable list of jobs.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -243,8 +279,8 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Provides a pageable list of jobs.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -301,11 +337,18 @@ module Azure::ARM::RecoveryServicesBackup
     #
     # Provides a pageable list of jobs.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param filter [String] OData filter options.
-    # @param skip_token [String] skipToken Filter.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param filter [String] The following equation can be used to filter the list
+    # of jobs based on status, type, start date, and end date. status eq {
+    # InProgress , Completed , Failed , CompletedWithWarnings , Cancelled ,
+    # Cancelling } and backupManagementType eq {AzureIaasVM, MAB, DPM,
+    # AzureBackupServer, AzureSql } and operation eq { ConfigureBackup , Backup ,
+    # Restore , DisableBackup , DeleteBackupData } and jobId eq {guid} and
+    # startTime eq { yyyy-mm-dd hh:mm:ss PM } and endTime eq { yyyy-mm-dd hh:mm:ss
+    # PM }.
+    # @param skip_token [String] The Skip Token filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

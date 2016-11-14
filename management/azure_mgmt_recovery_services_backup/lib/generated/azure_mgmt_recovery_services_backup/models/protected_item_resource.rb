@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for backup items.
+    # The base class for backup items.
     #
     class ProtectedItemResource < MsRestAzure::Resource
 

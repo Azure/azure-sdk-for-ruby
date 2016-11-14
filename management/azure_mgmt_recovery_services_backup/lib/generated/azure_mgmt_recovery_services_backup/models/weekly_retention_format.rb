@@ -15,7 +15,7 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [Array<DayOfWeek>] List of days of the week.
       attr_accessor :days_of_the_week
 
-      # @return [Array<WeekOfMonth>] List of weeks of month.
+      # @return [Array<WeekOfMonth>] List of weeks of the month.
       attr_accessor :weeks_of_the_month
 
 

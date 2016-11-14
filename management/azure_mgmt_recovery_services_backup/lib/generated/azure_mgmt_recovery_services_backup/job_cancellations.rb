@@ -23,12 +23,12 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Cancels a job. This is an asynchronous operation. To know the status of the
-    # cancellation, call GetCancelOperationResult API.
+    # Cancels the job. This is an asynchronous operation. To know the status of the
+    # cancellation, call the GetCancelOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
     # @param job_name [String] Name of the job to cancel.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -40,12 +40,12 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Cancels a job. This is an asynchronous operation. To know the status of the
-    # cancellation, call GetCancelOperationResult API.
+    # Cancels the job. This is an asynchronous operation. To know the status of the
+    # cancellation, call the GetCancelOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
     # @param job_name [String] Name of the job to cancel.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -57,12 +57,12 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Cancels a job. This is an asynchronous operation. To know the status of the
-    # cancellation, call GetCancelOperationResult API.
+    # Cancels the job. This is an asynchronous operation. To know the status of the
+    # cancellation, call the GetCancelOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
     # @param job_name [String] Name of the job to cancel.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.

@@ -23,20 +23,20 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Triggers backup for specified backed up item. This is an asynchronous
-    # operation. To know the status of the operation, call
+    # Triggers the backup job for the specified backup item. This is an
+    # asynchronous operation. To know the status of the operation, call
     # GetProtectedItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backup item.
-    # @param container_name [String] Container name associated with the backup
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backup item for which backup needs to be
-    # triggered.
-    # @param resource_backup_request [BackupRequestResource] resource backup
-    # request
+    # @param protected_item_name [String] The name of backup item used in this POST
+    # operation.
+    # @param resource_backup_request [BackupRequestResource] The resource backup
+    # request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -47,20 +47,20 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Triggers backup for specified backed up item. This is an asynchronous
-    # operation. To know the status of the operation, call
+    # Triggers the backup job for the specified backup item. This is an
+    # asynchronous operation. To know the status of the operation, call
     # GetProtectedItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backup item.
-    # @param container_name [String] Container name associated with the backup
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backup item for which backup needs to be
-    # triggered.
-    # @param resource_backup_request [BackupRequestResource] resource backup
-    # request
+    # @param protected_item_name [String] The name of backup item used in this POST
+    # operation.
+    # @param resource_backup_request [BackupRequestResource] The resource backup
+    # request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -71,20 +71,20 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Triggers backup for specified backed up item. This is an asynchronous
-    # operation. To know the status of the operation, call
+    # Triggers the backup job for the specified backup item. This is an
+    # asynchronous operation. To know the status of the operation, call
     # GetProtectedItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backup item.
-    # @param container_name [String] Container name associated with the backup
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup item.
+    # @param container_name [String] The container name associated with the backup
     # item.
-    # @param protected_item_name [String] Backup item for which backup needs to be
-    # triggered.
-    # @param resource_backup_request [BackupRequestResource] resource backup
-    # request
+    # @param protected_item_name [String] The name of backup item used in this POST
+    # operation.
+    # @param resource_backup_request [BackupRequestResource] The resource backup
+    # request.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

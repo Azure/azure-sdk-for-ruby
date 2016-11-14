@@ -19,11 +19,12 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :objectType
 
-      # @return [String] URL of the blob into which the serialized string of
-      # list of jobs is exported.
+      # @return [String] The URL of the blob. The serialized string, which is
+      # the list of jobs, is exported to this URL.
       attr_accessor :blob_url
 
-      # @return [String] SAS key to access the blob. It expires in 15 mins.
+      # @return [String] The Shared Access Signatures (SAS) key used to access
+      # the blob. The key expires after 15 minutes.
       attr_accessor :blob_sas_key
 
 
