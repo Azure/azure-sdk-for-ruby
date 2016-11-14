@@ -6,18 +6,18 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # The response of the List Namespace operation.
+    # The response to the List Namespace operation.
     #
     class SharedAccessAuthorizationRuleListResult
 
       include MsRestAzure
 
       # @return [Array<SharedAccessAuthorizationRuleResource>] Result of the
-      # List AuthorizationRules operation.
+      # List Authorization Rules operation.
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of AuthorizationRules
+      # contains incomplete list of Authorization Rules.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

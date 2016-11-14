@@ -6,13 +6,13 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Description of Subscription Resource.
+    # Description of subscription resource.
     #
     class SubscriptionResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [DateTime] Last time a there was a receive request to this
+      # @return [DateTime] Last time there was a receive request to this
       # subscription.
       attr_accessor :accessed_at
 
@@ -32,16 +32,16 @@ module Azure::ARM::ServiceBus
       # TimeToLive is not set on a message itself.
       attr_accessor :default_message_time_to_live
 
-      # @return [Boolean] Value that indicates if a subscription has dead
-      # letter support on Filter evaluation exceptions.
+      # @return [Boolean] Value that indicates whether a subscription has dead
+      # letter support on filter evaluation exceptions.
       attr_accessor :dead_lettering_on_filter_evaluation_exceptions
 
-      # @return [Boolean] Value that indicates if a subscription has dead
+      # @return [Boolean] Value that indicates whether a subscription has dead
       # letter support when a message expires.
       attr_accessor :dead_lettering_on_message_expiration
 
       # @return [Boolean] Value that indicates whether server-side batched
-      # operations are enabled..
+      # operations are enabled.
       attr_accessor :enable_batched_operations
 
       # @return [EntityAvailabilityStatus] Entity availability status for the
@@ -63,7 +63,7 @@ module Azure::ARM::ServiceBus
       attr_accessor :message_count
 
       # @return [Boolean] Value indicating if a subscription supports the
-      # concept of session.
+      # concept of sessions.
       attr_accessor :requires_session
 
       # @return [EntityStatus] Enumerates the possible values for the status
@@ -72,7 +72,7 @@ module Azure::ARM::ServiceBus
       # 'SendDisabled', 'Unknown'
       attr_accessor :status
 
-      # @return [DateTime] The exact time the message has been updated.
+      # @return [DateTime] The exact time the message was updated.
       attr_accessor :updated_at
 
 
