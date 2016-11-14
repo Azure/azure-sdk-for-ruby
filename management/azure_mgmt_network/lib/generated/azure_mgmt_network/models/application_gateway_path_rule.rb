@@ -6,31 +6,31 @@
 module Azure::ARM::Network
   module Models
     #
-    # Path rule of URL path map of application gateway
+    # Path rule of URL path map of an application gateway.
     #
     class ApplicationGatewayPathRule < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [Array<String>] Path rules of URL path map
+      # @return [Array<String>] Path rules of URL path map.
       attr_accessor :paths
 
-      # @return [SubResource] Backend address pool resource of URL path map
+      # @return [SubResource] Backend address pool resource of URL path map.
       attr_accessor :backend_address_pool
 
-      # @return [SubResource] Backend http settings resource of URL path map
+      # @return [SubResource] Backend http settings resource of URL path map.
       attr_accessor :backend_http_settings
 
-      # @return [String] Path rule of URL path map resource
-      # Updating/Deleting/Failed
+      # @return [String] Path rule of URL path map resource. Possible values
+      # are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
-      # group. This name can be used to access the resource
+      # group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

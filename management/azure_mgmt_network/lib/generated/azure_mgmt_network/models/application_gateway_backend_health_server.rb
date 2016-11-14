@@ -12,15 +12,15 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [String] IP address or FQDN of backend server
+      # @return [String] IP address or FQDN of backend server.
       attr_accessor :address
 
       # @return [SubResource] Reference of IP configuration of backend server.
       attr_accessor :ip_configuration
 
       # @return [ApplicationGatewayBackendHealthServerHealth] Health of
-      # backend server. Possible values include: 'Unknown', 'Healthy',
-      # 'Unhealthy', 'Partial'
+      # backend server. Possible values are: 'Unknown', 'Up', 'Down', and
+      # 'Partial'. Possible values include: 'Unknown', 'Up', 'Down', 'Partial'
       attr_accessor :health
 
 

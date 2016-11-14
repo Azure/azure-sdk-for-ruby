@@ -6,18 +6,18 @@
 module Azure::ARM::Network
   module Models
     #
-    # VpnClientConfiguration for P2S client
+    # VpnClientConfiguration for P2S client.
     #
     class VpnClientConfiguration
 
       include MsRestAzure
 
-      # @return [AddressSpace] Gets or sets the reference of the Address space
-      # resource which represents Address space for P2S VpnClient.
+      # @return [AddressSpace] The reference of the address space resource
+      # which represents Address space for P2S VpnClient.
       attr_accessor :vpn_client_address_pool
 
       # @return [Array<VpnClientRootCertificate>] VpnClientRootCertificate for
-      # Virtual network gateway.
+      # virtual network gateway.
       attr_accessor :vpn_client_root_certificates
 
       # @return [Array<VpnClientRevokedCertificate>]

@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Frontend Port of application gateway
+    # Frontend port of an application gateway.
     #
     class ApplicationGatewayFrontendPort < MsRestAzure::SubResource
 
@@ -15,16 +15,16 @@ module Azure::ARM::Network
       # @return [Integer] Frontend port
       attr_accessor :port
 
-      # @return [String] Provisioning state of the frontend port resource
-      # Updating/Deleting/Failed
+      # @return [String] Provisioning state of the frontend port resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
-      # group. This name can be used to access the resource
+      # group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

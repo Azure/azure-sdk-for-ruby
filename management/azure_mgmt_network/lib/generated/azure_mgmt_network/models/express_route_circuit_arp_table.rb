@@ -6,22 +6,22 @@
 module Azure::ARM::Network
   module Models
     #
-    # The arp table associated with the ExpressRouteCircuit
+    # The ARP table associated with the ExpressRouteCircuit.
     #
     class ExpressRouteCircuitArpTable
 
       include MsRestAzure
 
-      # @return [Integer] Age.
+      # @return [Integer] Age
       attr_accessor :age
 
-      # @return [String] Interface.
+      # @return [String] Interface
       attr_accessor :interface
 
-      # @return [String] Gets ipAddress.
+      # @return [String] The IP address.
       attr_accessor :ip_address
 
-      # @return [String] Gets macAddress.
+      # @return [String] The MAC address.
       attr_accessor :mac_address
 
 

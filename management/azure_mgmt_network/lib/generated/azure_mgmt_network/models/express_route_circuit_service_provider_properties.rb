@@ -6,19 +6,19 @@
 module Azure::ARM::Network
   module Models
     #
-    # Contains ServiceProviderProperties in an ExpressRouteCircuit
+    # Contains ServiceProviderProperties in an ExpressRouteCircuit.
     #
     class ExpressRouteCircuitServiceProviderProperties
 
       include MsRestAzure
 
-      # @return [String] Gets or sets serviceProviderName.
+      # @return [String] The serviceProviderName.
       attr_accessor :service_provider_name
 
-      # @return [String] Gets or sets peering location.
+      # @return [String] The peering location.
       attr_accessor :peering_location
 
-      # @return [Integer] Gets or sets BandwidthInMbps.
+      # @return [Integer] The BandwidthInMbps.
       attr_accessor :bandwidth_in_mbps
 
 

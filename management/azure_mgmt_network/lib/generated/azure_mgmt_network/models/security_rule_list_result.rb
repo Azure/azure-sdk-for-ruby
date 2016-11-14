@@ -6,18 +6,18 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListSecurityRule Api service callRetrieves all security
-    # rules that belongs to a network security group
+    # Response for ListSecurityRule API service call. Retrieves all security
+    # rules that belongs to a network security group.
     #
     class SecurityRuleListResult
 
       include MsRestAzure
 
-      # @return [Array<SecurityRule>] Gets security rules in a network
-      # security group
+      # @return [Array<SecurityRule>] The security rules in a network security
+      # group.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

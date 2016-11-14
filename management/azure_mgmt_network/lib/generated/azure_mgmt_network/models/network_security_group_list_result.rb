@@ -6,17 +6,17 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListNetworkSecurityGroups Api service call
+    # Response for ListNetworkSecurityGroups API service call.
     #
     class NetworkSecurityGroupListResult
 
       include MsRestAzure
 
-      # @return [Array<NetworkSecurityGroup>] Gets List of
-      # NetworkSecurityGroups
+      # @return [Array<NetworkSecurityGroup>] A list of NetworkSecurityGroup
+      # resources.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

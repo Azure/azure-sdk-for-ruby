@@ -6,14 +6,15 @@
 module Azure::ARM::Network
   module Models
     #
-    # Application gateway SSL policy
+    # Application gateway SSL policy.
     #
     class ApplicationGatewaySslPolicy
 
       include MsRestAzure
 
       # @return [Array<ApplicationGatewaySslProtocol>] SSL protocols to be
-      # disabled on Application Gateway
+      # disabled on application gateway. Possible values are: 'TLSv1_0',
+      # 'TLSv1_1', and 'TLSv1_2'.
       attr_accessor :disabled_ssl_protocols
 
 

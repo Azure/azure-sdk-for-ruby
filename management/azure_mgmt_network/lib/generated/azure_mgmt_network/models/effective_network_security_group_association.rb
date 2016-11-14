@@ -6,16 +6,16 @@
 module Azure::ARM::Network
   module Models
     #
-    # Effective NetworkSecurityGroup association
+    # The effective network security group association.
     #
     class EffectiveNetworkSecurityGroupAssociation
 
       include MsRestAzure
 
-      # @return [SubResource] Gets the id of subnet if assigned
+      # @return [SubResource] The ID of the subnet if assigned.
       attr_accessor :subnet
 
-      # @return [SubResource] Gets the id of network interface if assigned
+      # @return [SubResource] The ID of the network interface if assigned.
       attr_accessor :network_interface
 
 

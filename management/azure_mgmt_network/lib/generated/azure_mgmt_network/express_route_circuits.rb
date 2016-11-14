@@ -26,11 +26,10 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The delete ExpressRouteCircuit operation deletes the specified
-    # ExpressRouteCircuit.
+    # Deletes the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the express route Circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -41,7 +40,7 @@ module Azure::ARM::Network
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the express route Circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -65,11 +64,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get ExpressRouteCircuit operation retrieves information about the
-    # specified ExpressRouteCircuit.
+    # Gets information about the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of express route circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -81,11 +79,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get ExpressRouteCircuit operation retrieves information about the
-    # specified ExpressRouteCircuit.
+    # Gets information about the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of express route circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -96,11 +93,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get ExpressRouteCircuit operation retrieves information about the
-    # specified ExpressRouteCircuit.
+    # Gets information about the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of express route circuit.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -159,12 +155,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put ExpressRouteCircuit operation creates/updates a ExpressRouteCircuit
+    # Creates or updates an express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.
-    # @param parameters [ExpressRouteCircuit] Parameters supplied to the
-    # create/delete ExpressRouteCircuit operation
+    # @param parameters [ExpressRouteCircuit] Parameters supplied to the create or
+    # update express route circuit operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -178,8 +174,8 @@ module Azure::ARM::Network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.
-    # @param parameters [ExpressRouteCircuit] Parameters supplied to the
-    # create/delete ExpressRouteCircuit operation
+    # @param parameters [ExpressRouteCircuit] Parameters supplied to the create or
+    # update express route circuit operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -205,12 +201,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The ListArpTable from ExpressRouteCircuit operation retrieves the currently
-    # advertised arp table associated with the ExpressRouteCircuits in a resource
-    # group.
+    # Gets the currently advertised ARP table associated with the express route
+    # circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -225,7 +220,7 @@ module Azure::ARM::Network
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -253,12 +248,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
-    # currently advertised routes table associated with the ExpressRouteCircuits
-    # in a resource group.
+    # Gets the currently advertised routes table associated with the express route
+    # circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -273,7 +267,7 @@ module Azure::ARM::Network
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -301,12 +295,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
-    # currently advertised routes table associated with the ExpressRouteCircuits
-    # in a resource group.
+    # Gets the currently advertised routes table summary associated with the
+    # express route circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -321,7 +314,7 @@ module Azure::ARM::Network
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -349,11 +342,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The List stats ExpressRouteCircuit operation retrieves all the stats from a
-    # ExpressRouteCircuits in a resource group.
+    # Gets all the stats from an express route circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -365,11 +357,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The List stats ExpressRouteCircuit operation retrieves all the stats from a
-    # ExpressRouteCircuits in a resource group.
+    # Gets all the stats from an express route circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -380,11 +371,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The List stats ExpressRouteCircuit operation retrieves all the stats from a
-    # ExpressRouteCircuits in a resource group.
+    # Gets all the stats from an express route circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -443,11 +433,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The List stats ExpressRouteCircuit operation retrieves all the stats from a
-    # ExpressRouteCircuits in a resource group.
+    # Gets all stats from an express route circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -460,11 +449,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The List stats ExpressRouteCircuit operation retrieves all the stats from a
-    # ExpressRouteCircuits in a resource group.
+    # Gets all stats from an express route circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -476,11 +464,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The List stats ExpressRouteCircuit operation retrieves all the stats from a
-    # ExpressRouteCircuits in a resource group.
+    # Gets all stats from an express route circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -541,8 +528,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a resource group.
+    # Gets all the express route circuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -556,8 +542,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a resource group.
+    # Gets all the express route circuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -570,8 +555,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a resource group.
+    # Gets all the express route circuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -631,8 +615,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a subscription.
+    # Gets all the express route circuits in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -645,8 +628,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a subscription.
+    # Gets all the express route circuits in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -658,8 +640,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a subscription.
+    # Gets all the express route circuits in a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -717,11 +698,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete ExpressRouteCircuit operation deletes the specified
-    # ExpressRouteCircuit.
+    # Deletes the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the express route Circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -732,11 +712,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete ExpressRouteCircuit operation deletes the specified
-    # ExpressRouteCircuit.
+    # Deletes the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the express route Circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -747,11 +726,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete ExpressRouteCircuit operation deletes the specified
-    # ExpressRouteCircuit.
+    # Deletes the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the express route Circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -800,12 +778,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put ExpressRouteCircuit operation creates/updates a ExpressRouteCircuit
+    # Creates or updates an express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.
-    # @param parameters [ExpressRouteCircuit] Parameters supplied to the
-    # create/delete ExpressRouteCircuit operation
+    # @param parameters [ExpressRouteCircuit] Parameters supplied to the create or
+    # update express route circuit operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -817,12 +795,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put ExpressRouteCircuit operation creates/updates a ExpressRouteCircuit
+    # Creates or updates an express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.
-    # @param parameters [ExpressRouteCircuit] Parameters supplied to the
-    # create/delete ExpressRouteCircuit operation
+    # @param parameters [ExpressRouteCircuit] Parameters supplied to the create or
+    # update express route circuit operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -833,12 +811,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put ExpressRouteCircuit operation creates/updates a ExpressRouteCircuit
+    # Creates or updates an express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.
-    # @param parameters [ExpressRouteCircuit] Parameters supplied to the
-    # create/delete ExpressRouteCircuit operation
+    # @param parameters [ExpressRouteCircuit] Parameters supplied to the create or
+    # update express route circuit operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -917,12 +895,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The ListArpTable from ExpressRouteCircuit operation retrieves the currently
-    # advertised arp table associated with the ExpressRouteCircuits in a resource
-    # group.
+    # Gets the currently advertised ARP table associated with the express route
+    # circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -936,12 +913,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The ListArpTable from ExpressRouteCircuit operation retrieves the currently
-    # advertised arp table associated with the ExpressRouteCircuits in a resource
-    # group.
+    # Gets the currently advertised ARP table associated with the express route
+    # circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -954,12 +930,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The ListArpTable from ExpressRouteCircuit operation retrieves the currently
-    # advertised arp table associated with the ExpressRouteCircuits in a resource
-    # group.
+    # Gets the currently advertised ARP table associated with the express route
+    # circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1022,12 +997,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
-    # currently advertised routes table associated with the ExpressRouteCircuits
-    # in a resource group.
+    # Gets the currently advertised routes table associated with the express route
+    # circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1041,12 +1015,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
-    # currently advertised routes table associated with the ExpressRouteCircuits
-    # in a resource group.
+    # Gets the currently advertised routes table associated with the express route
+    # circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1059,12 +1032,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
-    # currently advertised routes table associated with the ExpressRouteCircuits
-    # in a resource group.
+    # Gets the currently advertised routes table associated with the express route
+    # circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1127,12 +1099,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
-    # currently advertised routes table associated with the ExpressRouteCircuits
-    # in a resource group.
+    # Gets the currently advertised routes table summary associated with the
+    # express route circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1146,12 +1117,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
-    # currently advertised routes table associated with the ExpressRouteCircuits
-    # in a resource group.
+    # Gets the currently advertised routes table summary associated with the
+    # express route circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1164,12 +1134,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The ListRoutesTable from ExpressRouteCircuit operation retrieves the
-    # currently advertised routes table associated with the ExpressRouteCircuits
-    # in a resource group.
+    # Gets the currently advertised routes table summary associated with the
+    # express route circuit in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param device_path [String] The path of the device.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1232,8 +1201,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a resource group.
+    # Gets all the express route circuits in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1248,8 +1216,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a resource group.
+    # Gets all the express route circuits in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1263,8 +1230,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a resource group.
+    # Gets all the express route circuits in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1322,8 +1288,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a subscription.
+    # Gets all the express route circuits in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1338,8 +1303,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a subscription.
+    # Gets all the express route circuits in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1353,8 +1317,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a subscription.
+    # Gets all the express route circuits in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1412,8 +1375,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a resource group.
+    # Gets all the express route circuits in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1434,8 +1396,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteCircuit operation retrieves all the
-    # ExpressRouteCircuits in a subscription.
+    # Gets all the express route circuits in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

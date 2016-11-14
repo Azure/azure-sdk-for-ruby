@@ -6,43 +6,43 @@
 module Azure::ARM::Network
   module Models
     #
-    # PublicIPAddress resource
+    # Public IP address resource.
     #
     class PublicIPAddress < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [IPAllocationMethod] Gets or sets PublicIP allocation method
-      # (Static/Dynamic). Possible values include: 'Static', 'Dynamic'
+      # @return [IPAllocationMethod] The public IP allocation method. Possible
+      # values are: 'Static' and 'Dynamic'. Possible values include:
+      # 'Static', 'Dynamic'
       attr_accessor :public_ipallocation_method
 
-      # @return [IPVersion] Gets or sets PublicIP address version (IPv4/IPv6).
-      # Possible values include: 'IPv4', 'IPv6'
+      # @return [IPVersion] The public IP address version. Possible values
+      # are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
       attr_accessor :public_ipaddress_version
 
       # @return [IPConfiguration]
       attr_accessor :ip_configuration
 
-      # @return [PublicIPAddressDnsSettings] Gets or sets FQDN of the DNS
-      # record associated with the public IP address
+      # @return [PublicIPAddressDnsSettings] The FQDN of the DNS record
+      # associated with the public IP address.
       attr_accessor :dns_settings
 
       # @return [String]
       attr_accessor :ip_address
 
-      # @return [Integer] Gets or sets the Idletimeout of the public IP address
+      # @return [Integer] The idle timeout of the public IP address.
       attr_accessor :idle_timeout_in_minutes
 
-      # @return [String] Gets or sets resource guid property of the PublicIP
-      # resource
+      # @return [String] The resource GUID property of the public IP resource.
       attr_accessor :resource_guid
 
-      # @return [String] Gets provisioning state of the PublicIP resource
-      # Updating/Deleting/Failed
+      # @return [String] The provisioning state of the PublicIP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
-      # @return [String] Gets a unique read-only string that changes whenever
-      # the resource is updated
+      # @return [String] A unique read-only string that changes whenever the
+      # resource is updated.
       attr_accessor :etag
 
 

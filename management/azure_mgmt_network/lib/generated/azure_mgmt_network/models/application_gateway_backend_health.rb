@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # List of backendhealth pools.
+    # List of ApplicationGatewayBackendHealthPool resources.
     #
     class ApplicationGatewayBackendHealth
 

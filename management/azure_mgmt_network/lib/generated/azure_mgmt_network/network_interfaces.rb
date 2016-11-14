@@ -26,7 +26,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # Deletes the specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -64,12 +64,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get network interface operation retrieves information about the
-    # specified network interface.
+    # Gets information about the specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
-    # @param expand [String] expand references resources.
+    # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -81,12 +80,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get network interface operation retrieves information about the
-    # specified network interface.
+    # Gets information about the specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
-    # @param expand [String] expand references resources.
+    # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -97,12 +95,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get network interface operation retrieves information about the
-    # specified network interface.
+    # Gets information about the specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
-    # @param expand [String] expand references resources.
+    # @param expand [String] Expands referenced resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -161,12 +158,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put NetworkInterface operation creates/updates a networkInterface
+    # Creates or updates a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
-    # @param parameters [NetworkInterface] Parameters supplied to the
-    # create/update NetworkInterface operation
+    # @param parameters [NetworkInterface] Parameters supplied to the create or
+    # update network interface operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -180,8 +177,8 @@ module Azure::ARM::Network
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
-    # @param parameters [NetworkInterface] Parameters supplied to the
-    # create/update NetworkInterface operation
+    # @param parameters [NetworkInterface] Parameters supplied to the create or
+    # update network interface operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -207,8 +204,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine from a virtual machine scale set.
+    # Gets information about all network interfaces in a virtual machine in a
+    # virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the virtual
@@ -225,8 +222,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine from a virtual machine scale set.
+    # Gets information about all network interfaces in a virtual machine in a
+    # virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the virtual
@@ -242,8 +239,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine from a virtual machine scale set.
+    # Gets information about all network interfaces in a virtual machine in a
+    # virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the virtual
@@ -308,8 +305,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine scale set.
+    # Gets all network interfaces in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the virtual
@@ -325,8 +321,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine scale set.
+    # Gets all network interfaces in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the virtual
@@ -341,8 +336,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine scale set.
+    # Gets all network interfaces in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the virtual
@@ -405,15 +399,14 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get network interface operation retrieves information about the
-    # specified network interface in a virtual machine scale set.
+    # Get the specified network interface in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the virtual
     # machine scale set.
     # @param virtualmachine_index [String] The virtual machine index.
     # @param network_interface_name [String] The name of the network interface.
-    # @param expand [String] expand references resources.
+    # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -425,15 +418,14 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get network interface operation retrieves information about the
-    # specified network interface in a virtual machine scale set.
+    # Get the specified network interface in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the virtual
     # machine scale set.
     # @param virtualmachine_index [String] The virtual machine index.
     # @param network_interface_name [String] The name of the network interface.
-    # @param expand [String] expand references resources.
+    # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -444,15 +436,14 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get network interface operation retrieves information about the
-    # specified network interface in a virtual machine scale set.
+    # Get the specified network interface in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the virtual
     # machine scale set.
     # @param virtualmachine_index [String] The virtual machine index.
     # @param network_interface_name [String] The name of the network interface.
-    # @param expand [String] expand references resources.
+    # @param expand [String] Expands referenced resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -513,8 +504,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a subscription.
+    # Gets all network interfaces in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -527,8 +517,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a subscription.
+    # Gets all network interfaces in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -540,8 +529,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a subscription.
+    # Gets all network interfaces in a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -599,8 +587,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a resource group.
+    # Gets all network interfaces in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -614,8 +601,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a resource group.
+    # Gets all network interfaces in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -628,8 +614,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a resource group.
+    # Gets all network interfaces in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -689,8 +674,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The get effective routetable operation retrieves all the route tables
-    # applied on a networkInterface.
+    # Gets all route tables applied to a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -732,8 +716,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The list effective network security group operation retrieves all the
-    # network security groups applied on a networkInterface.
+    # Gets all network security groups applied to a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -775,7 +758,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # Deletes the specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -789,7 +772,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # Deletes the specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -803,7 +786,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete netwokInterface operation deletes the specified netwokInterface.
+    # Deletes the specified network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -855,12 +838,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put NetworkInterface operation creates/updates a networkInterface
+    # Creates or updates a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
-    # @param parameters [NetworkInterface] Parameters supplied to the
-    # create/update NetworkInterface operation
+    # @param parameters [NetworkInterface] Parameters supplied to the create or
+    # update network interface operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -872,12 +855,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put NetworkInterface operation creates/updates a networkInterface
+    # Creates or updates a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
-    # @param parameters [NetworkInterface] Parameters supplied to the
-    # create/update NetworkInterface operation
+    # @param parameters [NetworkInterface] Parameters supplied to the create or
+    # update network interface operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -888,12 +871,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put NetworkInterface operation creates/updates a networkInterface
+    # Creates or updates a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
-    # @param parameters [NetworkInterface] Parameters supplied to the
-    # create/update NetworkInterface operation
+    # @param parameters [NetworkInterface] Parameters supplied to the create or
+    # update network interface operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -972,8 +955,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The get effective routetable operation retrieves all the route tables
-    # applied on a networkInterface.
+    # Gets all route tables applied to a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -988,8 +970,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The get effective routetable operation retrieves all the route tables
-    # applied on a networkInterface.
+    # Gets all route tables applied to a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -1003,8 +984,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The get effective routetable operation retrieves all the route tables
-    # applied on a networkInterface.
+    # Gets all route tables applied to a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -1066,8 +1046,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The list effective network security group operation retrieves all the
-    # network security groups applied on a networkInterface.
+    # Gets all network security groups applied to a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -1082,8 +1061,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The list effective network security group operation retrieves all the
-    # network security groups applied on a networkInterface.
+    # Gets all network security groups applied to a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -1097,8 +1075,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The list effective network security group operation retrieves all the
-    # network security groups applied on a networkInterface.
+    # Gets all network security groups applied to a network interface.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_interface_name [String] The name of the network interface.
@@ -1160,8 +1137,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine from a virtual machine scale set.
+    # Gets information about all network interfaces in a virtual machine in a
+    # virtual machine scale set.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1176,8 +1153,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine from a virtual machine scale set.
+    # Gets information about all network interfaces in a virtual machine in a
+    # virtual machine scale set.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1191,8 +1168,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine from a virtual machine scale set.
+    # Gets information about all network interfaces in a virtual machine in a
+    # virtual machine scale set.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1250,8 +1227,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine scale set.
+    # Gets all network interfaces in a virtual machine scale set.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1266,8 +1242,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine scale set.
+    # Gets all network interfaces in a virtual machine scale set.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1281,8 +1256,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine scale set.
+    # Gets all network interfaces in a virtual machine scale set.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1340,8 +1314,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a subscription.
+    # Gets all network interfaces in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1356,8 +1329,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a subscription.
+    # Gets all network interfaces in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1371,8 +1343,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a subscription.
+    # Gets all network interfaces in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1430,8 +1401,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a resource group.
+    # Gets all network interfaces in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1446,8 +1416,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a resource group.
+    # Gets all network interfaces in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1461,8 +1430,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a resource group.
+    # Gets all network interfaces in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1520,8 +1488,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine from a virtual machine scale set.
+    # Gets information about all network interfaces in a virtual machine in a
+    # virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the virtual
@@ -1545,8 +1513,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The list network interface operation retrieves information about all network
-    # interfaces in a virtual machine scale set.
+    # Gets all network interfaces in a virtual machine scale set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_machine_scale_set_name [String] The name of the virtual
@@ -1569,8 +1536,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a subscription.
+    # Gets all network interfaces in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1590,8 +1556,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List networkInterfaces operation retrieves all the networkInterfaces in
-    # a resource group.
+    # Gets all network interfaces in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

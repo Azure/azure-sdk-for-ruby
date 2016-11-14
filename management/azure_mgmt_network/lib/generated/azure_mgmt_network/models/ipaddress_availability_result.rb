@@ -6,17 +6,17 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for CheckIPAddressAvailability Api service call
+    # Response for CheckIPAddressAvailability API service call
     #
     class IPAddressAvailabilityResult
 
       include MsRestAzure
 
-      # @return [Boolean] Private IP address availability
+      # @return [Boolean] Private IP address availability.
       attr_accessor :available
 
       # @return [Array<String>] Contains other available private IP addresses
-      # if the asked for address is taken
+      # if the asked for address is taken.
       attr_accessor :available_ipaddresses
 
 

@@ -6,17 +6,17 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListVirtualNetworkGateways Api service call
+    # Response for the ListVirtualNetworkGateways API service call.
     #
     class VirtualNetworkGatewayListResult
 
       include MsRestAzure
 
-      # @return [Array<VirtualNetworkGateway>] Gets List of
-      # VirtualNetworkGateways that exists in a resource group
+      # @return [Array<VirtualNetworkGateway>] Gets a list of
+      # VirtualNetworkGateway resources that exists in a resource group.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

@@ -6,56 +6,55 @@
 module Azure::ARM::Network
   module Models
     #
-    # Load balancer Probe
+    # A load balancer probe.
     #
     class Probe < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [Array<SubResource>] Gets Load balancer rules that use this
-      # probe
+      # @return [Array<SubResource>] The load balancer rules that use this
+      # probe.
       attr_accessor :load_balancing_rules
 
-      # @return [ProbeProtocol] Gets or sets the protocol of the end point.
-      # Possible values are http or Tcp. If Tcp is specified, a received ACK
-      # is required for the probe to be successful. If http is specified,a
+      # @return [ProbeProtocol] The protocol of the end point. Possible values
+      # are: 'Http' or 'Tcp'. If 'Tcp' is specified, a received ACK is
+      # required for the probe to be successful. If 'Http' is specified, a
       # 200 OK response from the specifies URI is required for the probe to
       # be successful. Possible values include: 'Http', 'Tcp'
       attr_accessor :protocol
 
-      # @return [Integer] Gets or sets Port for communicating the probe.
-      # Possible values range from 1 to 65535, inclusive.
+      # @return [Integer] The port for communicating the probe. Possible
+      # values range from 1 to 65535, inclusive.
       attr_accessor :port
 
-      # @return [Integer] Gets or sets the interval, in seconds, for how
-      # frequently to probe the endpoint for health status. Typically, the
-      # interval is slightly less than half the allocated timeout period (in
-      # seconds) which allows two full probes before taking the instance out
-      # of rotation. The default value is 15, the minimum value is 5
+      # @return [Integer] The interval, in seconds, for how frequently to
+      # probe the endpoint for health status. Typically, the interval is
+      # slightly less than half the allocated timeout period (in seconds)
+      # which allows two full probes before taking the instance out of
+      # rotation. The default value is 15, the minimum value is 5.
       attr_accessor :interval_in_seconds
 
-      # @return [Integer] Gets or sets the number of probes where if no
-      # response, will result in stopping further traffic from being
-      # delivered to the endpoint. This values allows endpoints to be taken
-      # out of rotation faster or slower than the typical times used in
-      # Azure.
+      # @return [Integer] The number of probes where if no response, will
+      # result in stopping further traffic from being delivered to the
+      # endpoint. This values allows endpoints to be taken out of rotation
+      # faster or slower than the typical times used in Azure.
       attr_accessor :number_of_probes
 
-      # @return [String] Gets or sets the URI used for requesting health
-      # status from the VM. Path is required if a protocol is set to http.
-      # Otherwise, it is not allowed. There is no default value
+      # @return [String] The URI used for requesting health status from the
+      # VM. Path is required if a protocol is set to http. Otherwise, it is
+      # not allowed. There is no default value.
       attr_accessor :request_path
 
-      # @return [String] Gets provisioning state of the PublicIP resource
-      # Updating/Deleting/Failed
+      # @return [String] Gets the provisioning state of the public IP
+      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # resource group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

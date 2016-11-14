@@ -6,42 +6,44 @@
 module Azure::ARM::Network
   module Models
     #
-    # Http listener of application gateway
+    # Http listener of an application gateway.
     #
     class ApplicationGatewayHttpListener < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [SubResource] Frontend IP configuration resource of
-      # application gateway
+      # @return [SubResource] Frontend IP configuration resource of an
+      # application gateway.
       attr_accessor :frontend_ipconfiguration
 
-      # @return [SubResource] Frontend port resource of application gateway
+      # @return [SubResource] Frontend port resource of an application gateway.
       attr_accessor :frontend_port
 
-      # @return [ApplicationGatewayProtocol] Protocol. Possible values
-      # include: 'Http', 'Https'
+      # @return [ApplicationGatewayProtocol] Protocol. Possible values are:
+      # 'Http' and 'Https'. Possible values include: 'Http', 'Https'
       attr_accessor :protocol
 
-      # @return [String] Host name of http listener
+      # @return [String] Host name of HTTP listener.
       attr_accessor :host_name
 
-      # @return [SubResource] Ssl certificate resource of application gateway
+      # @return [SubResource] SSL certificate resource of an application
+      # gateway.
       attr_accessor :ssl_certificate
 
-      # @return [Boolean] RequireServerNameIndication of http listener
+      # @return [Boolean] Applicable only if protocol is https. Enables SNI
+      # for multi-hosting.
       attr_accessor :require_server_name_indication
 
-      # @return [String] Provisioning state of the http listener resource
-      # Updating/Deleting/Failed
+      # @return [String] Provisioning state of the HTTP listener resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
-      # group. This name can be used to access the resource
+      # group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

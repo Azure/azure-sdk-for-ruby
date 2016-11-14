@@ -6,17 +6,17 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for list effective network security groups api service call
+    # Response for list effective network security groups API service call.
     #
     class EffectiveNetworkSecurityGroupListResult
 
       include MsRestAzure
 
-      # @return [Array<EffectiveNetworkSecurityGroup>] Gets list of effective
-      # network security groups
+      # @return [Array<EffectiveNetworkSecurityGroup>] A list of effective
+      # network security groups.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
 

@@ -6,17 +6,17 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListSubnets Api service callRetrieves all subnet that
+    # Response for ListSubnets API service callRetrieves all subnet that
     # belongs to a virtual network
     #
     class SubnetListResult
 
       include MsRestAzure
 
-      # @return [Array<Subnet>] Gets the subnets in a virtual network
+      # @return [Array<Subnet>] The subnets in a virtual network.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

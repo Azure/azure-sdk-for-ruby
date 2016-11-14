@@ -6,38 +6,37 @@
 module Azure::ARM::Network
   module Models
     #
-    # Virtual Network resource
+    # Virtual Network resource.
     #
     class VirtualNetwork < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [AddressSpace] Gets or sets AddressSpace that contains an
-      # array of IP address ranges that can be used by subnets
+      # @return [AddressSpace] The AddressSpace that contains an array of IP
+      # address ranges that can be used by subnets.
       attr_accessor :address_space
 
-      # @return [DhcpOptions] Gets or sets DHCPOptions that contains an array
-      # of DNS servers available to VMs deployed in the virtual network
+      # @return [DhcpOptions] The dhcpOptions that contains an array of DNS
+      # servers available to VMs deployed in the virtual network.
       attr_accessor :dhcp_options
 
-      # @return [Array<Subnet>] Gets or sets list of subnets in a
-      # VirtualNetwork
+      # @return [Array<Subnet>] A list of subnets in a Virtual Network.
       attr_accessor :subnets
 
-      # @return [Array<VirtualNetworkPeering>] Gets or sets list of peerings
-      # in a VirtualNetwork
+      # @return [Array<VirtualNetworkPeering>] A list of peerings in a Virtual
+      # Network.
       attr_accessor :virtual_network_peerings
 
-      # @return [String] Gets or sets resource guid property of the
-      # VirtualNetwork resource
+      # @return [String] The resourceGuid property of the Virtual Network
+      # resource.
       attr_accessor :resource_guid
 
-      # @return [String] Gets provisioning state of the PublicIP resource
-      # Updating/Deleting/Failed
+      # @return [String] The provisioning state of the PublicIP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Gets a unique read-only string that changes whenever
-      # the resource is updated
+      # the resource is updated.
       attr_accessor :etag
 
 
@@ -130,7 +129,7 @@ module Azure::ARM::Network
               },
               virtual_network_peerings: {
                 required: false,
-                serialized_name: 'properties.VirtualNetworkPeerings',
+                serialized_name: 'properties.virtualNetworkPeerings',
                 type: {
                   name: 'Sequence',
                   element: {

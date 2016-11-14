@@ -6,40 +6,43 @@
 module Azure::ARM::Network
   module Models
     #
-    # IPConfiguration in a NetworkInterface
+    # IPConfiguration in a network interface.
     #
     class NetworkInterfaceIPConfiguration < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [Array<ApplicationGatewayBackendAddressPool>] Gets or sets the
-      # reference of ApplicationGatewayBackendAddressPool resource
+      # @return [Array<ApplicationGatewayBackendAddressPool>] The reference of
+      # ApplicationGatewayBackendAddressPool resource.
       attr_accessor :application_gateway_backend_address_pools
 
-      # @return [Array<BackendAddressPool>] Gets or sets the reference of
-      # LoadBalancerBackendAddressPool resource
+      # @return [Array<BackendAddressPool>] The reference of
+      # LoadBalancerBackendAddressPool resource.
       attr_accessor :load_balancer_backend_address_pools
 
-      # @return [Array<InboundNatRule>] Gets or sets list of references of
-      # LoadBalancerInboundNatRules
+      # @return [Array<InboundNatRule>] A list of references of
+      # LoadBalancerInboundNatRules.
       attr_accessor :load_balancer_inbound_nat_rules
 
       # @return [String]
       attr_accessor :private_ipaddress
 
-      # @return [IPAllocationMethod] Gets or sets PrivateIP allocation method.
-      # Possible values include: 'Static', 'Dynamic'
+      # @return [IPAllocationMethod] Defines how a private IP address is
+      # assigned. Possible values are: 'Static' and 'Dynamic'. Possible
+      # values include: 'Static', 'Dynamic'
       attr_accessor :private_ipallocation_method
 
-      # @return [IPVersion] Gets or sets PrivateIP address version
-      # (IPv4/IPv6). Possible values include: 'IPv4', 'IPv6'
+      # @return [IPVersion] Available from Api-Version 2016-03-30 onwards, it
+      # represents whether the specific ipconfiguration is IPv4 or IPv6.
+      # Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
+      # Possible values include: 'IPv4', 'IPv6'
       attr_accessor :private_ipaddress_version
 
       # @return [Subnet]
       attr_accessor :subnet
 
       # @return [Boolean] Gets whether this is a primary customer address on
-      # the NIC
+      # the network interface.
       attr_accessor :primary
 
       # @return [PublicIPAddress]
@@ -48,12 +51,12 @@ module Azure::ARM::Network
       # @return [String]
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] The name of the resource that is unique within a
+      # resource group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

@@ -6,20 +6,20 @@
 module Azure::ARM::Network
   module Models
     #
-    # ExpressRouteResourceProvider object
+    # A ExpressRouteResourceProvider object.
     #
     class ExpressRouteServiceProvider < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Array<String>] Gets or list of peering locations
+      # @return [Array<String>] Get a list of peering locations.
       attr_accessor :peering_locations
 
-      # @return [Array<ExpressRouteServiceProviderBandwidthsOffered>] Gets or
-      # bandwidths offered
+      # @return [Array<ExpressRouteServiceProviderBandwidthsOffered>] Gets
+      # bandwidths offered.
       attr_accessor :bandwidths_offered
 
-      # @return [String] Gets provisioning state of the resource
+      # @return [String] Gets the provisioning state of the resource.
       attr_accessor :provisioning_state
 
 

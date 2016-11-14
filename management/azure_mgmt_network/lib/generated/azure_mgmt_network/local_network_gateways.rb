@@ -26,15 +26,13 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The Put LocalNetworkGateway operation creates/updates a local network
-    # gateway in the specified resource group through Network resource provider.
+    # Creates or updates a local network gateway in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param local_network_gateway_name [String] The name of the local network
     # gateway.
-    # @param parameters [LocalNetworkGateway] Parameters supplied to the Begin
-    # Create or update Local Network Gateway operation through Network resource
-    # provider.
+    # @param parameters [LocalNetworkGateway] Parameters supplied to the create or
+    # update local network gateway operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -49,9 +47,8 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param local_network_gateway_name [String] The name of the local network
     # gateway.
-    # @param parameters [LocalNetworkGateway] Parameters supplied to the Begin
-    # Create or update Local Network Gateway operation through Network resource
-    # provider.
+    # @param parameters [LocalNetworkGateway] Parameters supplied to the create or
+    # update local network gateway operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -77,8 +74,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get LocalNetworkGateway operation retrieves information about the
-    # specified local network gateway through Network resource provider.
+    # Gets the specified local network gateway in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param local_network_gateway_name [String] The name of the local network
@@ -94,8 +90,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get LocalNetworkGateway operation retrieves information about the
-    # specified local network gateway through Network resource provider.
+    # Gets the specified local network gateway in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param local_network_gateway_name [String] The name of the local network
@@ -110,8 +105,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get LocalNetworkGateway operation retrieves information about the
-    # specified local network gateway through Network resource provider.
+    # Gets the specified local network gateway in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param local_network_gateway_name [String] The name of the local network
@@ -174,8 +168,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete LocalNetworkGateway operation deletes the specified local network
-    # Gateway through Network resource provider.
+    # Deletes the specified local network gateway.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param local_network_gateway_name [String] The name of the local network
@@ -215,8 +208,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways operation retrieves all the local network
-    # gateways stored.
+    # Gets all the local network gateways in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -230,8 +222,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways operation retrieves all the local network
-    # gateways stored.
+    # Gets all the local network gateways in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -244,8 +235,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways operation retrieves all the local network
-    # gateways stored.
+    # Gets all the local network gateways in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -305,15 +295,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put LocalNetworkGateway operation creates/updates a local network
-    # gateway in the specified resource group through Network resource provider.
+    # Creates or updates a local network gateway in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param local_network_gateway_name [String] The name of the local network
     # gateway.
-    # @param parameters [LocalNetworkGateway] Parameters supplied to the Begin
-    # Create or update Local Network Gateway operation through Network resource
-    # provider.
+    # @param parameters [LocalNetworkGateway] Parameters supplied to the create or
+    # update local network gateway operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -325,15 +313,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put LocalNetworkGateway operation creates/updates a local network
-    # gateway in the specified resource group through Network resource provider.
+    # Creates or updates a local network gateway in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param local_network_gateway_name [String] The name of the local network
     # gateway.
-    # @param parameters [LocalNetworkGateway] Parameters supplied to the Begin
-    # Create or update Local Network Gateway operation through Network resource
-    # provider.
+    # @param parameters [LocalNetworkGateway] Parameters supplied to the create or
+    # update local network gateway operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -344,15 +330,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put LocalNetworkGateway operation creates/updates a local network
-    # gateway in the specified resource group through Network resource provider.
+    # Creates or updates a local network gateway in the specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param local_network_gateway_name [String] The name of the local network
     # gateway.
-    # @param parameters [LocalNetworkGateway] Parameters supplied to the Begin
-    # Create or update Local Network Gateway operation through Network resource
-    # provider.
+    # @param parameters [LocalNetworkGateway] Parameters supplied to the create or
+    # update local network gateway operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -431,8 +415,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete LocalNetworkGateway operation deletes the specified local network
-    # Gateway through Network resource provider.
+    # Deletes the specified local network gateway.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param local_network_gateway_name [String] The name of the local network
@@ -447,8 +430,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete LocalNetworkGateway operation deletes the specified local network
-    # Gateway through Network resource provider.
+    # Deletes the specified local network gateway.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param local_network_gateway_name [String] The name of the local network
@@ -463,8 +445,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Delete LocalNetworkGateway operation deletes the specified local network
-    # Gateway through Network resource provider.
+    # Deletes the specified local network gateway.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param local_network_gateway_name [String] The name of the local network
@@ -517,8 +498,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways operation retrieves all the local network
-    # gateways stored.
+    # Gets all the local network gateways in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -533,8 +513,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways operation retrieves all the local network
-    # gateways stored.
+    # Gets all the local network gateways in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -548,8 +527,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways operation retrieves all the local network
-    # gateways stored.
+    # Gets all the local network gateways in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -607,8 +585,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List LocalNetworkGateways operation retrieves all the local network
-    # gateways stored.
+    # Gets all the local network gateways in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

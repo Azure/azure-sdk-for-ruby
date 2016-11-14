@@ -6,39 +6,42 @@
 module Azure::ARM::Network
   module Models
     #
-    # Request routing rule of application gateway
+    # Request routing rule of an application gateway.
     #
     class ApplicationGatewayRequestRoutingRule < MsRestAzure::SubResource
 
       include MsRestAzure
 
       # @return [ApplicationGatewayRequestRoutingRuleType] Rule type. Possible
-      # values include: 'Basic', 'PathBasedRouting'
+      # values are: 'Basic' and 'PathBasedRouting'. Possible values include:
+      # 'Basic', 'PathBasedRouting'
       attr_accessor :rule_type
 
-      # @return [SubResource] Backend address pool resource of application
-      # gateway
+      # @return [SubResource] Backend address pool resource of the application
+      # gateway.
       attr_accessor :backend_address_pool
 
-      # @return [SubResource] Frontend port resource of application gateway
+      # @return [SubResource] Frontend port resource of the application
+      # gateway.
       attr_accessor :backend_http_settings
 
-      # @return [SubResource] Http listener resource of application gateway
+      # @return [SubResource] Http listener resource of the application
+      # gateway.
       attr_accessor :http_listener
 
-      # @return [SubResource] Url path map resource of application gateway
+      # @return [SubResource] URL path map resource of the application gateway.
       attr_accessor :url_path_map
 
       # @return [String] Provisioning state of the request routing rule
-      # resource Updating/Deleting/Failed
+      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
-      # group. This name can be used to access the resource
+      # group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

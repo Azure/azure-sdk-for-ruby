@@ -26,8 +26,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The List ExpressRouteServiceProvider operation retrieves all the available
-    # ExpressRouteServiceProviders.
+    # Gets all the available express route service providers.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -40,8 +39,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteServiceProvider operation retrieves all the available
-    # ExpressRouteServiceProviders.
+    # Gets all the available express route service providers.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -53,8 +51,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteServiceProvider operation retrieves all the available
-    # ExpressRouteServiceProviders.
+    # Gets all the available express route service providers.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -112,8 +109,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteServiceProvider operation retrieves all the available
-    # ExpressRouteServiceProviders.
+    # Gets all the available express route service providers.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -128,8 +124,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteServiceProvider operation retrieves all the available
-    # ExpressRouteServiceProviders.
+    # Gets all the available express route service providers.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -143,8 +138,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteServiceProvider operation retrieves all the available
-    # ExpressRouteServiceProviders.
+    # Gets all the available express route service providers.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -202,8 +196,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List ExpressRouteServiceProvider operation retrieves all the available
-    # ExpressRouteServiceProviders.
+    # Gets all the available express route service providers.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

@@ -6,36 +6,37 @@
 module Azure::ARM::Network
   module Models
     #
-    # Frontend IP configuration of application gateway
+    # Frontend IP configuration of an application gateway.
     #
     class ApplicationGatewayFrontendIPConfiguration < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [String] PrivateIPAddress of the Network Interface IP
-      # Configuration
+      # @return [String] PrivateIPAddress of the network interface IP
+      # Configuration.
       attr_accessor :private_ipaddress
 
-      # @return [IPAllocationMethod] PrivateIP allocation method
-      # (Static/Dynamic). Possible values include: 'Static', 'Dynamic'
+      # @return [IPAllocationMethod] PrivateIP allocation method. Possible
+      # values are: 'Static' and 'Dynamic'. Possible values include:
+      # 'Static', 'Dynamic'
       attr_accessor :private_ipallocation_method
 
-      # @return [SubResource] Reference of the subnet resource
+      # @return [SubResource] Reference of the subnet resource.
       attr_accessor :subnet
 
-      # @return [SubResource] Reference of the PublicIP resource
+      # @return [SubResource] Reference of the PublicIP resource.
       attr_accessor :public_ipaddress
 
-      # @return [String] Provisioning state of the PublicIP resource
-      # Updating/Deleting/Failed
+      # @return [String] Provisioning state of the public IP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
-      # group. This name can be used to access the resource
+      # group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 
