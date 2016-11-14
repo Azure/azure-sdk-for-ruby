@@ -6,17 +6,18 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Profile for container service master.
+    # Profile for the container service master.
     #
     class ContainerServiceMasterProfile
 
       include MsRestAzure
 
       # @return [Integer] Number of masters (VMs) in the container service
-      # cluster. Default value: 1 .
+      # cluster. Allowed values are 1, 3, and 5. The default value is 1.
+      # Default value: 1 .
       attr_accessor :count
 
-      # @return [String] DNS prefix to be used to create FQDN for master.
+      # @return [String] DNS prefix to be used to create the FQDN for master.
       attr_accessor :dns_prefix
 
       # @return [String] FDQN for the master.

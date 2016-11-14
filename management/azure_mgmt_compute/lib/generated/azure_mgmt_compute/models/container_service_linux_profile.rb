@@ -6,7 +6,7 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Profile for Linux VMs.
+    # Profile for Linux VMs in the container service cluster.
     #
     class ContainerServiceLinuxProfile
 
