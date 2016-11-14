@@ -6,7 +6,7 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Server response for get tenant service principals API call
+    # Server response for get tenant service principals API call.
     #
     class ServicePrincipalListResult
 

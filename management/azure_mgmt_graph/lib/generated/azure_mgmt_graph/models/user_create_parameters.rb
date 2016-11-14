@@ -6,17 +6,16 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Request parameters for create a new work or school account user
+    # Request parameters for creating a new work or school account user.
     #
     class UserCreateParameters
 
       include MsRestAzure
 
-      # @return [Boolean] Enable the account. If it is enabled then true else
-      # false.
+      # @return [Boolean] Whether the account is enabled.
       attr_accessor :account_enabled
 
-      # @return [String] User display name
+      # @return [String] The display name of the user.
       attr_accessor :display_name
 
       # @return [PasswordProfile] Password Profile
@@ -26,13 +25,13 @@ module Azure::ARM::Graph
       # must contain one of the verified domains for the tenant.
       attr_accessor :user_principal_name
 
-      # @return [String] The mail alias for the user
+      # @return [String] The mail alias for the user.
       attr_accessor :mail_nickname
 
-      # @return [String] Needs to be specified if you are using a federated
-      # domain for the user's userPrincipalName (UPN) property while creating
-      # a new user account. It is used to associate an on-premises Active
-      # Directory user account to their Azure AD user object.
+      # @return [String] This must be specified if you are using a federated
+      # domain for the user's userPrincipalName (UPN) property when creating a
+      # new user account. It is used to associate an on-premises Active
+      # Directory user account with their Azure AD user object.
       attr_accessor :immutable_id
 
 

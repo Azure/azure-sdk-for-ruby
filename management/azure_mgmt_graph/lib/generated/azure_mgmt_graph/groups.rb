@@ -5,7 +5,8 @@
 
 module Azure::ARM::Graph
   #
-  # Composite Swagger for GraphRbac Management Client
+  # Composite Swagger specification for Azure Active Directory Graph RBAC
+  # management client.
   #
   class Groups
     include Azure::ARM::Graph::Models
@@ -24,9 +25,9 @@ module Azure::ARM::Graph
 
     #
     # Checks whether the specified user, group, contact, or service principal is a
-    # direct or a transitive member of the specified group.
+    # direct or transitive member of the specified group.
     #
-    # @param parameters [CheckGroupMembershipParameters] Check group membership
+    # @param parameters [CheckGroupMembershipParameters] The check group membership
     # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -40,9 +41,9 @@ module Azure::ARM::Graph
 
     #
     # Checks whether the specified user, group, contact, or service principal is a
-    # direct or a transitive member of the specified group.
+    # direct or transitive member of the specified group.
     #
-    # @param parameters [CheckGroupMembershipParameters] Check group membership
+    # @param parameters [CheckGroupMembershipParameters] The check group membership
     # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -55,9 +56,9 @@ module Azure::ARM::Graph
 
     #
     # Checks whether the specified user, group, contact, or service principal is a
-    # direct or a transitive member of the specified group.
+    # direct or transitive member of the specified group.
     #
-    # @param parameters [CheckGroupMembershipParameters] Check group membership
+    # @param parameters [CheckGroupMembershipParameters] The check group membership
     # parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -125,11 +126,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Remove a memeber from a group. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/groups-operations#DeleteGroupMember
+    # Remove a member from a group.
     #
-    # @param group_object_id [String] Group object id
-    # @param member_object_id [String] Member Object id
+    # @param group_object_id [String] The object ID of the group from which to
+    # remove the member.
+    # @param member_object_id [String] Member object id
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -140,11 +141,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Remove a memeber from a group. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/groups-operations#DeleteGroupMember
+    # Remove a member from a group.
     #
-    # @param group_object_id [String] Group object id
-    # @param member_object_id [String] Member Object id
+    # @param group_object_id [String] The object ID of the group from which to
+    # remove the member.
+    # @param member_object_id [String] Member object id
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -155,11 +156,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Remove a memeber from a group. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/groups-operations#DeleteGroupMember
+    # Remove a member from a group.
     #
-    # @param group_object_id [String] Group object id
-    # @param member_object_id [String] Member Object id
+    # @param group_object_id [String] The object ID of the group from which to
+    # remove the member.
+    # @param member_object_id [String] Member object id
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -209,12 +210,13 @@ module Azure::ARM::Graph
     end
 
     #
-    # Add a memeber to a group. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/groups-operations#AddGroupMembers
+    # Add a member to a group.
     #
-    # @param group_object_id [String] Group object id
-    # @param parameters [GroupAddMemberParameters] Member Object Url as
-    # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd
+    # @param group_object_id [String] The object ID of the group to which to add
+    # the member.
+    # @param parameters [GroupAddMemberParameters] The URL of the member object,
+    # such as
+    # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -225,12 +227,13 @@ module Azure::ARM::Graph
     end
 
     #
-    # Add a memeber to a group. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/groups-operations#AddGroupMembers
+    # Add a member to a group.
     #
-    # @param group_object_id [String] Group object id
-    # @param parameters [GroupAddMemberParameters] Member Object Url as
-    # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd
+    # @param group_object_id [String] The object ID of the group to which to add
+    # the member.
+    # @param parameters [GroupAddMemberParameters] The URL of the member object,
+    # such as
+    # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -241,12 +244,13 @@ module Azure::ARM::Graph
     end
 
     #
-    # Add a memeber to a group. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/groups-operations#AddGroupMembers
+    # Add a member to a group.
     #
-    # @param group_object_id [String] Group object id
-    # @param parameters [GroupAddMemberParameters] Member Object Url as
-    # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd
+    # @param group_object_id [String] The object ID of the group to which to add
+    # the member.
+    # @param parameters [GroupAddMemberParameters] The URL of the member object,
+    # such as
+    # https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -305,10 +309,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Delete a group in the directory. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx
+    # Delete a group from the directory.
     #
-    # @param group_object_id [String] Object id
+    # @param group_object_id [String] The object ID of the group to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -319,10 +322,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Delete a group in the directory. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx
+    # Delete a group from the directory.
     #
-    # @param group_object_id [String] Object id
+    # @param group_object_id [String] The object ID of the group to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -333,10 +335,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Delete a group in the directory. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx
+    # Delete a group from the directory.
     #
-    # @param group_object_id [String] Object id
+    # @param group_object_id [String] The object ID of the group to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -385,10 +386,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Create a group in the directory. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx
+    # Create a group in the directory.
     #
-    # @param parameters [GroupCreateParameters] Parameters to create a group
+    # @param parameters [GroupCreateParameters] The parameters for the group to
+    # create.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -400,10 +401,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Create a group in the directory. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx
+    # Create a group in the directory.
     #
-    # @param parameters [GroupCreateParameters] Parameters to create a group
+    # @param parameters [GroupCreateParameters] The parameters for the group to
+    # create.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -414,10 +415,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Create a group in the directory. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx
+    # Create a group in the directory.
     #
-    # @param parameters [GroupCreateParameters] Parameters to create a group
+    # @param parameters [GroupCreateParameters] The parameters for the group to
+    # create.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -486,7 +487,7 @@ module Azure::ARM::Graph
     #
     # Gets list of groups for the current tenant.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -500,7 +501,7 @@ module Azure::ARM::Graph
     #
     # Gets list of groups for the current tenant.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -513,7 +514,7 @@ module Azure::ARM::Graph
     #
     # Gets list of groups for the current tenant.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply to the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -572,7 +573,8 @@ module Azure::ARM::Graph
     #
     # Gets the members of a group.
     #
-    # @param object_id [String] Group object Id who's members should be retrieved.
+    # @param object_id [String] The object ID of the group whose members should be
+    # retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -586,7 +588,8 @@ module Azure::ARM::Graph
     #
     # Gets the members of a group.
     #
-    # @param object_id [String] Group object Id who's members should be retrieved.
+    # @param object_id [String] The object ID of the group whose members should be
+    # retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -599,7 +602,8 @@ module Azure::ARM::Graph
     #
     # Gets the members of a group.
     #
-    # @param object_id [String] Group object Id who's members should be retrieved.
+    # @param object_id [String] The object ID of the group whose members should be
+    # retrieved.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -660,7 +664,8 @@ module Azure::ARM::Graph
     #
     # Gets group information from the directory.
     #
-    # @param object_id [String] User objectId to get group information.
+    # @param object_id [String] The object ID of the user for which to get group
+    # information.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -674,7 +679,8 @@ module Azure::ARM::Graph
     #
     # Gets group information from the directory.
     #
-    # @param object_id [String] User objectId to get group information.
+    # @param object_id [String] The object ID of the user for which to get group
+    # information.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -687,7 +693,8 @@ module Azure::ARM::Graph
     #
     # Gets group information from the directory.
     #
-    # @param object_id [String] User objectId to get group information.
+    # @param object_id [String] The object ID of the user for which to get group
+    # information.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -746,10 +753,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets a collection that contains the Object IDs of the groups of which the
-    # group is a member.
+    # Gets a collection of object IDs of groups of which the specified group is a
+    # member.
     #
-    # @param object_id [String] Group filtering parameters.
+    # @param object_id [String] The object ID of the group for which to get group
+    # membership.
     # @param parameters [GroupGetMemberGroupsParameters] Group filtering
     # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -763,10 +771,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets a collection that contains the Object IDs of the groups of which the
-    # group is a member.
+    # Gets a collection of object IDs of groups of which the specified group is a
+    # member.
     #
-    # @param object_id [String] Group filtering parameters.
+    # @param object_id [String] The object ID of the group for which to get group
+    # membership.
     # @param parameters [GroupGetMemberGroupsParameters] Group filtering
     # parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -779,10 +788,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets a collection that contains the Object IDs of the groups of which the
-    # group is a member.
+    # Gets a collection of object IDs of groups of which the specified group is a
+    # member.
     #
-    # @param object_id [String] Group filtering parameters.
+    # @param object_id [String] The object ID of the group for which to get group
+    # membership.
     # @param parameters [GroupGetMemberGroupsParameters] Group filtering
     # parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -853,9 +863,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of groups for the current tenant.
+    # Gets a list of groups for the current tenant.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -867,9 +877,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of groups for the current tenant.
+    # Gets a list of groups for the current tenant.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -880,9 +890,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of groups for the current tenant.
+    # Gets a list of groups for the current tenant.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -943,7 +953,7 @@ module Azure::ARM::Graph
     #
     # Gets the members of a group.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -957,7 +967,7 @@ module Azure::ARM::Graph
     #
     # Gets the members of a group.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -970,7 +980,7 @@ module Azure::ARM::Graph
     #
     # Gets the members of a group.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1031,7 +1041,7 @@ module Azure::ARM::Graph
     #
     # Gets list of groups for the current tenant.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1051,7 +1061,8 @@ module Azure::ARM::Graph
     #
     # Gets the members of a group.
     #
-    # @param object_id [String] Group object Id who's members should be retrieved.
+    # @param object_id [String] The object ID of the group whose members should be
+    # retrieved.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

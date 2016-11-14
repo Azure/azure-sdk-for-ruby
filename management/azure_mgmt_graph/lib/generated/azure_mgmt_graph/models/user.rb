@@ -6,31 +6,31 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Active Directory user information
+    # Active Directory user information.
     #
     class User
 
       include MsRestAzure
 
-      # @return [String] object Id
+      # @return [String] The object ID.
       attr_accessor :object_id
 
-      # @return [String] object type
+      # @return [String] The object type.
       attr_accessor :object_type
 
-      # @return [String] user principal name
+      # @return [String] The principal name of the user.
       attr_accessor :user_principal_name
 
-      # @return [String] user display name
+      # @return [String] The display name of the user.
       attr_accessor :display_name
 
-      # @return [String] user signIn name
+      # @return [String] The sign-in name of the user.
       attr_accessor :sign_in_name
 
-      # @return [String] user mail
+      # @return [String] The primary email address of the user.
       attr_accessor :mail
 
-      # @return [String] The mail alias for the user
+      # @return [String] The mail alias for the user.
       attr_accessor :mail_nickname
 
 

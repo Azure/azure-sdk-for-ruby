@@ -6,15 +6,15 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Request parameters for GetMemberGroups API call
+    # Request parameters for GetMemberGroups API call.
     #
     class UserGetMemberGroupsParameters
 
       include MsRestAzure
 
-      # @return [Boolean] If true only membership in security enabled groups
-      # should be checked. Otherwise membership in all groups should be
-      # checked
+      # @return [Boolean] If true, only membership in security-enabled groups
+      # should be checked. Otherwise, membership in all groups should be
+      # checked.
       attr_accessor :security_enabled_only
 
 

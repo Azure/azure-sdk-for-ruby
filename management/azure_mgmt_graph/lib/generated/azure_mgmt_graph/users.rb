@@ -5,7 +5,8 @@
 
 module Azure::ARM::Graph
   #
-  # Composite Swagger for GraphRbac Management Client
+  # Composite Swagger specification for Azure Active Directory Graph RBAC
+  # management client.
   #
   class Users
     include Azure::ARM::Graph::Models
@@ -23,8 +24,7 @@ module Azure::ARM::Graph
     attr_reader :client
 
     #
-    # Create a new user. Reference:
-    # https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateUser
+    # Create a new user.
     #
     # @param parameters [UserCreateParameters] Parameters to create a user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -38,8 +38,7 @@ module Azure::ARM::Graph
     end
 
     #
-    # Create a new user. Reference:
-    # https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateUser
+    # Create a new user.
     #
     # @param parameters [UserCreateParameters] Parameters to create a user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -52,8 +51,7 @@ module Azure::ARM::Graph
     end
 
     #
-    # Create a new user. Reference:
-    # https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateUser
+    # Create a new user.
     #
     # @param parameters [UserCreateParameters] Parameters to create a user.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -122,10 +120,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of users for the current tenant. Reference
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#GetUsers
+    # Gets list of users for the current tenant.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -137,10 +134,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of users for the current tenant. Reference
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#GetUsers
+    # Gets list of users for the current tenant.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -151,10 +147,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of users for the current tenant. Reference
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#GetUsers
+    # Gets list of users for the current tenant.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply to the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -211,11 +206,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets user information from the directory. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#GetAUser
+    # Gets user information from the directory.
     #
-    # @param upn_or_object_id [String] User object Id or user principal name to
-    # get user information.
+    # @param upn_or_object_id [String] The object ID or principal name of the user
+    # for which to get information.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -227,11 +221,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets user information from the directory. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#GetAUser
+    # Gets user information from the directory.
     #
-    # @param upn_or_object_id [String] User object Id or user principal name to
-    # get user information.
+    # @param upn_or_object_id [String] The object ID or principal name of the user
+    # for which to get information.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -242,11 +235,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets user information from the directory. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#GetAUser
+    # Gets user information from the directory.
     #
-    # @param upn_or_object_id [String] User object Id or user principal name to
-    # get user information.
+    # @param upn_or_object_id [String] The object ID or principal name of the user
+    # for which to get information.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -305,12 +297,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Updates an exisitng user. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#UpdateUser
+    # Updates a user.
     #
-    # @param upn_or_object_id [String] User object Id or user principal name to
-    # get user information.
-    # @param parameters [UserUpdateParameters] Parameters to update an exisitng
+    # @param upn_or_object_id [String] The object ID or principal name of the user
+    # to update.
+    # @param parameters [UserUpdateParameters] Parameters to update an existing
     # user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -322,12 +313,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Updates an exisitng user. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#UpdateUser
+    # Updates a user.
     #
-    # @param upn_or_object_id [String] User object Id or user principal name to
-    # get user information.
-    # @param parameters [UserUpdateParameters] Parameters to update an exisitng
+    # @param upn_or_object_id [String] The object ID or principal name of the user
+    # to update.
+    # @param parameters [UserUpdateParameters] Parameters to update an existing
     # user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -339,12 +329,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Updates an exisitng user. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#UpdateUser
+    # Updates a user.
     #
-    # @param upn_or_object_id [String] User object Id or user principal name to
-    # get user information.
-    # @param parameters [UserUpdateParameters] Parameters to update an exisitng
+    # @param upn_or_object_id [String] The object ID or principal name of the user
+    # to update.
+    # @param parameters [UserUpdateParameters] Parameters to update an existing
     # user.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -404,10 +393,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Delete a user. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#DeleteUser
+    # Delete a user.
     #
-    # @param upn_or_object_id [String] user object id or user principal name (upn)
+    # @param upn_or_object_id [String] The object ID or principal name of the user
+    # to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -418,10 +407,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Delete a user. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#DeleteUser
+    # Delete a user.
     #
-    # @param upn_or_object_id [String] user object id or user principal name (upn)
+    # @param upn_or_object_id [String] The object ID or principal name of the user
+    # to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -432,10 +421,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Delete a user. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#DeleteUser
+    # Delete a user.
     #
-    # @param upn_or_object_id [String] user object id or user principal name (upn)
+    # @param upn_or_object_id [String] The object ID or principal name of the user
+    # to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -484,10 +473,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets a collection that contains the Object IDs of the groups of which the
+    # Gets a collection that contains the object IDs of the groups of which the
     # user is a member.
     #
-    # @param object_id [String] User filtering parameters.
+    # @param object_id [String] The object ID of the user for which to get group
+    # membership.
     # @param parameters [UserGetMemberGroupsParameters] User filtering parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -500,10 +490,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets a collection that contains the Object IDs of the groups of which the
+    # Gets a collection that contains the object IDs of the groups of which the
     # user is a member.
     #
-    # @param object_id [String] User filtering parameters.
+    # @param object_id [String] The object ID of the user for which to get group
+    # membership.
     # @param parameters [UserGetMemberGroupsParameters] User filtering parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -515,10 +506,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets a collection that contains the Object IDs of the groups of which the
+    # Gets a collection that contains the object IDs of the groups of which the
     # user is a member.
     #
-    # @param object_id [String] User filtering parameters.
+    # @param object_id [String] The object ID of the user for which to get group
+    # membership.
     # @param parameters [UserGetMemberGroupsParameters] User filtering parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -588,9 +580,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of users for the current tenant.
+    # Gets a list of users for the current tenant.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -602,9 +594,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of users for the current tenant.
+    # Gets a list of users for the current tenant.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -615,9 +607,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of users for the current tenant.
+    # Gets a list of users for the current tenant.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -676,10 +668,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of users for the current tenant. Reference
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#GetUsers
+    # Gets list of users for the current tenant.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

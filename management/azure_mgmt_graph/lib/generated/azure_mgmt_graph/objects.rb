@@ -5,7 +5,8 @@
 
 module Azure::ARM::Graph
   #
-  # Composite Swagger for GraphRbac Management Client
+  # Composite Swagger specification for Azure Active Directory Graph RBAC
+  # management client.
   #
   class Objects
     include Azure::ARM::Graph::Models
@@ -23,7 +24,7 @@ module Azure::ARM::Graph
     attr_reader :client
 
     #
-    # Gets the details for current logged in user
+    # Gets the details for the currently logged-in user.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -36,7 +37,7 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets the details for current logged in user
+    # Gets the details for the currently logged-in user.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -48,7 +49,7 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets the details for current logged in user
+    # Gets the details for the currently logged-in user.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -106,7 +107,7 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets AD group membership by provided AD object Ids
+    # Gets AD group membership for the specified AD object IDs.
     #
     # @param parameters [GetObjectsParameters] Objects filtering parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -120,7 +121,7 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets AD group membership by provided AD object Ids
+    # Gets AD group membership for the specified AD object IDs.
     #
     # @param parameters [GetObjectsParameters] Objects filtering parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -133,7 +134,7 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets AD group membership by provided AD object Ids
+    # Gets AD group membership for the specified AD object IDs.
     #
     # @param parameters [GetObjectsParameters] Objects filtering parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -202,9 +203,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets AD group membership by provided AD object Ids
+    # Gets AD group membership for the specified AD object IDs.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -216,9 +217,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets AD group membership by provided AD object Ids
+    # Gets AD group membership for the specified AD object IDs.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -229,9 +230,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets AD group membership by provided AD object Ids
+    # Gets AD group membership for the specified AD object IDs.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -290,7 +291,7 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets AD group membership by provided AD object Ids
+    # Gets AD group membership for the specified AD object IDs.
     #
     # @param parameters [GetObjectsParameters] Objects filtering parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

@@ -6,7 +6,7 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Contains the password profile associated with a user.
+    # The password profile associated with a user.
     #
     class PasswordProfile
 
@@ -15,7 +15,7 @@ module Azure::ARM::Graph
       # @return [String] Password
       attr_accessor :password
 
-      # @return [Boolean] Force change password on next login
+      # @return [Boolean] Whether to force a password change on next login.
       attr_accessor :force_change_password_next_login
 
 

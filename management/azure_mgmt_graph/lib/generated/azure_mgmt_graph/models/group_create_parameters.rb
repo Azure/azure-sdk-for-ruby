@@ -6,7 +6,7 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Request parameters for create a new group
+    # Request parameters for creating a new group.
     #
     class GroupCreateParameters
 
@@ -15,17 +15,17 @@ module Azure::ARM::Graph
       # @return [String] Group display name
       attr_accessor :display_name
 
-      # @return [Boolean] Specifies whether the group is mail-enabled. Must be
-      # false. This is because only pure security groups can be created using
-      # the Graph API. Default value: false .
+      # @return [Boolean] Whether the group is mail-enabled. Must be false.
+      # This is because only pure security groups can be created using the
+      # Graph API. Default value: false .
       attr_accessor :mail_enabled
 
-      # @return [String] Mail nick name
+      # @return [String] Mail nickname
       attr_accessor :mail_nickname
 
-      # @return [Boolean] Specifies whether the group is a security group.
-      # Must be true. This is because only pure security groups can be
-      # created using the Graph API. Default value: true .
+      # @return [Boolean] Whether the group is a security group. Must be true.
+      # This is because only pure security groups can be created using the
+      # Graph API. Default value: true .
       attr_accessor :security_enabled
 
 

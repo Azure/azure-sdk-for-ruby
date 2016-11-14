@@ -6,25 +6,25 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Active Directory service principal information
+    # Active Directory service principal information.
     #
     class ServicePrincipal
 
       include MsRestAzure
 
-      # @return [String] object Id
+      # @return [String] The object ID.
       attr_accessor :object_id
 
-      # @return [String] object type
+      # @return [String] The object type.
       attr_accessor :object_type
 
-      # @return [String] service principal display name
+      # @return [String] The display name of the service principal.
       attr_accessor :display_name
 
-      # @return [String] app id
+      # @return [String] The application ID.
       attr_accessor :app_id
 
-      # @return [Array<String>] the list of names.
+      # @return [Array<String>] A collection of service principal names.
       attr_accessor :service_principal_names
 
 

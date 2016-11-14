@@ -6,33 +6,32 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Request parameters for updating an existing application
+    # Request parameters for updating an existing application.
     #
     class ApplicationUpdateParameters
 
       include MsRestAzure
 
-      # @return [Boolean] Indicates if the application will be available to
-      # other tenants
+      # @return [Boolean] Whether the application is available to other tenants
       attr_accessor :available_to_other_tenants
 
-      # @return [String] Application display name
+      # @return [String] The display name of the application.
       attr_accessor :display_name
 
-      # @return [String] Application homepage
+      # @return [String] The home page of the application.
       attr_accessor :homepage
 
-      # @return [Array<String>] Application Uris
+      # @return [Array<String>] A collection of URIs for the application.
       attr_accessor :identifier_uris
 
-      # @return [Array<String>] Application reply Urls
+      # @return [Array<String>] A collection of reply URLs for the application.
       attr_accessor :reply_urls
 
-      # @return [Array<KeyCredential>] the list of KeyCredential objects
+      # @return [Array<KeyCredential>] The list of KeyCredential objects.
       attr_accessor :key_credentials
 
-      # @return [Array<PasswordCredential>] the list of PasswordCredential
-      # objects
+      # @return [Array<PasswordCredential>] The list of PasswordCredential
+      # objects.
       attr_accessor :password_credentials
 
 

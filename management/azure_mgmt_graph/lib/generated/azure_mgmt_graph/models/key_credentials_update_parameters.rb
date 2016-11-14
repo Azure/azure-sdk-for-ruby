@@ -6,13 +6,13 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Request parameters for  KeyCredentials update operation
+    # Request parameters for a KeyCredentials update operation
     #
     class KeyCredentialsUpdateParameters
 
       include MsRestAzure
 
-      # @return [Array<KeyCredential>] KeyCredential list.
+      # @return [Array<KeyCredential>] A collection of KeyCredentials.
       attr_accessor :value
 
 

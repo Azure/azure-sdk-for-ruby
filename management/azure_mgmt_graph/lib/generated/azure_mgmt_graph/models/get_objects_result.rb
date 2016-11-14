@@ -6,16 +6,16 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Server response for Active Directory objects inquiry API calls
+    # The response to an Active Directory object inquiry API request.
     #
     class GetObjectsResult
 
       include MsRestAzure
 
-      # @return [Array<AADObject>] Collection of Active Directory object
+      # @return [Array<AADObject>] A collection of Active Directory objects.
       attr_accessor :value
 
-      # @return [String] the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :odatanext_link
 
       # return [Proc] with next page method call.
