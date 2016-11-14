@@ -12,8 +12,7 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      # @return [RoleAssignmentProperties] Gets or sets role assignment
-      # properties.
+      # @return [RoleAssignmentProperties] Role assignment properties.
       attr_accessor :properties
 
 

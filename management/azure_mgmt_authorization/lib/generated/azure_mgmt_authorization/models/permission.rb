@@ -12,10 +12,10 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      # @return [Array<String>] Role definition allowed actions.
+      # @return [Array<String>] Allowed actions.
       attr_accessor :actions
 
-      # @return [Array<String>] Role definition denied actions.
+      # @return [Array<String>] Denied actions.
       attr_accessor :not_actions
 
 

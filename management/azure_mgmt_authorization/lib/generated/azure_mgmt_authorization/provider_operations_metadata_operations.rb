@@ -5,7 +5,12 @@
 
 module Azure::ARM::Authorization
   #
-  # ProviderOperationsMetadataOperations
+  # Role based access control provides you a way to apply granular level
+  # policy administration down to individual resources or resource groups.
+  # These operations enable you to manage role definitions and role
+  # assignments. A role definition describes the set of actions that can be
+  # performed on resources. A role assignment grants access to Azure Active
+  # Directory users.
   #
   class ProviderOperationsMetadataOperations
     include Azure::ARM::Authorization::Models
@@ -23,12 +28,12 @@ module Azure::ARM::Authorization
     attr_reader :client
 
     #
-    # Gets provider operations metadata
+    # Gets provider operations metadata for the specified resource provider.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
+    # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
-    # @param api_version [String]
-    # @param expand [String]
+    # @param api_version [String] The API version to use for the operation.
+    # @param expand [String] Specifies whether to expand the values.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,12 +45,12 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets provider operations metadata
+    # Gets provider operations metadata for the specified resource provider.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
+    # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
-    # @param api_version [String]
-    # @param expand [String]
+    # @param api_version [String] The API version to use for the operation.
+    # @param expand [String] Specifies whether to expand the values.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -56,12 +61,12 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets provider operations metadata
+    # Gets provider operations metadata for the specified resource provider.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
+    # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
-    # @param api_version [String]
-    # @param expand [String]
+    # @param api_version [String] The API version to use for the operation.
+    # @param expand [String] Specifies whether to expand the values.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -118,10 +123,10 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets provider operations metadata list
+    # Gets provider operations metadata for all resource providers.
     #
-    # @param api_version [String]
-    # @param expand [String]
+    # @param api_version [String] The API version to use for this operation.
+    # @param expand [String] Specifies whether to expand the values.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -133,10 +138,10 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets provider operations metadata list
+    # Gets provider operations metadata for all resource providers.
     #
-    # @param api_version [String]
-    # @param expand [String]
+    # @param api_version [String] The API version to use for this operation.
+    # @param expand [String] Specifies whether to expand the values.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -147,10 +152,10 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets provider operations metadata list
+    # Gets provider operations metadata for all resource providers.
     #
-    # @param api_version [String]
-    # @param expand [String]
+    # @param api_version [String] The API version to use for this operation.
+    # @param expand [String] Specifies whether to expand the values.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -205,7 +210,7 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets provider operations metadata list
+    # Gets provider operations metadata for all resource providers.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -220,7 +225,7 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets provider operations metadata list
+    # Gets provider operations metadata for all resource providers.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -234,7 +239,7 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets provider operations metadata list
+    # Gets provider operations metadata for all resource providers.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -292,10 +297,10 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets provider operations metadata list
+    # Gets provider operations metadata for all resource providers.
     #
-    # @param api_version [String]
-    # @param expand [String]
+    # @param api_version [String] The API version to use for this operation.
+    # @param expand [String] Specifies whether to expand the values.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

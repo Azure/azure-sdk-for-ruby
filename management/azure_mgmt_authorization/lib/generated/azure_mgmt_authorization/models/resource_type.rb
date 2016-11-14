@@ -12,14 +12,13 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the resource type name
+      # @return [String] The resource type name.
       attr_accessor :name
 
-      # @return [String] Gets or sets the resource type display name
+      # @return [String] The resource type display name.
       attr_accessor :display_name
 
-      # @return [Array<ProviderOperation>] Gets or sets the resource type
-      # operations
+      # @return [Array<ProviderOperation>] The resource type operations.
       attr_accessor :operations
 
 

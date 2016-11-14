@@ -12,10 +12,12 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      # @return [String] Gets or sets role definition id.
+      # @return [String] The role definition ID used in the role assignment.
       attr_accessor :role_definition_id
 
-      # @return [String] Gets or sets principal Id.
+      # @return [String] The principal ID assigned to the role. This maps to
+      # the ID inside the Active Directory. It can point to a user, service
+      # principal, or security group.
       attr_accessor :principal_id
 
 
