@@ -12,10 +12,10 @@ module Azure::ARM::Features
 
       include MsRestAzure
 
-      # @return [Array<FeatureResult>] Gets or sets the list of Features.
+      # @return [Array<FeatureResult>] The array of features.
       attr_accessor :value
 
-      # @return [String] Gets or sets the URL to get the next set of results.
+      # @return [String] The URL to use for getting the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

@@ -6,13 +6,14 @@
 module Azure::ARM::Features
   module Models
     #
-    # Previewed feature information.
+    # Information about feature.
     #
     class FeatureProperties
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the state of the previewed feature.
+      # @return [String] The registration state of the feature for the
+      # subscription.
       attr_accessor :state
 
 

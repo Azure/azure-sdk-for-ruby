@@ -12,11 +12,11 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
-      # @return [String] The fully qualified Id. For example,
+      # @return [String] The fully qualified ID of the tenant. For example,
       # /tenants/00000000-0000-0000-0000-000000000000.
       attr_accessor :id
 
-      # @return [String] The tenantId. For example,
+      # @return [String] The tenant ID. For example,
       # 00000000-0000-0000-0000-000000000000.
       attr_accessor :tenant_id
 

@@ -5,7 +5,11 @@
 
 module Azure::ARM::Features
   #
-  # Features
+  # Azure Feature Exposure Control (AFEC) provides a mechanism for the
+  # resource providers to control feature exposure to users. Resource
+  # providers typically use this mechanism to provide public/private preview
+  # for new features prior to making them generally available. Users need to
+  # explicitly register for AFEC features to get access to such functionality.
   #
   class Features
     include Azure::ARM::Features::Models
@@ -23,7 +27,7 @@ module Azure::ARM::Features
     attr_reader :client
 
     #
-    # Gets a list of previewed features for all the providers in the current
+    # Gets all the preview features that are available through AFEC for the
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -37,7 +41,7 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features for all the providers in the current
+    # Gets all the preview features that are available through AFEC for the
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -50,7 +54,7 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features for all the providers in the current
+    # Gets all the preview features that are available through AFEC for the
     # subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -109,10 +113,11 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features of a resource provider.
+    # Gets all the preview features in a provider namespace that are available
+    # through AFEC for the subscription.
     #
     # @param resource_provider_namespace [String] The namespace of the resource
-    # provider.
+    # provider for getting features.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -124,10 +129,11 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features of a resource provider.
+    # Gets all the preview features in a provider namespace that are available
+    # through AFEC for the subscription.
     #
     # @param resource_provider_namespace [String] The namespace of the resource
-    # provider.
+    # provider for getting features.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -138,10 +144,11 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features of a resource provider.
+    # Gets all the preview features in a provider namespace that are available
+    # through AFEC for the subscription.
     #
     # @param resource_provider_namespace [String] The namespace of the resource
-    # provider.
+    # provider for getting features.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -199,11 +206,11 @@ module Azure::ARM::Features
     end
 
     #
-    # Get all features under the subscription.
+    # Gets the preview feature with the specified name.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
-    # provider.
-    # @param feature_name [String] Previewed feature name in the resource provider.
+    # @param resource_provider_namespace [String] The resource provider namespace
+    # for the feature.
+    # @param feature_name [String] The name of the feature to get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -215,11 +222,11 @@ module Azure::ARM::Features
     end
 
     #
-    # Get all features under the subscription.
+    # Gets the preview feature with the specified name.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
-    # provider.
-    # @param feature_name [String] Previewed feature name in the resource provider.
+    # @param resource_provider_namespace [String] The resource provider namespace
+    # for the feature.
+    # @param feature_name [String] The name of the feature to get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -230,11 +237,11 @@ module Azure::ARM::Features
     end
 
     #
-    # Get all features under the subscription.
+    # Gets the preview feature with the specified name.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
-    # provider.
-    # @param feature_name [String] Previewed feature name in the resource provider.
+    # @param resource_provider_namespace [String] The resource provider namespace
+    # for the feature.
+    # @param feature_name [String] The name of the feature to get.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -293,11 +300,11 @@ module Azure::ARM::Features
     end
 
     #
-    # Registers for a previewed feature of a resource provider.
+    # Registers the preview feature for the subscription.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
+    # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
-    # @param feature_name [String] Previewed feature name in the resource provider.
+    # @param feature_name [String] The name of the feature to register.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -309,11 +316,11 @@ module Azure::ARM::Features
     end
 
     #
-    # Registers for a previewed feature of a resource provider.
+    # Registers the preview feature for the subscription.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
+    # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
-    # @param feature_name [String] Previewed feature name in the resource provider.
+    # @param feature_name [String] The name of the feature to register.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -324,11 +331,11 @@ module Azure::ARM::Features
     end
 
     #
-    # Registers for a previewed feature of a resource provider.
+    # Registers the preview feature for the subscription.
     #
-    # @param resource_provider_namespace [String] Namespace of the resource
+    # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
-    # @param feature_name [String] Previewed feature name in the resource provider.
+    # @param feature_name [String] The name of the feature to register.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -387,7 +394,7 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features for all the providers in the current
+    # Gets all the preview features that are available through AFEC for the
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -403,7 +410,7 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features for all the providers in the current
+    # Gets all the preview features that are available through AFEC for the
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -418,7 +425,7 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features for all the providers in the current
+    # Gets all the preview features that are available through AFEC for the
     # subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
@@ -477,7 +484,8 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features of a resource provider.
+    # Gets all the preview features in a provider namespace that are available
+    # through AFEC for the subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -492,7 +500,8 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features of a resource provider.
+    # Gets all the preview features in a provider namespace that are available
+    # through AFEC for the subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -506,7 +515,8 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features of a resource provider.
+    # Gets all the preview features in a provider namespace that are available
+    # through AFEC for the subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -564,7 +574,7 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features for all the providers in the current
+    # Gets all the preview features that are available through AFEC for the
     # subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -585,10 +595,11 @@ module Azure::ARM::Features
     end
 
     #
-    # Gets a list of previewed features of a resource provider.
+    # Gets all the preview features in a provider namespace that are available
+    # through AFEC for the subscription.
     #
     # @param resource_provider_namespace [String] The namespace of the resource
-    # provider.
+    # provider for getting features.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

@@ -17,7 +17,7 @@ module Azure::ARM::Subscriptions
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Client Api Version.
+    # @return [String] The API version to use for the operation.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.

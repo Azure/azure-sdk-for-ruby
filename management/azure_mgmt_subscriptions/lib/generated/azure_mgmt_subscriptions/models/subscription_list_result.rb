@@ -12,7 +12,7 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
-      # @return [Array<Subscription>] The subscriptions.
+      # @return [Array<Subscription>] An array of subscriptions.
       attr_accessor :value
 
       # @return [String] The URL to get the next set of results.
