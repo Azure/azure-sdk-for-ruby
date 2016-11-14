@@ -1,3 +1,7 @@
+## 2016.11.14 - Azure Gems @version 0.7.7
+* Fixing Relax mime-types gem pinning Issue [#482](https://github.com/Azure/azure-sdk-for-ruby/issues/482) PR [#518](https://github.com/Azure/azure-sdk-for-ruby/pull/518)
+* Fixing Azure gem has hard dependency on JSON 1.8 and fails with newer ruby versions [#482](https://github.com/Azure/azure-sdk-for-ruby/issues/490) PR [#518](https://github.com/Azure/azure-sdk-for-ruby/pull/518)
+
 ## 2016.9.1 - Azure Gems @version 0.7.6
 * Fixing Service Bus authorization with SAS [#425](https://github.com/Azure/azure-sdk-for-ruby/commit/09ab24e511889d41a1fef4755217baa595a279f5)
 * Adding require for azure/core and autoload Auth::SharedAccessSigner [#443](https://github.com/Azure/azure-sdk-for-ruby/pull/443)
