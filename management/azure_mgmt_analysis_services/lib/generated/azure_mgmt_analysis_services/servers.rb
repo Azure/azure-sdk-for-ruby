@@ -25,11 +25,13 @@ module Azure::ARM::AnalysisServices
     attr_reader :client
 
     #
-    # Gets details about the specified Analysis Services server
+    # Gets details about the specified Analysis Services server.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be a minimum of 3 characters, and a maximum of 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -41,11 +43,13 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Gets details about the specified Analysis Services server
+    # Gets details about the specified Analysis Services server.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be a minimum of 3 characters, and a maximum of 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -56,11 +60,13 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Gets details about the specified Analysis Services server
+    # Gets details about the specified Analysis Services server.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be a minimum of 3 characters, and a maximum of 63.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -120,13 +126,15 @@ module Azure::ARM::AnalysisServices
 
     #
     # Provisions the specified Analysis Services server based on the configuration
-    # specified in the request
+    # specified in the request.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
-    # @param server_parameters [AnalysisServicesServer] Request body for
-    # provisioning
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be a minimum of 3 characters, and a maximum of 63.
+    # @param server_parameters [AnalysisServicesServer] Contains the information
+    # used to provision the Analysis Services server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -138,11 +146,13 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
-    # @param server_parameters [AnalysisServicesServer] Request body for
-    # provisioning
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be a minimum of 3 characters, and a maximum of 63.
+    # @param server_parameters [AnalysisServicesServer] Contains the information
+    # used to provision the Analysis Services server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -170,9 +180,11 @@ module Azure::ARM::AnalysisServices
     #
     # Deletes the specified Analysis Services server.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -182,9 +194,11 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -208,13 +222,15 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Updates the current state of the specified Analysis Services server
+    # Updates the current state of the specified Analysis Services server.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param server_update_parameters [AnalysisServicesServerUpdateParameters]
-    # Request object for updating the server
+    # Request object that contains the updated information for the server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -226,13 +242,15 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Updates the current state of the specified Analysis Services server
+    # Updates the current state of the specified Analysis Services server.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param server_update_parameters [AnalysisServicesServerUpdateParameters]
-    # Request object for updating the server
+    # Request object that contains the updated information for the server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -243,13 +261,15 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Updates the current state of the specified Analysis Services server
+    # Updates the current state of the specified Analysis Services server.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param server_update_parameters [AnalysisServicesServerUpdateParameters]
-    # Request object for updating the server
+    # Request object that contains the updated information for the server.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -318,11 +338,13 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Supends the specified Analysis Services server instance
+    # Supends operation of the specified Analysis Services server instance.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -332,9 +354,11 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -358,11 +382,13 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Resumes the specified Analysis Services server instance
+    # Resumes operation of the specified Analysis Services server instance.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -372,9 +398,11 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -398,10 +426,11 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Gets all the Analysis Services servers for the given resource group
+    # Gets all the Analysis Services servers for the given resource group.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -413,10 +442,11 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Gets all the Analysis Services servers for the given resource group
+    # Gets all the Analysis Services servers for the given resource group.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -427,10 +457,11 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Gets all the Analysis Services servers for the given resource group
+    # Gets all the Analysis Services servers for the given resource group.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -488,7 +519,7 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # List all the Analysis Services servers for the given subscription
+    # Lists all the Analysis Services servers for the given subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -501,7 +532,7 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # List all the Analysis Services servers for the given subscription
+    # Lists all the Analysis Services servers for the given subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -513,7 +544,7 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # List all the Analysis Services servers for the given subscription
+    # Lists all the Analysis Services servers for the given subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -572,13 +603,15 @@ module Azure::ARM::AnalysisServices
 
     #
     # Provisions the specified Analysis Services server based on the configuration
-    # specified in the request
+    # specified in the request.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
-    # @param server_parameters [AnalysisServicesServer] Request body for
-    # provisioning
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be a minimum of 3 characters, and a maximum of 63.
+    # @param server_parameters [AnalysisServicesServer] Contains the information
+    # used to provision the Analysis Services server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -591,13 +624,15 @@ module Azure::ARM::AnalysisServices
 
     #
     # Provisions the specified Analysis Services server based on the configuration
-    # specified in the request
+    # specified in the request.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
-    # @param server_parameters [AnalysisServicesServer] Request body for
-    # provisioning
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be a minimum of 3 characters, and a maximum of 63.
+    # @param server_parameters [AnalysisServicesServer] Contains the information
+    # used to provision the Analysis Services server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -609,13 +644,15 @@ module Azure::ARM::AnalysisServices
 
     #
     # Provisions the specified Analysis Services server based on the configuration
-    # specified in the request
+    # specified in the request.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
-    # @param server_parameters [AnalysisServicesServer] Request body for
-    # provisioning
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be a minimum of 3 characters, and a maximum of 63.
+    # @param server_parameters [AnalysisServicesServer] Contains the information
+    # used to provision the Analysis Services server.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -696,9 +733,11 @@ module Azure::ARM::AnalysisServices
     #
     # Deletes the specified Analysis Services server.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -711,9 +750,11 @@ module Azure::ARM::AnalysisServices
     #
     # Deletes the specified Analysis Services server.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -726,9 +767,11 @@ module Azure::ARM::AnalysisServices
     #
     # Deletes the specified Analysis Services server.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -777,11 +820,13 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Supends the specified Analysis Services server instance
+    # Supends operation of the specified Analysis Services server instance.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -792,11 +837,13 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Supends the specified Analysis Services server instance
+    # Supends operation of the specified Analysis Services server instance.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -807,11 +854,13 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Supends the specified Analysis Services server instance
+    # Supends operation of the specified Analysis Services server instance.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -860,11 +909,13 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Resumes the specified Analysis Services server instance
+    # Resumes operation of the specified Analysis Services server instance.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -875,11 +926,13 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Resumes the specified Analysis Services server instance
+    # Resumes operation of the specified Analysis Services server instance.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -890,11 +943,13 @@ module Azure::ARM::AnalysisServices
     end
 
     #
-    # Resumes the specified Analysis Services server instance
+    # Resumes operation of the specified Analysis Services server instance.
     #
-    # @param resource_group_name [String] Name of the Azure Resource group which a
-    # given Analysis Services server is part of.
-    # @param server_name [String] Name of the Analysis Services server
+    # @param resource_group_name [String] The name of the Azure Resource group of
+    # which a given Analysis Services server is part. This name must be at least 1
+    # character in length, and no more than 90.
+    # @param server_name [String] The name of the Analysis Services server. It must
+    # be at least 3 characters in length, and no more than 63.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

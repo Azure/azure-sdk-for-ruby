@@ -12,11 +12,11 @@ module Azure::ARM::AnalysisServices
 
       include MsRestAzure
 
-      # @return [ResourceSku] Sku of the Analysis Services resource
+      # @return [ResourceSku] The SKU of the Analysis Services resource.
       attr_accessor :sku
 
-      # @return [Hash{String => String}] Key value pairs of additional
-      # properties that can ebe specified
+      # @return [Hash{String => String}] Key-value pairs of additional
+      # provisioning properties.
       attr_accessor :tags
 
       # @return [ServerAdministrators]
