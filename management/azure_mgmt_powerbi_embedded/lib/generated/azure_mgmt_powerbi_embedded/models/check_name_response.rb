@@ -21,7 +21,7 @@ module Azure::ARM::PowerBiEmbedded
       attr_accessor :reason
 
       # @return [String] Message indicating an unavailable name due to a
-      # conflict or a description of the naming rules that are violated.
+      # conflict, or a description of the naming rules that are violated.
       attr_accessor :message
 
 
