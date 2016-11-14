@@ -5,7 +5,7 @@
 
 module Azure::ARM::DevTestLabs
   #
-  # The DevTest Labs Client.
+  # Azure DevTest Labs REST API.
   #
   class PolicySet
     include Azure::ARM::DevTestLabs::Models

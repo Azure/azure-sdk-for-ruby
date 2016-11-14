@@ -5,7 +5,7 @@
 
 module Azure::ARM::DevTestLabs
   #
-  # The DevTest Labs Client.
+  # Azure DevTest Labs REST API.
   #
   class CustomImageOperations
     include Azure::ARM::DevTestLabs::Models
@@ -30,8 +30,8 @@ module Azure::ARM::DevTestLabs
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer] The maximum number of resources to return from the
     # operation.
-    # @param order_by [String] The ordering expression for the results, using
-    # OData notation.
+    # @param order_by [String] The ordering expression for the results, using OData
+    # notation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -50,8 +50,8 @@ module Azure::ARM::DevTestLabs
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer] The maximum number of resources to return from the
     # operation.
-    # @param order_by [String] The ordering expression for the results, using
-    # OData notation.
+    # @param order_by [String] The ordering expression for the results, using OData
+    # notation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -69,8 +69,8 @@ module Azure::ARM::DevTestLabs
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer] The maximum number of resources to return from the
     # operation.
-    # @param order_by [String] The ordering expression for the results, using
-    # OData notation.
+    # @param order_by [String] The ordering expression for the results, using OData
+    # notation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -518,8 +518,8 @@ module Azure::ARM::DevTestLabs
     #
     # List custom images in a given lab.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -533,8 +533,8 @@ module Azure::ARM::DevTestLabs
     #
     # List custom images in a given lab.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -547,8 +547,8 @@ module Azure::ARM::DevTestLabs
     #
     # List custom images in a given lab.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -610,8 +610,8 @@ module Azure::ARM::DevTestLabs
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer] The maximum number of resources to return from the
     # operation.
-    # @param order_by [String] The ordering expression for the results, using
-    # OData notation.
+    # @param order_by [String] The ordering expression for the results, using OData
+    # notation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

@@ -7,6 +7,7 @@ module Azure::ARM::DevTestLabs
   module Models
     #
     # Model object.
+    # 
     #
     class SubscriptionNotification
 
