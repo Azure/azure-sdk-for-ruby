@@ -7,42 +7,40 @@ module Azure::ARM::CDN
   module Models
     #
     # CDN endpoint is the entity within a CDN profile containing configuration
-    # information regarding caching behaviors and origins. The CDN endpoint
-    # is exposed using the URL format <endpointname>.azureedge.net by
-    # default, but custom domains can also be created.
+    # information regarding caching behaviors and origins. The CDN endpoint is
+    # exposed using the URL format <endpointname>.azureedge.net by default, but
+    # custom domains can also be created.
     #
     class Endpoint < MsRestAzure::Resource
 
       include MsRestAzure
 
       # @return [String] The host header the CDN provider will send along with
-      # content requests to origins. The default value is the host name of
-      # the origin.
+      # content requests to origins. The default value is the host name of the
+      # origin.
       attr_accessor :origin_host_header
 
       # @return [String] The path used for origin requests.
       attr_accessor :origin_path
 
-      # @return [Array<String>] List of content types on which compression
-      # will be applied. The value for the elements should be a valid MIME
-      # type.
+      # @return [Array<String>] List of content types on which compression will
+      # be applied. The value for the elements should be a valid MIME type.
       attr_accessor :content_types_to_compress
 
-      # @return [Boolean] Indicates whether content compression is enabled.
-      # The default value is false. If compression is enabled, the content
+      # @return [Boolean] Indicates whether content compression is enabled. The
+      # default value is false. If compression is enabled, the content
       # transferred from the CDN endpoint to the end user will be compressed.
-      # The requested content must be larger than 1 byte and smaller than 1
-      # MB.
+      # The requested content must be larger than 1 byte and smaller than 1 MB.
       attr_accessor :is_compression_enabled
 
       # @return [Boolean] Indicates whether HTTP traffic is allowed on the
-      # endpoint. Default value is true. At least one protocol (HTTP or
-      # HTTPS) must be allowed.
+      # endpoint. Default value is true. At least one protocol (HTTP or HTTPS)
+      # must be allowed.
       attr_accessor :is_http_allowed
 
       # @return [Boolean] Indicates whether HTTPS traffic is allowed on the
-      # endpoint. Default value is true. At least one protocol (HTTP or
-      # HTTPS) must be allowed.
+      # endpoint. Default value is true. At least one protocol (HTTP or HTTPS)
+      # must be allowed.
       attr_accessor :is_https_allowed
 
       # @return [QueryStringCachingBehavior] Defines the query string caching
@@ -63,13 +61,13 @@ module Azure::ARM::CDN
       attr_accessor :host_name
 
       # @return [Array<DeepCreatedOrigin>] The set of origins for the CDN
-      # endpoint. When multiple origins exist, the first origin will be used
-      # as primary and rest will be used as failover options.
+      # endpoint. When multiple origins exist, the first origin will be used as
+      # primary and rest will be used as failover options.
       attr_accessor :origins
 
       # @return [EndpointResourceState] Resource status of the endpoint.
-      # Possible values include: 'Creating', 'Deleting', 'Running',
-      # 'Starting', 'Stopped', 'Stopping'
+      # Possible values include: 'Creating', 'Deleting', 'Running', 'Starting',
+      # 'Stopped', 'Stopping'
       attr_accessor :resource_state
 
       # @return [String] Provisioning status of the endpoint.

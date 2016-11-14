@@ -7,9 +7,9 @@ module Azure::ARM::CDN
   module Models
     #
     # CDN profile represents the top level resource and the entry point into
-    # the CDN API. This allows users to set up a logical grouping of
-    # endpoints in addition to creating shared configuration settings and
-    # selecting pricing tiers and providers.
+    # the CDN API. This allows users to set up a logical grouping of endpoints
+    # in addition to creating shared configuration settings and selecting
+    # pricing tiers and providers.
     #
     class Profile < MsRestAzure::Resource
 
@@ -18,8 +18,8 @@ module Azure::ARM::CDN
       # @return [Sku] The SKU (pricing tier) of the CDN profile.
       attr_accessor :sku
 
-      # @return [ProfileResourceState] Resource status of the profile.
-      # Possible values include: 'Creating', 'Active', 'Deleting', 'Disabled'
+      # @return [ProfileResourceState] Resource status of the profile. Possible
+      # values include: 'Creating', 'Active', 'Deleting', 'Disabled'
       attr_accessor :resource_state
 
       # @return [String] Provisioning status of the profile.

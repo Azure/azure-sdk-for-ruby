@@ -16,8 +16,8 @@ module Azure::ARM::CDN
       # @return [Array<Origin>] List of CDN origins within an endpoint
       attr_accessor :value
 
-      # @return [String] URL to get the next set of origin objects if there
-      # are any.
+      # @return [String] URL to get the next set of origin objects if there are
+      # any.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

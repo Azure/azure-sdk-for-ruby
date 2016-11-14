@@ -15,8 +15,8 @@ module Azure::ARM::CDN
       # @return [String] Service provider: Microsoft.Cdn
       attr_accessor :provider
 
-      # @return [String] Resource on which the operation is performed:
-      # Profile, endpoint, etc.
+      # @return [String] Resource on which the operation is performed: Profile,
+      # endpoint, etc.
       attr_accessor :resource
 
       # @return [String] Operation type: Read, write, delete, etc.
