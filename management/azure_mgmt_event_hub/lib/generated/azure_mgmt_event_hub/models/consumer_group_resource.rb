@@ -6,7 +6,7 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # Description of Consumer Group Resource.
+    # Description of the consumer group resource.
     #
     class ConsumerGroupResource < MsRestAzure::Resource
 
@@ -15,10 +15,10 @@ module Azure::ARM::EventHub
       # @return [DateTime] Exact time the message was created.
       attr_accessor :created_at
 
-      # @return [String] The path of the event hub.
+      # @return [String] The path of the Event Hub.
       attr_accessor :event_hub_path
 
-      # @return [DateTime] The exact time the message has been updated.
+      # @return [DateTime] The exact time the message was updated.
       attr_accessor :updated_at
 
       # @return [String] The user metadata.

@@ -6,7 +6,7 @@
 module Azure::ARM::EventHub
   module Models
     #
-    # Parameters supplied to the Regenerate Auth Rule.
+    # Parameters supplied to the Regenerate Authorization Rule operation.
     #
     class RegenerateKeysParameters
 
