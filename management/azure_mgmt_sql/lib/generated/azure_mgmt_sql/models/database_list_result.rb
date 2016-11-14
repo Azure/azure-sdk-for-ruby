@@ -12,8 +12,8 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      # @return [Array<Database>] The list of Azure SQL Databases housed in
-      # the server.
+      # @return [Array<Database>] The list of Azure SQL Databases housed in the
+      # server.
       attr_accessor :value
 
 

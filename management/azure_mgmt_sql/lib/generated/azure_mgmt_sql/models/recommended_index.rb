@@ -12,14 +12,13 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      # @return [RecommendedIndexActions] The proposed index action. We
-      # suggest user to create missing index, drop unused index or to rebuild
-      # already existing index to improve its performance. Possible values
-      # are 'Create', 'Drop', 'Rebuild'. Possible values include: 'Create',
-      # 'Drop', 'Rebuild'
+      # @return [RecommendedIndexActions] The proposed index action. You can
+      # create a missing index, drop an unused index, or rebuild an existing
+      # index to improve its performance. Possible values are 'Create', 'Drop',
+      # 'Rebuild'. Possible values include: 'Create', 'Drop', 'Rebuild'
       attr_accessor :action
 
-      # @return [RecommendedIndexStates] The state recommendation is in.
+      # @return [RecommendedIndexStates] The current recommendation state.
       # Current options are: 'Active', 'Pending', 'Executing', 'Verifying',
       # 'Pending Revert', 'Reverting', 'Reverted', 'Ignored', 'Expired',
       # 'Blocked', 'Success'. Possible values include: 'Active', 'Pending',
@@ -61,8 +60,8 @@ module Azure::ARM::SQL
       # recommended index action.
       attr_accessor :estimated_impact
 
-      # @return [Array<OperationImpact>] The values reported after index
-      # action is complete.
+      # @return [Array<OperationImpact>] The values reported after index action
+      # is complete.
       attr_accessor :reported_impact
 
 

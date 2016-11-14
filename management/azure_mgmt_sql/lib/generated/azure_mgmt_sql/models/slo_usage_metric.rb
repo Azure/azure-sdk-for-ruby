@@ -13,8 +13,8 @@ module Azure::ARM::SQL
       include MsRestAzure
 
       # @return [ServiceObjectiveName] The serviceLevelObjective for SLO usage
-      # metric. Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3',
-      # 'P1', 'P2', 'P3'
+      # metric. Possible values include: 'Basic', 'S0', 'S1', 'S2', 'S3', 'P1',
+      # 'P2', 'P3'
       attr_accessor :service_level_objective
 
       # @return The serviceLevelObjectiveId for SLO usage metric.

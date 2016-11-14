@@ -13,8 +13,8 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      # @return [Array<ElasticPoolActivity>] The list of Azure SQL Elastic
-      # Pool Activities.
+      # @return [Array<ElasticPoolActivity>] The list of Azure SQL Elastic Pool
+      # Activities.
       attr_accessor :value
 
 

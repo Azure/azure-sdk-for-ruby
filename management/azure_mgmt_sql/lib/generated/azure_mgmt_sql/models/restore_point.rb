@@ -13,7 +13,7 @@ module Azure::ARM::SQL
       include MsRestAzure
 
       # @return [RestorePointTypes] The restore point type of the Azure SQL
-      # Database restore point. Possible values include: 'DISCRETE',
+      # database restore point. Possible values include: 'DISCRETE',
       # 'CONTINUOUS'
       attr_accessor :restore_point_type
 

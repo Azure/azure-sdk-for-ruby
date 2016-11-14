@@ -6,13 +6,13 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a List Azure SQL Server metrics request.
+    # Represents the response to a List Azure SQL server metrics request.
     #
     class ServerMetricListResult
 
       include MsRestAzure
 
-      # @return [Array<ServerMetric>] The list of Azure SQL Server metrics for
+      # @return [Array<ServerMetric>] The list of Azure SQL server metrics for
       # the server.
       attr_accessor :value
 

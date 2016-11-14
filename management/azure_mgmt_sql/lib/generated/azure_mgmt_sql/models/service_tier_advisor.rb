@@ -46,8 +46,7 @@ module Azure::ARM::SQL
       attr_accessor :current_service_level_objective_id
 
       # @return [String] Gets or sets
-      # usageBasedRecommendationServiceLevelObjective for service tier
-      # advisor.
+      # usageBasedRecommendationServiceLevelObjective for service tier advisor.
       attr_accessor :usage_based_recommendation_service_level_objective
 
       # @return Gets or sets usageBasedRecommendationServiceLevelObjectiveId
@@ -60,8 +59,8 @@ module Azure::ARM::SQL
       attr_accessor :database_size_based_recommendation_service_level_objective
 
       # @return Gets or sets
-      # databaseSizeBasedRecommendationServiceLevelObjectiveId for service
-      # tier advisor.
+      # databaseSizeBasedRecommendationServiceLevelObjectiveId for service tier
+      # advisor.
       attr_accessor :database_size_based_recommendation_service_level_objective_id
 
       # @return [String] Gets or sets
@@ -70,8 +69,8 @@ module Azure::ARM::SQL
       attr_accessor :disaster_plan_based_recommendation_service_level_objective
 
       # @return Gets or sets
-      # disasterPlanBasedRecommendationServiceLevelObjectiveId for service
-      # tier advisor.
+      # disasterPlanBasedRecommendationServiceLevelObjectiveId for service tier
+      # advisor.
       attr_accessor :disaster_plan_based_recommendation_service_level_objective_id
 
       # @return [String] Gets or sets

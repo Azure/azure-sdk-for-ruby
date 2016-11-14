@@ -6,17 +6,17 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Represents the response to a Get request for Upgrade status of an Azure
-    # SQL Server.
+    # Represents the response to a Get request for upgrade status of an Azure
+    # SQL server.
     #
     class ServerUpgradeGetResult
 
       include MsRestAzure
 
-      # @return [String] The status of the Azure SQL Server Upgrade.
+      # @return [String] The status of the Azure SQL server upgrade.
       attr_accessor :status
 
-      # @return [DateTime] The schedule time of the Azure SQL Server Upgrade
+      # @return [DateTime] The schedule time of the Azure SQL server upgrade
       # (ISO8601 format).
       attr_accessor :schedule_upgrade_after_time
 
