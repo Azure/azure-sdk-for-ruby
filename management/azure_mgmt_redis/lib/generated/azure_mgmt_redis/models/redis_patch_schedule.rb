@@ -6,25 +6,26 @@
 module Azure::ARM::Redis
   module Models
     #
-    # Response to put/get patch schedules for redis cache.
+    # Response to put/get patch schedules for Redis cache.
     #
     class RedisPatchSchedule
 
       include MsRestAzure
 
-      # @return [String] Resource Id
+      # @return [String] Resource ID.
       attr_accessor :id
 
-      # @return [String] Resource name
+      # @return [String] Resource name.
       attr_accessor :name
 
-      # @return [String] Resource type
+      # @return [String] Resource type.
       attr_accessor :type
 
-      # @return [String] Resource location
+      # @return [String] Resource location.
       attr_accessor :location
 
-      # @return [Array<ScheduleEntry>] List of patch schedules for redis cache.
+      # @return [Array<ScheduleEntry>] List of patch schedules for a Redis
+      # cache.
       attr_accessor :schedule_entries
 
 
