@@ -18,8 +18,8 @@ module Azure::ARM::Compute
       # @return [Integer] Fault Domain count.
       attr_accessor :platform_fault_domain_count
 
-      # @return [Array<SubResource>] a list containing reference to all
-      # Virtual Machines created under this Availability Set.
+      # @return [Array<SubResource>] A list of references to all virtual
+      # machines in the availability set.
       attr_accessor :virtual_machines
 
       # @return [Array<InstanceViewStatus>] the resource status information.
