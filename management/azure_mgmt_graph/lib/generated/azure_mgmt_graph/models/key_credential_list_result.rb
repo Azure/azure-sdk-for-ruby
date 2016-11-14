@@ -12,7 +12,7 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      # @return [Array<KeyCredential>] KeyCredential list.
+      # @return [Array<KeyCredential>] A collection of KeyCredentials.
       attr_accessor :value
 
 

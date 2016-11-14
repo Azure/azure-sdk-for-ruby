@@ -6,16 +6,16 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Role assignment list operation result.
+    # Application list operation result.
     #
     class ApplicationListResult
 
       include MsRestAzure
 
-      # @return [Array<Application>] Application list.
+      # @return [Array<Application>] A collection of applications.
       attr_accessor :value
 
-      # @return [String] the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :odatanext_link
 
       # return [Proc] with next page method call.

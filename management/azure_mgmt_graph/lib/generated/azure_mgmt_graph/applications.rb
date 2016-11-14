@@ -5,7 +5,8 @@
 
 module Azure::ARM::Graph
   #
-  # Composite Swagger for GraphRbac Management Client
+  # Composite Swagger specification for Azure Active Directory Graph RBAC
+  # management client.
   #
   class Applications
     include Azure::ARM::Graph::Models
@@ -23,11 +24,10 @@ module Azure::ARM::Graph
     attr_reader :client
 
     #
-    # Create a new application. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Create a new application.
     #
-    # @param parameters [ApplicationCreateParameters] Parameters to create an
-    # application.
+    # @param parameters [ApplicationCreateParameters] The parameters for creating
+    # an application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -39,11 +39,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Create a new application. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Create a new application.
     #
-    # @param parameters [ApplicationCreateParameters] Parameters to create an
-    # application.
+    # @param parameters [ApplicationCreateParameters] The parameters for creating
+    # an application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -54,11 +53,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Create a new application. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Create a new application.
     #
-    # @param parameters [ApplicationCreateParameters] Parameters to create an
-    # application.
+    # @param parameters [ApplicationCreateParameters] The parameters for creating
+    # an application.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -125,10 +123,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Lists applications by filter parameters. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Lists applications by filter parameters.
     #
-    # @param filter [String] The filters to apply on the operation
+    # @param filter [String] The filters to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -140,10 +137,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Lists applications by filter parameters. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Lists applications by filter parameters.
     #
-    # @param filter [String] The filters to apply on the operation
+    # @param filter [String] The filters to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -154,10 +150,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Lists applications by filter parameters. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Lists applications by filter parameters.
     #
-    # @param filter [String] The filters to apply on the operation
+    # @param filter [String] The filters to apply to the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -214,10 +209,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Delete an application. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Delete an application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -228,10 +222,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Delete an application. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Delete an application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -242,10 +235,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Delete an application. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Delete an application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -294,10 +286,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Get an application by object Id. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Get an application by object ID.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -309,10 +300,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Get an application by object Id. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Get an application by object ID.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -323,10 +313,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Get an application by object Id. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Get an application by object ID.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -385,10 +374,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Update existing application. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Update an existing application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param parameters [ApplicationUpdateParameters] Parameters to update an
     # existing application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -401,10 +389,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Update existing application. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Update an existing application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param parameters [ApplicationUpdateParameters] Parameters to update an
     # existing application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -417,10 +404,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Update existing application. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Update an existing application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param parameters [ApplicationUpdateParameters] Parameters to update an
     # existing application.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -481,10 +467,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Get keyCredentials associated with the application by object Id. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+    # Get the keyCredentials associated with an application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -496,10 +481,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Get keyCredentials associated with the application by object Id. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+    # Get the keyCredentials associated with an application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -510,10 +494,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Get keyCredentials associated with the application by object Id. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+    # Get the keyCredentials associated with an application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -572,11 +555,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Update keyCredentials associated with an existing application. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+    # Update the keyCredentials associated with an application.
     #
-    # @param application_object_id [String] Application object id
-    # @param parameters [KeyCredentialsUpdateParameters] Parameters to update
+    # @param application_object_id [String] Application object ID.
+    # @param parameters [KeyCredentialsUpdateParameters] Parameters to update the
     # keyCredentials of an existing application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -588,11 +570,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Update keyCredentials associated with an existing application. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+    # Update the keyCredentials associated with an application.
     #
-    # @param application_object_id [String] Application object id
-    # @param parameters [KeyCredentialsUpdateParameters] Parameters to update
+    # @param application_object_id [String] Application object ID.
+    # @param parameters [KeyCredentialsUpdateParameters] Parameters to update the
     # keyCredentials of an existing application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -604,11 +585,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Update keyCredentials associated with an existing application. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+    # Update the keyCredentials associated with an application.
     #
-    # @param application_object_id [String] Application object id
-    # @param parameters [KeyCredentialsUpdateParameters] Parameters to update
+    # @param application_object_id [String] Application object ID.
+    # @param parameters [KeyCredentialsUpdateParameters] Parameters to update the
     # keyCredentials of an existing application.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -668,10 +648,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets passwordCredentials associated with an existing application. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+    # Get the passwordCredentials associated with an application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -683,10 +662,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets passwordCredentials associated with an existing application. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+    # Get the passwordCredentials associated with an application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -697,10 +675,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets passwordCredentials associated with an existing application. Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+    # Get the passwordCredentials associated with an application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -759,11 +736,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Updates passwordCredentials associated with an existing application.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+    # Update passwordCredentials associated with an application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param parameters [PasswordCredentialsUpdateParameters] Parameters to update
     # passwordCredentials of an existing application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -776,11 +751,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Updates passwordCredentials associated with an existing application.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+    # Update passwordCredentials associated with an application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param parameters [PasswordCredentialsUpdateParameters] Parameters to update
     # passwordCredentials of an existing application.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -793,11 +766,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Updates passwordCredentials associated with an existing application.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+    # Update passwordCredentials associated with an application.
     #
-    # @param application_object_id [String] Application object id
+    # @param application_object_id [String] Application object ID.
     # @param parameters [PasswordCredentialsUpdateParameters] Parameters to update
     # passwordCredentials of an existing application.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -858,9 +829,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of applications from the current tenant.
+    # Gets a list of applications from the current tenant.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -872,9 +843,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of applications from the current tenant.
+    # Gets a list of applications from the current tenant.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -885,9 +856,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of applications from the current tenant.
+    # Gets a list of applications from the current tenant.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -946,10 +917,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Lists applications by filter parameters. Reference:
-    # http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
+    # Lists applications by filter parameters.
     #
-    # @param filter [String] The filters to apply on the operation
+    # @param filter [String] The filters to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

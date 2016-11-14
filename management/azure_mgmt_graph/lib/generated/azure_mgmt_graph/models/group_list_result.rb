@@ -12,10 +12,10 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      # @return [Array<ADGroup>] the list of groups.
+      # @return [Array<ADGroup>] A collection of Active Directory groups.
       attr_accessor :value
 
-      # @return [String] the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :odatanext_link
 
       # return [Proc] with next page method call.

@@ -6,7 +6,7 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Request parameters for create a new service principal
+    # Request parameters for creating a new service principal.
     #
     class ServicePrincipalCreateParameters
 
@@ -15,13 +15,13 @@ module Azure::ARM::Graph
       # @return [String] application Id
       attr_accessor :app_id
 
-      # @return [Boolean] Specifies if the account is enabled
+      # @return [Boolean] Whether the account is enabled
       attr_accessor :account_enabled
 
-      # @return [Array<KeyCredential>] the list of KeyCredential objects
+      # @return [Array<KeyCredential>] A collection of KeyCredential objects.
       attr_accessor :key_credentials
 
-      # @return [Array<PasswordCredential>] the list of PasswordCredential
+      # @return [Array<PasswordCredential>] A collection of PasswordCredential
       # objects
       attr_accessor :password_credentials
 

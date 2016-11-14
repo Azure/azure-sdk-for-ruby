@@ -6,20 +6,20 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Request parameters for GetObjectsByObjectIds API call
+    # Request parameters for the GetObjectsByObjectIds API.
     #
     class GetObjectsParameters
 
       include MsRestAzure
 
-      # @return [Array<String>] Requested object Ids
+      # @return [Array<String>] The requested object IDs.
       attr_accessor :object_ids
 
-      # @return [Array<String>] Requested object types
+      # @return [Array<String>] The requested object types.
       attr_accessor :types
 
-      # @return [Boolean] If true, also searches for object ids in the partner
-      # tenant
+      # @return [Boolean] If true, also searches for object IDs in the partner
+      # tenant.
       attr_accessor :include_directory_object_references
 
 

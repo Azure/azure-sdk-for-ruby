@@ -6,38 +6,38 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Active Directory user information
+    # Active Directory application information.
     #
     class Application
 
       include MsRestAzure
 
-      # @return [String] object Id
+      # @return [String] The object ID.
       attr_accessor :object_id
 
-      # @return [String] object type
+      # @return [String] The object type.
       attr_accessor :object_type
 
-      # @return [String] application Id
+      # @return [String] The application ID.
       attr_accessor :app_id
 
-      # @return [Array<String>] application permissions
+      # @return [Array<String>] The application permissions.
       attr_accessor :app_permissions
 
-      # @return [Boolean] Indicates if the application will be available to
-      # other tenants
+      # @return [Boolean] Whether the application is be available to other
+      # tenants.
       attr_accessor :available_to_other_tenants
 
-      # @return [String] the displayName
+      # @return [String] The display name of the application.
       attr_accessor :display_name
 
-      # @return [Array<String>] the application identifier Uris
+      # @return [Array<String>] A collection of URIs for the application.
       attr_accessor :identifier_uris
 
-      # @return [Array<String>] the application reply Urls
+      # @return [Array<String>] A collection of reply URLs for the application.
       attr_accessor :reply_urls
 
-      # @return [String] Application homepage
+      # @return [String] The home page of the application.
       attr_accessor :homepage
 
 

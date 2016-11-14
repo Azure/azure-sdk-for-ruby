@@ -6,7 +6,7 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Server response for Get tenant users API call
+    # Server response for Get tenant users API call.
     #
     class UserListResult
 
@@ -15,7 +15,7 @@ module Azure::ARM::Graph
       # @return [Array<User>] the list of users.
       attr_accessor :value
 
-      # @return [String] the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :odatanext_link
 
       # return [Proc] with next page method call.

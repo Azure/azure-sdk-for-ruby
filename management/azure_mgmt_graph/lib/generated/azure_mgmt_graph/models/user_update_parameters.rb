@@ -6,23 +6,22 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Request parameters for updating an existing work or school account user
+    # Request parameters for updating an existing work or school account user.
     #
     class UserUpdateParameters
 
       include MsRestAzure
 
-      # @return [Boolean] Enable the account. If it is enabled then true else
-      # false.
+      # @return [Boolean] Whether the account is enabled.
       attr_accessor :account_enabled
 
-      # @return [String] User display name
+      # @return [String] The display name of the user.
       attr_accessor :display_name
 
-      # @return [PasswordProfile] Password Profile
+      # @return [PasswordProfile] The password profile of the user.
       attr_accessor :password_profile
 
-      # @return [String] The mail alias for the user
+      # @return [String] The mail alias for the user.
       attr_accessor :mail_nickname
 
 

@@ -6,13 +6,14 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Server response for GetMemberGroups API call
+    # Server response for GetMemberGroups API call.
     #
     class GroupGetMemberGroupsResult
 
       include MsRestAzure
 
-      # @return [Array<String>] Group Ids of which the group is a member
+      # @return [Array<String>] A collection of group IDs of which the group is
+      # a member.
       attr_accessor :value
 
 

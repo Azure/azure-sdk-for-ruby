@@ -6,7 +6,7 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Request parameters for IsMemberOf API call
+    # Request parameters for IsMemberOf API call.
     #
     class CheckGroupMembershipParameters
 

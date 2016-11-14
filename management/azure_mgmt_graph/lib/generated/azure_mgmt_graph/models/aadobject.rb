@@ -6,40 +6,41 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Active Directory object information
+    # The properties of an Active Directory object.
     #
     class AADObject
 
       include MsRestAzure
 
-      # @return [String] object Id
+      # @return [String] The ID of the object.
       attr_accessor :object_id
 
-      # @return [String] object type
+      # @return [String] The type of AAD object.
       attr_accessor :object_type
 
-      # @return [String] object display name
+      # @return [String] The display name of the object.
       attr_accessor :display_name
 
-      # @return [String] principal name
+      # @return [String] The principal name of the object.
       attr_accessor :user_principal_name
 
-      # @return [String] mail
+      # @return [String] The primary email address of the object.
       attr_accessor :mail
 
-      # @return [Boolean] MailEnabled field
+      # @return [Boolean] Whether the AAD object is mail-enabled.
       attr_accessor :mail_enabled
 
-      # @return [Boolean] SecurityEnabled field
+      # @return [Boolean] Whether the AAD object is security-enabled.
       attr_accessor :security_enabled
 
-      # @return [String] signIn name
+      # @return [String] The sign-in name of the object.
       attr_accessor :sign_in_name
 
-      # @return [Array<String>] the list of service principal names.
+      # @return [Array<String>] A collection of service principal names
+      # associated with the object.
       attr_accessor :service_principal_names
 
-      # @return [String] the user type
+      # @return [String] The user type of the object.
       attr_accessor :user_type
 
 
