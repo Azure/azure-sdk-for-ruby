@@ -16,9 +16,9 @@ module Azure::ARM::TrafficManager
       # profile.  Possible values are 'Enabled' and 'Disabled'.
       attr_accessor :profile_status
 
-      # @return [String] Gets or sets the traffic routing method of the
-      # Traffic Manager profile.  Possible values are 'Performance',
-      # 'Weighted', or 'Priority'.
+      # @return [String] Gets or sets the traffic routing method of the Traffic
+      # Manager profile.  Possible values are 'Performance', 'Weighted', or
+      # 'Priority'.
       attr_accessor :traffic_routing_method
 
       # @return [DnsConfig] Gets or sets the DNS settings of the Traffic
