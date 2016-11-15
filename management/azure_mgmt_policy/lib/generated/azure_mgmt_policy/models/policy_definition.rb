@@ -12,8 +12,8 @@ module Azure::ARM::Policy
 
       include MsRestAzure
 
-      # @return [PolicyType] The type of policy definition. Possible values
-      # are NotSpecified, BuiltIn, and Custom. Possible values include:
+      # @return [PolicyType] The type of policy definition. Possible values are
+      # NotSpecified, BuiltIn, and Custom. Possible values include:
       # 'NotSpecified', 'BuiltIn', 'Custom'
       attr_accessor :policy_type
 
@@ -30,8 +30,8 @@ module Azure::ARM::Policy
       attr_accessor :id
 
       # @return [String] The name of the policy definition. If you do not
-      # specify a value for name, the value is inferred from the name value
-      # in the request URI.
+      # specify a value for name, the value is inferred from the name value in
+      # the request URI.
       attr_accessor :name
 
 
