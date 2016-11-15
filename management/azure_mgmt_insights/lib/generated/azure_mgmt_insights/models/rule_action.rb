@@ -6,8 +6,8 @@
 module Azure::ARM::Insights
   module Models
     #
-    # The action that is performed when the alert rule becomes active, and
-    # when an alert condition is resolved.
+    # The action that is performed when the alert rule becomes active, and when
+    # an alert condition is resolved.
     #
     class RuleAction
 

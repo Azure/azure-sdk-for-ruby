@@ -23,8 +23,8 @@ module Azure::ARM::Insights
       # @return [String] the service uri to Post the notitication.
       attr_accessor :service_uri
 
-      # @return [Hash{String => String}] the dictionary of custom properties
-      # to include with the post operation.
+      # @return [Hash{String => String}] the dictionary of custom properties to
+      # include with the post operation.
       attr_accessor :properties
 
 

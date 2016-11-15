@@ -13,12 +13,12 @@ module Azure::ARM::Insights
       include MsRestAzure
 
       # @return [ScaleDirection] the scale direction. Whether the scaling
-      # action increases or decreases the number of instances. Possible
-      # values include: 'None', 'Increase', 'Decrease'
+      # action increases or decreases the number of instances. Possible values
+      # include: 'None', 'Increase', 'Decrease'
       attr_accessor :direction
 
-      # @return [String] the type of action that should occur, this must be
-      # set to ChangeCount. Default value: 'ChangeCount' .
+      # @return [String] the type of action that should occur, this must be set
+      # to ChangeCount. Default value: 'ChangeCount' .
       attr_accessor :type
 
       # @return [String] the number of instances that are involved in the

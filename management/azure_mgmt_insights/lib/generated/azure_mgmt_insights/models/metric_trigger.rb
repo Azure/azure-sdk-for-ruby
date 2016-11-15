@@ -26,8 +26,8 @@ module Azure::ARM::Insights
       attr_accessor :time_grain
 
       # @return [MetricStatisticType] the metric statistic type. How the
-      # metrics from multiple instances are combined. Possible values
-      # include: 'Average', 'Min', 'Max', 'Sum'
+      # metrics from multiple instances are combined. Possible values include:
+      # 'Average', 'Min', 'Max', 'Sum'
       attr_accessor :statistic
 
       # @return [Duration] the range of time in which instance data is
