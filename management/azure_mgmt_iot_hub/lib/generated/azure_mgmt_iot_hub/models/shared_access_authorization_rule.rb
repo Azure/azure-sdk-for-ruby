@@ -7,6 +7,7 @@ module Azure::ARM::IotHub
   module Models
     #
     # Model object.
+    # 
     #
     class SharedAccessAuthorizationRule
 

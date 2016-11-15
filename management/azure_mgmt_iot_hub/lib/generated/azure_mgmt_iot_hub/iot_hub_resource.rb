@@ -2026,8 +2026,8 @@ module Azure::ARM::IotHub
     #
     # Get all IotHubs in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2043,8 +2043,8 @@ module Azure::ARM::IotHub
     #
     # Get all IotHubs in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2059,8 +2059,8 @@ module Azure::ARM::IotHub
     #
     # Get all IotHubs in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2119,8 +2119,8 @@ module Azure::ARM::IotHub
     #
     # Get all IotHubs in a Resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2136,8 +2136,8 @@ module Azure::ARM::IotHub
     #
     # Get all IotHubs in a Resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2152,8 +2152,8 @@ module Azure::ARM::IotHub
     #
     # Get all IotHubs in a Resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2212,8 +2212,8 @@ module Azure::ARM::IotHub
     #
     # Get Valid Skus.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2229,8 +2229,8 @@ module Azure::ARM::IotHub
     #
     # Get Valid Skus.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2245,8 +2245,8 @@ module Azure::ARM::IotHub
     #
     # Get Valid Skus.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2305,8 +2305,8 @@ module Azure::ARM::IotHub
     #
     # Get EventHub Consumer Groups for an IotHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2322,8 +2322,8 @@ module Azure::ARM::IotHub
     #
     # Get EventHub Consumer Groups for an IotHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2338,8 +2338,8 @@ module Azure::ARM::IotHub
     #
     # Get EventHub Consumer Groups for an IotHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2398,8 +2398,8 @@ module Azure::ARM::IotHub
     #
     # Get all the jobs in an IotHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2415,8 +2415,8 @@ module Azure::ARM::IotHub
     #
     # Get all the jobs in an IotHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2431,8 +2431,8 @@ module Azure::ARM::IotHub
     #
     # Get all the jobs in an IotHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2491,8 +2491,8 @@ module Azure::ARM::IotHub
     #
     # Get quota metrics for an IotHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2508,8 +2508,8 @@ module Azure::ARM::IotHub
     #
     # Get quota metrics for an IotHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2524,8 +2524,8 @@ module Azure::ARM::IotHub
     #
     # Get quota metrics for an IotHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2584,8 +2584,8 @@ module Azure::ARM::IotHub
     #
     # Get all keys for an IotHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2601,8 +2601,8 @@ module Azure::ARM::IotHub
     #
     # Get all keys for an IotHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2617,8 +2617,8 @@ module Azure::ARM::IotHub
     #
     # Get all keys for an IotHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2752,8 +2752,8 @@ module Azure::ARM::IotHub
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [EventHubConsumerGroupsListResult] which provide lazy access to
-    # pages of the response.
+    # @return [EventHubConsumerGroupsListResult] which provide lazy access to pages
+    # of the response.
     #
     def list_event_hub_consumer_groups_as_lazy(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers = nil)
       response = list_event_hub_consumer_groups_async(resource_group_name, resource_name, event_hub_endpoint_name, custom_headers).value!
@@ -2824,8 +2824,8 @@ module Azure::ARM::IotHub
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SharedAccessSignatureAuthorizationRuleListResult] which provide
-    # lazy access to pages of the response.
+    # @return [SharedAccessSignatureAuthorizationRuleListResult] which provide lazy
+    # access to pages of the response.
     #
     def list_keys_as_lazy(resource_group_name, resource_name, custom_headers = nil)
       response = list_keys_async(resource_group_name, resource_name, custom_headers).value!

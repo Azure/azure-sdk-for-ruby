@@ -16,8 +16,8 @@ module Azure::ARM::IotHub
       # 1-100.
       attr_accessor :max_delivery_count
 
-      # @return [Duration] The default time to live for the device queue.
-      # Range : 1 Min (PT1M) - 2 Days (P2D).
+      # @return [Duration] The default time to live for the device queue. Range
+      # : 1 Min (PT1M) - 2 Days (P2D).
       attr_accessor :default_ttl_as_iso8601
 
       # @return [FeedbackProperties]

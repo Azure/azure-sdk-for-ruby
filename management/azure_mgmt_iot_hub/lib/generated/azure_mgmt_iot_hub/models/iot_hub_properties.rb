@@ -26,9 +26,9 @@ module Azure::ARM::IotHub
       # properties.
       attr_accessor :event_hub_endpoints
 
-      # @return [Hash{String => StorageEndpointProperties}] The list of
-      # storage end points where files can be uploaded. Currently only one
-      # storage account can be configured.
+      # @return [Hash{String => StorageEndpointProperties}] The list of storage
+      # end points where files can be uploaded. Currently only one storage
+      # account can be configured.
       attr_accessor :storage_endpoints
 
       # @return [Hash{String => MessagingEndpointProperties}] The list of
@@ -36,8 +36,8 @@ module Azure::ARM::IotHub
       attr_accessor :messaging_endpoints
 
       # @return [Boolean] The flag which indicates whether file upload
-      # notification should be enabled. This is optional at iot hub level.
-      # When enabled upload notifications will be available.
+      # notification should be enabled. This is optional at iot hub level. When
+      # enabled upload notifications will be available.
       attr_accessor :enable_file_upload_notifications
 
       # @return [CloudToDeviceProperties]

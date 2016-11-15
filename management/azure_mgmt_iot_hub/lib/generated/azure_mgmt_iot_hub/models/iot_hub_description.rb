@@ -19,9 +19,9 @@ module Azure::ARM::IotHub
       # resource group within the user subscriptionId.
       attr_accessor :resourcegroup
 
-      # @return [String] The Etag field is *not* required. If it is provided
-      # in the response body, it must also be provided as a header per the
-      # normal ETag convention.
+      # @return [String] The Etag field is *not* required. If it is provided in
+      # the response body, it must also be provided as a header per the normal
+      # ETag convention.
       attr_accessor :etag
 
       # @return [IotHubProperties]
