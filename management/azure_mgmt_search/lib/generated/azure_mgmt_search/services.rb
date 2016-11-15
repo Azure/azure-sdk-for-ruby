@@ -24,21 +24,21 @@ module Azure::ARM::Search
 
     #
     # Creates or updates a Search service in the given resource group. If the
-    # Search service already exists, all properties will be updated with the
-    # given values.
+    # Search service already exists, all properties will be updated with the given
+    # values.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service to
     # create or update. Search service names must only contain lowercase letters,
     # digits or dashes, cannot use dash as the first two or last one characters,
-    # cannot contain consecutive dashes, and must be between 2 and 60 characters
-    # in length. Search service names must be globally unique since they are part
-    # of the service URI (https://<name>.search.windows.net). You cannot change
-    # the service name after the service is created.
-    # @param service [SearchService] The definition of the Search service to
-    # create or update.
+    # cannot contain consecutive dashes, and must be between 2 and 60 characters in
+    # length. Search service names must be globally unique since they are part of
+    # the service URI (https://<name>.search.windows.net). You cannot change the
+    # service name after the service is created.
+    # @param service [SearchService] The definition of the Search service to create
+    # or update.
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -53,21 +53,21 @@ module Azure::ARM::Search
 
     #
     # Creates or updates a Search service in the given resource group. If the
-    # Search service already exists, all properties will be updated with the
-    # given values.
+    # Search service already exists, all properties will be updated with the given
+    # values.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service to
     # create or update. Search service names must only contain lowercase letters,
     # digits or dashes, cannot use dash as the first two or last one characters,
-    # cannot contain consecutive dashes, and must be between 2 and 60 characters
-    # in length. Search service names must be globally unique since they are part
-    # of the service URI (https://<name>.search.windows.net). You cannot change
-    # the service name after the service is created.
-    # @param service [SearchService] The definition of the Search service to
-    # create or update.
+    # cannot contain consecutive dashes, and must be between 2 and 60 characters in
+    # length. Search service names must be globally unique since they are part of
+    # the service URI (https://<name>.search.windows.net). You cannot change the
+    # service name after the service is created.
+    # @param service [SearchService] The definition of the Search service to create
+    # or update.
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -81,21 +81,21 @@ module Azure::ARM::Search
 
     #
     # Creates or updates a Search service in the given resource group. If the
-    # Search service already exists, all properties will be updated with the
-    # given values.
+    # Search service already exists, all properties will be updated with the given
+    # values.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service to
     # create or update. Search service names must only contain lowercase letters,
     # digits or dashes, cannot use dash as the first two or last one characters,
-    # cannot contain consecutive dashes, and must be between 2 and 60 characters
-    # in length. Search service names must be globally unique since they are part
-    # of the service URI (https://<name>.search.windows.net). You cannot change
-    # the service name after the service is created.
-    # @param service [SearchService] The definition of the Search service to
-    # create or update.
+    # cannot contain consecutive dashes, and must be between 2 and 60 characters in
+    # length. Search service names must be globally unique since they are part of
+    # the service URI (https://<name>.search.windows.net). You cannot change the
+    # service name after the service is created.
+    # @param service [SearchService] The definition of the Search service to create
+    # or update.
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -183,8 +183,8 @@ module Azure::ARM::Search
     #
     # Gets the Search service with the given name in the given resource group.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -203,8 +203,8 @@ module Azure::ARM::Search
     #
     # Gets the Search service with the given name in the given resource group.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -222,8 +222,8 @@ module Azure::ARM::Search
     #
     # Gets the Search service with the given name in the given resource group.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -295,8 +295,8 @@ module Azure::ARM::Search
     # Deletes a Search service in the given resource group, along with its
     # associated resources.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -315,8 +315,8 @@ module Azure::ARM::Search
     # Deletes a Search service in the given resource group, along with its
     # associated resources.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -335,8 +335,8 @@ module Azure::ARM::Search
     # Deletes a Search service in the given resource group, along with its
     # associated resources.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -397,8 +397,8 @@ module Azure::ARM::Search
     #
     # Gets a list of all Search services in the given resource group.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
@@ -415,8 +415,8 @@ module Azure::ARM::Search
     #
     # Gets a list of all Search services in the given resource group.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
@@ -432,8 +432,8 @@ module Azure::ARM::Search
     #
     # Gets a list of all Search services in the given resource group.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
@@ -504,9 +504,9 @@ module Azure::ARM::Search
     # service URI (https://<name>.search.windows.net).
     #
     # @param name [String] The Search service name to validate. Search service
-    # names must only contain lowercase letters, digits or dashes, cannot use
-    # dash as the first two or last one characters, cannot contain consecutive
-    # dashes, and must be between 2 and 60 characters in length.
+    # names must only contain lowercase letters, digits or dashes, cannot use dash
+    # as the first two or last one characters, cannot contain consecutive dashes,
+    # and must be between 2 and 60 characters in length.
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -525,9 +525,9 @@ module Azure::ARM::Search
     # service URI (https://<name>.search.windows.net).
     #
     # @param name [String] The Search service name to validate. Search service
-    # names must only contain lowercase letters, digits or dashes, cannot use
-    # dash as the first two or last one characters, cannot contain consecutive
-    # dashes, and must be between 2 and 60 characters in length.
+    # names must only contain lowercase letters, digits or dashes, cannot use dash
+    # as the first two or last one characters, cannot contain consecutive dashes,
+    # and must be between 2 and 60 characters in length.
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -545,9 +545,9 @@ module Azure::ARM::Search
     # service URI (https://<name>.search.windows.net).
     #
     # @param name [String] The Search service name to validate. Search service
-    # names must only contain lowercase letters, digits or dashes, cannot use
-    # dash as the first two or last one characters, cannot contain consecutive
-    # dashes, and must be between 2 and 60 characters in length.
+    # names must only contain lowercase letters, digits or dashes, cannot use dash
+    # as the first two or last one characters, cannot contain consecutive dashes,
+    # and must be between 2 and 60 characters in length.
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
     # @param [Hash{String => String}] A hash of custom headers that will be added

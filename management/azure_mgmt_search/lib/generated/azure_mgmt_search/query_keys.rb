@@ -23,11 +23,11 @@ module Azure::ARM::Search
     attr_reader :client
 
     #
-    # Generates a new query key for the specified Search service. You can create
-    # up to 50 query keys per service.
+    # Generates a new query key for the specified Search service. You can create up
+    # to 50 query keys per service.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -45,11 +45,11 @@ module Azure::ARM::Search
     end
 
     #
-    # Generates a new query key for the specified Search service. You can create
-    # up to 50 query keys per service.
+    # Generates a new query key for the specified Search service. You can create up
+    # to 50 query keys per service.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -66,11 +66,11 @@ module Azure::ARM::Search
     end
 
     #
-    # Generates a new query key for the specified Search service. You can create
-    # up to 50 query keys per service.
+    # Generates a new query key for the specified Search service. You can create up
+    # to 50 query keys per service.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -143,8 +143,8 @@ module Azure::ARM::Search
     #
     # Returns the list of query API keys for the given Azure Search service.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -163,8 +163,8 @@ module Azure::ARM::Search
     #
     # Returns the list of query API keys for the given Azure Search service.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -182,8 +182,8 @@ module Azure::ARM::Search
     #
     # Returns the list of query API keys for the given Azure Search service.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -256,13 +256,13 @@ module Azure::ARM::Search
     # regenerated. The process for regenerating a query key is to delete and then
     # recreate it.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
-    # @param key [String] The query key to be deleted. Query keys are identified
-    # by value, not by name.
+    # @param key [String] The query key to be deleted. Query keys are identified by
+    # value, not by name.
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -279,13 +279,13 @@ module Azure::ARM::Search
     # regenerated. The process for regenerating a query key is to delete and then
     # recreate it.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
-    # @param key [String] The query key to be deleted. Query keys are identified
-    # by value, not by name.
+    # @param key [String] The query key to be deleted. Query keys are identified by
+    # value, not by name.
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -302,13 +302,13 @@ module Azure::ARM::Search
     # regenerated. The process for regenerating a query key is to delete and then
     # recreate it.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
-    # @param key [String] The query key to be deleted. Query keys are identified
-    # by value, not by name.
+    # @param key [String] The query key to be deleted. Query keys are identified by
+    # value, not by name.
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
     # @param [Hash{String => String}] A hash of custom headers that will be added
