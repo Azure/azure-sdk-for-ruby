@@ -6,8 +6,8 @@
 module Azure::ARM::Storage
   module Models
     #
-    # The URIs that are used to perform a retrieval of a public blob, queue,
-    # or table object.
+    # The URIs that are used to perform a retrieval of a public blob, queue, or
+    # table object.
     #
     class Endpoints
 

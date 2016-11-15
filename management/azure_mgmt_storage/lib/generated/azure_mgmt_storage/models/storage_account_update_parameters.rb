@@ -18,19 +18,18 @@ module Azure::ARM::Storage
       # sku names be updated to any other value.
       attr_accessor :sku
 
-      # @return [Hash{String => String}] Gets or sets a list of key value
-      # pairs that describe the resource. These tags can be used in viewing
-      # and grouping this resource (across resource groups). A maximum of 15
-      # tags can be provided for a resource. Each tag must have a key no
-      # greater in length than 128 characters and a value no greater in
-      # length than 256 characters.
+      # @return [Hash{String => String}] Gets or sets a list of key value pairs
+      # that describe the resource. These tags can be used in viewing and
+      # grouping this resource (across resource groups). A maximum of 15 tags
+      # can be provided for a resource. Each tag must have a key no greater in
+      # length than 128 characters and a value no greater in length than 256
+      # characters.
       attr_accessor :tags
 
-      # @return [CustomDomain] Custom domain assigned to the storage account
-      # by the user. Name is the CNAME source. Only one custom domain is
-      # supported per storage account at this time. To clear the existing
-      # custom domain, use an empty string for the custom domain name
-      # property.
+      # @return [CustomDomain] Custom domain assigned to the storage account by
+      # the user. Name is the CNAME source. Only one custom domain is supported
+      # per storage account at this time. To clear the existing custom domain,
+      # use an empty string for the custom domain name property.
       attr_accessor :custom_domain
 
       # @return [Encryption] Provides the encryption settings on the account.
@@ -38,8 +37,8 @@ module Azure::ARM::Storage
       attr_accessor :encryption
 
       # @return [AccessTier] Required for storage accounts where kind =
-      # BlobStorage. The access tier used for billing. Possible values
-      # include: 'Hot', 'Cool'
+      # BlobStorage. The access tier used for billing. Possible values include:
+      # 'Hot', 'Cool'
       attr_accessor :access_tier
 
 

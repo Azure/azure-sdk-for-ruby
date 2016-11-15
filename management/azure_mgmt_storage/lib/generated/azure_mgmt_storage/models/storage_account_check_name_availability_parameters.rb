@@ -7,6 +7,7 @@ module Azure::ARM::Storage
   module Models
     #
     # Model object.
+    # 
     #
     class StorageAccountCheckNameAvailabilityParameters
 
