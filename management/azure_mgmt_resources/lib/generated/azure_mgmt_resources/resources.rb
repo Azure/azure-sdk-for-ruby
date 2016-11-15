@@ -27,9 +27,9 @@ module Azure::ARM::Resources
     #
     # The resources to move must be in the same source resource group. The target
     # resource group may be in a different subscription. When moving resources,
-    # both the source group and the target group are locked for the duration of
-    # the operation. Write and delete operations are blocked on the groups until
-    # the move completes.
+    # both the source group and the target group are locked for the duration of the
+    # operation. Write and delete operations are blocked on the groups until the
+    # move completes.
     #
     # @param source_resource_group_name [String] The name of the resource group
     # containing the rsources to move.
@@ -166,8 +166,8 @@ module Azure::ARM::Resources
     #
     # Checks whether a resource exists.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource to check. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource to check. The name is case insensitive.
     # @param resource_provider_namespace [String] The resource provider of the
     # resource to check.
     # @param parent_resource_path [String] The parent resource identity.
@@ -188,8 +188,8 @@ module Azure::ARM::Resources
     #
     # Checks whether a resource exists.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource to check. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource to check. The name is case insensitive.
     # @param resource_provider_namespace [String] The resource provider of the
     # resource to check.
     # @param parent_resource_path [String] The parent resource identity.
@@ -209,8 +209,8 @@ module Azure::ARM::Resources
     #
     # Checks whether a resource exists.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource to check. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource to check. The name is case insensitive.
     # @param resource_provider_namespace [String] The resource provider of the
     # resource to check.
     # @param parent_resource_path [String] The parent resource identity.
@@ -381,8 +381,8 @@ module Azure::ARM::Resources
     #
     # Gets a resource.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource to get. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource to get. The name is case insensitive.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource identity.
@@ -402,8 +402,8 @@ module Azure::ARM::Resources
     #
     # Gets a resource.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource to get. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource to get. The name is case insensitive.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource identity.
@@ -422,8 +422,8 @@ module Azure::ARM::Resources
     #
     # Gets a resource.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource to get. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource to get. The name is case insensitive.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource identity.
@@ -494,8 +494,8 @@ module Azure::ARM::Resources
     #
     # Checks by ID whether a resource exists.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -511,8 +511,8 @@ module Azure::ARM::Resources
     #
     # Checks by ID whether a resource exists.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -527,8 +527,8 @@ module Azure::ARM::Resources
     #
     # Checks by ID whether a resource exists.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -580,8 +580,8 @@ module Azure::ARM::Resources
     #
     # Deletes a resource by ID.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -593,8 +593,8 @@ module Azure::ARM::Resources
     end
 
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -622,8 +622,8 @@ module Azure::ARM::Resources
     #
     # Create a resource by ID.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param parameters [GenericResource] Create or update resource parameters.
@@ -638,8 +638,8 @@ module Azure::ARM::Resources
     end
 
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param parameters [GenericResource] Create or update resource parameters.
@@ -670,8 +670,8 @@ module Azure::ARM::Resources
     #
     # Gets a resource by ID.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -687,8 +687,8 @@ module Azure::ARM::Resources
     #
     # Gets a resource by ID.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -703,8 +703,8 @@ module Azure::ARM::Resources
     #
     # Gets a resource by ID.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -767,9 +767,9 @@ module Azure::ARM::Resources
     #
     # The resources to move must be in the same source resource group. The target
     # resource group may be in a different subscription. When moving resources,
-    # both the source group and the target group are locked for the duration of
-    # the operation. Write and delete operations are blocked on the groups until
-    # the move completes.
+    # both the source group and the target group are locked for the duration of the
+    # operation. Write and delete operations are blocked on the groups until the
+    # move completes.
     #
     # @param source_resource_group_name [String] The name of the resource group
     # containing the rsources to move.
@@ -788,9 +788,9 @@ module Azure::ARM::Resources
     #
     # The resources to move must be in the same source resource group. The target
     # resource group may be in a different subscription. When moving resources,
-    # both the source group and the target group are locked for the duration of
-    # the operation. Write and delete operations are blocked on the groups until
-    # the move completes.
+    # both the source group and the target group are locked for the duration of the
+    # operation. Write and delete operations are blocked on the groups until the
+    # move completes.
     #
     # @param source_resource_group_name [String] The name of the resource group
     # containing the rsources to move.
@@ -809,9 +809,9 @@ module Azure::ARM::Resources
     #
     # The resources to move must be in the same source resource group. The target
     # resource group may be in a different subscription. When moving resources,
-    # both the source group and the target group are locked for the duration of
-    # the operation. Write and delete operations are blocked on the groups until
-    # the move completes.
+    # both the source group and the target group are locked for the duration of the
+    # operation. Write and delete operations are blocked on the groups until the
+    # move completes.
     #
     # @param source_resource_group_name [String] The name of the resource group
     # containing the rsources to move.
@@ -1116,8 +1116,8 @@ module Azure::ARM::Resources
     #
     # Deletes a resource by ID.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1132,8 +1132,8 @@ module Azure::ARM::Resources
     #
     # Deletes a resource by ID.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1148,8 +1148,8 @@ module Azure::ARM::Resources
     #
     # Deletes a resource by ID.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1200,8 +1200,8 @@ module Azure::ARM::Resources
     #
     # Create a resource by ID.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param parameters [GenericResource] Create or update resource parameters.
@@ -1218,8 +1218,8 @@ module Azure::ARM::Resources
     #
     # Create a resource by ID.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param parameters [GenericResource] Create or update resource parameters.
@@ -1235,8 +1235,8 @@ module Azure::ARM::Resources
     #
     # Create a resource by ID.
     #
-    # @param resource_id [String] The fully qualified ID of the resource,
-    # including the resource name and resource type. Use the format,
+    # @param resource_id [String] The fully qualified ID of the resource, including
+    # the resource name and resource type. Use the format,
     # /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
     # @param api_version [String] The API version to use for the operation.
     # @param parameters [GenericResource] Create or update resource parameters.
@@ -1318,8 +1318,8 @@ module Azure::ARM::Resources
     #
     # Get all the resources in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1333,8 +1333,8 @@ module Azure::ARM::Resources
     #
     # Get all the resources in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1347,8 +1347,8 @@ module Azure::ARM::Resources
     #
     # Get all the resources in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
