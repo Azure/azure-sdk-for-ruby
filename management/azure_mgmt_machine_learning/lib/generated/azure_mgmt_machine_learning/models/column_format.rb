@@ -11,7 +11,10 @@ module Azure::ARM::MachineLearning
     module ColumnFormat
       Byte = "Byte"
       Char = "Char"
-      Datetime = "Datetime"
+      Complex64 = "Complex64"
+      Complex128 = "Complex128"
+      DateTime = "Date-time"
+      DateTimeOffset = "Date-timeOffset"
       Double = "Double"
       Duration = "Duration"
       Float = "Float"

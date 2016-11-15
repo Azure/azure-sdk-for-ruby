@@ -15,15 +15,15 @@ module Azure::ARM::MachineLearning
       # @return [String] The source graph node's identifier.
       attr_accessor :source_node_id
 
-      # @return [String] The identifier of the source node's port that the
-      # edge connects from.
+      # @return [String] The identifier of the source node's port that the edge
+      # connects from.
       attr_accessor :source_port_id
 
       # @return [String] The destination graph node's identifier.
       attr_accessor :target_node_id
 
-      # @return [String] The identifier of the destination node's port that
-      # the edge connects into.
+      # @return [String] The identifier of the destination node's port that the
+      # edge connects into.
       attr_accessor :target_port_id
 
 

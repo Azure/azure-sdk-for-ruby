@@ -13,8 +13,8 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      # @return [Integer] Maximum number of concurrent calls allowed on the
-      # realtime endpoint.
+      # @return [Integer] Specifies the maximum concurrent calls that can be
+      # made to the web service. Minimum value: 4, Maximum value: 200.
       attr_accessor :max_concurrent_calls
 
 

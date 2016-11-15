@@ -18,10 +18,10 @@ module Azure::ARM::MachineLearning
       # 'Boolean', 'Integer', 'Number', 'String'
       attr_accessor :type
 
-      # @return [ColumnFormat] Additional format information for the data
-      # type. Possible values include: 'Byte', 'Char', 'Datetime', 'Double',
-      # 'Duration', 'Float', 'Int8', 'Int16', 'Int32', 'Int64', 'Uint8',
-      # 'Uint16', 'Uint32', 'Uint64'
+      # @return [ColumnFormat] Additional format information for the data type.
+      # Possible values include: 'Byte', 'Char', 'Complex64', 'Complex128',
+      # 'Date-time', 'Date-timeOffset', 'Double', 'Duration', 'Float', 'Int8',
+      # 'Int16', 'Int32', 'Int64', 'Uint8', 'Uint16', 'Uint32', 'Uint64'
       attr_accessor :format
 
       # @return If the data type is categorical, this provides the list of
@@ -32,8 +32,8 @@ module Azure::ARM::MachineLearning
       # not.
       attr_accessor :x_ms_isnullable
 
-      # @return [Boolean] Flag indicating whether the categories are treated
-      # as an ordered set or not, if this is a categorical column.
+      # @return [Boolean] Flag indicating whether the categories are treated as
+      # an ordered set or not, if this is a categorical column.
       attr_accessor :x_ms_isordered
 
 

@@ -17,11 +17,11 @@ module Azure::ARM::MachineLearning
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Azure subscription id.
+    # @return [String] The Azure subscription ID.
     attr_accessor :subscription_id
 
     # @return [String] The version of the Microsoft.MachineLearning resource
-    # provider API to be used.
+    # provider API to use.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.
@@ -57,6 +57,7 @@ module Azure::ARM::MachineLearning
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
+      add_telemetry
     end
 
     #
@@ -114,5 +115,17 @@ module Azure::ARM::MachineLearning
       super(request_url, method, path, options)
     end
 
+
+    private
+    #
+    # Adds telemetry information.
+    #
+    def add_telemetry
+        sdk_information = 'azure_mgmt_machine_learning'
+        if defined? Azure::ARM::MachineLearning::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::MachineLearning::VERSION}" 
+        end
+        add_user_agent_information(sdk_information)
+    end
   end
 end

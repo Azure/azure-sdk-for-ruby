@@ -21,9 +21,8 @@ module Azure::ARM::MachineLearning
 
       # @return [Hash{String => GraphParameter}] The collection of global
       # parameters for the graph, given as a global parameter name to
-      # GraphParameter map. Each parameter here has a 1:1 match with the
-      # global parameters values map declared at the WebServiceProperties
-      # level.
+      # GraphParameter map. Each parameter here has a 1:1 match with the global
+      # parameters values map declared at the WebServiceProperties level.
       attr_accessor :graph_parameters
 
 
