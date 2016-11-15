@@ -69,6 +69,7 @@ module Azure::ARM::CDN
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
+      add_telemetry
     end
 
     #
@@ -127,8 +128,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Check the availability of a resource name without creating the resource.
-    # This is needed for resources where name is globally unique, such as a CDN
+    # Check the availability of a resource name without creating the resource. This
+    # is needed for resources where name is globally unique, such as a CDN
     # endpoint.
     #
     # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
@@ -144,8 +145,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Check the availability of a resource name without creating the resource.
-    # This is needed for resources where name is globally unique, such as a CDN
+    # Check the availability of a resource name without creating the resource. This
+    # is needed for resources where name is globally unique, such as a CDN
     # endpoint.
     #
     # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
@@ -160,8 +161,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Check the availability of a resource name without creating the resource.
-    # This is needed for resources where name is globally unique, such as a CDN
+    # Check the availability of a resource name without creating the resource. This
+    # is needed for resources where name is globally unique, such as a CDN
     # endpoint.
     #
     # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
@@ -313,8 +314,8 @@ module Azure::ARM::CDN
     #
     # Lists all of the available CDN REST API operations.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -328,8 +329,8 @@ module Azure::ARM::CDN
     #
     # Lists all of the available CDN REST API operations.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -342,8 +343,8 @@ module Azure::ARM::CDN
     #
     # Lists all of the available CDN REST API operations.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -472,5 +473,17 @@ module Azure::ARM::CDN
       promise.execute
     end
 
+
+    private
+    #
+    # Adds telemetry information.
+    #
+    def add_telemetry
+        sdk_information = 'azure_mgmt_cdn'
+        if defined? Azure::ARM::CDN::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::CDN::VERSION}" 
+        end
+        add_user_agent_information(sdk_information)
+    end
   end
 end

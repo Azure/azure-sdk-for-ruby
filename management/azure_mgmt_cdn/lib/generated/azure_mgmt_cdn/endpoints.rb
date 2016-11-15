@@ -129,8 +129,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -149,8 +149,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -168,8 +168,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -235,8 +235,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param endpoint [Endpoint] Endpoint properties
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -253,8 +253,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param endpoint [Endpoint] Endpoint properties
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -281,8 +281,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Updates an existing CDN endpoint with the specified parameters. Only tags
-    # and OriginHostHeader can be updated after creating an endpoint. To update
+    # Updates an existing CDN endpoint with the specified parameters. Only tags and
+    # OriginHostHeader can be updated after creating an endpoint. To update
     # origins, use the Update Origin operation. To update custom domains, use the
     # Update Custom Domain operation.
     #
@@ -290,8 +290,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param endpoint_update_properties [EndpointUpdateParameters] Endpoint update
     # properties
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -309,8 +309,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param endpoint_update_properties [EndpointUpdateParameters] Endpoint update
     # properties
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -344,8 +344,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -359,8 +359,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -390,8 +390,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -407,8 +407,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -440,8 +440,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -457,8 +457,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -490,8 +490,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param content_file_paths [PurgeParameters] The path to the content to be
     # purged. Path can describe a file or directory using the wildcard. e.g.
     # '/my/directory/*' or '/my/file.exe/'
@@ -508,8 +508,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param content_file_paths [PurgeParameters] The path to the content to be
     # purged. Path can describe a file or directory using the wildcard. e.g.
     # '/my/directory/*' or '/my/file.exe/'
@@ -542,8 +542,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
     # loaded. Path should describe a file.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -559,8 +559,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
     # loaded. Path should describe a file.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -593,8 +593,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_domain_properties [ValidateCustomDomainInput] Custom domain to
     # validate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -615,8 +615,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_domain_properties [ValidateCustomDomainInput] Custom domain to
     # validate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -636,8 +636,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_domain_properties [ValidateCustomDomainInput] Custom domain to
     # validate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -715,8 +715,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param endpoint [Endpoint] Endpoint properties
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -735,8 +735,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param endpoint [Endpoint] Endpoint properties
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -754,8 +754,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param endpoint [Endpoint] Endpoint properties
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -846,8 +846,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Updates an existing CDN endpoint with the specified parameters. Only tags
-    # and OriginHostHeader can be updated after creating an endpoint. To update
+    # Updates an existing CDN endpoint with the specified parameters. Only tags and
+    # OriginHostHeader can be updated after creating an endpoint. To update
     # origins, use the Update Origin operation. To update custom domains, use the
     # Update Custom Domain operation.
     #
@@ -855,8 +855,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param endpoint_update_properties [EndpointUpdateParameters] Endpoint update
     # properties
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -870,8 +870,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Updates an existing CDN endpoint with the specified parameters. Only tags
-    # and OriginHostHeader can be updated after creating an endpoint. To update
+    # Updates an existing CDN endpoint with the specified parameters. Only tags and
+    # OriginHostHeader can be updated after creating an endpoint. To update
     # origins, use the Update Origin operation. To update custom domains, use the
     # Update Custom Domain operation.
     #
@@ -879,8 +879,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param endpoint_update_properties [EndpointUpdateParameters] Endpoint update
     # properties
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -893,8 +893,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Updates an existing CDN endpoint with the specified parameters. Only tags
-    # and OriginHostHeader can be updated after creating an endpoint. To update
+    # Updates an existing CDN endpoint with the specified parameters. Only tags and
+    # OriginHostHeader can be updated after creating an endpoint. To update
     # origins, use the Update Origin operation. To update custom domains, use the
     # Update Custom Domain operation.
     #
@@ -902,8 +902,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param endpoint_update_properties [EndpointUpdateParameters] Endpoint update
     # properties
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -991,8 +991,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1009,8 +1009,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1027,8 +1027,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1084,8 +1084,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1103,8 +1103,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1121,8 +1121,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1188,8 +1188,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1207,8 +1207,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1225,8 +1225,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1292,8 +1292,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param content_file_paths [PurgeParameters] The path to the content to be
     # purged. Path can describe a file or directory using the wildcard. e.g.
     # '/my/directory/*' or '/my/file.exe/'
@@ -1313,8 +1313,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param content_file_paths [PurgeParameters] The path to the content to be
     # purged. Path can describe a file or directory using the wildcard. e.g.
     # '/my/directory/*' or '/my/file.exe/'
@@ -1334,8 +1334,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param content_file_paths [PurgeParameters] The path to the content to be
     # purged. Path can describe a file or directory using the wildcard. e.g.
     # '/my/directory/*' or '/my/file.exe/'
@@ -1404,8 +1404,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
     # loaded. Path should describe a file.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1424,8 +1424,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
     # loaded. Path should describe a file.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1444,8 +1444,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param endpoint_name [String] Name of the endpoint under the profile which
-    # is unique globally.
+    # @param endpoint_name [String] Name of the endpoint under the profile which is
+    # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
     # loaded. Path should describe a file.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1509,8 +1509,8 @@ module Azure::ARM::CDN
     #
     # Lists existing CDN endpoints.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1524,8 +1524,8 @@ module Azure::ARM::CDN
     #
     # Lists existing CDN endpoints.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1538,8 +1538,8 @@ module Azure::ARM::CDN
     #
     # Lists existing CDN endpoints.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
