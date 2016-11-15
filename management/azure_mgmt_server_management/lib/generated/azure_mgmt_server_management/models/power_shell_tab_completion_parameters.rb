@@ -6,7 +6,7 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # collection of parameters for powershell tab completion
+    # Collection of parameters for PowerShell tab completion.
     #
     class PowerShellTabCompletionParameters
 

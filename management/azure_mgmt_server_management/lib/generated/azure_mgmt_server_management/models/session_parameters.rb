@@ -6,27 +6,27 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # parameter collection for creation and other operations on sessions
+    # Parameter collection for creation and other operations on sessions.
     #
     class SessionParameters
 
       include MsRestAzure
 
-      # @return [String] encrypted User name to be used to connect to node
+      # @return [String] Encrypted User name to be used to connect to node.
       attr_accessor :user_name
 
-      # @return [String] encrypted Password associated with user name
+      # @return [String] Encrypted Password associated with user name.
       attr_accessor :password
 
-      # @return [RetentionPeriod] session retention period. Possible values
+      # @return [RetentionPeriod] Session retention period. Possible values
       # include: 'Session', 'Persistent'
       attr_accessor :retention_period
 
-      # @return [CredentialDataFormat] credential data format. Possible values
+      # @return [CredentialDataFormat] Credential data format. Possible values
       # include: 'RsaEncrypted'
       attr_accessor :credential_data_format
 
-      # @return [String] encryption certificate thumbprint
+      # @return [String] Encryption certificate thumbprint.
       attr_accessor :encryption_certificate_thumbprint
 
 

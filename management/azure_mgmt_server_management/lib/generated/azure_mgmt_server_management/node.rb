@@ -5,7 +5,7 @@
 
 module Azure::ARM::ServerManagement
   #
-  # REST API for Azure Server Management Service
+  # REST API for Azure Server Management Service.
   #
   class Node
     include Azure::ARM::ServerManagement::Models
@@ -23,17 +23,17 @@ module Azure::ARM::ServerManagement
     attr_reader :client
 
     #
-    # Creates or updates a management node
+    # Creates or updates a management node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param location [String] location of the resource?
-    # @param tags resource tags
-    # @param gateway_id [String] Gateway id which will manage this node
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
+    # @param gateway_id [String] Gateway ID which will manage this node.
     # @param connection_name [String] myhost.domain.com
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] User name to be used to connect to node.
+    # @param password [String] Password associated with user name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -48,12 +48,12 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param location [String] location of the resource?
-    # @param tags resource tags
-    # @param gateway_id [String] Gateway id which will manage this node
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
+    # @param gateway_id [String] Gateway ID which will manage this node.
     # @param connection_name [String] myhost.domain.com
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] User name to be used to connect to node.
+    # @param password [String] Password associated with user name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -79,17 +79,17 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Updates a management node
+    # Updates a management node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param location [String] location of the resource?
-    # @param tags resource tags
-    # @param gateway_id [String] Gateway id which will manage this node
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
+    # @param gateway_id [String] Gateway ID which will manage this node.
     # @param connection_name [String] myhost.domain.com
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] User name to be used to connect to node.
+    # @param password [String] Password associated with user name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -104,12 +104,12 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param location [String] location of the resource?
-    # @param tags resource tags
-    # @param gateway_id [String] Gateway id which will manage this node
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
+    # @param gateway_id [String] Gateway ID which will manage this node.
     # @param connection_name [String] myhost.domain.com
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] User name to be used to connect to node.
+    # @param password [String] Password associated with user name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -218,7 +218,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # gets a management node
+    # Gets a management node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -234,7 +234,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # gets a management node
+    # Gets a management node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -249,7 +249,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # gets a management node
+    # Gets a management node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -312,7 +312,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a subscription
+    # Lists nodes in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -325,7 +325,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a subscription
+    # Lists nodes in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -337,7 +337,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a subscription
+    # Lists nodes in a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -395,7 +395,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a resource group
+    # Lists nodes in a resource group.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -410,7 +410,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a resource group
+    # Lists nodes in a resource group.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -424,7 +424,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a resource group
+    # Lists nodes in a resource group.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -485,17 +485,17 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Creates or updates a management node
+    # Creates or updates a management node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param location [String] location of the resource?
-    # @param tags resource tags
-    # @param gateway_id [String] Gateway id which will manage this node
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
+    # @param gateway_id [String] Gateway ID which will manage this node.
     # @param connection_name [String] myhost.domain.com
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] User name to be used to connect to node.
+    # @param password [String] Password associated with user name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -507,17 +507,17 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Creates or updates a management node
+    # Creates or updates a management node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param location [String] location of the resource?
-    # @param tags resource tags
-    # @param gateway_id [String] Gateway id which will manage this node
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
+    # @param gateway_id [String] Gateway ID which will manage this node.
     # @param connection_name [String] myhost.domain.com
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] User name to be used to connect to node.
+    # @param password [String] Password associated with user name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -528,17 +528,17 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Creates or updates a management node
+    # Creates or updates a management node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param location [String] location of the resource?
-    # @param tags resource tags
-    # @param gateway_id [String] Gateway id which will manage this node
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
+    # @param gateway_id [String] Gateway ID which will manage this node.
     # @param connection_name [String] myhost.domain.com
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] User name to be used to connect to node.
+    # @param password [String] Password associated with user name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -625,17 +625,17 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Updates a management node
+    # Updates a management node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param location [String] location of the resource?
-    # @param tags resource tags
-    # @param gateway_id [String] Gateway id which will manage this node
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
+    # @param gateway_id [String] Gateway ID which will manage this node.
     # @param connection_name [String] myhost.domain.com
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] User name to be used to connect to node.
+    # @param password [String] Password associated with user name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -647,17 +647,17 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Updates a management node
+    # Updates a management node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param location [String] location of the resource?
-    # @param tags resource tags
-    # @param gateway_id [String] Gateway id which will manage this node
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
+    # @param gateway_id [String] Gateway ID which will manage this node.
     # @param connection_name [String] myhost.domain.com
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] User name to be used to connect to node.
+    # @param password [String] Password associated with user name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -668,17 +668,17 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Updates a management node
+    # Updates a management node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param location [String] location of the resource?
-    # @param tags resource tags
-    # @param gateway_id [String] Gateway id which will manage this node
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
+    # @param gateway_id [String] Gateway ID which will manage this node.
     # @param connection_name [String] myhost.domain.com
-    # @param user_name [String] User name to be used to connect to node
-    # @param password [String] Password associated with user name
+    # @param user_name [String] User name to be used to connect to node.
+    # @param password [String] Password associated with user name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -755,10 +755,10 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a subscription
+    # Lists nodes in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -770,10 +770,10 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a subscription
+    # Lists nodes in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -784,10 +784,10 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a subscription
+    # Lists nodes in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -842,10 +842,10 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a resource group
+    # Lists nodes in a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -857,10 +857,10 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a resource group
+    # Lists nodes in a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -871,10 +871,10 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a resource group
+    # Lists nodes in a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -929,7 +929,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a subscription
+    # Lists nodes in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -948,7 +948,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns nodes in a resource group
+    # Lists nodes in a resource group.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.

@@ -6,14 +6,14 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # A powershell session resource (practically equivalent to a runspace
-    # instance)
+    # A PowerShell session resource (practically equivalent to a runspace
+    # instance).
     #
     class PowerShellSessionResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] the PowerShell Session Id.
+      # @return [String] The PowerShell Session ID.
       attr_accessor :session_id
 
       # @return [String] The runspace state.
@@ -22,8 +22,8 @@ module Azure::ARM::ServerManagement
       # @return [String] The availability of the runspace.
       attr_accessor :runspace_availability
 
-      # @return [DateTime] Timestamp of last time the service disconnected
-      # from the runspace.
+      # @return [DateTime] Timestamp of last time the service disconnected from
+      # the runspace.
       attr_accessor :disconnected_on
 
       # @return [DateTime] Timestamp when the runspace expires.
@@ -32,7 +32,7 @@ module Azure::ARM::ServerManagement
       # @return [Version]
       attr_accessor :version
 
-      # @return [String] Name of the runspace
+      # @return [String] Name of the runspace.
       attr_accessor :power_shell_session_resource_name
 
 

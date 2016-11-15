@@ -12,17 +12,17 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
-      # @return [String] the name of the prompt
+      # @return [String] The name of the prompt.
       attr_accessor :name
 
-      # @return [String] the label text of the prompt
+      # @return [String] The label text of the prompt.
       attr_accessor :label
 
-      # @return [String] the help message of the prompt
+      # @return [String] The help message of the prompt.
       attr_accessor :help_message
 
-      # @return [Boolean] when set to 'true' the prompt field type is a list
-      # of values
+      # @return [Boolean] When set to 'true' the prompt field type is a list of
+      # values.
       attr_accessor :prompt_field_type_is_list
 
       # @return [PromptFieldType] Possible values include: 'String',

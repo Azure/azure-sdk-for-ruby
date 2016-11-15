@@ -6,17 +6,17 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # the session object
+    # The session object.
     #
     class SessionResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] the username connecting to the session
+      # @return [String] The username connecting to the session.
       attr_accessor :user_name
 
       # @return [DateTime] UTC date and time when node was first added to
-      # management service
+      # management service.
       attr_accessor :created
 
       # @return [DateTime] UTC date and time when node was last updated.

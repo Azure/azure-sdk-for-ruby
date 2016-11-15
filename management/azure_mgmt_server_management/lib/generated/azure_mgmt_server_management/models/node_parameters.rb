@@ -6,28 +6,28 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # parameter collection for operations on arm node resource
+    # Parameter collection for operations on arm node resource.
     #
     class NodeParameters
 
       include MsRestAzure
 
-      # @return [String] location of the resource?
+      # @return [String] Location of the resource.
       attr_accessor :location
 
-      # @return resource tags
+      # @return Resource tags.
       attr_accessor :tags
 
-      # @return [String] Gateway id which will manage this node
+      # @return [String] Gateway ID which will manage this node.
       attr_accessor :gateway_id
 
       # @return [String] myhost.domain.com
       attr_accessor :connection_name
 
-      # @return [String] User name to be used to connect to node
+      # @return [String] User name to be used to connect to node.
       attr_accessor :user_name
 
-      # @return [String] Password associated with user name
+      # @return [String] Password associated with user name.
       attr_accessor :password
 
 

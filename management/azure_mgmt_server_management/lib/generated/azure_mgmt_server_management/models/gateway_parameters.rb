@@ -6,22 +6,22 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # collection of parameters for operations on a gateway resource
+    # Collection of parameters for operations on a gateway resource.
     #
     class GatewayParameters
 
       include MsRestAzure
 
-      # @return [String] location of the resource
+      # @return [String] Location of the resource.
       attr_accessor :location
 
-      # @return resource tags
+      # @return Resource tags.
       attr_accessor :tags
 
-      # @return [UpgradeMode] The upgradeMode property gives the flexibility
-      # to gateway to auto upgrade itself. If properties value not specified,
-      # then we assume upgradeMode = Automatic. Possible values include:
-      # 'Manual', 'Automatic'
+      # @return [UpgradeMode] The upgradeMode property gives the flexibility to
+      # gateway to auto upgrade itself. If properties value not specified, then
+      # we assume upgradeMode = Automatic. Possible values include: 'Manual',
+      # 'Automatic'
       attr_accessor :upgrade_mode
 
 

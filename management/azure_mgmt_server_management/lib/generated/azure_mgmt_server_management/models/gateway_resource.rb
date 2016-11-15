@@ -6,44 +6,44 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # data model for an arm gateway resource
+    # Data model for an arm gateway resource.
     #
     class GatewayResource < MsRestAzure::Resource
 
       include MsRestAzure
 
       # @return [DateTime] UTC date and time when gateway was first added to
-      # management service
+      # management service.
       attr_accessor :created
 
-      # @return [DateTime] UTC date and time when node was last updated
+      # @return [DateTime] UTC date and time when node was last updated.
       attr_accessor :updated
 
-      # @return [UpgradeMode] The upgradeMode property gives the flexibility
-      # to gateway to auto upgrade itself. If properties value not specified,
-      # then we assume upgradeMode = Automatic. Possible values include:
-      # 'Manual', 'Automatic'
+      # @return [UpgradeMode] The upgradeMode property gives the flexibility to
+      # gateway to auto upgrade itself. If properties value not specified, then
+      # we assume upgradeMode = Automatic. Possible values include: 'Manual',
+      # 'Automatic'
       attr_accessor :upgrade_mode
 
-      # @return [String] latest available msi version
+      # @return [String] Latest available MSI version.
       attr_accessor :desired_version
 
-      # @return [Array<GatewayStatus>] names of the nodes in the gateway
+      # @return [Array<GatewayStatus>] Names of the nodes in the gateway.
       attr_accessor :instances
 
-      # @return [Integer] number of active messages
+      # @return [Integer] Number of active messages.
       attr_accessor :active_message_count
 
-      # @return [String] last published msi version
+      # @return [String] Last published MSI version.
       attr_accessor :latest_published_msi_version
 
-      # @return [DateTime] the date/time of the last published gateway
+      # @return [DateTime] The date/time of the last published gateway.
       attr_accessor :published_time_utc
 
-      # @return [String] installer download uri
+      # @return [String] Installer download uri.
       attr_accessor :installer_download
 
-      # @return [String] minimum gateway version
+      # @return [String] Minimum gateway version.
       attr_accessor :minimum_version
 
 

@@ -5,7 +5,7 @@
 
 module Azure::ARM::ServerManagement
   #
-  # REST API for Azure Server Management Service
+  # REST API for Azure Server Management Service.
   #
   class Session
     include Azure::ARM::ServerManagement::Models
@@ -23,20 +23,20 @@ module Azure::ARM::ServerManagement
     attr_reader :client
 
     #
-    # Creates a session for a node
+    # Creates a session for a node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param user_name [String] encrypted User name to be used to connect to node
-    # @param password [String] encrypted Password associated with user name
-    # @param retention_period [RetentionPeriod] session retention period. Possible
+    # @param session [String] The sessionId from the user.
+    # @param user_name [String] Encrypted User name to be used to connect to node.
+    # @param password [String] Encrypted Password associated with user name.
+    # @param retention_period [RetentionPeriod] Session retention period. Possible
     # values include: 'Session', 'Persistent'
-    # @param credential_data_format [CredentialDataFormat] credential data format.
+    # @param credential_data_format [CredentialDataFormat] Credential data format.
     # Possible values include: 'RsaEncrypted'
-    # @param encryption_certificate_thumbprint [String] encryption certificate
-    # thumbprint
+    # @param encryption_certificate_thumbprint [String] Encryption certificate
+    # thumbprint.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -51,15 +51,15 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param user_name [String] encrypted User name to be used to connect to node
-    # @param password [String] encrypted Password associated with user name
-    # @param retention_period [RetentionPeriod] session retention period. Possible
+    # @param session [String] The sessionId from the user.
+    # @param user_name [String] Encrypted User name to be used to connect to node.
+    # @param password [String] Encrypted Password associated with user name.
+    # @param retention_period [RetentionPeriod] Session retention period. Possible
     # values include: 'Session', 'Persistent'
-    # @param credential_data_format [CredentialDataFormat] credential data format.
+    # @param credential_data_format [CredentialDataFormat] Credential data format.
     # Possible values include: 'RsaEncrypted'
-    # @param encryption_certificate_thumbprint [String] encryption certificate
-    # thumbprint
+    # @param encryption_certificate_thumbprint [String] Encryption certificate
+    # thumbprint.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -85,12 +85,12 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Deletes a session for a node
+    # Deletes a session for a node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
+    # @param session [String] The sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -101,12 +101,12 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Deletes a session for a node
+    # Deletes a session for a node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
+    # @param session [String] The sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -117,12 +117,12 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Deletes a session for a node
+    # Deletes a session for a node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
+    # @param session [String] The sessionId from the user.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -172,12 +172,12 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Gets a session for a node
+    # Gets a session for a node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
+    # @param session [String] The sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -189,12 +189,12 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Gets a session for a node
+    # Gets a session for a node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
+    # @param session [String] The sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -205,12 +205,12 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Gets a session for a node
+    # Gets a session for a node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
+    # @param session [String] The sessionId from the user.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -270,20 +270,20 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Creates a session for a node
+    # Creates a session for a node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param user_name [String] encrypted User name to be used to connect to node
-    # @param password [String] encrypted Password associated with user name
-    # @param retention_period [RetentionPeriod] session retention period. Possible
+    # @param session [String] The sessionId from the user.
+    # @param user_name [String] Encrypted User name to be used to connect to node.
+    # @param password [String] Encrypted Password associated with user name.
+    # @param retention_period [RetentionPeriod] Session retention period. Possible
     # values include: 'Session', 'Persistent'
-    # @param credential_data_format [CredentialDataFormat] credential data format.
+    # @param credential_data_format [CredentialDataFormat] Credential data format.
     # Possible values include: 'RsaEncrypted'
-    # @param encryption_certificate_thumbprint [String] encryption certificate
-    # thumbprint
+    # @param encryption_certificate_thumbprint [String] Encryption certificate
+    # thumbprint.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -295,20 +295,20 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Creates a session for a node
+    # Creates a session for a node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param user_name [String] encrypted User name to be used to connect to node
-    # @param password [String] encrypted Password associated with user name
-    # @param retention_period [RetentionPeriod] session retention period. Possible
+    # @param session [String] The sessionId from the user.
+    # @param user_name [String] Encrypted User name to be used to connect to node.
+    # @param password [String] Encrypted Password associated with user name.
+    # @param retention_period [RetentionPeriod] Session retention period. Possible
     # values include: 'Session', 'Persistent'
-    # @param credential_data_format [CredentialDataFormat] credential data format.
+    # @param credential_data_format [CredentialDataFormat] Credential data format.
     # Possible values include: 'RsaEncrypted'
-    # @param encryption_certificate_thumbprint [String] encryption certificate
-    # thumbprint
+    # @param encryption_certificate_thumbprint [String] Encryption certificate
+    # thumbprint.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -319,20 +319,20 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Creates a session for a node
+    # Creates a session for a node.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param user_name [String] encrypted User name to be used to connect to node
-    # @param password [String] encrypted Password associated with user name
-    # @param retention_period [RetentionPeriod] session retention period. Possible
+    # @param session [String] The sessionId from the user.
+    # @param user_name [String] Encrypted User name to be used to connect to node.
+    # @param password [String] Encrypted Password associated with user name.
+    # @param retention_period [RetentionPeriod] Session retention period. Possible
     # values include: 'Session', 'Persistent'
-    # @param credential_data_format [CredentialDataFormat] credential data format.
+    # @param credential_data_format [CredentialDataFormat] Credential data format.
     # Possible values include: 'RsaEncrypted'
-    # @param encryption_certificate_thumbprint [String] encryption certificate
-    # thumbprint
+    # @param encryption_certificate_thumbprint [String] Encryption certificate
+    # thumbprint.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

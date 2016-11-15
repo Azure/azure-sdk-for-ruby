@@ -6,13 +6,13 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # the response to a prompt message
+    # The response to a prompt message.
     #
     class PromptMessageResponse
 
       include MsRestAzure
 
-      # @return [Array<String>] the list of responses a cmdlet expects
+      # @return [Array<String>] The list of responses a cmdlet expects.
       attr_accessor :response
 
 

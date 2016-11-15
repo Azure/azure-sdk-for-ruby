@@ -22,7 +22,7 @@ module Azure::ARM::ServerManagement
     # for every service call.
     attr_accessor :subscription_id
 
-    # @return [String] Client Api Version.
+    # @return [String] Client API Version.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.
@@ -70,6 +70,7 @@ module Azure::ARM::ServerManagement
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
+      add_telemetry
     end
 
     #
@@ -127,5 +128,17 @@ module Azure::ARM::ServerManagement
       super(request_url, method, path, options)
     end
 
+
+    private
+    #
+    # Adds telemetry information.
+    #
+    def add_telemetry
+        sdk_information = 'azure_mgmt_server_management'
+        if defined? Azure::ARM::ServerManagement::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::ServerManagement::VERSION}" 
+        end
+        add_user_agent_information(sdk_information)
+    end
   end
 end
