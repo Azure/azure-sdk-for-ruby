@@ -25,8 +25,8 @@ module Azure::ARM::Subscriptions
       # @return [String] The subscription display name.
       attr_accessor :display_name
 
-      # @return [SubscriptionState] The subscription state. Possible values
-      # are Enabled, Warned, PastDue, Disabled, and Deleted. Possible values
+      # @return [SubscriptionState] The subscription state. Possible values are
+      # Enabled, Warned, PastDue, Disabled, and Deleted. Possible values
       # include: 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted'
       attr_accessor :state
 
@@ -34,8 +34,8 @@ module Azure::ARM::Subscriptions
       attr_accessor :subscription_policies
 
       # @return [String] The authorization source of the request. Valid values
-      # are one or more combinations of Legacy, RoleBased, Bypassed, Direct
-      # and Management. For example, 'Legacy, RoleBased'.
+      # are one or more combinations of Legacy, RoleBased, Bypassed, Direct and
+      # Management. For example, 'Legacy, RoleBased'.
       attr_accessor :authorization_source
 
 
