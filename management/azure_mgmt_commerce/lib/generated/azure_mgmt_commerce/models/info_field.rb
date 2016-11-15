@@ -12,8 +12,8 @@ module Azure::ARM::Commerce
 
       include MsRestAzure
 
-      # @return [String] Identifies the name of the instance provisioned by
-      # the user.
+      # @return [String] Identifies the name of the instance provisioned by the
+      # user.
       attr_accessor :project
 
 

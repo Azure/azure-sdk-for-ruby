@@ -17,8 +17,8 @@ module Azure::ARM::Commerce
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] It uniquely identifies Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # @return [String] It uniquely identifies Microsoft Azure subscription. The
+    # subscription ID forms part of the URI for every service call.
     attr_accessor :subscription_id
 
     # @return [String] Client Api Version.
@@ -61,6 +61,7 @@ module Azure::ARM::Commerce
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
+      add_telemetry
     end
 
     #
@@ -118,5 +119,17 @@ module Azure::ARM::Commerce
       super(request_url, method, path, options)
     end
 
+
+    private
+    #
+    # Adds telemetry information.
+    #
+    def add_telemetry
+        sdk_information = 'azure_mgmt_commerce'
+        if defined? Azure::ARM::Commerce::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::Commerce::VERSION}" 
+        end
+        add_user_agent_information(sdk_information)
+    end
   end
 end

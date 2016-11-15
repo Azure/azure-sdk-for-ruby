@@ -19,8 +19,8 @@ module Azure::ARM::Commerce
       # localized.
       attr_accessor :locale
 
-      # @return [Boolean] All rates are pretax, so this will always be
-      # returned as 'false'.
+      # @return [Boolean] All rates are pretax, so this will always be returned
+      # as 'false'.
       attr_accessor :is_tax_included
 
       # @return [String] The region in which the Azure service is available.
