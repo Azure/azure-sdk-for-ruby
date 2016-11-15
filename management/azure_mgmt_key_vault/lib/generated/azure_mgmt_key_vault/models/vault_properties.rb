@@ -12,8 +12,8 @@ module Azure::ARM::KeyVault
 
       include MsRestAzure
 
-      # @return [String] The URI of the vault for performing operations on
-      # keys and secrets.
+      # @return [String] The URI of the vault for performing operations on keys
+      # and secrets.
       attr_accessor :vault_uri
 
       # @return The Azure Active Directory tenant ID that should be used for
@@ -24,8 +24,8 @@ module Azure::ARM::KeyVault
       attr_accessor :sku
 
       # @return [Array<AccessPolicyEntry>] An array of 0 to 16 identities that
-      # have access to the key vault. All identities in the array must use
-      # the same tenant ID as the key vault's tenant ID.
+      # have access to the key vault. All identities in the array must use the
+      # same tenant ID as the key vault's tenant ID.
       attr_accessor :access_policies
 
       # @return [Boolean] Property to specify whether Azure Virtual Machines
@@ -37,8 +37,8 @@ module Azure::ARM::KeyVault
       # permitted to retrieve secrets from the vault and unwrap keys.
       attr_accessor :enabled_for_disk_encryption
 
-      # @return [Boolean] Property to specify whether Azure Resource Manager
-      # is permitted to retrieve secrets from the key vault.
+      # @return [Boolean] Property to specify whether Azure Resource Manager is
+      # permitted to retrieve secrets from the key vault.
       attr_accessor :enabled_for_template_deployment
 
 
