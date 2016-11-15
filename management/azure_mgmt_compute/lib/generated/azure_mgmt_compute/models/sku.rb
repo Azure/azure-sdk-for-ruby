@@ -18,7 +18,7 @@ module Azure::ARM::Compute
       # @return [String] The sku tier.
       attr_accessor :tier
 
-      # @return [Integer] the sku capacity.
+      # @return [Integer] The sku capacity.
       attr_accessor :capacity
 
 

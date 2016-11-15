@@ -6,7 +6,7 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Describes Windows Configuration of the OS Profile.
+    # Describes Windows configuration of the OS Profile.
     #
     class LinuxConfiguration
 

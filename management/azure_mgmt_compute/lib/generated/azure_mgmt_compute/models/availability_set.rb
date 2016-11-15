@@ -6,7 +6,7 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Create or update Availability Set parameters.
+    # Create or update availability set parameters.
     #
     class AvailabilitySet < MsRestAzure::Resource
 
@@ -22,7 +22,7 @@ module Azure::ARM::Compute
       # machines in the availability set.
       attr_accessor :virtual_machines
 
-      # @return [Array<InstanceViewStatus>] the resource status information.
+      # @return [Array<InstanceViewStatus>] The resource status information.
       attr_accessor :statuses
 
 

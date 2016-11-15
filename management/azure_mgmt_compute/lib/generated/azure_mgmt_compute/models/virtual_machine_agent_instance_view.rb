@@ -15,8 +15,8 @@ module Azure::ARM::Compute
       # @return [String] The VM Agent full version.
       attr_accessor :vm_agent_version
 
-      # @return [Array<VirtualMachineExtensionHandlerInstanceView>] The
-      # virtual machine extension handler instance view.
+      # @return [Array<VirtualMachineExtensionHandlerInstanceView>] The virtual
+      # machine extension handler instance view.
       attr_accessor :extension_handlers
 
       # @return [Array<InstanceViewStatus>] The resource status information.

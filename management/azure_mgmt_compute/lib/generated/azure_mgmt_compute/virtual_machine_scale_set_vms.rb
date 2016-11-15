@@ -437,9 +437,9 @@ module Azure::ARM::Compute
     end
 
     #
-    # Power off (stop) a virtual machine in a VM scale set. Note that resources
-    # are still attached and you are getting charged for the resources. Instead,
-    # use deallocate to release resources and avoid charges.
+    # Power off (stop) a virtual machine in a VM scale set. Note that resources are
+    # still attached and you are getting charged for the resources. Instead, use
+    # deallocate to release resources and avoid charges.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -823,9 +823,9 @@ module Azure::ARM::Compute
     end
 
     #
-    # Power off (stop) a virtual machine in a VM scale set. Note that resources
-    # are still attached and you are getting charged for the resources. Instead,
-    # use deallocate to release resources and avoid charges.
+    # Power off (stop) a virtual machine in a VM scale set. Note that resources are
+    # still attached and you are getting charged for the resources. Instead, use
+    # deallocate to release resources and avoid charges.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -840,9 +840,9 @@ module Azure::ARM::Compute
     end
 
     #
-    # Power off (stop) a virtual machine in a VM scale set. Note that resources
-    # are still attached and you are getting charged for the resources. Instead,
-    # use deallocate to release resources and avoid charges.
+    # Power off (stop) a virtual machine in a VM scale set. Note that resources are
+    # still attached and you are getting charged for the resources. Instead, use
+    # deallocate to release resources and avoid charges.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -857,9 +857,9 @@ module Azure::ARM::Compute
     end
 
     #
-    # Power off (stop) a virtual machine in a VM scale set. Note that resources
-    # are still attached and you are getting charged for the resources. Instead,
-    # use deallocate to release resources and avoid charges.
+    # Power off (stop) a virtual machine in a VM scale set. Note that resources are
+    # still attached and you are getting charged for the resources. Instead, use
+    # deallocate to release resources and avoid charges.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_scale_set_name [String] The name of the VM scale set.
@@ -1083,8 +1083,8 @@ module Azure::ARM::Compute
     #
     # Gets a list of all virtual machines in a VM scale sets.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1098,8 +1098,8 @@ module Azure::ARM::Compute
     #
     # Gets a list of all virtual machines in a VM scale sets.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1112,8 +1112,8 @@ module Azure::ARM::Compute
     #
     # Gets a list of all virtual machines in a VM scale sets.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

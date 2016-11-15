@@ -154,7 +154,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to get a virtual machine.
+    # Retrieves information about the model view or the instance view of a virtual
+    # machine.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -171,7 +172,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to get a virtual machine.
+    # Retrieves information about the model view or the instance view of a virtual
+    # machine.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -187,7 +189,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to get a virtual machine.
+    # Retrieves information about the model view or the instance view of a virtual
+    # machine.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -251,8 +254,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Shuts down the Virtual Machine and releases the compute resources. You are
-    # not billed for the compute resources that this Virtual Machine uses.
+    # Shuts down the virtual machine and releases the compute resources. You are
+    # not billed for the compute resources that this virtual machine uses.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -290,7 +293,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Sets the state of the VM as Generalized.
+    # Sets the state of the virtual machine to generalized.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -304,7 +307,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Sets the state of the VM as Generalized.
+    # Sets the state of the virtual machine to generalized.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -318,7 +321,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # Sets the state of the VM as Generalized.
+    # Sets the state of the virtual machine to generalized.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -370,7 +373,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list virtual machines under a resource group.
+    # Lists all of the virtual machines in the specified resource group. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -384,7 +388,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list virtual machines under a resource group.
+    # Lists all of the virtual machines in the specified resource group. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -397,7 +402,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list virtual machines under a resource group.
+    # Lists all of the virtual machines in the specified resource group. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -457,9 +463,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of Virtual Machines in the subscription. Use nextLink property
-    # in the response to get the next page of Virtual Machines. Do this till
-    # nextLink is not null to fetch all the Virtual Machines.
+    # Lists all of the virtual machines in the specified subscription. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -472,9 +477,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of Virtual Machines in the subscription. Use nextLink property
-    # in the response to get the next page of Virtual Machines. Do this till
-    # nextLink is not null to fetch all the Virtual Machines.
+    # Lists all of the virtual machines in the specified subscription. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -486,9 +490,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of Virtual Machines in the subscription. Use nextLink property
-    # in the response to get the next page of Virtual Machines. Do this till
-    # nextLink is not null to fetch all the Virtual Machines.
+    # Lists all of the virtual machines in the specified subscription. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -640,7 +643,9 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to power off (stop) a virtual machine.
+    # The operation to power off (stop) a virtual machine. The virtual machine can
+    # be restarted with the same provisioned resources. You are still charged for
+    # this virtual machine.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -1099,8 +1104,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Shuts down the Virtual Machine and releases the compute resources. You are
-    # not billed for the compute resources that this Virtual Machine uses.
+    # Shuts down the virtual machine and releases the compute resources. You are
+    # not billed for the compute resources that this virtual machine uses.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -1114,8 +1119,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Shuts down the Virtual Machine and releases the compute resources. You are
-    # not billed for the compute resources that this Virtual Machine uses.
+    # Shuts down the virtual machine and releases the compute resources. You are
+    # not billed for the compute resources that this virtual machine uses.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -1129,8 +1134,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Shuts down the Virtual Machine and releases the compute resources. You are
-    # not billed for the compute resources that this Virtual Machine uses.
+    # Shuts down the virtual machine and releases the compute resources. You are
+    # not billed for the compute resources that this virtual machine uses.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -1182,7 +1187,9 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to power off (stop) a virtual machine.
+    # The operation to power off (stop) a virtual machine. The virtual machine can
+    # be restarted with the same provisioned resources. You are still charged for
+    # this virtual machine.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -1196,7 +1203,9 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to power off (stop) a virtual machine.
+    # The operation to power off (stop) a virtual machine. The virtual machine can
+    # be restarted with the same provisioned resources. You are still charged for
+    # this virtual machine.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -1210,7 +1219,9 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to power off (stop) a virtual machine.
+    # The operation to power off (stop) a virtual machine. The virtual machine can
+    # be restarted with the same provisioned resources. You are still charged for
+    # this virtual machine.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param vm_name [String] The name of the virtual machine.
@@ -1502,10 +1513,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list virtual machines under a resource group.
+    # Lists all of the virtual machines in the specified resource group. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1517,10 +1529,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list virtual machines under a resource group.
+    # Lists all of the virtual machines in the specified resource group. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1531,10 +1544,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list virtual machines under a resource group.
+    # Lists all of the virtual machines in the specified resource group. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1589,12 +1603,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of Virtual Machines in the subscription. Use nextLink property
-    # in the response to get the next page of Virtual Machines. Do this till
-    # nextLink is not null to fetch all the Virtual Machines.
+    # Lists all of the virtual machines in the specified subscription. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1606,12 +1619,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of Virtual Machines in the subscription. Use nextLink property
-    # in the response to get the next page of Virtual Machines. Do this till
-    # nextLink is not null to fetch all the Virtual Machines.
+    # Lists all of the virtual machines in the specified subscription. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1622,12 +1634,11 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of Virtual Machines in the subscription. Use nextLink property
-    # in the response to get the next page of Virtual Machines. Do this till
-    # nextLink is not null to fetch all the Virtual Machines.
+    # Lists all of the virtual machines in the specified subscription. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1682,7 +1693,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list virtual machines under a resource group.
+    # Lists all of the virtual machines in the specified resource group. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1703,9 +1715,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets the list of Virtual Machines in the subscription. Use nextLink property
-    # in the response to get the next page of Virtual Machines. Do this till
-    # nextLink is not null to fetch all the Virtual Machines.
+    # Lists all of the virtual machines in the specified subscription. Use the
+    # nextLink property in the response to get the next page of virtual machines.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

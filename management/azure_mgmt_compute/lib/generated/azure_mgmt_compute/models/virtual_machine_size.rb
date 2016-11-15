@@ -23,16 +23,16 @@ module Azure::ARM::Compute
       # machine size.
       attr_accessor :os_disk_size_in_mb
 
-      # @return [Integer] The resource disk size, in MB, allowed by the
-      # virtual machine size.
+      # @return [Integer] The resource disk size, in MB, allowed by the virtual
+      # machine size.
       attr_accessor :resource_disk_size_in_mb
 
-      # @return [Integer] The amount of memory, in MB, supported by the
-      # virtual machine size.
+      # @return [Integer] The amount of memory, in MB, supported by the virtual
+      # machine size.
       attr_accessor :memory_in_mb
 
-      # @return [Integer] The maximum number of data disks that can be
-      # attached to the virtual machine size.
+      # @return [Integer] The maximum number of data disks that can be attached
+      # to the virtual machine size.
       attr_accessor :max_data_disk_count
 
 

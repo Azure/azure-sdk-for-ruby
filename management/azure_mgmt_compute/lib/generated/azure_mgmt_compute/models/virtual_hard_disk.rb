@@ -12,8 +12,8 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the virtual hard disk's uri. It should be a valid Uri
-      # to a virtual hard disk.
+      # @return [String] The virtual hard disk's URI. Must be a valid URI to a
+      # virtual hard disk.
       attr_accessor :uri
 
 

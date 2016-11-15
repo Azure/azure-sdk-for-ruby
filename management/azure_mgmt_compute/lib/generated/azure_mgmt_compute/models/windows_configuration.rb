@@ -12,16 +12,16 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Boolean] Indicates whether the virtual machine agent should
-      # be provisioned on the Virtual Machine. If not specified, then the
-      # default behavior is to set it to true.
+      # @return [Boolean] Indicates whether the virtual machine agent should be
+      # provisioned on the Virtual Machine. If not specified, then the default
+      # behavior is to set it to true.
       attr_accessor :provision_vmagent
 
       # @return [Boolean] Indicates whether Windows updates are automatically
       # installed on the VM.
       attr_accessor :enable_automatic_updates
 
-      # @return [String] The Time Zone of the VM
+      # @return [String] The time zone of the VM
       attr_accessor :time_zone
 
       # @return [Array<AdditionalUnattendContent>] Additional base-64 encoded

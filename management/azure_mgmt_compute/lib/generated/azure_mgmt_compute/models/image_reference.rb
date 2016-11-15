@@ -22,7 +22,7 @@ module Azure::ARM::Compute
       attr_accessor :sku
 
       # @return [String] The image version. The allowed formats are
-      # Major.Minor.Build or 'latest'. Major, Minor and Build being decimal
+      # Major.Minor.Build or 'latest'. Major, Minor and Build are decimal
       # numbers. Specify 'latest' to use the latest version of the image.
       attr_accessor :version
 

@@ -126,8 +126,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of all virtual machine image versions for the specified
-    # location, publisher, offer, and SKU.
+    # Gets a list of all virtual machine image versions for the specified location,
+    # publisher, offer, and SKU.
     #
     # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String] A valid image publisher.
@@ -147,8 +147,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of all virtual machine image versions for the specified
-    # location, publisher, offer, and SKU.
+    # Gets a list of all virtual machine image versions for the specified location,
+    # publisher, offer, and SKU.
     #
     # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String] A valid image publisher.
@@ -167,8 +167,8 @@ module Azure::ARM::Compute
     end
 
     #
-    # Gets a list of all virtual machine image versions for the specified
-    # location, publisher, offer, and SKU.
+    # Gets a list of all virtual machine image versions for the specified location,
+    # publisher, offer, and SKU.
     #
     # @param location [String] The name of a supported Azure region.
     # @param publisher_name [String] A valid image publisher.

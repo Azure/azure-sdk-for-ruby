@@ -12,35 +12,35 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [OperatingSystemTypes] the Operating System type. Possible
+      # @return [OperatingSystemTypes] The Operating System type. Possible
       # values include: 'Windows', 'Linux'
       attr_accessor :os_type
 
       # @return [DiskEncryptionSettings] the disk encryption settings.
       attr_accessor :encryption_settings
 
-      # @return [String] the disk name.
+      # @return [String] The disk name.
       attr_accessor :name
 
-      # @return [VirtualHardDisk] the Virtual Hard Disk.
+      # @return [VirtualHardDisk] The virtual hard disk.
       attr_accessor :vhd
 
-      # @return [VirtualHardDisk] the Source User Image VirtualHardDisk. This
-      # VirtualHardDisk will be copied before using it to attach to the
-      # Virtual Machine. If SourceImage is provided, the destination
-      # VirtualHardDisk should not exist.
+      # @return [VirtualHardDisk] The source user image virtual hard disk. The
+      # virtual hard disk will be copied before using it to attach to the
+      # virtual machine. If SourceImage is provided, the destination virtual
+      # hard disk must not exist.
       attr_accessor :image
 
-      # @return [CachingTypes] the caching type. Possible values include:
+      # @return [CachingTypes] The caching type. Possible values include:
       # 'None', 'ReadOnly', 'ReadWrite'
       attr_accessor :caching
 
-      # @return [DiskCreateOptionTypes] the create option. Possible values
+      # @return [DiskCreateOptionTypes] The create option. Possible values
       # include: 'fromImage', 'empty', 'attach'
       attr_accessor :create_option
 
-      # @return [Integer] the initial disk size in GB for blank data disks,
-      # and the new desired size for existing OS and Data disks.
+      # @return [Integer] The initial disk size, in GB, for blank data disks,
+      # and the new desired size for resizing existing OS and data disks.
       attr_accessor :disk_size_gb
 
 

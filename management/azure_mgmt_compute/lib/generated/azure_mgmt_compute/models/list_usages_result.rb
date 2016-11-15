@@ -12,12 +12,12 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Array<Usage>] the list Compute Resource Usages.
+      # @return [Array<Usage>] The list of compute resource usages.
       attr_accessor :value
 
-      # @return [String] the uri to fetch the next page of Compute Resource
-      # Usages. Call ListNext() with this to fetch the next page of Compute
-      # Resource Usages.
+      # @return [String] The URI to fetch the next page of compute resource
+      # usage information. Call ListNext() with this to fetch the next page of
+      # compute resource usage information.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

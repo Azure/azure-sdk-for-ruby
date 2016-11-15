@@ -12,10 +12,10 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the URL referencing a secret in a Key Vault.
+      # @return [String] The URL referencing a secret in a Key Vault.
       attr_accessor :secret_url
 
-      # @return [SubResource] the Relative URL of the Key Vault containing the
+      # @return [SubResource] The relative URL of the Key Vault containing the
       # secret.
       attr_accessor :source_vault
 

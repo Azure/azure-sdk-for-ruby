@@ -6,7 +6,7 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Specifies A list of virtual machine instance IDs from the VM scale set.
+    # Specifies a list of virtual machine instance IDs from the VM scale set.
     #
     class VirtualMachineScaleSetVMInstanceIDs
 

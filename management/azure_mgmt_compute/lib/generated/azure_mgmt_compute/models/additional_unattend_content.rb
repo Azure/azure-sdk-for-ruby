@@ -24,15 +24,14 @@ module Azure::ARM::Compute
       # include: 'Microsoft-Windows-Shell-Setup'
       attr_accessor :component_name
 
-      # @return [SettingNames] setting name (e.g. FirstLogonCommands,
-      # AutoLogon ). Possible values include: 'AutoLogon',
-      # 'FirstLogonCommands'
+      # @return [SettingNames] setting name (e.g. FirstLogonCommands, AutoLogon
+      # ). Possible values include: 'AutoLogon', 'FirstLogonCommands'
       attr_accessor :setting_name
 
       # @return [String] XML formatted content that is added to the
-      # unattend.xml file in the specified pass and component. The XML must
-      # be less than 4 KB and must include the root element for the setting
-      # or feature that is being inserted.
+      # unattend.xml file in the specified pass and component. The XML must be
+      # less than 4 KB and must include the root element for the setting or
+      # feature that is being inserted.
       attr_accessor :content
 
 

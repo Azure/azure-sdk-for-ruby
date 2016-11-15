@@ -40,8 +40,8 @@ module Azure::ARM::Compute
       # @return [DiagnosticsProfile] the diagnostics profile.
       attr_accessor :diagnostics_profile
 
-      # @return [SubResource] the reference Id of the availability set to
-      # which this virtual machine belongs.
+      # @return [SubResource] the reference Id of the availability set to which
+      # this virtual machine belongs.
       attr_accessor :availability_set
 
       # @return [String] the provisioning state, which only appears in the
@@ -52,8 +52,8 @@ module Azure::ARM::Compute
       # scenario.
       attr_accessor :license_type
 
-      # @return [Plan] The purchase plan when deploying virtual machine from
-      # VM Marketplace images.
+      # @return [Plan] The purchase plan when deploying virtual machine from VM
+      # Marketplace images.
       attr_accessor :plan
 
       # @return [Array<VirtualMachineExtension>] the virtual machine child

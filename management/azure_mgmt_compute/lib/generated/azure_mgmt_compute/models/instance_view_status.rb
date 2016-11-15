@@ -12,21 +12,21 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the status Code.
+      # @return [String] The status code.
       attr_accessor :code
 
-      # @return [StatusLevelTypes] the level Code. Possible values include:
+      # @return [StatusLevelTypes] The level code. Possible values include:
       # 'Info', 'Warning', 'Error'
       attr_accessor :level
 
-      # @return [String] the short localizable label for the status.
+      # @return [String] The short localizable label for the status.
       attr_accessor :display_status
 
-      # @return [String] the detailed Message, including for alerts and error
-      # messages.
+      # @return [String] The detailed status message, including for alerts and
+      # error messages.
       attr_accessor :message
 
-      # @return [DateTime] the time of the status.
+      # @return [DateTime] The time of the status.
       attr_accessor :time
 
 

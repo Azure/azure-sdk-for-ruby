@@ -29,16 +29,16 @@ module Azure::ARM::Compute
       # 'Standard_D4', 'Standard_D11', 'Standard_D12', 'Standard_D13',
       # 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2', 'Standard_D3_v2',
       # 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
-      # 'Standard_D12_v2', 'Standard_D13_v2', 'Standard_D14_v2',
-      # 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4',
-      # 'Standard_G5', 'Standard_DS1', 'Standard_DS2', 'Standard_DS3',
-      # 'Standard_DS4', 'Standard_DS11', 'Standard_DS12', 'Standard_DS13',
-      # 'Standard_DS14', 'Standard_GS1', 'Standard_GS2', 'Standard_GS3',
-      # 'Standard_GS4', 'Standard_GS5'
+      # 'Standard_D12_v2', 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_G1',
+      # 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
+      # 'Standard_DS1', 'Standard_DS2', 'Standard_DS3', 'Standard_DS4',
+      # 'Standard_DS11', 'Standard_DS12', 'Standard_DS13', 'Standard_DS14',
+      # 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
+      # 'Standard_GS5'
       attr_accessor :vm_size
 
-      # @return [String] DNS prefix to be used to create the FQDN for the
-      # agent pool.
+      # @return [String] DNS prefix to be used to create the FQDN for the agent
+      # pool.
       attr_accessor :dns_prefix
 
       # @return [String] FDQN for the agent pool.

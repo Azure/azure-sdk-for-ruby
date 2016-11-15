@@ -12,7 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Array<VirtualMachineSize>] the list of virtual machine sizes.
+      # @return [Array<VirtualMachineSize>] The list of virtual machine sizes.
       attr_accessor :value
 
 

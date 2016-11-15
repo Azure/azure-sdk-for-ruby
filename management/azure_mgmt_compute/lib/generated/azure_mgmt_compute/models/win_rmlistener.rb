@@ -16,8 +16,8 @@ module Azure::ARM::Compute
       # and Https are supported. Possible values include: 'Http', 'Https'
       attr_accessor :protocol
 
-      # @return [String] the Certificate URL in KMS for Https listeners.
-      # Should be null for Http listeners.
+      # @return [String] The Certificate URL in KMS for Https listeners. Should
+      # be null for Http listeners.
       attr_accessor :certificate_url
 
 

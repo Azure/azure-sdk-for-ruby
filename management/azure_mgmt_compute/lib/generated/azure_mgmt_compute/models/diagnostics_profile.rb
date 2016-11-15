@@ -12,9 +12,9 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [BootDiagnostics] Boot Diagnostics is a debugging feature
-      # which allows the user to view console output and/or a screenshot of
-      # the virtual machine from the hypervisor.
+      # @return [BootDiagnostics] Boot Diagnostics is a debugging feature which
+      # allows the user to view console output and/or a screenshot of the
+      # virtual machine from the hypervisor.
       attr_accessor :boot_diagnostics
 
 

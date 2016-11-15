@@ -12,8 +12,8 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Plan] The purchase plan when deploying virtual machine from
-      # VM Marketplace images.
+      # @return [Plan] The purchase plan when deploying virtual machine from VM
+      # Marketplace images.
       attr_accessor :plan
 
       # @return [HardwareProfile] The hardware profile.
@@ -31,8 +31,8 @@ module Azure::ARM::Compute
       # @return [DiagnosticsProfile] The diagnostics profile.
       attr_accessor :diagnostics_profile
 
-      # @return [SubResource] The reference Id of the availability set to
-      # which the virtual machine belongs.
+      # @return [SubResource] The reference Id of the availability set to which
+      # the virtual machine belongs.
       attr_accessor :availability_set
 
       # @return [String] The provisioning state, which only appears in the
@@ -48,8 +48,8 @@ module Azure::ARM::Compute
       attr_accessor :license_type
 
       # @return [String] Specifies the VM unique ID which is a 128-bits
-      # identifier that is encoded and stored in all Azure IaaS VMs SMBIOS
-      # and can be read using platform BIOS commands.
+      # identifier that is encoded and stored in all Azure IaaS VMs SMBIOS and
+      # can be read using platform BIOS commands.
       attr_accessor :vm_id
 
       # @return [Array<VirtualMachineExtension>] the virtual machine child

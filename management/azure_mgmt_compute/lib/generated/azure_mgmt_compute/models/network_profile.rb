@@ -13,7 +13,7 @@ module Azure::ARM::Compute
       include MsRestAzure
 
       # @return [Array<NetworkInterfaceReference>] Specifies the list of
-      # resource Ids for the network interfaces associated with the virtual
+      # resource IDs for the network interfaces associated with the virtual
       # machine.
       attr_accessor :network_interfaces
 

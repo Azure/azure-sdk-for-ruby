@@ -21,21 +21,21 @@ module Azure::ARM::Compute
       # @return [String] Specifies the password of the administrator account.
       attr_accessor :admin_password
 
-      # @return [String] Specifies a base-64 encoded string of custom data.
-      # The base-64 encoded string is decoded to a binary array that is saved
-      # as a file on the Virtual Machine. The maximum length of the binary
-      # array is 65535 bytes
+      # @return [String] Specifies a base-64 encoded string of custom data. The
+      # base-64 encoded string is decoded to a binary array that is saved as a
+      # file on the Virtual Machine. The maximum length of the binary array is
+      # 65535 bytes
       attr_accessor :custom_data
 
-      # @return [WindowsConfiguration] the Windows Configuration of the OS
+      # @return [WindowsConfiguration] the Windows configuration of the OS
       # profile.
       attr_accessor :windows_configuration
 
-      # @return [LinuxConfiguration] the Linux Configuration of the OS profile.
+      # @return [LinuxConfiguration] the Linux configuration of the OS profile.
       attr_accessor :linux_configuration
 
-      # @return [Array<VaultSecretGroup>] the List of certificates for
-      # addition to the VM.
+      # @return [Array<VaultSecretGroup>] The list of certificates for addition
+      # to the VM.
       attr_accessor :secrets
 
 

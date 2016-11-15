@@ -6,16 +6,16 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Contains information about SSH certificate public key and the path on
-    # the Linux VM where the public key is placed.
+    # Contains information about SSH certificate public key and the path on the
+    # Linux VM where the public key is placed.
     #
     class SshPublicKey
 
       include MsRestAzure
 
       # @return [String] Specifies the full path on the created VM where SSH
-      # public key is stored. If the file already exists, the specified key
-      # is appended to the file.
+      # public key is stored. If the file already exists, the specified key is
+      # appended to the file.
       attr_accessor :path
 
       # @return [String] Certificate public key used to authenticate to the VM

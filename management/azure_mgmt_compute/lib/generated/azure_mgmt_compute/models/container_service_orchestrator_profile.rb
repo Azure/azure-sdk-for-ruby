@@ -14,7 +14,9 @@ module Azure::ARM::Compute
 
       # @return [ContainerServiceOchestratorTypes] The orchestrator to use to
       # manage container service cluster resources. Valid values are Swarm,
-      # DCOS, and Custom. Possible values include: 'Swarm', 'DCOS', 'Custom'
+      # DCOS, and Custom. Possible values include: 'Swarm', 'DCOS', 'Custom',
+      # 'Kubernetes'
+
       attr_accessor :orchestrator_type
 
 

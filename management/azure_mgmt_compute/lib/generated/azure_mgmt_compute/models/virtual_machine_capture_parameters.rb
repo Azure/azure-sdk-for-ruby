@@ -12,14 +12,14 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the captured VirtualHardDisk's name prefix.
+      # @return [String] The captured virtual hard disk's name prefix.
       attr_accessor :vhd_prefix
 
-      # @return [String] the destination container name.
+      # @return [String] The destination container name.
       attr_accessor :destination_container_name
 
-      # @return [Boolean] whether it overwrites destination VirtualHardDisk if
-      # true, in case of conflict.
+      # @return [Boolean] Specifies whether to overwrite the destination
+      # virtual hard disk, in case of conflict.
       attr_accessor :overwrite_vhds
 
 

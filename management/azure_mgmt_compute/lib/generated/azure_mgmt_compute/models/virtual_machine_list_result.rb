@@ -15,8 +15,8 @@ module Azure::ARM::Compute
       # @return [Array<VirtualMachine>] The list of virtual machines.
       attr_accessor :value
 
-      # @return [String] The URI to fetch the next page of VMs. Call
-      # ListNext() with this to fetch the next page of Virtual Machines.
+      # @return [String] The URI to fetch the next page of VMs. Call ListNext()
+      # with this URI to fetch the next page of Virtual Machines.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

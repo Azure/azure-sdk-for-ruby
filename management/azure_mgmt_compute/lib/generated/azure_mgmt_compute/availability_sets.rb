@@ -23,7 +23,7 @@ module Azure::ARM::Compute
     attr_reader :client
 
     #
-    # The operation to create or update the availability set.
+    # Create or update an availability set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the availability set.
@@ -40,7 +40,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to create or update the availability set.
+    # Create or update an availability set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the availability set.
@@ -56,7 +56,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to create or update the availability set.
+    # Create or update an availability set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the availability set.
@@ -130,7 +130,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to delete the availability set.
+    # Delete an availability set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param availability_set_name [String] The name of the availability set.
@@ -144,7 +144,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to delete the availability set.
+    # Delete an availability set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param availability_set_name [String] The name of the availability set.
@@ -158,7 +158,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to delete the availability set.
+    # Delete an availability set.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param availability_set_name [String] The name of the availability set.
@@ -301,7 +301,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list all availability sets in a resource group.
+    # Lists all availability sets in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -315,7 +315,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list all availability sets in a resource group.
+    # Lists all availability sets in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -328,7 +328,7 @@ module Azure::ARM::Compute
     end
 
     #
-    # The operation to list all availability sets in a resource group.
+    # Lists all availability sets in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added

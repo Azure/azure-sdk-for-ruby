@@ -12,8 +12,8 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Boolean] Whether the VM diagnostic agent is provisioned on
-      # the VM.
+      # @return [Boolean] Whether the VM diagnostic agent is provisioned on the
+      # VM.
       attr_accessor :enabled
 
       # @return [String] The URI of the storage account where diagnostics are

@@ -31,8 +31,8 @@ module Azure::ARM::Compute
       # @return [LinuxConfiguration] the Linux Configuration of the OS profile.
       attr_accessor :linux_configuration
 
-      # @return [Array<VaultSecretGroup>] the List of certificates for
-      # addition to the VM.
+      # @return [Array<VaultSecretGroup>] the List of certificates for addition
+      # to the VM.
       attr_accessor :secrets
 
 

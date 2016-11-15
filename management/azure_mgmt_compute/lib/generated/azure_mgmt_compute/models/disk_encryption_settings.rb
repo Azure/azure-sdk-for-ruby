@@ -12,16 +12,16 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [KeyVaultSecretReference] the disk encryption key which is a
-      # KeyVault Secret.
+      # @return [KeyVaultSecretReference] The disk encryption key which is a
+      # Key Vault Secret.
       attr_accessor :disk_encryption_key
 
-      # @return [KeyVaultKeyReference] the key encryption key which is
-      # KeyVault Key.
+      # @return [KeyVaultKeyReference] The key encryption key which is Key
+      # Vault Key.
       attr_accessor :key_encryption_key
 
-      # @return [Boolean] whether disk encryption should be enabled on the
-      # Virtual Machine.
+      # @return [Boolean] Specifies whether disk encryption should be enabled
+      # on the virtual machine.
       attr_accessor :enabled
 
 

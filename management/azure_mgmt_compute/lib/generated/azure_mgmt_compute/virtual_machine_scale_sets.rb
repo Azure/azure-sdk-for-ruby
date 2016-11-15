@@ -1722,8 +1722,8 @@ module Azure::ARM::Compute
     #
     # Gets a list of all VM scale sets under a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1737,8 +1737,8 @@ module Azure::ARM::Compute
     #
     # Gets a list of all VM scale sets under a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1751,8 +1751,8 @@ module Azure::ARM::Compute
     #
     # Gets a list of all VM scale sets under a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1812,8 +1812,8 @@ module Azure::ARM::Compute
     # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
     # the VM Scale Sets.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1830,8 +1830,8 @@ module Azure::ARM::Compute
     # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
     # the VM Scale Sets.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1847,8 +1847,8 @@ module Azure::ARM::Compute
     # next page of VM Scale Sets. Do this till nextLink is not null to fetch all
     # the VM Scale Sets.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1906,8 +1906,8 @@ module Azure::ARM::Compute
     # Gets a list of SKUs available for your VM scale set, including the minimum
     # and maximum VM instances allowed for each SKU.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1922,8 +1922,8 @@ module Azure::ARM::Compute
     # Gets a list of SKUs available for your VM scale set, including the minimum
     # and maximum VM instances allowed for each SKU.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1937,8 +1937,8 @@ module Azure::ARM::Compute
     # Gets a list of SKUs available for your VM scale set, including the minimum
     # and maximum VM instances allowed for each SKU.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1999,8 +1999,8 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualMachineScaleSetListResult] which provide lazy access to
-    # pages of the response.
+    # @return [VirtualMachineScaleSetListResult] which provide lazy access to pages
+    # of the response.
     #
     def list_as_lazy(resource_group_name, custom_headers = nil)
       response = list_async(resource_group_name, custom_headers).value!

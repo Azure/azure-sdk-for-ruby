@@ -12,6 +12,7 @@ module Azure::ARM::Compute
       Swarm = "Swarm"
       DCOS = "DCOS"
       Custom = "Custom"
+      Kubernetes = "Kubernetes"
     end
   end
 end
