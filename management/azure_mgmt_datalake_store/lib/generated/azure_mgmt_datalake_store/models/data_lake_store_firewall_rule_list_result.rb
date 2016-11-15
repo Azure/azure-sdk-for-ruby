@@ -18,10 +18,6 @@ module Azure::ARM::DataLakeStore
       # @return [String] the link (url) to the next page of results.
       attr_accessor :next_link
 
-      # @return [Integer] the total count of results that are available, but
-      # might not be returned in the current page.
-      attr_accessor :count
-
       # return [Proc] with next page method call.
       attr_accessor :next_method
 
@@ -88,14 +84,6 @@ module Azure::ARM::DataLakeStore
                 serialized_name: 'nextLink',
                 type: {
                   name: 'String'
-                }
-              },
-              count: {
-                required: false,
-                read_only: true,
-                serialized_name: 'count',
-                type: {
-                  name: 'Number'
                 }
               }
             }

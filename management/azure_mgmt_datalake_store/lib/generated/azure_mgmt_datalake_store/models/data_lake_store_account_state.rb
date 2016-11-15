@@ -9,8 +9,8 @@ module Azure::ARM::DataLakeStore
     # Defines values for DataLakeStoreAccountState
     #
     module DataLakeStoreAccountState
-      Active = "active"
-      Suspended = "suspended"
+      Active = "Active"
+      Suspended = "Suspended"
     end
   end
 end

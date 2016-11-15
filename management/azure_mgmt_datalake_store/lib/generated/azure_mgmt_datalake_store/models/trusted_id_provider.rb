@@ -8,28 +8,25 @@ module Azure::ARM::DataLakeStore
     #
     # Data Lake Store firewall rule information
     #
-    class FirewallRule < MsRestAzure::SubResource
+    class TrustedIdProvider < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [String] the start IP address for the firewall rule.
-      attr_accessor :start_ip_address
-
-      # @return [String] the end IP address for the firewall rule.
-      attr_accessor :end_ip_address
+      # @return [String] The URL of this trusted identity provider
+      attr_accessor :id_provider
 
 
       #
-      # Mapper for FirewallRule class as Ruby Hash.
+      # Mapper for TrustedIdProvider class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'FirewallRule',
+          serialized_name: 'TrustedIdProvider',
           type: {
             name: 'Composite',
-            class_name: 'FirewallRule',
+            class_name: 'TrustedIdProvider',
             model_properties: {
               id: {
                 required: false,
@@ -54,16 +51,9 @@ module Azure::ARM::DataLakeStore
                   name: 'String'
                 }
               },
-              start_ip_address: {
+              id_provider: {
                 required: true,
-                serialized_name: 'properties.startIpAddress',
-                type: {
-                  name: 'String'
-                }
-              },
-              end_ip_address: {
-                required: true,
-                serialized_name: 'properties.endIpAddress',
+                serialized_name: 'properties.idProvider',
                 type: {
                   name: 'String'
                 }

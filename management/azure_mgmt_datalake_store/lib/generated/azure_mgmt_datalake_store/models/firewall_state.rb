@@ -6,10 +6,11 @@
 module Azure::ARM::DataLakeStore
   module Models
     #
-    # Defines values for EncryptionIdentityType
+    # Defines values for FirewallState
     #
-    module EncryptionIdentityType
-      SystemAssigned = "SystemAssigned"
+    module FirewallState
+      Enabled = "Enabled"
+      Disabled = "Disabled"
     end
   end
 end

@@ -8,31 +8,66 @@ module Azure::ARM::DataLakeStore
     #
     # Data Lake Store account information
     #
-    class DataLakeStoreAccount
+    class DataLakeStoreAccount < MsRestAzure::Resource
 
       include MsRestAzure
-
-      # @return [String] the account regional location.
-      attr_accessor :location
-
-      # @return [String] the account name.
-      attr_accessor :name
-
-      # @return [String] the namespace and type of the account.
-      attr_accessor :type
-
-      # @return [String] the account subscription ID.
-      attr_accessor :id
 
       # @return [EncryptionIdentity] The Key vault encryption identity, if any.
       attr_accessor :identity
 
-      # @return [Hash{String => String}] the value of custom properties.
-      attr_accessor :tags
+      # @return [DataLakeStoreAccountStatus] the status of the Data Lake Store
+      # account while being provisioned. Possible values include: 'Failed',
+      # 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending',
+      # 'Resuming', 'Deleting', 'Deleted'
+      attr_accessor :provisioning_state
 
-      # @return [DataLakeStoreAccountProperties] the Data Lake Store account
-      # properties.
-      attr_accessor :properties
+      # @return [DataLakeStoreAccountState] the status of the Data Lake Store
+      # account after provisioning has completed. Possible values include:
+      # 'Active', 'Suspended'
+      attr_accessor :state
+
+      # @return [DateTime] the account creation time.
+      attr_accessor :creation_time
+
+      # @return [EncryptionState] The current state of encryption for this Data
+      # Lake store account. Possible values include: 'Enabled', 'Disabled'
+      attr_accessor :encryption_state
+
+      # @return [EncryptionProvisioningState] The current state of encryption
+      # provisioning for this Data Lake store account. Possible values include:
+      # 'Creating', 'Succeeded'
+      attr_accessor :encryption_provisioning_state
+
+      # @return [EncryptionConfig] The Key vault encryption configuration.
+      attr_accessor :encryption_config
+
+      # @return [FirewallState] The current state of the IP address firewall
+      # for this Data Lake store account. Possible values include: 'Enabled',
+      # 'Disabled'
+      attr_accessor :firewall_state
+
+      # @return [Array<FirewallRule>] The list of firewall rules associated
+      # with this Data Lake store account.
+      attr_accessor :firewall_rules
+
+      # @return [TrustedIdProviderState] The current state of the trusted
+      # identity provider feature for this Data Lake store account. Possible
+      # values include: 'Enabled', 'Disabled'
+      attr_accessor :trusted_id_provider_state
+
+      # @return [Array<TrustedIdProvider>] The list of trusted identity
+      # providers associated with this Data Lake store account.
+      attr_accessor :trusted_id_providers
+
+      # @return [DateTime] the account last modified time.
+      attr_accessor :last_modified_time
+
+      # @return [String] the gateway host.
+      attr_accessor :endpoint
+
+      # @return [String] the default owner group for all new folders and files
+      # created in the Data Lake Store account.
+      attr_accessor :default_group
 
 
       #
@@ -47,15 +82,17 @@ module Azure::ARM::DataLakeStore
             name: 'Composite',
             class_name: 'DataLakeStoreAccount',
             model_properties: {
-              location: {
+              id: {
                 required: false,
-                serialized_name: 'location',
+                read_only: true,
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -69,20 +106,11 @@ module Azure::ARM::DataLakeStore
                   name: 'String'
                 }
               },
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
+              location: {
+                required: true,
+                serialized_name: 'location',
                 type: {
                   name: 'String'
-                }
-              },
-              identity: {
-                required: false,
-                serialized_name: 'identity',
-                type: {
-                  name: 'Composite',
-                  class_name: 'EncryptionIdentity'
                 }
               },
               tags: {
@@ -99,12 +127,132 @@ module Azure::ARM::DataLakeStore
                   }
                 }
               },
-              properties: {
+              identity: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'identity',
                 type: {
                   name: 'Composite',
-                  class_name: 'DataLakeStoreAccountProperties'
+                  class_name: 'EncryptionIdentity'
+                }
+              },
+              provisioning_state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'Enum',
+                  module: 'DataLakeStoreAccountStatus'
+                }
+              },
+              state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.state',
+                type: {
+                  name: 'Enum',
+                  module: 'DataLakeStoreAccountState'
+                }
+              },
+              creation_time: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.creationTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              encryption_state: {
+                required: false,
+                serialized_name: 'properties.encryptionState',
+                type: {
+                  name: 'Enum',
+                  module: 'EncryptionState'
+                }
+              },
+              encryption_provisioning_state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.encryptionProvisioningState',
+                type: {
+                  name: 'Enum',
+                  module: 'EncryptionProvisioningState'
+                }
+              },
+              encryption_config: {
+                required: false,
+                serialized_name: 'properties.encryptionConfig',
+                type: {
+                  name: 'Composite',
+                  class_name: 'EncryptionConfig'
+                }
+              },
+              firewall_state: {
+                required: false,
+                serialized_name: 'properties.firewallState',
+                type: {
+                  name: 'Enum',
+                  module: 'FirewallState'
+                }
+              },
+              firewall_rules: {
+                required: false,
+                serialized_name: 'properties.firewallRules',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'FirewallRuleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'FirewallRule'
+                      }
+                  }
+                }
+              },
+              trusted_id_provider_state: {
+                required: false,
+                serialized_name: 'properties.trustedIdProviderState',
+                type: {
+                  name: 'Enum',
+                  module: 'TrustedIdProviderState'
+                }
+              },
+              trusted_id_providers: {
+                required: false,
+                serialized_name: 'properties.trustedIdProviders',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'TrustedIdProviderElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'TrustedIdProvider'
+                      }
+                  }
+                }
+              },
+              last_modified_time: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.lastModifiedTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              endpoint: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.endpoint',
+                type: {
+                  name: 'String'
+                }
+              },
+              default_group: {
+                required: false,
+                serialized_name: 'properties.defaultGroup',
+                type: {
+                  name: 'String'
                 }
               }
             }

@@ -6,7 +6,7 @@
 module Azure::ARM::DataLakeStore
   module Models
     #
-    # Model object.
+    # The encryption configuration for the account.
     #
     class EncryptionConfig
 
@@ -36,7 +36,7 @@ module Azure::ARM::DataLakeStore
             class_name: 'EncryptionConfig',
             model_properties: {
               type: {
-                required: false,
+                required: true,
                 serialized_name: 'type',
                 type: {
                   name: 'Enum',

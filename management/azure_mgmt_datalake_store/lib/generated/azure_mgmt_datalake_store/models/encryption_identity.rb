@@ -6,15 +6,14 @@
 module Azure::ARM::DataLakeStore
   module Models
     #
-    # Model object.
+    # The encryption identity properties.
     #
     class EncryptionIdentity
 
       include MsRestAzure
 
-      # @return [EncryptionIdentityType] The type of encryption being used.
-      # Currently the only supported type is 'SystemAssigned'. Possible
-      # values include: 'SystemAssigned'
+      # @return [String] The type of encryption being used. Currently the only
+      # supported type is 'SystemAssigned'. Default value: 'SystemAssigned' .
       attr_accessor :type
 
       # @return The principal identifier associated with the encryption.
@@ -37,11 +36,12 @@ module Azure::ARM::DataLakeStore
             class_name: 'EncryptionIdentity',
             model_properties: {
               type: {
-                required: false,
+                required: true,
+                is_constant: true,
                 serialized_name: 'type',
+                default_value: 'SystemAssigned',
                 type: {
-                  name: 'Enum',
-                  module: 'EncryptionIdentityType'
+                  name: 'String'
                 }
               },
               principal_id: {

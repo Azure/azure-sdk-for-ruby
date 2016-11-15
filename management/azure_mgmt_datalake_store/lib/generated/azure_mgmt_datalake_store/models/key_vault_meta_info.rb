@@ -6,14 +6,14 @@
 module Azure::ARM::DataLakeStore
   module Models
     #
-    # Model object.
+    # Metadata information used by account encryption.
     #
     class KeyVaultMetaInfo
 
       include MsRestAzure
 
-      # @return [String] The resource identifier for the user managed Key
-      # Vault being used to encrypt.
+      # @return [String] The resource identifier for the user managed Key Vault
+      # being used to encrypt.
       attr_accessor :key_vault_resource_id
 
       # @return [String] The name of the user managed encryption key.
@@ -36,21 +36,21 @@ module Azure::ARM::DataLakeStore
             class_name: 'KeyVaultMetaInfo',
             model_properties: {
               key_vault_resource_id: {
-                required: false,
+                required: true,
                 serialized_name: 'keyVaultResourceId',
                 type: {
                   name: 'String'
                 }
               },
               encryption_key_name: {
-                required: false,
+                required: true,
                 serialized_name: 'encryptionKeyName',
                 type: {
                   name: 'String'
                 }
               },
               encryption_key_version: {
-                required: false,
+                required: true,
                 serialized_name: 'encryptionKeyVersion',
                 type: {
                   name: 'String'

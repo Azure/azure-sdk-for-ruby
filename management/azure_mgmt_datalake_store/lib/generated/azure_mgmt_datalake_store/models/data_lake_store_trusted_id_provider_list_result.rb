@@ -6,13 +6,13 @@
 module Azure::ARM::DataLakeStore
   module Models
     #
-    # Data Lake Store account list information response.
+    # Data Lake Store trusted identity provider list information.
     #
-    class DataLakeStoreAccountListResult
+    class DataLakeStoreTrustedIdProviderListResult
 
       include MsRestAzure
 
-      # @return [Array<DataLakeStoreAccount>] the results of the list operation
+      # @return [Array<TrustedIdProvider>] the results of the list operation
       attr_accessor :value
 
       # @return [String] the link (url) to the next page of results.
@@ -24,7 +24,7 @@ module Azure::ARM::DataLakeStore
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<DataLakeStoreAccount>] operation results.
+      # @return [Array<TrustedIdProvider>] operation results.
       #
       def get_all_items
         items = @value
@@ -39,7 +39,8 @@ module Azure::ARM::DataLakeStore
       #
       # Gets the next page of results.
       #
-      # @return [DataLakeStoreAccountListResult] with next page content.
+      # @return [DataLakeStoreTrustedIdProviderListResult] with next page
+      # content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -51,16 +52,16 @@ module Azure::ARM::DataLakeStore
       end
 
       #
-      # Mapper for DataLakeStoreAccountListResult class as Ruby Hash.
+      # Mapper for DataLakeStoreTrustedIdProviderListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'DataLakeStoreAccountListResult',
+          serialized_name: 'DataLakeStoreTrustedIdProviderListResult',
           type: {
             name: 'Composite',
-            class_name: 'DataLakeStoreAccountListResult',
+            class_name: 'DataLakeStoreTrustedIdProviderListResult',
             model_properties: {
               value: {
                 required: false,
@@ -70,10 +71,10 @@ module Azure::ARM::DataLakeStore
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'DataLakeStoreAccountElementType',
+                      serialized_name: 'TrustedIdProviderElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'DataLakeStoreAccount'
+                        class_name: 'TrustedIdProvider'
                       }
                   }
                 }
