@@ -7,6 +7,7 @@ module Azure::ARM::PowerBiEmbedded
   module Models
     #
     # Model object.
+    # 
     #
     class WorkspaceCollectionAccessKeys
 
