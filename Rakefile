@@ -177,13 +177,13 @@ REGEN_METADATA = {
         tag: 'arm_comp'
     },
     azure_mgmt_datalake_analytics: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-analytics/account/2015-10-01-preview/swagger/account.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-analytics/account/2016-11-01/swagger/account.json',
         ns: 'Azure::ARM::DataLakeAnalytics',
         version: version,
         tag: 'arm_datalake_analytics'
     },
     azure_mgmt_datalake_store: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-store/account/2015-10-01-preview/swagger/account.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-datalake-store/account/2016-11-01/swagger/account.json',
         ns: 'Azure::ARM::DataLakeStore',
         version: version,
         tag: 'arm_datalake_store'
