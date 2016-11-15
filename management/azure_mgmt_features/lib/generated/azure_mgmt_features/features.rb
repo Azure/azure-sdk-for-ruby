@@ -5,11 +5,11 @@
 
 module Azure::ARM::Features
   #
-  # Azure Feature Exposure Control (AFEC) provides a mechanism for the
-  # resource providers to control feature exposure to users. Resource
-  # providers typically use this mechanism to provide public/private preview
-  # for new features prior to making them generally available. Users need to
-  # explicitly register for AFEC features to get access to such functionality.
+  # Azure Feature Exposure Control (AFEC) provides a mechanism for the resource
+  # providers to control feature exposure to users. Resource providers
+  # typically use this mechanism to provide public/private preview for new
+  # features prior to making them generally available. Users need to explicitly
+  # register for AFEC features to get access to such functionality.
   #
   class Features
     include Azure::ARM::Features::Models
@@ -397,8 +397,8 @@ module Azure::ARM::Features
     # Gets all the preview features that are available through AFEC for the
     # subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -413,8 +413,8 @@ module Azure::ARM::Features
     # Gets all the preview features that are available through AFEC for the
     # subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -428,8 +428,8 @@ module Azure::ARM::Features
     # Gets all the preview features that are available through AFEC for the
     # subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -487,8 +487,8 @@ module Azure::ARM::Features
     # Gets all the preview features in a provider namespace that are available
     # through AFEC for the subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -503,8 +503,8 @@ module Azure::ARM::Features
     # Gets all the preview features in a provider namespace that are available
     # through AFEC for the subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -518,8 +518,8 @@ module Azure::ARM::Features
     # Gets all the preview features in a provider namespace that are available
     # through AFEC for the subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
