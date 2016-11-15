@@ -57,6 +57,7 @@ module Azure::ARM::MediaServices
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
+      add_telemetry
     end
 
     #
@@ -114,5 +115,17 @@ module Azure::ARM::MediaServices
       super(request_url, method, path, options)
     end
 
+
+    private
+    #
+    # Adds telemetry information.
+    #
+    def add_telemetry
+        sdk_information = 'azure_mgmt_media_services'
+        if defined? Azure::ARM::MediaServices::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::MediaServices::VERSION}" 
+        end
+        add_user_agent_information(sdk_information)
+    end
   end
 end
