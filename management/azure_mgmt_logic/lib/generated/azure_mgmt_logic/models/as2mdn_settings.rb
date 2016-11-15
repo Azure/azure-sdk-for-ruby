@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class AS2MdnSettings
 
@@ -20,8 +21,8 @@ module Azure::ARM::Logic
       # signed or not.
       attr_accessor :sign_mdn
 
-      # @return [Boolean] The value indicating whether to send the
-      # asynchronous MDN.
+      # @return [Boolean] The value indicating whether to send the asynchronous
+      # MDN.
       attr_accessor :send_mdn_asynchronously
 
       # @return [String] The receipt delivery URL.
@@ -30,8 +31,8 @@ module Azure::ARM::Logic
       # @return [String] The disposition notification to header value.
       attr_accessor :disposition_notification_to
 
-      # @return [Boolean] The value indicating whether to sign the outbound
-      # MDN if optional.
+      # @return [Boolean] The value indicating whether to sign the outbound MDN
+      # if optional.
       attr_accessor :sign_outbound_mdn_if_optional
 
       # @return [String] The MDN text.
@@ -42,8 +43,7 @@ module Azure::ARM::Logic
       attr_accessor :send_inbound_mdn_to_message_box
 
       # @return [HashingAlgorithm] The signing or hashing algorithm. Possible
-      # values include: 'NotSpecified', 'None', 'SHA2256', 'SHA2384',
-      # 'SHA2512'
+      # values include: 'NotSpecified', 'None', 'SHA2256', 'SHA2384', 'SHA2512'
       attr_accessor :mic_hashing_algorithm
 
 

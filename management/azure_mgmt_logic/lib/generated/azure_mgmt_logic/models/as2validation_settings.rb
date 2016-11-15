@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class AS2ValidationSettings
 
@@ -36,17 +37,17 @@ module Azure::ARM::Logic
       # interchange.
       attr_accessor :interchange_duplicates_validity_days
 
-      # @return [Boolean] The value indicating whether to check for
-      # certificate revocation list on send.
+      # @return [Boolean] The value indicating whether to check for certificate
+      # revocation list on send.
       attr_accessor :check_certificate_revocation_list_on_send
 
-      # @return [Boolean] The value indicating whether to check for
-      # certificate revocation list on receive.
+      # @return [Boolean] The value indicating whether to check for certificate
+      # revocation list on receive.
       attr_accessor :check_certificate_revocation_list_on_receive
 
-      # @return [EncryptionAlgorithm] The encryption algorithm. Possible
-      # values include: 'NotSpecified', 'None', 'DES3', 'RC2', 'AES128',
-      # 'AES192', 'AES256'
+      # @return [EncryptionAlgorithm] The encryption algorithm. Possible values
+      # include: 'NotSpecified', 'None', 'DES3', 'RC2', 'AES128', 'AES192',
+      # 'AES256'
       attr_accessor :encryption_algorithm
 
 

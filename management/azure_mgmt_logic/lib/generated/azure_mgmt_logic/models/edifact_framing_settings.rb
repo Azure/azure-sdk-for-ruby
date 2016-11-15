@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class EdifactFramingSettings
 
@@ -38,8 +39,8 @@ module Azure::ARM::Logic
 
       # @return [EdifactCharacterSet] The EDIFACT frame setting characterSet.
       # Possible values include: 'NotSpecified', 'UNOB', 'UNOA', 'UNOC',
-      # 'UNOD', 'UNOE', 'UNOF', 'UNOG', 'UNOH', 'UNOI', 'UNOJ', 'UNOK',
-      # 'UNOX', 'UNOY', 'KECA'
+      # 'UNOD', 'UNOE', 'UNOF', 'UNOG', 'UNOH', 'UNOI', 'UNOJ', 'UNOK', 'UNOX',
+      # 'UNOY', 'KECA'
       attr_accessor :character_set
 
       # @return [EdifactDecimalIndicator] The EDIFACT frame setting decimal

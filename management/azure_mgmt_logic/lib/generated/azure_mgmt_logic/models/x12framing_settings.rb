@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class X12FramingSettings
 
@@ -18,8 +19,8 @@ module Azure::ARM::Logic
       # @return [Integer] The component separator.
       attr_accessor :component_separator
 
-      # @return [Boolean] The value indicating whether to replace separators
-      # in payload.
+      # @return [Boolean] The value indicating whether to replace separators in
+      # payload.
       attr_accessor :replace_separators_in_payload
 
       # @return [Integer] The replacement character.

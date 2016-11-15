@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class WorkflowTriggerHistoryFilter
 
@@ -14,8 +15,8 @@ module Azure::ARM::Logic
 
       # @return [WorkflowStatus] The status of workflow trigger history.
       # Possible values include: 'NotSpecified', 'Paused', 'Running',
-      # 'Waiting', 'Succeeded', 'Skipped', 'Suspended', 'Cancelled',
-      # 'Failed', 'Faulted', 'TimedOut', 'Aborted', 'Ignored'
+      # 'Waiting', 'Succeeded', 'Skipped', 'Suspended', 'Cancelled', 'Failed',
+      # 'Faulted', 'TimedOut', 'Aborted', 'Ignored'
       attr_accessor :status
 
 

@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class X12DelimiterOverrides
 
@@ -34,8 +35,8 @@ module Azure::ARM::Logic
       # @return [Integer] The replacement character.
       attr_accessor :replace_character
 
-      # @return [Boolean] The value indicating whether to replace separators
-      # in payload.
+      # @return [Boolean] The value indicating whether to replace separators in
+      # payload.
       attr_accessor :replace_separators_in_payload
 
       # @return [String] The target namespace on which this delimiter settings

@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class IntegrationAccountMap < MsRestAzure::IntegrationAccountResource
 

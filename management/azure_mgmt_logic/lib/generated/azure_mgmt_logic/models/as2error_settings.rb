@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class AS2ErrorSettings
 
@@ -16,8 +17,8 @@ module Azure::ARM::Logic
       # message.
       attr_accessor :suspend_duplicate_message
 
-      # @return [Boolean] The value indicating whether to resend message If
-      # MDN is not received.
+      # @return [Boolean] The value indicating whether to resend message If MDN
+      # is not received.
       attr_accessor :resend_if_mdn_not_received
 
 

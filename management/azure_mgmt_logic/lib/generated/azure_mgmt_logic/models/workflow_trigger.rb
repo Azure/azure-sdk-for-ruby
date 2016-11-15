@@ -7,17 +7,17 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class WorkflowTrigger < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [WorkflowTriggerProvisioningState] Gets the provisioning
-      # state. Possible values include: 'NotSpecified', 'Accepted',
-      # 'Running', 'Ready', 'Creating', 'Created', 'Deleting', 'Deleted',
-      # 'Canceled', 'Failed', 'Succeeded', 'Moving', 'Updating',
-      # 'Registering', 'Registered', 'Unregistering', 'Unregistered',
-      # 'Completed'
+      # @return [WorkflowTriggerProvisioningState] Gets the provisioning state.
+      # Possible values include: 'NotSpecified', 'Accepted', 'Running',
+      # 'Ready', 'Creating', 'Created', 'Deleting', 'Deleted', 'Canceled',
+      # 'Failed', 'Succeeded', 'Moving', 'Updating', 'Registering',
+      # 'Registered', 'Unregistering', 'Unregistered', 'Completed'
       attr_accessor :provisioning_state
 
       # @return [DateTime] Gets the created time.
@@ -32,9 +32,9 @@ module Azure::ARM::Logic
       attr_accessor :state
 
       # @return [WorkflowStatus] Gets the status. Possible values include:
-      # 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded',
-      # 'Skipped', 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut',
-      # 'Aborted', 'Ignored'
+      # 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
+      # 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
+      # 'Ignored'
       attr_accessor :status
 
       # @return [DateTime] Gets the last execution time.
