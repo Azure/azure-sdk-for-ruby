@@ -12,8 +12,8 @@ module Azure::ARM::Dns
 
       include MsRestAzure
 
-      # @return [String] Users can perform a Get on Azure-AsyncOperation to
-      # get the status of their delete Zone operations.
+      # @return [String] Users can perform a Get on Azure-AsyncOperation to get
+      # the status of their delete Zone operations.
       attr_accessor :azure_async_operation
 
       # @return [OperationStatus] Possible values include: 'InProgress',
@@ -31,10 +31,9 @@ module Azure::ARM::Dns
       # 'ProxyAuthenticationRequired', 'RequestTimeout', 'Conflict', 'Gone',
       # 'LengthRequired', 'PreconditionFailed', 'RequestEntityTooLarge',
       # 'RequestUriTooLong', 'UnsupportedMediaType',
-      # 'RequestedRangeNotSatisfiable', 'ExpectationFailed',
-      # 'UpgradeRequired', 'InternalServerError', 'NotImplemented',
-      # 'BadGateway', 'ServiceUnavailable', 'GatewayTimeout',
-      # 'HttpVersionNotSupported'
+      # 'RequestedRangeNotSatisfiable', 'ExpectationFailed', 'UpgradeRequired',
+      # 'InternalServerError', 'NotImplemented', 'BadGateway',
+      # 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported'
       attr_accessor :status_code
 
       # @return [String]
