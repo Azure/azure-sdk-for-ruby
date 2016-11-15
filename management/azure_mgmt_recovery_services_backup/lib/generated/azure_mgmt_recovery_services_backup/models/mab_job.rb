@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # MAB workload-specific job.
+    # The Azure Backup Server workload-specific job.
     #
     class MabJob < Job
 
@@ -19,21 +19,21 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :jobType
 
-      # @return [Duration] Time taken by job to run.
+      # @return [Duration] The time required for the job to run.
       attr_accessor :duration
 
-      # @return [Array<JobSupportedAction>] The state/actions applicable on
-      # jobs like cancel/retry.
+      # @return [Array<JobSupportedAction>] The state or actions applicable on
+      # jobs such as Cancel or Retry.
       attr_accessor :actions_info
 
-      # @return [String] Name of server protecting the DS.
+      # @return [String] The name of server protecting the data store.
       attr_accessor :mab_server_name
 
-      # @return [MabServerType] Server type of MAB container. Possible values
-      # include: 'Invalid', 'Unknown', 'IaasVMContainer',
-      # 'IaasVMServiceContainer', 'DPMContainer', 'DPMVenusContainer',
-      # 'MABContainer', 'ClusterResource', 'AzureSqlContainer',
-      # 'WindowsServer', 'Windows'
+      # @return [MabServerType] Server type of the Azure Backup Server
+      # container. Possible values include: 'Invalid', 'Unknown',
+      # 'IaasVMContainer', 'IaasVMServiceContainer', 'DPMContainer',
+      # 'DPMVenusContainer', 'MABContainer', 'ClusterResource',
+      # 'AzureSqlContainer', 'WindowsServer', 'Windows'
       attr_accessor :mab_server_type
 
       # @return [WorkloadType] Workload type of backup item. Possible values

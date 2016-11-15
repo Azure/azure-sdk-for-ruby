@@ -12,15 +12,15 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [Integer] Gets or sets this BGP speaker's ASN
+      # @return [Integer] The BGP speaker's ASN.
       attr_accessor :asn
 
-      # @return [String] Gets or sets the BGP peering address and BGP
-      # identifier of this BGP speaker
+      # @return [String] The BGP peering address and BGP identifier of this
+      # BGP speaker.
       attr_accessor :bgp_peering_address
 
-      # @return [Integer] Gets or sets the weight added to routes learned from
-      # this BGP speaker
+      # @return [Integer] The weight added to routes learned from this BGP
+      # speaker.
       attr_accessor :peer_weight
 
 

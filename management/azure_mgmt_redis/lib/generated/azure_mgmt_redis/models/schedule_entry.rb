@@ -6,15 +6,15 @@
 module Azure::ARM::Redis
   module Models
     #
-    # Patch schedule entry for Premium Redis Cache.
+    # Patch schedule entry for a Premium Redis Cache.
     #
     class ScheduleEntry
 
       include MsRestAzure
 
-      # @return [DayOfWeek] Day of week when cache can be patched. Possible
-      # values include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
-      # 'Friday', 'Saturday', 'Sunday'
+      # @return [DayOfWeek] Day of the week when a cache can be patched.
+      # Possible values include: 'Monday', 'Tuesday', 'Wednesday',
+      # 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Everyday', 'Weekend'
       attr_accessor :day_of_week
 
       # @return [Integer] Start hour after which cache patching can start.

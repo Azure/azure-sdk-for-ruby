@@ -6,13 +6,13 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # List of RecoveryPoint resources
+    # The list of RecoveryPoint resources.
     #
     class RecoveryPointResourceList < ResourceList
 
       include MsRestAzure
 
-      # @return [Array<RecoveryPointResource>] List of resources.
+      # @return [Array<RecoveryPointResource>] The list of resources.
       attr_accessor :value
 
       # return [Proc] with next page method call.

@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Defines workload agnostic properties for a job.
+    # Defines the workload-agnostic properties for a job.
     #
     class JobResource < MsRestAzure::Resource
 

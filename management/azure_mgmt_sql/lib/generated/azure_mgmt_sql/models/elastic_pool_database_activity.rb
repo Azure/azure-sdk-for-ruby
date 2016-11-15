@@ -52,7 +52,7 @@ module Azure::ARM::SQL
       # available.
       attr_accessor :requested_service_objective
 
-      # @return [String] The name of the Azure SQL Server the Elastic Pool is
+      # @return [String] The name of the Azure SQL server the Elastic Pool is
       # in.
       attr_accessor :server_name
 

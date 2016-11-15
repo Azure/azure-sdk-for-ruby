@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # MAB workload-specific error information.
+    # Azure Backup Server workload-specific error information.
     #
     class MabErrorInfo
 

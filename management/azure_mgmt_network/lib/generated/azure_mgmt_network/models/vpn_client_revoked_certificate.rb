@@ -6,26 +6,26 @@
 module Azure::ARM::Network
   module Models
     #
-    # VPN client revoked certificate of virtual network gateway
+    # VPN client revoked certificate of virtual network gateway.
     #
     class VpnClientRevokedCertificate < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the revoked Vpn client certificate
-      # thumbprint
+      # @return [String] The revoked VPN client certificate thumbprint.
       attr_accessor :thumbprint
 
-      # @return [String] Gets provisioning state of the VPN client revoked
-      # certificate resource Updating/Deleting/Failed
+      # @return [String] The provisioning state of the VPN client revoked
+      # certificate resource. Possible values are: 'Updating', 'Deleting',
+      # and 'Failed'.
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] The name of the resource that is unique within a
+      # resource group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

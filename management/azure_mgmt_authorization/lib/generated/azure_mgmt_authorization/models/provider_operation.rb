@@ -12,19 +12,19 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the operation name
+      # @return [String] The operation name.
       attr_accessor :name
 
-      # @return [String] Gets or sets the operation display name
+      # @return [String] The operation display name.
       attr_accessor :display_name
 
-      # @return [String] Gets or sets the operation description
+      # @return [String] The operation description.
       attr_accessor :description
 
-      # @return [String] Gets or sets the operation origin
+      # @return [String] The operation origin.
       attr_accessor :origin
 
-      # @return Gets or sets the operation properties
+      # @return The operation properties.
       attr_accessor :properties
 
 

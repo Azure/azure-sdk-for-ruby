@@ -5,7 +5,8 @@
 
 module Azure::ARM::Graph
   #
-  # Composite Swagger for GraphRbac Management Client
+  # Composite Swagger specification for Azure Active Directory Graph RBAC
+  # management client.
   #
   class ServicePrincipals
     include Azure::ARM::Graph::Models
@@ -23,7 +24,7 @@ module Azure::ARM::Graph
     attr_reader :client
 
     #
-    # Creates a service principal in the  directory.
+    # Creates a service principal in the directory.
     #
     # @param parameters [ServicePrincipalCreateParameters] Parameters to create a
     # service principal.
@@ -38,7 +39,7 @@ module Azure::ARM::Graph
     end
 
     #
-    # Creates a service principal in the  directory.
+    # Creates a service principal in the directory.
     #
     # @param parameters [ServicePrincipalCreateParameters] Parameters to create a
     # service principal.
@@ -52,7 +53,7 @@ module Azure::ARM::Graph
     end
 
     #
-    # Creates a service principal in the  directory.
+    # Creates a service principal in the directory.
     #
     # @param parameters [ServicePrincipalCreateParameters] Parameters to create a
     # service principal.
@@ -122,9 +123,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of service principals from the current tenant.
+    # Gets a list of service principals from the current tenant.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -136,9 +137,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of service principals from the current tenant.
+    # Gets a list of service principals from the current tenant.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -149,9 +150,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of service principals from the current tenant.
+    # Gets a list of service principals from the current tenant.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply to the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -208,9 +209,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Deletes service principal from the directory.
+    # Deletes a service principal from the directory.
     #
-    # @param object_id [String] Object id to delete service principal information.
+    # @param object_id [String] The object ID of the service principal to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -221,9 +222,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Deletes service principal from the directory.
+    # Deletes a service principal from the directory.
     #
-    # @param object_id [String] Object id to delete service principal information.
+    # @param object_id [String] The object ID of the service principal to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -234,9 +235,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Deletes service principal from the directory.
+    # Deletes a service principal from the directory.
     #
-    # @param object_id [String] Object id to delete service principal information.
+    # @param object_id [String] The object ID of the service principal to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -287,7 +288,7 @@ module Azure::ARM::Graph
     #
     # Gets service principal information from the directory.
     #
-    # @param object_id [String] Object id to get service principal information.
+    # @param object_id [String] The object ID of the service principal to get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -301,7 +302,7 @@ module Azure::ARM::Graph
     #
     # Gets service principal information from the directory.
     #
-    # @param object_id [String] Object id to get service principal information.
+    # @param object_id [String] The object ID of the service principal to get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -314,7 +315,7 @@ module Azure::ARM::Graph
     #
     # Gets service principal information from the directory.
     #
-    # @param object_id [String] Object id to get service principal information.
+    # @param object_id [String] The object ID of the service principal to get.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -373,11 +374,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Get keyCredentials associated with the service principal by object Id.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+    # Get the keyCredentials associated with the specified service principal.
     #
-    # @param object_id [String] Object id to get service principal information.
+    # @param object_id [String] The object ID of the service principal for which to
+    # get keyCredentials.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -389,11 +389,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Get keyCredentials associated with the service principal by object Id.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+    # Get the keyCredentials associated with the specified service principal.
     #
-    # @param object_id [String] Object id to get service principal information.
+    # @param object_id [String] The object ID of the service principal for which to
+    # get keyCredentials.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -404,11 +403,10 @@ module Azure::ARM::Graph
     end
 
     #
-    # Get keyCredentials associated with the service principal by object Id.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+    # Get the keyCredentials associated with the specified service principal.
     #
-    # @param object_id [String] Object id to get service principal information.
+    # @param object_id [String] The object ID of the service principal for which to
+    # get keyCredentials.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -467,12 +465,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Update keyCredentials associated with an existing service principal.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+    # Update the keyCredentials associated with a service principal.
     #
-    # @param object_id [String] Object id to get service principal information.
-    # @param parameters [KeyCredentialsUpdateParameters] Parameters to update
+    # @param object_id [String] The object ID for which to get service principal
+    # information.
+    # @param parameters [KeyCredentialsUpdateParameters] Parameters to update the
     # keyCredentials of an existing service principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -484,12 +481,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Update keyCredentials associated with an existing service principal.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+    # Update the keyCredentials associated with a service principal.
     #
-    # @param object_id [String] Object id to get service principal information.
-    # @param parameters [KeyCredentialsUpdateParameters] Parameters to update
+    # @param object_id [String] The object ID for which to get service principal
+    # information.
+    # @param parameters [KeyCredentialsUpdateParameters] Parameters to update the
     # keyCredentials of an existing service principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -501,12 +497,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Update keyCredentials associated with an existing service principal.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+    # Update the keyCredentials associated with a service principal.
     #
-    # @param object_id [String] Object id to get service principal information.
-    # @param parameters [KeyCredentialsUpdateParameters] Parameters to update
+    # @param object_id [String] The object ID for which to get service principal
+    # information.
+    # @param parameters [KeyCredentialsUpdateParameters] Parameters to update the
     # keyCredentials of an existing service principal.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -566,11 +561,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets passwordCredentials associated with an existing service principal.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+    # Gets the passwordCredentials associated with a service principal.
     #
-    # @param object_id [String] Object id to get service principal information.
+    # @param object_id [String] The object ID of the service principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -582,11 +575,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets passwordCredentials associated with an existing service principal.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+    # Gets the passwordCredentials associated with a service principal.
     #
-    # @param object_id [String] Object id to get service principal information.
+    # @param object_id [String] The object ID of the service principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -597,11 +588,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets passwordCredentials associated with an existing service principal.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+    # Gets the passwordCredentials associated with a service principal.
     #
-    # @param object_id [String] Object id to get service principal information.
+    # @param object_id [String] The object ID of the service principal.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -660,13 +649,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Updates passwordCredentials associated with an existing service principal.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+    # Updates the passwordCredentials associated with a service principal.
     #
-    # @param object_id [String] Object id to get service principal information.
+    # @param object_id [String] The object ID of the service principal.
     # @param parameters [PasswordCredentialsUpdateParameters] Parameters to update
-    # passwordCredentials of an existing service principal.
+    # the passwordCredentials of an existing service principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -677,13 +664,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Updates passwordCredentials associated with an existing service principal.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+    # Updates the passwordCredentials associated with a service principal.
     #
-    # @param object_id [String] Object id to get service principal information.
+    # @param object_id [String] The object ID of the service principal.
     # @param parameters [PasswordCredentialsUpdateParameters] Parameters to update
-    # passwordCredentials of an existing service principal.
+    # the passwordCredentials of an existing service principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -694,13 +679,11 @@ module Azure::ARM::Graph
     end
 
     #
-    # Updates passwordCredentials associated with an existing service principal.
-    # Reference:
-    # https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+    # Updates the passwordCredentials associated with a service principal.
     #
-    # @param object_id [String] Object id to get service principal information.
+    # @param object_id [String] The object ID of the service principal.
     # @param parameters [PasswordCredentialsUpdateParameters] Parameters to update
-    # passwordCredentials of an existing service principal.
+    # the passwordCredentials of an existing service principal.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -759,9 +742,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of service principals from the current tenant.
+    # Gets a list of service principals from the current tenant.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -773,9 +756,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of service principals from the current tenant.
+    # Gets a list of service principals from the current tenant.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -786,9 +769,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of service principals from the current tenant.
+    # Gets a list of service principals from the current tenant.
     #
-    # @param next_link [String] Next link for list operation.
+    # @param next_link [String] Next link for the list operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -847,9 +830,9 @@ module Azure::ARM::Graph
     end
 
     #
-    # Gets list of service principals from the current tenant.
+    # Gets a list of service principals from the current tenant.
     #
-    # @param filter [String] The filter to apply on the operation.
+    # @param filter [String] The filter to apply to the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

@@ -6,13 +6,13 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for CheckDnsNameAvailability Api service call
+    # Response for the CheckDnsNameAvailability API service call.
     #
     class DnsNameAvailabilityResult
 
       include MsRestAzure
 
-      # @return [Boolean] Domain availability (True/False)
+      # @return [Boolean] Domain availability (True/False).
       attr_accessor :available
 
 

@@ -12,10 +12,10 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
-      # @return [Array<ResourceGroup>] The list of resource groups.
+      # @return [Array<ResourceGroup>] An array of resource groups.
       attr_accessor :value
 
-      # @return [String] The URL to get the next set of results.
+      # @return [String] The URL to use for getting the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

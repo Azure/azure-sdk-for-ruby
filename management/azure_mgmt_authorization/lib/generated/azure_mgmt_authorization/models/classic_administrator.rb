@@ -12,17 +12,17 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the classic administrator id.
+      # @return [String] The ID of the administrator.
       attr_accessor :id
 
-      # @return [String] Gets or sets the classic administrator name.
+      # @return [String] The name of the administrator.
       attr_accessor :name
 
-      # @return [String] Gets or sets the classic administrator type.
+      # @return [String] The type of the administrator.
       attr_accessor :type
 
-      # @return [ClassicAdministratorProperties] Gets or sets the classic
-      # administrator properties.
+      # @return [ClassicAdministratorProperties] Properties for the classic
+      # administrator.
       attr_accessor :properties
 
 

@@ -6,24 +6,25 @@
 module Azure::ARM::Network
   module Models
     #
-    # RouteTable resource
+    # Route table resource.
     #
     class RouteTable < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Array<Route>] Gets or sets Routes in a Route Table
+      # @return [Array<Route>] Collection of routes contained within a route
+      # table.
       attr_accessor :routes
 
-      # @return [Array<Subnet>] Gets collection of references to subnets
+      # @return [Array<Subnet>] A collection of references to subnets.
       attr_accessor :subnets
 
-      # @return [String] Gets provisioning state of the resource
-      # Updating/Deleting/Failed
+      # @return [String] The provisioning state of the resource. Possible
+      # values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Gets a unique read-only string that changes whenever
-      # the resource is updated
+      # the resource is updated.
       attr_accessor :etag
 
 

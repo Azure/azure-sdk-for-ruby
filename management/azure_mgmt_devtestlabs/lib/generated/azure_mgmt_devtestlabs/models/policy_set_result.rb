@@ -12,8 +12,8 @@ module Azure::ARM::DevTestLabs
 
       include MsRestAzure
 
-      # @return [Boolean] A value indicating whether this policy set
-      # evaluation has discovered violations.
+      # @return [Boolean] A value indicating whether this policy set evaluation
+      # has discovered violations.
       attr_accessor :has_error
 
       # @return [Array<PolicyViolation>] The list of policy violations.

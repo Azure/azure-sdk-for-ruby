@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for operation result info.
+    # Base class for operation result information.
     #
     class OperationResultInfoBaseResource < OperationWorkerResponse
 

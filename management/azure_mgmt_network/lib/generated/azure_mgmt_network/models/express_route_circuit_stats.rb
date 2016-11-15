@@ -6,7 +6,7 @@
 module Azure::ARM::Network
   module Models
     #
-    # Contains Stats associated with the peering
+    # Contains stats associated with the peering.
     #
     class ExpressRouteCircuitStats
 

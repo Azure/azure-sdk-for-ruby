@@ -7,12 +7,13 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class HttpAuthentication
 
       include MsRestAzure
 
-      # @return [HttpAuthenticationType] Gets or sets the http authentication
+      # @return [HttpAuthenticationType] Gets or sets the HTTP authentication
       # type. Possible values include: 'NotSpecified', 'ClientCertificate',
       # 'ActiveDirectoryOAuth', 'Basic'
       attr_accessor :type

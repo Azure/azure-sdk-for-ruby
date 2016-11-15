@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # MAB workload-specific job task details.
+    # Azure Backup Server workload-specific job task details.
     #
     class MabJobTaskDetails
 

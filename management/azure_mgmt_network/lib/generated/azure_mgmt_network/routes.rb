@@ -26,7 +26,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The delete route operation deletes the specified route from a route table.
+    # Deletes the specified route from a route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -66,8 +66,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get route operation retrieves information about the specified route from
-    # the route table.
+    # Gets the specified route from a route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -83,8 +82,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get route operation retrieves information about the specified route from
-    # the route table.
+    # Gets the specified route from a route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -99,8 +97,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get route operation retrieves information about the specified route from
-    # the route table.
+    # Gets the specified route from a route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -164,13 +161,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put route operation creates/updates a route in the specified route table
+    # Creates or updates a route in the specified route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
-    # @param route_parameters [Route] Parameters supplied to the create/update
-    # route operation
+    # @param route_parameters [Route] Parameters supplied to the create or update
+    # route operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -185,8 +182,8 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
-    # @param route_parameters [Route] Parameters supplied to the create/update
-    # route operation
+    # @param route_parameters [Route] Parameters supplied to the create or update
+    # route operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -212,8 +209,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the routes in a route
-    # table.
+    # Gets all routes in a route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -228,8 +224,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the routes in a route
-    # table.
+    # Gets all routes in a route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -243,8 +238,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the routes in a route
-    # table.
+    # Gets all routes in a route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -306,7 +300,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete route operation deletes the specified route from a route table.
+    # Deletes the specified route from a route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -321,7 +315,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete route operation deletes the specified route from a route table.
+    # Deletes the specified route from a route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -336,7 +330,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete route operation deletes the specified route from a route table.
+    # Deletes the specified route from a route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
@@ -390,13 +384,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put route operation creates/updates a route in the specified route table
+    # Creates or updates a route in the specified route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
-    # @param route_parameters [Route] Parameters supplied to the create/update
-    # route operation
+    # @param route_parameters [Route] Parameters supplied to the create or update
+    # route operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -408,13 +402,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put route operation creates/updates a route in the specified route table
+    # Creates or updates a route in the specified route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
-    # @param route_parameters [Route] Parameters supplied to the create/update
-    # route operation
+    # @param route_parameters [Route] Parameters supplied to the create or update
+    # route operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -425,13 +419,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put route operation creates/updates a route in the specified route table
+    # Creates or updates a route in the specified route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.
     # @param route_name [String] The name of the route.
-    # @param route_parameters [Route] Parameters supplied to the create/update
-    # route operation
+    # @param route_parameters [Route] Parameters supplied to the create or update
+    # route operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -511,8 +505,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the routes in a route
-    # table.
+    # Gets all routes in a route table.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -527,8 +520,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the routes in a route
-    # table.
+    # Gets all routes in a route table.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -542,8 +534,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the routes in a route
-    # table.
+    # Gets all routes in a route table.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -601,8 +592,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the routes in a route
-    # table.
+    # Gets all routes in a route table.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param route_table_name [String] The name of the route table.

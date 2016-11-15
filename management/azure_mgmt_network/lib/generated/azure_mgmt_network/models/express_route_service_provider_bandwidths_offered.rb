@@ -6,16 +6,16 @@
 module Azure::ARM::Network
   module Models
     #
-    # Contains Bandwidths offered in ExpressRouteServiceProviders
+    # Contains bandwidths offered in ExpressRouteServiceProvider resources.
     #
     class ExpressRouteServiceProviderBandwidthsOffered
 
       include MsRestAzure
 
-      # @return [String] Gets the OfferName
+      # @return [String] The OfferName.
       attr_accessor :offer_name
 
-      # @return [Integer] Gets the ValueInMbps.
+      # @return [Integer] The ValueInMbps.
       attr_accessor :value_in_mbps
 
 

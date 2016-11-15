@@ -6,17 +6,17 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListNetworkInterface Api service call
+    # Response for the ListNetworkInterface API service call.
     #
     class NetworkInterfaceListResult
 
       include MsRestAzure
 
-      # @return [Array<NetworkInterface>] Gets or sets list of
-      # NetworkInterfaces in a resource group
+      # @return [Array<NetworkInterface>] A list of network interfaces in a
+      # resource group.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

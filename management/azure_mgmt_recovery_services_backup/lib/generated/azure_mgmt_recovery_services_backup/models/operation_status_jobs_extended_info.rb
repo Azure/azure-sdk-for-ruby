@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Operation status extended info for list of jobs.
+    # Operation status extended info for the job list.
     #
     class OperationStatusJobsExtendedInfo < OperationStatusExtendedInfo
 
@@ -19,7 +19,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :objectType
 
-      # @return [Array<String>] IDs of the jobs created for the protected item.
+      # @return [Array<String>] IDs of the jobs created for the backup item.
       attr_accessor :job_ids
 
       # @return [Hash{String => String}] Stores all the failed jobs along with

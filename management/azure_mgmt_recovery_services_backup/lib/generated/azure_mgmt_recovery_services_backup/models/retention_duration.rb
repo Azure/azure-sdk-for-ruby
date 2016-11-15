@@ -12,14 +12,14 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [Integer] Count of duration types. Retention duration is
-      # obtained by the counting the duration type Count times.
-      # For example, when Count = 3 and DurationType = Weeks,
-      # retention duration will be three weeks.
+      # @return [Integer] Count of the duration types. Retention duration is
+      # determined by the combining the Count times and durationType.
+      # For example, if Count = 3 and durationType = Weeks, then the retention
+      # duration is three weeks.
       attr_accessor :count
 
-      # @return [RetentionDurationType] Retention duration type of retention
-      # policy. Possible values include: 'Invalid', 'Days', 'Weeks',
+      # @return [RetentionDurationType] The retention duration type of the
+      # retention policy. Possible values include: 'Invalid', 'Days', 'Weeks',
       # 'Months', 'Years'
       attr_accessor :duration_type
 

@@ -6,13 +6,13 @@
 module Azure::ARM::Network
   module Models
     #
-    # The List Usages operation response.
+    # The list usages operation response.
     #
     class UsagesListResult
 
       include MsRestAzure
 
-      # @return [Array<Usage>] Gets or sets the list Network Resource Usages.
+      # @return [Array<Usage>] The list network resource usages.
       attr_accessor :value
 
       # @return [String] URL to get the next set of results.

@@ -23,7 +23,7 @@ module Azure::ARM::ServiceBus
     attr_reader :client
 
     #
-    # Lsit all the subscriptions under a specified topic
+    # Lsit all the subscriptions under a specified topic.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
@@ -39,7 +39,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lsit all the subscriptions under a specified topic
+    # Lsit all the subscriptions under a specified topic.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
@@ -54,7 +54,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lsit all the subscriptions under a specified topic
+    # Lsit all the subscriptions under a specified topic.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
@@ -118,14 +118,14 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Creates a topic subscription
+    # Creates a topic subscription.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param topic_name [String] The topicName name.
-    # @param subscription_name [String] The subscriptionName name.
+    # @param topic_name [String] The topic name.
+    # @param subscription_name [String] The subscription name.
     # @param parameters [SubscriptionCreateOrUpdateParameters] Parameters supplied
-    # to create a subscription Resource.
+    # to create a subscription resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -137,14 +137,14 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Creates a topic subscription
+    # Creates a topic subscription.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param topic_name [String] The topicName name.
-    # @param subscription_name [String] The subscriptionName name.
+    # @param topic_name [String] The topic name.
+    # @param subscription_name [String] The subscription name.
     # @param parameters [SubscriptionCreateOrUpdateParameters] Parameters supplied
-    # to create a subscription Resource.
+    # to create a subscription resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -155,14 +155,14 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Creates a topic subscription
+    # Creates a topic subscription.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param topic_name [String] The topicName name.
-    # @param subscription_name [String] The subscriptionName name.
+    # @param topic_name [String] The topic name.
+    # @param subscription_name [String] The subscription name.
     # @param parameters [SubscriptionCreateOrUpdateParameters] Parameters supplied
-    # to create a subscription Resource.
+    # to create a subscription resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -420,7 +420,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lsit all the subscriptions under a specified topic
+    # Lsit all the subscriptions under a specified topic.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -435,7 +435,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lsit all the subscriptions under a specified topic
+    # Lsit all the subscriptions under a specified topic.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -449,7 +449,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lsit all the subscriptions under a specified topic
+    # Lsit all the subscriptions under a specified topic.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -507,7 +507,7 @@ module Azure::ARM::ServiceBus
     end
 
     #
-    # Lsit all the subscriptions under a specified topic
+    # Lsit all the subscriptions under a specified topic.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.

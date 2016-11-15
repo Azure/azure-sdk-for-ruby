@@ -6,18 +6,18 @@
 module Azure::ARM::Network
   module Models
     #
-    # Application gateway backendhealth pool.
+    # Application gateway BackendHealth pool.
     #
     class ApplicationGatewayBackendHealthPool
 
       include MsRestAzure
 
-      # @return [ApplicationGatewayBackendAddressPool] Reference of
-      # application gateway backend address pool resource.
+      # @return [ApplicationGatewayBackendAddressPool] Reference of an
+      # ApplicationGatewayBackendAddressPool resource.
       attr_accessor :backend_address_pool
 
       # @return [Array<ApplicationGatewayBackendHealthHttpSettings>] List of
-      # application gateway backendhealth http settings.
+      # ApplicationGatewayBackendHealthHttpSettings resources.
       attr_accessor :backend_http_settings_collection
 
 

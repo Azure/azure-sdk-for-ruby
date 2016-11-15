@@ -18,13 +18,13 @@ module Azure::ARM::DevTestLabs
       # @return [String] The name given to the subnet within the lab.
       attr_accessor :lab_subnet_name
 
-      # @return [UsagePermissionType] Indicates whether this subnet can be
-      # used during virtual machine creation. Possible values include:
-      # 'Default', 'Deny', 'Allow'
+      # @return [UsagePermissionType] Indicates whether this subnet can be used
+      # during virtual machine creation. Possible values include: 'Default',
+      # 'Deny', 'Allow'
       attr_accessor :use_in_vm_creation_permission
 
-      # @return [UsagePermissionType] Indicates whether public IP addresses
-      # can be assigned to virtual machines on this subnet. Possible values
+      # @return [UsagePermissionType] Indicates whether public IP addresses can
+      # be assigned to virtual machines on this subnet. Possible values
       # include: 'Default', 'Deny', 'Allow'
       attr_accessor :use_public_ip_address_permission
 

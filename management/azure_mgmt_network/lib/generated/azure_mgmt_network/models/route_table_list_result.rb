@@ -6,17 +6,17 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListRouteTable Api service call
+    # Response for the ListRouteTable API service call.
     #
     class RouteTableListResult
 
       include MsRestAzure
 
-      # @return [Array<RouteTable>] Gets List of RouteTables in a resource
-      # group
+      # @return [Array<RouteTable>] Gets a list of route tables in a resource
+      # group.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

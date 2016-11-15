@@ -10,8 +10,8 @@ module Azure::ARM::Network
     #
     module ApplicationGatewayBackendHealthServerHealth
       Unknown = "Unknown"
-      Healthy = "Healthy"
-      Unhealthy = "Unhealthy"
+      Up = "Up"
+      Down = "Down"
       Partial = "Partial"
     end
   end

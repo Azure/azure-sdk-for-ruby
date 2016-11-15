@@ -12,10 +12,10 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
-      # @return [String] The error code returned from the server.
+      # @return [String] The error code returned when exporting the template.
       attr_accessor :code
 
-      # @return [String] The error message returned from the server.
+      # @return [String] The error message describing the export error.
       attr_accessor :message
 
       # @return [String] The target of the error.

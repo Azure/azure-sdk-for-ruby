@@ -12,7 +12,7 @@ module Azure::ARM::Resources
 
       include MsRestAzure
 
-      # @return [Array<String>] The ids of the resources.
+      # @return [Array<String>] The IDs of the resources.
       attr_accessor :resources
 
       # @return [String] The target resource group.

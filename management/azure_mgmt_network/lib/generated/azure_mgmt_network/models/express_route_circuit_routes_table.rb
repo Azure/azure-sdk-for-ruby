@@ -12,19 +12,19 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [String] network.
+      # @return [String] network
       attr_accessor :network
 
       # @return [String] nextHop
       attr_accessor :next_hop
 
-      # @return [String] locPrf.
+      # @return [String] locPrf
       attr_accessor :loc_prf
 
       # @return [Integer] weight.
       attr_accessor :weight
 
-      # @return [String] path .
+      # @return [String] path
       attr_accessor :path
 
 

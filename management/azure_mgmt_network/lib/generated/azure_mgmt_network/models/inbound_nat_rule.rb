@@ -6,65 +6,57 @@
 module Azure::ARM::Network
   module Models
     #
-    # Inbound NAT rule of the loadbalancer
+    # Inbound NAT rule of the load balancer.
     #
     class InboundNatRule < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [SubResource] Gets or sets a reference to frontend IP Addresses
+      # @return [SubResource] A reference to frontend IP addresses.
       attr_accessor :frontend_ipconfiguration
 
-      # @return [NetworkInterfaceIPConfiguration] Gets or sets a reference to
-      # a private ip address defined on a NetworkInterface of a VM. Traffic
-      # sent to frontendPort of each of the frontendIPConfigurations is
-      # forwarded to the backed IP
+      # @return [NetworkInterfaceIPConfiguration] A reference to a private IP
+      # address defined on a network interface of a VM. Traffic sent to the
+      # frontend port of each of the frontend IP configurations is forwarded
+      # to the backed IP.
       attr_accessor :backend_ipconfiguration
 
-      # @return [TransportProtocol] Gets or sets the transport protocol for
-      # the endpoint. Possible values are Udp or Tcp. Possible values
-      # include: 'Udp', 'Tcp'
+      # @return [TransportProtocol] The transport protocol for the endpoint.
+      # Possible values are: 'Udp' or 'Tcp'. Possible values include: 'Udp',
+      # 'Tcp'
       attr_accessor :protocol
 
-      # @return [Integer] Gets or sets the port for the external endpoint. You
-      # can specify any port number you choose, but the port numbers
-      # specified for each role in the service must be unique. Possible
-      # values range between 1 and 65535, inclusive
+      # @return [Integer] The port for the external endpoint. Port numbers for
+      # each Rule must be unique within the Load Balancer. Acceptable values
+      # range from 1 to 65534.
       attr_accessor :frontend_port
 
-      # @return [Integer] Gets or sets a port used for internal connections on
-      # the endpoint. The localPort attribute maps the eternal port of the
-      # endpoint to an internal port on a role. This is useful in scenarios
-      # where a role must communicate to an internal component on a port that
-      # is different from the one that is exposed externally. If not
-      # specified, the value of localPort is the same as the port attribute.
-      # Set the value of localPort to '*' to automatically assign an
-      # unallocated port that is discoverable using the runtime API
+      # @return [Integer] The port used for the internal endpoint. Acceptable
+      # values range from 1 to 65535.
       attr_accessor :backend_port
 
-      # @return [Integer] Gets or sets the timeout for the Tcp idle
-      # connection. The value can be set between 4 and 30 minutes. The
-      # default value is 4 minutes. This element is only used when the
-      # protocol is set to Tcp
+      # @return [Integer] The timeout for the TCP idle connection. The value
+      # can be set between 4 and 30 minutes. The default value is 4 minutes.
+      # This element is only used when the protocol is set to TCP.
       attr_accessor :idle_timeout_in_minutes
 
       # @return [Boolean] Configures a virtual machine's endpoint for the
       # floating IP capability required to configure a SQL AlwaysOn
-      # availability Group. This setting is required when using the SQL
-      # Always ON availability Groups in SQL server. This setting can't be
-      # changed after you create the endpoint
+      # Availability Group. This setting is required when using the SQL
+      # AlwaysOn Availability Groups in SQL server. This setting can't be
+      # changed after you create the endpoint.
       attr_accessor :enable_floating_ip
 
-      # @return [String] Gets provisioning state of the PublicIP resource
-      # Updating/Deleting/Failed
+      # @return [String] Gets the provisioning state of the public IP
+      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # resource group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

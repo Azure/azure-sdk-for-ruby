@@ -17,7 +17,7 @@ module Azure::ARM::SQL
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] The subscription id that identifies an Azure
+    # @return [String] The subscription ID that identifies an Azure
     # subscription.
     attr_accessor :subscription_id
 

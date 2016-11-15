@@ -6,7 +6,7 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Active Directory error information
+    # Active Directory error information.
     #
     class GraphError
 

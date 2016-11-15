@@ -12,13 +12,13 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
-      # @return [String] The subscription location placement Id. The Id
+      # @return [String] The subscription location placement ID. The ID
       # indicates which regions are visible for a subscription. For example,
       # a subscription with a location placement Id of Public_2014-09-01 has
       # access to Azure public regions.
       attr_accessor :location_placement_id
 
-      # @return [String] The subscription quota Id.
+      # @return [String] The subscription quota ID.
       attr_accessor :quota_id
 
       # @return [SpendingLimit] The subscription spending limit. Possible

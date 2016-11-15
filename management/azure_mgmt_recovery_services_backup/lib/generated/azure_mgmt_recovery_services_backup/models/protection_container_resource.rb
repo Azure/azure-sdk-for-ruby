@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for container with backup items. Containers with specific
+    # Base class for a container with backup items. Containers with specific
     # workloads are derived from this class.
     #
     class ProtectionContainerResource < MsRestAzure::Resource

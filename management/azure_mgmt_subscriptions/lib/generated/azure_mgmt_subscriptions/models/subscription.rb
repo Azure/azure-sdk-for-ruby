@@ -12,20 +12,21 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
-      # @return [String] The fully qualified Id. For example,
-      # /subscriptions/00000000-0000-0000-0000-000000000000.
+      # @return [String] The fully qualified ID for the subscription. For
+      # example, /subscriptions/00000000-0000-0000-0000-000000000000.
       attr_accessor :id
 
-      # @return [String] The subscription Id.
+      # @return [String] The subscription ID.
       attr_accessor :subscription_id
 
-      # @return [String] The tenant Id.
+      # @return [String] The tenant ID.
       attr_accessor :tenant_id
 
       # @return [String] The subscription display name.
       attr_accessor :display_name
 
       # @return [SubscriptionState] The subscription state. Possible values
+      # are Enabled, Warned, PastDue, Disabled, and Deleted. Possible values
       # include: 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted'
       attr_accessor :state
 

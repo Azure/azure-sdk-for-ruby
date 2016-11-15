@@ -6,27 +6,26 @@
 module Azure::ARM::SQL
   module Models
     #
-    # Start Azure SQL Server Upgrade parameters.
+    # Start Azure SQL server upgrade parameters.
     #
     class ServerUpgradeStartParameters
 
       include MsRestAzure
 
-      # @return [String] The version for the Azure SQL Server being upgraded.
+      # @return [String] The version for the Azure SQL server being upgraded.
       # Default value: '12.0' .
       attr_accessor :version
 
-      # @return [DateTime] The earliest time to upgrade the Azure SQL Server
+      # @return [DateTime] The earliest time to upgrade the Azure SQL server
       # (ISO8601 format).
       attr_accessor :schedule_upgrade_after_utc_date_time
 
       # @return [Array<RecommendedDatabaseProperties>] The collection of
-      # recommended database properties to upgrade the Azure SQL Server.
+      # recommended database properties to upgrade the Azure SQL server.
       attr_accessor :database_collection
 
-      # @return [Array<UpgradeRecommendedElasticPoolProperties>] The
-      # collection of recommended elastic pool properties to upgrade the
-      # Azure SQL Server.
+      # @return [Array<UpgradeRecommendedElasticPoolProperties>] The collection
+      # of recommended elastic pool properties to upgrade the Azure SQL server.
       attr_accessor :elastic_pool_collection
 
 

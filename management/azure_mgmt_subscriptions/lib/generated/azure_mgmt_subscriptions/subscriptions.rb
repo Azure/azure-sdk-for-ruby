@@ -5,7 +5,10 @@
 
 module Azure::ARM::Subscriptions
   #
-  # Subscriptions
+  # All resource groups and resources exist within subscriptions. These
+  # operation enable you get information about your subscriptions and
+  # tenants. A tenant is a dedicated instance of Azure Active Directory
+  # (Azure AD) for your organization.
   #
   class Subscriptions
     include Azure::ARM::Subscriptions::Models
@@ -23,9 +26,13 @@ module Azure::ARM::Subscriptions
     attr_reader :client
 
     #
-    # Gets a list of the subscription locations.
+    # Gets all available geo-locations.
     #
-    # @param subscription_id [String] Id of the subscription
+    # This operation provides all the locations that are available for resource
+    # providers; however, each resource provider may support a subset of this
+    # list.
+    #
+    # @param subscription_id [String] The ID of the target subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -37,9 +44,13 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the subscription locations.
+    # Gets all available geo-locations.
     #
-    # @param subscription_id [String] Id of the subscription
+    # This operation provides all the locations that are available for resource
+    # providers; however, each resource provider may support a subset of this
+    # list.
+    #
+    # @param subscription_id [String] The ID of the target subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -50,9 +61,13 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of the subscription locations.
+    # Gets all available geo-locations.
     #
-    # @param subscription_id [String] Id of the subscription
+    # This operation provides all the locations that are available for resource
+    # providers; however, each resource provider may support a subset of this
+    # list.
+    #
+    # @param subscription_id [String] The ID of the target subscription.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -109,9 +124,9 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets details about particular subscription.
+    # Gets details about a specified subscription.
     #
-    # @param subscription_id [String] Id of the subscription.
+    # @param subscription_id [String] The ID of the target subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -123,9 +138,9 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets details about particular subscription.
+    # Gets details about a specified subscription.
     #
-    # @param subscription_id [String] Id of the subscription.
+    # @param subscription_id [String] The ID of the target subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -136,9 +151,9 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets details about particular subscription.
+    # Gets details about a specified subscription.
     #
-    # @param subscription_id [String] Id of the subscription.
+    # @param subscription_id [String] The ID of the target subscription.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -195,7 +210,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of subscriptions.
+    # Gets all subscriptions for a tenant.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -208,7 +223,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of subscriptions.
+    # Gets all subscriptions for a tenant.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -220,7 +235,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of subscriptions.
+    # Gets all subscriptions for a tenant.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -276,7 +291,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of subscriptions.
+    # Gets all subscriptions for a tenant.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -291,7 +306,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of subscriptions.
+    # Gets all subscriptions for a tenant.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -305,7 +320,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of subscriptions.
+    # Gets all subscriptions for a tenant.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -363,7 +378,7 @@ module Azure::ARM::Subscriptions
     end
 
     #
-    # Gets a list of subscriptions.
+    # Gets all subscriptions for a tenant.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

@@ -6,17 +6,17 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListPublicIpAddresses Api service call
+    # Response for ListPublicIpAddresses API service call.
     #
     class PublicIPAddressListResult
 
       include MsRestAzure
 
-      # @return [Array<PublicIPAddress>] Gets List of publicIP addresses that
-      # exists in a resource group
+      # @return [Array<PublicIPAddress>] A list of public IP addresses that
+      # exists in a resource group.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

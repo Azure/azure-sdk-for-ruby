@@ -6,31 +6,34 @@
 module Azure::ARM::Network
   module Models
     #
-    # SSL certificates of application gateway
+    # SSL certificates of an application gateway.
     #
     class ApplicationGatewaySslCertificate < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [String] SSL Certificate data
+      # @return [String] Base-64 encoded pfx certificate. Only applicable in
+      # PUT Request.
       attr_accessor :data
 
-      # @return [String] SSL Certificate password
+      # @return [String] Password for the pfx file specified in data. Only
+      # applicable in PUT request.
       attr_accessor :password
 
-      # @return [String] SSL Certificate public data
+      # @return [String] Base-64 encoded Public cert data corresponding to pfx
+      # specified in data. Only applicable in GET request.
       attr_accessor :public_cert_data
 
-      # @return [String] Provisioning state of the ssl certificate resource
-      # Updating/Deleting/Failed
+      # @return [String] Provisioning state of the SSL certificate resource
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
-      # group. This name can be used to access the resource
+      # group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

@@ -12,17 +12,16 @@ module Azure::ARM::Features
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the name of the feature.
+      # @return [String] The name of the feature.
       attr_accessor :name
 
-      # @return [FeatureProperties] Gets or sets the properties of the
-      # previewed feature.
+      # @return [FeatureProperties] Properties of the previewed feature.
       attr_accessor :properties
 
-      # @return [String] Gets or sets the Id of the feature.
+      # @return [String] The resource ID of the feature.
       attr_accessor :id
 
-      # @return [String] Gets or sets the type of the feature.
+      # @return [String] The resource type of the feature.
       attr_accessor :type
 
 

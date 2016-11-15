@@ -12,39 +12,54 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [Array<FrontendIPConfiguration>] Gets or sets frontend IP
-      # addresses of the load balancer
+      # @return [Array<FrontendIPConfiguration>] Object representing the
+      # frontend IPs to be used for the load balancer
       attr_accessor :frontend_ipconfigurations
 
-      # @return [Array<BackendAddressPool>] Gets or sets Pools of backend IP
-      # addresses
+      # @return [Array<BackendAddressPool>] Collection of backend address
+      # pools used by a load balancer
       attr_accessor :backend_address_pools
 
-      # @return [Array<LoadBalancingRule>] Gets or sets load balancing rules
+      # @return [Array<LoadBalancingRule>] Object collection representing the
+      # load balancing rules Gets the provisioning
       attr_accessor :load_balancing_rules
 
-      # @return [Array<Probe>] Gets or sets list of Load balancer probes
+      # @return [Array<Probe>] Collection of probe objects used in the load
+      # balancer
       attr_accessor :probes
 
-      # @return [Array<InboundNatRule>] Gets or sets list of inbound rules
+      # @return [Array<InboundNatRule>] Collection of inbound NAT Rules used
+      # by a load balancer. Defining inbound NAT rules on your load balancer
+      # is mutually exclusive with defining an inbound NAT pool. Inbound NAT
+      # pools are referenced from virtual machine scale sets. NICs that are
+      # associated with individual virtual machines cannot reference an
+      # Inbound NAT pool. They have to reference individual inbound NAT rules.
       attr_accessor :inbound_nat_rules
 
-      # @return [Array<InboundNatPool>] Gets or sets inbound NAT pools
+      # @return [Array<InboundNatPool>] Defines an external port range for
+      # inbound NAT to a single backend port on NICs associated with a load
+      # balancer. Inbound NAT rules are created automatically for each NIC
+      # associated with the Load Balancer using an external port from this
+      # range. Defining an Inbound NAT pool on your Load Balancer is mutually
+      # exclusive with defining inbound Nat rules. Inbound NAT pools are
+      # referenced from virtual machine scale sets. NICs that are associated
+      # with individual virtual machines cannot reference an inbound NAT
+      # pool. They have to reference individual inbound NAT rules.
       attr_accessor :inbound_nat_pools
 
-      # @return [Array<OutboundNatRule>] Gets or sets outbound NAT rules
+      # @return [Array<OutboundNatRule>] The outbound NAT rules.
       attr_accessor :outbound_nat_rules
 
-      # @return [String] Gets or sets resource guid property of the Load
-      # balancer resource
+      # @return [String] The resource GUID property of the load balancer
+      # resource.
       attr_accessor :resource_guid
 
-      # @return [String] Gets provisioning state of the PublicIP resource
-      # Updating/Deleting/Failed
+      # @return [String] Gets the provisioning state of the PublicIP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
-      # @return [String] Gets a unique read-only string that changes whenever
-      # the resource is updated
+      # @return [String] A unique read-only string that changes whenever the
+      # resource is updated.
       attr_accessor :etag
 
 

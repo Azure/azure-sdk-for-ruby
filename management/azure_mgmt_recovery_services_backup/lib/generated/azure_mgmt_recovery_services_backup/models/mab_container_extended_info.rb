@@ -6,28 +6,28 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Additional information of the container.
+    # Additional information for the container.
     #
     class MabContainerExtendedInfo
 
       include MsRestAzure
 
-      # @return [DateTime] Time stamp when this container was refreshed.
+      # @return [DateTime] The time stamp when this container was refreshed.
       attr_accessor :last_refreshed_at
 
-      # @return [BackupItemType] Type of backup items associated with this
+      # @return [BackupItemType] The type of backup items associated with this
       # container. Possible values include: 'Invalid', 'VM', 'FileFolder',
       # 'AzureSqlDb', 'SQLDB', 'Exchange', 'Sharepoint', 'DPMUnknown'
       attr_accessor :backup_item_type
 
-      # @return [Array<String>] List of backup items associated with this
+      # @return [Array<String>] The list of backup items associated with this
       # container.
       attr_accessor :backup_items
 
-      # @return [String] Backup policy associated with this container.
+      # @return [String] The backup policy associated with this container.
       attr_accessor :policy_name
 
-      # @return [String] Latest backup status of this container.
+      # @return [String] The latest backup status of this container.
       attr_accessor :last_backup_status
 
 

@@ -6,7 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Data Protection Manager (DPM) specific backup engine.
+    # The backup engine type when Data Protection Manager (DPM) is used to
+    # manage backups.
     #
     class DpmBackupEngine < BackupEngineBase
 

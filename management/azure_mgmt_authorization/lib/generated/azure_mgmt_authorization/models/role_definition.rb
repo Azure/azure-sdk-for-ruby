@@ -12,17 +12,16 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      # @return [String] Gets or sets role definition id.
+      # @return [String] The role definition ID.
       attr_accessor :id
 
-      # @return [String] Gets or sets role definition name.
+      # @return [String] The role definition name.
       attr_accessor :name
 
-      # @return [String] Gets or sets role definition type.
+      # @return [String] The role definition type.
       attr_accessor :type
 
-      # @return [RoleDefinitionProperties] Gets or sets role definition
-      # properties.
+      # @return [RoleDefinitionProperties] Role definition properties.
       attr_accessor :properties
 
 

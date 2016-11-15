@@ -17,8 +17,8 @@ module Azure::ARM::Redis
       # etc.
       attr_accessor :redis_configuration
 
-      # @return [Boolean] If the value is true, then the non-ssl redis server
-      # port (6379) will be enabled.
+      # @return [Boolean] Specifies whether the non-ssl Redis server port
+      # (6379) is enabled.
       attr_accessor :enable_non_ssl_port
 
       # @return [Hash{String => String}] tenantSettings
@@ -29,15 +29,15 @@ module Azure::ARM::Redis
       attr_accessor :shard_count
 
       # @return [String] The full resource ID of a subnet in a virtual network
-      # to deploy the redis cache in. Example format:
+      # to deploy the Redis cache in. Example format:
       # /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
       attr_accessor :subnet_id
 
-      # @return [String] Required when deploying a redis cache inside an
-      # existing Azure Virtual Network.
+      # @return [String] Static IP address. Required when deploying a Redis
+      # cache inside an existing Azure Virtual Network.
       attr_accessor :static_ip
 
-      # @return [Sku] What sku of redis cache to deploy.
+      # @return [Sku] The SKU of the Redis cache to deploy.
       attr_accessor :sku
 
 
@@ -100,7 +100,7 @@ module Azure::ARM::Redis
               },
               redis_configuration: {
                 required: false,
-                serialized_name: 'properties.redisConfiguration',
+                serialized_name: 'properties.RedisConfiguration',
                 type: {
                   name: 'Dictionary',
                   value: {

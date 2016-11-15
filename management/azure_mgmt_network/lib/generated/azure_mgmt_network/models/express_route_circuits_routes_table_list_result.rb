@@ -7,17 +7,17 @@ module Azure::ARM::Network
   module Models
     #
     # Response for ListRoutesTable associated with the Express Route Circuits
-    # Api
+    # API.
     #
     class ExpressRouteCircuitsRoutesTableListResult
 
       include MsRestAzure
 
-      # @return [Array<ExpressRouteCircuitRoutesTable>] Gets List of
-      # RoutesTable
+      # @return [Array<ExpressRouteCircuitRoutesTable>] The list of routes
+      # table.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
 

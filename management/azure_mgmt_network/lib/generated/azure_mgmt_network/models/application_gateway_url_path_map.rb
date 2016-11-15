@@ -6,34 +6,35 @@
 module Azure::ARM::Network
   module Models
     #
-    # UrlPathMap of application gateway
+    # UrlPathMaps give a url path to the backend mapping information for
+    # PathBasedRouting.
     #
     class ApplicationGatewayUrlPathMap < MsRestAzure::SubResource
 
       include MsRestAzure
 
       # @return [SubResource] Default backend address pool resource of URL
-      # path map
+      # path map.
       attr_accessor :default_backend_address_pool
 
       # @return [SubResource] Default backend http settings resource of URL
-      # path map
+      # path map.
       attr_accessor :default_backend_http_settings
 
       # @return [Array<ApplicationGatewayPathRule>] Path rule of URL path map
-      # resource
+      # resource.
       attr_accessor :path_rules
 
       # @return [String] Provisioning state of the backend http settings
-      # resource Updating/Deleting/Failed
+      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Name of the resource that is unique within a resource
-      # group. This name can be used to access the resource
+      # group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

@@ -26,8 +26,8 @@ module Azure::ARM::SQL
       # Elastic Pool being upgraded.
       attr_accessor :dtu
 
-      # @return [Integer] The storage limit in MB for the Azure SQL
-      # Recommended Elastic Pool being upgraded.
+      # @return [Integer] The storage limit in MB for the Azure SQL Recommended
+      # Elastic Pool being upgraded.
       attr_accessor :storage_mb
 
       # @return [Integer] The DTU guarantee for database for the Azure SQL

@@ -15,7 +15,7 @@ module Azure::ARM::Resources
       # @return [String] The path of an alias.
       attr_accessor :path
 
-      # @return [Array<String>] The api versions.
+      # @return [Array<String>] The API versions.
       attr_accessor :api_versions
 
 

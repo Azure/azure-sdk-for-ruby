@@ -12,23 +12,23 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      # @return [String] PrimaryConnectionString of the created Namespace
-      # AuthorizationRule.
+      # @return [String] Primary connection string of the created namespace
+      # authorization rule.
       attr_accessor :primary_connection_string
 
-      # @return [String] SecondaryConnectionString of the created Namespace
-      # AuthorizationRule
+      # @return [String] Secondary connection string of the created namespace
+      # authorization rule.
       attr_accessor :secondary_connection_string
 
       # @return [String] A base64-encoded 256-bit primary key for signing and
-      # validating the SAS token
+      # validating the SAS token.
       attr_accessor :primary_key
 
       # @return [String] A base64-encoded 256-bit primary key for signing and
-      # validating the SAS token
+      # validating the SAS token.
       attr_accessor :secondary_key
 
-      # @return [String] A string that describes the authorization rule
+      # @return [String] A string that describes the authorization rule.
       attr_accessor :key_name
 
 

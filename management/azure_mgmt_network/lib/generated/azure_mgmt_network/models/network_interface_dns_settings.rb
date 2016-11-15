@@ -6,26 +6,36 @@
 module Azure::ARM::Network
   module Models
     #
-    # Dns settings of a network interface
+    # DNS settings of a network interface.
     #
     class NetworkInterfaceDnsSettings
 
       include MsRestAzure
 
-      # @return [Array<String>] Gets or sets list of DNS servers IP addresses
+      # @return [Array<String>] List of DNS servers IP addresses. Use
+      # 'AzureProvidedDNS' to switch to azure provided DNS resolution.
+      # 'AzureProvidedDNS' value cannot be combined with other IPs, it must
+      # be the only value in dnsServers collection.
       attr_accessor :dns_servers
 
-      # @return [Array<String>] Gets or sets list of Applied DNS servers IP
-      # addresses
+      # @return [Array<String>] If the VM that uses this NIC is part of an
+      # Availability Set, then this list will have the union of all DNS
+      # servers from all NICs that are part of the Availability Set. This
+      # property is what is configured on each of those VMs.
       attr_accessor :applied_dns_servers
 
-      # @return [String] Gets or sets the internal DNS name
+      # @return [String] Relative DNS name for this NIC used for internal
+      # communications between VMs in the same virtual network.
       attr_accessor :internal_dns_name_label
 
-      # @return [String] Gets or sets the internal fqdn.
+      # @return [String] Fully qualified DNS name supporting internal
+      # communications between VMs in the same virtual network.
       attr_accessor :internal_fqdn
 
-      # @return [String] Gets or sets internal domain name suffix of the NIC.
+      # @return [String] Even if internalDnsNameLabel is not specified, a DNS
+      # entry is created for the primary NIC of the VM. This DNS name can be
+      # constructed by concatenating the VM name with the value of
+      # internalDomainNameSuffix.
       attr_accessor :internal_domain_name_suffix
 
 

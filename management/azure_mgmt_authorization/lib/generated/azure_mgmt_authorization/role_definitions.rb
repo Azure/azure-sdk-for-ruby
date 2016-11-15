@@ -5,7 +5,12 @@
 
 module Azure::ARM::Authorization
   #
-  # RoleDefinitions
+  # Role based access control provides you a way to apply granular level
+  # policy administration down to individual resources or resource groups.
+  # These operations enable you to manage role definitions and role
+  # assignments. A role definition describes the set of actions that can be
+  # performed on resources. A role assignment grants access to Azure Active
+  # Directory users.
   #
   class RoleDefinitions
     include Azure::ARM::Authorization::Models
@@ -23,10 +28,10 @@ module Azure::ARM::Authorization
     attr_reader :client
 
     #
-    # Deletes the role definition.
+    # Deletes a role definition.
     #
-    # @param scope [String] Scope
-    # @param role_definition_id [String] Role definition id.
+    # @param scope [String] The scope of the role definition.
+    # @param role_definition_id [String] The ID of the role definition to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -38,10 +43,10 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Deletes the role definition.
+    # Deletes a role definition.
     #
-    # @param scope [String] Scope
-    # @param role_definition_id [String] Role definition id.
+    # @param scope [String] The scope of the role definition.
+    # @param role_definition_id [String] The ID of the role definition to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -52,10 +57,10 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Deletes the role definition.
+    # Deletes a role definition.
     #
-    # @param scope [String] Scope
-    # @param role_definition_id [String] Role definition id.
+    # @param scope [String] The scope of the role definition.
+    # @param role_definition_id [String] The ID of the role definition to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -116,8 +121,8 @@ module Azure::ARM::Authorization
     #
     # Get role definition by name (GUID).
     #
-    # @param scope [String] Scope
-    # @param role_definition_id [String] Role definition Id
+    # @param scope [String] The scope of the role definition.
+    # @param role_definition_id [String] The ID of the role definition.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -131,8 +136,8 @@ module Azure::ARM::Authorization
     #
     # Get role definition by name (GUID).
     #
-    # @param scope [String] Scope
-    # @param role_definition_id [String] Role definition Id
+    # @param scope [String] The scope of the role definition.
+    # @param role_definition_id [String] The ID of the role definition.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -145,8 +150,8 @@ module Azure::ARM::Authorization
     #
     # Get role definition by name (GUID).
     #
-    # @param scope [String] Scope
-    # @param role_definition_id [String] Role definition Id
+    # @param scope [String] The scope of the role definition.
+    # @param role_definition_id [String] The ID of the role definition.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -207,9 +212,9 @@ module Azure::ARM::Authorization
     #
     # Creates or updates a role definition.
     #
-    # @param scope [String] Scope
-    # @param role_definition_id [String] Role definition id.
-    # @param role_definition [RoleDefinition] Role definition.
+    # @param scope [String] The scope of the role definition.
+    # @param role_definition_id [String] The ID of the role definition.
+    # @param role_definition [RoleDefinition] The values for the role definition.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -223,9 +228,9 @@ module Azure::ARM::Authorization
     #
     # Creates or updates a role definition.
     #
-    # @param scope [String] Scope
-    # @param role_definition_id [String] Role definition id.
-    # @param role_definition [RoleDefinition] Role definition.
+    # @param scope [String] The scope of the role definition.
+    # @param role_definition_id [String] The ID of the role definition.
+    # @param role_definition [RoleDefinition] The values for the role definition.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -238,9 +243,9 @@ module Azure::ARM::Authorization
     #
     # Creates or updates a role definition.
     #
-    # @param scope [String] Scope
-    # @param role_definition_id [String] Role definition id.
-    # @param role_definition [RoleDefinition] Role definition.
+    # @param scope [String] The scope of the role definition.
+    # @param role_definition_id [String] The ID of the role definition.
+    # @param role_definition [RoleDefinition] The values for the role definition.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -309,9 +314,10 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Get role definition by name (GUID).
+    # Gets a role definition by ID.
     #
-    # @param role_definition_id [String] Fully qualified role definition Id
+    # @param role_definition_id [String] The fully qualified role definition ID to
+    # get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -323,9 +329,10 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Get role definition by name (GUID).
+    # Gets a role definition by ID.
     #
-    # @param role_definition_id [String] Fully qualified role definition Id
+    # @param role_definition_id [String] The fully qualified role definition ID to
+    # get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -336,9 +343,10 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Get role definition by name (GUID).
+    # Gets a role definition by ID.
     #
-    # @param role_definition_id [String] Fully qualified role definition Id
+    # @param role_definition_id [String] The fully qualified role definition ID to
+    # get.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -395,11 +403,11 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Get all role definitions that are applicable at scope and above. Use
-    # atScopeAndBelow filter to search below the given scope as well
+    # Get all role definitions that are applicable at scope and above.
     #
-    # @param scope [String] Scope
-    # @param filter [String] The filter to apply on the operation.
+    # @param scope [String] The scope of the role definition.
+    # @param filter [String] The filter to apply on the operation. Use
+    # atScopeAndBelow filter to search below the given scope as well.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -411,11 +419,11 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Get all role definitions that are applicable at scope and above. Use
-    # atScopeAndBelow filter to search below the given scope as well
+    # Get all role definitions that are applicable at scope and above.
     #
-    # @param scope [String] Scope
-    # @param filter [String] The filter to apply on the operation.
+    # @param scope [String] The scope of the role definition.
+    # @param filter [String] The filter to apply on the operation. Use
+    # atScopeAndBelow filter to search below the given scope as well.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -426,11 +434,11 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Get all role definitions that are applicable at scope and above. Use
-    # atScopeAndBelow filter to search below the given scope as well
+    # Get all role definitions that are applicable at scope and above.
     #
-    # @param scope [String] Scope
-    # @param filter [String] The filter to apply on the operation.
+    # @param scope [String] The scope of the role definition.
+    # @param filter [String] The filter to apply on the operation. Use
+    # atScopeAndBelow filter to search below the given scope as well.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -487,8 +495,7 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Get all role definitions that are applicable at scope and above. Use
-    # atScopeAndBelow filter to search below the given scope as well
+    # Get all role definitions that are applicable at scope and above.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -503,8 +510,7 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Get all role definitions that are applicable at scope and above. Use
-    # atScopeAndBelow filter to search below the given scope as well
+    # Get all role definitions that are applicable at scope and above.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -518,8 +524,7 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Get all role definitions that are applicable at scope and above. Use
-    # atScopeAndBelow filter to search below the given scope as well
+    # Get all role definitions that are applicable at scope and above.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -577,11 +582,11 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Get all role definitions that are applicable at scope and above. Use
-    # atScopeAndBelow filter to search below the given scope as well
+    # Get all role definitions that are applicable at scope and above.
     #
-    # @param scope [String] Scope
-    # @param filter [String] The filter to apply on the operation.
+    # @param scope [String] The scope of the role definition.
+    # @param filter [String] The filter to apply on the operation. Use
+    # atScopeAndBelow filter to search below the given scope as well.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

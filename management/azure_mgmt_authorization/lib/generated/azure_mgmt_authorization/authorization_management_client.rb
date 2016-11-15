@@ -17,12 +17,10 @@ module Azure::ARM::Authorization
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Gets subscription credentials which uniquely identify
-    # Microsoft Azure subscription. The subscription ID forms part of the URI
-    # for every service call.
+    # @return [String] The ID of the target subscription.
     attr_accessor :subscription_id
 
-    # @return [String] Client Api Version.
+    # @return [String] The API version to use for this operation.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.

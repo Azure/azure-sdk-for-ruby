@@ -6,7 +6,8 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Parameters supplied to the CreateOrUpdate  AuthorizationRules.
+    # Parameters supplied to the Create Or Update Authorization Rules
+    # operation.
     #
     class SharedAccessAuthorizationRuleCreateOrUpdateParameters
 
@@ -15,7 +16,7 @@ module Azure::ARM::ServiceBus
       # @return [String] data center location.
       attr_accessor :location
 
-      # @return [String] Name of the AuthorizationRule.
+      # @return [String] Name of the authorization rule.
       attr_accessor :name
 
       # @return [Array<AccessRights>] The rights associated with the rule.

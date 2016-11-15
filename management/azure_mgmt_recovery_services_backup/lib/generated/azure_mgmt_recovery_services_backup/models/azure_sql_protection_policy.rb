@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Azure SQL workload-specific backup policy.
+    # The Azure SQL workload-specific backup policy.
     #
     class AzureSqlProtectionPolicy < ProtectionPolicy
 
@@ -19,7 +19,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :backupManagementType
 
-      # @return [RetentionPolicy] Retention policy details.
+      # @return [RetentionPolicy] The retention policy details.
       attr_accessor :retention_policy
 
 

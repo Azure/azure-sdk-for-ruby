@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Azure IaaS VM workload-specific additional information for job.
+    # Additional information for the Azure IaaS VM workload-specific job.
     #
     class AzureIaaSVMJobExtendedInfo
 
@@ -23,7 +23,7 @@ module Azure::ARM::RecoveryServicesBackup
       # started or completed.
       attr_accessor :progress_percentage
 
-      # @return [String] Non localized error message on job execution.
+      # @return [String] Non-localized error message for job execution.
       attr_accessor :dynamic_error_message
 
 

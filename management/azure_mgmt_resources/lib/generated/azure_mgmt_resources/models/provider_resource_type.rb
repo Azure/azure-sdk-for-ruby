@@ -16,14 +16,14 @@ module Azure::ARM::Resources
       attr_accessor :resource_type
 
       # @return [Array<String>] The collection of locations where this
-      # resource type can be created in.
+      # resource type can be created.
       attr_accessor :locations
 
       # @return [Array<AliasType>] The aliases that are supported by this
       # resource type.
       attr_accessor :aliases
 
-      # @return [Array<String>] The api version.
+      # @return [Array<String>] The API version.
       attr_accessor :api_versions
 
       # @return [Hash{String => String}] The properties.

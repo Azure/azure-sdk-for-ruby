@@ -5,7 +5,7 @@
 
 module Azure::ARM::Resources
   #
-  # Deployments
+  # Provides operations for working with resources and resource groups.
   #
   class Deployments
     include Azure::ARM::Resources::Models
@@ -23,11 +23,22 @@ module Azure::ARM::Resources
     attr_reader :client
 
     #
-    # Delete deployment.
+    # Deletes a deployment from the deployment history.
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param deployment_name [String] The name of the deployment to be deleted.
+    # A template deployment that is currently running cannot be deleted. Deleting
+    # a template deployment removes the associated deployment operations.
+    # Deleting a template deployment does not affect the state of the resource
+    # group. This is an asynchronous operation that returns a status of 202 until
+    # the template deployment is successfully deleted. The Location response
+    # header contains the URI that is used to obtain the status of the process.
+    # While the process is running, a call to the URI in the Location header
+    # returns a status of 202. When the process finishes, the URI in the Location
+    # header returns a status of 204 on success. If the asynchronous request
+    # failed, the URI in the Location header returns an error-level status code.
+    #
+    # @param resource_group_name [String] The name of the resource group with the
+    # deployment to delete. The name is case insensitive.
+    # @param deployment_name [String] The name of the deployment to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -37,9 +48,9 @@ module Azure::ARM::Resources
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param deployment_name [String] The name of the deployment to be deleted.
+    # @param resource_group_name [String] The name of the resource group with the
+    # deployment to delete. The name is case insensitive.
+    # @param deployment_name [String] The name of the deployment to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -63,11 +74,11 @@ module Azure::ARM::Resources
     end
 
     #
-    # Checks whether deployment exists.
+    # Checks whether the deployment exists.
     #
-    # @param resource_group_name [String] The name of the resource group to check.
-    # The name is case insensitive.
-    # @param deployment_name [String] The name of the deployment.
+    # @param resource_group_name [String] The name of the resource group with the
+    # deployment to check. The name is case insensitive.
+    # @param deployment_name [String] The name of the deployment to check.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -79,11 +90,11 @@ module Azure::ARM::Resources
     end
 
     #
-    # Checks whether deployment exists.
+    # Checks whether the deployment exists.
     #
-    # @param resource_group_name [String] The name of the resource group to check.
-    # The name is case insensitive.
-    # @param deployment_name [String] The name of the deployment.
+    # @param resource_group_name [String] The name of the resource group with the
+    # deployment to check. The name is case insensitive.
+    # @param deployment_name [String] The name of the deployment to check.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -94,11 +105,11 @@ module Azure::ARM::Resources
     end
 
     #
-    # Checks whether deployment exists.
+    # Checks whether the deployment exists.
     #
-    # @param resource_group_name [String] The name of the resource group to check.
-    # The name is case insensitive.
-    # @param deployment_name [String] The name of the deployment.
+    # @param resource_group_name [String] The name of the resource group with the
+    # deployment to check. The name is case insensitive.
+    # @param deployment_name [String] The name of the deployment to check.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -148,10 +159,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a named template deployment using a template.
+    # Deploys resources to a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
+    # You can provide the template and parameters directly in the request or link
+    # to JSON files.
+    #
+    # @param resource_group_name [String] The name of the resource group to deploy
+    # the resources to. The name is case insensitive. The resource group must
+    # already exist.
     # @param deployment_name [String] The name of the deployment.
     # @param parameters [Deployment] Additional parameters supplied to the
     # operation.
@@ -166,8 +181,9 @@ module Azure::ARM::Resources
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
+    # @param resource_group_name [String] The name of the resource group to deploy
+    # the resources to. The name is case insensitive. The resource group must
+    # already exist.
     # @param deployment_name [String] The name of the deployment.
     # @param parameters [Deployment] Additional parameters supplied to the
     # operation.
@@ -196,11 +212,11 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a deployment.
+    # Gets a deployment.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param deployment_name [String] The name of the deployment.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param deployment_name [String] The name of the deployment to get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -212,11 +228,11 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a deployment.
+    # Gets a deployment.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param deployment_name [String] The name of the deployment.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param deployment_name [String] The name of the deployment to get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -227,11 +243,11 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a deployment.
+    # Gets a deployment.
     #
-    # @param resource_group_name [String] The name of the resource group to get.
-    # The name is case insensitive.
-    # @param deployment_name [String] The name of the deployment.
+    # @param resource_group_name [String] The name of the resource group. The name
+    # is case insensitive.
+    # @param deployment_name [String] The name of the deployment to get.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -290,11 +306,16 @@ module Azure::ARM::Resources
     end
 
     #
-    # Cancel a currently running template deployment.
+    # Cancels a currently running template deployment.
+    #
+    # You can cancel a deployment only if the provisioningState is Accepted or
+    # Running. After the deployment is canceled, the provisioningState is set to
+    # Canceled. Canceling a template deployment stops the currently running
+    # template deployment and leaves the resource group partially deployed.
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param deployment_name [String] The name of the deployment.
+    # @param deployment_name [String] The name of the deployment to cancel.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -305,11 +326,16 @@ module Azure::ARM::Resources
     end
 
     #
-    # Cancel a currently running template deployment.
+    # Cancels a currently running template deployment.
+    #
+    # You can cancel a deployment only if the provisioningState is Accepted or
+    # Running. After the deployment is canceled, the provisioningState is set to
+    # Canceled. Canceling a template deployment stops the currently running
+    # template deployment and leaves the resource group partially deployed.
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param deployment_name [String] The name of the deployment.
+    # @param deployment_name [String] The name of the deployment to cancel.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -320,11 +346,16 @@ module Azure::ARM::Resources
     end
 
     #
-    # Cancel a currently running template deployment.
+    # Cancels a currently running template deployment.
+    #
+    # You can cancel a deployment only if the provisioningState is Accepted or
+    # Running. After the deployment is canceled, the provisioningState is set to
+    # Canceled. Canceling a template deployment stops the currently running
+    # template deployment and leaves the resource group partially deployed.
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param deployment_name [String] The name of the deployment.
+    # @param deployment_name [String] The name of the deployment to cancel.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -373,12 +404,13 @@ module Azure::ARM::Resources
     end
 
     #
-    # Validate a deployment template.
+    # Validates whether the specified template is syntactically correct and will
+    # be accepted by Azure Resource Manager..
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
+    # @param resource_group_name [String] The name of the resource group the
+    # template will be deployed to. The name is case insensitive.
     # @param deployment_name [String] The name of the deployment.
-    # @param parameters [Deployment] Deployment to validate.
+    # @param parameters [Deployment] Parameters to validate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -390,12 +422,13 @@ module Azure::ARM::Resources
     end
 
     #
-    # Validate a deployment template.
+    # Validates whether the specified template is syntactically correct and will
+    # be accepted by Azure Resource Manager..
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
+    # @param resource_group_name [String] The name of the resource group the
+    # template will be deployed to. The name is case insensitive.
     # @param deployment_name [String] The name of the deployment.
-    # @param parameters [Deployment] Deployment to validate.
+    # @param parameters [Deployment] Parameters to validate.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -406,12 +439,13 @@ module Azure::ARM::Resources
     end
 
     #
-    # Validate a deployment template.
+    # Validates whether the specified template is syntactically correct and will
+    # be accepted by Azure Resource Manager..
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
+    # @param resource_group_name [String] The name of the resource group the
+    # template will be deployed to. The name is case insensitive.
     # @param deployment_name [String] The name of the deployment.
-    # @param parameters [Deployment] Deployment to validate.
+    # @param parameters [Deployment] Parameters to validate.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -490,11 +524,12 @@ module Azure::ARM::Resources
     end
 
     #
-    # Exports a deployment template.
+    # Exports the template used for specified deployment.
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param deployment_name [String] The name of the deployment.
+    # @param deployment_name [String] The name of the deployment from which to get
+    # the template.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -506,11 +541,12 @@ module Azure::ARM::Resources
     end
 
     #
-    # Exports a deployment template.
+    # Exports the template used for specified deployment.
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param deployment_name [String] The name of the deployment.
+    # @param deployment_name [String] The name of the deployment from which to get
+    # the template.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -521,11 +557,12 @@ module Azure::ARM::Resources
     end
 
     #
-    # Exports a deployment template.
+    # Exports the template used for specified deployment.
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param deployment_name [String] The name of the deployment.
+    # @param deployment_name [String] The name of the deployment from which to get
+    # the template.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -584,13 +621,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of deployments.
+    # Get all the deployments for a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group to filter
-    # by. The name is case insensitive.
-    # @param filter [String] The filter to apply on the operation.
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # deployments.
+    # @param resource_group_name [String] The name of the resource group with the
+    # deployments to get. The name is case insensitive.
+    # @param filter [String] The filter to apply on the operation. For example,
+    # you can use $filter=provisioningState eq '{state}'.
+    # @param top [Integer] The number of results to get. If null is passed,
+    # returns all deployments.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -602,13 +640,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of deployments.
+    # Get all the deployments for a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group to filter
-    # by. The name is case insensitive.
-    # @param filter [String] The filter to apply on the operation.
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # deployments.
+    # @param resource_group_name [String] The name of the resource group with the
+    # deployments to get. The name is case insensitive.
+    # @param filter [String] The filter to apply on the operation. For example,
+    # you can use $filter=provisioningState eq '{state}'.
+    # @param top [Integer] The number of results to get. If null is passed,
+    # returns all deployments.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -619,13 +658,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of deployments.
+    # Get all the deployments for a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group to filter
-    # by. The name is case insensitive.
-    # @param filter [String] The filter to apply on the operation.
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # deployments.
+    # @param resource_group_name [String] The name of the resource group with the
+    # deployments to get. The name is case insensitive.
+    # @param filter [String] The filter to apply on the operation. For example,
+    # you can use $filter=provisioningState eq '{state}'.
+    # @param top [Integer] The number of results to get. If null is passed,
+    # returns all deployments.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -683,11 +723,22 @@ module Azure::ARM::Resources
     end
 
     #
-    # Delete deployment.
+    # Deletes a deployment from the deployment history.
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param deployment_name [String] The name of the deployment to be deleted.
+    # A template deployment that is currently running cannot be deleted. Deleting
+    # a template deployment removes the associated deployment operations.
+    # Deleting a template deployment does not affect the state of the resource
+    # group. This is an asynchronous operation that returns a status of 202 until
+    # the template deployment is successfully deleted. The Location response
+    # header contains the URI that is used to obtain the status of the process.
+    # While the process is running, a call to the URI in the Location header
+    # returns a status of 202. When the process finishes, the URI in the Location
+    # header returns a status of 204 on success. If the asynchronous request
+    # failed, the URI in the Location header returns an error-level status code.
+    #
+    # @param resource_group_name [String] The name of the resource group with the
+    # deployment to delete. The name is case insensitive.
+    # @param deployment_name [String] The name of the deployment to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -698,11 +749,22 @@ module Azure::ARM::Resources
     end
 
     #
-    # Delete deployment.
+    # Deletes a deployment from the deployment history.
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param deployment_name [String] The name of the deployment to be deleted.
+    # A template deployment that is currently running cannot be deleted. Deleting
+    # a template deployment removes the associated deployment operations.
+    # Deleting a template deployment does not affect the state of the resource
+    # group. This is an asynchronous operation that returns a status of 202 until
+    # the template deployment is successfully deleted. The Location response
+    # header contains the URI that is used to obtain the status of the process.
+    # While the process is running, a call to the URI in the Location header
+    # returns a status of 202. When the process finishes, the URI in the Location
+    # header returns a status of 204 on success. If the asynchronous request
+    # failed, the URI in the Location header returns an error-level status code.
+    #
+    # @param resource_group_name [String] The name of the resource group with the
+    # deployment to delete. The name is case insensitive.
+    # @param deployment_name [String] The name of the deployment to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -713,11 +775,22 @@ module Azure::ARM::Resources
     end
 
     #
-    # Delete deployment.
+    # Deletes a deployment from the deployment history.
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param deployment_name [String] The name of the deployment to be deleted.
+    # A template deployment that is currently running cannot be deleted. Deleting
+    # a template deployment removes the associated deployment operations.
+    # Deleting a template deployment does not affect the state of the resource
+    # group. This is an asynchronous operation that returns a status of 202 until
+    # the template deployment is successfully deleted. The Location response
+    # header contains the URI that is used to obtain the status of the process.
+    # While the process is running, a call to the URI in the Location header
+    # returns a status of 202. When the process finishes, the URI in the Location
+    # header returns a status of 204 on success. If the asynchronous request
+    # failed, the URI in the Location header returns an error-level status code.
+    #
+    # @param resource_group_name [String] The name of the resource group with the
+    # deployment to delete. The name is case insensitive.
+    # @param deployment_name [String] The name of the deployment to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -766,10 +839,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a named template deployment using a template.
+    # Deploys resources to a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
+    # You can provide the template and parameters directly in the request or link
+    # to JSON files.
+    #
+    # @param resource_group_name [String] The name of the resource group to deploy
+    # the resources to. The name is case insensitive. The resource group must
+    # already exist.
     # @param deployment_name [String] The name of the deployment.
     # @param parameters [Deployment] Additional parameters supplied to the
     # operation.
@@ -784,10 +861,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a named template deployment using a template.
+    # Deploys resources to a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
+    # You can provide the template and parameters directly in the request or link
+    # to JSON files.
+    #
+    # @param resource_group_name [String] The name of the resource group to deploy
+    # the resources to. The name is case insensitive. The resource group must
+    # already exist.
     # @param deployment_name [String] The name of the deployment.
     # @param parameters [Deployment] Additional parameters supplied to the
     # operation.
@@ -801,10 +882,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Create a named template deployment using a template.
+    # Deploys resources to a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
+    # You can provide the template and parameters directly in the request or link
+    # to JSON files.
+    #
+    # @param resource_group_name [String] The name of the resource group to deploy
+    # the resources to. The name is case insensitive. The resource group must
+    # already exist.
     # @param deployment_name [String] The name of the deployment.
     # @param parameters [Deployment] Additional parameters supplied to the
     # operation.
@@ -886,7 +971,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of deployments.
+    # Get all the deployments for a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -901,7 +986,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of deployments.
+    # Get all the deployments for a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -915,7 +1000,7 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of deployments.
+    # Get all the deployments for a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -973,13 +1058,14 @@ module Azure::ARM::Resources
     end
 
     #
-    # Get a list of deployments.
+    # Get all the deployments for a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group to filter
-    # by. The name is case insensitive.
-    # @param filter [String] The filter to apply on the operation.
-    # @param top [Integer] Query parameters. If null is passed returns all
-    # deployments.
+    # @param resource_group_name [String] The name of the resource group with the
+    # deployments to get. The name is case insensitive.
+    # @param filter [String] The filter to apply on the operation. For example,
+    # you can use $filter=provisioningState eq '{state}'.
+    # @param top [Integer] The number of results to get. If null is passed,
+    # returns all deployments.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

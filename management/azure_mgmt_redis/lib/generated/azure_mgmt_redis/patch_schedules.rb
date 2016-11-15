@@ -5,7 +5,7 @@
 
 module Azure::ARM::Redis
   #
-  # REST API for Azure Redis Cache Service
+  # REST API for Azure Redis Cache Service.
   #
   class PatchSchedules
     include Azure::ARM::Redis::Models
@@ -23,12 +23,12 @@ module Azure::ARM::Redis
     attr_reader :client
 
     #
-    # Create or replace the patching schedule for redis cache.
+    # Create or replace the patching schedule for Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisPatchSchedule] Parameters to set patch schedules for
-    # redis cache.
+    # Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,12 +40,12 @@ module Azure::ARM::Redis
     end
 
     #
-    # Create or replace the patching schedule for redis cache.
+    # Create or replace the patching schedule for Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisPatchSchedule] Parameters to set patch schedules for
-    # redis cache.
+    # Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -56,12 +56,12 @@ module Azure::ARM::Redis
     end
 
     #
-    # Create or replace the patching schedule for redis cache.
+    # Create or replace the patching schedule for Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param parameters [RedisPatchSchedule] Parameters to set patch schedules for
-    # redis cache.
+    # Redis cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -130,10 +130,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Deletes the patching schedule for redis cache.
+    # Deletes the patching schedule for Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -144,10 +144,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Deletes the patching schedule for redis cache.
+    # Deletes the patching schedule for Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -158,10 +158,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Deletes the patching schedule for redis cache.
+    # Deletes the patching schedule for Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -210,10 +210,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets the patching schedule for redis cache.
+    # Gets the patching schedule for Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -225,10 +225,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets the patching schedule for redis cache.
+    # Gets the patching schedule for Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -239,10 +239,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets the patching schedule for redis cache.
+    # Gets the patching schedule for Redis cache.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the redis cache.
+    # @param name [String] The name of the Redis cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

@@ -6,73 +6,64 @@
 module Azure::ARM::Network
   module Models
     #
-    # Rules of the load balancer
+    # A loag balancing rule for a load balancer.
     #
     class LoadBalancingRule < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [SubResource] Gets or sets a reference to frontend IP Addresses
+      # @return [SubResource] A reference to frontend IP addresses.
       attr_accessor :frontend_ipconfiguration
 
-      # @return [SubResource] Gets or sets  a reference to a pool of DIPs.
-      # Inbound traffic is randomly load balanced across IPs in the backend
-      # IPs
+      # @return [SubResource] A reference to a pool of DIPs. Inbound traffic
+      # is randomly load balanced across IPs in the backend IPs.
       attr_accessor :backend_address_pool
 
-      # @return [SubResource] Gets or sets the reference of the load balancer
-      # probe used by the Load Balancing rule.
+      # @return [SubResource] The reference of the load balancer probe used by
+      # the load balancing rule.
       attr_accessor :probe
 
-      # @return [TransportProtocol] Gets or sets the transport protocol for
-      # the external endpoint. Possible values are Udp or Tcp. Possible
-      # values include: 'Udp', 'Tcp'
+      # @return [TransportProtocol] The transport protocol for the external
+      # endpoint. Possible values are 'Udp' or 'Tcp'. Possible values
+      # include: 'Udp', 'Tcp'
       attr_accessor :protocol
 
-      # @return [LoadDistribution] Gets or sets the load distribution policy
-      # for this rule. Possible values include: 'Default', 'SourceIP',
-      # 'SourceIPProtocol'
+      # @return [LoadDistribution] The load distribution policy for this rule.
+      # Possible values are 'Default', 'SourceIP', and 'SourceIPProtocol'.
+      # Possible values include: 'Default', 'SourceIP', 'SourceIPProtocol'
       attr_accessor :load_distribution
 
-      # @return [Integer] Gets or sets the port for the external endpoint. You
-      # can specify any port number you choose, but the port numbers
-      # specified for each role in the service must be unique. Possible
-      # values range between 1 and 65535, inclusive
+      # @return [Integer] The port for the external endpoint. Port numbers for
+      # each Rule must be unique within the Load Balancer. Acceptable values
+      # are between 1 and 65534.
       attr_accessor :frontend_port
 
-      # @return [Integer] Gets or sets a port used for internal connections on
-      # the endpoint. The localPort attribute maps the eternal port of the
-      # endpoint to an internal port on a role. This is useful in scenarios
-      # where a role must communicate to an internal component on a port that
-      # is different from the one that is exposed externally. If not
-      # specified, the value of localPort is the same as the port attribute.
-      # Set the value of localPort to '*' to automatically assign an
-      # unallocated port that is discoverable using the runtime API
+      # @return [Integer] The port used for internal connections on the
+      # endpoint. Acceptable values are between 1 and 65535.
       attr_accessor :backend_port
 
-      # @return [Integer] Gets or sets the timeout for the Tcp idle
-      # connection. The value can be set between 4 and 30 minutes. The
-      # default value is 4 minutes. This element is only used when the
-      # protocol is set to Tcp
+      # @return [Integer] The timeout for the TCP idle connection. The value
+      # can be set between 4 and 30 minutes. The default value is 4 minutes.
+      # This element is only used when the protocol is set to TCP.
       attr_accessor :idle_timeout_in_minutes
 
       # @return [Boolean] Configures a virtual machine's endpoint for the
       # floating IP capability required to configure a SQL AlwaysOn
-      # availability Group. This setting is required when using the SQL
-      # Always ON availability Groups in SQL server. This setting can't be
-      # changed after you create the endpoint
+      # Availability Group. This setting is required when using the SQL
+      # AlwaysOn Availability Groups in SQL server. This setting can't be
+      # changed after you create the endpoint.
       attr_accessor :enable_floating_ip
 
-      # @return [String] Gets provisioning state of the PublicIP resource
-      # Updating/Deleting/Failed
+      # @return [String] Gets the provisioning state of the PublicIP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] The name of the resource that is unique within a
+      # resource group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

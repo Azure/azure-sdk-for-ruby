@@ -17,7 +17,7 @@ module Azure::ARM::PowerBiEmbedded
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Gets subscription credentials which uniquely identify
+    # @return [String] Gets subscription credentials which uniquely identify a
     # Microsoft Azure subscription. The subscription ID forms part of the URI
     # for every service call.
     attr_accessor :subscription_id

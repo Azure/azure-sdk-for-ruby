@@ -6,17 +6,20 @@
 module Azure::ARM::AnalysisServices
   module Models
     #
-    # Represents the SKU name and tier for Analysis Services resource
+    # Represents the SKU name and Azure pricing tier for Analysis Services
+    # resource.
     #
     class ResourceSku
 
       include MsRestAzure
 
-      # @return [SkuName] Name of the Sku level for the server being
-      # provisioned. Possible values include: 'S1', 'S2', 'S4', 'D1'
+      # @return [SkuName] Name of the SKU level for the server being
+      # provisioned. Possible values are: 'S1', 'S2', 'S4', and 'D1'. Possible
+      # values include: 'S1', 'S2', 'S4', 'D1'
       attr_accessor :name
 
-      # @return [SkuTier] Name of the tier to which the Sku applies. Possible
+      # @return [SkuTier] The name of the Azure pricing tier to which the SKU
+      # applies. Possible values are: 'Development' and 'Standard'. Possible
       # values include: 'Development', 'Standard'
       attr_accessor :tier
 

@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # List of WorkloadProtectableItem resources
+    # The list of WorkloadProtectableItem resources.
     #
     class WorkloadProtectableItemResourceList < ResourceList
 

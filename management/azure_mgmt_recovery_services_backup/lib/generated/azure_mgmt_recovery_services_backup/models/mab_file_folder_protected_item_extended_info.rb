@@ -6,20 +6,21 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Additional information on the backed up item.
+    # Additional information for the backup item.
     #
     class MabFileFolderProtectedItemExtendedInfo
 
       include MsRestAzure
 
-      # @return [DateTime] Last time when the agent data synced to service.
+      # @return [DateTime] The last day and time the agent synced with the
+      # service.
       attr_accessor :last_refreshed_at
 
       # @return [DateTime] The oldest backup copy available.
       attr_accessor :oldest_recovery_point
 
-      # @return [Integer] Number of backup copies associated with the backup
-      # item.
+      # @return [Integer] The number of backup copies associated with the
+      # backup item.
       attr_accessor :recovery_point_count
 
 

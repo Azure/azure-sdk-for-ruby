@@ -12,20 +12,22 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [Boolean] Identifies whether this backup copy represents an
+      # @return [Boolean] Identifies whether the backup copy represents an
       # encrypted VM at the time of backup.
       attr_accessor :encryption_enabled
 
-      # @return [String] Key Url.
+      # @return [String] URL of the Key Encryption Key (KEK).
       attr_accessor :kek_url
 
-      # @return [String] Secret Url.
+      # @return [String] URL of the Bitlocker Encryption Key (BEK).
       attr_accessor :secret_key_url
 
-      # @return [String] ID of Key Vault where KEK is stored.
+      # @return [String] The ID of Key Vault where the Key Encryption Key (KEK)
+      # is stored.
       attr_accessor :kek_vault_id
 
-      # @return [String] ID of Key Vault where Secret is stored.
+      # @return [String] The ID of Key Vault where the Bitlocker Encryption Key
+      # (BEK), or Secret, is stored.
       attr_accessor :secret_key_vault_id
 
 

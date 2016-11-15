@@ -12,22 +12,22 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the provider id.
+      # @return [String] The provider id.
       attr_accessor :id
 
-      # @return [String] Gets or sets the provider name
+      # @return [String] The provider name.
       attr_accessor :name
 
-      # @return [String] Gets or sets the provider type
+      # @return [String] The provider type.
       attr_accessor :type
 
-      # @return [String] Gets or sets the provider display name
+      # @return [String] The provider display name.
       attr_accessor :display_name
 
-      # @return [Array<ResourceType>] Gets or sets the provider resource types
+      # @return [Array<ResourceType>] The provider resource types
       attr_accessor :resource_types
 
-      # @return [Array<ProviderOperation>] Gets or sets the provider operations
+      # @return [Array<ProviderOperation>] The provider operations.
       attr_accessor :operations
 
 

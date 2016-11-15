@@ -15,9 +15,8 @@ module Azure::ARM::SQL
       # @return [DateTime] The time of metric (ISO8601 format).
       attr_accessor :date_time
 
-      # @return [Float] Gets or sets the DTUs (Database Transaction Units).
-      # See
-      # https://azure.microsoft.com/en-us/documentation/articles/sql-database-what-is-a-dtu/
+      # @return [Float] Gets or sets the DTUs (Database Transaction Units). See
+      # https://azure.microsoft.com/documentation/articles/sql-database-what-is-a-dtu/
       attr_accessor :dtu
 
       # @return [Float] Gets or sets size in gigabytes.

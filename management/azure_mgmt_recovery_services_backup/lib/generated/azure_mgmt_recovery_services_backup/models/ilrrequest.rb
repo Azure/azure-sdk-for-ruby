@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Parameters to restore file/folders API.
+    # Parameters to restore file or folders API.
     #
     class ILRRequest
 

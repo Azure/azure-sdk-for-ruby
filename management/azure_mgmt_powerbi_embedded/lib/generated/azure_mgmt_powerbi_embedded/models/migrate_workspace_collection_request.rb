@@ -12,8 +12,8 @@ module Azure::ARM::PowerBiEmbedded
 
       include MsRestAzure
 
-      # @return [String] Name of the resource group that the Power BI
-      # Workspace Collections will be migrated to.
+      # @return [String] Name of the resource group the Power BI workspace
+      # collections will be migrated to.
       attr_accessor :target_resource_group
 
       # @return [Array<String>]

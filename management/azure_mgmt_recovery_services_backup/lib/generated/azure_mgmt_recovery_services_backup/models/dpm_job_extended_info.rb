@@ -19,7 +19,7 @@ module Azure::ARM::RecoveryServicesBackup
       # @return [Hash{String => String}] The job properties.
       attr_accessor :property_bag
 
-      # @return [String] Non localized error message on job execution.
+      # @return [String] Non-localized error message on job execution.
       attr_accessor :dynamic_error_message
 
 

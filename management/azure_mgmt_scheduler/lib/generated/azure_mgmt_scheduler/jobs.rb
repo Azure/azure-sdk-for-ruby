@@ -516,7 +516,8 @@ module Azure::ARM::Scheduler
     #
     # @param resource_group_name [String] The resource group name.
     # @param job_collection_name [String] The job collection name.
-    # @param top [Integer] The number of jobs to request, in the of range [1..100].
+    # @param top [Integer] The number of jobs to request, in the of range of
+    # [1..100].
     # @param skip [Integer] The (0-based) index of the job history list from which
     # to begin requesting entries.
     # @param filter [String] The filter to apply on the job state.
@@ -535,7 +536,8 @@ module Azure::ARM::Scheduler
     #
     # @param resource_group_name [String] The resource group name.
     # @param job_collection_name [String] The job collection name.
-    # @param top [Integer] The number of jobs to request, in the of range [1..100].
+    # @param top [Integer] The number of jobs to request, in the of range of
+    # [1..100].
     # @param skip [Integer] The (0-based) index of the job history list from which
     # to begin requesting entries.
     # @param filter [String] The filter to apply on the job state.
@@ -553,7 +555,8 @@ module Azure::ARM::Scheduler
     #
     # @param resource_group_name [String] The resource group name.
     # @param job_collection_name [String] The job collection name.
-    # @param top [Integer] The number of jobs to request, in the of range [1..100].
+    # @param top [Integer] The number of jobs to request, in the of range of
+    # [1..100].
     # @param skip [Integer] The (0-based) index of the job history list from which
     # to begin requesting entries.
     # @param filter [String] The filter to apply on the job state.
@@ -620,7 +623,7 @@ module Azure::ARM::Scheduler
     # @param resource_group_name [String] The resource group name.
     # @param job_collection_name [String] The job collection name.
     # @param job_name [String] The job name.
-    # @param top [Integer] the number of job history to request, in the of range
+    # @param top [Integer] the number of job history to request, in the of range of
     # [1..100].
     # @param skip [Integer] The (0-based) index of the job history list from which
     # to begin requesting entries.
@@ -641,7 +644,7 @@ module Azure::ARM::Scheduler
     # @param resource_group_name [String] The resource group name.
     # @param job_collection_name [String] The job collection name.
     # @param job_name [String] The job name.
-    # @param top [Integer] the number of job history to request, in the of range
+    # @param top [Integer] the number of job history to request, in the of range of
     # [1..100].
     # @param skip [Integer] The (0-based) index of the job history list from which
     # to begin requesting entries.
@@ -661,7 +664,7 @@ module Azure::ARM::Scheduler
     # @param resource_group_name [String] The resource group name.
     # @param job_collection_name [String] The job collection name.
     # @param job_name [String] The job name.
-    # @param top [Integer] the number of job history to request, in the of range
+    # @param top [Integer] the number of job history to request, in the of range of
     # [1..100].
     # @param skip [Integer] The (0-based) index of the job history list from which
     # to begin requesting entries.
@@ -727,8 +730,8 @@ module Azure::ARM::Scheduler
     #
     # Lists all jobs under the specified job collection.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -742,8 +745,8 @@ module Azure::ARM::Scheduler
     #
     # Lists all jobs under the specified job collection.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -756,8 +759,8 @@ module Azure::ARM::Scheduler
     #
     # Lists all jobs under the specified job collection.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -814,8 +817,8 @@ module Azure::ARM::Scheduler
     #
     # Lists job history.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -829,8 +832,8 @@ module Azure::ARM::Scheduler
     #
     # Lists job history.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -843,8 +846,8 @@ module Azure::ARM::Scheduler
     #
     # Lists job history.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -903,7 +906,8 @@ module Azure::ARM::Scheduler
     #
     # @param resource_group_name [String] The resource group name.
     # @param job_collection_name [String] The job collection name.
-    # @param top [Integer] The number of jobs to request, in the of range [1..100].
+    # @param top [Integer] The number of jobs to request, in the of range of
+    # [1..100].
     # @param skip [Integer] The (0-based) index of the job history list from which
     # to begin requesting entries.
     # @param filter [String] The filter to apply on the job state.
@@ -929,7 +933,7 @@ module Azure::ARM::Scheduler
     # @param resource_group_name [String] The resource group name.
     # @param job_collection_name [String] The job collection name.
     # @param job_name [String] The job name.
-    # @param top [Integer] the number of job history to request, in the of range
+    # @param top [Integer] the number of job history to request, in the of range of
     # [1..100].
     # @param skip [Integer] The (0-based) index of the job history list from which
     # to begin requesting entries.

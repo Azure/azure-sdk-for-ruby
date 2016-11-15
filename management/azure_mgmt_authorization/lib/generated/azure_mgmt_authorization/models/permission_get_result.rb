@@ -12,11 +12,10 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      # @return [Array<Permission>] Gets or sets permissions.
+      # @return [Array<Permission>] An array of permissions.
       attr_accessor :value
 
-      # @return [String] Gets or sets the URL to get the next set of
-      # permissions results.
+      # @return [String] The URL to use for getting the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

@@ -26,8 +26,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The delete peering operation deletes the specified peering from the
-    # ExpressRouteCircuit.
+    # Deletes the specified peering from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -67,8 +66,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The GET peering operation retrieves the specified authorization from the
-    # ExpressRouteCircuit.
+    # Gets the specified authorization from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -84,8 +82,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The GET peering operation retrieves the specified authorization from the
-    # ExpressRouteCircuit.
+    # Gets the specified authorization from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -100,8 +97,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The GET peering operation retrieves the specified authorization from the
-    # ExpressRouteCircuit.
+    # Gets the specified authorization from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -165,14 +161,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Peering operation creates/updates an peering in the specified
-    # ExpressRouteCircuits
+    # Creates or updates a peering in the specified express route circuits.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param peering_parameters [ExpressRouteCircuitPeering] Parameters supplied
-    # to the create/update ExpressRouteCircuit Peering operation
+    # to the create or update express route circuit peering operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -188,7 +183,7 @@ module Azure::ARM::Network
     # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param peering_parameters [ExpressRouteCircuitPeering] Parameters supplied
-    # to the create/update ExpressRouteCircuit Peering operation
+    # to the create or update express route circuit peering operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -214,11 +209,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The List peering operation retrieves all the peerings in an
-    # ExpressRouteCircuit.
+    # Gets all peerings in a specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -230,11 +224,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The List peering operation retrieves all the peerings in an
-    # ExpressRouteCircuit.
+    # Gets all peerings in a specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -245,11 +238,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The List peering operation retrieves all the peerings in an
-    # ExpressRouteCircuit.
+    # Gets all peerings in a specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -308,8 +300,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete peering operation deletes the specified peering from the
-    # ExpressRouteCircuit.
+    # Deletes the specified peering from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -324,8 +315,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete peering operation deletes the specified peering from the
-    # ExpressRouteCircuit.
+    # Deletes the specified peering from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -340,8 +330,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete peering operation deletes the specified peering from the
-    # ExpressRouteCircuit.
+    # Deletes the specified peering from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -395,14 +384,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Peering operation creates/updates an peering in the specified
-    # ExpressRouteCircuits
+    # Creates or updates a peering in the specified express route circuits.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param peering_parameters [ExpressRouteCircuitPeering] Parameters supplied
-    # to the create/update ExpressRouteCircuit Peering operation
+    # to the create or update express route circuit peering operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -414,14 +402,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Peering operation creates/updates an peering in the specified
-    # ExpressRouteCircuits
+    # Creates or updates a peering in the specified express route circuits.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param peering_parameters [ExpressRouteCircuitPeering] Parameters supplied
-    # to the create/update ExpressRouteCircuit Peering operation
+    # to the create or update express route circuit peering operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -432,14 +419,13 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Peering operation creates/updates an peering in the specified
-    # ExpressRouteCircuits
+    # Creates or updates a peering in the specified express route circuits.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
     # @param peering_name [String] The name of the peering.
     # @param peering_parameters [ExpressRouteCircuitPeering] Parameters supplied
-    # to the create/update ExpressRouteCircuit Peering operation
+    # to the create or update express route circuit peering operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -519,8 +505,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List peering operation retrieves all the peerings in an
-    # ExpressRouteCircuit.
+    # Gets all peerings in a specified express route circuit.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -535,8 +520,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List peering operation retrieves all the peerings in an
-    # ExpressRouteCircuit.
+    # Gets all peerings in a specified express route circuit.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -550,8 +534,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List peering operation retrieves all the peerings in an
-    # ExpressRouteCircuit.
+    # Gets all peerings in a specified express route circuit.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -609,11 +592,10 @@ module Azure::ARM::Network
     end
 
     #
-    # The List peering operation retrieves all the peerings in an
-    # ExpressRouteCircuit.
+    # Gets all peerings in a specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param circuit_name [String] The name of the circuit.
+    # @param circuit_name [String] The name of the express route circuit.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

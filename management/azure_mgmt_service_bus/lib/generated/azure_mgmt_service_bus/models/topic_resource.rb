@@ -6,14 +6,14 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # Description of topic Resource.
+    # Description of topic resource.
     #
     class TopicResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [DateTime] Last time the message was sent or a request was
-      # received for this topic.
+      # @return [DateTime] Last time the message was sent, or a request was
+      # received, for this topic.
       attr_accessor :accessed_at
 
       # @return [String] TimeSpan idle interval after which the topic is
@@ -38,11 +38,11 @@ module Azure::ARM::ServiceBus
       attr_accessor :default_message_time_to_live
 
       # @return [String] TimeSpan structure that defines the duration of the
-      # duplicate detection history. The default value is 10 minutes..
+      # duplicate detection history. The default value is 10 minutes.
       attr_accessor :duplicate_detection_history_time_window
 
       # @return [Boolean] Value that indicates whether server-side batched
-      # operations are enabled..
+      # operations are enabled.
       attr_accessor :enable_batched_operations
 
       # @return [Boolean] Value that indicates whether Express Entities are
@@ -55,7 +55,7 @@ module Azure::ARM::ServiceBus
       attr_accessor :enable_partitioning
 
       # @return [Boolean] Value that indicates whether partitioning is enabled
-      # or disabled..
+      # or disabled.
       attr_accessor :enable_subscription_partitioning
 
       # @return [Boolean] Whether messages should be filtered before
@@ -63,21 +63,21 @@ module Azure::ARM::ServiceBus
       attr_accessor :filtering_messages_before_publishing
 
       # @return [Boolean] Value that indicates whether the message is
-      # anonymous accessible.
+      # accessible anonymously.
       attr_accessor :is_anonymous_accessible
 
       # @return [Boolean]
       attr_accessor :is_express
 
       # @return [Integer] Maximum size of the topic in megabytes, which is the
-      # size of memory allocated for the topic.
+      # size of the memory allocated for the topic.
       attr_accessor :max_size_in_megabytes
 
       # @return [Boolean] Value indicating if this topic requires duplicate
       # detection.
       attr_accessor :requires_duplicate_detection
 
-      # @return [Integer] Size of the topic in bytes.
+      # @return [Integer] Size of the topic, in bytes.
       attr_accessor :size_in_bytes
 
       # @return [EntityStatus] Enumerates the possible values for the status
@@ -93,7 +93,7 @@ module Azure::ARM::ServiceBus
       # ordering.
       attr_accessor :support_ordering
 
-      # @return [DateTime] The exact time the message has been updated.
+      # @return [DateTime] The exact time the message was updated.
       attr_accessor :updated_at
 
 

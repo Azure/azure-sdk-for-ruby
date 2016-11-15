@@ -12,7 +12,7 @@ module Azure::ARM::Subscriptions
 
       include MsRestAzure
 
-      # @return [Array<Location>] The locations.
+      # @return [Array<Location>] An array of locations.
       attr_accessor :value
 
 

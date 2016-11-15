@@ -26,8 +26,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The delete authorization operation deletes the specified authorization from
-    # the specified ExpressRouteCircuit.
+    # Deletes the specified authorization from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -67,8 +66,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The GET authorization operation retrieves the specified authorization from
-    # the specified ExpressRouteCircuit.
+    # Gets the specified authorization from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -84,8 +82,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The GET authorization operation retrieves the specified authorization from
-    # the specified ExpressRouteCircuit.
+    # Gets the specified authorization from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -100,8 +97,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The GET authorization operation retrieves the specified authorization from
-    # the specified ExpressRouteCircuit.
+    # Gets the specified authorization from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -165,15 +161,14 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Authorization operation creates/updates an authorization in the
-    # specified ExpressRouteCircuits
+    # Creates or updates an authorization in the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
     # @param authorization_name [String] The name of the authorization.
     # @param authorization_parameters [ExpressRouteCircuitAuthorization]
-    # Parameters supplied to the create/update ExpressRouteCircuitAuthorization
-    # operation
+    # Parameters supplied to the create or update express route circuit
+    # authorization operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -189,8 +184,8 @@ module Azure::ARM::Network
     # @param circuit_name [String] The name of the express route circuit.
     # @param authorization_name [String] The name of the authorization.
     # @param authorization_parameters [ExpressRouteCircuitAuthorization]
-    # Parameters supplied to the create/update ExpressRouteCircuitAuthorization
-    # operation
+    # Parameters supplied to the create or update express route circuit
+    # authorization operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -216,8 +211,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List authorization operation retrieves all the authorizations in an
-    # ExpressRouteCircuit.
+    # Gets all authorizations in an express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.
@@ -232,8 +226,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List authorization operation retrieves all the authorizations in an
-    # ExpressRouteCircuit.
+    # Gets all authorizations in an express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.
@@ -247,8 +240,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List authorization operation retrieves all the authorizations in an
-    # ExpressRouteCircuit.
+    # Gets all authorizations in an express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.
@@ -310,8 +302,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete authorization operation deletes the specified authorization from
-    # the specified ExpressRouteCircuit.
+    # Deletes the specified authorization from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -326,8 +317,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete authorization operation deletes the specified authorization from
-    # the specified ExpressRouteCircuit.
+    # Deletes the specified authorization from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -342,8 +332,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete authorization operation deletes the specified authorization from
-    # the specified ExpressRouteCircuit.
+    # Deletes the specified authorization from the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
@@ -397,15 +386,14 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Authorization operation creates/updates an authorization in the
-    # specified ExpressRouteCircuits
+    # Creates or updates an authorization in the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
     # @param authorization_name [String] The name of the authorization.
     # @param authorization_parameters [ExpressRouteCircuitAuthorization]
-    # Parameters supplied to the create/update ExpressRouteCircuitAuthorization
-    # operation
+    # Parameters supplied to the create or update express route circuit
+    # authorization operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -417,15 +405,14 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Authorization operation creates/updates an authorization in the
-    # specified ExpressRouteCircuits
+    # Creates or updates an authorization in the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
     # @param authorization_name [String] The name of the authorization.
     # @param authorization_parameters [ExpressRouteCircuitAuthorization]
-    # Parameters supplied to the create/update ExpressRouteCircuitAuthorization
-    # operation
+    # Parameters supplied to the create or update express route circuit
+    # authorization operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -436,15 +423,14 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put Authorization operation creates/updates an authorization in the
-    # specified ExpressRouteCircuits
+    # Creates or updates an authorization in the specified express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the express route circuit.
     # @param authorization_name [String] The name of the authorization.
     # @param authorization_parameters [ExpressRouteCircuitAuthorization]
-    # Parameters supplied to the create/update ExpressRouteCircuitAuthorization
-    # operation
+    # Parameters supplied to the create or update express route circuit
+    # authorization operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -524,8 +510,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List authorization operation retrieves all the authorizations in an
-    # ExpressRouteCircuit.
+    # Gets all authorizations in an express route circuit.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -540,8 +525,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List authorization operation retrieves all the authorizations in an
-    # ExpressRouteCircuit.
+    # Gets all authorizations in an express route circuit.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -555,8 +539,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List authorization operation retrieves all the authorizations in an
-    # ExpressRouteCircuit.
+    # Gets all authorizations in an express route circuit.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -614,8 +597,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List authorization operation retrieves all the authorizations in an
-    # ExpressRouteCircuit.
+    # Gets all authorizations in an express route circuit.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param circuit_name [String] The name of the circuit.

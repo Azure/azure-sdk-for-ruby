@@ -6,21 +6,20 @@
 module Azure::ARM::Network
   module Models
     #
-    # Effective NetworkSecurityGroup
+    # Effective network security group.
     #
     class EffectiveNetworkSecurityGroup
 
       include MsRestAzure
 
-      # @return [SubResource] Gets the id of network security group that is
-      # applied
+      # @return [SubResource] The ID of network security group that is applied.
       attr_accessor :network_security_group
 
       # @return [EffectiveNetworkSecurityGroupAssociation]
       attr_accessor :association
 
-      # @return [Array<EffectiveNetworkSecurityRule>] Gets collection of
-      # effective security rules
+      # @return [Array<EffectiveNetworkSecurityRule>] A collection of
+      # effective security rules.
       attr_accessor :effective_security_rules
 
 

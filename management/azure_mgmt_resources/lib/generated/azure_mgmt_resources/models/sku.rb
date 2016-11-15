@@ -6,28 +6,28 @@
 module Azure::ARM::Resources
   module Models
     #
-    # Sku for the resource.
+    # SKU for the resource.
     #
     class Sku
 
       include MsRestAzure
 
-      # @return [String] The sku name.
+      # @return [String] The SKU name.
       attr_accessor :name
 
-      # @return [String] The sku tier.
+      # @return [String] The SKU tier.
       attr_accessor :tier
 
-      # @return [String] The sku size.
+      # @return [String] The SKU size.
       attr_accessor :size
 
-      # @return [String] The sku family.
+      # @return [String] The SKU family.
       attr_accessor :family
 
-      # @return [String] The sku model.
+      # @return [String] The SKU model.
       attr_accessor :model
 
-      # @return [Integer] The sku capacity.
+      # @return [Integer] The SKU capacity.
       attr_accessor :capacity
 
 

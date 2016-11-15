@@ -6,35 +6,33 @@
 module Azure::ARM::Network
   module Models
     #
-    # Outbound NAT pool of the load balancer
+    # Outbound NAT pool of the load balancer.
     #
     class OutboundNatRule < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [Integer] Gets or sets the number of outbound ports to be used
-      # for SNAT
+      # @return [Integer] The number of outbound ports to be used for NAT.
       attr_accessor :allocated_outbound_ports
 
-      # @return [Array<SubResource>] Gets or sets Frontend IP addresses of the
-      # load balancer
+      # @return [Array<SubResource>] The Frontend IP addresses of the load
+      # balancer.
       attr_accessor :frontend_ipconfigurations
 
-      # @return [SubResource] Gets or sets a reference to a pool of DIPs.
-      # Outbound traffic is randomly load balanced across IPs in the backend
-      # IPs
+      # @return [SubResource] A reference to a pool of DIPs. Outbound traffic
+      # is randomly load balanced across IPs in the backend IPs.
       attr_accessor :backend_address_pool
 
-      # @return [String] Gets provisioning state of the PublicIP resource
-      # Updating/Deleting/Failed
+      # @return [String] Gets the provisioning state of the PublicIP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] The name of the resource that is unique within a
+      # resource group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

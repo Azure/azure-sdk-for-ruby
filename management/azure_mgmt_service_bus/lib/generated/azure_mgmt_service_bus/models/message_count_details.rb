@@ -16,10 +16,10 @@ module Azure::ARM::ServiceBus
       # subscription.
       attr_accessor :active_message_count
 
-      # @return [Integer] Number of messages that are dead letters.
+      # @return [Integer] Number of messages that are dead lettered.
       attr_accessor :dead_letter_message_count
 
-      # @return [Integer] Number scheduled messages.
+      # @return [Integer] Number of scheduled messages.
       attr_accessor :scheduled_message_count
 
       # @return [Integer] Number of messages transferred into dead letters.

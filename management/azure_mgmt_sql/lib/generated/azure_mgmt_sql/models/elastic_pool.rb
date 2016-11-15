@@ -36,8 +36,8 @@ module Azure::ARM::SQL
       # guaranteed.
       attr_accessor :database_dtu_min
 
-      # @return [Integer] Gets storage limit for the SQL Azure Database
-      # Elastic Pool in MB.
+      # @return [Integer] Gets storage limit for the SQL Azure Database Elastic
+      # Pool in MB.
       attr_accessor :storage_mb
 
 

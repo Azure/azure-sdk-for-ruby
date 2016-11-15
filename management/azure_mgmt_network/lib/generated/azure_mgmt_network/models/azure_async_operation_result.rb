@@ -19,7 +19,8 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [NetworkOperationStatus] Status of the AzureAsuncOperation.
+      # @return [NetworkOperationStatus] Status of the Azure async operation.
+      # Possible values are: 'InProgress', 'Succeeded', and 'Failed'.
       # Possible values include: 'InProgress', 'Succeeded', 'Failed'
       attr_accessor :status
 

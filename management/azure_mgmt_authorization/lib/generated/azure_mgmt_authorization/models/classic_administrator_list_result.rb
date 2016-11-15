@@ -12,12 +12,10 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      # @return [Array<ClassicAdministrator>] Gets or sets
-      # ClassicAdministrators.
+      # @return [Array<ClassicAdministrator>] An array of administrators.
       attr_accessor :value
 
-      # @return [String] Gets or sets the URL to get the next set of classic
-      # administrators results.
+      # @return [String] The URL to use for getting the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

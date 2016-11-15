@@ -5,7 +5,8 @@
 
 module Azure::ARM::Policy
   #
-  # PolicyAssignments
+  # To manage and control access to your resources, you can define customized
+  # policies and assign them at a scope.
   #
   class PolicyAssignments
     include Azure::ARM::Policy::Models
@@ -23,10 +24,11 @@ module Azure::ARM::Policy
     attr_reader :client
 
     #
-    # Delete policy assignment.
+    # Deletes a policy assignment.
     #
-    # @param scope [String] Scope of the policy assignment.
-    # @param policy_assignment_name [String] Policy assignment name.
+    # @param scope [String] The scope of the policy assignment.
+    # @param policy_assignment_name [String] The name of the policy assignment to
+    # delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -38,10 +40,11 @@ module Azure::ARM::Policy
     end
 
     #
-    # Delete policy assignment.
+    # Deletes a policy assignment.
     #
-    # @param scope [String] Scope of the policy assignment.
-    # @param policy_assignment_name [String] Policy assignment name.
+    # @param scope [String] The scope of the policy assignment.
+    # @param policy_assignment_name [String] The name of the policy assignment to
+    # delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -52,10 +55,11 @@ module Azure::ARM::Policy
     end
 
     #
-    # Delete policy assignment.
+    # Deletes a policy assignment.
     #
-    # @param scope [String] Scope of the policy assignment.
-    # @param policy_assignment_name [String] Policy assignment name.
+    # @param scope [String] The scope of the policy assignment.
+    # @param policy_assignment_name [String] The name of the policy assignment to
+    # delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -114,11 +118,15 @@ module Azure::ARM::Policy
     end
 
     #
-    # Create policy assignment.
+    # Creates a policy assignment.
     #
-    # @param scope [String] Scope of the policy assignment.
-    # @param policy_assignment_name [String] Policy assignment name.
-    # @param parameters [PolicyAssignment] Policy assignment.
+    # Policy assignments are inherited by child resources. For example, when you
+    # apply a policy to a resource group that policy is assigned to all resources
+    # in the group.
+    #
+    # @param scope [String] The scope of the policy assignment.
+    # @param policy_assignment_name [String] The name of the policy assignment.
+    # @param parameters [PolicyAssignment] Parameters for the policy assignment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -130,11 +138,15 @@ module Azure::ARM::Policy
     end
 
     #
-    # Create policy assignment.
+    # Creates a policy assignment.
     #
-    # @param scope [String] Scope of the policy assignment.
-    # @param policy_assignment_name [String] Policy assignment name.
-    # @param parameters [PolicyAssignment] Policy assignment.
+    # Policy assignments are inherited by child resources. For example, when you
+    # apply a policy to a resource group that policy is assigned to all resources
+    # in the group.
+    #
+    # @param scope [String] The scope of the policy assignment.
+    # @param policy_assignment_name [String] The name of the policy assignment.
+    # @param parameters [PolicyAssignment] Parameters for the policy assignment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -145,11 +157,15 @@ module Azure::ARM::Policy
     end
 
     #
-    # Create policy assignment.
+    # Creates a policy assignment.
     #
-    # @param scope [String] Scope of the policy assignment.
-    # @param policy_assignment_name [String] Policy assignment name.
-    # @param parameters [PolicyAssignment] Policy assignment.
+    # Policy assignments are inherited by child resources. For example, when you
+    # apply a policy to a resource group that policy is assigned to all resources
+    # in the group.
+    #
+    # @param scope [String] The scope of the policy assignment.
+    # @param policy_assignment_name [String] The name of the policy assignment.
+    # @param parameters [PolicyAssignment] Parameters for the policy assignment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -218,10 +234,11 @@ module Azure::ARM::Policy
     end
 
     #
-    # Get single policy assignment.
+    # Gets a policy assignment.
     #
-    # @param scope [String] Scope of the policy assignment.
-    # @param policy_assignment_name [String] Policy assignment name.
+    # @param scope [String] The scope of the policy assignment.
+    # @param policy_assignment_name [String] The name of the policy assignment to
+    # get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -233,10 +250,11 @@ module Azure::ARM::Policy
     end
 
     #
-    # Get single policy assignment.
+    # Gets a policy assignment.
     #
-    # @param scope [String] Scope of the policy assignment.
-    # @param policy_assignment_name [String] Policy assignment name.
+    # @param scope [String] The scope of the policy assignment.
+    # @param policy_assignment_name [String] The name of the policy assignment to
+    # get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -247,10 +265,11 @@ module Azure::ARM::Policy
     end
 
     #
-    # Get single policy assignment.
+    # Gets a policy assignment.
     #
-    # @param scope [String] Scope of the policy assignment.
-    # @param policy_assignment_name [String] Policy assignment name.
+    # @param scope [String] The scope of the policy assignment.
+    # @param policy_assignment_name [String] The name of the policy assignment to
+    # get.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -309,9 +328,10 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource group.
+    # Gets policy assignments for the resource group.
     #
-    # @param resource_group_name [String] Resource group name.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains policy assignments.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -324,9 +344,10 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource group.
+    # Gets policy assignments for the resource group.
     #
-    # @param resource_group_name [String] Resource group name.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains policy assignments.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -338,9 +359,10 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource group.
+    # Gets policy assignments for the resource group.
     #
-    # @param resource_group_name [String] Resource group name.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains policy assignments.
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -400,14 +422,16 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource.
+    # Gets policy assignments for a resource.
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param resource_provider_namespace [String] The resource provider namespace.
+    # @param resource_group_name [String] The name of the resource group
+    # containing the resource. The name is case insensitive.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider.
     # @param parent_resource_path [String] The parent resource path.
     # @param resource_type [String] The resource type.
-    # @param resource_name [String] The resource name.
+    # @param resource_name [String] The name of the resource with policy
+    # assignments.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -420,14 +444,16 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource.
+    # Gets policy assignments for a resource.
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param resource_provider_namespace [String] The resource provider namespace.
+    # @param resource_group_name [String] The name of the resource group
+    # containing the resource. The name is case insensitive.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider.
     # @param parent_resource_path [String] The parent resource path.
     # @param resource_type [String] The resource type.
-    # @param resource_name [String] The resource name.
+    # @param resource_name [String] The name of the resource with policy
+    # assignments.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -439,14 +465,16 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource.
+    # Gets policy assignments for a resource.
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param resource_provider_namespace [String] The resource provider namespace.
+    # @param resource_group_name [String] The name of the resource group
+    # containing the resource. The name is case insensitive.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider.
     # @param parent_resource_path [String] The parent resource path.
     # @param resource_type [String] The resource type.
-    # @param resource_name [String] The resource name.
+    # @param resource_name [String] The name of the resource with policy
+    # assignments.
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -510,7 +538,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy assignments of a subscription.
+    # Gets all the policy assignments for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -524,7 +552,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy assignments of a subscription.
+    # Gets all the policy assignments for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -537,7 +565,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy assignments of a subscription.
+    # Gets all the policy assignments for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -596,9 +624,18 @@ module Azure::ARM::Policy
     end
 
     #
-    # Delete policy assignment.
+    # Deletes a policy assignment by ID.
     #
-    # @param policy_assignment_id [String] Policy assignment Id
+    # When providing a scope for the assigment, use
+    # '/subscriptions/{subscription-id}/' for subscriptions,
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
+    # resource groups, and
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}'
+    # for resources.
+    #
+    # @param policy_assignment_id [String] The ID of the policy assignment to
+    # delete. Use the format
+    # '/{scope}/providers/Microsoft.Authorization/policyAssignments/{policy-assignment-name}'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -610,9 +647,18 @@ module Azure::ARM::Policy
     end
 
     #
-    # Delete policy assignment.
+    # Deletes a policy assignment by ID.
     #
-    # @param policy_assignment_id [String] Policy assignment Id
+    # When providing a scope for the assigment, use
+    # '/subscriptions/{subscription-id}/' for subscriptions,
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
+    # resource groups, and
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}'
+    # for resources.
+    #
+    # @param policy_assignment_id [String] The ID of the policy assignment to
+    # delete. Use the format
+    # '/{scope}/providers/Microsoft.Authorization/policyAssignments/{policy-assignment-name}'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -623,9 +669,18 @@ module Azure::ARM::Policy
     end
 
     #
-    # Delete policy assignment.
+    # Deletes a policy assignment by ID.
     #
-    # @param policy_assignment_id [String] Policy assignment Id
+    # When providing a scope for the assigment, use
+    # '/subscriptions/{subscription-id}/' for subscriptions,
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
+    # resource groups, and
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}'
+    # for resources.
+    #
+    # @param policy_assignment_id [String] The ID of the policy assignment to
+    # delete. Use the format
+    # '/{scope}/providers/Microsoft.Authorization/policyAssignments/{policy-assignment-name}'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -682,10 +737,21 @@ module Azure::ARM::Policy
     end
 
     #
-    # Create policy assignment by Id.
+    # Creates a policy assignment by ID.
     #
-    # @param policy_assignment_id [String] Policy assignment Id
-    # @param parameters [PolicyAssignment] Policy assignment.
+    # Policy assignments are inherited by child resources. For example, when you
+    # apply a policy to a resource group that policy is assigned to all resources
+    # in the group. When providing a scope for the assigment, use
+    # '/subscriptions/{subscription-id}/' for subscriptions,
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
+    # resource groups, and
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}'
+    # for resources.
+    #
+    # @param policy_assignment_id [String] The ID of the policy assignment to
+    # create. Use the format
+    # '/{scope}/providers/Microsoft.Authorization/policyAssignments/{policy-assignment-name}'.
+    # @param parameters [PolicyAssignment] Parameters for policy assignment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -697,10 +763,21 @@ module Azure::ARM::Policy
     end
 
     #
-    # Create policy assignment by Id.
+    # Creates a policy assignment by ID.
     #
-    # @param policy_assignment_id [String] Policy assignment Id
-    # @param parameters [PolicyAssignment] Policy assignment.
+    # Policy assignments are inherited by child resources. For example, when you
+    # apply a policy to a resource group that policy is assigned to all resources
+    # in the group. When providing a scope for the assigment, use
+    # '/subscriptions/{subscription-id}/' for subscriptions,
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
+    # resource groups, and
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}'
+    # for resources.
+    #
+    # @param policy_assignment_id [String] The ID of the policy assignment to
+    # create. Use the format
+    # '/{scope}/providers/Microsoft.Authorization/policyAssignments/{policy-assignment-name}'.
+    # @param parameters [PolicyAssignment] Parameters for policy assignment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -711,10 +788,21 @@ module Azure::ARM::Policy
     end
 
     #
-    # Create policy assignment by Id.
+    # Creates a policy assignment by ID.
     #
-    # @param policy_assignment_id [String] Policy assignment Id
-    # @param parameters [PolicyAssignment] Policy assignment.
+    # Policy assignments are inherited by child resources. For example, when you
+    # apply a policy to a resource group that policy is assigned to all resources
+    # in the group. When providing a scope for the assigment, use
+    # '/subscriptions/{subscription-id}/' for subscriptions,
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
+    # resource groups, and
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}'
+    # for resources.
+    #
+    # @param policy_assignment_id [String] The ID of the policy assignment to
+    # create. Use the format
+    # '/{scope}/providers/Microsoft.Authorization/policyAssignments/{policy-assignment-name}'.
+    # @param parameters [PolicyAssignment] Parameters for policy assignment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -781,9 +869,18 @@ module Azure::ARM::Policy
     end
 
     #
-    # Get single policy assignment.
+    # Gets a policy assignment by ID.
     #
-    # @param policy_assignment_id [String] Policy assignment Id
+    # When providing a scope for the assigment, use
+    # '/subscriptions/{subscription-id}/' for subscriptions,
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
+    # resource groups, and
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}'
+    # for resources.
+    #
+    # @param policy_assignment_id [String] The ID of the policy assignment to get.
+    # Use the format
+    # '/{scope}/providers/Microsoft.Authorization/policyAssignments/{policy-assignment-name}'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -795,9 +892,18 @@ module Azure::ARM::Policy
     end
 
     #
-    # Get single policy assignment.
+    # Gets a policy assignment by ID.
     #
-    # @param policy_assignment_id [String] Policy assignment Id
+    # When providing a scope for the assigment, use
+    # '/subscriptions/{subscription-id}/' for subscriptions,
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
+    # resource groups, and
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}'
+    # for resources.
+    #
+    # @param policy_assignment_id [String] The ID of the policy assignment to get.
+    # Use the format
+    # '/{scope}/providers/Microsoft.Authorization/policyAssignments/{policy-assignment-name}'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -808,9 +914,18 @@ module Azure::ARM::Policy
     end
 
     #
-    # Get single policy assignment.
+    # Gets a policy assignment by ID.
     #
-    # @param policy_assignment_id [String] Policy assignment Id
+    # When providing a scope for the assigment, use
+    # '/subscriptions/{subscription-id}/' for subscriptions,
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
+    # resource groups, and
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}'
+    # for resources.
+    #
+    # @param policy_assignment_id [String] The ID of the policy assignment to get.
+    # Use the format
+    # '/{scope}/providers/Microsoft.Authorization/policyAssignments/{policy-assignment-name}'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -867,7 +982,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource group.
+    # Gets policy assignments for the resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -882,7 +997,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource group.
+    # Gets policy assignments for the resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -896,7 +1011,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource group.
+    # Gets policy assignments for the resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -954,7 +1069,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource.
+    # Gets policy assignments for a resource.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -969,7 +1084,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource.
+    # Gets policy assignments for a resource.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -983,7 +1098,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource.
+    # Gets policy assignments for a resource.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1041,7 +1156,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy assignments of a subscription.
+    # Gets all the policy assignments for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1056,7 +1171,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy assignments of a subscription.
+    # Gets all the policy assignments for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1070,7 +1185,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy assignments of a subscription.
+    # Gets all the policy assignments for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -1128,9 +1243,10 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource group.
+    # Gets policy assignments for the resource group.
     #
-    # @param resource_group_name [String] Resource group name.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains policy assignments.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1150,14 +1266,16 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets policy assignments of the resource.
+    # Gets policy assignments for a resource.
     #
-    # @param resource_group_name [String] The name of the resource group. The name
-    # is case insensitive.
-    # @param resource_provider_namespace [String] The resource provider namespace.
+    # @param resource_group_name [String] The name of the resource group
+    # containing the resource. The name is case insensitive.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider.
     # @param parent_resource_path [String] The parent resource path.
     # @param resource_type [String] The resource type.
-    # @param resource_name [String] The resource name.
+    # @param resource_name [String] The name of the resource with policy
+    # assignments.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1177,7 +1295,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy assignments of a subscription.
+    # Gets all the policy assignments for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

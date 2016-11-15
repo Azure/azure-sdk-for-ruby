@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for backup copies. Workload-specific backup copies are
+    # The base class for backup copies. Workload-specific backup copies are
     # derived from this class.
     #
     class RecoveryPointResource < MsRestAzure::Resource

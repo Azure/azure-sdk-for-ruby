@@ -6,17 +6,17 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListLocalNetworkGateways Api service call
+    # Response for ListLocalNetworkGateways API service call.
     #
     class LocalNetworkGatewayListResult
 
       include MsRestAzure
 
-      # @return [Array<LocalNetworkGateway>] Gets List of LocalNetworkGateways
-      # that exists in a resource group
+      # @return [Array<LocalNetworkGateway>] A list of local network gateways
+      # that exists in a resource group.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

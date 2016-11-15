@@ -7,16 +7,18 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class ServiceBusMessage
 
       include MsRestAzure
 
-      # @return [ServiceBusAuthentication] Gets or sets the authentication.
+      # @return [ServiceBusAuthentication] Gets or sets the Service Bus
+      # authentication.
       attr_accessor :authentication
 
-      # @return [ServiceBusBrokeredMessageProperties] Gets or sets the
-      # brokered message properties.
+      # @return [ServiceBusBrokeredMessageProperties] Gets or sets the brokered
+      # message properties.
       attr_accessor :brokered_message_properties
 
       # @return [Hash{String => String}] Gets or sets the custom message

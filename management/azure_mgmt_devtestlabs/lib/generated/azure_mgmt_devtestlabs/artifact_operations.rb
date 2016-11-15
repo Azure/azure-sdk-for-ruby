@@ -5,7 +5,7 @@
 
 module Azure::ARM::DevTestLabs
   #
-  # The DevTest Labs Client.
+  # Azure DevTest Labs REST API.
   #
   class ArtifactOperations
     include Azure::ARM::DevTestLabs::Models
@@ -31,8 +31,8 @@ module Azure::ARM::DevTestLabs
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer] The maximum number of resources to return from the
     # operation.
-    # @param order_by [String] The ordering expression for the results, using
-    # OData notation.
+    # @param order_by [String] The ordering expression for the results, using OData
+    # notation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -52,8 +52,8 @@ module Azure::ARM::DevTestLabs
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer] The maximum number of resources to return from the
     # operation.
-    # @param order_by [String] The ordering expression for the results, using
-    # OData notation.
+    # @param order_by [String] The ordering expression for the results, using OData
+    # notation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -72,8 +72,8 @@ module Azure::ARM::DevTestLabs
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer] The maximum number of resources to return from the
     # operation.
-    # @param order_by [String] The ordering expression for the results, using
-    # OData notation.
+    # @param order_by [String] The ordering expression for the results, using OData
+    # notation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -349,8 +349,8 @@ module Azure::ARM::DevTestLabs
     #
     # List artifacts in a given artifact source.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -364,8 +364,8 @@ module Azure::ARM::DevTestLabs
     #
     # List artifacts in a given artifact source.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -378,8 +378,8 @@ module Azure::ARM::DevTestLabs
     #
     # List artifacts in a given artifact source.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -442,13 +442,13 @@ module Azure::ARM::DevTestLabs
     # @param filter [String] The filter to apply on the operation.
     # @param top [Integer] The maximum number of resources to return from the
     # operation.
-    # @param order_by [String] The ordering expression for the results, using
-    # OData notation.
+    # @param order_by [String] The ordering expression for the results, using OData
+    # notation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ResponseWithContinuationArtifact] which provide lazy access to
-    # pages of the response.
+    # @return [ResponseWithContinuationArtifact] which provide lazy access to pages
+    # of the response.
     #
     def list_as_lazy(resource_group_name, lab_name, artifact_source_name, filter = nil, top = nil, order_by = nil, custom_headers = nil)
       response = list_async(resource_group_name, lab_name, artifact_source_name, filter, top, order_by, custom_headers).value!

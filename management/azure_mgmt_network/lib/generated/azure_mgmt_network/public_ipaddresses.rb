@@ -26,7 +26,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The delete publicIpAddress operation deletes the specified publicIpAddress.
+    # Deletes the specified public IP address.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param public_ip_address_name [String] The name of the subnet.
@@ -64,12 +64,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get publicIpAddress operation retrieves information about the specified
-    # pubicIpAddress
+    # Gets the specified public IP address in a specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param public_ip_address_name [String] The name of the subnet.
-    # @param expand [String] expand references resources.
+    # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -81,12 +80,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get publicIpAddress operation retrieves information about the specified
-    # pubicIpAddress
+    # Gets the specified public IP address in a specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param public_ip_address_name [String] The name of the subnet.
-    # @param expand [String] expand references resources.
+    # @param expand [String] Expands referenced resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -97,12 +95,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get publicIpAddress operation retrieves information about the specified
-    # pubicIpAddress
+    # Gets the specified public IP address in a specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param public_ip_address_name [String] The name of the subnet.
-    # @param expand [String] expand references resources.
+    # @param expand [String] Expands referenced resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -161,13 +158,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put PublicIPAddress operation creates/updates a stable/dynamic PublicIP
-    # address
+    # Creates or updates a static or dynamic public IP address.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param public_ip_address_name [String] The name of the publicIpAddress.
-    # @param parameters [PublicIPAddress] Parameters supplied to the create/update
-    # PublicIPAddress operation
+    # @param public_ip_address_name [String] The name of the public IP address.
+    # @param parameters [PublicIPAddress] Parameters supplied to the create or
+    # update public IP address operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -180,9 +176,9 @@ module Azure::ARM::Network
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param public_ip_address_name [String] The name of the publicIpAddress.
-    # @param parameters [PublicIPAddress] Parameters supplied to the create/update
-    # PublicIPAddress operation
+    # @param public_ip_address_name [String] The name of the public IP address.
+    # @param parameters [PublicIPAddress] Parameters supplied to the create or
+    # update public IP address operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -208,8 +204,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # subscription.
+    # Gets all the public IP addresses in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -222,8 +217,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # subscription.
+    # Gets all the public IP addresses in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -235,8 +229,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # subscription.
+    # Gets all the public IP addresses in a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -294,8 +287,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # resource group.
+    # Gets all public IP addresses in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -309,8 +301,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # resource group.
+    # Gets all public IP addresses in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -323,8 +314,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # resource group.
+    # Gets all public IP addresses in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -384,7 +374,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete publicIpAddress operation deletes the specified publicIpAddress.
+    # Deletes the specified public IP address.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param public_ip_address_name [String] The name of the subnet.
@@ -398,7 +388,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete publicIpAddress operation deletes the specified publicIpAddress.
+    # Deletes the specified public IP address.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param public_ip_address_name [String] The name of the subnet.
@@ -412,7 +402,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete publicIpAddress operation deletes the specified publicIpAddress.
+    # Deletes the specified public IP address.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param public_ip_address_name [String] The name of the subnet.
@@ -464,13 +454,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put PublicIPAddress operation creates/updates a stable/dynamic PublicIP
-    # address
+    # Creates or updates a static or dynamic public IP address.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param public_ip_address_name [String] The name of the publicIpAddress.
-    # @param parameters [PublicIPAddress] Parameters supplied to the create/update
-    # PublicIPAddress operation
+    # @param public_ip_address_name [String] The name of the public IP address.
+    # @param parameters [PublicIPAddress] Parameters supplied to the create or
+    # update public IP address operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -482,13 +471,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put PublicIPAddress operation creates/updates a stable/dynamic PublicIP
-    # address
+    # Creates or updates a static or dynamic public IP address.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param public_ip_address_name [String] The name of the publicIpAddress.
-    # @param parameters [PublicIPAddress] Parameters supplied to the create/update
-    # PublicIPAddress operation
+    # @param public_ip_address_name [String] The name of the public IP address.
+    # @param parameters [PublicIPAddress] Parameters supplied to the create or
+    # update public IP address operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -499,13 +487,12 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put PublicIPAddress operation creates/updates a stable/dynamic PublicIP
-    # address
+    # Creates or updates a static or dynamic public IP address.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param public_ip_address_name [String] The name of the publicIpAddress.
-    # @param parameters [PublicIPAddress] Parameters supplied to the create/update
-    # PublicIPAddress operation
+    # @param public_ip_address_name [String] The name of the public IP address.
+    # @param parameters [PublicIPAddress] Parameters supplied to the create or
+    # update public IP address operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -584,8 +571,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # subscription.
+    # Gets all the public IP addresses in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -600,8 +586,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # subscription.
+    # Gets all the public IP addresses in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -615,8 +600,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # subscription.
+    # Gets all the public IP addresses in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -674,8 +658,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # resource group.
+    # Gets all public IP addresses in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -690,8 +673,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # resource group.
+    # Gets all public IP addresses in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -705,8 +687,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # resource group.
+    # Gets all public IP addresses in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -764,8 +745,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # subscription.
+    # Gets all the public IP addresses in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -785,8 +765,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List publicIpAddress operation retrieves all the publicIpAddresses in a
-    # resource group.
+    # Gets all public IP addresses in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

@@ -6,21 +6,23 @@
 module Azure::ARM::Network
   module Models
     #
-    # Contains sku in an ExpressRouteCircuit
+    # Contains SKU in an ExpressRouteCircuit.
     #
     class ExpressRouteCircuitSku
 
       include MsRestAzure
 
-      # @return [String] Gets or sets name of the sku.
+      # @return [String] The name of the SKU.
       attr_accessor :name
 
-      # @return [ExpressRouteCircuitSkuTier] Gets or sets tier of the sku.
-      # Possible values include: 'Standard', 'Premium'
+      # @return [ExpressRouteCircuitSkuTier] The tier of the SKU. Possible
+      # values are 'Standard' and 'Premium'. Possible values include:
+      # 'Standard', 'Premium'
       attr_accessor :tier
 
-      # @return [ExpressRouteCircuitSkuFamily] Gets or sets family of the sku.
-      # Possible values include: 'UnlimitedData', 'MeteredData'
+      # @return [ExpressRouteCircuitSkuFamily] The family of the SKU. Possible
+      # values are: 'UnlimitedData' and 'MeteredData'. Possible values
+      # include: 'UnlimitedData', 'MeteredData'
       attr_accessor :family
 
 

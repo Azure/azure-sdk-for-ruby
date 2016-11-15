@@ -12,7 +12,7 @@ module Azure::ARM::ServiceBus
 
       include MsRestAzure
 
-      # @return [String] the duration of a peek lock; that is, the amount of
+      # @return [String] The duration of a peek-lock; that is, the amount of
       # time that the message is locked for other receivers. The maximum
       # value for LockDuration is 5 minutes; the default value is 1 minute.
       attr_accessor :lock_duration
@@ -30,63 +30,63 @@ module Azure::ARM::ServiceBus
       # 'Restoring', 'Unknown'
       attr_accessor :entity_availability_status
 
-      # @return [DateTime] the exact time the message was created.
+      # @return [DateTime] The exact time the message was created.
       attr_accessor :created_at
 
-      # @return [String] the default message time to live value. This is the
+      # @return [String] The default message time to live value. This is the
       # duration after which the message expires, starting from when the
       # message is sent to Service Bus. This is the default value used when
       # TimeToLive is not set on a message itself.
       attr_accessor :default_message_time_to_live
 
       # @return [String] TimeSpan structure that defines the duration of the
-      # duplicate detection history. The default value is 10 minutes..
+      # duplicate detection history. The default value is 10 minutes.
       attr_accessor :duplicate_detection_history_time_window
 
-      # @return [Boolean] value that indicates whether server-side batched
-      # operations are enabled..
+      # @return [Boolean] A value that indicates whether server-side batched
+      # operations are enabled.
       attr_accessor :enable_batched_operations
 
-      # @return [Boolean] a value that indicates whether this queue has dead
+      # @return [Boolean] A value that indicates whether this queue has dead
       # letter support when a message expires.
       attr_accessor :dead_lettering_on_message_expiration
 
-      # @return [Boolean] a value that indicates whether Express Entities are
+      # @return [Boolean] A value that indicates whether Express Entities are
       # enabled. An express queue holds a message in memory temporarily
       # before writing it to persistent storage.
       attr_accessor :enable_express
 
-      # @return [Boolean] value that indicates whether the queue to be
-      # partitioned across multiple message brokers is enabled.
+      # @return [Boolean] A value that indicates whether the queue is to be
+      # partitioned across multiple message brokers.
       attr_accessor :enable_partitioning
 
-      # @return [Boolean] a value that indicates whether the message is
-      # anonymous accessible.
+      # @return [Boolean] A value that indicates whether the message is
+      # accessible anonymously.
       attr_accessor :is_anonymous_accessible
 
-      # @return [Integer] the maximum delivery count. A message is
+      # @return [Integer] The maximum delivery count. A message is
       # automatically deadlettered after this number of deliveries.
       attr_accessor :max_delivery_count
 
-      # @return [Integer] the maximum size of the queue in megabytes, which is
+      # @return [Integer] The maximum size of the queue in megabytes, which is
       # the size of memory allocated for the queue.
       attr_accessor :max_size_in_megabytes
 
-      # @return [Integer] the number of messages in the queue.
+      # @return [Integer] The number of messages in the queue.
       attr_accessor :message_count
 
       # @return [MessageCountDetails]
       attr_accessor :count_details
 
-      # @return [Boolean] the value indicating if this queue requires
-      # duplicate detection.
+      # @return [Boolean] A value indicating if this queue requires duplicate
+      # detection.
       attr_accessor :requires_duplicate_detection
 
-      # @return [Boolean] a value that indicates whether the queue supports
-      # the concept of session.
+      # @return [Boolean] A value that indicates whether the queue supports
+      # the concept of sessions.
       attr_accessor :requires_session
 
-      # @return [Integer] the size of the queue in bytes.
+      # @return [Integer] The size of the queue, in bytes.
       attr_accessor :size_in_bytes
 
       # @return [EntityStatus] Enumerates the possible values for the status
@@ -95,11 +95,11 @@ module Azure::ARM::ServiceBus
       # 'SendDisabled', 'Unknown'
       attr_accessor :status
 
-      # @return [Boolean] a value that indicates whether the queue supports
+      # @return [Boolean] A value that indicates whether the queue supports
       # ordering.
       attr_accessor :support_ordering
 
-      # @return [DateTime] the exact time the message has been updated.
+      # @return [DateTime] The exact time the message was updated.
       attr_accessor :updated_at
 
 

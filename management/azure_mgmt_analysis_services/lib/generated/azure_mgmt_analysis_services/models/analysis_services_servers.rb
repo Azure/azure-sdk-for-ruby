@@ -6,14 +6,14 @@
 module Azure::ARM::AnalysisServices
   module Models
     #
-    # A collection of Analysis Services resources
+    # An array of Analysis Services resources.
     #
     class AnalysisServicesServers
 
       include MsRestAzure
 
-      # @return [Array<AnalysisServicesServer>] The collection of Analysis
-      # Services resources
+      # @return [Array<AnalysisServicesServer>] An array of Analysis Services
+      # resources.
       attr_accessor :value
 
 

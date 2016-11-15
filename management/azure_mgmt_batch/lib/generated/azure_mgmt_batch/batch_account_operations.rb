@@ -24,16 +24,16 @@ module Azure::ARM::Batch
 
     #
     # Creates a new Batch account with the specified parameters. Existing accounts
-    # cannot be updated with this API and should instead be updated with the
-    # Update Batch Account API.
+    # cannot be updated with this API and should instead be updated with the Update
+    # Batch Account API.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the new Batch account.
     # @param account_name [String] A name for the Batch account which must be
     # unique within the region. Batch account names must be between 3 and 24
     # characters in length and must use only numbers and lowercase letters. This
-    # name is used as part of the DNS name that is used to access the Batch
-    # service in the region in which the account is created. For example:
+    # name is used as part of the DNS name that is used to access the Batch service
+    # in the region in which the account is created. For example:
     # http://accountname.region.batch.azure.com/.
     # @param parameters [BatchAccountCreateParameters] Additional parameters for
     # account creation.
@@ -53,8 +53,8 @@ module Azure::ARM::Batch
     # @param account_name [String] A name for the Batch account which must be
     # unique within the region. Batch account names must be between 3 and 24
     # characters in length and must use only numbers and lowercase letters. This
-    # name is used as part of the DNS name that is used to access the Batch
-    # service in the region in which the account is created. For example:
+    # name is used as part of the DNS name that is used to access the Batch service
+    # in the region in which the account is created. For example:
     # http://accountname.region.batch.azure.com/.
     # @param parameters [BatchAccountCreateParameters] Additional parameters for
     # account creation.
@@ -171,7 +171,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -305,7 +305,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -388,7 +388,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -481,7 +481,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -577,7 +577,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 204
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -589,7 +589,7 @@ module Azure::ARM::Batch
     end
 
     #
-    # Regenerates the specified account key for the specified Batch account.
+    # Regenerates the specified account key for the Batch account.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
@@ -607,7 +607,7 @@ module Azure::ARM::Batch
     end
 
     #
-    # Regenerates the specified account key for the specified Batch account.
+    # Regenerates the specified account key for the Batch account.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
@@ -624,7 +624,7 @@ module Azure::ARM::Batch
     end
 
     #
-    # Regenerates the specified account key for the specified Batch account.
+    # Regenerates the specified account key for the Batch account.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the Batch account.
@@ -677,7 +677,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -771,7 +771,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -794,16 +794,16 @@ module Azure::ARM::Batch
 
     #
     # Creates a new Batch account with the specified parameters. Existing accounts
-    # cannot be updated with this API and should instead be updated with the
-    # Update Batch Account API.
+    # cannot be updated with this API and should instead be updated with the Update
+    # Batch Account API.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the new Batch account.
     # @param account_name [String] A name for the Batch account which must be
     # unique within the region. Batch account names must be between 3 and 24
     # characters in length and must use only numbers and lowercase letters. This
-    # name is used as part of the DNS name that is used to access the Batch
-    # service in the region in which the account is created. For example:
+    # name is used as part of the DNS name that is used to access the Batch service
+    # in the region in which the account is created. For example:
     # http://accountname.region.batch.azure.com/.
     # @param parameters [BatchAccountCreateParameters] Additional parameters for
     # account creation.
@@ -819,16 +819,16 @@ module Azure::ARM::Batch
 
     #
     # Creates a new Batch account with the specified parameters. Existing accounts
-    # cannot be updated with this API and should instead be updated with the
-    # Update Batch Account API.
+    # cannot be updated with this API and should instead be updated with the Update
+    # Batch Account API.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the new Batch account.
     # @param account_name [String] A name for the Batch account which must be
     # unique within the region. Batch account names must be between 3 and 24
     # characters in length and must use only numbers and lowercase letters. This
-    # name is used as part of the DNS name that is used to access the Batch
-    # service in the region in which the account is created. For example:
+    # name is used as part of the DNS name that is used to access the Batch service
+    # in the region in which the account is created. For example:
     # http://accountname.region.batch.azure.com/.
     # @param parameters [BatchAccountCreateParameters] Additional parameters for
     # account creation.
@@ -843,16 +843,16 @@ module Azure::ARM::Batch
 
     #
     # Creates a new Batch account with the specified parameters. Existing accounts
-    # cannot be updated with this API and should instead be updated with the
-    # Update Batch Account API.
+    # cannot be updated with this API and should instead be updated with the Update
+    # Batch Account API.
     #
     # @param resource_group_name [String] The name of the resource group that
     # contains the new Batch account.
     # @param account_name [String] A name for the Batch account which must be
     # unique within the region. Batch account names must be between 3 and 24
     # characters in length and must use only numbers and lowercase letters. This
-    # name is used as part of the DNS name that is used to access the Batch
-    # service in the region in which the account is created. For example:
+    # name is used as part of the DNS name that is used to access the Batch service
+    # in the region in which the account is created. For example:
     # http://accountname.region.batch.azure.com/.
     # @param parameters [BatchAccountCreateParameters] Additional parameters for
     # account creation.
@@ -900,9 +900,9 @@ module Azure::ARM::Batch
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202 || status_code == 200
+        unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -993,9 +993,9 @@ module Azure::ARM::Batch
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202 || status_code == 204 || status_code == 200
+        unless status_code == 200 || status_code == 202
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -1009,8 +1009,8 @@ module Azure::ARM::Batch
     #
     # Gets information about the Batch accounts associated with the subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1024,8 +1024,8 @@ module Azure::ARM::Batch
     #
     # Gets information about the Batch accounts associated with the subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1038,8 +1038,8 @@ module Azure::ARM::Batch
     #
     # Gets information about the Batch accounts associated with the subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1072,7 +1072,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -1097,8 +1097,8 @@ module Azure::ARM::Batch
     # Gets information about the Batch accounts associated within the specified
     # resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1113,8 +1113,8 @@ module Azure::ARM::Batch
     # Gets information about the Batch accounts associated within the specified
     # resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1128,8 +1128,8 @@ module Azure::ARM::Batch
     # Gets information about the Batch accounts associated within the specified
     # resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1162,7 +1162,7 @@ module Azure::ARM::Batch
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?

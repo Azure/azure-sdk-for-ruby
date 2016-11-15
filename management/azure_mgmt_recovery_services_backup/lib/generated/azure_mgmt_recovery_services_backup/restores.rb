@@ -23,20 +23,20 @@ module Azure::ARM::RecoveryServicesBackup
     attr_reader :client
 
     #
-    # Restores the specified backed up data. This is an asynchronous operation. To
+    # Restores the specified backup data. This is an asynchronous operation. To
     # know the status of this API call, use GetProtectedItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up items.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup items.
+    # @param container_name [String] The container name associated with the backup
     # items.
-    # @param protected_item_name [String] Backed up item to be restored.
-    # @param recovery_point_id [String] Recovery point ID which represents the
-    # backed up data to be restored.
-    # @param resource_restore_request [RestoreRequestResource] resource restore
-    # request
+    # @param protected_item_name [String] The backup item to be restored.
+    # @param recovery_point_id [String] The recovery point ID for the backup data
+    # to be restored.
+    # @param resource_restore_request [RestoreRequestResource] The resource restore
+    # request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -47,20 +47,20 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Restores the specified backed up data. This is an asynchronous operation. To
+    # Restores the specified backup data. This is an asynchronous operation. To
     # know the status of this API call, use GetProtectedItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up items.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup items.
+    # @param container_name [String] The container name associated with the backup
     # items.
-    # @param protected_item_name [String] Backed up item to be restored.
-    # @param recovery_point_id [String] Recovery point ID which represents the
-    # backed up data to be restored.
-    # @param resource_restore_request [RestoreRequestResource] resource restore
-    # request
+    # @param protected_item_name [String] The backup item to be restored.
+    # @param recovery_point_id [String] The recovery point ID for the backup data
+    # to be restored.
+    # @param resource_restore_request [RestoreRequestResource] The resource restore
+    # request.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -71,20 +71,20 @@ module Azure::ARM::RecoveryServicesBackup
     end
 
     #
-    # Restores the specified backed up data. This is an asynchronous operation. To
+    # Restores the specified backup data. This is an asynchronous operation. To
     # know the status of this API call, use GetProtectedItemOperationResult API.
     #
-    # @param vault_name [String] The name of the recovery services vault.
-    # @param resource_group_name [String] The name of the resource group where the
-    # recovery services vault is present.
-    # @param fabric_name [String] Fabric name associated with the backed up items.
-    # @param container_name [String] Container name associated with the backed up
+    # @param vault_name [String] The name of the Recovery Services vault.
+    # @param resource_group_name [String] The name of the resource group associated
+    # with the Recovery Services vault.
+    # @param fabric_name [String] The fabric name associated with the backup items.
+    # @param container_name [String] The container name associated with the backup
     # items.
-    # @param protected_item_name [String] Backed up item to be restored.
-    # @param recovery_point_id [String] Recovery point ID which represents the
-    # backed up data to be restored.
-    # @param resource_restore_request [RestoreRequestResource] resource restore
-    # request
+    # @param protected_item_name [String] The backup item to be restored.
+    # @param recovery_point_id [String] The recovery point ID for the backup data
+    # to be restored.
+    # @param resource_restore_request [RestoreRequestResource] The resource restore
+    # request.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

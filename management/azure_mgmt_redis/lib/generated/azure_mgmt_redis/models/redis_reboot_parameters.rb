@@ -6,19 +6,19 @@
 module Azure::ARM::Redis
   module Models
     #
-    # Specifies which redis node(s) to reboot.
+    # Specifies which Redis node(s) to reboot.
     #
     class RedisRebootParameters
 
       include MsRestAzure
 
-      # @return [RebootType] Which redis node(s) to reboot. Depending on this
+      # @return [RebootType] Which Redis node(s) to reboot. Depending on this
       # value data loss is possible. Possible values include: 'PrimaryNode',
       # 'SecondaryNode', 'AllNodes'
       attr_accessor :reboot_type
 
-      # @return [Integer] In case of cluster cache, this specifies shard id
-      # which should be rebooted.
+      # @return [Integer] If clustering is enabled, the ID of the shard to be
+      # rebooted.
       attr_accessor :shard_id
 
 

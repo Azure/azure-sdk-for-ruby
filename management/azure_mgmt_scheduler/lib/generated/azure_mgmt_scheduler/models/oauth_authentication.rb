@@ -7,12 +7,14 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class OAuthAuthentication < HttpAuthentication
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the secret.
+      # @return [String] Gets or sets the secret, return value will always be
+      # empty.
       attr_accessor :secret
 
       # @return [String] Gets or sets the tenant.

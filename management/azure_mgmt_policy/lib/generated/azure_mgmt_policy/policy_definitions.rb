@@ -5,7 +5,8 @@
 
 module Azure::ARM::Policy
   #
-  # PolicyDefinitions
+  # To manage and control access to your resources, you can define customized
+  # policies and assign them at a scope.
   #
   class PolicyDefinitions
     include Azure::ARM::Policy::Models
@@ -23,9 +24,10 @@ module Azure::ARM::Policy
     attr_reader :client
 
     #
-    # Create or update a policy definition.
+    # Creates or updates a policy definition.
     #
-    # @param policy_definition_name [String] The policy definition name.
+    # @param policy_definition_name [String] The name of the policy definition to
+    # create.
     # @param parameters [PolicyDefinition] The policy definition properties.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -38,9 +40,10 @@ module Azure::ARM::Policy
     end
 
     #
-    # Create or update a policy definition.
+    # Creates or updates a policy definition.
     #
-    # @param policy_definition_name [String] The policy definition name.
+    # @param policy_definition_name [String] The name of the policy definition to
+    # create.
     # @param parameters [PolicyDefinition] The policy definition properties.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -52,9 +55,10 @@ module Azure::ARM::Policy
     end
 
     #
-    # Create or update a policy definition.
+    # Creates or updates a policy definition.
     #
-    # @param policy_definition_name [String] The policy definition name.
+    # @param policy_definition_name [String] The name of the policy definition to
+    # create.
     # @param parameters [PolicyDefinition] The policy definition properties.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -123,9 +127,10 @@ module Azure::ARM::Policy
     end
 
     #
-    # Deletes the policy definition.
+    # Deletes a policy definition.
     #
-    # @param policy_definition_name [String] The policy definition name.
+    # @param policy_definition_name [String] The name of the policy definition to
+    # delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -136,9 +141,10 @@ module Azure::ARM::Policy
     end
 
     #
-    # Deletes the policy definition.
+    # Deletes a policy definition.
     #
-    # @param policy_definition_name [String] The policy definition name.
+    # @param policy_definition_name [String] The name of the policy definition to
+    # delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -149,9 +155,10 @@ module Azure::ARM::Policy
     end
 
     #
-    # Deletes the policy definition.
+    # Deletes a policy definition.
     #
-    # @param policy_definition_name [String] The policy definition name.
+    # @param policy_definition_name [String] The name of the policy definition to
+    # delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -201,7 +208,8 @@ module Azure::ARM::Policy
     #
     # Gets the policy definition.
     #
-    # @param policy_definition_name [String] The policy definition name.
+    # @param policy_definition_name [String] The name of the policy definition to
+    # get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -215,7 +223,8 @@ module Azure::ARM::Policy
     #
     # Gets the policy definition.
     #
-    # @param policy_definition_name [String] The policy definition name.
+    # @param policy_definition_name [String] The name of the policy definition to
+    # get.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -228,7 +237,8 @@ module Azure::ARM::Policy
     #
     # Gets the policy definition.
     #
-    # @param policy_definition_name [String] The policy definition name.
+    # @param policy_definition_name [String] The name of the policy definition to
+    # get.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -286,7 +296,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy definitions of a subscription.
+    # Gets all the policy definitions for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -300,7 +310,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy definitions of a subscription.
+    # Gets all the policy definitions for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -313,7 +323,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy definitions of a subscription.
+    # Gets all the policy definitions for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -372,7 +382,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy definitions of a subscription.
+    # Gets all the policy definitions for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -387,7 +397,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy definitions of a subscription.
+    # Gets all the policy definitions for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -401,7 +411,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy definitions of a subscription.
+    # Gets all the policy definitions for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -459,7 +469,7 @@ module Azure::ARM::Policy
     end
 
     #
-    # Gets all the policy definitions of a subscription.
+    # Gets all the policy definitions for a subscription.
     #
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that

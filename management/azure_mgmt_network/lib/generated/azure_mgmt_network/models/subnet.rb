@@ -6,40 +6,39 @@
 module Azure::ARM::Network
   module Models
     #
-    # Subnet in a VirtualNework resource
+    # Subnet in a virtual network resource.
     #
     class Subnet < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [String] Gets or sets Address prefix for the subnet.
+      # @return [String] The address prefix for the subnet.
       attr_accessor :address_prefix
 
-      # @return [NetworkSecurityGroup] Gets or sets the reference of the
-      # NetworkSecurityGroup resource
+      # @return [NetworkSecurityGroup] The reference of the
+      # NetworkSecurityGroup resource.
       attr_accessor :network_security_group
 
-      # @return [RouteTable] Gets or sets the reference of the RouteTable
-      # resource
+      # @return [RouteTable] The reference of the RouteTable resource.
       attr_accessor :route_table
 
-      # @return [Array<IPConfiguration>] Gets array of references to the
-      # network interface IP configurations using subnet
+      # @return [Array<IPConfiguration>] Gets an array of references to the
+      # network interface IP configurations using subnet.
       attr_accessor :ip_configurations
 
-      # @return [Array<ResourceNavigationLink>] Gets array of references to
-      # the external resources using subnet
+      # @return [Array<ResourceNavigationLink>] Gets an array of references to
+      # the external resources using subnet.
       attr_accessor :resource_navigation_links
 
-      # @return [String] Gets provisioning state of the resource
+      # @return [String] The provisioning state of the resource.
       attr_accessor :provisioning_state
 
-      # @return [String] Gets or sets the name of the resource that is unique
-      # within a resource group. This name can be used to access the resource
+      # @return [String] The name of the resource that is unique within a
+      # resource group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

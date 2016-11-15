@@ -12,8 +12,8 @@ module Azure::ARM::RecoveryServicesBackup
 
       include MsRestAzure
 
-      # @return [String] The uri to fetch the next page of resources. Call
-      # ListNext() fetches next page of resources.
+      # @return [String] The URI to GET the next page of resources. Call
+      # ListNext() gets the next page of resources.
       attr_accessor :next_link
 
 

@@ -12,13 +12,13 @@ module Azure::ARM::Authorization
 
       include MsRestAzure
 
-      # @return [String] Gets or sets role assignment scope.
+      # @return [String] The role assignment scope.
       attr_accessor :scope
 
-      # @return [String] Gets or sets role definition id.
+      # @return [String] The role definition ID.
       attr_accessor :role_definition_id
 
-      # @return [String] Gets or sets principal Id.
+      # @return [String] The principal ID.
       attr_accessor :principal_id
 
 

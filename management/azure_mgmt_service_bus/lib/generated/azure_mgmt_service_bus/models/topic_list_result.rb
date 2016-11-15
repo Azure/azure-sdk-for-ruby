@@ -6,7 +6,7 @@
 module Azure::ARM::ServiceBus
   module Models
     #
-    # The response of the List Topics operation.
+    # The response to the List Topics operation.
     #
     class TopicListResult
 
@@ -16,7 +16,7 @@ module Azure::ARM::ServiceBus
       attr_accessor :value
 
       # @return [String] Link to the next set of results. Not empty if Value
-      # contains incomplete list of Topics
+      # contains incomplete list of topics.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

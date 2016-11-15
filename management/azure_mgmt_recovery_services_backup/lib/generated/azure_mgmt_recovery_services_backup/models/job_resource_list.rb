@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # List of Job resources
+    # List of Job resources.
     #
     class JobResourceList < ResourceList
 

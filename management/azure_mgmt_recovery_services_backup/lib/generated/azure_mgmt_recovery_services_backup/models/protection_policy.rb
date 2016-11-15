@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Base class for backup policy. Workload-specific backup policies are
+    # The base class for a backup policy. Workload-specific backup policies are
     # derived from this class.
     #
     class ProtectionPolicy
@@ -24,7 +24,7 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :backupManagementType
 
-      # @return [Integer] Number of items associated with this policy.
+      # @return [Integer] The number of items associated with this policy.
       attr_accessor :protected_items_count
 
 

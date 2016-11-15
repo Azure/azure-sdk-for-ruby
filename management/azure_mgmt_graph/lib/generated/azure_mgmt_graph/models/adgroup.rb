@@ -6,25 +6,25 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Active Directory group information
+    # Active Directory group information.
     #
     class ADGroup
 
       include MsRestAzure
 
-      # @return [String] object Id
+      # @return [String] The object ID.
       attr_accessor :object_id
 
-      # @return [String] object type
+      # @return [String] The object type.
       attr_accessor :object_type
 
-      # @return [String] group display name
+      # @return [String] The display name of the group.
       attr_accessor :display_name
 
-      # @return [Boolean] security enabled field
+      # @return [Boolean] Whether the group is security-enable.
       attr_accessor :security_enabled
 
-      # @return [String] mail field
+      # @return [String] The primary email address of the group.
       attr_accessor :mail
 
 

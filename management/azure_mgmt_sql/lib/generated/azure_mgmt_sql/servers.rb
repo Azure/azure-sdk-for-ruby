@@ -7,7 +7,7 @@ module Azure::ARM::SQL
   #
   # The Azure SQL Database management API provides a RESTful set of web
   # services that interact with Azure SQL Database services to manage your
-  # databases. The API enables users to create, retrieve, update, and delete
+  # databases. The API enables you to create, retrieve, update, and delete
   # databases.
   #
   class Servers
@@ -28,12 +28,13 @@ module Azure::ARM::SQL
     #
     # Creates or updates an Azure SQL server firewall rule.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
-    # @param firewall_rule_name [String] The name of the Azure SQL Server Firewall
-    # Rule.
-    # @param parameters [ServerFirewallRule] The required parameters for createing
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
+    # @param firewall_rule_name [String] The name of the Azure SQL server firewall
+    # rule.
+    # @param parameters [ServerFirewallRule] The required parameters for creating
     # or updating a firewall rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -48,12 +49,13 @@ module Azure::ARM::SQL
     #
     # Creates or updates an Azure SQL server firewall rule.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
-    # @param firewall_rule_name [String] The name of the Azure SQL Server Firewall
-    # Rule.
-    # @param parameters [ServerFirewallRule] The required parameters for createing
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
+    # @param firewall_rule_name [String] The name of the Azure SQL server firewall
+    # rule.
+    # @param parameters [ServerFirewallRule] The required parameters for creating
     # or updating a firewall rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -67,12 +69,13 @@ module Azure::ARM::SQL
     #
     # Creates or updates an Azure SQL server firewall rule.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
-    # @param firewall_rule_name [String] The name of the Azure SQL Server Firewall
-    # Rule.
-    # @param parameters [ServerFirewallRule] The required parameters for createing
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
+    # @param firewall_rule_name [String] The name of the Azure SQL server firewall
+    # rule.
+    # @param parameters [ServerFirewallRule] The required parameters for creating
     # or updating a firewall rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -155,11 +158,12 @@ module Azure::ARM::SQL
     #
     # Deletes an Azure SQL server firewall rule.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
-    # @param firewall_rule_name [String] The name of the Azure SQL Server Firewall
-    # Rule.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
+    # @param firewall_rule_name [String] The name of the Azure SQL server firewall
+    # rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -172,11 +176,12 @@ module Azure::ARM::SQL
     #
     # Deletes an Azure SQL server firewall rule.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
-    # @param firewall_rule_name [String] The name of the Azure SQL Server Firewall
-    # Rule.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
+    # @param firewall_rule_name [String] The name of the Azure SQL server firewall
+    # rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -189,11 +194,12 @@ module Azure::ARM::SQL
     #
     # Deletes an Azure SQL server firewall rule.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
-    # @param firewall_rule_name [String] The name of the Azure SQL Server Firewall
-    # Rule.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
+    # @param firewall_rule_name [String] The name of the Azure SQL server firewall
+    # rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -245,11 +251,12 @@ module Azure::ARM::SQL
     #
     # Returns an Azure SQL server firewall rule.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
-    # @param firewall_rule_name [String] The name of the Azure SQL Server Firewall
-    # Rule.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
+    # @param firewall_rule_name [String] The name of the Azure SQL server firewall
+    # rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -263,11 +270,12 @@ module Azure::ARM::SQL
     #
     # Returns an Azure SQL server firewall rule.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
-    # @param firewall_rule_name [String] The name of the Azure SQL Server Firewall
-    # Rule.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
+    # @param firewall_rule_name [String] The name of the Azure SQL server firewall
+    # rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -280,11 +288,12 @@ module Azure::ARM::SQL
     #
     # Returns an Azure SQL server firewall rule.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
-    # @param firewall_rule_name [String] The name of the Azure SQL Server Firewall
-    # Rule.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
+    # @param firewall_rule_name [String] The name of the Azure SQL server firewall
+    # rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -346,9 +355,10 @@ module Azure::ARM::SQL
     #
     # Returns a list of Azure SQL server firewall rules.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -362,9 +372,10 @@ module Azure::ARM::SQL
     #
     # Returns a list of Azure SQL server firewall rules.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -377,9 +388,10 @@ module Azure::ARM::SQL
     #
     # Returns a list of Azure SQL server firewall rules.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -438,7 +450,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an Azure SQL Server.
+    # Returns information about an Azure SQL server.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -451,7 +463,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an Azure SQL Server.
+    # Returns information about an Azure SQL server.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -463,7 +475,7 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an Azure SQL Server.
+    # Returns information about an Azure SQL server.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -521,13 +533,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates a new Azure SQL Server.
+    # Creates a new Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
-    # @param parameters [Server] The required parameters for createing or updating
-    # a server.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
+    # @param parameters [Server] The required parameters for creating or updating a
+    # server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -539,13 +552,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates a new Azure SQL Server.
+    # Creates a new Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
-    # @param parameters [Server] The required parameters for createing or updating
-    # a server.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
+    # @param parameters [Server] The required parameters for creating or updating a
+    # server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -556,13 +570,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Creates a new Azure SQL Server.
+    # Creates a new Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
-    # @param parameters [Server] The required parameters for createing or updating
-    # a server.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
+    # @param parameters [Server] The required parameters for creating or updating a
+    # server.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -643,9 +658,10 @@ module Azure::ARM::SQL
     #
     # Deletes a SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -658,9 +674,10 @@ module Azure::ARM::SQL
     #
     # Deletes a SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -673,9 +690,10 @@ module Azure::ARM::SQL
     #
     # Deletes a SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -724,11 +742,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL Server.
+    # Gets information about an Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -740,11 +759,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL Server.
+    # Gets information about an Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -755,11 +775,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL Server.
+    # Gets information about an Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -818,10 +839,11 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an Azure SQL Server.
+    # Returns information about an Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -833,10 +855,11 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an Azure SQL Server.
+    # Returns information about an Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -847,10 +870,11 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about an Azure SQL Server.
+    # Returns information about an Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -908,11 +932,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Cancel a pending upgrade for the Azure SQL Server.
+    # Cancel a pending upgrade for the Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -923,11 +948,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Cancel a pending upgrade for the Azure SQL Server.
+    # Cancel a pending upgrade for the Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -938,11 +964,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Cancel a pending upgrade for the Azure SQL Server.
+    # Cancel a pending upgrade for the Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -991,11 +1018,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about Upgrade status of an Azure SQL Server.
+    # Gets information about Upgrade status of an Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1007,11 +1035,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about Upgrade status of an Azure SQL Server.
+    # Gets information about Upgrade status of an Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1022,11 +1051,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about Upgrade status of an Azure SQL Server.
+    # Gets information about Upgrade status of an Azure SQL server.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1085,13 +1115,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Start an Azure SQL Server Upgrade.
+    # Start an Azure SQL server upgrade.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param parameters [ServerUpgradeStartParameters] The required parameters for
-    # the Azure SQL Server Upgrade.
+    # the Azure SQL server upgrade.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1101,11 +1132,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param parameters [ServerUpgradeStartParameters] The required parameters for
-    # the Azure SQL Server Upgrade.
+    # the Azure SQL server upgrade.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1129,11 +1161,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about Azure SQL Server usage.
+    # Returns information about Azure SQL server usage.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1145,11 +1178,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about Azure SQL Server usage.
+    # Returns information about Azure SQL server usage.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1160,11 +1194,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about Azure SQL Server usage.
+    # Returns information about Azure SQL server usage.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1223,11 +1258,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL Database Service Objective.
+    # Gets information about an Azure SQL database Service Objective.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param service_objective_name [String] The name of the service objective to
     # retrieve.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1241,11 +1277,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL Database Service Objective.
+    # Gets information about an Azure SQL database Service Objective.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param service_objective_name [String] The name of the service objective to
     # retrieve.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -1258,11 +1295,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Gets information about an Azure SQL Database Service Objective.
+    # Gets information about an Azure SQL database Service Objective.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param service_objective_name [String] The name of the service objective to
     # retrieve.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -1324,11 +1362,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about Azure SQL Database Service Objectives.
+    # Returns information about Azure SQL database Service Objectives.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1340,11 +1379,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about Azure SQL Database Service Objectives.
+    # Returns information about Azure SQL database Service Objectives.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1355,11 +1395,12 @@ module Azure::ARM::SQL
     end
 
     #
-    # Returns information about Azure SQL Database Service Objectives.
+    # Returns information about Azure SQL database Service Objectives.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1418,13 +1459,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Start an Azure SQL Server Upgrade.
+    # Start an Azure SQL server upgrade.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param parameters [ServerUpgradeStartParameters] The required parameters for
-    # the Azure SQL Server Upgrade.
+    # the Azure SQL server upgrade.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1435,13 +1477,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Start an Azure SQL Server Upgrade.
+    # Start an Azure SQL server upgrade.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param parameters [ServerUpgradeStartParameters] The required parameters for
-    # the Azure SQL Server Upgrade.
+    # the Azure SQL server upgrade.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1452,13 +1495,14 @@ module Azure::ARM::SQL
     end
 
     #
-    # Start an Azure SQL Server Upgrade.
+    # Start an Azure SQL server upgrade.
     #
-    # @param resource_group_name [String] The name of the Resource Group to which
-    # the resource belongs.
-    # @param server_name [String] The name of the Azure SQL Server
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the resource. You can obtain this value from the Azure Resource
+    # Manager API or the portal.
+    # @param server_name [String] The name of the Azure SQL server.
     # @param parameters [ServerUpgradeStartParameters] The required parameters for
-    # the Azure SQL Server Upgrade.
+    # the Azure SQL server upgrade.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

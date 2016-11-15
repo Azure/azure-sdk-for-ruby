@@ -6,18 +6,18 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListPeering Api service callRetrieves all Peerings that
-    # belongs to an ExpressRouteCircuit
+    # Response for ListPeering API service call retrieves all peerings that
+    # belong to an ExpressRouteCircuit.
     #
     class ExpressRouteCircuitPeeringListResult
 
       include MsRestAzure
 
-      # @return [Array<ExpressRouteCircuitPeering>] Gets the peerings in an
-      # express route circuit
+      # @return [Array<ExpressRouteCircuitPeering>] The peerings in an express
+      # route circuit.
       attr_accessor :value
 
-      # @return [String] Gets the URL to get the next set of results.
+      # @return [String] The URL to get the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

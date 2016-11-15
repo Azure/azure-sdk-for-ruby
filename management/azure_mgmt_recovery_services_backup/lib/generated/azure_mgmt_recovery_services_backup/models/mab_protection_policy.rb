@@ -6,7 +6,7 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # Mab container-specific backup policy.
+    # The backup policy for the file or folder container.
     #
     class MabProtectionPolicy < ProtectionPolicy
 
@@ -19,10 +19,11 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :backupManagementType
 
-      # @return [SchedulePolicy] Backup schedule of backup policy.
+      # @return [SchedulePolicy] The schedule specified in the backup policy.
       attr_accessor :schedule_policy
 
-      # @return [RetentionPolicy] Retention policy details.
+      # @return [RetentionPolicy] The details specified in the Retention
+      # policy.
       attr_accessor :retention_policy
 
 

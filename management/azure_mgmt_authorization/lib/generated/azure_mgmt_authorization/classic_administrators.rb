@@ -5,7 +5,12 @@
 
 module Azure::ARM::Authorization
   #
-  # ClassicAdministrators
+  # Role based access control provides you a way to apply granular level
+  # policy administration down to individual resources or resource groups.
+  # These operations enable you to manage role definitions and role
+  # assignments. A role definition describes the set of actions that can be
+  # performed on resources. A role assignment grants access to Azure Active
+  # Directory users.
   #
   class ClassicAdministrators
     include Azure::ARM::Authorization::Models
@@ -23,9 +28,10 @@ module Azure::ARM::Authorization
     attr_reader :client
 
     #
-    # Gets a list of classic administrators for the subscription.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
-    # @param api_version [String]
+    # @param api_version [String] The API version to use for this operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -37,9 +43,10 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets a list of classic administrators for the subscription.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
-    # @param api_version [String]
+    # @param api_version [String] The API version to use for this operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -50,9 +57,10 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets a list of classic administrators for the subscription.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
-    # @param api_version [String]
+    # @param api_version [String] The API version to use for this operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -109,7 +117,8 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets a list of classic administrators for the subscription.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -124,7 +133,8 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets a list of classic administrators for the subscription.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -138,7 +148,8 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets a list of classic administrators for the subscription.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -196,9 +207,10 @@ module Azure::ARM::Authorization
     end
 
     #
-    # Gets a list of classic administrators for the subscription.
+    # Gets service administrator, account administrator, and co-administrators for
+    # the subscription.
     #
-    # @param api_version [String]
+    # @param api_version [String] The API version to use for this operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

@@ -6,8 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # The base backup engine class. All workload specific backup engines
-    # derive from this class.
+    # The base backup engine class. All workload-specific backup engines derive
+    # from this class.
     #
     class BackupEngineBase
 
@@ -23,26 +23,26 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :backupEngineType
 
-      # @return [String] Friendly name of the backup engine.
+      # @return [String] The friendly name of the backup engine.
       attr_accessor :friendly_name
 
-      # @return [BackupManagementType] Type of backup management for the
-      # backup engine. Possible values include: 'Invalid', 'AzureIaasVM',
-      # 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql'
+      # @return [BackupManagementType] The type of backup management associated
+      # with the backup engine. Possible values include: 'Invalid',
+      # 'AzureIaasVM', 'MAB', 'DPM', 'AzureBackupServer', 'AzureSql'
       attr_accessor :backup_management_type
 
-      # @return [String] Registration status of the backup engine with the
-      # Recovery Services Vault.
+      # @return [String] The status of the backup engine registration with the
+      # Recovery Services vault.
       attr_accessor :registration_status
 
-      # @return [String] Backup status of the backup engine.
+      # @return [String] The backup status of the backup engine.
       attr_accessor :health_status
 
-      # @return [Boolean] Flag indicating if the backup engine be registered,
-      # once already registered.
+      # @return [Boolean] The flag indicating whether the backup engine be
+      # registered again, once the engine has been initially registered.
       attr_accessor :can_re_register
 
-      # @return [String] ID of the backup engine.
+      # @return [String] The ID of the backup engine.
       attr_accessor :backup_engine_id
 
 

@@ -28,7 +28,7 @@ module Azure::ARM::Network
     #
     # Lists compute usages for a subscription.
     #
-    # @param location [String] The location upon which resource usage is queried.
+    # @param location [String] The location where resource usage is queried.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -42,7 +42,7 @@ module Azure::ARM::Network
     #
     # Lists compute usages for a subscription.
     #
-    # @param location [String] The location upon which resource usage is queried.
+    # @param location [String] The location where resource usage is queried.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -55,7 +55,7 @@ module Azure::ARM::Network
     #
     # Lists compute usages for a subscription.
     #
-    # @param location [String] The location upon which resource usage is queried.
+    # @param location [String] The location where resource usage is queried.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -202,7 +202,7 @@ module Azure::ARM::Network
     #
     # Lists compute usages for a subscription.
     #
-    # @param location [String] The location upon which resource usage is queried.
+    # @param location [String] The location where resource usage is queried.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

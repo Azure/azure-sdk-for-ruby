@@ -7,6 +7,7 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
+    # 
     #
     class JobRecurrence
 
@@ -20,8 +21,8 @@ module Azure::ARM::Scheduler
       # @return [Integer] Gets or sets the interval between retries.
       attr_accessor :interval
 
-      # @return [Integer] Gets or sets the maximum number of times that the
-      # job should run.
+      # @return [Integer] Gets or sets the maximum number of times that the job
+      # should run.
       attr_accessor :count
 
       # @return [DateTime] Gets or sets the time at which the job will

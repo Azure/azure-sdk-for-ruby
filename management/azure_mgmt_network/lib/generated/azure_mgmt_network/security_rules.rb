@@ -26,8 +26,7 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # The delete network security rule operation deletes the specified network
-    # security rule.
+    # Deletes the specified network security rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -69,8 +68,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get NetworkSecurityRule operation retrieves information about the
-    # specified network security rule.
+    # Get the specified network security rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -87,8 +85,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get NetworkSecurityRule operation retrieves information about the
-    # specified network security rule.
+    # Get the specified network security rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -104,8 +101,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The Get NetworkSecurityRule operation retrieves information about the
-    # specified network security rule.
+    # Get the specified network security rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -170,15 +166,14 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put network security rule operation creates/updates a security rule in
-    # the specified network security group
+    # Creates or updates a security rule in the specified network security group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
     # group.
     # @param security_rule_name [String] The name of the security rule.
     # @param security_rule_parameters [SecurityRule] Parameters supplied to the
-    # create/update network security rule operation
+    # create or update network security rule operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -195,7 +190,7 @@ module Azure::ARM::Network
     # group.
     # @param security_rule_name [String] The name of the security rule.
     # @param security_rule_parameters [SecurityRule] Parameters supplied to the
-    # create/update network security rule operation
+    # create or update network security rule operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -221,8 +216,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the security rules in
-    # a network security group.
+    # Gets all security rules in a network security group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -238,8 +232,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the security rules in
-    # a network security group.
+    # Gets all security rules in a network security group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -254,8 +247,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the security rules in
-    # a network security group.
+    # Gets all security rules in a network security group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -318,8 +310,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete network security rule operation deletes the specified network
-    # security rule.
+    # Deletes the specified network security rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -335,8 +326,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete network security rule operation deletes the specified network
-    # security rule.
+    # Deletes the specified network security rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -352,8 +342,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The delete network security rule operation deletes the specified network
-    # security rule.
+    # Deletes the specified network security rule.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
@@ -408,15 +397,14 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put network security rule operation creates/updates a security rule in
-    # the specified network security group
+    # Creates or updates a security rule in the specified network security group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
     # group.
     # @param security_rule_name [String] The name of the security rule.
     # @param security_rule_parameters [SecurityRule] Parameters supplied to the
-    # create/update network security rule operation
+    # create or update network security rule operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -428,15 +416,14 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put network security rule operation creates/updates a security rule in
-    # the specified network security group
+    # Creates or updates a security rule in the specified network security group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
     # group.
     # @param security_rule_name [String] The name of the security rule.
     # @param security_rule_parameters [SecurityRule] Parameters supplied to the
-    # create/update network security rule operation
+    # create or update network security rule operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -447,15 +434,14 @@ module Azure::ARM::Network
     end
 
     #
-    # The Put network security rule operation creates/updates a security rule in
-    # the specified network security group
+    # Creates or updates a security rule in the specified network security group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security
     # group.
     # @param security_rule_name [String] The name of the security rule.
     # @param security_rule_parameters [SecurityRule] Parameters supplied to the
-    # create/update network security rule operation
+    # create or update network security rule operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -535,8 +521,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the security rules in
-    # a network security group.
+    # Gets all security rules in a network security group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -551,8 +536,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the security rules in
-    # a network security group.
+    # Gets all security rules in a network security group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -566,8 +550,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the security rules in
-    # a network security group.
+    # Gets all security rules in a network security group.
     #
     # @param next_page_link [String] The NextLink from the previous successful
     # call to List operation.
@@ -625,8 +608,7 @@ module Azure::ARM::Network
     end
 
     #
-    # The List network security rule operation retrieves all the security rules in
-    # a network security group.
+    # Gets all security rules in a network security group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param network_security_group_name [String] The name of the network security

@@ -6,13 +6,13 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for GetConnectionSharedKey Api service call
+    # Response for GetConnectionSharedKey API service call
     #
     class ConnectionSharedKey
 
       include MsRestAzure
 
-      # @return [String] The virtual network connection shared key value
+      # @return [String] The virtual network connection shared key value.
       attr_accessor :value
 
 

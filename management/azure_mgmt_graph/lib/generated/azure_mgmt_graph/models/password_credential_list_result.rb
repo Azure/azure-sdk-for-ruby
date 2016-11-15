@@ -12,7 +12,8 @@ module Azure::ARM::Graph
 
       include MsRestAzure
 
-      # @return [Array<PasswordCredential>] PasswordCredential list.
+      # @return [Array<PasswordCredential>] A collection of
+      # PasswordCredentials.
       attr_accessor :value
 
 

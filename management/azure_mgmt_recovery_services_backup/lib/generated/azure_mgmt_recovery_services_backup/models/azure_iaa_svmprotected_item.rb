@@ -6,7 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # IaaS VM workload-specific backup item.
+    # This Azure VM workload-specific (also known as IaaS VM workload-specific)
+    # backup item has been backed up.
     #
     class AzureIaaSVMProtectedItem < ProtectedItem
 
@@ -19,27 +20,27 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :protectedItemType
 
-      # @return [String] Friendly name of the VM represented by this backup
+      # @return [String] The friendly name of the VM represented by this backup
       # item.
       attr_accessor :friendly_name
 
-      # @return [String] Fully qualified ARM ID of the virtual machine
-      # represented by this item.
+      # @return [String] The fully qualified Resource Manager ID of the virtual
+      # machine represented by this item.
       attr_accessor :virtual_machine_id
 
-      # @return [String] Backup status of this backup item.
+      # @return [String] The backup status of this backup item.
       attr_accessor :protection_status
 
-      # @return [ProtectionState] Backup state of this backup item. Possible
-      # values include: 'Invalid', 'IRPending', 'Protected',
+      # @return [ProtectionState] The backup state of this backup item.
+      # Possible values include: 'Invalid', 'IRPending', 'Protected',
       # 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused'
       attr_accessor :protection_state
 
-      # @return [String] Last backup operation status. Possible values:
-      # Healthy, Unhealthy.
+      # @return [String] The last backup operation status. The possible values
+      # are: Healthy or Unhealthy.
       attr_accessor :last_backup_status
 
-      # @return [DateTime] Timestamp of the last backup operation on this
+      # @return [DateTime] The timestamp of the last backup operation for this
       # backup item.
       attr_accessor :last_backup_time
 

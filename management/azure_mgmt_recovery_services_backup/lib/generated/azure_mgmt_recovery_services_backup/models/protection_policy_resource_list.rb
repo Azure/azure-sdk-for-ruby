@@ -6,13 +6,13 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # List of ProtectionPolicy resources
+    # The list of ProtectionPolicy resources.
     #
     class ProtectionPolicyResourceList < ResourceList
 
       include MsRestAzure
 
-      # @return [Array<ProtectionPolicyResource>] List of resources.
+      # @return [Array<ProtectionPolicyResource>] The list of resources.
       attr_accessor :value
 
       # return [Proc] with next page method call.

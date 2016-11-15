@@ -6,14 +6,14 @@
 module Azure::ARM::Network
   module Models
     #
-    # Response for ListApplicationGateways Api service call
+    # Response for ListApplicationGateways API service call.
     #
     class ApplicationGatewayListResult
 
       include MsRestAzure
 
-      # @return [Array<ApplicationGateway>] List of ApplicationGateways in a
-      # resource group
+      # @return [Array<ApplicationGateway>] List of an application gateways in
+      # a resource group.
       attr_accessor :value
 
       # @return [String] URL to get the next set of results.

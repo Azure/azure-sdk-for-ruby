@@ -6,33 +6,33 @@
 module Azure::ARM::Network
   module Models
     #
-    # IpConfiguration for Virtual network gateway
+    # IP configuration for virtual network gateway
     #
     class VirtualNetworkGatewayIPConfiguration < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [IPAllocationMethod] Gets or sets PrivateIP allocation method.
-      # Possible values include: 'Static', 'Dynamic'
+      # @return [IPAllocationMethod] The private IP allocation method.
+      # Possible values are: 'Static' and 'Dynamic'. Possible values include:
+      # 'Static', 'Dynamic'
       attr_accessor :private_ipallocation_method
 
-      # @return [SubResource] Gets or sets the reference of the subnet resource
+      # @return [SubResource] The reference of the subnet resource.
       attr_accessor :subnet
 
-      # @return [SubResource] Gets or sets the reference of the PublicIP
-      # resource
+      # @return [SubResource] The reference of the public IP resource.
       attr_accessor :public_ipaddress
 
-      # @return [String] Gets provisioning state of the PublicIP resource
-      # Updating/Deleting/Failed
+      # @return [String] The provisioning state of the public IP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
-      # @return [String] Gets name of the resource that is unique within a
-      # resource group. This name can be used to access the resource
+      # @return [String] The name of the resource that is unique within a
+      # resource group. This name can be used to access the resource.
       attr_accessor :name
 
       # @return [String] A unique read-only string that changes whenever the
-      # resource is updated
+      # resource is updated.
       attr_accessor :etag
 
 

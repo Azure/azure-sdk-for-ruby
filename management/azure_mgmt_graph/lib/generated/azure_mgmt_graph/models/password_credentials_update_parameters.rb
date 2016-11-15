@@ -6,13 +6,14 @@
 module Azure::ARM::Graph
   module Models
     #
-    # Request paramters for PasswordCredentials update operation
+    # Request parameters for a PasswordCredentials update operation.
     #
     class PasswordCredentialsUpdateParameters
 
       include MsRestAzure
 
-      # @return [Array<PasswordCredential>] PasswordCredential list.
+      # @return [Array<PasswordCredential>] A collection of
+      # PasswordCredentials.
       attr_accessor :value
 
 

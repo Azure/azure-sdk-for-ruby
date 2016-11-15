@@ -13,11 +13,11 @@ module Azure::ARM::Redis
       include MsRestAzure
 
       # @return [String] The current primary key that clients can use to
-      # authenticate with redis cache.
+      # authenticate with Redis cache.
       attr_accessor :primary_key
 
       # @return [String] The current secondary key that clients can use to
-      # authenticate with redis cache.
+      # authenticate with Redis cache.
       attr_accessor :secondary_key
 
 

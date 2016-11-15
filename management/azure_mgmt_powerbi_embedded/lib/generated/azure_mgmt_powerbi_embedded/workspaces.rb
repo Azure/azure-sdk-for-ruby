@@ -5,7 +5,7 @@
 
 module Azure::ARM::PowerBiEmbedded
   #
-  # Client to manage your Power BI embedded workspace collections and retrieve
+  # Client to manage your Power BI Embedded workspace collections and retrieve
   # workspaces.
   #
   class Workspaces
@@ -24,12 +24,12 @@ module Azure::ARM::PowerBiEmbedded
     attr_reader :client
 
     #
-    # Retrieves all existing Power BI Workspaces in the specified Workspace
-    # Collection.
+    # Retrieves all existing Power BI workspaces in the specified workspace
+    # collection.
     #
     # @param resource_group_name [String] Azure resource group
-    # @param workspace_collection_name [String] Power BI Embedded workspace
-    # collection name
+    # @param workspace_collection_name [String] Power BI Embedded Workspace
+    # Collection name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -41,12 +41,12 @@ module Azure::ARM::PowerBiEmbedded
     end
 
     #
-    # Retrieves all existing Power BI Workspaces in the specified Workspace
-    # Collection.
+    # Retrieves all existing Power BI workspaces in the specified workspace
+    # collection.
     #
     # @param resource_group_name [String] Azure resource group
-    # @param workspace_collection_name [String] Power BI Embedded workspace
-    # collection name
+    # @param workspace_collection_name [String] Power BI Embedded Workspace
+    # Collection name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -57,12 +57,12 @@ module Azure::ARM::PowerBiEmbedded
     end
 
     #
-    # Retrieves all existing Power BI Workspaces in the specified Workspace
-    # Collection.
+    # Retrieves all existing Power BI workspaces in the specified workspace
+    # collection.
     #
     # @param resource_group_name [String] Azure resource group
-    # @param workspace_collection_name [String] Power BI Embedded workspace
-    # collection name
+    # @param workspace_collection_name [String] Power BI Embedded Workspace
+    # Collection name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

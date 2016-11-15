@@ -15,8 +15,7 @@ module Azure::ARM::Authorization
       # @return [Array<RoleAssignment>] Role assignment list.
       attr_accessor :value
 
-      # @return [String] Gets or sets the URL to get the next set of role
-      # assignment results.
+      # @return [String] The URL to use for getting the next set of results.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

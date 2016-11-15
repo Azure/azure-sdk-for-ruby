@@ -13,16 +13,16 @@ module Azure::ARM::SQL
 
       include MsRestAzure
 
-      # @return [String] The name of the Azure SQL Database being upgraded.
+      # @return [String] The name of the Azure SQL database being upgraded.
       attr_accessor :name
 
       # @return [TargetDatabaseEditions] The target edition for the Azure SQL
-      # Database being upgraded. Possible values include: 'Basic',
-      # 'Standard', 'Premium', 'Free', 'Stretch', 'DataWarehouse'
+      # database being upgraded. Possible values include: 'Basic', 'Standard',
+      # 'Premium', 'Free', 'Stretch', 'DataWarehouse'
       attr_accessor :target_edition
 
       # @return [String] The target Service Level Objective for the Azure SQL
-      # Database being upgraded.
+      # database being upgraded.
       attr_accessor :target_service_level_objective
 
 

@@ -6,7 +6,8 @@
 module Azure::ARM::RecoveryServicesBackup
   module Models
     #
-    # IaaS VM workload-specific backup item.
+    # This Azure VM workload-specific (also known as IaaS VM workload-specific)
+    # backup item can be backed up.
     #
     class IaaSVMProtectableItem < WorkloadProtectableItem
 
@@ -19,7 +20,8 @@ module Azure::ARM::RecoveryServicesBackup
 
       attr_accessor :protectableItemType
 
-      # @return [String] Fully qualified ARM ID of the virtual machine.
+      # @return [String] The fully qualified Resource Manager ID of the virtual
+      # machine.
       attr_accessor :virtual_machine_id
 
 

@@ -6,7 +6,7 @@
 module Azure::ARM::Redis
   module Models
     #
-    # Parameters for redis export operation.
+    # Parameters for Redis export operation.
     #
     class ExportRDBParameters
 

@@ -17,7 +17,7 @@ module Azure::ARM::Graph
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] the tenant Id.
+    # @return [String] The tenant ID.
     attr_accessor :tenant_id
 
     # @return [String] Gets or sets the preferred language for the response.
