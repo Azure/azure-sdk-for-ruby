@@ -68,5 +68,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_subscriptions', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_traffic_manager', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_web', "~>#{version}"
-  spec.add_runtime_dependency 'azure-storage', '0.11.1.preview'
+  spec.add_runtime_dependency 'azure-storage', "~>0.11.3.preview"
 end
