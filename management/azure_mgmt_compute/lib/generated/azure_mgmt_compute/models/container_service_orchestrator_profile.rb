@@ -16,7 +16,6 @@ module Azure::ARM::Compute
       # manage container service cluster resources. Valid values are Swarm,
       # DCOS, and Custom. Possible values include: 'Swarm', 'DCOS', 'Custom',
       # 'Kubernetes'
-
       attr_accessor :orchestrator_type
 
 
