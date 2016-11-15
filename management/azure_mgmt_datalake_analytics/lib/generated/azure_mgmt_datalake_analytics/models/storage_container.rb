@@ -8,7 +8,7 @@ module Azure::ARM::DataLakeAnalytics
     #
     # Azure Storage blob container information.
     #
-    class BlobContainer
+    class StorageContainer
 
       include MsRestAzure
 
@@ -21,21 +21,21 @@ module Azure::ARM::DataLakeAnalytics
       # @return [String] the type of the blob container.
       attr_accessor :type
 
-      # @return [BlobContainerProperties] the properties of the blob container.
-      attr_accessor :properties
+      # @return [DateTime] the last modified time of the blob container.
+      attr_accessor :last_modified_time
 
 
       #
-      # Mapper for BlobContainer class as Ruby Hash.
+      # Mapper for StorageContainer class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'BlobContainer',
+          serialized_name: 'StorageContainer',
           type: {
             name: 'Composite',
-            class_name: 'BlobContainer',
+            class_name: 'StorageContainer',
             model_properties: {
               name: {
                 required: false,
@@ -61,13 +61,12 @@ module Azure::ARM::DataLakeAnalytics
                   name: 'String'
                 }
               },
-              properties: {
+              last_modified_time: {
                 required: false,
                 read_only: true,
-                serialized_name: 'properties',
+                serialized_name: 'properties.lastModifiedTime',
                 type: {
-                  name: 'Composite',
-                  class_name: 'BlobContainerProperties'
+                  name: 'DateTime'
                 }
               }
             }

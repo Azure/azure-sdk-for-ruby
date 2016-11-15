@@ -9,11 +9,11 @@ module Azure::ARM::DataLakeAnalytics
     # The list of blob containers associated with the storage account attached
     # to the Data Lake Analytics account.
     #
-    class ListBlobContainersResult
+    class ListStorageContainersResult
 
       include MsRestAzure
 
-      # @return [Array<BlobContainer>] the results of the list operation
+      # @return [Array<StorageContainer>] the results of the list operation
       attr_accessor :value
 
       # @return [String] the link (url) to the next page of results.
@@ -25,7 +25,7 @@ module Azure::ARM::DataLakeAnalytics
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<BlobContainer>] operation results.
+      # @return [Array<StorageContainer>] operation results.
       #
       def get_all_items
         items = @value
@@ -40,7 +40,7 @@ module Azure::ARM::DataLakeAnalytics
       #
       # Gets the next page of results.
       #
-      # @return [ListBlobContainersResult] with next page content.
+      # @return [ListStorageContainersResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -52,16 +52,16 @@ module Azure::ARM::DataLakeAnalytics
       end
 
       #
-      # Mapper for ListBlobContainersResult class as Ruby Hash.
+      # Mapper for ListStorageContainersResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ListBlobContainersResult',
+          serialized_name: 'ListStorageContainersResult',
           type: {
             name: 'Composite',
-            class_name: 'ListBlobContainersResult',
+            class_name: 'ListStorageContainersResult',
             model_properties: {
               value: {
                 required: false,
@@ -71,10 +71,10 @@ module Azure::ARM::DataLakeAnalytics
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'BlobContainerElementType',
+                      serialized_name: 'StorageContainerElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'BlobContainer'
+                        class_name: 'StorageContainer'
                       }
                   }
                 }

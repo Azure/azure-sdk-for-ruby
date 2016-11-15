@@ -9,8 +9,8 @@ module Azure::ARM::DataLakeAnalytics
     # Defines values for DataLakeAnalyticsAccountState
     #
     module DataLakeAnalyticsAccountState
-      Active = "active"
-      Suspended = "suspended"
+      Active = "Active"
+      Suspended = "Suspended"
     end
   end
 end

@@ -6,15 +6,15 @@
 module Azure::ARM::DataLakeAnalytics
   module Models
     #
-    # Storage account parameters for a storage account being added to a Data
+    # Storage account parameters for a storage account being updated in a Data
     # Lake Analytics account.
     #
-    class AddStorageAccountParameters
+    class UpdateStorageAccountParameters
 
       include MsRestAzure
 
-      # @return [String] the access key associated with this Azure Storage
-      # account that will be used to connect to it.
+      # @return [String] the updated access key associated with this Azure
+      # Storage account that will be used to connect to it.
       attr_accessor :access_key
 
       # @return [String] the optional suffix for the storage account.
@@ -22,19 +22,19 @@ module Azure::ARM::DataLakeAnalytics
 
 
       #
-      # Mapper for AddStorageAccountParameters class as Ruby Hash.
+      # Mapper for UpdateStorageAccountParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'AddStorageAccountParameters',
+          serialized_name: 'UpdateStorageAccountParameters',
           type: {
             name: 'Composite',
-            class_name: 'AddStorageAccountParameters',
+            class_name: 'UpdateStorageAccountParameters',
             model_properties: {
               access_key: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.accessKey',
                 type: {
                   name: 'String'
