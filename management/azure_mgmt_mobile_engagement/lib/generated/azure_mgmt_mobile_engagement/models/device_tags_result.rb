@@ -7,6 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class DeviceTagsResult
 
@@ -17,6 +18,7 @@ module Azure::ARM::MobileEngagement
       # valid but all the specified devices are rejected, the status code is
       # still `200` with a response including all the devices as being
       # rejected.
+      # 
       attr_accessor :invalid_ids
 
 

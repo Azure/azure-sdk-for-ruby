@@ -7,6 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class DeviceMeta
 
@@ -28,15 +29,14 @@ module Azure::ARM::MobileEngagement
       # milliseconds since January 1st, 1970 UTC.
       attr_accessor :last_location
 
-      # @return [Boolean] Boolean indicating if native push notifications
-      # (like Android’s GCM or Apple’s APNS) are enabled for the application.
-      # This boolean is set to true when the application registers
-      # successfully to the native push service, and set to false when the
-      # native push service reports to Mobile Engagement that the application
-      # can no longer be pushed (which means that it has been uninstalled).
-      # This report is performed a few hours after Mobile Engagement has
-      # tried to perform a native push to a device on which the application
-      # has been uninstalled.
+      # @return [Boolean] Boolean indicating if native push notifications (like
+      # Android’s GCM or Apple’s APNS) are enabled for the application. This
+      # boolean is set to true when the application registers successfully to
+      # the native push service, and set to false when the native push service
+      # reports to Mobile Engagement that the application can no longer be
+      # pushed (which means that it has been uninstalled). This report is
+      # performed a few hours after Mobile Engagement has tried to perform a
+      # native push to a device on which the application has been uninstalled.
       attr_accessor :native_push_enabled
 
 

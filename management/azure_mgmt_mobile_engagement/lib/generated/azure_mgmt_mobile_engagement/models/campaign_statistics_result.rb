@@ -7,6 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class CampaignStatisticsResult
 
@@ -41,13 +42,13 @@ module Azure::ARM::MobileEngagement
       # (Not present in case of a native-push).
       attr_accessor :dropped
 
-      # @return [Integer] Number of times the system notification was
-      # displayed (Not present in case of a data-push or a native-push). On
-      # Android it corresponds to a status bar notification.
+      # @return [Integer] Number of times the system notification was displayed
+      # (Not present in case of a data-push or a native-push). On Android it
+      # corresponds to a status bar notification.
       attr_accessor :system_notification_displayed
 
-      # @return [Integer] Number of times the in-app notification was
-      # displayed (Not present in case of a data-push or a native-push).
+      # @return [Integer] Number of times the in-app notification was displayed
+      # (Not present in case of a data-push or a native-push).
       attr_accessor :in_app_notification_displayed
 
       # @return [Integer] Number of times the campaign’s content view was
@@ -73,8 +74,8 @@ module Azure::ARM::MobileEngagement
       attr_accessor :in_app_notification_exited
 
       # @return [Integer] Number of times the campaign’s content view was
-      # actioned (Not present in case of a notification-only announcement or
-      # a native-push).
+      # actioned (Not present in case of a notification-only announcement or a
+      # native-push).
       attr_accessor :content_actioned
 
       # @return [Integer] Number of times the campaign’s content view was

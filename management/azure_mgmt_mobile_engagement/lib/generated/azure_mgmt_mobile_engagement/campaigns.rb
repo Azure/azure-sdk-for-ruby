@@ -27,8 +27,8 @@ module Azure::ARM::MobileEngagement
     #
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
-    # @param skip [Integer] Control paging of campaigns, start results at the
-    # given offset, defaults to 0 (1st page of data).
+    # @param skip [Integer] Control paging of campaigns, start results at the given
+    # offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of campaigns, number of campaigns to
     # return with each call. It returns all campaigns by default. When specifying
     # $top parameter, the response contains a `nextLink` property describing the
@@ -38,16 +38,16 @@ module Azure::ARM::MobileEngagement
     # 'draft'`. Valid state values are: draft, scheduled, in-progress, and
     # finished. Only the eq operator and the state property are supported.
     # @param orderby [String] Sort results by an expression which looks like
-    # `$orderby=id asc` (this example is actually the default behavior). The
-    # syntax is orderby={property} {direction} or just orderby={property}. The
-    # available sorting properties are id, name, state, activatedDate, and
-    # finishedDate. The available directions are asc (for ascending order) and
-    # desc (for descending order). When not specified the asc direction is used.
-    # Only one property at a time can be used for sorting.
+    # `$orderby=id asc` (this example is actually the default behavior). The syntax
+    # is orderby={property} {direction} or just orderby={property}. The available
+    # sorting properties are id, name, state, activatedDate, and finishedDate. The
+    # available directions are asc (for ascending order) and desc (for descending
+    # order). When not specified the asc direction is used. Only one property at a
+    # time can be used for sorting.
     # @param search [String] Restrict results to campaigns matching the optional
-    # `search` expression. This currently performs the search based on the name
-    # on the campaign only, case insensitive. If the campaign contains the value
-    # of the `search` parameter anywhere in the name, it matches.
+    # `search` expression. This currently performs the search based on the name on
+    # the campaign only, case insensitive. If the campaign contains the value of
+    # the `search` parameter anywhere in the name, it matches.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -63,8 +63,8 @@ module Azure::ARM::MobileEngagement
     #
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
-    # @param skip [Integer] Control paging of campaigns, start results at the
-    # given offset, defaults to 0 (1st page of data).
+    # @param skip [Integer] Control paging of campaigns, start results at the given
+    # offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of campaigns, number of campaigns to
     # return with each call. It returns all campaigns by default. When specifying
     # $top parameter, the response contains a `nextLink` property describing the
@@ -74,16 +74,16 @@ module Azure::ARM::MobileEngagement
     # 'draft'`. Valid state values are: draft, scheduled, in-progress, and
     # finished. Only the eq operator and the state property are supported.
     # @param orderby [String] Sort results by an expression which looks like
-    # `$orderby=id asc` (this example is actually the default behavior). The
-    # syntax is orderby={property} {direction} or just orderby={property}. The
-    # available sorting properties are id, name, state, activatedDate, and
-    # finishedDate. The available directions are asc (for ascending order) and
-    # desc (for descending order). When not specified the asc direction is used.
-    # Only one property at a time can be used for sorting.
+    # `$orderby=id asc` (this example is actually the default behavior). The syntax
+    # is orderby={property} {direction} or just orderby={property}. The available
+    # sorting properties are id, name, state, activatedDate, and finishedDate. The
+    # available directions are asc (for ascending order) and desc (for descending
+    # order). When not specified the asc direction is used. Only one property at a
+    # time can be used for sorting.
     # @param search [String] Restrict results to campaigns matching the optional
-    # `search` expression. This currently performs the search based on the name
-    # on the campaign only, case insensitive. If the campaign contains the value
-    # of the `search` parameter anywhere in the name, it matches.
+    # `search` expression. This currently performs the search based on the name on
+    # the campaign only, case insensitive. If the campaign contains the value of
+    # the `search` parameter anywhere in the name, it matches.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -98,8 +98,8 @@ module Azure::ARM::MobileEngagement
     #
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
-    # @param skip [Integer] Control paging of campaigns, start results at the
-    # given offset, defaults to 0 (1st page of data).
+    # @param skip [Integer] Control paging of campaigns, start results at the given
+    # offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of campaigns, number of campaigns to
     # return with each call. It returns all campaigns by default. When specifying
     # $top parameter, the response contains a `nextLink` property describing the
@@ -109,16 +109,16 @@ module Azure::ARM::MobileEngagement
     # 'draft'`. Valid state values are: draft, scheduled, in-progress, and
     # finished. Only the eq operator and the state property are supported.
     # @param orderby [String] Sort results by an expression which looks like
-    # `$orderby=id asc` (this example is actually the default behavior). The
-    # syntax is orderby={property} {direction} or just orderby={property}. The
-    # available sorting properties are id, name, state, activatedDate, and
-    # finishedDate. The available directions are asc (for ascending order) and
-    # desc (for descending order). When not specified the asc direction is used.
-    # Only one property at a time can be used for sorting.
+    # `$orderby=id asc` (this example is actually the default behavior). The syntax
+    # is orderby={property} {direction} or just orderby={property}. The available
+    # sorting properties are id, name, state, activatedDate, and finishedDate. The
+    # available directions are asc (for ascending order) and desc (for descending
+    # order). When not specified the asc direction is used. Only one property at a
+    # time can be used for sorting.
     # @param search [String] Restrict results to campaigns matching the optional
-    # `search` expression. This currently performs the search based on the name
-    # on the campaign only, case insensitive. If the campaign contains the value
-    # of the `search` parameter anywhere in the name, it matches.
+    # `search` expression. This currently performs the search based on the name on
+    # the campaign only, case insensitive. If the campaign contains the value of
+    # the `search` parameter anywhere in the name, it matches.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -807,8 +807,8 @@ module Azure::ARM::MobileEngagement
     #
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
-    # @param parameters [CampaignTestNewParameters] Parameters supplied to the
-    # Test Campaign operation.
+    # @param parameters [CampaignTestNewParameters] Parameters supplied to the Test
+    # Campaign operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -824,8 +824,8 @@ module Azure::ARM::MobileEngagement
     #
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
-    # @param parameters [CampaignTestNewParameters] Parameters supplied to the
-    # Test Campaign operation.
+    # @param parameters [CampaignTestNewParameters] Parameters supplied to the Test
+    # Campaign operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -840,8 +840,8 @@ module Azure::ARM::MobileEngagement
     #
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
-    # @param parameters [CampaignTestNewParameters] Parameters supplied to the
-    # Test Campaign operation.
+    # @param parameters [CampaignTestNewParameters] Parameters supplied to the Test
+    # Campaign operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1418,8 +1418,8 @@ module Azure::ARM::MobileEngagement
     #
     # Get the list of campaigns.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1433,8 +1433,8 @@ module Azure::ARM::MobileEngagement
     #
     # Get the list of campaigns.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1447,8 +1447,8 @@ module Azure::ARM::MobileEngagement
     #
     # Get the list of campaigns.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1507,8 +1507,8 @@ module Azure::ARM::MobileEngagement
     #
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
-    # @param skip [Integer] Control paging of campaigns, start results at the
-    # given offset, defaults to 0 (1st page of data).
+    # @param skip [Integer] Control paging of campaigns, start results at the given
+    # offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of campaigns, number of campaigns to
     # return with each call. It returns all campaigns by default. When specifying
     # $top parameter, the response contains a `nextLink` property describing the
@@ -1518,16 +1518,16 @@ module Azure::ARM::MobileEngagement
     # 'draft'`. Valid state values are: draft, scheduled, in-progress, and
     # finished. Only the eq operator and the state property are supported.
     # @param orderby [String] Sort results by an expression which looks like
-    # `$orderby=id asc` (this example is actually the default behavior). The
-    # syntax is orderby={property} {direction} or just orderby={property}. The
-    # available sorting properties are id, name, state, activatedDate, and
-    # finishedDate. The available directions are asc (for ascending order) and
-    # desc (for descending order). When not specified the asc direction is used.
-    # Only one property at a time can be used for sorting.
+    # `$orderby=id asc` (this example is actually the default behavior). The syntax
+    # is orderby={property} {direction} or just orderby={property}. The available
+    # sorting properties are id, name, state, activatedDate, and finishedDate. The
+    # available directions are asc (for ascending order) and desc (for descending
+    # order). When not specified the asc direction is used. Only one property at a
+    # time can be used for sorting.
     # @param search [String] Restrict results to campaigns matching the optional
-    # `search` expression. This currently performs the search based on the name
-    # on the campaign only, case insensitive. If the campaign contains the value
-    # of the `search` parameter anywhere in the name, it matches.
+    # `search` expression. This currently performs the search based on the name on
+    # the campaign only, case insensitive. If the campaign contains the value of
+    # the `search` parameter anywhere in the name, it matches.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

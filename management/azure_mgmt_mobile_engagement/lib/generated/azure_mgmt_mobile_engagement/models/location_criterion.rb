@@ -27,8 +27,8 @@ module Azure::ARM::MobileEngagement
       # state or province.
       attr_accessor :region
 
-      # @return [String] A locality within the administrative region, such as
-      # a town or city.
+      # @return [String] A locality within the administrative region, such as a
+      # town or city.
       attr_accessor :locality
 
 

@@ -7,18 +7,20 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class CampaignPushResult
 
       include MsRestAzure
 
       # @return [Array<String>] A JSON array containing all identifiers that
-      # have been rejected. A device can be rejected for the following
-      # reasons: * The device hasn’t reported any session yet. * The device
-      # is over quota (if a push quota filter is applied on your campaign).
-      # Please note that if the request parameters are valid but all the
-      # specified devices are rejected, the status code is still `200` with a
-      # response including all the devices as being rejected.
+      # have been rejected. A device can be rejected for the following reasons:
+      # * The device hasn’t reported any session yet. * The device is over
+      # quota (if a push quota filter is applied on your campaign). Please note
+      # that if the request parameters are valid but all the specified devices
+      # are rejected, the status code is still `200` with a response including
+      # all the devices as being rejected.
+      # 
       attr_accessor :invalid_device_ids
 
 

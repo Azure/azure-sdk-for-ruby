@@ -7,6 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class FeedbackByCampaignParameter
 
@@ -25,8 +26,8 @@ module Azure::ARM::MobileEngagement
       # @return [Array<Integer>] A list of campaign identifiers.
       attr_accessor :campaign_ids
 
-      # @return [ExportFormat] The format of the exported data. Possible
-      # values include: 'JsonBlob', 'CsvBlob'
+      # @return [ExportFormat] The format of the exported data. Possible values
+      # include: 'JsonBlob', 'CsvBlob'
       attr_accessor :export_format
 
 

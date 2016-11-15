@@ -26,9 +26,9 @@ module Azure::ARM::MobileEngagement
       attr_accessor :value
 
       # @return [AudienceOperators] comparison operator: `EQ` (equal to), `LT`
-      # (less than), `GT` (greater than), `LE` (less than or equal to) or
-      # `GE` (greater than or equal to). Possible values include: 'EQ', 'LT',
-      # 'GT', 'LE', 'GE'
+      # (less than), `GT` (greater than), `LE` (less than or equal to) or `GE`
+      # (greater than or equal to). Possible values include: 'EQ', 'LT', 'GT',
+      # 'LE', 'GE'
       attr_accessor :op
 
 

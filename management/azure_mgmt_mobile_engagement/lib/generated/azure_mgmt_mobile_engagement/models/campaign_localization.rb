@@ -7,13 +7,14 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class CampaignLocalization
 
       include MsRestAzure
 
-      # @return [String] Title of the notification. This field supports
-      # appInfo markers.
+      # @return [String] Title of the notification. This field supports appInfo
+      # markers.
       attr_accessor :notification_title
 
       # @return [String] Message of the notification. This field supports
@@ -25,13 +26,14 @@ module Azure::ARM::MobileEngagement
       # there is neither text nor content icon). For Android system
       # notifications, the image is used as the large icon (displayed only on
       # Android 3+).
+      # 
       attr_accessor :notification_image
 
       # @return [NotificationOptions] Additional platform specific options.
       attr_accessor :notification_options
 
-      # @return [String] Title of the announcement or poll. This field
-      # supports appInfo markers.
+      # @return [String] Title of the announcement or poll. This field supports
+      # appInfo markers.
       attr_accessor :title
 
       # @return [String] Body of the text/web announcement, poll or data push.
@@ -42,8 +44,8 @@ module Azure::ARM::MobileEngagement
       # and polls (answer button).
       attr_accessor :action_button_text
 
-      # @return [String] Text of the exit button for text/web announcements
-      # and polls.
+      # @return [String] Text of the exit button for text/web announcements and
+      # polls.
       attr_accessor :exit_button_text
 
       # @return [String] URL to launch when the announcement is actioned.

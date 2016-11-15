@@ -7,9 +7,10 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Send only to users who have some app info set. This is a special filter
-    # that is automatically added if your campaign contains appInfo
-    # parameters. It is not intended to be public and should not be used as
-    # it could be removed or replaced by the API.
+    # that is automatically added if your campaign contains appInfo parameters.
+    # It is not intended to be public and should not be used as it could be
+    # removed or replaced by the API.
+    # 
     #
     class AppInfoFilter < Filter
 

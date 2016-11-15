@@ -7,6 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class ExportTaskParameter
 
@@ -18,8 +19,8 @@ module Azure::ARM::MobileEngagement
       # @return [String] A description of the export task.
       attr_accessor :description
 
-      # @return [ExportFormat] The format of the exported data. Possible
-      # values include: 'JsonBlob', 'CsvBlob'
+      # @return [ExportFormat] The format of the exported data. Possible values
+      # include: 'JsonBlob', 'CsvBlob'
       attr_accessor :export_format
 
 

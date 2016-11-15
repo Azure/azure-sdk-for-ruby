@@ -7,6 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class DeviceQueryResult
 
@@ -18,8 +19,8 @@ module Azure::ARM::MobileEngagement
       # @return [DeviceMeta] Application usage data.
       attr_accessor :meta
 
-      # @return [Hash{String => String}] Also known as tags, a key-value set
-      # as a JSON object.
+      # @return [Hash{String => String}] Also known as tags, a key-value set as
+      # a JSON object.
       attr_accessor :app_info
 
 

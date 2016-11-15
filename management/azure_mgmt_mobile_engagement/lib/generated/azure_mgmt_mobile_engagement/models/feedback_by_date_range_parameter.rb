@@ -7,6 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class FeedbackByDateRangeParameter
 
@@ -30,8 +31,8 @@ module Azure::ARM::MobileEngagement
       # inclusion of active campaigns.
       attr_accessor :campaign_window_end
 
-      # @return [ExportFormat] The format of the exported data. Possible
-      # values include: 'JsonBlob', 'CsvBlob'
+      # @return [ExportFormat] The format of the exported data. Possible values
+      # include: 'JsonBlob', 'CsvBlob'
       attr_accessor :export_format
 
 
