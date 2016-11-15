@@ -24,8 +24,8 @@ module Azure::ARM::NotificationHubs
 
     #
     # Checks the availability of the given service namespace across all Azure
-    # subscriptions. This is useful because the domain name is created based on
-    # the service namespace name.
+    # subscriptions. This is useful because the domain name is created based on the
+    # service namespace name.
     #
     # @param parameters [CheckAvailabilityParameters] The namespace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -40,8 +40,8 @@ module Azure::ARM::NotificationHubs
 
     #
     # Checks the availability of the given service namespace across all Azure
-    # subscriptions. This is useful because the domain name is created based on
-    # the service namespace name.
+    # subscriptions. This is useful because the domain name is created based on the
+    # service namespace name.
     #
     # @param parameters [CheckAvailabilityParameters] The namespace name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -55,8 +55,8 @@ module Azure::ARM::NotificationHubs
 
     #
     # Checks the availability of the given service namespace across all Azure
-    # subscriptions. This is useful because the domain name is created based on
-    # the service namespace name.
+    # subscriptions. This is useful because the domain name is created based on the
+    # service namespace name.
     #
     # @param parameters [CheckAvailabilityParameters] The namespace name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -487,8 +487,8 @@ module Azure::ARM::NotificationHubs
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param authorization_rule_name [String] Aauthorization Rule Name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
-    # The shared access authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -505,8 +505,8 @@ module Azure::ARM::NotificationHubs
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param authorization_rule_name [String] Aauthorization Rule Name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
-    # The shared access authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -522,8 +522,8 @@ module Azure::ARM::NotificationHubs
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param authorization_rule_name [String] Aauthorization Rule Name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
-    # The shared access authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1339,8 +1339,8 @@ module Azure::ARM::NotificationHubs
     #
     # Lists the available namespaces within a resourceGroup.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1354,8 +1354,8 @@ module Azure::ARM::NotificationHubs
     #
     # Lists the available namespaces within a resourceGroup.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1368,8 +1368,8 @@ module Azure::ARM::NotificationHubs
     #
     # Lists the available namespaces within a resourceGroup.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1427,8 +1427,8 @@ module Azure::ARM::NotificationHubs
     # Lists all the available namespaces within the subscription irrespective of
     # the resourceGroups.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1443,8 +1443,8 @@ module Azure::ARM::NotificationHubs
     # Lists all the available namespaces within the subscription irrespective of
     # the resourceGroups.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1458,8 +1458,8 @@ module Azure::ARM::NotificationHubs
     # Lists all the available namespaces within the subscription irrespective of
     # the resourceGroups.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1516,8 +1516,8 @@ module Azure::ARM::NotificationHubs
     #
     # Gets the authorization rules for a namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1531,8 +1531,8 @@ module Azure::ARM::NotificationHubs
     #
     # Gets the authorization rules for a namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1545,8 +1545,8 @@ module Azure::ARM::NotificationHubs
     #
     # Gets the authorization rules for a namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
