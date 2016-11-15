@@ -5,12 +5,11 @@
 
 module Azure::ARM::Authorization
   #
-  # Role based access control provides you a way to apply granular level
-  # policy administration down to individual resources or resource groups.
-  # These operations enable you to manage role definitions and role
-  # assignments. A role definition describes the set of actions that can be
-  # performed on resources. A role assignment grants access to Azure Active
-  # Directory users.
+  # Role based access control provides you a way to apply granular level policy
+  # administration down to individual resources or resource groups. These
+  # operations enable you to manage role definitions and role assignments. A
+  # role definition describes the set of actions that can be performed on
+  # resources. A role assignment grants access to Azure Active Directory users.
   #
   class RoleAssignments
     include Azure::ARM::Authorization::Models
@@ -39,8 +38,8 @@ module Azure::ARM::Authorization
     # assignments for.
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -63,8 +62,8 @@ module Azure::ARM::Authorization
     # assignments for.
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -86,8 +85,8 @@ module Azure::ARM::Authorization
     # assignments for.
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -155,8 +154,8 @@ module Azure::ARM::Authorization
     # @param resource_group_name [String] The name of the resource group.
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -173,8 +172,8 @@ module Azure::ARM::Authorization
     # @param resource_group_name [String] The name of the resource group.
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -190,8 +189,8 @@ module Azure::ARM::Authorization
     # @param resource_group_name [String] The name of the resource group.
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -348,8 +347,8 @@ module Azure::ARM::Authorization
     # @param scope [String] The scope of the role assignment to create. The scope
     # can be any REST resource instance. For example, use
     # '/subscriptions/{subscription-id}/' for a subscription,
-    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
-    # a resource group, and
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a
+    # resource group, and
     # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}'
     # for a resource.
     # @param role_assignment_name [String] The name of the role assignment to
@@ -372,8 +371,8 @@ module Azure::ARM::Authorization
     # @param scope [String] The scope of the role assignment to create. The scope
     # can be any REST resource instance. For example, use
     # '/subscriptions/{subscription-id}/' for a subscription,
-    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
-    # a resource group, and
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a
+    # resource group, and
     # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}'
     # for a resource.
     # @param role_assignment_name [String] The name of the role assignment to
@@ -395,8 +394,8 @@ module Azure::ARM::Authorization
     # @param scope [String] The scope of the role assignment to create. The scope
     # can be any REST resource instance. For example, use
     # '/subscriptions/{subscription-id}/' for a subscription,
-    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for
-    # a resource group, and
+    # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a
+    # resource group, and
     # '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}'
     # for a resource.
     # @param role_assignment_name [String] The name of the role assignment to
@@ -840,8 +839,8 @@ module Azure::ARM::Authorization
     #
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -857,8 +856,8 @@ module Azure::ARM::Authorization
     #
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -873,8 +872,8 @@ module Azure::ARM::Authorization
     #
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -936,8 +935,8 @@ module Azure::ARM::Authorization
     # @param scope [String] The scope of the role assignments.
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -954,8 +953,8 @@ module Azure::ARM::Authorization
     # @param scope [String] The scope of the role assignments.
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -971,8 +970,8 @@ module Azure::ARM::Authorization
     # @param scope [String] The scope of the role assignments.
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1031,8 +1030,8 @@ module Azure::ARM::Authorization
     #
     # Gets role assignments for a resource.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1046,8 +1045,8 @@ module Azure::ARM::Authorization
     #
     # Gets role assignments for a resource.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1060,8 +1059,8 @@ module Azure::ARM::Authorization
     #
     # Gets role assignments for a resource.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1118,8 +1117,8 @@ module Azure::ARM::Authorization
     #
     # Gets role assignments for a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1133,8 +1132,8 @@ module Azure::ARM::Authorization
     #
     # Gets role assignments for a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1147,8 +1146,8 @@ module Azure::ARM::Authorization
     #
     # Gets role assignments for a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1205,8 +1204,8 @@ module Azure::ARM::Authorization
     #
     # Gets all role assignments for the subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1220,8 +1219,8 @@ module Azure::ARM::Authorization
     #
     # Gets all role assignments for the subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1234,8 +1233,8 @@ module Azure::ARM::Authorization
     #
     # Gets all role assignments for the subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1292,8 +1291,8 @@ module Azure::ARM::Authorization
     #
     # Gets role assignments for a scope.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1307,8 +1306,8 @@ module Azure::ARM::Authorization
     #
     # Gets role assignments for a scope.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1321,8 +1320,8 @@ module Azure::ARM::Authorization
     #
     # Gets role assignments for a scope.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1388,8 +1387,8 @@ module Azure::ARM::Authorization
     # assignments for.
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1413,8 +1412,8 @@ module Azure::ARM::Authorization
     # @param resource_group_name [String] The name of the resource group.
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1437,8 +1436,8 @@ module Azure::ARM::Authorization
     #
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1462,8 +1461,8 @@ module Azure::ARM::Authorization
     # @param scope [String] The scope of the role assignments.
     # @param filter [String] The filter to apply on the operation. Use
     # $filter=atScope() to return all role assignments at or above the scope. Use
-    # $filter=principalId eq {id} to return all role assignments at, above or
-    # below the scope for the specified principal.
+    # $filter=principalId eq {id} to return all role assignments at, above or below
+    # the scope for the specified principal.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
