@@ -13,8 +13,8 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [Array<ExpressRouteCircuitAuthorization>] The authorizations
-      # in an ExpressRoute Circuit.
+      # @return [Array<ExpressRouteCircuitAuthorization>] The authorizations in
+      # an ExpressRoute Circuit.
       attr_accessor :value
 
       # @return [String] The URL to get the next set of results.

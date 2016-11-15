@@ -16,8 +16,8 @@ module Azure::ARM::Network
       # frontend IPs to be used for the load balancer
       attr_accessor :frontend_ipconfigurations
 
-      # @return [Array<BackendAddressPool>] Collection of backend address
-      # pools used by a load balancer
+      # @return [Array<BackendAddressPool>] Collection of backend address pools
+      # used by a load balancer
       attr_accessor :backend_address_pools
 
       # @return [Array<LoadBalancingRule>] Object collection representing the
@@ -28,12 +28,12 @@ module Azure::ARM::Network
       # balancer
       attr_accessor :probes
 
-      # @return [Array<InboundNatRule>] Collection of inbound NAT Rules used
-      # by a load balancer. Defining inbound NAT rules on your load balancer
-      # is mutually exclusive with defining an inbound NAT pool. Inbound NAT
-      # pools are referenced from virtual machine scale sets. NICs that are
-      # associated with individual virtual machines cannot reference an
-      # Inbound NAT pool. They have to reference individual inbound NAT rules.
+      # @return [Array<InboundNatRule>] Collection of inbound NAT Rules used by
+      # a load balancer. Defining inbound NAT rules on your load balancer is
+      # mutually exclusive with defining an inbound NAT pool. Inbound NAT pools
+      # are referenced from virtual machine scale sets. NICs that are
+      # associated with individual virtual machines cannot reference an Inbound
+      # NAT pool. They have to reference individual inbound NAT rules.
       attr_accessor :inbound_nat_rules
 
       # @return [Array<InboundNatPool>] Defines an external port range for
@@ -43,8 +43,8 @@ module Azure::ARM::Network
       # range. Defining an Inbound NAT pool on your Load Balancer is mutually
       # exclusive with defining inbound Nat rules. Inbound NAT pools are
       # referenced from virtual machine scale sets. NICs that are associated
-      # with individual virtual machines cannot reference an inbound NAT
-      # pool. They have to reference individual inbound NAT rules.
+      # with individual virtual machines cannot reference an inbound NAT pool.
+      # They have to reference individual inbound NAT rules.
       attr_accessor :inbound_nat_pools
 
       # @return [Array<OutboundNatRule>] The outbound NAT rules.

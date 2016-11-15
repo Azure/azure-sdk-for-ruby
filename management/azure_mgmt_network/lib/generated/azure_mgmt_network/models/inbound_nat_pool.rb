@@ -21,13 +21,13 @@ module Azure::ARM::Network
       attr_accessor :protocol
 
       # @return [Integer] The first port number in the range of external ports
-      # that will be used to provide Inbound Nat to NICs associated with a
-      # load balancer. Acceptable values range between 1 and 65534.
+      # that will be used to provide Inbound Nat to NICs associated with a load
+      # balancer. Acceptable values range between 1 and 65534.
       attr_accessor :frontend_port_range_start
 
       # @return [Integer] The last port number in the range of external ports
-      # that will be used to provide Inbound Nat to NICs associated with a
-      # load balancer. Acceptable values range between 1 and 65535.
+      # that will be used to provide Inbound Nat to NICs associated with a load
+      # balancer. Acceptable values range between 1 and 65535.
       attr_accessor :frontend_port_range_end
 
       # @return [Integer] The port used for internal connections on the

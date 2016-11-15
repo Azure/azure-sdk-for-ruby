@@ -6,9 +6,9 @@
 module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
-  # services that interact with Microsoft Azure Networks service to manage
-  # your network resources. The API has entities that capture the
-  # relationship between an end user and the Microsoft Azure Networks service.
+  # services that interact with Microsoft Azure Networks service to manage your
+  # network resources. The API has entities that capture the relationship
+  # between an end user and the Microsoft Azure Networks service.
   #
   class Subnets
     include Azure::ARM::Network::Models
@@ -169,8 +169,8 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
     # @param subnet_name [String] The name of the subnet.
-    # @param subnet_parameters [Subnet] Parameters supplied to the create or
-    # update subnet operation.
+    # @param subnet_parameters [Subnet] Parameters supplied to the create or update
+    # subnet operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -185,8 +185,8 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
     # @param subnet_name [String] The name of the subnet.
-    # @param subnet_parameters [Subnet] Parameters supplied to the create or
-    # update subnet operation.
+    # @param subnet_parameters [Subnet] Parameters supplied to the create or update
+    # subnet operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -392,8 +392,8 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
     # @param subnet_name [String] The name of the subnet.
-    # @param subnet_parameters [Subnet] Parameters supplied to the create or
-    # update subnet operation.
+    # @param subnet_parameters [Subnet] Parameters supplied to the create or update
+    # subnet operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -410,8 +410,8 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
     # @param subnet_name [String] The name of the subnet.
-    # @param subnet_parameters [Subnet] Parameters supplied to the create or
-    # update subnet operation.
+    # @param subnet_parameters [Subnet] Parameters supplied to the create or update
+    # subnet operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -427,8 +427,8 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_name [String] The name of the virtual network.
     # @param subnet_name [String] The name of the subnet.
-    # @param subnet_parameters [Subnet] Parameters supplied to the create or
-    # update subnet operation.
+    # @param subnet_parameters [Subnet] Parameters supplied to the create or update
+    # subnet operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -510,8 +510,8 @@ module Azure::ARM::Network
     #
     # Gets all subnets in a virtual network.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -525,8 +525,8 @@ module Azure::ARM::Network
     #
     # Gets all subnets in a virtual network.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -539,8 +539,8 @@ module Azure::ARM::Network
     #
     # Gets all subnets in a virtual network.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

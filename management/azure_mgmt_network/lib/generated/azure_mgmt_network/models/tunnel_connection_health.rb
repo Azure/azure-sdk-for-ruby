@@ -15,9 +15,9 @@ module Azure::ARM::Network
       # @return [String] Tunnel name.
       attr_accessor :tunnel
 
-      # @return [VirtualNetworkGatewayConnectionStatus] Virtual network
-      # Gateway connection status. Possible values include: 'Unknown',
-      # 'Connecting', 'Connected', 'NotConnected'
+      # @return [VirtualNetworkGatewayConnectionStatus] Virtual network Gateway
+      # connection status. Possible values include: 'Unknown', 'Connecting',
+      # 'Connected', 'NotConnected'
       attr_accessor :connection_status
 
       # @return [Integer] The Ingress Bytes Transferred in this connection

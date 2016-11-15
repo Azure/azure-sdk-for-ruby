@@ -48,8 +48,8 @@ module Azure::ARM::Network
       attr_accessor :priority
 
       # @return [SecurityRuleDirection] The direction of the rule. Possible
-      # values are: 'Inbound and Outbound'. Possible values include:
-      # 'Inbound', 'Outbound'
+      # values are: 'Inbound and Outbound'. Possible values include: 'Inbound',
+      # 'Outbound'
       attr_accessor :direction
 
 

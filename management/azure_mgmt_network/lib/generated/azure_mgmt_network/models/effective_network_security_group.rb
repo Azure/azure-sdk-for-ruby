@@ -18,8 +18,8 @@ module Azure::ARM::Network
       # @return [EffectiveNetworkSecurityGroupAssociation]
       attr_accessor :association
 
-      # @return [Array<EffectiveNetworkSecurityRule>] A collection of
-      # effective security rules.
+      # @return [Array<EffectiveNetworkSecurityRule>] A collection of effective
+      # security rules.
       attr_accessor :effective_security_rules
 
 

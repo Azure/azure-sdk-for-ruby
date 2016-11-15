@@ -6,9 +6,9 @@
 module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
-  # services that interact with Microsoft Azure Networks service to manage
-  # your network resources. The API has entities that capture the
-  # relationship between an end user and the Microsoft Azure Networks service.
+  # services that interact with Microsoft Azure Networks service to manage your
+  # network resources. The API has entities that capture the relationship
+  # between an end user and the Microsoft Azure Networks service.
   #
   class ExpressRouteCircuits
     include Azure::ARM::Network::Models
@@ -1203,8 +1203,8 @@ module Azure::ARM::Network
     #
     # Gets all the express route circuits in a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1218,8 +1218,8 @@ module Azure::ARM::Network
     #
     # Gets all the express route circuits in a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1232,8 +1232,8 @@ module Azure::ARM::Network
     #
     # Gets all the express route circuits in a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1290,8 +1290,8 @@ module Azure::ARM::Network
     #
     # Gets all the express route circuits in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1305,8 +1305,8 @@ module Azure::ARM::Network
     #
     # Gets all the express route circuits in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1319,8 +1319,8 @@ module Azure::ARM::Network
     #
     # Gets all the express route circuits in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1381,8 +1381,8 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ExpressRouteCircuitListResult] which provide lazy access to pages
-    # of the response.
+    # @return [ExpressRouteCircuitListResult] which provide lazy access to pages of
+    # the response.
     #
     def list_as_lazy(resource_group_name, custom_headers = nil)
       response = list_async(resource_group_name, custom_headers).value!
@@ -1401,8 +1401,8 @@ module Azure::ARM::Network
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ExpressRouteCircuitListResult] which provide lazy access to pages
-    # of the response.
+    # @return [ExpressRouteCircuitListResult] which provide lazy access to pages of
+    # the response.
     #
     def list_all_as_lazy(custom_headers = nil)
       response = list_all_async(custom_headers).value!

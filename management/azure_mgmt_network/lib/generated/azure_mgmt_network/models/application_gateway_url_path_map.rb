@@ -13,8 +13,8 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [SubResource] Default backend address pool resource of URL
-      # path map.
+      # @return [SubResource] Default backend address pool resource of URL path
+      # map.
       attr_accessor :default_backend_address_pool
 
       # @return [SubResource] Default backend http settings resource of URL

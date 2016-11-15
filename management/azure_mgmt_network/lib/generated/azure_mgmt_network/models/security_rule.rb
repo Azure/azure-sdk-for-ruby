@@ -52,9 +52,9 @@ module Azure::ARM::Network
       attr_accessor :priority
 
       # @return [SecurityRuleDirection] The direction of the rule. The
-      # direction specifies if rule will be evaluated on incoming or
-      # outcoming traffic. Possible values are: 'Inbound' and 'Outbound'.
-      # Possible values include: 'Inbound', 'Outbound'
+      # direction specifies if rule will be evaluated on incoming or outcoming
+      # traffic. Possible values are: 'Inbound' and 'Outbound'. Possible values
+      # include: 'Inbound', 'Outbound'
       attr_accessor :direction
 
       # @return [String] The provisioning state of the public IP resource.

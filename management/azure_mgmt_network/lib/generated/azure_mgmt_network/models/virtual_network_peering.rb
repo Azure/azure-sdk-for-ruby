@@ -25,11 +25,10 @@ module Azure::ARM::Network
       attr_accessor :allow_gateway_transit
 
       # @return [Boolean] If remote gateways can be used on this virtual
-      # network. If the flag is set to true, and allowGatewayTransit on
-      # remote peering is also true, virtual network will use gateways of
-      # remote virtual network for transit. Only one peering can have this
-      # flag set to true. This flag cannot be set if virtual network already
-      # has a gateway.
+      # network. If the flag is set to true, and allowGatewayTransit on remote
+      # peering is also true, virtual network will use gateways of remote
+      # virtual network for transit. Only one peering can have this flag set to
+      # true. This flag cannot be set if virtual network already has a gateway.
       attr_accessor :use_remote_gateways
 
       # @return [SubResource] The reference of the remote virtual network.

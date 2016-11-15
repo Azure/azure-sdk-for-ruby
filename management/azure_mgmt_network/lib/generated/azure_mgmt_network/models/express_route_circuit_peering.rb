@@ -19,8 +19,8 @@ module Azure::ARM::Network
       attr_accessor :peering_type
 
       # @return [ExpressRouteCircuitPeeringState] The state of peering.
-      # Possible values are: 'Disabled' and 'Enbaled'. Possible values
-      # include: 'Disabled', 'Enabled'
+      # Possible values are: 'Disabled' and 'Enbaled'. Possible values include:
+      # 'Disabled', 'Enabled'
       attr_accessor :state
 
       # @return [Integer] The Azure ASN.
@@ -54,8 +54,8 @@ module Azure::ARM::Network
       # @return [ExpressRouteCircuitStats] Gets peering stats.
       attr_accessor :stats
 
-      # @return [String] Gets the provisioning state of the public IP
-      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+      # @return [String] Gets the provisioning state of the public IP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] The GatewayManager Etag.

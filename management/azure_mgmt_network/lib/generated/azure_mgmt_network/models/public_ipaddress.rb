@@ -13,12 +13,12 @@ module Azure::ARM::Network
       include MsRestAzure
 
       # @return [IPAllocationMethod] The public IP allocation method. Possible
-      # values are: 'Static' and 'Dynamic'. Possible values include:
-      # 'Static', 'Dynamic'
+      # values are: 'Static' and 'Dynamic'. Possible values include: 'Static',
+      # 'Dynamic'
       attr_accessor :public_ipallocation_method
 
-      # @return [IPVersion] The public IP address version. Possible values
-      # are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
+      # @return [IPVersion] The public IP address version. Possible values are:
+      # 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
       attr_accessor :public_ipaddress_version
 
       # @return [IPConfiguration]

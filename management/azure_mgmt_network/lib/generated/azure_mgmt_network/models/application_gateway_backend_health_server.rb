@@ -18,9 +18,9 @@ module Azure::ARM::Network
       # @return [SubResource] Reference of IP configuration of backend server.
       attr_accessor :ip_configuration
 
-      # @return [ApplicationGatewayBackendHealthServerHealth] Health of
-      # backend server. Possible values are: 'Unknown', 'Up', 'Down', and
-      # 'Partial'. Possible values include: 'Unknown', 'Up', 'Down', 'Partial'
+      # @return [ApplicationGatewayBackendHealthServerHealth] Health of backend
+      # server. Possible values are: 'Unknown', 'Up', 'Down', and 'Partial'.
+      # Possible values include: 'Unknown', 'Up', 'Down', 'Partial'
       attr_accessor :health
 
 

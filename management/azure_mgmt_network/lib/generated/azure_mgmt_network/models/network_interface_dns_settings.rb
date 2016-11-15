@@ -14,14 +14,14 @@ module Azure::ARM::Network
 
       # @return [Array<String>] List of DNS servers IP addresses. Use
       # 'AzureProvidedDNS' to switch to azure provided DNS resolution.
-      # 'AzureProvidedDNS' value cannot be combined with other IPs, it must
-      # be the only value in dnsServers collection.
+      # 'AzureProvidedDNS' value cannot be combined with other IPs, it must be
+      # the only value in dnsServers collection.
       attr_accessor :dns_servers
 
       # @return [Array<String>] If the VM that uses this NIC is part of an
-      # Availability Set, then this list will have the union of all DNS
-      # servers from all NICs that are part of the Availability Set. This
-      # property is what is configured on each of those VMs.
+      # Availability Set, then this list will have the union of all DNS servers
+      # from all NICs that are part of the Availability Set. This property is
+      # what is configured on each of those VMs.
       attr_accessor :applied_dns_servers
 
       # @return [String] Relative DNS name for this NIC used for internal

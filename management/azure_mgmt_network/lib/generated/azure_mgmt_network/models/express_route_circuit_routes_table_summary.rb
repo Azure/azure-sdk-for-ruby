@@ -22,8 +22,8 @@ module Azure::ARM::Network
       attr_accessor :as
 
       # @return [String] The length of time that the BGP session has been in
-      # the Established state, or the current status if not in the
-      # Established state.
+      # the Established state, or the current status if not in the Established
+      # state.
       attr_accessor :up_down
 
       # @return [String] Current state of the BGP session, and the number of

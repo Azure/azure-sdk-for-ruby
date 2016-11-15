@@ -6,9 +6,9 @@
 module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
-  # services that interact with Microsoft Azure Networks service to manage
-  # your network resources. The API has entities that capture the
-  # relationship between an end user and the Microsoft Azure Networks service.
+  # services that interact with Microsoft Azure Networks service to manage your
+  # network resources. The API has entities that capture the relationship
+  # between an end user and the Microsoft Azure Networks service.
   #
   class VirtualNetworkGatewayConnections
     include Azure::ARM::Network::Models
@@ -211,8 +211,7 @@ module Azure::ARM::Network
     #
     # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
     # network gateway connection shared key for passed virtual network gateway
-    # connection in the specified resource group through Network resource
-    # provider.
+    # connection in the specified resource group through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
@@ -263,8 +262,8 @@ module Azure::ARM::Network
 
     #
     # The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves
-    # information about the specified virtual network gateway connection shared
-    # key through Network resource provider.
+    # information about the specified virtual network gateway connection shared key
+    # through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
@@ -281,8 +280,8 @@ module Azure::ARM::Network
 
     #
     # The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves
-    # information about the specified virtual network gateway connection shared
-    # key through Network resource provider.
+    # information about the specified virtual network gateway connection shared key
+    # through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
@@ -298,8 +297,8 @@ module Azure::ARM::Network
 
     #
     # The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves
-    # information about the specified virtual network gateway connection shared
-    # key through Network resource provider.
+    # information about the specified virtual network gateway connection shared key
+    # through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
@@ -362,8 +361,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The List VirtualNetworkGatewayConnections operation retrieves all the
-    # virtual network gateways connections created.
+    # The List VirtualNetworkGatewayConnections operation retrieves all the virtual
+    # network gateways connections created.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -377,8 +376,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The List VirtualNetworkGatewayConnections operation retrieves all the
-    # virtual network gateways connections created.
+    # The List VirtualNetworkGatewayConnections operation retrieves all the virtual
+    # network gateways connections created.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -391,8 +390,8 @@ module Azure::ARM::Network
     end
 
     #
-    # The List VirtualNetworkGatewayConnections operation retrieves all the
-    # virtual network gateways connections created.
+    # The List VirtualNetworkGatewayConnections operation retrieves all the virtual
+    # network gateways connections created.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -460,9 +459,9 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection reset shared key Name.
-    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the
-    # begin reset virtual network gateway connection shared key operation through
-    # network resource provider.
+    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the begin
+    # reset virtual network gateway connection shared key operation through network
+    # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -477,9 +476,9 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection reset shared key Name.
-    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the
-    # begin reset virtual network gateway connection shared key operation through
-    # network resource provider.
+    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the begin
+    # reset virtual network gateway connection shared key operation through network
+    # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -713,8 +712,7 @@ module Azure::ARM::Network
     #
     # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
     # network gateway connection shared key for passed virtual network gateway
-    # connection in the specified resource group through Network resource
-    # provider.
+    # connection in the specified resource group through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
@@ -735,8 +733,7 @@ module Azure::ARM::Network
     #
     # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
     # network gateway connection shared key for passed virtual network gateway
-    # connection in the specified resource group through Network resource
-    # provider.
+    # connection in the specified resource group through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
@@ -756,8 +753,7 @@ module Azure::ARM::Network
     #
     # The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
     # network gateway connection shared key for passed virtual network gateway
-    # connection in the specified resource group through Network resource
-    # provider.
+    # connection in the specified resource group through Network resource provider.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
@@ -851,9 +847,9 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection reset shared key Name.
-    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the
-    # begin reset virtual network gateway connection shared key operation through
-    # network resource provider.
+    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the begin
+    # reset virtual network gateway connection shared key operation through network
+    # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -873,9 +869,9 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection reset shared key Name.
-    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the
-    # begin reset virtual network gateway connection shared key operation through
-    # network resource provider.
+    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the begin
+    # reset virtual network gateway connection shared key operation through network
+    # resource provider.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -894,9 +890,9 @@ module Azure::ARM::Network
     # @param resource_group_name [String] The name of the resource group.
     # @param virtual_network_gateway_connection_name [String] The virtual network
     # gateway connection reset shared key Name.
-    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the
-    # begin reset virtual network gateway connection shared key operation through
-    # network resource provider.
+    # @param parameters [ConnectionResetSharedKey] Parameters supplied to the begin
+    # reset virtual network gateway connection shared key operation through network
+    # resource provider.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -965,11 +961,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The List VirtualNetworkGatewayConnections operation retrieves all the
-    # virtual network gateways connections created.
+    # The List VirtualNetworkGatewayConnections operation retrieves all the virtual
+    # network gateways connections created.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -981,11 +977,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The List VirtualNetworkGatewayConnections operation retrieves all the
-    # virtual network gateways connections created.
+    # The List VirtualNetworkGatewayConnections operation retrieves all the virtual
+    # network gateways connections created.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -996,11 +992,11 @@ module Azure::ARM::Network
     end
 
     #
-    # The List VirtualNetworkGatewayConnections operation retrieves all the
-    # virtual network gateways connections created.
+    # The List VirtualNetworkGatewayConnections operation retrieves all the virtual
+    # network gateways connections created.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1055,15 +1051,15 @@ module Azure::ARM::Network
     end
 
     #
-    # The List VirtualNetworkGatewayConnections operation retrieves all the
-    # virtual network gateways connections created.
+    # The List VirtualNetworkGatewayConnections operation retrieves all the virtual
+    # network gateways connections created.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualNetworkGatewayConnectionListResult] which provide lazy
-    # access to pages of the response.
+    # @return [VirtualNetworkGatewayConnectionListResult] which provide lazy access
+    # to pages of the response.
     #
     def list_as_lazy(resource_group_name, custom_headers = nil)
       response = list_async(resource_group_name, custom_headers).value!

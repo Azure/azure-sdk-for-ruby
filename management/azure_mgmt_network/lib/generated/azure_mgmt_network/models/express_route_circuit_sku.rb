@@ -21,8 +21,8 @@ module Azure::ARM::Network
       attr_accessor :tier
 
       # @return [ExpressRouteCircuitSkuFamily] The family of the SKU. Possible
-      # values are: 'UnlimitedData' and 'MeteredData'. Possible values
-      # include: 'UnlimitedData', 'MeteredData'
+      # values are: 'UnlimitedData' and 'MeteredData'. Possible values include:
+      # 'UnlimitedData', 'MeteredData'
       attr_accessor :family
 
 

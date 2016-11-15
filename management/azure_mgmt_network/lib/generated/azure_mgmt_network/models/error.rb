@@ -7,6 +7,7 @@ module Azure::ARM::Network
   module Models
     #
     # Model object.
+    # 
     #
     class Error
 
