@@ -343,13 +343,12 @@ REGEN_METADATA = {
         version: version,
         tag: 'arm_server'
     },
-    # Not releasing this gem due to known issue in swagger
-    # azure_mgmt_service_bus: {
-    #     spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servicebus/2015-08-01/swagger/servicebus.json',
-    #     ns: 'Azure::ARM::ServiceBus',
-    #     version: version,
-    #     tag: 'arm_servicebus'
-    # },
+    azure_mgmt_service_bus: {
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-servicebus/2015-08-01/swagger/servicebus.json',
+        ns: 'Azure::ARM::ServiceBus',
+        version: version,
+        tag: 'arm_servicebus'
+    },
     azure_mgmt_sql: {
         spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-sql/compositeSql.json',
         ns: 'Azure::ARM::SQL',
