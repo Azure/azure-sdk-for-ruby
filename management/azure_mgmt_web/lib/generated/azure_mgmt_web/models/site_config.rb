@@ -123,8 +123,8 @@ module Azure::ARM::Web
       # @return [PushSettings] Push endpoint settings.
       attr_accessor :push
 
-      # @return [ApiDefinitionInfo] Information about the formal API
-      # definition for the web app.
+      # @return [ApiDefinitionInfo] Information about the formal API definition
+      # for the web app.
       attr_accessor :api_definition
 
       # @return [String] Auto swap slot name

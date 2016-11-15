@@ -6,8 +6,8 @@
 module Azure::ARM::Web
   module Models
     #
-    # An object describing the difference in setting values between two web
-    # app slots
+    # An object describing the difference in setting values between two web app
+    # slots
     #
     class SlotDifference < MsRestAzure::Resource
 

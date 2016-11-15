@@ -25,8 +25,8 @@ module Azure::ARM::Web
       # @return [Integer] Number of instances in the worker pool
       attr_accessor :worker_count
 
-      # @return [Array<String>] Names of all instances in the worker pool
-      # (read only)
+      # @return [Array<String>] Names of all instances in the worker pool (read
+      # only)
       attr_accessor :instance_names
 
       # @return [SkuDescription]

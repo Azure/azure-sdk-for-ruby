@@ -38,10 +38,10 @@ module Azure::ARM::Web
       attr_accessor :hosting_environment
 
       # @return [Hash{String => String}] Application settings overrides for
-      # cloned web app. If specified these settings will override the
-      # settings cloned
-      # from source web app. If not specified, application
-      # settings from source web app are retained.
+      # cloned web app. If specified these settings will override the settings
+      # cloned
+      # from source web app. If not specified, application settings from source
+      # web app are retained.
       attr_accessor :app_settings_overrides
 
       # @return [Boolean] If specified configure load balancing for source and

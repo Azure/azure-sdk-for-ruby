@@ -38,12 +38,11 @@ module Azure::ARM::Web
 
       # @return [SiteAvailabilityState] Management information availability
       # state for the web app. Possible values are Normal or Limited.
-      # Normal means that the site is running correctly and that
-      # management information for the site is available.
-      # Limited means that only partial management information for
-      # the site is available and that detailed site information is
-      # unavailable. Possible values include: 'Normal', 'Limited',
-      # 'DisasterRecoveryMode'
+      # Normal means that the site is running correctly and that management
+      # information for the site is available.
+      # Limited means that only partial management information for the site is
+      # available and that detailed site information is unavailable. Possible
+      # values include: 'Normal', 'Limited', 'DisasterRecoveryMode'
       attr_accessor :availability_state
 
       # @return [Array<HostNameSslState>] Hostname SSL states are  used to
@@ -70,8 +69,8 @@ module Azure::ARM::Web
       # premium app
       attr_accessor :premium_app_deployed
 
-      # @return [Boolean] If set indicates whether to stop SCM (KUDU) site
-      # when the web app is stopped. Default is false.
+      # @return [Boolean] If set indicates whether to stop SCM (KUDU) site when
+      # the web app is stopped. Default is false.
       attr_accessor :scm_site_also_stopped
 
       # @return [String] Read-only property that specifies which slot this app
@@ -88,8 +87,8 @@ module Azure::ARM::Web
       # @return [String] Name of gateway app associated with web app
       attr_accessor :gateway_site_name
 
-      # @return [Boolean] Specifies if the client affinity is enabled when
-      # load balancing http request for multiple instances of the web app
+      # @return [Boolean] Specifies if the client affinity is enabled when load
+      # balancing http request for multiple instances of the web app
       attr_accessor :client_affinity_enabled
 
       # @return [Boolean] Specifies if the client certificate is enabled for
@@ -98,12 +97,11 @@ module Azure::ARM::Web
 
       # @return [Boolean] Specifies if the public hostnames are disabled the
       # web app.
-      # If set to true the app is only accessible via API
-      # Management process
+      # If set to true the app is only accessible via API Management process
       attr_accessor :host_names_disabled
 
-      # @return [String] List of comma separated IP addresses that this web
-      # app uses for outbound connections. Those can be used when configuring
+      # @return [String] List of comma separated IP addresses that this web app
+      # uses for outbound connections. Those can be used when configuring
       # firewall rules for databases accessed by this web app.
       attr_accessor :outbound_ip_addresses
 

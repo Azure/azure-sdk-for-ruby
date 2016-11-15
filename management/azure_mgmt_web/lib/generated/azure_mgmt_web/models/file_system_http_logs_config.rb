@@ -14,8 +14,7 @@ module Azure::ARM::Web
 
       # @return [Integer] Maximum size in megabytes that http log files can
       # use.
-      # When reached old log files will be removed to make space
-      # for new ones.
+      # When reached old log files will be removed to make space for new ones.
       # Value can range between 25 and 100.
       attr_accessor :retention_in_mb
 

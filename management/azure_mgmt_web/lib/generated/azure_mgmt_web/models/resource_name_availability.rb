@@ -18,8 +18,8 @@ module Azure::ARM::Web
 
       # @return [String] Required if nameAvailable is false. 'Invalid'
       # indicates the name provided does not match Azure WebApp service’s
-      # naming requirements. 'AlreadyExists' indicates that the name is
-      # already in use and is therefore unavailable.
+      # naming requirements. 'AlreadyExists' indicates that the name is already
+      # in use and is therefore unavailable.
       attr_accessor :reason
 
       # @return [String]

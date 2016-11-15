@@ -12,10 +12,9 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [Array<String>] Gets or sets the list of origins that should
-      # be allowed to make cross-origin
-      # calls (for example: http://example.com:12345). Use "*" to
-      # allow all.
+      # @return [Array<String>] Gets or sets the list of origins that should be
+      # allowed to make cross-origin
+      # calls (for example: http://example.com:12345). Use "*" to allow all.
       attr_accessor :allowed_origins
 
 

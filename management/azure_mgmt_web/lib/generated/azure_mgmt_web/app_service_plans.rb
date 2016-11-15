@@ -565,11 +565,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a specific Service Bus Hybrid Connection in use on this App
-    # Service Plan.
+    # Retrieves a specific Service Bus Hybrid Connection in use on this App Service
+    # Plan.
     #
-    # Retrieves a specific Service Bus Hybrid Connection in use on this App
-    # Service Plan.
+    # Retrieves a specific Service Bus Hybrid Connection in use on this App Service
+    # Plan.
     #
     # @param resource_group_name [String] The resource group name
     # @param name [String] The name of the App Service Plan
@@ -586,11 +586,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a specific Service Bus Hybrid Connection in use on this App
-    # Service Plan.
+    # Retrieves a specific Service Bus Hybrid Connection in use on this App Service
+    # Plan.
     #
-    # Retrieves a specific Service Bus Hybrid Connection in use on this App
-    # Service Plan.
+    # Retrieves a specific Service Bus Hybrid Connection in use on this App Service
+    # Plan.
     #
     # @param resource_group_name [String] The resource group name
     # @param name [String] The name of the App Service Plan
@@ -606,11 +606,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a specific Service Bus Hybrid Connection in use on this App
-    # Service Plan.
+    # Retrieves a specific Service Bus Hybrid Connection in use on this App Service
+    # Plan.
     #
-    # Retrieves a specific Service Bus Hybrid Connection in use on this App
-    # Service Plan.
+    # Retrieves a specific Service Bus Hybrid Connection in use on this App Service
+    # Plan.
     #
     # @param resource_group_name [String] The resource group name
     # @param name [String] The name of the App Service Plan
@@ -1403,10 +1403,9 @@ module Azure::ARM::Web
     # @param details [Boolean] If true, metrics are broken down per App Service
     # Plan instance
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1427,10 +1426,9 @@ module Azure::ARM::Web
     # @param details [Boolean] If true, metrics are broken down per App Service
     # Plan instance
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1450,10 +1448,9 @@ module Azure::ARM::Web
     # @param details [Boolean] If true, metrics are broken down per App Service
     # Plan instance
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1619,9 +1616,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
-    # @param soft_restart [Boolean] Soft restart applies the configuration
-    # settings and restarts the apps if necessary. Hard restart always restarts
-    # and reprovisions the apps
+    # @param soft_restart [Boolean] Soft restart applies the configuration settings
+    # and restarts the apps if necessary. Hard restart always restarts and
+    # reprovisions the apps
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1639,9 +1636,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
-    # @param soft_restart [Boolean] Soft restart applies the configuration
-    # settings and restarts the apps if necessary. Hard restart always restarts
-    # and reprovisions the apps
+    # @param soft_restart [Boolean] Soft restart applies the configuration settings
+    # and restarts the apps if necessary. Hard restart always restarts and
+    # reprovisions the apps
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1658,9 +1655,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
-    # @param soft_restart [Boolean] Soft restart applies the configuration
-    # settings and restarts the apps if necessary. Hard restart always restarts
-    # and reprovisions the apps
+    # @param soft_restart [Boolean] Soft restart applies the configuration settings
+    # and restarts the apps if necessary. Hard restart always restarts and
+    # reprovisions the apps
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1716,9 +1713,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
     # @param skip_token [String] Skip to of web apps in a list. If specified, the
-    # resulting list will contain web apps starting from (including) the
-    # skipToken. Else, the resulting list contains web apps from the start of the
-    # list
+    # resulting list will contain web apps starting from (including) the skipToken.
+    # Else, the resulting list contains web apps from the start of the list
     # @param filter [String] Supported filter: $filter=state eq running. Returns
     # only web apps that are currently running
     # @param top [String] List page size. If specified, results are paged.
@@ -1740,9 +1736,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
     # @param skip_token [String] Skip to of web apps in a list. If specified, the
-    # resulting list will contain web apps starting from (including) the
-    # skipToken. Else, the resulting list contains web apps from the start of the
-    # list
+    # resulting list will contain web apps starting from (including) the skipToken.
+    # Else, the resulting list contains web apps from the start of the list
     # @param filter [String] Supported filter: $filter=state eq running. Returns
     # only web apps that are currently running
     # @param top [String] List page size. If specified, results are paged.
@@ -1763,9 +1758,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
     # @param skip_token [String] Skip to of web apps in a list. If specified, the
-    # resulting list will contain web apps starting from (including) the
-    # skipToken. Else, the resulting list contains web apps from the start of the
-    # list
+    # resulting list will contain web apps starting from (including) the skipToken.
+    # Else, the resulting list contains web apps from the start of the list
     # @param filter [String] Supported filter: $filter=state eq running. Returns
     # only web apps that are currently running
     # @param top [String] List page size. If specified, results are paged.
@@ -2502,11 +2496,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new route or updates an existing route for a vnet in an app
-    # service plan.
+    # Creates a new route or updates an existing route for a vnet in an app service
+    # plan.
     #
-    # Creates a new route or updates an existing route for a vnet in an app
-    # service plan.
+    # Creates a new route or updates an existing route for a vnet in an app service
+    # plan.
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
@@ -2524,11 +2518,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new route or updates an existing route for a vnet in an app
-    # service plan.
+    # Creates a new route or updates an existing route for a vnet in an app service
+    # plan.
     #
-    # Creates a new route or updates an existing route for a vnet in an app
-    # service plan.
+    # Creates a new route or updates an existing route for a vnet in an app service
+    # plan.
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
@@ -2545,11 +2539,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new route or updates an existing route for a vnet in an app
-    # service plan.
+    # Creates a new route or updates an existing route for a vnet in an app service
+    # plan.
     #
-    # Creates a new route or updates an existing route for a vnet in an app
-    # service plan.
+    # Creates a new route or updates an existing route for a vnet in an app service
+    # plan.
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
@@ -2721,11 +2715,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new route or updates an existing route for a vnet in an app
-    # service plan.
+    # Creates a new route or updates an existing route for a vnet in an app service
+    # plan.
     #
-    # Creates a new route or updates an existing route for a vnet in an app
-    # service plan.
+    # Creates a new route or updates an existing route for a vnet in an app service
+    # plan.
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
@@ -2743,11 +2737,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new route or updates an existing route for a vnet in an app
-    # service plan.
+    # Creates a new route or updates an existing route for a vnet in an app service
+    # plan.
     #
-    # Creates a new route or updates an existing route for a vnet in an app
-    # service plan.
+    # Creates a new route or updates an existing route for a vnet in an app service
+    # plan.
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
@@ -2764,11 +2758,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new route or updates an existing route for a vnet in an app
-    # service plan.
+    # Creates a new route or updates an existing route for a vnet in an app service
+    # plan.
     #
-    # Creates a new route or updates an existing route for a vnet in an app
-    # service plan.
+    # Creates a new route or updates an existing route for a vnet in an app service
+    # plan.
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
@@ -3066,8 +3060,8 @@ module Azure::ARM::Web
     #
     # Gets all App Service Plans for a subcription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3083,8 +3077,8 @@ module Azure::ARM::Web
     #
     # Gets all App Service Plans for a subcription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3099,8 +3093,8 @@ module Azure::ARM::Web
     #
     # Gets all App Service Plans for a subcription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3161,8 +3155,8 @@ module Azure::ARM::Web
     # Gets collection of App Service Plans in a resource group for a given
     # subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3180,8 +3174,8 @@ module Azure::ARM::Web
     # Gets collection of App Service Plans in a resource group for a given
     # subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3198,8 +3192,8 @@ module Azure::ARM::Web
     # Gets collection of App Service Plans in a resource group for a given
     # subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3258,8 +3252,8 @@ module Azure::ARM::Web
     #
     # List of metrics that can be queried for an App Service Plan
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3275,8 +3269,8 @@ module Azure::ARM::Web
     #
     # List of metrics that can be queried for an App Service Plan
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3291,8 +3285,8 @@ module Azure::ARM::Web
     #
     # List of metrics that can be queried for an App Service Plan
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3351,8 +3345,8 @@ module Azure::ARM::Web
     #
     # Queries for App Serice Plan metrics
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3368,8 +3362,8 @@ module Azure::ARM::Web
     #
     # Queries for App Serice Plan metrics
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3384,8 +3378,8 @@ module Azure::ARM::Web
     #
     # Queries for App Serice Plan metrics
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3444,8 +3438,8 @@ module Azure::ARM::Web
     #
     # Gets list of Apps associated with an App Service Plan
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3461,8 +3455,8 @@ module Azure::ARM::Web
     #
     # Gets list of Apps associated with an App Service Plan
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3477,8 +3471,8 @@ module Azure::ARM::Web
     #
     # Gets list of Apps associated with an App Service Plan
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3616,10 +3610,9 @@ module Azure::ARM::Web
     # @param details [Boolean] If true, metrics are broken down per App Service
     # Plan instance
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3645,9 +3638,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of App Service Plan
     # @param skip_token [String] Skip to of web apps in a list. If specified, the
-    # resulting list will contain web apps starting from (including) the
-    # skipToken. Else, the resulting list contains web apps from the start of the
-    # list
+    # resulting list will contain web apps starting from (including) the skipToken.
+    # Else, the resulting list contains web apps from the start of the list
     # @param filter [String] Supported filter: $filter=state eq running. Returns
     # only web apps that are currently running
     # @param top [String] List page size. If specified, results are paged.

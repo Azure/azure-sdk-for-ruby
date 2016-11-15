@@ -21,13 +21,13 @@ module Azure::ARM::Web
       attr_accessor :app_service_environment_location
 
       # @return [ProvisioningState] Provisioning state of the
-      # hostingEnvironment (App Service Environment). Possible values
-      # include: 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
+      # hostingEnvironment (App Service Environment). Possible values include:
+      # 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
       attr_accessor :provisioning_state
 
       # @return [HostingEnvironmentStatus] Current status of the
-      # hostingEnvironment (App Service Environment). Possible values
-      # include: 'Preparing', 'Ready', 'Scaling', 'Deleting'
+      # hostingEnvironment (App Service Environment). Possible values include:
+      # 'Preparing', 'Ready', 'Scaling', 'Deleting'
       attr_accessor :status
 
       # @return [String] Name of the hostingEnvironment's (App Service
@@ -42,13 +42,13 @@ module Azure::ARM::Web
       # Environment) virtual network
       attr_accessor :vnet_subnet_name
 
-      # @return [VirtualNetworkProfile] Description of the
-      # hostingEnvironment's (App Service Environment) virtual network
+      # @return [VirtualNetworkProfile] Description of the hostingEnvironment's
+      # (App Service Environment) virtual network
       attr_accessor :virtual_network
 
       # @return [InternalLoadBalancingMode] Specifies which endpoints to serve
-      # internally in the hostingEnvironment's (App Service Environment)
-      # VNET. Possible values include: 'None', 'Web', 'Publishing'
+      # internally in the hostingEnvironment's (App Service Environment) VNET.
+      # Possible values include: 'None', 'Web', 'Publishing'
       attr_accessor :internal_load_balancing_mode
 
       # @return [String] Front-end VM size, e.g. "Medium", "Large"
@@ -85,8 +85,8 @@ module Azure::ARM::Web
       # Environment)
       attr_accessor :dns_suffix
 
-      # @return [String] Last deployment action on this hostingEnvironment
-      # (App Service Environment)
+      # @return [String] Last deployment action on this hostingEnvironment (App
+      # Service Environment)
       attr_accessor :last_action
 
       # @return [String] Result of the last deployment action on this
@@ -101,8 +101,8 @@ module Azure::ARM::Web
       # sizes are allowed for workers
       attr_accessor :allowed_worker_sizes
 
-      # @return [Integer] Maximum number of VMs in this hostingEnvironment
-      # (App Service Environment)
+      # @return [Integer] Maximum number of VMs in this hostingEnvironment (App
+      # Service Environment)
       attr_accessor :maximum_number_of_machines
 
       # @return [Array<VirtualIPMapping>] Description of IP SSL mapping for
@@ -114,8 +114,7 @@ module Azure::ARM::Web
       attr_accessor :environment_capacities
 
       # @return [Array<NetworkAccessControlEntry>] Access control list for
-      # controlling traffic to the hostingEnvironment (App Service
-      # Environment)
+      # controlling traffic to the hostingEnvironment (App Service Environment)
       attr_accessor :network_access_control_list
 
       # @return [Boolean] True/false indicating whether the hostingEnvironment
@@ -137,14 +136,14 @@ module Azure::ARM::Web
       attr_accessor :api_management_account_id
 
       # @return [Boolean] True/false indicating whether the hostingEnvironment
-      # is suspended. The environment can be suspended e.g. when the
-      # management endpoint is no longer available
+      # is suspended. The environment can be suspended e.g. when the management
+      # endpoint is no longer available
       # (most likely because NSG blocked the incoming traffic)
       attr_accessor :suspended
 
       # @return [Boolean] True/false indicating whether the hostingEnvironment
-      # is suspended. The environment can be suspended e.g. when the
-      # management endpoint is no longer available
+      # is suspended. The environment can be suspended e.g. when the management
+      # endpoint is no longer available
       # (most likely because NSG blocked the incoming traffic)
       attr_accessor :dynamic_cache_enabled
 

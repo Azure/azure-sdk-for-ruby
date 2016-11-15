@@ -39,10 +39,10 @@ module Azure::ARM::Web
       # @return [String] Geographical location for the App Service Plan
       attr_accessor :geo_region
 
-      # @return [Boolean] If True apps assigned to this App Service Plan can
-      # be scaled independently
-      # If False apps assigned to this App Service Plan will scale
-      # to all instances of the plan
+      # @return [Boolean] If True apps assigned to this App Service Plan can be
+      # scaled independently
+      # If False apps assigned to this App Service Plan will scale to all
+      # instances of the plan
       attr_accessor :per_site_scaling
 
       # @return [Integer] Number of web apps assigned to this App Service Plan

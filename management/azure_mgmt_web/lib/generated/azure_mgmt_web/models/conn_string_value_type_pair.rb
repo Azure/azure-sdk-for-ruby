@@ -16,9 +16,8 @@ module Azure::ARM::Web
       attr_accessor :value
 
       # @return [ConnectionStringType] Type of database. Possible values
-      # include: 'MySql', 'SQLServer', 'SQLAzure', 'Custom',
-      # 'NotificationHub', 'ServiceBus', 'EventHub', 'ApiHub', 'DocDb',
-      # 'RedisCache'
+      # include: 'MySql', 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub',
+      # 'ServiceBus', 'EventHub', 'ApiHub', 'DocDb', 'RedisCache'
       attr_accessor :type
 
 

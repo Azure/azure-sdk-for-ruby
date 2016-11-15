@@ -116,8 +116,8 @@ module Azure::ARM::Web
     #
     # Validate certificate purchase information
     #
-    # @param app_service_certificate_order [AppServiceCertificateOrder]
-    # Certificate order
+    # @param app_service_certificate_order [AppServiceCertificateOrder] Certificate
+    # order
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -133,8 +133,8 @@ module Azure::ARM::Web
     #
     # Validate certificate purchase information
     #
-    # @param app_service_certificate_order [AppServiceCertificateOrder]
-    # Certificate order
+    # @param app_service_certificate_order [AppServiceCertificateOrder] Certificate
+    # order
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -149,8 +149,8 @@ module Azure::ARM::Web
     #
     # Validate certificate purchase information
     #
-    # @param app_service_certificate_order [AppServiceCertificateOrder]
-    # Certificate order
+    # @param app_service_certificate_order [AppServiceCertificateOrder] Certificate
+    # order
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1716,8 +1716,8 @@ module Azure::ARM::Web
     #
     # Lists all domains in a subscription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1733,8 +1733,8 @@ module Azure::ARM::Web
     #
     # Lists all domains in a subscription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1749,8 +1749,8 @@ module Azure::ARM::Web
     #
     # Lists all domains in a subscription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1809,8 +1809,8 @@ module Azure::ARM::Web
     #
     # Get certificate orders in a resource group
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1826,8 +1826,8 @@ module Azure::ARM::Web
     #
     # Get certificate orders in a resource group
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1842,8 +1842,8 @@ module Azure::ARM::Web
     #
     # Get certificate orders in a resource group
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1904,8 +1904,8 @@ module Azure::ARM::Web
     # List all certificates associated with a certificate order (only one
     # certificate can be associated with an order at a time)
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1923,8 +1923,8 @@ module Azure::ARM::Web
     # List all certificates associated with a certificate order (only one
     # certificate can be associated with an order at a time)
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1941,8 +1941,8 @@ module Azure::ARM::Web
     # List all certificates associated with a certificate order (only one
     # certificate can be associated with an order at a time)
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

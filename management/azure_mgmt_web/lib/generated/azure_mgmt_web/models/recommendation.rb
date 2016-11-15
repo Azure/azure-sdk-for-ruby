@@ -41,8 +41,8 @@ module Azure::ARM::Web
       # 'Warning', 'Information', 'NonUrgentSuggestion'
       attr_accessor :level
 
-      # @return [Channels] List of channels that this recommendation can
-      # apply. Possible values include: 'Notification', 'Api', 'Email', 'All'
+      # @return [Channels] List of channels that this recommendation can apply.
+      # Possible values include: 'Notification', 'Api', 'Email', 'All'
       attr_accessor :channels
 
       # @return [Array<String>] The list of category tags that this

@@ -8,15 +8,15 @@ module Azure::ARM::Web
     #
     # The IIS handler mappings used to define which handler processes HTTP
     # requests with certain extension.
-    # For example it is used to configure php-cgi.exe process to
-    # handle all HTTP requests with *.php extension.
+    # For example it is used to configure php-cgi.exe process to handle all
+    # HTTP requests with *.php extension.
     #
     class HandlerMapping
 
       include MsRestAzure
 
-      # @return [String] Requests with this extension will be handled using
-      # the specified FastCGI application.
+      # @return [String] Requests with this extension will be handled using the
+      # specified FastCGI application.
       attr_accessor :extension
 
       # @return [String] The absolute path to the FastCGI application.
