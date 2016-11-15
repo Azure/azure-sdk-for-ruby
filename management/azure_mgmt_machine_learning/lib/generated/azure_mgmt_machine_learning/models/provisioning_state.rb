@@ -13,7 +13,6 @@ module Azure::ARM::MachineLearning
       Provisioning = "Provisioning"
       Succeeded = "Succeeded"
       Failed = "Failed"
-      Canceled = "Canceled"
     end
   end
 end

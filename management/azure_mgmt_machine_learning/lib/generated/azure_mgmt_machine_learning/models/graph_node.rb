@@ -23,9 +23,8 @@ module Azure::ARM::MachineLearning
       # @return [String] The id of the output element represented by this node.
       attr_accessor :output_id
 
-      # @return [Hash{String => String}] If applicable, parameters of the
-      # node. Global graph parameters map into these, with values set at
-      # runtime.
+      # @return [Hash{String => String}] If applicable, parameters of the node.
+      # Global graph parameters map into these, with values set at runtime.
       attr_accessor :parameters
 
 

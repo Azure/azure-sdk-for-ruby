@@ -21,82 +21,88 @@ module Azure::ARM::MachineLearning
 
       attr_accessor :packageType
 
-      # @return [String] The title of the Azure ML web service.
+      # @return [String] The title of the web service.
       attr_accessor :title
 
-      # @return [String] The description of the Azure ML web service.
+      # @return [String] The description of the web service.
       attr_accessor :description
 
-      # @return [DateTime] The moment of time the Azure ML web service was
-      # created.
+      # @return [DateTime] Read Only: The date and time when the web service
+      # was created.
       attr_accessor :created_on
 
-      # @return [DateTime] The moment of time the web service was last
-      # modified.
+      # @return [DateTime] Read Only: The date and time when the web service
+      # was last modified.
       attr_accessor :modified_on
 
-      # @return [ProvisioningState] The web service resource's provisioning
-      # state. Possible values include: 'Unknown', 'Provisioning',
-      # 'Succeeded', 'Failed', 'Canceled'
+      # @return [ProvisioningState] Read Only: The provision state of the web
+      # service. Valid values are Unknown, Provisioning, Succeeded, and Failed.
+      # Possible values include: 'Unknown', 'Provisioning', 'Succeeded',
+      # 'Failed'
       attr_accessor :provisioning_state
 
-      # @return [WebServiceKeys] The set of access keys for the web service.
-      # If not specified at creation time (PUT), they will be generated
-      # automatically by the resource provider.
+      # @return [WebServiceKeys] Contains the web service provisioning keys. If
+      # you do not specify provisioning keys, the Azure Machine Learning system
+      # generates them for you. Note: The keys are not returned from calls to
+      # GET operations.
       attr_accessor :keys
 
-      # @return [Boolean] If true, the web service can no longer be updated /
-      # patched, only removed. Otherwise, the service resource supports
-      # changes.
+      # @return [Boolean] When set to true, indicates that the web service is
+      # read-only and can no longer be updated or patched, only removed.
+      # Default, is false. Note: Once set to true, you cannot change its value.
       attr_accessor :read_only
 
-      # @return [String] The uri for the swagger spec associated with this web
-      # service.
+      # @return [String] Read Only: Contains the URI of the swagger spec
+      # associated with this web service.
       attr_accessor :swagger_location
 
-      # @return [Boolean] Flag that controls whether to expose sample data or
-      # not in the web service's swagger definition.
+      # @return [Boolean] When set to true, sample data is included in the web
+      # service's swagger definition. The default value is true.
       attr_accessor :expose_sample_data
 
-      # @return [RealtimeConfiguration] Configuration for the service's
-      # realtime endpoint.
+      # @return [RealtimeConfiguration] Contains the configuration settings for
+      # the web service endpoint.
       attr_accessor :realtime_configuration
 
-      # @return [DiagnosticsConfiguration] Settings controlling the
-      # diagnostics traces collection for the web service.
+      # @return [DiagnosticsConfiguration] Settings controlling the diagnostics
+      # traces collection for the web service.
       attr_accessor :diagnostics
 
-      # @return [StorageAccount] The storage account associated with the
-      # service. This is used to store both datasets and diagnostic traces.
-      # This information is required at creation time (PUT) and only the key
-      # is updateable after that. The account credentials are hidden on a GET
-      # web service call.
+      # @return [StorageAccount] Specifies the storage account that Azure
+      # Machine Learning uses to store information about the web service. Only
+      # the name of the storage account is returned from calls to GET
+      # operations. When updating the storage account information, you must
+      # ensure that all necessary assets are available in the new storage
+      # account or calls to your web service will fail.
       attr_accessor :storage_account
 
-      # @return [MachineLearningWorkspace] This is only populated at creation
-      # time (PUT) for web services originating from an AzureML Studio
-      # experiment.
+      # @return [MachineLearningWorkspace] Specifies the Machine Learning
+      # workspace containing the experiment that is source for the web service.
       attr_accessor :machine_learning_workspace
 
-      # @return [CommitmentPlan] The commitment plan associated with this web
-      # service. This is required to be specified at creation time (PUT) and
-      # is not updateable afterwards.
+      # @return [CommitmentPlan] Contains the commitment plan associated with
+      # this web service. Set at creation time. Once set, this value cannot be
+      # changed. Note: The commitment plan is not returned from calls to GET
+      # operations.
       attr_accessor :commitment_plan
 
-      # @return [ServiceInputOutputSpecification] Swagger schema for the
-      # service's input(s), as applicable.
+      # @return [ServiceInputOutputSpecification] Contains the Swagger 2.0
+      # schema describing one or more of the web service's inputs. For more
+      # information, see the Swagger specification.
       attr_accessor :input
 
-      # @return [ServiceInputOutputSpecification] Swagger schema for the
-      # service's output(s), as applicable.
+      # @return [ServiceInputOutputSpecification] Contains the Swagger 2.0
+      # schema describing one or more of the web service's outputs. For more
+      # information, see the Swagger specification.
       attr_accessor :output
 
-      # @return [ExampleRequest] Sample request data for each of the service's
-      # inputs, as applicable.
+      # @return [ExampleRequest] Defines sample input data for one or more of
+      # the service's inputs.
       attr_accessor :example_request
 
-      # @return [Hash{String => AssetItem}] Set of assets associated with the
-      # web service.
+      # @return [Hash{String => AssetItem}] Contains user defined properties
+      # describing web service assets. Properties are expressed as Key/Value
+      # pairs.
       attr_accessor :assets
 
       # @return [Hash{String => String}] The set of global parameters values

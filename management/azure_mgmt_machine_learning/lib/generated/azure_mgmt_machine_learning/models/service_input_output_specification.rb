@@ -13,18 +13,19 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      # @return [String] Swagger schema title.
+      # @return [String] The title of your Swagger schema.
       attr_accessor :title
 
-      # @return [String] Swagger schema description.
+      # @return [String] The description of the Swagger schema.
       attr_accessor :description
 
       # @return [String] The type of the entity described in swagger. Always
       # 'object'. Default value: 'object' .
       attr_accessor :type
 
-      # @return [Hash{String => TableSpecification}] Map of name to swagger
-      # schema for each input or output of the web service.
+      # @return [Hash{String => TableSpecification}] Specifies a collection
+      # that contains the column schema for each input or output of the web
+      # service. For more information, see the Swagger specification.
       attr_accessor :properties
 
 

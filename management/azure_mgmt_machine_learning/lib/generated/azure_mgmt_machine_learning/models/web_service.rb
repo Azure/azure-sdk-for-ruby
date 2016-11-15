@@ -12,7 +12,8 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      # @return [WebServiceProperties] Web service resource properties.
+      # @return [WebServiceProperties] Contains the property payload that
+      # describes the web service.
       attr_accessor :properties
 
 

@@ -13,7 +13,8 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      # @return [String] The workspace ARM resource id.
+      # @return [String] Specifies the workspace ID of the machine learning
+      # workspace associated with the web service
       attr_accessor :id
 
 

@@ -26,8 +26,8 @@ module Azure::ARM::MachineLearning
       # @return [String] The format, if 'type' is not 'object'
       attr_accessor :format
 
-      # @return [Hash{String => ColumnSpecification}] The set of columns
-      # within the data table.
+      # @return [Hash{String => ColumnSpecification}] The set of columns within
+      # the data table.
       attr_accessor :properties
 
 
