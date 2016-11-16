@@ -13,12 +13,12 @@ module Azure::ARM::ServiceBus
       include MsRestAzure
 
       # @return [String] The duration of a peek-lock; that is, the amount of
-      # time that the message is locked for other receivers. The maximum
-      # value for LockDuration is 5 minutes; the default value is 1 minute.
+      # time that the message is locked for other receivers. The maximum value
+      # for LockDuration is 5 minutes; the default value is 1 minute.
       attr_accessor :lock_duration
 
-      # @return [DateTime] Last time a message was sent, or the last time
-      # there was a receive request to this queue.
+      # @return [DateTime] Last time a message was sent, or the last time there
+      # was a receive request to this queue.
       attr_accessor :accessed_at
 
       # @return [String] the TimeSpan idle interval after which the queue is
@@ -52,8 +52,8 @@ module Azure::ARM::ServiceBus
       attr_accessor :dead_lettering_on_message_expiration
 
       # @return [Boolean] A value that indicates whether Express Entities are
-      # enabled. An express queue holds a message in memory temporarily
-      # before writing it to persistent storage.
+      # enabled. An express queue holds a message in memory temporarily before
+      # writing it to persistent storage.
       attr_accessor :enable_express
 
       # @return [Boolean] A value that indicates whether the queue is to be
@@ -82,15 +82,15 @@ module Azure::ARM::ServiceBus
       # detection.
       attr_accessor :requires_duplicate_detection
 
-      # @return [Boolean] A value that indicates whether the queue supports
-      # the concept of sessions.
+      # @return [Boolean] A value that indicates whether the queue supports the
+      # concept of sessions.
       attr_accessor :requires_session
 
       # @return [Integer] The size of the queue, in bytes.
       attr_accessor :size_in_bytes
 
-      # @return [EntityStatus] Enumerates the possible values for the status
-      # of a messaging entity. Possible values include: 'Active', 'Creating',
+      # @return [EntityStatus] Enumerates the possible values for the status of
+      # a messaging entity. Possible values include: 'Active', 'Creating',
       # 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
       # 'SendDisabled', 'Unknown'
       attr_accessor :status

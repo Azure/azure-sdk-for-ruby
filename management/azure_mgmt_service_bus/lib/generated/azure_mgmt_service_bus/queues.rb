@@ -505,8 +505,8 @@ module Azure::ARM::ServiceBus
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
     # @param authorization_rule_name [String] Authorization rule name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
-    # The shared access authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -524,8 +524,8 @@ module Azure::ARM::ServiceBus
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
     # @param authorization_rule_name [String] Authorization rule name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
-    # The shared access authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -542,8 +542,8 @@ module Azure::ARM::ServiceBus
     # @param namespace_name [String] The namespace name.
     # @param queue_name [String] The queue name.
     # @param authorization_rule_name [String] Authorization rule name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
-    # The shared access authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1017,8 +1017,8 @@ module Azure::ARM::ServiceBus
     #
     # Gets the queues within a namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1032,8 +1032,8 @@ module Azure::ARM::ServiceBus
     #
     # Gets the queues within a namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1046,8 +1046,8 @@ module Azure::ARM::ServiceBus
     #
     # Gets the queues within a namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1104,8 +1104,8 @@ module Azure::ARM::ServiceBus
     #
     # Gets all authorization rules for a queue.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1119,8 +1119,8 @@ module Azure::ARM::ServiceBus
     #
     # Gets all authorization rules for a queue.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1133,8 +1133,8 @@ module Azure::ARM::ServiceBus
     #
     # Gets all authorization rules for a queue.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
