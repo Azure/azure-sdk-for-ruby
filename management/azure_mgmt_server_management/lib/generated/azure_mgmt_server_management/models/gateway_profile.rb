@@ -13,35 +13,35 @@ module Azure::ARM::ServerManagement
 
       include MsRestAzure
 
-      # @return [String] the Dataplane connection URL
+      # @return [String] The Dataplane connection URL.
       attr_accessor :data_plane_service_base_address
 
-      # @return [String] the ID of the gateway
+      # @return [String] The ID of the gateway.
       attr_accessor :gateway_id
 
-      # @return [String] the environment for the gateway (DEV, DogFood, or
-      # Production)
+      # @return [String] The environment for the gateway (DEV, DogFood, or
+      # Production).
       attr_accessor :environment
 
-      # @return [String] Gateway upgrade manifest URL
+      # @return [String] Gateway upgrade manifest URL.
       attr_accessor :upgrade_manifest_url
 
-      # @return [String] Messaging namespace
+      # @return [String] Messaging namespace.
       attr_accessor :messaging_namespace
 
-      # @return [String] Messaging Account
+      # @return [String] Messaging Account.
       attr_accessor :messaging_account
 
-      # @return [String] Messaging Key
+      # @return [String] Messaging Key.
       attr_accessor :messaging_key
 
-      # @return [String] Request queue name
+      # @return [String] Request queue name.
       attr_accessor :request_queue
 
-      # @return [String] Response topic name
+      # @return [String] Response topic name.
       attr_accessor :response_topic
 
-      # @return [String] The gateway status blob SAS url
+      # @return [String] The gateway status blob SAS URL.
       attr_accessor :status_blob_signature
 
 

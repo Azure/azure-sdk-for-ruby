@@ -22,16 +22,16 @@ module Azure::ARM::Network
       attr_accessor :source
 
       # @return [EffectiveRouteState] The value of effective route. Possible
-      # values are: 'Active' and 'Invalid'. Possible values include:
-      # 'Active', 'Invalid'
+      # values are: 'Active' and 'Invalid'. Possible values include: 'Active',
+      # 'Invalid'
       attr_accessor :state
 
-      # @return [Array<String>] The address prefixes of the effective routes
-      # in CIDR notation.
+      # @return [Array<String>] The address prefixes of the effective routes in
+      # CIDR notation.
       attr_accessor :address_prefix
 
-      # @return [Array<String>] The IP address of the next hop of the
-      # effective route.
+      # @return [Array<String>] The IP address of the next hop of the effective
+      # route.
       attr_accessor :next_hop_ip_address
 
       # @return [RouteNextHopType] The type of Azure hop the packet should be

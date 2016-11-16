@@ -6,16 +6,16 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # collection of Gateway Resources
+    # Collection of Gateway Resources.
     #
     class GatewayResources
 
       include MsRestAzure
 
-      # @return [Array<GatewayResource>] collection of Gateway Resources
+      # @return [Array<GatewayResource>] Collection of Gateway Resources.
       attr_accessor :value
 
-      # @return [String] the URL to the next set of resources
+      # @return [String] The URL to the next set of resources.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

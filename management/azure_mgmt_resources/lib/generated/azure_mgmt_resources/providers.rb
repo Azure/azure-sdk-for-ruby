@@ -207,9 +207,9 @@ module Azure::ARM::Resources
     #
     # @param top [Integer] The number of results to return. If null is passed
     # returns all deployments.
-    # @param expand [String] The properties to include in the results. For
-    # example, use &$expand=metadata in the query string to retrieve resource
-    # provider metadata. To include property aliases in response, use
+    # @param expand [String] The properties to include in the results. For example,
+    # use &$expand=metadata in the query string to retrieve resource provider
+    # metadata. To include property aliases in response, use
     # $expand=resourceTypes/aliases.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -226,9 +226,9 @@ module Azure::ARM::Resources
     #
     # @param top [Integer] The number of results to return. If null is passed
     # returns all deployments.
-    # @param expand [String] The properties to include in the results. For
-    # example, use &$expand=metadata in the query string to retrieve resource
-    # provider metadata. To include property aliases in response, use
+    # @param expand [String] The properties to include in the results. For example,
+    # use &$expand=metadata in the query string to retrieve resource provider
+    # metadata. To include property aliases in response, use
     # $expand=resourceTypes/aliases.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -244,9 +244,9 @@ module Azure::ARM::Resources
     #
     # @param top [Integer] The number of results to return. If null is passed
     # returns all deployments.
-    # @param expand [String] The properties to include in the results. For
-    # example, use &$expand=metadata in the query string to retrieve resource
-    # provider metadata. To include property aliases in response, use
+    # @param expand [String] The properties to include in the results. For example,
+    # use &$expand=metadata in the query string to retrieve resource provider
+    # metadata. To include property aliases in response, use
     # $expand=resourceTypes/aliases.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -402,8 +402,8 @@ module Azure::ARM::Resources
     #
     # Gets all resource providers for a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -417,8 +417,8 @@ module Azure::ARM::Resources
     #
     # Gets all resource providers for a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -431,8 +431,8 @@ module Azure::ARM::Resources
     #
     # Gets all resource providers for a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -491,9 +491,9 @@ module Azure::ARM::Resources
     #
     # @param top [Integer] The number of results to return. If null is passed
     # returns all deployments.
-    # @param expand [String] The properties to include in the results. For
-    # example, use &$expand=metadata in the query string to retrieve resource
-    # provider metadata. To include property aliases in response, use
+    # @param expand [String] The properties to include in the results. For example,
+    # use &$expand=metadata in the query string to retrieve resource provider
+    # metadata. To include property aliases in response, use
     # $expand=resourceTypes/aliases.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

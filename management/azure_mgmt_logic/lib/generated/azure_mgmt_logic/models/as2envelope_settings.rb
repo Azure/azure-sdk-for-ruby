@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class AS2EnvelopeSettings
 
@@ -15,8 +16,8 @@ module Azure::ARM::Logic
       # @return [String] The message content type.
       attr_accessor :message_content_type
 
-      # @return [Boolean] The value indicating whether to transmit file name
-      # in mime header.
+      # @return [Boolean] The value indicating whether to transmit file name in
+      # mime header.
       attr_accessor :transmit_file_name_in_mime_header
 
       # @return [String] The template for file name.

@@ -15,9 +15,8 @@ module Azure::ARM::Insights
 
       # @return [RecurrenceFrequency] the recurrence frequency. How often the
       # schedule profile should take effect. This value must be Week, meaning
-      # each week will have the same set of profiles. Possible values
-      # include: 'None', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month',
-      # 'Year'
+      # each week will have the same set of profiles. Possible values include:
+      # 'None', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
       attr_accessor :frequency
 
       # @return [RecurrentSchedule] the scheduling constraints for when the

@@ -15,16 +15,16 @@ module Azure::ARM::Commerce
 
       # @return [String] The Offer ID parameter consists of the 'MS-AZR-'
       # prefix, plus the Offer ID number (e.g., MS-AZR-0026P). See
-      # https://azure.microsoft.com/en-us/support/legal/offer-details/ for
-      # more information on the list of available Offer IDs, country/region
+      # https://azure.microsoft.com/en-us/support/legal/offer-details/ for more
+      # information on the list of available Offer IDs, country/region
       # availability, and billing currency.
       attr_accessor :offer_durable_id
 
       # @return [String] The currency in which the rates need to be provided.
       attr_accessor :currency
 
-      # @return [String] The culture in which the resource metadata needs to
-      # be localized.
+      # @return [String] The culture in which the resource metadata needs to be
+      # localized.
       attr_accessor :locale
 
       # @return [String] 2 letter ISO code where the offer was purchased.

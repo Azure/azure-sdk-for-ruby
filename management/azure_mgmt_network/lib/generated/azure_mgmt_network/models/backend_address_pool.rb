@@ -20,8 +20,8 @@ module Azure::ARM::Network
       # backend address pool.
       attr_accessor :load_balancing_rules
 
-      # @return [SubResource] Gets outbound rules that use this backend
-      # address pool.
+      # @return [SubResource] Gets outbound rules that use this backend address
+      # pool.
       attr_accessor :outbound_nat_rule
 
       # @return [String] Get provisioning state of the public IP resource.

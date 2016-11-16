@@ -20,8 +20,8 @@ module Azure::ARM::Network
       # security group.
       attr_accessor :default_security_rules
 
-      # @return [Array<NetworkInterface>] A collection of references to
-      # network interfaces.
+      # @return [Array<NetworkInterface>] A collection of references to network
+      # interfaces.
       attr_accessor :network_interfaces
 
       # @return [Array<Subnet>] A collection of references to subnets.

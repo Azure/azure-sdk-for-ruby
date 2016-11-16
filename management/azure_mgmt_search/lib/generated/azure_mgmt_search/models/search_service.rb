@@ -19,18 +19,18 @@ module Azure::ARM::Search
 
       # @return [Integer] The number of partitions in the Search service; if
       # specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are
-      # only valid for standard SKUs. For 'standard3' services with
-      # hostingMode set to 'highDensity', the allowed values are between 1
-      # and 3. Default value: 1 .
+      # only valid for standard SKUs. For 'standard3' services with hostingMode
+      # set to 'highDensity', the allowed values are between 1 and 3. Default
+      # value: 1 .
       attr_accessor :partition_count
 
       # @return [HostingMode] Applicable only for the standard3 SKU. You can
-      # set this property to enable up to 3 high density partitions that
-      # allow up to 1000 indexes, which is much higher than the maximum
-      # indexes allowed for any other SKU. For the standard3 SKU, the value
-      # is either 'default' or 'highDensity'. For all other SKUs, this value
-      # must be 'default'. Possible values include: 'default', 'highDensity'.
-      # Default value: 'default' .
+      # set this property to enable up to 3 high density partitions that allow
+      # up to 1000 indexes, which is much higher than the maximum indexes
+      # allowed for any other SKU. For the standard3 SKU, the value is either
+      # 'default' or 'highDensity'. For all other SKUs, this value must be
+      # 'default'. Possible values include: 'default', 'highDensity'. Default
+      # value: 'default' .
       attr_accessor :hosting_mode
 
       # @return [SearchServiceStatus] The status of the Search service.
@@ -39,16 +39,15 @@ module Azure::ARM::Search
       # service is being provisioned or scaled up or down. 'deleting': The
       # Search service is being deleted. 'degraded': The Search service is
       # degraded. This can occur when the underlying search units are not
-      # healthy. The Search service is most likely operational, but
-      # performance might be slow and some requests might be dropped.
-      # 'disabled': The Search service is disabled. In this state, the
-      # service will reject all API requests. 'error': The Search service is
-      # in an error state. If your service is in the degraded, disabled, or
-      # error states, it means the Azure Search team is actively
-      # investigating the underlying issue. Dedicated services in these
-      # states are still chargeable based on the number of search units
-      # provisioned. Possible values include: 'running', 'provisioning',
-      # 'deleting', 'degraded', 'disabled', 'error'
+      # healthy. The Search service is most likely operational, but performance
+      # might be slow and some requests might be dropped. 'disabled': The
+      # Search service is disabled. In this state, the service will reject all
+      # API requests. 'error': The Search service is in an error state. If your
+      # service is in the degraded, disabled, or error states, it means the
+      # Azure Search team is actively investigating the underlying issue.
+      # Dedicated services in these states are still chargeable based on the
+      # number of search units provisioned. Possible values include: 'running',
+      # 'provisioning', 'deleting', 'degraded', 'disabled', 'error'
       attr_accessor :status
 
       # @return [String] The details of the Search service status.
@@ -60,12 +59,12 @@ module Azure::ARM::Search
       # established. After capacity is set up, provisioningState changes to
       # either 'succeeded' or 'failed'. Client applications can poll
       # provisioning status (the recommended polling interval is from 30
-      # seconds to one minute) by using the Get Search Service operation to
-      # see when an operation is completed. If you are using the free
-      # service, this value tends to come back as 'succeeded' directly in the
-      # call to Create Search service. This is because the free service uses
-      # capacity that is already set up. Possible values include:
-      # 'succeeded', 'provisioning', 'failed'
+      # seconds to one minute) by using the Get Search Service operation to see
+      # when an operation is completed. If you are using the free service, this
+      # value tends to come back as 'succeeded' directly in the call to Create
+      # Search service. This is because the free service uses capacity that is
+      # already set up. Possible values include: 'succeeded', 'provisioning',
+      # 'failed'
       attr_accessor :provisioning_state
 
       # @return [Sku] The SKU of the Search Service, which determines price

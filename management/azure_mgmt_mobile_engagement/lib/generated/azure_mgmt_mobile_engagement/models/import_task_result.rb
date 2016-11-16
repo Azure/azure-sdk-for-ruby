@@ -7,6 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class ImportTaskResult < ImportTask
 
@@ -22,12 +23,14 @@ module Azure::ARM::MobileEngagement
       # @return [DateTime] The date at which the import job was created.
       # The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as
       # specified by the ISO 8601 standard.
+      # 
       attr_accessor :date_created
 
       # @return [DateTime] The date at which the import job completed (Not
       # present if not yet completed).
       # The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as
       # specified by the ISO 8601 standard.
+      # 
       attr_accessor :date_completed
 
       # @return [String] Details of any errors encountered during the import,

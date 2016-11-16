@@ -5,7 +5,7 @@
 
 module Azure::ARM::ServerManagement
   #
-  # REST API for Azure Server Management Service
+  # REST API for Azure Server Management Service.
   #
   class Gateway
     include Azure::ARM::ServerManagement::Models
@@ -28,8 +28,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param gateway_name [String] The gateway name (256 characters maximum).
-    # @param location [String] location of the resource
-    # @param tags resource tags
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
     # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
     # specified, then we assume upgradeMode = Automatic. Possible values include:
@@ -48,8 +48,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param gateway_name [String] The gateway name (256 characters maximum).
-    # @param location [String] location of the resource
-    # @param tags resource tags
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
     # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
     # specified, then we assume upgradeMode = Automatic. Possible values include:
@@ -84,8 +84,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param gateway_name [String] The gateway name (256 characters maximum).
-    # @param location [String] location of the resource
-    # @param tags resource tags
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
     # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
     # specified, then we assume upgradeMode = Automatic. Possible values include:
@@ -104,8 +104,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param gateway_name [String] The gateway name (256 characters maximum).
-    # @param location [String] location of the resource
-    # @param tags resource tags
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
     # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
     # specified, then we assume upgradeMode = Automatic. Possible values include:
@@ -218,7 +218,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns a gateway
+    # Gets a gateway.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -238,7 +238,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns a gateway
+    # Gets a gateway.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -257,7 +257,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns a gateway
+    # Gets a gateway.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -324,7 +324,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a subscription
+    # Returns gateways in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -337,7 +337,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a subscription
+    # Returns gateways in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -349,7 +349,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a subscription
+    # Returns gateways in a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -407,7 +407,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a resource group
+    # Returns gateways in a resource group.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -422,7 +422,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a resource group
+    # Returns gateways in a resource group.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -436,7 +436,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a resource group
+    # Returns gateways in a resource group.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -497,7 +497,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Upgrade a gateway
+    # Upgrades a gateway.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -577,7 +577,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Gets a gateway profile
+    # Gets a gateway profile.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -626,8 +626,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param gateway_name [String] The gateway name (256 characters maximum).
-    # @param location [String] location of the resource
-    # @param tags resource tags
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
     # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
     # specified, then we assume upgradeMode = Automatic. Possible values include:
@@ -648,8 +648,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param gateway_name [String] The gateway name (256 characters maximum).
-    # @param location [String] location of the resource
-    # @param tags resource tags
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
     # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
     # specified, then we assume upgradeMode = Automatic. Possible values include:
@@ -669,8 +669,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param gateway_name [String] The gateway name (256 characters maximum).
-    # @param location [String] location of the resource
-    # @param tags resource tags
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
     # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
     # specified, then we assume upgradeMode = Automatic. Possible values include:
@@ -763,8 +763,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param gateway_name [String] The gateway name (256 characters maximum).
-    # @param location [String] location of the resource
-    # @param tags resource tags
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
     # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
     # specified, then we assume upgradeMode = Automatic. Possible values include:
@@ -785,8 +785,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param gateway_name [String] The gateway name (256 characters maximum).
-    # @param location [String] location of the resource
-    # @param tags resource tags
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
     # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
     # specified, then we assume upgradeMode = Automatic. Possible values include:
@@ -806,8 +806,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param gateway_name [String] The gateway name (256 characters maximum).
-    # @param location [String] location of the resource
-    # @param tags resource tags
+    # @param location [String] Location of the resource.
+    # @param tags Resource tags.
     # @param upgrade_mode [UpgradeMode] The upgradeMode property gives the
     # flexibility to gateway to auto upgrade itself. If properties value not
     # specified, then we assume upgradeMode = Automatic. Possible values include:
@@ -885,7 +885,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Upgrade a gateway
+    # Upgrades a gateway.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -900,7 +900,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Upgrade a gateway
+    # Upgrades a gateway.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -915,7 +915,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Upgrade a gateway
+    # Upgrades a gateway.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -1051,7 +1051,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Gets a gateway profile
+    # Gets a gateway profile.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -1067,7 +1067,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Gets a gateway profile
+    # Gets a gateway profile.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -1082,7 +1082,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Gets a gateway profile
+    # Gets a gateway profile.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
@@ -1145,10 +1145,10 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a subscription
+    # Returns gateways in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1160,10 +1160,10 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a subscription
+    # Returns gateways in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1174,10 +1174,10 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a subscription
+    # Returns gateways in a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1232,10 +1232,10 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a resource group
+    # Returns gateways in a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1247,10 +1247,10 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a resource group
+    # Returns gateways in a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1261,10 +1261,10 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a resource group
+    # Returns gateways in a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1319,7 +1319,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a subscription
+    # Returns gateways in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1339,7 +1339,7 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Returns gateways in a resource group
+    # Returns gateways in a resource group.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.

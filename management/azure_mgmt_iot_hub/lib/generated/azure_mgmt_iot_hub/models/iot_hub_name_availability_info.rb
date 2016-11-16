@@ -16,8 +16,8 @@ module Azure::ARM::IotHub
       # is available.
       attr_accessor :name_available
 
-      # @return [IotHubNameUnavailabilityReason] The reason for
-      # unavailability. Possible values include: 'Invalid', 'AlreadyExists'
+      # @return [IotHubNameUnavailabilityReason] The reason for unavailability.
+      # Possible values include: 'Invalid', 'AlreadyExists'
       attr_accessor :reason
 
       # @return [String] The message describing the detailed reason.

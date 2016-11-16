@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class X12ProcessingSettings
 
@@ -27,8 +28,8 @@ module Azure::ARM::Logic
       # on error.
       attr_accessor :suspend_interchange_on_error
 
-      # @return [Boolean] The value indicating whether to create empty xml
-      # tags for trailing separators.
+      # @return [Boolean] The value indicating whether to create empty xml tags
+      # for trailing separators.
       attr_accessor :create_empty_xml_tags_for_trailing_separators
 
       # @return [Boolean] The value indicating whether to use dot as decimal

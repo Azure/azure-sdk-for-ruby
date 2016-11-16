@@ -36,10 +36,10 @@ module Azure::ARM::Network
       # @return [String] The IPSec shared key.
       attr_accessor :shared_key
 
-      # @return [VirtualNetworkGatewayConnectionStatus] Virtual network
-      # Gateway connection status. Possible values are 'Unknown',
-      # 'Connecting', 'Connected' and 'NotConnected'. Possible values
-      # include: 'Unknown', 'Connecting', 'Connected', 'NotConnected'
+      # @return [VirtualNetworkGatewayConnectionStatus] Virtual network Gateway
+      # connection status. Possible values are 'Unknown', 'Connecting',
+      # 'Connected' and 'NotConnected'. Possible values include: 'Unknown',
+      # 'Connecting', 'Connected', 'NotConnected'
       attr_accessor :connection_status
 
       # @return [Array<TunnelConnectionHealth>] Collection of all tunnels'

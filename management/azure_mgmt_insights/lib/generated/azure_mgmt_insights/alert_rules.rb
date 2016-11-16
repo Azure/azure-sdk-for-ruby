@@ -27,8 +27,8 @@ module Azure::ARM::Insights
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
-    # @param parameters [AlertRuleResource] The parameters of the rule to create
-    # or update.
+    # @param parameters [AlertRuleResource] The parameters of the rule to create or
+    # update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -44,8 +44,8 @@ module Azure::ARM::Insights
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
-    # @param parameters [AlertRuleResource] The parameters of the rule to create
-    # or update.
+    # @param parameters [AlertRuleResource] The parameters of the rule to create or
+    # update.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -60,8 +60,8 @@ module Azure::ARM::Insights
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
-    # @param parameters [AlertRuleResource] The parameters of the rule to create
-    # or update.
+    # @param parameters [AlertRuleResource] The parameters of the rule to create or
+    # update.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

@@ -12,8 +12,8 @@ module Azure::ARM::IotHub
 
       include MsRestAzure
 
-      # @return [IotHubSku] The name of the Sku. Possible values include:
-      # 'F1', 'S1', 'S2', 'S3'
+      # @return [IotHubSku] The name of the Sku. Possible values include: 'F1',
+      # 'S1', 'S2', 'S3'
       attr_accessor :name
 
       # @return [IotHubSkuTier] The tier. Possible values include: 'Free',
@@ -21,8 +21,8 @@ module Azure::ARM::IotHub
       attr_accessor :tier
 
       # @return [Integer] The number of units being provisioned. Range of
-      # values [For F1: 1-1, S1: 1-200, S2: 1-200, S3: 1-10]. To go above
-      # this range, call support.
+      # values [For F1: 1-1, S1: 1-200, S2: 1-200, S3: 1-10]. To go above this
+      # range, call support.
       attr_accessor :capacity
 
 

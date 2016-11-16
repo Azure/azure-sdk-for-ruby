@@ -18,9 +18,9 @@ module Azure::ARM::Web
       # @return [String] Operation Name
       attr_accessor :name
 
-      # @return [OperationStatus] The current status of the operation.
-      # Possible values include: 'InProgress', 'Failed', 'Succeeded',
-      # 'TimedOut', 'Created'
+      # @return [OperationStatus] The current status of the operation. Possible
+      # values include: 'InProgress', 'Failed', 'Succeeded', 'TimedOut',
+      # 'Created'
       attr_accessor :status
 
       # @return [Array<ErrorEntity>] Any errors associate with the operation

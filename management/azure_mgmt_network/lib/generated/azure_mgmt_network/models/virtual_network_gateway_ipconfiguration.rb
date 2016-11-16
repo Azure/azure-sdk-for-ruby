@@ -12,9 +12,9 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [IPAllocationMethod] The private IP allocation method.
-      # Possible values are: 'Static' and 'Dynamic'. Possible values include:
-      # 'Static', 'Dynamic'
+      # @return [IPAllocationMethod] The private IP allocation method. Possible
+      # values are: 'Static' and 'Dynamic'. Possible values include: 'Static',
+      # 'Dynamic'
       attr_accessor :private_ipallocation_method
 
       # @return [SubResource] The reference of the subnet resource.

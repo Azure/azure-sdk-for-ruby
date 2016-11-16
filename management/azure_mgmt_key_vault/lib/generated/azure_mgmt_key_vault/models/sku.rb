@@ -16,8 +16,8 @@ module Azure::ARM::KeyVault
       attr_accessor :family
 
       # @return [SkuName] SKU name to specify whether the key vault is a
-      # standard vault or a premium vault. Possible values include:
-      # 'standard', 'premium'
+      # standard vault or a premium vault. Possible values include: 'standard',
+      # 'premium'
       attr_accessor :name
 
 

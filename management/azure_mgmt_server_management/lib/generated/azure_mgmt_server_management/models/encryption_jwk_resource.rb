@@ -6,7 +6,7 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # the public key of the gateway
+    # The public key of the gateway.
     #
     class EncryptionJwkResource
 

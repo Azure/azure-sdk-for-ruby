@@ -25,15 +25,15 @@ module Azure::ARM::TrafficManager
     #
     # Update a Traffic Manager endpoint.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager endpoint to be updated.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager endpoint to be updated.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param endpoint_type [String] The type of the Traffic Manager endpoint to be
     # updated.
     # @param endpoint_name [String] The name of the Traffic Manager endpoint to be
     # updated.
-    # @param parameters [Endpoint] The Traffic Manager endpoint parameters
-    # supplied to the Update operation.
+    # @param parameters [Endpoint] The Traffic Manager endpoint parameters supplied
+    # to the Update operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -47,15 +47,15 @@ module Azure::ARM::TrafficManager
     #
     # Update a Traffic Manager endpoint.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager endpoint to be updated.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager endpoint to be updated.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param endpoint_type [String] The type of the Traffic Manager endpoint to be
     # updated.
     # @param endpoint_name [String] The name of the Traffic Manager endpoint to be
     # updated.
-    # @param parameters [Endpoint] The Traffic Manager endpoint parameters
-    # supplied to the Update operation.
+    # @param parameters [Endpoint] The Traffic Manager endpoint parameters supplied
+    # to the Update operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -68,15 +68,15 @@ module Azure::ARM::TrafficManager
     #
     # Update a Traffic Manager endpoint.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager endpoint to be updated.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager endpoint to be updated.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param endpoint_type [String] The type of the Traffic Manager endpoint to be
     # updated.
     # @param endpoint_name [String] The name of the Traffic Manager endpoint to be
     # updated.
-    # @param parameters [Endpoint] The Traffic Manager endpoint parameters
-    # supplied to the Update operation.
+    # @param parameters [Endpoint] The Traffic Manager endpoint parameters supplied
+    # to the Update operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -149,8 +149,8 @@ module Azure::ARM::TrafficManager
     #
     # Gets a Traffic Manager endpoint.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager endpoint.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager endpoint.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param endpoint_type [String] The type of the Traffic Manager endpoint.
     # @param endpoint_name [String] The name of the Traffic Manager endpoint.
@@ -167,8 +167,8 @@ module Azure::ARM::TrafficManager
     #
     # Gets a Traffic Manager endpoint.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager endpoint.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager endpoint.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param endpoint_type [String] The type of the Traffic Manager endpoint.
     # @param endpoint_name [String] The name of the Traffic Manager endpoint.
@@ -184,8 +184,8 @@ module Azure::ARM::TrafficManager
     #
     # Gets a Traffic Manager endpoint.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager endpoint.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager endpoint.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param endpoint_type [String] The type of the Traffic Manager endpoint.
     # @param endpoint_name [String] The name of the Traffic Manager endpoint.
@@ -251,15 +251,15 @@ module Azure::ARM::TrafficManager
     #
     # Create or update a Traffic Manager endpoint.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager endpoint to be created or updated.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager endpoint to be created or updated.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param endpoint_type [String] The type of the Traffic Manager endpoint to be
     # created or updated.
     # @param endpoint_name [String] The name of the Traffic Manager endpoint to be
     # created or updated.
-    # @param parameters [Endpoint] The Traffic Manager endpoint parameters
-    # supplied to the CreateOrUpdate operation.
+    # @param parameters [Endpoint] The Traffic Manager endpoint parameters supplied
+    # to the CreateOrUpdate operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -273,15 +273,15 @@ module Azure::ARM::TrafficManager
     #
     # Create or update a Traffic Manager endpoint.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager endpoint to be created or updated.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager endpoint to be created or updated.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param endpoint_type [String] The type of the Traffic Manager endpoint to be
     # created or updated.
     # @param endpoint_name [String] The name of the Traffic Manager endpoint to be
     # created or updated.
-    # @param parameters [Endpoint] The Traffic Manager endpoint parameters
-    # supplied to the CreateOrUpdate operation.
+    # @param parameters [Endpoint] The Traffic Manager endpoint parameters supplied
+    # to the CreateOrUpdate operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -294,15 +294,15 @@ module Azure::ARM::TrafficManager
     #
     # Create or update a Traffic Manager endpoint.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager endpoint to be created or updated.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager endpoint to be created or updated.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param endpoint_type [String] The type of the Traffic Manager endpoint to be
     # created or updated.
     # @param endpoint_name [String] The name of the Traffic Manager endpoint to be
     # created or updated.
-    # @param parameters [Endpoint] The Traffic Manager endpoint parameters
-    # supplied to the CreateOrUpdate operation.
+    # @param parameters [Endpoint] The Traffic Manager endpoint parameters supplied
+    # to the CreateOrUpdate operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -385,8 +385,8 @@ module Azure::ARM::TrafficManager
     #
     # Deletes a Traffic Manager endpoint.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager endpoint to be deleted.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager endpoint to be deleted.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param endpoint_type [String] The type of the Traffic Manager endpoint to be
     # deleted.
@@ -404,8 +404,8 @@ module Azure::ARM::TrafficManager
     #
     # Deletes a Traffic Manager endpoint.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager endpoint to be deleted.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager endpoint to be deleted.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param endpoint_type [String] The type of the Traffic Manager endpoint to be
     # deleted.
@@ -423,8 +423,8 @@ module Azure::ARM::TrafficManager
     #
     # Deletes a Traffic Manager endpoint.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager endpoint to be deleted.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager endpoint to be deleted.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param endpoint_type [String] The type of the Traffic Manager endpoint to be
     # deleted.

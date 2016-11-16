@@ -25,12 +25,13 @@ module Azure::ARM::MobileEngagement
       # @return [Date] It can be either: * an absolute date using yyyy-MM-dd
       # format (e.g. 1969-12-07 stands for 7 Dec 1969). * an offset in days
       # relative to the current day (`TODAY` + `value`).
+      # 
       attr_accessor :value
 
       # @return [AudienceOperators] comparison operator: `EQ` (equal to), `LT`
-      # (less than), `GT` (greater than), `LE` (less than or equal to) or
-      # `GE` (greater than or equal to). Possible values include: 'EQ', 'LT',
-      # 'GT', 'LE', 'GE'
+      # (less than), `GT` (greater than), `LE` (less than or equal to) or `GE`
+      # (greater than or equal to). Possible values include: 'EQ', 'LT', 'GT',
+      # 'LE', 'GE'
       attr_accessor :op
 
 

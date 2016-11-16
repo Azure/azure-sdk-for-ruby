@@ -6,7 +6,7 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # Expanded gateway status information
+    # Expanded gateway status information.
     #
     class GatewayStatus
 
@@ -30,7 +30,7 @@ module Azure::ARM::ServerManagement
       # @return [String] The Plaintext description of the OS on the gateway.
       attr_accessor :friendly_os_name
 
-      # @return [DateTime] The date the gateway was installed
+      # @return [DateTime] The date the gateway was installed.
       attr_accessor :installed_date
 
       # @return [Integer] Number of logical processors in the gateway system.
@@ -39,7 +39,7 @@ module Azure::ARM::ServerManagement
       # @return [String] The computer name of the gateway system.
       attr_accessor :name
 
-      # @return [String] The gateway resource id.
+      # @return [String] The gateway resource ID.
       attr_accessor :gateway_id
 
       # @return [Float] The working set size of the gateway process in
@@ -47,38 +47,38 @@ module Azure::ARM::ServerManagement
       attr_accessor :gateway_working_set_mbyte
 
       # @return [DateTime] UTC date and time when gateway status was last
-      # updated
+      # updated.
       attr_accessor :status_updated
 
-      # @return [String] The group policy error
+      # @return [String] The group policy error.
       attr_accessor :group_policy_error
 
-      # @return [Boolean] Status of the allowGatewayGroupPolicy setting
+      # @return [Boolean] Status of the allowGatewayGroupPolicy setting.
       attr_accessor :allow_gateway_group_policy_status
 
-      # @return [Boolean] Status of the requireMfaGroupPolicy setting
+      # @return [Boolean] Status of the requireMfaGroupPolicy setting.
       attr_accessor :require_mfa_group_policy_status
 
-      # @return [String] Thumbprint of the encryption certificate
+      # @return [String] Thumbprint of the encryption certificate.
       attr_accessor :encryption_certificate_thumbprint
 
-      # @return [String] Secondary thumbprint of the encryption certificate
+      # @return [String] Secondary thumbprint of the encryption certificate.
       attr_accessor :secondary_encryption_certificate_thumbprint
 
-      # @return [EncryptionJwkResource] The encryption cerfiticate key
+      # @return [EncryptionJwkResource] The encryption certificate key.
       attr_accessor :encryption_jwk
 
-      # @return [EncryptionJwkResource] The secondary encryption cerfiticate
-      # key
+      # @return [EncryptionJwkResource] The secondary encryption certificate
+      # key.
       attr_accessor :secondary_encryption_jwk
 
-      # @return [Integer] active message count
+      # @return [Integer] Active message count.
       attr_accessor :active_message_count
 
-      # @return [String] latest published version of the gateway install msi
+      # @return [String] Latest published version of the gateway install MSI.
       attr_accessor :latest_published_msi_version
 
-      # @return [DateTime] gateway install msi published time
+      # @return [DateTime] Gateway install MSI published time.
       attr_accessor :published_time_utc
 
 

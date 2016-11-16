@@ -30,8 +30,8 @@ module Azure::ARM::Network
       # gateway.
       attr_accessor :ssl_certificate
 
-      # @return [Boolean] Applicable only if protocol is https. Enables SNI
-      # for multi-hosting.
+      # @return [Boolean] Applicable only if protocol is https. Enables SNI for
+      # multi-hosting.
       attr_accessor :require_server_name_indication
 
       # @return [String] Provisioning state of the HTTP listener resource.

@@ -20,8 +20,8 @@ module Azure::ARM::Storage
       attr_accessor :kind
 
       # @return [ProvisioningState] Gets the status of the storage account at
-      # the time the operation was called. Possible values include:
-      # 'Creating', 'ResolvingDNS', 'Succeeded'
+      # the time the operation was called. Possible values include: 'Creating',
+      # 'ResolvingDNS', 'Succeeded'
       attr_accessor :provisioning_state
 
       # @return [Endpoints] Gets the URLs that are used to perform a retrieval
@@ -41,33 +41,32 @@ module Azure::ARM::Storage
       # @return [DateTime] Gets the timestamp of the most recent instance of a
       # failover to the secondary location. Only the most recent timestamp is
       # retained. This element is not returned if there has never been a
-      # failover instance. Only available if the accountType is Standard_GRS
-      # or Standard_RAGRS.
+      # failover instance. Only available if the accountType is Standard_GRS or
+      # Standard_RAGRS.
       attr_accessor :last_geo_failover_time
 
       # @return [String] Gets the location of the geo-replicated secondary for
-      # the storage account. Only available if the accountType is
-      # Standard_GRS or Standard_RAGRS.
+      # the storage account. Only available if the accountType is Standard_GRS
+      # or Standard_RAGRS.
       attr_accessor :secondary_location
 
       # @return [AccountStatus] Gets the status indicating whether the
-      # secondary location of the storage account is available or
-      # unavailable. Only available if the SKU name is Standard_GRS or
-      # Standard_RAGRS. Possible values include: 'Available', 'Unavailable'
+      # secondary location of the storage account is available or unavailable.
+      # Only available if the SKU name is Standard_GRS or Standard_RAGRS.
+      # Possible values include: 'Available', 'Unavailable'
       attr_accessor :status_of_secondary
 
       # @return [DateTime] Gets the creation date and time of the storage
       # account in UTC.
       attr_accessor :creation_time
 
-      # @return [CustomDomain] Gets the custom domain the user assigned to
-      # this storage account.
+      # @return [CustomDomain] Gets the custom domain the user assigned to this
+      # storage account.
       attr_accessor :custom_domain
 
       # @return [Endpoints] Gets the URLs that are used to perform a retrieval
-      # of a public blob, queue, or table object from the secondary location
-      # of the storage account. Only available if the SKU name is
-      # Standard_RAGRS.
+      # of a public blob, queue, or table object from the secondary location of
+      # the storage account. Only available if the SKU name is Standard_RAGRS.
       attr_accessor :secondary_endpoints
 
       # @return [Encryption] Gets the encryption settings on the account. If
@@ -75,8 +74,8 @@ module Azure::ARM::Storage
       attr_accessor :encryption
 
       # @return [AccessTier] Required for storage accounts where kind =
-      # BlobStorage. The access tier used for billing. Possible values
-      # include: 'Hot', 'Cool'
+      # BlobStorage. The access tier used for billing. Possible values include:
+      # 'Hot', 'Cool'
       attr_accessor :access_tier
 
 

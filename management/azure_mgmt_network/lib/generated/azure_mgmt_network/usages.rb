@@ -6,9 +6,9 @@
 module Azure::ARM::Network
   #
   # The Microsoft Azure Network management API provides a RESTful set of web
-  # services that interact with Microsoft Azure Networks service to manage
-  # your network resources. The API has entities that capture the
-  # relationship between an end user and the Microsoft Azure Networks service.
+  # services that interact with Microsoft Azure Networks service to manage your
+  # network resources. The API has entities that capture the relationship
+  # between an end user and the Microsoft Azure Networks service.
   #
   class Usages
     include Azure::ARM::Network::Models
@@ -115,8 +115,8 @@ module Azure::ARM::Network
     #
     # Lists compute usages for a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -130,8 +130,8 @@ module Azure::ARM::Network
     #
     # Lists compute usages for a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -144,8 +144,8 @@ module Azure::ARM::Network
     #
     # Lists compute usages for a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

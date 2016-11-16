@@ -15,9 +15,9 @@ module Azure::ARM::Network
       # @return [Boolean] Whether the web application firewall is enabled.
       attr_accessor :enabled
 
-      # @return [ApplicationGatewayFirewallMode] Web application firewall
-      # mode. Possible values are: 'Detection' and 'Prevention'. Possible
-      # values include: 'Detection', 'Prevention'
+      # @return [ApplicationGatewayFirewallMode] Web application firewall mode.
+      # Possible values are: 'Detection' and 'Prevention'. Possible values
+      # include: 'Detection', 'Prevention'
       attr_accessor :firewall_mode
 
 

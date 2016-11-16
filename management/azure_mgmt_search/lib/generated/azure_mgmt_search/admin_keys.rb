@@ -26,8 +26,8 @@ module Azure::ARM::Search
     # Gets the primary and secondary admin API keys for the specified Azure Search
     # service.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -47,8 +47,8 @@ module Azure::ARM::Search
     # Gets the primary and secondary admin API keys for the specified Azure Search
     # service.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -67,8 +67,8 @@ module Azure::ARM::Search
     # Gets the primary and secondary admin API keys for the specified Azure Search
     # service.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
@@ -140,14 +140,14 @@ module Azure::ARM::Search
     # Regenerates either the primary or secondary admin API key. You can only
     # regenerate one key at a time.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
     # @param key_kind [AdminKeyKind] Specifies which key to regenerate. Valid
-    # values include 'primary' and 'secondary'. Possible values include:
-    # 'primary', 'secondary'
+    # values include 'primary' and 'secondary'. Possible values include: 'primary',
+    # 'secondary'
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -164,14 +164,14 @@ module Azure::ARM::Search
     # Regenerates either the primary or secondary admin API key. You can only
     # regenerate one key at a time.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
     # @param key_kind [AdminKeyKind] Specifies which key to regenerate. Valid
-    # values include 'primary' and 'secondary'. Possible values include:
-    # 'primary', 'secondary'
+    # values include 'primary' and 'secondary'. Possible values include: 'primary',
+    # 'secondary'
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -187,14 +187,14 @@ module Azure::ARM::Search
     # Regenerates either the primary or secondary admin API key. You can only
     # regenerate one key at a time.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the current subscription. You can obtain this value from the Azure Resource
+    # @param resource_group_name [String] The name of the resource group within the
+    # current subscription. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param search_service_name [String] The name of the Azure Search service
     # associated with the specified resource group.
     # @param key_kind [AdminKeyKind] Specifies which key to regenerate. Valid
-    # values include 'primary' and 'secondary'. Possible values include:
-    # 'primary', 'secondary'
+    # values include 'primary' and 'secondary'. Possible values include: 'primary',
+    # 'secondary'
     # @param search_management_request_options [SearchManagementRequestOptions]
     # Additional parameters for the operation
     # @param [Hash{String => String}] A hash of custom headers that will be added

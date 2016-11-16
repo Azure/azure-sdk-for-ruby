@@ -23,8 +23,8 @@ module Azure::ARM::MobileEngagement
       attr_accessor :content_id
 
       # @return [CampaignFeedbacks] Action that was performed on the
-      # announcement. Possible values include: 'pushed', 'replied',
-      # 'actioned', 'exited'
+      # announcement. Possible values include: 'pushed', 'replied', 'actioned',
+      # 'exited'
       attr_accessor :action
 
 

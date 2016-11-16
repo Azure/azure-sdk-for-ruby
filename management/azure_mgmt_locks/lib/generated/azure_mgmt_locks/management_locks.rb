@@ -26,11 +26,11 @@ module Azure::ARM::Locks
     #
     # Creates or updates a management lock at the resource group level.
     #
-    # When you apply a lock at a parent scope, all child resources inherit the
-    # same lock. To create management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # When you apply a lock at a parent scope, all child resources inherit the same
+    # lock. To create management locks, you must have access to
+    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of the
+    # built-in roles, only Owner and User Access Administrator are granted those
+    # actions.
     #
     # @param resource_group_name [String] The name of the resource group to lock.
     # @param lock_name [String] The lock name. The lock name can be a maximum of
@@ -50,11 +50,11 @@ module Azure::ARM::Locks
     #
     # Creates or updates a management lock at the resource group level.
     #
-    # When you apply a lock at a parent scope, all child resources inherit the
-    # same lock. To create management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # When you apply a lock at a parent scope, all child resources inherit the same
+    # lock. To create management locks, you must have access to
+    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of the
+    # built-in roles, only Owner and User Access Administrator are granted those
+    # actions.
     #
     # @param resource_group_name [String] The name of the resource group to lock.
     # @param lock_name [String] The lock name. The lock name can be a maximum of
@@ -73,11 +73,11 @@ module Azure::ARM::Locks
     #
     # Creates or updates a management lock at the resource group level.
     #
-    # When you apply a lock at a parent scope, all child resources inherit the
-    # same lock. To create management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # When you apply a lock at a parent scope, all child resources inherit the same
+    # lock. To create management locks, you must have access to
+    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of the
+    # built-in roles, only Owner and User Access Administrator are granted those
+    # actions.
     #
     # @param resource_group_name [String] The name of the resource group to lock.
     # @param lock_name [String] The lock name. The lock name can be a maximum of
@@ -164,13 +164,12 @@ module Azure::ARM::Locks
     #
     # Deletes a management lock at the resource group level.
     #
-    # To delete management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # To delete management locks, you must have access to Microsoft.Authorization/*
+    # or Microsoft.Authorization/locks/* actions. Of the built-in roles, only Owner
+    # and User Access Administrator are granted those actions.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the lock.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the lock.
     # @param lock_name [String] The name of lock to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -184,13 +183,12 @@ module Azure::ARM::Locks
     #
     # Deletes a management lock at the resource group level.
     #
-    # To delete management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # To delete management locks, you must have access to Microsoft.Authorization/*
+    # or Microsoft.Authorization/locks/* actions. Of the built-in roles, only Owner
+    # and User Access Administrator are granted those actions.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the lock.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the lock.
     # @param lock_name [String] The name of lock to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -204,13 +202,12 @@ module Azure::ARM::Locks
     #
     # Deletes a management lock at the resource group level.
     #
-    # To delete management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # To delete management locks, you must have access to Microsoft.Authorization/*
+    # or Microsoft.Authorization/locks/* actions. Of the built-in roles, only Owner
+    # and User Access Administrator are granted those actions.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the lock.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the lock.
     # @param lock_name [String] The name of lock to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -351,24 +348,24 @@ module Azure::ARM::Locks
     end
 
     #
-    # Creates or updates a management lock at the resource level or any level
-    # below the resource.
+    # Creates or updates a management lock at the resource level or any level below
+    # the resource.
     #
-    # When you apply a lock at a parent scope, all child resources inherit the
-    # same lock. To create management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # When you apply a lock at a parent scope, all child resources inherit the same
+    # lock. To create management locks, you must have access to
+    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of the
+    # built-in roles, only Owner and User Access Administrator are granted those
+    # actions.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource to lock.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource to lock.
     # @param resource_provider_namespace [String] The resource provider namespace
     # of the resource to lock.
     # @param parent_resource_path [String] The parent resource identity.
     # @param resource_type [String] The resource type of the resource to lock.
     # @param resource_name [String] The name of the resource to lock.
-    # @param lock_name [String] The name of lock. The lock name can be a maximum
-    # of 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control
+    # @param lock_name [String] The name of lock. The lock name can be a maximum of
+    # 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control
     # characters.
     # @param parameters [ManagementLockObject] Parameters for creating or updating
     # a  management lock.
@@ -383,24 +380,24 @@ module Azure::ARM::Locks
     end
 
     #
-    # Creates or updates a management lock at the resource level or any level
-    # below the resource.
+    # Creates or updates a management lock at the resource level or any level below
+    # the resource.
     #
-    # When you apply a lock at a parent scope, all child resources inherit the
-    # same lock. To create management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # When you apply a lock at a parent scope, all child resources inherit the same
+    # lock. To create management locks, you must have access to
+    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of the
+    # built-in roles, only Owner and User Access Administrator are granted those
+    # actions.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource to lock.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource to lock.
     # @param resource_provider_namespace [String] The resource provider namespace
     # of the resource to lock.
     # @param parent_resource_path [String] The parent resource identity.
     # @param resource_type [String] The resource type of the resource to lock.
     # @param resource_name [String] The name of the resource to lock.
-    # @param lock_name [String] The name of lock. The lock name can be a maximum
-    # of 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control
+    # @param lock_name [String] The name of lock. The lock name can be a maximum of
+    # 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control
     # characters.
     # @param parameters [ManagementLockObject] Parameters for creating or updating
     # a  management lock.
@@ -414,24 +411,24 @@ module Azure::ARM::Locks
     end
 
     #
-    # Creates or updates a management lock at the resource level or any level
-    # below the resource.
+    # Creates or updates a management lock at the resource level or any level below
+    # the resource.
     #
-    # When you apply a lock at a parent scope, all child resources inherit the
-    # same lock. To create management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # When you apply a lock at a parent scope, all child resources inherit the same
+    # lock. To create management locks, you must have access to
+    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of the
+    # built-in roles, only Owner and User Access Administrator are granted those
+    # actions.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource to lock.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource to lock.
     # @param resource_provider_namespace [String] The resource provider namespace
     # of the resource to lock.
     # @param parent_resource_path [String] The parent resource identity.
     # @param resource_type [String] The resource type of the resource to lock.
     # @param resource_name [String] The name of the resource to lock.
-    # @param lock_name [String] The name of lock. The lock name can be a maximum
-    # of 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control
+    # @param lock_name [String] The name of lock. The lock name can be a maximum of
+    # 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control
     # characters.
     # @param parameters [ManagementLockObject] Parameters for creating or updating
     # a  management lock.
@@ -520,18 +517,17 @@ module Azure::ARM::Locks
     #
     # Deletes the management lock of a resource or any level below the resource.
     #
-    # To delete management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # To delete management locks, you must have access to Microsoft.Authorization/*
+    # or Microsoft.Authorization/locks/* actions. Of the built-in roles, only Owner
+    # and User Access Administrator are granted those actions.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource with the lock to delete.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource with the lock to delete.
     # @param resource_provider_namespace [String] The resource provider namespace
     # of the resource with the lock to delete.
     # @param parent_resource_path [String] The parent resource identity.
-    # @param resource_type [String] The resource type of the resource with the
-    # lock to delete.
+    # @param resource_type [String] The resource type of the resource with the lock
+    # to delete.
     # @param resource_name [String] The name of the resource with the lock to
     # delete.
     # @param lock_name [String] The name of the lock to delete.
@@ -547,18 +543,17 @@ module Azure::ARM::Locks
     #
     # Deletes the management lock of a resource or any level below the resource.
     #
-    # To delete management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # To delete management locks, you must have access to Microsoft.Authorization/*
+    # or Microsoft.Authorization/locks/* actions. Of the built-in roles, only Owner
+    # and User Access Administrator are granted those actions.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource with the lock to delete.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource with the lock to delete.
     # @param resource_provider_namespace [String] The resource provider namespace
     # of the resource with the lock to delete.
     # @param parent_resource_path [String] The parent resource identity.
-    # @param resource_type [String] The resource type of the resource with the
-    # lock to delete.
+    # @param resource_type [String] The resource type of the resource with the lock
+    # to delete.
     # @param resource_name [String] The name of the resource with the lock to
     # delete.
     # @param lock_name [String] The name of the lock to delete.
@@ -574,18 +569,17 @@ module Azure::ARM::Locks
     #
     # Deletes the management lock of a resource or any level below the resource.
     #
-    # To delete management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # To delete management locks, you must have access to Microsoft.Authorization/*
+    # or Microsoft.Authorization/locks/* actions. Of the built-in roles, only Owner
+    # and User Access Administrator are granted those actions.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource with the lock to delete.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource with the lock to delete.
     # @param resource_provider_namespace [String] The resource provider namespace
     # of the resource with the lock to delete.
     # @param parent_resource_path [String] The parent resource identity.
-    # @param resource_type [String] The resource type of the resource with the
-    # lock to delete.
+    # @param resource_type [String] The resource type of the resource with the lock
+    # to delete.
     # @param resource_name [String] The name of the resource with the lock to
     # delete.
     # @param lock_name [String] The name of the lock to delete.
@@ -644,14 +638,14 @@ module Azure::ARM::Locks
     #
     # Creates or updates a management lock at the subscription level.
     #
-    # When you apply a lock at a parent scope, all child resources inherit the
-    # same lock. To create management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # When you apply a lock at a parent scope, all child resources inherit the same
+    # lock. To create management locks, you must have access to
+    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of the
+    # built-in roles, only Owner and User Access Administrator are granted those
+    # actions.
     #
-    # @param lock_name [String] The name of lock. The lock name can be a maximum
-    # of 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control
+    # @param lock_name [String] The name of lock. The lock name can be a maximum of
+    # 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control
     # characters.
     # @param parameters [ManagementLockObject] The management lock parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -667,14 +661,14 @@ module Azure::ARM::Locks
     #
     # Creates or updates a management lock at the subscription level.
     #
-    # When you apply a lock at a parent scope, all child resources inherit the
-    # same lock. To create management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # When you apply a lock at a parent scope, all child resources inherit the same
+    # lock. To create management locks, you must have access to
+    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of the
+    # built-in roles, only Owner and User Access Administrator are granted those
+    # actions.
     #
-    # @param lock_name [String] The name of lock. The lock name can be a maximum
-    # of 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control
+    # @param lock_name [String] The name of lock. The lock name can be a maximum of
+    # 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control
     # characters.
     # @param parameters [ManagementLockObject] The management lock parameters.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -689,14 +683,14 @@ module Azure::ARM::Locks
     #
     # Creates or updates a management lock at the subscription level.
     #
-    # When you apply a lock at a parent scope, all child resources inherit the
-    # same lock. To create management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # When you apply a lock at a parent scope, all child resources inherit the same
+    # lock. To create management locks, you must have access to
+    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of the
+    # built-in roles, only Owner and User Access Administrator are granted those
+    # actions.
     #
-    # @param lock_name [String] The name of lock. The lock name can be a maximum
-    # of 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control
+    # @param lock_name [String] The name of lock. The lock name can be a maximum of
+    # 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control
     # characters.
     # @param parameters [ManagementLockObject] The management lock parameters.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -778,10 +772,9 @@ module Azure::ARM::Locks
     #
     # Deletes the management lock at the subscription level.
     #
-    # To delete management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # To delete management locks, you must have access to Microsoft.Authorization/*
+    # or Microsoft.Authorization/locks/* actions. Of the built-in roles, only Owner
+    # and User Access Administrator are granted those actions.
     #
     # @param lock_name [String] The name of lock to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -796,10 +789,9 @@ module Azure::ARM::Locks
     #
     # Deletes the management lock at the subscription level.
     #
-    # To delete management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # To delete management locks, you must have access to Microsoft.Authorization/*
+    # or Microsoft.Authorization/locks/* actions. Of the built-in roles, only Owner
+    # and User Access Administrator are granted those actions.
     #
     # @param lock_name [String] The name of lock to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -814,10 +806,9 @@ module Azure::ARM::Locks
     #
     # Deletes the management lock at the subscription level.
     #
-    # To delete management locks, you must have access to
-    # Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions. Of
-    # the built-in roles, only Owner and User Access Administrator are granted
-    # those actions.
+    # To delete management locks, you must have access to Microsoft.Authorization/*
+    # or Microsoft.Authorization/locks/* actions. Of the built-in roles, only Owner
+    # and User Access Administrator are granted those actions.
     #
     # @param lock_name [String] The name of lock to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -956,8 +947,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the locks to get.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the locks to get.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -972,8 +963,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the locks to get.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the locks to get.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -987,8 +978,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the locks to get.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the locks to get.
     # @param filter [String] The filter to apply on the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1049,8 +1040,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource or any level below resource.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the locked resource. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the locked resource. The name is case insensitive.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource identity.
@@ -1070,8 +1061,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource or any level below resource.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the locked resource. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the locked resource. The name is case insensitive.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource identity.
@@ -1090,8 +1081,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource or any level below resource.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the locked resource. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the locked resource. The name is case insensitive.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource identity.
@@ -1248,8 +1239,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1263,8 +1254,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1277,8 +1268,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1335,8 +1326,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource or any level below resource.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1350,8 +1341,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource or any level below resource.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1364,8 +1355,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource or any level below resource.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1422,8 +1413,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1437,8 +1428,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1451,8 +1442,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1509,8 +1500,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the locks to get.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the locks to get.
     # @param filter [String] The filter to apply on the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1532,8 +1523,8 @@ module Azure::ARM::Locks
     #
     # Gets all the management locks for a resource or any level below resource.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the locked resource. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the locked resource. The name is case insensitive.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource identity.

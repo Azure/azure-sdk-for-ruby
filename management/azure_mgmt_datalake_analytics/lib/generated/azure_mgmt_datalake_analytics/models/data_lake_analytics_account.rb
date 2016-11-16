@@ -9,29 +9,62 @@ module Azure::ARM::DataLakeAnalytics
     # A Data Lake Analytics account object, containing all information
     # associated with the named Data Lake Analytics account.
     #
-    class DataLakeAnalyticsAccount
+    class DataLakeAnalyticsAccount < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] the account regional location.
-      attr_accessor :location
+      # @return [DataLakeAnalyticsAccountStatus] the provisioning status of the
+      # Data Lake Analytics account. Possible values include: 'Failed',
+      # 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending',
+      # 'Resuming', 'Deleting', 'Deleted'
+      attr_accessor :provisioning_state
 
-      # @return [String] the account name.
-      attr_accessor :name
+      # @return [DataLakeAnalyticsAccountState] the state of the Data Lake
+      # Analytics account. Possible values include: 'Active', 'Suspended'
+      attr_accessor :state
 
-      # @return [String] the namespace and type of the account.
-      attr_accessor :type
+      # @return [String] the default data lake storage account associated with
+      # this Data Lake Analytics account.
+      attr_accessor :default_data_lake_store_account
 
-      # @return [String] the account subscription ID.
-      attr_accessor :id
+      # @return [Integer] the maximum supported degree of parallelism for this
+      # account. Default value: 30 .
+      attr_accessor :max_degree_of_parallelism
 
-      # @return [Hash{String => String}] the value of custom properties.
-      attr_accessor :tags
+      # @return [Integer] the number of days that job metadata is retained.
+      # Default value: 30 .
+      attr_accessor :query_store_retention
 
-      # @return [DataLakeAnalyticsAccountProperties] the properties defined by
-      # Data Lake Analytics all properties are specific to each resource
-      # provider.
-      attr_accessor :properties
+      # @return [Integer] the maximum supported jobs running under the account
+      # at the same time. Default value: 3 .
+      attr_accessor :max_job_count
+
+      # @return [Integer] the system defined maximum supported degree of
+      # parallelism for this account, which restricts the maximum value of
+      # parallelism the user can set for the account..
+      attr_accessor :system_max_degree_of_parallelism
+
+      # @return [Integer] the system defined maximum supported jobs running
+      # under the account at the same time, which restricts the maximum number
+      # of running jobs the user can set for the account.
+      attr_accessor :system_max_job_count
+
+      # @return [Array<DataLakeStoreAccountInfo>] the list of Data Lake storage
+      # accounts associated with this account.
+      attr_accessor :data_lake_store_accounts
+
+      # @return [Array<StorageAccountInfo>] the list of Azure Blob storage
+      # accounts associated with this account.
+      attr_accessor :storage_accounts
+
+      # @return [DateTime] the account creation time.
+      attr_accessor :creation_time
+
+      # @return [DateTime] the account last modified time.
+      attr_accessor :last_modified_time
+
+      # @return [String] the full CName endpoint for this account.
+      attr_accessor :endpoint
 
 
       #
@@ -46,15 +79,17 @@ module Azure::ARM::DataLakeAnalytics
             name: 'Composite',
             class_name: 'DataLakeAnalyticsAccount',
             model_properties: {
-              location: {
+              id: {
                 required: false,
-                serialized_name: 'location',
+                read_only: true,
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -68,10 +103,9 @@ module Azure::ARM::DataLakeAnalytics
                   name: 'String'
                 }
               },
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
+              location: {
+                required: true,
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
@@ -90,12 +124,133 @@ module Azure::ARM::DataLakeAnalytics
                   }
                 }
               },
-              properties: {
+              provisioning_state: {
                 required: false,
-                serialized_name: 'properties',
+                read_only: true,
+                serialized_name: 'properties.provisioningState',
                 type: {
-                  name: 'Composite',
-                  class_name: 'DataLakeAnalyticsAccountProperties'
+                  name: 'Enum',
+                  module: 'DataLakeAnalyticsAccountStatus'
+                }
+              },
+              state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.state',
+                type: {
+                  name: 'Enum',
+                  module: 'DataLakeAnalyticsAccountState'
+                }
+              },
+              default_data_lake_store_account: {
+                required: true,
+                serialized_name: 'properties.defaultDataLakeStoreAccount',
+                type: {
+                  name: 'String'
+                }
+              },
+              max_degree_of_parallelism: {
+                required: false,
+                serialized_name: 'properties.maxDegreeOfParallelism',
+                default_value: 30,
+                constraints: {
+                  InclusiveMinimum: 1
+                },
+                type: {
+                  name: 'Number'
+                }
+              },
+              query_store_retention: {
+                required: false,
+                serialized_name: 'properties.queryStoreRetention',
+                default_value: 30,
+                constraints: {
+                  InclusiveMaximum: 180,
+                  InclusiveMinimum: 1
+                },
+                type: {
+                  name: 'Number'
+                }
+              },
+              max_job_count: {
+                required: false,
+                serialized_name: 'properties.maxJobCount',
+                default_value: 3,
+                constraints: {
+                  InclusiveMinimum: 1
+                },
+                type: {
+                  name: 'Number'
+                }
+              },
+              system_max_degree_of_parallelism: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.systemMaxDegreeOfParallelism',
+                type: {
+                  name: 'Number'
+                }
+              },
+              system_max_job_count: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.systemMaxJobCount',
+                type: {
+                  name: 'Number'
+                }
+              },
+              data_lake_store_accounts: {
+                required: true,
+                serialized_name: 'properties.dataLakeStoreAccounts',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'DataLakeStoreAccountInfoElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'DataLakeStoreAccountInfo'
+                      }
+                  }
+                }
+              },
+              storage_accounts: {
+                required: false,
+                serialized_name: 'properties.storageAccounts',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StorageAccountInfoElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'StorageAccountInfo'
+                      }
+                  }
+                }
+              },
+              creation_time: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.creationTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              last_modified_time: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.lastModifiedTime',
+                type: {
+                  name: 'DateTime'
+                }
+              },
+              endpoint: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.endpoint',
+                type: {
+                  name: 'String'
                 }
               }
             }

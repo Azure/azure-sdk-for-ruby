@@ -42,11 +42,11 @@ module Azure::ARM::TrafficManager
       # 1000.
       attr_accessor :weight
 
-      # @return [Integer] Gets or sets the priority of this endpoint when
-      # using the ‘Priority’ traffic routing method. Possible values are from
-      # 1 to 1000, lower values represent higher priority. This is an
-      # optional parameter.  If specified, it must be specified on all
-      # endpoints, and no two endpoints can share the same priority value.
+      # @return [Integer] Gets or sets the priority of this endpoint when using
+      # the ‘Priority’ traffic routing method. Possible values are from 1 to
+      # 1000, lower values represent higher priority. This is an optional
+      # parameter.  If specified, it must be specified on all endpoints, and no
+      # two endpoints can share the same priority value.
       attr_accessor :priority
 
       # @return [String] Specifies the location of the external or nested
@@ -57,9 +57,9 @@ module Azure::ARM::TrafficManager
       attr_accessor :endpoint_monitor_status
 
       # @return [Integer] Gets or sets the minimum number of endpoints that
-      # must be available in the child profile in order for the parent
-      # profile to be considered available. Only applicable to endpoint of
-      # type 'NestedEndpoints'.
+      # must be available in the child profile in order for the parent profile
+      # to be considered available. Only applicable to endpoint of type
+      # 'NestedEndpoints'.
       attr_accessor :min_child_endpoints
 
 

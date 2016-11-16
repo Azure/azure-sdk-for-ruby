@@ -12,8 +12,8 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [String] ARM resource id of an app service plan that would
-      # host the web app
+      # @return [String] ARM resource id of an app service plan that would host
+      # the web app
       attr_accessor :server_farm_id
 
       # @return [String] Name of the target SKU for the server farm

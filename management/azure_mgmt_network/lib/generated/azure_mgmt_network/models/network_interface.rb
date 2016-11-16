@@ -30,8 +30,8 @@ module Azure::ARM::Network
       # @return [String] The MAC address of the network interface.
       attr_accessor :mac_address
 
-      # @return [Boolean] Gets whether this is a primary network interface on
-      # a virtual machine.
+      # @return [Boolean] Gets whether this is a primary network interface on a
+      # virtual machine.
       attr_accessor :primary
 
       # @return [Boolean] If the network interface is accelerated networking

@@ -7,8 +7,7 @@ module Azure::ARM::Web
   module Models
     #
     # Routing rules for ramp up testing. This rule allows to redirect static
-    # traffic % to a slot or to gradually change routing % based on
-    # performance
+    # traffic % to a slot or to gradually change routing % based on performance
     #
     class RampUpRule
 
@@ -22,8 +21,8 @@ module Azure::ARM::Web
       # {Microsoft.Web.Hosting.Administration.RampUpRule.ActionHostName}
       attr_accessor :reroute_percentage
 
-      # @return [Float] [Optional] In auto ramp up scenario this is the step
-      # to to add/remove from
+      # @return [Float] [Optional] In auto ramp up scenario this is the step to
+      # to add/remove from
       # {Microsoft.Web.Hosting.Administration.RampUpRule.ReroutePercentage}
       # until it reaches
       # {Microsoft.Web.Hosting.Administration.RampUpRule.MinReroutePercentage}
@@ -31,8 +30,8 @@ module Azure::ARM::Web
       # {Microsoft.Web.Hosting.Administration.RampUpRule.MaxReroutePercentage}.
       # Site metrics are checked every N minutes specificed in
       # {Microsoft.Web.Hosting.Administration.RampUpRule.ChangeIntervalInMinutes}.
-      # Custom decision algorithm can be provided in TiPCallback
-      # site extension which Url can be specified in
+      # Custom decision algorithm can be provided in TiPCallback site extension
+      # which Url can be specified in
       # {Microsoft.Web.Hosting.Administration.RampUpRule.ChangeDecisionCallbackUrl}
       attr_accessor :change_step
 
@@ -49,8 +48,8 @@ module Azure::ARM::Web
       attr_accessor :max_reroute_percentage
 
       # @return [String] Custom decision algorithm can be provided in
-      # TiPCallback site extension which Url can be specified. See
-      # TiPCallback site extension for the scaffold and contracts.
+      # TiPCallback site extension which Url can be specified. See TiPCallback
+      # site extension for the scaffold and contracts.
       # https://www.siteextensions.net/packages/TiPCallback/
       attr_accessor :change_decision_callback_url
 

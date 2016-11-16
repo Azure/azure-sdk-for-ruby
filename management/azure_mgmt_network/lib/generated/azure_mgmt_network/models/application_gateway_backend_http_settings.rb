@@ -20,8 +20,8 @@ module Azure::ARM::Network
       attr_accessor :protocol
 
       # @return [ApplicationGatewayCookieBasedAffinity] Cookie based affinity.
-      # Possible values are: 'Enabled' and 'Disabled'. Possible values
-      # include: 'Enabled', 'Disabled'
+      # Possible values are: 'Enabled' and 'Disabled'. Possible values include:
+      # 'Enabled', 'Disabled'
       attr_accessor :cookie_based_affinity
 
       # @return [Integer] Request timeout in seconds. Application Gateway will
@@ -32,8 +32,8 @@ module Azure::ARM::Network
       # @return [SubResource] Probe resource of an application gateway.
       attr_accessor :probe
 
-      # @return [Array<SubResource>] Array of references to application
-      # gateway authentication certificates.
+      # @return [Array<SubResource>] Array of references to application gateway
+      # authentication certificates.
       attr_accessor :authentication_certificates
 
       # @return [String] Provisioning state of the backend http settings

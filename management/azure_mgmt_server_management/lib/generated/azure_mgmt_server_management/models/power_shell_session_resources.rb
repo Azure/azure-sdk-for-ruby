@@ -6,17 +6,17 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # a collaction of powershell session resources
+    # A collection of PowerShell session resources
     #
     class PowerShellSessionResources
 
       include MsRestAzure
 
-      # @return [Array<PowerShellSessionResource>] Colleciton of powershell
-      # session resources
+      # @return [Array<PowerShellSessionResource>] Collection of PowerShell
+      # session resources.
       attr_accessor :value
 
-      # @return [String] the URL to the next set of resources
+      # @return [String] The URL to the next set of resources.
       attr_accessor :next_link
 
 

@@ -13,8 +13,8 @@ module Azure::ARM::Search
       include MsRestAzure
 
       # @return [String] The Search service name to validate. Search service
-      # names must only contain lowercase letters, digits or dashes, cannot
-      # use dash as the first two or last one characters, cannot contain
+      # names must only contain lowercase letters, digits or dashes, cannot use
+      # dash as the first two or last one characters, cannot contain
       # consecutive dashes, and must be between 2 and 60 characters in length.
       attr_accessor :name
 

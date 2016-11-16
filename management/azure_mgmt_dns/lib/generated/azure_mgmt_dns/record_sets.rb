@@ -28,15 +28,15 @@ module Azure::ARM::Dns
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
-    # @param relative_record_set_name [String] The name of the record set,
-    # relative to the name of the zone.
+    # @param relative_record_set_name [String] The name of the record set, relative
+    # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
     # @param parameters [RecordSet] Parameters supplied to the Update operation.
     # @param if_match [String] The etag of the record set. Omit this value to
-    # always overwrite the current record set. Specify the last-seen etag value
-    # to prevent accidentally overwritting concurrent changes.
+    # always overwrite the current record set. Specify the last-seen etag value to
+    # prevent accidentally overwritting concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -53,15 +53,15 @@ module Azure::ARM::Dns
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
-    # @param relative_record_set_name [String] The name of the record set,
-    # relative to the name of the zone.
+    # @param relative_record_set_name [String] The name of the record set, relative
+    # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
     # @param parameters [RecordSet] Parameters supplied to the Update operation.
     # @param if_match [String] The etag of the record set. Omit this value to
-    # always overwrite the current record set. Specify the last-seen etag value
-    # to prevent accidentally overwritting concurrent changes.
+    # always overwrite the current record set. Specify the last-seen etag value to
+    # prevent accidentally overwritting concurrent changes.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -77,15 +77,15 @@ module Azure::ARM::Dns
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
-    # @param relative_record_set_name [String] The name of the record set,
-    # relative to the name of the zone.
+    # @param relative_record_set_name [String] The name of the record set, relative
+    # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
     # @param parameters [RecordSet] Parameters supplied to the Update operation.
     # @param if_match [String] The etag of the record set. Omit this value to
-    # always overwrite the current record set. Specify the last-seen etag value
-    # to prevent accidentally overwritting concurrent changes.
+    # always overwrite the current record set. Specify the last-seen etag value to
+    # prevent accidentally overwritting concurrent changes.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -163,20 +163,20 @@ module Azure::ARM::Dns
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
-    # @param relative_record_set_name [String] The name of the record set,
-    # relative to the name of the zone.
+    # @param relative_record_set_name [String] The name of the record set, relative
+    # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
-    # Record sets of type SOA can be updated but not created (they are created
-    # when the DNS zone is created). Possible values include: 'A', 'AAAA',
-    # 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+    # Record sets of type SOA can be updated but not created (they are created when
+    # the DNS zone is created). Possible values include: 'A', 'AAAA', 'CNAME',
+    # 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
     # @param parameters [RecordSet] Parameters supplied to the CreateOrUpdate
     # operation.
     # @param if_match [String] The etag of the record set. Omit this value to
-    # always overwrite the current record set. Specify the last-seen etag value
-    # to prevent accidentally overwritting any concurrent changes.
+    # always overwrite the current record set. Specify the last-seen etag value to
+    # prevent accidentally overwritting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new record set to be
-    # created, but to prevent updating an existing record set. Other values will
-    # be ignored.
+    # created, but to prevent updating an existing record set. Other values will be
+    # ignored.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -193,20 +193,20 @@ module Azure::ARM::Dns
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
-    # @param relative_record_set_name [String] The name of the record set,
-    # relative to the name of the zone.
+    # @param relative_record_set_name [String] The name of the record set, relative
+    # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
-    # Record sets of type SOA can be updated but not created (they are created
-    # when the DNS zone is created). Possible values include: 'A', 'AAAA',
-    # 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+    # Record sets of type SOA can be updated but not created (they are created when
+    # the DNS zone is created). Possible values include: 'A', 'AAAA', 'CNAME',
+    # 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
     # @param parameters [RecordSet] Parameters supplied to the CreateOrUpdate
     # operation.
     # @param if_match [String] The etag of the record set. Omit this value to
-    # always overwrite the current record set. Specify the last-seen etag value
-    # to prevent accidentally overwritting any concurrent changes.
+    # always overwrite the current record set. Specify the last-seen etag value to
+    # prevent accidentally overwritting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new record set to be
-    # created, but to prevent updating an existing record set. Other values will
-    # be ignored.
+    # created, but to prevent updating an existing record set. Other values will be
+    # ignored.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -222,20 +222,20 @@ module Azure::ARM::Dns
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
-    # @param relative_record_set_name [String] The name of the record set,
-    # relative to the name of the zone.
+    # @param relative_record_set_name [String] The name of the record set, relative
+    # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
-    # Record sets of type SOA can be updated but not created (they are created
-    # when the DNS zone is created). Possible values include: 'A', 'AAAA',
-    # 'CNAME', 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+    # Record sets of type SOA can be updated but not created (they are created when
+    # the DNS zone is created). Possible values include: 'A', 'AAAA', 'CNAME',
+    # 'MX', 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
     # @param parameters [RecordSet] Parameters supplied to the CreateOrUpdate
     # operation.
     # @param if_match [String] The etag of the record set. Omit this value to
-    # always overwrite the current record set. Specify the last-seen etag value
-    # to prevent accidentally overwritting any concurrent changes.
+    # always overwrite the current record set. Specify the last-seen etag value to
+    # prevent accidentally overwritting any concurrent changes.
     # @param if_none_match [String] Set to '*' to allow a new record set to be
-    # created, but to prevent updating an existing record set. Other values will
-    # be ignored.
+    # created, but to prevent updating an existing record set. Other values will be
+    # ignored.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -324,12 +324,12 @@ module Azure::ARM::Dns
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
-    # @param relative_record_set_name [String] The name of the record set,
-    # relative to the name of the zone.
+    # @param relative_record_set_name [String] The name of the record set, relative
+    # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
-    # Record sets of type SOA cannot be deleted (they are deleted when the DNS
-    # zone is deleted). Possible values include: 'A', 'AAAA', 'CNAME', 'MX',
-    # 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+    # Record sets of type SOA cannot be deleted (they are deleted when the DNS zone
+    # is deleted). Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS',
+    # 'PTR', 'SOA', 'SRV', 'TXT'
     # @param if_match [String] The etag of the record set. Omit this value to
     # always delete the current record set. Specify the last-seen etag value to
     # prevent accidentally deleting any concurrent changes.
@@ -348,12 +348,12 @@ module Azure::ARM::Dns
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
-    # @param relative_record_set_name [String] The name of the record set,
-    # relative to the name of the zone.
+    # @param relative_record_set_name [String] The name of the record set, relative
+    # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
-    # Record sets of type SOA cannot be deleted (they are deleted when the DNS
-    # zone is deleted). Possible values include: 'A', 'AAAA', 'CNAME', 'MX',
-    # 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+    # Record sets of type SOA cannot be deleted (they are deleted when the DNS zone
+    # is deleted). Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS',
+    # 'PTR', 'SOA', 'SRV', 'TXT'
     # @param if_match [String] The etag of the record set. Omit this value to
     # always delete the current record set. Specify the last-seen etag value to
     # prevent accidentally deleting any concurrent changes.
@@ -372,12 +372,12 @@ module Azure::ARM::Dns
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
-    # @param relative_record_set_name [String] The name of the record set,
-    # relative to the name of the zone.
+    # @param relative_record_set_name [String] The name of the record set, relative
+    # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
-    # Record sets of type SOA cannot be deleted (they are deleted when the DNS
-    # zone is deleted). Possible values include: 'A', 'AAAA', 'CNAME', 'MX',
-    # 'NS', 'PTR', 'SOA', 'SRV', 'TXT'
+    # Record sets of type SOA cannot be deleted (they are deleted when the DNS zone
+    # is deleted). Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS',
+    # 'PTR', 'SOA', 'SRV', 'TXT'
     # @param if_match [String] The etag of the record set. Omit this value to
     # always delete the current record set. Specify the last-seen etag value to
     # prevent accidentally deleting any concurrent changes.
@@ -438,8 +438,8 @@ module Azure::ARM::Dns
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
-    # @param relative_record_set_name [String] The name of the record set,
-    # relative to the name of the zone.
+    # @param relative_record_set_name [String] The name of the record set, relative
+    # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
@@ -459,8 +459,8 @@ module Azure::ARM::Dns
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
-    # @param relative_record_set_name [String] The name of the record set,
-    # relative to the name of the zone.
+    # @param relative_record_set_name [String] The name of the record set, relative
+    # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
@@ -479,8 +479,8 @@ module Azure::ARM::Dns
     # @param resource_group_name [String] The name of the resource group.
     # @param zone_name [String] The name of the DNS zone (without a terminating
     # dot).
-    # @param relative_record_set_name [String] The name of the record set,
-    # relative to the name of the zone.
+    # @param relative_record_set_name [String] The name of the record set, relative
+    # to the name of the zone.
     # @param record_type [RecordType] The type of DNS record in this record set.
     # Possible values include: 'A', 'AAAA', 'CNAME', 'MX', 'NS', 'PTR', 'SOA',
     # 'SRV', 'TXT'
@@ -757,8 +757,8 @@ module Azure::ARM::Dns
     #
     # Lists the record sets of a specified type in a DNS zone.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -772,8 +772,8 @@ module Azure::ARM::Dns
     #
     # Lists the record sets of a specified type in a DNS zone.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -786,8 +786,8 @@ module Azure::ARM::Dns
     #
     # Lists the record sets of a specified type in a DNS zone.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -844,8 +844,8 @@ module Azure::ARM::Dns
     #
     # Lists all record sets in a DNS zone.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -859,8 +859,8 @@ module Azure::ARM::Dns
     #
     # Lists all record sets in a DNS zone.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -873,8 +873,8 @@ module Azure::ARM::Dns
     #
     # Lists all record sets in a DNS zone.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

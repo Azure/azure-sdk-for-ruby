@@ -8,24 +8,15 @@ module Azure::ARM::DataLakeStore
     #
     # Data Lake Store firewall rule information
     #
-    class FirewallRule
+    class FirewallRule < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [String] the firewall rule's name.
-      attr_accessor :name
+      # @return [String] the start IP address for the firewall rule.
+      attr_accessor :start_ip_address
 
-      # @return [String] the namespace and type of the firewall Rule.
-      attr_accessor :type
-
-      # @return [String] the firewall rule's subscription ID.
-      attr_accessor :id
-
-      # @return [String] the firewall rule's regional location.
-      attr_accessor :location
-
-      # @return [FirewallRuleProperties] the properties of the firewall rule.
-      attr_accessor :properties
+      # @return [String] the end IP address for the firewall rule.
+      attr_accessor :end_ip_address
 
 
       #
@@ -40,6 +31,14 @@ module Azure::ARM::DataLakeStore
             name: 'Composite',
             class_name: 'FirewallRule',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
                 serialized_name: 'name',
@@ -55,26 +54,18 @@ module Azure::ARM::DataLakeStore
                   name: 'String'
                 }
               },
-              id: {
-                required: false,
-                serialized_name: 'id',
+              start_ip_address: {
+                required: true,
+                serialized_name: 'properties.startIpAddress',
                 type: {
                   name: 'String'
                 }
               },
-              location: {
-                required: false,
-                serialized_name: 'location',
+              end_ip_address: {
+                required: true,
+                serialized_name: 'properties.endIpAddress',
                 type: {
                   name: 'String'
-                }
-              },
-              properties: {
-                required: false,
-                serialized_name: 'properties',
-                type: {
-                  name: 'Composite',
-                  class_name: 'FirewallRuleProperties'
                 }
               }
             }

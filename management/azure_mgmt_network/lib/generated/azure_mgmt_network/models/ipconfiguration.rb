@@ -15,9 +15,9 @@ module Azure::ARM::Network
       # @return [String] The private IP address of the IP configuration.
       attr_accessor :private_ipaddress
 
-      # @return [IPAllocationMethod] The private IP allocation method.
-      # Possible values are 'Static' and 'Dynamic'. Possible values include:
-      # 'Static', 'Dynamic'
+      # @return [IPAllocationMethod] The private IP allocation method. Possible
+      # values are 'Static' and 'Dynamic'. Possible values include: 'Static',
+      # 'Dynamic'
       attr_accessor :private_ipallocation_method
 
       # @return [Subnet] The reference of the subnet resource.
@@ -26,8 +26,8 @@ module Azure::ARM::Network
       # @return [PublicIPAddress] The reference of the public IP resource.
       attr_accessor :public_ipaddress
 
-      # @return [String] Gets the provisioning state of the public IP
-      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+      # @return [String] Gets the provisioning state of the public IP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] The name of the resource that is unique within a

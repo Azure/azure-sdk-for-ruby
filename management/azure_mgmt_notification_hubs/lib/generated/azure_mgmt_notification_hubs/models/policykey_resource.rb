@@ -13,8 +13,8 @@ module Azure::ARM::NotificationHubs
       include MsRestAzure
 
       # @return [String] Name of the key that has to be regenerated for the
-      # Namespace/Notification Hub Authorization Rule. The value can be
-      # Primary Key/Secondary Key.
+      # Namespace/Notification Hub Authorization Rule. The value can be Primary
+      # Key/Secondary Key.
       attr_accessor :policy_key
 
 

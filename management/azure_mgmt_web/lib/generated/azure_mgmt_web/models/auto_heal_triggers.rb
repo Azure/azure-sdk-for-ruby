@@ -12,8 +12,8 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [RequestsBasedTrigger] Requests - Defines a rule based on
-      # total requests
+      # @return [RequestsBasedTrigger] Requests - Defines a rule based on total
+      # requests
       attr_accessor :requests
 
       # @return [Integer] PrivateBytesInKB - Defines a rule based on private

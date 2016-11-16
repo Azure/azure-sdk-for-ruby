@@ -218,8 +218,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param properties_to_include [String] Additional web app properties included
     # in the response
-    # @param include_slots [Boolean] Whether or not to include deployments slots
-    # in results
+    # @param include_slots [Boolean] Whether or not to include deployments slots in
+    # results
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -238,8 +238,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param properties_to_include [String] Additional web app properties included
     # in the response
-    # @param include_slots [Boolean] Whether or not to include deployments slots
-    # in results
+    # @param include_slots [Boolean] Whether or not to include deployments slots in
+    # results
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -257,8 +257,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param properties_to_include [String] Additional web app properties included
     # in the response
-    # @param include_slots [Boolean] Whether or not to include deployments slots
-    # in results
+    # @param include_slots [Boolean] Whether or not to include deployments slots in
+    # results
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -688,8 +688,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name. Settings from that slot will be applied on the source slot
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name. Settings from that slot will be applied on the source slot
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -707,8 +707,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name. Settings from that slot will be applied on the source slot
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name. Settings from that slot will be applied on the source slot
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -725,8 +725,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name. Settings from that slot will be applied on the source slot
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name. Settings from that slot will be applied on the source slot
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3070,11 +3070,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the names of application settings and connection string that remain
-    # with the slot during swap operation
+    # Gets the names of application settings and connection string that remain with
+    # the slot during swap operation
     #
-    # Gets the names of application settings and connection string that remain
-    # with the slot during swap operation
+    # Gets the names of application settings and connection string that remain with
+    # the slot during swap operation
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
@@ -3089,11 +3089,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the names of application settings and connection string that remain
-    # with the slot during swap operation
+    # Gets the names of application settings and connection string that remain with
+    # the slot during swap operation
     #
-    # Gets the names of application settings and connection string that remain
-    # with the slot during swap operation
+    # Gets the names of application settings and connection string that remain with
+    # the slot during swap operation
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
@@ -3107,11 +3107,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the names of application settings and connection string that remain
-    # with the slot during swap operation
+    # Gets the names of application settings and connection string that remain with
+    # the slot during swap operation
     #
-    # Gets the names of application settings and connection string that remain
-    # with the slot during swap operation
+    # Gets the names of application settings and connection string that remain with
+    # the slot during swap operation
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
@@ -6326,10 +6326,9 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param details [Boolean] If true, metric details are included in response
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6349,10 +6348,9 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param details [Boolean] If true, metric details are included in response
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6371,10 +6369,9 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param details [Boolean] If true, metric details are included in response
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -7031,8 +7028,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-    # eq duration'[Hour|Minute|Day]'.
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7052,8 +7049,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-    # eq duration'[Hour|Minute|Day]'.
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7072,8 +7069,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-    # eq duration'[Hour|Minute|Day]'.
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -7621,9 +7618,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param options [CsmPublishingProfileOptions] Specifies options for
-    # publishing profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for
-    # FileZilla FTP format.
+    # @param options [CsmPublishingProfileOptions] Specifies options for publishing
+    # profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for FileZilla FTP
+    # format.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7641,9 +7638,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param options [CsmPublishingProfileOptions] Specifies options for
-    # publishing profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for
-    # FileZilla FTP format.
+    # @param options [CsmPublishingProfileOptions] Specifies options for publishing
+    # profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for FileZilla FTP
+    # format.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7660,9 +7657,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param options [CsmPublishingProfileOptions] Specifies options for
-    # publishing profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for
-    # FileZilla FTP format.
+    # @param options [CsmPublishingProfileOptions] Specifies options for publishing
+    # profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for FileZilla FTP
+    # format.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -7743,9 +7740,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web
-    # app recovery. Snapshot information can be obtained by calling
-    # GetDeletedSites or GetSiteSnapshots API.
+    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
+    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
+    # GetSiteSnapshots API.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7759,9 +7756,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web
-    # app recovery. Snapshot information can be obtained by calling
-    # GetDeletedSites or GetSiteSnapshots API.
+    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
+    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
+    # GetSiteSnapshots API.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7787,11 +7784,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Resets the configuration settings of the current slot if they were
-    # previously modified by calling ApplySlotConfig API
+    # Resets the configuration settings of the current slot if they were previously
+    # modified by calling ApplySlotConfig API
     #
-    # Resets the configuration settings of the current slot if they were
-    # previously modified by calling ApplySlotConfig API
+    # Resets the configuration settings of the current slot if they were previously
+    # modified by calling ApplySlotConfig API
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
@@ -7806,11 +7803,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Resets the configuration settings of the current slot if they were
-    # previously modified by calling ApplySlotConfig API
+    # Resets the configuration settings of the current slot if they were previously
+    # modified by calling ApplySlotConfig API
     #
-    # Resets the configuration settings of the current slot if they were
-    # previously modified by calling ApplySlotConfig API
+    # Resets the configuration settings of the current slot if they were previously
+    # modified by calling ApplySlotConfig API
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
@@ -7824,11 +7821,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Resets the configuration settings of the current slot if they were
-    # previously modified by calling ApplySlotConfig API
+    # Resets the configuration settings of the current slot if they were previously
+    # modified by calling ApplySlotConfig API
     #
-    # Resets the configuration settings of the current slot if they were
-    # previously modified by calling ApplySlotConfig API
+    # Resets the configuration settings of the current slot if they were previously
+    # modified by calling ApplySlotConfig API
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
@@ -7886,9 +7883,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param soft_restart [Boolean] Soft restart applies the configuration
-    # settings and restarts the app if necessary. Hard restart always restarts
-    # and reprovisions the app
+    # @param soft_restart [Boolean] Soft restart applies the configuration settings
+    # and restarts the app if necessary. Hard restart always restarts and
+    # reprovisions the app
     # @param synchronous [Boolean] If true then the API will block until the app
     # has been restarted
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -7908,9 +7905,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param soft_restart [Boolean] Soft restart applies the configuration
-    # settings and restarts the app if necessary. Hard restart always restarts
-    # and reprovisions the app
+    # @param soft_restart [Boolean] Soft restart applies the configuration settings
+    # and restarts the app if necessary. Hard restart always restarts and
+    # reprovisions the app
     # @param synchronous [Boolean] If true then the API will block until the app
     # has been restarted
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -7929,9 +7926,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param soft_restart [Boolean] Soft restart applies the configuration
-    # settings and restarts the app if necessary. Hard restart always restarts
-    # and reprovisions the app
+    # @param soft_restart [Boolean] Soft restart applies the configuration settings
+    # and restarts the app if necessary. Hard restart always restarts and
+    # reprovisions the app
     # @param synchronous [Boolean] If true then the API will block until the app
     # has been restarted
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -8091,8 +8088,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param properties_to_include [String] Additional web app properties included
     # in the response
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -8112,8 +8109,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param properties_to_include [String] Additional web app properties included
     # in the response
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -8132,8 +8129,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param properties_to_include [String] Additional web app properties included
     # in the response
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -8202,8 +8199,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the web app
     # @param site_envelope [Site] Details of web app if it exists already
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -8227,8 +8224,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the web app
     # @param site_envelope [Site] Details of web app if it exists already
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -8269,8 +8266,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param delete_metrics [Boolean] If true, web app metrics are also deleted
     # @param delete_empty_server_farm [Boolean] If true and App Service Plan is
     # empty after web app deletion, App Service Plan is also deleted
@@ -8292,8 +8289,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param delete_metrics [Boolean] If true, web app metrics are also deleted
     # @param delete_empty_server_farm [Boolean] If true and App Service Plan is
     # empty after web app deletion, App Service Plan is also deleted
@@ -8314,8 +8311,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param delete_metrics [Boolean] If true, web app metrics are also deleted
     # @param delete_empty_server_farm [Boolean] If true and App Service Plan is
     # empty after web app deletion, App Service Plan is also deleted
@@ -8375,8 +8372,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param host_name [String] Custom hostname
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -8395,8 +8392,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param host_name [String] Custom hostname
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -8414,8 +8411,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param host_name [String] Custom hostname
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -8482,8 +8479,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name. Settings from that slot will be applied on the source slot
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name. Settings from that slot will be applied on the source slot
     # @param slot [String] Name of the source slot. Settings from the target slot
     # will be applied onto this slot
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -8503,8 +8500,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name. Settings from that slot will be applied on the source slot
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name. Settings from that slot will be applied on the source slot
     # @param slot [String] Name of the source slot. Settings from the target slot
     # will be applied onto this slot
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -8523,8 +8520,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name. Settings from that slot will be applied on the source slot
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name. Settings from that slot will be applied on the source slot
     # @param slot [String] Name of the source slot. Settings from the target slot
     # will be applied onto this slot
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -8593,8 +8590,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8613,8 +8610,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8632,8 +8629,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -8709,8 +8706,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8728,8 +8725,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8746,8 +8743,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -8814,8 +8811,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8834,8 +8831,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8853,8 +8850,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -8931,8 +8928,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8951,8 +8948,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8970,8 +8967,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9039,8 +9036,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9059,8 +9056,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9078,8 +9075,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9154,8 +9151,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
     # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9181,8 +9178,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
     # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9207,8 +9204,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
     # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9287,8 +9284,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup to restore
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9304,8 +9301,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup to restore
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9338,8 +9335,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param app_settings [StringDictionary] Application settings of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9358,8 +9355,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param app_settings [StringDictionary] Application settings of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9377,8 +9374,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param app_settings [StringDictionary] Application settings of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9454,8 +9451,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9473,8 +9470,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9491,8 +9488,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9560,8 +9557,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param site_auth_settings [SiteAuthSettings] Auth settings associated with
     # web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9581,8 +9578,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param site_auth_settings [SiteAuthSettings] Auth settings associated with
     # web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9601,8 +9598,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param site_auth_settings [SiteAuthSettings] Auth settings associated with
     # web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9678,8 +9675,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9697,8 +9694,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9715,8 +9712,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9783,8 +9780,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9803,8 +9800,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9822,8 +9819,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9899,8 +9896,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9918,8 +9915,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9936,8 +9933,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9993,8 +9990,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10012,8 +10009,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10030,8 +10027,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10099,8 +10096,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param connection_strings [ConnectionStringDictionary] Connection strings
     # associated with web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10120,8 +10117,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param connection_strings [ConnectionStringDictionary] Connection strings
     # associated with web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10140,8 +10137,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param connection_strings [ConnectionStringDictionary] Connection strings
     # associated with web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10217,8 +10214,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10236,8 +10233,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10254,8 +10251,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10321,8 +10318,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10340,8 +10337,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10358,8 +10355,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10426,8 +10423,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param site_logs_config [SiteLogsConfig] Site logs configuration
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10446,8 +10443,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param site_logs_config [SiteLogsConfig] Site logs configuration
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10465,8 +10462,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param site_logs_config [SiteLogsConfig] Site logs configuration
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10543,8 +10540,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param metadata [StringDictionary] Meta data of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10563,8 +10560,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param metadata [StringDictionary] Meta data of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10582,8 +10579,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param metadata [StringDictionary] Meta data of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10659,8 +10656,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10678,8 +10675,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10696,8 +10693,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10763,8 +10760,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10778,8 +10775,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10812,8 +10809,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param push_settings [PushSettings] Push settings associated with web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10832,8 +10829,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param push_settings [PushSettings] Push settings associated with web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10851,8 +10848,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param push_settings [PushSettings] Push settings associated with web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10928,8 +10925,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10947,8 +10944,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10965,8 +10962,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11032,8 +11029,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11051,8 +11048,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11069,8 +11066,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11138,8 +11135,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param site_config [SiteConfig] Request body that contains the configuraiton
     # setting for the web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11159,8 +11156,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param site_config [SiteConfig] Request body that contains the configuraiton
     # setting for the web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11179,8 +11176,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param site_config [SiteConfig] Request body that contains the configuraiton
     # setting for the web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11258,8 +11255,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param site_config [SiteConfig] Request body that contains the configuraiton
     # setting for the web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11279,8 +11276,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param site_config [SiteConfig] Request body that contains the configuraiton
     # setting for the web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11299,8 +11296,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param site_config [SiteConfig] Request body that contains the configuraiton
     # setting for the web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11376,8 +11373,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11395,8 +11392,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11413,8 +11410,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11481,8 +11478,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11501,8 +11498,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11520,8 +11517,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11589,8 +11586,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param deployment [Deployment] Details of deployment
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -11610,8 +11607,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param deployment [Deployment] Details of deployment
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -11630,8 +11627,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param deployment [Deployment] Details of deployment
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -11710,8 +11707,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11730,8 +11727,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11749,8 +11746,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11807,8 +11804,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11826,8 +11823,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11844,8 +11841,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11911,8 +11908,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param host_name [String] Name of host
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -11931,8 +11928,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param host_name [String] Name of host
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -11950,8 +11947,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param host_name [String] Name of host
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -12021,8 +12018,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param host_name [String] Name of host
     # @param host_name_binding [HostNameBinding] Host name binding information
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -12042,8 +12039,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param host_name [String] Name of host
     # @param host_name_binding [HostNameBinding] Host name binding information
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -12062,8 +12059,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param host_name [String] Name of host
     # @param host_name_binding [HostNameBinding] Host name binding information
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -12140,8 +12137,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param host_name [String] Name of host
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -12160,8 +12157,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param host_name [String] Name of host
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -12179,8 +12176,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param host_name [String] Name of host
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -13469,8 +13466,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13488,8 +13485,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13506,8 +13503,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -13573,8 +13570,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -13593,8 +13590,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -13612,8 +13609,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -13682,8 +13679,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -13703,8 +13700,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -13723,8 +13720,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -13794,8 +13791,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param deployment [Deployment] Details of deployment
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -13816,8 +13813,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param deployment [Deployment] Details of deployment
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -13837,8 +13834,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param deployment [Deployment] Details of deployment
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -13919,8 +13916,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -13940,8 +13937,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -13960,8 +13957,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -14020,8 +14017,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14039,8 +14036,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14057,8 +14054,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -14124,8 +14121,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14143,8 +14140,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14161,8 +14158,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -14228,14 +14225,13 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param details [Boolean] If true, metric details are included in response
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14253,14 +14249,13 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param details [Boolean] If true, metric details are included in response
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14277,14 +14272,13 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param details [Boolean] If true, metric details are included in response
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -14678,8 +14672,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14697,8 +14691,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14715,8 +14709,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -14773,8 +14767,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param operation_id [String] Id of an operation
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14793,8 +14787,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param operation_id [String] Id of an operation
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14812,8 +14806,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param operation_id [String] Id of an operation
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -14870,12 +14864,12 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot. **** CURRENTLY UNUSED *****
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot. **** CURRENTLY UNUSED *****
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-    # eq duration'[Hour|Minute|Day]'.
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14893,12 +14887,12 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot. **** CURRENTLY UNUSED *****
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot. **** CURRENTLY UNUSED *****
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-    # eq duration'[Hour|Minute|Day]'.
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14915,12 +14909,12 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot. **** CURRENTLY UNUSED *****
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot. **** CURRENTLY UNUSED *****
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-    # eq duration'[Hour|Minute|Day]'.
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -14986,8 +14980,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15005,8 +14999,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15023,8 +15017,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -15492,11 +15486,11 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param options [CsmPublishingProfileOptions] Specifies options for
-    # publishing profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for
-    # FileZilla FTP format.
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param options [CsmPublishingProfileOptions] Specifies options for publishing
+    # profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for FileZilla FTP
+    # format.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15514,11 +15508,11 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param options [CsmPublishingProfileOptions] Specifies options for
-    # publishing profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for
-    # FileZilla FTP format.
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param options [CsmPublishingProfileOptions] Specifies options for publishing
+    # profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for FileZilla FTP
+    # format.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15535,11 +15529,11 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param options [CsmPublishingProfileOptions] Specifies options for
-    # publishing profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for
-    # FileZilla FTP format.
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param options [CsmPublishingProfileOptions] Specifies options for publishing
+    # profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for FileZilla FTP
+    # format.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -15621,11 +15615,11 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web
-    # app recovery. Snapshot information can be obtained by calling
-    # GetDeletedSites or GetSiteSnapshots API.
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
+    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
+    # GetSiteSnapshots API.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15639,11 +15633,11 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web
-    # app recovery. Snapshot information can be obtained by calling
-    # GetDeletedSites or GetSiteSnapshots API.
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
+    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
+    # GetSiteSnapshots API.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15669,16 +15663,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Resets the configuration settings of the current slot if they were
-    # previously modified by calling ApplySlotConfig API
+    # Resets the configuration settings of the current slot if they were previously
+    # modified by calling ApplySlotConfig API
     #
-    # Resets the configuration settings of the current slot if they were
-    # previously modified by calling ApplySlotConfig API
+    # Resets the configuration settings of the current slot if they were previously
+    # modified by calling ApplySlotConfig API
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15690,16 +15684,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Resets the configuration settings of the current slot if they were
-    # previously modified by calling ApplySlotConfig API
+    # Resets the configuration settings of the current slot if they were previously
+    # modified by calling ApplySlotConfig API
     #
-    # Resets the configuration settings of the current slot if they were
-    # previously modified by calling ApplySlotConfig API
+    # Resets the configuration settings of the current slot if they were previously
+    # modified by calling ApplySlotConfig API
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15710,16 +15704,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Resets the configuration settings of the current slot if they were
-    # previously modified by calling ApplySlotConfig API
+    # Resets the configuration settings of the current slot if they were previously
+    # modified by calling ApplySlotConfig API
     #
-    # Resets the configuration settings of the current slot if they were
-    # previously modified by calling ApplySlotConfig API
+    # Resets the configuration settings of the current slot if they were previously
+    # modified by calling ApplySlotConfig API
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -15775,11 +15769,11 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
-    # @param soft_restart [Boolean] Soft restart applies the configuration
-    # settings and restarts the app if necessary. Hard restart always restarts
-    # and reprovisions the app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param soft_restart [Boolean] Soft restart applies the configuration settings
+    # and restarts the app if necessary. Hard restart always restarts and
+    # reprovisions the app
     # @param synchronous [Boolean] If true then the API will block until the app
     # has been restarted
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -15799,11 +15793,11 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
-    # @param soft_restart [Boolean] Soft restart applies the configuration
-    # settings and restarts the app if necessary. Hard restart always restarts
-    # and reprovisions the app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param soft_restart [Boolean] Soft restart applies the configuration settings
+    # and restarts the app if necessary. Hard restart always restarts and
+    # reprovisions the app
     # @param synchronous [Boolean] If true then the API will block until the app
     # has been restarted
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -15822,11 +15816,11 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
-    # @param soft_restart [Boolean] Soft restart applies the configuration
-    # settings and restarts the app if necessary. Hard restart always restarts
-    # and reprovisions the app
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
+    # @param soft_restart [Boolean] Soft restart applies the configuration settings
+    # and restarts the app if necessary. Hard restart always restarts and
+    # reprovisions the app
     # @param synchronous [Boolean] If true then the API will block until the app
     # has been restarted
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -15884,8 +15878,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param slot [String] Name of the source slot
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -15904,8 +15898,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param slot [String] Name of the source slot
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -15923,8 +15917,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param slot [String] Name of the source slot
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -16001,8 +15995,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param slot [String] Name of source slot for the swap
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -16017,8 +16011,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param slot [String] Name of source slot for the swap
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -16158,8 +16152,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16177,8 +16171,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16195,8 +16189,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -16262,10 +16256,10 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains
-    # the source control parameters
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param site_source_control [SiteSourceControl] Request body that contains the
+    # source control parameters
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16283,10 +16277,10 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains
-    # the source control parameters
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param site_source_control [SiteSourceControl] Request body that contains the
+    # source control parameters
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16303,10 +16297,10 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains
-    # the source control parameters
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param site_source_control [SiteSourceControl] Request body that contains the
+    # source control parameters
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -16392,8 +16386,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16411,8 +16405,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16429,8 +16423,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -16486,10 +16480,10 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains
-    # the source control parameters
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param site_source_control [SiteSourceControl] Request body that contains the
+    # source control parameters
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16507,10 +16501,10 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains
-    # the source control parameters
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param site_source_control [SiteSourceControl] Request body that contains the
+    # source control parameters
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16527,10 +16521,10 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains
-    # the source control parameters
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param site_source_control [SiteSourceControl] Request body that contains the
+    # source control parameters
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -16606,8 +16600,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16625,8 +16619,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16643,8 +16637,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -16700,8 +16694,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16719,8 +16713,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16737,8 +16731,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -16794,8 +16788,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16813,8 +16807,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16831,8 +16825,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -16888,13 +16882,12 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16912,13 +16905,12 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16935,13 +16927,12 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -17940,8 +17931,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17959,8 +17950,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17977,8 +17968,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -18053,8 +18044,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18068,8 +18059,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18301,8 +18292,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains
-    # the source control parameters
+    # @param site_source_control [SiteSourceControl] Request body that contains the
+    # source control parameters
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18320,8 +18311,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains
-    # the source control parameters
+    # @param site_source_control [SiteSourceControl] Request body that contains the
+    # source control parameters
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18338,8 +18329,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains
-    # the source control parameters
+    # @param site_source_control [SiteSourceControl] Request body that contains the
+    # source control parameters
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -18511,8 +18502,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains
-    # the source control parameters
+    # @param site_source_control [SiteSourceControl] Request body that contains the
+    # source control parameters
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18530,8 +18521,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains
-    # the source control parameters
+    # @param site_source_control [SiteSourceControl] Request body that contains the
+    # source control parameters
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18548,8 +18539,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains
-    # the source control parameters
+    # @param site_source_control [SiteSourceControl] Request body that contains the
+    # source control parameters
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -18886,10 +18877,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18908,10 +18898,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18929,10 +18918,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -20483,9 +20471,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web
-    # app recovery. Snapshot information can be obtained by calling
-    # GetDeletedSites or GetSiteSnapshots API.
+    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
+    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
+    # GetSiteSnapshots API.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -20503,9 +20491,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web
-    # app recovery. Snapshot information can be obtained by calling
-    # GetDeletedSites or GetSiteSnapshots API.
+    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
+    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
+    # GetSiteSnapshots API.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -20522,9 +20510,9 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web
-    # app recovery. Snapshot information can be obtained by calling
-    # GetDeletedSites or GetSiteSnapshots API.
+    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
+    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
+    # GetSiteSnapshots API.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -20600,8 +20588,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the web app
     # @param site_envelope [Site] Details of web app if it exists already
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -20629,8 +20617,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the web app
     # @param site_envelope [Site] Details of web app if it exists already
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -20657,8 +20645,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of the resource group
     # @param name [String] Name of the web app
     # @param site_envelope [Site] Details of web app if it exists already
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -20755,8 +20743,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup to restore
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -20776,8 +20764,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup to restore
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -20796,8 +20784,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup to restore
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -20874,8 +20862,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -20893,8 +20881,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -20911,8 +20899,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -20978,11 +20966,11 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web
-    # app recovery. Snapshot information can be obtained by calling
-    # GetDeletedSites or GetSiteSnapshots API.
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
+    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
+    # GetSiteSnapshots API.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21000,11 +20988,11 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web
-    # app recovery. Snapshot information can be obtained by calling
-    # GetDeletedSites or GetSiteSnapshots API.
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
+    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
+    # GetSiteSnapshots API.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21021,11 +21009,11 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web
-    # app recovery. Snapshot information can be obtained by calling
-    # GetDeletedSites or GetSiteSnapshots API.
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
+    # recovery. Snapshot information can be obtained by calling GetDeletedSites or
+    # GetSiteSnapshots API.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -21101,8 +21089,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param slot [String] Name of source slot for the swap
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -21121,8 +21109,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param slot [String] Name of source slot for the swap
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -21140,8 +21128,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param slot [String] Name of source slot for the swap
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -21208,8 +21196,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21227,8 +21215,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21245,8 +21233,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -21309,8 +21297,8 @@ module Azure::ARM::Web
     #
     # Gets all Web Apps for a subscription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21326,8 +21314,8 @@ module Azure::ARM::Web
     #
     # Gets all Web Apps for a subscription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21342,8 +21330,8 @@ module Azure::ARM::Web
     #
     # Gets all Web Apps for a subscription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -21402,8 +21390,8 @@ module Azure::ARM::Web
     #
     # Gets deleted web apps in subscription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21419,8 +21407,8 @@ module Azure::ARM::Web
     #
     # Gets deleted web apps in subscription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21435,8 +21423,8 @@ module Azure::ARM::Web
     #
     # Gets deleted web apps in subscription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -21495,8 +21483,8 @@ module Azure::ARM::Web
     #
     # Gets the web apps for a subscription in the specified resource group
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21512,8 +21500,8 @@ module Azure::ARM::Web
     #
     # Gets the web apps for a subscription in the specified resource group
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21528,8 +21516,8 @@ module Azure::ARM::Web
     #
     # Gets the web apps for a subscription in the specified resource group
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -21588,8 +21576,8 @@ module Azure::ARM::Web
     #
     # Lists all available backups for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21605,8 +21593,8 @@ module Azure::ARM::Web
     #
     # Lists all available backups for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21621,8 +21609,8 @@ module Azure::ARM::Web
     #
     # Lists all available backups for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -21681,8 +21669,8 @@ module Azure::ARM::Web
     #
     # List deployments
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21698,8 +21686,8 @@ module Azure::ARM::Web
     #
     # List deployments
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21714,8 +21702,8 @@ module Azure::ARM::Web
     #
     # List deployments
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -21774,8 +21762,8 @@ module Azure::ARM::Web
     #
     # Get web app hostname bindings
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21791,8 +21779,8 @@ module Azure::ARM::Web
     #
     # Get web app hostname bindings
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21807,8 +21795,8 @@ module Azure::ARM::Web
     #
     # Get web app hostname bindings
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -21867,8 +21855,8 @@ module Azure::ARM::Web
     #
     # Gets all instance of a web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21884,8 +21872,8 @@ module Azure::ARM::Web
     #
     # Gets all instance of a web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21900,8 +21888,8 @@ module Azure::ARM::Web
     #
     # Gets all instance of a web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -21960,8 +21948,8 @@ module Azure::ARM::Web
     #
     # List deployments
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21977,8 +21965,8 @@ module Azure::ARM::Web
     #
     # List deployments
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21993,8 +21981,8 @@ module Azure::ARM::Web
     #
     # List deployments
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -22053,8 +22041,8 @@ module Azure::ARM::Web
     #
     # Gets metric definitions for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22070,8 +22058,8 @@ module Azure::ARM::Web
     #
     # Gets metric definitions for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22086,8 +22074,8 @@ module Azure::ARM::Web
     #
     # Gets metric definitions for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -22146,8 +22134,8 @@ module Azure::ARM::Web
     #
     # Gets metrics for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22163,8 +22151,8 @@ module Azure::ARM::Web
     #
     # Gets metrics for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22179,8 +22167,8 @@ module Azure::ARM::Web
     #
     # Gets metrics for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -22239,8 +22227,8 @@ module Azure::ARM::Web
     #
     # Gets perfmon counters for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22256,8 +22244,8 @@ module Azure::ARM::Web
     #
     # Gets perfmon counters for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22272,8 +22260,8 @@ module Azure::ARM::Web
     #
     # Gets perfmon counters for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -22332,8 +22320,8 @@ module Azure::ARM::Web
     #
     # Gets all the slots for a web apps
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22349,8 +22337,8 @@ module Azure::ARM::Web
     #
     # Gets all the slots for a web apps
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22365,8 +22353,8 @@ module Azure::ARM::Web
     #
     # Gets all the slots for a web apps
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -22425,8 +22413,8 @@ module Azure::ARM::Web
     #
     # Lists all available backups for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22442,8 +22430,8 @@ module Azure::ARM::Web
     #
     # Lists all available backups for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22458,8 +22446,8 @@ module Azure::ARM::Web
     #
     # Lists all available backups for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -22518,8 +22506,8 @@ module Azure::ARM::Web
     #
     # List deployments
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22535,8 +22523,8 @@ module Azure::ARM::Web
     #
     # List deployments
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22551,8 +22539,8 @@ module Azure::ARM::Web
     #
     # List deployments
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -22611,8 +22599,8 @@ module Azure::ARM::Web
     #
     # Get web app hostname bindings
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22628,8 +22616,8 @@ module Azure::ARM::Web
     #
     # Get web app hostname bindings
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22644,8 +22632,8 @@ module Azure::ARM::Web
     #
     # Get web app hostname bindings
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -22704,8 +22692,8 @@ module Azure::ARM::Web
     #
     # Gets all instance of a web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22721,8 +22709,8 @@ module Azure::ARM::Web
     #
     # Gets all instance of a web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22737,8 +22725,8 @@ module Azure::ARM::Web
     #
     # Gets all instance of a web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -22797,8 +22785,8 @@ module Azure::ARM::Web
     #
     # List deployments
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22814,8 +22802,8 @@ module Azure::ARM::Web
     #
     # List deployments
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22830,8 +22818,8 @@ module Azure::ARM::Web
     #
     # List deployments
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -22890,8 +22878,8 @@ module Azure::ARM::Web
     #
     # Gets metric definitions for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22907,8 +22895,8 @@ module Azure::ARM::Web
     #
     # Gets metric definitions for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -22923,8 +22911,8 @@ module Azure::ARM::Web
     #
     # Gets metric definitions for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -22983,8 +22971,8 @@ module Azure::ARM::Web
     #
     # Gets metrics for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23000,8 +22988,8 @@ module Azure::ARM::Web
     #
     # Gets metrics for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23016,8 +23004,8 @@ module Azure::ARM::Web
     #
     # Gets metrics for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -23076,8 +23064,8 @@ module Azure::ARM::Web
     #
     # Gets perfmon counters for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23093,8 +23081,8 @@ module Azure::ARM::Web
     #
     # Gets perfmon counters for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23109,8 +23097,8 @@ module Azure::ARM::Web
     #
     # Gets perfmon counters for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -23169,8 +23157,8 @@ module Azure::ARM::Web
     #
     # Get the difference in configuration settings between two web app slots
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23186,8 +23174,8 @@ module Azure::ARM::Web
     #
     # Get the difference in configuration settings between two web app slots
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23202,8 +23190,8 @@ module Azure::ARM::Web
     #
     # Get the difference in configuration settings between two web app slots
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -23262,8 +23250,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23279,8 +23267,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23295,8 +23283,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -23355,8 +23343,8 @@ module Azure::ARM::Web
     #
     # Gets the quota usage numbers for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23372,8 +23360,8 @@ module Azure::ARM::Web
     #
     # Gets the quota usage numbers for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23388,8 +23376,8 @@ module Azure::ARM::Web
     #
     # Gets the quota usage numbers for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -23448,8 +23436,8 @@ module Azure::ARM::Web
     #
     # Get the difference in configuration settings between two web app slots
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23465,8 +23453,8 @@ module Azure::ARM::Web
     #
     # Get the difference in configuration settings between two web app slots
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23481,8 +23469,8 @@ module Azure::ARM::Web
     #
     # Get the difference in configuration settings between two web app slots
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -23541,8 +23529,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23558,8 +23546,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23574,8 +23562,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -23634,8 +23622,8 @@ module Azure::ARM::Web
     #
     # Gets the quota usage numbers for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23651,8 +23639,8 @@ module Azure::ARM::Web
     #
     # Gets the quota usage numbers for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23667,8 +23655,8 @@ module Azure::ARM::Web
     #
     # Gets the quota usage numbers for web app
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -23777,8 +23765,8 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param properties_to_include [String] Additional web app properties included
     # in the response
-    # @param include_slots [Boolean] Whether or not to include deployments slots
-    # in results
+    # @param include_slots [Boolean] Whether or not to include deployments slots in
+    # results
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23854,8 +23842,8 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [HostNameBindingCollection] which provide lazy access to pages of
-    # the response.
+    # @return [HostNameBindingCollection] which provide lazy access to pages of the
+    # response.
     #
     def list_host_name_bindings_as_lazy(resource_group_name, name, custom_headers = nil)
       response = list_host_name_bindings_async(resource_group_name, name, custom_headers).value!
@@ -23950,10 +23938,9 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param details [Boolean] If true, metric details are included in response
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23980,8 +23967,8 @@ module Azure::ARM::Web
     # @param name [String] Name of web app
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-    # eq duration'[Hour|Minute|Day]'.
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24032,8 +24019,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24058,8 +24045,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24084,13 +24071,13 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [HostNameBindingCollection] which provide lazy access to pages of
-    # the response.
+    # @return [HostNameBindingCollection] which provide lazy access to pages of the
+    # response.
     #
     def list_host_name_bindings_slot_as_lazy(resource_group_name, name, slot, custom_headers = nil)
       response = list_host_name_bindings_slot_async(resource_group_name, name, slot, custom_headers).value!
@@ -24110,8 +24097,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24136,8 +24123,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param instance_id [String] Id of web app instance
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -24163,8 +24150,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24189,14 +24176,13 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param details [Boolean] If true, metric details are included in response
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24221,12 +24207,12 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot. **** CURRENTLY UNUSED *****
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot. **** CURRENTLY UNUSED *****
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
-    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-    # eq duration'[Hour|Minute|Day]'.
+    # '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+    # duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24251,8 +24237,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param slot [String] Name of the source slot
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -24303,13 +24289,12 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will
-    # default to production slot.
+    # @param slot [String] Name of web app slot. If not specified then will default
+    # to production slot.
     # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24334,8 +24319,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the
-    # target slot name
+    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
+    # slot name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24385,10 +24370,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of web app
     # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

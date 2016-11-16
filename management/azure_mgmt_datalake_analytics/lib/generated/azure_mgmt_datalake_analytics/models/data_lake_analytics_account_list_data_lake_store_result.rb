@@ -16,9 +16,6 @@ module Azure::ARM::DataLakeAnalytics
       # operation
       attr_accessor :value
 
-      # @return [Integer] total number of results.
-      attr_accessor :count
-
       # @return [String] the link (url) to the next page of results.
       attr_accessor :next_link
 
@@ -82,14 +79,6 @@ module Azure::ARM::DataLakeAnalytics
                         class_name: 'DataLakeStoreAccountInfo'
                       }
                   }
-                }
-              },
-              count: {
-                required: false,
-                read_only: true,
-                serialized_name: 'count',
-                type: {
-                  name: 'Number'
                 }
               },
               next_link: {

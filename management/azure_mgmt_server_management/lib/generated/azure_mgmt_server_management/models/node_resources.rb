@@ -6,16 +6,16 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # a collection of node resource objects
+    # A collection of node resource objects.
     #
     class NodeResources
 
       include MsRestAzure
 
-      # @return [Array<NodeResource>] Collection of Node Resources
+      # @return [Array<NodeResource>] Collection of Node Resources.
       attr_accessor :value
 
-      # @return [String] the URL to the next set of resources
+      # @return [String] The URL to the next set of resources.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.

@@ -12,8 +12,8 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [String] When server starts the restore process, it will
-      # return an OperationId identifying that particular restore operation
+      # @return [String] When server starts the restore process, it will return
+      # an OperationId identifying that particular restore operation
       attr_accessor :operation_id
 
 

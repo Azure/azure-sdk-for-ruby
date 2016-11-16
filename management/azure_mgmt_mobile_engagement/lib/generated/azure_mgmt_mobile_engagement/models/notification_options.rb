@@ -7,14 +7,16 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class NotificationOptions
 
       include MsRestAzure
 
       # @return [String] Android 4.1+ only. Multi line message shown in
-      # expanded notifications on Android 4.1+ devices. The
-      # `notificationType` property must be set to `system`.
+      # expanded notifications on Android 4.1+ devices. The `notificationType`
+      # property must be set to `system`.
+      # 
       attr_accessor :big_text
 
       # @return [String] URL of a remote image displayed in expanded
@@ -33,14 +35,16 @@ module Azure::ARM::MobileEngagement
       # * URL scheme must be HTTP or HTTPS (with valid SSL certificate).
       # * Incompatible with `bigText`, only one of the fields can be set.
       # * The `notificationType` property must be set to `system`.
+      # 
       attr_accessor :big_picture
 
       # @return [String] iOS only. The name of a sound file in the application
-      # bundle. The sound in this file is played as an alert. If the sound
-      # file doesn’t exist or default is specified as the value, the default
-      # alert sound is played. The audio must be in one of the audio data
-      # formats that are compatible with system sounds. The `deliveryTime`
-      # property must be set to `any` or `background`.
+      # bundle. The sound in this file is played as an alert. If the sound file
+      # doesn’t exist or default is specified as the value, the default alert
+      # sound is played. The audio must be in one of the audio data formats
+      # that are compatible with system sounds. The `deliveryTime` property
+      # must be set to `any` or `background`.
+      # 
       attr_accessor :sound
 
       # @return [String] The action text is the title of the right button of
@@ -48,6 +52,7 @@ module Azure::ARM::MobileEngagement
       # 'unlock' in 'slide to unlock'. 'View' (localized to the preferred
       # language) is used as the default value. The `deliveryTime` property
       # must be set to `any` or `background`.
+      # 
       attr_accessor :action_text
 
 

@@ -42,8 +42,8 @@ module Azure::ARM::Web
       attr_accessor :provisioning_state
 
       # @return [CertificateOrderStatus] Current order status. Possible values
-      # include: 'Pendingissuance', 'Issued', 'Revoked', 'Canceled',
-      # 'Denied', 'Pendingrevocation', 'PendingRekey', 'Unused', 'Expired',
+      # include: 'Pendingissuance', 'Issued', 'Revoked', 'Canceled', 'Denied',
+      # 'Pendingrevocation', 'PendingRekey', 'Unused', 'Expired',
       # 'NotSubmitted'
       attr_accessor :status
 

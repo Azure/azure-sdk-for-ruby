@@ -28,8 +28,8 @@ module Azure::ARM::MobileEngagement
     # @param skip [Integer] Control paging of import jobs, start results at the
     # given offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of import jobs, number of import jobs to
-    # return with each call. By default, it returns all import jobs with a
-    # default paging of 20.
+    # return with each call. By default, it returns all import jobs with a default
+    # paging of 20.
     # The response contains a `nextLink` property describing the path to get the
     # next page if there are more results.
     # The maximum paging limit for $top is 40.
@@ -58,8 +58,8 @@ module Azure::ARM::MobileEngagement
     # @param skip [Integer] Control paging of import jobs, start results at the
     # given offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of import jobs, number of import jobs to
-    # return with each call. By default, it returns all import jobs with a
-    # default paging of 20.
+    # return with each call. By default, it returns all import jobs with a default
+    # paging of 20.
     # The response contains a `nextLink` property describing the path to get the
     # next page if there are more results.
     # The maximum paging limit for $top is 40.
@@ -87,8 +87,8 @@ module Azure::ARM::MobileEngagement
     # @param skip [Integer] Control paging of import jobs, start results at the
     # given offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of import jobs, number of import jobs to
-    # return with each call. By default, it returns all import jobs with a
-    # default paging of 20.
+    # return with each call. By default, it returns all import jobs with a default
+    # paging of 20.
     # The response contains a `nextLink` property describing the path to get the
     # next page if there are more results.
     # The maximum paging limit for $top is 40.
@@ -269,8 +269,8 @@ module Azure::ARM::MobileEngagement
     end
 
     #
-    # The Get import job operation retrieves information about a previously
-    # created import job.
+    # The Get import job operation retrieves information about a previously created
+    # import job.
     #
     # @param id [String] Import job identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -284,8 +284,8 @@ module Azure::ARM::MobileEngagement
     end
 
     #
-    # The Get import job operation retrieves information about a previously
-    # created import job.
+    # The Get import job operation retrieves information about a previously created
+    # import job.
     #
     # @param id [String] Import job identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -298,8 +298,8 @@ module Azure::ARM::MobileEngagement
     end
 
     #
-    # The Get import job operation retrieves information about a previously
-    # created import job.
+    # The Get import job operation retrieves information about a previously created
+    # import job.
     #
     # @param id [String] Import job identifier.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -364,8 +364,8 @@ module Azure::ARM::MobileEngagement
     #
     # Get the list of import jobs.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -379,8 +379,8 @@ module Azure::ARM::MobileEngagement
     #
     # Get the list of import jobs.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -393,8 +393,8 @@ module Azure::ARM::MobileEngagement
     #
     # Get the list of import jobs.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -454,8 +454,8 @@ module Azure::ARM::MobileEngagement
     # @param skip [Integer] Control paging of import jobs, start results at the
     # given offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of import jobs, number of import jobs to
-    # return with each call. By default, it returns all import jobs with a
-    # default paging of 20.
+    # return with each call. By default, it returns all import jobs with a default
+    # paging of 20.
     # The response contains a `nextLink` property describing the path to get the
     # next page if there are more results.
     # The maximum paging limit for $top is 40.

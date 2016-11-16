@@ -3,15 +3,14 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DataLakeAnalytics
+module Azure::ARM::DataLakeStore
   module Models
     #
-    # Defines values for OperationStatus
+    # Defines values for FirewallState
     #
-    module OperationStatus
-      InProgress = "InProgress"
-      Succeeded = "Succeeded"
-      Failed = "Failed"
+    module FirewallState
+      Enabled = "Enabled"
+      Disabled = "Disabled"
     end
   end
 end

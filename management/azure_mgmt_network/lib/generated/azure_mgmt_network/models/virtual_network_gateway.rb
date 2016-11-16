@@ -12,13 +12,13 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [Array<VirtualNetworkGatewayIPConfiguration>] IP
-      # configurations for virtual network gateway.
+      # @return [Array<VirtualNetworkGatewayIPConfiguration>] IP configurations
+      # for virtual network gateway.
       attr_accessor :ip_configurations
 
       # @return [VirtualNetworkGatewayType] The type of this virtual network
-      # gateway. Possible values are: 'Vpn' and 'ExpressRoute'. Possible
-      # values include: 'Vpn', 'ExpressRoute'
+      # gateway. Possible values are: 'Vpn' and 'ExpressRoute'. Possible values
+      # include: 'Vpn', 'ExpressRoute'
       attr_accessor :gateway_type
 
       # @return [VpnType] The type of this virtual network gateway. Possible
@@ -33,14 +33,14 @@ module Azure::ARM::Network
       # @return [Boolean] ActiveActive flag
       attr_accessor :active_active
 
-      # @return [SubResource] The reference of the LocalNetworkGateway
-      # resource which represents local network site having default routes.
-      # Assign Null value in case of removing existing default site setting.
+      # @return [SubResource] The reference of the LocalNetworkGateway resource
+      # which represents local network site having default routes. Assign Null
+      # value in case of removing existing default site setting.
       attr_accessor :gateway_default_site
 
       # @return [VirtualNetworkGatewaySku] The reference of the
-      # VirtualNetworkGatewaySku resource which represents the SKU selected
-      # for Virtual network gateway.
+      # VirtualNetworkGatewaySku resource which represents the SKU selected for
+      # Virtual network gateway.
       attr_accessor :sku
 
       # @return [VpnClientConfiguration] The reference of the

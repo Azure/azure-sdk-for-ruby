@@ -40,8 +40,8 @@ module Azure::ARM::Commerce
       # time frame.
       attr_accessor :quantity
 
-      # @return [String] The unit in which the usage for this resource is
-      # being counted, e.g. Hours, GB.
+      # @return [String] The unit in which the usage for this resource is being
+      # counted, e.g. Hours, GB.
       attr_accessor :unit
 
       # @return [String] Friendly name of the resource being consumed.

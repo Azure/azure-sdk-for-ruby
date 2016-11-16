@@ -7,6 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class Device
 
@@ -25,8 +26,8 @@ module Azure::ARM::MobileEngagement
       # @return [DeviceLocation] Last geo-location data received.
       attr_accessor :location
 
-      # @return [Hash{String => String}] Also known as tags, a key-value set
-      # as a JSON object.
+      # @return [Hash{String => String}] Also known as tags, a key-value set as
+      # a JSON object.
       attr_accessor :app_info
 
 

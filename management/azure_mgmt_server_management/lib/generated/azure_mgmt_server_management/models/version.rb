@@ -6,28 +6,28 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # A multipart-numeric version number
+    # A multipart-numeric version number.
     #
     class Version
 
       include MsRestAzure
 
-      # @return [Integer] the leftmost number of the version
+      # @return [Integer] The leftmost number of the version.
       attr_accessor :major
 
-      # @return [Integer] the second leftmost number of the version
+      # @return [Integer] The second leftmost number of the version.
       attr_accessor :minor
 
-      # @return [Integer] the third number of the version
+      # @return [Integer] The third number of the version.
       attr_accessor :build
 
-      # @return [Integer] the fourth number of the version
+      # @return [Integer] The fourth number of the version.
       attr_accessor :revision
 
-      # @return [Integer] the MSW of the fourth part
+      # @return [Integer] The MSW of the fourth part.
       attr_accessor :major_revision
 
-      # @return [Integer] the LSW of the fourth part
+      # @return [Integer] The LSW of the fourth part.
       attr_accessor :minor_revision
 
 

@@ -7,9 +7,10 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Used to target devices based on a specific region. A center point
-    # (defined by a latitude and longitude) and a radius form the boundary
-    # for the region. This criterion will be met when the user crosses the
+    # (defined by a latitude and longitude) and a radius form the boundary for
+    # the region. This criterion will be met when the user crosses the
     # boundaries of the region.
+    # 
     #
     class GeoFencingCriterion < Criterion
 

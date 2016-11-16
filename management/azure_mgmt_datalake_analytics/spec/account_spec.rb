@@ -31,13 +31,11 @@ describe 'DataLakeAnalyticsClient Account' do
         :testtag1 => :testtag1,
         :testtag2 => :testtag2,
     }
-    dla_acc_prop = Models::DataLakeAnalyticsAccountProperties.new
-    dla_acc_prop.default_data_lake_store_account = @dl_store_acc.name
+    analytics_acc.default_data_lake_store_account = @dl_store_acc.name
     dla_acc_info = Models::DataLakeStoreAccountInfo.new
     dla_acc_info.name = @dl_store_acc.name
 
-    dla_acc_prop.data_lake_store_accounts = [dla_acc_info]
-    analytics_acc.properties = dla_acc_prop
+    analytics_acc.data_lake_store_accounts = [dla_acc_info]
 
     result = @client.create_async(@resource_group.name, @datalake_analytics_acc_name, analytics_acc).value!
     expect(result.body).to be_an_instance_of(Models::DataLakeAnalyticsAccount)

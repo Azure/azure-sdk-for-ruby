@@ -6,9 +6,9 @@
 module Azure::ARM::Network
   module Models
     #
-    # DhcpOptions contains an array of DNS servers available to VMs deployed
-    # in the virtual network. Standard DHCP option for a subnet overrides
-    # VNET DHCP options.
+    # DhcpOptions contains an array of DNS servers available to VMs deployed in
+    # the virtual network. Standard DHCP option for a subnet overrides VNET
+    # DHCP options.
     #
     class DhcpOptions
 

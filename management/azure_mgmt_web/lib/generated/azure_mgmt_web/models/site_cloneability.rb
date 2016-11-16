@@ -23,12 +23,11 @@ module Azure::ARM::Web
       # @return [Array<SiteCloneabilityCriterion>] List of features enabled on
       # web app that are non-blocking but cannot be cloned. The web app can
       # still be cloned
-      # but the features in this list will not be set up on cloned
-      # web app.
+      # but the features in this list will not be set up on cloned web app.
       attr_accessor :unsupported_features
 
-      # @return [Array<SiteCloneabilityCriterion>] List of blocking
-      # application characteristics
+      # @return [Array<SiteCloneabilityCriterion>] List of blocking application
+      # characteristics
       attr_accessor :blocking_characteristics
 
 

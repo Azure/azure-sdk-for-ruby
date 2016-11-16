@@ -20,8 +20,8 @@ module Azure::ARM::Insights
       # @return [Array<AutoscaleNotification>] the collection of notifications.
       attr_accessor :notifications
 
-      # @return [Boolean] the enabled flag. Specifies whether automatic
-      # scaling is enabled for the resource. Default value: true .
+      # @return [Boolean] the enabled flag. Specifies whether automatic scaling
+      # is enabled for the resource. Default value: true .
       attr_accessor :enabled
 
       # @return [String] the name of the autoscale setting.

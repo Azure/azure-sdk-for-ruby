@@ -25,11 +25,10 @@ module Azure::ARM::Web
       attr_accessor :contact_tech
 
       # @return [DomainStatus] Domain registration status. Possible values
-      # include: 'Active', 'Awaiting', 'Cancelled', 'Confiscated',
-      # 'Disabled', 'Excluded', 'Expired', 'Failed', 'Held', 'Locked',
-      # 'Parked', 'Pending', 'Reserved', 'Reverted', 'Suspended',
-      # 'Transferred', 'Unknown', 'Unlocked', 'Unparked', 'Updated',
-      # 'JsonConverterFailed'
+      # include: 'Active', 'Awaiting', 'Cancelled', 'Confiscated', 'Disabled',
+      # 'Excluded', 'Expired', 'Failed', 'Held', 'Locked', 'Parked', 'Pending',
+      # 'Reserved', 'Reverted', 'Suspended', 'Transferred', 'Unknown',
+      # 'Unlocked', 'Unparked', 'Updated', 'JsonConverterFailed'
       attr_accessor :registration_status
 
       # @return [ProvisioningState] Domain provisioning state. Possible values

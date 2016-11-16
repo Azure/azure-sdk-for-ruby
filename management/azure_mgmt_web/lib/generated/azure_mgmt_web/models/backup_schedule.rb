@@ -14,8 +14,8 @@ module Azure::ARM::Web
       include MsRestAzure
 
       # @return [Integer] How often should be the backup executed (e.g. for
-      # weekly backup, this should be set to 7 and FrequencyUnit should be
-      # set to Day)
+      # weekly backup, this should be set to 7 and FrequencyUnit should be set
+      # to Day)
       attr_accessor :frequency_interval
 
       # @return [FrequencyUnit] How often should be the backup executed (e.g.

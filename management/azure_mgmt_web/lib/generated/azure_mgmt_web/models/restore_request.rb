@@ -33,8 +33,8 @@ module Azure::ARM::Web
       # @return [Boolean] Changes a logic when restoring a site with custom
       # domains. If "true", custom domains are removed automatically. If
       # "false", custom domains are added to
-      # the site object when it is being restored, but that might
-      # fail due to conflicts during the operation.
+      # the site object when it is being restored, but that might fail due to
+      # conflicts during the operation.
       attr_accessor :ignore_conflicting_host_names
 
       # @return [BackupRestoreOperationType] Operation type. Possible values

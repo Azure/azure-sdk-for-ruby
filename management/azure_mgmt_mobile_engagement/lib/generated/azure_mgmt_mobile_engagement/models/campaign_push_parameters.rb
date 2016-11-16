@@ -7,28 +7,29 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class CampaignPushParameters
 
       include MsRestAzure
 
       # @return [Array<String>] Device identifiers to push as a JSON array of
-      # strings. Note that if you want to push the same campaign several
-      # times to the same device, you need to make several API calls.
+      # strings. Note that if you want to push the same campaign several times
+      # to the same device, you need to make several API calls.
+      # 
       attr_accessor :device_ids
 
-      # @return [Campaign] Alternative campaign's content to use instead of
-      # the referenced campaign. All campaign's properties can be overridden
-      # except for the following: `name`, `manualPush`, `audience`,
-      # `startTime` and `timezone`. `endTime` can be overridden while keeping
-      # original `timezone` parameter. The effect is to change the client
-      # side expiration of the received campaign for the specific devices. If
-      # your campaign is a *poll*, the provided data should contain the same
-      # number of questions and choices that the one you created with the
-      # create command. Please note that all the push messages created using
-      # this parameter will expire after 4 weeks at maximum (`endTime`
-      # property of the campaign will be used if lower than 4 weeks in the
-      # future).
+      # @return [Campaign] Alternative campaign's content to use instead of the
+      # referenced campaign. All campaign's properties can be overridden except
+      # for the following: `name`, `manualPush`, `audience`, `startTime` and
+      # `timezone`. `endTime` can be overridden while keeping original
+      # `timezone` parameter. The effect is to change the client side
+      # expiration of the received campaign for the specific devices. If your
+      # campaign is a *poll*, the provided data should contain the same number
+      # of questions and choices that the one you created with the create
+      # command. Please note that all the push messages created using this
+      # parameter will expire after 4 weeks at maximum (`endTime` property of
+      # the campaign will be used if lower than 4 weeks in the future).
       attr_accessor :data
 
 

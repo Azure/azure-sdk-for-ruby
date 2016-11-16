@@ -16,8 +16,8 @@ module Azure::ARM::Network
       attr_accessor :public_cert_data
 
       # @return [String] The provisioning state of the VPN client root
-      # certificate resource. Possible values are: 'Updating', 'Deleting',
-      # and 'Failed'.
+      # certificate resource. Possible values are: 'Updating', 'Deleting', and
+      # 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] The name of the resource that is unique within a

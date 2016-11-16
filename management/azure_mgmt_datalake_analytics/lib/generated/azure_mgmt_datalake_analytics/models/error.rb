@@ -22,10 +22,10 @@ module Azure::ARM::DataLakeAnalytics
       # @return [String] the target of the error.
       attr_accessor :target
 
-      # @return [Array<ErrorDetails>] the list of error details
+      # @return [Array<ErrorDetails>] The list of error details
       attr_accessor :details
 
-      # @return [InnerError] the inner exceptions or errors, if any
+      # @return [InnerError] The inner exceptions or errors, if any
       attr_accessor :inner_error
 
 

@@ -6,8 +6,8 @@
 module Azure::ARM::Web
   module Models
     #
-    # VNETInfo contract. This contract is public and is a stripped down
-    # version of VNETInfoInternal
+    # VNETInfo contract. This contract is public and is a stripped down version
+    # of VNETInfoInternal
     #
     class VnetInfo < MsRestAzure::Resource
 

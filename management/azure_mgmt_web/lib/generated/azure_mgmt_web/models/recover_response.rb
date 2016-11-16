@@ -12,8 +12,8 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [String] ID of the recovery operation. Can be used to check
-      # the status of the corresponding operation.
+      # @return [String] ID of the recovery operation. Can be used to check the
+      # status of the corresponding operation.
       attr_accessor :operation_id
 
 

@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class WorkflowRunAction < MsRestAzure::SubResource
 
@@ -19,9 +20,9 @@ module Azure::ARM::Logic
       attr_accessor :end_time
 
       # @return [WorkflowStatus] Gets the status. Possible values include:
-      # 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded',
-      # 'Skipped', 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut',
-      # 'Aborted', 'Ignored'
+      # 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
+      # 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
+      # 'Ignored'
       attr_accessor :status
 
       # @return [String] Gets the code.

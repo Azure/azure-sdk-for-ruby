@@ -16,9 +16,12 @@ module Azure::ARM::DataLakeAnalytics
       # account.
       attr_accessor :name
 
-      # @return [StorageAccountProperties] the properties associated with this
-      # storage account.
-      attr_accessor :properties
+      # @return [String] the access key associated with this Azure Storage
+      # account that will be used to connect to it.
+      attr_accessor :access_key
+
+      # @return [String] the optional suffix for the storage account.
+      attr_accessor :suffix
 
 
       #
@@ -34,18 +37,25 @@ module Azure::ARM::DataLakeAnalytics
             class_name: 'StorageAccountInfo',
             model_properties: {
               name: {
-                required: true,
+                required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              properties: {
+              access_key: {
                 required: true,
-                serialized_name: 'properties',
+                serialized_name: 'properties.accessKey',
                 type: {
-                  name: 'Composite',
-                  class_name: 'StorageAccountProperties'
+                  name: 'String'
+                }
+              },
+              suffix: {
+                required: false,
+                serialized_name: 'properties.suffix',
+                type: {
+                  name: 'String'
                 }
               }
             }

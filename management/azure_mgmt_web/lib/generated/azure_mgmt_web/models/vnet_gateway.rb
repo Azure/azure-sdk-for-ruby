@@ -6,8 +6,8 @@
 module Azure::ARM::Web
   module Models
     #
-    # The VnetGateway contract. This is used to give the vnet gateway access
-    # to the VPN package.
+    # The VnetGateway contract. This is used to give the vnet gateway access to
+    # the VPN package.
     #
     class VnetGateway < MsRestAzure::Resource
 

@@ -12,8 +12,8 @@ module Azure::ARM::Storage
 
       include MsRestAzure
 
-      # @return [EncryptionService] The encryption function of the blob
-      # storage service.
+      # @return [EncryptionService] The encryption function of the blob storage
+      # service.
       attr_accessor :blob
 
 

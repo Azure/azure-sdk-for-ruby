@@ -5,7 +5,7 @@
 
 module Azure::ARM::ServerManagement
   #
-  # REST API for Azure Server Management Service
+  # REST API for Azure Server Management Service.
   #
   class PowerShell
     include Azure::ARM::ServerManagement::Models
@@ -28,7 +28,7 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
+    # @param session [String] The sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -45,7 +45,7 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
+    # @param session [String] The sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -61,7 +61,7 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
+    # @param session [String] The sessionId from the user.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -121,13 +121,13 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Creates a PowerShell session
+    # Creates a PowerShell session.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -142,8 +142,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -174,8 +174,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param expand [PowerShellExpandOption] Gets current output from an ongoing
     # call. Possible values include: 'output'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -194,8 +194,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param expand [PowerShellExpandOption] Gets current output from an ongoing
     # call. Possible values include: 'output'
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -213,8 +213,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param expand [PowerShellExpandOption] Gets current output from an ongoing
     # call. Possible values include: 'output'
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -277,13 +277,13 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # updates a running PowerShell command with more data.
+    # Updates a running PowerShell command with more data.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -298,8 +298,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -330,9 +330,9 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
-    # @param command [String] Script to execute
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
+    # @param command [String] Script to execute.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -347,9 +347,9 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
-    # @param command [String] Script to execute
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
+    # @param command [String] Script to execute.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -380,8 +380,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -396,8 +396,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -423,13 +423,13 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # gets tab completion values for a command.
+    # Gets tab completion values for a command.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param command [String] Command to get tab completion for.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -442,13 +442,13 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # gets tab completion values for a command.
+    # Gets tab completion values for a command.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param command [String] Command to get tab completion for.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -460,13 +460,13 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # gets tab completion values for a command.
+    # Gets tab completion values for a command.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param command [String] Command to get tab completion for.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -541,13 +541,13 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Creates a PowerShell session
+    # Creates a PowerShell session.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -559,13 +559,13 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Creates a PowerShell session
+    # Creates a PowerShell session.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -576,13 +576,13 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # Creates a PowerShell session
+    # Creates a PowerShell session.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -643,13 +643,13 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # updates a running PowerShell command with more data.
+    # Updates a running PowerShell command with more data.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -661,13 +661,13 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # updates a running PowerShell command with more data.
+    # Updates a running PowerShell command with more data.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -678,13 +678,13 @@ module Azure::ARM::ServerManagement
     end
 
     #
-    # updates a running PowerShell command with more data.
+    # Updates a running PowerShell command with more data.
     #
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -750,9 +750,9 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
-    # @param command [String] Script to execute
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
+    # @param command [String] Script to execute.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -769,9 +769,9 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
-    # @param command [String] Script to execute
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
+    # @param command [String] Script to execute.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -787,9 +787,9 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
-    # @param command [String] Script to execute
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
+    # @param command [String] Script to execute.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -868,8 +868,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -886,8 +886,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -903,8 +903,8 @@ module Azure::ARM::ServerManagement
     # @param resource_group_name [String] The resource group name uniquely
     # identifies the resource group within the user subscriptionId.
     # @param node_name [String] The node name (256 characters maximum).
-    # @param session [String] The sessionId from the user
-    # @param pssession [String] The PowerShell sessionId from the user
+    # @param session [String] The sessionId from the user.
+    # @param pssession [String] The PowerShell sessionId from the user.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

@@ -19,8 +19,8 @@ module Azure::ARM::Web
       # @return [String] Key Vault secret name
       attr_accessor :key_vault_secret_name
 
-      # @return [KeyVaultSecretStatus] Status of the Key Vault secret.
-      # Possible values include: 'Initialized', 'WaitingOnCertificateOrder',
+      # @return [KeyVaultSecretStatus] Status of the Key Vault secret. Possible
+      # values include: 'Initialized', 'WaitingOnCertificateOrder',
       # 'Succeeded', 'CertificateOrderFailed',
       # 'OperationNotPermittedOnKeyVault',
       # 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',

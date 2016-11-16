@@ -127,8 +127,8 @@ module Azure::ARM::TrafficManager
     #
     # Lists all Traffic Manager profiles within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profiles to be listed.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profiles to be listed.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -142,8 +142,8 @@ module Azure::ARM::TrafficManager
     #
     # Lists all Traffic Manager profiles within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profiles to be listed.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profiles to be listed.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -156,8 +156,8 @@ module Azure::ARM::TrafficManager
     #
     # Lists all Traffic Manager profiles within a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profiles to be listed.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profiles to be listed.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -300,8 +300,8 @@ module Azure::ARM::TrafficManager
     #
     # Gets a Traffic Manager profile.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profile.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profile.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -316,8 +316,8 @@ module Azure::ARM::TrafficManager
     #
     # Gets a Traffic Manager profile.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profile.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profile.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -331,8 +331,8 @@ module Azure::ARM::TrafficManager
     #
     # Gets a Traffic Manager profile.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profile.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profile.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -394,8 +394,8 @@ module Azure::ARM::TrafficManager
     #
     # Create or update a Traffic Manager profile.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profile.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profile.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param parameters [Profile] The Traffic Manager profile parameters supplied
     # to the CreateOrUpdate operation.
@@ -412,8 +412,8 @@ module Azure::ARM::TrafficManager
     #
     # Create or update a Traffic Manager profile.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profile.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profile.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param parameters [Profile] The Traffic Manager profile parameters supplied
     # to the CreateOrUpdate operation.
@@ -429,8 +429,8 @@ module Azure::ARM::TrafficManager
     #
     # Create or update a Traffic Manager profile.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profile.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profile.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param parameters [Profile] The Traffic Manager profile parameters supplied
     # to the CreateOrUpdate operation.
@@ -514,8 +514,8 @@ module Azure::ARM::TrafficManager
     #
     # Deletes a Traffic Manager profile.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profile to be deleted.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profile to be deleted.
     # @param profile_name [String] The name of the Traffic Manager profile to be
     # deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -530,8 +530,8 @@ module Azure::ARM::TrafficManager
     #
     # Deletes a Traffic Manager profile.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profile to be deleted.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profile to be deleted.
     # @param profile_name [String] The name of the Traffic Manager profile to be
     # deleted.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -546,8 +546,8 @@ module Azure::ARM::TrafficManager
     #
     # Deletes a Traffic Manager profile.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profile to be deleted.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profile to be deleted.
     # @param profile_name [String] The name of the Traffic Manager profile to be
     # deleted.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -600,8 +600,8 @@ module Azure::ARM::TrafficManager
     #
     # Update a Traffic Manager profile.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profile.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profile.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param parameters [Profile] The Traffic Manager profile parameters supplied
     # to the Update operation.
@@ -618,8 +618,8 @@ module Azure::ARM::TrafficManager
     #
     # Update a Traffic Manager profile.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profile.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profile.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param parameters [Profile] The Traffic Manager profile parameters supplied
     # to the Update operation.
@@ -635,8 +635,8 @@ module Azure::ARM::TrafficManager
     #
     # Update a Traffic Manager profile.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the Traffic Manager profile.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the Traffic Manager profile.
     # @param profile_name [String] The name of the Traffic Manager profile.
     # @param parameters [Profile] The Traffic Manager profile parameters supplied
     # to the Update operation.

@@ -207,8 +207,8 @@ module Azure::ARM::Resources
     # Creates a tag in the subscription.
     #
     # The tag name can have a maximum of 512 characters and is case insensitive.
-    # Tag names created by Azure have prefixes of microsoft, azure, or windows.
-    # You cannot create tags with one of these prefixes.
+    # Tag names created by Azure have prefixes of microsoft, azure, or windows. You
+    # cannot create tags with one of these prefixes.
     #
     # @param tag_name [String] The name of the tag to create.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -225,8 +225,8 @@ module Azure::ARM::Resources
     # Creates a tag in the subscription.
     #
     # The tag name can have a maximum of 512 characters and is case insensitive.
-    # Tag names created by Azure have prefixes of microsoft, azure, or windows.
-    # You cannot create tags with one of these prefixes.
+    # Tag names created by Azure have prefixes of microsoft, azure, or windows. You
+    # cannot create tags with one of these prefixes.
     #
     # @param tag_name [String] The name of the tag to create.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -242,8 +242,8 @@ module Azure::ARM::Resources
     # Creates a tag in the subscription.
     #
     # The tag name can have a maximum of 512 characters and is case insensitive.
-    # Tag names created by Azure have prefixes of microsoft, azure, or windows.
-    # You cannot create tags with one of these prefixes.
+    # Tag names created by Azure have prefixes of microsoft, azure, or windows. You
+    # cannot create tags with one of these prefixes.
     #
     # @param tag_name [String] The name of the tag to create.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -484,8 +484,8 @@ module Azure::ARM::Resources
     # Gets the names and values of all resource tags that are defined in a
     # subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -500,8 +500,8 @@ module Azure::ARM::Resources
     # Gets the names and values of all resource tags that are defined in a
     # subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -515,8 +515,8 @@ module Azure::ARM::Resources
     # Gets the names and values of all resource tags that are defined in a
     # subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

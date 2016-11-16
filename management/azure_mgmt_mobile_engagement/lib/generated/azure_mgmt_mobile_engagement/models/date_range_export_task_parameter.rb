@@ -7,6 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class DateRangeExportTaskParameter
 
@@ -22,12 +23,12 @@ module Azure::ARM::MobileEngagement
       # which data is exported.
       attr_accessor :start_date
 
-      # @return [Date] The RFC3339 full-date of the end of the period for
-      # which data is exported.
+      # @return [Date] The RFC3339 full-date of the end of the period for which
+      # data is exported.
       attr_accessor :end_date
 
-      # @return [ExportFormat] The format of the exported data. Possible
-      # values include: 'JsonBlob', 'CsvBlob'
+      # @return [ExportFormat] The format of the exported data. Possible values
+      # include: 'JsonBlob', 'CsvBlob'
       attr_accessor :export_format
 
 

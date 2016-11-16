@@ -22,8 +22,8 @@ module Azure::ARM::Network
       attr_accessor :circuit_provisioning_state
 
       # @return [ServiceProviderProvisioningState] The
-      # ServiceProviderProvisioningState state of the resource. Possible
-      # values are 'NotProvisioned', 'Provisioning', 'Provisioned', and
+      # ServiceProviderProvisioningState state of the resource. Possible values
+      # are 'NotProvisioned', 'Provisioning', 'Provisioned', and
       # 'Deprovisioning'. Possible values include: 'NotProvisioned',
       # 'Provisioning', 'Provisioned', 'Deprovisioning'
       attr_accessor :service_provider_provisioning_state
@@ -45,8 +45,8 @@ module Azure::ARM::Network
       # ServiceProviderProperties.
       attr_accessor :service_provider_properties
 
-      # @return [String] Gets the provisioning state of the public IP
-      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+      # @return [String] Gets the provisioning state of the public IP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] The GatewayManager Etag.

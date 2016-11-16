@@ -20,9 +20,9 @@ module Azure::ARM::Web
       # reverted to its state at SnapshotTime
       attr_accessor :recover_config
 
-      # @return [String] [Optional] Destination web app name into which web
-      # app should be recovered. This is case when new web app should be
-      # created instead.
+      # @return [String] [Optional] Destination web app name into which web app
+      # should be recovered. This is case when new web app should be created
+      # instead.
       attr_accessor :site_name
 
       # @return [String] [Optional] Destination web app slot name into which

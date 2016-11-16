@@ -7,6 +7,7 @@ module Azure::ARM::Network
   module Models
     #
     # Model object.
+    # 
     #
     class BgpSettings
 
@@ -15,8 +16,8 @@ module Azure::ARM::Network
       # @return [Integer] The BGP speaker's ASN.
       attr_accessor :asn
 
-      # @return [String] The BGP peering address and BGP identifier of this
-      # BGP speaker.
+      # @return [String] The BGP peering address and BGP identifier of this BGP
+      # speaker.
       attr_accessor :bgp_peering_address
 
       # @return [Integer] The weight added to routes learned from this BGP

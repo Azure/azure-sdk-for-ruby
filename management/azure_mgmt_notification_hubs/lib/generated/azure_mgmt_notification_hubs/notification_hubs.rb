@@ -433,8 +433,8 @@ module Azure::ARM::NotificationHubs
     # @param namespace_name [String] The namespace name.
     # @param notification_hub_name [String] The notification hub name.
     # @param authorization_rule_name [String] Authorization Rule Name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
-    # The shared access authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -452,8 +452,8 @@ module Azure::ARM::NotificationHubs
     # @param namespace_name [String] The namespace name.
     # @param notification_hub_name [String] The notification hub name.
     # @param authorization_rule_name [String] Authorization Rule Name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
-    # The shared access authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -470,8 +470,8 @@ module Azure::ARM::NotificationHubs
     # @param namespace_name [String] The namespace name.
     # @param notification_hub_name [String] The notification hub name.
     # @param authorization_rule_name [String] Authorization Rule Name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
-    # The shared access authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1235,8 +1235,8 @@ module Azure::ARM::NotificationHubs
     #
     # Lists the notification hubs associated with a namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1250,8 +1250,8 @@ module Azure::ARM::NotificationHubs
     #
     # Lists the notification hubs associated with a namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1264,8 +1264,8 @@ module Azure::ARM::NotificationHubs
     #
     # Lists the notification hubs associated with a namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1322,8 +1322,8 @@ module Azure::ARM::NotificationHubs
     #
     # Gets the authorization rules for a NotificationHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1337,8 +1337,8 @@ module Azure::ARM::NotificationHubs
     #
     # Gets the authorization rules for a NotificationHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1351,8 +1351,8 @@ module Azure::ARM::NotificationHubs
     #
     # Gets the authorization rules for a NotificationHub.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1414,8 +1414,8 @@ module Azure::ARM::NotificationHubs
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [NotificationHubListResult] which provide lazy access to pages of
-    # the response.
+    # @return [NotificationHubListResult] which provide lazy access to pages of the
+    # response.
     #
     def list_as_lazy(resource_group_name, namespace_name, custom_headers = nil)
       response = list_async(resource_group_name, namespace_name, custom_headers).value!

@@ -24,8 +24,8 @@ module Azure::ARM::Resources
       # @return Key/value pairs that represent deploymentoutput.
       attr_accessor :outputs
 
-      # @return [Array<Provider>] The list of resource providers needed for
-      # the deployment.
+      # @return [Array<Provider>] The list of resource providers needed for the
+      # deployment.
       attr_accessor :providers
 
       # @return [Array<Dependency>] The list of deployment dependencies.

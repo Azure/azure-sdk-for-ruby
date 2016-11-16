@@ -6,8 +6,8 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # an array of strings representing the different values that can be tabbed
-    # thru
+    # An array of strings representing the different values that can be
+    # selected through.
     #
     class PowerShellTabCompletionResults
 

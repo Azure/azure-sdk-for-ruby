@@ -189,8 +189,8 @@ module Azure::ARM::Insights
     # Create or update the log profile.
     #
     # @param log_profile_name [String] The name of the log profile.
-    # @param parameters [LogProfileCreateOrUpdateParameters] Parameters supplied
-    # to the operation.
+    # @param parameters [LogProfileCreateOrUpdateParameters] Parameters supplied to
+    # the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -205,8 +205,8 @@ module Azure::ARM::Insights
     # Create or update the log profile.
     #
     # @param log_profile_name [String] The name of the log profile.
-    # @param parameters [LogProfileCreateOrUpdateParameters] Parameters supplied
-    # to the operation.
+    # @param parameters [LogProfileCreateOrUpdateParameters] Parameters supplied to
+    # the operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -220,8 +220,8 @@ module Azure::ARM::Insights
     # Create or update the log profile.
     #
     # @param log_profile_name [String] The name of the log profile.
-    # @param parameters [LogProfileCreateOrUpdateParameters] Parameters supplied
-    # to the operation.
+    # @param parameters [LogProfileCreateOrUpdateParameters] Parameters supplied to
+    # the operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

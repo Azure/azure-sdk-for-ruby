@@ -6,7 +6,7 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # Error message
+    # Error message.
     #
     class Error
 

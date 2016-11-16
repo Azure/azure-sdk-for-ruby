@@ -17,9 +17,9 @@ module Azure::ARM::Network
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] The subscription credentials which uniquely identify
-    # the Microsoft Azure subscription. The subscription ID forms part of the
-    # URI for every service call.
+    # @return [String] The subscription credentials which uniquely identify the
+    # Microsoft Azure subscription. The subscription ID forms part of the URI
+    # for every service call.
     attr_accessor :subscription_id
 
     # @return [String] Client API version.
@@ -132,6 +132,7 @@ module Azure::ARM::Network
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
+      add_telemetry
     end
 
     #
@@ -282,5 +283,17 @@ module Azure::ARM::Network
       promise.execute
     end
 
+
+    private
+    #
+    # Adds telemetry information.
+    #
+    def add_telemetry
+        sdk_information = 'azure_mgmt_network'
+        if defined? Azure::ARM::Network::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::Network::VERSION}" 
+        end
+        add_user_agent_information(sdk_information)
+    end
   end
 end

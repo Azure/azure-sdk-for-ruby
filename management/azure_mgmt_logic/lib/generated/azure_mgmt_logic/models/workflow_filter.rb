@@ -7,14 +7,15 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class WorkflowFilter
 
       include MsRestAzure
 
       # @return [WorkflowState] The state of workflows. Possible values
-      # include: 'NotSpecified', 'Completed', 'Enabled', 'Disabled',
-      # 'Deleted', 'Suspended'
+      # include: 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted',
+      # 'Suspended'
       attr_accessor :state
 
 

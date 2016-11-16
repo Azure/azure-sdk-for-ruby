@@ -12,8 +12,8 @@ module Azure::ARM::Network
 
       include MsRestAzure
 
-      # @return [Array<VirtualNetwork>] Gets a list of VirtualNetwork
-      # resources in a resource group.
+      # @return [Array<VirtualNetwork>] Gets a list of VirtualNetwork resources
+      # in a resource group.
       attr_accessor :value
 
       # @return [String] The URL to get the next set of results.

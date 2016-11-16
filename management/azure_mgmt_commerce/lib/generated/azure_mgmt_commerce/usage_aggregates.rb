@@ -31,11 +31,11 @@ module Azure::ARM::Commerce
     # data for.
     # @param show_details [Boolean] When set to true (default), the aggregates are
     # broken down into the instance metadata which is more granular.
-    # @param aggregation_granularity [AggregationGranularity] Value is either
-    # daily (default) or hourly to tell the API how to return the results grouped
-    # by day or hour. Possible values include: 'Daily', 'Hourly'
-    # @param continuation_token [String] Retrieved from previous calls, this is
-    # the bookmark used for progress when the responses are paged.
+    # @param aggregation_granularity [AggregationGranularity] Value is either daily
+    # (default) or hourly to tell the API how to return the results grouped by day
+    # or hour. Possible values include: 'Daily', 'Hourly'
+    # @param continuation_token [String] Retrieved from previous calls, this is the
+    # bookmark used for progress when the responses are paged.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -55,11 +55,11 @@ module Azure::ARM::Commerce
     # data for.
     # @param show_details [Boolean] When set to true (default), the aggregates are
     # broken down into the instance metadata which is more granular.
-    # @param aggregation_granularity [AggregationGranularity] Value is either
-    # daily (default) or hourly to tell the API how to return the results grouped
-    # by day or hour. Possible values include: 'Daily', 'Hourly'
-    # @param continuation_token [String] Retrieved from previous calls, this is
-    # the bookmark used for progress when the responses are paged.
+    # @param aggregation_granularity [AggregationGranularity] Value is either daily
+    # (default) or hourly to tell the API how to return the results grouped by day
+    # or hour. Possible values include: 'Daily', 'Hourly'
+    # @param continuation_token [String] Retrieved from previous calls, this is the
+    # bookmark used for progress when the responses are paged.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -78,11 +78,11 @@ module Azure::ARM::Commerce
     # data for.
     # @param show_details [Boolean] When set to true (default), the aggregates are
     # broken down into the instance metadata which is more granular.
-    # @param aggregation_granularity [AggregationGranularity] Value is either
-    # daily (default) or hourly to tell the API how to return the results grouped
-    # by day or hour. Possible values include: 'Daily', 'Hourly'
-    # @param continuation_token [String] Retrieved from previous calls, this is
-    # the bookmark used for progress when the responses are paged.
+    # @param aggregation_granularity [AggregationGranularity] Value is either daily
+    # (default) or hourly to tell the API how to return the results grouped by day
+    # or hour. Possible values include: 'Daily', 'Hourly'
+    # @param continuation_token [String] Retrieved from previous calls, this is the
+    # bookmark used for progress when the responses are paged.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -143,8 +143,8 @@ module Azure::ARM::Commerce
     #
     # Query aggregated Azure subscription consumption data for a date range.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -158,8 +158,8 @@ module Azure::ARM::Commerce
     #
     # Query aggregated Azure subscription consumption data for a date range.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -172,8 +172,8 @@ module Azure::ARM::Commerce
     #
     # Query aggregated Azure subscription consumption data for a date range.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -236,11 +236,11 @@ module Azure::ARM::Commerce
     # data for.
     # @param show_details [Boolean] When set to true (default), the aggregates are
     # broken down into the instance metadata which is more granular.
-    # @param aggregation_granularity [AggregationGranularity] Value is either
-    # daily (default) or hourly to tell the API how to return the results grouped
-    # by day or hour. Possible values include: 'Daily', 'Hourly'
-    # @param continuation_token [String] Retrieved from previous calls, this is
-    # the bookmark used for progress when the responses are paged.
+    # @param aggregation_granularity [AggregationGranularity] Value is either daily
+    # (default) or hourly to tell the API how to return the results grouped by day
+    # or hour. Possible values include: 'Daily', 'Hourly'
+    # @param continuation_token [String] Retrieved from previous calls, this is the
+    # bookmark used for progress when the responses are paged.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

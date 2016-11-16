@@ -17,8 +17,8 @@ module Azure::ARM::Network
 
       # @return [NetworkInterfaceIPConfiguration] A reference to a private IP
       # address defined on a network interface of a VM. Traffic sent to the
-      # frontend port of each of the frontend IP configurations is forwarded
-      # to the backed IP.
+      # frontend port of each of the frontend IP configurations is forwarded to
+      # the backed IP.
       attr_accessor :backend_ipconfiguration
 
       # @return [TransportProtocol] The transport protocol for the endpoint.
@@ -47,8 +47,8 @@ module Azure::ARM::Network
       # changed after you create the endpoint.
       attr_accessor :enable_floating_ip
 
-      # @return [String] Gets the provisioning state of the public IP
-      # resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+      # @return [String] Gets the provisioning state of the public IP resource.
+      # Possible values are: 'Updating', 'Deleting', and 'Failed'.
       attr_accessor :provisioning_state
 
       # @return [String] Gets name of the resource that is unique within a

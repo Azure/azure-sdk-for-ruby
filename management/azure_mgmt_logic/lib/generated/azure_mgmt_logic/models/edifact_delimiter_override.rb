@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class EdifactDelimiterOverride
 
@@ -37,8 +38,8 @@ module Azure::ARM::Logic
       # Possible values include: 'NotSpecified', 'None', 'CR', 'LF', 'CRLF'
       attr_accessor :segment_terminator_suffix
 
-      # @return [EdifactDecimalIndicator] The decimal point indicator.
-      # Possible values include: 'NotSpecified', 'Comma', 'Decimal'
+      # @return [EdifactDecimalIndicator] The decimal point indicator. Possible
+      # values include: 'NotSpecified', 'Comma', 'Decimal'
       attr_accessor :decimal_point_indicator
 
       # @return [Integer] The release indicator.

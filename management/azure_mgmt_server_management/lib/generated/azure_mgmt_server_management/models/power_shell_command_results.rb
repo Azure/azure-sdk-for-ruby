@@ -6,7 +6,7 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # a collection of results from a powershell command
+    # A collection of results from a PowerShell command.
     #
     class PowerShellCommandResults
 

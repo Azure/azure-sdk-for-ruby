@@ -7,6 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class X12EnvelopeSettings
 
@@ -15,8 +16,8 @@ module Azure::ARM::Logic
       # @return [Integer] The controls standards id.
       attr_accessor :control_standards_id
 
-      # @return [Boolean] The value indicating whether to use control
-      # standards id as repetition character.
+      # @return [Boolean] The value indicating whether to use control standards
+      # id as repetition character.
       attr_accessor :use_control_standards_id_as_repetition_character
 
       # @return [String] The sender application id.

@@ -3,52 +3,42 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DataLakeAnalytics
+module Azure::ARM::DataLakeStore
   module Models
     #
-    # Azure Storage blob container information.
+    # Data Lake Store firewall rule information
     #
-    class BlobContainer
+    class TrustedIdProvider < MsRestAzure::SubResource
 
       include MsRestAzure
 
-      # @return [String] the name of the blob container.
-      attr_accessor :name
-
-      # @return [String] the unique identifier of the blob container.
-      attr_accessor :id
-
-      # @return [String] the type of the blob container.
-      attr_accessor :type
-
-      # @return [BlobContainerProperties] the properties of the blob container.
-      attr_accessor :properties
+      # @return [String] The URL of this trusted identity provider
+      attr_accessor :id_provider
 
 
       #
-      # Mapper for BlobContainer class as Ruby Hash.
+      # Mapper for TrustedIdProvider class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'BlobContainer',
+          serialized_name: 'TrustedIdProvider',
           type: {
             name: 'Composite',
-            class_name: 'BlobContainer',
+            class_name: 'TrustedIdProvider',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
               id: {
                 required: false,
                 read_only: true,
                 serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: false,
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
@@ -61,13 +51,11 @@ module Azure::ARM::DataLakeAnalytics
                   name: 'String'
                 }
               },
-              properties: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties',
+              id_provider: {
+                required: true,
+                serialized_name: 'properties.idProvider',
                 type: {
-                  name: 'Composite',
-                  class_name: 'BlobContainerProperties'
+                  name: 'String'
                 }
               }
             }

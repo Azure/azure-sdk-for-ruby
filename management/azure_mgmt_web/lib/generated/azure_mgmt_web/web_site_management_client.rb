@@ -80,6 +80,7 @@ module Azure::ARM::Web
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
+      add_telemetry
     end
 
     #
@@ -1245,8 +1246,8 @@ module Azure::ARM::Web
     #
     # Gets the source controls available for Azure websites
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1262,8 +1263,8 @@ module Azure::ARM::Web
     #
     # Gets the source controls available for Azure websites
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1278,8 +1279,8 @@ module Azure::ARM::Web
     #
     # Gets the source controls available for Azure websites
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1338,8 +1339,8 @@ module Azure::ARM::Web
     #
     # Gets list of available geo regions
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1355,8 +1356,8 @@ module Azure::ARM::Web
     #
     # Gets list of available geo regions
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1371,8 +1372,8 @@ module Azure::ARM::Web
     #
     # Gets list of available geo regions
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1595,5 +1596,17 @@ module Azure::ARM::Web
       promise.execute
     end
 
+
+    private
+    #
+    # Adds telemetry information.
+    #
+    def add_telemetry
+        sdk_information = 'azure_mgmt_web'
+        if defined? Azure::ARM::Web::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::Web::VERSION}" 
+        end
+        add_user_agent_information(sdk_information)
+    end
   end
 end

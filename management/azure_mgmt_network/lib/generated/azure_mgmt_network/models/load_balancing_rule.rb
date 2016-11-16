@@ -15,8 +15,8 @@ module Azure::ARM::Network
       # @return [SubResource] A reference to frontend IP addresses.
       attr_accessor :frontend_ipconfiguration
 
-      # @return [SubResource] A reference to a pool of DIPs. Inbound traffic
-      # is randomly load balanced across IPs in the backend IPs.
+      # @return [SubResource] A reference to a pool of DIPs. Inbound traffic is
+      # randomly load balanced across IPs in the backend IPs.
       attr_accessor :backend_address_pool
 
       # @return [SubResource] The reference of the load balancer probe used by
@@ -24,8 +24,8 @@ module Azure::ARM::Network
       attr_accessor :probe
 
       # @return [TransportProtocol] The transport protocol for the external
-      # endpoint. Possible values are 'Udp' or 'Tcp'. Possible values
-      # include: 'Udp', 'Tcp'
+      # endpoint. Possible values are 'Udp' or 'Tcp'. Possible values include:
+      # 'Udp', 'Tcp'
       attr_accessor :protocol
 
       # @return [LoadDistribution] The load distribution policy for this rule.

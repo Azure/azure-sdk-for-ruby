@@ -6,12 +6,11 @@
 module Azure::ARM::DataLakeStore
   module Models
     #
-    # Defines values for OperationStatus
+    # Defines values for TrustedIdProviderState
     #
-    module OperationStatus
-      InProgress = "InProgress"
-      Succeeded = "Succeeded"
-      Failed = "Failed"
+    module TrustedIdProviderState
+      Enabled = "Enabled"
+      Disabled = "Disabled"
     end
   end
 end

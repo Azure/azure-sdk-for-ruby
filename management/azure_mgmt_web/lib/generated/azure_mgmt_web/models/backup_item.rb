@@ -26,9 +26,8 @@ module Azure::ARM::Web
       attr_accessor :backup_item_name
 
       # @return [BackupItemStatus] Backup status. Possible values include:
-      # 'InProgress', 'Failed', 'Succeeded', 'TimedOut', 'Created',
-      # 'Skipped', 'PartiallySucceeded', 'DeleteInProgress', 'DeleteFailed',
-      # 'Deleted'
+      # 'InProgress', 'Failed', 'Succeeded', 'TimedOut', 'Created', 'Skipped',
+      # 'PartiallySucceeded', 'DeleteInProgress', 'DeleteFailed', 'Deleted'
       attr_accessor :status
 
       # @return [Integer] Size of the backup in bytes

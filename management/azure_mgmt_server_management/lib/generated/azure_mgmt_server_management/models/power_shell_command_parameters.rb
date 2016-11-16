@@ -6,13 +6,13 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # the parameters to a powershell script execution command
+    # The parameters to a PowerShell script execution command.
     #
     class PowerShellCommandParameters
 
       include MsRestAzure
 
-      # @return [String] Script to execute
+      # @return [String] Script to execute.
       attr_accessor :command
 
 

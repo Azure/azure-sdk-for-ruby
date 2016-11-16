@@ -125,8 +125,8 @@ module Azure::ARM::Resources
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param deployment_name [String] The name of the deployment with the
-    # operation to get.
+    # @param deployment_name [String] The name of the deployment with the operation
+    # to get.
     # @param top [Integer] The number of results to return.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -143,8 +143,8 @@ module Azure::ARM::Resources
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param deployment_name [String] The name of the deployment with the
-    # operation to get.
+    # @param deployment_name [String] The name of the deployment with the operation
+    # to get.
     # @param top [Integer] The number of results to return.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -160,8 +160,8 @@ module Azure::ARM::Resources
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param deployment_name [String] The name of the deployment with the
-    # operation to get.
+    # @param deployment_name [String] The name of the deployment with the operation
+    # to get.
     # @param top [Integer] The number of results to return.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -223,8 +223,8 @@ module Azure::ARM::Resources
     #
     # Gets all deployments operations for a deployment.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -238,8 +238,8 @@ module Azure::ARM::Resources
     #
     # Gets all deployments operations for a deployment.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -252,8 +252,8 @@ module Azure::ARM::Resources
     #
     # Gets all deployments operations for a deployment.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -312,8 +312,8 @@ module Azure::ARM::Resources
     #
     # @param resource_group_name [String] The name of the resource group. The name
     # is case insensitive.
-    # @param deployment_name [String] The name of the deployment with the
-    # operation to get.
+    # @param deployment_name [String] The name of the deployment with the operation
+    # to get.
     # @param top [Integer] The number of results to return.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.

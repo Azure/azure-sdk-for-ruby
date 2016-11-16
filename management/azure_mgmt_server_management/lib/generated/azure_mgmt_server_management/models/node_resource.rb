@@ -6,20 +6,20 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # A Node Resource
+    # A Node Resource.
     #
     class NodeResource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Id of the gateway
+      # @return [String] ID of the gateway.
       attr_accessor :gateway_id
 
       # @return [String] myhost.domain.com
       attr_accessor :connection_name
 
       # @return [DateTime] UTC date and time when node was first added to
-      # management service
+      # management service.
       attr_accessor :created
 
       # @return [DateTime] UTC date and time when node was last updated.

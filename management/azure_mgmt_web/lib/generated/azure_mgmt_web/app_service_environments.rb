@@ -404,11 +404,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
@@ -423,11 +423,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
@@ -441,11 +441,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
@@ -945,10 +945,9 @@ module Azure::ARM::Web
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -968,10 +967,9 @@ module Azure::ARM::Web
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -990,10 +988,9 @@ module Azure::ARM::Web
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1605,10 +1602,9 @@ module Azure::ARM::Web
     # @param time_grain [String] Time granularity of metrics query
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1633,10 +1629,9 @@ module Azure::ARM::Web
     # @param time_grain [String] Time granularity of metrics query
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1660,10 +1655,9 @@ module Azure::ARM::Web
     # @param time_grain [String] Time granularity of metrics query
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2375,8 +2369,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param properties_to_include [String] Comma separated list of site
-    # properties to include
+    # @param properties_to_include [String] Comma separated list of site properties
+    # to include
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2394,8 +2388,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param properties_to_include [String] Comma separated list of site
-    # properties to include
+    # @param properties_to_include [String] Comma separated list of site properties
+    # to include
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2412,8 +2406,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param properties_to_include [String] Comma separated list of site
-    # properties to include
+    # @param properties_to_include [String] Comma separated list of site properties
+    # to include
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2546,10 +2540,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2568,10 +2561,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2589,10 +2581,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3010,10 +3001,9 @@ module Azure::ARM::Web
     # @param instance [String] Name of instance in the worker pool
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3037,10 +3027,9 @@ module Azure::ARM::Web
     # @param instance [String] Name of instance in the worker pool
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3063,10 +3052,9 @@ module Azure::ARM::Web
     # @param instance [String] Name of instance in the worker pool
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3235,10 +3223,9 @@ module Azure::ARM::Web
     # @param worker_pool_name [String] Name of worker pool
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3261,10 +3248,9 @@ module Azure::ARM::Web
     # @param worker_pool_name [String] Name of worker pool
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3286,10 +3272,9 @@ module Azure::ARM::Web
     # @param worker_pool_name [String] Name of worker pool
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4235,8 +4220,8 @@ module Azure::ARM::Web
     #
     # Gets all hostingEnvironments (App Service Environment) for a subscription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4252,8 +4237,8 @@ module Azure::ARM::Web
     #
     # Gets all hostingEnvironments (App Service Environment) for a subscription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4268,8 +4253,8 @@ module Azure::ARM::Web
     #
     # Gets all hostingEnvironments (App Service Environment) for a subscription
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4328,8 +4313,8 @@ module Azure::ARM::Web
     #
     # Get all hostingEnvironments (App Service Environments) in a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4345,8 +4330,8 @@ module Azure::ARM::Web
     #
     # Get all hostingEnvironments (App Service Environments) in a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4361,8 +4346,8 @@ module Azure::ARM::Web
     #
     # Get all hostingEnvironments (App Service Environments) in a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4417,14 +4402,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4436,14 +4421,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4454,14 +4439,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4520,8 +4505,8 @@ module Azure::ARM::Web
     #
     # Get global metrics of AppServiceEnvironment (App Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4537,8 +4522,8 @@ module Azure::ARM::Web
     #
     # Get global metrics of AppServiceEnvironment (App Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4553,8 +4538,8 @@ module Azure::ARM::Web
     #
     # Get global metrics of AppServiceEnvironment (App Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4613,8 +4598,8 @@ module Azure::ARM::Web
     #
     # Get all multi role pools
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4630,8 +4615,8 @@ module Azure::ARM::Web
     #
     # Get all multi role pools
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4646,8 +4631,8 @@ module Azure::ARM::Web
     #
     # Get all multi role pools
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4708,8 +4693,8 @@ module Azure::ARM::Web
     # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
     # Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4727,8 +4712,8 @@ module Azure::ARM::Web
     # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
     # Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4745,8 +4730,8 @@ module Azure::ARM::Web
     # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
     # Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4807,8 +4792,8 @@ module Azure::ARM::Web
     # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4826,8 +4811,8 @@ module Azure::ARM::Web
     # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4844,8 +4829,8 @@ module Azure::ARM::Web
     # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4904,8 +4889,8 @@ module Azure::ARM::Web
     #
     # Get available skus for scaling a multiRole pool.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4921,8 +4906,8 @@ module Azure::ARM::Web
     #
     # Get available skus for scaling a multiRole pool.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4937,8 +4922,8 @@ module Azure::ARM::Web
     #
     # Get available skus for scaling a multiRole pool.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4999,8 +4984,8 @@ module Azure::ARM::Web
     # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5018,8 +5003,8 @@ module Azure::ARM::Web
     # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5036,8 +5021,8 @@ module Azure::ARM::Web
     # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5096,8 +5081,8 @@ module Azure::ARM::Web
     #
     # Resumes the AppServiceEnvironment.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5109,8 +5094,8 @@ module Azure::ARM::Web
     end
 
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5142,8 +5127,8 @@ module Azure::ARM::Web
     # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
     # Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5161,8 +5146,8 @@ module Azure::ARM::Web
     # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
     # Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5179,8 +5164,8 @@ module Azure::ARM::Web
     # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
     # Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5239,8 +5224,8 @@ module Azure::ARM::Web
     #
     # Get all sites on the AppServiceEnvironment (App Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5256,8 +5241,8 @@ module Azure::ARM::Web
     #
     # Get all sites on the AppServiceEnvironment (App Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5272,8 +5257,8 @@ module Azure::ARM::Web
     #
     # Get all sites on the AppServiceEnvironment (App Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5332,8 +5317,8 @@ module Azure::ARM::Web
     #
     # Suspends the AppServiceEnvironment.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5345,8 +5330,8 @@ module Azure::ARM::Web
     end
 
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5376,8 +5361,8 @@ module Azure::ARM::Web
     #
     # Get global usages of AppServiceEnvironment (App Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5393,8 +5378,8 @@ module Azure::ARM::Web
     #
     # Get global usages of AppServiceEnvironment (App Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5409,8 +5394,8 @@ module Azure::ARM::Web
     #
     # Get global usages of AppServiceEnvironment (App Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5469,8 +5454,8 @@ module Azure::ARM::Web
     #
     # Get all worker pools
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5486,8 +5471,8 @@ module Azure::ARM::Web
     #
     # Get all worker pools
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5502,8 +5487,8 @@ module Azure::ARM::Web
     #
     # Get all worker pools
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5564,8 +5549,8 @@ module Azure::ARM::Web
     # Get metric definitions for a worker pool of a AppServiceEnvironment (App
     # Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5583,8 +5568,8 @@ module Azure::ARM::Web
     # Get metric definitions for a worker pool of a AppServiceEnvironment (App
     # Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5601,8 +5586,8 @@ module Azure::ARM::Web
     # Get metric definitions for a worker pool of a AppServiceEnvironment (App
     # Service Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5663,8 +5648,8 @@ module Azure::ARM::Web
     # Get metrics for a worker pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5682,8 +5667,8 @@ module Azure::ARM::Web
     # Get metrics for a worker pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5700,8 +5685,8 @@ module Azure::ARM::Web
     # Get metrics for a worker pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5760,8 +5745,8 @@ module Azure::ARM::Web
     #
     # Get available skus for scaling a worker pool.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5777,8 +5762,8 @@ module Azure::ARM::Web
     #
     # Get available skus for scaling a worker pool.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5793,8 +5778,8 @@ module Azure::ARM::Web
     #
     # Get available skus for scaling a worker pool.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5855,8 +5840,8 @@ module Azure::ARM::Web
     # Get usages for a worker pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5874,8 +5859,8 @@ module Azure::ARM::Web
     # Get usages for a worker pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5892,8 +5877,8 @@ module Azure::ARM::Web
     # Get usages for a worker pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5952,8 +5937,8 @@ module Azure::ARM::Web
     #
     # Resumes the AppServiceEnvironment.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5969,8 +5954,8 @@ module Azure::ARM::Web
     #
     # Resumes the AppServiceEnvironment.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5985,8 +5970,8 @@ module Azure::ARM::Web
     #
     # Resumes the AppServiceEnvironment.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -6055,8 +6040,8 @@ module Azure::ARM::Web
     #
     # Suspends the AppServiceEnvironment.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6072,8 +6057,8 @@ module Azure::ARM::Web
     #
     # Suspends the AppServiceEnvironment.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6088,8 +6073,8 @@ module Azure::ARM::Web
     #
     # Suspends the AppServiceEnvironment.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -6199,11 +6184,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment
-    # (App Service Environment).
+    # Get used, available, and total worker capacity for AppServiceEnvironment (App
+    # Service Environment).
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
@@ -6233,10 +6218,9 @@ module Azure::ARM::Web
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6318,10 +6302,9 @@ module Azure::ARM::Web
     # @param time_grain [String] Time granularity of metrics query
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6421,8 +6404,8 @@ module Azure::ARM::Web
     #
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param properties_to_include [String] Comma separated list of site
-    # properties to include
+    # @param properties_to_include [String] Comma separated list of site properties
+    # to include
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6448,10 +6431,9 @@ module Azure::ARM::Web
     # @param resource_group_name [String] Name of resource group
     # @param name [String] Name of AppServiceEnvironment (App Service Environment)
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6532,10 +6514,9 @@ module Azure::ARM::Web
     # @param worker_pool_name [String] Name of worker pool
     # @param details [Boolean] Include instance details
     # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1'
-    # or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-    # endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
-    # duration'[Hour|Minute|Day]'.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

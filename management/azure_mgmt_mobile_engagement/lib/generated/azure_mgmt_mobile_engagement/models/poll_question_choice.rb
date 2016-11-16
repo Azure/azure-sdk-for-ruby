@@ -7,6 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
+    # 
     #
     class PollQuestionChoice < PollQuestionChoiceLocalization
 
@@ -17,9 +18,10 @@ module Azure::ARM::MobileEngagement
 
       # @return [Hash{String => PollQuestionChoiceLocalization}] Poll choices
       # can be localized using an optional JSON object. The JSON key is a
-      # two-character language code as specified by the ISO 639-1 standard.
-      # The corresponding value is an object containing the localizable
-      # property title.
+      # two-character language code as specified by the ISO 639-1 standard. The
+      # corresponding value is an object containing the localizable property
+      # title.
+      # 
       attr_accessor :localization
 
       # @return [Boolean] A flag indicating if this choice is the default

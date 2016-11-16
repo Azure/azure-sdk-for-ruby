@@ -15,14 +15,14 @@ module Azure::ARM::Web
       # @return [String] Name of the hostname
       attr_accessor :name
 
-      # @return [Array<String>] List of sites the hostname is assigned to.
-      # This list will have more than one site only if the hostname is
-      # pointing to a Traffic Manager
+      # @return [Array<String>] List of sites the hostname is assigned to. This
+      # list will have more than one site only if the hostname is pointing to a
+      # Traffic Manager
       attr_accessor :site_names
 
       # @return [String] Name of the Azure resource the hostname is assigned
-      # to. If it is assigned to a traffic manager then it will be the
-      # traffic manager name otherwise it will be the website name
+      # to. If it is assigned to a traffic manager then it will be the traffic
+      # manager name otherwise it will be the website name
       attr_accessor :azure_resource_name
 
       # @return [AzureResourceType] Type of the Azure resource the hostname is

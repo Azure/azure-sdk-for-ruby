@@ -12,9 +12,8 @@ module Azure::ARM::DataLakeAnalytics
 
       include MsRestAzure
 
-      # @return [DataLakeStoreAccountInfoProperties] the properties for the
-      # Data Lake Store account being added.
-      attr_accessor :properties
+      # @return [String] the optional suffix for the Data Lake Store account.
+      attr_accessor :suffix
 
 
       #
@@ -29,12 +28,11 @@ module Azure::ARM::DataLakeAnalytics
             name: 'Composite',
             class_name: 'AddDataLakeStoreParameters',
             model_properties: {
-              properties: {
-                required: true,
-                serialized_name: 'properties',
+              suffix: {
+                required: false,
+                serialized_name: 'properties.suffix',
                 type: {
-                  name: 'Composite',
-                  class_name: 'DataLakeStoreAccountInfoProperties'
+                  name: 'String'
                 }
               }
             }

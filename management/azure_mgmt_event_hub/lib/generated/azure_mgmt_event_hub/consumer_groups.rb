@@ -23,15 +23,15 @@ module Azure::ARM::EventHub
     attr_reader :client
 
     #
-    # Creates or updates an Event Hubs consumer group as a nested resource within
-    # a namespace.
+    # Creates or updates an Event Hubs consumer group as a nested resource within a
+    # namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param event_hub_name [String] The Event Hub name.
     # @param consumer_group_name [String] The consumer group name.
-    # @param parameters [ConsumerGroupCreateOrUpdateParameters] Parameters
-    # supplied to create a consumer group resource.
+    # @param parameters [ConsumerGroupCreateOrUpdateParameters] Parameters supplied
+    # to create a consumer group resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -43,15 +43,15 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates or updates an Event Hubs consumer group as a nested resource within
-    # a namespace.
+    # Creates or updates an Event Hubs consumer group as a nested resource within a
+    # namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param event_hub_name [String] The Event Hub name.
     # @param consumer_group_name [String] The consumer group name.
-    # @param parameters [ConsumerGroupCreateOrUpdateParameters] Parameters
-    # supplied to create a consumer group resource.
+    # @param parameters [ConsumerGroupCreateOrUpdateParameters] Parameters supplied
+    # to create a consumer group resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -62,15 +62,15 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Creates or updates an Event Hubs consumer group as a nested resource within
-    # a namespace.
+    # Creates or updates an Event Hubs consumer group as a nested resource within a
+    # namespace.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
     # @param event_hub_name [String] The Event Hub name.
     # @param consumer_group_name [String] The consumer group name.
-    # @param parameters [ConsumerGroupCreateOrUpdateParameters] Parameters
-    # supplied to create a consumer group resource.
+    # @param parameters [ConsumerGroupCreateOrUpdateParameters] Parameters supplied
+    # to create a consumer group resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -429,8 +429,8 @@ module Azure::ARM::EventHub
     # Gets all the consumer groups in a namespace. An empty feed is returned if no
     # consumer group exists in the namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -445,8 +445,8 @@ module Azure::ARM::EventHub
     # Gets all the consumer groups in a namespace. An empty feed is returned if no
     # consumer group exists in the namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -460,8 +460,8 @@ module Azure::ARM::EventHub
     # Gets all the consumer groups in a namespace. An empty feed is returned if no
     # consumer group exists in the namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

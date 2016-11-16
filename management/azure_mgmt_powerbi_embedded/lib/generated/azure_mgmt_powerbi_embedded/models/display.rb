@@ -7,6 +7,7 @@ module Azure::ARM::PowerBiEmbedded
   module Models
     #
     # Model object.
+    # 
     #
     class Display
 
@@ -24,20 +25,20 @@ module Azure::ARM::PowerBiEmbedded
       # examples, refer to the “name” section.
       attr_accessor :resource
 
-      # @return [String] The localized friendly name for the operation as
-      # shown to the user. This name should be concise (to fit in drop
-      # downs), but clear (self-documenting). Use Title Casing and include
-      # the entity/resource to which it applies.
+      # @return [String] The localized friendly name for the operation as shown
+      # to the user. This name should be concise (to fit in drop downs), but
+      # clear (self-documenting). Use Title Casing and include the
+      # entity/resource to which it applies.
       attr_accessor :operation
 
       # @return [String] The localized friendly description for the operation
-      # as shown to the user. This description should be thorough, yet
-      # concise. It will be used in tool-tips and detailed views.
+      # as shown to the user. This description should be thorough, yet concise.
+      # It will be used in tool-tips and detailed views.
       attr_accessor :description
 
       # @return [String] The intended executor of the operation; governs the
-      # display of the operation in the RBAC UX and the audit logs UX.
-      # Default value is 'user,system'
+      # display of the operation in the RBAC UX and the audit logs UX. Default
+      # value is 'user,system'
       attr_accessor :origin
 
 

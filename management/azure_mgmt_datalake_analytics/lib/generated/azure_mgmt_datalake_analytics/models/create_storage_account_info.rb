@@ -6,42 +6,54 @@
 module Azure::ARM::DataLakeAnalytics
   module Models
     #
-    # Azure Storage account properties information.
+    # Azure Storage account information to add to the Data Lake analytics
+    # account being created.
     #
-    class StorageAccountProperties
+    class CreateStorageAccountInfo
 
       include MsRestAzure
+
+      # @return [String] the account name associated with the Azure storage
+      # account to add to the Data Lake analytics account being created.
+      attr_accessor :name
 
       # @return [String] the access key associated with this Azure Storage
       # account that will be used to connect to it.
       attr_accessor :access_key
 
-      # @return [String] the optional suffix for the Data Lake account.
+      # @return [String] the optional suffix for the storage account.
       attr_accessor :suffix
 
 
       #
-      # Mapper for StorageAccountProperties class as Ruby Hash.
+      # Mapper for CreateStorageAccountInfo class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'StorageAccountProperties',
+          serialized_name: 'CreateStorageAccountInfo',
           type: {
             name: 'Composite',
-            class_name: 'StorageAccountProperties',
+            class_name: 'CreateStorageAccountInfo',
             model_properties: {
+              name: {
+                required: true,
+                serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
               access_key: {
                 required: true,
-                serialized_name: 'accessKey',
+                serialized_name: 'properties.accessKey',
                 type: {
                   name: 'String'
                 }
               },
               suffix: {
                 required: false,
-                serialized_name: 'suffix',
+                serialized_name: 'properties.suffix',
                 type: {
                   name: 'String'
                 }

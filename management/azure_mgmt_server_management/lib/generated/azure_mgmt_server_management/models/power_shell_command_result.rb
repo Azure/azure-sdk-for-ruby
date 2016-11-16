@@ -6,44 +6,44 @@
 module Azure::ARM::ServerManagement
   module Models
     #
-    # results from invoking a powershell command
+    # Results from invoking a PowerShell command.
     #
     class PowerShellCommandResult
 
       include MsRestAzure
 
-      # @return [Integer] the type of message
+      # @return [Integer] The type of message.
       attr_accessor :message_type
 
-      # @return [String] the HTML color string representing the foreground
+      # @return [String] The HTML color string representing the foreground
       # color.
       attr_accessor :foreground_color
 
-      # @return [String] the HTML color string representing the background
+      # @return [String] The HTML color string representing the background
       # color.
       attr_accessor :background_color
 
-      # @return [String] actual result text from the PowerShell Command
+      # @return [String] Actual result text from the PowerShell Command.
       attr_accessor :value
 
-      # @return [String] The interactive prompt message
+      # @return [String] The interactive prompt message.
       attr_accessor :prompt
 
-      # @return [Integer] the exit code from a executable that was called from
-      # powershell.
+      # @return [Integer] The exit code from a executable that was called from
+      # PowerShell.
       attr_accessor :exit_code
 
-      # @return [Integer] ID of the prompt message
+      # @return [Integer] ID of the prompt message.
       attr_accessor :id
 
-      # @return [String] text that precedes the prompt.
+      # @return [String] Text that precedes the prompt.
       attr_accessor :caption
 
-      # @return [String] text of the prompt.
+      # @return [String] Text of the prompt.
       attr_accessor :message
 
-      # @return [Array<PromptFieldDescription>] collection of
-      # PromptFieldDescription objects that contains the user input
+      # @return [Array<PromptFieldDescription>] Collection of
+      # PromptFieldDescription objects that contains the user input.
       attr_accessor :descriptions
 
 

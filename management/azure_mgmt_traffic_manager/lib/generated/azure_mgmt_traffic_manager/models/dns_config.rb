@@ -18,15 +18,14 @@ module Azure::ARM::TrafficManager
       # name (FQDN) of the profile.
       attr_accessor :relative_name
 
-      # @return [String] Gets or sets the fully-qualified domain name (FQDN)
-      # of the Traffic Manager profile.  This is formed from the
-      # concatenation of the RelativeName with the DNS domain used by Azure
-      # Traffic Manager.
+      # @return [String] Gets or sets the fully-qualified domain name (FQDN) of
+      # the Traffic Manager profile.  This is formed from the concatenation of
+      # the RelativeName with the DNS domain used by Azure Traffic Manager.
       attr_accessor :fqdn
 
-      # @return [Integer] Gets or sets the DNS Ttime-To-Live (TTL), in
-      # seconds.  This informs the local DNS resolvers and DNS clients how
-      # long to cache DNS responses provided by this Traffic Manager profile.
+      # @return [Integer] Gets or sets the DNS Ttime-To-Live (TTL), in seconds.
+      # This informs the local DNS resolvers and DNS clients how long to cache
+      # DNS responses provided by this Traffic Manager profile.
       attr_accessor :ttl
 
 

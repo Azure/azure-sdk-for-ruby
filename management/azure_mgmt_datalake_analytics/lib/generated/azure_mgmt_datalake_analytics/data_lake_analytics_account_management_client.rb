@@ -36,6 +36,12 @@ module Azure::ARM::DataLakeAnalytics
     # is generated and included in each request. Default is true.
     attr_accessor :generate_client_request_id
 
+    # @return [StorageAccounts] storage_accounts
+    attr_reader :storage_accounts
+
+    # @return [DataLakeStoreAccounts] data_lake_store_accounts
+    attr_reader :data_lake_store_accounts
+
     # @return [Account] account
     attr_reader :account
 
@@ -53,11 +59,14 @@ module Azure::ARM::DataLakeAnalytics
       fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials)
       @credentials = credentials
 
+      @storage_accounts = StorageAccounts.new(self)
+      @data_lake_store_accounts = DataLakeStoreAccounts.new(self)
       @account = Account.new(self)
-      @api_version = '2015-10-01-preview'
+      @api_version = '2016-11-01'
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
+      add_telemetry
     end
 
     #
@@ -115,5 +124,17 @@ module Azure::ARM::DataLakeAnalytics
       super(request_url, method, path, options)
     end
 
+
+    private
+    #
+    # Adds telemetry information.
+    #
+    def add_telemetry
+        sdk_information = 'azure_mgmt_datalake_analytics'
+        if defined? Azure::ARM::DataLakeAnalytics::VERSION
+          sdk_information = "#{sdk_information}/#{Azure::ARM::DataLakeAnalytics::VERSION}" 
+        end
+        add_user_agent_information(sdk_information)
+    end
   end
 end

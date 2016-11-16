@@ -16,8 +16,7 @@ module Azure::ARM::Web
       attr_accessor :backup_request_name
 
       # @return [Boolean] True if the backup schedule is enabled (must be
-      # included in that case), false if the backup schedule should be
-      # disabled
+      # included in that case), false if the backup schedule should be disabled
       attr_accessor :enabled
 
       # @return [String] SAS URL to the container

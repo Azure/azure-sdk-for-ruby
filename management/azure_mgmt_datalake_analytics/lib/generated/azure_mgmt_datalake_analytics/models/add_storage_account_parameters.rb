@@ -6,15 +6,19 @@
 module Azure::ARM::DataLakeAnalytics
   module Models
     #
-    # Additional Azure Storage account parameters.
+    # Storage account parameters for a storage account being added to a Data
+    # Lake Analytics account.
     #
     class AddStorageAccountParameters
 
       include MsRestAzure
 
-      # @return [StorageAccountProperties] the properties for the Azure
-      # Storage account being added.
-      attr_accessor :properties
+      # @return [String] the access key associated with this Azure Storage
+      # account that will be used to connect to it.
+      attr_accessor :access_key
+
+      # @return [String] the optional suffix for the storage account.
+      attr_accessor :suffix
 
 
       #
@@ -29,12 +33,18 @@ module Azure::ARM::DataLakeAnalytics
             name: 'Composite',
             class_name: 'AddStorageAccountParameters',
             model_properties: {
-              properties: {
+              access_key: {
                 required: true,
-                serialized_name: 'properties',
+                serialized_name: 'properties.accessKey',
                 type: {
-                  name: 'Composite',
-                  class_name: 'StorageAccountProperties'
+                  name: 'String'
+                }
+              },
+              suffix: {
+                required: false,
+                serialized_name: 'properties.suffix',
+                type: {
+                  name: 'String'
                 }
               }
             }

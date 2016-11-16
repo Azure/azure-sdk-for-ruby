@@ -12,6 +12,7 @@ module Azure::ARM::MobileEngagement
     # audience is a boolean expression made of criteria (variables) operators
     # (`not`, `and` or `or`) and parenthesis. Additionally, a set of filters
     # can be added to an audience. 65535 bytes max as per JSON encoding.
+    # 
     #
     class CampaignAudience
 
@@ -21,6 +22,7 @@ module Azure::ARM::MobileEngagement
       # operators (`not`, `and` or `or`) and parenthesis. Criterion names in
       # the audience expression must start with a capital letter and can only
       # contain alphanumeric (A-Z,a-z,0-9) and underscore (_) characters.
+      # 
       attr_accessor :expression
 
       # @return [Hash{String => Criterion}] Criteria by name.

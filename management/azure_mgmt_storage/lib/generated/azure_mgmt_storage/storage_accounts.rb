@@ -134,8 +134,8 @@ module Azure::ARM::Storage
     # account is already created and a subsequent create or update request is
     # issued with the exact same set of properties, the request will succeed.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -152,8 +152,8 @@ module Azure::ARM::Storage
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -186,8 +186,8 @@ module Azure::ARM::Storage
     #
     # Deletes a storage account in Microsoft Azure.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -203,8 +203,8 @@ module Azure::ARM::Storage
     #
     # Deletes a storage account in Microsoft Azure.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -220,8 +220,8 @@ module Azure::ARM::Storage
     #
     # Deletes a storage account in Microsoft Azure.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -277,8 +277,8 @@ module Azure::ARM::Storage
     # limited to name, SKU name, location, and account status. The ListKeys
     # operation should be used to retrieve storage keys.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -297,8 +297,8 @@ module Azure::ARM::Storage
     # limited to name, SKU name, location, and account status. The ListKeys
     # operation should be used to retrieve storage keys.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -316,8 +316,8 @@ module Azure::ARM::Storage
     # limited to name, SKU name, location, and account status. The ListKeys
     # operation should be used to retrieve storage keys.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -382,15 +382,15 @@ module Azure::ARM::Storage
     # The update operation can be used to update the SKU, encryption, access tier,
     # or tags for a storage account. It can also be used to map the account to a
     # custom domain. Only one custom domain is supported per storage account; the
-    # replacement/change of custom domain is not supported. In order to replace
-    # an old custom domain, the old value must be cleared/unregistered before a
-    # new value can be set. The update of multiple properties is supported. This
-    # call does not change the storage keys for the account. If you want to
-    # change the storage account keys, use the regenerate keys operation. The
-    # location and name of the storage account cannot be changed after creation.
+    # replacement/change of custom domain is not supported. In order to replace an
+    # old custom domain, the old value must be cleared/unregistered before a new
+    # value can be set. The update of multiple properties is supported. This call
+    # does not change the storage keys for the account. If you want to change the
+    # storage account keys, use the regenerate keys operation. The location and
+    # name of the storage account cannot be changed after creation.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -410,15 +410,15 @@ module Azure::ARM::Storage
     # The update operation can be used to update the SKU, encryption, access tier,
     # or tags for a storage account. It can also be used to map the account to a
     # custom domain. Only one custom domain is supported per storage account; the
-    # replacement/change of custom domain is not supported. In order to replace
-    # an old custom domain, the old value must be cleared/unregistered before a
-    # new value can be set. The update of multiple properties is supported. This
-    # call does not change the storage keys for the account. If you want to
-    # change the storage account keys, use the regenerate keys operation. The
-    # location and name of the storage account cannot be changed after creation.
+    # replacement/change of custom domain is not supported. In order to replace an
+    # old custom domain, the old value must be cleared/unregistered before a new
+    # value can be set. The update of multiple properties is supported. This call
+    # does not change the storage keys for the account. If you want to change the
+    # storage account keys, use the regenerate keys operation. The location and
+    # name of the storage account cannot be changed after creation.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -437,15 +437,15 @@ module Azure::ARM::Storage
     # The update operation can be used to update the SKU, encryption, access tier,
     # or tags for a storage account. It can also be used to map the account to a
     # custom domain. Only one custom domain is supported per storage account; the
-    # replacement/change of custom domain is not supported. In order to replace
-    # an old custom domain, the old value must be cleared/unregistered before a
-    # new value can be set. The update of multiple properties is supported. This
-    # call does not change the storage keys for the account. If you want to
-    # change the storage account keys, use the regenerate keys operation. The
-    # location and name of the storage account cannot be changed after creation.
+    # replacement/change of custom domain is not supported. In order to replace an
+    # old custom domain, the old value must be cleared/unregistered before a new
+    # value can be set. The update of multiple properties is supported. This call
+    # does not change the storage keys for the account. If you want to change the
+    # storage account keys, use the regenerate keys operation. The location and
+    # name of the storage account cannot be changed after creation.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -605,12 +605,11 @@ module Azure::ARM::Storage
     end
 
     #
-    # Lists all the storage accounts available under the given resource group.
-    # Note that storage keys are not returned; use the ListKeys operation for
-    # this.
+    # Lists all the storage accounts available under the given resource group. Note
+    # that storage keys are not returned; use the ListKeys operation for this.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -622,12 +621,11 @@ module Azure::ARM::Storage
     end
 
     #
-    # Lists all the storage accounts available under the given resource group.
-    # Note that storage keys are not returned; use the ListKeys operation for
-    # this.
+    # Lists all the storage accounts available under the given resource group. Note
+    # that storage keys are not returned; use the ListKeys operation for this.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -638,12 +636,11 @@ module Azure::ARM::Storage
     end
 
     #
-    # Lists all the storage accounts available under the given resource group.
-    # Note that storage keys are not returned; use the ListKeys operation for
-    # this.
+    # Lists all the storage accounts available under the given resource group. Note
+    # that storage keys are not returned; use the ListKeys operation for this.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -703,8 +700,8 @@ module Azure::ARM::Storage
     #
     # Lists the access keys for the specified storage account.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -721,8 +718,8 @@ module Azure::ARM::Storage
     #
     # Lists the access keys for the specified storage account.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -738,8 +735,8 @@ module Azure::ARM::Storage
     #
     # Lists the access keys for the specified storage account.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -803,8 +800,8 @@ module Azure::ARM::Storage
     #
     # Regenerates one of the access keys for the specified storage account.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -823,8 +820,8 @@ module Azure::ARM::Storage
     #
     # Regenerates one of the access keys for the specified storage account.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -842,8 +839,8 @@ module Azure::ARM::Storage
     #
     # Regenerates one of the access keys for the specified storage account.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -923,8 +920,8 @@ module Azure::ARM::Storage
     # account is already created and a subsequent create or update request is
     # issued with the exact same set of properties, the request will succeed.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -947,8 +944,8 @@ module Azure::ARM::Storage
     # account is already created and a subsequent create or update request is
     # issued with the exact same set of properties, the request will succeed.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.
@@ -970,8 +967,8 @@ module Azure::ARM::Storage
     # account is already created and a subsequent create or update request is
     # issued with the exact same set of properties, the request will succeed.
     #
-    # @param resource_group_name [String] The name of the resource group within
-    # the user's subscription.
+    # @param resource_group_name [String] The name of the resource group within the
+    # user's subscription.
     # @param account_name [String] The name of the storage account within the
     # specified resource group. Storage account names must be between 3 and 24
     # characters in length and use numbers and lower-case letters only.

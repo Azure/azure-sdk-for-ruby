@@ -7,6 +7,7 @@ module Azure::ARM::CognitiveServices
   module Models
     #
     # Model object.
+    # 
     #
     class Error
 

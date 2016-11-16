@@ -7,6 +7,7 @@ module Azure::ARM::EventHub
   module Models
     #
     # Model object.
+    # 
     #
     class EventHubProperties
 
@@ -25,10 +26,10 @@ module Azure::ARM::EventHub
       # @return [Array<String>] Current number of shards on the Event Hub.
       attr_accessor :partition_ids
 
-      # @return [EntityStatus] Enumerates the possible values for the status
-      # of the Event Hub. Possible values include: 'Active', 'Disabled',
-      # 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating',
-      # 'Deleting', 'Renaming', 'Unknown'
+      # @return [EntityStatus] Enumerates the possible values for the status of
+      # the Event Hub. Possible values include: 'Active', 'Disabled',
+      # 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
+      # 'Renaming', 'Unknown'
       attr_accessor :status
 
       # @return [DateTime] The exact time the message was updated.

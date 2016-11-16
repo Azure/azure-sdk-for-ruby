@@ -424,8 +424,8 @@ module Azure::ARM::Policy
     #
     # Gets policy assignments for a resource.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource. The name is case insensitive.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource path.
@@ -446,8 +446,8 @@ module Azure::ARM::Policy
     #
     # Gets policy assignments for a resource.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource. The name is case insensitive.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource path.
@@ -467,8 +467,8 @@ module Azure::ARM::Policy
     #
     # Gets policy assignments for a resource.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource. The name is case insensitive.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource path.
@@ -984,8 +984,8 @@ module Azure::ARM::Policy
     #
     # Gets policy assignments for the resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -999,8 +999,8 @@ module Azure::ARM::Policy
     #
     # Gets policy assignments for the resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1013,8 +1013,8 @@ module Azure::ARM::Policy
     #
     # Gets policy assignments for the resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1071,8 +1071,8 @@ module Azure::ARM::Policy
     #
     # Gets policy assignments for a resource.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1086,8 +1086,8 @@ module Azure::ARM::Policy
     #
     # Gets policy assignments for a resource.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1100,8 +1100,8 @@ module Azure::ARM::Policy
     #
     # Gets policy assignments for a resource.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1158,8 +1158,8 @@ module Azure::ARM::Policy
     #
     # Gets all the policy assignments for a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1173,8 +1173,8 @@ module Azure::ARM::Policy
     #
     # Gets all the policy assignments for a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1187,8 +1187,8 @@ module Azure::ARM::Policy
     #
     # Gets all the policy assignments for a subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1268,8 +1268,8 @@ module Azure::ARM::Policy
     #
     # Gets policy assignments for a resource.
     #
-    # @param resource_group_name [String] The name of the resource group
-    # containing the resource. The name is case insensitive.
+    # @param resource_group_name [String] The name of the resource group containing
+    # the resource. The name is case insensitive.
     # @param resource_provider_namespace [String] The namespace of the resource
     # provider.
     # @param parent_resource_path [String] The parent resource path.

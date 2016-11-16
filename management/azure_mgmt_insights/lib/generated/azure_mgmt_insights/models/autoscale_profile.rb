@@ -15,8 +15,8 @@ module Azure::ARM::Insights
       # @return [String] the name of the profile.
       attr_accessor :name
 
-      # @return [ScaleCapacity] the number of instances that can be used
-      # during this profile.
+      # @return [ScaleCapacity] the number of instances that can be used during
+      # this profile.
       attr_accessor :capacity
 
       # @return [Array<ScaleRule>] the collection of rules that provide the

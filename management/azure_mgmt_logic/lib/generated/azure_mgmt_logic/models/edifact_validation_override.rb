@@ -7,13 +7,14 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
+    # 
     #
     class EdifactValidationOverride
 
       include MsRestAzure
 
-      # @return [String] The message id on which the validation settings has
-      # to be applied.
+      # @return [String] The message id on which the validation settings has to
+      # be applied.
       attr_accessor :message_id
 
       # @return [Boolean] The value indicating whether to validate character

@@ -7,6 +7,7 @@ module Azure::ARM::Resources
   module Models
     #
     # Model object.
+    # 
     #
     class ResourceManagementErrorWithDetails
 

@@ -23,8 +23,8 @@ module Azure::ARM::EventHub
     attr_reader :client
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of
-    # the resource groups.
+    # Lists all the available namespaces within a subscription, irrespective of the
+    # resource groups.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -37,8 +37,8 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of
-    # the resource groups.
+    # Lists all the available namespaces within a subscription, irrespective of the
+    # resource groups.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -50,8 +50,8 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of
-    # the resource groups.
+    # Lists all the available namespaces within a subscription, irrespective of the
+    # resource groups.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -201,8 +201,8 @@ module Azure::ARM::EventHub
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for
-    # creating a namespace resource.
+    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for creating
+    # a namespace resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -216,8 +216,8 @@ module Azure::ARM::EventHub
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for
-    # creating a namespace resource.
+    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for creating
+    # a namespace resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -478,8 +478,8 @@ module Azure::ARM::EventHub
     # the namespace lives.
     # @param namespace_name [String] The namespace name.
     # @param authorization_rule_name [String] Namespace authorization rule name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
-    # The shared access authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -497,8 +497,8 @@ module Azure::ARM::EventHub
     # the namespace lives.
     # @param namespace_name [String] The namespace name.
     # @param authorization_rule_name [String] Namespace authorization rule name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
-    # The shared access authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -515,8 +515,8 @@ module Azure::ARM::EventHub
     # the namespace lives.
     # @param namespace_name [String] The namespace name.
     # @param authorization_rule_name [String] Namespace authorization rule name.
-    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters]
-    # The shared access authorization rule.
+    # @param parameters [SharedAccessAuthorizationRuleCreateOrUpdateParameters] The
+    # shared access authorization rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -991,8 +991,8 @@ module Azure::ARM::EventHub
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for
-    # creating a namespace resource.
+    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for creating
+    # a namespace resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1009,8 +1009,8 @@ module Azure::ARM::EventHub
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for
-    # creating a namespace resource.
+    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for creating
+    # a namespace resource.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1026,8 +1026,8 @@ module Azure::ARM::EventHub
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param namespace_name [String] The namespace name.
-    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for
-    # creating a namespace resource.
+    # @param parameters [NamespaceCreateOrUpdateParameters] Parameters for creating
+    # a namespace resource.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1192,11 +1192,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of
-    # the resource groups.
+    # Lists all the available namespaces within a subscription, irrespective of the
+    # resource groups.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1208,11 +1208,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of
-    # the resource groups.
+    # Lists all the available namespaces within a subscription, irrespective of the
+    # resource groups.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1223,11 +1223,11 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of
-    # the resource groups.
+    # Lists all the available namespaces within a subscription, irrespective of the
+    # resource groups.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1284,8 +1284,8 @@ module Azure::ARM::EventHub
     #
     # Lists the available namespaces within a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1299,8 +1299,8 @@ module Azure::ARM::EventHub
     #
     # Lists the available namespaces within a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1313,8 +1313,8 @@ module Azure::ARM::EventHub
     #
     # Lists the available namespaces within a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1371,8 +1371,8 @@ module Azure::ARM::EventHub
     #
     # Gets a list of authorization rules for a namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1386,8 +1386,8 @@ module Azure::ARM::EventHub
     #
     # Gets a list of authorization rules for a namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1400,8 +1400,8 @@ module Azure::ARM::EventHub
     #
     # Gets a list of authorization rules for a namespace.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1456,8 +1456,8 @@ module Azure::ARM::EventHub
     end
 
     #
-    # Lists all the available namespaces within a subscription, irrespective of
-    # the resource groups.
+    # Lists all the available namespaces within a subscription, irrespective of the
+    # resource groups.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
