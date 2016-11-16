@@ -66,8 +66,8 @@ module Azure::ARM::ServiceBus
       # concept of sessions.
       attr_accessor :requires_session
 
-      # @return [EntityStatus] Enumerates the possible values for the status
-      # of a messaging entity. Possible values include: 'Active', 'Creating',
+      # @return [EntityStatus] Enumerates the possible values for the status of
+      # a messaging entity. Possible values include: 'Active', 'Creating',
       # 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
       # 'SendDisabled', 'Unknown'
       attr_accessor :status

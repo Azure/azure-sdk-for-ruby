@@ -52,8 +52,8 @@ module Azure::ARM::ServiceBus
       attr_accessor :enable_batched_operations
 
       # @return [Boolean] Value that indicates whether Express Entities are
-      # enabled. An express topic holds a message in memory temporarily
-      # before writing it to persistent storage.
+      # enabled. An express topic holds a message in memory temporarily before
+      # writing it to persistent storage.
       attr_accessor :enable_express
 
       # @return [Boolean] Value that indicates whether the topic to be
@@ -86,8 +86,8 @@ module Azure::ARM::ServiceBus
       # @return [Integer] Size of the topic, in bytes.
       attr_accessor :size_in_bytes
 
-      # @return [EntityStatus] Enumerates the possible values for the status
-      # of a messaging entity. Possible values include: 'Active', 'Creating',
+      # @return [EntityStatus] Enumerates the possible values for the status of
+      # a messaging entity. Possible values include: 'Active', 'Creating',
       # 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
       # 'SendDisabled', 'Unknown'
       attr_accessor :status
