@@ -127,8 +127,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Check the availability of a resource name without creating the resource.
-    # This is needed for resources where name is globally unique, such as a CDN
+    # Check the availability of a resource name without creating the resource. This
+    # is needed for resources where name is globally unique, such as a CDN
     # endpoint.
     #
     # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
@@ -144,8 +144,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Check the availability of a resource name without creating the resource.
-    # This is needed for resources where name is globally unique, such as a CDN
+    # Check the availability of a resource name without creating the resource. This
+    # is needed for resources where name is globally unique, such as a CDN
     # endpoint.
     #
     # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
@@ -160,8 +160,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Check the availability of a resource name without creating the resource.
-    # This is needed for resources where name is globally unique, such as a CDN
+    # Check the availability of a resource name without creating the resource. This
+    # is needed for resources where name is globally unique, such as a CDN
     # endpoint.
     #
     # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
@@ -313,8 +313,8 @@ module Azure::ARM::CDN
     #
     # Lists all of the available CDN REST API operations.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -328,8 +328,8 @@ module Azure::ARM::CDN
     #
     # Lists all of the available CDN REST API operations.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -342,8 +342,8 @@ module Azure::ARM::CDN
     #
     # Lists all of the available CDN REST API operations.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

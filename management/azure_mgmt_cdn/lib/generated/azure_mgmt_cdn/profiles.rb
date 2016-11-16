@@ -354,8 +354,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param profile_update_parameters [ProfileUpdateParameters] Profile
-    # properties needed to update an existing profile.
+    # @param profile_update_parameters [ProfileUpdateParameters] Profile properties
+    # needed to update an existing profile.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -371,8 +371,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param profile_update_parameters [ProfileUpdateParameters] Profile
-    # properties needed to update an existing profile.
+    # @param profile_update_parameters [ProfileUpdateParameters] Profile properties
+    # needed to update an existing profile.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -399,8 +399,8 @@ module Azure::ARM::CDN
 
     #
     # Deletes an existing CDN profile with the specified parameters. Deleting a
-    # profile will result in the deletion of all subresources including
-    # endpoints, origins and custom domains.
+    # profile will result in the deletion of all subresources including endpoints,
+    # origins and custom domains.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -444,10 +444,9 @@ module Azure::ARM::CDN
     #
     # Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
     # Supplemnetal portal is used to configure advanced feature capabilities that
-    # are not yet available in the Azure portal, such as core reports in a
-    # standard profile; rules engine, advanced HTTP reports, and real-time stats
-    # and alerts in a premium profile. The SSO URI changes approximately every 10
-    # minutes.
+    # are not yet available in the Azure portal, such as core reports in a standard
+    # profile; rules engine, advanced HTTP reports, and real-time stats and alerts
+    # in a premium profile. The SSO URI changes approximately every 10 minutes.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -466,10 +465,9 @@ module Azure::ARM::CDN
     #
     # Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
     # Supplemnetal portal is used to configure advanced feature capabilities that
-    # are not yet available in the Azure portal, such as core reports in a
-    # standard profile; rules engine, advanced HTTP reports, and real-time stats
-    # and alerts in a premium profile. The SSO URI changes approximately every 10
-    # minutes.
+    # are not yet available in the Azure portal, such as core reports in a standard
+    # profile; rules engine, advanced HTTP reports, and real-time stats and alerts
+    # in a premium profile. The SSO URI changes approximately every 10 minutes.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -487,10 +485,9 @@ module Azure::ARM::CDN
     #
     # Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
     # Supplemnetal portal is used to configure advanced feature capabilities that
-    # are not yet available in the Azure portal, such as core reports in a
-    # standard profile; rules engine, advanced HTTP reports, and real-time stats
-    # and alerts in a premium profile. The SSO URI changes approximately every 10
-    # minutes.
+    # are not yet available in the Azure portal, such as core reports in a standard
+    # profile; rules engine, advanced HTTP reports, and real-time stats and alerts
+    # in a premium profile. The SSO URI changes approximately every 10 minutes.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -694,8 +691,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param profile_update_parameters [ProfileUpdateParameters] Profile
-    # properties needed to update an existing profile.
+    # @param profile_update_parameters [ProfileUpdateParameters] Profile properties
+    # needed to update an existing profile.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -714,8 +711,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param profile_update_parameters [ProfileUpdateParameters] Profile
-    # properties needed to update an existing profile.
+    # @param profile_update_parameters [ProfileUpdateParameters] Profile properties
+    # needed to update an existing profile.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -733,8 +730,8 @@ module Azure::ARM::CDN
     # Azure subscription.
     # @param profile_name [String] Name of the CDN profile which is unique within
     # the resource group.
-    # @param profile_update_parameters [ProfileUpdateParameters] Profile
-    # properties needed to update an existing profile.
+    # @param profile_update_parameters [ProfileUpdateParameters] Profile properties
+    # needed to update an existing profile.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -814,8 +811,8 @@ module Azure::ARM::CDN
 
     #
     # Deletes an existing CDN profile with the specified parameters. Deleting a
-    # profile will result in the deletion of all subresources including
-    # endpoints, origins and custom domains.
+    # profile will result in the deletion of all subresources including endpoints,
+    # origins and custom domains.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -832,8 +829,8 @@ module Azure::ARM::CDN
 
     #
     # Deletes an existing CDN profile with the specified parameters. Deleting a
-    # profile will result in the deletion of all subresources including
-    # endpoints, origins and custom domains.
+    # profile will result in the deletion of all subresources including endpoints,
+    # origins and custom domains.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -850,8 +847,8 @@ module Azure::ARM::CDN
 
     #
     # Deletes an existing CDN profile with the specified parameters. Deleting a
-    # profile will result in the deletion of all subresources including
-    # endpoints, origins and custom domains.
+    # profile will result in the deletion of all subresources including endpoints,
+    # origins and custom domains.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -907,8 +904,8 @@ module Azure::ARM::CDN
     #
     # Lists all the CDN profiles within an Azure subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -922,8 +919,8 @@ module Azure::ARM::CDN
     #
     # Lists all the CDN profiles within an Azure subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -936,8 +933,8 @@ module Azure::ARM::CDN
     #
     # Lists all the CDN profiles within an Azure subscription.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -994,8 +991,8 @@ module Azure::ARM::CDN
     #
     # Lists all the CDN profiles within a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1009,8 +1006,8 @@ module Azure::ARM::CDN
     #
     # Lists all the CDN profiles within a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1023,8 +1020,8 @@ module Azure::ARM::CDN
     #
     # Lists all the CDN profiles within a resource group.
     #
-    # @param next_page_link [String] The NextLink from the previous successful
-    # call to List operation.
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

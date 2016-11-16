@@ -16,33 +16,31 @@ module Azure::ARM::CDN
       attr_accessor :tags
 
       # @return [String] The host header the CDN provider will send along with
-      # content requests to origins. The default value is the host name of
-      # the origin.
+      # content requests to origins. The default value is the host name of the
+      # origin.
       attr_accessor :origin_host_header
 
       # @return [String] The path used for origin requests.
       attr_accessor :origin_path
 
-      # @return [Array<String>] List of content types on which compression
-      # will be applied. The value for the elements should be a valid MIME
-      # type.
+      # @return [Array<String>] List of content types on which compression will
+      # be applied. The value for the elements should be a valid MIME type.
       attr_accessor :content_types_to_compress
 
-      # @return [Boolean] Indicates whether content compression is enabled.
-      # The default value is false. If compression is enabled, the content
+      # @return [Boolean] Indicates whether content compression is enabled. The
+      # default value is false. If compression is enabled, the content
       # transferred from the CDN endpoint to the end user will be compressed.
-      # The requested content must be larger than 1 byte and smaller than 1
-      # MB.
+      # The requested content must be larger than 1 byte and smaller than 1 MB.
       attr_accessor :is_compression_enabled
 
       # @return [Boolean] Indicates whether HTTP traffic is allowed on the
-      # endpoint. Default value is true. At least one protocol (HTTP or
-      # HTTPS) must be allowed.
+      # endpoint. Default value is true. At least one protocol (HTTP or HTTPS)
+      # must be allowed.
       attr_accessor :is_http_allowed
 
       # @return [Boolean] Indicates whether HTTPS traffic is allowed on the
-      # endpoint. Default value is true. At least one protocol (HTTP or
-      # HTTPS) must be allowed.
+      # endpoint. Default value is true. At least one protocol (HTTP or HTTPS)
+      # must be allowed.
       attr_accessor :is_https_allowed
 
       # @return [QueryStringCachingBehavior] Defines the query string caching
