@@ -12,10 +12,10 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      # @return [String] The storage account's name.
+      # @return [String] Specifies the name of the storage account.
       attr_accessor :name
 
-      # @return [String] The storage account's active key.
+      # @return [String] Specifies the key used to access the storage account.
       attr_accessor :key
 
 

@@ -17,11 +17,11 @@ module Azure::ARM::MachineLearning
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Azure subscription id.
+    # @return [String] The Azure subscription ID.
     attr_accessor :subscription_id
 
     # @return [String] The version of the Microsoft.MachineLearning resource
-    # provider API to be used.
+    # provider API to use.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.

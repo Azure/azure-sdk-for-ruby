@@ -12,11 +12,11 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      # @return [Array<WebService>] List of web services objects.
+      # @return [Array<WebService>] An array of web service objects.
       attr_accessor :value
 
-      # @return [String] Continuation link to be used to potentially retrieve
-      # the next page of results in the list.
+      # @return [String] A continuation link (absolute URI) to the next page of
+      # results in the list.
       attr_accessor :next_link
 
 

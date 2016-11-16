@@ -6,11 +6,11 @@
 module Azure::ARM::MachineLearning
   #
   # These APIs allow end users to operate on Azure Machine Learning Web
-  # Services resources. They support the following operations:<ul><li>Create
-  # or update a web service</li><li>Get a web service</li><li>Patch a web
+  # Services resources. They support the following operations:<ul><li>Create or
+  # update a web service</li><li>Get a web service</li><li>Patch a web
   # service</li><li>Delete a web service</li><li>Get All Web Services in a
-  # Resource Group </li><li>Get All Web Services in a
-  # Subscription</li><li>Get Web Services Keys</li></ul>
+  # Resource Group </li><li>Get All Web Services in a Subscription</li><li>Get
+  # Web Services Keys</li></ul>
   #
   class WebServices
     include Azure::ARM::MachineLearning::Models
@@ -28,38 +28,41 @@ module Azure::ARM::MachineLearning
     attr_reader :client
 
     #
-    # Creates or updates a new Azure ML web service or update an existing one.
+    # Create or update a web service. This call will overwrite an existing web
+    # service. Note that there is no warning or confirmation. This is a
+    # nonrecoverable operation. If your intent is to create a new web service, call
+    # the Get operation first to verify that it does not exist.
     #
-    # @param create_or_update_payload [WebService] The payload to create or update
-    # the Azure ML web service.
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
+    # @param create_or_update_payload [WebService] The payload that is used to
+    # create or update the web service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [WebService] operation results.
     #
-    def create_or_update(create_or_update_payload, resource_group_name, web_service_name, custom_headers = nil)
-      response = create_or_update_async(create_or_update_payload, resource_group_name, web_service_name, custom_headers).value!
+    def create_or_update(resource_group_name, web_service_name, create_or_update_payload, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param create_or_update_payload [WebService] The payload to create or update
-    # the Azure ML web service.
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
+    # @param create_or_update_payload [WebService] The payload that is used to
+    # create or update the web service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(create_or_update_payload, resource_group_name, web_service_name, custom_headers = nil)
+    def create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(create_or_update_payload, resource_group_name, web_service_name, custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -76,12 +79,14 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Retrieve an Azure ML web service definition by its subscription, resource
-    # group and name.
+    # Gets the Web Service Definiton as specified by a subscription, resource
+    # group, and name. Note that the storage credentials and web service keys are
+    # not returned by this call. To get the web service access keys, call List
+    # Keys.
     #
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -93,12 +98,14 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Retrieve an Azure ML web service definition by its subscription, resource
-    # group and name.
+    # Gets the Web Service Definiton as specified by a subscription, resource
+    # group, and name. Note that the storage credentials and web service keys are
+    # not returned by this call. To get the web service access keys, call List
+    # Keys.
     #
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -109,12 +116,14 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Retrieve an Azure ML web service definition by its subscription, resource
-    # group and name.
+    # Gets the Web Service Definiton as specified by a subscription, resource
+    # group, and name. Note that the storage credentials and web service keys are
+    # not returned by this call. To get the web service access keys, call List
+    # Keys.
     #
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -173,38 +182,40 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Patch an existing Azure ML web service resource.
+    # Modifies an existing web service resource. The PATCH API call is an
+    # asynchronous operation. To determine whether it has completed successfully,
+    # you must perform a Get operation.
     #
-    # @param patch_payload [WebService] The payload to patch the Azure ML web
-    # service with.
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
+    # @param patch_payload [WebService] The payload to use to patch the web
+    # service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [WebService] operation results.
     #
-    def patch(patch_payload, resource_group_name, web_service_name, custom_headers = nil)
-      response = patch_async(patch_payload, resource_group_name, web_service_name, custom_headers).value!
+    def patch(resource_group_name, web_service_name, patch_payload, custom_headers = nil)
+      response = patch_async(resource_group_name, web_service_name, patch_payload, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param patch_payload [WebService] The payload to patch the Azure ML web
-    # service with.
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
+    # @param patch_payload [WebService] The payload to use to patch the web
+    # service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def patch_async(patch_payload, resource_group_name, web_service_name, custom_headers = nil)
+    def patch_async(resource_group_name, web_service_name, patch_payload, custom_headers = nil)
       # Send request
-      promise = begin_patch_async(patch_payload, resource_group_name, web_service_name, custom_headers)
+      promise = begin_patch_async(resource_group_name, web_service_name, patch_payload, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -221,11 +232,11 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Remove an existing Azure ML web service.
+    # Deletes the specified web service.
     #
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -235,9 +246,9 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -261,11 +272,11 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Get the access keys of a particular Azure ML web service
+    # Gets the access keys for the specified web service.
     #
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -277,11 +288,11 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Get the access keys of a particular Azure ML web service
+    # Gets the access keys for the specified web service.
     #
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -292,11 +303,11 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Get the access keys of a particular Azure ML web service
+    # Gets the access keys for the specified web service.
     #
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -355,9 +366,10 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Retrieve all Azure ML web services in a given resource group.
+    # Gets the web services in the specified resource group.
     #
-    # @param resource_group_name [String] Name of the resource group.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
     # @param skiptoken [String] Continuation token for pagination.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -370,9 +382,10 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Retrieve all Azure ML web services in a given resource group.
+    # Gets the web services in the specified resource group.
     #
-    # @param resource_group_name [String] Name of the resource group.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
     # @param skiptoken [String] Continuation token for pagination.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -384,9 +397,10 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Retrieve all Azure ML web services in a given resource group.
+    # Gets the web services in the specified resource group.
     #
-    # @param resource_group_name [String] Name of the resource group.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
     # @param skiptoken [String] Continuation token for pagination.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -445,7 +459,7 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Retrieve all Azure ML web services in the current Azure subscription.
+    # Gets the web services in the specified subscription.
     #
     # @param skiptoken [String] Continuation token for pagination.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -459,7 +473,7 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Retrieve all Azure ML web services in the current Azure subscription.
+    # Gets the web services in the specified subscription.
     #
     # @param skiptoken [String] Continuation token for pagination.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -472,7 +486,7 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Retrieve all Azure ML web services in the current Azure subscription.
+    # Gets the web services in the specified subscription.
     #
     # @param skiptoken [String] Continuation token for pagination.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -531,59 +545,68 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Creates or updates a new Azure ML web service or update an existing one.
+    # Create or update a web service. This call will overwrite an existing web
+    # service. Note that there is no warning or confirmation. This is a
+    # nonrecoverable operation. If your intent is to create a new web service, call
+    # the Get operation first to verify that it does not exist.
     #
-    # @param create_or_update_payload [WebService] The payload to create or update
-    # the Azure ML web service.
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
+    # @param create_or_update_payload [WebService] The payload that is used to
+    # create or update the web service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [WebService] operation results.
     #
-    def begin_create_or_update(create_or_update_payload, resource_group_name, web_service_name, custom_headers = nil)
-      response = begin_create_or_update_async(create_or_update_payload, resource_group_name, web_service_name, custom_headers).value!
+    def begin_create_or_update(resource_group_name, web_service_name, create_or_update_payload, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Creates or updates a new Azure ML web service or update an existing one.
+    # Create or update a web service. This call will overwrite an existing web
+    # service. Note that there is no warning or confirmation. This is a
+    # nonrecoverable operation. If your intent is to create a new web service, call
+    # the Get operation first to verify that it does not exist.
     #
-    # @param create_or_update_payload [WebService] The payload to create or update
-    # the Azure ML web service.
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
+    # @param create_or_update_payload [WebService] The payload that is used to
+    # create or update the web service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(create_or_update_payload, resource_group_name, web_service_name, custom_headers = nil)
-      begin_create_or_update_async(create_or_update_payload, resource_group_name, web_service_name, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, web_service_name, create_or_update_payload, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers).value!
     end
 
     #
-    # Creates or updates a new Azure ML web service or update an existing one.
+    # Create or update a web service. This call will overwrite an existing web
+    # service. Note that there is no warning or confirmation. This is a
+    # nonrecoverable operation. If your intent is to create a new web service, call
+    # the Get operation first to verify that it does not exist.
     #
-    # @param create_or_update_payload [WebService] The payload to create or update
-    # the Azure ML web service.
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
+    # @param create_or_update_payload [WebService] The payload that is used to
+    # create or update the web service.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(create_or_update_payload, resource_group_name, web_service_name, custom_headers = nil)
-      fail ArgumentError, 'create_or_update_payload is nil' if create_or_update_payload.nil?
+    def begin_create_or_update_async(resource_group_name, web_service_name, create_or_update_payload, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'web_service_name is nil' if web_service_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'create_or_update_payload is nil' if create_or_update_payload.nil?
 
 
       request_headers = {}
@@ -651,59 +674,65 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Patch an existing Azure ML web service resource.
+    # Modifies an existing web service resource. The PATCH API call is an
+    # asynchronous operation. To determine whether it has completed successfully,
+    # you must perform a Get operation.
     #
-    # @param patch_payload [WebService] The payload to patch the Azure ML web
-    # service with.
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
+    # @param patch_payload [WebService] The payload to use to patch the web
+    # service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [WebService] operation results.
     #
-    def begin_patch(patch_payload, resource_group_name, web_service_name, custom_headers = nil)
-      response = begin_patch_async(patch_payload, resource_group_name, web_service_name, custom_headers).value!
+    def begin_patch(resource_group_name, web_service_name, patch_payload, custom_headers = nil)
+      response = begin_patch_async(resource_group_name, web_service_name, patch_payload, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Patch an existing Azure ML web service resource.
+    # Modifies an existing web service resource. The PATCH API call is an
+    # asynchronous operation. To determine whether it has completed successfully,
+    # you must perform a Get operation.
     #
-    # @param patch_payload [WebService] The payload to patch the Azure ML web
-    # service with.
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
+    # @param patch_payload [WebService] The payload to use to patch the web
+    # service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_patch_with_http_info(patch_payload, resource_group_name, web_service_name, custom_headers = nil)
-      begin_patch_async(patch_payload, resource_group_name, web_service_name, custom_headers).value!
+    def begin_patch_with_http_info(resource_group_name, web_service_name, patch_payload, custom_headers = nil)
+      begin_patch_async(resource_group_name, web_service_name, patch_payload, custom_headers).value!
     end
 
     #
-    # Patch an existing Azure ML web service resource.
+    # Modifies an existing web service resource. The PATCH API call is an
+    # asynchronous operation. To determine whether it has completed successfully,
+    # you must perform a Get operation.
     #
-    # @param patch_payload [WebService] The payload to patch the Azure ML web
-    # service with.
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
+    # @param patch_payload [WebService] The payload to use to patch the web
+    # service.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_patch_async(patch_payload, resource_group_name, web_service_name, custom_headers = nil)
-      fail ArgumentError, 'patch_payload is nil' if patch_payload.nil?
+    def begin_patch_async(resource_group_name, web_service_name, patch_payload, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'web_service_name is nil' if web_service_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, 'patch_payload is nil' if patch_payload.nil?
 
 
       request_headers = {}
@@ -761,11 +790,11 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Remove an existing Azure ML web service.
+    # Deletes the specified web service.
     #
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -776,11 +805,11 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Remove an existing Azure ML web service.
+    # Deletes the specified web service.
     #
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -791,11 +820,11 @@ module Azure::ARM::MachineLearning
     end
 
     #
-    # Remove an existing Azure ML web service.
+    # Deletes the specified web service.
     #
-    # @param resource_group_name [String] Name of the resource group.
-    # @param web_service_name [String] The Azure ML web service name which you
-    # want to reach.
+    # @param resource_group_name [String] Name of the resource group in which the
+    # web service is located.
+    # @param web_service_name [String] The name of the web service.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -830,7 +859,7 @@ module Azure::ARM::MachineLearning
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202 || status_code == 204
+        unless status_code == 202
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end

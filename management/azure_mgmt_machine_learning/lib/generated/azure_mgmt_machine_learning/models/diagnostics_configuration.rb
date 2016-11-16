@@ -12,14 +12,14 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      # @return [DiagnosticsLevel] Level of tracing to be used: None -
-      # disables tracing; Error - collects only error (stderr) traces; All -
-      # collects all traces (stdout and stderr). Possible values include:
-      # 'None', 'Error', 'All'
+      # @return [DiagnosticsLevel] Specifies the verbosity of the diagnostic
+      # output. Valid values are: None - disables tracing; Error - collects
+      # only error (stderr) traces; All - collects all traces (stdout and
+      # stderr). Possible values include: 'None', 'Error', 'All'
       attr_accessor :level
 
-      # @return [DateTime] Moment of time after which diagnostics are no
-      # longer collected. If null, diagnostic collection is not time limited.
+      # @return [DateTime] Specifies the date and time when the logging will
+      # cease. If null, diagnostic collection is not time limited.
       attr_accessor :expiry
 
 

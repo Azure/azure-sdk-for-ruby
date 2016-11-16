@@ -25,8 +25,8 @@ module Azure::ARM::MachineLearning
       # @return [AssetLocation] Access information for the asset.
       attr_accessor :location_info
 
-      # @return [Hash{String => InputPort}] Information about the asset's
-      # input ports.
+      # @return [Hash{String => InputPort}] Information about the asset's input
+      # ports.
       attr_accessor :input_ports
 
       # @return [Hash{String => OutputPort}] Information about the asset's

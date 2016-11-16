@@ -13,7 +13,8 @@ module Azure::ARM::MachineLearning
 
       include MsRestAzure
 
-      # @return [String] The commitment plan ARM resource  id.
+      # @return [String] Specifies the Azure Resource Manager ID of the
+      # commitment plan associated with the web service.
       attr_accessor :id
 
 
