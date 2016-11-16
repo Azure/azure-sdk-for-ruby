@@ -63,6 +63,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'azure_mgmt_scheduler', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_search', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_server_management', "~>#{version}"
+  spec.add_runtime_dependency 'azure_mgmt_service_bus', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_sql', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_storage', "~>#{version}"
   spec.add_runtime_dependency 'azure_mgmt_subscriptions', "~>#{version}"
