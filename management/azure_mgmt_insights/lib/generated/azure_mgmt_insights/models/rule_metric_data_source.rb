@@ -6,7 +6,8 @@
 module Azure::ARM::Insights
   module Models
     #
-    # A rule metric data source.
+    # A rule metric data source. The discriminator value is always
+    # RuleMetricDataSource in this case.
     #
     class RuleMetricDataSource < RuleDataSource
 
@@ -42,7 +43,7 @@ module Azure::ARM::Insights
             model_properties: {
               odata.type: {
                 required: true,
-                serialized_name: 'odata.type',
+                serialized_name: 'odata\\.type',
                 type: {
                   name: 'String'
                 }

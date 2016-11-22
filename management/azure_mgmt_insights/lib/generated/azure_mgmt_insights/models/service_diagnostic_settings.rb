@@ -6,58 +6,64 @@
 module Azure::ARM::Insights
   module Models
     #
-    # Parameters supplied to the Create or Update service configuration.
+    # The diagnostic settings for service.
     #
-    class ServiceDiagnosticSettingsCreateOrUpdateParameters
+    class ServiceDiagnosticSettings
 
       include MsRestAzure
 
-      # @return [String] the resource id of the storage account.
+      # @return [String] The resource ID of the storage account to which you
+      # would like to send Diagnostic Logs.
       attr_accessor :storage_account_id
 
-      # @return [String] the id of the service bus rule.
+      # @return [String] The service bus rule ID of the service bus namespace
+      # in which you would like to have Event Hubs created for streaming
+      # Diagnostic Logs. The rule ID is of the format: '{service bus resource
+      # ID}/authorizationrules/{key name}'.
       attr_accessor :service_bus_rule_id
 
-      # @return [Array<MetricSettings>] the list of metrics.
+      # @return [Array<MetricSettings>] the list of metric settings.
       attr_accessor :metrics
 
-      # @return [Array<LogSettings>] the list of logs.
+      # @return [Array<LogSettings>] the list of logs settings.
       attr_accessor :logs
 
-      # @return [String] the OMS workspace Id.
+      # @return [String] The workspace ID (resource ID of a Log Analytics
+      # workspace) for a Log Analytics workspace to which you would like to
+      # send Diagnostic Logs. Example:
+      # /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
       attr_accessor :workspace_id
 
 
       #
-      # Mapper for ServiceDiagnosticSettingsCreateOrUpdateParameters class as
-      # Ruby Hash.
+      # Mapper for ServiceDiagnosticSettings class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ServiceDiagnosticSettingsCreateOrUpdateParameters',
+          serialized_name: 'ServiceDiagnosticSettings',
           type: {
             name: 'Composite',
-            class_name: 'ServiceDiagnosticSettingsCreateOrUpdateParameters',
+            class_name: 'ServiceDiagnosticSettings',
             model_properties: {
               storage_account_id: {
                 required: false,
-                serialized_name: 'properties.storageAccountId',
+                serialized_name: 'storageAccountId',
                 type: {
                   name: 'String'
                 }
               },
               service_bus_rule_id: {
                 required: false,
-                serialized_name: 'properties.serviceBusRuleId',
+                serialized_name: 'serviceBusRuleId',
                 type: {
                   name: 'String'
                 }
               },
               metrics: {
                 required: false,
-                serialized_name: 'properties.metrics',
+                serialized_name: 'metrics',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -72,7 +78,7 @@ module Azure::ARM::Insights
               },
               logs: {
                 required: false,
-                serialized_name: 'properties.logs',
+                serialized_name: 'logs',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -87,7 +93,7 @@ module Azure::ARM::Insights
               },
               workspace_id: {
                 required: false,
-                serialized_name: 'properties.workspaceId',
+                serialized_name: 'workspaceId',
                 type: {
                   name: 'String'
                 }

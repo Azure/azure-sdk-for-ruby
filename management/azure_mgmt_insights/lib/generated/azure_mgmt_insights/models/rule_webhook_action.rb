@@ -7,7 +7,7 @@ module Azure::ARM::Insights
   module Models
     #
     # Specifies the action to post to service when the rule condition is
-    # evaluated.
+    # evaluated. The discriminator is always RuleWebhookAction in this case.
     #
     class RuleWebhookAction < RuleAction
 
@@ -20,11 +20,13 @@ module Azure::ARM::Insights
 
       attr_accessor :odata.type
 
-      # @return [String] the service uri to Post the notitication.
+      # @return [String] the service uri to Post the notitication when the
+      # alert activates or resolves.
       attr_accessor :service_uri
 
       # @return [Hash{String => String}] the dictionary of custom properties to
-      # include with the post operation.
+      # include with the post operation. These data are appended to the webhook
+      # payload.
       attr_accessor :properties
 
 
@@ -42,7 +44,7 @@ module Azure::ARM::Insights
             model_properties: {
               odata.type: {
                 required: true,
-                serialized_name: 'odata.type',
+                serialized_name: 'odata\\.type',
                 type: {
                   name: 'String'
                 }

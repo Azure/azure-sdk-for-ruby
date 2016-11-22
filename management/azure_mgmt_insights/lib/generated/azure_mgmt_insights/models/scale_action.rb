@@ -17,8 +17,9 @@ module Azure::ARM::Insights
       # include: 'None', 'Increase', 'Decrease'
       attr_accessor :direction
 
-      # @return [String] the type of action that should occur, this must be set
-      # to ChangeCount. Default value: 'ChangeCount' .
+      # @return [ScaleType] the type of action that should occur when the scale
+      # rule fires. Possible values include: 'ChangeCount',
+      # 'PercentChangeCount', 'ExactCount'
       attr_accessor :type
 
       # @return [String] the number of instances that are involved in the
@@ -28,7 +29,7 @@ module Azure::ARM::Insights
 
       # @return [Duration] the amount of time to wait since the last scaling
       # action before this action occurs. It must be between 1 week and 1
-      # minute.
+      # minute in ISO 8601 format.
       attr_accessor :cooldown
 
 
@@ -54,11 +55,10 @@ module Azure::ARM::Insights
               },
               type: {
                 required: true,
-                is_constant: true,
                 serialized_name: 'type',
-                default_value: 'ChangeCount',
                 type: {
-                  name: 'String'
+                  name: 'Enum',
+                  module: 'ScaleType'
                 }
               },
               value: {

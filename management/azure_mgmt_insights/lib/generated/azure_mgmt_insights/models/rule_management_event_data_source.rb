@@ -6,7 +6,8 @@
 module Azure::ARM::Insights
   module Models
     #
-    # A rule management event data source.
+    # A rule management event data source. The discriminator fields is always
+    # RuleManagementEventDataSource in this case.
     #
     class RuleManagementEventDataSource < RuleDataSource
 
@@ -66,7 +67,7 @@ module Azure::ARM::Insights
             model_properties: {
               odata.type: {
                 required: true,
-                serialized_name: 'odata.type',
+                serialized_name: 'odata\\.type',
                 type: {
                   name: 'String'
                 }

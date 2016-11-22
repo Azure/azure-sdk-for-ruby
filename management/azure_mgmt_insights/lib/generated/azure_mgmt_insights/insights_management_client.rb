@@ -38,14 +38,11 @@ module Azure::ARM::Insights
     # service_diagnostic_settings_operations
     attr_reader :service_diagnostic_settings_operations
 
-    # @return [AlertRuleIncidents] alert_rule_incidents
-    attr_reader :alert_rule_incidents
-
-    # @return [Incidents] incidents
-    attr_reader :incidents
-
     # @return [AlertRules] alert_rules
     attr_reader :alert_rules
+
+    # @return [AlertRuleIncidents] alert_rule_incidents
+    attr_reader :alert_rule_incidents
 
     # @return [LogProfiles] log_profiles
     attr_reader :log_profiles
@@ -66,9 +63,8 @@ module Azure::ARM::Insights
 
       @autoscale_settings = AutoscaleSettings.new(self)
       @service_diagnostic_settings_operations = ServiceDiagnosticSettingsOperations.new(self)
-      @alert_rule_incidents = AlertRuleIncidents.new(self)
-      @incidents = Incidents.new(self)
       @alert_rules = AlertRules.new(self)
+      @alert_rule_incidents = AlertRuleIncidents.new(self)
       @log_profiles = LogProfiles.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
@@ -78,7 +74,7 @@ module Azure::ARM::Insights
 
     #
     # Makes a request and returns the body of the response.
-    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete. 
+    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
     # @param path [String] the path, relative to {base_url}.
     # @param options [Hash{String=>String}] specifying any request options like :body.
     # @return [Hash{String=>String}] containing the body of the response.
@@ -139,7 +135,7 @@ module Azure::ARM::Insights
     def add_telemetry
         sdk_information = 'azure_mgmt_insights'
         if defined? Azure::ARM::Insights::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Insights::VERSION}" 
+          sdk_information = "#{sdk_information}/#{Azure::ARM::Insights::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

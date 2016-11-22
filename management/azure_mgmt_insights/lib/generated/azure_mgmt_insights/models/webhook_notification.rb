@@ -6,7 +6,7 @@
 module Azure::ARM::Insights
   module Models
     #
-    # Webhook notification.
+    # Webhook notification of an autoscale event.
     #
     class WebhookNotification
 
@@ -15,7 +15,8 @@ module Azure::ARM::Insights
       # @return [String] the service address to receive the notification.
       attr_accessor :service_uri
 
-      # @return [Hash{String => String}] a property bag of settings.
+      # @return [Hash{String => String}] a property bag of settings. This value
+      # can be empty.
       attr_accessor :properties
 
 

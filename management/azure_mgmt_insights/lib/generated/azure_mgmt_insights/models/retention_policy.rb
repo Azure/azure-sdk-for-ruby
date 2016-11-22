@@ -16,7 +16,8 @@ module Azure::ARM::Insights
       # enabled.
       attr_accessor :enabled
 
-      # @return [Integer] the number of days for the retention.
+      # @return [Integer] the number of days for the retention in days. A value
+      # of 0 will retain the events indefinitely.
       attr_accessor :days
 
 

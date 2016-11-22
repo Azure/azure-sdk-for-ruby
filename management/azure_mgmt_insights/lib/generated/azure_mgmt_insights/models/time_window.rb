@@ -6,8 +6,7 @@
 module Azure::ARM::Insights
   module Models
     #
-    # A specific date-time for the profile. This element is not used if the
-    # Recurrence element is used.
+    # A specific date-time for the profile.
     #
     class TimeWindow
 

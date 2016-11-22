@@ -29,7 +29,7 @@ module Azure::ARM::Insights
             class_name: 'LogProfileCollection',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',

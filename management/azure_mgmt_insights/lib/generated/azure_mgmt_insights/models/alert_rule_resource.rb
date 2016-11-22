@@ -27,8 +27,9 @@ module Azure::ARM::Insights
       # being activated.
       attr_accessor :condition
 
-      # @return [Array<RuleAction>] the actions that are performed when the
-      # alert rule becomes active, and when an alert condition is resolved.
+      # @return [Array<RuleAction>] the array of actions that are performed
+      # when the alert rule becomes active, and when an alert condition is
+      # resolved.
       attr_accessor :actions
 
       # @return [DateTime] Last time the rule was updated in ISO8601 format.

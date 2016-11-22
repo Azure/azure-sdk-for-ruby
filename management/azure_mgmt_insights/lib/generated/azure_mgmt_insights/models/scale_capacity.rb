@@ -16,7 +16,8 @@ module Azure::ARM::Insights
       attr_accessor :minimum
 
       # @return [String] the maximum number of instances for the resource. The
-      # actual maximum number may be limited by the cores that are available.
+      # actual maximum number of instances is limited by the cores that are
+      # available in the subscription.
       attr_accessor :maximum
 
       # @return [String] the number of instances that will be set if metrics

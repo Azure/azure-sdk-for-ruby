@@ -20,11 +20,14 @@ module Azure::ARM::Insights
       attr_accessor :odata.type
 
       # @return [RuleDataSource] the resource from which the rule collects its
-      # data.
+      # data. For this type dataSource will always be of type
+      # RuleManagementEventDataSource.
       attr_accessor :data_source
 
-      # @return [ManagementEventAggregationCondition] the aggregation
-      # condition.
+      # @return [ManagementEventAggregationCondition] How the data that is
+      # collected should be combined over time and when the alert is activated.
+      # Note that for management event alerts aggregation is optional – if it
+      # is not provided then any event will cause the alert to activate.
       attr_accessor :aggregation
 
 
@@ -42,7 +45,7 @@ module Azure::ARM::Insights
             model_properties: {
               odata.type: {
                 required: true,
-                serialized_name: 'odata.type',
+                serialized_name: 'odata\\.type',
                 type: {
                   name: 'String'
                 }
