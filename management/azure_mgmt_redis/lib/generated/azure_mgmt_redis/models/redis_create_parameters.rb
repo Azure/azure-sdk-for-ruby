@@ -100,7 +100,7 @@ module Azure::ARM::Redis
               },
               redis_configuration: {
                 required: false,
-                serialized_name: 'properties.RedisConfiguration',
+                serialized_name: 'properties.redisConfiguration',
                 type: {
                   name: 'Dictionary',
                   value: {
