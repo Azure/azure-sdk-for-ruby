@@ -17,7 +17,8 @@ module Azure::ARM::MediaServices
     # @return Credentials needed for the client to connect to Azure.
     attr_reader :credentials
 
-    # @return [String] Azure subscription id.
+    # @return [String] The unique identifier for a Microsoft Azure
+    # subscription.
     attr_accessor :subscription_id
 
     # @return [String] Version of the API to be used with the client request.
@@ -62,7 +63,7 @@ module Azure::ARM::MediaServices
 
     #
     # Makes a request and returns the body of the response.
-    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete. 
+    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
     # @param path [String] the path, relative to {base_url}.
     # @param options [Hash{String=>String}] specifying any request options like :body.
     # @return [Hash{String=>String}] containing the body of the response.
@@ -123,7 +124,7 @@ module Azure::ARM::MediaServices
     def add_telemetry
         sdk_information = 'azure_mgmt_media_services'
         if defined? Azure::ARM::MediaServices::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::MediaServices::VERSION}" 
+          sdk_information = "#{sdk_information}/#{Azure::ARM::MediaServices::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

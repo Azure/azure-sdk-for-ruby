@@ -8,12 +8,13 @@ module Azure::ARM::MediaServices
     #
     # The properties of a Media Service resource.
     #
-    class MediaService < TrackedResource
+    class MediaService < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Array<ApiEndpoint>] The Media Services REST API endpoints for
-      # this resource.
+      # @return [Array<ApiEndpoint>] Read-only property that lists the Media
+      # Services REST API endpoints for this resource. If supplied on a PUT or
+      # PATCH, the value will be ignored.
       attr_accessor :api_endpoints
 
       # @return [Array<StorageAccount>] The storage accounts for this resource.
@@ -57,7 +58,7 @@ module Azure::ARM::MediaServices
                 }
               },
               location: {
-                required: true,
+                required: false,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -79,6 +80,7 @@ module Azure::ARM::MediaServices
               },
               api_endpoints: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.apiEndpoints',
                 type: {
                   name: 'Sequence',
