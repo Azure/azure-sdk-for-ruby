@@ -37,8 +37,8 @@ module Azure::ARM::SQL
       # serviceLevelObjectiveUsageMetrics for the service tier advisor.
       attr_accessor :service_level_objective_usage_metrics
 
-      # @return Gets or sets currentServiceLevelObjective for service tier
-      # advisor.
+      # @return [String] Gets or sets currentServiceLevelObjective for service
+      # tier advisor.
       attr_accessor :current_service_level_objective
 
       # @return Gets or sets currentServiceLevelObjectiveId for service tier

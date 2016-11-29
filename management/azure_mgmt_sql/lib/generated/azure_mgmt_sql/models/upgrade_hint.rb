@@ -8,7 +8,7 @@ module Azure::ARM::SQL
     #
     # Represents a Upgrade Hint.
     #
-    class UpgradeHint < MsRestAzure::Resource
+    class UpgradeHint
 
       include MsRestAzure
 
@@ -31,51 +31,6 @@ module Azure::ARM::SQL
             name: 'Composite',
             class_name: 'UpgradeHint',
             model_properties: {
-              name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
-              location: {
-                required: true,
-                serialized_name: 'location',
-                type: {
-                  name: 'String'
-                }
-              },
-              tags: {
-                required: false,
-                serialized_name: 'tags',
-                type: {
-                  name: 'Dictionary',
-                  value: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
-                }
-              },
               target_service_level_objective: {
                 required: false,
                 serialized_name: 'targetServiceLevelObjective',
