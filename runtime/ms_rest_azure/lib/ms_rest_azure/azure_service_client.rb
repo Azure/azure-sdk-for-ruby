@@ -41,7 +41,7 @@ module MsRestAzure
       if !AsyncOperationStatus.is_terminal_status(polling_state.status)
         task = Concurrent::TimerTask.new do
           begin
-            if !polling_state.azure_async_operation_header_link.nil?
+            if !polling_state.azure_async_operation_header_link.nil? && custom_deserialization_block.nil?
               update_state_from_azure_async_operation_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state)
             elsif !polling_state.location_header_link.nil?
               update_state_from_location_header(polling_state.get_request(headers: request.headers, base_uri: request.base_uri, user_agent_extended: user_agent_extended), polling_state, custom_deserialization_block)
