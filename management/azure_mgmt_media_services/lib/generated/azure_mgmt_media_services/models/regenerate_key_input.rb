@@ -31,7 +31,7 @@ module Azure::ARM::MediaServices
             class_name: 'RegenerateKeyInput',
             model_properties: {
               key_type: {
-                required: false,
+                required: true,
                 serialized_name: 'keyType',
                 type: {
                   name: 'Enum',

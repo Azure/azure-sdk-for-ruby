@@ -12,16 +12,16 @@ module Azure::ARM::MediaServices
 
       include MsRestAzure
 
-      # @return [String] The primary Authorization endpoint.
+      # @return [String] The primary authorization endpoint.
       attr_accessor :primary_auth_endpoint
 
-      # @return [String] The secondary Authorization endpoint.
+      # @return [String] The secondary authorization endpoint.
       attr_accessor :secondary_auth_endpoint
 
-      # @return [String] The primary resource.
+      # @return [String] The primary key for the Media Service resource.
       attr_accessor :primary_key
 
-      # @return [String] The secondary resource.
+      # @return [String] The secondary key for the Media Service resource.
       attr_accessor :secondary_key
 
       # @return [String] The authorization scope.

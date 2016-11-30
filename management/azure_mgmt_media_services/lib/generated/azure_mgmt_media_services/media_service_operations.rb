@@ -23,7 +23,7 @@ module Azure::ARM::MediaServices
     attr_reader :client
 
     #
-    # Check whether the Media Service resource name is available. The name must be
+    # Checks whether the Media Service resource name is available. The name must be
     # globally unique.
     #
     # @param check_name_availability_input [CheckNameAvailabilityInput] Properties
@@ -39,7 +39,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Check whether the Media Service resource name is available. The name must be
+    # Checks whether the Media Service resource name is available. The name must be
     # globally unique.
     #
     # @param check_name_availability_input [CheckNameAvailabilityInput] Properties
@@ -54,7 +54,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Check whether the Media Service resource name is available. The name must be
+    # Checks whether the Media Service resource name is available. The name must be
     # globally unique.
     #
     # @param check_name_availability_input [CheckNameAvailabilityInput] Properties
@@ -125,7 +125,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # List all of the Media Services in a resource group.
+    # Lists all of the Media Services in a resource group.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -140,7 +140,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # List all of the Media Services in a resource group.
+    # Lists all of the Media Services in a resource group.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -154,7 +154,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # List all of the Media Services in a resource group.
+    # Lists all of the Media Services in a resource group.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -215,7 +215,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Get a Media Service.
+    # Gets a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -231,7 +231,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Get a Media Service.
+    # Gets a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -246,7 +246,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Get a Media Service.
+    # Gets a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -309,7 +309,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Create a Media Service.
+    # Creates a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -327,7 +327,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Create a Media Service.
+    # Creates a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -344,7 +344,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Create a Media Service.
+    # Creates a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -395,22 +395,12 @@ module Azure::ARM::MediaServices
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 201
+        unless status_code == 201
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MediaService.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
         # Deserialize Response
         if status_code == 201
           begin
@@ -429,7 +419,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Delete a Media Service.
+    # Deletes a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -444,7 +434,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Delete a Media Service.
+    # Deletes a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -459,7 +449,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Delete a Media Service.
+    # Deletes a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -498,7 +488,7 @@ module Azure::ARM::MediaServices
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -512,7 +502,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Update a Media Service.
+    # Updates a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -530,7 +520,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Update a Media Service.
+    # Updates a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -547,7 +537,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Update a Media Service.
+    # Updates a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -622,7 +612,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Regenerate the key for a Media Service.
+    # Regenerates a primary or secondary key for a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -640,7 +630,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Regenerate the key for a Media Service.
+    # Regenerates a primary or secondary key for a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -657,7 +647,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Regenerate the key for a Media Service.
+    # Regenerates a primary or secondary key for a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -708,7 +698,7 @@ module Azure::ARM::MediaServices
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -732,7 +722,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # List the keys for a Media Service.
+    # Lists the keys for a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -748,7 +738,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # List the keys for a Media Service.
+    # Lists the keys for a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -763,7 +753,7 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # List the keys for a Media Service.
+    # Lists the keys for a Media Service.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
@@ -802,7 +792,7 @@ module Azure::ARM::MediaServices
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -826,31 +816,32 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Synchronize the keys for a storage account to the Media Service.
+    # Synchronizes storage account keys for a storage account associated with the
+    # Media Service account.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
     # @param sync_storage_keys_input [SyncStorageKeysInput] Properties needed to
-    # sycnronize the keys for a storage account to the Media Service.
+    # synchronize the keys for a storage account to the Media Service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MediaService] operation results.
     #
     def sync_storage_keys(resource_group_name, media_service_name, sync_storage_keys_input, custom_headers = nil)
       response = sync_storage_keys_async(resource_group_name, media_service_name, sync_storage_keys_input, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Synchronize the keys for a storage account to the Media Service.
+    # Synchronizes storage account keys for a storage account associated with the
+    # Media Service account.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
     # @param sync_storage_keys_input [SyncStorageKeysInput] Properties needed to
-    # sycnronize the keys for a storage account to the Media Service.
+    # synchronize the keys for a storage account to the Media Service.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -861,13 +852,14 @@ module Azure::ARM::MediaServices
     end
 
     #
-    # Synchronize the keys for a storage account to the Media Service.
+    # Synchronizes storage account keys for a storage account associated with the
+    # Media Service account.
     #
     # @param resource_group_name [String] Name of the resource group within the
     # Azure subscription.
     # @param media_service_name [String] Name of the Media Service.
     # @param sync_storage_keys_input [SyncStorageKeysInput] Properties needed to
-    # sycnronize the keys for a storage account to the Media Service.
+    # synchronize the keys for a storage account to the Media Service.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -912,22 +904,12 @@ module Azure::ARM::MediaServices
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MediaService.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
 
         result
       end
