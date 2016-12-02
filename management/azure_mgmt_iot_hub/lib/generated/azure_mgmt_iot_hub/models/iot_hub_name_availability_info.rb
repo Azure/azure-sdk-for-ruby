@@ -6,7 +6,7 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The properties indicating whether a given iothub name is available.
+    # The properties indicating whether a given IoT hub name is available.
     #
     class IotHubNameAvailabilityInfo
 
@@ -20,7 +20,7 @@ module Azure::ARM::IotHub
       # Possible values include: 'Invalid', 'AlreadyExists'
       attr_accessor :reason
 
-      # @return [String] The message describing the detailed reason.
+      # @return [String] The detailed reason message.
       attr_accessor :message
 
 
@@ -38,6 +38,7 @@ module Azure::ARM::IotHub
             model_properties: {
               name_available: {
                 required: false,
+                read_only: true,
                 serialized_name: 'nameAvailable',
                 type: {
                   name: 'Boolean'
@@ -45,6 +46,7 @@ module Azure::ARM::IotHub
               },
               reason: {
                 required: false,
+                read_only: true,
                 serialized_name: 'reason',
                 type: {
                   name: 'Enum',

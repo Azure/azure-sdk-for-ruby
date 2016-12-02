@@ -20,7 +20,7 @@ module Azure::ARM::IotHub
     # @return [String] The subscription identifier.
     attr_accessor :subscription_id
 
-    # @return [String] Version of the Api.
+    # @return [String] The version of the API.
     attr_reader :api_version
 
     # @return [String] Gets or sets the preferred language for the response.
@@ -61,7 +61,7 @@ module Azure::ARM::IotHub
 
     #
     # Makes a request and returns the body of the response.
-    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete. 
+    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
     # @param path [String] the path, relative to {base_url}.
     # @param options [Hash{String=>String}] specifying any request options like :body.
     # @return [Hash{String=>String}] containing the body of the response.
@@ -122,7 +122,7 @@ module Azure::ARM::IotHub
     def add_telemetry
         sdk_information = 'azure_mgmt_iot_hub'
         if defined? Azure::ARM::IotHub::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::IotHub::VERSION}" 
+          sdk_information = "#{sdk_information}/#{Azure::ARM::IotHub::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

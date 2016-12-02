@@ -12,6 +12,7 @@ module Azure::ARM::IotHub
       None = "None"
       Error = "Error"
       Information = "Information"
+      ErrorInformation = "Error, Information"
     end
   end
 end

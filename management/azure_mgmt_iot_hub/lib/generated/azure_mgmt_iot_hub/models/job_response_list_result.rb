@@ -6,13 +6,13 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The list of JobResponse objects with a next link.
+    # The JSON-serialized array of JobResponse objects with a next link.
     #
     class JobResponseListResult
 
       include MsRestAzure
 
-      # @return [Array<JobResponse>] The list of JobResponse.
+      # @return [Array<JobResponse>] The array of JobResponse objects.
       attr_accessor :value
 
       # @return [String] The next link.

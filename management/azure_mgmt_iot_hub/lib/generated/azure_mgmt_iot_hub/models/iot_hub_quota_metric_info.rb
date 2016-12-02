@@ -6,7 +6,7 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The properties related to quota metrics.
+    # Quota metrics properties.
     #
     class IotHubQuotaMetricInfo
 
@@ -36,6 +36,7 @@ module Azure::ARM::IotHub
             model_properties: {
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'Name',
                 type: {
                   name: 'String'
@@ -43,6 +44,7 @@ module Azure::ARM::IotHub
               },
               current_value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'CurrentValue',
                 type: {
                   name: 'Number'
@@ -50,6 +52,7 @@ module Azure::ARM::IotHub
               },
               max_value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'MaxValue',
                 type: {
                   name: 'Number'

@@ -6,7 +6,7 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The description of the IotHub.
+    # The description of the IoT hub.
     #
     class IotHubDescription < MsRestAzure::Resource
 
@@ -15,8 +15,9 @@ module Azure::ARM::IotHub
       # @return [String] The subscription identifier.
       attr_accessor :subscriptionid
 
-      # @return [String] The resource group name uniquely identifies the
-      # resource group within the user subscriptionId.
+      # @return [String] The name of the resource group that contains the IoT
+      # hub. A resource group name uniquely identifies the resource group
+      # within the subscription.
       attr_accessor :resourcegroup
 
       # @return [String] The Etag field is *not* required. If it is provided in
@@ -71,7 +72,7 @@ module Azure::ARM::IotHub
                 }
               },
               location: {
-                required: false,
+                required: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
@@ -92,14 +93,14 @@ module Azure::ARM::IotHub
                 }
               },
               subscriptionid: {
-                required: false,
+                required: true,
                 serialized_name: 'subscriptionid',
                 type: {
                   name: 'String'
                 }
               },
               resourcegroup: {
-                required: false,
+                required: true,
                 serialized_name: 'resourcegroup',
                 type: {
                   name: 'String'
@@ -121,7 +122,7 @@ module Azure::ARM::IotHub
                 }
               },
               sku: {
-                required: false,
+                required: true,
                 serialized_name: 'sku',
                 type: {
                   name: 'Composite',

@@ -6,18 +6,20 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The Iot Hub Cloud-To-Device messaging properties.
+    # The IoT hub cloud-to-device messaging properties.
     #
     class CloudToDeviceProperties
 
       include MsRestAzure
 
-      # @return [Integer] The max delivery count for the device queue. Range :
-      # 1-100.
+      # @return [Integer] The max delivery count for cloud-to-device messages
+      # in the device queue. See:
+      # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
       attr_accessor :max_delivery_count
 
-      # @return [Duration] The default time to live for the device queue. Range
-      # : 1 Min (PT1M) - 2 Days (P2D).
+      # @return [Duration] The default time to live for cloud-to-device
+      # messages in the device queue. See:
+      # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
       attr_accessor :default_ttl_as_iso8601
 
       # @return [FeedbackProperties]

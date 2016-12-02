@@ -6,7 +6,7 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The properties related to the details of an error.
+    # Error details.
     #
     class ErrorDetails
 
@@ -15,7 +15,7 @@ module Azure::ARM::IotHub
       # @return [String] The error code.
       attr_accessor :code
 
-      # @return [String] The http status code.
+      # @return [String] The HTTP status code.
       attr_accessor :http_status_code
 
       # @return [String] The error message.
@@ -39,6 +39,7 @@ module Azure::ARM::IotHub
             model_properties: {
               code: {
                 required: false,
+                read_only: true,
                 serialized_name: 'Code',
                 type: {
                   name: 'String'
@@ -54,6 +55,7 @@ module Azure::ARM::IotHub
               },
               message: {
                 required: false,
+                read_only: true,
                 serialized_name: 'Message',
                 type: {
                   name: 'String'
@@ -61,6 +63,7 @@ module Azure::ARM::IotHub
               },
               details: {
                 required: false,
+                read_only: true,
                 serialized_name: 'Details',
                 type: {
                   name: 'String'
