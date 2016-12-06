@@ -21,8 +21,27 @@ module Azure::ARM::EventHub
       # @return [String] Name of the Event Hub.
       attr_accessor :name
 
-      # @return [EventHubProperties]
-      attr_accessor :properties
+      # @return [DateTime] Exact time the Event Hub was created.
+      attr_accessor :created_at
+
+      # @return [Integer] Number of days to retain the events for this Event
+      # Hub.
+      attr_accessor :message_retention_in_days
+
+      # @return [Integer] Number of partitions created for the Event Hub.
+      attr_accessor :partition_count
+
+      # @return [Array<String>] Current number of shards on the Event Hub.
+      attr_accessor :partition_ids
+
+      # @return [EntityStatus] Enumerates the possible values for the status of
+      # the Event Hub. Possible values include: 'Active', 'Disabled',
+      # 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
+      # 'Renaming', 'Unknown'
+      attr_accessor :status
+
+      # @return [DateTime] The exact time the message was updated.
+      attr_accessor :updated_at
 
 
       #
@@ -58,12 +77,54 @@ module Azure::ARM::EventHub
                   name: 'String'
                 }
               },
-              properties: {
+              created_at: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.createdAt',
                 type: {
-                  name: 'Composite',
-                  class_name: 'EventHubProperties'
+                  name: 'DateTime'
+                }
+              },
+              message_retention_in_days: {
+                required: false,
+                serialized_name: 'properties.messageRetentionInDays',
+                type: {
+                  name: 'Number'
+                }
+              },
+              partition_count: {
+                required: false,
+                serialized_name: 'properties.partitionCount',
+                type: {
+                  name: 'Number'
+                }
+              },
+              partition_ids: {
+                required: false,
+                serialized_name: 'properties.partitionIds',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              status: {
+                required: false,
+                serialized_name: 'properties.status',
+                type: {
+                  name: 'Enum',
+                  module: 'EntityStatus'
+                }
+              },
+              updated_at: {
+                required: false,
+                serialized_name: 'properties.updatedAt',
+                type: {
+                  name: 'DateTime'
                 }
               }
             }
