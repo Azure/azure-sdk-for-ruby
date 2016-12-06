@@ -12,13 +12,13 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the error code.
+      # @return [String] The error code.
       attr_accessor :code
 
-      # @return [String] the target of the particular error.
+      # @return [String] The target of the particular error.
       attr_accessor :target
 
-      # @return [String] the error message.
+      # @return [String] The error message.
       attr_accessor :message
 
 

@@ -24,7 +24,7 @@ module Azure::ARM::Compute
       # include: 'Microsoft-Windows-Shell-Setup'
       attr_accessor :component_name
 
-      # @return [SettingNames] setting name (e.g. FirstLogonCommands, AutoLogon
+      # @return [SettingNames] Setting name (e.g. FirstLogonCommands, AutoLogon
       # ). Possible values include: 'AutoLogon', 'FirstLogonCommands'
       attr_accessor :setting_name
 

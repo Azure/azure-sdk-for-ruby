@@ -28,11 +28,11 @@ module Azure::ARM::Compute
       # @return [Array<DiskInstanceView>] The virtual machine disk information.
       attr_accessor :disks
 
-      # @return [Array<VirtualMachineExtensionInstanceView>] the extensions
+      # @return [Array<VirtualMachineExtensionInstanceView>] The extensions
       # information.
       attr_accessor :extensions
 
-      # @return [BootDiagnosticsInstanceView] the boot diagnostics.
+      # @return [BootDiagnosticsInstanceView] The boot diagnostics.
       attr_accessor :boot_diagnostics
 
       # @return [Array<InstanceViewStatus>] The resource status information.

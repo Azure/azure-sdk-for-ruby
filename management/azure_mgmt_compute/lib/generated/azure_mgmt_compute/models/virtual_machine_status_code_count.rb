@@ -13,10 +13,10 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the instance view status code.
+      # @return [String] The instance view status code.
       attr_accessor :code
 
-      # @return [Integer] the number of instances having a particular status
+      # @return [Integer] The number of instances having a particular status
       # code.
       attr_accessor :count
 

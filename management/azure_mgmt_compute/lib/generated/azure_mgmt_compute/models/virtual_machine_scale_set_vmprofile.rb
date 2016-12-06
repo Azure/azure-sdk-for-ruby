@@ -12,19 +12,19 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [VirtualMachineScaleSetOSProfile] the virtual machine scale set
+      # @return [VirtualMachineScaleSetOSProfile] The virtual machine scale set
       # OS profile.
       attr_accessor :os_profile
 
-      # @return [VirtualMachineScaleSetStorageProfile] the virtual machine
+      # @return [VirtualMachineScaleSetStorageProfile] The virtual machine
       # scale set storage profile.
       attr_accessor :storage_profile
 
-      # @return [VirtualMachineScaleSetNetworkProfile] the virtual machine
+      # @return [VirtualMachineScaleSetNetworkProfile] The virtual machine
       # scale set network profile.
       attr_accessor :network_profile
 
-      # @return [VirtualMachineScaleSetExtensionProfile] the virtual machine
+      # @return [VirtualMachineScaleSetExtensionProfile] The virtual machine
       # scale set extension profile.
       attr_accessor :extension_profile
 

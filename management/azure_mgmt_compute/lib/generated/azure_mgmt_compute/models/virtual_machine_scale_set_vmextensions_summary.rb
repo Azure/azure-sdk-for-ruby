@@ -12,10 +12,10 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the extension name.
+      # @return [String] The extension name.
       attr_accessor :name
 
-      # @return [Array<VirtualMachineStatusCodeCount>] the extensions
+      # @return [Array<VirtualMachineStatusCodeCount>] The extensions
       # information.
       attr_accessor :statuses_summary
 

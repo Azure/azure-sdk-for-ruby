@@ -12,28 +12,28 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the disk name.
+      # @return [String] The disk name.
       attr_accessor :name
 
-      # @return [CachingTypes] the caching type. Possible values include:
+      # @return [CachingTypes] The caching type. Possible values include:
       # 'None', 'ReadOnly', 'ReadWrite'
       attr_accessor :caching
 
-      # @return [DiskCreateOptionTypes] the create option. Possible values
+      # @return [DiskCreateOptionTypes] The create option. Possible values
       # include: 'fromImage', 'empty', 'attach'
       attr_accessor :create_option
 
-      # @return [OperatingSystemTypes] the Operating System type. Possible
+      # @return [OperatingSystemTypes] The Operating System type. Possible
       # values include: 'Windows', 'Linux'
       attr_accessor :os_type
 
-      # @return [VirtualHardDisk] the Source User Image VirtualHardDisk. This
+      # @return [VirtualHardDisk] The Source User Image VirtualHardDisk. This
       # VirtualHardDisk will be copied before using it to attach to the Virtual
       # Machine. If SourceImage is provided, the destination VirtualHardDisk
       # should not exist.
       attr_accessor :image
 
-      # @return [Array<String>] the list of virtual hard disk container uris.
+      # @return [Array<String>] The list of virtual hard disk container uris.
       attr_accessor :vhd_containers
 
 

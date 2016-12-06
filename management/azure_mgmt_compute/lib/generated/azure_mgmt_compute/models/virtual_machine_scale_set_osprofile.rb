@@ -12,26 +12,26 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the computer name prefix.
+      # @return [String] The computer name prefix.
       attr_accessor :computer_name_prefix
 
-      # @return [String] the admin user name.
+      # @return [String] The admin user name.
       attr_accessor :admin_username
 
-      # @return [String] the admin user password.
+      # @return [String] The admin user password.
       attr_accessor :admin_password
 
-      # @return [String] a base-64 encoded string of custom data.
+      # @return [String] A base-64 encoded string of custom data.
       attr_accessor :custom_data
 
-      # @return [WindowsConfiguration] the Windows Configuration of the OS
+      # @return [WindowsConfiguration] The Windows Configuration of the OS
       # profile.
       attr_accessor :windows_configuration
 
-      # @return [LinuxConfiguration] the Linux Configuration of the OS profile.
+      # @return [LinuxConfiguration] The Linux Configuration of the OS profile.
       attr_accessor :linux_configuration
 
-      # @return [Array<VaultSecretGroup>] the List of certificates for addition
+      # @return [Array<VaultSecretGroup>] The List of certificates for addition
       # to the VM.
       attr_accessor :secrets
 

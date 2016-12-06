@@ -52,7 +52,7 @@ module Azure::ARM::Compute
       # can be read using platform BIOS commands.
       attr_accessor :vm_id
 
-      # @return [Array<VirtualMachineExtension>] the virtual machine child
+      # @return [Array<VirtualMachineExtension>] The virtual machine child
       # extension resources.
       attr_accessor :resources
 

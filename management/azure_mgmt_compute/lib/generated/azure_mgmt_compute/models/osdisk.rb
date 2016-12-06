@@ -16,7 +16,7 @@ module Azure::ARM::Compute
       # values include: 'Windows', 'Linux'
       attr_accessor :os_type
 
-      # @return [DiskEncryptionSettings] the disk encryption settings.
+      # @return [DiskEncryptionSettings] The disk encryption settings.
       attr_accessor :encryption_settings
 
       # @return [String] The disk name.

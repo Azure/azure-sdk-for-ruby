@@ -12,7 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the ARM resource id in the form of
+      # @return [String] The ARM resource id in the form of
       # /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
       attr_accessor :id
 

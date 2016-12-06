@@ -12,10 +12,10 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the exception type.
+      # @return [String] The exception type.
       attr_accessor :exceptiontype
 
-      # @return [String] the internal error message or exception dump.
+      # @return [String] The internal error message or exception dump.
       attr_accessor :errordetail
 
 
