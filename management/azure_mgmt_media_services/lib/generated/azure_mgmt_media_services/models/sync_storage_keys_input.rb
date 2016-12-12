@@ -29,7 +29,7 @@ module Azure::ARM::MediaServices
             class_name: 'SyncStorageKeysInput',
             model_properties: {
               id: {
-                required: false,
+                required: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'

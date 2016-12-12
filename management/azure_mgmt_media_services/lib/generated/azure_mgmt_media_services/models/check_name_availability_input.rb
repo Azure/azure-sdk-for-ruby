@@ -16,8 +16,8 @@ module Azure::ARM::MediaServices
       # unique.
       attr_accessor :name
 
-      # @return [String] Specifies the type of the resource. Default value:
-      # 'mediaservices' .
+      # @return [String] The type of the resource - mediaservices. Default
+      # value: 'mediaservices' .
       attr_accessor :type
 
 
