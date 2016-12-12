@@ -6,13 +6,13 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # OperationInputs.
+    # Input values.
     #
     class OperationInputs
 
       include MsRestAzure
 
-      # @return [String] The name of the iot hub.
+      # @return [String] The name of the IoT hub to check.
       attr_accessor :name
 
 

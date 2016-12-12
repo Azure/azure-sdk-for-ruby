@@ -6,19 +6,21 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The properties related to the registry statistics.
+    # Identity registry statistics.
     #
     class RegistryStatistics
 
       include MsRestAzure
 
-      # @return [Integer] The total device count.
+      # @return [Integer] The total count of devices in the identity registry.
       attr_accessor :total_device_count
 
-      # @return [Integer] The enabled device count.
+      # @return [Integer] The count of enabled devices in the identity
+      # registry.
       attr_accessor :enabled_device_count
 
-      # @return [Integer] The disabled device count.
+      # @return [Integer] The count of disabled devices in the identity
+      # registry.
       attr_accessor :disabled_device_count
 
 
@@ -36,6 +38,7 @@ module Azure::ARM::IotHub
             model_properties: {
               total_device_count: {
                 required: false,
+                read_only: true,
                 serialized_name: 'totalDeviceCount',
                 type: {
                   name: 'Number'
@@ -43,6 +46,7 @@ module Azure::ARM::IotHub
               },
               enabled_device_count: {
                 required: false,
+                read_only: true,
                 serialized_name: 'enabledDeviceCount',
                 type: {
                   name: 'Number'
@@ -50,6 +54,7 @@ module Azure::ARM::IotHub
               },
               disabled_device_count: {
                 required: false,
+                read_only: true,
                 serialized_name: 'disabledDeviceCount',
                 type: {
                   name: 'Number'

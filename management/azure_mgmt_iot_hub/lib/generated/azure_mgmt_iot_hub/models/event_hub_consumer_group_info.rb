@@ -6,7 +6,7 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The properties indicating the EventHubConsumerGroupInfo.
+    # The properties of the EventHubConsumerGroupInfo object.
     #
     class EventHubConsumerGroupInfo
 
@@ -15,10 +15,10 @@ module Azure::ARM::IotHub
       # @return [Hash{String => String}] The tags.
       attr_accessor :tags
 
-      # @return [String] The event hub consumer group identifier.
+      # @return [String] The Event Hub-compatible consumer group identifier.
       attr_accessor :id
 
-      # @return [String] The event hub consumer group name.
+      # @return [String] The Event Hub-compatible consumer group name.
       attr_accessor :name
 
 

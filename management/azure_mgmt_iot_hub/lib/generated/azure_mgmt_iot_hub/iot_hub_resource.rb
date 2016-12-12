@@ -5,7 +5,7 @@
 
 module Azure::ARM::IotHub
   #
-  # API for using the IoT Hub Features.
+  # Use this API to manage the IoT hubs in your subscription.
   #
   class IotHubResource
     include Azure::ARM::IotHub::Models
@@ -23,12 +23,13 @@ module Azure::ARM::IotHub
     attr_reader :client
 
     #
-    # Get an IotHub.
+    # Get the non-security related metadata of an IoT hub.
     #
-    # Get an IotHub.
+    # Get the non-security related metadata of an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,12 +41,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get an IotHub.
+    # Get the non-security related metadata of an IoT hub.
     #
-    # Get an IotHub.
+    # Get the non-security related metadata of an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -56,12 +58,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get an IotHub.
+    # Get the non-security related metadata of an IoT hub.
     #
-    # Get an IotHub.
+    # Get the non-security related metadata of an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -120,13 +123,17 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Create or update an IotHub.
+    # Create or update the metadata of an IoT hub.
     #
-    # Create or update an IotHub.
+    # Create or update the metadata of an Iot hub. The usual pattern to modify a
+    # property is to retrieve the IoT hub metadata and security metadata, and then
+    # combine them with the modified values in a new body to update the IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param iot_hub_description [IotHubDescription] The Iot hub description.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub to create or update.
+    # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
+    # security metadata.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -138,9 +145,11 @@ module Azure::ARM::IotHub
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param iot_hub_description [IotHubDescription] The Iot hub description.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub to create or update.
+    # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
+    # security metadata.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -166,16 +175,17 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Delete an IotHub.
+    # Delete an IoT hub.
     #
-    # Delete an IotHub.
+    # Delete an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [IotHubDescription] operation results.
+    # @return [Object] operation results.
     #
     def delete(resource_group_name, resource_name, custom_headers = nil)
       response = delete_async(resource_group_name, resource_name, custom_headers).value!
@@ -183,8 +193,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -198,7 +209,13 @@ module Azure::ARM::IotHub
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = IotHubDescription.mapper()
+          result_mapper = {
+            required: false,
+            serialized_name: 'parsed_response',
+            type: {
+              name: 'Object'
+            }
+          }
           parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
@@ -210,9 +227,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -225,9 +242,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -239,9 +256,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -299,11 +316,12 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a Resourcegroup.
+    # Get all the IoT hubs in a resource group.
     #
-    # Get all IotHubs in a Resource group.
+    # Get all the IoT hubs in a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hubs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -315,11 +333,12 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a Resourcegroup.
+    # Get all the IoT hubs in a resource group.
     #
-    # Get all IotHubs in a Resource group.
+    # Get all the IoT hubs in a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hubs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -330,11 +349,12 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a Resourcegroup.
+    # Get all the IoT hubs in a resource group.
     #
-    # Get all IotHubs in a Resource group.
+    # Get all the IoT hubs in a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hubs.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -392,12 +412,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get IotHub Stats.
+    # Get the statistics from an IoT hub.
     #
-    # Get IotHub Stats.
+    # Get the statistics from an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -409,12 +430,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get IotHub Stats.
+    # Get the statistics from an IoT hub.
     #
-    # Get IotHub Stats.
+    # Get the statistics from an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -425,12 +447,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get IotHub Stats.
+    # Get the statistics from an IoT hub.
     #
-    # Get IotHub Stats.
+    # Get the statistics from an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -489,12 +512,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -506,12 +530,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -522,12 +547,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -586,13 +612,17 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -604,13 +634,17 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -621,13 +655,17 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -687,14 +725,18 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get EventHub Consumer Group for an IotHub.
+    # Get a consumer group from the Event Hub-compatible device-to-cloud endpoint
+    # for an IoT hub.
     #
-    # Get EventHub Consumer Group for an IotHub.
+    # Get a consumer group from the Event Hub-compatible device-to-cloud endpoint
+    # for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
-    # @param name [String] The name of the consumer group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint in the IoT hub.
+    # @param name [String] The name of the consumer group to retrieve.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -706,14 +748,18 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get EventHub Consumer Group for an IotHub.
+    # Get a consumer group from the Event Hub-compatible device-to-cloud endpoint
+    # for an IoT hub.
     #
-    # Get EventHub Consumer Group for an IotHub.
+    # Get a consumer group from the Event Hub-compatible device-to-cloud endpoint
+    # for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
-    # @param name [String] The name of the consumer group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint in the IoT hub.
+    # @param name [String] The name of the consumer group to retrieve.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -724,14 +770,18 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get EventHub Consumer Group for an IotHub.
+    # Get a consumer group from the Event Hub-compatible device-to-cloud endpoint
+    # for an IoT hub.
     #
-    # Get EventHub Consumer Group for an IotHub.
+    # Get a consumer group from the Event Hub-compatible device-to-cloud endpoint
+    # for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
-    # @param name [String] The name of the consumer group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint in the IoT hub.
+    # @param name [String] The name of the consumer group to retrieve.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -792,14 +842,16 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Add an EventHub Consumer Group to an IotHub.
+    # Add a consumer group to an Event Hub-compatible endpoint in an IoT hub.
     #
-    # Add an EventHub Consumer Group to an IotHub.
+    # Add a consumer group to an Event Hub-compatible endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
-    # @param name [String] The name of the consumer group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint in the IoT hub.
+    # @param name [String] The name of the consumer group to add.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -811,14 +863,16 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Add an EventHub Consumer Group to an IotHub.
+    # Add a consumer group to an Event Hub-compatible endpoint in an IoT hub.
     #
-    # Add an EventHub Consumer Group to an IotHub.
+    # Add a consumer group to an Event Hub-compatible endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
-    # @param name [String] The name of the consumer group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint in the IoT hub.
+    # @param name [String] The name of the consumer group to add.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -829,14 +883,16 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Add an EventHub Consumer Group to an IotHub.
+    # Add a consumer group to an Event Hub-compatible endpoint in an IoT hub.
     #
-    # Add an EventHub Consumer Group to an IotHub.
+    # Add a consumer group to an Event Hub-compatible endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
-    # @param name [String] The name of the consumer group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint in the IoT hub.
+    # @param name [String] The name of the consumer group to add.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -897,14 +953,16 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Delete EventHub Consumer Group for an IotHub.
+    # Delete a consumer group from an Event Hub-compatible endpoint in an IoT hub.
     #
-    # Delete EventHub Consumer Group for an IotHub.
+    # Delete a consumer group from an Event Hub-compatible endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
-    # @param name [String] The name of the consumer group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint in the IoT hub.
+    # @param name [String] The name of the consumer group to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -915,14 +973,16 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Delete EventHub Consumer Group for an IotHub.
+    # Delete a consumer group from an Event Hub-compatible endpoint in an IoT hub.
     #
-    # Delete EventHub Consumer Group for an IotHub.
+    # Delete a consumer group from an Event Hub-compatible endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
-    # @param name [String] The name of the consumer group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint in the IoT hub.
+    # @param name [String] The name of the consumer group to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -933,14 +993,16 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Delete EventHub Consumer Group for an IotHub.
+    # Delete a consumer group from an Event Hub-compatible endpoint in an IoT hub.
     #
-    # Delete EventHub Consumer Group for an IotHub.
+    # Delete a consumer group from an Event Hub-compatible endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
-    # @param name [String] The name of the consumer group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint in the IoT hub.
+    # @param name [String] The name of the consumer group to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -991,12 +1053,15 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1008,12 +1073,15 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1024,12 +1092,15 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1088,12 +1159,15 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get a job in an IotHub.
+    # Get the details of a job from an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # Get a job in an IotHub.
+    # Get the details of a job from an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param job_id [String] The job identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1106,12 +1180,15 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get a job in an IotHub.
+    # Get the details of a job from an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # Get a job in an IotHub.
+    # Get the details of a job from an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param job_id [String] The job identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1123,12 +1200,15 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get a job in an IotHub.
+    # Get the details of a job from an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # Get a job in an IotHub.
+    # Get the details of a job from an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param job_id [String] The job identifier.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1189,12 +1269,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1206,12 +1287,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1222,12 +1304,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1286,12 +1369,12 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Check if an IotHub name is available.
+    # Check if an IoT hub name is available.
     #
-    # Check if an IotHub name is available.
+    # Check if an IoT hub name is available.
     #
-    # @param operation_inputs [OperationInputs] The operation inputs. Set the name
-    # parameter in the operationInputs structure to the desired iothub name.
+    # @param operation_inputs [OperationInputs] Set the name parameter in the
+    # OperationInputs structure to the name of the IoT hub to check.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1303,12 +1386,12 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Check if an IotHub name is available.
+    # Check if an IoT hub name is available.
     #
-    # Check if an IotHub name is available.
+    # Check if an IoT hub name is available.
     #
-    # @param operation_inputs [OperationInputs] The operation inputs. Set the name
-    # parameter in the operationInputs structure to the desired iothub name.
+    # @param operation_inputs [OperationInputs] Set the name parameter in the
+    # OperationInputs structure to the name of the IoT hub to check.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1319,12 +1402,12 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Check if an IotHub name is available.
+    # Check if an IoT hub name is available.
     #
-    # Check if an IotHub name is available.
+    # Check if an IoT hub name is available.
     #
-    # @param operation_inputs [OperationInputs] The operation inputs. Set the name
-    # parameter in the operationInputs structure to the desired iothub name.
+    # @param operation_inputs [OperationInputs] Set the name parameter in the
+    # OperationInputs structure to the name of the IoT hub to check.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1391,12 +1474,15 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1408,12 +1494,15 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1424,12 +1513,15 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1488,13 +1580,16 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get the Key given a specific KeyName for an IotHub.
+    # Get a shared access policy by name from an IoT hub. For more information,
+    # see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # Get the Key given a specific KeyName for an IotHub.
+    # Get a shared access policy by name from an IoT hub. For more information,
+    # see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param key_name [String] The name of the key.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param key_name [String] The name of the shared access policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1506,13 +1601,16 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get the Key given a specific KeyName for an IotHub.
+    # Get a shared access policy by name from an IoT hub. For more information,
+    # see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # Get the Key given a specific KeyName for an IotHub.
+    # Get a shared access policy by name from an IoT hub. For more information,
+    # see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param key_name [String] The name of the key.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param key_name [String] The name of the shared access policy.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1523,13 +1621,16 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get the Key given a specific KeyName for an IotHub.
+    # Get a shared access policy by name from an IoT hub. For more information,
+    # see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # Get the Key given a specific KeyName for an IotHub.
+    # Get a shared access policy by name from an IoT hub. For more information,
+    # see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param key_name [String] The name of the key.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param key_name [String] The name of the shared access policy.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1589,14 +1690,19 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Export all the devices in an IotHub.
+    # Exports all the device identities in the IoT hub identity registry to an
+    # Azure Storage blob container. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # Export all the devices in an IotHub.
+    # Exports all the device identities in the IoT hub identity registry to an
+    # Azure Storage blob container. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param export_devices_parameters [ExportDevicesRequest] The export devices
-    # parameters.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param export_devices_parameters [ExportDevicesRequest] The parameters that
+    # specify the export devices operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1608,14 +1714,19 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Export all the devices in an IotHub.
+    # Exports all the device identities in the IoT hub identity registry to an
+    # Azure Storage blob container. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # Export all the devices in an IotHub.
+    # Exports all the device identities in the IoT hub identity registry to an
+    # Azure Storage blob container. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param export_devices_parameters [ExportDevicesRequest] The export devices
-    # parameters.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param export_devices_parameters [ExportDevicesRequest] The parameters that
+    # specify the export devices operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1626,14 +1737,19 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Export all the devices in an IotHub.
+    # Exports all the device identities in the IoT hub identity registry to an
+    # Azure Storage blob container. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # Export all the devices in an IotHub.
+    # Exports all the device identities in the IoT hub identity registry to an
+    # Azure Storage blob container. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param export_devices_parameters [ExportDevicesRequest] The export devices
-    # parameters.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param export_devices_parameters [ExportDevicesRequest] The parameters that
+    # specify the export devices operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1702,14 +1818,19 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Import all the devices in an IotHub.
+    # Import, update, or delete device identities in the IoT hub identity registry
+    # from a blob. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # Import all the devices in an IotHub.
+    # Import, update, or delete device identities in the IoT hub identity registry
+    # from a blob. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param import_devices_parameters [ImportDevicesRequest] The import devices
-    # parameters.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param import_devices_parameters [ImportDevicesRequest] The parameters that
+    # specify the import devices operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1721,14 +1842,19 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Import all the devices in an IotHub.
+    # Import, update, or delete device identities in the IoT hub identity registry
+    # from a blob. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # Import all the devices in an IotHub.
+    # Import, update, or delete device identities in the IoT hub identity registry
+    # from a blob. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param import_devices_parameters [ImportDevicesRequest] The import devices
-    # parameters.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param import_devices_parameters [ImportDevicesRequest] The parameters that
+    # specify the import devices operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1739,14 +1865,19 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Import all the devices in an IotHub.
+    # Import, update, or delete device identities in the IoT hub identity registry
+    # from a blob. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # Import all the devices in an IotHub.
+    # Import, update, or delete device identities in the IoT hub identity registry
+    # from a blob. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param import_devices_parameters [ImportDevicesRequest] The import devices
-    # parameters.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param import_devices_parameters [ImportDevicesRequest] The parameters that
+    # specify the import devices operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1815,13 +1946,17 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Create or update an IotHub.
+    # Create or update the metadata of an IoT hub.
     #
-    # Create or update an IotHub.
+    # Create or update the metadata of an Iot hub. The usual pattern to modify a
+    # property is to retrieve the IoT hub metadata and security metadata, and then
+    # combine them with the modified values in a new body to update the IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param iot_hub_description [IotHubDescription] The Iot hub description.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub to create or update.
+    # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
+    # security metadata.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1833,13 +1968,17 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Create or update an IotHub.
+    # Create or update the metadata of an IoT hub.
     #
-    # Create or update an IotHub.
+    # Create or update the metadata of an Iot hub. The usual pattern to modify a
+    # property is to retrieve the IoT hub metadata and security metadata, and then
+    # combine them with the modified values in a new body to update the IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param iot_hub_description [IotHubDescription] The Iot hub description.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub to create or update.
+    # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
+    # security metadata.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1850,13 +1989,17 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Create or update an IotHub.
+    # Create or update the metadata of an IoT hub.
     #
-    # Create or update an IotHub.
+    # Create or update the metadata of an Iot hub. The usual pattern to modify a
+    # property is to retrieve the IoT hub metadata and security metadata, and then
+    # combine them with the modified values in a new body to update the IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param iot_hub_description [IotHubDescription] The Iot hub description.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub to create or update.
+    # @param iot_hub_description [IotHubDescription] The IoT hub metadata and
+    # security metadata.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1901,7 +2044,7 @@ module Azure::ARM::IotHub
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 201
+        unless status_code == 201 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -1909,6 +2052,16 @@ module Azure::ARM::IotHub
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
         if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = IotHubDescription.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
             result_mapper = IotHubDescription.mapper()
@@ -1925,16 +2078,17 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Delete an IotHub.
+    # Delete an IoT hub.
     #
-    # Delete an IotHub.
+    # Delete an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [IotHubDescription] operation results.
+    # @return [Object] operation results.
     #
     def begin_delete(resource_group_name, resource_name, custom_headers = nil)
       response = begin_delete_async(resource_group_name, resource_name, custom_headers).value!
@@ -1942,12 +2096,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Delete an IotHub.
+    # Delete an IoT hub.
     #
-    # Delete an IotHub.
+    # Delete an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1958,12 +2113,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Delete an IotHub.
+    # Delete an IoT hub.
     #
-    # Delete an IotHub.
+    # Delete an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1998,7 +2154,7 @@ module Azure::ARM::IotHub
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202
+        unless status_code == 202 || status_code == 200 || status_code == 204 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
@@ -2014,6 +2170,26 @@ module Azure::ARM::IotHub
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
           end
         end
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = IotHubDescription.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 404
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ErrorDetails.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -2022,9 +2198,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2039,9 +2215,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2055,9 +2231,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2115,9 +2291,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a Resourcegroup.
+    # Get all the IoT hubs in a resource group.
     #
-    # Get all IotHubs in a Resource group.
+    # Get all the IoT hubs in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2132,9 +2308,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a Resourcegroup.
+    # Get all the IoT hubs in a resource group.
     #
-    # Get all IotHubs in a Resource group.
+    # Get all the IoT hubs in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2148,9 +2324,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a Resourcegroup.
+    # Get all the IoT hubs in a resource group.
     #
-    # Get all IotHubs in a Resource group.
+    # Get all the IoT hubs in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2208,9 +2384,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2225,9 +2401,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2241,9 +2417,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2301,9 +2477,11 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2318,9 +2496,11 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2334,9 +2514,11 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2394,9 +2576,11 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2411,9 +2595,11 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2427,9 +2613,11 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2487,9 +2675,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2504,9 +2692,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2520,9 +2708,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2580,9 +2768,11 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2597,9 +2787,11 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2613,9 +2805,11 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -2673,9 +2867,9 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
-    # Get all IotHubs in a subscription.
+    # Get all the IoT hubs in a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -2695,11 +2889,12 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all IotHubs in a Resourcegroup.
+    # Get all the IoT hubs in a resource group.
     #
-    # Get all IotHubs in a Resource group.
+    # Get all the IoT hubs in a resource group.
     #
-    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hubs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2718,12 +2913,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
-    # Get Valid Skus.
+    # Get the list of valid SKUs for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2742,13 +2938,17 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
-    # Get EventHub Consumer Groups for an IotHub.
+    # Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+    # endpoint in an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
-    # @param event_hub_endpoint_name [String] The name of the event hub endpoint.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
+    # @param event_hub_endpoint_name [String] The name of the Event Hub-compatible
+    # endpoint.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2767,12 +2967,15 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # Get all the jobs in an IotHub.
+    # Get a list of all the jobs in an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2791,12 +2994,13 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
-    # Get quota metrics for an IotHub.
+    # Get the quota metrics for an IoT hub.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2815,12 +3019,15 @@ module Azure::ARM::IotHub
     end
 
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # Get all keys for an IotHub.
+    # Get the security metadata for an IoT hub. For more information, see:
+    # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param resource_name [String] The name of the resource.
+    # @param resource_group_name [String] The name of the resource group that
+    # contains the IoT hub.
+    # @param resource_name [String] The name of the IoT hub.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

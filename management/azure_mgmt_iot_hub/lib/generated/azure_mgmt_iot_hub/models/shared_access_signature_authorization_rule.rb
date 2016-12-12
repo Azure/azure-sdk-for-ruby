@@ -6,13 +6,13 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The properties that describe the keys to access the IotHub artifacts.
+    # The properties of an IoT hub shared access policy.
     #
     class SharedAccessSignatureAuthorizationRule
 
       include MsRestAzure
 
-      # @return [String] The name of the key.
+      # @return [String] The name of the shared access policy.
       attr_accessor :key_name
 
       # @return [String] The primary key.
@@ -21,15 +21,16 @@ module Azure::ARM::IotHub
       # @return [String] The secondary key.
       attr_accessor :secondary_key
 
-      # @return [AccessRights] The access rights. Possible values include:
-      # 'RegistryRead', 'RegistryWrite', 'ServiceConnect', 'DeviceConnect',
-      # 'RegistryRead, RegistryWrite', 'RegistryRead, ServiceConnect',
-      # 'RegistryRead, DeviceConnect', 'RegistryWrite, ServiceConnect',
-      # 'RegistryWrite, DeviceConnect', 'ServiceConnect, DeviceConnect',
-      # 'RegistryRead, RegistryWrite, ServiceConnect', 'RegistryRead,
-      # RegistryWrite, DeviceConnect', 'RegistryRead, ServiceConnect,
-      # DeviceConnect', 'RegistryWrite, ServiceConnect, DeviceConnect',
-      # 'RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect'
+      # @return [AccessRights] The permissions assigned to the shared access
+      # policy. Possible values include: 'RegistryRead', 'RegistryWrite',
+      # 'ServiceConnect', 'DeviceConnect', 'RegistryRead, RegistryWrite',
+      # 'RegistryRead, ServiceConnect', 'RegistryRead, DeviceConnect',
+      # 'RegistryWrite, ServiceConnect', 'RegistryWrite, DeviceConnect',
+      # 'ServiceConnect, DeviceConnect', 'RegistryRead, RegistryWrite,
+      # ServiceConnect', 'RegistryRead, RegistryWrite, DeviceConnect',
+      # 'RegistryRead, ServiceConnect, DeviceConnect', 'RegistryWrite,
+      # ServiceConnect, DeviceConnect', 'RegistryRead, RegistryWrite,
+      # ServiceConnect, DeviceConnect'
       attr_accessor :rights
 
 
@@ -46,7 +47,7 @@ module Azure::ARM::IotHub
             class_name: 'SharedAccessSignatureAuthorizationRule',
             model_properties: {
               key_name: {
-                required: false,
+                required: true,
                 serialized_name: 'keyName',
                 type: {
                   name: 'String'
@@ -67,7 +68,7 @@ module Azure::ARM::IotHub
                 }
               },
               rights: {
-                required: false,
+                required: true,
                 serialized_name: 'rights',
                 type: {
                   name: 'Enum',

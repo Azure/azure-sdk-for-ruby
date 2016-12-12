@@ -6,14 +6,14 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # Used to provide parameters when requesting an export of all devices in
-    # the hub.
+    # Use to provide parameters when requesting an export of all devices in the
+    # IoT hub.
     #
     class ExportDevicesRequest
 
       include MsRestAzure
 
-      # @return [String] The export BLOB container URI.
+      # @return [String] The export blob container URI.
       attr_accessor :export_blob_container_uri
 
       # @return [Boolean] The value indicating whether keys should be excluded

@@ -6,13 +6,15 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The list of eventhub consumer group names with a next link.
+    # The JSON-serialized array of Event Hub-compatible consumer group names
+    # with a next link.
     #
     class EventHubConsumerGroupsListResult
 
       include MsRestAzure
 
-      # @return [Array<String>] The list of eventhub consumer group names.
+      # @return [Array<String>] The array of Event Hub-compatible consumer
+      # group names.
       attr_accessor :value
 
       # @return [String] The next link.

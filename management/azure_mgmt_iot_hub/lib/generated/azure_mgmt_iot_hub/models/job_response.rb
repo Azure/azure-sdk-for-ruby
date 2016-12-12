@@ -6,7 +6,7 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The properties describing a Job Response.
+    # The properties of the Job Response object.
     #
     class JobResponse
 
@@ -15,33 +15,30 @@ module Azure::ARM::IotHub
       # @return [String] The job identifier.
       attr_accessor :job_id
 
-      # @return [DateTime] Start time of the Job.
+      # @return [DateTime] The start time of the Job.
       attr_accessor :start_time_utc
 
-      # @return [DateTime] Represents the time the job stopped processing.
+      # @return [DateTime] The time the job stopped processing.
       attr_accessor :end_time_utc
 
-      # @return [JobType] The type of job to execute. Possible values include:
+      # @return [JobType] The type of the job. Possible values include:
       # 'unknown', 'export', 'import', 'backup', 'readDeviceProperties',
       # 'writeDeviceProperties', 'updateDeviceConfiguration', 'rebootDevice',
       # 'factoryResetDevice', 'firmwareUpdate'
       attr_accessor :type
 
-      # @return [JobStatus] Status of the Job. Possible values include:
+      # @return [JobStatus] The status of the job. Possible values include:
       # 'unknown', 'enqueued', 'running', 'completed', 'failed', 'cancelled'
       attr_accessor :status
 
-      # @return [String] If status == failure, this represents a string
-      # containing the reason.
+      # @return [String] If status == failed, this string containing the reason
+      # for the failure.
       attr_accessor :failure_reason
 
       # @return [String] The status message for the job.
       attr_accessor :status_message
 
-      # @return [String] The deviceId related to this response.
-      attr_accessor :device_id
-
-      # @return [String] The jobId of the parent job, if any.
+      # @return [String] The job identifier of the parent job, if any.
       attr_accessor :parent_job_id
 
 
@@ -59,6 +56,7 @@ module Azure::ARM::IotHub
             model_properties: {
               job_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'jobId',
                 type: {
                   name: 'String'
@@ -66,20 +64,23 @@ module Azure::ARM::IotHub
               },
               start_time_utc: {
                 required: false,
+                read_only: true,
                 serialized_name: 'startTimeUtc',
                 type: {
-                  name: 'DateTime'
+                  name: 'DateTimeRfc1123'
                 }
               },
               end_time_utc: {
                 required: false,
+                read_only: true,
                 serialized_name: 'endTimeUtc',
                 type: {
-                  name: 'DateTime'
+                  name: 'DateTimeRfc1123'
                 }
               },
               type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
@@ -87,6 +88,7 @@ module Azure::ARM::IotHub
               },
               status: {
                 required: false,
+                read_only: true,
                 serialized_name: 'status',
                 type: {
                   name: 'Enum',
@@ -95,6 +97,7 @@ module Azure::ARM::IotHub
               },
               failure_reason: {
                 required: false,
+                read_only: true,
                 serialized_name: 'failureReason',
                 type: {
                   name: 'String'
@@ -102,20 +105,15 @@ module Azure::ARM::IotHub
               },
               status_message: {
                 required: false,
+                read_only: true,
                 serialized_name: 'statusMessage',
-                type: {
-                  name: 'String'
-                }
-              },
-              device_id: {
-                required: false,
-                serialized_name: 'deviceId',
                 type: {
                   name: 'String'
                 }
               },
               parent_job_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'parentJobId',
                 type: {
                   name: 'String'

@@ -6,7 +6,9 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The Operation Monitoring properties.
+    # The operations monitoring properties for the IoT hub. The possible keys
+    # to the dictionary are Connections, DeviceTelemetry, C2DCommands,
+    # DeviceIdentityOperations, FileUploadOperations.
     #
     class OperationsMonitoringProperties
 

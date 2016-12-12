@@ -6,13 +6,15 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The list of IotHubSkuDescription objects with a next link.
+    # The JSON-serialized array of IotHubSkuDescription objects with a next
+    # link.
     #
     class IotHubSkuDescriptionListResult
 
       include MsRestAzure
 
-      # @return [Array<IotHubSkuDescription>] The list of IotHubSkuDescription.
+      # @return [Array<IotHubSkuDescription>] The array of
+      # IotHubSkuDescription.
       attr_accessor :value
 
       # @return [String] The next link.

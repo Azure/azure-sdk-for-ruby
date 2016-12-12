@@ -6,7 +6,7 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The properties related to the Sku.
+    # SKU properties.
     #
     class IotHubSkuDescription
 
@@ -43,7 +43,7 @@ module Azure::ARM::IotHub
                 }
               },
               sku: {
-                required: false,
+                required: true,
                 serialized_name: 'sku',
                 type: {
                   name: 'Composite',
@@ -51,7 +51,7 @@ module Azure::ARM::IotHub
                 }
               },
               capacity: {
-                required: false,
+                required: true,
                 serialized_name: 'capacity',
                 type: {
                   name: 'Composite',
