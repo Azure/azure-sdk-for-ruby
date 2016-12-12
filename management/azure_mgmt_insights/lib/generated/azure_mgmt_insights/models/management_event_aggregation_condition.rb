@@ -6,7 +6,7 @@
 module Azure::ARM::Insights
   module Models
     #
-    # A management event aggregation condition.
+    # How the data that is collected should be combined over time.
     #
     class ManagementEventAggregationCondition
 
@@ -17,7 +17,7 @@ module Azure::ARM::Insights
       # 'LessThanOrEqual'
       attr_accessor :operator
 
-      # @return [Float] the condition threshold.
+      # @return [Float] The threshold value that activates the alert.
       attr_accessor :threshold
 
       # @return [Duration] the period of time (in ISO 8601 duration format)

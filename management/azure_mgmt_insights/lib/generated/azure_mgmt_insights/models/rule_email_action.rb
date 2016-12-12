@@ -7,6 +7,7 @@ module Azure::ARM::Insights
   module Models
     #
     # Specifies the action to send email when the rule condition is evaluated.
+    # The discriminator is always RuleEmailAction in this case.
     #
     class RuleEmailAction < RuleAction
 
@@ -19,9 +20,9 @@ module Azure::ARM::Insights
 
       attr_accessor :odata.type
 
-      # @return [Boolean] the flag to send e-mails to the service owners.
-      # Whether the administrators (service and co-adiminstrators) of the
-      # service should be notified when the alert is activated.
+      # @return [Boolean] Whether the administrators (service and
+      # co-adiminstrators) of the service should be notified when the alert is
+      # activated.
       attr_accessor :send_to_service_owners
 
       # @return [Array<String>] the list of administrator's custom email
@@ -43,7 +44,7 @@ module Azure::ARM::Insights
             model_properties: {
               odata.type: {
                 required: true,
-                serialized_name: 'odata.type',
+                serialized_name: 'odata\\.type',
                 type: {
                   name: 'String'
                 }

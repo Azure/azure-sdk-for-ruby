@@ -20,7 +20,8 @@ module Azure::ARM::Insights
       attr_accessor :odata.type
 
       # @return [RuleDataSource] the resource from which the rule collects its
-      # data.
+      # data. For this type dataSource will always be of type
+      # RuleMetricDataSource.
       attr_accessor :data_source
 
       # @return [ConditionOperator] the operator used to compare the data and
@@ -37,7 +38,7 @@ module Azure::ARM::Insights
       attr_accessor :window_size
 
       # @return [TimeAggregationOperator] the time aggregation operator. How
-      # the data that is collected should be combined over time. The default
+      # the data that are collected should be combined over time. The default
       # value is the PrimaryAggregationType of the Metric. Possible values
       # include: 'Average', 'Minimum', 'Maximum', 'Total', 'Last'
       attr_accessor :time_aggregation
@@ -57,7 +58,7 @@ module Azure::ARM::Insights
             model_properties: {
               odata.type: {
                 required: true,
-                serialized_name: 'odata.type',
+                serialized_name: 'odata\\.type',
                 type: {
                   name: 'String'
                 }

@@ -37,7 +37,7 @@ module Azure::ARM::Insights
             class_name: 'Recurrence',
             model_properties: {
               frequency: {
-                required: false,
+                required: true,
                 serialized_name: 'frequency',
                 type: {
                   name: 'Enum',
@@ -45,7 +45,7 @@ module Azure::ARM::Insights
                 }
               },
               schedule: {
-                required: false,
+                required: true,
                 serialized_name: 'schedule',
                 type: {
                   name: 'Composite',

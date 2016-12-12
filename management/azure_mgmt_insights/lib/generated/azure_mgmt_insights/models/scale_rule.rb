@@ -32,7 +32,7 @@ module Azure::ARM::Insights
             class_name: 'ScaleRule',
             model_properties: {
               metric_trigger: {
-                required: false,
+                required: true,
                 serialized_name: 'metricTrigger',
                 type: {
                   name: 'Composite',
@@ -42,7 +42,6 @@ module Azure::ARM::Insights
               scale_action: {
                 required: true,
                 serialized_name: 'scaleAction',
-                default_value: {},
                 type: {
                   name: 'Composite',
                   class_name: 'ScaleAction'

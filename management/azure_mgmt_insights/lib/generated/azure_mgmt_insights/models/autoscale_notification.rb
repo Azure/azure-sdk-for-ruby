@@ -12,8 +12,8 @@ module Azure::ARM::Insights
 
       include MsRestAzure
 
-      # @return [String] the operation associated with the notification and
-      # it's value must be "scale". Default value: 'Scale' .
+      # @return [String] the operation associated with the notification and its
+      # value must be "scale". Default value: 'Scale' .
       attr_accessor :operation
 
       # @return [EmailNotification] the email notification.

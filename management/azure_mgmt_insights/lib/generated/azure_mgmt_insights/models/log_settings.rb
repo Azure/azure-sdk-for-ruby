@@ -13,7 +13,10 @@ module Azure::ARM::Insights
 
       include MsRestAzure
 
-      # @return [String] the name of the logs to which this setting is applied.
+      # @return [String] Name of a Diagnostic Log category for a resource type
+      # this setting is applied to. To obtain the list of Diagnostic Log
+      # categories for a resource, first perform a GET diagnostic settings
+      # operation.
       attr_accessor :category
 
       # @return [Boolean] a value indicating whether this log is enabled.

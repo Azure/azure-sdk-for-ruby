@@ -66,28 +66,28 @@ module Azure::ARM::Insights
             class_name: 'MetricTrigger',
             model_properties: {
               metric_name: {
-                required: false,
+                required: true,
                 serialized_name: 'metricName',
                 type: {
                   name: 'String'
                 }
               },
               metric_resource_uri: {
-                required: false,
+                required: true,
                 serialized_name: 'metricResourceUri',
                 type: {
                   name: 'String'
                 }
               },
               time_grain: {
-                required: false,
+                required: true,
                 serialized_name: 'timeGrain',
                 type: {
                   name: 'TimeSpan'
                 }
               },
               statistic: {
-                required: false,
+                required: true,
                 serialized_name: 'statistic',
                 type: {
                   name: 'Enum',
@@ -95,14 +95,14 @@ module Azure::ARM::Insights
                 }
               },
               time_window: {
-                required: false,
+                required: true,
                 serialized_name: 'timeWindow',
                 type: {
                   name: 'TimeSpan'
                 }
               },
               time_aggregation: {
-                required: false,
+                required: true,
                 serialized_name: 'timeAggregation',
                 type: {
                   name: 'Enum',
@@ -110,7 +110,7 @@ module Azure::ARM::Insights
                 }
               },
               operator: {
-                required: false,
+                required: true,
                 serialized_name: 'operator',
                 type: {
                   name: 'Enum',
@@ -118,7 +118,7 @@ module Azure::ARM::Insights
                 }
               },
               threshold: {
-                required: false,
+                required: true,
                 serialized_name: 'threshold',
                 type: {
                   name: 'Double'

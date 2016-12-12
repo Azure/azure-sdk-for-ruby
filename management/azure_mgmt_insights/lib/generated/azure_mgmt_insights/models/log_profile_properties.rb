@@ -6,57 +6,66 @@
 module Azure::ARM::Insights
   module Models
     #
-    # Paramters to create a new Log Profile
+    # The log profile properties.
     #
-    class LogProfileCreateOrUpdateParameters
+    class LogProfileProperties
 
       include MsRestAzure
 
-      # @return [String] the resource id of the storage account.
+      # @return [String] the resource id of the storage account to which you
+      # would like to send the Activity Log.
       attr_accessor :storage_account_id
 
-      # @return [String] the resource id of the service bus rule.
+      # @return [String] The service bus rule ID of the service bus namespace
+      # in which you would like to have Event Hubs created for streaming the
+      # Activity Log. The rule ID is of the format: '{service bus resource
+      # ID}/authorizationrules/{key name}'.
       attr_accessor :service_bus_rule_id
 
-      # @return [Array<String>] the locations.
+      # @return [Array<String>] List of regions for which Activity Log events
+      # should be stored or streamed. It is a comma separated list of valid ARM
+      # locations including the 'global' location.
       attr_accessor :locations
 
-      # @return [Array<String>]  the categories.
+      # @return [Array<String>] the categories of the logs. These categories
+      # are created as is convenient to the user. Some values are: 'Write',
+      # 'Delete', and/or 'Action.'
       attr_accessor :categories
 
-      # @return [RetentionPolicy] the retention policy for this log.
+      # @return [RetentionPolicy] the retention policy for the events in the
+      # log.
       attr_accessor :retention_policy
 
 
       #
-      # Mapper for LogProfileCreateOrUpdateParameters class as Ruby Hash.
+      # Mapper for LogProfileProperties class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'LogProfileCreateOrUpdateParameters',
+          serialized_name: 'LogProfileProperties',
           type: {
             name: 'Composite',
-            class_name: 'LogProfileCreateOrUpdateParameters',
+            class_name: 'LogProfileProperties',
             model_properties: {
               storage_account_id: {
-                required: false,
-                serialized_name: 'properties.storageAccountId',
+                required: true,
+                serialized_name: 'storageAccountId',
                 type: {
                   name: 'String'
                 }
               },
               service_bus_rule_id: {
                 required: false,
-                serialized_name: 'properties.serviceBusRuleId',
+                serialized_name: 'serviceBusRuleId',
                 type: {
                   name: 'String'
                 }
               },
               locations: {
-                required: false,
-                serialized_name: 'properties.locations',
+                required: true,
+                serialized_name: 'locations',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -70,7 +79,7 @@ module Azure::ARM::Insights
               },
               categories: {
                 required: false,
-                serialized_name: 'properties.categories',
+                serialized_name: 'categories',
                 type: {
                   name: 'Sequence',
                   element: {
@@ -84,7 +93,7 @@ module Azure::ARM::Insights
               },
               retention_policy: {
                 required: false,
-                serialized_name: 'properties.retentionPolicy',
+                serialized_name: 'retentionPolicy',
                 type: {
                   name: 'Composite',
                   class_name: 'RetentionPolicy'

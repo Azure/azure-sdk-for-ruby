@@ -20,7 +20,8 @@ module Azure::ARM::Insights
       attr_accessor :odata.type
 
       # @return [RuleDataSource] the resource from which the rule collects its
-      # data.
+      # data. For this type dataSource will always be of type
+      # RuleMetricDataSource.
       attr_accessor :data_source
 
       # @return [Duration] the period of time (in ISO 8601 duration format)
@@ -47,7 +48,7 @@ module Azure::ARM::Insights
             model_properties: {
               odata.type: {
                 required: true,
-                serialized_name: 'odata.type',
+                serialized_name: 'odata\\.type',
                 type: {
                   name: 'String'
                 }
