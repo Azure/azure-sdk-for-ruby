@@ -15,7 +15,7 @@ module MsRest
     # @param response_body [Hash] Ruby Hash object to deserialize.
     # @param object_name [String] Name of the deserialized object.
     #
-    def deserialize(mapper, response_body, object_name)
+    def deserialize(mapper, response_body, object_name = nil)
       build_serializer.deserialize(mapper, response_body, object_name)
     end
 
@@ -26,7 +26,7 @@ module MsRest
     # @param object [Object] Ruby object to serialize.
     # @param object_name [String] Name of the serialized object.
     #
-    def serialize(mapper, object, object_name)
+    def serialize(mapper, object, object_name = nil)
       build_serializer.serialize(mapper, object, object_name)
     end
 
@@ -391,7 +391,14 @@ module MsRest
       # @param model_name [String] Name of the model to retrieve.
       #
       def get_model(model_name)
-        Object.const_get(@context.class.to_s.split('::')[0...-1].join('::') + "::Models::#{model_name}")
+        consts = @context.class.to_s.split('::')
+        if consts.any?{ |const| const == 'Models' }
+          # context is a model class
+          @context.class
+        else
+          # context is a service, so find the model class
+          Object.const_get(consts[0...-1].join('::') + "::Models::#{model_name}")
+        end
       end
 
       #
