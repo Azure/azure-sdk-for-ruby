@@ -6,7 +6,7 @@
 module Azure::ARM::CDN
   module Models
     #
-    # Endpoint properties required for new endpoint creation.
+    # Properties required to create a new endpoint.
     #
     class EndpointUpdateParameters
 
@@ -15,22 +15,22 @@ module Azure::ARM::CDN
       # @return [Hash{String => String}] Endpoint tags.
       attr_accessor :tags
 
-      # @return [String] The host header the CDN provider will send along with
-      # content requests to origins. The default value is the host name of the
-      # origin.
+      # @return [String] The host header CDN sends along with content requests
+      # to origin. The default value is the host name of the origin.
       attr_accessor :origin_host_header
 
-      # @return [String] The path used for origin requests.
+      # @return [String] The path used when CDN sends request to origin.
       attr_accessor :origin_path
 
-      # @return [Array<String>] List of content types on which compression will
-      # be applied. The value for the elements should be a valid MIME type.
+      # @return [Array<String>] List of content types on which compression
+      # applies. The value should be a valid MIME type.
       attr_accessor :content_types_to_compress
 
-      # @return [Boolean] Indicates whether content compression is enabled. The
-      # default value is false. If compression is enabled, the content
-      # transferred from the CDN endpoint to the end user will be compressed.
-      # The requested content must be larger than 1 byte and smaller than 1 MB.
+      # @return [Boolean] Indicates whether content compression is enabled on
+      # CDN. Default value is false. If compression is enabled, content will be
+      # served as compressed if user requests for a compressed version. Content
+      # won't be compressed on CDN when requested content is smaller than 1
+      # byte or larger than 1 MB.
       attr_accessor :is_compression_enabled
 
       # @return [Boolean] Indicates whether HTTP traffic is allowed on the
@@ -49,12 +49,13 @@ module Azure::ARM::CDN
       attr_accessor :query_string_caching_behavior
 
       # @return [String] Customer can specify what scenario they want this CDN
-      # endpoint to optimize. (e.g. Download, Media services, and etc.) With
-      # this information we can apply scenario driven optimization.
+      # endpoint to optimize, e.g. Download, Media services. With this
+      # information we can apply scenario driven optimization.
       attr_accessor :optimization_type
 
-      # @return [Array<GeoFilter>] The list of geo filters for the CDN
-      # endpoint.
+      # @return [Array<GeoFilter>] List of rules defining user geo access
+      # within a CDN endpoint. Each geo filter defines an acess rule to a
+      # specified path or content, e.g. block APAC for path /pictures/
       attr_accessor :geo_filters
 
 

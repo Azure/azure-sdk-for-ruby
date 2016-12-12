@@ -229,7 +229,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Creates a new CDN endpoint with the specified parameters.
+    # Creates a new CDN endpoint with the specified endpoint name under the
+    # specified subscription, resource group and profile.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -281,10 +282,11 @@ module Azure::ARM::CDN
     end
 
     #
-    # Updates an existing CDN endpoint with the specified parameters. Only tags and
-    # OriginHostHeader can be updated after creating an endpoint. To update
-    # origins, use the Update Origin operation. To update custom domains, use the
-    # Update Custom Domain operation.
+    # Updates an existing CDN endpoint with the specified endpoint name under the
+    # specified subscription, resource group and profile. Only tags and Origin
+    # HostHeader can be updated after creating an endpoint. To update origins, use
+    # the Update Origin operation. To update custom domains, use the Update Custom
+    # Domain operation.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -338,7 +340,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Deletes an existing CDN endpoint with the specified parameters.
+    # Deletes an existing CDN endpoint with the specified endpoint name under the
+    # specified subscription, resource group and profile.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -384,7 +387,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Starts an existing stopped CDN endpoint.
+    # Starts an existing CDN endpoint that is on a stopped state.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -484,7 +487,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Forcibly purges CDN endpoint content.
+    # Removes a content from CDN.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -493,8 +496,9 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [PurgeParameters] The path to the content to be
-    # purged. Path can describe a file or directory using the wildcard. e.g.
-    # '/my/directory/*' or '/my/file.exe/'
+    # purged. Path can be a full URL, e.g. '/pictures/city.png' which removes a
+    # single file, or a directory with a wildcard, e.g. '/pictures/*' which removes
+    # all folders and files in the directory.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -511,8 +515,9 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [PurgeParameters] The path to the content to be
-    # purged. Path can describe a file or directory using the wildcard. e.g.
-    # '/my/directory/*' or '/my/file.exe/'
+    # purged. Path can be a full URL, e.g. '/pictures/city.png' which removes a
+    # single file, or a directory with a wildcard, e.g. '/pictures/*' which removes
+    # all folders and files in the directory.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -536,7 +541,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Forcibly pre-loads CDN endpoint content. Available for Verizon Profiles.
+    # Pre-loads a content to CDN. Available for Verizon Profiles.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -545,7 +550,8 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should describe a file.
+    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # single file
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -562,7 +568,8 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should describe a file.
+    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # single file
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -586,8 +593,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Validates a custom domain mapping to ensure it maps to the correct CNAME in
-    # DNS.
+    # Validates the custom domain mapping to ensure it maps to the correct CDN
+    # endpoint in DNS.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -596,7 +603,7 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param custom_domain_properties [ValidateCustomDomainInput] Custom domain to
-    # validate.
+    # be validated.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -608,8 +615,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Validates a custom domain mapping to ensure it maps to the correct CNAME in
-    # DNS.
+    # Validates the custom domain mapping to ensure it maps to the correct CDN
+    # endpoint in DNS.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -618,7 +625,7 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param custom_domain_properties [ValidateCustomDomainInput] Custom domain to
-    # validate.
+    # be validated.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -629,8 +636,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Validates a custom domain mapping to ensure it maps to the correct CNAME in
-    # DNS.
+    # Validates the custom domain mapping to ensure it maps to the correct CDN
+    # endpoint in DNS.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -639,7 +646,7 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param custom_domain_properties [ValidateCustomDomainInput] Custom domain to
-    # validate.
+    # be validated.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -709,7 +716,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Creates a new CDN endpoint with the specified parameters.
+    # Creates a new CDN endpoint with the specified endpoint name under the
+    # specified subscription, resource group and profile.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -729,7 +737,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Creates a new CDN endpoint with the specified parameters.
+    # Creates a new CDN endpoint with the specified endpoint name under the
+    # specified subscription, resource group and profile.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -748,7 +757,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Creates a new CDN endpoint with the specified parameters.
+    # Creates a new CDN endpoint with the specified endpoint name under the
+    # specified subscription, resource group and profile.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -846,10 +856,11 @@ module Azure::ARM::CDN
     end
 
     #
-    # Updates an existing CDN endpoint with the specified parameters. Only tags and
-    # OriginHostHeader can be updated after creating an endpoint. To update
-    # origins, use the Update Origin operation. To update custom domains, use the
-    # Update Custom Domain operation.
+    # Updates an existing CDN endpoint with the specified endpoint name under the
+    # specified subscription, resource group and profile. Only tags and Origin
+    # HostHeader can be updated after creating an endpoint. To update origins, use
+    # the Update Origin operation. To update custom domains, use the Update Custom
+    # Domain operation.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -870,10 +881,11 @@ module Azure::ARM::CDN
     end
 
     #
-    # Updates an existing CDN endpoint with the specified parameters. Only tags and
-    # OriginHostHeader can be updated after creating an endpoint. To update
-    # origins, use the Update Origin operation. To update custom domains, use the
-    # Update Custom Domain operation.
+    # Updates an existing CDN endpoint with the specified endpoint name under the
+    # specified subscription, resource group and profile. Only tags and Origin
+    # HostHeader can be updated after creating an endpoint. To update origins, use
+    # the Update Origin operation. To update custom domains, use the Update Custom
+    # Domain operation.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -893,10 +905,11 @@ module Azure::ARM::CDN
     end
 
     #
-    # Updates an existing CDN endpoint with the specified parameters. Only tags and
-    # OriginHostHeader can be updated after creating an endpoint. To update
-    # origins, use the Update Origin operation. To update custom domains, use the
-    # Update Custom Domain operation.
+    # Updates an existing CDN endpoint with the specified endpoint name under the
+    # specified subscription, resource group and profile. Only tags and Origin
+    # HostHeader can be updated after creating an endpoint. To update origins, use
+    # the Update Origin operation. To update custom domains, use the Update Custom
+    # Domain operation.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -985,7 +998,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Deletes an existing CDN endpoint with the specified parameters.
+    # Deletes an existing CDN endpoint with the specified endpoint name under the
+    # specified subscription, resource group and profile.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -1003,7 +1017,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Deletes an existing CDN endpoint with the specified parameters.
+    # Deletes an existing CDN endpoint with the specified endpoint name under the
+    # specified subscription, resource group and profile.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -1021,7 +1036,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Deletes an existing CDN endpoint with the specified parameters.
+    # Deletes an existing CDN endpoint with the specified endpoint name under the
+    # specified subscription, resource group and profile.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -1078,7 +1094,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Starts an existing stopped CDN endpoint.
+    # Starts an existing CDN endpoint that is on a stopped state.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -1097,7 +1113,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Starts an existing stopped CDN endpoint.
+    # Starts an existing CDN endpoint that is on a stopped state.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -1115,7 +1131,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Starts an existing stopped CDN endpoint.
+    # Starts an existing CDN endpoint that is on a stopped state.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -1286,7 +1302,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Forcibly purges CDN endpoint content.
+    # Removes a content from CDN.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -1295,8 +1311,9 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [PurgeParameters] The path to the content to be
-    # purged. Path can describe a file or directory using the wildcard. e.g.
-    # '/my/directory/*' or '/my/file.exe/'
+    # purged. Path can be a full URL, e.g. '/pictures/city.png' which removes a
+    # single file, or a directory with a wildcard, e.g. '/pictures/*' which removes
+    # all folders and files in the directory.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1307,7 +1324,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Forcibly purges CDN endpoint content.
+    # Removes a content from CDN.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -1316,8 +1333,9 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [PurgeParameters] The path to the content to be
-    # purged. Path can describe a file or directory using the wildcard. e.g.
-    # '/my/directory/*' or '/my/file.exe/'
+    # purged. Path can be a full URL, e.g. '/pictures/city.png' which removes a
+    # single file, or a directory with a wildcard, e.g. '/pictures/*' which removes
+    # all folders and files in the directory.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1328,7 +1346,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Forcibly purges CDN endpoint content.
+    # Removes a content from CDN.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -1337,8 +1355,9 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [PurgeParameters] The path to the content to be
-    # purged. Path can describe a file or directory using the wildcard. e.g.
-    # '/my/directory/*' or '/my/file.exe/'
+    # purged. Path can be a full URL, e.g. '/pictures/city.png' which removes a
+    # single file, or a directory with a wildcard, e.g. '/pictures/*' which removes
+    # all folders and files in the directory.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1398,7 +1417,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Forcibly pre-loads CDN endpoint content. Available for Verizon Profiles.
+    # Pre-loads a content to CDN. Available for Verizon Profiles.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -1407,7 +1426,8 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should describe a file.
+    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # single file
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1418,7 +1438,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Forcibly pre-loads CDN endpoint content. Available for Verizon Profiles.
+    # Pre-loads a content to CDN. Available for Verizon Profiles.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -1427,7 +1447,8 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should describe a file.
+    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # single file
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1438,7 +1459,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Forcibly pre-loads CDN endpoint content. Available for Verizon Profiles.
+    # Pre-loads a content to CDN. Available for Verizon Profiles.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -1447,7 +1468,8 @@ module Azure::ARM::CDN
     # @param endpoint_name [String] Name of the endpoint under the profile which is
     # unique globally.
     # @param content_file_paths [LoadParameters] The path to the content to be
-    # loaded. Path should describe a file.
+    # loaded. Path should be a full URL, e.g. ‘/pictires/city.png' which loads a
+    # single file
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #

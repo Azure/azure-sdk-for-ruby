@@ -15,7 +15,8 @@ module Azure::ARM::CDN
 
       include MsRestAzure
 
-      # @return [Sku] The SKU (pricing tier) of the CDN profile.
+      # @return [Sku] The pricing tier (defines a CDN provider, feature list
+      # and rate) of the CDN profile.
       attr_accessor :sku
 
       # @return [ProfileResourceState] Resource status of the profile. Possible

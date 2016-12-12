@@ -25,7 +25,7 @@ module Azure::ARM::CDN
     attr_reader :client
 
     #
-    # Lists the existing CDN origins within an endpoint.
+    # Lists all of the existing origins within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -44,7 +44,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists the existing CDN origins within an endpoint.
+    # Lists all of the existing origins within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -62,7 +62,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists the existing CDN origins within an endpoint.
+    # Lists all of the existing origins within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -129,7 +129,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Gets an existing CDN origin within an endpoint.
+    # Gets an existing origin within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -150,7 +150,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Gets an existing CDN origin within an endpoint.
+    # Gets an existing origin within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -170,7 +170,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Gets an existing CDN origin within an endpoint.
+    # Gets an existing origin within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -240,7 +240,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Updates an existing CDN origin within an endpoint.
+    # Updates an existing origin within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -296,7 +296,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Updates an existing CDN origin within an endpoint.
+    # Updates an existing origin within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -318,7 +318,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Updates an existing CDN origin within an endpoint.
+    # Updates an existing origin within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -339,7 +339,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Updates an existing CDN origin within an endpoint.
+    # Updates an existing origin within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -430,7 +430,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists the existing CDN origins within an endpoint.
+    # Lists all of the existing origins within an endpoint.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -445,7 +445,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists the existing CDN origins within an endpoint.
+    # Lists all of the existing origins within an endpoint.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -459,7 +459,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists the existing CDN origins within an endpoint.
+    # Lists all of the existing origins within an endpoint.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -517,7 +517,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists the existing CDN origins within an endpoint.
+    # Lists all of the existing origins within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.

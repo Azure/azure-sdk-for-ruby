@@ -6,14 +6,14 @@
 module Azure::ARM::CDN
   module Models
     #
-    # Parameters required for endpoint load.
+    # Parameters required for content load.
     #
     class LoadParameters
 
       include MsRestAzure
 
-      # @return [Array<String>] The path to the content to be loaded. Should
-      # describe a file path.
+      # @return [Array<String>] The path to the content to be loaded. Path
+      # should be a relative file URL of the origin.
       attr_accessor :content_paths
 
 
