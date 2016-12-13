@@ -6,31 +6,41 @@
 module Azure::ARM::CDN
   module Models
     #
-    # SSO URI required to login to the supplemental portal.
+    # CIDR Ip address
     #
-    class SsoUri
+    class CidrIpAddress
 
       include MsRestAzure
 
-      # @return [String] The URI used to login to the supplemental portal.
-      attr_accessor :sso_uri_value
+      # @return [String] Ip adress itself.
+      attr_accessor :base_ip_address
+
+      # @return [String] The length of the prefix of the ip address.
+      attr_accessor :prefix_length
 
 
       #
-      # Mapper for SsoUri class as Ruby Hash.
+      # Mapper for CidrIpAddress class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'SsoUri',
+          serialized_name: 'cidrIpAddress',
           type: {
             name: 'Composite',
-            class_name: 'SsoUri',
+            class_name: 'CidrIpAddress',
             model_properties: {
-              sso_uri_value: {
+              base_ip_address: {
                 required: false,
-                serialized_name: 'ssoUriValue',
+                serialized_name: 'baseIpAddress',
+                type: {
+                  name: 'String'
+                }
+              },
+              prefix_length: {
+                required: false,
+                serialized_name: 'prefixLength',
                 type: {
                   name: 'String'
                 }

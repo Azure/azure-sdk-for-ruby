@@ -6,34 +6,34 @@
 module Azure::ARM::CDN
   module Models
     #
-    # Input of the custom domain to be validated for DNS mapping.
+    # Result of the request to list CDN edgenodes. It contains a list of ip
+    # address group and a URL link to get the next set of results.
     #
-    class ValidateCustomDomainInput
+    class EdgenodeResult
 
       include MsRestAzure
 
-      # @return [String] The host name of the custom domain. Must be a domain
-      # name.
-      attr_accessor :host_name
+      # @return Edge node of CDN service.
+      attr_accessor :value
 
 
       #
-      # Mapper for ValidateCustomDomainInput class as Ruby Hash.
+      # Mapper for EdgenodeResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ValidateCustomDomainInput',
+          serialized_name: 'EdgenodeResult',
           type: {
             name: 'Composite',
-            class_name: 'ValidateCustomDomainInput',
+            class_name: 'EdgenodeResult',
             model_properties: {
-              host_name: {
-                required: true,
-                serialized_name: 'hostName',
+              value: {
+                required: false,
+                serialized_name: 'value',
                 type: {
-                  name: 'String'
+                  name: 'Object'
                 }
               }
             }

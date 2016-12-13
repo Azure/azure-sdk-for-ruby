@@ -25,7 +25,7 @@ module Azure::ARM::CDN
     attr_reader :client
 
     #
-    # Lists the existing CDN custom domains within an endpoint.
+    # Lists all of the existing custom domains within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -44,7 +44,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists the existing CDN custom domains within an endpoint.
+    # Lists all of the existing custom domains within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -62,7 +62,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists the existing CDN custom domains within an endpoint.
+    # Lists all of the existing custom domains within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -129,7 +129,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Gets an existing CDN custom domain within an endpoint.
+    # Gets an exisitng custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -150,7 +150,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Gets an existing CDN custom domain within an endpoint.
+    # Gets an exisitng custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -170,7 +170,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Gets an existing CDN custom domain within an endpoint.
+    # Gets an exisitng custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -240,7 +240,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Creates a new CDN custom domain within an endpoint.
+    # Creates a new custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -250,8 +250,8 @@ module Azure::ARM::CDN
     # unique globally.
     # @param custom_domain_name [String] Name of the custom domain within an
     # endpoint.
-    # @param custom_domain_properties [CustomDomainParameters] Custom domain
-    # properties required for creation.
+    # @param custom_domain_properties [CustomDomainParameters] Properties required
+    # to create a new custom domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -271,8 +271,8 @@ module Azure::ARM::CDN
     # unique globally.
     # @param custom_domain_name [String] Name of the custom domain within an
     # endpoint.
-    # @param custom_domain_properties [CustomDomainParameters] Custom domain
-    # properties required for creation.
+    # @param custom_domain_properties [CustomDomainParameters] Properties required
+    # to create a new custom domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -298,7 +298,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Deletes an existing CDN custom domain within an endpoint.
+    # Deletes an existing custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -352,7 +352,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Creates a new CDN custom domain within an endpoint.
+    # Creates a new custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -362,8 +362,8 @@ module Azure::ARM::CDN
     # unique globally.
     # @param custom_domain_name [String] Name of the custom domain within an
     # endpoint.
-    # @param custom_domain_properties [CustomDomainParameters] Custom domain
-    # properties required for creation.
+    # @param custom_domain_properties [CustomDomainParameters] Properties required
+    # to create a new custom domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -375,7 +375,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Creates a new CDN custom domain within an endpoint.
+    # Creates a new custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -385,8 +385,8 @@ module Azure::ARM::CDN
     # unique globally.
     # @param custom_domain_name [String] Name of the custom domain within an
     # endpoint.
-    # @param custom_domain_properties [CustomDomainParameters] Custom domain
-    # properties required for creation.
+    # @param custom_domain_properties [CustomDomainParameters] Properties required
+    # to create a new custom domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -397,7 +397,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Creates a new CDN custom domain within an endpoint.
+    # Creates a new custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -407,8 +407,8 @@ module Azure::ARM::CDN
     # unique globally.
     # @param custom_domain_name [String] Name of the custom domain within an
     # endpoint.
-    # @param custom_domain_properties [CustomDomainParameters] Custom domain
-    # properties required for creation.
+    # @param custom_domain_properties [CustomDomainParameters] Properties required
+    # to create a new custom domain.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -499,7 +499,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Deletes an existing CDN custom domain within an endpoint.
+    # Deletes an existing custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -520,7 +520,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Deletes an existing CDN custom domain within an endpoint.
+    # Deletes an existing custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -540,7 +540,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Deletes an existing CDN custom domain within an endpoint.
+    # Deletes an existing custom domain within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -610,7 +610,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists the existing CDN custom domains within an endpoint.
+    # Lists all of the existing custom domains within an endpoint.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -625,7 +625,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists the existing CDN custom domains within an endpoint.
+    # Lists all of the existing custom domains within an endpoint.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -639,7 +639,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists the existing CDN custom domains within an endpoint.
+    # Lists all of the existing custom domains within an endpoint.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -697,7 +697,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists the existing CDN custom domains within an endpoint.
+    # Lists all of the existing custom domains within an endpoint.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
