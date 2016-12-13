@@ -23,6 +23,9 @@ module MsRestAzure
     # @return [Hash{String => String}] the tags attached to resources (optional).
     attr_accessor :tags
 
+    # @return [String] the resource group of the resource.
+    attr_accessor :resource_group
+
     def self.mapper
       {
         required: false,
