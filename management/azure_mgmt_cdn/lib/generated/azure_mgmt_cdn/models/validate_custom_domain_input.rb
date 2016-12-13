@@ -6,7 +6,7 @@
 module Azure::ARM::CDN
   module Models
     #
-    # Input of the custom domain to be validated.
+    # Input of the custom domain to be validated for DNS mapping.
     #
     class ValidateCustomDomainInput
 

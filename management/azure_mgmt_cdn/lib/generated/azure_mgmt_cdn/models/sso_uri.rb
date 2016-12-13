@@ -6,13 +6,13 @@
 module Azure::ARM::CDN
   module Models
     #
-    # SSO URI required to login to third party web portal.
+    # SSO URI required to login to the supplemental portal.
     #
     class SsoUri
 
       include MsRestAzure
 
-      # @return [String] The URI used to login to third party web portal.
+      # @return [String] The URI used to login to the supplemental portal.
       attr_accessor :sso_uri_value
 
 

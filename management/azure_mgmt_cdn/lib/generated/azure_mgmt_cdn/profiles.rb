@@ -25,7 +25,7 @@ module Azure::ARM::CDN
     attr_reader :client
 
     #
-    # Lists all the CDN profiles within an Azure subscription.
+    # Lists all of the CDN profiles within an Azure subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -38,7 +38,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within an Azure subscription.
+    # Lists all of the CDN profiles within an Azure subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -50,7 +50,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within an Azure subscription.
+    # Lists all of the CDN profiles within an Azure subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -108,7 +108,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within a resource group.
+    # Lists all of the CDN profiles within a resource group.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -123,7 +123,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within a resource group.
+    # Lists all of the CDN profiles within a resource group.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -137,7 +137,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within a resource group.
+    # Lists all of the CDN profiles within a resource group.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -399,8 +399,8 @@ module Azure::ARM::CDN
 
     #
     # Deletes an existing CDN profile with the specified parameters. Deleting a
-    # profile will result in the deletion of all subresources including endpoints,
-    # origins and custom domains.
+    # profile will result in the deletion of all of the sub-resources including
+    # endpoints, origins and custom domains.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -811,8 +811,8 @@ module Azure::ARM::CDN
 
     #
     # Deletes an existing CDN profile with the specified parameters. Deleting a
-    # profile will result in the deletion of all subresources including endpoints,
-    # origins and custom domains.
+    # profile will result in the deletion of all of the sub-resources including
+    # endpoints, origins and custom domains.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -829,8 +829,8 @@ module Azure::ARM::CDN
 
     #
     # Deletes an existing CDN profile with the specified parameters. Deleting a
-    # profile will result in the deletion of all subresources including endpoints,
-    # origins and custom domains.
+    # profile will result in the deletion of all of the sub-resources including
+    # endpoints, origins and custom domains.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -847,8 +847,8 @@ module Azure::ARM::CDN
 
     #
     # Deletes an existing CDN profile with the specified parameters. Deleting a
-    # profile will result in the deletion of all subresources including endpoints,
-    # origins and custom domains.
+    # profile will result in the deletion of all of the sub-resources including
+    # endpoints, origins and custom domains.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.
@@ -902,7 +902,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within an Azure subscription.
+    # Lists all of the CDN profiles within an Azure subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -917,7 +917,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within an Azure subscription.
+    # Lists all of the CDN profiles within an Azure subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -931,7 +931,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within an Azure subscription.
+    # Lists all of the CDN profiles within an Azure subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -989,7 +989,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within a resource group.
+    # Lists all of the CDN profiles within a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1004,7 +1004,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within a resource group.
+    # Lists all of the CDN profiles within a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1018,7 +1018,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within a resource group.
+    # Lists all of the CDN profiles within a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -1076,7 +1076,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within an Azure subscription.
+    # Lists all of the CDN profiles within an Azure subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1096,7 +1096,7 @@ module Azure::ARM::CDN
     end
 
     #
-    # Lists all the CDN profiles within a resource group.
+    # Lists all of the CDN profiles within a resource group.
     #
     # @param resource_group_name [String] Name of the Resource group within the
     # Azure subscription.

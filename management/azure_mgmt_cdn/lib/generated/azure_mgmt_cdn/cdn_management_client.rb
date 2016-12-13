@@ -74,7 +74,7 @@ module Azure::ARM::CDN
 
     #
     # Makes a request and returns the body of the response.
-    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete. 
+    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
     # @param path [String] the path, relative to {base_url}.
     # @param options [Hash{String=>String}] specifying any request options like :body.
     # @return [Hash{String=>String}] containing the body of the response.
@@ -128,9 +128,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Check the availability of a resource name without creating the resource. This
-    # is needed for resources where name is globally unique, such as a CDN
-    # endpoint.
+    # Check the availability of a resource name. This is needed for resources where
+    # name is globally unique, such as a CDN endpoint.
     #
     # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
     # check.
@@ -145,9 +144,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Check the availability of a resource name without creating the resource. This
-    # is needed for resources where name is globally unique, such as a CDN
-    # endpoint.
+    # Check the availability of a resource name. This is needed for resources where
+    # name is globally unique, such as a CDN endpoint.
     #
     # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
     # check.
@@ -161,9 +159,8 @@ module Azure::ARM::CDN
     end
 
     #
-    # Check the availability of a resource name without creating the resource. This
-    # is needed for resources where name is globally unique, such as a CDN
-    # endpoint.
+    # Check the availability of a resource name. This is needed for resources where
+    # name is globally unique, such as a CDN endpoint.
     #
     # @param check_name_availability_input [CheckNameAvailabilityInput] Input to
     # check.
@@ -481,7 +478,7 @@ module Azure::ARM::CDN
     def add_telemetry
         sdk_information = 'azure_mgmt_cdn'
         if defined? Azure::ARM::CDN::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::CDN::VERSION}" 
+          sdk_information = "#{sdk_information}/#{Azure::ARM::CDN::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

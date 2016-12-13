@@ -6,9 +6,7 @@
 module Azure::ARM::CDN
   module Models
     #
-    # CDN CustomDomain represents a mapping between a user-specified domain
-    # name and a CDN endpoint. This is to use custom domain names to represent
-    # the URLs for branding purposes.
+    # Customer provided domain for branding purposes, e.g. www.consoto.com.
     #
     class CustomDomain < MsRestAzure::Resource
 
@@ -23,9 +21,9 @@ module Azure::ARM::CDN
       attr_accessor :resource_state
 
       # @return [String] Special validation or data may be required when
-      # delivering CDN to some regions due to local compliance reasons. (e.g.
+      # delivering CDN to some regions due to local compliance reasons. E.g.
       # ICP license number of a custom domain is required to deliver content in
-      # China.)
+      # China.
       attr_accessor :validation_data
 
       # @return [String] Provisioning status of the custom domain.

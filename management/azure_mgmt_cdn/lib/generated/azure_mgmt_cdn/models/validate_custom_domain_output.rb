@@ -19,7 +19,7 @@ module Azure::ARM::CDN
       # @return [String] The reason why the custom domain is not valid.
       attr_accessor :reason
 
-      # @return [String] The message describing why the custom domain is not
+      # @return [String] Error message describing why the custom domain is not
       # valid.
       attr_accessor :message
 
