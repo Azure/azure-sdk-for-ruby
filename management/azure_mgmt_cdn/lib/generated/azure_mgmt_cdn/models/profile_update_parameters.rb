@@ -6,7 +6,7 @@
 module Azure::ARM::CDN
   module Models
     #
-    # Profile properties required for profile update.
+    # Properties required to update a profile.
     #
     class ProfileUpdateParameters
 

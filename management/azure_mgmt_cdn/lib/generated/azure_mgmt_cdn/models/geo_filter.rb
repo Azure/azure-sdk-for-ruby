@@ -6,7 +6,7 @@
 module Azure::ARM::CDN
   module Models
     #
-    # Geo filter of a CDN endpoint.
+    # Rules defining user geo access within a CDN endpoint.
     #
     class GeoFilter
 
@@ -16,12 +16,12 @@ module Azure::ARM::CDN
       # '/mypictures', '/mypicture/kitty.jpg', and etc.)
       attr_accessor :relative_path
 
-      # @return [GeoFilterActions] Action of the geo filter. Possible values
-      # include: 'Block', 'Allow'
+      # @return [GeoFilterActions] Action of the geo filter, i.e. allow or
+      # block access. Possible values include: 'Block', 'Allow'
       attr_accessor :action
 
-      # @return [Array<String>] Two letter country codes of the geo filter.
-      # (e.g. AU, MX, and etc.)
+      # @return [Array<String>] Two letter country codes defining user country
+      # access in a geo filter, e.g. AU, MX, US.
       attr_accessor :country_codes
 
 

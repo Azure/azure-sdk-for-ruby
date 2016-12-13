@@ -6,7 +6,8 @@
 module Azure::ARM::CDN
   module Models
     #
-    # The SKU (pricing tier) of the CDN profile.
+    # The pricing tier (defines a CDN provider, feature list and rate) of the
+    # CDN profile.
     #
     class Sku
 
