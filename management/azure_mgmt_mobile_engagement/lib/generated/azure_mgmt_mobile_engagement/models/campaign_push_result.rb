@@ -7,7 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
-    # 
+    #
     #
     class CampaignPushResult
 
@@ -20,7 +20,7 @@ module Azure::ARM::MobileEngagement
       # that if the request parameters are valid but all the specified devices
       # are rejected, the status code is still `200` with a response including
       # all the devices as being rejected.
-      # 
+      #
       attr_accessor :invalid_device_ids
 
 

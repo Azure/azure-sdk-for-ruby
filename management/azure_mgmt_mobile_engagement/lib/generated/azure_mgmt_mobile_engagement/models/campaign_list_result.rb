@@ -7,7 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
-    # 
+    #
     #
     class CampaignListResult < CampaignStateResult
 
@@ -19,34 +19,34 @@ module Azure::ARM::MobileEngagement
       # @return [DateTime] The date at which the campaign was activated (Not
       # present if not yet activated). The date conforms to the following
       # format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
-      # 
+      #
       attr_accessor :activated_date
 
       # @return [DateTime] The date at which the campaign was finished (Not
       # present if not yet finished). The date conforms to the following
       # format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
-      # 
+      #
       attr_accessor :finished_date
 
       # @return [DateTime] The date at which the campaign should be started if
       # specified. The date conforms to the following format:
       # `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
       # Applicable only to announcements and polls.
-      # 
+      #
       attr_accessor :start_time
 
       # @return [DateTime] The date at which the campaign should be finished if
       # specified. The date conforms to the following format:
       # `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
       # Applicable only to announcements and polls.
-      # 
+      #
       attr_accessor :end_time
 
       # @return [String] The id of the time zone to use for the `startTime` and
       # `endTime` dates. If not provided, the two date attributes are
       # referencing to the device timezone. Applicable only to announcements
       # and polls.
-      # 
+      #
       attr_accessor :timezone
 
 

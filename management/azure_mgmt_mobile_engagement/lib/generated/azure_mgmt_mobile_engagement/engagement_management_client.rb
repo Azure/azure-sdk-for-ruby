@@ -25,15 +25,6 @@ module Azure::ARM::MobileEngagement
     # @return [String] Client Api Version.
     attr_reader :api_version
 
-    # @return [String] The name of the resource group.
-    attr_accessor :resource_group_name
-
-    # @return [String] Application collection.
-    attr_accessor :app_collection
-
-    # @return [String] Application resource name.
-    attr_accessor :app_name
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -96,7 +87,7 @@ module Azure::ARM::MobileEngagement
 
     #
     # Makes a request and returns the body of the response.
-    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete. 
+    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
     # @param path [String] the path, relative to {base_url}.
     # @param options [Hash{String=>String}] specifying any request options like :body.
     # @return [Hash{String=>String}] containing the body of the response.
@@ -157,7 +148,7 @@ module Azure::ARM::MobileEngagement
     def add_telemetry
         sdk_information = 'azure_mgmt_mobile_engagement'
         if defined? Azure::ARM::MobileEngagement::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::MobileEngagement::VERSION}" 
+          sdk_information = "#{sdk_information}/#{Azure::ARM::MobileEngagement::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

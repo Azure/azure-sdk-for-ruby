@@ -7,7 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
-    # 
+    #
     #
     class Campaign < CampaignLocalization
 
@@ -23,7 +23,7 @@ module Azure::ARM::MobileEngagement
       # criteria (variables) operators (`not`, `and` or `or`) and parenthesis.
       # Additionally, a set of filters can be added to an audience. 65535 bytes
       # max as per JSON encoding.
-      # 
+      #
       attr_accessor :audience
 
       # @return [String] Category of the campaign. Categories can be used on
@@ -72,7 +72,7 @@ module Azure::ARM::MobileEngagement
       # set if deliveryTime is set to any. In that case, if the campaign is
       # received when the application is launched, it will be delivered only in
       # the specified list of activities.
-      # 
+      #
       attr_accessor :delivery_activities
 
       # @return [String] The date at which the campaign should be started. The
@@ -80,19 +80,19 @@ module Azure::ARM::MobileEngagement
       # If you set pushMode property to manual, this attribute will be ignored.
       # * If you set pushMode property to one-shot, then the timezone attribute
       # must be specified. Example: `2011-11-21 15:23Z`
-      # 
+      #
       attr_accessor :start_time
 
       # @return [String] The date at which the campaign should be finished. The
       # date shall conform to the following format: `yyyy-MM-ddTHH:mm:ssZ`.
       # Example: `2011-11-21 15:23Z`
-      # 
+      #
       attr_accessor :end_time
 
       # @return [String] The id of the time zone to use for the startTime and
       # endTime dates. If not provided, the two date attributes will be
       # expressed using the device timezone. Example: America/Los_Angeles
-      # 
+      #
       attr_accessor :timezone
 
       # @return [NotificationTypes] Android only. Defines how the notification
@@ -138,7 +138,7 @@ module Azure::ARM::MobileEngagement
       # localized using an optional JSON object. The JSON key is a
       # two-character language code as specified by the ISO 639-1 standard. The
       # corresponding value is an object containing the localizable properties.
-      # 
+      #
       attr_accessor :localization
 
       # @return [Array<PollQuestion>] Poll questions.

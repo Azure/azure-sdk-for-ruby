@@ -25,6 +25,9 @@ module Azure::ARM::MobileEngagement
     #
     # Get the list of export tasks.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param skip [Integer] Control paging of export tasks, start results at the
     # given offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of export tasks, number of export tasks
@@ -47,14 +50,17 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Array<ExportTaskResult>] operation results.
     #
-    def list(skip = 0, top = 20, orderby = nil, custom_headers = nil)
-      first_page = list_as_lazy(skip, top, orderby, custom_headers)
+    def list(resource_group_name, app_collection, app_name, skip = 0, top = 20, orderby = nil, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, app_collection, app_name, skip, top, orderby, custom_headers)
       first_page.get_all_items
     end
 
     #
     # Get the list of export tasks.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param skip [Integer] Control paging of export tasks, start results at the
     # given offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of export tasks, number of export tasks
@@ -77,13 +83,16 @@ module Azure::ARM::MobileEngagement
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(skip = 0, top = 20, orderby = nil, custom_headers = nil)
-      list_async(skip, top, orderby, custom_headers).value!
+    def list_with_http_info(resource_group_name, app_collection, app_name, skip = 0, top = 20, orderby = nil, custom_headers = nil)
+      list_async(resource_group_name, app_collection, app_name, skip, top, orderby, custom_headers).value!
     end
 
     #
     # Get the list of export tasks.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param skip [Integer] Control paging of export tasks, start results at the
     # given offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of export tasks, number of export tasks
@@ -106,11 +115,11 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(skip = 0, top = 20, orderby = nil, custom_headers = nil)
+    def list_async(resource_group_name, app_collection, app_name, skip = 0, top = 20, orderby = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -125,7 +134,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version,'$skip' => skip,'$top' => top,'$orderby' => orderby},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -162,44 +171,53 @@ module Azure::ARM::MobileEngagement
     #
     # Retrieves information about a previously created export task.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param id [String] Export task identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ExportTaskResult] operation results.
     #
-    def get(id, custom_headers = nil)
-      response = get_async(id, custom_headers).value!
+    def get(resource_group_name, app_collection, app_name, id, custom_headers = nil)
+      response = get_async(resource_group_name, app_collection, app_name, id, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Retrieves information about a previously created export task.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param id [String] Export task identifier.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(id, custom_headers = nil)
-      get_async(id, custom_headers).value!
+    def get_with_http_info(resource_group_name, app_collection, app_name, id, custom_headers = nil)
+      get_async(resource_group_name, app_collection, app_name, id, custom_headers).value!
     end
 
     #
     # Retrieves information about a previously created export task.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param id [String] Export task identifier.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(id, custom_headers = nil)
+    def get_async(resource_group_name, app_collection, app_name, id, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'id is nil' if id.nil?
 
@@ -215,7 +233,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name,'id' => id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name,'id' => id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -252,44 +270,53 @@ module Azure::ARM::MobileEngagement
     #
     # Creates a task to export activities.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ExportTaskResult] operation results.
     #
-    def create_activities_task(parameters, custom_headers = nil)
-      response = create_activities_task_async(parameters, custom_headers).value!
+    def create_activities_task(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      response = create_activities_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates a task to export activities.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_activities_task_with_http_info(parameters, custom_headers = nil)
-      create_activities_task_async(parameters, custom_headers).value!
+    def create_activities_task_with_http_info(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      create_activities_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
     end
 
     #
     # Creates a task to export activities.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_activities_task_async(parameters, custom_headers = nil)
+    def create_activities_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -313,7 +340,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -351,44 +378,53 @@ module Azure::ARM::MobileEngagement
     #
     # Creates a task to export crashes.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ExportTaskResult] operation results.
     #
-    def create_crashes_task(parameters, custom_headers = nil)
-      response = create_crashes_task_async(parameters, custom_headers).value!
+    def create_crashes_task(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      response = create_crashes_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates a task to export crashes.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_crashes_task_with_http_info(parameters, custom_headers = nil)
-      create_crashes_task_async(parameters, custom_headers).value!
+    def create_crashes_task_with_http_info(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      create_crashes_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
     end
 
     #
     # Creates a task to export crashes.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_crashes_task_async(parameters, custom_headers = nil)
+    def create_crashes_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -412,7 +448,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -450,44 +486,53 @@ module Azure::ARM::MobileEngagement
     #
     # Creates a task to export errors.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ExportTaskResult] operation results.
     #
-    def create_errors_task(parameters, custom_headers = nil)
-      response = create_errors_task_async(parameters, custom_headers).value!
+    def create_errors_task(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      response = create_errors_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates a task to export errors.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_errors_task_with_http_info(parameters, custom_headers = nil)
-      create_errors_task_async(parameters, custom_headers).value!
+    def create_errors_task_with_http_info(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      create_errors_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
     end
 
     #
     # Creates a task to export errors.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_errors_task_async(parameters, custom_headers = nil)
+    def create_errors_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -511,7 +556,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -549,44 +594,53 @@ module Azure::ARM::MobileEngagement
     #
     # Creates a task to export events.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ExportTaskResult] operation results.
     #
-    def create_events_task(parameters, custom_headers = nil)
-      response = create_events_task_async(parameters, custom_headers).value!
+    def create_events_task(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      response = create_events_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates a task to export events.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_events_task_with_http_info(parameters, custom_headers = nil)
-      create_events_task_async(parameters, custom_headers).value!
+    def create_events_task_with_http_info(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      create_events_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
     end
 
     #
     # Creates a task to export events.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_events_task_async(parameters, custom_headers = nil)
+    def create_events_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -610,7 +664,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -648,44 +702,53 @@ module Azure::ARM::MobileEngagement
     #
     # Creates a task to export jobs.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ExportTaskResult] operation results.
     #
-    def create_jobs_task(parameters, custom_headers = nil)
-      response = create_jobs_task_async(parameters, custom_headers).value!
+    def create_jobs_task(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      response = create_jobs_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates a task to export jobs.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_jobs_task_with_http_info(parameters, custom_headers = nil)
-      create_jobs_task_async(parameters, custom_headers).value!
+    def create_jobs_task_with_http_info(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      create_jobs_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
     end
 
     #
     # Creates a task to export jobs.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_jobs_task_async(parameters, custom_headers = nil)
+    def create_jobs_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -709,7 +772,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -747,44 +810,53 @@ module Azure::ARM::MobileEngagement
     #
     # Creates a task to export sessions.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ExportTaskResult] operation results.
     #
-    def create_sessions_task(parameters, custom_headers = nil)
-      response = create_sessions_task_async(parameters, custom_headers).value!
+    def create_sessions_task(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      response = create_sessions_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates a task to export sessions.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_sessions_task_with_http_info(parameters, custom_headers = nil)
-      create_sessions_task_async(parameters, custom_headers).value!
+    def create_sessions_task_with_http_info(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      create_sessions_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
     end
 
     #
     # Creates a task to export sessions.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [DateRangeExportTaskParameter]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_sessions_task_async(parameters, custom_headers = nil)
+    def create_sessions_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -808,7 +880,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -846,44 +918,53 @@ module Azure::ARM::MobileEngagement
     #
     # Creates a task to export tags.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [ExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ExportTaskResult] operation results.
     #
-    def create_tags_task(parameters, custom_headers = nil)
-      response = create_tags_task_async(parameters, custom_headers).value!
+    def create_tags_task(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      response = create_tags_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates a task to export tags.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [ExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_tags_task_with_http_info(parameters, custom_headers = nil)
-      create_tags_task_async(parameters, custom_headers).value!
+    def create_tags_task_with_http_info(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      create_tags_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
     end
 
     #
     # Creates a task to export tags.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [ExportTaskParameter]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_tags_task_async(parameters, custom_headers = nil)
+    def create_tags_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -907,7 +988,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -945,44 +1026,53 @@ module Azure::ARM::MobileEngagement
     #
     # Creates a task to export tags.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [ExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ExportTaskResult] operation results.
     #
-    def create_tokens_task(parameters, custom_headers = nil)
-      response = create_tokens_task_async(parameters, custom_headers).value!
+    def create_tokens_task(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      response = create_tokens_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates a task to export tags.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [ExportTaskParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_tokens_task_with_http_info(parameters, custom_headers = nil)
-      create_tokens_task_async(parameters, custom_headers).value!
+    def create_tokens_task_with_http_info(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      create_tokens_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
     end
 
     #
     # Creates a task to export tags.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [ExportTaskParameter]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_tokens_task_async(parameters, custom_headers = nil)
+    def create_tokens_task_async(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -1006,7 +1096,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -1044,44 +1134,53 @@ module Azure::ARM::MobileEngagement
     #
     # Creates a task to export push campaign data for a date range.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [FeedbackByDateRangeParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ExportTaskResult] operation results.
     #
-    def create_feedback_task_by_date_range(parameters, custom_headers = nil)
-      response = create_feedback_task_by_date_range_async(parameters, custom_headers).value!
+    def create_feedback_task_by_date_range(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      response = create_feedback_task_by_date_range_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates a task to export push campaign data for a date range.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [FeedbackByDateRangeParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_feedback_task_by_date_range_with_http_info(parameters, custom_headers = nil)
-      create_feedback_task_by_date_range_async(parameters, custom_headers).value!
+    def create_feedback_task_by_date_range_with_http_info(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      create_feedback_task_by_date_range_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
     end
 
     #
     # Creates a task to export push campaign data for a date range.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [FeedbackByDateRangeParameter]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_feedback_task_by_date_range_async(parameters, custom_headers = nil)
+    def create_feedback_task_by_date_range_async(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -1105,7 +1204,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -1143,44 +1242,53 @@ module Azure::ARM::MobileEngagement
     #
     # Creates a task to export push campaign data for a set of campaigns.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [FeedbackByCampaignParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ExportTaskResult] operation results.
     #
-    def create_feedback_task_by_campaign(parameters, custom_headers = nil)
-      response = create_feedback_task_by_campaign_async(parameters, custom_headers).value!
+    def create_feedback_task_by_campaign(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      response = create_feedback_task_by_campaign_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates a task to export push campaign data for a set of campaigns.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [FeedbackByCampaignParameter]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_feedback_task_by_campaign_with_http_info(parameters, custom_headers = nil)
-      create_feedback_task_by_campaign_async(parameters, custom_headers).value!
+    def create_feedback_task_by_campaign_with_http_info(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      create_feedback_task_by_campaign_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
     end
 
     #
     # Creates a task to export push campaign data for a set of campaigns.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [FeedbackByCampaignParameter]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_feedback_task_by_campaign_async(parameters, custom_headers = nil)
+    def create_feedback_task_by_campaign_async(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -1204,7 +1312,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -1329,6 +1437,9 @@ module Azure::ARM::MobileEngagement
     #
     # Get the list of export tasks.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param skip [Integer] Control paging of export tasks, start results at the
     # given offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of export tasks, number of export tasks
@@ -1352,8 +1463,8 @@ module Azure::ARM::MobileEngagement
     # @return [ExportTaskListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(skip = 0, top = 20, orderby = nil, custom_headers = nil)
-      response = list_async(skip, top, orderby, custom_headers).value!
+    def list_as_lazy(resource_group_name, app_collection, app_name, skip = 0, top = 20, orderby = nil, custom_headers = nil)
+      response = list_async(resource_group_name, app_collection, app_name, skip, top, orderby, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

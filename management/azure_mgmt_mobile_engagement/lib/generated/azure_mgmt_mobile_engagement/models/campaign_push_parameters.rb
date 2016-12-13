@@ -7,7 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
-    # 
+    #
     #
     class CampaignPushParameters
 
@@ -16,7 +16,7 @@ module Azure::ARM::MobileEngagement
       # @return [Array<String>] Device identifiers to push as a JSON array of
       # strings. Note that if you want to push the same campaign several times
       # to the same device, you need to make several API calls.
-      # 
+      #
       attr_accessor :device_ids
 
       # @return [Campaign] Alternative campaign's content to use instead of the
