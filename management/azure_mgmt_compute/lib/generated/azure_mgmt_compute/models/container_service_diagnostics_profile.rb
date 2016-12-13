@@ -7,7 +7,7 @@ module Azure::ARM::Compute
   module Models
     #
     # Model object.
-    # 
+    #
     #
     class ContainerServiceDiagnosticsProfile
 

@@ -12,20 +12,20 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the virtual machine extension name.
+      # @return [String] The virtual machine extension name.
       attr_accessor :name
 
-      # @return [String] the full type of the extension handler which includes
+      # @return [String] The full type of the extension handler which includes
       # both publisher and type.
       attr_accessor :type
 
-      # @return [String] the type version of the extension handler.
+      # @return [String] The type version of the extension handler.
       attr_accessor :type_handler_version
 
-      # @return [Array<InstanceViewStatus>] the resource status information.
+      # @return [Array<InstanceViewStatus>] The resource status information.
       attr_accessor :substatuses
 
-      # @return [Array<InstanceViewStatus>] the resource status information.
+      # @return [Array<InstanceViewStatus>] The resource status information.
       attr_accessor :statuses
 
 

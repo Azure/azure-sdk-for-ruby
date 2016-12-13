@@ -12,13 +12,13 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the type of resource the sku applies to.
+      # @return [String] The type of resource the sku applies to.
       attr_accessor :resource_type
 
-      # @return [Sku] the Sku.
+      # @return [Sku] The Sku.
       attr_accessor :sku
 
-      # @return [VirtualMachineScaleSetSkuCapacity] available scaling
+      # @return [VirtualMachineScaleSetSkuCapacity] Available scaling
       # information.
       attr_accessor :capacity
 

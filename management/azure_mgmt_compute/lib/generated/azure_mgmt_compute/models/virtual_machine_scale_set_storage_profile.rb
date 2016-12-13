@@ -12,10 +12,10 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [ImageReference] the image reference.
+      # @return [ImageReference] The image reference.
       attr_accessor :image_reference
 
-      # @return [VirtualMachineScaleSetOSDisk] the OS disk.
+      # @return [VirtualMachineScaleSetOSDisk] The OS disk.
       attr_accessor :os_disk
 
 

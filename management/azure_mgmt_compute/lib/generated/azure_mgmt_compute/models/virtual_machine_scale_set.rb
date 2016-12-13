@@ -12,16 +12,16 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Sku] the virtual machine scale set sku.
+      # @return [Sku] The virtual machine scale set sku.
       attr_accessor :sku
 
-      # @return [UpgradePolicy] the upgrade policy.
+      # @return [UpgradePolicy] The upgrade policy.
       attr_accessor :upgrade_policy
 
-      # @return [VirtualMachineScaleSetVMProfile] the virtual machine profile.
+      # @return [VirtualMachineScaleSetVMProfile] The virtual machine profile.
       attr_accessor :virtual_machine_profile
 
-      # @return [String] the provisioning state, which only appears in the
+      # @return [String] The provisioning state, which only appears in the
       # response.
       attr_accessor :provisioning_state
 

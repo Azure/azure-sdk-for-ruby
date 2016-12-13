@@ -12,7 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [UpgradeMode] the upgrade mode. Possible values include:
+      # @return [UpgradeMode] The upgrade mode. Possible values include:
       # 'Automatic', 'Manual'
       attr_accessor :mode
 

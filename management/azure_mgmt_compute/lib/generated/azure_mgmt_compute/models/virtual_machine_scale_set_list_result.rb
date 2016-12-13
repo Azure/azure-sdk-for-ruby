@@ -12,11 +12,11 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Array<VirtualMachineScaleSet>] the list of virtual machine
+      # @return [Array<VirtualMachineScaleSet>] The list of virtual machine
       # scale sets.
       attr_accessor :value
 
-      # @return [String] the uri to fetch the next page of Virtual Machine
+      # @return [String] The uri to fetch the next page of Virtual Machine
       # Scale Sets. Call ListNext() with this to fetch the next page of VMSS.
       attr_accessor :next_link
 

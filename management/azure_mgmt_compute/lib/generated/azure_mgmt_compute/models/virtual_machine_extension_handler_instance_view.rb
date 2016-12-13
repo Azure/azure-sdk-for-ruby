@@ -12,14 +12,14 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] full type of the extension handler which includes both
+      # @return [String] Full type of the extension handler which includes both
       # publisher and type.
       attr_accessor :type
 
-      # @return [String] the type version of the extension handler.
+      # @return [String] The type version of the extension handler.
       attr_accessor :type_handler_version
 
-      # @return [InstanceViewStatus] the extension handler status.
+      # @return [InstanceViewStatus] The extension handler status.
       attr_accessor :status
 
 
