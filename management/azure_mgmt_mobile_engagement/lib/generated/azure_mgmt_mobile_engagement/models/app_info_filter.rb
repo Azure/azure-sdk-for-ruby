@@ -10,7 +10,7 @@ module Azure::ARM::MobileEngagement
     # that is automatically added if your campaign contains appInfo parameters.
     # It is not intended to be public and should not be used as it could be
     # removed or replaced by the API.
-    # 
+    #
     #
     class AppInfoFilter < Filter
 

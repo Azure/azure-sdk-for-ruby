@@ -25,6 +25,9 @@ module Azure::ARM::MobileEngagement
     #
     # Get the list of campaigns.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param skip [Integer] Control paging of campaigns, start results at the given
@@ -53,14 +56,17 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Array<CampaignListResult>] operation results.
     #
-    def list(kind, skip = nil, top = nil, filter = nil, orderby = nil, search = nil, custom_headers = nil)
-      first_page = list_as_lazy(kind, skip, top, filter, orderby, search, custom_headers)
+    def list(resource_group_name, app_collection, app_name, kind, skip = nil, top = nil, filter = nil, orderby = nil, search = nil, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, app_collection, app_name, kind, skip, top, filter, orderby, search, custom_headers)
       first_page.get_all_items
     end
 
     #
     # Get the list of campaigns.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param skip [Integer] Control paging of campaigns, start results at the given
@@ -89,13 +95,16 @@ module Azure::ARM::MobileEngagement
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(kind, skip = nil, top = nil, filter = nil, orderby = nil, search = nil, custom_headers = nil)
-      list_async(kind, skip, top, filter, orderby, search, custom_headers).value!
+    def list_with_http_info(resource_group_name, app_collection, app_name, kind, skip = nil, top = nil, filter = nil, orderby = nil, search = nil, custom_headers = nil)
+      list_async(resource_group_name, app_collection, app_name, kind, skip, top, filter, orderby, search, custom_headers).value!
     end
 
     #
     # Get the list of campaigns.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param skip [Integer] Control paging of campaigns, start results at the given
@@ -124,11 +133,11 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(kind, skip = nil, top = nil, filter = nil, orderby = nil, search = nil, custom_headers = nil)
+    def list_async(resource_group_name, app_collection, app_name, kind, skip = nil, top = nil, filter = nil, orderby = nil, search = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'kind is nil' if kind.nil?
 
@@ -144,7 +153,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name,'kind' => kind},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name,'kind' => kind},
           query_params: {'api-version' => @client.api_version,'$skip' => skip,'$top' => top,'$filter' => filter,'$orderby' => orderby,'$search' => search},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -181,6 +190,9 @@ module Azure::ARM::MobileEngagement
     #
     # Create a push campaign (announcement, poll, data push or native push).
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param parameters [Campaign] Parameters supplied to the Update Campaign
@@ -190,14 +202,17 @@ module Azure::ARM::MobileEngagement
     #
     # @return [CampaignStateResult] operation results.
     #
-    def create(kind, parameters, custom_headers = nil)
-      response = create_async(kind, parameters, custom_headers).value!
+    def create(resource_group_name, app_collection, app_name, kind, parameters, custom_headers = nil)
+      response = create_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Create a push campaign (announcement, poll, data push or native push).
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param parameters [Campaign] Parameters supplied to the Update Campaign
@@ -207,13 +222,16 @@ module Azure::ARM::MobileEngagement
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(kind, parameters, custom_headers = nil)
-      create_async(kind, parameters, custom_headers).value!
+    def create_with_http_info(resource_group_name, app_collection, app_name, kind, parameters, custom_headers = nil)
+      create_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers).value!
     end
 
     #
     # Create a push campaign (announcement, poll, data push or native push).
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param parameters [Campaign] Parameters supplied to the Update Campaign
@@ -223,11 +241,11 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(kind, parameters, custom_headers = nil)
+    def create_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -252,7 +270,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name,'kind' => kind},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name,'kind' => kind},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -294,13 +312,16 @@ module Azure::ARM::MobileEngagement
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CampaignResult] operation results.
     #
-    def get(kind, id, custom_headers = nil)
-      response = get_async(kind, id, custom_headers).value!
+    def get(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
+      response = get_async(kind, id, resource_group_name, app_collection, app_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -311,13 +332,16 @@ module Azure::ARM::MobileEngagement
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(kind, id, custom_headers = nil)
-      get_async(kind, id, custom_headers).value!
+    def get_with_http_info(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
+      get_async(kind, id, resource_group_name, app_collection, app_name, custom_headers).value!
     end
 
     #
@@ -327,18 +351,21 @@ module Azure::ARM::MobileEngagement
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(kind, id, custom_headers = nil)
+    def get_async(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -353,7 +380,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'kind' => kind,'id' => id,'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'kind' => kind,'id' => id,'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -396,13 +423,16 @@ module Azure::ARM::MobileEngagement
     # @param id [Integer] Campaign identifier.
     # @param parameters [Campaign] Parameters supplied to the Update Campaign
     # operation.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CampaignStateResult] operation results.
     #
-    def update(kind, id, parameters, custom_headers = nil)
-      response = update_async(kind, id, parameters, custom_headers).value!
+    def update(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers = nil)
+      response = update_async(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -415,13 +445,16 @@ module Azure::ARM::MobileEngagement
     # @param id [Integer] Campaign identifier.
     # @param parameters [Campaign] Parameters supplied to the Update Campaign
     # operation.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def update_with_http_info(kind, id, parameters, custom_headers = nil)
-      update_async(kind, id, parameters, custom_headers).value!
+    def update_with_http_info(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers = nil)
+      update_async(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers).value!
     end
 
     #
@@ -433,19 +466,22 @@ module Azure::ARM::MobileEngagement
     # @param id [Integer] Campaign identifier.
     # @param parameters [Campaign] Parameters supplied to the Update Campaign
     # operation.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def update_async(kind, id, parameters, custom_headers = nil)
+    def update_async(kind, id, parameters, resource_group_name, app_collection, app_name, custom_headers = nil)
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -468,7 +504,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'kind' => kind,'id' => id,'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'kind' => kind,'id' => id,'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -509,12 +545,15 @@ module Azure::ARM::MobileEngagement
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def delete(kind, id, custom_headers = nil)
-      response = delete_async(kind, id, custom_headers).value!
+    def delete(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
+      response = delete_async(kind, id, resource_group_name, app_collection, app_name, custom_headers).value!
       nil
     end
 
@@ -524,13 +563,16 @@ module Azure::ARM::MobileEngagement
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def delete_with_http_info(kind, id, custom_headers = nil)
-      delete_async(kind, id, custom_headers).value!
+    def delete_with_http_info(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
+      delete_async(kind, id, resource_group_name, app_collection, app_name, custom_headers).value!
     end
 
     #
@@ -539,18 +581,21 @@ module Azure::ARM::MobileEngagement
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def delete_async(kind, id, custom_headers = nil)
+    def delete_async(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -565,7 +610,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'kind' => kind,'id' => id,'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'kind' => kind,'id' => id,'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -593,6 +638,9 @@ module Azure::ARM::MobileEngagement
     # The Get campaign operation retrieves information about a previously created
     # campaign.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param name [String] Campaign name.
@@ -601,8 +649,8 @@ module Azure::ARM::MobileEngagement
     #
     # @return [CampaignResult] operation results.
     #
-    def get_by_name(kind, name, custom_headers = nil)
-      response = get_by_name_async(kind, name, custom_headers).value!
+    def get_by_name(resource_group_name, app_collection, app_name, kind, name, custom_headers = nil)
+      response = get_by_name_async(resource_group_name, app_collection, app_name, kind, name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -610,6 +658,9 @@ module Azure::ARM::MobileEngagement
     # The Get campaign operation retrieves information about a previously created
     # campaign.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param name [String] Campaign name.
@@ -618,14 +669,17 @@ module Azure::ARM::MobileEngagement
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_by_name_with_http_info(kind, name, custom_headers = nil)
-      get_by_name_async(kind, name, custom_headers).value!
+    def get_by_name_with_http_info(resource_group_name, app_collection, app_name, kind, name, custom_headers = nil)
+      get_by_name_async(resource_group_name, app_collection, app_name, kind, name, custom_headers).value!
     end
 
     #
     # The Get campaign operation retrieves information about a previously created
     # campaign.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param name [String] Campaign name.
@@ -634,11 +688,11 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_by_name_async(kind, name, custom_headers = nil)
+    def get_by_name_async(resource_group_name, app_collection, app_name, kind, name, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -655,7 +709,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name,'kind' => kind,'name' => name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name,'kind' => kind,'name' => name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -692,6 +746,9 @@ module Azure::ARM::MobileEngagement
     #
     # Test an existing campaign (created with Create campaign) on a set of devices.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -702,14 +759,17 @@ module Azure::ARM::MobileEngagement
     #
     # @return [CampaignStateResult] operation results.
     #
-    def test_saved(kind, id, parameters, custom_headers = nil)
-      response = test_saved_async(kind, id, parameters, custom_headers).value!
+    def test_saved(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers = nil)
+      response = test_saved_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Test an existing campaign (created with Create campaign) on a set of devices.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -720,13 +780,16 @@ module Azure::ARM::MobileEngagement
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def test_saved_with_http_info(kind, id, parameters, custom_headers = nil)
-      test_saved_async(kind, id, parameters, custom_headers).value!
+    def test_saved_with_http_info(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers = nil)
+      test_saved_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers).value!
     end
 
     #
     # Test an existing campaign (created with Create campaign) on a set of devices.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -737,11 +800,11 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def test_saved_async(kind, id, parameters, custom_headers = nil)
+    def test_saved_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -767,7 +830,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name,'kind' => kind,'id' => id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name,'kind' => kind,'id' => id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -805,6 +868,9 @@ module Azure::ARM::MobileEngagement
     #
     # Test a new campaign on a set of devices.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param parameters [CampaignTestNewParameters] Parameters supplied to the Test
@@ -814,14 +880,17 @@ module Azure::ARM::MobileEngagement
     #
     # @return [CampaignState] operation results.
     #
-    def test_new(kind, parameters, custom_headers = nil)
-      response = test_new_async(kind, parameters, custom_headers).value!
+    def test_new(resource_group_name, app_collection, app_name, kind, parameters, custom_headers = nil)
+      response = test_new_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Test a new campaign on a set of devices.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param parameters [CampaignTestNewParameters] Parameters supplied to the Test
@@ -831,13 +900,16 @@ module Azure::ARM::MobileEngagement
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def test_new_with_http_info(kind, parameters, custom_headers = nil)
-      test_new_async(kind, parameters, custom_headers).value!
+    def test_new_with_http_info(resource_group_name, app_collection, app_name, kind, parameters, custom_headers = nil)
+      test_new_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers).value!
     end
 
     #
     # Test a new campaign on a set of devices.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param parameters [CampaignTestNewParameters] Parameters supplied to the Test
@@ -847,11 +919,11 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def test_new_async(kind, parameters, custom_headers = nil)
+    def test_new_async(resource_group_name, app_collection, app_name, kind, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
@@ -876,7 +948,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name,'kind' => kind},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name,'kind' => kind},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -914,6 +986,9 @@ module Azure::ARM::MobileEngagement
     #
     # Activate a campaign previously created by a call to Create campaign.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -922,14 +997,17 @@ module Azure::ARM::MobileEngagement
     #
     # @return [CampaignStateResult] operation results.
     #
-    def activate(kind, id, custom_headers = nil)
-      response = activate_async(kind, id, custom_headers).value!
+    def activate(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
+      response = activate_async(resource_group_name, app_collection, app_name, kind, id, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Activate a campaign previously created by a call to Create campaign.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -938,13 +1016,16 @@ module Azure::ARM::MobileEngagement
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def activate_with_http_info(kind, id, custom_headers = nil)
-      activate_async(kind, id, custom_headers).value!
+    def activate_with_http_info(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
+      activate_async(resource_group_name, app_collection, app_name, kind, id, custom_headers).value!
     end
 
     #
     # Activate a campaign previously created by a call to Create campaign.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -953,11 +1034,11 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def activate_async(kind, id, custom_headers = nil)
+    def activate_async(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -974,7 +1055,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name,'kind' => kind,'id' => id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name,'kind' => kind,'id' => id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1011,6 +1092,9 @@ module Azure::ARM::MobileEngagement
     #
     # Suspend a push campaign previously activated by a call to Activate campaign.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -1019,14 +1103,17 @@ module Azure::ARM::MobileEngagement
     #
     # @return [CampaignStateResult] operation results.
     #
-    def suspend(kind, id, custom_headers = nil)
-      response = suspend_async(kind, id, custom_headers).value!
+    def suspend(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
+      response = suspend_async(resource_group_name, app_collection, app_name, kind, id, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Suspend a push campaign previously activated by a call to Activate campaign.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -1035,13 +1122,16 @@ module Azure::ARM::MobileEngagement
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def suspend_with_http_info(kind, id, custom_headers = nil)
-      suspend_async(kind, id, custom_headers).value!
+    def suspend_with_http_info(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
+      suspend_async(resource_group_name, app_collection, app_name, kind, id, custom_headers).value!
     end
 
     #
     # Suspend a push campaign previously activated by a call to Activate campaign.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -1050,11 +1140,11 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def suspend_async(kind, id, custom_headers = nil)
+    def suspend_async(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1071,7 +1161,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name,'kind' => kind,'id' => id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name,'kind' => kind,'id' => id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1109,6 +1199,9 @@ module Azure::ARM::MobileEngagement
     # Push a previously saved campaign (created with Create campaign) to a set of
     # devices.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -1119,8 +1212,8 @@ module Azure::ARM::MobileEngagement
     #
     # @return [CampaignPushResult] operation results.
     #
-    def push(kind, id, parameters, custom_headers = nil)
-      response = push_async(kind, id, parameters, custom_headers).value!
+    def push(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers = nil)
+      response = push_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1128,6 +1221,9 @@ module Azure::ARM::MobileEngagement
     # Push a previously saved campaign (created with Create campaign) to a set of
     # devices.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -1138,14 +1234,17 @@ module Azure::ARM::MobileEngagement
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def push_with_http_info(kind, id, parameters, custom_headers = nil)
-      push_async(kind, id, parameters, custom_headers).value!
+    def push_with_http_info(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers = nil)
+      push_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers).value!
     end
 
     #
     # Push a previously saved campaign (created with Create campaign) to a set of
     # devices.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -1156,11 +1255,11 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def push_async(kind, id, parameters, custom_headers = nil)
+    def push_async(resource_group_name, app_collection, app_name, kind, id, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
@@ -1186,7 +1285,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name,'kind' => kind,'id' => id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name,'kind' => kind,'id' => id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -1227,13 +1326,16 @@ module Azure::ARM::MobileEngagement
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [CampaignStatisticsResult] operation results.
     #
-    def get_statistics(kind, id, custom_headers = nil)
-      response = get_statistics_async(kind, id, custom_headers).value!
+    def get_statistics(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
+      response = get_statistics_async(kind, id, resource_group_name, app_collection, app_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -1243,13 +1345,16 @@ module Azure::ARM::MobileEngagement
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_statistics_with_http_info(kind, id, custom_headers = nil)
-      get_statistics_async(kind, id, custom_headers).value!
+    def get_statistics_with_http_info(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
+      get_statistics_async(kind, id, resource_group_name, app_collection, app_name, custom_headers).value!
     end
 
     #
@@ -1258,18 +1363,21 @@ module Azure::ARM::MobileEngagement
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_statistics_async(kind, id, custom_headers = nil)
+    def get_statistics_async(kind, id, resource_group_name, app_collection, app_name, custom_headers = nil)
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -1284,7 +1392,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'kind' => kind,'id' => id,'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'kind' => kind,'id' => id,'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1321,6 +1429,9 @@ module Azure::ARM::MobileEngagement
     #
     # Finish a push campaign previously activated by a call to Activate campaign.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -1329,14 +1440,17 @@ module Azure::ARM::MobileEngagement
     #
     # @return [CampaignStateResult] operation results.
     #
-    def finish(kind, id, custom_headers = nil)
-      response = finish_async(kind, id, custom_headers).value!
+    def finish(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
+      response = finish_async(resource_group_name, app_collection, app_name, kind, id, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Finish a push campaign previously activated by a call to Activate campaign.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -1345,13 +1459,16 @@ module Azure::ARM::MobileEngagement
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def finish_with_http_info(kind, id, custom_headers = nil)
-      finish_async(kind, id, custom_headers).value!
+    def finish_with_http_info(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
+      finish_async(resource_group_name, app_collection, app_name, kind, id, custom_headers).value!
     end
 
     #
     # Finish a push campaign previously activated by a call to Activate campaign.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param id [Integer] Campaign identifier.
@@ -1360,11 +1477,11 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def finish_async(kind, id, custom_headers = nil)
+    def finish_async(resource_group_name, app_collection, app_name, kind, id, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, 'kind is nil' if kind.nil?
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
@@ -1381,7 +1498,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name,'kind' => kind,'id' => id},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name,'kind' => kind,'id' => id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -1505,6 +1622,9 @@ module Azure::ARM::MobileEngagement
     #
     # Get the list of campaigns.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param kind [CampaignKinds] Campaign kind. Possible values include:
     # 'announcements', 'polls', 'dataPushes', 'nativePushes'
     # @param skip [Integer] Control paging of campaigns, start results at the given
@@ -1534,8 +1654,8 @@ module Azure::ARM::MobileEngagement
     # @return [CampaignsListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(kind, skip = nil, top = nil, filter = nil, orderby = nil, search = nil, custom_headers = nil)
-      response = list_async(kind, skip, top, filter, orderby, search, custom_headers).value!
+    def list_as_lazy(resource_group_name, app_collection, app_name, kind, skip = nil, top = nil, filter = nil, orderby = nil, search = nil, custom_headers = nil)
+      response = list_async(resource_group_name, app_collection, app_name, kind, skip, top, filter, orderby, search, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

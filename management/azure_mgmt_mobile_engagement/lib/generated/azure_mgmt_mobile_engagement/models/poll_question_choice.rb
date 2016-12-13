@@ -7,7 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
-    # 
+    #
     #
     class PollQuestionChoice < PollQuestionChoiceLocalization
 
@@ -21,7 +21,7 @@ module Azure::ARM::MobileEngagement
       # two-character language code as specified by the ISO 639-1 standard. The
       # corresponding value is an object containing the localizable property
       # title.
-      # 
+      #
       attr_accessor :localization
 
       # @return [Boolean] A flag indicating if this choice is the default

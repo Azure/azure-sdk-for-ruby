@@ -7,7 +7,7 @@ module Azure::ARM::MobileEngagement
   module Models
     #
     # Model object.
-    # 
+    #
     #
     class CampaignLocalization
 
@@ -26,7 +26,7 @@ module Azure::ARM::MobileEngagement
       # there is neither text nor content icon). For Android system
       # notifications, the image is used as the large icon (displayed only on
       # Android 3+).
-      # 
+      #
       attr_accessor :notification_image
 
       # @return [NotificationOptions] Additional platform specific options.
