@@ -32,14 +32,14 @@ MsRestAzure has only unit tests which doesn't require any preparation, just run 
 
 To start working on the gem the only additional dev dependecy is required - rspec. After you've added a new feature and all specs pass - you're good to go with PR. But before starting any bug/feature - please make sure you've thoroughly discussed it with repository maintainers. This gem already powers a few SDKs and backward compatibility should taken in account.
 
-# Adding gem to you generated SDK
+# Adding gem to your generated SDK
 
 Reference it in the gemfile and also add this line to your client's gemspec file:
 
 ```ruby
 spec.add_runtime_dependency 'ms_rest_azure', '~> 0.6.2'
 ```
-Don't forget to correct the version.
+Do not forget to correct the version.
 
 # Utilizing Telemetry Extension in your SDK
 
