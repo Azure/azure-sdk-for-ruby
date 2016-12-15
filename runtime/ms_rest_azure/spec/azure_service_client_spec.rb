@@ -64,13 +64,13 @@ module MsRestAzure
       azure_service_client.long_running_operation_retry_timeout = 0
 
       allow_any_instance_of(MsRestAzure::PollingState).to receive(:create_connection).and_return(nil)
-      allow(azure_service_client).to receive(:update_state_with_custom_deserialization) do |request, polling_state|
+      allow(azure_service_client).to receive(:update_state_without_custom_deserialization) do |request, polling_state|
         polling_state.status = AsyncOperationStatus::SUCCESS_STATUS
         polling_state.resource = 'resource'
       end
 
       response = double('response', :headers => { 'Location' => 'location_header'}, :status => 202)
-      expect(azure_service_client).to receive(:update_state_with_custom_deserialization)
+      expect(azure_service_client).to receive(:update_state_without_custom_deserialization)
 
       @methods.each do |method|
         request = double('request', headers: {}, base_uri: '', method: method)
