@@ -23,12 +23,13 @@ module Azure::ARM::Redis
     attr_reader :client
 
     #
-    # Create or replace the patching schedule for Redis cache.
+    # Create or replace the patching schedule for Redis cache (requires Premium
+    # SKU).
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the Redis cache.
-    # @param parameters [RedisPatchSchedule] Parameters to set patch schedules for
-    # Redis cache.
+    # @param parameters [RedisPatchSchedule] Parameters to set the patching
+    # schedule for Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -40,12 +41,13 @@ module Azure::ARM::Redis
     end
 
     #
-    # Create or replace the patching schedule for Redis cache.
+    # Create or replace the patching schedule for Redis cache (requires Premium
+    # SKU).
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the Redis cache.
-    # @param parameters [RedisPatchSchedule] Parameters to set patch schedules for
-    # Redis cache.
+    # @param parameters [RedisPatchSchedule] Parameters to set the patching
+    # schedule for Redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -56,12 +58,13 @@ module Azure::ARM::Redis
     end
 
     #
-    # Create or replace the patching schedule for Redis cache.
+    # Create or replace the patching schedule for Redis cache (requires Premium
+    # SKU).
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the Redis cache.
-    # @param parameters [RedisPatchSchedule] Parameters to set patch schedules for
-    # Redis cache.
+    # @param parameters [RedisPatchSchedule] Parameters to set the patching
+    # schedule for Redis cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -130,10 +133,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Deletes the patching schedule for Redis cache.
+    # Deletes the patching schedule of a redis cache (requires Premium SKU).
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the Redis cache.
+    # @param name [String] The name of the redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -144,10 +147,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Deletes the patching schedule for Redis cache.
+    # Deletes the patching schedule of a redis cache (requires Premium SKU).
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the Redis cache.
+    # @param name [String] The name of the redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -158,10 +161,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Deletes the patching schedule for Redis cache.
+    # Deletes the patching schedule of a redis cache (requires Premium SKU).
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the Redis cache.
+    # @param name [String] The name of the redis cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -196,7 +199,7 @@ module Azure::ARM::Redis
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -210,10 +213,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets the patching schedule for Redis cache.
+    # Gets the patching schedule of a redis cache (requires Premium SKU).
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the Redis cache.
+    # @param name [String] The name of the redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -225,10 +228,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets the patching schedule for Redis cache.
+    # Gets the patching schedule of a redis cache (requires Premium SKU).
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the Redis cache.
+    # @param name [String] The name of the redis cache.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -239,10 +242,10 @@ module Azure::ARM::Redis
     end
 
     #
-    # Gets the patching schedule for Redis cache.
+    # Gets the patching schedule of a redis cache (requires Premium SKU).
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param name [String] The name of the Redis cache.
+    # @param name [String] The name of the redis cache.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -277,7 +280,7 @@ module Azure::ARM::Redis
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 404
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
