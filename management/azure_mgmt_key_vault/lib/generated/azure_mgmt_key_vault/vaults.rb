@@ -424,7 +424,7 @@ module Azure::ARM::KeyVault
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<Vault>] operation results.
+    # @return [Array<Resource>] operation results.
     #
     def list(top = nil, custom_headers = nil)
       first_page = list_as_lazy(top, custom_headers)
@@ -493,7 +493,7 @@ module Azure::ARM::KeyVault
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VaultListResult.mapper()
+            result_mapper = ResourceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -605,7 +605,7 @@ module Azure::ARM::KeyVault
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VaultListResult] operation results.
+    # @return [ResourceListResult] operation results.
     #
     def list_next(next_page_link, custom_headers = nil)
       response = list_next_async(next_page_link, custom_headers).value!
@@ -673,7 +673,7 @@ module Azure::ARM::KeyVault
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VaultListResult.mapper()
+            result_mapper = ResourceListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -717,7 +717,8 @@ module Azure::ARM::KeyVault
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VaultListResult] which provide lazy access to pages of the response.
+    # @return [ResourceListResult] which provide lazy access to pages of the
+    # response.
     #
     def list_as_lazy(top = nil, custom_headers = nil)
       response = list_async(top, custom_headers).value!

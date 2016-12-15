@@ -17,9 +17,9 @@ module Azure::ARM::KeyVault
       # authenticating requests to the key vault.
       attr_accessor :tenant_id
 
-      # @return The object ID of a user, service principal or security group in
-      # the Azure Active Directory tenant for the vault. The object ID must be
-      # unique for the list of access policies.
+      # @return [String] The object ID of a user, service principal or security
+      # group in the Azure Active Directory tenant for the vault. The object ID
+      # must be unique for the list of access policies.
       attr_accessor :object_id
 
       # @return  Application ID of the client making request on behalf of a
