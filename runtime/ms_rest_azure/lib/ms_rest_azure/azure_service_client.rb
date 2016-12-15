@@ -136,7 +136,7 @@ module MsRestAzure
     end
 
     #
-    # Updates polling state based on location header for HTTP requests.
+    # Updates polling state and calls the custom deserialization block
     # @param request [MsRest::HttpOperationRequest] The url retrieve data from.
     # @param polling_state [MsRestAzure::PollingState] polling state to update.
     # @param custom_deserialization_block [Proc] custom deserialization method for parsing response.
@@ -167,7 +167,7 @@ module MsRestAzure
     end
 
     #
-    # Updates polling state from Azure async operation header.
+    # Updates polling state and provides default deserialization.
     # @param polling_state [MsRestAzure::PollingState] polling state.
     #
     def update_state_without_custom_deserialization(request, polling_state)
