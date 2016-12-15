@@ -760,7 +760,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Import data into Redis cache.
+    # Export data from the redis cache to blobs in a container.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the Redis cache.
@@ -1205,7 +1205,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Import data into Redis cache.
+    # Export data from the redis cache to blobs in a container.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the Redis cache.
@@ -1221,7 +1221,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Import data into Redis cache.
+    # Export data from the redis cache to blobs in a container.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the Redis cache.
@@ -1237,7 +1237,7 @@ module Azure::ARM::Redis
     end
 
     #
-    # Import data into Redis cache.
+    # Export data from the redis cache to blobs in a container.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param name [String] The name of the Redis cache.
