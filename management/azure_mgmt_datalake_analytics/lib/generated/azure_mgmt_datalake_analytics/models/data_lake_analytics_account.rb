@@ -66,6 +66,22 @@ module Azure::ARM::DataLakeAnalytics
       # @return [String] the full CName endpoint for this account.
       attr_accessor :endpoint
 
+      # @return [PricingTierType] the billing tier to use for next month.
+      # Possible values include: 'Consumption', 'Commitment_100AUHours',
+      # 'Commitment_500AUHours', 'Commitment_1000AUHours',
+      # 'Commitment_5000AUHours', 'Commitment_10000AUHours',
+      # 'Commitment_50000AUHours', 'Commitment_100000AUHours',
+      # 'Commitment_500000AUHours'
+      attr_accessor :new_tier
+
+      # @return [PricingTierType] the billing tier in use for the current
+      # month. Possible values include: 'Consumption', 'Commitment_100AUHours',
+      # 'Commitment_500AUHours', 'Commitment_1000AUHours',
+      # 'Commitment_5000AUHours', 'Commitment_10000AUHours',
+      # 'Commitment_50000AUHours', 'Commitment_100000AUHours',
+      # 'Commitment_500000AUHours'
+      attr_accessor :current_tier
+
 
       #
       # Mapper for DataLakeAnalyticsAccount class as Ruby Hash.
@@ -251,6 +267,23 @@ module Azure::ARM::DataLakeAnalytics
                 serialized_name: 'properties.endpoint',
                 type: {
                   name: 'String'
+                }
+              },
+              new_tier: {
+                required: false,
+                serialized_name: 'properties.newTier',
+                type: {
+                  name: 'Enum',
+                  module: 'PricingTierType'
+                }
+              },
+              current_tier: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.currentTier',
+                type: {
+                  name: 'Enum',
+                  module: 'PricingTierType'
                 }
               }
             }
