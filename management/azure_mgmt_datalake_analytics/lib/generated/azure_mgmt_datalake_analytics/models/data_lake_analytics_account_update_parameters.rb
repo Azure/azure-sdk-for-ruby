@@ -27,6 +27,14 @@ module Azure::ARM::DataLakeAnalytics
       # at the same time.
       attr_accessor :max_job_count
 
+      # @return [PricingTierType] the billing tier to use for next month.
+      # Possible values include: 'Consumption', 'Commitment_100AUHours',
+      # 'Commitment_500AUHours', 'Commitment_1000AUHours',
+      # 'Commitment_5000AUHours', 'Commitment_10000AUHours',
+      # 'Commitment_50000AUHours', 'Commitment_100000AUHours',
+      # 'Commitment_500000AUHours'
+      attr_accessor :new_tier
+
 
       #
       # Mapper for DataLakeAnalyticsAccountUpdateParameters class as Ruby Hash.
@@ -83,6 +91,14 @@ module Azure::ARM::DataLakeAnalytics
                 },
                 type: {
                   name: 'Number'
+                }
+              },
+              new_tier: {
+                required: false,
+                serialized_name: 'properties.newTier',
+                type: {
+                  name: 'Enum',
+                  module: 'PricingTierType'
                 }
               }
             }
