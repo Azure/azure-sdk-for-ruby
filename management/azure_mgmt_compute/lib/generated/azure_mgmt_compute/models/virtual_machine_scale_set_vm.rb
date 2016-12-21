@@ -22,6 +22,9 @@ module Azure::ARM::Compute
       # to the virtual machine.
       attr_accessor :latest_model_applied
 
+      # @return [String] Azure VM unique ID.
+      attr_accessor :vm_id
+
       # @return [VirtualMachineInstanceView] The virtual machine instance view.
       attr_accessor :instance_view
 
@@ -141,6 +144,14 @@ module Azure::ARM::Compute
                 serialized_name: 'properties.latestModelApplied',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              vm_id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.vmId',
+                type: {
+                  name: 'String'
                 }
               },
               instance_view: {
