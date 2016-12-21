@@ -15,7 +15,7 @@ module Azure::ARM::CDN
       # @return [String] Ip adress itself.
       attr_accessor :base_ip_address
 
-      # @return [String] The length of the prefix of the ip address.
+      # @return [Integer] The length of the prefix of the ip address.
       attr_accessor :prefix_length
 
 
@@ -42,7 +42,7 @@ module Azure::ARM::CDN
                 required: false,
                 serialized_name: 'prefixLength',
                 type: {
-                  name: 'String'
+                  name: 'Number'
                 }
               }
             }

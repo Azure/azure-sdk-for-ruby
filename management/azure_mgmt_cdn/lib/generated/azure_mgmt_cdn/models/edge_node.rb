@@ -8,15 +8,9 @@ module Azure::ARM::CDN
     #
     # Edge node of CDN service.
     #
-    class EdgeNode
+    class EdgeNode < MsRestAzure::Resource
 
       include MsRestAzure
-
-      # @return [String] Ip adress group that contains Ipv4 and Ipv6 addresses
-      attr_accessor :name
-
-      # @return [String] The resource group of the edge node.
-      attr_accessor :resource_group
 
       # @return [Array<IpAddressGroup>] List of ip address groups.
       attr_accessor :ip_address_groups
@@ -34,23 +28,54 @@ module Azure::ARM::CDN
             name: 'Composite',
             class_name: 'EdgeNode',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              resource_group: {
+              type: {
                 required: false,
-                serialized_name: 'resourceGroup',
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              ip_address_groups: {
+              location: {
+                required: true,
+                serialized_name: 'location',
+                type: {
+                  name: 'String'
+                }
+              },
+              tags: {
                 required: false,
-                serialized_name: 'ipAddressGroups',
+                serialized_name: 'tags',
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
+                }
+              },
+              ip_address_groups: {
+                required: true,
+                serialized_name: 'properties.ipAddressGroups',
                 type: {
                   name: 'Sequence',
                   element: {
