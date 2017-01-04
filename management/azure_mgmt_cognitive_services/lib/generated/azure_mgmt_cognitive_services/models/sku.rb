@@ -13,8 +13,8 @@ module Azure::ARM::CognitiveServices
       include MsRestAzure
 
       # @return [SkuName] Gets or sets the sku name. Required for account
-      # creation, optional for update. Possible values include: 'F0', 'S0',
-      # 'S1', 'S2', 'S3', 'S4'
+      # creation, optional for update. Possible values include: 'F0', 'P0',
+      # 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6'
       attr_accessor :name
 
       # @return [SkuTier] Gets the sku tier. This is based on the SKU name.
@@ -38,8 +38,7 @@ module Azure::ARM::CognitiveServices
                 required: true,
                 serialized_name: 'name',
                 type: {
-                  name: 'Enum',
-                  module: 'SkuName'
+                  name: 'String'
                 }
               },
               tier: {
