@@ -91,7 +91,7 @@ module MsRest
       template = path_template.dup
       path_params.each{ |key, value| template["{#{key}}"] = ERB::Util.url_encode(value) if template.include?("{#{key}}") } unless path_params.nil?
       skip_encoding_path_params.each{ |key, value| template["{#{key}}"] = value } unless skip_encoding_path_params.nil?
-      path = URI.parse(template.gsub(/([^:])\/\//, '\1/'))
+      path = URI.parse(template.gsub(/([^:]|\A)\/\//, '\1/'))
       unless skip_encoding_query_params.nil?
         path.query = [(path.query || ""), skip_encoding_query_params.reject{|_, v| v.nil?}.map{|k,v| "#{k}=#{v}"}].join('&')
       end
