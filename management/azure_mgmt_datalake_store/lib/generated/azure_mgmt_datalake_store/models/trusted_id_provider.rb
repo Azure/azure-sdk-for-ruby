@@ -8,7 +8,7 @@ module Azure::ARM::DataLakeStore
     #
     # Data Lake Store firewall rule information
     #
-    class TrustedIdProvider < MsRestAzure::SubResource
+    class TrustedIdProvider < SubResource
 
       include MsRestAzure
 

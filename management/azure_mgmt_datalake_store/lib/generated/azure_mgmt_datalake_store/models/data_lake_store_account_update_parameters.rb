@@ -32,6 +32,12 @@ module Azure::ARM::DataLakeStore
       # created in the Data Lake Store account.
       attr_accessor :default_group
 
+      # @return [TierType] the commitment tier to use for next month. Possible
+      # values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+      # 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB',
+      # 'Commitment_5PB'
+      attr_accessor :new_tier
+
 
       #
       # Mapper for DataLakeStoreAccountUpdateParameters class as Ruby Hash.
@@ -80,6 +86,14 @@ module Azure::ARM::DataLakeStore
                 serialized_name: 'properties.defaultGroup',
                 type: {
                   name: 'String'
+                }
+              },
+              new_tier: {
+                required: false,
+                serialized_name: 'properties.newTier',
+                type: {
+                  name: 'Enum',
+                  module: 'TierType'
                 }
               }
             }
