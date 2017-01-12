@@ -7,7 +7,7 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
-    # 
+    #
     #
     class JobDefinition
 
