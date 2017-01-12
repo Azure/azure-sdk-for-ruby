@@ -16,8 +16,11 @@ module Azure::ARM::CognitiveServices
       attr_accessor :sku
 
       # @return [Kind] Required. Indicates the type of cognitive service
-      # account. Possible values include: 'ComputerVision', 'Emotion', 'Face',
-      # 'LUIS', 'Recommendations', 'Speech', 'TextAnalytics', 'WebLM'
+      # account. Possible values include: 'Academic', 'Bing.Autosuggest',
+      # 'Bing.Search', 'Bing.Speech', 'Bing.SpellCheck', 'ComputerVision',
+      # 'ContentModerator', 'Emotion', 'Face', 'LUIS', 'Recommendations',
+      # 'SpeakerRecognition', 'Speech', 'SpeechTranslation', 'TextAnalytics',
+      # 'TextTranslation', 'WebLM'
       attr_accessor :kind
 
       # @return [String] Required. Gets or sets the location of the resource.
@@ -62,8 +65,7 @@ module Azure::ARM::CognitiveServices
                 required: true,
                 serialized_name: 'kind',
                 type: {
-                  name: 'Enum',
-                  module: 'Kind'
+                  name: 'String'
                 }
               },
               location: {

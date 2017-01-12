@@ -9,13 +9,22 @@ module Azure::ARM::CognitiveServices
     # Defines values for Kind
     #
     module Kind
+      Academic = "Academic"
+      BingAutosuggest = "Bing.Autosuggest"
+      BingSearch = "Bing.Search"
+      BingSpeech = "Bing.Speech"
+      BingSpellCheck = "Bing.SpellCheck"
       ComputerVision = "ComputerVision"
+      ContentModerator = "ContentModerator"
       Emotion = "Emotion"
       Face = "Face"
       LUIS = "LUIS"
       Recommendations = "Recommendations"
+      SpeakerRecognition = "SpeakerRecognition"
       Speech = "Speech"
+      SpeechTranslation = "SpeechTranslation"
       TextAnalytics = "TextAnalytics"
+      TextTranslation = "TextTranslation"
       WebLM = "WebLM"
     end
   end
