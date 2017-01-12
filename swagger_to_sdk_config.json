@@ -274,10 +274,11 @@
       ]
     },
     "azure_mgmt_network": {
-      "swagger": "arm-network/2016-09-01/swagger/network.json",
+      "swagger": "arm-network/compositeNetworkClient.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Network",
         "PackageName": "azure_mgmt_network",
+        "Modeler": "CompositeSwagger",
         "PackageVersion": "0.8.0"
       },
       "output_dir": "management/azure_mgmt_network/lib",
