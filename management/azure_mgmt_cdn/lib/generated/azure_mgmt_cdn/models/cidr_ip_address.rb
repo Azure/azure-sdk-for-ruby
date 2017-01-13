@@ -3,48 +3,46 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::CognitiveServices
+module Azure::ARM::CDN
   module Models
     #
-    # Model object.
+    # CIDR Ip address
     #
-    #
-    class CognitiveServicesResourceAndSku
+    class CidrIpAddress
 
       include MsRestAzure
 
-      # @return [String] Resource Namespace and Type
-      attr_accessor :resource_type
+      # @return [String] Ip adress itself.
+      attr_accessor :base_ip_address
 
-      # @return [Sku]
-      attr_accessor :sku
+      # @return [Integer] The length of the prefix of the ip address.
+      attr_accessor :prefix_length
 
 
       #
-      # Mapper for CognitiveServicesResourceAndSku class as Ruby Hash.
+      # Mapper for CidrIpAddress class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'CognitiveServicesResourceAndSku',
+          serialized_name: 'cidrIpAddress',
           type: {
             name: 'Composite',
-            class_name: 'CognitiveServicesResourceAndSku',
+            class_name: 'CidrIpAddress',
             model_properties: {
-              resource_type: {
+              base_ip_address: {
                 required: false,
-                serialized_name: 'resourceType',
+                serialized_name: 'baseIpAddress',
                 type: {
                   name: 'String'
                 }
               },
-              sku: {
+              prefix_length: {
                 required: false,
-                serialized_name: 'sku',
+                serialized_name: 'prefixLength',
                 type: {
-                  name: 'Composite',
-                  class_name: 'Sku'
+                  name: 'Number'
                 }
               }
             }

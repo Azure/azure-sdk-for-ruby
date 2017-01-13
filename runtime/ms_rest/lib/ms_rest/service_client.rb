@@ -27,7 +27,7 @@ module MsRest
     # HTTP requests made by the service client.
     # @param options additional parameters for the HTTP request (not implemented yet).
     #
-    def initialize(credentials, options = nil)
+    def initialize(credentials = nil, options = nil)
       @credentials = credentials
       @request_headers = {}
       @middlewares = {middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]]}

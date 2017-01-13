@@ -348,6 +348,306 @@ module Azure::ARM::Locks
     end
 
     #
+    # Create or update a management lock by scope.
+    #
+    # @param scope [String] The scope for the lock. When providing a scope for the
+    # assignment, use '/subscriptions/{subscriptionId}' for subscriptions,
+    # '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}' for
+    # resource groups, and
+    # '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePathIfPresent}/{resourceType}/{resourceName}'
+    # for resources.
+    # @param lock_name [String] The name of lock.
+    # @param parameters [ManagementLockObject] Create or update management lock
+    # parameters.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ManagementLockObject] operation results.
+    #
+    def create_or_update_by_scope(scope, lock_name, parameters, custom_headers = nil)
+      response = create_or_update_by_scope_async(scope, lock_name, parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Create or update a management lock by scope.
+    #
+    # @param scope [String] The scope for the lock. When providing a scope for the
+    # assignment, use '/subscriptions/{subscriptionId}' for subscriptions,
+    # '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}' for
+    # resource groups, and
+    # '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePathIfPresent}/{resourceType}/{resourceName}'
+    # for resources.
+    # @param lock_name [String] The name of lock.
+    # @param parameters [ManagementLockObject] Create or update management lock
+    # parameters.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_by_scope_with_http_info(scope, lock_name, parameters, custom_headers = nil)
+      create_or_update_by_scope_async(scope, lock_name, parameters, custom_headers).value!
+    end
+
+    #
+    # Create or update a management lock by scope.
+    #
+    # @param scope [String] The scope for the lock. When providing a scope for the
+    # assignment, use '/subscriptions/{subscriptionId}' for subscriptions,
+    # '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}' for
+    # resource groups, and
+    # '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePathIfPresent}/{resourceType}/{resourceName}'
+    # for resources.
+    # @param lock_name [String] The name of lock.
+    # @param parameters [ManagementLockObject] Create or update management lock
+    # parameters.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_or_update_by_scope_async(scope, lock_name, parameters, custom_headers = nil)
+      fail ArgumentError, 'scope is nil' if scope.nil?
+      fail ArgumentError, 'lock_name is nil' if lock_name.nil?
+      fail ArgumentError, 'parameters is nil' if parameters.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = ManagementLockObject.mapper()
+      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/{scope}/providers/Microsoft.Authorization/locks/{lockName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'scope' => scope,'lockName' => lock_name},
+          query_params: {'api-version' => @client.api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ManagementLockObject.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ManagementLockObject.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Delete a management lock by scope.
+    #
+    # @param scope [String] The scope for the lock.
+    # @param lock_name [String] The name of lock.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete_by_scope(scope, lock_name, custom_headers = nil)
+      response = delete_by_scope_async(scope, lock_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Delete a management lock by scope.
+    #
+    # @param scope [String] The scope for the lock.
+    # @param lock_name [String] The name of lock.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_by_scope_with_http_info(scope, lock_name, custom_headers = nil)
+      delete_by_scope_async(scope, lock_name, custom_headers).value!
+    end
+
+    #
+    # Delete a management lock by scope.
+    #
+    # @param scope [String] The scope for the lock.
+    # @param lock_name [String] The name of lock.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_by_scope_async(scope, lock_name, custom_headers = nil)
+      fail ArgumentError, 'scope is nil' if scope.nil?
+      fail ArgumentError, 'lock_name is nil' if lock_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/{scope}/providers/Microsoft.Authorization/locks/{lockName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'scope' => scope,'lockName' => lock_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204 || status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get a management lock by scope.
+    #
+    # @param scope [String] The scope for the lock.
+    # @param lock_name [String] The name of lock.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ManagementLockObject] operation results.
+    #
+    def get_by_scope(scope, lock_name, custom_headers = nil)
+      response = get_by_scope_async(scope, lock_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get a management lock by scope.
+    #
+    # @param scope [String] The scope for the lock.
+    # @param lock_name [String] The name of lock.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_by_scope_with_http_info(scope, lock_name, custom_headers = nil)
+      get_by_scope_async(scope, lock_name, custom_headers).value!
+    end
+
+    #
+    # Get a management lock by scope.
+    #
+    # @param scope [String] The scope for the lock.
+    # @param lock_name [String] The name of lock.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_by_scope_async(scope, lock_name, custom_headers = nil)
+      fail ArgumentError, 'scope is nil' if scope.nil?
+      fail ArgumentError, 'lock_name is nil' if lock_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/{scope}/providers/Microsoft.Authorization/locks/{lockName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'scope' => scope,'lockName' => lock_name},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ManagementLockObject.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Creates or updates a management lock at the resource level or any level below
     # the resource.
     #
@@ -636,6 +936,120 @@ module Azure::ARM::Locks
     end
 
     #
+    # Get the management lock of a resource or any level below resource.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider.
+    # @param parent_resource_path [String] An extra path parameter needed in some
+    # services, like SQL Databases.
+    # @param resource_type [String] The type of the resource.
+    # @param resource_name [String] The name of the resource.
+    # @param lock_name [String] The name of lock.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ManagementLockObject] operation results.
+    #
+    def get_at_resource_level(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers = nil)
+      response = get_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get the management lock of a resource or any level below resource.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider.
+    # @param parent_resource_path [String] An extra path parameter needed in some
+    # services, like SQL Databases.
+    # @param resource_type [String] The type of the resource.
+    # @param resource_name [String] The name of the resource.
+    # @param lock_name [String] The name of lock.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_at_resource_level_with_http_info(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers = nil)
+      get_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers).value!
+    end
+
+    #
+    # Get the management lock of a resource or any level below resource.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param resource_provider_namespace [String] The namespace of the resource
+    # provider.
+    # @param parent_resource_path [String] An extra path parameter needed in some
+    # services, like SQL Databases.
+    # @param resource_type [String] The type of the resource.
+    # @param resource_name [String] The name of the resource.
+    # @param lock_name [String] The name of lock.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_at_resource_level_async(resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, lock_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'resource_provider_namespace is nil' if resource_provider_namespace.nil?
+      fail ArgumentError, 'parent_resource_path is nil' if parent_resource_path.nil?
+      fail ArgumentError, 'resource_type is nil' if resource_type.nil?
+      fail ArgumentError, 'resource_name is nil' if resource_name.nil?
+      fail ArgumentError, 'lock_name is nil' if lock_name.nil?
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/locks/{lockName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'resourceProviderNamespace' => resource_provider_namespace,'resourceName' => resource_name,'lockName' => lock_name,'subscriptionId' => @client.subscription_id},
+          skip_encoding_path_params: {'parentResourcePath' => parent_resource_path,'resourceType' => resource_type},
+          query_params: {'api-version' => @client.api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ManagementLockObject.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
     # Creates or updates a management lock at the subscription level.
     #
     # When you apply a lock at a parent scope, all child resources inherit the same
@@ -866,8 +1280,8 @@ module Azure::ARM::Locks
     #
     # @return [ManagementLockObject] operation results.
     #
-    def get(lock_name, custom_headers = nil)
-      response = get_async(lock_name, custom_headers).value!
+    def get_at_subscription_level(lock_name, custom_headers = nil)
+      response = get_at_subscription_level_async(lock_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -880,8 +1294,8 @@ module Azure::ARM::Locks
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(lock_name, custom_headers = nil)
-      get_async(lock_name, custom_headers).value!
+    def get_at_subscription_level_with_http_info(lock_name, custom_headers = nil)
+      get_at_subscription_level_async(lock_name, custom_headers).value!
     end
 
     #
@@ -893,7 +1307,7 @@ module Azure::ARM::Locks
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(lock_name, custom_headers = nil)
+    def get_at_subscription_level_async(lock_name, custom_headers = nil)
       fail ArgumentError, 'lock_name is nil' if lock_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?

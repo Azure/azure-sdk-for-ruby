@@ -7,7 +7,7 @@ module Azure::ARM::Scheduler
   module Models
     #
     # Model object.
-    # 
+    #
     #
     class ServiceBusBrokeredMessageProperties
 
@@ -43,7 +43,7 @@ module Azure::ARM::Scheduler
       # @return [String] Gets or sets the session ID.
       attr_accessor :session_id
 
-      # @return [DateTime] Gets or sets the time to live.
+      # @return [Duration] Gets or sets the time to live.
       attr_accessor :time_to_live
 
       # @return [String] Gets or sets the to.
@@ -139,7 +139,7 @@ module Azure::ARM::Scheduler
                 required: false,
                 serialized_name: 'timeToLive',
                 type: {
-                  name: 'DateTime'
+                  name: 'TimeSpan'
                 }
               },
               to: {
