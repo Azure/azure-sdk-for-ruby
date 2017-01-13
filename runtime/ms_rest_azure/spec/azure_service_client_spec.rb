@@ -44,8 +44,7 @@ module MsRestAzure
 
       response = double('response',
                         :headers =>
-                            { 'Azure-AsyncOperation' => 'async_operation_header',
-                              'Location' => 'location_header'},
+                            { 'Azure-AsyncOperation' => 'async_operation_header'},
                         :status => 202)
       expect(azure_service_client).to receive(:update_state_without_custom_deserialization)
 
