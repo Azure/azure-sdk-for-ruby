@@ -27,11 +27,11 @@ module Azure::ARM::Compute
       # 65535 bytes
       attr_accessor :custom_data
 
-      # @return [WindowsConfiguration] the Windows configuration of the OS
+      # @return [WindowsConfiguration] The Windows configuration of the OS
       # profile.
       attr_accessor :windows_configuration
 
-      # @return [LinuxConfiguration] the Linux configuration of the OS profile.
+      # @return [LinuxConfiguration] The Linux configuration of the OS profile.
       attr_accessor :linux_configuration
 
       # @return [Array<VaultSecretGroup>] The list of certificates for addition

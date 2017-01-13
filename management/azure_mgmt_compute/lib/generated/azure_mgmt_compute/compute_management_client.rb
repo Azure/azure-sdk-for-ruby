@@ -95,7 +95,7 @@ module Azure::ARM::Compute
 
     #
     # Makes a request and returns the body of the response.
-    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete. 
+    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
     # @param path [String] the path, relative to {base_url}.
     # @param options [Hash{String=>String}] specifying any request options like :body.
     # @return [Hash{String=>String}] containing the body of the response.
@@ -156,7 +156,7 @@ module Azure::ARM::Compute
     def add_telemetry
         sdk_information = 'azure_mgmt_compute'
         if defined? Azure::ARM::Compute::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Compute::VERSION}" 
+          sdk_information = "#{sdk_information}/#{Azure::ARM::Compute::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

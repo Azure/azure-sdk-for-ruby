@@ -97,7 +97,7 @@ module MsRestAzure
                                                         :active_directory_resource_id => 'https://management.core.windows.net/',
                                                         :active_directory_graph_resource_id => 'https://graph.windows.net/',
                                                         :active_directory_graph_api_version => '2013-04-05',
-                                                        :storage_endpoing_suffix => '.core.windows.net',
+                                                        :storage_endpoint_suffix => '.core.windows.net',
                                                         :key_vault_dns_suffix => '.vault.azure.net',
                                                         :datalake_store_filesystem_endpoint_suffix => 'azuredatalakestore.net',
                                                         :datalake_analytics_catalog_and_job_endpoint_suffix => 'azuredatalakeanalytics.net'
@@ -115,7 +115,7 @@ module MsRestAzure
                                                              :active_directory_resource_id => 'https://management.core.chinacloudapi.cn/',
                                                              :active_directory_graph_resource_id => 'https://graph.chinacloudapi.cn/',
                                                              :active_directory_graph_api_version => '2013-04-05',
-                                                             :storage_endpoing_suffix => '.core.chinacloudapi.cn',
+                                                             :storage_endpoint_suffix => '.core.chinacloudapi.cn',
                                                              :key_vault_dns_suffix => '.vault.azure.cn',
                                                              # TODO: add dns suffixes for the china cloud for datalake store and datalake analytics once they are defined.
                                                              :datalake_store_filesystem_endpoint_suffix => 'N/A',
@@ -134,7 +134,7 @@ module MsRestAzure
                                                                     :active_directory_resource_id => 'https://management.core.usgovcloudapi.net/',
                                                                     :active_directory_graph_resource_id => 'https://graph.windows.net/',
                                                                     :active_directory_graph_api_version => '2013-04-05',
-                                                                    :storage_endpoing_suffix => '.core.usgovcloudapi.net',
+                                                                    :storage_endpoint_suffix => '.core.usgovcloudapi.net',
                                                                     :key_vault_dns_suffix => '.vault.usgovcloudapi.net',
                                                                     # TODO: add dns suffixes for the US government for datalake store and datalake analytics once they are defined.
                                                                     :datalake_store_filesystem_endpoint_suffix => 'N/A',
@@ -153,7 +153,7 @@ module MsRestAzure
                                                                    :active_directory_resource_id => 'https://management.core.cloudapi.de/',
                                                                    :active_directory_graph_resource_id => 'https://graph.cloudapi.de/',
                                                                    :active_directory_graph_api_version => '2013-04-05',
-                                                                   :storage_endpoing_suffix => '.core.cloudapi.de',
+                                                                   :storage_endpoint_suffix => '.core.cloudapi.de',
                                                                    :key_vault_dns_suffix => '.vault.microsoftazure.de',
                                                                    # TODO: add dns suffixes for the US government for datalake store and datalake analytics once they are defined.
                                                                    :datalake_store_filesystem_endpoint_suffix => 'N/A',

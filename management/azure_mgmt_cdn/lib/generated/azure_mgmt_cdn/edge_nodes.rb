@@ -3,69 +3,62 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::Insights
+module Azure::ARM::CDN
   #
-  # Composite Swagger for Insights Management Client
+  # Use these APIs to manage Azure CDN resources through the Azure Resource
+  # Manager. You must make sure that requests made to these resources are
+  # secure.
   #
-  class Incidents
-    include Azure::ARM::Insights::Models
+  class EdgeNodes
+    include Azure::ARM::CDN::Models
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the Incidents class.
+    # Creates and initializes a new instance of the EdgeNodes class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
       @client = client
     end
 
-    # @return [InsightsManagementClient] reference to the InsightsManagementClient
+    # @return [CdnManagementClient] reference to the CdnManagementClient
     attr_reader :client
 
     #
-    # Gets a list of incidents associated to an alert rule
+    # Lists all the edge nodes of a CDN service.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param rule_name [String] The name of the rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [IncidentListResult] operation results.
+    # @return [EdgenodeResult] operation results.
     #
-    def list_by_alert_rule(resource_group_name, rule_name, custom_headers = nil)
-      response = list_by_alert_rule_async(resource_group_name, rule_name, custom_headers).value!
+    def list(custom_headers = nil)
+      response = list_async(custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a list of incidents associated to an alert rule
+    # Lists all the edge nodes of a CDN service.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param rule_name [String] The name of the rule.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_alert_rule_with_http_info(resource_group_name, rule_name, custom_headers = nil)
-      list_by_alert_rule_async(resource_group_name, rule_name, custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
-    # Gets a list of incidents associated to an alert rule
+    # Lists all the edge nodes of a CDN service.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param rule_name [String] The name of the rule.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_alert_rule_async(resource_group_name, rule_name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'rule_name is nil' if rule_name.nil?
-      api_version = '2016-03-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+    def list_async(custom_headers = nil)
+      fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
       request_headers = {}
@@ -73,14 +66,13 @@ module Azure::ARM::Insights
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.insights/alertrules/{ruleName}/incidents'
+      path_template = '/providers/Microsoft.Cdn/edgenodes'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'ruleName' => rule_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
+          query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -92,7 +84,7 @@ module Azure::ARM::Insights
         response_content = http_response.body
         unless status_code == 200
           error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+          fail MsRest::HttpOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
@@ -100,7 +92,7 @@ module Azure::ARM::Insights
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = IncidentListResult.mapper()
+            result_mapper = EdgenodeResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)

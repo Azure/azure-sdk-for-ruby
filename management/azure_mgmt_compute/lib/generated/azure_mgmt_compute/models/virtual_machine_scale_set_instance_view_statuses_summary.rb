@@ -13,7 +13,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Array<VirtualMachineStatusCodeCount>] the extensions
+      # @return [Array<VirtualMachineStatusCodeCount>] The extensions
       # information.
       attr_accessor :statuses_summary
 

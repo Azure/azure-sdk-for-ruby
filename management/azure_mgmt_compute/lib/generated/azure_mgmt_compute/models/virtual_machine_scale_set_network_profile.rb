@@ -12,7 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Array<VirtualMachineScaleSetNetworkConfiguration>] the list of
+      # @return [Array<VirtualMachineScaleSetNetworkConfiguration>] The list of
       # network configurations.
       attr_accessor :network_interface_configurations
 

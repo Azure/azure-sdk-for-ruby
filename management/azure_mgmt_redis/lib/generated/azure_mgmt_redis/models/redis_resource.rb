@@ -12,21 +12,6 @@ module Azure::ARM::Redis
 
       include MsRestAzure
 
-      # @return [String] Redis version.
-      attr_accessor :redis_version
-
-      # @return [String] Redis instance provisioning status.
-      attr_accessor :provisioning_state
-
-      # @return [String] Redis host name.
-      attr_accessor :host_name
-
-      # @return [Integer] Redis non-SSL port.
-      attr_accessor :port
-
-      # @return [Integer] Redis SSL port.
-      attr_accessor :ssl_port
-
       # @return [Hash{String => String}] All Redis Settings. Few possible keys:
       # rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
       # etc.
@@ -54,6 +39,21 @@ module Azure::ARM::Redis
 
       # @return [Sku] The SKU of the Redis cache to deploy.
       attr_accessor :sku
+
+      # @return [String] Redis version.
+      attr_accessor :redis_version
+
+      # @return [String] Redis instance provisioning status.
+      attr_accessor :provisioning_state
+
+      # @return [String] Redis host name.
+      attr_accessor :host_name
+
+      # @return [Integer] Redis non-SSL port.
+      attr_accessor :port
+
+      # @return [Integer] Redis SSL port.
+      attr_accessor :ssl_port
 
 
       #
@@ -113,49 +113,9 @@ module Azure::ARM::Redis
                   }
                 }
               },
-              redis_version: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.RedisVersion',
-                type: {
-                  name: 'String'
-                }
-              },
-              provisioning_state: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.provisioningState',
-                type: {
-                  name: 'String'
-                }
-              },
-              host_name: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.hostName',
-                type: {
-                  name: 'String'
-                }
-              },
-              port: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.port',
-                type: {
-                  name: 'Number'
-                }
-              },
-              ssl_port: {
-                required: false,
-                read_only: true,
-                serialized_name: 'properties.sslPort',
-                type: {
-                  name: 'Number'
-                }
-              },
               redis_configuration: {
                 required: false,
-                serialized_name: 'properties.RedisConfiguration',
+                serialized_name: 'properties.redisConfiguration',
                 type: {
                   name: 'Dictionary',
                   value: {
@@ -216,11 +176,51 @@ module Azure::ARM::Redis
                 }
               },
               sku: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.sku',
                 type: {
                   name: 'Composite',
                   class_name: 'Sku'
+                }
+              },
+              redis_version: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.redisVersion',
+                type: {
+                  name: 'String'
+                }
+              },
+              provisioning_state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.provisioningState',
+                type: {
+                  name: 'String'
+                }
+              },
+              host_name: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.hostName',
+                type: {
+                  name: 'String'
+                }
+              },
+              port: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.port',
+                type: {
+                  name: 'Number'
+                }
+              },
+              ssl_port: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.sslPort',
+                type: {
+                  name: 'Number'
                 }
               }
             }

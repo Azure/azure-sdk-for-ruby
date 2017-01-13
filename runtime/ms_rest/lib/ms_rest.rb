@@ -23,6 +23,7 @@ require 'ms_rest/http_operation_request'
 require 'ms_rest/http_operation_error'
 require 'ms_rest/retry_policy_middleware'
 require 'ms_rest/service_client'
+require 'ms_rest/jsonable'
 
 module MsRest end
 module MsRest::Serialization end

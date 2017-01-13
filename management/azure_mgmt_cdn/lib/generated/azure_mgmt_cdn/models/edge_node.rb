@@ -3,33 +3,30 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::MediaServices
+module Azure::ARM::CDN
   module Models
     #
-    # ARM tracked resource
+    # Edge node of CDN service.
     #
-    class TrackedResource < MsRestAzure::Resource
+    class EdgeNode < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] The location of the resource.
-      attr_accessor :location
-
-      # @return [Hash{String => String}] The tags of the resource.
-      attr_accessor :tags
+      # @return [Array<IpAddressGroup>] List of ip address groups.
+      attr_accessor :ip_address_groups
 
 
       #
-      # Mapper for TrackedResource class as Ruby Hash.
+      # Mapper for EdgeNode class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'TrackedResource',
+          serialized_name: 'EdgeNode',
           type: {
             name: 'Composite',
-            class_name: 'TrackedResource',
+            class_name: 'EdgeNode',
             model_properties: {
               id: {
                 required: false,
@@ -72,6 +69,21 @@ module Azure::ARM::MediaServices
                       serialized_name: 'StringElementType',
                       type: {
                         name: 'String'
+                      }
+                  }
+                }
+              },
+              ip_address_groups: {
+                required: true,
+                serialized_name: 'properties.ipAddressGroups',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'IpAddressGroupElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'IpAddressGroup'
                       }
                   }
                 }

@@ -12,19 +12,28 @@ module Azure::ARM::Insights
 
       include MsRestAzure
 
-      # @return [String] the resource id of the storage account.
+      # @return [String] the resource id of the storage account to which you
+      # would like to send the Activity Log.
       attr_accessor :storage_account_id
 
-      # @return [String] the resource id of the service bus rule.
+      # @return [String] The service bus rule ID of the service bus namespace
+      # in which you would like to have Event Hubs created for streaming the
+      # Activity Log. The rule ID is of the format: '{service bus resource
+      # ID}/authorizationrules/{key name}'.
       attr_accessor :service_bus_rule_id
 
-      # @return [Array<String>] the locations.
+      # @return [Array<String>] List of regions for which Activity Log events
+      # should be stored or streamed. It is a comma separated list of valid ARM
+      # locations including the 'global' location.
       attr_accessor :locations
 
-      # @return [Array<String>]  the categories.
+      # @return [Array<String>] the categories of the logs. These categories
+      # are created as is convenient to the user. Some values are: 'Write',
+      # 'Delete', and/or 'Action.'
       attr_accessor :categories
 
-      # @return [RetentionPolicy] the retention policy for this log.
+      # @return [RetentionPolicy] the retention policy for the events in the
+      # log.
       attr_accessor :retention_policy
 
 
@@ -85,7 +94,7 @@ module Azure::ARM::Insights
                 }
               },
               storage_account_id: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.storageAccountId',
                 type: {
                   name: 'String'
@@ -99,7 +108,7 @@ module Azure::ARM::Insights
                 }
               },
               locations: {
-                required: false,
+                required: true,
                 serialized_name: 'properties.locations',
                 type: {
                   name: 'Sequence',

@@ -6,7 +6,7 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # IP filter Rule
+    # The IP filter rules for the IoT hub.
     #
     class IpFilterRule
 
@@ -15,12 +15,12 @@ module Azure::ARM::IotHub
       # @return [String] The name of the IP filter rule.
       attr_accessor :filter_name
 
-      # @return [IpFilterActionType] The action desired - accept or reject.
-      # Possible values include: 'Accept', 'Reject'
+      # @return [IpFilterActionType] The desired action for requests captured
+      # by this rule. Possible values include: 'Accept', 'Reject'
       attr_accessor :action
 
-      # @return [String] A string containing the IPAddress/range in CIDR
-      # notation.
+      # @return [String] A string that contains the IP address range in CIDR
+      # notation for the rule.
       attr_accessor :ip_mask
 
 

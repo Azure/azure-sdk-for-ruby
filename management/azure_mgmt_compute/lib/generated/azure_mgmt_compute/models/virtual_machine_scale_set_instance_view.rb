@@ -12,15 +12,15 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [VirtualMachineScaleSetInstanceViewStatusesSummary] the
+      # @return [VirtualMachineScaleSetInstanceViewStatusesSummary] The
       # instance view status summary for the virtual machine scale set.
       attr_accessor :virtual_machine
 
-      # @return [Array<VirtualMachineScaleSetVMExtensionsSummary>] the
+      # @return [Array<VirtualMachineScaleSetVMExtensionsSummary>] The
       # extensions information.
       attr_accessor :extensions
 
-      # @return [Array<InstanceViewStatus>] the resource status information.
+      # @return [Array<InstanceViewStatus>] The resource status information.
       attr_accessor :statuses
 
 

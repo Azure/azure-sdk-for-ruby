@@ -12,16 +12,16 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Integer] the minimum capacity.
+      # @return [Integer] The minimum capacity.
       attr_accessor :minimum
 
-      # @return [Integer] the maximum capacity that can be set.
+      # @return [Integer] The maximum capacity that can be set.
       attr_accessor :maximum
 
-      # @return [Integer] the default capacity.
+      # @return [Integer] The default capacity.
       attr_accessor :default_capacity
 
-      # @return [VirtualMachineScaleSetSkuScaleType] the scale type applicable
+      # @return [VirtualMachineScaleSetSkuScaleType] The scale type applicable
       # to the sku. Possible values include: 'Automatic', 'None'
       attr_accessor :scale_type
 

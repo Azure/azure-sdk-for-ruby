@@ -25,41 +25,47 @@ module Azure::ARM::MobileEngagement
     #
     # Lists apps in an appCollection.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<App>] operation results.
     #
-    def list(custom_headers = nil)
-      first_page = list_as_lazy(custom_headers)
+    def list(resource_group_name, app_collection, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, app_collection, custom_headers)
       first_page.get_all_items
     end
 
     #
     # Lists apps in an appCollection.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(custom_headers = nil)
-      list_async(custom_headers).value!
+    def list_with_http_info(resource_group_name, app_collection, custom_headers = nil)
+      list_async(resource_group_name, app_collection, custom_headers).value!
     end
 
     #
     # Lists apps in an appCollection.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(custom_headers = nil)
+    def list_async(resource_group_name, app_collection, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
 
 
       request_headers = {}
@@ -73,7 +79,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -197,13 +203,15 @@ module Azure::ARM::MobileEngagement
     #
     # Lists apps in an appCollection.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [AppListResult] which provide lazy access to pages of the response.
     #
-    def list_as_lazy(custom_headers = nil)
-      response = list_async(custom_headers).value!
+    def list_as_lazy(resource_group_name, app_collection, custom_headers = nil)
+      response = list_async(resource_group_name, app_collection, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

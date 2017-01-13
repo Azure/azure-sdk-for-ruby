@@ -12,7 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [Array<String>] the virtual machine scale set instance ids.
+      # @return [Array<String>] The virtual machine scale set instance ids.
       attr_accessor :instance_ids
 
 

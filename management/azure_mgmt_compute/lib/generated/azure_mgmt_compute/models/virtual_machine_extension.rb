@@ -12,20 +12,20 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] how the extension handler should be forced to update
+      # @return [String] How the extension handler should be forced to update
       # even if the extension configuration has not changed.
       attr_accessor :force_update_tag
 
-      # @return [String] the name of the extension handler publisher.
+      # @return [String] The name of the extension handler publisher.
       attr_accessor :publisher
 
-      # @return [String] the type of the extension handler.
+      # @return [String] The type of the extension handler.
       attr_accessor :virtual_machine_extension_type
 
-      # @return [String] the type version of the extension handler.
+      # @return [String] The type version of the extension handler.
       attr_accessor :type_handler_version
 
-      # @return [Boolean] whether the extension handler should be automatically
+      # @return [Boolean] Whether the extension handler should be automatically
       # upgraded across minor versions.
       attr_accessor :auto_upgrade_minor_version
 
@@ -35,11 +35,11 @@ module Azure::ARM::Compute
       # @return Json formatted protected settings for the extension.
       attr_accessor :protected_settings
 
-      # @return [String] the provisioning state, which only appears in the
+      # @return [String] The provisioning state, which only appears in the
       # response.
       attr_accessor :provisioning_state
 
-      # @return [VirtualMachineExtensionInstanceView] the virtual machine
+      # @return [VirtualMachineExtensionInstanceView] The virtual machine
       # extension instance view.
       attr_accessor :instance_view
 

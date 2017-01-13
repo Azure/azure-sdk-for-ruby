@@ -3,16 +3,15 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::IotHub
+module Azure::ARM::Insights
   module Models
     #
-    # Defines values for SBAccessRights
+    # Defines values for ScaleType
     #
-    module SBAccessRights
-      Manage = "Manage"
-      Send = "Send"
-      Listen = "Listen"
-      ManageNotificationHub = "ManageNotificationHub"
+    module ScaleType
+      ChangeCount = "ChangeCount"
+      PercentChangeCount = "PercentChangeCount"
+      ExactCount = "ExactCount"
     end
   end
 end

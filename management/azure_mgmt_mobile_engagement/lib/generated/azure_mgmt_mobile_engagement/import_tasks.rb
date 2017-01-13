@@ -25,6 +25,9 @@ module Azure::ARM::MobileEngagement
     #
     # Get the list of import jobs.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param skip [Integer] Control paging of import jobs, start results at the
     # given offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of import jobs, number of import jobs to
@@ -47,14 +50,17 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Array<ImportTaskResult>] operation results.
     #
-    def list(skip = 0, top = 20, orderby = nil, custom_headers = nil)
-      first_page = list_as_lazy(skip, top, orderby, custom_headers)
+    def list(resource_group_name, app_collection, app_name, skip = 0, top = 20, orderby = nil, custom_headers = nil)
+      first_page = list_as_lazy(resource_group_name, app_collection, app_name, skip, top, orderby, custom_headers)
       first_page.get_all_items
     end
 
     #
     # Get the list of import jobs.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param skip [Integer] Control paging of import jobs, start results at the
     # given offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of import jobs, number of import jobs to
@@ -77,13 +83,16 @@ module Azure::ARM::MobileEngagement
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(skip = 0, top = 20, orderby = nil, custom_headers = nil)
-      list_async(skip, top, orderby, custom_headers).value!
+    def list_with_http_info(resource_group_name, app_collection, app_name, skip = 0, top = 20, orderby = nil, custom_headers = nil)
+      list_async(resource_group_name, app_collection, app_name, skip, top, orderby, custom_headers).value!
     end
 
     #
     # Get the list of import jobs.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param skip [Integer] Control paging of import jobs, start results at the
     # given offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of import jobs, number of import jobs to
@@ -106,11 +115,11 @@ module Azure::ARM::MobileEngagement
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(skip = 0, top = 20, orderby = nil, custom_headers = nil)
+    def list_async(resource_group_name, app_collection, app_name, skip = 0, top = 20, orderby = nil, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -125,7 +134,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version,'$skip' => skip,'$top' => top,'$orderby' => orderby},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -162,44 +171,53 @@ module Azure::ARM::MobileEngagement
     #
     # Creates a job to import the specified data to a storageUrl.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [ImportTask]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ImportTaskResult] operation results.
     #
-    def create(parameters, custom_headers = nil)
-      response = create_async(parameters, custom_headers).value!
+    def create(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      response = create_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # Creates a job to import the specified data to a storageUrl.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [ImportTask]
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def create_with_http_info(parameters, custom_headers = nil)
-      create_async(parameters, custom_headers).value!
+    def create_with_http_info(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
+      create_async(resource_group_name, app_collection, app_name, parameters, custom_headers).value!
     end
 
     #
     # Creates a job to import the specified data to a storageUrl.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param parameters [ImportTask]
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def create_async(parameters, custom_headers = nil)
+    def create_async(resource_group_name, app_collection, app_name, parameters, custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
 
@@ -223,7 +241,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -273,13 +291,16 @@ module Azure::ARM::MobileEngagement
     # import job.
     #
     # @param id [String] Import job identifier.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ImportTaskResult] operation results.
     #
-    def get(id, custom_headers = nil)
-      response = get_async(id, custom_headers).value!
+    def get(id, resource_group_name, app_collection, app_name, custom_headers = nil)
+      response = get_async(id, resource_group_name, app_collection, app_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -288,13 +309,16 @@ module Azure::ARM::MobileEngagement
     # import job.
     #
     # @param id [String] Import job identifier.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(id, custom_headers = nil)
-      get_async(id, custom_headers).value!
+    def get_with_http_info(id, resource_group_name, app_collection, app_name, custom_headers = nil)
+      get_async(id, resource_group_name, app_collection, app_name, custom_headers).value!
     end
 
     #
@@ -302,17 +326,20 @@ module Azure::ARM::MobileEngagement
     # import job.
     #
     # @param id [String] Import job identifier.
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(id, custom_headers = nil)
+    def get_async(id, resource_group_name, app_collection, app_name, custom_headers = nil)
       fail ArgumentError, 'id is nil' if id.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      fail ArgumentError, '@client.resource_group_name is nil' if @client.resource_group_name.nil?
-      fail ArgumentError, '@client.app_collection is nil' if @client.app_collection.nil?
-      fail ArgumentError, '@client.app_name is nil' if @client.app_name.nil?
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'app_collection is nil' if app_collection.nil?
+      fail ArgumentError, 'app_name is nil' if app_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
 
 
@@ -327,7 +354,7 @@ module Azure::ARM::MobileEngagement
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'id' => id,'subscriptionId' => @client.subscription_id,'resourceGroupName' => @client.resource_group_name,'appCollection' => @client.app_collection,'appName' => @client.app_name},
+          path_params: {'id' => id,'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'appCollection' => app_collection,'appName' => app_name},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -451,6 +478,9 @@ module Azure::ARM::MobileEngagement
     #
     # Get the list of import jobs.
     #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param app_collection [String] Application collection.
+    # @param app_name [String] Application resource name.
     # @param skip [Integer] Control paging of import jobs, start results at the
     # given offset, defaults to 0 (1st page of data).
     # @param top [Integer] Control paging of import jobs, number of import jobs to
@@ -474,8 +504,8 @@ module Azure::ARM::MobileEngagement
     # @return [ImportTaskListResult] which provide lazy access to pages of the
     # response.
     #
-    def list_as_lazy(skip = 0, top = 20, orderby = nil, custom_headers = nil)
-      response = list_async(skip, top, orderby, custom_headers).value!
+    def list_as_lazy(resource_group_name, app_collection, app_name, skip = 0, top = 20, orderby = nil, custom_headers = nil)
+      response = list_async(resource_group_name, app_collection, app_name, skip, top, orderby, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

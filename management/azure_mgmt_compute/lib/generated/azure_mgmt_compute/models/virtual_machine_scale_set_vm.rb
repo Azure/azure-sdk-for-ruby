@@ -22,33 +22,36 @@ module Azure::ARM::Compute
       # to the virtual machine.
       attr_accessor :latest_model_applied
 
-      # @return [VirtualMachineInstanceView] the virtual machine instance view.
+      # @return [String] Azure VM unique ID.
+      attr_accessor :vm_id
+
+      # @return [VirtualMachineInstanceView] The virtual machine instance view.
       attr_accessor :instance_view
 
-      # @return [HardwareProfile] the hardware profile.
+      # @return [HardwareProfile] The hardware profile.
       attr_accessor :hardware_profile
 
-      # @return [StorageProfile] the storage profile.
+      # @return [StorageProfile] The storage profile.
       attr_accessor :storage_profile
 
-      # @return [OSProfile] the OS profile.
+      # @return [OSProfile] The OS profile.
       attr_accessor :os_profile
 
-      # @return [NetworkProfile] the network profile.
+      # @return [NetworkProfile] The network profile.
       attr_accessor :network_profile
 
-      # @return [DiagnosticsProfile] the diagnostics profile.
+      # @return [DiagnosticsProfile] The diagnostics profile.
       attr_accessor :diagnostics_profile
 
-      # @return [SubResource] the reference Id of the availability set to which
+      # @return [SubResource] The reference Id of the availability set to which
       # this virtual machine belongs.
       attr_accessor :availability_set
 
-      # @return [String] the provisioning state, which only appears in the
+      # @return [String] The provisioning state, which only appears in the
       # response.
       attr_accessor :provisioning_state
 
-      # @return [String] the license type, which is for bring your own license
+      # @return [String] The license type, which is for bring your own license
       # scenario.
       attr_accessor :license_type
 
@@ -56,7 +59,7 @@ module Azure::ARM::Compute
       # Marketplace images.
       attr_accessor :plan
 
-      # @return [Array<VirtualMachineExtension>] the virtual machine child
+      # @return [Array<VirtualMachineExtension>] The virtual machine child
       # extension resources.
       attr_accessor :resources
 
@@ -141,6 +144,14 @@ module Azure::ARM::Compute
                 serialized_name: 'properties.latestModelApplied',
                 type: {
                   name: 'Boolean'
+                }
+              },
+              vm_id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.vmId',
+                type: {
+                  name: 'String'
                 }
               },
               instance_view: {

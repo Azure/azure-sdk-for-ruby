@@ -482,18 +482,18 @@ module Azure::ARM::SQL
     # Returns information about activity on Azure SQL databases inside of an Azure
     # SQL elastic pool.
     #
-    # @param elastic_pool_name [String] The name of the Azure SQL Elastic Pool.
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the Azure SQL server.
+    # @param elastic_pool_name [String] The name of the Azure SQL Elastic Pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [ElasticPoolDatabaseActivityListResult] operation results.
     #
-    def list_database_activity(elastic_pool_name, resource_group_name, server_name, custom_headers = nil)
-      response = list_database_activity_async(elastic_pool_name, resource_group_name, server_name, custom_headers).value!
+    def list_database_activity(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
+      response = list_database_activity_async(resource_group_name, server_name, elastic_pool_name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -501,40 +501,40 @@ module Azure::ARM::SQL
     # Returns information about activity on Azure SQL databases inside of an Azure
     # SQL elastic pool.
     #
-    # @param elastic_pool_name [String] The name of the Azure SQL Elastic Pool.
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the Azure SQL server.
+    # @param elastic_pool_name [String] The name of the Azure SQL Elastic Pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_database_activity_with_http_info(elastic_pool_name, resource_group_name, server_name, custom_headers = nil)
-      list_database_activity_async(elastic_pool_name, resource_group_name, server_name, custom_headers).value!
+    def list_database_activity_with_http_info(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
+      list_database_activity_async(resource_group_name, server_name, elastic_pool_name, custom_headers).value!
     end
 
     #
     # Returns information about activity on Azure SQL databases inside of an Azure
     # SQL elastic pool.
     #
-    # @param elastic_pool_name [String] The name of the Azure SQL Elastic Pool.
     # @param resource_group_name [String] The name of the resource group that
     # contains the resource. You can obtain this value from the Azure Resource
     # Manager API or the portal.
     # @param server_name [String] The name of the Azure SQL server.
+    # @param elastic_pool_name [String] The name of the Azure SQL Elastic Pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_database_activity_async(elastic_pool_name, resource_group_name, server_name, custom_headers = nil)
-      fail ArgumentError, 'elastic_pool_name is nil' if elastic_pool_name.nil?
+    def list_database_activity_async(resource_group_name, server_name, elastic_pool_name, custom_headers = nil)
       api_version = '2014-04-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'server_name is nil' if server_name.nil?
+      fail ArgumentError, 'elastic_pool_name is nil' if elastic_pool_name.nil?
 
 
       request_headers = {}
@@ -548,7 +548,7 @@ module Azure::ARM::SQL
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'elasticPoolName' => elastic_pool_name,'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name},
+          path_params: {'subscriptionId' => @client.subscription_id,'resourceGroupName' => resource_group_name,'serverName' => server_name,'elasticPoolName' => elastic_pool_name},
           query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

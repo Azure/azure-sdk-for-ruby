@@ -186,11 +186,11 @@ module Azure::ARM::Insights
     end
 
     #
-    # Create or update the log profile.
+    # Create or update a log profile in Azure Monitoring REST API.
     #
     # @param log_profile_name [String] The name of the log profile.
-    # @param parameters [LogProfileCreateOrUpdateParameters] Parameters supplied to
-    # the operation.
+    # @param parameters [LogProfileProperties] Parameters supplied to the
+    # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -202,11 +202,11 @@ module Azure::ARM::Insights
     end
 
     #
-    # Create or update the log profile.
+    # Create or update a log profile in Azure Monitoring REST API.
     #
     # @param log_profile_name [String] The name of the log profile.
-    # @param parameters [LogProfileCreateOrUpdateParameters] Parameters supplied to
-    # the operation.
+    # @param parameters [LogProfileProperties] Parameters supplied to the
+    # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -217,11 +217,11 @@ module Azure::ARM::Insights
     end
 
     #
-    # Create or update the log profile.
+    # Create or update a log profile in Azure Monitoring REST API.
     #
     # @param log_profile_name [String] The name of the log profile.
-    # @param parameters [LogProfileCreateOrUpdateParameters] Parameters supplied to
-    # the operation.
+    # @param parameters [LogProfileProperties] Parameters supplied to the
+    # operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -243,7 +243,7 @@ module Azure::ARM::Insights
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = LogProfileCreateOrUpdateParameters.mapper()
+      request_mapper = LogProfileProperties.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

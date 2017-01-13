@@ -13,13 +13,13 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the network configuration name.
+      # @return [String] The network configuration name.
       attr_accessor :name
 
-      # @return [Boolean] whether this is a primary NIC on a virtual machine.
+      # @return [Boolean] Whether this is a primary NIC on a virtual machine.
       attr_accessor :primary
 
-      # @return [Array<VirtualMachineScaleSetIPConfiguration>] the virtual
+      # @return [Array<VirtualMachineScaleSetIPConfiguration>] The virtual
       # machine scale set IP Configuration.
       attr_accessor :ip_configurations
 

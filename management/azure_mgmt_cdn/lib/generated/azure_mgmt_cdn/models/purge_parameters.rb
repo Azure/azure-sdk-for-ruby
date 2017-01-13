@@ -6,7 +6,7 @@
 module Azure::ARM::CDN
   module Models
     #
-    # Parameters required for endpoint purge.
+    # Parameters required for content purge.
     #
     class PurgeParameters
 

@@ -12,20 +12,20 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the IP configuration name.
+      # @return [String] The IP configuration name.
       attr_accessor :name
 
-      # @return [ApiEntityReference] the subnet.
+      # @return [ApiEntityReference] The subnet.
       attr_accessor :subnet
 
-      # @return [Array<SubResource>] the application gateway backend address
+      # @return [Array<SubResource>] The application gateway backend address
       # pools.
       attr_accessor :application_gateway_backend_address_pools
 
-      # @return [Array<SubResource>] the load balancer backend address pools.
+      # @return [Array<SubResource>] The load balancer backend address pools.
       attr_accessor :load_balancer_backend_address_pools
 
-      # @return [Array<SubResource>] the load balancer inbound nat pools.
+      # @return [Array<SubResource>] The load balancer inbound nat pools.
       attr_accessor :load_balancer_inbound_nat_pools
 
 

@@ -6,14 +6,14 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The list of authorization rules with a next link.
+    # The list of shared access policies with a next link.
     #
     class SharedAccessSignatureAuthorizationRuleListResult
 
       include MsRestAzure
 
       # @return [Array<SharedAccessSignatureAuthorizationRule>] The list of
-      # authorization rules.
+      # shared access policies.
       attr_accessor :value
 
       # @return [String] The next link.

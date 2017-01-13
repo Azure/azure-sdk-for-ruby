@@ -6,23 +6,22 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The Sku related information for the hub.
+    # Information about the SKU of the IoT hub.
     #
     class IotHubSkuInfo
 
       include MsRestAzure
 
-      # @return [IotHubSku] The name of the Sku. Possible values include: 'F1',
+      # @return [IotHubSku] The name of the SKU. Possible values include: 'F1',
       # 'S1', 'S2', 'S3'
       attr_accessor :name
 
-      # @return [IotHubSkuTier] The tier. Possible values include: 'Free',
-      # 'Standard'
+      # @return [IotHubSkuTier] The billing tier for the IoT hub. Possible
+      # values include: 'Free', 'Standard'
       attr_accessor :tier
 
-      # @return [Integer] The number of units being provisioned. Range of
-      # values [For F1: 1-1, S1: 1-200, S2: 1-200, S3: 1-10]. To go above this
-      # range, call support.
+      # @return [Integer] The number of provisioned IoT Hub units. See:
+      # https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
       attr_accessor :capacity
 
 
@@ -39,7 +38,7 @@ module Azure::ARM::IotHub
             class_name: 'IotHubSkuInfo',
             model_properties: {
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -55,7 +54,7 @@ module Azure::ARM::IotHub
                 }
               },
               capacity: {
-                required: false,
+                required: true,
                 serialized_name: 'capacity',
                 type: {
                   name: 'Number'

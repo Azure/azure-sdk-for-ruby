@@ -10,11 +10,16 @@ module Azure::ARM::CognitiveServices
     #
     module SkuName
       F0 = "F0"
+      P0 = "P0"
+      P1 = "P1"
+      P2 = "P2"
       S0 = "S0"
       S1 = "S1"
       S2 = "S2"
       S3 = "S3"
       S4 = "S4"
+      S5 = "S5"
+      S6 = "S6"
     end
   end
 end

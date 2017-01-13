@@ -113,8 +113,8 @@ module Azure::ARM::Insights
     # Create or update new diagnostic settings for the specified resource.
     #
     # @param resource_uri [String] The identifier of the resource.
-    # @param parameters [ServiceDiagnosticSettingsCreateOrUpdateParameters]
-    # Parameters supplied to the operation.
+    # @param parameters [ServiceDiagnosticSettings] Parameters supplied to the
+    # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -129,8 +129,8 @@ module Azure::ARM::Insights
     # Create or update new diagnostic settings for the specified resource.
     #
     # @param resource_uri [String] The identifier of the resource.
-    # @param parameters [ServiceDiagnosticSettingsCreateOrUpdateParameters]
-    # Parameters supplied to the operation.
+    # @param parameters [ServiceDiagnosticSettings] Parameters supplied to the
+    # operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -144,8 +144,8 @@ module Azure::ARM::Insights
     # Create or update new diagnostic settings for the specified resource.
     #
     # @param resource_uri [String] The identifier of the resource.
-    # @param parameters [ServiceDiagnosticSettingsCreateOrUpdateParameters]
-    # Parameters supplied to the operation.
+    # @param parameters [ServiceDiagnosticSettings] Parameters supplied to the
+    # operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -167,7 +167,7 @@ module Azure::ARM::Insights
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = ServiceDiagnosticSettingsCreateOrUpdateParameters.mapper()
+      request_mapper = ServiceDiagnosticSettings.mapper()
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 

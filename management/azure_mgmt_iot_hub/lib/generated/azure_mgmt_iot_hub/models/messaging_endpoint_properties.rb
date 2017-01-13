@@ -6,21 +6,24 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The properties of the Messaging Endpoints used by this IoT Hub.
+    # The properties of the messaging endpoints used by this IoT hub.
     #
     class MessagingEndpointProperties
 
       include MsRestAzure
 
-      # @return [Duration] The lock duration. Range: 5 Sec (PT5S) - 5 Min
-      # (PT5M).
+      # @return [Duration] The lock duration. See:
+      # https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-file-upload.
       attr_accessor :lock_duration_as_iso8601
 
-      # @return [Duration] The time to live. Range: 1 Min (PT1M) - 2 Days
-      # (P2D).
+      # @return [Duration] The period of time for which a message is available
+      # to consume before it is expired by the IoT hub. See:
+      # https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-file-upload.
       attr_accessor :ttl_as_iso8601
 
-      # @return [Integer] The max delivery count. Range: 1-100.
+      # @return [Integer] The number of times the IoT hub attempts to deliver a
+      # message. See:
+      # https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-file-upload.
       attr_accessor :max_delivery_count
 
 

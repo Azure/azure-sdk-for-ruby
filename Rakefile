@@ -79,7 +79,8 @@ namespace :arm do
 
   desc 'run specs for each of the Azure Resource Manager projects'
   task :spec => :dotenv do
-    each_gem do
+    each_gem do |gem_dir|
+      puts "Executing spec on #{gem_dir}"
       execute_and_stream('bundle install')
       execute_and_stream('bundle exec rspec')
     end
@@ -277,9 +278,10 @@ REGEN_METADATA = {
         tag: 'arm_mobile'
     },
     azure_mgmt_network: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-network/2016-09-01/swagger/network.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-network/compositeNetworkClient.json',
         ns: 'Azure::ARM::Network',
         version: version,
+        modeler: "CompositeSwagger",
         tag: 'arm_netw'
     },
     azure_mgmt_notification_hubs: {

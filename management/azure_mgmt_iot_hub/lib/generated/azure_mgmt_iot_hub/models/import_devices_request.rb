@@ -6,17 +6,17 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # Used to provide parameters when requesting an import of all devices in
-    # the hub.
+    # Use to provide parameters when requesting an import of all devices in the
+    # hub.
     #
     class ImportDevicesRequest
 
       include MsRestAzure
 
-      # @return [String] The input BLOB container URI.
+      # @return [String] The input blob container URI.
       attr_accessor :input_blob_container_uri
 
-      # @return [String] The output BLOB container URI.
+      # @return [String] The output blob container URI.
       attr_accessor :output_blob_container_uri
 
 

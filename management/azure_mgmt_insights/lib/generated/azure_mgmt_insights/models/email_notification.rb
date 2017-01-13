@@ -6,7 +6,7 @@
 module Azure::ARM::Insights
   module Models
     #
-    # Email notification.
+    # Email notification of an autoscale event.
     #
     class EmailNotification
 
@@ -20,7 +20,8 @@ module Azure::ARM::Insights
       # subscription co-administrators.
       attr_accessor :send_to_subscription_co_administrators
 
-      # @return [Array<String>] the custom email list.
+      # @return [Array<String>] the custom e-mails list. This value can be null
+      # or empty, in which case this attribute will be ignored.
       attr_accessor :custom_emails
 
 

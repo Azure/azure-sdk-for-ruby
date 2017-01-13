@@ -6,35 +6,32 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The properties of the provisioned event hub used by the Iot Hub.
+    # The properties of the provisioned Event Hub-compatible endpoint used by
+    # the IoT hub.
     #
     class EventHubProperties
 
       include MsRestAzure
 
-      # @return [Integer] The retention time in days. Range of values [For F1:
-      # 1-1, S1: 1-7, S2: 1-7, S3: 1-7].
+      # @return [Integer] The retention time for device-to-cloud messages in
+      # days. See:
+      # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages
       attr_accessor :retention_time_in_days
 
-      # @return [Integer] The partition count. Range of values [For F1: 2-2,
-      # S1: 2-128, S2: 2-128, S3: 2-128].
+      # @return [Integer] The number of paritions for receiving device-to-cloud
+      # messages in the Event Hub-compatible endpoint. See:
+      # https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages.
       attr_accessor :partition_count
 
-      # @return [Array<String>] The partition ids.
+      # @return [Array<String>] The partition ids in the Event Hub-compatible
+      # endpoint.
       attr_accessor :partition_ids
 
-      # @return [String] The eventhub path.
+      # @return [String] The Event Hub-compatible name.
       attr_accessor :path
 
-      # @return [String] The endpoint.
+      # @return [String] The Event Hub-compatible endpoint.
       attr_accessor :endpoint
-
-      # @return [Array<SharedAccessAuthorizationRule>] The internal
-      # authorization rules.
-      attr_accessor :internal_authorization_policies
-
-      # @return [Array<SharedAccessAuthorizationRule>] The authorization rules.
-      attr_accessor :authorization_policies
 
 
       #
@@ -65,6 +62,7 @@ module Azure::ARM::IotHub
               },
               partition_ids: {
                 required: false,
+                read_only: true,
                 serialized_name: 'partitionIds',
                 type: {
                   name: 'Sequence',
@@ -79,6 +77,7 @@ module Azure::ARM::IotHub
               },
               path: {
                 required: false,
+                read_only: true,
                 serialized_name: 'path',
                 type: {
                   name: 'String'
@@ -86,39 +85,10 @@ module Azure::ARM::IotHub
               },
               endpoint: {
                 required: false,
+                read_only: true,
                 serialized_name: 'endpoint',
                 type: {
                   name: 'String'
-                }
-              },
-              internal_authorization_policies: {
-                required: false,
-                serialized_name: 'internalAuthorizationPolicies',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'SharedAccessAuthorizationRuleElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'SharedAccessAuthorizationRule'
-                      }
-                  }
-                }
-              },
-              authorization_policies: {
-                required: false,
-                serialized_name: 'authorizationPolicies',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'SharedAccessAuthorizationRuleElementType',
-                      type: {
-                        name: 'Composite',
-                        class_name: 'SharedAccessAuthorizationRule'
-                      }
-                  }
                 }
               }
             }

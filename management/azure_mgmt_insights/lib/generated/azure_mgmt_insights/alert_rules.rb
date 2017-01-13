@@ -23,7 +23,9 @@ module Azure::ARM::Insights
     attr_reader :client
 
     #
-    # Creates or updates an alert rule
+    # Creates or updates an alert rule.
+    # Request method: PUT		Request URI:
+    # https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/microsoft.insights/alertRules/{alert-rule-name}?api-version={api-version}
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -40,7 +42,9 @@ module Azure::ARM::Insights
     end
 
     #
-    # Creates or updates an alert rule
+    # Creates or updates an alert rule.
+    # Request method: PUT		Request URI:
+    # https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/microsoft.insights/alertRules/{alert-rule-name}?api-version={api-version}
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.
@@ -56,7 +60,9 @@ module Azure::ARM::Insights
     end
 
     #
-    # Creates or updates an alert rule
+    # Creates or updates an alert rule.
+    # Request method: PUT		Request URI:
+    # https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/microsoft.insights/alertRules/{alert-rule-name}?api-version={api-version}
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param rule_name [String] The name of the rule.

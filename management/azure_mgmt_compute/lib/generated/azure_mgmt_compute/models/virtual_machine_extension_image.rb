@@ -12,24 +12,24 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] the operating system this extension supports.
+      # @return [String] The operating system this extension supports.
       attr_accessor :operating_system
 
-      # @return [String] the type of role (IaaS or PaaS) this extension
+      # @return [String] The type of role (IaaS or PaaS) this extension
       # supports.
       attr_accessor :compute_role
 
-      # @return [String] the schema defined by publisher, where extension
+      # @return [String] The schema defined by publisher, where extension
       # consumers should provide settings in a matching schema.
       attr_accessor :handler_schema
 
-      # @return [Boolean] whether the extension can be used on xRP VMScaleSets.
+      # @return [Boolean] Whether the extension can be used on xRP VMScaleSets.
       # By default existing extensions are usable on scalesets, but there might
       # be cases where a publisher wants to explicitly indicate the extension
       # is only enabled for CRP VMs but not VMSS.
       attr_accessor :vm_scale_set_enabled
 
-      # @return [Boolean] whether the handler can support multiple extensions.
+      # @return [Boolean] Whether the handler can support multiple extensions.
       attr_accessor :supports_multiple_extensions
 
 

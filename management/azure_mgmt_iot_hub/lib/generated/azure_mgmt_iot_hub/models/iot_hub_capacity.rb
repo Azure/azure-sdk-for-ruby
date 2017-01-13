@@ -6,7 +6,7 @@
 module Azure::ARM::IotHub
   module Models
     #
-    # The properties related to the capacity information.
+    # IoT Hub capacity information.
     #
     class IotHubCapacity
 
@@ -21,8 +21,8 @@ module Azure::ARM::IotHub
       # @return [Integer] The default number of units.
       attr_accessor :default
 
-      # @return [IotHubScaleType] The type of the scale. Possible values
-      # include: 'Automatic', 'Manual', 'None'
+      # @return [IotHubScaleType] The type of the scaling enabled. Possible
+      # values include: 'Automatic', 'Manual', 'None'
       attr_accessor :scale_type
 
 
@@ -40,6 +40,7 @@ module Azure::ARM::IotHub
             model_properties: {
               minimum: {
                 required: false,
+                read_only: true,
                 serialized_name: 'minimum',
                 constraints: {
                   InclusiveMaximum: 1,
@@ -51,6 +52,7 @@ module Azure::ARM::IotHub
               },
               maximum: {
                 required: false,
+                read_only: true,
                 serialized_name: 'maximum',
                 type: {
                   name: 'Number'
@@ -58,6 +60,7 @@ module Azure::ARM::IotHub
               },
               default: {
                 required: false,
+                read_only: true,
                 serialized_name: 'default',
                 type: {
                   name: 'Number'
@@ -65,6 +68,7 @@ module Azure::ARM::IotHub
               },
               scale_type: {
                 required: false,
+                read_only: true,
                 serialized_name: 'scaleType',
                 type: {
                   name: 'Enum',
