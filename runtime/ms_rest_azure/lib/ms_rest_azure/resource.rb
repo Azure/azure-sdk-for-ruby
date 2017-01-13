@@ -24,7 +24,13 @@ module MsRestAzure
     attr_accessor :tags
 
     # @return [String] the name of the resource group of the resource.
-    attr_accessor :resource_group
+    def resource_group
+      unless self.id.nil?
+        if self.id =~ /.+\/resourceGroups\/.+\/.+/
+          self.id.split(/\/resourceGroups\//)[1].split(/\//)[0].strip
+        end
+      end
+    end
 
     def self.mapper
       {
