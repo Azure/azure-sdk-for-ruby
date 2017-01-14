@@ -26,9 +26,8 @@ module MsRestAzure
     # @return [String] the name of the resource group of the resource.
     def resource_group
       unless self.id.nil?
-        if self.id =~ /.+\/resourceGroups\/.+\/.+/
-          self.id.split(/\/resourceGroups\//)[1].split(/\//)[0].strip
-        end
+        groups = self.id.match(/.+\/resourceGroups\/([^\/]+)\/.+/)
+        groups.captures[0].strip if groups
       end
     end
 
