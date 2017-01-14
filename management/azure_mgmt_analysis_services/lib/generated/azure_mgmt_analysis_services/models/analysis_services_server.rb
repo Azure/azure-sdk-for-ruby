@@ -15,8 +15,18 @@ module Azure::ARM::AnalysisServices
       # @return [ServerAdministrators]
       attr_accessor :as_administrators
 
-      # @return [String] The current deployment state of Analysis Services
-      # resource.
+      # @return [State] The current state of Analysis Services resource. The
+      # state is to indicate more states outside of resource provisioning.
+      # Possible values include: 'Deleting', 'Succeeded', 'Failed', 'Paused',
+      # 'Suspended', 'Provisioning', 'Updating', 'Suspending', 'Pausing',
+      # 'Resuming', 'Preparing', 'Scaling'
+      attr_accessor :state
+
+      # @return [ProvisioningState] The current deployment state of Analysis
+      # Services resource. The provisioningState is to indicate states for
+      # resource provisioning. Possible values include: 'Deleting',
+      # 'Succeeded', 'Failed', 'Paused', 'Suspended', 'Provisioning',
+      # 'Updating', 'Suspending', 'Pausing', 'Resuming', 'Preparing', 'Scaling'
       attr_accessor :provisioning_state
 
       # @return [String] The full name of the Analysis Services resource.
@@ -94,6 +104,14 @@ module Azure::ARM::AnalysisServices
                 type: {
                   name: 'Composite',
                   class_name: 'ServerAdministrators'
+                }
+              },
+              state: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.state',
+                type: {
+                  name: 'String'
                 }
               },
               provisioning_state: {
