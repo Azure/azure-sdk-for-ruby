@@ -31,5 +31,7 @@ module Azure::ARM::AnalysisServices
     autoload :AnalysisServicesServer,                             'generated/azure_mgmt_analysis_services/models/analysis_services_server.rb'
     autoload :SkuName,                                            'generated/azure_mgmt_analysis_services/models/sku_name.rb'
     autoload :SkuTier,                                            'generated/azure_mgmt_analysis_services/models/sku_tier.rb'
+    autoload :State,                                              'generated/azure_mgmt_analysis_services/models/state.rb'
+    autoload :ProvisioningState,                                  'generated/azure_mgmt_analysis_services/models/provisioning_state.rb'
   end
 end
