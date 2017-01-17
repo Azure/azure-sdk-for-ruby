@@ -123,9 +123,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
+    #
     def delete(resource_group_name, vm_name, custom_headers = nil)
       response = delete_async(resource_group_name, vm_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -144,6 +146,8 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
+          result_mapper = OperationStatusResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -262,9 +266,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
+    #
     def deallocate(resource_group_name, vm_name, custom_headers = nil)
       response = deallocate_async(resource_group_name, vm_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -283,6 +289,8 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
+          result_mapper = OperationStatusResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -652,9 +660,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
+    #
     def power_off(resource_group_name, vm_name, custom_headers = nil)
       response = power_off_async(resource_group_name, vm_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -673,6 +683,8 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
+          result_mapper = OperationStatusResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -690,9 +702,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
+    #
     def restart(resource_group_name, vm_name, custom_headers = nil)
       response = restart_async(resource_group_name, vm_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -711,6 +725,8 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
+          result_mapper = OperationStatusResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -728,9 +744,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
+    #
     def start(resource_group_name, vm_name, custom_headers = nil)
       response = start_async(resource_group_name, vm_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -749,6 +767,8 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
+          result_mapper = OperationStatusResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -766,9 +786,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
+    #
     def redeploy(resource_group_name, vm_name, custom_headers = nil)
       response = redeploy_async(resource_group_name, vm_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -787,6 +809,8 @@ module Azure::ARM::Compute
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
+          result_mapper = OperationStatusResponse.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -1031,10 +1055,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
     #
     def begin_delete(resource_group_name, vm_name, custom_headers = nil)
       response = begin_delete_async(resource_group_name, vm_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -1090,12 +1115,22 @@ module Azure::ARM::Compute
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202 || status_code == 204
+        unless status_code == 202 || status_code == 204 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -1112,10 +1147,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
     #
     def begin_deallocate(resource_group_name, vm_name, custom_headers = nil)
       response = begin_deallocate_async(resource_group_name, vm_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -1173,12 +1209,22 @@ module Azure::ARM::Compute
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202
+        unless status_code == 202 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -1196,10 +1242,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
     #
     def begin_power_off(resource_group_name, vm_name, custom_headers = nil)
       response = begin_power_off_async(resource_group_name, vm_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -1259,12 +1306,22 @@ module Azure::ARM::Compute
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202
+        unless status_code == 202 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -1280,10 +1337,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
     #
     def begin_restart(resource_group_name, vm_name, custom_headers = nil)
       response = begin_restart_async(resource_group_name, vm_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -1339,12 +1397,22 @@ module Azure::ARM::Compute
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202
+        unless status_code == 202 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -1360,10 +1428,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
     #
     def begin_start(resource_group_name, vm_name, custom_headers = nil)
       response = begin_start_async(resource_group_name, vm_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -1419,12 +1488,22 @@ module Azure::ARM::Compute
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202
+        unless status_code == 202 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -1440,10 +1519,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
     #
     def begin_redeploy(resource_group_name, vm_name, custom_headers = nil)
       response = begin_redeploy_async(resource_group_name, vm_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -1499,12 +1579,22 @@ module Azure::ARM::Compute
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202
+        unless status_code == 202 || status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
