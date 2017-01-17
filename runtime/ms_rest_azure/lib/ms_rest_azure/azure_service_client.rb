@@ -166,7 +166,9 @@ module MsRestAzure
 
     #
     # Updates polling state from Azure async operation header.
+    # @param request [MsRest::HttpOperationRequest] The url retrieve data from.
     # @param polling_state [MsRestAzure::PollingState] polling state.
+    # @param custom_deserialization_block [Proc] custom deserialization method for parsing response.
     #
     def update_state_from_azure_async_operation_header(request, polling_state, custom_deserialization_block)
       if custom_deserialization_block.nil?
