@@ -15,7 +15,7 @@ module Azure::ARM::Resources
       # @return [String] Type of count.
       attr_accessor :type
 
-      # @return [String] Value of count.
+      # @return [Integer] Value of count.
       attr_accessor :value
 
 
@@ -42,7 +42,7 @@ module Azure::ARM::Resources
                 required: false,
                 serialized_name: 'value',
                 type: {
-                  name: 'String'
+                  name: 'Number'
                 }
               }
             }
