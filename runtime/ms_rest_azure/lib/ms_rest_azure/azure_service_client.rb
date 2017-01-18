@@ -183,7 +183,7 @@ module MsRestAzure
       polling_state.error_data = result.body.error
       polling_state.response = result.response
       polling_state.request = result.request
-      polling_state.resource = nil
+      polling_state.resource = result.body
 
       polling_state
     end
