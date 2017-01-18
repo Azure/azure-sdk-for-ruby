@@ -6,7 +6,7 @@
 module Azure::ARM::Commerce
   module Models
     #
-    # Describes ehe format of Error response.
+    # Describes the format of Error response.
     #
     class ErrorResponse
 

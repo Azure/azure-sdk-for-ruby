@@ -25,12 +25,12 @@ module Azure::ARM::Commerce
   autoload :UsageManagementClient,                              'generated/azure_mgmt_commerce/usage_management_client.rb'
 
   module Models
-    autoload :OfferTermInfo,                                      'generated/azure_mgmt_commerce/models/offer_term_info.rb'
     autoload :MeterInfo,                                          'generated/azure_mgmt_commerce/models/meter_info.rb'
+    autoload :ResourceRateCardInfo,                               'generated/azure_mgmt_commerce/models/resource_rate_card_info.rb'
     autoload :UsageAggregation,                                   'generated/azure_mgmt_commerce/models/usage_aggregation.rb'
     autoload :InfoField,                                          'generated/azure_mgmt_commerce/models/info_field.rb'
     autoload :UsageAggregationListResult,                         'generated/azure_mgmt_commerce/models/usage_aggregation_list_result.rb'
-    autoload :ResourceRateCardInfo,                               'generated/azure_mgmt_commerce/models/resource_rate_card_info.rb'
+    autoload :OfferTermInfo,                                      'generated/azure_mgmt_commerce/models/offer_term_info.rb'
     autoload :RateCardQueryParameters,                            'generated/azure_mgmt_commerce/models/rate_card_query_parameters.rb'
     autoload :ErrorResponse,                                      'generated/azure_mgmt_commerce/models/error_response.rb'
     autoload :MonetaryCredit,                                     'generated/azure_mgmt_commerce/models/monetary_credit.rb'

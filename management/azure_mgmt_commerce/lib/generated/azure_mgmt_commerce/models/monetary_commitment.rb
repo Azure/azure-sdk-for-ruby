@@ -7,7 +7,7 @@ module Azure::ARM::Commerce
   module Models
     #
     # Model object.
-    # 
+    #
     #
     class MonetaryCommitment < OfferTermInfo
 
