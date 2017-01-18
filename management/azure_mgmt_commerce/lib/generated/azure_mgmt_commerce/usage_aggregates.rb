@@ -25,71 +25,92 @@ module Azure::ARM::Commerce
     #
     # Query aggregated Azure subscription consumption data for a date range.
     #
-    # @param reportedstart_time [DateTime] The start of the time range to retrieve
+    # @param reported_start_time [DateTime] The start of the time range to retrieve
     # data for.
     # @param reported_end_time [DateTime] The end of the time range to retrieve
     # data for.
-    # @param show_details [Boolean] When set to true (default), the aggregates are
-    # broken down into the instance metadata which is more granular.
-    # @param aggregation_granularity [AggregationGranularity] Value is either daily
-    # (default) or hourly to tell the API how to return the results grouped by day
-    # or hour. Possible values include: 'Daily', 'Hourly'
-    # @param continuation_token [String] Retrieved from previous calls, this is the
-    # bookmark used for progress when the responses are paged.
+    # @param show_details [Boolean] `True` returns usage data in instance-level
+    # detail, `false` causes server-side aggregation with fewer details. For
+    # example, if you have 3 website instances, by default you will get 3 line
+    # items for website consumption. If you specify showDetails = false, the data
+    # will be aggregated as a single line item for website consumption within the
+    # time period (for the given subscriptionId, meterId, usageStartTime and
+    # usageEndTime).
+    # @param aggregation_granularity [AggregationGranularity] `Daily` (default)
+    # returns the data in daily granularity, `Hourly` returns the data in hourly
+    # granularity. Possible values include: 'Daily', 'Hourly'
+    # @param continuation_token [String] Used when a continuation token string is
+    # provided in the response body of the previous call, enabling paging through a
+    # large result set. If not present, the data is retrieved from the beginning of
+    # the day/hour (based on the granularity) passed in.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<UsageAggregation>] operation results.
     #
-    def list(reportedstart_time, reported_end_time, show_details = nil, aggregation_granularity = nil, continuation_token = nil, custom_headers = nil)
-      first_page = list_as_lazy(reportedstart_time, reported_end_time, show_details, aggregation_granularity, continuation_token, custom_headers)
+    def list(reported_start_time, reported_end_time, show_details = nil, aggregation_granularity = nil, continuation_token = nil, custom_headers = nil)
+      first_page = list_as_lazy(reported_start_time, reported_end_time, show_details, aggregation_granularity, continuation_token, custom_headers)
       first_page.get_all_items
     end
 
     #
     # Query aggregated Azure subscription consumption data for a date range.
     #
-    # @param reportedstart_time [DateTime] The start of the time range to retrieve
+    # @param reported_start_time [DateTime] The start of the time range to retrieve
     # data for.
     # @param reported_end_time [DateTime] The end of the time range to retrieve
     # data for.
-    # @param show_details [Boolean] When set to true (default), the aggregates are
-    # broken down into the instance metadata which is more granular.
-    # @param aggregation_granularity [AggregationGranularity] Value is either daily
-    # (default) or hourly to tell the API how to return the results grouped by day
-    # or hour. Possible values include: 'Daily', 'Hourly'
-    # @param continuation_token [String] Retrieved from previous calls, this is the
-    # bookmark used for progress when the responses are paged.
+    # @param show_details [Boolean] `True` returns usage data in instance-level
+    # detail, `false` causes server-side aggregation with fewer details. For
+    # example, if you have 3 website instances, by default you will get 3 line
+    # items for website consumption. If you specify showDetails = false, the data
+    # will be aggregated as a single line item for website consumption within the
+    # time period (for the given subscriptionId, meterId, usageStartTime and
+    # usageEndTime).
+    # @param aggregation_granularity [AggregationGranularity] `Daily` (default)
+    # returns the data in daily granularity, `Hourly` returns the data in hourly
+    # granularity. Possible values include: 'Daily', 'Hourly'
+    # @param continuation_token [String] Used when a continuation token string is
+    # provided in the response body of the previous call, enabling paging through a
+    # large result set. If not present, the data is retrieved from the beginning of
+    # the day/hour (based on the granularity) passed in.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(reportedstart_time, reported_end_time, show_details = nil, aggregation_granularity = nil, continuation_token = nil, custom_headers = nil)
-      list_async(reportedstart_time, reported_end_time, show_details, aggregation_granularity, continuation_token, custom_headers).value!
+    def list_with_http_info(reported_start_time, reported_end_time, show_details = nil, aggregation_granularity = nil, continuation_token = nil, custom_headers = nil)
+      list_async(reported_start_time, reported_end_time, show_details, aggregation_granularity, continuation_token, custom_headers).value!
     end
 
     #
     # Query aggregated Azure subscription consumption data for a date range.
     #
-    # @param reportedstart_time [DateTime] The start of the time range to retrieve
+    # @param reported_start_time [DateTime] The start of the time range to retrieve
     # data for.
     # @param reported_end_time [DateTime] The end of the time range to retrieve
     # data for.
-    # @param show_details [Boolean] When set to true (default), the aggregates are
-    # broken down into the instance metadata which is more granular.
-    # @param aggregation_granularity [AggregationGranularity] Value is either daily
-    # (default) or hourly to tell the API how to return the results grouped by day
-    # or hour. Possible values include: 'Daily', 'Hourly'
-    # @param continuation_token [String] Retrieved from previous calls, this is the
-    # bookmark used for progress when the responses are paged.
+    # @param show_details [Boolean] `True` returns usage data in instance-level
+    # detail, `false` causes server-side aggregation with fewer details. For
+    # example, if you have 3 website instances, by default you will get 3 line
+    # items for website consumption. If you specify showDetails = false, the data
+    # will be aggregated as a single line item for website consumption within the
+    # time period (for the given subscriptionId, meterId, usageStartTime and
+    # usageEndTime).
+    # @param aggregation_granularity [AggregationGranularity] `Daily` (default)
+    # returns the data in daily granularity, `Hourly` returns the data in hourly
+    # granularity. Possible values include: 'Daily', 'Hourly'
+    # @param continuation_token [String] Used when a continuation token string is
+    # provided in the response body of the previous call, enabling paging through a
+    # large result set. If not present, the data is retrieved from the beginning of
+    # the day/hour (based on the granularity) passed in.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(reportedstart_time, reported_end_time, show_details = nil, aggregation_granularity = nil, continuation_token = nil, custom_headers = nil)
-      fail ArgumentError, 'reportedstart_time is nil' if reportedstart_time.nil?
+    def list_async(reported_start_time, reported_end_time, show_details = nil, aggregation_granularity = nil, continuation_token = nil, custom_headers = nil)
+      fail ArgumentError, 'reported_start_time is nil' if reported_start_time.nil?
       fail ArgumentError, 'reported_end_time is nil' if reported_end_time.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -107,7 +128,7 @@ module Azure::ARM::Commerce
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'subscriptionId' => @client.subscription_id},
-          query_params: {'reportedstartTime' => reportedstart_time,'reportedEndTime' => reported_end_time,'showDetails' => show_details,'aggregationGranularity' => aggregation_granularity,'continuationToken' => continuation_token,'api-version' => @client.api_version},
+          query_params: {'reportedStartTime' => reported_start_time,'reportedEndTime' => reported_end_time,'showDetails' => show_details,'aggregationGranularity' => aggregation_granularity,'continuationToken' => continuation_token,'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -230,25 +251,32 @@ module Azure::ARM::Commerce
     #
     # Query aggregated Azure subscription consumption data for a date range.
     #
-    # @param reportedstart_time [DateTime] The start of the time range to retrieve
+    # @param reported_start_time [DateTime] The start of the time range to retrieve
     # data for.
     # @param reported_end_time [DateTime] The end of the time range to retrieve
     # data for.
-    # @param show_details [Boolean] When set to true (default), the aggregates are
-    # broken down into the instance metadata which is more granular.
-    # @param aggregation_granularity [AggregationGranularity] Value is either daily
-    # (default) or hourly to tell the API how to return the results grouped by day
-    # or hour. Possible values include: 'Daily', 'Hourly'
-    # @param continuation_token [String] Retrieved from previous calls, this is the
-    # bookmark used for progress when the responses are paged.
+    # @param show_details [Boolean] `True` returns usage data in instance-level
+    # detail, `false` causes server-side aggregation with fewer details. For
+    # example, if you have 3 website instances, by default you will get 3 line
+    # items for website consumption. If you specify showDetails = false, the data
+    # will be aggregated as a single line item for website consumption within the
+    # time period (for the given subscriptionId, meterId, usageStartTime and
+    # usageEndTime).
+    # @param aggregation_granularity [AggregationGranularity] `Daily` (default)
+    # returns the data in daily granularity, `Hourly` returns the data in hourly
+    # granularity. Possible values include: 'Daily', 'Hourly'
+    # @param continuation_token [String] Used when a continuation token string is
+    # provided in the response body of the previous call, enabling paging through a
+    # large result set. If not present, the data is retrieved from the beginning of
+    # the day/hour (based on the granularity) passed in.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [UsageAggregationListResult] which provide lazy access to pages of
     # the response.
     #
-    def list_as_lazy(reportedstart_time, reported_end_time, show_details = nil, aggregation_granularity = nil, continuation_token = nil, custom_headers = nil)
-      response = list_async(reportedstart_time, reported_end_time, show_details, aggregation_granularity, continuation_token, custom_headers).value!
+    def list_as_lazy(reported_start_time, reported_end_time, show_details = nil, aggregation_granularity = nil, continuation_token = nil, custom_headers = nil)
+      response = list_async(reported_start_time, reported_end_time, show_details, aggregation_granularity, continuation_token, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
