@@ -14,7 +14,6 @@ require 'ms_rest_azure/credentials/application_token_provider.rb'
 require 'ms_rest_azure/polling_state.rb'
 require 'ms_rest_azure/resource.rb'
 require 'ms_rest_azure/serialization.rb'
-require 'ms_rest_azure/sub_resource.rb'
 require 'ms_rest_azure/version'
 
 module MsRestAzure end
