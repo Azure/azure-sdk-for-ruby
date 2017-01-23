@@ -18,6 +18,9 @@ module Azure::ARM::Compute
       # @return [VirtualMachineScaleSetOSDisk] The OS disk.
       attr_accessor :os_disk
 
+      # @return [Array<VirtualMachineScaleSetDataDisk>] The data disks.
+      attr_accessor :data_disks
+
 
       #
       # Mapper for VirtualMachineScaleSetStorageProfile class as Ruby Hash.
@@ -45,6 +48,21 @@ module Azure::ARM::Compute
                 type: {
                   name: 'Composite',
                   class_name: 'VirtualMachineScaleSetOSDisk'
+                }
+              },
+              data_disks: {
+                required: false,
+                serialized_name: 'dataDisks',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'VirtualMachineScaleSetDataDiskElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'VirtualMachineScaleSetDataDisk'
+                      }
+                  }
                 }
               }
             }

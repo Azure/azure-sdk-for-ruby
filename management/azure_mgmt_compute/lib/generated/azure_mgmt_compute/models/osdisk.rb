@@ -43,6 +43,9 @@ module Azure::ARM::Compute
       # and the new desired size for resizing existing OS and data disks.
       attr_accessor :disk_size_gb
 
+      # @return [ManagedDiskParameters] The managed disk parameters.
+      attr_accessor :managed_disk
+
 
       #
       # Mapper for OSDisk class as Ruby Hash.
@@ -73,14 +76,14 @@ module Azure::ARM::Compute
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
               vhd: {
-                required: true,
+                required: false,
                 serialized_name: 'vhd',
                 type: {
                   name: 'Composite',
@@ -116,6 +119,14 @@ module Azure::ARM::Compute
                 serialized_name: 'diskSizeGB',
                 type: {
                   name: 'Number'
+                }
+              },
+              managed_disk: {
+                required: false,
+                serialized_name: 'managedDisk',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ManagedDiskParameters'
                 }
               }
             }

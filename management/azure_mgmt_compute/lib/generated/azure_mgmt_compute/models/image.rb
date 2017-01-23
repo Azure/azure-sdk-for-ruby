@@ -6,49 +6,34 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Describes a Virtual Machine Scale Set.
+    # Describes an Image.
     #
-    class VirtualMachineScaleSet < MsRestAzure::Resource
+    class Image < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Sku] The virtual machine scale set sku.
-      attr_accessor :sku
+      # @return [SubResource] The source virtual machine from which Image is
+      # created.
+      attr_accessor :source_virtual_machine
 
-      # @return [Plan] The purchase plan when deploying a virtual machine scale
-      # set from VM Marketplace images.
-      attr_accessor :plan
+      # @return [ImageStorageProfile] The storage profile.
+      attr_accessor :storage_profile
 
-      # @return [UpgradePolicy] The upgrade policy.
-      attr_accessor :upgrade_policy
-
-      # @return [VirtualMachineScaleSetVMProfile] The virtual machine profile.
-      attr_accessor :virtual_machine_profile
-
-      # @return [String] The provisioning state, which only appears in the
-      # response.
+      # @return [String] The provisioning state.
       attr_accessor :provisioning_state
-
-      # @return [Boolean] Specifies whether the Virtual Machine Scale Set
-      # should be overprovisioned.
-      attr_accessor :overprovision
-
-      # @return [Boolean] When true this limits the scale set to a single
-      # placement group, of max size 100 virtual machines.
-      attr_accessor :single_placement_group
 
 
       #
-      # Mapper for VirtualMachineScaleSet class as Ruby Hash.
+      # Mapper for Image class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VirtualMachineScaleSet',
+          serialized_name: 'Image',
           type: {
             name: 'Composite',
-            class_name: 'VirtualMachineScaleSet',
+            class_name: 'Image',
             model_properties: {
               id: {
                 required: false,
@@ -95,36 +80,20 @@ module Azure::ARM::Compute
                   }
                 }
               },
-              sku: {
+              source_virtual_machine: {
                 required: false,
-                serialized_name: 'sku',
+                serialized_name: 'properties.sourceVirtualMachine',
                 type: {
                   name: 'Composite',
-                  class_name: 'Sku'
+                  class_name: 'SubResource'
                 }
               },
-              plan: {
+              storage_profile: {
                 required: false,
-                serialized_name: 'plan',
+                serialized_name: 'properties.storageProfile',
                 type: {
                   name: 'Composite',
-                  class_name: 'Plan'
-                }
-              },
-              upgrade_policy: {
-                required: false,
-                serialized_name: 'properties.upgradePolicy',
-                type: {
-                  name: 'Composite',
-                  class_name: 'UpgradePolicy'
-                }
-              },
-              virtual_machine_profile: {
-                required: false,
-                serialized_name: 'properties.virtualMachineProfile',
-                type: {
-                  name: 'Composite',
-                  class_name: 'VirtualMachineScaleSetVMProfile'
+                  class_name: 'ImageStorageProfile'
                 }
               },
               provisioning_state: {
@@ -133,20 +102,6 @@ module Azure::ARM::Compute
                 serialized_name: 'properties.provisioningState',
                 type: {
                   name: 'String'
-                }
-              },
-              overprovision: {
-                required: false,
-                serialized_name: 'properties.overprovision',
-                type: {
-                  name: 'Boolean'
-                }
-              },
-              single_placement_group: {
-                required: false,
-                serialized_name: 'properties.singlePlacementGroup',
-                type: {
-                  name: 'Boolean'
                 }
               }
             }

@@ -6,14 +6,17 @@
 module Azure::ARM::Compute
   module Models
     #
-    # Describes a virtual machine scale set operating system disk.
+    # Describes a virtual machine scale set data disk.
     #
-    class VirtualMachineScaleSetOSDisk
+    class VirtualMachineScaleSetDataDisk
 
       include MsRestAzure
 
       # @return [String] The disk name.
       attr_accessor :name
+
+      # @return [Integer] The logical unit number.
+      attr_accessor :lun
 
       # @return [CachingTypes] The caching type. Possible values include:
       # 'None', 'ReadOnly', 'ReadWrite'
@@ -23,18 +26,9 @@ module Azure::ARM::Compute
       # include: 'fromImage', 'empty', 'attach'
       attr_accessor :create_option
 
-      # @return [OperatingSystemTypes] The Operating System type. Possible
-      # values include: 'Windows', 'Linux'
-      attr_accessor :os_type
-
-      # @return [VirtualHardDisk] The Source User Image VirtualHardDisk. This
-      # VirtualHardDisk will be copied before using it to attach to the Virtual
-      # Machine. If SourceImage is provided, the destination VirtualHardDisk
-      # should not exist.
-      attr_accessor :image
-
-      # @return [Array<String>] The list of virtual hard disk container uris.
-      attr_accessor :vhd_containers
+      # @return [Integer] The initial disk size in GB for blank data disks, and
+      # the new desired size for existing OS and Data disks.
+      attr_accessor :disk_size_gb
 
       # @return [VirtualMachineScaleSetManagedDiskParameters] The managed disk
       # parameters.
@@ -42,22 +36,29 @@ module Azure::ARM::Compute
 
 
       #
-      # Mapper for VirtualMachineScaleSetOSDisk class as Ruby Hash.
+      # Mapper for VirtualMachineScaleSetDataDisk class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'VirtualMachineScaleSetOSDisk',
+          serialized_name: 'VirtualMachineScaleSetDataDisk',
           type: {
             name: 'Composite',
-            class_name: 'VirtualMachineScaleSetOSDisk',
+            class_name: 'VirtualMachineScaleSetDataDisk',
             model_properties: {
               name: {
                 required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
+                }
+              },
+              lun: {
+                required: true,
+                serialized_name: 'lun',
+                type: {
+                  name: 'Number'
                 }
               },
               caching: {
@@ -76,34 +77,11 @@ module Azure::ARM::Compute
                   module: 'DiskCreateOptionTypes'
                 }
               },
-              os_type: {
+              disk_size_gb: {
                 required: false,
-                serialized_name: 'osType',
+                serialized_name: 'diskSizeGB',
                 type: {
-                  name: 'Enum',
-                  module: 'OperatingSystemTypes'
-                }
-              },
-              image: {
-                required: false,
-                serialized_name: 'image',
-                type: {
-                  name: 'Composite',
-                  class_name: 'VirtualHardDisk'
-                }
-              },
-              vhd_containers: {
-                required: false,
-                serialized_name: 'vhdContainers',
-                type: {
-                  name: 'Sequence',
-                  element: {
-                      required: false,
-                      serialized_name: 'StringElementType',
-                      type: {
-                        name: 'String'
-                      }
-                  }
+                  name: 'Number'
                 }
               },
               managed_disk: {

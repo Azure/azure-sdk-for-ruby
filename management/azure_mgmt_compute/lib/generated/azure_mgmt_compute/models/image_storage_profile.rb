@@ -6,40 +6,50 @@
 module Azure::ARM::Compute
   module Models
     #
-    # SSH configuration for Linux-based VMs running on Azure.
+    # Describes a storage profile.
     #
-    class ContainerServiceSshConfiguration
+    class ImageStorageProfile
 
       include MsRestAzure
 
-      # @return [Array<ContainerServiceSshPublicKey>] the list of SSH public
-      # keys used to authenticate with Linux-based VMs.
-      attr_accessor :public_keys
+      # @return [ImageOSDisk] The OS disk.
+      attr_accessor :os_disk
+
+      # @return [Array<ImageDataDisk>] The data disks.
+      attr_accessor :data_disks
 
 
       #
-      # Mapper for ContainerServiceSshConfiguration class as Ruby Hash.
+      # Mapper for ImageStorageProfile class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ContainerServiceSshConfiguration',
+          serialized_name: 'ImageStorageProfile',
           type: {
             name: 'Composite',
-            class_name: 'ContainerServiceSshConfiguration',
+            class_name: 'ImageStorageProfile',
             model_properties: {
-              public_keys: {
+              os_disk: {
                 required: true,
-                serialized_name: 'publicKeys',
+                serialized_name: 'osDisk',
+                type: {
+                  name: 'Composite',
+                  class_name: 'ImageOSDisk'
+                }
+              },
+              data_disks: {
+                required: false,
+                serialized_name: 'dataDisks',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ContainerServiceSshPublicKeyElementType',
+                      serialized_name: 'ImageDataDiskElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ContainerServiceSshPublicKey'
+                        class_name: 'ImageDataDisk'
                       }
                   }
                 }

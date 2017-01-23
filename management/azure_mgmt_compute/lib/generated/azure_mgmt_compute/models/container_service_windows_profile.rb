@@ -12,7 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] The administrator user name to use for Windows VMs.
+      # @return [String] The administrator username to use for Windows VMs.
       attr_accessor :admin_username
 
       # @return [String] The administrator password to use for Windows VMs.

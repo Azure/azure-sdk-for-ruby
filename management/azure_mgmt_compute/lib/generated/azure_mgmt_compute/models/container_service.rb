@@ -12,7 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] The current deployment or provisioning state, which
+      # @return [String] the current deployment or provisioning state, which
       # only appears in the response.
       attr_accessor :provisioning_state
 

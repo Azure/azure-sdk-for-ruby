@@ -8,52 +8,42 @@ module Azure::ARM::Compute
     #
     # Describes a data disk.
     #
-    class DataDisk
+    class ImageDataDisk
 
       include MsRestAzure
 
       # @return [Integer] The logical unit number.
       attr_accessor :lun
 
-      # @return [String] The disk name.
-      attr_accessor :name
+      # @return [SubResource] The snapshot.
+      attr_accessor :snapshot
 
-      # @return [VirtualHardDisk] The virtual hard disk.
-      attr_accessor :vhd
+      # @return [SubResource] The managedDisk.
+      attr_accessor :managed_disk
 
-      # @return [VirtualHardDisk] The source user image virtual hard disk. This
-      # virtual hard disk will be copied before using it to attach to the
-      # virtual machine. If SourceImage is provided, the destination virtual
-      # hard disk must not exist.
-      attr_accessor :image
+      # @return [String] The Virtual Hard Disk.
+      attr_accessor :blob_uri
 
       # @return [CachingTypes] The caching type. Possible values include:
       # 'None', 'ReadOnly', 'ReadWrite'
       attr_accessor :caching
 
-      # @return [DiskCreateOptionTypes] The create option. Possible values
-      # include: 'fromImage', 'empty', 'attach'
-      attr_accessor :create_option
-
       # @return [Integer] The initial disk size in GB for blank data disks, and
-      # the new desired size for resizing existing OS and data disks.
+      # the new desired size for existing OS and Data disks.
       attr_accessor :disk_size_gb
-
-      # @return [ManagedDiskParameters] The managed disk parameters.
-      attr_accessor :managed_disk
 
 
       #
-      # Mapper for DataDisk class as Ruby Hash.
+      # Mapper for ImageDataDisk class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'DataDisk',
+          serialized_name: 'ImageDataDisk',
           type: {
             name: 'Composite',
-            class_name: 'DataDisk',
+            class_name: 'ImageDataDisk',
             model_properties: {
               lun: {
                 required: true,
@@ -62,27 +52,27 @@ module Azure::ARM::Compute
                   name: 'Number'
                 }
               },
-              name: {
+              snapshot: {
                 required: false,
-                serialized_name: 'name',
+                serialized_name: 'snapshot',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
+              managed_disk: {
+                required: false,
+                serialized_name: 'managedDisk',
+                type: {
+                  name: 'Composite',
+                  class_name: 'SubResource'
+                }
+              },
+              blob_uri: {
+                required: false,
+                serialized_name: 'blobUri',
                 type: {
                   name: 'String'
-                }
-              },
-              vhd: {
-                required: false,
-                serialized_name: 'vhd',
-                type: {
-                  name: 'Composite',
-                  class_name: 'VirtualHardDisk'
-                }
-              },
-              image: {
-                required: false,
-                serialized_name: 'image',
-                type: {
-                  name: 'Composite',
-                  class_name: 'VirtualHardDisk'
                 }
               },
               caching: {
@@ -93,27 +83,11 @@ module Azure::ARM::Compute
                   module: 'CachingTypes'
                 }
               },
-              create_option: {
-                required: true,
-                serialized_name: 'createOption',
-                type: {
-                  name: 'Enum',
-                  module: 'DiskCreateOptionTypes'
-                }
-              },
               disk_size_gb: {
                 required: false,
                 serialized_name: 'diskSizeGB',
                 type: {
                   name: 'Number'
-                }
-              },
-              managed_disk: {
-                required: false,
-                serialized_name: 'managedDisk',
-                type: {
-                  name: 'Composite',
-                  class_name: 'ManagedDiskParameters'
                 }
               }
             }

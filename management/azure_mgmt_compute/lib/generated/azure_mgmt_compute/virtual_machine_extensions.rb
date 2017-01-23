@@ -170,7 +170,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
       fail ArgumentError, 'vm_extension_name is nil' if vm_extension_name.nil?
-      api_version = '2016-03-30'
+      api_version = '2016-04-30-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -275,7 +275,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
       fail ArgumentError, 'vm_extension_name is nil' if vm_extension_name.nil?
       fail ArgumentError, 'extension_parameters is nil' if extension_parameters.nil?
-      api_version = '2016-03-30'
+      api_version = '2016-04-30-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -392,7 +392,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'vm_name is nil' if vm_name.nil?
       fail ArgumentError, 'vm_extension_name is nil' if vm_extension_name.nil?
-      api_version = '2016-03-30'
+      api_version = '2016-04-30-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -418,7 +418,7 @@ module Azure::ARM::Compute
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202 || status_code == 204 || status_code == 200
+        unless status_code == 200 || status_code == 202 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end

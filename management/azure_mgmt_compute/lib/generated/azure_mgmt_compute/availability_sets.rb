@@ -71,7 +71,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2016-03-30'
+      api_version = '2016-04-30-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -137,10 +137,11 @@ module Azure::ARM::Compute
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [OperationStatusResponse] operation results.
     #
     def delete(resource_group_name, availability_set_name, custom_headers = nil)
       response = delete_async(resource_group_name, availability_set_name, custom_headers).value!
-      nil
+      response.body unless response.nil?
     end
 
     #
@@ -170,7 +171,7 @@ module Azure::ARM::Compute
     def delete_async(resource_group_name, availability_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
-      api_version = '2016-03-30'
+      api_version = '2016-04-30-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -202,6 +203,16 @@ module Azure::ARM::Compute
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = OperationStatusResponse.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -251,7 +262,7 @@ module Azure::ARM::Compute
     def get_async(resource_group_name, availability_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
-      api_version = '2016-03-30'
+      api_version = '2016-04-30-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -338,7 +349,7 @@ module Azure::ARM::Compute
     #
     def list_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2016-03-30'
+      api_version = '2016-04-30-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -432,7 +443,7 @@ module Azure::ARM::Compute
     def list_available_sizes_async(resource_group_name, availability_set_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'availability_set_name is nil' if availability_set_name.nil?
-      api_version = '2016-03-30'
+      api_version = '2016-04-30-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 

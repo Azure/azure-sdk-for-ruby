@@ -72,7 +72,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
       fail ArgumentError, 'type is nil' if type.nil?
       fail ArgumentError, 'version is nil' if version.nil?
-      api_version = '2016-03-30'
+      api_version = '2016-04-30-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -163,7 +163,7 @@ module Azure::ARM::Compute
     def list_types_async(location, publisher_name, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
-      api_version = '2016-03-30'
+      api_version = '2016-04-30-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -281,7 +281,7 @@ module Azure::ARM::Compute
       fail ArgumentError, 'location is nil' if location.nil?
       fail ArgumentError, 'publisher_name is nil' if publisher_name.nil?
       fail ArgumentError, 'type is nil' if type.nil?
-      api_version = '2016-03-30'
+      api_version = '2016-04-30-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
