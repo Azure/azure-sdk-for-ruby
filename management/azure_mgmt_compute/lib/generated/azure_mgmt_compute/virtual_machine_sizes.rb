@@ -63,7 +63,7 @@ module Azure::ARM::Compute
     #
     def list_async(location, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      api_version = '2016-03-30'
+      api_version = '2016-04-30-preview'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 

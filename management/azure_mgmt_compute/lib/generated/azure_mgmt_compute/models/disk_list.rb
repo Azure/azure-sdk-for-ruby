@@ -6,17 +6,17 @@
 module Azure::ARM::Compute
   module Models
     #
-    # The response from the List Container Services operation.
+    # The List Disks operation response.
     #
-    class ContainerServiceListResult
+    class DiskList
 
       include MsRestAzure
 
-      # @return [Array<ContainerService>] the list of container services.
+      # @return [Array<Disk>] A list of disks.
       attr_accessor :value
 
-      # @return [String] The URL to get the next set of container service
-      # results.
+      # @return [String] the uri to fetch the next page of disks. Call
+      # ListNext() with this to fetch the next page of disks.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -25,7 +25,7 @@ module Azure::ARM::Compute
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<ContainerService>] operation results.
+      # @return [Array<Disk>] operation results.
       #
       def get_all_items
         items = @value
@@ -40,7 +40,7 @@ module Azure::ARM::Compute
       #
       # Gets the next page of results.
       #
-      # @return [ContainerServiceListResult] with next page content.
+      # @return [DiskList] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -52,28 +52,28 @@ module Azure::ARM::Compute
       end
 
       #
-      # Mapper for ContainerServiceListResult class as Ruby Hash.
+      # Mapper for DiskList class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ContainerServiceListResult',
+          serialized_name: 'DiskList',
           type: {
             name: 'Composite',
-            class_name: 'ContainerServiceListResult',
+            class_name: 'DiskList',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ContainerServiceElementType',
+                      serialized_name: 'DiskElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ContainerService'
+                        class_name: 'Disk'
                       }
                   }
                 }

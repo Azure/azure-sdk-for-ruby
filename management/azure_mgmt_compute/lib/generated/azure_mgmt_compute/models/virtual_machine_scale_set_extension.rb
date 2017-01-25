@@ -8,7 +8,7 @@ module Azure::ARM::Compute
     #
     # Describes a Virtual Machine Scale Set Extension.
     #
-    class VirtualMachineScaleSetExtension < MsRestAzure::SubResource
+    class VirtualMachineScaleSetExtension < MsRestAzure::SubResourceReadOnly
 
       include MsRestAzure
 
@@ -53,6 +53,7 @@ module Azure::ARM::Compute
             model_properties: {
               id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'id',
                 type: {
                   name: 'String'

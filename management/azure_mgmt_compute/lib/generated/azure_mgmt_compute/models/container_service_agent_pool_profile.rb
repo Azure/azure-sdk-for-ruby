@@ -18,7 +18,7 @@ module Azure::ARM::Compute
 
       # @return [Integer] Number of agents (VMs) to host docker containers.
       # Allowed values must be in the range of 1 to 100 (inclusive). The
-      # default value is 1.
+      # default value is 1. . Default value: 1 .
       attr_accessor :count
 
       # @return [ContainerServiceVMSizeTypes] Size of agent VMs. Possible
@@ -67,6 +67,7 @@ module Azure::ARM::Compute
               count: {
                 required: true,
                 serialized_name: 'count',
+                default_value: 1,
                 constraints: {
                   InclusiveMaximum: 100,
                   InclusiveMinimum: 1

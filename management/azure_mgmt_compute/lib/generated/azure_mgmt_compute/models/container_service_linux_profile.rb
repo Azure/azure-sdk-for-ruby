@@ -12,7 +12,7 @@ module Azure::ARM::Compute
 
       include MsRestAzure
 
-      # @return [String] The administrator user name to use for Linux VMs.
+      # @return [String] The administrator username to use for Linux VMs.
       attr_accessor :admin_username
 
       # @return [ContainerServiceSshConfiguration] The ssh key configuration

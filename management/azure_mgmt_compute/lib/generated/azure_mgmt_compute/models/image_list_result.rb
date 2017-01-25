@@ -6,17 +6,17 @@
 module Azure::ARM::Compute
   module Models
     #
-    # The response from the List Container Services operation.
+    # The List Image operation response.
     #
-    class ContainerServiceListResult
+    class ImageListResult
 
       include MsRestAzure
 
-      # @return [Array<ContainerService>] the list of container services.
+      # @return [Array<Image>] The list of Images.
       attr_accessor :value
 
-      # @return [String] The URL to get the next set of container service
-      # results.
+      # @return [String] The uri to fetch the next page of Images. Call
+      # ListNext() with this to fetch the next page of Images.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -25,7 +25,7 @@ module Azure::ARM::Compute
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<ContainerService>] operation results.
+      # @return [Array<Image>] operation results.
       #
       def get_all_items
         items = @value
@@ -40,7 +40,7 @@ module Azure::ARM::Compute
       #
       # Gets the next page of results.
       #
-      # @return [ContainerServiceListResult] with next page content.
+      # @return [ImageListResult] with next page content.
       #
       def get_next_page
         response = @next_method.call(@next_link).value! unless @next_method.nil?
@@ -52,28 +52,28 @@ module Azure::ARM::Compute
       end
 
       #
-      # Mapper for ContainerServiceListResult class as Ruby Hash.
+      # Mapper for ImageListResult class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ContainerServiceListResult',
+          serialized_name: 'ImageListResult',
           type: {
             name: 'Composite',
-            class_name: 'ContainerServiceListResult',
+            class_name: 'ImageListResult',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',
                   element: {
                       required: false,
-                      serialized_name: 'ContainerServiceElementType',
+                      serialized_name: 'ImageElementType',
                       type: {
                         name: 'Composite',
-                        class_name: 'ContainerService'
+                        class_name: 'Image'
                       }
                   }
                 }

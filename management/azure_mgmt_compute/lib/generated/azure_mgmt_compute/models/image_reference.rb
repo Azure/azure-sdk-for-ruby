@@ -8,7 +8,7 @@ module Azure::ARM::Compute
     #
     # The image reference.
     #
-    class ImageReference
+    class ImageReference < MsRestAzure::SubResource
 
       include MsRestAzure
 
@@ -39,6 +39,13 @@ module Azure::ARM::Compute
             name: 'Composite',
             class_name: 'ImageReference',
             model_properties: {
+              id: {
+                required: false,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               publisher: {
                 required: false,
                 serialized_name: 'publisher',

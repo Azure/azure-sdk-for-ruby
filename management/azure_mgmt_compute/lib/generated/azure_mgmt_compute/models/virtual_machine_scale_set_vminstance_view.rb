@@ -38,6 +38,10 @@ module Azure::ARM::Compute
       # @return [Array<InstanceViewStatus>] The resource status information.
       attr_accessor :statuses
 
+      # @return [String] The placement group in which the VM is running. If the
+      # VM is deallocated it will not have a placementGroupId.
+      attr_accessor :placement_group_id
+
 
       #
       # Mapper for VirtualMachineScaleSetVMInstanceView class as Ruby Hash.
@@ -131,6 +135,13 @@ module Azure::ARM::Compute
                         class_name: 'InstanceViewStatus'
                       }
                   }
+                }
+              },
+              placement_group_id: {
+                required: false,
+                serialized_name: 'placementGroupId',
+                type: {
+                  name: 'String'
                 }
               }
             }
