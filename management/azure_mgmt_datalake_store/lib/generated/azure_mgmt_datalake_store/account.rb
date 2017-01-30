@@ -123,30 +123,28 @@ module Azure::ARM::DataLakeStore
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to
-    # delete.
+    # @param name [String] The name of the Data Lake Store account to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, account_name, custom_headers = nil)
-      response = delete_async(resource_group_name, account_name, custom_headers).value!
+    def delete(resource_group_name, name, custom_headers = nil)
+      response = delete_async(resource_group_name, name, custom_headers).value!
       nil
     end
 
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to
-    # delete.
+    # @param name [String] The name of the Data Lake Store account to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, account_name, custom_headers = nil)
+    def delete_async(resource_group_name, name, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, account_name, custom_headers)
+      promise = begin_delete_async(resource_group_name, name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -165,15 +163,14 @@ module Azure::ARM::DataLakeStore
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to
-    # retrieve.
+    # @param name [String] The name of the Data Lake Store account to retrieve.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [DataLakeStoreAccount] operation results.
     #
-    def get(resource_group_name, account_name, custom_headers = nil)
-      response = get_async(resource_group_name, account_name, custom_headers).value!
+    def get(resource_group_name, name, custom_headers = nil)
+      response = get_async(resource_group_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -182,15 +179,14 @@ module Azure::ARM::DataLakeStore
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to
-    # retrieve.
+    # @param name [String] The name of the Data Lake Store account to retrieve.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, account_name, custom_headers = nil)
-      get_async(resource_group_name, account_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, name, custom_headers = nil)
+      get_async(resource_group_name, name, custom_headers).value!
     end
 
     #
@@ -198,16 +194,15 @@ module Azure::ARM::DataLakeStore
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to
-    # retrieve.
+    # @param name [String] The name of the Data Lake Store account to retrieve.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, account_name, custom_headers = nil)
+    def get_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -217,13 +212,13 @@ module Azure::ARM::DataLakeStore
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{name}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -854,14 +849,13 @@ module Azure::ARM::DataLakeStore
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to
-    # delete.
+    # @param name [String] The name of the Data Lake Store account to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     #
-    def begin_delete(resource_group_name, account_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, account_name, custom_headers).value!
+    def begin_delete(resource_group_name, name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, name, custom_headers).value!
       nil
     end
 
@@ -870,15 +864,14 @@ module Azure::ARM::DataLakeStore
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to
-    # delete.
+    # @param name [String] The name of the Data Lake Store account to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_delete_with_http_info(resource_group_name, account_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, account_name, custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, name, custom_headers = nil)
+      begin_delete_async(resource_group_name, name, custom_headers).value!
     end
 
     #
@@ -886,16 +879,15 @@ module Azure::ARM::DataLakeStore
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to
-    # delete.
+    # @param name [String] The name of the Data Lake Store account to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_delete_async(resource_group_name, account_name, custom_headers = nil)
+    def begin_delete_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'account_name is nil' if account_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -905,13 +897,13 @@ module Azure::ARM::DataLakeStore
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{name}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url

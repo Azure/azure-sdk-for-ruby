@@ -69,6 +69,18 @@ module Azure::ARM::DataLakeStore
       # created in the Data Lake Store account.
       attr_accessor :default_group
 
+      # @return [PricingTierType] the billing tier to use for next month.
+      # Possible values include: 'Consumption', 'Commitment_1TB',
+      # 'Commitment_10TB', 'Commitment_100TB', 'Commitment_500TB',
+      # 'Commitment_1PB', 'Commitment_5PB'
+      attr_accessor :new_tier
+
+      # @return [PricingTierType] the billing tier in use for the current
+      # month. Possible values include: 'Consumption', 'Commitment_1TB',
+      # 'Commitment_10TB', 'Commitment_100TB', 'Commitment_500TB',
+      # 'Commitment_1PB', 'Commitment_5PB'
+      attr_accessor :current_tier
+
 
       #
       # Mapper for DataLakeStoreAccount class as Ruby Hash.
@@ -253,6 +265,23 @@ module Azure::ARM::DataLakeStore
                 serialized_name: 'properties.defaultGroup',
                 type: {
                   name: 'String'
+                }
+              },
+              new_tier: {
+                required: false,
+                serialized_name: 'properties.newTier',
+                type: {
+                  name: 'Enum',
+                  module: 'PricingTierType'
+                }
+              },
+              current_tier: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.currentTier',
+                type: {
+                  name: 'Enum',
+                  module: 'PricingTierType'
                 }
               }
             }
