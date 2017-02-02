@@ -8,7 +8,7 @@ module Azure::ARM::DataLakeStore
     #
     # Data Lake Store firewall rule information
     #
-    class FirewallRule < MsRestAzure::SubResource
+    class FirewallRule < SubResource
 
       include MsRestAzure
 
