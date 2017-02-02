@@ -162,7 +162,7 @@ module Azure::ARM::ServiceBus
               },
               lock_duration: {
                 required: false,
-                serialized_name: 'properties.lockDuration ',
+                serialized_name: 'properties.lockDuration',
                 type: {
                   name: 'String'
                 }
@@ -183,7 +183,7 @@ module Azure::ARM::ServiceBus
               },
               entity_availability_status: {
                 required: false,
-                serialized_name: 'properties.entityAvailabilityStatus ',
+                serialized_name: 'properties.entityAvailabilityStatus',
                 type: {
                   name: 'Enum',
                   module: 'EntityAvailabilityStatus'
@@ -205,7 +205,7 @@ module Azure::ARM::ServiceBus
               },
               duplicate_detection_history_time_window: {
                 required: false,
-                serialized_name: 'properties.duplicateDetectionHistoryTimeWindow ',
+                serialized_name: 'properties.duplicateDetectionHistoryTimeWindow',
                 type: {
                   name: 'String'
                 }
@@ -247,7 +247,7 @@ module Azure::ARM::ServiceBus
               },
               max_delivery_count: {
                 required: false,
-                serialized_name: 'properties.maxDeliveryCount ',
+                serialized_name: 'properties.maxDeliveryCount',
                 type: {
                   name: 'Number'
                 }
@@ -261,7 +261,7 @@ module Azure::ARM::ServiceBus
               },
               message_count: {
                 required: false,
-                serialized_name: 'properties.messageCount ',
+                serialized_name: 'properties.messageCount',
                 type: {
                   name: 'Number'
                 }
@@ -290,7 +290,7 @@ module Azure::ARM::ServiceBus
               },
               size_in_bytes: {
                 required: false,
-                serialized_name: 'properties.sizeInBytes ',
+                serialized_name: 'properties.sizeInBytes',
                 type: {
                   name: 'Number'
                 }

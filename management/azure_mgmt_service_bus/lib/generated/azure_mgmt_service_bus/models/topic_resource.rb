@@ -170,7 +170,7 @@ module Azure::ARM::ServiceBus
               },
               entity_availability_status: {
                 required: false,
-                serialized_name: 'properties.entityAvailabilityStatus ',
+                serialized_name: 'properties.entityAvailabilityStatus',
                 type: {
                   name: 'Enum',
                   module: 'EntityAvailabilityStatus'
@@ -200,7 +200,7 @@ module Azure::ARM::ServiceBus
               },
               duplicate_detection_history_time_window: {
                 required: false,
-                serialized_name: 'properties.duplicateDetectionHistoryTimeWindow ',
+                serialized_name: 'properties.duplicateDetectionHistoryTimeWindow',
                 type: {
                   name: 'String'
                 }
