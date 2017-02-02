@@ -6,56 +6,54 @@
 module Azure::ARM::DataLakeAnalytics
   module Models
     #
-    # Generic resource error details information.
+    # The Resource model definition for a nested resource with no required
+    # properties.
     #
-    class ErrorDetails
+    class OptionalSubResource
 
       include MsRestAzure
 
-      # @return [String] the HTTP status code or error code associated with
-      # this error
-      attr_accessor :code
+      # @return [String] Resource Id
+      attr_accessor :id
 
-      # @return [String] the error message localized based on Accept-Language
-      attr_accessor :message
+      # @return [String] Resource name
+      attr_accessor :name
 
-      # @return [String] the target of the particular error (for example, the
-      # name of the property in error).
-      attr_accessor :target
+      # @return [String] Resource type
+      attr_accessor :type
 
 
       #
-      # Mapper for ErrorDetails class as Ruby Hash.
+      # Mapper for OptionalSubResource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ErrorDetails',
+          serialized_name: 'OptionalSubResource',
           type: {
             name: 'Composite',
-            class_name: 'ErrorDetails',
+            class_name: 'OptionalSubResource',
             model_properties: {
-              code: {
+              id: {
                 required: false,
                 read_only: true,
-                serialized_name: 'code',
+                serialized_name: 'id',
                 type: {
                   name: 'String'
                 }
               },
-              message: {
+              name: {
                 required: false,
-                read_only: true,
-                serialized_name: 'message',
+                serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
-              target: {
+              type: {
                 required: false,
                 read_only: true,
-                serialized_name: 'target',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

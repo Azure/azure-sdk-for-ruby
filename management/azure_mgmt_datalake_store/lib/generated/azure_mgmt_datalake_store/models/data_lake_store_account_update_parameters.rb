@@ -21,6 +21,12 @@ module Azure::ARM::DataLakeStore
       # re-enabled. Possible values include: 'Enabled', 'Disabled'
       attr_accessor :firewall_state
 
+      # @return [FirewallAllowAzureIpsState] The current state of allowing or
+      # disallowing IPs originating within Azure through the firewall. If the
+      # firewall is disabled, this is not enforced. Possible values include:
+      # 'Enabled', 'Disabled'
+      attr_accessor :firewall_allow_azure_ips
+
       # @return [TrustedIdProviderState] The current state of the trusted
       # identity provider feature for this Data Lake store account. Disabling
       # trusted identity provider functionality does not remove the providers,
@@ -31,6 +37,12 @@ module Azure::ARM::DataLakeStore
       # @return [String] the default owner group for all new folders and files
       # created in the Data Lake Store account.
       attr_accessor :default_group
+
+      # @return [TierType] the commitment tier to use for next month. Possible
+      # values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+      # 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB',
+      # 'Commitment_5PB'
+      attr_accessor :new_tier
 
 
       #
@@ -67,6 +79,14 @@ module Azure::ARM::DataLakeStore
                   module: 'FirewallState'
                 }
               },
+              firewall_allow_azure_ips: {
+                required: false,
+                serialized_name: 'properties.firewallAllowAzureIps',
+                type: {
+                  name: 'Enum',
+                  module: 'FirewallAllowAzureIpsState'
+                }
+              },
               trusted_id_provider_state: {
                 required: false,
                 serialized_name: 'properties.trustedIdProviderState',
@@ -80,6 +100,14 @@ module Azure::ARM::DataLakeStore
                 serialized_name: 'properties.defaultGroup',
                 type: {
                   name: 'String'
+                }
+              },
+              new_tier: {
+                required: false,
+                serialized_name: 'properties.newTier',
+                type: {
+                  name: 'Enum',
+                  module: 'TierType'
                 }
               }
             }

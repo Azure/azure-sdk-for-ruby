@@ -26,16 +26,17 @@ module Azure::ARM::DataLakeStore
   autoload :DataLakeStoreAccountManagementClient,               'generated/azure_mgmt_datalake_store/data_lake_store_account_management_client.rb'
 
   module Models
-    autoload :DataLakeStoreAccountUpdateParameters,               'generated/azure_mgmt_datalake_store/models/data_lake_store_account_update_parameters.rb'
     autoload :KeyVaultMetaInfo,                                   'generated/azure_mgmt_datalake_store/models/key_vault_meta_info.rb'
+    autoload :EncryptionConfig,                                   'generated/azure_mgmt_datalake_store/models/encryption_config.rb'
+    autoload :UpdateFirewallRuleParameters,                       'generated/azure_mgmt_datalake_store/models/update_firewall_rule_parameters.rb'
+    autoload :UpdateTrustedIdProviderParameters,                  'generated/azure_mgmt_datalake_store/models/update_trusted_id_provider_parameters.rb'
+    autoload :SubResource,                                        'generated/azure_mgmt_datalake_store/models/sub_resource.rb'
     autoload :DataLakeStoreTrustedIdProviderListResult,           'generated/azure_mgmt_datalake_store/models/data_lake_store_trusted_id_provider_list_result.rb'
+    autoload :DataLakeStoreAccountUpdateParameters,               'generated/azure_mgmt_datalake_store/models/data_lake_store_account_update_parameters.rb'
     autoload :EncryptionIdentity,                                 'generated/azure_mgmt_datalake_store/models/encryption_identity.rb'
+    autoload :DataLakeStoreFirewallRuleListResult,                'generated/azure_mgmt_datalake_store/models/data_lake_store_firewall_rule_list_result.rb'
     autoload :DataLakeStoreAccountListResult,                     'generated/azure_mgmt_datalake_store/models/data_lake_store_account_list_result.rb'
     autoload :ErrorDetails,                                       'generated/azure_mgmt_datalake_store/models/error_details.rb'
-    autoload :EncryptionConfig,                                   'generated/azure_mgmt_datalake_store/models/encryption_config.rb'
-    autoload :InnerError,                                         'generated/azure_mgmt_datalake_store/models/inner_error.rb'
-    autoload :DataLakeStoreFirewallRuleListResult,                'generated/azure_mgmt_datalake_store/models/data_lake_store_firewall_rule_list_result.rb'
-    autoload :Error,                                              'generated/azure_mgmt_datalake_store/models/error.rb'
     autoload :FirewallRule,                                       'generated/azure_mgmt_datalake_store/models/firewall_rule.rb'
     autoload :TrustedIdProvider,                                  'generated/azure_mgmt_datalake_store/models/trusted_id_provider.rb'
     autoload :DataLakeStoreAccount,                               'generated/azure_mgmt_datalake_store/models/data_lake_store_account.rb'
@@ -45,6 +46,8 @@ module Azure::ARM::DataLakeStore
     autoload :EncryptionState,                                    'generated/azure_mgmt_datalake_store/models/encryption_state.rb'
     autoload :EncryptionProvisioningState,                        'generated/azure_mgmt_datalake_store/models/encryption_provisioning_state.rb'
     autoload :FirewallState,                                      'generated/azure_mgmt_datalake_store/models/firewall_state.rb'
+    autoload :FirewallAllowAzureIpsState,                         'generated/azure_mgmt_datalake_store/models/firewall_allow_azure_ips_state.rb'
     autoload :TrustedIdProviderState,                             'generated/azure_mgmt_datalake_store/models/trusted_id_provider_state.rb'
+    autoload :TierType,                                           'generated/azure_mgmt_datalake_store/models/tier_type.rb'
   end
 end

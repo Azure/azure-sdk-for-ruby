@@ -27,6 +27,29 @@ module Azure::ARM::DataLakeAnalytics
       # at the same time.
       attr_accessor :max_job_count
 
+      # @return [TierType] the commitment tier to use for next month. Possible
+      # values include: 'Consumption', 'Commitment_100AUHours',
+      # 'Commitment_500AUHours', 'Commitment_1000AUHours',
+      # 'Commitment_5000AUHours', 'Commitment_10000AUHours',
+      # 'Commitment_50000AUHours', 'Commitment_100000AUHours',
+      # 'Commitment_500000AUHours'
+      attr_accessor :new_tier
+
+      # @return [FirewallState] The current state of the IP address firewall
+      # for this Data Lake Analytics account. Possible values include:
+      # 'Enabled', 'Disabled'
+      attr_accessor :firewall_state
+
+      # @return [FirewallAllowAzureIpsState] The current state of allowing or
+      # disallowing IPs originating within Azure through the firewall. If the
+      # firewall is disabled, this is not enforced. Possible values include:
+      # 'Enabled', 'Disabled'
+      attr_accessor :firewall_allow_azure_ips
+
+      # @return [Array<FirewallRule>] The list of firewall rules associated
+      # with this Data Lake Analytics account.
+      attr_accessor :firewall_rules
+
 
       #
       # Mapper for DataLakeAnalyticsAccountUpdateParameters class as Ruby Hash.
@@ -83,6 +106,45 @@ module Azure::ARM::DataLakeAnalytics
                 },
                 type: {
                   name: 'Number'
+                }
+              },
+              new_tier: {
+                required: false,
+                serialized_name: 'properties.newTier',
+                type: {
+                  name: 'Enum',
+                  module: 'TierType'
+                }
+              },
+              firewall_state: {
+                required: false,
+                serialized_name: 'properties.firewallState',
+                type: {
+                  name: 'Enum',
+                  module: 'FirewallState'
+                }
+              },
+              firewall_allow_azure_ips: {
+                required: false,
+                serialized_name: 'properties.firewallAllowAzureIps',
+                type: {
+                  name: 'Enum',
+                  module: 'FirewallAllowAzureIpsState'
+                }
+              },
+              firewall_rules: {
+                required: false,
+                serialized_name: 'properties.firewallRules',
+                type: {
+                  name: 'Sequence',
+                  element: {
+                      required: false,
+                      serialized_name: 'FirewallRuleElementType',
+                      type: {
+                        name: 'Composite',
+                        class_name: 'FirewallRule'
+                      }
+                  }
                 }
               }
             }

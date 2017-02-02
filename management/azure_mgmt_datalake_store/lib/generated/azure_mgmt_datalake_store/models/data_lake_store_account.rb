@@ -46,6 +46,12 @@ module Azure::ARM::DataLakeStore
       # 'Disabled'
       attr_accessor :firewall_state
 
+      # @return [FirewallAllowAzureIpsState] The current state of allowing or
+      # disallowing IPs originating within Azure through the firewall. If the
+      # firewall is disabled, this is not enforced. Possible values include:
+      # 'Enabled', 'Disabled'
+      attr_accessor :firewall_allow_azure_ips
+
       # @return [Array<FirewallRule>] The list of firewall rules associated
       # with this Data Lake store account.
       attr_accessor :firewall_rules
@@ -68,6 +74,18 @@ module Azure::ARM::DataLakeStore
       # @return [String] the default owner group for all new folders and files
       # created in the Data Lake Store account.
       attr_accessor :default_group
+
+      # @return [TierType] the commitment tier to use for next month. Possible
+      # values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+      # 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB',
+      # 'Commitment_5PB'
+      attr_accessor :new_tier
+
+      # @return [TierType] the commitment tier in use for the current month.
+      # Possible values include: 'Consumption', 'Commitment_1TB',
+      # 'Commitment_10TB', 'Commitment_100TB', 'Commitment_500TB',
+      # 'Commitment_1PB', 'Commitment_5PB'
+      attr_accessor :current_tier
 
 
       #
@@ -194,6 +212,14 @@ module Azure::ARM::DataLakeStore
                   module: 'FirewallState'
                 }
               },
+              firewall_allow_azure_ips: {
+                required: false,
+                serialized_name: 'properties.firewallAllowAzureIps',
+                type: {
+                  name: 'Enum',
+                  module: 'FirewallAllowAzureIpsState'
+                }
+              },
               firewall_rules: {
                 required: false,
                 serialized_name: 'properties.firewallRules',
@@ -253,6 +279,23 @@ module Azure::ARM::DataLakeStore
                 serialized_name: 'properties.defaultGroup',
                 type: {
                   name: 'String'
+                }
+              },
+              new_tier: {
+                required: false,
+                serialized_name: 'properties.newTier',
+                type: {
+                  name: 'Enum',
+                  module: 'TierType'
+                }
+              },
+              current_tier: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.currentTier',
+                type: {
+                  name: 'Enum',
+                  module: 'TierType'
                 }
               }
             }

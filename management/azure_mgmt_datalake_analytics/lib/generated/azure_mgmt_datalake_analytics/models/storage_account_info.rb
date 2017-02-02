@@ -8,13 +8,9 @@ module Azure::ARM::DataLakeAnalytics
     #
     # Azure Storage account information.
     #
-    class StorageAccountInfo
+    class StorageAccountInfo < SubResource
 
       include MsRestAzure
-
-      # @return [String] the account name associated with the Azure storage
-      # account.
-      attr_accessor :name
 
       # @return [String] the access key associated with this Azure Storage
       # account that will be used to connect to it.
@@ -36,10 +32,25 @@ module Azure::ARM::DataLakeAnalytics
             name: 'Composite',
             class_name: 'StorageAccountInfo',
             model_properties: {
-              name: {
+              id: {
                 required: false,
                 read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
+              name: {
+                required: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
