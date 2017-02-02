@@ -241,7 +241,7 @@ module Azure::ARM::DataLakeAnalytics
     # will be added to the HTTP request.
     #
     #
-    def add(resource_group_name, account_name, data_lake_store_account_name, parameters, custom_headers = nil)
+    def add(resource_group_name, account_name, data_lake_store_account_name, parameters = nil, custom_headers = nil)
       response = add_async(resource_group_name, account_name, data_lake_store_account_name, parameters, custom_headers).value!
       nil
     end
@@ -263,7 +263,7 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def add_with_http_info(resource_group_name, account_name, data_lake_store_account_name, parameters, custom_headers = nil)
+    def add_with_http_info(resource_group_name, account_name, data_lake_store_account_name, parameters = nil, custom_headers = nil)
       add_async(resource_group_name, account_name, data_lake_store_account_name, parameters, custom_headers).value!
     end
 
@@ -284,11 +284,10 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def add_async(resource_group_name, account_name, data_lake_store_account_name, parameters, custom_headers = nil)
+    def add_async(resource_group_name, account_name, data_lake_store_account_name, parameters = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'data_lake_store_account_name is nil' if data_lake_store_account_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
