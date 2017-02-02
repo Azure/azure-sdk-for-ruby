@@ -2,14 +2,12 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
+
 module MsRestAzure
   #
   # Class which represents any Azure resource.
   #
-  class Resource
-
-    # @return [String] the id of the resource.
-    attr_accessor :id
+  class Resource < SubResource
 
     # @return [String] the name of the resource.
     attr_accessor :name
