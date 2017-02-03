@@ -22,9 +22,6 @@ module Azure::ARM::Network
     # for every service call.
     attr_accessor :subscription_id
 
-    # @return [String] Client API version.
-    attr_reader :api_version
-
     # @return [String] Gets or sets the preferred language for the response.
     attr_accessor :accept_language
 
@@ -39,6 +36,49 @@ module Azure::ARM::Network
     # @return [ApplicationGateways] application_gateways
     attr_reader :application_gateways
 
+    # @return [RouteTables] route_tables
+    attr_reader :route_tables
+
+    # @return [Routes] routes
+    attr_reader :routes
+
+    # @return [PublicIPAddresses] public_ipaddresses
+    attr_reader :public_ipaddresses
+
+    # @return [NetworkSecurityGroups] network_security_groups
+    attr_reader :network_security_groups
+
+    # @return [SecurityRules] security_rules
+    attr_reader :security_rules
+
+    # @return [LoadBalancers] load_balancers
+    attr_reader :load_balancers
+
+    # @return [VirtualNetworks] virtual_networks
+    attr_reader :virtual_networks
+
+    # @return [Subnets] subnets
+    attr_reader :subnets
+
+    # @return [VirtualNetworkPeerings] virtual_network_peerings
+    attr_reader :virtual_network_peerings
+
+    # @return [NetworkInterfaces] network_interfaces
+    attr_reader :network_interfaces
+
+    # @return [Usages] usages
+    attr_reader :usages
+
+    # @return [VirtualNetworkGateways] virtual_network_gateways
+    attr_reader :virtual_network_gateways
+
+    # @return [VirtualNetworkGatewayConnections]
+    # virtual_network_gateway_connections
+    attr_reader :virtual_network_gateway_connections
+
+    # @return [LocalNetworkGateways] local_network_gateways
+    attr_reader :local_network_gateways
+
     # @return [ExpressRouteCircuitAuthorizations]
     # express_route_circuit_authorizations
     attr_reader :express_route_circuit_authorizations
@@ -52,48 +92,14 @@ module Azure::ARM::Network
     # @return [ExpressRouteServiceProviders] express_route_service_providers
     attr_reader :express_route_service_providers
 
-    # @return [LoadBalancers] load_balancers
-    attr_reader :load_balancers
+    # @return [RouteFilters] route_filters
+    attr_reader :route_filters
 
-    # @return [LocalNetworkGateways] local_network_gateways
-    attr_reader :local_network_gateways
+    # @return [RouteFilterRules] route_filter_rules
+    attr_reader :route_filter_rules
 
-    # @return [NetworkInterfaces] network_interfaces
-    attr_reader :network_interfaces
-
-    # @return [NetworkSecurityGroups] network_security_groups
-    attr_reader :network_security_groups
-
-    # @return [PublicIPAddresses] public_ipaddresses
-    attr_reader :public_ipaddresses
-
-    # @return [RouteTables] route_tables
-    attr_reader :route_tables
-
-    # @return [Routes] routes
-    attr_reader :routes
-
-    # @return [SecurityRules] security_rules
-    attr_reader :security_rules
-
-    # @return [Subnets] subnets
-    attr_reader :subnets
-
-    # @return [VirtualNetworkPeerings] virtual_network_peerings
-    attr_reader :virtual_network_peerings
-
-    # @return [Usages] usages
-    attr_reader :usages
-
-    # @return [VirtualNetworkGatewayConnections]
-    # virtual_network_gateway_connections
-    attr_reader :virtual_network_gateway_connections
-
-    # @return [VirtualNetworkGateways] virtual_network_gateways
-    attr_reader :virtual_network_gateways
-
-    # @return [VirtualNetworks] virtual_networks
-    attr_reader :virtual_networks
+    # @return [BgpServiceCommunities] bgp_service_communities
+    attr_reader :bgp_service_communities
 
     #
     # Creates initializes a new instance of the NetworkManagementClient class.
@@ -101,34 +107,35 @@ module Azure::ARM::Network
     # @param base_url [String] the base URI of the service.
     # @param options [Array] filters to be applied to the HTTP requests.
     #
-    def initialize(credentials, base_url = nil, options = nil)
+    def initialize(credentials = nil, base_url = nil, options = nil)
       super(credentials, options)
       @base_url = base_url || 'https://management.azure.com'
 
-      fail ArgumentError, 'credentials is nil' if credentials.nil?
-      fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials)
+      fail ArgumentError, 'invalid type of credentials input parameter' unless credentials.is_a?(MsRest::ServiceClientCredentials) unless credentials.nil?
       @credentials = credentials
 
       @application_gateways = ApplicationGateways.new(self)
+      @route_tables = RouteTables.new(self)
+      @routes = Routes.new(self)
+      @public_ipaddresses = PublicIPAddresses.new(self)
+      @network_security_groups = NetworkSecurityGroups.new(self)
+      @security_rules = SecurityRules.new(self)
+      @load_balancers = LoadBalancers.new(self)
+      @virtual_networks = VirtualNetworks.new(self)
+      @subnets = Subnets.new(self)
+      @virtual_network_peerings = VirtualNetworkPeerings.new(self)
+      @network_interfaces = NetworkInterfaces.new(self)
+      @usages = Usages.new(self)
+      @virtual_network_gateways = VirtualNetworkGateways.new(self)
+      @virtual_network_gateway_connections = VirtualNetworkGatewayConnections.new(self)
+      @local_network_gateways = LocalNetworkGateways.new(self)
       @express_route_circuit_authorizations = ExpressRouteCircuitAuthorizations.new(self)
       @express_route_circuit_peerings = ExpressRouteCircuitPeerings.new(self)
       @express_route_circuits = ExpressRouteCircuits.new(self)
       @express_route_service_providers = ExpressRouteServiceProviders.new(self)
-      @load_balancers = LoadBalancers.new(self)
-      @local_network_gateways = LocalNetworkGateways.new(self)
-      @network_interfaces = NetworkInterfaces.new(self)
-      @network_security_groups = NetworkSecurityGroups.new(self)
-      @public_ipaddresses = PublicIPAddresses.new(self)
-      @route_tables = RouteTables.new(self)
-      @routes = Routes.new(self)
-      @security_rules = SecurityRules.new(self)
-      @subnets = Subnets.new(self)
-      @virtual_network_peerings = VirtualNetworkPeerings.new(self)
-      @usages = Usages.new(self)
-      @virtual_network_gateway_connections = VirtualNetworkGatewayConnections.new(self)
-      @virtual_network_gateways = VirtualNetworkGateways.new(self)
-      @virtual_networks = VirtualNetworks.new(self)
-      @api_version = '2016-09-01'
+      @route_filters = RouteFilters.new(self)
+      @route_filter_rules = RouteFilterRules.new(self)
+      @bgp_service_communities = BgpServiceCommunities.new(self)
       @accept_language = 'en-US'
       @long_running_operation_retry_timeout = 30
       @generate_client_request_id = true
@@ -137,7 +144,7 @@ module Azure::ARM::Network
 
     #
     # Makes a request and returns the body of the response.
-    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete. 
+    # @param method [Symbol] with any of the following values :get, :put, :post, :patch, :delete.
     # @param path [String] the path, relative to {base_url}.
     # @param options [Hash{String=>String}] specifying any request options like :body.
     # @return [Hash{String=>String}] containing the body of the response.
@@ -234,7 +241,7 @@ module Azure::ARM::Network
     #
     def check_dns_name_availability_async(location, domain_name_label = nil, custom_headers = nil)
       fail ArgumentError, 'location is nil' if location.nil?
-      fail ArgumentError, 'api_version is nil' if api_version.nil?
+      api_version = '2016-09-01'
       fail ArgumentError, 'subscription_id is nil' if subscription_id.nil?
 
 
@@ -291,7 +298,7 @@ module Azure::ARM::Network
     def add_telemetry
         sdk_information = 'azure_mgmt_network'
         if defined? Azure::ARM::Network::VERSION
-          sdk_information = "#{sdk_information}/#{Azure::ARM::Network::VERSION}" 
+          sdk_information = "#{sdk_information}/#{Azure::ARM::Network::VERSION}"
         end
         add_user_agent_information(sdk_information)
     end

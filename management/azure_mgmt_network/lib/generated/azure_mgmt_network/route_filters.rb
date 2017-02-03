@@ -7,12 +7,12 @@ module Azure::ARM::Network
   #
   # Composite Swagger for Network Client
   #
-  class VirtualNetworkGateways
+  class RouteFilters
     include Azure::ARM::Network::Models
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the VirtualNetworkGateways class.
+    # Creates and initializes a new instance of the RouteFilters class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -23,44 +23,34 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # Creates or updates a virtual network gateway in the specified resource group.
+    # Deletes the specified route filter.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param parameters [VirtualNetworkGateway] Parameters supplied to create or
-    # update virtual network gateway operation.
+    # @param route_filter_name [String] The name of the route filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualNetworkGateway] operation results.
-    #
-    def create_or_update(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
-      response.body unless response.nil?
+    def delete(resource_group_name, route_filter_name, custom_headers = nil)
+      response = delete_async(resource_group_name, route_filter_name, custom_headers).value!
+      nil
     end
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param parameters [VirtualNetworkGateway] Parameters supplied to create or
-    # update virtual network gateway operation.
+    # @param route_filter_name [String] The name of the route filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
+    def delete_async(resource_group_name, route_filter_name, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers)
+      promise = begin_delete_async(resource_group_name, route_filter_name, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = VirtualNetworkGateway.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -71,51 +61,54 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets the specified virtual network gateway by resource group.
+    # Gets the specified route filter.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param expand [String] Expands referenced express route bgp peering
+    # resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualNetworkGateway] operation results.
+    # @return [RouteFilter] operation results.
     #
-    def get(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
-      response = get_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
+    def get(resource_group_name, route_filter_name, expand = nil, custom_headers = nil)
+      response = get_async(resource_group_name, route_filter_name, expand, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets the specified virtual network gateway by resource group.
+    # Gets the specified route filter.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param expand [String] Expands referenced express route bgp peering
+    # resources.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
-      get_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
+    def get_with_http_info(resource_group_name, route_filter_name, expand = nil, custom_headers = nil)
+      get_async(resource_group_name, route_filter_name, expand, custom_headers).value!
     end
 
     #
-    # Gets the specified virtual network gateway by resource group.
+    # Gets the specified route filter.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param expand [String] Expands referenced express route bgp peering
+    # resources.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+    def get_async(resource_group_name, route_filter_name, expand = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2016-09-01'
+      fail ArgumentError, 'route_filter_name is nil' if route_filter_name.nil?
+      api_version = '2016-12-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -124,14 +117,14 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayName' => virtual_network_gateway_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'routeFilterName' => route_filter_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version,'$expand' => expand},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -151,7 +144,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualNetworkGateway.mapper()
+            result_mapper = RouteFilter.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -165,36 +158,42 @@ module Azure::ARM::Network
     end
 
     #
-    # Deletes the specified virtual network gateway.
+    # Creates or updates a route filter in a specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param route_filter_parameters [RouteFilter] Parameters supplied to the
+    # create or update route filter operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    def delete(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
-      response = delete_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
-      nil
+    # @return [RouteFilter] operation results.
+    #
+    def create_or_update(resource_group_name, route_filter_name, route_filter_parameters, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, route_filter_name, route_filter_parameters, custom_headers).value!
+      response.body unless response.nil?
     end
 
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param route_filter_parameters [RouteFilter] Parameters supplied to the
+    # create or update route filter operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def delete_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
+    def create_or_update_async(resource_group_name, route_filter_name, route_filter_parameters, custom_headers = nil)
       # Send request
-      promise = begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, route_filter_name, route_filter_parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
+          result_mapper = RouteFilter.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -205,21 +204,67 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all virtual network gateways by resource group.
+    # Updates a route filter in a specified resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param route_filter_parameters [PatchRouteFilter] Parameters supplied to the
+    # update route filter operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RouteFilter] operation results.
+    #
+    def update(resource_group_name, route_filter_name, route_filter_parameters, custom_headers = nil)
+      response = update_async(resource_group_name, route_filter_name, route_filter_parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param route_filter_parameters [PatchRouteFilter] Parameters supplied to the
+    # update route filter operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
+    #
+    def update_async(resource_group_name, route_filter_name, route_filter_parameters, custom_headers = nil)
+      # Send request
+      promise = begin_update_async(resource_group_name, route_filter_name, route_filter_parameters, custom_headers)
+
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = RouteFilter.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
+        end
+
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
+      end
+
+      promise
+    end
+
+    #
+    # Gets all route filters in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<VirtualNetworkGateway>] operation results.
+    # @return [Array<RouteFilter>] operation results.
     #
-    def list(resource_group_name, custom_headers = nil)
-      first_page = list_as_lazy(resource_group_name, custom_headers)
+    def list_by_resource_group(resource_group_name, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Gets all virtual network gateways by resource group.
+    # Gets all route filters in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -227,12 +272,12 @@ module Azure::ARM::Network
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_with_http_info(resource_group_name, custom_headers = nil)
-      list_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, custom_headers).value!
     end
 
     #
-    # Gets all virtual network gateways by resource group.
+    # Gets all route filters in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -240,9 +285,9 @@ module Azure::ARM::Network
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_async(resource_group_name, custom_headers = nil)
+    def list_by_resource_group_async(resource_group_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      api_version = '2016-09-01'
+      api_version = '2016-12-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -251,7 +296,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters'
 
       request_url = @base_url || @client.base_url
 
@@ -278,7 +323,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualNetworkGatewayListResult.mapper()
+            result_mapper = RouteFilterListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -292,110 +337,40 @@ module Azure::ARM::Network
     end
 
     #
-    # Resets the primary of the virtual network gateway in the specified resource
-    # group.
+    # Gets all route filters in a subscription.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param gateway_vip [String] Virtual network gateway vip address supplied to
-    # the begin reset of the active-active feature enabled gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualNetworkGateway] operation results.
+    # @return [Array<RouteFilter>] operation results.
     #
-    def reset(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
-      response = reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip, custom_headers).value!
-      response.body unless response.nil?
+    def list(custom_headers = nil)
+      first_page = list_as_lazy(custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param gateway_vip [String] Virtual network gateway vip address supplied to
-    # the begin reset of the active-active feature enabled gateway.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
+    # Gets all route filters in a subscription.
     #
-    # @return [Concurrent::Promise] promise which provides async access to http
-    # response.
-    #
-    def reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
-      # Send request
-      promise = begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip, custom_headers)
-
-      promise = promise.then do |response|
-        # Defining deserialization method.
-        deserialize_method = lambda do |parsed_response|
-          result_mapper = VirtualNetworkGateway.mapper()
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
-        end
-
-        # Waiting for response.
-        @client.get_long_running_operation_result(response, deserialize_method)
-      end
-
-      promise
-    end
-
-    #
-    # Generates VPN client package for P2S client of the virtual network gateway in
-    # the specified resource group.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param parameters [VpnClientParameters] Parameters supplied to the generate
-    # virtual network gateway VPN client package operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [String] operation results.
-    #
-    def generatevpnclientpackage(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
-      response = generatevpnclientpackage_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Generates VPN client package for P2S client of the virtual network gateway in
-    # the specified resource group.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param parameters [VpnClientParameters] Parameters supplied to the generate
-    # virtual network gateway VPN client package operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def generatevpnclientpackage_with_http_info(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
-      generatevpnclientpackage_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
+    def list_with_http_info(custom_headers = nil)
+      list_async(custom_headers).value!
     end
 
     #
-    # Generates VPN client package for P2S client of the virtual network gateway in
-    # the specified resource group.
+    # Gets all route filters in a subscription.
     #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param parameters [VpnClientParameters] Parameters supplied to the generate
-    # virtual network gateway VPN client package operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def generatevpnclientpackage_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2016-09-01'
+    def list_async(custom_headers = nil)
+      api_version = '2016-12-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -404,49 +379,34 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = VpnClientParameters.mapper()
-      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnclientpackage'
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeFilters'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayName' => virtual_network_gateway_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
-          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:post, path_template, options)
+      promise = @client.make_request_async(:get, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
         # Deserialize Response
-        if status_code == 202
+        if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = {
-              required: false,
-              serialized_name: 'parsed_response',
-              type: {
-                name: 'String'
-              }
-            }
+            result_mapper = RouteFilterListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -460,58 +420,135 @@ module Azure::ARM::Network
     end
 
     #
-    # Creates or updates a virtual network gateway in the specified resource group.
+    # Deletes the specified route filter.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param parameters [VirtualNetworkGateway] Parameters supplied to create or
-    # update virtual network gateway operation.
+    # @param route_filter_name [String] The name of the route filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualNetworkGateway] operation results.
     #
-    def begin_create_or_update(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
-      response.body unless response.nil?
+    def begin_delete(resource_group_name, route_filter_name, custom_headers = nil)
+      response = begin_delete_async(resource_group_name, route_filter_name, custom_headers).value!
+      nil
     end
 
     #
-    # Creates or updates a virtual network gateway in the specified resource group.
+    # Deletes the specified route filter.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param parameters [VirtualNetworkGateway] Parameters supplied to create or
-    # update virtual network gateway operation.
+    # @param route_filter_name [String] The name of the route filter.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers).value!
+    def begin_delete_with_http_info(resource_group_name, route_filter_name, custom_headers = nil)
+      begin_delete_async(resource_group_name, route_filter_name, custom_headers).value!
     end
 
     #
-    # Creates or updates a virtual network gateway in the specified resource group.
+    # Deletes the specified route filter.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param parameters [VirtualNetworkGateway] Parameters supplied to create or
-    # update virtual network gateway operation.
+    # @param route_filter_name [String] The name of the route filter.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, virtual_network_gateway_name, parameters, custom_headers = nil)
+    def begin_delete_async(resource_group_name, route_filter_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      fail ArgumentError, 'parameters is nil' if parameters.nil?
-      api_version = '2016-09-01'
+      fail ArgumentError, 'route_filter_name is nil' if route_filter_name.nil?
+      api_version = '2016-12-01'
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'routeFilterName' => route_filter_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 202 || status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates or updates a route filter in a specified resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param route_filter_parameters [RouteFilter] Parameters supplied to the
+    # create or update route filter operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RouteFilter] operation results.
+    #
+    def begin_create_or_update(resource_group_name, route_filter_name, route_filter_parameters, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, route_filter_name, route_filter_parameters, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates or updates a route filter in a specified resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param route_filter_parameters [RouteFilter] Parameters supplied to the
+    # create or update route filter operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_or_update_with_http_info(resource_group_name, route_filter_name, route_filter_parameters, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, route_filter_name, route_filter_parameters, custom_headers).value!
+    end
+
+    #
+    # Creates or updates a route filter in a specified resource group.
+    #
+    # @param resource_group_name [String] The name of the resource group.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param route_filter_parameters [RouteFilter] Parameters supplied to the
+    # create or update route filter operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_or_update_async(resource_group_name, route_filter_name, route_filter_parameters, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'route_filter_name is nil' if route_filter_name.nil?
+      fail ArgumentError, 'route_filter_parameters is nil' if route_filter_parameters.nil?
+      api_version = '2016-12-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -524,17 +561,17 @@ module Azure::ARM::Network
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = VirtualNetworkGateway.mapper()
-      request_content = @client.serialize(request_mapper,  parameters, 'parameters')
+      request_mapper = RouteFilter.mapper()
+      request_content = @client.serialize(request_mapper,  route_filter_parameters, 'route_filter_parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayName' => virtual_network_gateway_name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'routeFilterName' => route_filter_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -556,7 +593,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualNetworkGateway.mapper()
+            result_mapper = RouteFilter.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -566,7 +603,7 @@ module Azure::ARM::Network
         if status_code == 201
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualNetworkGateway.mapper()
+            result_mapper = RouteFilter.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -580,143 +617,55 @@ module Azure::ARM::Network
     end
 
     #
-    # Deletes the specified virtual network gateway.
+    # Updates a route filter in a specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param route_filter_parameters [PatchRouteFilter] Parameters supplied to the
+    # update route filter operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
+    # @return [RouteFilter] operation results.
     #
-    def begin_delete(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
-      response = begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
-      nil
-    end
-
-    #
-    # Deletes the specified virtual network gateway.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def begin_delete_with_http_info(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
-      begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers).value!
-    end
-
-    #
-    # Deletes the specified virtual network gateway.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def begin_delete_async(resource_group_name, virtual_network_gateway_name, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2016-09-01'
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayName' => virtual_network_gateway_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:delete, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 204 || status_code == 202 || status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Resets the primary of the virtual network gateway in the specified resource
-    # group.
-    #
-    # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param gateway_vip [String] Virtual network gateway vip address supplied to
-    # the begin reset of the active-active feature enabled gateway.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [VirtualNetworkGateway] operation results.
-    #
-    def begin_reset(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
-      response = begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip, custom_headers).value!
+    def begin_update(resource_group_name, route_filter_name, route_filter_parameters, custom_headers = nil)
+      response = begin_update_async(resource_group_name, route_filter_name, route_filter_parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Resets the primary of the virtual network gateway in the specified resource
-    # group.
+    # Updates a route filter in a specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param gateway_vip [String] Virtual network gateway vip address supplied to
-    # the begin reset of the active-active feature enabled gateway.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param route_filter_parameters [PatchRouteFilter] Parameters supplied to the
+    # update route filter operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_reset_with_http_info(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
-      begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip, custom_headers).value!
+    def begin_update_with_http_info(resource_group_name, route_filter_name, route_filter_parameters, custom_headers = nil)
+      begin_update_async(resource_group_name, route_filter_name, route_filter_parameters, custom_headers).value!
     end
 
     #
-    # Resets the primary of the virtual network gateway in the specified resource
-    # group.
+    # Updates a route filter in a specified resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
-    # @param virtual_network_gateway_name [String] The name of the virtual network
-    # gateway.
-    # @param gateway_vip [String] Virtual network gateway vip address supplied to
-    # the begin reset of the active-active feature enabled gateway.
+    # @param route_filter_name [String] The name of the route filter.
+    # @param route_filter_parameters [PatchRouteFilter] Parameters supplied to the
+    # update route filter operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_reset_async(resource_group_name, virtual_network_gateway_name, gateway_vip = nil, custom_headers = nil)
+    def begin_update_async(resource_group_name, route_filter_name, route_filter_parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'virtual_network_gateway_name is nil' if virtual_network_gateway_name.nil?
-      api_version = '2016-09-01'
+      fail ArgumentError, 'route_filter_name is nil' if route_filter_name.nil?
+      fail ArgumentError, 'route_filter_parameters is nil' if route_filter_parameters.nil?
+      api_version = '2016-12-01'
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
 
@@ -725,24 +674,33 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/reset'
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = PatchRouteFilter.mapper()
+      request_content = @client.serialize(request_mapper,  route_filter_parameters, 'route_filter_parameters')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'virtualNetworkGatewayName' => virtual_network_gateway_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'gatewayVip' => gateway_vip,'api-version' => api_version},
+          path_params: {'resourceGroupName' => resource_group_name,'routeFilterName' => route_filter_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
-      promise = @client.make_request_async(:post, path_template, options)
+      promise = @client.make_request_async(:patch, path_template, options)
 
       promise = promise.then do |result|
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 202 || status_code == 200
+        unless status_code == 200
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -752,7 +710,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualNetworkGateway.mapper()
+            result_mapper = RouteFilter.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -766,14 +724,101 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all virtual network gateways by resource group.
+    # Gets all route filters in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualNetworkGatewayListResult] operation results.
+    # @return [RouteFilterListResult] operation results.
+    #
+    def list_by_resource_group_next(next_page_link, custom_headers = nil)
+      response = list_by_resource_group_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets all route filters in a resource group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_by_resource_group_next_with_http_info(next_page_link, custom_headers = nil)
+      list_by_resource_group_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Gets all route filters in a resource group.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_by_resource_group_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = RouteFilterListResult.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets all route filters in a subscription.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RouteFilterListResult] operation results.
     #
     def list_next(next_page_link, custom_headers = nil)
       response = list_next_async(next_page_link, custom_headers).value!
@@ -781,7 +826,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all virtual network gateways by resource group.
+    # Gets all route filters in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -795,7 +840,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all virtual network gateways by resource group.
+    # Gets all route filters in a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -839,7 +884,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = VirtualNetworkGatewayListResult.mapper()
+            result_mapper = RouteFilterListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -853,17 +898,37 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all virtual network gateways by resource group.
+    # Gets all route filters in a resource group.
     #
     # @param resource_group_name [String] The name of the resource group.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [VirtualNetworkGatewayListResult] which provide lazy access to pages
-    # of the response.
+    # @return [RouteFilterListResult] which provide lazy access to pages of the
+    # response.
     #
-    def list_as_lazy(resource_group_name, custom_headers = nil)
-      response = list_async(resource_group_name, custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_by_resource_group_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Gets all route filters in a subscription.
+    #
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [RouteFilterListResult] which provide lazy access to pages of the
+    # response.
+    #
+    def list_as_lazy(custom_headers = nil)
+      response = list_async(custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|

@@ -6,12 +6,11 @@
 module Azure::ARM::Network
   module Models
     #
-    # Defines values for NetworkOperationStatus
+    # Defines values for Access
     #
-    module NetworkOperationStatus
-      InProgress = "InProgress"
-      Succeeded = "Succeeded"
-      Failed = "Failed"
+    module Access
+      Allow = "Allow"
+      Deny = "Deny"
     end
   end
 end
