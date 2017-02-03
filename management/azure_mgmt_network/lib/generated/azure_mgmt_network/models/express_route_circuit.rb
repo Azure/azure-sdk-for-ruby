@@ -210,6 +210,7 @@ module Azure::ARM::Network
               },
               etag: {
                 required: false,
+                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

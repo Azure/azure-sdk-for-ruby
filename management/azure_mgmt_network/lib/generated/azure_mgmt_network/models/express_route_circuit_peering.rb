@@ -19,7 +19,7 @@ module Azure::ARM::Network
       attr_accessor :peering_type
 
       # @return [ExpressRouteCircuitPeeringState] The state of peering.
-      # Possible values are: 'Disabled' and 'Enbaled'. Possible values include:
+      # Possible values are: 'Disabled' and 'Enabled'. Possible values include:
       # 'Disabled', 'Enabled'
       attr_accessor :state
 
@@ -50,6 +50,9 @@ module Azure::ARM::Network
       # @return [ExpressRouteCircuitPeeringConfig] The Microsoft peering
       # configuration.
       attr_accessor :microsoft_peering_config
+
+      # @return [RouteFilter] The reference of the RouteFilter resource.
+      attr_accessor :route_filter
 
       # @return [ExpressRouteCircuitStats] Gets peering stats.
       attr_accessor :stats
@@ -171,6 +174,14 @@ module Azure::ARM::Network
                   class_name: 'ExpressRouteCircuitPeeringConfig'
                 }
               },
+              route_filter: {
+                required: false,
+                serialized_name: 'properties.routeFilter',
+                type: {
+                  name: 'Composite',
+                  class_name: 'RouteFilter'
+                }
+              },
               stats: {
                 required: false,
                 serialized_name: 'properties.stats',
@@ -209,6 +220,7 @@ module Azure::ARM::Network
               },
               etag: {
                 required: false,
+                read_only: true,
                 serialized_name: 'etag',
                 type: {
                   name: 'String'

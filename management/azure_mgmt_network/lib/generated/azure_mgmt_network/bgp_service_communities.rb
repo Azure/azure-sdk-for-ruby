@@ -7,12 +7,12 @@ module Azure::ARM::Network
   #
   # Composite Swagger for Network Client
   #
-  class ExpressRouteServiceProviders
+  class BgpServiceCommunities
     include Azure::ARM::Network::Models
     include MsRestAzure
 
     #
-    # Creates and initializes a new instance of the ExpressRouteServiceProviders class.
+    # Creates and initializes a new instance of the BgpServiceCommunities class.
     # @param client service class for accessing basic functionality.
     #
     def initialize(client)
@@ -23,12 +23,12 @@ module Azure::ARM::Network
     attr_reader :client
 
     #
-    # Gets all the available express route service providers.
+    # Gets all the available bgp service communities.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<ExpressRouteServiceProvider>] operation results.
+    # @return [Array<BgpServiceCommunity>] operation results.
     #
     def list(custom_headers = nil)
       first_page = list_as_lazy(custom_headers)
@@ -36,7 +36,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all the available express route service providers.
+    # Gets all the available bgp service communities.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -48,7 +48,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all the available express route service providers.
+    # Gets all the available bgp service communities.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -65,7 +65,7 @@ module Azure::ARM::Network
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteServiceProviders'
+      path_template = '/subscriptions/{subscriptionId}/providers/Microsoft.Network/bgpServiceCommunities'
 
       request_url = @base_url || @client.base_url
 
@@ -92,7 +92,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ExpressRouteServiceProviderListResult.mapper()
+            result_mapper = BgpServiceCommunityListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -106,14 +106,14 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all the available express route service providers.
+    # Gets all the available bgp service communities.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ExpressRouteServiceProviderListResult] operation results.
+    # @return [BgpServiceCommunityListResult] operation results.
     #
     def list_next(next_page_link, custom_headers = nil)
       response = list_next_async(next_page_link, custom_headers).value!
@@ -121,7 +121,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all the available express route service providers.
+    # Gets all the available bgp service communities.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -135,7 +135,7 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all the available express route service providers.
+    # Gets all the available bgp service communities.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -179,7 +179,7 @@ module Azure::ARM::Network
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = ExpressRouteServiceProviderListResult.mapper()
+            result_mapper = BgpServiceCommunityListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -193,13 +193,13 @@ module Azure::ARM::Network
     end
 
     #
-    # Gets all the available express route service providers.
+    # Gets all the available bgp service communities.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [ExpressRouteServiceProviderListResult] which provide lazy access to
-    # pages of the response.
+    # @return [BgpServiceCommunityListResult] which provide lazy access to pages of
+    # the response.
     #
     def list_as_lazy(custom_headers = nil)
       response = list_async(custom_headers).value!
