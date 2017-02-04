@@ -9,8 +9,8 @@ module Azure::ARM::Storage
     # Defines values for KeyPermission
     #
     module KeyPermission
-      READ = "READ"
-      FULL = "FULL"
+      Read = "Read"
+      Full = "Full"
     end
   end
 end

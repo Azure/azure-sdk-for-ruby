@@ -6,31 +6,32 @@
 module Azure::ARM::Storage
   module Models
     #
-    # The parameters used to regenerate the storage account key.
+    # The List SAS credentials operation response.
     #
-    class StorageAccountRegenerateKeyParameters
+    class ListAccountSasResponse
 
       include MsRestAzure
 
-      # @return [String]
-      attr_accessor :key_name
+      # @return [String] List SAS credentials of storage account.
+      attr_accessor :account_sas_token
 
 
       #
-      # Mapper for StorageAccountRegenerateKeyParameters class as Ruby Hash.
+      # Mapper for ListAccountSasResponse class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'StorageAccountRegenerateKeyParameters',
+          serialized_name: 'ListAccountSasResponse',
           type: {
             name: 'Composite',
-            class_name: 'StorageAccountRegenerateKeyParameters',
+            class_name: 'ListAccountSasResponse',
             model_properties: {
-              key_name: {
-                required: true,
-                serialized_name: 'keyName',
+              account_sas_token: {
+                required: false,
+                read_only: true,
+                serialized_name: 'accountSasToken',
                 type: {
                   name: 'String'
                 }

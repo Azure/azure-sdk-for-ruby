@@ -6,11 +6,11 @@
 module Azure::ARM::Storage
   module Models
     #
-    # Defines values for AccountStatus
+    # Defines values for HttpProtocol
     #
-    module AccountStatus
-      Available = "available"
-      Unavailable = "unavailable"
+    module HttpProtocol
+      Httpshttp = "https,http"
+      Https = "https"
     end
   end
 end

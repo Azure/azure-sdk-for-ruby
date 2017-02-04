@@ -35,7 +35,7 @@ module Azure::ARM::Storage
 
       # @return [AccountStatus] Gets the status indicating whether the primary
       # location of the storage account is available or unavailable. Possible
-      # values include: 'Available', 'Unavailable'
+      # values include: 'available', 'unavailable'
       attr_accessor :status_of_primary
 
       # @return [DateTime] Gets the timestamp of the most recent instance of a
@@ -53,7 +53,7 @@ module Azure::ARM::Storage
       # @return [AccountStatus] Gets the status indicating whether the
       # secondary location of the storage account is available or unavailable.
       # Only available if the SKU name is Standard_GRS or Standard_RAGRS.
-      # Possible values include: 'Available', 'Unavailable'
+      # Possible values include: 'available', 'unavailable'
       attr_accessor :status_of_secondary
 
       # @return [DateTime] Gets the creation date and time of the storage

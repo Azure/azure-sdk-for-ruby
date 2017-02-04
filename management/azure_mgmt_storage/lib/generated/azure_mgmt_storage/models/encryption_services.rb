@@ -16,6 +16,18 @@ module Azure::ARM::Storage
       # service.
       attr_accessor :blob
 
+      # @return [EncryptionService] The encryption function of the file storage
+      # service.
+      attr_accessor :file
+
+      # @return [EncryptionService] The encryption function of the table
+      # storage service.
+      attr_accessor :table
+
+      # @return [EncryptionService] The encryption function of the queue
+      # storage service.
+      attr_accessor :queue
+
 
       #
       # Mapper for EncryptionServices class as Ruby Hash.
@@ -32,6 +44,32 @@ module Azure::ARM::Storage
               blob: {
                 required: false,
                 serialized_name: 'blob',
+                type: {
+                  name: 'Composite',
+                  class_name: 'EncryptionService'
+                }
+              },
+              file: {
+                required: false,
+                serialized_name: 'file',
+                type: {
+                  name: 'Composite',
+                  class_name: 'EncryptionService'
+                }
+              },
+              table: {
+                required: false,
+                read_only: true,
+                serialized_name: 'table',
+                type: {
+                  name: 'Composite',
+                  class_name: 'EncryptionService'
+                }
+              },
+              queue: {
+                required: false,
+                read_only: true,
+                serialized_name: 'queue',
                 type: {
                   name: 'Composite',
                   class_name: 'EncryptionService'
