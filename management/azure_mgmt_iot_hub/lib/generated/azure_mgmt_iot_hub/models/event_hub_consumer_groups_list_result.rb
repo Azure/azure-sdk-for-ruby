@@ -26,7 +26,7 @@ module Azure::ARM::IotHub
       #
       # Gets the rest of the items for the request, enabling auto-pagination.
       #
-      # @return [Array<>] operation results.
+      # @return [Array<String>] operation results.
       #
       def get_all_items
         items = @value
