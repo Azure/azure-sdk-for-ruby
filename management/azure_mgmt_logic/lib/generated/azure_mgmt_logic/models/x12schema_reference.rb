@@ -7,7 +7,7 @@ module Azure::ARM::Logic
   module Models
     #
     # Model object.
-    # 
+    #
     #
     class X12SchemaReference
 
