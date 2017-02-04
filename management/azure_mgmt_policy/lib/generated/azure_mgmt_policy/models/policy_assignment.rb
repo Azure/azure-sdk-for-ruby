@@ -21,6 +21,13 @@ module Azure::ARM::Policy
       # @return [String] The scope for the policy assignment.
       attr_accessor :scope
 
+      # @return Required if a parameter is used in policy rule.
+      attr_accessor :parameters
+
+      # @return [String] This message will be part of response in case of
+      # policy violation.
+      attr_accessor :description
+
       # @return [String] The ID of the policy assignment.
       attr_accessor :id
 
@@ -60,6 +67,20 @@ module Azure::ARM::Policy
               scope: {
                 required: false,
                 serialized_name: 'properties.scope',
+                type: {
+                  name: 'String'
+                }
+              },
+              parameters: {
+                required: false,
+                serialized_name: 'properties.parameters',
+                type: {
+                  name: 'Object'
+                }
+              },
+              description: {
+                required: false,
+                serialized_name: 'properties.description',
                 type: {
                   name: 'String'
                 }
