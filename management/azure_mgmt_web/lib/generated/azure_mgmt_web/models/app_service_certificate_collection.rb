@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Collection of certitificateorder certificates
+    # Collection of certitificateorder certificates.
     #
     class AppServiceCertificateCollection
 
       include MsRestAzure
 
-      # @return [Array<AppServiceCertificate>] Collection of resources
+      # @return [Array<AppServiceCertificate>] Collection of resources.
       attr_accessor :value
 
-      # @return [String] Link to next page of resources
+      # @return [String] Link to next page of resources.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -63,7 +63,7 @@ module Azure::ARM::Web
             class_name: 'AppServiceCertificateCollection',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',

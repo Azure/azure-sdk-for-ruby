@@ -6,23 +6,23 @@
 module Azure::ARM::Web
   module Models
     #
-    # Network Access control entry
+    # Network access control entry.
     #
     class NetworkAccessControlEntry
 
       include MsRestAzure
 
-      # @return [AccessControlEntryAction] Possible values include: 'Permit',
-      # 'Deny'
+      # @return [AccessControlEntryAction] Action object. Possible values
+      # include: 'Permit', 'Deny'
       attr_accessor :action
 
-      # @return [String]
+      # @return [String] Description.
       attr_accessor :description
 
-      # @return [Integer]
+      # @return [Integer] Order of precedence.
       attr_accessor :order
 
-      # @return [String]
+      # @return [String] Remote subnet.
       attr_accessor :remote_subnet
 
 

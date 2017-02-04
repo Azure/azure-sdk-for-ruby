@@ -15,26 +15,28 @@ module Azure::ARM::Web
 
       # @return [Integer] How often should be the backup executed (e.g. for
       # weekly backup, this should be set to 7 and FrequencyUnit should be set
-      # to Day)
+      # to Day). Default value: 7 .
       attr_accessor :frequency_interval
 
-      # @return [FrequencyUnit] How often should be the backup executed (e.g.
-      # for weekly backup, this should be set to Day and FrequencyInterval
-      # should be set to 7). Possible values include: 'Day', 'Hour'
+      # @return [FrequencyUnit] The unit of time for how often should be the
+      # backup executed (e.g. for weekly backup, this should be set to Day and
+      # FrequencyInterval should be set to 7). Possible values include: 'Day',
+      # 'Hour'. Default value: 'Day' .
       attr_accessor :frequency_unit
 
       # @return [Boolean] True if the retention policy should always keep at
       # least one backup in the storage account, regardless how old it is;
-      # false otherwise.
+      # false otherwise. Default value: true .
       attr_accessor :keep_at_least_one_backup
 
-      # @return [Integer] After how many days backups should be deleted
+      # @return [Integer] After how many days backups should be deleted.
+      # Default value: 90 .
       attr_accessor :retention_period_in_days
 
-      # @return [DateTime] When the schedule should start working
+      # @return [DateTime] When the schedule should start working.
       attr_accessor :start_time
 
-      # @return [DateTime] The last time when this schedule was triggered
+      # @return [DateTime] Last time when this schedule was triggered.
       attr_accessor :last_execution_time
 
 
@@ -51,8 +53,9 @@ module Azure::ARM::Web
             class_name: 'BackupSchedule',
             model_properties: {
               frequency_interval: {
-                required: false,
+                required: true,
                 serialized_name: 'frequencyInterval',
+                default_value: 7,
                 type: {
                   name: 'Number'
                 }
@@ -60,21 +63,24 @@ module Azure::ARM::Web
               frequency_unit: {
                 required: true,
                 serialized_name: 'frequencyUnit',
+                default_value: 'Day',
                 type: {
                   name: 'Enum',
                   module: 'FrequencyUnit'
                 }
               },
               keep_at_least_one_backup: {
-                required: false,
+                required: true,
                 serialized_name: 'keepAtLeastOneBackup',
+                default_value: true,
                 type: {
                   name: 'Boolean'
                 }
               },
               retention_period_in_days: {
-                required: false,
+                required: true,
                 serialized_name: 'retentionPeriodInDays',
+                default_value: 90,
                 type: {
                   name: 'Number'
                 }
@@ -88,6 +94,7 @@ module Azure::ARM::Web
               },
               last_execution_time: {
                 required: false,
+                read_only: true,
                 serialized_name: 'lastExecutionTime',
                 type: {
                   name: 'DateTime'

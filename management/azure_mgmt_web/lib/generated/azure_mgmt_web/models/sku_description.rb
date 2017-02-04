@@ -6,34 +6,34 @@
 module Azure::ARM::Web
   module Models
     #
-    # Describes a sku for a scalable resource
+    # Description of a SKU for a scalable resource.
     #
     class SkuDescription
 
       include MsRestAzure
 
-      # @return [String] Name of the resource sku
+      # @return [String] Name of the resource SKU.
       attr_accessor :name
 
-      # @return [String] Service Tier of the resource sku
+      # @return [String] Service tier of the resource SKU.
       attr_accessor :tier
 
-      # @return [String] Size specifier of the resource sku
+      # @return [String] Size specifier of the resource SKU.
       attr_accessor :size
 
-      # @return [String] Family code of the resource sku
+      # @return [String] Family code of the resource SKU.
       attr_accessor :family
 
-      # @return [Integer] Current number of instances assigned to the resource
+      # @return [Integer] Current number of instances assigned to the resource.
       attr_accessor :capacity
 
-      # @return [SkuCapacity] Min, max, and default scale values of the sku
+      # @return [SkuCapacity] Min, max, and default scale values of the SKU.
       attr_accessor :sku_capacity
 
-      # @return [Array<String>] Locations of the sku
+      # @return [Array<String>] Locations of the SKU.
       attr_accessor :locations
 
-      # @return [Array<Capability>] Capabilities of the sku, eg., is traffic
+      # @return [Array<Capability>] Capabilities of the SKU, e.g., is traffic
       # manager enabled?
       attr_accessor :capabilities
 

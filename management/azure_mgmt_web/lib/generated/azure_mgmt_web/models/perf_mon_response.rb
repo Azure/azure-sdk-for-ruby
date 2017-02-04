@@ -6,19 +6,19 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents the perf monitor api reponse
+    # Performance monitor API response.
     #
     class PerfMonResponse
 
       include MsRestAzure
 
-      # @return [String] Gets or sets the response code.
+      # @return [String] The response code.
       attr_accessor :code
 
-      # @return [String] Gets or sets the message.
+      # @return [String] The message.
       attr_accessor :message
 
-      # @return [PerfMonSet] Gets or sets the perf mon counters.
+      # @return [PerfMonSet] The performance monitor counters.
       attr_accessor :data
 
 

@@ -6,18 +6,17 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class containing deployment slot parameters
+    # Deployment slot parameters.
     #
     class CsmSlotEntity
 
       include MsRestAzure
 
-      # @return [String] Set the destination deployment slot during swap
-      # operation
+      # @return [String] Destination deployment slot during swap operation.
       attr_accessor :target_slot
 
-      # @return [Boolean] Get or set the flag indicating it should preserve
-      # VNet to the slot during swap
+      # @return [Boolean] <code>true</code> to preserve Virtual Network to the
+      # slot during swap; otherwise, <code>false</code>.
       attr_accessor :preserve_vnet
 
 
@@ -34,14 +33,14 @@ module Azure::ARM::Web
             class_name: 'CsmSlotEntity',
             model_properties: {
               target_slot: {
-                required: false,
+                required: true,
                 serialized_name: 'targetSlot',
                 type: {
                   name: 'String'
                 }
               },
               preserve_vnet: {
-                required: false,
+                required: true,
                 serialized_name: 'preserveVnet',
                 type: {
                   name: 'Boolean'

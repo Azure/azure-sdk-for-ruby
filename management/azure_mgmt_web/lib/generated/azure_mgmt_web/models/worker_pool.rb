@@ -6,27 +6,27 @@
 module Azure::ARM::Web
   module Models
     #
-    # Worker pool of a hostingEnvironment (App Service Environment)
+    # Worker pool of an App Service Environment.
     #
     class WorkerPool < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Integer] Worker size id for referencing this worker pool
+      # @return [Integer] Worker size ID for referencing this worker pool.
       attr_accessor :worker_size_id
 
-      # @return [ComputeModeOptions] Shared or dedicated web app hosting.
-      # Possible values include: 'Shared', 'Dedicated', 'Dynamic'
+      # @return [ComputeModeOptions] Shared or dedicated app hosting. Possible
+      # values include: 'Shared', 'Dedicated', 'Dynamic'
       attr_accessor :compute_mode
 
-      # @return [String] VM size of the worker pool instances
+      # @return [String] VM size of the worker pool instances.
       attr_accessor :worker_size
 
-      # @return [Integer] Number of instances in the worker pool
+      # @return [Integer] Number of instances in the worker pool.
       attr_accessor :worker_count
 
       # @return [Array<String>] Names of all instances in the worker pool (read
-      # only)
+      # only).
       attr_accessor :instance_names
 
       # @return [SkuDescription]
@@ -54,7 +54,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -126,6 +126,7 @@ module Azure::ARM::Web
               },
               instance_names: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.instanceNames',
                 type: {
                   name: 'Sequence',

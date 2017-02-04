@@ -6,27 +6,27 @@
 module Azure::ARM::Web
   module Models
     #
-    # Object that represents a SSL-enabled host name.
+    # SSL-enabled hostname.
     #
     class HostNameSslState
 
       include MsRestAzure
 
-      # @return [String] Host name
+      # @return [String] Hostname.
       attr_accessor :name
 
       # @return [SslState] SSL type. Possible values include: 'Disabled',
       # 'SniEnabled', 'IpBasedEnabled'
       attr_accessor :ssl_state
 
-      # @return [String] Virtual IP address assigned to the host name if IP
-      # based SSL is enabled
+      # @return [String] Virtual IP address assigned to the hostname if IP
+      # based SSL is enabled.
       attr_accessor :virtual_ip
 
-      # @return [String] SSL cert thumbprint
+      # @return [String] SSL certificate thumbprint.
       attr_accessor :thumbprint
 
-      # @return [Boolean] Set this flag to update existing host name
+      # @return [Boolean] Set to <code>true</code> to update existing hostname.
       attr_accessor :to_update
 
 
@@ -50,7 +50,7 @@ module Azure::ARM::Web
                 }
               },
               ssl_state: {
-                required: true,
+                required: false,
                 serialized_name: 'sslState',
                 type: {
                   name: 'Enum',

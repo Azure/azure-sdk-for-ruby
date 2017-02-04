@@ -6,13 +6,13 @@
 module Azure::ARM::Web
   module Models
     #
-    # Instance of a web app
+    # Instance of an app.
     #
     class SiteInstance < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Name of instance
+      # @return [String] Name of instance.
       attr_accessor :site_instance_name
 
 
@@ -37,7 +37,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -80,6 +80,7 @@ module Azure::ARM::Web
               },
               site_instance_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.name',
                 type: {
                   name: 'String'

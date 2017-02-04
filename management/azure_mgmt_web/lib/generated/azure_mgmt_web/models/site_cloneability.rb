@@ -6,28 +6,28 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents whether or not a web app is cloneable
+    # Represents whether or not an app is cloneable.
     #
     class SiteCloneability
 
       include MsRestAzure
 
-      # @return [CloneAbilityResult] Name of web app. Possible values include:
+      # @return [CloneAbilityResult] Name of app. Possible values include:
       # 'Cloneable', 'PartiallyCloneable', 'NotCloneable'
       attr_accessor :result
 
       # @return [Array<SiteCloneabilityCriterion>] List of features enabled on
-      # web app that prevent cloning
+      # app that prevent cloning.
       attr_accessor :blocking_features
 
       # @return [Array<SiteCloneabilityCriterion>] List of features enabled on
-      # web app that are non-blocking but cannot be cloned. The web app can
-      # still be cloned
-      # but the features in this list will not be set up on cloned web app.
+      # app that are non-blocking but cannot be cloned. The app can still be
+      # cloned
+      # but the features in this list will not be set up on cloned app.
       attr_accessor :unsupported_features
 
       # @return [Array<SiteCloneabilityCriterion>] List of blocking application
-      # characteristics
+      # characteristics.
       attr_accessor :blocking_characteristics
 
 
@@ -44,7 +44,7 @@ module Azure::ARM::Web
             class_name: 'SiteCloneability',
             model_properties: {
               result: {
-                required: true,
+                required: false,
                 serialized_name: 'result',
                 type: {
                   name: 'Enum',

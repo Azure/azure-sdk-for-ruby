@@ -6,22 +6,22 @@
 module Azure::ARM::Web
   module Models
     #
-    # Specification for using a virtual network
+    # Specification for using a Virtual Network.
     #
     class VirtualNetworkProfile
 
       include MsRestAzure
 
-      # @return [String] Resource id of the virtual network
+      # @return [String] Resource id of the Virtual Network.
       attr_accessor :id
 
-      # @return [String] Name of the virtual network (read-only)
+      # @return [String] Name of the Virtual Network (read-only).
       attr_accessor :name
 
-      # @return [String] Resource type of the virtual network (read-only)
+      # @return [String] Resource type of the Virtual Network (read-only).
       attr_accessor :type
 
-      # @return [String] Subnet within the virtual network
+      # @return [String] Subnet within the Virtual Network.
       attr_accessor :subnet
 
 

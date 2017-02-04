@@ -6,22 +6,22 @@
 module Azure::ARM::Web
   module Models
     #
-    # MachineKey of Azure web site
+    # MachineKey of an app.
     #
     class SiteMachineKey
 
       include MsRestAzure
 
-      # @return [String] MachineKeyValidation
+      # @return [String] MachineKey validation.
       attr_accessor :validation
 
-      # @return [String] ValidationKey
+      # @return [String] Validation key.
       attr_accessor :validation_key
 
-      # @return [String] Decryption
+      # @return [String] Decryption.
       attr_accessor :decryption
 
-      # @return [String] DecryptionKey
+      # @return [String] Decryption key.
       attr_accessor :decryption_key
 
 

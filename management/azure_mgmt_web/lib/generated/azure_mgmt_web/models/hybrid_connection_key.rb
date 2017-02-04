@@ -13,10 +13,10 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [String] The name of the send key
+      # @return [String] The name of the send key.
       attr_accessor :send_key_name
 
-      # @return [String] The value of the send key
+      # @return [String] The value of the send key.
       attr_accessor :send_key_value
 
 
@@ -41,7 +41,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -84,6 +84,7 @@ module Azure::ARM::Web
               },
               send_key_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.sendKeyName',
                 type: {
                   name: 'String'
@@ -91,6 +92,7 @@ module Azure::ARM::Web
               },
               send_key_value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.sendKeyValue',
                 type: {
                   name: 'String'

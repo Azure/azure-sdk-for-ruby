@@ -6,26 +6,26 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class containing metric information
+    # Metric information.
     #
     class PerfMonSet
 
       include MsRestAzure
 
-      # @return [String] Unique key name of the counter
+      # @return [String] Unique key name of the counter.
       attr_accessor :name
 
-      # @return [DateTime] Start time of the period
+      # @return [DateTime] Start time of the period.
       attr_accessor :start_time
 
-      # @return [DateTime] End time of the period
+      # @return [DateTime] End time of the period.
       attr_accessor :end_time
 
-      # @return [String] Presented time grain
+      # @return [String] Presented time grain.
       attr_accessor :time_grain
 
       # @return [Array<PerfMonSample>] Collection of workers that are active
-      # during this time
+      # during this time.
       attr_accessor :values
 
 

@@ -12,22 +12,22 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [String] Basic error code
+      # @return [String] Basic error code.
       attr_accessor :code
 
-      # @return [String] Any details of the error
+      # @return [String] Any details of the error.
       attr_accessor :message
 
-      # @return [String] Type of error
+      # @return [String] Type of error.
       attr_accessor :extended_code
 
-      # @return [String] Message template
+      # @return [String] Message template.
       attr_accessor :message_template
 
-      # @return [Array<String>] Parameters for the template
+      # @return [Array<String>] Parameters for the template.
       attr_accessor :parameters
 
-      # @return [Array<ErrorEntity>] Inner errors
+      # @return [Array<ErrorEntity>] Inner errors.
       attr_accessor :inner_errors
 
 

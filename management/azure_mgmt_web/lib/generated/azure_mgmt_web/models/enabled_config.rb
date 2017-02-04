@@ -6,13 +6,13 @@
 module Azure::ARM::Web
   module Models
     #
-    # Enabled configuration
+    # Enabled configuration.
     #
     class EnabledConfig
 
       include MsRestAzure
 
-      # @return [Boolean] Enabled
+      # @return [Boolean] Enabled.
       attr_accessor :enabled
 
 

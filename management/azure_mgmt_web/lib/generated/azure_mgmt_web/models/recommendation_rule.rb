@@ -7,36 +7,32 @@ module Azure::ARM::Web
   module Models
     #
     # Represents a recommendation rule that the recommendation engine can
-    # perform
+    # perform.
     #
     class RecommendationRule
 
       include MsRestAzure
 
-      # @return [String] Unique name of the rule
+      # @return [String] Unique name of the rule.
       attr_accessor :name
 
-      # @return [String] UI friendly name of the rule
+      # @return [String] UI friendly name of the rule.
       attr_accessor :display_name
 
-      # @return [String] Localized name of the rule (Good for UI)
+      # @return [String] Localized name of the rule (Good for UI).
       attr_accessor :message
 
-      # @return [String] Recommendation ID of an associated recommendation
-      # object tied to the rule, if exists.
+      # @return Recommendation ID of an associated recommendation object tied
+      # to the rule, if exists.
       # If such an object doesn't exist, it is set to null.
       attr_accessor :recommendation_id
 
-      # @return [String] Localized detailed description of the rule
+      # @return [String] Localized detailed description of the rule.
       attr_accessor :description
 
       # @return [String] Name of action that is recommended by this rule in
-      # string
+      # string.
       attr_accessor :action_name
-
-      # @return [Integer] On/off flag indicating the rule is currently enabled
-      # or disabled.
-      attr_accessor :enabled
 
       # @return [NotificationLevel] Level of impact indicating how critical
       # this rule is. Possible values include: 'Critical', 'Warning',
@@ -44,7 +40,8 @@ module Azure::ARM::Web
       attr_accessor :level
 
       # @return [Channels] List of available channels that this rule applies.
-      # Possible values include: 'Notification', 'Api', 'Email', 'All'
+      # Possible values include: 'Notification', 'Api', 'Email', 'Webhook',
+      # 'All'
       attr_accessor :channels
 
       # @return [Array<String>] An array of category tags that the rule
@@ -106,15 +103,8 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              enabled: {
-                required: false,
-                serialized_name: 'enabled',
-                type: {
-                  name: 'Number'
-                }
-              },
               level: {
-                required: true,
+                required: false,
                 serialized_name: 'level',
                 type: {
                   name: 'Enum',
@@ -122,7 +112,7 @@ module Azure::ARM::Web
                 }
               },
               channels: {
-                required: true,
+                required: false,
                 serialized_name: 'channels',
                 type: {
                   name: 'Enum',

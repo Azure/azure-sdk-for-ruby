@@ -6,23 +6,29 @@
 module Azure::ARM::Web
   module Models
     #
-    # Describes if a resource name is available
+    # Information regarding availbility of a resource name.
     #
     class ResourceNameAvailability
 
       include MsRestAzure
 
-      # @return [Boolean] True indicates name is valid and available.  False
-      # indicates the name is invalid, unavailable, or both.
+      # @return [Boolean] <code>true</code> indicates name is valid and
+      # available. <code>false</code> indicates the name is invalid,
+      # unavailable, or both.
       attr_accessor :name_available
 
-      # @return [String] Required if nameAvailable is false. 'Invalid'
-      # indicates the name provided does not match Azure WebApp service’s
-      # naming requirements. 'AlreadyExists' indicates that the name is already
-      # in use and is therefore unavailable.
+      # @return [InAvailabilityReasonType] <code>Invalid</code> indicates the
+      # name provided does not match Azure App Service naming requirements.
+      # <code>AlreadyExists</code> indicates that the name is already in use
+      # and is therefore unavailable. Possible values include: 'Invalid',
+      # 'AlreadyExists'
       attr_accessor :reason
 
-      # @return [String]
+      # @return [String] If reason == invalid, provide the user with the reason
+      # why the given name is invalid, and provide the resource naming
+      # requirements so that the user can select a valid name. If reason ==
+      # AlreadyExists, explain that resource name is already in use, and direct
+      # them to select a different name.
       attr_accessor :message
 
 

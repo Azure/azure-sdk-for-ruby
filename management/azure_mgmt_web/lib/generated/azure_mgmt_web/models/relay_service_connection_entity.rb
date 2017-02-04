@@ -6,7 +6,7 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class that represents a Biztalk Hybrid Connection
+    # Hybrid Connection for an App Service app.
     #
     class RelayServiceConnectionEntity < MsRestAzure::Resource
 
@@ -55,7 +55,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

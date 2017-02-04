@@ -6,17 +6,17 @@
 module Azure::ARM::Web
   module Models
     #
-    # Domain recommendation search parameters
+    # Domain recommendation search parameters.
     #
     class DomainRecommendationSearchParameters
 
       include MsRestAzure
 
       # @return [String] Keywords to be used for generating domain
-      # recommendations
+      # recommendations.
       attr_accessor :keywords
 
-      # @return [Integer] Maximum number of recommendations
+      # @return [Integer] Maximum number of recommendations.
       attr_accessor :max_domain_recommendations
 
 

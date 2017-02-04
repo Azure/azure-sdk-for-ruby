@@ -6,24 +6,24 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class representing certificate reissue request
+    # Class representing certificate reissue request.
     #
     class ReissueCertificateOrderRequest < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Integer] Certificate Key Size
+      # @return [Integer] Certificate Key Size.
       attr_accessor :key_size
 
       # @return [Integer] Delay in hours to revoke existing certificate after
-      # the new certificate is issued
+      # the new certificate is issued.
       attr_accessor :delay_existing_revoke_in_hours
 
-      # @return [String] Csr to be used for re-key operation
+      # @return [String] Csr to be used for re-key operation.
       attr_accessor :csr
 
       # @return [Boolean] Should we change the ASC type (from managed private
-      # key to external private key and vice versa)
+      # key to external private key and vice versa).
       attr_accessor :is_private_key_external
 
 
@@ -48,7 +48,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

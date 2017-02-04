@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Collection of sites
+    # Collection of App Service apps.
     #
     class WebAppCollection
 
       include MsRestAzure
 
-      # @return [Array<Site>] Collection of resources
+      # @return [Array<Site>] Collection of resources.
       attr_accessor :value
 
-      # @return [String] Link to next page of resources
+      # @return [String] Link to next page of resources.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -63,7 +63,7 @@ module Azure::ARM::Web
             class_name: 'WebAppCollection',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',

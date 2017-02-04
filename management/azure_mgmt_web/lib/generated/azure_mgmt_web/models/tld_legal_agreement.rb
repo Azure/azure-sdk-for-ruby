@@ -6,22 +6,22 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents a legal agreement for top level domain
+    # Legal agreement for a top level domain.
     #
     class TldLegalAgreement
 
       include MsRestAzure
 
-      # @return [String] Unique identifier for the agreement
+      # @return [String] Unique identifier for the agreement.
       attr_accessor :agreement_key
 
-      # @return [String] Agreement title
+      # @return [String] Agreement title.
       attr_accessor :title
 
-      # @return [String] Agreement details
+      # @return [String] Agreement details.
       attr_accessor :content
 
-      # @return [String] Url where a copy of the agreement details is hosted
+      # @return [String] URL where a copy of the agreement details is hosted.
       attr_accessor :url
 
 
@@ -38,21 +38,21 @@ module Azure::ARM::Web
             class_name: 'TldLegalAgreement',
             model_properties: {
               agreement_key: {
-                required: false,
+                required: true,
                 serialized_name: 'agreementKey',
                 type: {
                   name: 'String'
                 }
               },
               title: {
-                required: false,
+                required: true,
                 serialized_name: 'title',
                 type: {
                   name: 'String'
                 }
               },
               content: {
-                required: false,
+                required: true,
                 serialized_name: 'content',
                 type: {
                   name: 'String'

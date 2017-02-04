@@ -6,7 +6,7 @@
 module Azure::ARM::Web
   module Models
     #
-    # Application logs azure blob storage configuration
+    # Application logs azure blob storage configuration.
     #
     class AzureBlobStorageApplicationLogsConfig
 
@@ -17,7 +17,7 @@ module Azure::ARM::Web
       attr_accessor :level
 
       # @return [String] SAS url to a azure blob container with
-      # read/write/list/delete permissions
+      # read/write/list/delete permissions.
       attr_accessor :sas_url
 
       # @return [Integer] Retention in days.

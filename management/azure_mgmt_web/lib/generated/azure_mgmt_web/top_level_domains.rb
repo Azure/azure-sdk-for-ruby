@@ -23,9 +23,9 @@ module Azure::ARM::Web
     attr_reader :client
 
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -38,9 +38,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -52,9 +52,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -63,7 +63,7 @@ module Azure::ARM::Web
     #
     def list_async(custom_headers = nil)
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-04-01'
 
 
       request_headers = {}
@@ -112,11 +112,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets details of a top level domain
+    # Get details of a top-level domain.
     #
-    # Gets details of a top level domain
+    # Get details of a top-level domain.
     #
-    # @param name [String] Name of the top level domain
+    # @param name [String] Name of the top-level domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -128,11 +128,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets details of a top level domain
+    # Get details of a top-level domain.
     #
-    # Gets details of a top level domain
+    # Get details of a top-level domain.
     #
-    # @param name [String] Name of the top level domain
+    # @param name [String] Name of the top-level domain.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -143,11 +143,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets details of a top level domain
+    # Get details of a top-level domain.
     #
-    # Gets details of a top level domain
+    # Get details of a top-level domain.
     #
-    # @param name [String] Name of the top level domain
+    # @param name [String] Name of the top-level domain.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -156,7 +156,7 @@ module Azure::ARM::Web
     def get_async(name, custom_headers = nil)
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-04-01'
 
 
       request_headers = {}
@@ -205,13 +205,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
-    # @param name [String] Name of the top level domain
+    # @param name [String] Name of the top-level domain.
     # @param agreement_option [TopLevelDomainAgreementOption] Domain agreement
-    # options
+    # options.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -223,13 +225,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
-    # @param name [String] Name of the top level domain
+    # @param name [String] Name of the top-level domain.
     # @param agreement_option [TopLevelDomainAgreementOption] Domain agreement
-    # options
+    # options.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -240,13 +244,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
-    # @param name [String] Name of the top level domain
+    # @param name [String] Name of the top-level domain.
     # @param agreement_option [TopLevelDomainAgreementOption] Domain agreement
-    # options
+    # options.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -256,7 +262,7 @@ module Azure::ARM::Web
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'agreement_option is nil' if agreement_option.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-03-01'
+      api_version = '2015-04-01'
 
 
       request_headers = {}
@@ -314,9 +320,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -331,9 +337,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -347,9 +353,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -407,9 +413,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -424,9 +432,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -440,9 +450,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -500,9 +512,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
-    # Lists all top level domains supported for registration
+    # Get all top-level domains supported for registration.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -522,13 +534,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
-    # Lists legal agreements that user needs to accept before purchasing domain
+    # Gets all legal agreements that user needs to accept before purchasing a
+    # domain.
     #
-    # @param name [String] Name of the top level domain
+    # @param name [String] Name of the top-level domain.
     # @param agreement_option [TopLevelDomainAgreementOption] Domain agreement
-    # options
+    # options.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

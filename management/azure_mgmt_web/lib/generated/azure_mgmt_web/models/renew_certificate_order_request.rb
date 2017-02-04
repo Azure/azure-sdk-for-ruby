@@ -6,20 +6,20 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class representing certificate renew request
+    # Class representing certificate renew request.
     #
     class RenewCertificateOrderRequest < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [Integer] Certificate Key Size
+      # @return [Integer] Certificate Key Size.
       attr_accessor :key_size
 
-      # @return [String] Csr to be used for re-key operation
+      # @return [String] Csr to be used for re-key operation.
       attr_accessor :csr
 
       # @return [Boolean] Should we change the ASC type (from managed private
-      # key to external private key and vice versa)
+      # key to external private key and vice versa).
       attr_accessor :is_private_key_external
 
 
@@ -44,7 +44,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

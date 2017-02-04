@@ -6,24 +6,40 @@
 module Azure::ARM::Web
   module Models
     #
-    # Resource validation request content
+    # Resource validation request content.
     #
     class ValidateRequest
 
       include MsRestAzure
 
-      # @return [String] Resource name to verify
+      # @return [String] Resource name to verify.
       attr_accessor :name
 
       # @return [ValidateResourceTypes] Resource type used for verification.
       # Possible values include: 'ServerFarm', 'Site'
       attr_accessor :type
 
-      # @return [String] Expected location of the resource
+      # @return [String] Expected location of the resource.
       attr_accessor :location
 
-      # @return [ValidateProperties] Properties of the resource to validate
-      attr_accessor :properties
+      # @return [String] ARM resource ID of an App Service plan that would host
+      # the app.
+      attr_accessor :server_farm_id
+
+      # @return [String] Name of the target SKU for the App Service plan.
+      attr_accessor :sku_name
+
+      # @return [Boolean] <code>true</code> if App Service plan is for Linux
+      # workers; otherwise, <code>false</code>.
+      attr_accessor :need_linux_workers
+
+      # @return [Integer] Target capacity of the App Service plan (number of
+      # VM's).
+      attr_accessor :capacity
+
+      # @return [String] Name of App Service Environment where app or App
+      # Service plan should be created.
+      attr_accessor :hosting_environment
 
 
       #
@@ -39,32 +55,62 @@ module Azure::ARM::Web
             class_name: 'ValidateRequest',
             model_properties: {
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
               type: {
-                required: false,
+                required: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
               location: {
-                required: false,
+                required: true,
                 serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
               },
-              properties: {
+              server_farm_id: {
                 required: false,
-                serialized_name: 'properties',
+                serialized_name: 'properties.serverFarmId',
                 type: {
-                  name: 'Composite',
-                  class_name: 'ValidateProperties'
+                  name: 'String'
+                }
+              },
+              sku_name: {
+                required: false,
+                serialized_name: 'properties.skuName',
+                type: {
+                  name: 'String'
+                }
+              },
+              need_linux_workers: {
+                required: false,
+                serialized_name: 'properties.needLinuxWorkers',
+                type: {
+                  name: 'Boolean'
+                }
+              },
+              capacity: {
+                required: false,
+                serialized_name: 'properties.capacity',
+                constraints: {
+                  InclusiveMinimum: 1
+                },
+                type: {
+                  name: 'Number'
+                }
+              },
+              hosting_environment: {
+                required: false,
+                serialized_name: 'properties.hostingEnvironment',
+                type: {
+                  name: 'String'
                 }
               }
             }

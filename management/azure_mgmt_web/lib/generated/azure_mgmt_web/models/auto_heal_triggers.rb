@@ -6,26 +6,23 @@
 module Azure::ARM::Web
   module Models
     #
-    # AutoHealTriggers - describes the triggers for auto-heal.
+    # Triggers for auto-heal.
     #
     class AutoHealTriggers
 
       include MsRestAzure
 
-      # @return [RequestsBasedTrigger] Requests - Defines a rule based on total
-      # requests
+      # @return [RequestsBasedTrigger] A rule based on total requests.
       attr_accessor :requests
 
-      # @return [Integer] PrivateBytesInKB - Defines a rule based on private
-      # bytes
+      # @return [Integer] A rule based on private bytes.
       attr_accessor :private_bytes_in_kb
 
-      # @return [Array<StatusCodesBasedTrigger>] StatusCodes - Defines a rule
-      # based on status codes
+      # @return [Array<StatusCodesBasedTrigger>] A rule based on status codes.
       attr_accessor :status_codes
 
-      # @return [SlowRequestsBasedTrigger] SlowRequests - Defines a rule based
-      # on request execution time
+      # @return [SlowRequestsBasedTrigger] A rule based on request execution
+      # time.
       attr_accessor :slow_requests
 
 

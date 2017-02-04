@@ -6,19 +6,19 @@
 module Azure::ARM::Web
   module Models
     #
-    # SlowRequestsBasedTrigger
+    # Trigger based on request execution time.
     #
     class SlowRequestsBasedTrigger
 
       include MsRestAzure
 
-      # @return [String] TimeTaken
+      # @return [String] Time taken.
       attr_accessor :time_taken
 
-      # @return [Integer] Count
+      # @return [Integer] Count.
       attr_accessor :count
 
-      # @return [String] TimeInterval
+      # @return [String] Time interval.
       attr_accessor :time_interval
 
 

@@ -6,7 +6,7 @@
 module Azure::ARM::Web
   module Models
     #
-    # Response for a recover site request
+    # Response for an app recovery request.
     #
     class RecoverResponse < MsRestAzure::Resource
 
@@ -38,7 +38,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -81,6 +81,7 @@ module Azure::ARM::Web
               },
               operation_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.operationId',
                 type: {
                   name: 'String'

@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Diagnostics for a hosting environment (App Service Environment)
+    # Diagnostics for an App Service Environment.
     #
     class HostingEnvironmentDiagnostics
 
       include MsRestAzure
 
-      # @return [String] Name/identifier of the diagnostics
+      # @return [String] Name/identifier of the diagnostics.
       attr_accessor :name
 
-      # @return [String] Diagnostics output
+      # @return [String] Diagnostics output.
       attr_accessor :diagnosics_output
 
 

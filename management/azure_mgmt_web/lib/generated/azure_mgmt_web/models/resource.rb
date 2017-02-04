@@ -6,40 +6,36 @@
 module Azure::ARM::Web
   module Models
     #
-    # The plan object in an ARM, represents a marketplace plan
+    # Azure resource.
     #
-    class ArmPlan
+    class Resource < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] The name
-      attr_accessor :name
-
-      # @return [String] The publisher
-      attr_accessor :publisher
-
-      # @return [String] The product
-      attr_accessor :product
-
-      # @return [String] The promotion code
-      attr_accessor :promotion_code
-
-      # @return [String] Version of product
-      attr_accessor :version
+      # @return [String] Kind of resource.
+      attr_accessor :kind
 
 
       #
-      # Mapper for ArmPlan class as Ruby Hash.
+      # Mapper for Resource class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ArmPlan',
+          serialized_name: 'Resource',
           type: {
             name: 'Composite',
-            class_name: 'ArmPlan',
+            class_name: 'Resource',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: false,
                 serialized_name: 'name',
@@ -47,32 +43,39 @@ module Azure::ARM::Web
                   name: 'String'
                 }
               },
-              publisher: {
+              kind: {
                 required: false,
-                serialized_name: 'publisher',
+                serialized_name: 'kind',
                 type: {
                   name: 'String'
                 }
               },
-              product: {
-                required: false,
-                serialized_name: 'product',
+              location: {
+                required: true,
+                serialized_name: 'location',
                 type: {
                   name: 'String'
                 }
               },
-              promotion_code: {
+              type: {
                 required: false,
-                serialized_name: 'promotionCode',
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }
               },
-              version: {
+              tags: {
                 required: false,
-                serialized_name: 'version',
+                serialized_name: 'tags',
                 type: {
-                  name: 'String'
+                  name: 'Dictionary',
+                  value: {
+                      required: false,
+                      serialized_name: 'StringElementType',
+                      type: {
+                        name: 'String'
+                      }
+                  }
                 }
               }
             }

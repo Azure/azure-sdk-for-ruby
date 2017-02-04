@@ -6,25 +6,25 @@
 module Azure::ARM::Web
   module Models
     #
-    # StatusCodeBasedTrigger
+    # Trigger based on status code.
     #
     class StatusCodesBasedTrigger
 
       include MsRestAzure
 
-      # @return [Integer] HTTP status code
+      # @return [Integer] HTTP status code.
       attr_accessor :status
 
-      # @return [Integer] SubStatus
+      # @return [Integer] SubStatus.
       attr_accessor :sub_status
 
-      # @return [Integer] Win32 error code
+      # @return [Integer] Win32 error code.
       attr_accessor :win32status
 
-      # @return [Integer] Count
+      # @return [Integer] Count.
       attr_accessor :count
 
-      # @return [String] TimeInterval
+      # @return [String] Time interval.
       attr_accessor :time_interval
 
 

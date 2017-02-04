@@ -6,17 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class repesenting metrics availability and retention
+    # Metric availability and retention.
     #
     class MetricAvailabilily
 
       include MsRestAzure
 
-      # @return [String] Time grain
+      # @return [String] Time grain.
       attr_accessor :time_grain
 
-      # @return [String] Retention period for the current
-      # {Microsoft.Web.Hosting.Administration.MetricAvailabilily.TimeGrain}
+      # @return [String] Retention period for the current time grain.
       attr_accessor :retention
 
 

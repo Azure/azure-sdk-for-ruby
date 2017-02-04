@@ -12,6 +12,7 @@ module Azure::ARM::Web
       Notification = "Notification"
       Api = "Api"
       Email = "Email"
+      Webhook = "Webhook"
       All = "All"
     end
   end

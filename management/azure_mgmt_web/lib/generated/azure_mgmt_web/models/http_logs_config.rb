@@ -6,18 +6,18 @@
 module Azure::ARM::Web
   module Models
     #
-    # Http logs configuration
+    # Http logs configuration.
     #
     class HttpLogsConfig
 
       include MsRestAzure
 
       # @return [FileSystemHttpLogsConfig] Http logs to file system
-      # configuration
+      # configuration.
       attr_accessor :file_system
 
       # @return [AzureBlobStorageHttpLogsConfig] Http logs to azure blob
-      # storage configuration
+      # storage configuration.
       attr_accessor :azure_blob_storage
 
 

@@ -6,27 +6,29 @@
 module Azure::ARM::Web
   module Models
     #
-    # Description of a backup which will be performed
+    # Description of a backup which will be performed.
     #
     class BackupRequest < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Name of the backup
+      # @return [String] Name of the backup.
       attr_accessor :backup_request_name
 
       # @return [Boolean] True if the backup schedule is enabled (must be
-      # included in that case), false if the backup schedule should be disabled
+      # included in that case), false if the backup schedule should be
+      # disabled.
       attr_accessor :enabled
 
-      # @return [String] SAS URL to the container
+      # @return [String] SAS URL to the container.
       attr_accessor :storage_account_url
 
       # @return [BackupSchedule] Schedule for the backup if it is executed
-      # periodically
+      # periodically.
       attr_accessor :backup_schedule
 
-      # @return [Array<DatabaseBackupSetting>] Databases included in the backup
+      # @return [Array<DatabaseBackupSetting>] Databases included in the
+      # backup.
       attr_accessor :databases
 
       # @return [BackupRestoreOperationType] Type of the backup. Possible
@@ -55,7 +57,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

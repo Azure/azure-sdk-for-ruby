@@ -6,25 +6,25 @@
 module Azure::ARM::Web
   module Models
     #
-    # Describes the Source Control OAuth Token
+    # The source control OAuth token.
     #
     class SourceControl < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Name or Source Control Type
+      # @return [String] Name or source control type.
       attr_accessor :source_control_name
 
-      # @return [String] OAuth Access Token
+      # @return [String] OAuth access token.
       attr_accessor :token
 
-      # @return [String] OAuth Access Token Secret
+      # @return [String] OAuth access token secret.
       attr_accessor :token_secret
 
-      # @return [String] OAuth Refresh Token
+      # @return [String] OAuth refresh token.
       attr_accessor :refresh_token
 
-      # @return [DateTime] OAuth Token Expiration
+      # @return [DateTime] OAuth token expiration.
       attr_accessor :expiration_time
 
 
@@ -49,7 +49,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

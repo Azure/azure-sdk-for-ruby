@@ -6,20 +6,20 @@
 module Azure::ARM::Web
   module Models
     #
-    # Resource name availability request content
+    # Resource name availability request content.
     #
     class ResourceNameAvailabilityRequest
 
       include MsRestAzure
 
-      # @return [String] Resource name to verify
+      # @return [String] Resource name to verify.
       attr_accessor :name
 
       # @return [CheckNameResourceTypes] Resource type used for verification.
       # Possible values include: 'Site', 'Slot', 'HostingEnvironment'
       attr_accessor :type
 
-      # @return [Boolean] Is fully qualified domain name
+      # @return [Boolean] Is fully qualified domain name.
       attr_accessor :is_fqdn
 
 
@@ -36,14 +36,14 @@ module Azure::ARM::Web
             class_name: 'ResourceNameAvailabilityRequest',
             model_properties: {
               name: {
-                required: false,
+                required: true,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
                 }
               },
               type: {
-                required: false,
+                required: true,
                 serialized_name: 'type',
                 type: {
                   name: 'String'

@@ -6,27 +6,31 @@
 module Azure::ARM::Web
   module Models
     #
-    # A mobile service
+    # Hybrid Connection limits contract. This is used to return the plan limits
+    # of Hybrid Connections.
     #
-    class ClassicMobileService < MsRestAzure::Resource
+    class HybridConnectionLimits < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Name of the mobile service
-      attr_accessor :classic_mobile_service_name
+      # @return [Integer] The current number of Hybrid Connections.
+      attr_accessor :current
+
+      # @return [Integer] The maximum number of Hybrid Connections allowed.
+      attr_accessor :maximum
 
 
       #
-      # Mapper for ClassicMobileService class as Ruby Hash.
+      # Mapper for HybridConnectionLimits class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'ClassicMobileService',
+          serialized_name: 'HybridConnectionLimits',
           type: {
             name: 'Composite',
-            class_name: 'ClassicMobileService',
+            class_name: 'HybridConnectionLimits',
             model_properties: {
               id: {
                 required: false,
@@ -37,7 +41,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -78,11 +82,20 @@ module Azure::ARM::Web
                   }
                 }
               },
-              classic_mobile_service_name: {
+              current: {
                 required: false,
-                serialized_name: 'properties.name',
+                read_only: true,
+                serialized_name: 'properties.current',
                 type: {
-                  name: 'String'
+                  name: 'Number'
+                }
+              },
+              maximum: {
+                required: false,
+                read_only: true,
+                serialized_name: 'properties.maximum',
+                type: {
+                  name: 'Number'
                 }
               }
             }

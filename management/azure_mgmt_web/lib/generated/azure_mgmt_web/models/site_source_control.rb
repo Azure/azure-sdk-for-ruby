@@ -6,25 +6,29 @@
 module Azure::ARM::Web
   module Models
     #
-    # Describes the source control configuration for web app
+    # Source control configuration for an app.
     #
     class SiteSourceControl < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Repository or source control url
+      # @return [String] Repository or source control URL.
       attr_accessor :repo_url
 
-      # @return [String] Name of branch to use for deployment
+      # @return [String] Name of branch to use for deployment.
       attr_accessor :branch
 
-      # @return [Boolean] Whether to manual or continuous integration
+      # @return [Boolean] <code>true</code> to limit to manual integration;
+      # <code>false</code> to enable continuous integration (which configures
+      # webhooks into online repos like GitHub).
       attr_accessor :is_manual_integration
 
-      # @return [Boolean] Whether to manual or continuous integration
+      # @return [Boolean] <code>true</code> to enable deployment rollback;
+      # otherwise, <code>false</code>.
       attr_accessor :deployment_rollback_enabled
 
-      # @return [Boolean] Mercurial or Git repository type
+      # @return [Boolean] <code>true</code> for a Mercurial repository;
+      # <code>false</code> for a Git repository.
       attr_accessor :is_mercurial
 
 
@@ -49,7 +53,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

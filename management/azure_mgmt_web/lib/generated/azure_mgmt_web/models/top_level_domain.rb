@@ -6,17 +6,17 @@
 module Azure::ARM::Web
   module Models
     #
-    # A top level domain object
+    # A top level domain object.
     #
     class TopLevelDomain < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Name of the top level domain
-      attr_accessor :top_level_domain_name
+      # @return [String] Name of the top level domain.
+      attr_accessor :domain_name
 
-      # @return [Boolean] If true then the top level domain supports domain
-      # privacy
+      # @return [Boolean] If <code>true</code>, then the top level domain
+      # supports domain privacy; otherwise, <code>false</code>.
       attr_accessor :privacy
 
 
@@ -41,7 +41,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -82,8 +82,9 @@ module Azure::ARM::Web
                   }
                 }
               },
-              top_level_domain_name: {
+              domain_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.name',
                 type: {
                   name: 'String'

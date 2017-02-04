@@ -23,12 +23,13 @@ module Azure::ARM::Web
     attr_reader :client
 
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
-    # @param detailed [Boolean] False to return a subset of App Service Plan
-    # properties, true to return all of the properties.
+    # @param detailed [Boolean] Specify <code>true</code> to return all App Service
+    # plan properties. The default is <code>false</code>, which returns a subset of
+    # the properties.
     # Retrieval of all properties may increase the API latency.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -41,12 +42,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
-    # @param detailed [Boolean] False to return a subset of App Service Plan
-    # properties, true to return all of the properties.
+    # @param detailed [Boolean] Specify <code>true</code> to return all App Service
+    # plan properties. The default is <code>false</code>, which returns a subset of
+    # the properties.
     # Retrieval of all properties may increase the API latency.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -58,12 +60,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
-    # @param detailed [Boolean] False to return a subset of App Service Plan
-    # properties, true to return all of the properties.
+    # @param detailed [Boolean] Specify <code>true</code> to return all App Service
+    # plan properties. The default is <code>false</code>, which returns a subset of
+    # the properties.
     # Retrieval of all properties may increase the API latency.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -121,13 +124,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -139,13 +141,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -156,13 +157,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -220,12 +220,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets specified App Service Plan in a resource group
+    # Get an App Service plan.
     #
-    # Gets specified App Service Plan in a resource group
+    # Get an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -237,12 +238,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets specified App Service Plan in a resource group
+    # Get an App Service plan.
     #
-    # Gets specified App Service Plan in a resource group
+    # Get an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -253,12 +255,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets specified App Service Plan in a resource group
+    # Get an App Service plan.
     #
-    # Gets specified App Service Plan in a resource group
+    # Get an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -317,40 +320,38 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates or updates an App Service Plan
+    # Creates or updates an App Service Plan.
     #
-    # Creates or updates an App Service Plan
+    # Creates or updates an App Service Plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param app_service_plan [AppServicePlan] Details of App Service Plan
-    # @param allow_pending_state [Boolean] OBSOLETE: If true, allow pending state
-    # for App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param app_service_plan [AppServicePlan] Details of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [AppServicePlan] operation results.
     #
-    def create_or_update(resource_group_name, name, app_service_plan, allow_pending_state = nil, custom_headers = nil)
-      response = create_or_update_async(resource_group_name, name, app_service_plan, allow_pending_state, custom_headers).value!
+    def create_or_update(resource_group_name, name, app_service_plan, custom_headers = nil)
+      response = create_or_update_async(resource_group_name, name, app_service_plan, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param app_service_plan [AppServicePlan] Details of App Service Plan
-    # @param allow_pending_state [Boolean] OBSOLETE: If true, allow pending state
-    # for App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param app_service_plan [AppServicePlan] Details of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_or_update_async(resource_group_name, name, app_service_plan, allow_pending_state = nil, custom_headers = nil)
+    def create_or_update_async(resource_group_name, name, app_service_plan, custom_headers = nil)
       # Send request
-      promise = begin_create_or_update_async(resource_group_name, name, app_service_plan, allow_pending_state, custom_headers)
+      promise = begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -367,29 +368,30 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a App Service Plan
+    # Delete an App Service plan.
     #
-    # Deletes a App Service Plan
+    # Delete an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete(resource_group_name, name, custom_headers = nil)
       response = delete_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Deletes a App Service Plan
+    # Delete an App Service plan.
     #
-    # Deletes a App Service Plan
+    # Delete an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -400,12 +402,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a App Service Plan
+    # Delete an App Service plan.
     #
-    # Deletes a App Service Plan
+    # Delete an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -454,12 +457,13 @@ module Azure::ARM::Web
     end
 
     #
-    # List serverfarm capabilities
+    # List all capabilities of an App Service plan.
     #
-    # List serverfarm capabilities
+    # List all capabilities of an App Service plan.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -471,12 +475,13 @@ module Azure::ARM::Web
     end
 
     #
-    # List serverfarm capabilities
+    # List all capabilities of an App Service plan.
     #
-    # List serverfarm capabilities
+    # List all capabilities of an App Service plan.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -487,12 +492,13 @@ module Azure::ARM::Web
     end
 
     #
-    # List serverfarm capabilities
+    # List all capabilities of an App Service plan.
     #
-    # List serverfarm capabilities
+    # List all capabilities of an App Service plan.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -565,16 +571,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a specific Service Bus Hybrid Connection in use on this App Service
-    # Plan.
+    # Retrieve a Hybrid Connection in use in an App Service plan.
     #
-    # Retrieves a specific Service Bus Hybrid Connection in use on this App Service
-    # Plan.
+    # Retrieve a Hybrid Connection in use in an App Service plan.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The name of the Service Bus Namespace
-    # @param relay_name [String] The name of the Service Bus Relay
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] Name of the Service Bus namespace.
+    # @param relay_name [String] Name of the Service Bus relay.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -586,16 +591,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a specific Service Bus Hybrid Connection in use on this App Service
-    # Plan.
+    # Retrieve a Hybrid Connection in use in an App Service plan.
     #
-    # Retrieves a specific Service Bus Hybrid Connection in use on this App Service
-    # Plan.
+    # Retrieve a Hybrid Connection in use in an App Service plan.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The name of the Service Bus Namespace
-    # @param relay_name [String] The name of the Service Bus Relay
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] Name of the Service Bus namespace.
+    # @param relay_name [String] Name of the Service Bus relay.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -606,16 +610,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a specific Service Bus Hybrid Connection in use on this App Service
-    # Plan.
+    # Retrieve a Hybrid Connection in use in an App Service plan.
     #
-    # Retrieves a specific Service Bus Hybrid Connection in use on this App Service
-    # Plan.
+    # Retrieve a Hybrid Connection in use in an App Service plan.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The name of the Service Bus Namespace
-    # @param relay_name [String] The name of the Service Bus Relay
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] Name of the Service Bus namespace.
+    # @param relay_name [String] Name of the Service Bus relay.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -676,161 +679,34 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates an existing Service Bus Hybrid Connection in use on this App Service
-    # Plan. This will fail if the Hybrid Connection does not already exist.
+    # Delete a Hybrid Connection in use in an App Service plan.
     #
-    # Updates an existing Service Bus Hybrid Connection in use on this App Service
-    # Plan. This will fail if the Hybrid Connection does not already exist.
+    # Delete a Hybrid Connection in use in an App Service plan.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The name of the Service Bus Namespace
-    # @param relay_name [String] The name of the Service Bus Relay
-    # @param connection [HybridConnection] The hybrid connection entity
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] Name of the Service Bus namespace.
+    # @param relay_name [String] Name of the Service Bus relay.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [HybridConnection] operation results.
-    #
-    def update_hybrid_connection(resource_group_name, name, namespace_name, relay_name, connection, custom_headers = nil)
-      response = update_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, connection, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Updates an existing Service Bus Hybrid Connection in use on this App Service
-    # Plan. This will fail if the Hybrid Connection does not already exist.
-    #
-    # Updates an existing Service Bus Hybrid Connection in use on this App Service
-    # Plan. This will fail if the Hybrid Connection does not already exist.
-    #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The name of the Service Bus Namespace
-    # @param relay_name [String] The name of the Service Bus Relay
-    # @param connection [HybridConnection] The hybrid connection entity
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def update_hybrid_connection_with_http_info(resource_group_name, name, namespace_name, relay_name, connection, custom_headers = nil)
-      update_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, connection, custom_headers).value!
-    end
-
-    #
-    # Updates an existing Service Bus Hybrid Connection in use on this App Service
-    # Plan. This will fail if the Hybrid Connection does not already exist.
-    #
-    # Updates an existing Service Bus Hybrid Connection in use on this App Service
-    # Plan. This will fail if the Hybrid Connection does not already exist.
-    #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The name of the Service Bus Namespace
-    # @param relay_name [String] The name of the Service Bus Relay
-    # @param connection [HybridConnection] The hybrid connection entity
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def update_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, connection, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
-      fail ArgumentError, 'relay_name is nil' if relay_name.nil?
-      fail ArgumentError, 'connection is nil' if connection.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-09-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = HybridConnection.mapper()
-      request_content = @client.serialize(request_mapper,  connection, 'connection')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'namespaceName' => namespace_name,'relayName' => relay_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = HybridConnection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Deletes an existing Service Bus Hybrid Connection in use on this App Service
-    # Plan.
-    #
-    # Deletes an existing Service Bus Hybrid Connection in use on this App Service
-    # Plan.
-    #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The name of the Service Bus Namespace
-    # @param relay_name [String] The name of the Service Bus Relay
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Object] operation results.
     #
     def delete_hybrid_connection(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
       response = delete_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Deletes an existing Service Bus Hybrid Connection in use on this App Service
-    # Plan.
+    # Delete a Hybrid Connection in use in an App Service plan.
     #
-    # Deletes an existing Service Bus Hybrid Connection in use on this App Service
-    # Plan.
+    # Delete a Hybrid Connection in use in an App Service plan.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The name of the Service Bus Namespace
-    # @param relay_name [String] The name of the Service Bus Relay
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] Name of the Service Bus namespace.
+    # @param relay_name [String] Name of the Service Bus relay.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -841,16 +717,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes an existing Service Bus Hybrid Connection in use on this App Service
-    # Plan.
+    # Delete a Hybrid Connection in use in an App Service plan.
     #
-    # Deletes an existing Service Bus Hybrid Connection in use on this App Service
-    # Plan.
+    # Delete a Hybrid Connection in use in an App Service plan.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The name of the Service Bus Namespace
-    # @param relay_name [String] The name of the Service Bus Relay
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] Name of the Service Bus namespace.
+    # @param relay_name [String] Name of the Service Bus relay.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -887,7 +762,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -901,14 +776,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the send key name and value for this Hybrid Connection
+    # Get the send key name and value of a Hybrid Connection.
     #
-    # Gets the send key name and value for this Hybrid Connection
+    # Get the send key name and value of a Hybrid Connection.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The name of the Service Bus Namespace
-    # @param relay_name [String] The name of the Service Bus Relay
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] The name of the Service Bus namespace.
+    # @param relay_name [String] The name of the Service Bus relay.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -920,14 +796,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the send key name and value for this Hybrid Connection
+    # Get the send key name and value of a Hybrid Connection.
     #
-    # Gets the send key name and value for this Hybrid Connection
+    # Get the send key name and value of a Hybrid Connection.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The name of the Service Bus Namespace
-    # @param relay_name [String] The name of the Service Bus Relay
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] The name of the Service Bus namespace.
+    # @param relay_name [String] The name of the Service Bus relay.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -938,14 +815,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the send key name and value for this Hybrid Connection
+    # Get the send key name and value of a Hybrid Connection.
     #
-    # Gets the send key name and value for this Hybrid Connection
+    # Get the send key name and value of a Hybrid Connection.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The name of the Service Bus Namespace
-    # @param relay_name [String] The name of the Service Bus Relay
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] The name of the Service Bus namespace.
+    # @param relay_name [String] The name of the Service Bus relay.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1006,63 +884,60 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a list of sites that are using a particular Hybrid Connection on an App
-    # Service Plan
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
     #
-    # Gets a list of sites that are using a particular Hybrid Connection on an App
-    # Service Plan
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
     #
-    # @param resource_group_name [String] The resource group
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The Hybrid Connection namespace
-    # @param relay_name [String] The Hybrid Connection relay name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] Name of the Hybrid Connection namespace.
+    # @param relay_name [String] Name of the Hybrid Connection relay.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [Array<String>] operation results.
     #
-    def list_hybrid_connection_web_apps(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
-      response = list_hybrid_connection_web_apps_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
-      response.body unless response.nil?
+    def list_web_apps_by_hybrid_connection(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
+      first_page = list_web_apps_by_hybrid_connection_as_lazy(resource_group_name, name, namespace_name, relay_name, custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # Gets a list of sites that are using a particular Hybrid Connection on an App
-    # Service Plan
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
     #
-    # Gets a list of sites that are using a particular Hybrid Connection on an App
-    # Service Plan
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
     #
-    # @param resource_group_name [String] The resource group
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The Hybrid Connection namespace
-    # @param relay_name [String] The Hybrid Connection relay name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] Name of the Hybrid Connection namespace.
+    # @param relay_name [String] Name of the Hybrid Connection relay.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_hybrid_connection_web_apps_with_http_info(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
-      list_hybrid_connection_web_apps_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
+    def list_web_apps_by_hybrid_connection_with_http_info(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
+      list_web_apps_by_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
     end
 
     #
-    # Gets a list of sites that are using a particular Hybrid Connection on an App
-    # Service Plan
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
     #
-    # Gets a list of sites that are using a particular Hybrid Connection on an App
-    # Service Plan
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
     #
-    # @param resource_group_name [String] The resource group
-    # @param name [String] The name of the App Service Plan
-    # @param namespace_name [String] The Hybrid Connection namespace
-    # @param relay_name [String] The Hybrid Connection relay name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] Name of the Hybrid Connection namespace.
+    # @param relay_name [String] Name of the Hybrid Connection relay.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_hybrid_connection_web_apps_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
+    def list_web_apps_by_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'namespace_name is nil' if namespace_name.nil?
@@ -1099,6 +974,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ResourceCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -1107,18 +992,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the maximum number of Hybrid Connections allowed on a specified App
-    # Service Plan
+    # Get the maximum number of Hybrid Connections allowed in an App Service plan.
     #
-    # Gets the maximum number of Hybrid Connections allowed on a specified App
-    # Service Plan
+    # Get the maximum number of Hybrid Connections allowed in an App Service plan.
     #
-    # @param resource_group_name [String] The resource group
-    # @param name [String] The name of the App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [HybridConnectionLimits] operation results.
     #
     def get_hybrid_connection_plan_limit(resource_group_name, name, custom_headers = nil)
       response = get_hybrid_connection_plan_limit_async(resource_group_name, name, custom_headers).value!
@@ -1126,14 +1010,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the maximum number of Hybrid Connections allowed on a specified App
-    # Service Plan
+    # Get the maximum number of Hybrid Connections allowed in an App Service plan.
     #
-    # Gets the maximum number of Hybrid Connections allowed on a specified App
-    # Service Plan
+    # Get the maximum number of Hybrid Connections allowed in an App Service plan.
     #
-    # @param resource_group_name [String] The resource group
-    # @param name [String] The name of the App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1144,14 +1027,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the maximum number of Hybrid Connections allowed on a specified App
-    # Service Plan
+    # Get the maximum number of Hybrid Connections allowed in an App Service plan.
     #
-    # Gets the maximum number of Hybrid Connections allowed on a specified App
-    # Service Plan
+    # Get the maximum number of Hybrid Connections allowed in an App Service plan.
     #
-    # @param resource_group_name [String] The resource group
-    # @param name [String] The name of the App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1192,6 +1074,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = HybridConnectionLimits.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -1200,29 +1092,31 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves all Service Bus Hybrid Connections in use on this App Service Plan
+    # Retrieve all Hybrid Connections in use in an App Service plan.
     #
-    # Retrieves all Service Bus Hybrid Connections in use on this App Service Plan
+    # Retrieve all Hybrid Connections in use in an App Service plan.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [HybridConnection] operation results.
+    # @return [Array<HybridConnection>] operation results.
     #
     def list_hybrid_connections(resource_group_name, name, custom_headers = nil)
-      response = list_hybrid_connections_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_hybrid_connections_as_lazy(resource_group_name, name, custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # Retrieves all Service Bus Hybrid Connections in use on this App Service Plan
+    # Retrieve all Hybrid Connections in use in an App Service plan.
     #
-    # Retrieves all Service Bus Hybrid Connections in use on this App Service Plan
+    # Retrieve all Hybrid Connections in use in an App Service plan.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1233,12 +1127,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves all Service Bus Hybrid Connections in use on this App Service Plan
+    # Retrieve all Hybrid Connections in use in an App Service plan.
     #
-    # Retrieves all Service Bus Hybrid Connections in use on this App Service Plan
+    # Retrieve all Hybrid Connections in use in an App Service plan.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1283,7 +1178,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = HybridConnection.mapper()
+            result_mapper = HybridConnectionCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1297,16 +1192,19 @@ module Azure::ARM::Web
     end
 
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<MetricDefinition>] operation results.
+    # @return [Array<ResourceMetricDefinition>] operation results.
     #
     def list_metric_defintions(resource_group_name, name, custom_headers = nil)
       first_page = list_metric_defintions_as_lazy(resource_group_name, name, custom_headers)
@@ -1314,12 +1212,15 @@ module Azure::ARM::Web
     end
 
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1330,12 +1231,15 @@ module Azure::ARM::Web
     end
 
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1380,7 +1284,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MetricDefinitionCollection.mapper()
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1394,14 +1298,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param details [Boolean] If true, metrics are broken down per App Service
-    # Plan instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -1417,14 +1322,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param details [Boolean] If true, metrics are broken down per App Service
-    # Plan instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -1439,14 +1345,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param details [Boolean] If true, metrics are broken down per App Service
-    # Plan instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -1475,7 +1382,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'details' => details,'$filter' => filter,'api-version' => api_version},
+          query_params: {'details' => details,'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -1509,135 +1417,37 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a server farm operation
+    # Restart all apps in an App Service plan.
     #
-    # Gets a server farm operation
+    # Restart all apps in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of server farm
-    # @param operation_id [String] Id of Server farm operation"&gt;
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [AppServicePlan] operation results.
-    #
-    def get_operation(resource_group_name, name, operation_id, custom_headers = nil)
-      response = get_operation_async(resource_group_name, name, operation_id, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets a server farm operation
-    #
-    # Gets a server farm operation
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of server farm
-    # @param operation_id [String] Id of Server farm operation"&gt;
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_operation_with_http_info(resource_group_name, name, operation_id, custom_headers = nil)
-      get_operation_async(resource_group_name, name, operation_id, custom_headers).value!
-    end
-
-    #
-    # Gets a server farm operation
-    #
-    # Gets a server farm operation
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of server farm
-    # @param operation_id [String] Id of Server farm operation"&gt;
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_operation_async(resource_group_name, name, operation_id, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-09-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/operationresults/{operationId}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'operationId' => operation_id,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = AppServicePlan.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Restarts web apps in a specified App Service Plan
-    #
-    # Restarts web apps in a specified App Service Plan
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param soft_restart [Boolean] Soft restart applies the configuration settings
-    # and restarts the apps if necessary. Hard restart always restarts and
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param soft_restart [Boolean] Specify <code>true</code> to performa a soft
+    # restart, applies the configuration settings and restarts the apps if
+    # necessary. The default is <code>false</code>, which always restarts and
     # reprovisions the apps
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def restart_web_apps(resource_group_name, name, soft_restart = nil, custom_headers = nil)
       response = restart_web_apps_async(resource_group_name, name, soft_restart, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Restarts web apps in a specified App Service Plan
+    # Restart all apps in an App Service plan.
     #
-    # Restarts web apps in a specified App Service Plan
+    # Restart all apps in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param soft_restart [Boolean] Soft restart applies the configuration settings
-    # and restarts the apps if necessary. Hard restart always restarts and
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param soft_restart [Boolean] Specify <code>true</code> to performa a soft
+    # restart, applies the configuration settings and restarts the apps if
+    # necessary. The default is <code>false</code>, which always restarts and
     # reprovisions the apps
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1649,14 +1459,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Restarts web apps in a specified App Service Plan
+    # Restart all apps in an App Service plan.
     #
-    # Restarts web apps in a specified App Service Plan
+    # Restart all apps in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param soft_restart [Boolean] Soft restart applies the configuration settings
-    # and restarts the apps if necessary. Hard restart always restarts and
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param soft_restart [Boolean] Specify <code>true</code> to performa a soft
+    # restart, applies the configuration settings and restarts the apps if
+    # necessary. The default is <code>false</code>, which always restarts and
     # reprovisions the apps
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -1692,7 +1504,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -1706,15 +1518,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param skip_token [String] Skip to of web apps in a list. If specified, the
-    # resulting list will contain web apps starting from (including) the skipToken.
-    # Else, the resulting list contains web apps from the start of the list
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param skip_token [String] Skip to a web app in the list of webapps
+    # associated with app service plan. If specified, the resulting list will
+    # contain web apps starting from (including) the skipToken. Otherwise, the
+    # resulting list contains web apps from the start of the list
     # @param filter [String] Supported filter: $filter=state eq running. Returns
     # only web apps that are currently running
     # @param top [String] List page size. If specified, results are paged.
@@ -1729,15 +1543,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param skip_token [String] Skip to of web apps in a list. If specified, the
-    # resulting list will contain web apps starting from (including) the skipToken.
-    # Else, the resulting list contains web apps from the start of the list
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param skip_token [String] Skip to a web app in the list of webapps
+    # associated with app service plan. If specified, the resulting list will
+    # contain web apps starting from (including) the skipToken. Otherwise, the
+    # resulting list contains web apps from the start of the list
     # @param filter [String] Supported filter: $filter=state eq running. Returns
     # only web apps that are currently running
     # @param top [String] List page size. If specified, results are paged.
@@ -1751,15 +1567,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param skip_token [String] Skip to of web apps in a list. If specified, the
-    # resulting list will contain web apps starting from (including) the skipToken.
-    # Else, the resulting list contains web apps from the start of the list
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param skip_token [String] Skip to a web app in the list of webapps
+    # associated with app service plan. If specified, the resulting list will
+    # contain web apps starting from (including) the skipToken. Otherwise, the
+    # resulting list contains web apps from the start of the list
     # @param filter [String] Supported filter: $filter=state eq running. Returns
     # only web apps that are currently running
     # @param top [String] List page size. If specified, results are paged.
@@ -1787,7 +1605,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'$skipToken' => skip_token,'$filter' => filter,'$top' => top,'api-version' => api_version},
+          query_params: {'$skipToken' => skip_token,'$top' => top,'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -1821,12 +1640,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets list of vnets associated with App Service Plan
+    # Get all Virtual Networks associated with an App Service plan.
     #
-    # Gets list of vnets associated with App Service Plan
+    # Get all Virtual Networks associated with an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1838,12 +1658,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets list of vnets associated with App Service Plan
+    # Get all Virtual Networks associated with an App Service plan.
     #
-    # Gets list of vnets associated with App Service Plan
+    # Get all Virtual Networks associated with an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1854,12 +1675,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets list of vnets associated with App Service Plan
+    # Get all Virtual Networks associated with an App Service plan.
     #
-    # Gets list of vnets associated with App Service Plan
+    # Get all Virtual Networks associated with an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1932,13 +1754,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a vnet associated with an App Service Plan
+    # Get a Virtual Network associated with an App Service plan.
     #
-    # Gets a vnet associated with an App Service Plan
+    # Get a Virtual Network associated with an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1950,13 +1773,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a vnet associated with an App Service Plan
+    # Get a Virtual Network associated with an App Service plan.
     #
-    # Gets a vnet associated with an App Service Plan
+    # Get a Virtual Network associated with an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1967,13 +1791,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a vnet associated with an App Service Plan
+    # Get a Virtual Network associated with an App Service plan.
     #
-    # Gets a vnet associated with an App Service Plan
+    # Get a Virtual Network associated with an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2033,13 +1858,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the vnet gateway.
+    # Get a Virtual Network gateway.
     #
-    # Gets the vnet gateway.
+    # Get a Virtual Network gateway.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of the App Service Plan
-    # @param vnet_name [String] Name of the virtual network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
     # @param gateway_name [String] Name of the gateway. Only the 'primary' gateway
     # is supported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -2053,13 +1879,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the vnet gateway.
+    # Get a Virtual Network gateway.
     #
-    # Gets the vnet gateway.
+    # Get a Virtual Network gateway.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of the App Service Plan
-    # @param vnet_name [String] Name of the virtual network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
     # @param gateway_name [String] Name of the gateway. Only the 'primary' gateway
     # is supported.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -2072,13 +1899,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the vnet gateway.
+    # Get a Virtual Network gateway.
     #
-    # Gets the vnet gateway.
+    # Get a Virtual Network gateway.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of the App Service Plan
-    # @param vnet_name [String] Name of the virtual network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
     # @param gateway_name [String] Name of the gateway. Only the 'primary' gateway
     # is supported.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -2141,16 +1969,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the vnet gateway
+    # Update a Virtual Network gateway.
     #
-    # Updates the vnet gateway
+    # Update a Virtual Network gateway.
     #
-    # @param resource_group_name [String] The resource group
-    # @param name [String] The name of the App Service Plan
-    # @param vnet_name [String] The name of the virtual network
-    # @param gateway_name [String] The name of the gateway. Only 'primary' is
-    # supported.
-    # @param connection_envelope [VnetGateway] The gateway entity.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Only the 'primary' gateway
+    # is supported.
+    # @param connection_envelope [VnetGateway] Definition of the gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2162,16 +1991,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the vnet gateway
+    # Update a Virtual Network gateway.
     #
-    # Updates the vnet gateway
+    # Update a Virtual Network gateway.
     #
-    # @param resource_group_name [String] The resource group
-    # @param name [String] The name of the App Service Plan
-    # @param vnet_name [String] The name of the virtual network
-    # @param gateway_name [String] The name of the gateway. Only 'primary' is
-    # supported.
-    # @param connection_envelope [VnetGateway] The gateway entity.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Only the 'primary' gateway
+    # is supported.
+    # @param connection_envelope [VnetGateway] Definition of the gateway.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2182,16 +2012,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the vnet gateway
+    # Update a Virtual Network gateway.
     #
-    # Updates the vnet gateway
+    # Update a Virtual Network gateway.
     #
-    # @param resource_group_name [String] The resource group
-    # @param name [String] The name of the App Service Plan
-    # @param vnet_name [String] The name of the virtual network
-    # @param gateway_name [String] The name of the gateway. Only 'primary' is
-    # supported.
-    # @param connection_envelope [VnetGateway] The gateway entity.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Only the 'primary' gateway
+    # is supported.
+    # @param connection_envelope [VnetGateway] Definition of the gateway.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2262,54 +2093,63 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a list of all routes associated with a vnet, in an app service plan
+    # Get all routes that are associated with a Virtual Network in an App Service
+    # plan.
     #
-    # Gets a list of all routes associated with a vnet, in an app service plan
+    # Get all routes that are associated with a Virtual Network in an App Service
+    # plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array] operation results.
     #
-    def listt_routes_for_vnet(resource_group_name, name, vnet_name, custom_headers = nil)
-      response = listt_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers).value!
+    def list_routes_for_vnet(resource_group_name, name, vnet_name, custom_headers = nil)
+      response = list_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets a list of all routes associated with a vnet, in an app service plan
+    # Get all routes that are associated with a Virtual Network in an App Service
+    # plan.
     #
-    # Gets a list of all routes associated with a vnet, in an app service plan
+    # Get all routes that are associated with a Virtual Network in an App Service
+    # plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def listt_routes_for_vnet_with_http_info(resource_group_name, name, vnet_name, custom_headers = nil)
-      listt_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers).value!
+    def list_routes_for_vnet_with_http_info(resource_group_name, name, vnet_name, custom_headers = nil)
+      list_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers).value!
     end
 
     #
-    # Gets a list of all routes associated with a vnet, in an app service plan
+    # Get all routes that are associated with a Virtual Network in an App Service
+    # plan.
     #
-    # Gets a list of all routes associated with a vnet, in an app service plan
+    # Get all routes that are associated with a Virtual Network in an App Service
+    # plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def listt_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers = nil)
+    def list_routes_for_vnet_async(resource_group_name, name, vnet_name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'vnet_name is nil' if vnet_name.nil?
@@ -2377,14 +2217,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a specific route associated with a vnet, in an app service plan
+    # Get a Virtual Network route in an App Service plan.
     #
-    # Gets a specific route associated with a vnet, in an app service plan
+    # Get a Virtual Network route in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
-    # @param route_name [String] Name of the virtual network route
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param route_name [String] Name of the Virtual Network route.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2396,14 +2237,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a specific route associated with a vnet, in an app service plan
+    # Get a Virtual Network route in an App Service plan.
     #
-    # Gets a specific route associated with a vnet, in an app service plan
+    # Get a Virtual Network route in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
-    # @param route_name [String] Name of the virtual network route
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param route_name [String] Name of the Virtual Network route.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2414,14 +2256,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a specific route associated with a vnet, in an app service plan
+    # Get a Virtual Network route in an App Service plan.
     #
-    # Gets a specific route associated with a vnet, in an app service plan
+    # Get a Virtual Network route in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
-    # @param route_name [String] Name of the virtual network route
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param route_name [String] Name of the Virtual Network route.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2496,17 +2339,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new route or updates an existing route for a vnet in an app service
-    # plan.
+    # Create or update a Virtual Network route in an App Service plan.
     #
-    # Creates a new route or updates an existing route for a vnet in an app service
-    # plan.
+    # Create or update a Virtual Network route in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
-    # @param route_name [String] Name of the virtual network route
-    # @param route [VnetRoute] The route object
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param route_name [String] Name of the Virtual Network route.
+    # @param route [VnetRoute] Definition of the Virtual Network route.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2518,17 +2360,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new route or updates an existing route for a vnet in an app service
-    # plan.
+    # Create or update a Virtual Network route in an App Service plan.
     #
-    # Creates a new route or updates an existing route for a vnet in an app service
-    # plan.
+    # Create or update a Virtual Network route in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
-    # @param route_name [String] Name of the virtual network route
-    # @param route [VnetRoute] The route object
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param route_name [String] Name of the Virtual Network route.
+    # @param route [VnetRoute] Definition of the Virtual Network route.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2539,17 +2380,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new route or updates an existing route for a vnet in an app service
-    # plan.
+    # Create or update a Virtual Network route in an App Service plan.
     #
-    # Creates a new route or updates an existing route for a vnet in an app service
-    # plan.
+    # Create or update a Virtual Network route in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
-    # @param route_name [String] Name of the virtual network route
-    # @param route [VnetRoute] The route object
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param route_name [String] Name of the Virtual Network route.
+    # @param route [VnetRoute] Definition of the Virtual Network route.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2620,33 +2460,34 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes an existing route for a vnet in an app service plan.
+    # Delete a Virtual Network route in an App Service plan.
     #
-    # Deletes an existing route for a vnet in an app service plan.
+    # Delete a Virtual Network route in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
-    # @param route_name [String] Name of the virtual network route
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param route_name [String] Name of the Virtual Network route.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_vnet_route(resource_group_name, name, vnet_name, route_name, custom_headers = nil)
       response = delete_vnet_route_async(resource_group_name, name, vnet_name, route_name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Deletes an existing route for a vnet in an app service plan.
+    # Delete a Virtual Network route in an App Service plan.
     #
-    # Deletes an existing route for a vnet in an app service plan.
+    # Delete a Virtual Network route in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
-    # @param route_name [String] Name of the virtual network route
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param route_name [String] Name of the Virtual Network route.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2657,14 +2498,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes an existing route for a vnet in an app service plan.
+    # Delete a Virtual Network route in an App Service plan.
     #
-    # Deletes an existing route for a vnet in an app service plan.
+    # Delete a Virtual Network route in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
-    # @param route_name [String] Name of the virtual network route
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param route_name [String] Name of the Virtual Network route.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2715,17 +2557,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new route or updates an existing route for a vnet in an app service
-    # plan.
+    # Create or update a Virtual Network route in an App Service plan.
     #
-    # Creates a new route or updates an existing route for a vnet in an app service
-    # plan.
+    # Create or update a Virtual Network route in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
-    # @param route_name [String] Name of the virtual network route
-    # @param route [VnetRoute] The route object
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param route_name [String] Name of the Virtual Network route.
+    # @param route [VnetRoute] Definition of the Virtual Network route.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2737,17 +2578,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new route or updates an existing route for a vnet in an app service
-    # plan.
+    # Create or update a Virtual Network route in an App Service plan.
     #
-    # Creates a new route or updates an existing route for a vnet in an app service
-    # plan.
+    # Create or update a Virtual Network route in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
-    # @param route_name [String] Name of the virtual network route
-    # @param route [VnetRoute] The route object
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param route_name [String] Name of the Virtual Network route.
+    # @param route [VnetRoute] Definition of the Virtual Network route.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2758,17 +2598,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new route or updates an existing route for a vnet in an app service
-    # plan.
+    # Create or update a Virtual Network route in an App Service plan.
     #
-    # Creates a new route or updates an existing route for a vnet in an app service
-    # plan.
+    # Create or update a Virtual Network route in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param vnet_name [String] Name of virtual network
-    # @param route_name [String] Name of the virtual network route
-    # @param route [VnetRoute] The route object
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param route_name [String] Name of the Virtual Network route.
+    # @param route [VnetRoute] Definition of the Virtual Network route.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2839,31 +2678,34 @@ module Azure::ARM::Web
     end
 
     #
-    # Submit a reboot request for a worker machine in the specified server farm
+    # Reboot a worker machine in an App Service plan.
     #
-    # Submit a reboot request for a worker machine in the specified server farm
+    # Reboot a worker machine in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of server farm
-    # @param worker_name [String] Name of worker machine, typically starts with RD
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param worker_name [String] Name of worker machine, which typically starts
+    # with RD.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def reboot_worker(resource_group_name, name, worker_name, custom_headers = nil)
       response = reboot_worker_async(resource_group_name, name, worker_name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Submit a reboot request for a worker machine in the specified server farm
+    # Reboot a worker machine in an App Service plan.
     #
-    # Submit a reboot request for a worker machine in the specified server farm
+    # Reboot a worker machine in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of server farm
-    # @param worker_name [String] Name of worker machine, typically starts with RD
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param worker_name [String] Name of worker machine, which typically starts
+    # with RD.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2874,13 +2716,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Submit a reboot request for a worker machine in the specified server farm
+    # Reboot a worker machine in an App Service plan.
     #
-    # Submit a reboot request for a worker machine in the specified server farm
+    # Reboot a worker machine in an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of server farm
-    # @param worker_name [String] Name of worker machine, typically starts with RD
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param worker_name [String] Name of worker machine, which typically starts
+    # with RD.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2916,7 +2760,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -2930,60 +2774,57 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates or updates an App Service Plan
+    # Creates or updates an App Service Plan.
     #
-    # Creates or updates an App Service Plan
+    # Creates or updates an App Service Plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param app_service_plan [AppServicePlan] Details of App Service Plan
-    # @param allow_pending_state [Boolean] OBSOLETE: If true, allow pending state
-    # for App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param app_service_plan [AppServicePlan] Details of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [AppServicePlan] operation results.
     #
-    def begin_create_or_update(resource_group_name, name, app_service_plan, allow_pending_state = nil, custom_headers = nil)
-      response = begin_create_or_update_async(resource_group_name, name, app_service_plan, allow_pending_state, custom_headers).value!
+    def begin_create_or_update(resource_group_name, name, app_service_plan, custom_headers = nil)
+      response = begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Creates or updates an App Service Plan
+    # Creates or updates an App Service Plan.
     #
-    # Creates or updates an App Service Plan
+    # Creates or updates an App Service Plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param app_service_plan [AppServicePlan] Details of App Service Plan
-    # @param allow_pending_state [Boolean] OBSOLETE: If true, allow pending state
-    # for App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param app_service_plan [AppServicePlan] Details of the App Service plan.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_or_update_with_http_info(resource_group_name, name, app_service_plan, allow_pending_state = nil, custom_headers = nil)
-      begin_create_or_update_async(resource_group_name, name, app_service_plan, allow_pending_state, custom_headers).value!
+    def begin_create_or_update_with_http_info(resource_group_name, name, app_service_plan, custom_headers = nil)
+      begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers).value!
     end
 
     #
-    # Creates or updates an App Service Plan
+    # Creates or updates an App Service Plan.
     #
-    # Creates or updates an App Service Plan
+    # Creates or updates an App Service Plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param app_service_plan [AppServicePlan] Details of App Service Plan
-    # @param allow_pending_state [Boolean] OBSOLETE: If true, allow pending state
-    # for App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param app_service_plan [AppServicePlan] Details of the App Service plan.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_or_update_async(resource_group_name, name, app_service_plan, allow_pending_state = nil, custom_headers = nil)
+    def begin_create_or_update_async(resource_group_name, name, app_service_plan, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'app_service_plan is nil' if app_service_plan.nil?
@@ -3011,7 +2852,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'allowPendingState' => allow_pending_state,'api-version' => api_version},
+          query_params: {'api-version' => api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
@@ -3056,9 +2897,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3073,9 +2914,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3089,9 +2930,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3149,11 +2990,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3168,11 +3007,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3186,11 +3023,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3248,16 +3083,204 @@ module Azure::ARM::Web
     end
 
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MetricDefinitionCollection] operation results.
+    # @return [ResourceCollection] operation results.
+    #
+    def list_web_apps_by_hybrid_connection_next(next_page_link, custom_headers = nil)
+      response = list_web_apps_by_hybrid_connection_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
+    #
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_web_apps_by_hybrid_connection_next_with_http_info(next_page_link, custom_headers = nil)
+      list_web_apps_by_hybrid_connection_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
+    #
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_web_apps_by_hybrid_connection_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ResourceCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Retrieve all Hybrid Connections in use in an App Service plan.
+    #
+    # Retrieve all Hybrid Connections in use in an App Service plan.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [HybridConnectionCollection] operation results.
+    #
+    def list_hybrid_connections_next(next_page_link, custom_headers = nil)
+      response = list_hybrid_connections_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Retrieve all Hybrid Connections in use in an App Service plan.
+    #
+    # Retrieve all Hybrid Connections in use in an App Service plan.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_hybrid_connections_next_with_http_info(next_page_link, custom_headers = nil)
+      list_hybrid_connections_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Retrieve all Hybrid Connections in use in an App Service plan.
+    #
+    # Retrieve all Hybrid Connections in use in an App Service plan.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_hybrid_connections_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = HybridConnectionCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
+    #
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ResourceMetricDefinitionCollection] operation results.
     #
     def list_metric_defintions_next(next_page_link, custom_headers = nil)
       response = list_metric_defintions_next_async(next_page_link, custom_headers).value!
@@ -3265,9 +3288,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3281,9 +3306,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3327,7 +3354,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MetricDefinitionCollection.mapper()
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -3341,9 +3368,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3358,9 +3385,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3374,9 +3401,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3434,9 +3461,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3451,9 +3478,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3467,9 +3494,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -3527,12 +3554,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
-    # Gets all App Service Plans for a subcription
+    # Get all App Service plans for a subcription.
     #
-    # @param detailed [Boolean] False to return a subset of App Service Plan
-    # properties, true to return all of the properties.
+    # @param detailed [Boolean] Specify <code>true</code> to return all App Service
+    # plan properties. The default is <code>false</code>, which returns a subset of
+    # the properties.
     # Retrieval of all properties may increase the API latency.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -3552,13 +3580,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
-    # Gets collection of App Service Plans in a resource group for a given
-    # subscription.
+    # Get all App Service plans in a resource group.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3577,17 +3604,72 @@ module Azure::ARM::Web
     end
 
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
     #
-    # List of metrics that can be queried for an App Service Plan
+    # Get all apps that use a Hybrid Connection in an App Service Plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param namespace_name [String] Name of the Hybrid Connection namespace.
+    # @param relay_name [String] Name of the Hybrid Connection relay.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MetricDefinitionCollection] which provide lazy access to pages of
+    # @return [ResourceCollection] which provide lazy access to pages of the
+    # response.
+    #
+    def list_web_apps_by_hybrid_connection_as_lazy(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
+      response = list_web_apps_by_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_web_apps_by_hybrid_connection_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Retrieve all Hybrid Connections in use in an App Service plan.
+    #
+    # Retrieve all Hybrid Connections in use in an App Service plan.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [HybridConnectionCollection] which provide lazy access to pages of
     # the response.
+    #
+    def list_hybrid_connections_as_lazy(resource_group_name, name, custom_headers = nil)
+      response = list_hybrid_connections_async(resource_group_name, name, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_hybrid_connections_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
+    #
+    # Get metrics that can be queried for an App Service plan, and their
+    # definitions.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ResourceMetricDefinitionCollection] which provide lazy access to
+    # pages of the response.
     #
     def list_metric_defintions_as_lazy(resource_group_name, name, custom_headers = nil)
       response = list_metric_defintions_async(resource_group_name, name, custom_headers).value!
@@ -3601,14 +3683,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
-    # Queries for App Serice Plan metrics
+    # Get metrics for an App Serice plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param details [Boolean] If true, metrics are broken down per App Service
-    # Plan instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -3631,15 +3714,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
-    # Gets list of Apps associated with an App Service Plan
+    # Get all apps associated with an App Service plan.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of App Service Plan
-    # @param skip_token [String] Skip to of web apps in a list. If specified, the
-    # resulting list will contain web apps starting from (including) the skipToken.
-    # Else, the resulting list contains web apps from the start of the list
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service plan.
+    # @param skip_token [String] Skip to a web app in the list of webapps
+    # associated with app service plan. If specified, the resulting list will
+    # contain web apps starting from (including) the skipToken. Otherwise, the
+    # resulting list contains web apps from the start of the list
     # @param filter [String] Supported filter: $filter=state eq running. Returns
     # only web apps that are currently running
     # @param top [String] List page size. If specified, results are paged.

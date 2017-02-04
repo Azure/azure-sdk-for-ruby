@@ -6,14 +6,14 @@
 module Azure::ARM::Web
   module Models
     #
-    # Description of a MySql migration request
+    # MySQL migration request.
     #
     class MigrateMySqlRequest < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Connection string to the remote MySql database to
-      # which data should be migrated
+      # @return [String] Connection string to the remote MySQL database to
+      # which data should be migrated.
       attr_accessor :connection_string
 
 
@@ -38,7 +38,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

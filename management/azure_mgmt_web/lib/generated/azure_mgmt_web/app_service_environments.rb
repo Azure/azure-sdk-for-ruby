@@ -23,9 +23,9 @@ module Azure::ARM::Web
     attr_reader :client
 
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -38,9 +38,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -52,9 +52,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -112,11 +112,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -128,11 +129,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -143,11 +145,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -205,12 +208,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get properties of AppServiceEnvironment (App Service Environment).
+    # Get the properties of an App Service Environment.
     #
-    # Get properties of AppServiceEnvironment (App Service Environment).
+    # Get the properties of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -222,12 +226,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get properties of AppServiceEnvironment (App Service Environment).
+    # Get the properties of an App Service Environment.
     #
-    # Get properties of AppServiceEnvironment (App Service Environment).
+    # Get the properties of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -238,12 +243,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get properties of AppServiceEnvironment (App Service Environment).
+    # Get the properties of an App Service Environment.
     #
-    # Get properties of AppServiceEnvironment (App Service Environment).
+    # Get the properties of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -302,14 +308,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Create or update a AppServiceEnvironment (App Service Environment).
+    # Create or update an App Service Environment.
     #
-    # Create or update a AppServiceEnvironment (App Service Environment).
+    # Create or update an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param hosting_environment_envelope [AppServiceEnvironment] Properties of
-    # AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironment] Configuration
+    # details of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -321,10 +328,11 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param hosting_environment_envelope [AppServiceEnvironment] Properties of
-    # AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironment] Configuration
+    # details of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -350,29 +358,31 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete a AppServiceEnvironment (App Service Environment).
+    # Delete an App Service Environment.
     #
-    # Delete a AppServiceEnvironment (App Service Environment).
+    # Delete an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param force_delete [Boolean] Delete even if the AppServiceEnvironment (App
-    # Service Environment) contains resources
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param force_delete [Boolean] Specify <code>true</code> to force the deletion
+    # even if the App Service Environment contains resources. The default is
+    # <code>false</code>.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
-    #
     def delete(resource_group_name, name, force_delete = nil, custom_headers = nil)
       response = delete_async(resource_group_name, name, force_delete, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param force_delete [Boolean] Delete even if the AppServiceEnvironment (App
-    # Service Environment) contains resources
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param force_delete [Boolean] Specify <code>true</code> to force the deletion
+    # even if the App Service Environment contains resources. The default is
+    # <code>false</code>.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -386,14 +396,6 @@ module Azure::ARM::Web
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = {
-            required: false,
-            serialized_name: 'parsed_response',
-            type: {
-              name: 'Object'
-            }
-          }
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -404,14 +406,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -423,14 +426,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -441,14 +445,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -507,14 +512,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get IP addresses assigned to the AppServiceEnvironment (App Service
-    # Environment).
+    # Get IP addresses assigned to an App Service Environment.
     #
-    # Get IP addresses assigned to the AppServiceEnvironment (App Service
-    # Environment).
+    # Get IP addresses assigned to an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -526,14 +530,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get IP addresses assigned to the AppServiceEnvironment (App Service
-    # Environment).
+    # Get IP addresses assigned to an App Service Environment.
     #
-    # Get IP addresses assigned to the AppServiceEnvironment (App Service
-    # Environment).
+    # Get IP addresses assigned to an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -544,14 +547,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get IP addresses assigned to the AppServiceEnvironment (App Service
-    # Environment).
+    # Get IP addresses assigned to an App Service Environment.
     #
-    # Get IP addresses assigned to the AppServiceEnvironment (App Service
-    # Environment).
+    # Get IP addresses assigned to an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -610,14 +612,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get diagnostic information for AppServiceEnvironment (App Service
-    # Environment).
+    # Get diagnostic information for an App Service Environment.
     #
-    # Get diagnostic information for AppServiceEnvironment (App Service
-    # Environment).
+    # Get diagnostic information for an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -629,14 +630,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get diagnostic information for AppServiceEnvironment (App Service
-    # Environment).
+    # Get diagnostic information for an App Service Environment.
     #
-    # Get diagnostic information for AppServiceEnvironment (App Service
-    # Environment).
+    # Get diagnostic information for an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -647,14 +647,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get diagnostic information for AppServiceEnvironment (App Service
-    # Environment).
+    # Get diagnostic information for an App Service Environment.
     #
-    # Get diagnostic information for AppServiceEnvironment (App Service
-    # Environment).
+    # Get diagnostic information for an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -727,15 +726,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get diagnostic information for AppServiceEnvironment (App Service
-    # Environment).
+    # Get a diagnostics item for an App Service Environment.
     #
-    # Get diagnostic information for AppServiceEnvironment (App Service
-    # Environment).
+    # Get a diagnostics item for an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param diagnostics_name [String] Name of the diagnostics
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param diagnostics_name [String] Name of the diagnostics item.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -747,15 +745,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get diagnostic information for AppServiceEnvironment (App Service
-    # Environment).
+    # Get a diagnostics item for an App Service Environment.
     #
-    # Get diagnostic information for AppServiceEnvironment (App Service
-    # Environment).
+    # Get a diagnostics item for an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param diagnostics_name [String] Name of the diagnostics
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param diagnostics_name [String] Name of the diagnostics item.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -766,15 +763,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get diagnostic information for AppServiceEnvironment (App Service
-    # Environment).
+    # Get a diagnostics item for an App Service Environment.
     #
-    # Get diagnostic information for AppServiceEnvironment (App Service
-    # Environment).
+    # Get a diagnostics item for an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param diagnostics_name [String] Name of the diagnostics
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param diagnostics_name [String] Name of the diagnostics item.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -834,14 +830,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global metric definitions of AppServiceEnvironment (App Service
-    # Environment).
+    # Get global metric definitions of an App Service Environment.
     #
-    # Get global metric definitions of AppServiceEnvironment (App Service
-    # Environment).
+    # Get global metric definitions of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -853,14 +848,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global metric definitions of AppServiceEnvironment (App Service
-    # Environment).
+    # Get global metric definitions of an App Service Environment.
     #
-    # Get global metric definitions of AppServiceEnvironment (App Service
-    # Environment).
+    # Get global metric definitions of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -871,14 +865,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global metric definitions of AppServiceEnvironment (App Service
-    # Environment).
+    # Get global metric definitions of an App Service Environment.
     #
-    # Get global metric definitions of AppServiceEnvironment (App Service
-    # Environment).
+    # Get global metric definitions of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -937,13 +930,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -959,13 +954,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -980,13 +977,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -1015,7 +1014,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'details' => details,'$filter' => filter,'api-version' => api_version},
+          query_params: {'details' => details,'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -1049,12 +1049,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1066,12 +1067,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1082,12 +1084,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1146,12 +1149,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get properties of a multiRool pool.
+    # Get properties of a multi-role pool.
     #
-    # Get properties of a multiRool pool.
+    # Get properties of a multi-role pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1163,12 +1167,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get properties of a multiRool pool.
+    # Get properties of a multi-role pool.
     #
-    # Get properties of a multiRool pool.
+    # Get properties of a multi-role pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1179,12 +1184,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get properties of a multiRool pool.
+    # Get properties of a multi-role pool.
     #
-    # Get properties of a multiRool pool.
+    # Get properties of a multi-role pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1243,13 +1249,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Create or update a multiRole pool.
+    # Create or update a multi-role pool.
     #
-    # Create or update a multiRole pool.
+    # Create or update a multi-role pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param multi_role_pool_envelope [WorkerPool] Properties of multiRole pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param multi_role_pool_envelope [WorkerPool] Properties of the multi-role
+    # pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1261,9 +1269,11 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param multi_role_pool_envelope [WorkerPool] Properties of multiRole pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param multi_role_pool_envelope [WorkerPool] Properties of the multi-role
+    # pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1289,35 +1299,37 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a specific instance of a multiRole pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
     #
-    # Get metric definitions for a specific instance of a multiRole pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param instance [String] Name of instance in the multiRole pool&gt;
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param instance [String] Name of the instance in the multi-role pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [Array<ResourceMetricDefinition>] operation results.
     #
     def list_multi_role_pool_instance_metric_definitions(resource_group_name, name, instance, custom_headers = nil)
-      response = list_multi_role_pool_instance_metric_definitions_async(resource_group_name, name, instance, custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_multi_role_pool_instance_metric_definitions_as_lazy(resource_group_name, name, instance, custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # Get metric definitions for a specific instance of a multiRole pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
     #
-    # Get metric definitions for a specific instance of a multiRole pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param instance [String] Name of instance in the multiRole pool&gt;
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param instance [String] Name of the instance in the multi-role pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1328,15 +1340,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a specific instance of a multiRole pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
     #
-    # Get metric definitions for a specific instance of a multiRole pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param instance [String] Name of instance in the multiRole pool&gt;
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param instance [String] Name of the instance in the multi-role pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1378,6 +1391,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -1386,37 +1409,41 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metrics for a specific instance of a multiRole pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
     #
-    # Get metrics for a specific instance of a multiRole pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param instance [String] Name of instance in the multiRole pool
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param instance [String] Name of the instance in the multi-role pool.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [Array<ResourceMetric>] operation results.
     #
     def list_multi_role_pool_instance_metrics(resource_group_name, name, instance, details = nil, custom_headers = nil)
-      response = list_multi_role_pool_instance_metrics_async(resource_group_name, name, instance, details, custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_multi_role_pool_instance_metrics_as_lazy(resource_group_name, name, instance, details, custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # Get metrics for a specific instance of a multiRole pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
     #
-    # Get metrics for a specific instance of a multiRole pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param instance [String] Name of instance in the multiRole pool
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param instance [String] Name of the instance in the multi-role pool.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1427,16 +1454,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metrics for a specific instance of a multiRole pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
     #
-    # Get metrics for a specific instance of a multiRole pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param instance [String] Name of instance in the multiRole pool
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param instance [String] Name of the instance in the multi-role pool.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1455,7 +1484,7 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/instances/{instance}/metrics'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default/instances/{instance}metrics'
 
       request_url = @base_url || @client.base_url
 
@@ -1478,6 +1507,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ResourceMetricCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -1486,18 +1525,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a multi-role pool of an App Service Environment.
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a multi-role pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<MetricDefinition>] operation results.
+    # @return [Array<ResourceMetricDefinition>] operation results.
     #
     def list_multi_role_metric_definitions(resource_group_name, name, custom_headers = nil)
       first_page = list_multi_role_metric_definitions_as_lazy(resource_group_name, name, custom_headers)
@@ -1505,14 +1543,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a multi-role pool of an App Service Environment.
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a multi-role pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1523,14 +1560,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a multi-role pool of an App Service Environment.
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a multi-role pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1575,7 +1611,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MetricDefinitionCollection.mapper()
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -1589,18 +1625,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param start_time [String] Beginning time of metrics query
-    # @param end_time [String] End time of metrics query
-    # @param time_grain [String] Time granularity of metrics query
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param start_time [String] Beginning time of the metrics query.
+    # @param end_time [String] End time of the metrics query.
+    # @param time_grain [String] Time granularity of the metrics query.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -1616,18 +1652,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param start_time [String] Beginning time of metrics query
-    # @param end_time [String] End time of metrics query
-    # @param time_grain [String] Time granularity of metrics query
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param start_time [String] Beginning time of the metrics query.
+    # @param end_time [String] End time of the metrics query.
+    # @param time_grain [String] Time granularity of the metrics query.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -1642,18 +1678,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param start_time [String] Beginning time of metrics query
-    # @param end_time [String] End time of metrics query
-    # @param time_grain [String] Time granularity of metrics query
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param start_time [String] Beginning time of the metrics query.
+    # @param end_time [String] End time of the metrics query.
+    # @param time_grain [String] Time granularity of the metrics query.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -1682,7 +1718,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'startTime' => start_time,'endTime' => end_time,'timeGrain' => time_grain,'details' => details,'$filter' => filter,'api-version' => api_version},
+          query_params: {'startTime' => start_time,'endTime' => end_time,'timeGrain' => time_grain,'details' => details,'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -1716,12 +1753,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1733,12 +1771,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1749,12 +1788,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1813,14 +1853,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1832,14 +1871,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1850,14 +1888,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1916,18 +1953,17 @@ module Azure::ARM::Web
     end
 
     #
-    # List all currently running operations on the AppServiceEnvironment (App
-    # Service Environment)
+    # List all currently running operations on the App Service Environment.
     #
-    # List all currently running operations on the AppServiceEnvironment (App
-    # Service Environment)
+    # List all currently running operations on the App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [Array] operation results.
     #
     def list_operations(resource_group_name, name, custom_headers = nil)
       response = list_operations_async(resource_group_name, name, custom_headers).value!
@@ -1935,14 +1971,13 @@ module Azure::ARM::Web
     end
 
     #
-    # List all currently running operations on the AppServiceEnvironment (App
-    # Service Environment)
+    # List all currently running operations on the App Service Environment.
     #
-    # List all currently running operations on the AppServiceEnvironment (App
-    # Service Environment)
+    # List all currently running operations on the App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1953,14 +1988,13 @@ module Azure::ARM::Web
     end
 
     #
-    # List all currently running operations on the AppServiceEnvironment (App
-    # Service Environment)
+    # List all currently running operations on the App Service Environment.
     #
-    # List all currently running operations on the AppServiceEnvironment (App
-    # Service Environment)
+    # List all currently running operations on the App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2001,104 +2035,31 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Get status of an operation on a AppServiceEnvironment (App Service
-    # Environment).
-    #
-    # Get status of an operation on a AppServiceEnvironment (App Service
-    # Environment).
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param operation_id [String] operation identifier GUID
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Object] operation results.
-    #
-    def get_operation(resource_group_name, name, operation_id, custom_headers = nil)
-      response = get_operation_async(resource_group_name, name, operation_id, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Get status of an operation on a AppServiceEnvironment (App Service
-    # Environment).
-    #
-    # Get status of an operation on a AppServiceEnvironment (App Service
-    # Environment).
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param operation_id [String] operation identifier GUID
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_operation_with_http_info(resource_group_name, name, operation_id, custom_headers = nil)
-      get_operation_async(resource_group_name, name, operation_id, custom_headers).value!
-    end
-
-    #
-    # Get status of an operation on a AppServiceEnvironment (App Service
-    # Environment).
-    #
-    # Get status of an operation on a AppServiceEnvironment (App Service
-    # Environment).
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param operation_id [String] operation identifier GUID
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_operation_async(resource_group_name, name, operation_id, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-09-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/operations/{operationId}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'operationId' => operation_id,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 202 || status_code == 404 || status_code == 500
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    required: false,
+                    serialized_name: 'OperationElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'Operation'
+                    }
+                }
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
         result
       end
 
@@ -2106,29 +2067,30 @@ module Azure::ARM::Web
     end
 
     #
-    # Reboots all machines in a AppServiceEnvironment (App Service Environment).
+    # Reboot all machines in an App Service Environment.
     #
-    # Reboots all machines in a AppServiceEnvironment (App Service Environment).
+    # Reboot all machines in an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def reboot(resource_group_name, name, custom_headers = nil)
       response = reboot_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Reboots all machines in a AppServiceEnvironment (App Service Environment).
+    # Reboot all machines in an App Service Environment.
     #
-    # Reboots all machines in a AppServiceEnvironment (App Service Environment).
+    # Reboot all machines in an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2139,12 +2101,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Reboots all machines in a AppServiceEnvironment (App Service Environment).
+    # Reboot all machines in an App Service Environment.
     #
-    # Reboots all machines in a AppServiceEnvironment (App Service Environment).
+    # Reboot all machines in an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2193,17 +2156,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WebAppCollection] which provide lazy access to pages of the
-    # response.
+    # @return [Array<Site>] which provide lazy access to pages of the response.
     #
     def resume(resource_group_name, name, custom_headers = nil)
       response = resume_async(resource_group_name, name, custom_headers).value!
@@ -2216,12 +2179,13 @@ module Azure::ARM::Web
       end
     end
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2233,8 +2197,9 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2260,14 +2225,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2279,14 +2243,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2297,14 +2260,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2363,14 +2325,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param properties_to_include [String] Comma separated list of site properties
-    # to include
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param properties_to_include [String] Comma separated list of app properties
+    # to include.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2382,14 +2345,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param properties_to_include [String] Comma separated list of site properties
-    # to include
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param properties_to_include [String] Comma separated list of app properties
+    # to include.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2400,14 +2364,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param properties_to_include [String] Comma separated list of site properties
-    # to include
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param properties_to_include [String] Comma separated list of app properties
+    # to include.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2466,17 +2431,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [WebAppCollection] which provide lazy access to pages of the
-    # response.
+    # @return [Array<Site>] which provide lazy access to pages of the response.
     #
     def suspend(resource_group_name, name, custom_headers = nil)
       response = suspend_async(resource_group_name, name, custom_headers).value!
@@ -2489,12 +2454,13 @@ module Azure::ARM::Web
       end
     end
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2506,8 +2472,9 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2533,12 +2500,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -2554,12 +2522,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -2574,12 +2543,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -2608,7 +2578,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'api-version' => api_version},
+          query_params: {'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -2642,12 +2613,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2659,12 +2631,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2675,12 +2648,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2743,9 +2717,10 @@ module Azure::ARM::Web
     #
     # Get properties of a worker pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2761,9 +2736,10 @@ module Azure::ARM::Web
     #
     # Get properties of a worker pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2778,9 +2754,10 @@ module Azure::ARM::Web
     #
     # Get properties of a worker pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2844,10 +2821,11 @@ module Azure::ARM::Web
     #
     # Create or update a worker pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
-    # @param worker_pool_envelope [WorkerPool] Properties of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param worker_pool_envelope [WorkerPool] Properties of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2859,10 +2837,11 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
-    # @param worker_pool_envelope [WorkerPool] Properties of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param worker_pool_envelope [WorkerPool] Properties of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2888,37 +2867,39 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a specific instance of a worker pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
     #
-    # Get metric definitions for a specific instance of a worker pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
-    # @param instance [String] Name of instance in the worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param instance [String] Name of the instance in the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [Array<ResourceMetricDefinition>] operation results.
     #
     def list_worker_pool_instance_metric_definitions(resource_group_name, name, worker_pool_name, instance, custom_headers = nil)
-      response = list_worker_pool_instance_metric_definitions_async(resource_group_name, name, worker_pool_name, instance, custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_worker_pool_instance_metric_definitions_as_lazy(resource_group_name, name, worker_pool_name, instance, custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # Get metric definitions for a specific instance of a worker pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
     #
-    # Get metric definitions for a specific instance of a worker pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
-    # @param instance [String] Name of instance in the worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param instance [String] Name of the instance in the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2929,16 +2910,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a specific instance of a worker pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
     #
-    # Get metric definitions for a specific instance of a worker pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
-    # @param instance [String] Name of instance in the worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param instance [String] Name of the instance in the worker pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2981,6 +2963,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -2989,17 +2981,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metrics for a specific instance of a worker pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
     #
-    # Get metrics for a specific instance of a worker pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
-    # @param instance [String] Name of instance in the worker pool
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param instance [String] Name of the instance in the worker pool.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -3007,25 +3001,27 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [Array<ResourceMetric>] operation results.
     #
     def list_worker_pool_instance_metrics(resource_group_name, name, worker_pool_name, instance, details = nil, filter = nil, custom_headers = nil)
-      response = list_worker_pool_instance_metrics_async(resource_group_name, name, worker_pool_name, instance, details, filter, custom_headers).value!
-      response.body unless response.nil?
+      first_page = list_worker_pool_instance_metrics_as_lazy(resource_group_name, name, worker_pool_name, instance, details, filter, custom_headers)
+      first_page.get_all_items
     end
 
     #
-    # Get metrics for a specific instance of a worker pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
     #
-    # Get metrics for a specific instance of a worker pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
-    # @param instance [String] Name of instance in the worker pool
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param instance [String] Name of the instance in the worker pool.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -3040,17 +3036,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metrics for a specific instance of a worker pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
     #
-    # Get metrics for a specific instance of a worker pool of a
-    # AppServiceEnvironment (App Service Environment).
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
-    # @param instance [String] Name of instance in the worker pool
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param instance [String] Name of the instance in the worker pool.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -3074,14 +3072,15 @@ module Azure::ARM::Web
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/instances/{instance}/metrics'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}/instances/{instance}metrics'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'workerPoolName' => worker_pool_name,'instance' => instance,'subscriptionId' => @client.subscription_id},
-          query_params: {'details' => details,'$filter' => filter,'api-version' => api_version},
+          query_params: {'details' => details,'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -3097,6 +3096,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ResourceMetricCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -3105,19 +3114,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a worker pool of an App Service Environment.
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a worker pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<MetricDefinition>] operation results.
+    # @return [Array<ResourceMetricDefinition>] operation results.
     #
     def list_web_worker_metric_definitions(resource_group_name, name, worker_pool_name, custom_headers = nil)
       first_page = list_web_worker_metric_definitions_as_lazy(resource_group_name, name, worker_pool_name, custom_headers)
@@ -3125,15 +3133,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a worker pool of an App Service Environment.
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a worker pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3144,15 +3151,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a worker pool of an App Service Environment.
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a worker pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3198,7 +3204,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MetricDefinitionCollection.mapper()
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -3218,10 +3224,12 @@ module Azure::ARM::Web
     # Get metrics for a worker pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param worker_pool_name [String] Name of worker pool
-    # @param details [Boolean] Include instance details
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -3243,10 +3251,12 @@ module Azure::ARM::Web
     # Get metrics for a worker pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param worker_pool_name [String] Name of worker pool
-    # @param details [Boolean] Include instance details
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -3267,10 +3277,12 @@ module Azure::ARM::Web
     # Get metrics for a worker pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param worker_pool_name [String] Name of worker pool
-    # @param details [Boolean] Include instance details
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -3300,7 +3312,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'workerPoolName' => worker_pool_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'details' => details,'$filter' => filter,'api-version' => api_version},
+          query_params: {'details' => details,'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -3334,13 +3347,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3352,13 +3366,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3369,13 +3384,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3435,15 +3451,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3455,15 +3470,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3474,15 +3488,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3542,14 +3555,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Create or update a AppServiceEnvironment (App Service Environment).
+    # Create or update an App Service Environment.
     #
-    # Create or update a AppServiceEnvironment (App Service Environment).
+    # Create or update an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param hosting_environment_envelope [AppServiceEnvironment] Properties of
-    # AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironment] Configuration
+    # details of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3561,14 +3575,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Create or update a AppServiceEnvironment (App Service Environment).
+    # Create or update an App Service Environment.
     #
-    # Create or update a AppServiceEnvironment (App Service Environment).
+    # Create or update an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param hosting_environment_envelope [AppServiceEnvironment] Properties of
-    # AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironment] Configuration
+    # details of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3579,14 +3594,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Create or update a AppServiceEnvironment (App Service Environment).
+    # Create or update an App Service Environment.
     #
-    # Create or update a AppServiceEnvironment (App Service Environment).
+    # Create or update an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param hosting_environment_envelope [AppServiceEnvironment] Properties of
-    # AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param hosting_environment_envelope [AppServiceEnvironment] Configuration
+    # details of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3665,33 +3681,36 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete a AppServiceEnvironment (App Service Environment).
+    # Delete an App Service Environment.
     #
-    # Delete a AppServiceEnvironment (App Service Environment).
+    # Delete an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param force_delete [Boolean] Delete even if the AppServiceEnvironment (App
-    # Service Environment) contains resources
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param force_delete [Boolean] Specify <code>true</code> to force the deletion
+    # even if the App Service Environment contains resources. The default is
+    # <code>false</code>.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def begin_delete(resource_group_name, name, force_delete = nil, custom_headers = nil)
       response = begin_delete_async(resource_group_name, name, force_delete, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Delete a AppServiceEnvironment (App Service Environment).
+    # Delete an App Service Environment.
     #
-    # Delete a AppServiceEnvironment (App Service Environment).
+    # Delete an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param force_delete [Boolean] Delete even if the AppServiceEnvironment (App
-    # Service Environment) contains resources
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param force_delete [Boolean] Specify <code>true</code> to force the deletion
+    # even if the App Service Environment contains resources. The default is
+    # <code>false</code>.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3702,14 +3721,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete a AppServiceEnvironment (App Service Environment).
+    # Delete an App Service Environment.
     #
-    # Delete a AppServiceEnvironment (App Service Environment).
+    # Delete an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param force_delete [Boolean] Delete even if the AppServiceEnvironment (App
-    # Service Environment) contains resources
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param force_delete [Boolean] Specify <code>true</code> to force the deletion
+    # even if the App Service Environment contains resources. The default is
+    # <code>false</code>.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3744,7 +3765,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200 || status_code == 202 || status_code == 400 || status_code == 404 || status_code == 409
+        unless status_code == 202 || status_code == 204 || status_code == 400 || status_code == 404 || status_code == 409
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -3758,13 +3779,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Create or update a multiRole pool.
+    # Create or update a multi-role pool.
     #
-    # Create or update a multiRole pool.
+    # Create or update a multi-role pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param multi_role_pool_envelope [WorkerPool] Properties of multiRole pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param multi_role_pool_envelope [WorkerPool] Properties of the multi-role
+    # pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3776,13 +3799,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Create or update a multiRole pool.
+    # Create or update a multi-role pool.
     #
-    # Create or update a multiRole pool.
+    # Create or update a multi-role pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param multi_role_pool_envelope [WorkerPool] Properties of multiRole pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param multi_role_pool_envelope [WorkerPool] Properties of the multi-role
+    # pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3793,13 +3818,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Create or update a multiRole pool.
+    # Create or update a multi-role pool.
     #
-    # Create or update a multiRole pool.
+    # Create or update a multi-role pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param multi_role_pool_envelope [WorkerPool] Properties of multiRole pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param multi_role_pool_envelope [WorkerPool] Properties of the multi-role
+    # pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3878,12 +3905,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3895,12 +3923,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3911,12 +3940,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3985,12 +4015,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4002,12 +4033,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4018,12 +4050,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4096,10 +4129,11 @@ module Azure::ARM::Web
     #
     # Create or update a worker pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
-    # @param worker_pool_envelope [WorkerPool] Properties of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param worker_pool_envelope [WorkerPool] Properties of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4115,10 +4149,11 @@ module Azure::ARM::Web
     #
     # Create or update a worker pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
-    # @param worker_pool_envelope [WorkerPool] Properties of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param worker_pool_envelope [WorkerPool] Properties of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4133,10 +4168,11 @@ module Azure::ARM::Web
     #
     # Create or update a worker pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
-    # @param worker_pool_envelope [WorkerPool] Properties of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param worker_pool_envelope [WorkerPool] Properties of the worker pool.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4216,9 +4252,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4233,9 +4269,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4249,9 +4285,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4309,9 +4345,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4326,9 +4362,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4342,9 +4378,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4402,11 +4438,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4421,11 +4457,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4439,11 +4475,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4501,9 +4537,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4518,9 +4554,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4534,9 +4570,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4594,9 +4630,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4611,9 +4647,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4627,9 +4663,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4687,18 +4723,214 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MetricDefinitionCollection] operation results.
+    # @return [ResourceMetricDefinitionCollection] operation results.
+    #
+    def list_multi_role_pool_instance_metric_definitions_next(next_page_link, custom_headers = nil)
+      response = list_multi_role_pool_instance_metric_definitions_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
+    #
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_multi_role_pool_instance_metric_definitions_next_with_http_info(next_page_link, custom_headers = nil)
+      list_multi_role_pool_instance_metric_definitions_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
+    #
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_multi_role_pool_instance_metric_definitions_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
+    #
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ResourceMetricCollection] operation results.
+    #
+    def list_multi_role_pool_instance_metrics_next(next_page_link, custom_headers = nil)
+      response = list_multi_role_pool_instance_metrics_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
+    #
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_multi_role_pool_instance_metrics_next_with_http_info(next_page_link, custom_headers = nil)
+      list_multi_role_pool_instance_metrics_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
+    #
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_multi_role_pool_instance_metrics_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ResourceMetricCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get metric definitions for a multi-role pool of an App Service Environment.
+    #
+    # Get metric definitions for a multi-role pool of an App Service Environment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ResourceMetricDefinitionCollection] operation results.
     #
     def list_multi_role_metric_definitions_next(next_page_link, custom_headers = nil)
       response = list_multi_role_metric_definitions_next_async(next_page_link, custom_headers).value!
@@ -4706,11 +4938,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a multi-role pool of an App Service Environment.
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a multi-role pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4724,11 +4954,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a multi-role pool of an App Service Environment.
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a multi-role pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4772,7 +5000,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MetricDefinitionCollection.mapper()
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -4786,11 +5014,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4805,11 +5031,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4823,11 +5047,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4885,9 +5107,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4902,9 +5124,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4918,9 +5140,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4978,11 +5200,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -4997,11 +5217,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5015,11 +5233,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5077,9 +5293,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5121,11 +5337,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5140,11 +5354,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5158,11 +5370,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5220,9 +5430,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5237,9 +5447,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5253,9 +5463,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5313,9 +5523,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5357,9 +5567,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5374,9 +5584,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5390,9 +5600,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5450,9 +5660,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5467,9 +5677,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5483,9 +5693,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5543,18 +5753,214 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MetricDefinitionCollection] operation results.
+    # @return [ResourceMetricDefinitionCollection] operation results.
+    #
+    def list_worker_pool_instance_metric_definitions_next(next_page_link, custom_headers = nil)
+      response = list_worker_pool_instance_metric_definitions_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
+    #
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_worker_pool_instance_metric_definitions_next_with_http_info(next_page_link, custom_headers = nil)
+      list_worker_pool_instance_metric_definitions_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
+    #
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_worker_pool_instance_metric_definitions_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
+    #
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ResourceMetricCollection] operation results.
+    #
+    def list_worker_pool_instance_metrics_next(next_page_link, custom_headers = nil)
+      response = list_worker_pool_instance_metrics_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
+    #
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_worker_pool_instance_metrics_next_with_http_info(next_page_link, custom_headers = nil)
+      list_worker_pool_instance_metrics_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
+    #
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_worker_pool_instance_metrics_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = ResourceMetricCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get metric definitions for a worker pool of an App Service Environment.
+    #
+    # Get metric definitions for a worker pool of an App Service Environment.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ResourceMetricDefinitionCollection] operation results.
     #
     def list_web_worker_metric_definitions_next(next_page_link, custom_headers = nil)
       response = list_web_worker_metric_definitions_next_async(next_page_link, custom_headers).value!
@@ -5562,11 +5968,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a worker pool of an App Service Environment.
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a worker pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5580,11 +5984,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a worker pool of an App Service Environment.
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a worker pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5628,7 +6030,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MetricDefinitionCollection.mapper()
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -5741,9 +6143,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5758,9 +6160,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5774,9 +6176,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5834,11 +6236,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5853,11 +6253,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5871,11 +6269,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5933,9 +6329,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5950,9 +6346,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -5966,9 +6362,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -6036,9 +6432,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -6053,9 +6449,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -6069,9 +6465,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -6139,9 +6535,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
-    # Gets all hostingEnvironments (App Service Environment) for a subscription
+    # Get all App Service Environments for a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -6161,11 +6557,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
-    # Get all hostingEnvironments (App Service Environments) in a resource group.
+    # Get all App Service Environments in a resource group.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6184,14 +6581,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
-    # Get used, available, and total worker capacity for AppServiceEnvironment (App
-    # Service Environment).
+    # Get the used, available, and total worker capacity an App Service
+    # Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6210,13 +6608,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
-    # Get global metrics of AppServiceEnvironment (App Service Environment).
+    # Get global metrics of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -6239,12 +6639,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
-    # Get all multi role pools
+    # Get all multi-role pools.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6263,19 +6664,76 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
     #
-    # Get metric definitions for a multiRole pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a specific instance of a multi-role pool of an App
+    # Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param instance [String] Name of the instance in the multi-role pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MetricDefinitionCollection] which provide lazy access to pages of
-    # the response.
+    # @return [ResourceMetricDefinitionCollection] which provide lazy access to
+    # pages of the response.
+    #
+    def list_multi_role_pool_instance_metric_definitions_as_lazy(resource_group_name, name, instance, custom_headers = nil)
+      response = list_multi_role_pool_instance_metric_definitions_async(resource_group_name, name, instance, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_multi_role_pool_instance_metric_definitions_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
+    #
+    # Get metrics for a specific instance of a multi-role pool of an App Service
+    # Environment.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param instance [String] Name of the instance in the multi-role pool.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ResourceMetricCollection] which provide lazy access to pages of the
+    # response.
+    #
+    def list_multi_role_pool_instance_metrics_as_lazy(resource_group_name, name, instance, details = nil, custom_headers = nil)
+      response = list_multi_role_pool_instance_metrics_async(resource_group_name, name, instance, details, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_multi_role_pool_instance_metrics_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Get metric definitions for a multi-role pool of an App Service Environment.
+    #
+    # Get metric definitions for a multi-role pool of an App Service Environment.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ResourceMetricDefinitionCollection] which provide lazy access to
+    # pages of the response.
     #
     def list_multi_role_metric_definitions_as_lazy(resource_group_name, name, custom_headers = nil)
       response = list_multi_role_metric_definitions_async(resource_group_name, name, custom_headers).value!
@@ -6289,18 +6747,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
-    # Get metrics for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get metrics for a multi-role pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param start_time [String] Beginning time of metrics query
-    # @param end_time [String] End time of metrics query
-    # @param time_grain [String] Time granularity of metrics query
-    # @param details [Boolean] Include instance details
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param start_time [String] Beginning time of the metrics query.
+    # @param end_time [String] End time of the metrics query.
+    # @param time_grain [String] Time granularity of the metrics query.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -6323,12 +6781,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
-    # Get available skus for scaling a multiRole pool.
+    # Get available SKUs for scaling a multi-role pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6347,14 +6806,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
-    # Get usages for a multiRole pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a multi-role pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6372,14 +6830,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
-    # Get all serverfarms (App Service Plans) on the AppServiceEnvironment (App
-    # Service Environment).
+    # Get all App Service plans in an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6398,14 +6855,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
-    # Get all sites on the AppServiceEnvironment (App Service Environment).
+    # Get all apps in an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param properties_to_include [String] Comma separated list of site properties
-    # to include
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param properties_to_include [String] Comma separated list of app properties
+    # to include.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6424,12 +6882,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
-    # Get global usages of AppServiceEnvironment (App Service Environment).
+    # Get global usage metrics of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -6452,12 +6911,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
-    # Get all worker pools
+    # Get all worker pools of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6476,20 +6936,83 @@ module Azure::ARM::Web
     end
 
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
     #
-    # Get metric definitions for a worker pool of a AppServiceEnvironment (App
-    # Service Environment).
+    # Get metric definitions for a specific instance of a worker pool of an App
+    # Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param instance [String] Name of the instance in the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MetricDefinitionCollection] which provide lazy access to pages of
-    # the response.
+    # @return [ResourceMetricDefinitionCollection] which provide lazy access to
+    # pages of the response.
+    #
+    def list_worker_pool_instance_metric_definitions_as_lazy(resource_group_name, name, worker_pool_name, instance, custom_headers = nil)
+      response = list_worker_pool_instance_metric_definitions_async(resource_group_name, name, worker_pool_name, instance, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_worker_pool_instance_metric_definitions_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
+    #
+    # Get metrics for a specific instance of a worker pool of an App Service
+    # Environment.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param instance [String] Name of the instance in the worker pool.
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
+    # @param filter [String] Return only usages/metrics specified in the filter.
+    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
+    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
+    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ResourceMetricCollection] which provide lazy access to pages of the
+    # response.
+    #
+    def list_worker_pool_instance_metrics_as_lazy(resource_group_name, name, worker_pool_name, instance, details = nil, filter = nil, custom_headers = nil)
+      response = list_worker_pool_instance_metrics_async(resource_group_name, name, worker_pool_name, instance, details, filter, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_worker_pool_instance_metrics_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Get metric definitions for a worker pool of an App Service Environment.
+    #
+    # Get metric definitions for a worker pool of an App Service Environment.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [ResourceMetricDefinitionCollection] which provide lazy access to
+    # pages of the response.
     #
     def list_web_worker_metric_definitions_as_lazy(resource_group_name, name, worker_pool_name, custom_headers = nil)
       response = list_web_worker_metric_definitions_async(resource_group_name, name, worker_pool_name, custom_headers).value!
@@ -6509,10 +7032,12 @@ module Azure::ARM::Web
     # Get metrics for a worker pool of a AppServiceEnvironment (App Service
     # Environment).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param worker_pool_name [String] Name of worker pool
-    # @param details [Boolean] Include instance details
+    # @param details [Boolean] Specify <code>true</code> to include instance
+    # details. The default is <code>false</code>.
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
     # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
@@ -6535,13 +7060,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
-    # Get available skus for scaling a worker pool.
+    # Get available SKUs for scaling a worker pool.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6560,15 +7086,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
-    # Get usages for a worker pool of a AppServiceEnvironment (App Service
-    # Environment).
+    # Get usage metrics for a worker pool of an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
-    # @param worker_pool_name [String] Name of worker pool
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
+    # @param worker_pool_name [String] Name of the worker pool.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6586,12 +7111,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # Resumes the AppServiceEnvironment.
+    # Resume an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6610,12 +7136,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # Suspends the AppServiceEnvironment.
+    # Suspend an App Service Environment.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of AppServiceEnvironment (App Service Environment)
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the App Service Environment.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

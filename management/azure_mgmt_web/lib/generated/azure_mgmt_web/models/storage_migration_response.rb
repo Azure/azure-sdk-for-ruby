@@ -6,14 +6,14 @@
 module Azure::ARM::Web
   module Models
     #
-    # Response for a migration of site content request
+    # Response for a migration of app content request.
     #
     class StorageMigrationResponse < MsRestAzure::Resource
 
       include MsRestAzure
 
       # @return [String] When server starts the migration process, it will
-      # return an OperationId identifying that particular migration operation
+      # return an operation ID identifying that particular migration operation.
       attr_accessor :operation_id
 
 
@@ -38,7 +38,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -81,6 +81,7 @@ module Azure::ARM::Web
               },
               operation_id: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.operationId',
                 type: {
                   name: 'String'

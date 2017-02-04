@@ -6,27 +6,22 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class containting details about site recovery operation.
+    # Details about app recovery operation.
     #
     class CsmSiteRecoveryEntity
 
       include MsRestAzure
 
-      # @return [DateTime] Point in time in which the site recover should be
+      # @return [DateTime] Point in time in which the app recovery should be
       # attempted.
       attr_accessor :snapshot_time
 
-      # @return [Boolean] If true, then the website's configuration will be
-      # reverted to its state at SnapshotTime
-      attr_accessor :recover_config
-
-      # @return [String] [Optional] Destination web app name into which web app
-      # should be recovered. This is case when new web app should be created
-      # instead.
+      # @return [String] [Optional] Destination app name into which app should
+      # be recovered. This is case when new app should be created instead.
       attr_accessor :site_name
 
-      # @return [String] [Optional] Destination web app slot name into which
-      # web app should be recovered
+      # @return [String] [Optional] Destination app slot name into which app
+      # should be recovered.
       attr_accessor :slot_name
 
 
@@ -47,13 +42,6 @@ module Azure::ARM::Web
                 serialized_name: 'snapshotTime',
                 type: {
                   name: 'DateTime'
-                }
-              },
-              recover_config: {
-                required: false,
-                serialized_name: 'recoverConfig',
-                type: {
-                  name: 'Boolean'
                 }
               },
               site_name: {

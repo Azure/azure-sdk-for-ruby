@@ -6,8 +6,8 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class containing a list of the resources that need to be moved and the
-    # resource group they should be moved to
+    # Object with a list of the resources that need to be moved and the
+    # resource group they should be moved to.
     #
     class CsmMoveResourceEnvelope
 
@@ -35,6 +35,11 @@ module Azure::ARM::Web
               target_resource_group: {
                 required: false,
                 serialized_name: 'targetResourceGroup',
+                constraints: {
+                  MaxLength: 90,
+                  MinLength: 1,
+                  Pattern: ' ^[-\w\._\(\)]+[^\.]$'
+                },
                 type: {
                   name: 'String'
                 }

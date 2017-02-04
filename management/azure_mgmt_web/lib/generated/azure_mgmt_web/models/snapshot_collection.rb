@@ -6,17 +6,17 @@
 module Azure::ARM::Web
   module Models
     #
-    # Collection of Snapshots which can be used to revert a site to a previous
+    # Collection of snapshots which can be used to revert an app to a previous
     # time.
     #
     class SnapshotCollection
 
       include MsRestAzure
 
-      # @return [Array<Snapshot>] Collection of resources
+      # @return [Array<Snapshot>] Collection of resources.
       attr_accessor :value
 
-      # @return [String] Link to next page of resources
+      # @return [String] Link to next page of resources.
       attr_accessor :next_link
 
       # return [Proc] with next page method call.
@@ -64,7 +64,7 @@ module Azure::ARM::Web
             class_name: 'SnapshotCollection',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'Sequence',

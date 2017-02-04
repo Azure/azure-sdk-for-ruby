@@ -6,13 +6,13 @@
 module Azure::ARM::Web
   module Models
     #
-    # Database connection string value to type pair
+    # Database connection string value to type pair.
     #
     class ConnStringValueTypePair
 
       include MsRestAzure
 
-      # @return [String] Value of pair
+      # @return [String] Value of pair.
       attr_accessor :value
 
       # @return [ConnectionStringType] Type of database. Possible values
@@ -34,7 +34,7 @@ module Azure::ARM::Web
             class_name: 'ConnStringValueTypePair',
             model_properties: {
               value: {
-                required: false,
+                required: true,
                 serialized_name: 'value',
                 type: {
                   name: 'String'

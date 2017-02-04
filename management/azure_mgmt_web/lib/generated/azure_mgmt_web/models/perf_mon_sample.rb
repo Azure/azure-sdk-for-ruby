@@ -6,19 +6,19 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class representing a Perf Mon Sample
+    # Performance monitor sample in a set.
     #
     class PerfMonSample
 
       include MsRestAzure
 
-      # @return [DateTime] Point in time for which counter was measured
+      # @return [DateTime] Point in time for which counter was measured.
       attr_accessor :time
 
-      # @return [String] Name of the server on which the measurement is made
+      # @return [String] Name of the server on which the measurement is made.
       attr_accessor :instance_name
 
-      # @return [Float] Value of Counter at certain time
+      # @return [Float] Value of counter at a certain time.
       attr_accessor :value
 
 

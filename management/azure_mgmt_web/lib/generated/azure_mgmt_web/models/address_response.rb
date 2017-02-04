@@ -6,23 +6,23 @@
 module Azure::ARM::Web
   module Models
     #
-    # Describes main public ip address and any extra vips
+    # Describes main public IP address and any extra virtual IPs.
     #
     class AddressResponse
 
       include MsRestAzure
 
-      # @return [String] Main public vip
+      # @return [String] Main public virtual IP.
       attr_accessor :service_ip_address
 
-      # @return [String] VNET internal ip address of the hostingEnvironment
-      # (App Service Environment) if it is in internal load-balancing mode
+      # @return [String] Virtual Network internal IP address of the App Service
+      # Environment if it is in internal load-balancing mode.
       attr_accessor :internal_ip_address
 
-      # @return [Array<String>] IP addresses appearing on outbound connections
+      # @return [Array<String>] IP addresses appearing on outbound connections.
       attr_accessor :outbound_ip_addresses
 
-      # @return [Array<VirtualIPMapping>] Additional vips
+      # @return [Array<VirtualIPMapping>] Additional virtual IPs.
       attr_accessor :vip_mappings
 
 

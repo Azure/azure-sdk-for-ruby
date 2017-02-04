@@ -6,20 +6,22 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents a certificate action
+    # Certificate order action.
     #
     class CertificateOrderAction < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [CertificateOrderActionType] Type. Possible values include:
-      # 'CertificateIssued', 'CertificateOrderCanceled',
+      # @return [CertificateOrderActionType] Action type. Possible values
+      # include: 'CertificateIssued', 'CertificateOrderCanceled',
       # 'CertificateOrderCreated', 'CertificateRevoked',
       # 'DomainValidationComplete', 'FraudDetected', 'OrgNameChange',
-      # 'OrgValidationComplete', 'SanDrop'
+      # 'OrgValidationComplete', 'SanDrop', 'FraudCleared',
+      # 'CertificateExpired', 'CertificateExpirationWarning',
+      # 'FraudDocumentationRequired', 'Unknown'
       attr_accessor :certificate_order_action_type
 
-      # @return [DateTime] Time at which the certificate action was performed
+      # @return [DateTime] Time at which the certificate action was performed.
       attr_accessor :created_at
 
 
@@ -44,7 +46,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

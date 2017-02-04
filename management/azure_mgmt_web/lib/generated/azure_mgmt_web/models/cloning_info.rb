@@ -6,55 +6,57 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents information needed for cloning operation
+    # Information needed for cloning operation.
     #
     class CloningInfo
 
       include MsRestAzure
 
-      # @return [String] Correlation Id of cloning operation. This id ties
+      # @return [String] Correlation ID of cloning operation. This ID ties
       # multiple cloning operations
-      # together to use the same snapshot
+      # together to use the same snapshot.
       attr_accessor :correlation_id
 
-      # @return [Boolean] Overwrite destination web app
+      # @return [Boolean] <code>true</code> to overwrite destination app;
+      # otherwise, <code>false</code>.
       attr_accessor :overwrite
 
-      # @return [Boolean] If true, clone custom hostnames from source web app
+      # @return [Boolean] <code>true</code> to clone custom hostnames from
+      # source app; otherwise, <code>false</code>.
       attr_accessor :clone_custom_host_names
 
-      # @return [Boolean] Clone source control from source web app
+      # @return [Boolean] <code>true</code> to clone source control from source
+      # app; otherwise, <code>false</code>.
       attr_accessor :clone_source_control
 
-      # @return [String] ARM resource id of the source web app. Web app
-      # resource id is of the form
+      # @return [String] ARM resource ID of the source app. App resource ID is
+      # of the form
       # /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
       # for production slots and
       # /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-      # for other slots
+      # for other slots.
       attr_accessor :source_web_app_id
 
-      # @return [String] Hosting environment
+      # @return [String] App Service Environment.
       attr_accessor :hosting_environment
 
-      # @return [Hash{String => String}] Application settings overrides for
-      # cloned web app. If specified these settings will override the settings
-      # cloned
-      # from source web app. If not specified, application settings from source
-      # web app are retained.
+      # @return [Hash{String => String}] Application setting overrides for
+      # cloned app. If specified, these settings override the settings cloned
+      # from source app. Otherwise, application settings from source app are
+      # retained.
       attr_accessor :app_settings_overrides
 
-      # @return [Boolean] If specified configure load balancing for source and
-      # clone site
+      # @return [Boolean] <code>true</code> to configure load balancing for
+      # source and destination app.
       attr_accessor :configure_load_balancing
 
-      # @return [String] ARM resource id of the traffic manager profile to use
-      # if it exists. Traffic manager resource id is of the form
-      # /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}
+      # @return [String] ARM resource ID of the Traffic Manager profile to use,
+      # if it exists. Traffic Manager resource ID is of the form
+      # /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
       attr_accessor :traffic_manager_profile_id
 
-      # @return [String] Name of traffic manager profile to create. This is
-      # only needed if traffic manager profile does not already exist
+      # @return [String] Name of Traffic Manager profile to create. This is
+      # only needed if Traffic Manager profile does not already exist.
       attr_accessor :traffic_manager_profile_name
 
 

@@ -6,14 +6,13 @@
 module Azure::ARM::Web
   module Models
     #
-    # Class containing Routing in production experiments
+    # Routing rules in production experiments.
     #
     class Experiments
 
       include MsRestAzure
 
-      # @return [Array<RampUpRule>] List of
-      # {Microsoft.Web.Hosting.Administration.RampUpRule} objects.
+      # @return [Array<RampUpRule>] List of ramp-up rules.
       attr_accessor :ramp_up_rules
 
 

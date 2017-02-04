@@ -23,9 +23,9 @@ module Azure::ARM::Web
     attr_reader :client
 
     #
-    # Gets all Web Apps for a subscription
+    # Get all apps for a subscription.
     #
-    # Gets all Web Apps for a subscription
+    # Get all apps for a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -38,9 +38,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all Web Apps for a subscription
+    # Get all apps for a subscription.
     #
-    # Gets all Web Apps for a subscription
+    # Get all apps for a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -52,9 +52,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all Web Apps for a subscription
+    # Get all apps for a subscription.
     #
-    # Gets all Web Apps for a subscription
+    # Get all apps for a subscription.
     #
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -112,159 +112,60 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets deleted web apps in subscription
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
-    # Gets deleted web apps in subscription
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Array<DeletedSite>] operation results.
-    #
-    def list_deleted(resource_group_name, properties_to_include = nil, custom_headers = nil)
-      first_page = list_deleted_as_lazy(resource_group_name, properties_to_include, custom_headers)
-      first_page.get_all_items
-    end
-
-    #
-    # Gets deleted web apps in subscription
-    #
-    # Gets deleted web apps in subscription
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_deleted_with_http_info(resource_group_name, properties_to_include = nil, custom_headers = nil)
-      list_deleted_async(resource_group_name, properties_to_include, custom_headers).value!
-    end
-
-    #
-    # Gets deleted web apps in subscription
-    #
-    # Gets deleted web apps in subscription
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_deleted_async(resource_group_name, properties_to_include = nil, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-08-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/deletedSites'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'propertiesToInclude' => properties_to_include,'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DeletedWebAppCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets the web apps for a subscription in the specified resource group
-    #
-    # Gets the web apps for a subscription in the specified resource group
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
-    # @param include_slots [Boolean] Whether or not to include deployments slots in
-    # results
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param include_slots [Boolean] Specify <strong>true</strong> to include
+    # deployment slots in results. The default is false, which only gives you the
+    # production slot of all apps.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<Site>] operation results.
     #
-    def list_by_resource_group(resource_group_name, properties_to_include = nil, include_slots = nil, custom_headers = nil)
-      first_page = list_by_resource_group_as_lazy(resource_group_name, properties_to_include, include_slots, custom_headers)
+    def list_by_resource_group(resource_group_name, include_slots = nil, custom_headers = nil)
+      first_page = list_by_resource_group_as_lazy(resource_group_name, include_slots, custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Gets the web apps for a subscription in the specified resource group
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
-    # Gets the web apps for a subscription in the specified resource group
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
-    # @param include_slots [Boolean] Whether or not to include deployments slots in
-    # results
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param include_slots [Boolean] Specify <strong>true</strong> to include
+    # deployment slots in results. The default is false, which only gives you the
+    # production slot of all apps.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_by_resource_group_with_http_info(resource_group_name, properties_to_include = nil, include_slots = nil, custom_headers = nil)
-      list_by_resource_group_async(resource_group_name, properties_to_include, include_slots, custom_headers).value!
+    def list_by_resource_group_with_http_info(resource_group_name, include_slots = nil, custom_headers = nil)
+      list_by_resource_group_async(resource_group_name, include_slots, custom_headers).value!
     end
 
     #
-    # Gets the web apps for a subscription in the specified resource group
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
-    # Gets the web apps for a subscription in the specified resource group
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
-    # @param include_slots [Boolean] Whether or not to include deployments slots in
-    # results
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param include_slots [Boolean] Specify <strong>true</strong> to include
+    # deployment slots in results. The default is false, which only gives you the
+    # production slot of all apps.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_by_resource_group_async(resource_group_name, properties_to_include = nil, include_slots = nil, custom_headers = nil)
+    def list_by_resource_group_async(resource_group_name, include_slots = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       api_version = '2016-08-01'
@@ -282,7 +183,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'subscriptionId' => @client.subscription_id},
-          query_params: {'propertiesToInclude' => properties_to_include,'includeSlots' => include_slots,'api-version' => api_version},
+          query_params: {'includeSlots' => include_slots,'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -316,57 +217,54 @@ module Azure::ARM::Web
     end
 
     #
-    # Get details of a web app
+    # Gets the details of a web, mobile, or API app.
     #
-    # Get details of a web app
+    # Gets the details of a web, mobile, or API app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Site] operation results.
     #
-    def get(resource_group_name, name, properties_to_include = nil, custom_headers = nil)
-      response = get_async(resource_group_name, name, properties_to_include, custom_headers).value!
+    def get(resource_group_name, name, custom_headers = nil)
+      response = get_async(resource_group_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get details of a web app
+    # Gets the details of a web, mobile, or API app.
     #
-    # Get details of a web app
+    # Gets the details of a web, mobile, or API app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_with_http_info(resource_group_name, name, properties_to_include = nil, custom_headers = nil)
-      get_async(resource_group_name, name, properties_to_include, custom_headers).value!
+    def get_with_http_info(resource_group_name, name, custom_headers = nil)
+      get_async(resource_group_name, name, custom_headers).value!
     end
 
     #
-    # Get details of a web app
+    # Gets the details of a web, mobile, or API app.
     #
-    # Get details of a web app
+    # Gets the details of a web, mobile, or API app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_async(resource_group_name, name, properties_to_include = nil, custom_headers = nil)
+    def get_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -385,7 +283,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'propertiesToInclude' => properties_to_include,'api-version' => api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -419,13 +317,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param site_envelope [Site] Details of web app if it exists already
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [Site] A JSON representation of the app properties. See
+    # example.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -446,9 +349,12 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param site_envelope [Site] Details of web app if it exists already
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [Site] A JSON representation of the app properties. See
+    # example.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -483,36 +389,39 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a web app
+    # Deletes a web, mobile, or API app, or one of the deployment slots.
     #
-    # Deletes a web app
+    # Deletes a web, mobile, or API app, or one of the deployment slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app to delete.
     # @param delete_metrics [Boolean] If true, web app metrics are also deleted
-    # @param delete_empty_server_farm [Boolean] If true and App Service Plan is
-    # empty after web app deletion, App Service Plan is also deleted
+    # @param delete_empty_server_farm [Boolean] Specify true if the App Service
+    # plan will be empty after app deletion and you want to delete the empty App
+    # Service plan. By default, the empty App Service plan is not deleted.
     # @param skip_dns_registration [Boolean] If true, DNS registration is skipped
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete(resource_group_name, name, delete_metrics = nil, delete_empty_server_farm = nil, skip_dns_registration = nil, custom_headers = nil)
       response = delete_async(resource_group_name, name, delete_metrics, delete_empty_server_farm, skip_dns_registration, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Deletes a web app
+    # Deletes a web, mobile, or API app, or one of the deployment slots.
     #
-    # Deletes a web app
+    # Deletes a web, mobile, or API app, or one of the deployment slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app to delete.
     # @param delete_metrics [Boolean] If true, web app metrics are also deleted
-    # @param delete_empty_server_farm [Boolean] If true and App Service Plan is
-    # empty after web app deletion, App Service Plan is also deleted
+    # @param delete_empty_server_farm [Boolean] Specify true if the App Service
+    # plan will be empty after app deletion and you want to delete the empty App
+    # Service plan. By default, the empty App Service plan is not deleted.
     # @param skip_dns_registration [Boolean] If true, DNS registration is skipped
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -524,15 +433,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a web app
+    # Deletes a web, mobile, or API app, or one of the deployment slots.
     #
-    # Deletes a web app
+    # Deletes a web, mobile, or API app, or one of the deployment slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app to delete.
     # @param delete_metrics [Boolean] If true, web app metrics are also deleted
-    # @param delete_empty_server_farm [Boolean] If true and App Service Plan is
-    # empty after web app deletion, App Service Plan is also deleted
+    # @param delete_empty_server_farm [Boolean] Specify true if the App Service
+    # plan will be empty after app deletion and you want to delete the empty App
+    # Service plan. By default, the empty App Service plan is not deleted.
     # @param skip_dns_registration [Boolean] If true, DNS registration is skipped
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -568,7 +479,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -582,11 +493,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Analyze a custom hostname
+    # Analyze a custom hostname.
     #
-    # Analyze a custom hostname
+    # Analyze a custom hostname.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param host_name [String] Custom hostname
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -600,11 +512,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Analyze a custom hostname
+    # Analyze a custom hostname.
     #
-    # Analyze a custom hostname
+    # Analyze a custom hostname.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param host_name [String] Custom hostname
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -617,11 +530,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Analyze a custom hostname
+    # Analyze a custom hostname.
     #
-    # Analyze a custom hostname
+    # Analyze a custom hostname.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param host_name [String] Custom hostname
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -682,33 +596,38 @@ module Azure::ARM::Web
     end
 
     #
-    # Applies the configuration settings from the target slot onto the current slot
+    # Applies the configuration settings from the target slot onto the current
+    # slot.
     #
-    # Applies the configuration settings from the target slot onto the current slot
+    # Applies the configuration settings from the target slot onto the current
+    # slot.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name. Settings from that slot will be applied on the source slot
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def apply_slot_config_to_production(resource_group_name, name, slot_swap_entity, custom_headers = nil)
       response = apply_slot_config_to_production_async(resource_group_name, name, slot_swap_entity, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Applies the configuration settings from the target slot onto the current slot
+    # Applies the configuration settings from the target slot onto the current
+    # slot.
     #
-    # Applies the configuration settings from the target slot onto the current slot
+    # Applies the configuration settings from the target slot onto the current
+    # slot.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name. Settings from that slot will be applied on the source slot
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -719,14 +638,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Applies the configuration settings from the target slot onto the current slot
+    # Applies the configuration settings from the target slot onto the current
+    # slot.
     #
-    # Applies the configuration settings from the target slot onto the current slot
+    # Applies the configuration settings from the target slot onto the current
+    # slot.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name. Settings from that slot will be applied on the source slot
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -771,7 +693,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -785,13 +707,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates web app backup
+    # Creates a backup of an app.
     #
-    # Creates web app backup
+    # Creates a backup of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [BackupRequest] Information on backup request
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [BackupRequest] Backup configuration. You can use the JSON
+    # response from the POST action as input here.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -803,13 +727,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates web app backup
+    # Creates a backup of an app.
     #
-    # Creates web app backup
+    # Creates a backup of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [BackupRequest] Information on backup request
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [BackupRequest] Backup configuration. You can use the JSON
+    # response from the POST action as input here.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -820,13 +746,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates web app backup
+    # Creates a backup of an app.
     #
-    # Creates web app backup
+    # Creates a backup of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [BackupRequest] Information on backup request
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [BackupRequest] Backup configuration. You can use the JSON
+    # response from the POST action as input here.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -895,12 +823,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -912,12 +841,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -928,12 +858,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -992,13 +923,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Discovers existing web app backups that can be restored
+    # Discovers an existing app backup that can be restored from a blob in Azure
+    # storage.
     #
-    # Discovers existing web app backups that can be restored
+    # Discovers an existing app backup that can be restored from a blob in Azure
+    # storage.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [RestoreRequest] Information on restore request
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [RestoreRequest] A RestoreRequest object that includes Azure
+    # storage URL and blog name for discovery of backup.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1010,13 +945,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Discovers existing web app backups that can be restored
+    # Discovers an existing app backup that can be restored from a blob in Azure
+    # storage.
     #
-    # Discovers existing web app backups that can be restored
+    # Discovers an existing app backup that can be restored from a blob in Azure
+    # storage.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [RestoreRequest] Information on restore request
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [RestoreRequest] A RestoreRequest object that includes Azure
+    # storage URL and blog name for discovery of backup.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1027,13 +966,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Discovers existing web app backups that can be restored
+    # Discovers an existing app backup that can be restored from a blob in Azure
+    # storage.
     #
-    # Discovers existing web app backups that can be restored
+    # Discovers an existing app backup that can be restored from a blob in Azure
+    # storage.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [RestoreRequest] Information on restore request
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [RestoreRequest] A RestoreRequest object that includes Azure
+    # storage URL and blog name for discovery of backup.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1102,13 +1045,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets status of a web app backup that may be in progress.
+    # Gets a backup of an app by its ID.
     #
-    # Gets status of a web app backup that may be in progress.
+    # Gets a backup of an app by its ID.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1120,13 +1064,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets status of a web app backup that may be in progress.
+    # Gets a backup of an app by its ID.
     #
-    # Gets status of a web app backup that may be in progress.
+    # Gets a backup of an app by its ID.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1137,13 +1082,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets status of a web app backup that may be in progress.
+    # Gets a backup of an app by its ID.
     #
-    # Gets status of a web app backup that may be in progress.
+    # Gets a backup of an app by its ID.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1203,31 +1149,32 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a backup from Azure Storage
+    # Deletes a backup of an app by its ID.
     #
-    # Deletes a backup from Azure Storage
+    # Deletes a backup of an app by its ID.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [BackupItem] operation results.
     #
     def delete_backup(resource_group_name, name, backup_id, custom_headers = nil)
       response = delete_backup_async(resource_group_name, name, backup_id, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Deletes a backup from Azure Storage
+    # Deletes a backup of an app by its ID.
     #
-    # Deletes a backup from Azure Storage
+    # Deletes a backup of an app by its ID.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1238,13 +1185,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a backup from Azure Storage
+    # Deletes a backup of an app by its ID.
     #
-    # Deletes a backup from Azure Storage
+    # Deletes a backup of an app by its ID.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1280,22 +1228,12 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = BackupItem.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
 
         result
       end
@@ -1314,7 +1252,8 @@ module Azure::ARM::Web
     # used to update the SAS URL for the backup if a new URL is passed in the
     # request body.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
     # @param request [BackupRequest] Information on backup request
@@ -1339,7 +1278,8 @@ module Azure::ARM::Web
     # used to update the SAS URL for the backup if a new URL is passed in the
     # request body.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
     # @param request [BackupRequest] Information on backup request
@@ -1363,7 +1303,8 @@ module Azure::ARM::Web
     # used to update the SAS URL for the backup if a new URL is passed in the
     # request body.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
     # @param request [BackupRequest] Information on backup request
@@ -1436,13 +1377,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup to restore
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param request [RestoreRequest] Information on restore request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1455,9 +1397,10 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup to restore
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param request [RestoreRequest] Information on restore request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -1484,13 +1427,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the application settings of web app
+    # Replaces the application settings of an app.
     #
-    # Updates the application settings of web app
+    # Replaces the application settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param app_settings [StringDictionary] Application settings of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param app_settings [StringDictionary] Application settings of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1502,13 +1446,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the application settings of web app
+    # Replaces the application settings of an app.
     #
-    # Updates the application settings of web app
+    # Replaces the application settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param app_settings [StringDictionary] Application settings of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param app_settings [StringDictionary] Application settings of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1519,13 +1464,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the application settings of web app
+    # Replaces the application settings of an app.
     #
-    # Updates the application settings of web app
+    # Replaces the application settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param app_settings [StringDictionary] Application settings of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param app_settings [StringDictionary] Application settings of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1594,12 +1540,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the application settings of web app
+    # Gets the application settings of an app.
     #
-    # Gets the application settings of web app
+    # Gets the application settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1611,12 +1558,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the application settings of web app
+    # Gets the application settings of an app.
     #
-    # Gets the application settings of web app
+    # Gets the application settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1627,12 +1575,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the application settings of web app
+    # Gets the application settings of an app.
     #
-    # Gets the application settings of web app
+    # Gets the application settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -1691,11 +1640,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Authentication / Authorization settings associated with web app
+    # Updates the Authentication / Authorization settings associated with web app.
     #
-    # Updates the Authentication / Authorization settings associated with web app
+    # Updates the Authentication / Authorization settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param site_auth_settings [SiteAuthSettings] Auth settings associated with
     # web app
@@ -1710,11 +1660,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Authentication / Authorization settings associated with web app
+    # Updates the Authentication / Authorization settings associated with web app.
     #
-    # Updates the Authentication / Authorization settings associated with web app
+    # Updates the Authentication / Authorization settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param site_auth_settings [SiteAuthSettings] Auth settings associated with
     # web app
@@ -1728,11 +1679,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Authentication / Authorization settings associated with web app
+    # Updates the Authentication / Authorization settings associated with web app.
     #
-    # Updates the Authentication / Authorization settings associated with web app
+    # Updates the Authentication / Authorization settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param site_auth_settings [SiteAuthSettings] Auth settings associated with
     # web app
@@ -1804,51 +1756,54 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the Authentication / Authorization settings associated with web app
+    # Gets the Authentication/Authorization settings of an app.
     #
-    # Gets the Authentication / Authorization settings associated with web app
+    # Gets the Authentication/Authorization settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SiteAuthSettings] operation results.
     #
-    def list_auth_settings(resource_group_name, name, custom_headers = nil)
-      response = list_auth_settings_async(resource_group_name, name, custom_headers).value!
+    def get_auth_settings(resource_group_name, name, custom_headers = nil)
+      response = get_auth_settings_async(resource_group_name, name, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets the Authentication / Authorization settings associated with web app
+    # Gets the Authentication/Authorization settings of an app.
     #
-    # Gets the Authentication / Authorization settings associated with web app
+    # Gets the Authentication/Authorization settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_auth_settings_with_http_info(resource_group_name, name, custom_headers = nil)
-      list_auth_settings_async(resource_group_name, name, custom_headers).value!
+    def get_auth_settings_with_http_info(resource_group_name, name, custom_headers = nil)
+      get_auth_settings_async(resource_group_name, name, custom_headers).value!
     end
 
     #
-    # Gets the Authentication / Authorization settings associated with web app
+    # Gets the Authentication/Authorization settings of an app.
     #
-    # Gets the Authentication / Authorization settings associated with web app
+    # Gets the Authentication/Authorization settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_auth_settings_async(resource_group_name, name, custom_headers = nil)
+    def get_auth_settings_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -1901,13 +1856,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates backup configuration of web app
+    # Updates the backup configuration of an app.
     #
-    # Updates backup configuration of web app
+    # Updates the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [BackupRequest] Information on backup request
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [BackupRequest] Edited backup configuration.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1919,13 +1875,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates backup configuration of web app
+    # Updates the backup configuration of an app.
     #
-    # Updates backup configuration of web app
+    # Updates the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [BackupRequest] Information on backup request
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [BackupRequest] Edited backup configuration.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -1936,13 +1893,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates backup configuration of web app
+    # Updates the backup configuration of an app.
     #
-    # Updates backup configuration of web app
+    # Updates the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [BackupRequest] Information on backup request
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [BackupRequest] Edited backup configuration.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2011,29 +1969,30 @@ module Azure::ARM::Web
     end
 
     #
-    # Removes the backup configuration for a web app
+    # Deletes the backup configuration of an app.
     #
-    # Removes the backup configuration for a web app
+    # Deletes the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_backup_configuration(resource_group_name, name, custom_headers = nil)
       response = delete_backup_configuration_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Removes the backup configuration for a web app
+    # Deletes the backup configuration of an app.
     #
-    # Removes the backup configuration for a web app
+    # Deletes the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2044,12 +2003,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Removes the backup configuration for a web app
+    # Deletes the backup configuration of an app.
     #
-    # Removes the backup configuration for a web app
+    # Deletes the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2098,12 +2058,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the backup configuration for a web app
+    # Gets the backup configuration of an app.
     #
-    # Gets the backup configuration for a web app
+    # Gets the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2115,12 +2076,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the backup configuration for a web app
+    # Gets the backup configuration of an app.
     #
-    # Gets the backup configuration for a web app
+    # Gets the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2131,12 +2093,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the backup configuration for a web app
+    # Gets the backup configuration of an app.
     #
-    # Gets the backup configuration for a web app
+    # Gets the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2195,14 +2158,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the connection strings associated with web app
+    # Replaces the connection strings of an app.
     #
-    # Updates the connection strings associated with web app
+    # Replaces the connection strings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param connection_strings [ConnectionStringDictionary] Connection strings
-    # associated with web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param connection_strings [ConnectionStringDictionary] Connection strings of
+    # the app or deployment slot. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2214,14 +2178,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the connection strings associated with web app
+    # Replaces the connection strings of an app.
     #
-    # Updates the connection strings associated with web app
+    # Replaces the connection strings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param connection_strings [ConnectionStringDictionary] Connection strings
-    # associated with web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param connection_strings [ConnectionStringDictionary] Connection strings of
+    # the app or deployment slot. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2232,14 +2197,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the connection strings associated with web app
+    # Replaces the connection strings of an app.
     #
-    # Updates the connection strings associated with web app
+    # Replaces the connection strings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param connection_strings [ConnectionStringDictionary] Connection strings
-    # associated with web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param connection_strings [ConnectionStringDictionary] Connection strings of
+    # the app or deployment slot. See example.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2308,12 +2274,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the connection strings associated with web app
+    # Gets the connection strings of an app.
     #
-    # Gets the connection strings associated with web app
+    # Gets the connection strings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2325,12 +2292,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the connection strings associated with web app
+    # Gets the connection strings of an app.
     #
-    # Gets the connection strings associated with web app
+    # Gets the connection strings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2341,12 +2309,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the connection strings associated with web app
+    # Gets the connection strings of an app.
     #
-    # Gets the connection strings associated with web app
+    # Gets the connection strings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2405,12 +2374,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app logs configuration
+    # Gets the logging configuration of an app.
     #
-    # Gets the web app logs configuration
+    # Gets the logging configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2422,12 +2392,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app logs configuration
+    # Gets the logging configuration of an app.
     #
-    # Gets the web app logs configuration
+    # Gets the logging configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2438,12 +2409,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app logs configuration
+    # Gets the logging configuration of an app.
     #
-    # Gets the web app logs configuration
+    # Gets the logging configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2502,13 +2474,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the meta data for web app
+    # Updates the logging configuration of an app.
     #
-    # Updates the meta data for web app
+    # Updates the logging configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_logs_config [SiteLogsConfig] Site logs configuration
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_logs_config [SiteLogsConfig] A SiteLogsConfig JSON object that
+    # contains the logging configuration to change in the "properties" property.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2520,13 +2494,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the meta data for web app
+    # Updates the logging configuration of an app.
     #
-    # Updates the meta data for web app
+    # Updates the logging configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_logs_config [SiteLogsConfig] Site logs configuration
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_logs_config [SiteLogsConfig] A SiteLogsConfig JSON object that
+    # contains the logging configuration to change in the "properties" property.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2537,13 +2513,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the meta data for web app
+    # Updates the logging configuration of an app.
     #
-    # Updates the meta data for web app
+    # Updates the logging configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_logs_config [SiteLogsConfig] Site logs configuration
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_logs_config [SiteLogsConfig] A SiteLogsConfig JSON object that
+    # contains the logging configuration to change in the "properties" property.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2612,13 +2590,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the meta data for web app
+    # Replaces the metadata of an app.
     #
-    # Updates the meta data for web app
+    # Replaces the metadata of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param metadata [StringDictionary] Meta data of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param metadata [StringDictionary] Edited metadata of the app or deployment
+    # slot. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2630,13 +2610,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the meta data for web app
+    # Replaces the metadata of an app.
     #
-    # Updates the meta data for web app
+    # Replaces the metadata of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param metadata [StringDictionary] Meta data of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param metadata [StringDictionary] Edited metadata of the app or deployment
+    # slot. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2647,13 +2629,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the meta data for web app
+    # Replaces the metadata of an app.
     #
-    # Updates the meta data for web app
+    # Replaces the metadata of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param metadata [StringDictionary] Meta data of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param metadata [StringDictionary] Edited metadata of the app or deployment
+    # slot. See example.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2722,12 +2706,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app meta data.
+    # Gets the metadata of an app.
     #
-    # Gets the web app meta data.
+    # Gets the metadata of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2739,12 +2724,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app meta data.
+    # Gets the metadata of an app.
     #
-    # Gets the web app meta data.
+    # Gets the metadata of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2755,12 +2741,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app meta data.
+    # Gets the metadata of an app.
     #
-    # Gets the web app meta data.
+    # Gets the metadata of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -2819,12 +2806,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2836,8 +2824,9 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -2863,11 +2852,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Push settings associated with web app
+    # Updates the Push settings associated with web app.
     #
-    # Updates the Push settings associated with web app
+    # Updates the Push settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param push_settings [PushSettings] Push settings associated with web app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -2881,11 +2871,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Push settings associated with web app
+    # Updates the Push settings associated with web app.
     #
-    # Updates the Push settings associated with web app
+    # Updates the Push settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param push_settings [PushSettings] Push settings associated with web app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -2898,11 +2889,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Push settings associated with web app
+    # Updates the Push settings associated with web app.
     #
-    # Updates the Push settings associated with web app
+    # Updates the Push settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param push_settings [PushSettings] Push settings associated with web app
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -2973,11 +2965,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the Push settings associated with web app
+    # Gets the Push settings associated with web app.
     #
-    # Gets the Push settings associated with web app
+    # Gets the Push settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -2990,11 +2983,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the Push settings associated with web app
+    # Gets the Push settings associated with web app.
     #
-    # Gets the Push settings associated with web app
+    # Gets the Push settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -3006,11 +3000,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the Push settings associated with web app
+    # Gets the Push settings associated with web app.
     #
-    # Gets the Push settings associated with web app
+    # Gets the Push settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -3070,14 +3065,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the names of application settings and connection string that remain with
-    # the slot during swap operation
+    # Gets the names of app settings and connection strings that stick to the slot
+    # (not swapped).
     #
-    # Gets the names of application settings and connection string that remain with
-    # the slot during swap operation
+    # Gets the names of app settings and connection strings that stick to the slot
+    # (not swapped).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3089,14 +3085,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the names of application settings and connection string that remain with
-    # the slot during swap operation
+    # Gets the names of app settings and connection strings that stick to the slot
+    # (not swapped).
     #
-    # Gets the names of application settings and connection string that remain with
-    # the slot during swap operation
+    # Gets the names of app settings and connection strings that stick to the slot
+    # (not swapped).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3107,14 +3104,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the names of application settings and connection string that remain with
-    # the slot during swap operation
+    # Gets the names of app settings and connection strings that stick to the slot
+    # (not swapped).
     #
-    # Gets the names of application settings and connection string that remain with
-    # the slot during swap operation
+    # Gets the names of app settings and connection strings that stick to the slot
+    # (not swapped).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3174,15 +3172,16 @@ module Azure::ARM::Web
 
     #
     # Updates the names of application settings and connection string that remain
-    # with the slot during swap operation
+    # with the slot during swap operation.
     #
     # Updates the names of application settings and connection string that remain
-    # with the slot during swap operation
+    # with the slot during swap operation.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_config_names [SlotConfigNamesResource] Request body containing
-    # the names of application settings and connection strings
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_config_names [SlotConfigNamesResource] Names of application
+    # settings and connection strings. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3195,15 +3194,16 @@ module Azure::ARM::Web
 
     #
     # Updates the names of application settings and connection string that remain
-    # with the slot during swap operation
+    # with the slot during swap operation.
     #
     # Updates the names of application settings and connection string that remain
-    # with the slot during swap operation
+    # with the slot during swap operation.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_config_names [SlotConfigNamesResource] Request body containing
-    # the names of application settings and connection strings
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_config_names [SlotConfigNamesResource] Names of application
+    # settings and connection strings. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3215,15 +3215,16 @@ module Azure::ARM::Web
 
     #
     # Updates the names of application settings and connection string that remain
-    # with the slot during swap operation
+    # with the slot during swap operation.
     #
     # Updates the names of application settings and connection string that remain
-    # with the slot during swap operation
+    # with the slot during swap operation.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_config_names [SlotConfigNamesResource] Request body containing
-    # the names of application settings and connection strings
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_config_names [SlotConfigNamesResource] Names of application
+    # settings and connection strings. See example.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3292,12 +3293,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the configuration of the web app
+    # Gets the configuration of an app, such as platform version and bitness,
+    # default documents, virtual applications, Always On, etc.
     #
-    # Gets the configuration of the web app
+    # Gets the configuration of an app, such as platform version and bitness,
+    # default documents, virtual applications, Always On, etc.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3309,12 +3313,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the configuration of the web app
+    # Gets the configuration of an app, such as platform version and bitness,
+    # default documents, virtual applications, Always On, etc.
     #
-    # Gets the configuration of the web app
+    # Gets the configuration of an app, such as platform version and bitness,
+    # default documents, virtual applications, Always On, etc.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3325,12 +3332,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the configuration of the web app
+    # Gets the configuration of an app, such as platform version and bitness,
+    # default documents, virtual applications, Always On, etc.
     #
-    # Gets the configuration of the web app
+    # Gets the configuration of an app, such as platform version and bitness,
+    # default documents, virtual applications, Always On, etc.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3389,14 +3399,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_config [SiteConfig] Request body that contains the configuraiton
-    # setting for the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
+    # See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3408,14 +3419,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_config [SiteConfig] Request body that contains the configuraiton
-    # setting for the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
+    # See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3426,14 +3438,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_config [SiteConfig] Request body that contains the configuraiton
-    # setting for the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
+    # See example.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3502,14 +3515,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_config [SiteConfig] Request body that contains the configuraiton
-    # setting for the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
+    # See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3521,14 +3535,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_config [SiteConfig] Request body that contains the configuraiton
-    # setting for the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
+    # See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3539,14 +3554,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_config [SiteConfig] Request body that contains the configuraiton
-    # setting for the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
+    # See example.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3615,12 +3631,332 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
     #
-    # List deployments
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array] operation results.
+    #
+    def list_configuration_snapshot_info(resource_group_name, name, custom_headers = nil)
+      response = list_configuration_snapshot_info_async(resource_group_name, name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_configuration_snapshot_info_with_http_info(resource_group_name, name, custom_headers = nil)
+      list_configuration_snapshot_info_async(resource_group_name, name, custom_headers).value!
+    end
+
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_configuration_snapshot_info_async(resource_group_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    required: false,
+                    serialized_name: 'SiteConfigurationSnapshotInfoElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'SiteConfigurationSnapshotInfo'
+                    }
+                }
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets a snapshot of the configuration of an app at a previous point in time.
+    #
+    # Gets a snapshot of the configuration of an app at a previous point in time.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param snapshot_id [String] The ID of the snapshot to read.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SiteConfig] operation results.
+    #
+    def get_configuration_snapshot(resource_group_name, name, snapshot_id, custom_headers = nil)
+      response = get_configuration_snapshot_async(resource_group_name, name, snapshot_id, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a snapshot of the configuration of an app at a previous point in time.
+    #
+    # Gets a snapshot of the configuration of an app at a previous point in time.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param snapshot_id [String] The ID of the snapshot to read.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_configuration_snapshot_with_http_info(resource_group_name, name, snapshot_id, custom_headers = nil)
+      get_configuration_snapshot_async(resource_group_name, name, snapshot_id, custom_headers).value!
+    end
+
+    #
+    # Gets a snapshot of the configuration of an app at a previous point in time.
+    #
+    # Gets a snapshot of the configuration of an app at a previous point in time.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param snapshot_id [String] The ID of the snapshot to read.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_configuration_snapshot_async(resource_group_name, name, snapshot_id, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'snapshot_id is nil' if snapshot_id.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots/{snapshotId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'snapshotId' => snapshot_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = SiteConfig.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Reverts the configuration of an app to a previous snapshot.
+    #
+    # Reverts the configuration of an app to a previous snapshot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param snapshot_id [String] The ID of the snapshot to read.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def recover_site_configuration_snapshot(resource_group_name, name, snapshot_id, custom_headers = nil)
+      response = recover_site_configuration_snapshot_async(resource_group_name, name, snapshot_id, custom_headers).value!
+      nil
+    end
+
+    #
+    # Reverts the configuration of an app to a previous snapshot.
+    #
+    # Reverts the configuration of an app to a previous snapshot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param snapshot_id [String] The ID of the snapshot to read.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def recover_site_configuration_snapshot_with_http_info(resource_group_name, name, snapshot_id, custom_headers = nil)
+      recover_site_configuration_snapshot_async(resource_group_name, name, snapshot_id, custom_headers).value!
+    end
+
+    #
+    # Reverts the configuration of an app to a previous snapshot.
+    #
+    # Reverts the configuration of an app to a previous snapshot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param snapshot_id [String] The ID of the snapshot to read.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def recover_site_configuration_snapshot_async(resource_group_name, name, snapshot_id, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'snapshot_id is nil' if snapshot_id.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots/{snapshotId}/recover'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'snapshotId' => snapshot_id,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
+    #
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3632,12 +3968,15 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3648,12 +3987,15 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3712,13 +4054,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3730,13 +4075,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3747,13 +4095,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3813,14 +4164,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param deployment [Deployment] Details of deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] ID of an existing deployment.
+    # @param deployment [Deployment] Deployment details.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3832,14 +4186,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param deployment [Deployment] Details of deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] ID of an existing deployment.
+    # @param deployment [Deployment] Deployment details.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3850,14 +4207,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param deployment [Deployment] Details of deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] ID of an existing deployment.
+    # @param deployment [Deployment] Deployment details.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -3927,31 +4287,36 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_deployment(resource_group_name, name, id, custom_headers = nil)
       response = delete_deployment_async(resource_group_name, name, id, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -3962,13 +4327,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4004,7 +4372,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -4018,12 +4386,574 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Lists ownership identifiers for domain associated with web app.
     #
-    # Get web app hostname bindings
+    # Lists ownership identifiers for domain associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<Identifier>] operation results.
+    #
+    def list_domain_ownership_identifiers(resource_group_name, name, custom_headers = nil)
+      first_page = list_domain_ownership_identifiers_as_lazy(resource_group_name, name, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_domain_ownership_identifiers_with_http_info(resource_group_name, name, custom_headers = nil)
+      list_domain_ownership_identifiers_async(resource_group_name, name, custom_headers).value!
+    end
+
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_domain_ownership_identifiers_async(resource_group_name, name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = IdentifierCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get domain ownership identifier for web app.
+    #
+    # Get domain ownership identifier for web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Identifier] operation results.
+    #
+    def get_domain_ownership_identifier(resource_group_name, name, domain_ownership_identifier_name, custom_headers = nil)
+      response = get_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get domain ownership identifier for web app.
+    #
+    # Get domain ownership identifier for web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_domain_ownership_identifier_with_http_info(resource_group_name, name, domain_ownership_identifier_name, custom_headers = nil)
+      get_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, custom_headers).value!
+    end
+
+    #
+    # Get domain ownership identifier for web app.
+    #
+    # Get domain ownership identifier for web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'domainOwnershipIdentifierName' => domain_ownership_identifier_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Identifier.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param domain_ownership_identifier [Identifier] A JSON representation of the
+    # domain ownership properties.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Identifier] operation results.
+    #
+    def create_or_update_domain_ownership_identifier(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, custom_headers = nil)
+      response = create_or_update_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param domain_ownership_identifier [Identifier] A JSON representation of the
+    # domain ownership properties.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_domain_ownership_identifier_with_http_info(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, custom_headers = nil)
+      create_or_update_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, custom_headers).value!
+    end
+
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param domain_ownership_identifier [Identifier] A JSON representation of the
+    # domain ownership properties.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_or_update_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
+      fail ArgumentError, 'domain_ownership_identifier is nil' if domain_ownership_identifier.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Identifier.mapper()
+      request_content = @client.serialize(request_mapper,  domain_ownership_identifier, 'domain_ownership_identifier')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'domainOwnershipIdentifierName' => domain_ownership_identifier_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Identifier.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Deletes a domain ownership identifier for a web app.
+    #
+    # Deletes a domain ownership identifier for a web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete_domain_ownership_identifier(resource_group_name, name, domain_ownership_identifier_name, custom_headers = nil)
+      response = delete_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes a domain ownership identifier for a web app.
+    #
+    # Deletes a domain ownership identifier for a web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_domain_ownership_identifier_with_http_info(resource_group_name, name, domain_ownership_identifier_name, custom_headers = nil)
+      delete_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, custom_headers).value!
+    end
+
+    #
+    # Deletes a domain ownership identifier for a web app.
+    #
+    # Deletes a domain ownership identifier for a web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'domainOwnershipIdentifierName' => domain_ownership_identifier_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param domain_ownership_identifier [Identifier] A JSON representation of the
+    # domain ownership properties.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Identifier] operation results.
+    #
+    def update_domain_ownership_identifier(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, custom_headers = nil)
+      response = update_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param domain_ownership_identifier [Identifier] A JSON representation of the
+    # domain ownership properties.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_domain_ownership_identifier_with_http_info(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, custom_headers = nil)
+      update_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, custom_headers).value!
+    end
+
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param domain_ownership_identifier [Identifier] A JSON representation of the
+    # domain ownership properties.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_domain_ownership_identifier_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
+      fail ArgumentError, 'domain_ownership_identifier is nil' if domain_ownership_identifier.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Identifier.mapper()
+      request_content = @client.serialize(request_mapper,  domain_ownership_identifier, 'domain_ownership_identifier')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'domainOwnershipIdentifierName' => domain_ownership_identifier_name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Identifier.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get hostname bindings for an app or a deployment slot.
+    #
+    # Get hostname bindings for an app or a deployment slot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4035,12 +4965,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4051,12 +4982,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4115,13 +5047,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app binding for a hostname
+    # Get the named hostname binding for an app (or deployment slot, if specified).
     #
-    # Get web app binding for a hostname
+    # Get the named hostname binding for an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param host_name [String] Name of host
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param host_name [String] Hostname in the hostname binding.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4133,13 +5066,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app binding for a hostname
+    # Get the named hostname binding for an app (or deployment slot, if specified).
     #
-    # Get web app binding for a hostname
+    # Get the named hostname binding for an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param host_name [String] Name of host
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param host_name [String] Hostname in the hostname binding.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4150,13 +5084,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app binding for a hostname
+    # Get the named hostname binding for an app (or deployment slot, if specified).
     #
-    # Get web app binding for a hostname
+    # Get the named hostname binding for an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param host_name [String] Name of host
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param host_name [String] Hostname in the hostname binding.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4216,14 +5151,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a web app hostname binding
+    # Creates a hostname binding for an app.
     #
-    # Creates a web app hostname binding
+    # Creates a hostname binding for an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param host_name [String] Name of host
-    # @param host_name_binding [HostNameBinding] Host name binding information
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param host_name [String] Hostname in the hostname binding.
+    # @param host_name_binding [HostNameBinding] Binding details. This is the JSON
+    # representation of a HostNameBinding object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4235,14 +5172,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a web app hostname binding
+    # Creates a hostname binding for an app.
     #
-    # Creates a web app hostname binding
+    # Creates a hostname binding for an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param host_name [String] Name of host
-    # @param host_name_binding [HostNameBinding] Host name binding information
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param host_name [String] Hostname in the hostname binding.
+    # @param host_name_binding [HostNameBinding] Binding details. This is the JSON
+    # representation of a HostNameBinding object.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4253,14 +5192,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a web app hostname binding
+    # Creates a hostname binding for an app.
     #
-    # Creates a web app hostname binding
+    # Creates a hostname binding for an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param host_name [String] Name of host
-    # @param host_name_binding [HostNameBinding] Host name binding information
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param host_name [String] Hostname in the hostname binding.
+    # @param host_name_binding [HostNameBinding] Binding details. This is the JSON
+    # representation of a HostNameBinding object.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4330,31 +5271,32 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a host name binding
+    # Deletes a hostname binding for an app.
     #
-    # Deletes a host name binding
+    # Deletes a hostname binding for an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param host_name [String] Name of host
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param host_name [String] Hostname in the hostname binding.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_host_name_binding(resource_group_name, name, host_name, custom_headers = nil)
       response = delete_host_name_binding_async(resource_group_name, name, host_name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Deletes a host name binding
+    # Deletes a hostname binding for an app.
     #
-    # Deletes a host name binding
+    # Deletes a hostname binding for an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param host_name [String] Name of host
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param host_name [String] Hostname in the hostname binding.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -4365,13 +5307,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a host name binding
+    # Deletes a hostname binding for an app.
     #
-    # Deletes a host name binding
+    # Deletes a hostname binding for an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param host_name [String] Name of host
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param host_name [String] Hostname in the hostname binding.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -4407,7 +5350,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -4425,7 +5368,8 @@ module Azure::ARM::Web
     #
     # Retrieves a specific Service Bus Hybrid Connection used by this Web App.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4444,7 +5388,8 @@ module Azure::ARM::Web
     #
     # Retrieves a specific Service Bus Hybrid Connection used by this Web App.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4462,7 +5407,8 @@ module Azure::ARM::Web
     #
     # Retrieves a specific Service Bus Hybrid Connection used by this Web App.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4526,11 +5472,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4547,11 +5494,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4567,11 +5515,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4651,18 +5600,18 @@ module Azure::ARM::Web
     #
     # Removes a Hybrid Connection from this site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_hybrid_connection(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
       response = delete_hybrid_connection_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
@@ -4670,7 +5619,8 @@ module Azure::ARM::Web
     #
     # Removes a Hybrid Connection from this site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4688,7 +5638,8 @@ module Azure::ARM::Web
     #
     # Removes a Hybrid Connection from this site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4728,7 +5679,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -4742,11 +5693,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4763,11 +5715,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4783,11 +5736,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4863,18 +5817,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the send key name and value for a Hybrid Connection
+    # Gets the send key name and value for a Hybrid Connection.
     #
-    # Gets the send key name and value for a Hybrid Connection
+    # Gets the send key name and value for a Hybrid Connection.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [HybridConnectionKey] operation results.
     #
     def list_hybrid_connection_keys(resource_group_name, name, namespace_name, relay_name, custom_headers = nil)
       response = list_hybrid_connection_keys_async(resource_group_name, name, namespace_name, relay_name, custom_headers).value!
@@ -4882,11 +5837,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the send key name and value for a Hybrid Connection
+    # Gets the send key name and value for a Hybrid Connection.
     #
-    # Gets the send key name and value for a Hybrid Connection
+    # Gets the send key name and value for a Hybrid Connection.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4900,11 +5856,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the send key name and value for a Hybrid Connection
+    # Gets the send key name and value for a Hybrid Connection.
     #
-    # Gets the send key name and value for a Hybrid Connection
+    # Gets the send key name and value for a Hybrid Connection.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -4950,6 +5907,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = HybridConnectionKey.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -4962,7 +5929,8 @@ module Azure::ARM::Web
     #
     # Retrieves all Service Bus Hybrid Connections used by this Web App.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -4979,7 +5947,8 @@ module Azure::ARM::Web
     #
     # Retrieves all Service Bus Hybrid Connections used by this Web App.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -4995,7 +5964,8 @@ module Azure::ARM::Web
     #
     # Retrieves all Service Bus Hybrid Connections used by this Web App.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -5055,12 +6025,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves all Biztalk Hybrid Connections associated with this web app.
+    # Gets hybrid connections configured for an app (or deployment slot, if
+    # specified).
     #
-    # Retrieves all Biztalk Hybrid Connections associated with this web app.
+    # Gets hybrid connections configured for an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5072,12 +6045,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves all Biztalk Hybrid Connections associated with this web app.
+    # Gets hybrid connections configured for an app (or deployment slot, if
+    # specified).
     #
-    # Retrieves all Biztalk Hybrid Connections associated with this web app.
+    # Gets hybrid connections configured for an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5088,12 +6064,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves all Biztalk Hybrid Connections associated with this web app.
+    # Gets hybrid connections configured for an app (or deployment slot, if
+    # specified).
     #
-    # Retrieves all Biztalk Hybrid Connections associated with this web app.
+    # Gets hybrid connections configured for an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5152,14 +6131,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a Biztalk Hybrid Connection identified by its entity name.
+    # Gets a hybrid connection configuration by its name.
     #
-    # Retrieves a Biztalk Hybrid Connection identified by its entity name.
+    # Gets a hybrid connection configuration by its name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5171,14 +6150,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a Biztalk Hybrid Connection identified by its entity name.
+    # Gets a hybrid connection configuration by its name.
     #
-    # Retrieves a Biztalk Hybrid Connection identified by its entity name.
+    # Gets a hybrid connection configuration by its name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5189,14 +6168,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a Biztalk Hybrid Connection identified by its entity name.
+    # Gets a hybrid connection configuration by its name.
     #
-    # Retrieves a Biztalk Hybrid Connection identified by its entity name.
+    # Gets a hybrid connection configuration by its name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5256,18 +6235,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param connection_envelope [RelayServiceConnectionEntity] The details of the
-    # Hybrid Connection
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param connection_envelope [RelayServiceConnectionEntity] Details of the
+    # hybrid connection configuration.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5279,18 +6258,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param connection_envelope [RelayServiceConnectionEntity] The details of the
-    # Hybrid Connection
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param connection_envelope [RelayServiceConnectionEntity] Details of the
+    # hybrid connection configuration.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5301,18 +6280,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param connection_envelope [RelayServiceConnectionEntity] The details of the
-    # Hybrid Connection
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param connection_envelope [RelayServiceConnectionEntity] Details of the
+    # hybrid connection configuration.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5382,37 +6361,32 @@ module Azure::ARM::Web
     end
 
     #
-    # Removes the association to a Biztalk Hybrid Connection, identified by its
-    # entity name.
+    # Deletes a relay service connection by its name.
     #
-    # Removes the association to a Biztalk Hybrid Connection, identified by its
-    # entity name.
+    # Deletes a relay service connection by its name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_relay_service_connection(resource_group_name, name, entity_name, custom_headers = nil)
       response = delete_relay_service_connection_async(resource_group_name, name, entity_name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Removes the association to a Biztalk Hybrid Connection, identified by its
-    # entity name.
+    # Deletes a relay service connection by its name.
     #
-    # Removes the association to a Biztalk Hybrid Connection, identified by its
-    # entity name.
+    # Deletes a relay service connection by its name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5423,16 +6397,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Removes the association to a Biztalk Hybrid Connection, identified by its
-    # entity name.
+    # Deletes a relay service connection by its name.
     #
-    # Removes the association to a Biztalk Hybrid Connection, identified by its
-    # entity name.
+    # Deletes a relay service connection by its name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5468,7 +6440,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -5482,18 +6454,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param connection_envelope [RelayServiceConnectionEntity] The details of the
-    # Hybrid Connection
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param connection_envelope [RelayServiceConnectionEntity] Details of the
+    # hybrid connection configuration.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5505,18 +6477,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param connection_envelope [RelayServiceConnectionEntity] The details of the
-    # Hybrid Connection
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param connection_envelope [RelayServiceConnectionEntity] Details of the
+    # hybrid connection configuration.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5527,18 +6499,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param connection_envelope [RelayServiceConnectionEntity] The details of the
-    # Hybrid Connection
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param connection_envelope [RelayServiceConnectionEntity] Details of the
+    # hybrid connection configuration.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5608,12 +6580,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5625,12 +6598,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5641,12 +6615,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5691,7 +6666,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteInstanceCollection.mapper()
+            result_mapper = WebAppInstanceCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -5705,13 +6680,18 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param instance_id [String] The ID of a specific scaled-out instance. This is
+    # the value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5723,13 +6703,18 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param instance_id [String] The ID of a specific scaled-out instance. This is
+    # the value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5740,13 +6725,18 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param instance_id [String] The ID of a specific scaled-out instance. This is
+    # the value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5806,14 +6796,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5825,14 +6820,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5843,14 +6843,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -5911,15 +6916,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param instance_id [String] Id of web app instance
-    # @param deployment [Deployment] Details of deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] ID of an existing deployment.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
+    # @param deployment [Deployment] Deployment details.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5931,15 +6941,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param instance_id [String] Id of web app instance
-    # @param deployment [Deployment] Details of deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] ID of an existing deployment.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
+    # @param deployment [Deployment] Deployment details.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -5950,15 +6965,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param instance_id [String] Id of web app instance
-    # @param deployment [Deployment] Details of deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] ID of an existing deployment.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
+    # @param deployment [Deployment] Deployment details.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -6029,33 +7049,42 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_instance_deployment(resource_group_name, name, id, instance_id, custom_headers = nil)
       response = delete_instance_deployment_async(resource_group_name, name, id, instance_id, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6066,14 +7095,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -6110,7 +7144,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -6124,12 +7158,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Shows whether an app can be cloned to another resource group or subscription.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Shows whether an app can be cloned to another resource group or subscription.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6141,12 +7176,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Shows whether an app can be cloned to another resource group or subscription.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Shows whether an app can be cloned to another resource group or subscription.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6157,12 +7193,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Shows whether an app can be cloned to another resource group or subscription.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Shows whether an app can be cloned to another resource group or subscription.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -6221,16 +7258,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<MetricDefinition>] operation results.
+    # @return [Array<ResourceMetricDefinition>] operation results.
     #
     def list_metric_definitions(resource_group_name, name, custom_headers = nil)
       first_page = list_metric_definitions_as_lazy(resource_group_name, name, custom_headers)
@@ -6238,12 +7276,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6254,12 +7293,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -6304,7 +7344,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MetricDefinitionCollection.mapper()
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -6318,17 +7358,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param details [Boolean] If true, metric details are included in response
-    # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param details [Boolean] Specify "true" to include metric details in the
+    # response. It is "false" by default.
+    # @param filter [String] Return only metrics specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6340,17 +7382,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param details [Boolean] If true, metric details are included in response
-    # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param details [Boolean] Specify "true" to include metric details in the
+    # response. It is "false" by default.
+    # @param filter [String] Return only metrics specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6361,17 +7405,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param details [Boolean] If true, metric details are included in response
-    # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param details [Boolean] Specify "true" to include metric details in the
+    # response. It is "false" by default.
+    # @param filter [String] Return only metrics specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -6396,7 +7442,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'details' => details,'$filter' => filter,'api-version' => api_version},
+          query_params: {'details' => details,'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -6430,38 +7477,40 @@ module Azure::ARM::Web
     end
 
     #
-    # Restores a web app
+    # Restores a web app.
     #
-    # Restores a web app
+    # Restores a web app.
     #
     # @param subscription_name [String] Azure subscription
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
-    # @param options [StorageMigrationOptions] Migration options
+    # @param migration_options [StorageMigrationOptions] Migration migrationOptions
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [StorageMigrationResponse] operation results.
     #
-    def migrate_storage(subscription_name, resource_group_name, name, options, custom_headers = nil)
-      response = migrate_storage_async(subscription_name, resource_group_name, name, options, custom_headers).value!
+    def migrate_storage(subscription_name, resource_group_name, name, migration_options, custom_headers = nil)
+      response = migrate_storage_async(subscription_name, resource_group_name, name, migration_options, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # @param subscription_name [String] Azure subscription
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
-    # @param options [StorageMigrationOptions] Migration options
+    # @param migration_options [StorageMigrationOptions] Migration migrationOptions
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def migrate_storage_async(subscription_name, resource_group_name, name, options, custom_headers = nil)
+    def migrate_storage_async(subscription_name, resource_group_name, name, migration_options, custom_headers = nil)
       # Send request
-      promise = begin_migrate_storage_async(subscription_name, resource_group_name, name, options, custom_headers)
+      promise = begin_migrate_storage_async(subscription_name, resource_group_name, name, migration_options, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -6478,11 +7527,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Migrates a local (in-app) MySql database to a remote MySql database
+    # Migrates a local (in-app) MySql database to a remote MySql database.
     #
-    # Migrates a local (in-app) MySql database to a remote MySql database
+    # Migrates a local (in-app) MySql database to a remote MySql database.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param migration_request_envelope [MigrateMySqlRequest] MySql migration
     # options
@@ -6497,7 +7547,8 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param migration_request_envelope [MigrateMySqlRequest] MySql migration
     # options
@@ -6526,12 +7577,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a view of all network features in use on this web app.
+    # Gets all network features used by the app (or deployment slot, if specified).
     #
-    # Retrieves a view of all network features in use on this web app.
+    # Gets all network features used by the app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param view [String] The type of view. This can either be "summary" or
     # "detailed".
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -6545,12 +7597,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a view of all network features in use on this web app.
+    # Gets all network features used by the app (or deployment slot, if specified).
     #
-    # Retrieves a view of all network features in use on this web app.
+    # Gets all network features used by the app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param view [String] The type of view. This can either be "summary" or
     # "detailed".
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -6563,12 +7616,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a view of all network features in use on this web app.
+    # Gets all network features used by the app (or deployment slot, if specified).
     #
-    # Retrieves a view of all network features in use on this web app.
+    # Gets all network features used by the app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param view [String] The type of view. This can either be "summary" or
     # "detailed".
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -6630,11 +7684,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Start capturing network packets for the site
+    # Start capturing network packets for the site.
     #
-    # Start capturing network packets for the site
+    # Start capturing network packets for the site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param duration_in_seconds [Integer] The duration to keep capturing in
     # seconds
@@ -6649,11 +7704,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Start capturing network packets for the site
+    # Start capturing network packets for the site.
     #
-    # Start capturing network packets for the site
+    # Start capturing network packets for the site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param duration_in_seconds [Integer] The duration to keep capturing in
     # seconds
@@ -6667,11 +7723,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Start capturing network packets for the site
+    # Start capturing network packets for the site.
     #
-    # Start capturing network packets for the site
+    # Start capturing network packets for the site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param duration_in_seconds [Integer] The duration to keep capturing in
     # seconds
@@ -6739,11 +7796,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Stop ongoing capturing network packets for the site
+    # Stop ongoing capturing network packets for the site.
     #
-    # Stop ongoing capturing network packets for the site
+    # Stop ongoing capturing network packets for the site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -6756,11 +7814,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Stop ongoing capturing network packets for the site
+    # Stop ongoing capturing network packets for the site.
     #
-    # Stop ongoing capturing network packets for the site
+    # Stop ongoing capturing network packets for the site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -6772,11 +7831,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Stop ongoing capturing network packets for the site
+    # Stop ongoing capturing network packets for the site.
     #
-    # Stop ongoing capturing network packets for the site
+    # Stop ongoing capturing network packets for the site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -6842,29 +7902,34 @@ module Azure::ARM::Web
     end
 
     #
-    # Generates new random app publishing password
+    # Generates a new publishing password for an app (or deployment slot, if
+    # specified).
     #
-    # Generates new random app publishing password
+    # Generates a new publishing password for an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def generate_new_site_publishing_password(resource_group_name, name, custom_headers = nil)
       response = generate_new_site_publishing_password_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Generates new random app publishing password
+    # Generates a new publishing password for an app (or deployment slot, if
+    # specified).
     #
-    # Generates new random app publishing password
+    # Generates a new publishing password for an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -6875,12 +7940,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Generates new random app publishing password
+    # Generates a new publishing password for an app (or deployment slot, if
+    # specified).
     #
-    # Generates new random app publishing password
+    # Generates a new publishing password for an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -6915,7 +7983,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -6929,102 +7997,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the operation for a web app
+    # Gets perfmon counters for web app.
     #
-    # Gets the operation for a web app
+    # Gets perfmon counters for web app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param operation_id [String] Id of an operation
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Object] operation results.
-    #
-    def get_operation(resource_group_name, name, operation_id, custom_headers = nil)
-      response = get_operation_async(resource_group_name, name, operation_id, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets the operation for a web app
-    #
-    # Gets the operation for a web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param operation_id [String] Id of an operation
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_operation_with_http_info(resource_group_name, name, operation_id, custom_headers = nil)
-      get_operation_async(resource_group_name, name, operation_id, custom_headers).value!
-    end
-
-    #
-    # Gets the operation for a web app
-    #
-    # Gets the operation for a web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param operation_id [String] Id of an operation
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_operation_async(resource_group_name, name, operation_id, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-08-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/operationresults/{operationId}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'operationId' => operation_id,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets perfmon counters for web app
-    #
-    # Gets perfmon counters for web app
-    #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
@@ -7041,11 +8019,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
@@ -7061,11 +8040,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
@@ -7095,7 +8075,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'api-version' => api_version},
+          query_params: {'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -7129,16 +8110,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets sites's event logs
+    # Gets web app's event logs.
     #
-    # Gets sites's event logs
+    # Gets web app's event logs.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array] operation results.
+    # @return [SitePhpErrorLogFlag] operation results.
     #
     def get_site_php_error_log_flag(resource_group_name, name, custom_headers = nil)
       response = get_site_php_error_log_flag_async(resource_group_name, name, custom_headers).value!
@@ -7146,11 +8128,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets sites's event logs
+    # Gets web app's event logs.
     #
-    # Gets sites's event logs
+    # Gets web app's event logs.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -7162,11 +8145,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets sites's event logs
+    # Gets web app's event logs.
     #
-    # Gets sites's event logs
+    # Gets web app's event logs.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -7212,20 +8196,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = {
-              required: false,
-              serialized_name: 'parsed_response',
-              type: {
-                name: 'Sequence',
-                element: {
-                    required: false,
-                    serialized_name: 'ObjectElementType',
-                    type: {
-                      name: 'Object'
-                    }
-                }
-              }
-            }
+            result_mapper = SitePhpErrorLogFlag.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -7239,16 +8210,17 @@ module Azure::ARM::Web
     end
 
     #
-    # List premier add ons for web app
+    # Gets the premier add-ons of an app.
     #
-    # List premier add ons for web app
+    # Gets the premier add-ons of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [PremierAddOn] operation results.
     #
     def list_premier_add_ons(resource_group_name, name, custom_headers = nil)
       response = list_premier_add_ons_async(resource_group_name, name, custom_headers).value!
@@ -7256,12 +8228,13 @@ module Azure::ARM::Web
     end
 
     #
-    # List premier add ons for web app
+    # Gets the premier add-ons of an app.
     #
-    # List premier add ons for web app
+    # Gets the premier add-ons of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7272,12 +8245,13 @@ module Azure::ARM::Web
     end
 
     #
-    # List premier add ons for web app
+    # Gets the premier add-ons of an app.
     #
-    # List premier add ons for web app
+    # Gets the premier add-ons of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -7318,6 +8292,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = PremierAddOn.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -7326,17 +8310,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a specific premier add on
+    # Gets a named add-on of an app.
     #
-    # Gets a specific premier add on
+    # Gets a named add-on of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [PremierAddOn] operation results.
     #
     def get_premier_add_on(resource_group_name, name, premier_add_on_name, custom_headers = nil)
       response = get_premier_add_on_async(resource_group_name, name, premier_add_on_name, custom_headers).value!
@@ -7344,13 +8329,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a specific premier add on
+    # Gets a named add-on of an app.
     #
-    # Gets a specific premier add on
+    # Gets a named add-on of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7361,13 +8347,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a specific premier add on
+    # Gets a named add-on of an app.
     #
-    # Gets a specific premier add on
+    # Gets a named add-on of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -7409,6 +8396,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = PremierAddOn.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -7417,18 +8414,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Add premier add-on
+    # Updates a named add-on of an app.
     #
-    # Add premier add-on
+    # Updates a named add-on of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
-    # @param premier_add_on [PremierAddOnRequest] Premier add on request
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
+    # @param premier_add_on [PremierAddOn] A JSON representation of the edited
+    # premier add-on.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [PremierAddOn] operation results.
     #
     def add_premier_add_on(resource_group_name, name, premier_add_on_name, premier_add_on, custom_headers = nil)
       response = add_premier_add_on_async(resource_group_name, name, premier_add_on_name, premier_add_on, custom_headers).value!
@@ -7436,14 +8435,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Add premier add-on
+    # Updates a named add-on of an app.
     #
-    # Add premier add-on
+    # Updates a named add-on of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
-    # @param premier_add_on [PremierAddOnRequest] Premier add on request
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
+    # @param premier_add_on [PremierAddOn] A JSON representation of the edited
+    # premier add-on.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7454,14 +8455,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Add premier add-on
+    # Updates a named add-on of an app.
     #
-    # Add premier add-on
+    # Updates a named add-on of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
-    # @param premier_add_on [PremierAddOnRequest] Premier add on request
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
+    # @param premier_add_on [PremierAddOn] A JSON representation of the edited
+    # premier add-on.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -7485,7 +8488,7 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = PremierAddOnRequest.mapper()
+      request_mapper = PremierAddOn.mapper()
       request_content = @client.serialize(request_mapper,  premier_add_on, 'premier_add_on')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -7513,6 +8516,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = PremierAddOn.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -7521,31 +8534,32 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete premier add-on
+    # Delete a premier add-on from an app.
     #
-    # Delete premier add-on
+    # Delete a premier add-on from an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_premier_add_on(resource_group_name, name, premier_add_on_name, custom_headers = nil)
       response = delete_premier_add_on_async(resource_group_name, name, premier_add_on_name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Delete premier add-on
+    # Delete a premier add-on from an app.
     #
-    # Delete premier add-on
+    # Delete a premier add-on from an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7556,13 +8570,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete premier add-on
+    # Delete a premier add-on from an app.
     #
-    # Delete premier add-on
+    # Delete a premier add-on from an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -7612,63 +8627,66 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the publishing profile for web app
+    # Gets the publishing profile for an app (or deployment slot, if specified).
     #
-    # Gets the publishing profile for web app
+    # Gets the publishing profile for an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param options [CsmPublishingProfileOptions] Specifies options for publishing
-    # profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for FileZilla FTP
-    # format.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param publishing_profile_options [CsmPublishingProfileOptions] Specifies
+    # publishingProfileOptions for publishing profile. For example, use {"format":
+    # "FileZilla3"} to get a FileZilla publishing profile.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [NOT_IMPLEMENTED] operation results.
     #
-    def list_publishing_profile_xml_with_secrets(resource_group_name, name, options, custom_headers = nil)
-      response = list_publishing_profile_xml_with_secrets_async(resource_group_name, name, options, custom_headers).value!
+    def list_publishing_profile_xml_with_secrets(resource_group_name, name, publishing_profile_options, custom_headers = nil)
+      response = list_publishing_profile_xml_with_secrets_async(resource_group_name, name, publishing_profile_options, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets the publishing profile for web app
+    # Gets the publishing profile for an app (or deployment slot, if specified).
     #
-    # Gets the publishing profile for web app
+    # Gets the publishing profile for an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param options [CsmPublishingProfileOptions] Specifies options for publishing
-    # profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for FileZilla FTP
-    # format.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param publishing_profile_options [CsmPublishingProfileOptions] Specifies
+    # publishingProfileOptions for publishing profile. For example, use {"format":
+    # "FileZilla3"} to get a FileZilla publishing profile.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_publishing_profile_xml_with_secrets_with_http_info(resource_group_name, name, options, custom_headers = nil)
-      list_publishing_profile_xml_with_secrets_async(resource_group_name, name, options, custom_headers).value!
+    def list_publishing_profile_xml_with_secrets_with_http_info(resource_group_name, name, publishing_profile_options, custom_headers = nil)
+      list_publishing_profile_xml_with_secrets_async(resource_group_name, name, publishing_profile_options, custom_headers).value!
     end
 
     #
-    # Gets the publishing profile for web app
+    # Gets the publishing profile for an app (or deployment slot, if specified).
     #
-    # Gets the publishing profile for web app
+    # Gets the publishing profile for an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param options [CsmPublishingProfileOptions] Specifies options for publishing
-    # profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for FileZilla FTP
-    # format.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param publishing_profile_options [CsmPublishingProfileOptions] Specifies
+    # publishingProfileOptions for publishing profile. For example, use {"format":
+    # "FileZilla3"} to get a FileZilla publishing profile.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_publishing_profile_xml_with_secrets_async(resource_group_name, name, options, custom_headers = nil)
+    def list_publishing_profile_xml_with_secrets_async(resource_group_name, name, publishing_profile_options, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'options is nil' if options.nil?
+      fail ArgumentError, 'publishing_profile_options is nil' if publishing_profile_options.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       api_version = '2016-08-01'
 
@@ -7683,7 +8701,7 @@ module Azure::ARM::Web
 
       # Serialize Request
       request_mapper = CsmPublishingProfileOptions.mapper()
-      request_content = @client.serialize(request_mapper,  options, 'options')
+      request_content = @client.serialize(request_mapper,  publishing_profile_options, 'publishing_profile_options')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publishxml'
@@ -7734,11 +8752,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
     # recovery. Snapshot information can be obtained by calling GetDeletedSites or
@@ -7754,7 +8773,8 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
     # recovery. Snapshot information can be obtained by calling GetDeletedSites or
@@ -7785,32 +8805,33 @@ module Azure::ARM::Web
 
     #
     # Resets the configuration settings of the current slot if they were previously
-    # modified by calling ApplySlotConfig API
+    # modified by calling the API with POST.
     #
     # Resets the configuration settings of the current slot if they were previously
-    # modified by calling ApplySlotConfig API
+    # modified by calling the API with POST.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def reset_production_slot_config(resource_group_name, name, custom_headers = nil)
       response = reset_production_slot_config_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
     # Resets the configuration settings of the current slot if they were previously
-    # modified by calling ApplySlotConfig API
+    # modified by calling the API with POST.
     #
     # Resets the configuration settings of the current slot if they were previously
-    # modified by calling ApplySlotConfig API
+    # modified by calling the API with POST.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7822,13 +8843,14 @@ module Azure::ARM::Web
 
     #
     # Resets the configuration settings of the current slot if they were previously
-    # modified by calling ApplySlotConfig API
+    # modified by calling the API with POST.
     #
     # Resets the configuration settings of the current slot if they were previously
-    # modified by calling ApplySlotConfig API
+    # modified by calling the API with POST.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -7863,7 +8885,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -7877,39 +8899,42 @@ module Azure::ARM::Web
     end
 
     #
-    # Restarts web app
+    # Restarts an app (or deployment slot, if specified).
     #
-    # Restarts web app
+    # Restarts an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param soft_restart [Boolean] Soft restart applies the configuration settings
-    # and restarts the app if necessary. Hard restart always restarts and
-    # reprovisions the app
-    # @param synchronous [Boolean] If true then the API will block until the app
-    # has been restarted
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param soft_restart [Boolean] Specify true to apply the configuration
+    # settings and restarts the app only if necessary. By default, the API always
+    # restarts and reprovisions the app.
+    # @param synchronous [Boolean] Specify true to block until the app is
+    # restarted. By default, it is set to false, and the API responds immediately
+    # (asynchronous).
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def restart(resource_group_name, name, soft_restart = nil, synchronous = nil, custom_headers = nil)
       response = restart_async(resource_group_name, name, soft_restart, synchronous, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Restarts web app
+    # Restarts an app (or deployment slot, if specified).
     #
-    # Restarts web app
+    # Restarts an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param soft_restart [Boolean] Soft restart applies the configuration settings
-    # and restarts the app if necessary. Hard restart always restarts and
-    # reprovisions the app
-    # @param synchronous [Boolean] If true then the API will block until the app
-    # has been restarted
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param soft_restart [Boolean] Specify true to apply the configuration
+    # settings and restarts the app only if necessary. By default, the API always
+    # restarts and reprovisions the app.
+    # @param synchronous [Boolean] Specify true to block until the app is
+    # restarted. By default, it is set to false, and the API responds immediately
+    # (asynchronous).
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -7920,17 +8945,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Restarts web app
+    # Restarts an app (or deployment slot, if specified).
     #
-    # Restarts web app
+    # Restarts an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param soft_restart [Boolean] Soft restart applies the configuration settings
-    # and restarts the app if necessary. Hard restart always restarts and
-    # reprovisions the app
-    # @param synchronous [Boolean] If true then the API will block until the app
-    # has been restarted
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param soft_restart [Boolean] Specify true to apply the configuration
+    # settings and restarts the app only if necessary. By default, the API always
+    # restarts and reprovisions the app.
+    # @param synchronous [Boolean] Specify true to block until the app is
+    # restarted. By default, it is set to false, and the API responds immediately
+    # (asynchronous).
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -7979,57 +9006,54 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param properties_to_include [String] List of app properties to include in
-    # the response
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Array<Site>] operation results.
     #
-    def list_slots(resource_group_name, name, properties_to_include = nil, custom_headers = nil)
-      first_page = list_slots_as_lazy(resource_group_name, name, properties_to_include, custom_headers)
+    def list_slots(resource_group_name, name, custom_headers = nil)
+      first_page = list_slots_as_lazy(resource_group_name, name, custom_headers)
       first_page.get_all_items
     end
 
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param properties_to_include [String] List of app properties to include in
-    # the response
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_slots_with_http_info(resource_group_name, name, properties_to_include = nil, custom_headers = nil)
-      list_slots_async(resource_group_name, name, properties_to_include, custom_headers).value!
+    def list_slots_with_http_info(resource_group_name, name, custom_headers = nil)
+      list_slots_async(resource_group_name, name, custom_headers).value!
     end
 
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param properties_to_include [String] List of app properties to include in
-    # the response
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_slots_async(resource_group_name, name, properties_to_include = nil, custom_headers = nil)
+    def list_slots_async(resource_group_name, name, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -8048,7 +9072,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'propertiesToInclude' => properties_to_include,'api-version' => api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -8082,63 +9106,60 @@ module Azure::ARM::Web
     end
 
     #
-    # Get details of a web app
+    # Gets the details of a web, mobile, or API app.
     #
-    # Get details of a web app
+    # Gets the details of a web, mobile, or API app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. By default, this API
+    # returns the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Site] operation results.
     #
-    def get_slot(resource_group_name, name, slot, properties_to_include = nil, custom_headers = nil)
-      response = get_slot_async(resource_group_name, name, slot, properties_to_include, custom_headers).value!
+    def get_slot(resource_group_name, name, slot, custom_headers = nil)
+      response = get_slot_async(resource_group_name, name, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Get details of a web app
+    # Gets the details of a web, mobile, or API app.
     #
-    # Get details of a web app
+    # Gets the details of a web, mobile, or API app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. By default, this API
+    # returns the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def get_slot_with_http_info(resource_group_name, name, slot, properties_to_include = nil, custom_headers = nil)
-      get_slot_async(resource_group_name, name, slot, properties_to_include, custom_headers).value!
+    def get_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
+      get_slot_async(resource_group_name, name, slot, custom_headers).value!
     end
 
     #
-    # Get details of a web app
+    # Gets the details of a web, mobile, or API app.
     #
-    # Get details of a web app
+    # Gets the details of a web, mobile, or API app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. By default, this API
+    # returns the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def get_slot_async(resource_group_name, name, slot, properties_to_include = nil, custom_headers = nil)
+    def get_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -8158,7 +9179,7 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
-          query_params: {'propertiesToInclude' => properties_to_include,'api-version' => api_version},
+          query_params: {'api-version' => api_version},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -8192,15 +9213,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param site_envelope [Site] Details of web app if it exists already
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [Site] A JSON representation of the app properties. See
+    # example.
+    # @param slot [String] Name of the deployment slot to create or update. By
+    # default, this API attempts to create or modify the production slot.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -8221,11 +9247,14 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param site_envelope [Site] Details of web app if it exists already
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [Site] A JSON representation of the app properties. See
+    # example.
+    # @param slot [String] Name of the deployment slot to create or update. By
+    # default, this API attempts to create or modify the production slot.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -8260,40 +9289,43 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a web app
+    # Deletes a web, mobile, or API app, or one of the deployment slots.
     #
-    # Deletes a web app
+    # Deletes a web, mobile, or API app, or one of the deployment slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app to delete.
+    # @param slot [String] Name of the deployment slot to delete. By default, the
+    # API deletes the production slot.
     # @param delete_metrics [Boolean] If true, web app metrics are also deleted
-    # @param delete_empty_server_farm [Boolean] If true and App Service Plan is
-    # empty after web app deletion, App Service Plan is also deleted
+    # @param delete_empty_server_farm [Boolean] Specify true if the App Service
+    # plan will be empty after app deletion and you want to delete the empty App
+    # Service plan. By default, the empty App Service plan is not deleted.
     # @param skip_dns_registration [Boolean] If true, DNS registration is skipped
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_slot(resource_group_name, name, slot, delete_metrics = nil, delete_empty_server_farm = nil, skip_dns_registration = nil, custom_headers = nil)
       response = delete_slot_async(resource_group_name, name, slot, delete_metrics, delete_empty_server_farm, skip_dns_registration, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Deletes a web app
+    # Deletes a web, mobile, or API app, or one of the deployment slots.
     #
-    # Deletes a web app
+    # Deletes a web, mobile, or API app, or one of the deployment slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app to delete.
+    # @param slot [String] Name of the deployment slot to delete. By default, the
+    # API deletes the production slot.
     # @param delete_metrics [Boolean] If true, web app metrics are also deleted
-    # @param delete_empty_server_farm [Boolean] If true and App Service Plan is
-    # empty after web app deletion, App Service Plan is also deleted
+    # @param delete_empty_server_farm [Boolean] Specify true if the App Service
+    # plan will be empty after app deletion and you want to delete the empty App
+    # Service plan. By default, the empty App Service plan is not deleted.
     # @param skip_dns_registration [Boolean] If true, DNS registration is skipped
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -8305,17 +9337,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a web app
+    # Deletes a web, mobile, or API app, or one of the deployment slots.
     #
-    # Deletes a web app
+    # Deletes a web, mobile, or API app, or one of the deployment slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app to delete.
+    # @param slot [String] Name of the deployment slot to delete. By default, the
+    # API deletes the production slot.
     # @param delete_metrics [Boolean] If true, web app metrics are also deleted
-    # @param delete_empty_server_farm [Boolean] If true and App Service Plan is
-    # empty after web app deletion, App Service Plan is also deleted
+    # @param delete_empty_server_farm [Boolean] Specify true if the App Service
+    # plan will be empty after app deletion and you want to delete the empty App
+    # Service plan. By default, the empty App Service plan is not deleted.
     # @param skip_dns_registration [Boolean] If true, DNS registration is skipped
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -8352,7 +9386,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -8366,11 +9400,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Analyze a custom hostname
+    # Analyze a custom hostname.
     #
-    # Analyze a custom hostname
+    # Analyze a custom hostname.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
@@ -8386,11 +9421,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Analyze a custom hostname
+    # Analyze a custom hostname.
     #
-    # Analyze a custom hostname
+    # Analyze a custom hostname.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
@@ -8405,11 +9441,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Analyze a custom hostname
+    # Analyze a custom hostname.
     #
-    # Analyze a custom hostname
+    # Analyze a custom hostname.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
@@ -8473,37 +9510,42 @@ module Azure::ARM::Web
     end
 
     #
-    # Applies the configuration settings from the target slot onto the current slot
+    # Applies the configuration settings from the target slot onto the current
+    # slot.
     #
-    # Applies the configuration settings from the target slot onto the current slot
+    # Applies the configuration settings from the target slot onto the current
+    # slot.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name. Settings from that slot will be applied on the source slot
-    # @param slot [String] Name of the source slot. Settings from the target slot
-    # will be applied onto this slot
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param slot [String] Name of the source slot. If a slot is not specified, the
+    # production slot is used as the source slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def apply_slot_configuration_slot(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
       response = apply_slot_configuration_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Applies the configuration settings from the target slot onto the current slot
+    # Applies the configuration settings from the target slot onto the current
+    # slot.
     #
-    # Applies the configuration settings from the target slot onto the current slot
+    # Applies the configuration settings from the target slot onto the current
+    # slot.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name. Settings from that slot will be applied on the source slot
-    # @param slot [String] Name of the source slot. Settings from the target slot
-    # will be applied onto this slot
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param slot [String] Name of the source slot. If a slot is not specified, the
+    # production slot is used as the source slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8514,16 +9556,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Applies the configuration settings from the target slot onto the current slot
+    # Applies the configuration settings from the target slot onto the current
+    # slot.
     #
-    # Applies the configuration settings from the target slot onto the current slot
+    # Applies the configuration settings from the target slot onto the current
+    # slot.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name. Settings from that slot will be applied on the source slot
-    # @param slot [String] Name of the source slot. Settings from the target slot
-    # will be applied onto this slot
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param slot [String] Name of the source slot. If a slot is not specified, the
+    # production slot is used as the source slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -8569,7 +9614,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -8583,15 +9628,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates web app backup
+    # Creates a backup of an app.
     #
-    # Creates web app backup
+    # Creates a backup of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [BackupRequest] Backup configuration. You can use the JSON
+    # response from the POST action as input here.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create a backup for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8603,15 +9650,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates web app backup
+    # Creates a backup of an app.
     #
-    # Creates web app backup
+    # Creates a backup of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [BackupRequest] Backup configuration. You can use the JSON
+    # response from the POST action as input here.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create a backup for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8622,15 +9671,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates web app backup
+    # Creates a backup of an app.
     #
-    # Creates web app backup
+    # Creates a backup of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [BackupRequest] Backup configuration. You can use the JSON
+    # response from the POST action as input here.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create a backup for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -8700,14 +9751,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get backups of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8719,14 +9771,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get backups of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8737,14 +9790,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get backups of the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -8804,15 +9858,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Discovers existing web app backups that can be restored
+    # Discovers an existing app backup that can be restored from a blob in Azure
+    # storage.
     #
-    # Discovers existing web app backups that can be restored
+    # Discovers an existing app backup that can be restored from a blob in Azure
+    # storage.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [RestoreRequest] A RestoreRequest object that includes Azure
+    # storage URL and blog name for discovery of backup.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will perform discovery for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8824,15 +9882,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Discovers existing web app backups that can be restored
+    # Discovers an existing app backup that can be restored from a blob in Azure
+    # storage.
     #
-    # Discovers existing web app backups that can be restored
+    # Discovers an existing app backup that can be restored from a blob in Azure
+    # storage.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [RestoreRequest] A RestoreRequest object that includes Azure
+    # storage URL and blog name for discovery of backup.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will perform discovery for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8843,15 +9905,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Discovers existing web app backups that can be restored
+    # Discovers an existing app backup that can be restored from a blob in Azure
+    # storage.
     #
-    # Discovers existing web app backups that can be restored
+    # Discovers an existing app backup that can be restored from a blob in Azure
+    # storage.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [RestoreRequest] A RestoreRequest object that includes Azure
+    # storage URL and blog name for discovery of backup.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will perform discovery for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -8921,15 +9987,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets status of a web app backup that may be in progress.
+    # Gets a backup of an app by its ID.
     #
-    # Gets status of a web app backup that may be in progress.
+    # Gets a backup of an app by its ID.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get a backup of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8941,15 +10008,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets status of a web app backup that may be in progress.
+    # Gets a backup of an app by its ID.
     #
-    # Gets status of a web app backup that may be in progress.
+    # Gets a backup of an app by its ID.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get a backup of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -8960,15 +10028,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets status of a web app backup that may be in progress.
+    # Gets a backup of an app by its ID.
     #
-    # Gets status of a web app backup that may be in progress.
+    # Gets a backup of an app by its ID.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get a backup of the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9029,35 +10098,36 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a backup from Azure Storage
+    # Deletes a backup of an app by its ID.
     #
-    # Deletes a backup from Azure Storage
+    # Deletes a backup of an app by its ID.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete a backup of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [BackupItem] operation results.
     #
     def delete_backup_slot(resource_group_name, name, backup_id, slot, custom_headers = nil)
       response = delete_backup_slot_async(resource_group_name, name, backup_id, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Deletes a backup from Azure Storage
+    # Deletes a backup of an app by its ID.
     #
-    # Deletes a backup from Azure Storage
+    # Deletes a backup of an app by its ID.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete a backup of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9068,15 +10138,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a backup from Azure Storage
+    # Deletes a backup of an app by its ID.
     #
-    # Deletes a backup from Azure Storage
+    # Deletes a backup of an app by its ID.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete a backup of the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9113,22 +10184,12 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = BackupItem.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
 
         result
       end
@@ -9147,7 +10208,8 @@ module Azure::ARM::Web
     # used to update the SAS URL for the backup if a new URL is passed in the
     # request body.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
     # @param request [BackupRequest] Information on backup request
@@ -9174,7 +10236,8 @@ module Azure::ARM::Web
     # used to update the SAS URL for the backup if a new URL is passed in the
     # request body.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
     # @param request [BackupRequest] Information on backup request
@@ -9200,7 +10263,8 @@ module Azure::ARM::Web
     # used to update the SAS URL for the backup if a new URL is passed in the
     # request body.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param backup_id [String] Id of backup
     # @param request [BackupRequest] Information on backup request
@@ -9276,16 +10340,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup to restore
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will restore a backup of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9297,12 +10362,13 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup to restore
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will restore a backup of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9328,15 +10394,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the application settings of web app
+    # Replaces the application settings of an app.
     #
-    # Updates the application settings of web app
+    # Replaces the application settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param app_settings [StringDictionary] Application settings of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param app_settings [StringDictionary] Application settings of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the application settings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9348,15 +10415,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the application settings of web app
+    # Replaces the application settings of an app.
     #
-    # Updates the application settings of web app
+    # Replaces the application settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param app_settings [StringDictionary] Application settings of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param app_settings [StringDictionary] Application settings of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the application settings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9367,15 +10435,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the application settings of web app
+    # Replaces the application settings of an app.
     #
-    # Updates the application settings of web app
+    # Replaces the application settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param app_settings [StringDictionary] Application settings of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param app_settings [StringDictionary] Application settings of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the application settings for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9445,14 +10514,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the application settings of web app
+    # Gets the application settings of an app.
     #
-    # Gets the application settings of web app
+    # Gets the application settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the application settings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9464,14 +10534,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the application settings of web app
+    # Gets the application settings of an app.
     #
-    # Gets the application settings of web app
+    # Gets the application settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the application settings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9482,14 +10553,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the application settings of web app
+    # Gets the application settings of an app.
     #
-    # Gets the application settings of web app
+    # Gets the application settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the application settings for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9549,11 +10621,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Authentication / Authorization settings associated with web app
+    # Updates the Authentication / Authorization settings associated with web app.
     #
-    # Updates the Authentication / Authorization settings associated with web app
+    # Updates the Authentication / Authorization settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param site_auth_settings [SiteAuthSettings] Auth settings associated with
     # web app
@@ -9570,11 +10643,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Authentication / Authorization settings associated with web app
+    # Updates the Authentication / Authorization settings associated with web app.
     #
-    # Updates the Authentication / Authorization settings associated with web app
+    # Updates the Authentication / Authorization settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param site_auth_settings [SiteAuthSettings] Auth settings associated with
     # web app
@@ -9590,11 +10664,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Authentication / Authorization settings associated with web app
+    # Updates the Authentication / Authorization settings associated with web app.
     #
-    # Updates the Authentication / Authorization settings associated with web app
+    # Updates the Authentication / Authorization settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param site_auth_settings [SiteAuthSettings] Auth settings associated with
     # web app
@@ -9669,57 +10744,60 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the Authentication / Authorization settings associated with web app
+    # Gets the Authentication/Authorization settings of an app.
     #
-    # Gets the Authentication / Authorization settings associated with web app
+    # Gets the Authentication/Authorization settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the settings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [SiteAuthSettings] operation results.
     #
-    def list_auth_settings_slot(resource_group_name, name, slot, custom_headers = nil)
-      response = list_auth_settings_slot_async(resource_group_name, name, slot, custom_headers).value!
+    def get_auth_settings_slot(resource_group_name, name, slot, custom_headers = nil)
+      response = get_auth_settings_slot_async(resource_group_name, name, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets the Authentication / Authorization settings associated with web app
+    # Gets the Authentication/Authorization settings of an app.
     #
-    # Gets the Authentication / Authorization settings associated with web app
+    # Gets the Authentication/Authorization settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the settings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_auth_settings_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
-      list_auth_settings_slot_async(resource_group_name, name, slot, custom_headers).value!
+    def get_auth_settings_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
+      get_auth_settings_slot_async(resource_group_name, name, slot, custom_headers).value!
     end
 
     #
-    # Gets the Authentication / Authorization settings associated with web app
+    # Gets the Authentication/Authorization settings of an app.
     #
-    # Gets the Authentication / Authorization settings associated with web app
+    # Gets the Authentication/Authorization settings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the settings for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_auth_settings_slot_async(resource_group_name, name, slot, custom_headers = nil)
+    def get_auth_settings_slot_async(resource_group_name, name, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
@@ -9773,15 +10851,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates backup configuration of web app
+    # Updates the backup configuration of an app.
     #
-    # Updates backup configuration of web app
+    # Updates the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [BackupRequest] Edited backup configuration.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the backup configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9793,15 +10872,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates backup configuration of web app
+    # Updates the backup configuration of an app.
     #
-    # Updates backup configuration of web app
+    # Updates the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [BackupRequest] Edited backup configuration.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the backup configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9812,15 +10892,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates backup configuration of web app
+    # Updates the backup configuration of an app.
     #
-    # Updates backup configuration of web app
+    # Updates the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param request [BackupRequest] Information on backup request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param request [BackupRequest] Edited backup configuration.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the backup configuration for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9890,33 +10971,34 @@ module Azure::ARM::Web
     end
 
     #
-    # Removes the backup configuration for a web app
+    # Deletes the backup configuration of an app.
     #
-    # Removes the backup configuration for a web app
+    # Deletes the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the backup configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_backup_configuration_slot(resource_group_name, name, slot, custom_headers = nil)
       response = delete_backup_configuration_slot_async(resource_group_name, name, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Removes the backup configuration for a web app
+    # Deletes the backup configuration of an app.
     #
-    # Removes the backup configuration for a web app
+    # Deletes the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the backup configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -9927,14 +11009,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Removes the backup configuration for a web app
+    # Deletes the backup configuration of an app.
     #
-    # Removes the backup configuration for a web app
+    # Deletes the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the backup configuration for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -9984,14 +11067,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the backup configuration for a web app
+    # Gets the backup configuration of an app.
     #
-    # Gets the backup configuration for a web app
+    # Gets the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the backup configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10003,14 +11087,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the backup configuration for a web app
+    # Gets the backup configuration of an app.
     #
-    # Gets the backup configuration for a web app
+    # Gets the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the backup configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10021,14 +11106,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the backup configuration for a web app
+    # Gets the backup configuration of an app.
     #
-    # Gets the backup configuration for a web app
+    # Gets the backup configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the backup configuration for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10088,16 +11174,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the connection strings associated with web app
+    # Replaces the connection strings of an app.
     #
-    # Updates the connection strings associated with web app
+    # Replaces the connection strings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param connection_strings [ConnectionStringDictionary] Connection strings
-    # associated with web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param connection_strings [ConnectionStringDictionary] Connection strings of
+    # the app or deployment slot. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the connection settings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10109,16 +11196,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the connection strings associated with web app
+    # Replaces the connection strings of an app.
     #
-    # Updates the connection strings associated with web app
+    # Replaces the connection strings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param connection_strings [ConnectionStringDictionary] Connection strings
-    # associated with web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param connection_strings [ConnectionStringDictionary] Connection strings of
+    # the app or deployment slot. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the connection settings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10129,16 +11217,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the connection strings associated with web app
+    # Replaces the connection strings of an app.
     #
-    # Updates the connection strings associated with web app
+    # Replaces the connection strings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param connection_strings [ConnectionStringDictionary] Connection strings
-    # associated with web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param connection_strings [ConnectionStringDictionary] Connection strings of
+    # the app or deployment slot. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the connection settings for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10208,14 +11297,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the connection strings associated with web app
+    # Gets the connection strings of an app.
     #
-    # Gets the connection strings associated with web app
+    # Gets the connection strings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the connection settings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10227,14 +11317,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the connection strings associated with web app
+    # Gets the connection strings of an app.
     #
-    # Gets the connection strings associated with web app
+    # Gets the connection strings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the connection settings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10245,14 +11336,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the connection strings associated with web app
+    # Gets the connection strings of an app.
     #
-    # Gets the connection strings associated with web app
+    # Gets the connection strings of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the connection settings for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10312,14 +11404,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app logs configuration
+    # Gets the logging configuration of an app.
     #
-    # Gets the web app logs configuration
+    # Gets the logging configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the logging configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10331,14 +11424,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app logs configuration
+    # Gets the logging configuration of an app.
     #
-    # Gets the web app logs configuration
+    # Gets the logging configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the logging configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10349,14 +11443,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app logs configuration
+    # Gets the logging configuration of an app.
     #
-    # Gets the web app logs configuration
+    # Gets the logging configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the logging configuration for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10416,15 +11511,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the meta data for web app
+    # Updates the logging configuration of an app.
     #
-    # Updates the meta data for web app
+    # Updates the logging configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_logs_config [SiteLogsConfig] Site logs configuration
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_logs_config [SiteLogsConfig] A SiteLogsConfig JSON object that
+    # contains the logging configuration to change in the "properties" property.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the logging configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10436,15 +11533,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the meta data for web app
+    # Updates the logging configuration of an app.
     #
-    # Updates the meta data for web app
+    # Updates the logging configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_logs_config [SiteLogsConfig] Site logs configuration
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_logs_config [SiteLogsConfig] A SiteLogsConfig JSON object that
+    # contains the logging configuration to change in the "properties" property.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the logging configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10455,15 +11554,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the meta data for web app
+    # Updates the logging configuration of an app.
     #
-    # Updates the meta data for web app
+    # Updates the logging configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_logs_config [SiteLogsConfig] Site logs configuration
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_logs_config [SiteLogsConfig] A SiteLogsConfig JSON object that
+    # contains the logging configuration to change in the "properties" property.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the logging configuration for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10533,15 +11634,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the meta data for web app
+    # Replaces the metadata of an app.
     #
-    # Updates the meta data for web app
+    # Replaces the metadata of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param metadata [StringDictionary] Meta data of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param metadata [StringDictionary] Edited metadata of the app or deployment
+    # slot. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the metadata for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10553,15 +11656,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the meta data for web app
+    # Replaces the metadata of an app.
     #
-    # Updates the meta data for web app
+    # Replaces the metadata of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param metadata [StringDictionary] Meta data of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param metadata [StringDictionary] Edited metadata of the app or deployment
+    # slot. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the metadata for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10572,15 +11677,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the meta data for web app
+    # Replaces the metadata of an app.
     #
-    # Updates the meta data for web app
+    # Replaces the metadata of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param metadata [StringDictionary] Meta data of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param metadata [StringDictionary] Edited metadata of the app or deployment
+    # slot. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the metadata for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10650,14 +11757,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app meta data.
+    # Gets the metadata of an app.
     #
-    # Gets the web app meta data.
+    # Gets the metadata of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the metadata for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10669,14 +11777,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app meta data.
+    # Gets the metadata of an app.
     #
-    # Gets the web app meta data.
+    # Gets the metadata of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the metadata for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10687,14 +11796,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app meta data.
+    # Gets the metadata of an app.
     #
-    # Gets the web app meta data.
+    # Gets the metadata of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the metadata for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -10754,14 +11864,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the publishing credentials for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10773,10 +11884,11 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the publishing credentials for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -10802,11 +11914,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Push settings associated with web app
+    # Updates the Push settings associated with web app.
     #
-    # Updates the Push settings associated with web app
+    # Updates the Push settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param push_settings [PushSettings] Push settings associated with web app
     # @param slot [String] Name of web app slot. If not specified then will default
@@ -10822,11 +11935,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Push settings associated with web app
+    # Updates the Push settings associated with web app.
     #
-    # Updates the Push settings associated with web app
+    # Updates the Push settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param push_settings [PushSettings] Push settings associated with web app
     # @param slot [String] Name of web app slot. If not specified then will default
@@ -10841,11 +11955,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Push settings associated with web app
+    # Updates the Push settings associated with web app.
     #
-    # Updates the Push settings associated with web app
+    # Updates the Push settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param push_settings [PushSettings] Push settings associated with web app
     # @param slot [String] Name of web app slot. If not specified then will default
@@ -10919,11 +12034,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the Push settings associated with web app
+    # Gets the Push settings associated with web app.
     #
-    # Gets the Push settings associated with web app
+    # Gets the Push settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
@@ -10938,11 +12054,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the Push settings associated with web app
+    # Gets the Push settings associated with web app.
     #
-    # Gets the Push settings associated with web app
+    # Gets the Push settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
@@ -10956,11 +12073,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the Push settings associated with web app
+    # Gets the Push settings associated with web app.
     #
-    # Gets the Push settings associated with web app
+    # Gets the Push settings associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
@@ -11023,14 +12141,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the configuration of the web app
+    # Gets the configuration of an app, such as platform version and bitness,
+    # default documents, virtual applications, Always On, etc.
     #
-    # Gets the configuration of the web app
+    # Gets the configuration of an app, such as platform version and bitness,
+    # default documents, virtual applications, Always On, etc.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11042,14 +12163,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the configuration of the web app
+    # Gets the configuration of an app, such as platform version and bitness,
+    # default documents, virtual applications, Always On, etc.
     #
-    # Gets the configuration of the web app
+    # Gets the configuration of an app, such as platform version and bitness,
+    # default documents, virtual applications, Always On, etc.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11060,14 +12184,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the configuration of the web app
+    # Gets the configuration of an app, such as platform version and bitness,
+    # default documents, virtual applications, Always On, etc.
     #
-    # Gets the configuration of the web app
+    # Gets the configuration of an app, such as platform version and bitness,
+    # default documents, virtual applications, Always On, etc.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11127,16 +12254,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_config [SiteConfig] Request body that contains the configuraiton
-    # setting for the web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
+    # See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11148,16 +12276,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_config [SiteConfig] Request body that contains the configuraiton
-    # setting for the web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
+    # See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11168,16 +12297,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_config [SiteConfig] Request body that contains the configuraiton
-    # setting for the web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
+    # See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update configuration for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11247,16 +12377,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_config [SiteConfig] Request body that contains the configuraiton
-    # setting for the web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
+    # See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11268,16 +12399,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_config [SiteConfig] Request body that contains the configuraiton
-    # setting for the web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
+    # See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11288,16 +12420,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # Update the configuration of web app
+    # Updates the configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_config [SiteConfig] Request body that contains the configuraiton
-    # setting for the web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_config [SiteConfig] JSON representation of a SiteConfig object.
+    # See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update configuration for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11367,14 +12500,355 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
     #
-    # List deployments
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array] operation results.
+    #
+    def list_configuration_snapshot_info_slot(resource_group_name, name, slot, custom_headers = nil)
+      response = list_configuration_snapshot_info_slot_async(resource_group_name, name, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_configuration_snapshot_info_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
+      list_configuration_snapshot_info_slot_async(resource_group_name, name, slot, custom_headers).value!
+    end
+
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # Gets a list of web app configuration snapshots identifiers. Each element of
+    # the list contains a timestamp and the ID of the snapshot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_configuration_snapshot_info_slot_async(resource_group_name, name, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web/snapshots'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = {
+              required: false,
+              serialized_name: 'parsed_response',
+              type: {
+                name: 'Sequence',
+                element: {
+                    required: false,
+                    serialized_name: 'SiteConfigurationSnapshotInfoElementType',
+                    type: {
+                      name: 'Composite',
+                      class_name: 'SiteConfigurationSnapshotInfo'
+                    }
+                }
+              }
+            }
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Gets a snapshot of the configuration of an app at a previous point in time.
+    #
+    # Gets a snapshot of the configuration of an app at a previous point in time.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param snapshot_id [String] The ID of the snapshot to read.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SiteConfig] operation results.
+    #
+    def get_configuration_snapshot_slot(resource_group_name, name, snapshot_id, slot, custom_headers = nil)
+      response = get_configuration_snapshot_slot_async(resource_group_name, name, snapshot_id, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Gets a snapshot of the configuration of an app at a previous point in time.
+    #
+    # Gets a snapshot of the configuration of an app at a previous point in time.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param snapshot_id [String] The ID of the snapshot to read.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_configuration_snapshot_slot_with_http_info(resource_group_name, name, snapshot_id, slot, custom_headers = nil)
+      get_configuration_snapshot_slot_async(resource_group_name, name, snapshot_id, slot, custom_headers).value!
+    end
+
+    #
+    # Gets a snapshot of the configuration of an app at a previous point in time.
+    #
+    # Gets a snapshot of the configuration of an app at a previous point in time.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param snapshot_id [String] The ID of the snapshot to read.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_configuration_snapshot_slot_async(resource_group_name, name, snapshot_id, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'snapshot_id is nil' if snapshot_id.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web/snapshots/{snapshotId}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'snapshotId' => snapshot_id,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = SiteConfig.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Reverts the configuration of an app to a previous snapshot.
+    #
+    # Reverts the configuration of an app to a previous snapshot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param snapshot_id [String] The ID of the snapshot to read.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def recover_site_configuration_snapshot_slot(resource_group_name, name, snapshot_id, slot, custom_headers = nil)
+      response = recover_site_configuration_snapshot_slot_async(resource_group_name, name, snapshot_id, slot, custom_headers).value!
+      nil
+    end
+
+    #
+    # Reverts the configuration of an app to a previous snapshot.
+    #
+    # Reverts the configuration of an app to a previous snapshot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param snapshot_id [String] The ID of the snapshot to read.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def recover_site_configuration_snapshot_slot_with_http_info(resource_group_name, name, snapshot_id, slot, custom_headers = nil)
+      recover_site_configuration_snapshot_slot_async(resource_group_name, name, snapshot_id, slot, custom_headers).value!
+    end
+
+    #
+    # Reverts the configuration of an app to a previous snapshot.
+    #
+    # Reverts the configuration of an app to a previous snapshot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param snapshot_id [String] The ID of the snapshot to read.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will return configuration for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def recover_site_configuration_snapshot_slot_async(resource_group_name, name, snapshot_id, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'snapshot_id is nil' if snapshot_id.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web/snapshots/{snapshotId}/recover'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'snapshotId' => snapshot_id,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:post, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
+    #
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API returns deployments for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11386,14 +12860,17 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API returns deployments for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11404,14 +12881,17 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API returns deployments for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11471,15 +12951,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets a deployment for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11491,15 +12974,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets a deployment for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11510,15 +12996,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets a deployment for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11579,16 +13068,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param deployment [Deployment] Details of deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] ID of an existing deployment.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API creates a deployment for the production slot.
+    # @param deployment [Deployment] Deployment details.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11600,16 +13092,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param deployment [Deployment] Details of deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] ID of an existing deployment.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API creates a deployment for the production slot.
+    # @param deployment [Deployment] Deployment details.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11620,16 +13115,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param deployment [Deployment] Details of deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] ID of an existing deployment.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API creates a deployment for the production slot.
+    # @param deployment [Deployment] Deployment details.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11700,35 +13198,40 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API deletes a deployment for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_deployment_slot(resource_group_name, name, id, slot, custom_headers = nil)
       response = delete_deployment_slot_async(resource_group_name, name, id, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API deletes a deployment for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11739,15 +13242,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API deletes a deployment for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11784,7 +13290,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -11798,14 +13304,611 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Lists ownership identifiers for domain associated with web app.
     #
-    # Get web app hostname bindings
+    # Lists ownership identifiers for domain associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Array<Identifier>] operation results.
+    #
+    def list_domain_ownership_identifiers_slot(resource_group_name, name, slot, custom_headers = nil)
+      first_page = list_domain_ownership_identifiers_slot_as_lazy(resource_group_name, name, slot, custom_headers)
+      first_page.get_all_items
+    end
+
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_domain_ownership_identifiers_slot_with_http_info(resource_group_name, name, slot, custom_headers = nil)
+      list_domain_ownership_identifiers_slot_async(resource_group_name, name, slot, custom_headers).value!
+    end
+
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_domain_ownership_identifiers_slot_async(resource_group_name, name, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = IdentifierCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get domain ownership identifier for web app.
+    #
+    # Get domain ownership identifier for web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Identifier] operation results.
+    #
+    def get_domain_ownership_identifier_slot(resource_group_name, name, domain_ownership_identifier_name, slot, custom_headers = nil)
+      response = get_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Get domain ownership identifier for web app.
+    #
+    # Get domain ownership identifier for web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def get_domain_ownership_identifier_slot_with_http_info(resource_group_name, name, domain_ownership_identifier_name, slot, custom_headers = nil)
+      get_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, slot, custom_headers).value!
+    end
+
+    #
+    # Get domain ownership identifier for web app.
+    #
+    # Get domain ownership identifier for web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def get_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'domainOwnershipIdentifierName' => domain_ownership_identifier_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Identifier.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param domain_ownership_identifier [Identifier] A JSON representation of the
+    # domain ownership properties.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Identifier] operation results.
+    #
+    def create_or_update_domain_ownership_identifier_slot(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, slot, custom_headers = nil)
+      response = create_or_update_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param domain_ownership_identifier [Identifier] A JSON representation of the
+    # domain ownership properties.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def create_or_update_domain_ownership_identifier_slot_with_http_info(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, slot, custom_headers = nil)
+      create_or_update_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, slot, custom_headers).value!
+    end
+
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param domain_ownership_identifier [Identifier] A JSON representation of the
+    # domain ownership properties.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def create_or_update_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
+      fail ArgumentError, 'domain_ownership_identifier is nil' if domain_ownership_identifier.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Identifier.mapper()
+      request_content = @client.serialize(request_mapper,  domain_ownership_identifier, 'domain_ownership_identifier')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'domainOwnershipIdentifierName' => domain_ownership_identifier_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Identifier.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Deletes a domain ownership identifier for a web app.
+    #
+    # Deletes a domain ownership identifier for a web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def delete_domain_ownership_identifier_slot(resource_group_name, name, domain_ownership_identifier_name, slot, custom_headers = nil)
+      response = delete_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, slot, custom_headers).value!
+      nil
+    end
+
+    #
+    # Deletes a domain ownership identifier for a web app.
+    #
+    # Deletes a domain ownership identifier for a web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def delete_domain_ownership_identifier_slot_with_http_info(resource_group_name, name, domain_ownership_identifier_name, slot, custom_headers = nil)
+      delete_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, slot, custom_headers).value!
+    end
+
+    #
+    # Deletes a domain ownership identifier for a web app.
+    #
+    # Deletes a domain ownership identifier for a web app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def delete_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'domainOwnershipIdentifierName' => domain_ownership_identifier_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:delete, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 204
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param domain_ownership_identifier [Identifier] A JSON representation of the
+    # domain ownership properties.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [Identifier] operation results.
+    #
+    def update_domain_ownership_identifier_slot(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, slot, custom_headers = nil)
+      response = update_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, slot, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param domain_ownership_identifier [Identifier] A JSON representation of the
+    # domain ownership properties.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def update_domain_ownership_identifier_slot_with_http_info(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, slot, custom_headers = nil)
+      update_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, slot, custom_headers).value!
+    end
+
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # Creates a domain ownership identifier for web app, or updates an existing
+    # ownership identifier.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param domain_ownership_identifier_name [String] Name of domain ownership
+    # identifier.
+    # @param domain_ownership_identifier [Identifier] A JSON representation of the
+    # domain ownership properties.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def update_domain_ownership_identifier_slot_async(resource_group_name, name, domain_ownership_identifier_name, domain_ownership_identifier, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'domain_ownership_identifier_name is nil' if domain_ownership_identifier_name.nil?
+      fail ArgumentError, 'domain_ownership_identifier is nil' if domain_ownership_identifier.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = Identifier.mapper()
+      request_content = @client.serialize(request_mapper,  domain_ownership_identifier, 'domain_ownership_identifier')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'domainOwnershipIdentifierName' => domain_ownership_identifier_name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:patch, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = Identifier.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get hostname bindings for an app or a deployment slot.
+    #
+    # Get hostname bindings for an app or a deployment slot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets hostname bindings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11817,14 +13920,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets hostname bindings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11835,14 +13939,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets hostname bindings for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -11902,15 +14007,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app binding for a hostname
+    # Get the named hostname binding for an app (or deployment slot, if specified).
     #
-    # Get web app binding for a hostname
+    # Get the named hostname binding for an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param host_name [String] Name of host
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API the named binding for the production slot.
+    # @param host_name [String] Hostname in the hostname binding.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11922,15 +14028,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app binding for a hostname
+    # Get the named hostname binding for an app (or deployment slot, if specified).
     #
-    # Get web app binding for a hostname
+    # Get the named hostname binding for an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param host_name [String] Name of host
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API the named binding for the production slot.
+    # @param host_name [String] Hostname in the hostname binding.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -11941,15 +14048,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app binding for a hostname
+    # Get the named hostname binding for an app (or deployment slot, if specified).
     #
-    # Get web app binding for a hostname
+    # Get the named hostname binding for an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param host_name [String] Name of host
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API the named binding for the production slot.
+    # @param host_name [String] Hostname in the hostname binding.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -12010,16 +14118,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a web app hostname binding
+    # Creates a hostname binding for an app.
     #
-    # Creates a web app hostname binding
+    # Creates a hostname binding for an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param host_name [String] Name of host
-    # @param host_name_binding [HostNameBinding] Host name binding information
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param host_name [String] Hostname in the hostname binding.
+    # @param host_name_binding [HostNameBinding] Binding details. This is the JSON
+    # representation of a HostNameBinding object.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create a binding for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -12031,16 +14141,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a web app hostname binding
+    # Creates a hostname binding for an app.
     #
-    # Creates a web app hostname binding
+    # Creates a hostname binding for an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param host_name [String] Name of host
-    # @param host_name_binding [HostNameBinding] Host name binding information
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param host_name [String] Hostname in the hostname binding.
+    # @param host_name_binding [HostNameBinding] Binding details. This is the JSON
+    # representation of a HostNameBinding object.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create a binding for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -12051,16 +14163,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a web app hostname binding
+    # Creates a hostname binding for an app.
     #
-    # Creates a web app hostname binding
+    # Creates a hostname binding for an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param host_name [String] Name of host
-    # @param host_name_binding [HostNameBinding] Host name binding information
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param host_name [String] Hostname in the hostname binding.
+    # @param host_name_binding [HostNameBinding] Binding details. This is the JSON
+    # representation of a HostNameBinding object.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create a binding for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -12131,35 +14245,36 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a host name binding
+    # Deletes a hostname binding for an app.
     #
-    # Deletes a host name binding
+    # Deletes a hostname binding for an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param host_name [String] Name of host
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param host_name [String] Hostname in the hostname binding.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_host_name_binding_slot(resource_group_name, name, slot, host_name, custom_headers = nil)
       response = delete_host_name_binding_slot_async(resource_group_name, name, slot, host_name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Deletes a host name binding
+    # Deletes a hostname binding for an app.
     #
-    # Deletes a host name binding
+    # Deletes a hostname binding for an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param host_name [String] Name of host
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param host_name [String] Hostname in the hostname binding.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -12170,15 +14285,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Deletes a host name binding
+    # Deletes a hostname binding for an app.
     #
-    # Deletes a host name binding
+    # Deletes a hostname binding for an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param host_name [String] Name of host
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param host_name [String] Hostname in the hostname binding.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -12215,7 +14331,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -12233,7 +14349,8 @@ module Azure::ARM::Web
     #
     # Retrieves a specific Service Bus Hybrid Connection used by this Web App.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12253,7 +14370,8 @@ module Azure::ARM::Web
     #
     # Retrieves a specific Service Bus Hybrid Connection used by this Web App.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12272,7 +14390,8 @@ module Azure::ARM::Web
     #
     # Retrieves a specific Service Bus Hybrid Connection used by this Web App.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12338,11 +14457,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12360,11 +14480,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12381,11 +14502,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12467,7 +14589,8 @@ module Azure::ARM::Web
     #
     # Removes a Hybrid Connection from this site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12475,11 +14598,10 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_hybrid_connection_slot(resource_group_name, name, namespace_name, relay_name, slot, custom_headers = nil)
       response = delete_hybrid_connection_slot_async(resource_group_name, name, namespace_name, relay_name, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
@@ -12487,7 +14609,8 @@ module Azure::ARM::Web
     #
     # Removes a Hybrid Connection from this site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12506,7 +14629,8 @@ module Azure::ARM::Web
     #
     # Removes a Hybrid Connection from this site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12548,7 +14672,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -12562,11 +14686,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12584,11 +14709,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12605,11 +14731,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # Creates a new Hybrid Connection using a Service Bus relay
+    # Creates a new Hybrid Connection using a Service Bus relay.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12687,11 +14814,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the send key name and value for a Hybrid Connection
+    # Gets the send key name and value for a Hybrid Connection.
     #
-    # Gets the send key name and value for a Hybrid Connection
+    # Gets the send key name and value for a Hybrid Connection.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12699,7 +14827,7 @@ module Azure::ARM::Web
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [HybridConnectionKey] operation results.
     #
     def list_hybrid_connection_keys_slot(resource_group_name, name, namespace_name, relay_name, slot, custom_headers = nil)
       response = list_hybrid_connection_keys_slot_async(resource_group_name, name, namespace_name, relay_name, slot, custom_headers).value!
@@ -12707,11 +14835,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the send key name and value for a Hybrid Connection
+    # Gets the send key name and value for a Hybrid Connection.
     #
-    # Gets the send key name and value for a Hybrid Connection
+    # Gets the send key name and value for a Hybrid Connection.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12726,11 +14855,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the send key name and value for a Hybrid Connection
+    # Gets the send key name and value for a Hybrid Connection.
     #
-    # Gets the send key name and value for a Hybrid Connection
+    # Gets the send key name and value for a Hybrid Connection.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param namespace_name [String] The namespace for this hybrid connection
     # @param relay_name [String] The relay name for this hybrid connection
@@ -12778,6 +14908,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = HybridConnectionKey.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -12790,7 +14930,8 @@ module Azure::ARM::Web
     #
     # Retrieves all Service Bus Hybrid Connections used by this Web App.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param slot [String] The name of the slot for the web app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -12808,7 +14949,8 @@ module Azure::ARM::Web
     #
     # Retrieves all Service Bus Hybrid Connections used by this Web App.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param slot [String] The name of the slot for the web app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -12825,7 +14967,8 @@ module Azure::ARM::Web
     #
     # Retrieves all Service Bus Hybrid Connections used by this Web App.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param slot [String] The name of the slot for the web app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -12887,13 +15030,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves all Biztalk Hybrid Connections associated with this web app.
+    # Gets hybrid connections configured for an app (or deployment slot, if
+    # specified).
     #
-    # Retrieves all Biztalk Hybrid Connections associated with this web app.
+    # Gets hybrid connections configured for an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get hybrid connections for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -12905,13 +15052,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves all Biztalk Hybrid Connections associated with this web app.
+    # Gets hybrid connections configured for an app (or deployment slot, if
+    # specified).
     #
-    # Retrieves all Biztalk Hybrid Connections associated with this web app.
+    # Gets hybrid connections configured for an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get hybrid connections for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -12922,13 +15073,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves all Biztalk Hybrid Connections associated with this web app.
+    # Gets hybrid connections configured for an app (or deployment slot, if
+    # specified).
     #
-    # Retrieves all Biztalk Hybrid Connections associated with this web app.
+    # Gets hybrid connections configured for an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get hybrid connections for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -12988,15 +15143,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a Biztalk Hybrid Connection identified by its entity name.
+    # Gets a hybrid connection configuration by its name.
     #
-    # Retrieves a Biztalk Hybrid Connection identified by its entity name.
+    # Gets a hybrid connection configuration by its name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get a hybrid connection for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13008,15 +15164,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a Biztalk Hybrid Connection identified by its entity name.
+    # Gets a hybrid connection configuration by its name.
     #
-    # Retrieves a Biztalk Hybrid Connection identified by its entity name.
+    # Gets a hybrid connection configuration by its name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get a hybrid connection for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13027,15 +15184,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a Biztalk Hybrid Connection identified by its entity name.
+    # Gets a hybrid connection configuration by its name.
     #
-    # Retrieves a Biztalk Hybrid Connection identified by its entity name.
+    # Gets a hybrid connection configuration by its name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get a hybrid connection for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -13096,19 +15254,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param connection_envelope [RelayServiceConnectionEntity] The details of the
-    # Hybrid Connection
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param connection_envelope [RelayServiceConnectionEntity] Details of the
+    # hybrid connection configuration.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create or update a hybrid connection for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13120,19 +15279,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param connection_envelope [RelayServiceConnectionEntity] The details of the
-    # Hybrid Connection
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param connection_envelope [RelayServiceConnectionEntity] Details of the
+    # hybrid connection configuration.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create or update a hybrid connection for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13143,19 +15303,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param connection_envelope [RelayServiceConnectionEntity] The details of the
-    # Hybrid Connection
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param connection_envelope [RelayServiceConnectionEntity] Details of the
+    # hybrid connection configuration.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create or update a hybrid connection for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -13226,39 +15387,36 @@ module Azure::ARM::Web
     end
 
     #
-    # Removes the association to a Biztalk Hybrid Connection, identified by its
-    # entity name.
+    # Deletes a relay service connection by its name.
     #
-    # Removes the association to a Biztalk Hybrid Connection, identified by its
-    # entity name.
+    # Deletes a relay service connection by its name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete a hybrid connection for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_relay_service_connection_slot(resource_group_name, name, entity_name, slot, custom_headers = nil)
       response = delete_relay_service_connection_slot_async(resource_group_name, name, entity_name, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Removes the association to a Biztalk Hybrid Connection, identified by its
-    # entity name.
+    # Deletes a relay service connection by its name.
     #
-    # Removes the association to a Biztalk Hybrid Connection, identified by its
-    # entity name.
+    # Deletes a relay service connection by its name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete a hybrid connection for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13269,17 +15427,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Removes the association to a Biztalk Hybrid Connection, identified by its
-    # entity name.
+    # Deletes a relay service connection by its name.
     #
-    # Removes the association to a Biztalk Hybrid Connection, identified by its
-    # entity name.
+    # Deletes a relay service connection by its name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete a hybrid connection for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -13316,7 +15473,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -13330,19 +15487,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param connection_envelope [RelayServiceConnectionEntity] The details of the
-    # Hybrid Connection
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param connection_envelope [RelayServiceConnectionEntity] Details of the
+    # hybrid connection configuration.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create or update a hybrid connection for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13354,19 +15512,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param connection_envelope [RelayServiceConnectionEntity] The details of the
-    # Hybrid Connection
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param connection_envelope [RelayServiceConnectionEntity] Details of the
+    # hybrid connection configuration.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create or update a hybrid connection for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13377,19 +15536,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # Creates a new association to a Biztalk Hybrid Connection, or updates an
-    # existing one.
+    # Creates a new hybrid connection configuration (PUT), or updates an existing
+    # one (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param entity_name [String] The name by which the Hybrid Connection is
-    # identified
-    # @param connection_envelope [RelayServiceConnectionEntity] The details of the
-    # Hybrid Connection
-    # @param slot [String] The name of the slot for the web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param entity_name [String] Name of the hybrid connection configuration.
+    # @param connection_envelope [RelayServiceConnectionEntity] Details of the
+    # hybrid connection configuration.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will create or update a hybrid connection for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -13460,14 +15620,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets the production slot instances.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13479,14 +15640,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets the production slot instances.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13497,14 +15659,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets the production slot instances.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -13550,7 +15713,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteInstanceCollection.mapper()
+            result_mapper = WebAppInstanceCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -13564,15 +15727,20 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API returns deployments for the production slot.
+    # @param instance_id [String] The ID of a specific scaled-out instance. This is
+    # the value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13584,15 +15752,20 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API returns deployments for the production slot.
+    # @param instance_id [String] The ID of a specific scaled-out instance. This is
+    # the value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13603,15 +15776,20 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API returns deployments for the production slot.
+    # @param instance_id [String] The ID of a specific scaled-out instance. This is
+    # the value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -13672,16 +15850,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets a deployment for the production slot.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13693,16 +15876,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets a deployment for the production slot.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13713,16 +15901,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # Get the deployment
+    # Get a deployment by its ID for an app, a specific deployment slot, and/or a
+    # specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets a deployment for the production slot.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -13784,17 +15977,22 @@ module Azure::ARM::Web
     end
 
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
-    # @param deployment [Deployment] Details of deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] ID of an existing deployment.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API creates a deployment for the production slot.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
+    # @param deployment [Deployment] Deployment details.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13806,17 +16004,22 @@ module Azure::ARM::Web
     end
 
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
-    # @param deployment [Deployment] Details of deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] ID of an existing deployment.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API creates a deployment for the production slot.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
+    # @param deployment [Deployment] Deployment details.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13827,17 +16030,22 @@ module Azure::ARM::Web
     end
 
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # Create a deployment
+    # Create a deployment for an app, a specific deployment slot, and/or a specific
+    # scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
-    # @param deployment [Deployment] Details of deployment
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] ID of an existing deployment.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API creates a deployment for the production slot.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
+    # @param deployment [Deployment] Deployment details.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -13909,37 +16117,46 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API deletes a deployment for the production slot.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_instance_deployment_slot(resource_group_name, name, id, slot, instance_id, custom_headers = nil)
       response = delete_instance_deployment_slot_async(resource_group_name, name, id, slot, instance_id, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API deletes a deployment for the production slot.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -13950,16 +16167,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # Delete the deployment
+    # Delete a deployment by its ID for an app, a specific deployment slot, and/or
+    # a specific scaled-out instance.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param id [String] Id of the deployment
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param id [String] Deployment ID.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API deletes a deployment for the production slot.
+    # @param instance_id [String] ID of a specific scaled-out instance. This is the
+    # value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -13997,7 +16219,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -14011,14 +16233,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Shows whether an app can be cloned to another resource group or subscription.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Shows whether an app can be cloned to another resource group or subscription.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. By default, this API
+    # returns information on the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14030,14 +16253,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Shows whether an app can be cloned to another resource group or subscription.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Shows whether an app can be cloned to another resource group or subscription.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. By default, this API
+    # returns information on the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14048,14 +16272,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Shows whether an app can be cloned to another resource group or subscription.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Shows whether an app can be cloned to another resource group or subscription.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. By default, this API
+    # returns information on the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -14115,18 +16340,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get metric definitions of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array<MetricDefinition>] operation results.
+    # @return [Array<ResourceMetricDefinition>] operation results.
     #
     def list_metric_definitions_slot(resource_group_name, name, slot, custom_headers = nil)
       first_page = list_metric_definitions_slot_as_lazy(resource_group_name, name, slot, custom_headers)
@@ -14134,14 +16360,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get metric definitions of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14152,14 +16379,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get metric definitions of the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -14205,7 +16433,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MetricDefinitionCollection.mapper()
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -14219,19 +16447,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param details [Boolean] If true, metric details are included in response
-    # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get metrics of the production slot.
+    # @param details [Boolean] Specify "true" to include metric details in the
+    # response. It is "false" by default.
+    # @param filter [String] Return only metrics specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14243,19 +16473,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param details [Boolean] If true, metric details are included in response
-    # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get metrics of the production slot.
+    # @param details [Boolean] Specify "true" to include metric details in the
+    # response. It is "false" by default.
+    # @param filter [String] Return only metrics specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14266,19 +16498,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param details [Boolean] If true, metric details are included in response
-    # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get metrics of the production slot.
+    # @param details [Boolean] Specify "true" to include metric details in the
+    # response. It is "false" by default.
+    # @param filter [String] Return only metrics specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -14304,7 +16538,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
-          query_params: {'details' => details,'$filter' => filter,'api-version' => api_version},
+          query_params: {'details' => details,'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -14338,15 +16573,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a view of all network features in use on this web app.
+    # Gets all network features used by the app (or deployment slot, if specified).
     #
-    # Retrieves a view of all network features in use on this web app.
+    # Gets all network features used by the app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param view [String] The type of view. This can either be "summary" or
     # "detailed".
-    # @param slot [String] The name of the slot for this web app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get network features for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14358,15 +16595,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a view of all network features in use on this web app.
+    # Gets all network features used by the app (or deployment slot, if specified).
     #
-    # Retrieves a view of all network features in use on this web app.
+    # Gets all network features used by the app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param view [String] The type of view. This can either be "summary" or
     # "detailed".
-    # @param slot [String] The name of the slot for this web app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get network features for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14377,15 +16616,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a view of all network features in use on this web app.
+    # Gets all network features used by the app (or deployment slot, if specified).
     #
-    # Retrieves a view of all network features in use on this web app.
+    # Gets all network features used by the app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param view [String] The type of view. This can either be "summary" or
     # "detailed".
-    # @param slot [String] The name of the slot for this web app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get network features for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -14446,11 +16687,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Start capturing network packets for the site
+    # Start capturing network packets for the site.
     #
-    # Start capturing network packets for the site
+    # Start capturing network packets for the site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param slot [String] The name of the slot for this web app.
     # @param duration_in_seconds [Integer] The duration to keep capturing in
@@ -14466,11 +16708,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Start capturing network packets for the site
+    # Start capturing network packets for the site.
     #
-    # Start capturing network packets for the site
+    # Start capturing network packets for the site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param slot [String] The name of the slot for this web app.
     # @param duration_in_seconds [Integer] The duration to keep capturing in
@@ -14485,11 +16728,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Start capturing network packets for the site
+    # Start capturing network packets for the site.
     #
-    # Start capturing network packets for the site
+    # Start capturing network packets for the site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param slot [String] The name of the slot for this web app.
     # @param duration_in_seconds [Integer] The duration to keep capturing in
@@ -14559,11 +16803,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Stop ongoing capturing network packets for the site
+    # Stop ongoing capturing network packets for the site.
     #
-    # Stop ongoing capturing network packets for the site
+    # Stop ongoing capturing network packets for the site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param slot [String] The name of the slot for this web app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -14577,11 +16822,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Stop ongoing capturing network packets for the site
+    # Stop ongoing capturing network packets for the site.
     #
-    # Stop ongoing capturing network packets for the site
+    # Stop ongoing capturing network packets for the site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param slot [String] The name of the slot for this web app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -14594,11 +16840,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Stop ongoing capturing network packets for the site
+    # Stop ongoing capturing network packets for the site.
     #
-    # Stop ongoing capturing network packets for the site
+    # Stop ongoing capturing network packets for the site.
     #
-    # @param resource_group_name [String] The resource group name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] The name of the web app
     # @param slot [String] The name of the slot for this web app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -14666,33 +16913,38 @@ module Azure::ARM::Web
     end
 
     #
-    # Generates new random app publishing password
+    # Generates a new publishing password for an app (or deployment slot, if
+    # specified).
     #
-    # Generates new random app publishing password
+    # Generates a new publishing password for an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API generate a new publishing password for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def generate_new_site_publishing_password_slot(resource_group_name, name, slot, custom_headers = nil)
       response = generate_new_site_publishing_password_slot_async(resource_group_name, name, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Generates new random app publishing password
+    # Generates a new publishing password for an app (or deployment slot, if
+    # specified).
     #
-    # Generates new random app publishing password
+    # Generates a new publishing password for an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API generate a new publishing password for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -14703,14 +16955,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Generates new random app publishing password
+    # Generates a new publishing password for an app (or deployment slot, if
+    # specified).
     #
-    # Generates new random app publishing password
+    # Generates a new publishing password for an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API generate a new publishing password for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -14746,7 +17001,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -14760,109 +17015,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the operation for a web app
+    # Gets perfmon counters for web app.
     #
-    # Gets the operation for a web app
+    # Gets perfmon counters for web app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param operation_id [String] Id of an operation
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Object] operation results.
-    #
-    def get_operation_slot(resource_group_name, name, operation_id, slot, custom_headers = nil)
-      response = get_operation_slot_async(resource_group_name, name, operation_id, slot, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets the operation for a web app
-    #
-    # Gets the operation for a web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param operation_id [String] Id of an operation
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def get_operation_slot_with_http_info(resource_group_name, name, operation_id, slot, custom_headers = nil)
-      get_operation_slot_async(resource_group_name, name, operation_id, slot, custom_headers).value!
-    end
-
-    #
-    # Gets the operation for a web app
-    #
-    # Gets the operation for a web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param operation_id [String] Id of an operation
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def get_operation_slot_async(resource_group_name, name, operation_id, slot, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'operation_id is nil' if operation_id.nil?
-      fail ArgumentError, 'slot is nil' if slot.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-08-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/operationresults/{operationId}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'operationId' => operation_id,'slot' => slot,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets perfmon counters for web app
-    #
-    # Gets perfmon counters for web app
-    #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot. **** CURRENTLY UNUSED *****
@@ -14881,11 +17039,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot. **** CURRENTLY UNUSED *****
@@ -14903,11 +17062,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot. **** CURRENTLY UNUSED *****
@@ -14940,7 +17100,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'api-version' => api_version},
+          query_params: {'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -14974,18 +17135,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets sites's event logs
+    # Gets web app's event logs.
     #
-    # Gets sites's event logs
+    # Gets web app's event logs.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Array] operation results.
+    # @return [SitePhpErrorLogFlag] operation results.
     #
     def get_site_php_error_log_flag_slot(resource_group_name, name, slot, custom_headers = nil)
       response = get_site_php_error_log_flag_slot_async(resource_group_name, name, slot, custom_headers).value!
@@ -14993,11 +17155,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets sites's event logs
+    # Gets web app's event logs.
     #
-    # Gets sites's event logs
+    # Gets web app's event logs.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
@@ -15011,11 +17174,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets sites's event logs
+    # Gets web app's event logs.
     #
-    # Gets sites's event logs
+    # Gets web app's event logs.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
@@ -15064,20 +17228,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = {
-              required: false,
-              serialized_name: 'parsed_response',
-              type: {
-                name: 'Sequence',
-                element: {
-                    required: false,
-                    serialized_name: 'ObjectElementType',
-                    type: {
-                      name: 'Object'
-                    }
-                }
-              }
-            }
+            result_mapper = SitePhpErrorLogFlag.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -15091,17 +17242,19 @@ module Azure::ARM::Web
     end
 
     #
-    # List premier add ons for web app
+    # Gets the premier add-ons of an app.
     #
-    # List premier add ons for web app
+    # Gets the premier add-ons of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param slot [String] web app slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the premier add-ons for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [PremierAddOn] operation results.
     #
     def list_premier_add_ons_slot(resource_group_name, name, slot, custom_headers = nil)
       response = list_premier_add_ons_slot_async(resource_group_name, name, slot, custom_headers).value!
@@ -15109,13 +17262,15 @@ module Azure::ARM::Web
     end
 
     #
-    # List premier add ons for web app
+    # Gets the premier add-ons of an app.
     #
-    # List premier add ons for web app
+    # Gets the premier add-ons of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param slot [String] web app slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the premier add-ons for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15126,13 +17281,15 @@ module Azure::ARM::Web
     end
 
     #
-    # List premier add ons for web app
+    # Gets the premier add-ons of an app.
     #
-    # List premier add ons for web app
+    # Gets the premier add-ons of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param slot [String] web app slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the premier add-ons for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -15174,6 +17331,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = PremierAddOn.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -15182,18 +17349,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a specific premier add on
+    # Gets a named add-on of an app.
     #
-    # Gets a specific premier add on
+    # Gets a named add-on of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
-    # @param slot [String] web app slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the named add-on for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [PremierAddOn] operation results.
     #
     def get_premier_add_on_slot(resource_group_name, name, premier_add_on_name, slot, custom_headers = nil)
       response = get_premier_add_on_slot_async(resource_group_name, name, premier_add_on_name, slot, custom_headers).value!
@@ -15201,14 +17370,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a specific premier add on
+    # Gets a named add-on of an app.
     #
-    # Gets a specific premier add on
+    # Gets a named add-on of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
-    # @param slot [String] web app slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the named add-on for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15219,14 +17390,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets a specific premier add on
+    # Gets a named add-on of an app.
     #
-    # Gets a specific premier add on
+    # Gets a named add-on of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
-    # @param slot [String] web app slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the named add-on for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -15269,6 +17442,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = PremierAddOn.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -15277,19 +17460,22 @@ module Azure::ARM::Web
     end
 
     #
-    # Add premier add-on
+    # Updates a named add-on of an app.
     #
-    # Add premier add-on
+    # Updates a named add-on of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
-    # @param premier_add_on [PremierAddOnRequest] Premier add on request
-    # @param slot [String] web app slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
+    # @param premier_add_on [PremierAddOn] A JSON representation of the edited
+    # premier add-on.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the named add-on for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [PremierAddOn] operation results.
     #
     def add_premier_add_on_slot(resource_group_name, name, premier_add_on_name, premier_add_on, slot, custom_headers = nil)
       response = add_premier_add_on_slot_async(resource_group_name, name, premier_add_on_name, premier_add_on, slot, custom_headers).value!
@@ -15297,15 +17483,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Add premier add-on
+    # Updates a named add-on of an app.
     #
-    # Add premier add-on
+    # Updates a named add-on of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
-    # @param premier_add_on [PremierAddOnRequest] Premier add on request
-    # @param slot [String] web app slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
+    # @param premier_add_on [PremierAddOn] A JSON representation of the edited
+    # premier add-on.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the named add-on for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15316,15 +17505,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Add premier add-on
+    # Updates a named add-on of an app.
     #
-    # Add premier add-on
+    # Updates a named add-on of an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
-    # @param premier_add_on [PremierAddOnRequest] Premier add on request
-    # @param slot [String] web app slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
+    # @param premier_add_on [PremierAddOn] A JSON representation of the edited
+    # premier add-on.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the named add-on for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -15349,7 +17541,7 @@ module Azure::ARM::Web
       request_headers['Content-Type'] = 'application/json; charset=utf-8'
 
       # Serialize Request
-      request_mapper = PremierAddOnRequest.mapper()
+      request_mapper = PremierAddOn.mapper()
       request_content = @client.serialize(request_mapper,  premier_add_on, 'premier_add_on')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
@@ -15377,6 +17569,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = PremierAddOn.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -15385,33 +17587,36 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete premier add-on
+    # Delete a premier add-on from an app.
     #
-    # Delete premier add-on
+    # Delete a premier add-on from an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
-    # @param slot [String] web app slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the named add-on for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_premier_add_on_slot(resource_group_name, name, premier_add_on_name, slot, custom_headers = nil)
       response = delete_premier_add_on_slot_async(resource_group_name, name, premier_add_on_name, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Delete premier add-on
+    # Delete a premier add-on from an app.
     #
-    # Delete premier add-on
+    # Delete a premier add-on from an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
-    # @param slot [String] web app slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the named add-on for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15422,14 +17627,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete premier add-on
+    # Delete a premier add-on from an app.
     #
-    # Delete premier add-on
+    # Delete a premier add-on from an app.
     #
-    # @param resource_group_name [String] Resource group
-    # @param name [String] web app name
-    # @param premier_add_on_name [String] Premier add on
-    # @param slot [String] web app slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param premier_add_on_name [String] Add-on name.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the named add-on for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -15480,69 +17687,72 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the publishing profile for web app
+    # Gets the publishing profile for an app (or deployment slot, if specified).
     #
-    # Gets the publishing profile for web app
+    # Gets the publishing profile for an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param options [CsmPublishingProfileOptions] Specifies options for publishing
-    # profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for FileZilla FTP
-    # format.
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param publishing_profile_options [CsmPublishingProfileOptions] Specifies
+    # publishingProfileOptions for publishing profile. For example, use {"format":
+    # "FileZilla3"} to get a FileZilla publishing profile.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the publishing profile for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [NOT_IMPLEMENTED] operation results.
     #
-    def list_publishing_profile_xml_with_secrets_slot(resource_group_name, name, options, slot, custom_headers = nil)
-      response = list_publishing_profile_xml_with_secrets_slot_async(resource_group_name, name, options, slot, custom_headers).value!
+    def list_publishing_profile_xml_with_secrets_slot(resource_group_name, name, publishing_profile_options, slot, custom_headers = nil)
+      response = list_publishing_profile_xml_with_secrets_slot_async(resource_group_name, name, publishing_profile_options, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Gets the publishing profile for web app
+    # Gets the publishing profile for an app (or deployment slot, if specified).
     #
-    # Gets the publishing profile for web app
+    # Gets the publishing profile for an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param options [CsmPublishingProfileOptions] Specifies options for publishing
-    # profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for FileZilla FTP
-    # format.
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param publishing_profile_options [CsmPublishingProfileOptions] Specifies
+    # publishingProfileOptions for publishing profile. For example, use {"format":
+    # "FileZilla3"} to get a FileZilla publishing profile.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the publishing profile for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def list_publishing_profile_xml_with_secrets_slot_with_http_info(resource_group_name, name, options, slot, custom_headers = nil)
-      list_publishing_profile_xml_with_secrets_slot_async(resource_group_name, name, options, slot, custom_headers).value!
+    def list_publishing_profile_xml_with_secrets_slot_with_http_info(resource_group_name, name, publishing_profile_options, slot, custom_headers = nil)
+      list_publishing_profile_xml_with_secrets_slot_async(resource_group_name, name, publishing_profile_options, slot, custom_headers).value!
     end
 
     #
-    # Gets the publishing profile for web app
+    # Gets the publishing profile for an app (or deployment slot, if specified).
     #
-    # Gets the publishing profile for web app
+    # Gets the publishing profile for an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param options [CsmPublishingProfileOptions] Specifies options for publishing
-    # profile. Pass CsmPublishingProfileOptions.Format=FileZilla3 for FileZilla FTP
-    # format.
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param publishing_profile_options [CsmPublishingProfileOptions] Specifies
+    # publishingProfileOptions for publishing profile. For example, use {"format":
+    # "FileZilla3"} to get a FileZilla publishing profile.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the publishing profile for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def list_publishing_profile_xml_with_secrets_slot_async(resource_group_name, name, options, slot, custom_headers = nil)
+    def list_publishing_profile_xml_with_secrets_slot_async(resource_group_name, name, publishing_profile_options, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'options is nil' if options.nil?
+      fail ArgumentError, 'publishing_profile_options is nil' if publishing_profile_options.nil?
       fail ArgumentError, 'slot is nil' if slot.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       api_version = '2016-08-01'
@@ -15558,7 +17768,7 @@ module Azure::ARM::Web
 
       # Serialize Request
       request_mapper = CsmPublishingProfileOptions.mapper()
-      request_content = @client.serialize(request_mapper,  options, 'options')
+      request_content = @client.serialize(request_mapper,  publishing_profile_options, 'publishing_profile_options')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publishxml'
@@ -15609,11 +17819,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
     # recovery. Snapshot information can be obtained by calling GetDeletedSites or
@@ -15631,7 +17842,8 @@ module Azure::ARM::Web
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
     # recovery. Snapshot information can be obtained by calling GetDeletedSites or
@@ -15664,36 +17876,37 @@ module Azure::ARM::Web
 
     #
     # Resets the configuration settings of the current slot if they were previously
-    # modified by calling ApplySlotConfig API
+    # modified by calling the API with POST.
     #
     # Resets the configuration settings of the current slot if they were previously
-    # modified by calling ApplySlotConfig API
+    # modified by calling the API with POST.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API resets configuration settings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def reset_slot_configuration_slot(resource_group_name, name, slot, custom_headers = nil)
       response = reset_slot_configuration_slot_async(resource_group_name, name, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
     # Resets the configuration settings of the current slot if they were previously
-    # modified by calling ApplySlotConfig API
+    # modified by calling the API with POST.
     #
     # Resets the configuration settings of the current slot if they were previously
-    # modified by calling ApplySlotConfig API
+    # modified by calling the API with POST.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API resets configuration settings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15705,15 +17918,16 @@ module Azure::ARM::Web
 
     #
     # Resets the configuration settings of the current slot if they were previously
-    # modified by calling ApplySlotConfig API
+    # modified by calling the API with POST.
     #
     # Resets the configuration settings of the current slot if they were previously
-    # modified by calling ApplySlotConfig API
+    # modified by calling the API with POST.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API resets configuration settings for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -15749,7 +17963,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -15763,43 +17977,46 @@ module Azure::ARM::Web
     end
 
     #
-    # Restarts web app
+    # Restarts an app (or deployment slot, if specified).
     #
-    # Restarts web app
+    # Restarts an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param soft_restart [Boolean] Soft restart applies the configuration settings
-    # and restarts the app if necessary. Hard restart always restarts and
-    # reprovisions the app
-    # @param synchronous [Boolean] If true then the API will block until the app
-    # has been restarted
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will restart the production slot.
+    # @param soft_restart [Boolean] Specify true to apply the configuration
+    # settings and restarts the app only if necessary. By default, the API always
+    # restarts and reprovisions the app.
+    # @param synchronous [Boolean] Specify true to block until the app is
+    # restarted. By default, it is set to false, and the API responds immediately
+    # (asynchronous).
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def restart_slot(resource_group_name, name, slot, soft_restart = nil, synchronous = nil, custom_headers = nil)
       response = restart_slot_async(resource_group_name, name, slot, soft_restart, synchronous, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Restarts web app
+    # Restarts an app (or deployment slot, if specified).
     #
-    # Restarts web app
+    # Restarts an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param soft_restart [Boolean] Soft restart applies the configuration settings
-    # and restarts the app if necessary. Hard restart always restarts and
-    # reprovisions the app
-    # @param synchronous [Boolean] If true then the API will block until the app
-    # has been restarted
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will restart the production slot.
+    # @param soft_restart [Boolean] Specify true to apply the configuration
+    # settings and restarts the app only if necessary. By default, the API always
+    # restarts and reprovisions the app.
+    # @param synchronous [Boolean] Specify true to block until the app is
+    # restarted. By default, it is set to false, and the API responds immediately
+    # (asynchronous).
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15810,19 +18027,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Restarts web app
+    # Restarts an app (or deployment slot, if specified).
     #
-    # Restarts web app
+    # Restarts an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param soft_restart [Boolean] Soft restart applies the configuration settings
-    # and restarts the app if necessary. Hard restart always restarts and
-    # reprovisions the app
-    # @param synchronous [Boolean] If true then the API will block until the app
-    # has been restarted
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will restart the production slot.
+    # @param soft_restart [Boolean] Specify true to apply the configuration
+    # settings and restarts the app only if necessary. By default, the API always
+    # restarts and reprovisions the app.
+    # @param synchronous [Boolean] Specify true to block until the app is
+    # restarted. By default, it is set to false, and the API responds immediately
+    # (asynchronous).
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -15872,15 +18091,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
-    # @param slot [String] Name of the source slot
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param slot [String] Name of the source slot. If a slot is not specified, the
+    # production slot is used as the source slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15892,15 +18113,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
-    # @param slot [String] Name of the source slot
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param slot [String] Name of the source slot. If a slot is not specified, the
+    # production slot is used as the source slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -15911,15 +18134,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
-    # @param slot [String] Name of the source slot
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param slot [String] Name of the source slot. If a slot is not specified, the
+    # production slot is used as the source slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -15989,52 +18214,46 @@ module Azure::ARM::Web
     end
 
     #
-    # Swaps web app slots
+    # Swaps two deployment slots of an app.
     #
-    # Swaps web app slots
+    # Swaps two deployment slots of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
-    # @param slot [String] Name of source slot for the swap
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param slot [String] Name of the source slot. If a slot is not specified, the
+    # production slot is used as the source slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
-    #
-    def swap_slots_slot(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
-      response = swap_slots_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers).value!
-      response.body unless response.nil?
+    def swap_slot_slot(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
+      response = swap_slot_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers).value!
+      nil
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
-    # @param slot [String] Name of source slot for the swap
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param slot [String] Name of the source slot. If a slot is not specified, the
+    # production slot is used as the source slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def swap_slots_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
+    def swap_slot_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
       # Send request
-      promise = begin_swap_slots_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers)
+      promise = begin_swap_slot_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = {
-            required: false,
-            serialized_name: 'parsed_response',
-            type: {
-              name: 'Object'
-            }
-          }
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -16049,7 +18268,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param resource_group_name [String] Resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Website Name
     # @param slot [String] Website Slot
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -16067,7 +18287,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param resource_group_name [String] Resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Website Name
     # @param slot [String] Website Slot
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -16084,7 +18305,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param resource_group_name [String] Resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Website Name
     # @param slot [String] Website Slot
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -16146,14 +18368,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the source control configuration of web app
+    # Gets the source control configuration of an app.
     #
-    # Get the source control configuration of web app
+    # Gets the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the source control configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16165,14 +18388,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the source control configuration of web app
+    # Gets the source control configuration of an app.
     #
-    # Get the source control configuration of web app
+    # Gets the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the source control configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16183,14 +18407,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the source control configuration of web app
+    # Gets the source control configuration of an app.
     #
-    # Get the source control configuration of web app
+    # Gets the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the source control configuration for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -16250,16 +18475,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the source control configuration of web app
+    # Updates the source control configuration of an app.
     #
-    # Update the source control configuration of web app
+    # Updates the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains the
-    # source control parameters
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the source control configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16271,142 +18497,66 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the source control configuration of web app
-    #
-    # Update the source control configuration of web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains the
-    # source control parameters
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the source control configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def create_or_update_source_control_slot_with_http_info(resource_group_name, name, site_source_control, slot, custom_headers = nil)
-      create_or_update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers).value!
-    end
-
-    #
-    # Update the source control configuration of web app
-    #
-    # Update the source control configuration of web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains the
-    # source control parameters
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def create_or_update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'site_source_control is nil' if site_source_control.nil?
-      fail ArgumentError, 'slot is nil' if slot.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-08-01'
+      # Send request
+      promise = begin_create_or_update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers)
 
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = SiteSourceControl.mapper()
-      request_content = @client.serialize(request_mapper,  site_source_control, 'site_source_control')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 201
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = SiteSourceControl.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteSourceControl.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteSourceControl.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
-      promise.execute
+      promise
     end
 
     #
-    # Delete source control configuration of web app
+    # Deletes the source control configuration of an app.
     #
-    # Delete source control configuration of web app
+    # Deletes the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the source control configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_source_control_slot(resource_group_name, name, slot, custom_headers = nil)
       response = delete_source_control_slot_async(resource_group_name, name, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Delete source control configuration of web app
+    # Deletes the source control configuration of an app.
     #
-    # Delete source control configuration of web app
+    # Deletes the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the source control configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16417,14 +18567,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete source control configuration of web app
+    # Deletes the source control configuration of an app.
     #
-    # Delete source control configuration of web app
+    # Deletes the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the source control configuration for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -16460,7 +18611,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 202 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -16474,153 +18625,34 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the source control configuration of web app
+    # Starts an app (or deployment slot, if specified).
     #
-    # Update the source control configuration of web app
+    # Starts an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains the
-    # source control parameters
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will start the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteSourceControl] operation results.
-    #
-    def update_source_control_slot(resource_group_name, name, site_source_control, slot, custom_headers = nil)
-      response = update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Update the source control configuration of web app
-    #
-    # Update the source control configuration of web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains the
-    # source control parameters
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def update_source_control_slot_with_http_info(resource_group_name, name, site_source_control, slot, custom_headers = nil)
-      update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers).value!
-    end
-
-    #
-    # Update the source control configuration of web app
-    #
-    # Update the source control configuration of web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains the
-    # source control parameters
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'site_source_control is nil' if site_source_control.nil?
-      fail ArgumentError, 'slot is nil' if slot.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-08-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = SiteSourceControl.mapper()
-      request_content = @client.serialize(request_mapper,  site_source_control, 'site_source_control')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:patch, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteSourceControl.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Starts web app
-    #
-    # Starts web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Object] operation results.
     #
     def start_slot(resource_group_name, name, slot, custom_headers = nil)
       response = start_slot_async(resource_group_name, name, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Starts web app
+    # Starts an app (or deployment slot, if specified).
     #
-    # Starts web app
+    # Starts an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will start the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16631,14 +18663,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Starts web app
+    # Starts an app (or deployment slot, if specified).
     #
-    # Starts web app
+    # Starts an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will start the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -16688,33 +18721,34 @@ module Azure::ARM::Web
     end
 
     #
-    # Stops web app
+    # Stops an app (or deployment slot, if specified).
     #
-    # Stops web app
+    # Stops an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will stop the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def stop_slot(resource_group_name, name, slot, custom_headers = nil)
       response = stop_slot_async(resource_group_name, name, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Stops web app
+    # Stops an app (or deployment slot, if specified).
     #
-    # Stops web app
+    # Stops an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will stop the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16725,14 +18759,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Stops web app
+    # Stops an app (or deployment slot, if specified).
     #
-    # Stops web app
+    # Stops an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will stop the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -16782,30 +18817,31 @@ module Azure::ARM::Web
     end
 
     #
-    # Sync web app repository
+    # Sync web app repository.
     #
-    # Sync web app repository
+    # Sync web app repository.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def sync_repository_slot(resource_group_name, name, slot, custom_headers = nil)
       response = sync_repository_slot_async(resource_group_name, name, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Sync web app repository
+    # Sync web app repository.
     #
-    # Sync web app repository
+    # Sync web app repository.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
@@ -16819,11 +18855,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Sync web app repository
+    # Sync web app repository.
     #
-    # Sync web app repository
+    # Sync web app repository.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot.
@@ -16862,7 +18899,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -16876,18 +18913,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get quota information of the production slot.
+    # @param filter [String] Return only information specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16899,18 +18939,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get quota information of the production slot.
+    # @param filter [String] Return only information specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -16921,18 +18964,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get quota information of the production slot.
+    # @param filter [String] Return only information specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -16958,7 +19004,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'api-version' => api_version},
+          query_params: {'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -16992,15 +19039,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a list of all Virtual Network Connections associated with this web
-    # app.
+    # Gets the virtual networks the app (or deployment slot) is connected to.
     #
-    # Retrieves a list of all Virtual Network Connections associated with this web
-    # app.
+    # Gets the virtual networks the app (or deployment slot) is connected to.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get virtual network connections for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17012,15 +19059,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a list of all Virtual Network Connections associated with this web
-    # app.
+    # Gets the virtual networks the app (or deployment slot) is connected to.
     #
-    # Retrieves a list of all Virtual Network Connections associated with this web
-    # app.
+    # Gets the virtual networks the app (or deployment slot) is connected to.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get virtual network connections for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17031,15 +19078,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a list of all Virtual Network Connections associated with this web
-    # app.
+    # Gets the virtual networks the app (or deployment slot) is connected to.
     #
-    # Retrieves a list of all Virtual Network Connections associated with this web
-    # app.
+    # Gets the virtual networks the app (or deployment slot) is connected to.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get virtual network connections for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -17113,14 +19160,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a specific Virtual Network Connection associated with this web app.
+    # Gets a virtual network the app (or deployment slot) is connected to by name.
     #
-    # Retrieves a specific Virtual Network Connection associated with this web app.
+    # Gets a virtual network the app (or deployment slot) is connected to by name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the virtual network.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the named virtual network for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17132,14 +19181,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a specific Virtual Network Connection associated with this web app.
+    # Gets a virtual network the app (or deployment slot) is connected to by name.
     #
-    # Retrieves a specific Virtual Network Connection associated with this web app.
+    # Gets a virtual network the app (or deployment slot) is connected to by name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the virtual network.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the named virtual network for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17150,14 +19201,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a specific Virtual Network Connection associated with this web app.
+    # Gets a virtual network the app (or deployment slot) is connected to by name.
     #
-    # Retrieves a specific Virtual Network Connection associated with this web app.
+    # Gets a virtual network the app (or deployment slot) is connected to by name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the virtual network.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the named virtual network for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -17218,16 +19271,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param connection_envelope [VnetInfo] The properties of this Virtual Network
-    # Connection
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of an existing Virtual Network.
+    # @param connection_envelope [VnetInfo] Properties of the Virtual Network
+    # connection. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will add or update connections for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17239,16 +19296,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param connection_envelope [VnetInfo] The properties of this Virtual Network
-    # Connection
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of an existing Virtual Network.
+    # @param connection_envelope [VnetInfo] Properties of the Virtual Network
+    # connection. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will add or update connections for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17259,16 +19320,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param connection_envelope [VnetInfo] The properties of this Virtual Network
-    # Connection
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of an existing Virtual Network.
+    # @param connection_envelope [VnetInfo] Properties of the Virtual Network
+    # connection. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will add or update connections for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -17339,37 +19404,40 @@ module Azure::ARM::Web
     end
 
     #
-    # Removes the specified Virtual Network Connection association from this web
-    # app.
+    # Deletes a connection from an app (or deployment slot to a named virtual
+    # network.
     #
-    # Removes the specified Virtual Network Connection association from this web
-    # app.
+    # Deletes a connection from an app (or deployment slot to a named virtual
+    # network.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the virtual network.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the connection for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_vnet_connection_slot(resource_group_name, name, vnet_name, slot, custom_headers = nil)
       response = delete_vnet_connection_slot_async(resource_group_name, name, vnet_name, slot, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Removes the specified Virtual Network Connection association from this web
-    # app.
+    # Deletes a connection from an app (or deployment slot to a named virtual
+    # network.
     #
-    # Removes the specified Virtual Network Connection association from this web
-    # app.
+    # Deletes a connection from an app (or deployment slot to a named virtual
+    # network.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the virtual network.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the connection for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17380,16 +19448,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Removes the specified Virtual Network Connection association from this web
-    # app.
+    # Deletes a connection from an app (or deployment slot to a named virtual
+    # network.
     #
-    # Removes the specified Virtual Network Connection association from this web
-    # app.
+    # Deletes a connection from an app (or deployment slot to a named virtual
+    # network.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the virtual network.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the connection for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -17426,7 +19496,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -17440,16 +19510,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param connection_envelope [VnetInfo] The properties of this Virtual Network
-    # Connection
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of an existing Virtual Network.
+    # @param connection_envelope [VnetInfo] Properties of the Virtual Network
+    # connection. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will add or update connections for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17461,16 +19535,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param connection_envelope [VnetInfo] The properties of this Virtual Network
-    # Connection
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of an existing Virtual Network.
+    # @param connection_envelope [VnetInfo] Properties of the Virtual Network
+    # connection. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will add or update connections for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17481,16 +19559,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param connection_envelope [VnetInfo] The properties of this Virtual Network
-    # Connection
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of an existing Virtual Network.
+    # @param connection_envelope [VnetInfo] Properties of the Virtual Network
+    # connection. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will add or update connections for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -17561,22 +19643,22 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a Virtual Network connection gateway associated with this web app
-    # and virtual network.
+    # Gets an app's Virtual Network gateway.
     #
-    # Retrieves a Virtual Network connection gateway associated with this web app
-    # and virtual network.
+    # Gets an app's Virtual Network gateway.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get a gateway for the production slot's Virtual Network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [VnetGateway] operation results.
     #
     def get_vnet_connection_gateway_slot(resource_group_name, name, vnet_name, gateway_name, slot, custom_headers = nil)
       response = get_vnet_connection_gateway_slot_async(resource_group_name, name, vnet_name, gateway_name, slot, custom_headers).value!
@@ -17584,18 +19666,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a Virtual Network connection gateway associated with this web app
-    # and virtual network.
+    # Gets an app's Virtual Network gateway.
     #
-    # Retrieves a Virtual Network connection gateway associated with this web app
-    # and virtual network.
+    # Gets an app's Virtual Network gateway.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get a gateway for the production slot's Virtual Network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17606,18 +19688,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a Virtual Network connection gateway associated with this web app
-    # and virtual network.
+    # Gets an app's Virtual Network gateway.
     #
-    # Retrieves a Virtual Network connection gateway associated with this web app
-    # and virtual network.
+    # Gets an app's Virtual Network gateway.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
-    # @param slot [String] The name of the slot for this web app.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get a gateway for the production slot's Virtual Network.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -17661,6 +19743,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = VnetGateway.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -17669,18 +19761,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param connection_envelope [VnetGateway] The properties to update this
     # gateway with.
-    # @param slot [String] The name of the slot for this web app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will add or update a gateway for the production slot's Virtual
+    # Network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17692,18 +19787,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param connection_envelope [VnetGateway] The properties to update this
     # gateway with.
-    # @param slot [String] The name of the slot for this web app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will add or update a gateway for the production slot's Virtual
+    # Network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17714,18 +19812,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param connection_envelope [VnetGateway] The properties to update this
     # gateway with.
-    # @param slot [String] The name of the slot for this web app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will add or update a gateway for the production slot's Virtual
+    # Network.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -17797,18 +19898,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param connection_envelope [VnetGateway] The properties to update this
     # gateway with.
-    # @param slot [String] The name of the slot for this web app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will add or update a gateway for the production slot's Virtual
+    # Network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17820,18 +19924,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param connection_envelope [VnetGateway] The properties to update this
     # gateway with.
-    # @param slot [String] The name of the slot for this web app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will add or update a gateway for the production slot's Virtual
+    # Network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17842,18 +19949,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param connection_envelope [VnetGateway] The properties to update this
     # gateway with.
-    # @param slot [String] The name of the slot for this web app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will add or update a gateway for the production slot's Virtual
+    # Network.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -17925,14 +20035,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17944,14 +20055,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -17962,14 +20074,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -18038,29 +20151,29 @@ module Azure::ARM::Web
     end
 
     #
-    # Swaps web app slots
+    # Swaps two deployment slots of an app.
     #
-    # Swaps web app slots
+    # Swaps two deployment slots of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
-    #
     def swap_slot_with_production(resource_group_name, name, slot_swap_entity, custom_headers = nil)
       response = swap_slot_with_production_async(resource_group_name, name, slot_swap_entity, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18074,14 +20187,6 @@ module Azure::ARM::Web
       promise = promise.then do |response|
         # Defining deserialization method.
         deserialize_method = lambda do |parsed_response|
-          result_mapper = {
-            required: false,
-            serialized_name: 'parsed_response',
-            type: {
-              name: 'Object'
-            }
-          }
-          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
         # Waiting for response.
@@ -18096,7 +20201,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param resource_group_name [String] Resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Website Name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -18113,7 +20219,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param resource_group_name [String] Resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Website Name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -18129,7 +20236,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param resource_group_name [String] Resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Website Name
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -18189,12 +20297,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the source control configuration of web app
+    # Gets the source control configuration of an app.
     #
-    # Get the source control configuration of web app
+    # Gets the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18206,12 +20315,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the source control configuration of web app
+    # Gets the source control configuration of an app.
     #
-    # Get the source control configuration of web app
+    # Gets the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18222,12 +20332,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the source control configuration of web app
+    # Gets the source control configuration of an app.
     #
-    # Get the source control configuration of web app
+    # Gets the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -18286,14 +20397,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the source control configuration of web app
+    # Updates the source control configuration of an app.
     #
-    # Update the source control configuration of web app
+    # Updates the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains the
-    # source control parameters
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18305,133 +20417,60 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the source control configuration of web app
-    #
-    # Update the source control configuration of web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains the
-    # source control parameters
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def create_or_update_source_control_with_http_info(resource_group_name, name, site_source_control, custom_headers = nil)
-      create_or_update_source_control_async(resource_group_name, name, site_source_control, custom_headers).value!
-    end
-
-    #
-    # Update the source control configuration of web app
-    #
-    # Update the source control configuration of web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains the
-    # source control parameters
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    # @return [Concurrent::Promise] promise which provides async access to http
+    # response.
     #
     def create_or_update_source_control_async(resource_group_name, name, site_source_control, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'site_source_control is nil' if site_source_control.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-08-01'
+      # Send request
+      promise = begin_create_or_update_source_control_async(resource_group_name, name, site_source_control, custom_headers)
 
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = SiteSourceControl.mapper()
-      request_content = @client.serialize(request_mapper,  site_source_control, 'site_source_control')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:put, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200 || status_code == 201
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+      promise = promise.then do |response|
+        # Defining deserialization method.
+        deserialize_method = lambda do |parsed_response|
+          result_mapper = SiteSourceControl.mapper()
+          parsed_response = @client.deserialize(result_mapper, parsed_response, 'parsed_response')
         end
 
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteSourceControl.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-        # Deserialize Response
-        if status_code == 201
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteSourceControl.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
+        # Waiting for response.
+        @client.get_long_running_operation_result(response, deserialize_method)
       end
 
-      promise.execute
+      promise
     end
 
     #
-    # Delete source control configuration of web app
+    # Deletes the source control configuration of an app.
     #
-    # Delete source control configuration of web app
+    # Deletes the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_source_control(resource_group_name, name, custom_headers = nil)
       response = delete_source_control_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Delete source control configuration of web app
+    # Deletes the source control configuration of an app.
     #
-    # Delete source control configuration of web app
+    # Deletes the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18442,12 +20481,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Delete source control configuration of web app
+    # Deletes the source control configuration of an app.
     #
-    # Delete source control configuration of web app
+    # Deletes the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -18482,7 +20522,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 202 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -18496,142 +20536,30 @@ module Azure::ARM::Web
     end
 
     #
-    # Update the source control configuration of web app
+    # Starts an app (or deployment slot, if specified).
     #
-    # Update the source control configuration of web app
+    # Starts an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains the
-    # source control parameters
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteSourceControl] operation results.
-    #
-    def update_source_control(resource_group_name, name, site_source_control, custom_headers = nil)
-      response = update_source_control_async(resource_group_name, name, site_source_control, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Update the source control configuration of web app
-    #
-    # Update the source control configuration of web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains the
-    # source control parameters
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def update_source_control_with_http_info(resource_group_name, name, site_source_control, custom_headers = nil)
-      update_source_control_async(resource_group_name, name, site_source_control, custom_headers).value!
-    end
-
-    #
-    # Update the source control configuration of web app
-    #
-    # Update the source control configuration of web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param site_source_control [SiteSourceControl] Request body that contains the
-    # source control parameters
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def update_source_control_async(resource_group_name, name, site_source_control, custom_headers = nil)
-      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'site_source_control is nil' if site_source_control.nil?
-      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
-      api_version = '2016-08-01'
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-
-      request_headers['Content-Type'] = 'application/json; charset=utf-8'
-
-      # Serialize Request
-      request_mapper = SiteSourceControl.mapper()
-      request_content = @client.serialize(request_mapper,  site_source_control, 'site_source_control')
-      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
-
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'api-version' => api_version},
-          body: request_content,
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:patch, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteSourceControl.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Starts web app
-    #
-    # Starts web app
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [Object] operation results.
     #
     def start(resource_group_name, name, custom_headers = nil)
       response = start_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Starts web app
+    # Starts an app (or deployment slot, if specified).
     #
-    # Starts web app
+    # Starts an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18642,12 +20570,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Starts web app
+    # Starts an app (or deployment slot, if specified).
     #
-    # Starts web app
+    # Starts an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -18696,29 +20625,30 @@ module Azure::ARM::Web
     end
 
     #
-    # Stops web app
+    # Stops an app (or deployment slot, if specified).
     #
-    # Stops web app
+    # Stops an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def stop(resource_group_name, name, custom_headers = nil)
       response = stop_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Stops web app
+    # Stops an app (or deployment slot, if specified).
     #
-    # Stops web app
+    # Stops an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18729,12 +20659,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Stops web app
+    # Stops an app (or deployment slot, if specified).
     #
-    # Stops web app
+    # Stops an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -18783,28 +20714,29 @@ module Azure::ARM::Web
     end
 
     #
-    # Sync web app repository
+    # Sync web app repository.
     #
-    # Sync web app repository
+    # Sync web app repository.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def sync_repository(resource_group_name, name, custom_headers = nil)
       response = sync_repository_async(resource_group_name, name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Sync web app repository
+    # Sync web app repository.
     #
-    # Sync web app repository
+    # Sync web app repository.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -18816,11 +20748,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Sync web app repository
+    # Sync web app repository.
     #
-    # Sync web app repository
+    # Sync web app repository.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -18856,7 +20789,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 204
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -18870,16 +20803,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param filter [String] Return only information specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18891,16 +20827,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param filter [String] Return only information specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18911,16 +20850,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param filter [String] Return only information specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -18945,7 +20887,8 @@ module Azure::ARM::Web
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
           path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
-          query_params: {'$filter' => filter,'api-version' => api_version},
+          query_params: {'api-version' => api_version},
+          skip_encoding_query_params: {'$filter' => filter},
           headers: request_headers.merge(custom_headers || {}),
           base_url: request_url
       }
@@ -18979,14 +20922,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a list of all Virtual Network Connections associated with this web
-    # app.
+    # Gets the virtual networks the app (or deployment slot) is connected to.
     #
-    # Retrieves a list of all Virtual Network Connections associated with this web
-    # app.
+    # Gets the virtual networks the app (or deployment slot) is connected to.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -18998,14 +20940,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a list of all Virtual Network Connections associated with this web
-    # app.
+    # Gets the virtual networks the app (or deployment slot) is connected to.
     #
-    # Retrieves a list of all Virtual Network Connections associated with this web
-    # app.
+    # Gets the virtual networks the app (or deployment slot) is connected to.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -19016,14 +20957,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a list of all Virtual Network Connections associated with this web
-    # app.
+    # Gets the virtual networks the app (or deployment slot) is connected to.
     #
-    # Retrieves a list of all Virtual Network Connections associated with this web
-    # app.
+    # Gets the virtual networks the app (or deployment slot) is connected to.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -19096,13 +21036,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a specific Virtual Network Connection associated with this web app.
+    # Gets a virtual network the app (or deployment slot) is connected to by name.
     #
-    # Retrieves a specific Virtual Network Connection associated with this web app.
+    # Gets a virtual network the app (or deployment slot) is connected to by name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the virtual network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -19114,13 +21055,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a specific Virtual Network Connection associated with this web app.
+    # Gets a virtual network the app (or deployment slot) is connected to by name.
     #
-    # Retrieves a specific Virtual Network Connection associated with this web app.
+    # Gets a virtual network the app (or deployment slot) is connected to by name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the virtual network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -19131,13 +21073,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a specific Virtual Network Connection associated with this web app.
+    # Gets a virtual network the app (or deployment slot) is connected to by name.
     #
-    # Retrieves a specific Virtual Network Connection associated with this web app.
+    # Gets a virtual network the app (or deployment slot) is connected to by name.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the virtual network.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -19197,15 +21140,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param connection_envelope [VnetInfo] The properties of this Virtual Network
-    # Connection
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of an existing Virtual Network.
+    # @param connection_envelope [VnetInfo] Properties of the Virtual Network
+    # connection. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -19217,15 +21163,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param connection_envelope [VnetInfo] The properties of this Virtual Network
-    # Connection
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of an existing Virtual Network.
+    # @param connection_envelope [VnetInfo] Properties of the Virtual Network
+    # connection. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -19236,15 +21185,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param connection_envelope [VnetInfo] The properties of this Virtual Network
-    # Connection
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of an existing Virtual Network.
+    # @param connection_envelope [VnetInfo] Properties of the Virtual Network
+    # connection. See example.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -19314,35 +21266,36 @@ module Azure::ARM::Web
     end
 
     #
-    # Removes the specified Virtual Network Connection association from this web
-    # app.
+    # Deletes a connection from an app (or deployment slot to a named virtual
+    # network.
     #
-    # Removes the specified Virtual Network Connection association from this web
-    # app.
+    # Deletes a connection from an app (or deployment slot to a named virtual
+    # network.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the virtual network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
     def delete_vnet_connection(resource_group_name, name, vnet_name, custom_headers = nil)
       response = delete_vnet_connection_async(resource_group_name, name, vnet_name, custom_headers).value!
-      response.body unless response.nil?
+      nil
     end
 
     #
-    # Removes the specified Virtual Network Connection association from this web
-    # app.
+    # Deletes a connection from an app (or deployment slot to a named virtual
+    # network.
     #
-    # Removes the specified Virtual Network Connection association from this web
-    # app.
+    # Deletes a connection from an app (or deployment slot to a named virtual
+    # network.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the virtual network.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -19353,15 +21306,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Removes the specified Virtual Network Connection association from this web
-    # app.
+    # Deletes a connection from an app (or deployment slot to a named virtual
+    # network.
     #
-    # Removes the specified Virtual Network Connection association from this web
-    # app.
+    # Deletes a connection from an app (or deployment slot to a named virtual
+    # network.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the virtual network.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -19397,7 +21351,7 @@ module Azure::ARM::Web
         http_response = result.response
         status_code = http_response.status
         response_content = http_response.body
-        unless status_code == 200
+        unless status_code == 200 || status_code == 404
           error_model = JSON.load(response_content)
           fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
         end
@@ -19411,15 +21365,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param connection_envelope [VnetInfo] The properties of this Virtual Network
-    # Connection
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of an existing Virtual Network.
+    # @param connection_envelope [VnetInfo] Properties of the Virtual Network
+    # connection. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -19431,15 +21388,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param connection_envelope [VnetInfo] The properties of this Virtual Network
-    # Connection
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of an existing Virtual Network.
+    # @param connection_envelope [VnetInfo] Properties of the Virtual Network
+    # connection. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -19450,15 +21410,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # Adds a Virtual Network Connection or updates it's properties.
+    # Adds a Virtual Network connection to an app or slot (PUT) or updates the
+    # connection properties (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param connection_envelope [VnetInfo] The properties of this Virtual Network
-    # Connection
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of an existing Virtual Network.
+    # @param connection_envelope [VnetInfo] Properties of the Virtual Network
+    # connection. See example.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -19528,21 +21491,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a Virtual Network connection gateway associated with this web app
-    # and virtual network.
+    # Gets an app's Virtual Network gateway.
     #
-    # Retrieves a Virtual Network connection gateway associated with this web app
-    # and virtual network.
+    # Gets an app's Virtual Network gateway.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [VnetGateway] operation results.
     #
     def get_vnet_connection_gateway(resource_group_name, name, vnet_name, gateway_name, custom_headers = nil)
       response = get_vnet_connection_gateway_async(resource_group_name, name, vnet_name, gateway_name, custom_headers).value!
@@ -19550,17 +21512,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a Virtual Network connection gateway associated with this web app
-    # and virtual network.
+    # Gets an app's Virtual Network gateway.
     #
-    # Retrieves a Virtual Network connection gateway associated with this web app
-    # and virtual network.
+    # Gets an app's Virtual Network gateway.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -19571,17 +21532,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Retrieves a Virtual Network connection gateway associated with this web app
-    # and virtual network.
+    # Gets an app's Virtual Network gateway.
     #
-    # Retrieves a Virtual Network connection gateway associated with this web app
-    # and virtual network.
+    # Gets an app's Virtual Network gateway.
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -19624,6 +21584,16 @@ module Azure::ARM::Web
         end
 
         result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = VnetGateway.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
 
         result
       end
@@ -19632,15 +21602,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param connection_envelope [VnetGateway] The properties to update this
     # gateway with.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -19654,15 +21625,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param connection_envelope [VnetGateway] The properties to update this
     # gateway with.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -19675,15 +21647,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param connection_envelope [VnetGateway] The properties to update this
     # gateway with.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -19756,15 +21729,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param connection_envelope [VnetGateway] The properties to update this
     # gateway with.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -19778,15 +21752,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param connection_envelope [VnetGateway] The properties to update this
     # gateway with.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -19799,15 +21774,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # Updates the Virtual Network Gateway.
+    # Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
     #
-    # @param resource_group_name [String] The resource group name
-    # @param name [String] The name of the web app
-    # @param vnet_name [String] The name of the Virtual Network
-    # @param gateway_name [String] The name of the gateway. The only gateway that
-    # exists presently is "primary"
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param vnet_name [String] Name of the Virtual Network.
+    # @param gateway_name [String] Name of the gateway. Currently, the only
+    # supported string is "primary".
     # @param connection_envelope [VnetGateway] The properties to update this
     # gateway with.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -19880,13 +21856,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param site_envelope [Site] Details of web app if it exists already
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [Site] A JSON representation of the app properties. See
+    # example.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -19907,13 +21888,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param site_envelope [Site] Details of web app if it exists already
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [Site] A JSON representation of the app properties. See
+    # example.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -19933,13 +21919,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param site_envelope [Site] Details of web app if it exists already
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [Site] A JSON representation of the app properties. See
+    # example.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -20027,13 +22018,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup to restore
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param request [RestoreRequest] Information on restore request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -20046,13 +22038,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup to restore
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param request [RestoreRequest] Information on restore request
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -20064,13 +22057,14 @@ module Azure::ARM::Web
     end
 
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup to restore
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param request [RestoreRequest] Information on restore request
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -20141,12 +22135,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -20158,12 +22153,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -20174,12 +22170,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -20238,61 +22235,64 @@ module Azure::ARM::Web
     end
 
     #
-    # Restores a web app
+    # Restores a web app.
     #
-    # Restores a web app
+    # Restores a web app.
     #
     # @param subscription_name [String] Azure subscription
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
-    # @param options [StorageMigrationOptions] Migration options
+    # @param migration_options [StorageMigrationOptions] Migration migrationOptions
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [StorageMigrationResponse] operation results.
     #
-    def begin_migrate_storage(subscription_name, resource_group_name, name, options, custom_headers = nil)
-      response = begin_migrate_storage_async(subscription_name, resource_group_name, name, options, custom_headers).value!
+    def begin_migrate_storage(subscription_name, resource_group_name, name, migration_options, custom_headers = nil)
+      response = begin_migrate_storage_async(subscription_name, resource_group_name, name, migration_options, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Restores a web app
+    # Restores a web app.
     #
-    # Restores a web app
+    # Restores a web app.
     #
     # @param subscription_name [String] Azure subscription
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
-    # @param options [StorageMigrationOptions] Migration options
+    # @param migration_options [StorageMigrationOptions] Migration migrationOptions
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_migrate_storage_with_http_info(subscription_name, resource_group_name, name, options, custom_headers = nil)
-      begin_migrate_storage_async(subscription_name, resource_group_name, name, options, custom_headers).value!
+    def begin_migrate_storage_with_http_info(subscription_name, resource_group_name, name, migration_options, custom_headers = nil)
+      begin_migrate_storage_async(subscription_name, resource_group_name, name, migration_options, custom_headers).value!
     end
 
     #
-    # Restores a web app
+    # Restores a web app.
     #
-    # Restores a web app
+    # Restores a web app.
     #
     # @param subscription_name [String] Azure subscription
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
-    # @param options [StorageMigrationOptions] Migration options
+    # @param migration_options [StorageMigrationOptions] Migration migrationOptions
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_migrate_storage_async(subscription_name, resource_group_name, name, options, custom_headers = nil)
+    def begin_migrate_storage_async(subscription_name, resource_group_name, name, migration_options, custom_headers = nil)
       fail ArgumentError, 'subscription_name is nil' if subscription_name.nil?
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
-      fail ArgumentError, 'options is nil' if options.nil?
+      fail ArgumentError, 'migration_options is nil' if migration_options.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
       api_version = '2016-08-01'
 
@@ -20307,7 +22307,7 @@ module Azure::ARM::Web
 
       # Serialize Request
       request_mapper = StorageMigrationOptions.mapper()
-      request_content = @client.serialize(request_mapper,  options, 'options')
+      request_content = @client.serialize(request_mapper,  migration_options, 'migration_options')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
       path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migrate'
@@ -20352,11 +22352,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Migrates a local (in-app) MySql database to a remote MySql database
+    # Migrates a local (in-app) MySql database to a remote MySql database.
     #
-    # Migrates a local (in-app) MySql database to a remote MySql database
+    # Migrates a local (in-app) MySql database to a remote MySql database.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param migration_request_envelope [MigrateMySqlRequest] MySql migration
     # options
@@ -20371,11 +22372,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Migrates a local (in-app) MySql database to a remote MySql database
+    # Migrates a local (in-app) MySql database to a remote MySql database.
     #
-    # Migrates a local (in-app) MySql database to a remote MySql database
+    # Migrates a local (in-app) MySql database to a remote MySql database.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param migration_request_envelope [MigrateMySqlRequest] MySql migration
     # options
@@ -20389,11 +22391,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Migrates a local (in-app) MySql database to a remote MySql database
+    # Migrates a local (in-app) MySql database to a remote MySql database.
     #
-    # Migrates a local (in-app) MySql database to a remote MySql database
+    # Migrates a local (in-app) MySql database to a remote MySql database.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param migration_request_envelope [MigrateMySqlRequest] MySql migration
     # options
@@ -20465,11 +22468,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
     # recovery. Snapshot information can be obtained by calling GetDeletedSites or
@@ -20485,11 +22489,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
     # recovery. Snapshot information can be obtained by calling GetDeletedSites or
@@ -20504,11 +22509,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
     # recovery. Snapshot information can be obtained by calling GetDeletedSites or
@@ -20581,15 +22587,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param site_envelope [Site] Details of web app if it exists already
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [Site] A JSON representation of the app properties. See
+    # example.
+    # @param slot [String] Name of the deployment slot to create or update. By
+    # default, this API attempts to create or modify the production slot.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -20610,15 +22621,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param site_envelope [Site] Details of web app if it exists already
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [Site] A JSON representation of the app properties. See
+    # example.
+    # @param slot [String] Name of the deployment slot to create or update. By
+    # default, this API attempts to create or modify the production slot.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -20638,15 +22654,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # Creates a new web app or modifies an existing web app.
+    # Creates a new web, mobile, or API app in an existing resource group, or
+    # updates an existing app.
     #
-    # @param resource_group_name [String] Name of the resource group
-    # @param name [String] Name of the web app
-    # @param site_envelope [Site] Details of web app if it exists already
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Unique name of the app to create or update. To create or
+    # update a deployment slot, use the {slot} parameter.
+    # @param site_envelope [Site] A JSON representation of the app properties. See
+    # example.
+    # @param slot [String] Name of the deployment slot to create or update. By
+    # default, this API attempts to create or modify the production slot.
     # @param skip_dns_registration [Boolean] If true web app hostname is not
     # registered with DNS on creation. This parameter is
     # only used for app creation
@@ -20735,16 +22756,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup to restore
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will restore a backup of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -20756,16 +22778,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup to restore
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will restore a backup of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -20776,16 +22799,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # Restores a web app
+    # Restores a specific backup to another app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param backup_id [String] Id of backup to restore
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param backup_id [String] ID of the backup.
     # @param request [RestoreRequest] Information on restore request
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will restore a backup of the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -20856,14 +22880,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the publishing credentials for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -20875,14 +22900,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the publishing credentials for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -20893,14 +22919,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # Gets the web app publishing credentials
+    # Gets the Git/FTP publishing credentials of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get the publishing credentials for the production slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -20960,11 +22987,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
     # recovery. Snapshot information can be obtained by calling GetDeletedSites or
@@ -20982,11 +23010,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
     # recovery. Snapshot information can be obtained by calling GetDeletedSites or
@@ -21003,11 +23032,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # Recovers a deleted web app
+    # Recovers a deleted web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param recovery_entity [CsmSiteRecoveryEntity] Snapshot data used for web app
     # recovery. Snapshot information can be obtained by calling GetDeletedSites or
@@ -21083,60 +23113,65 @@ module Azure::ARM::Web
     end
 
     #
-    # Swaps web app slots
+    # Swaps two deployment slots of an app.
     #
-    # Swaps web app slots
+    # Swaps two deployment slots of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
-    # @param slot [String] Name of source slot for the swap
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param slot [String] Name of the source slot. If a slot is not specified, the
+    # production slot is used as the source slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
     #
-    def begin_swap_slots_slot(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
-      response = begin_swap_slots_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers).value!
-      response.body unless response.nil?
+    def begin_swap_slot_slot(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
+      response = begin_swap_slot_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers).value!
+      nil
     end
 
     #
-    # Swaps web app slots
+    # Swaps two deployment slots of an app.
     #
-    # Swaps web app slots
+    # Swaps two deployment slots of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
-    # @param slot [String] Name of source slot for the swap
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param slot [String] Name of the source slot. If a slot is not specified, the
+    # production slot is used as the source slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_swap_slots_slot_with_http_info(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
-      begin_swap_slots_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers).value!
+    def begin_swap_slot_slot_with_http_info(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
+      begin_swap_slot_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers).value!
     end
 
     #
-    # Swaps web app slots
+    # Swaps two deployment slots of an app.
     #
-    # Swaps web app slots
+    # Swaps two deployment slots of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
-    # @param slot [String] Name of source slot for the swap
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param slot [String] Name of the source slot. If a slot is not specified, the
+    # production slot is used as the source slot.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_swap_slots_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
+    def begin_swap_slot_slot_async(resource_group_name, name, slot_swap_entity, slot, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
       fail ArgumentError, 'name is nil' if name.nil?
       fail ArgumentError, 'slot_swap_entity is nil' if slot_swap_entity.nil?
@@ -21190,33 +23225,167 @@ module Azure::ARM::Web
     end
 
     #
-    # Swaps web app slots
+    # Updates the source control configuration of an app.
     #
-    # Swaps web app slots
+    # Updates the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the source control configuration for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [Object] operation results.
+    # @return [SiteSourceControl] operation results.
     #
-    def begin_swap_slot_with_production(resource_group_name, name, slot_swap_entity, custom_headers = nil)
-      response = begin_swap_slot_with_production_async(resource_group_name, name, slot_swap_entity, custom_headers).value!
+    def begin_create_or_update_source_control_slot(resource_group_name, name, site_source_control, slot, custom_headers = nil)
+      response = begin_create_or_update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
-    # Swaps web app slots
+    # Updates the source control configuration of an app.
     #
-    # Swaps web app slots
+    # Updates the source control configuration of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the source control configuration for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_or_update_source_control_slot_with_http_info(resource_group_name, name, site_source_control, slot, custom_headers = nil)
+      begin_create_or_update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers).value!
+    end
+
+    #
+    # Updates the source control configuration of an app.
+    #
+    # Updates the source control configuration of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will update the source control configuration for the production slot.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_or_update_source_control_slot_async(resource_group_name, name, site_source_control, slot, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'site_source_control is nil' if site_source_control.nil?
+      fail ArgumentError, 'slot is nil' if slot.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = SiteSourceControl.mapper()
+      request_content = @client.serialize(request_mapper,  site_source_control, 'site_source_control')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'slot' => slot,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Swaps two deployment slots of an app.
+    #
+    # Swaps two deployment slots of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    #
+    def begin_swap_slot_with_production(resource_group_name, name, slot_swap_entity, custom_headers = nil)
+      response = begin_swap_slot_with_production_async(resource_group_name, name, slot_swap_entity, custom_headers).value!
+      nil
+    end
+
+    #
+    # Swaps two deployment slots of an app.
+    #
+    # Swaps two deployment slots of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -21227,14 +23396,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Swaps web app slots
+    # Swaps two deployment slots of an app.
     #
-    # Swaps web app slots
+    # Swaps two deployment slots of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
     #
@@ -21293,9 +23463,135 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all Web Apps for a subscription
+    # Updates the source control configuration of an app.
     #
-    # Gets all Web Apps for a subscription
+    # Updates the source control configuration of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [SiteSourceControl] operation results.
+    #
+    def begin_create_or_update_source_control(resource_group_name, name, site_source_control, custom_headers = nil)
+      response = begin_create_or_update_source_control_async(resource_group_name, name, site_source_control, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Updates the source control configuration of an app.
+    #
+    # Updates the source control configuration of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def begin_create_or_update_source_control_with_http_info(resource_group_name, name, site_source_control, custom_headers = nil)
+      begin_create_or_update_source_control_async(resource_group_name, name, site_source_control, custom_headers).value!
+    end
+
+    #
+    # Updates the source control configuration of an app.
+    #
+    # Updates the source control configuration of an app.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param site_source_control [SiteSourceControl] JSON representation of a
+    # SiteSourceControl object. See example.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def begin_create_or_update_source_control_async(resource_group_name, name, site_source_control, custom_headers = nil)
+      fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
+      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'site_source_control is nil' if site_source_control.nil?
+      fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
+      api_version = '2016-08-01'
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+
+      request_headers['Content-Type'] = 'application/json; charset=utf-8'
+
+      # Serialize Request
+      request_mapper = SiteSourceControl.mapper()
+      request_content = @client.serialize(request_mapper,  site_source_control, 'site_source_control')
+      request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
+
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          query_params: {'api-version' => api_version},
+          body: request_content,
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:put, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200 || status_code == 201
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+        # Deserialize Response
+        if status_code == 201
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = SiteSourceControl.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get all apps for a subscription.
+    #
+    # Get all apps for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21310,9 +23606,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all Web Apps for a subscription
+    # Get all apps for a subscription.
     #
-    # Gets all Web Apps for a subscription
+    # Get all apps for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21326,9 +23622,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all Web Apps for a subscription
+    # Get all apps for a subscription.
     #
-    # Gets all Web Apps for a subscription
+    # Get all apps for a subscription.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21386,102 +23682,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets deleted web apps in subscription
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
-    # Gets deleted web apps in subscription
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [DeletedWebAppCollection] operation results.
-    #
-    def list_deleted_next(next_page_link, custom_headers = nil)
-      response = list_deleted_next_async(next_page_link, custom_headers).value!
-      response.body unless response.nil?
-    end
-
-    #
-    # Gets deleted web apps in subscription
-    #
-    # Gets deleted web apps in subscription
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
-    #
-    def list_deleted_next_with_http_info(next_page_link, custom_headers = nil)
-      list_deleted_next_async(next_page_link, custom_headers).value!
-    end
-
-    #
-    # Gets deleted web apps in subscription
-    #
-    # Gets deleted web apps in subscription
-    #
-    # @param next_page_link [String] The NextLink from the previous successful call
-    # to List operation.
-    # @param [Hash{String => String}] A hash of custom headers that will be added
-    # to the HTTP request.
-    #
-    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
-    #
-    def list_deleted_next_async(next_page_link, custom_headers = nil)
-      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
-
-
-      request_headers = {}
-
-      # Set Headers
-      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
-      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '{nextLink}'
-
-      request_url = @base_url || @client.base_url
-
-      options = {
-          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          skip_encoding_path_params: {'nextLink' => next_page_link},
-          headers: request_headers.merge(custom_headers || {}),
-          base_url: request_url
-      }
-      promise = @client.make_request_async(:get, path_template, options)
-
-      promise = promise.then do |result|
-        http_response = result.response
-        status_code = http_response.status
-        response_content = http_response.body
-        unless status_code == 200
-          error_model = JSON.load(response_content)
-          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
-        end
-
-        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
-        # Deserialize Response
-        if status_code == 200
-          begin
-            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DeletedWebAppCollection.mapper()
-            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
-          rescue Exception => e
-            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
-          end
-        end
-
-        result
-      end
-
-      promise.execute
-    end
-
-    #
-    # Gets the web apps for a subscription in the specified resource group
-    #
-    # Gets the web apps for a subscription in the specified resource group
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21496,9 +23699,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web apps for a subscription in the specified resource group
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
-    # Gets the web apps for a subscription in the specified resource group
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21512,9 +23715,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the web apps for a subscription in the specified resource group
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
-    # Gets the web apps for a subscription in the specified resource group
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21572,9 +23775,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21589,9 +23792,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21605,9 +23808,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21665,9 +23868,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21682,9 +23887,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21698,9 +23905,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21758,9 +23967,102 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Lists ownership identifiers for domain associated with web app.
     #
-    # Get web app hostname bindings
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IdentifierCollection] operation results.
+    #
+    def list_domain_ownership_identifiers_next(next_page_link, custom_headers = nil)
+      response = list_domain_ownership_identifiers_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_domain_ownership_identifiers_next_with_http_info(next_page_link, custom_headers = nil)
+      list_domain_ownership_identifiers_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_domain_ownership_identifiers_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = IdentifierCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get hostname bindings for an app or a deployment slot.
+    #
+    # Get hostname bindings for an app or a deployment slot.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21775,9 +24077,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21791,9 +24093,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21851,16 +24153,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteInstanceCollection] operation results.
+    # @return [WebAppInstanceCollection] operation results.
     #
     def list_instance_identifiers_next(next_page_link, custom_headers = nil)
       response = list_instance_identifiers_next_async(next_page_link, custom_headers).value!
@@ -21868,9 +24170,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21884,9 +24186,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21930,7 +24232,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteInstanceCollection.mapper()
+            result_mapper = WebAppInstanceCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -21944,9 +24246,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21961,9 +24265,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -21977,9 +24283,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22037,16 +24345,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MetricDefinitionCollection] operation results.
+    # @return [ResourceMetricDefinitionCollection] operation results.
     #
     def list_metric_definitions_next(next_page_link, custom_headers = nil)
       response = list_metric_definitions_next_async(next_page_link, custom_headers).value!
@@ -22054,9 +24362,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22070,9 +24378,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22116,7 +24424,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MetricDefinitionCollection.mapper()
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -22130,9 +24438,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22147,9 +24455,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22163,9 +24471,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22223,9 +24531,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22240,9 +24548,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22256,9 +24564,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22316,9 +24624,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22333,9 +24641,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22349,9 +24657,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22409,9 +24717,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22426,9 +24734,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22442,9 +24750,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22502,9 +24810,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22519,9 +24829,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22535,9 +24847,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22595,9 +24909,102 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Lists ownership identifiers for domain associated with web app.
     #
-    # Get web app hostname bindings
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IdentifierCollection] operation results.
+    #
+    def list_domain_ownership_identifiers_slot_next(next_page_link, custom_headers = nil)
+      response = list_domain_ownership_identifiers_slot_next_async(next_page_link, custom_headers).value!
+      response.body unless response.nil?
+    end
+
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
+    #
+    def list_domain_ownership_identifiers_slot_next_with_http_info(next_page_link, custom_headers = nil)
+      list_domain_ownership_identifiers_slot_next_async(next_page_link, custom_headers).value!
+    end
+
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # Lists ownership identifiers for domain associated with web app.
+    #
+    # @param next_page_link [String] The NextLink from the previous successful call
+    # to List operation.
+    # @param [Hash{String => String}] A hash of custom headers that will be added
+    # to the HTTP request.
+    #
+    # @return [Concurrent::Promise] Promise object which holds the HTTP response.
+    #
+    def list_domain_ownership_identifiers_slot_next_async(next_page_link, custom_headers = nil)
+      fail ArgumentError, 'next_page_link is nil' if next_page_link.nil?
+
+
+      request_headers = {}
+
+      # Set Headers
+      request_headers['x-ms-client-request-id'] = SecureRandom.uuid
+      request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
+      path_template = '{nextLink}'
+
+      request_url = @base_url || @client.base_url
+
+      options = {
+          middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
+          skip_encoding_path_params: {'nextLink' => next_page_link},
+          headers: request_headers.merge(custom_headers || {}),
+          base_url: request_url
+      }
+      promise = @client.make_request_async(:get, path_template, options)
+
+      promise = promise.then do |result|
+        http_response = result.response
+        status_code = http_response.status
+        response_content = http_response.body
+        unless status_code == 200
+          error_model = JSON.load(response_content)
+          fail MsRestAzure::AzureOperationError.new(result.request, http_response, error_model)
+        end
+
+        result.request_id = http_response['x-ms-request-id'] unless http_response['x-ms-request-id'].nil?
+        # Deserialize Response
+        if status_code == 200
+          begin
+            parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
+            result_mapper = IdentifierCollection.mapper()
+            result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
+          rescue Exception => e
+            fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
+          end
+        end
+
+        result
+      end
+
+      promise.execute
+    end
+
+    #
+    # Get hostname bindings for an app or a deployment slot.
+    #
+    # Get hostname bindings for an app or a deployment slot.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22612,9 +25019,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22628,9 +25035,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
-    # Get web app hostname bindings
+    # Get hostname bindings for an app or a deployment slot.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22688,16 +25095,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteInstanceCollection] operation results.
+    # @return [WebAppInstanceCollection] operation results.
     #
     def list_instance_identifiers_slot_next(next_page_link, custom_headers = nil)
       response = list_instance_identifiers_slot_next_async(next_page_link, custom_headers).value!
@@ -22705,9 +25112,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22721,9 +25128,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22767,7 +25174,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = SiteInstanceCollection.mapper()
+            result_mapper = WebAppInstanceCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -22781,9 +25188,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22798,9 +25207,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22814,9 +25225,11 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22874,16 +25287,16 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MetricDefinitionCollection] operation results.
+    # @return [ResourceMetricDefinitionCollection] operation results.
     #
     def list_metric_definitions_slot_next(next_page_link, custom_headers = nil)
       response = list_metric_definitions_slot_next_async(next_page_link, custom_headers).value!
@@ -22891,9 +25304,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22907,9 +25320,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22953,7 +25366,7 @@ module Azure::ARM::Web
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = MetricDefinitionCollection.mapper()
+            result_mapper = ResourceMetricDefinitionCollection.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -22967,9 +25380,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -22984,9 +25397,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23000,9 +25413,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23060,9 +25473,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23077,9 +25490,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23093,9 +25506,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23153,9 +25566,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23170,9 +25583,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23186,9 +25599,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23339,9 +25752,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23356,9 +25771,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23372,9 +25789,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23432,9 +25851,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23449,9 +25868,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23465,9 +25884,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23618,9 +26037,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23635,9 +26056,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23651,9 +26074,11 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -23711,9 +26136,9 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all Web Apps for a subscription
+    # Get all apps for a subscription.
     #
-    # Gets all Web Apps for a subscription
+    # Get all apps for a subscription.
     #
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -23733,48 +26158,23 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets deleted web apps in subscription
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
-    # Gets deleted web apps in subscription
+    # Gets all web, mobile, and API apps in the specified resource group.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
-    # @param custom_headers [Hash{String => String}] A hash of custom headers that
-    # will be added to the HTTP request.
-    #
-    # @return [DeletedWebAppCollection] which provide lazy access to pages of the
-    # response.
-    #
-    def list_deleted_as_lazy(resource_group_name, properties_to_include = nil, custom_headers = nil)
-      response = list_deleted_async(resource_group_name, properties_to_include, custom_headers).value!
-      unless response.nil?
-        page = response.body
-        page.next_method = Proc.new do |next_page_link|
-          list_deleted_next_async(next_page_link, custom_headers)
-        end
-        page
-      end
-    end
-
-    #
-    # Gets the web apps for a subscription in the specified resource group
-    #
-    # Gets the web apps for a subscription in the specified resource group
-    #
-    # @param resource_group_name [String] Name of resource group
-    # @param properties_to_include [String] Additional web app properties included
-    # in the response
-    # @param include_slots [Boolean] Whether or not to include deployments slots in
-    # results
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param include_slots [Boolean] Specify <strong>true</strong> to include
+    # deployment slots in results. The default is false, which only gives you the
+    # production slot of all apps.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [WebAppCollection] which provide lazy access to pages of the
     # response.
     #
-    def list_by_resource_group_as_lazy(resource_group_name, properties_to_include = nil, include_slots = nil, custom_headers = nil)
-      response = list_by_resource_group_async(resource_group_name, properties_to_include, include_slots, custom_headers).value!
+    def list_by_resource_group_as_lazy(resource_group_name, include_slots = nil, custom_headers = nil)
+      response = list_by_resource_group_async(resource_group_name, include_slots, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
@@ -23785,12 +26185,13 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23809,12 +26210,15 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23833,12 +26237,38 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Lists ownership identifiers for domain associated with web app.
     #
-    # Get web app hostname bindings
+    # Lists ownership identifiers for domain associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IdentifierCollection] which provide lazy access to pages of the
+    # response.
+    #
+    def list_domain_ownership_identifiers_as_lazy(resource_group_name, name, custom_headers = nil)
+      response = list_domain_ownership_identifiers_async(resource_group_name, name, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_domain_ownership_identifiers_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Get hostname bindings for an app or a deployment slot.
+    #
+    # Get hostname bindings for an app or a deployment slot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23857,16 +26287,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteInstanceCollection] which provide lazy access to pages of the
+    # @return [WebAppInstanceCollection] which provide lazy access to pages of the
     # response.
     #
     def list_instance_identifiers_as_lazy(resource_group_name, name, custom_headers = nil)
@@ -23881,13 +26312,18 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param instance_id [String] The ID of a specific scaled-out instance. This is
+    # the value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23906,17 +26342,18 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MetricDefinitionCollection] which provide lazy access to pages of
-    # the response.
+    # @return [ResourceMetricDefinitionCollection] which provide lazy access to
+    # pages of the response.
     #
     def list_metric_definitions_as_lazy(resource_group_name, name, custom_headers = nil)
       response = list_metric_definitions_async(resource_group_name, name, custom_headers).value!
@@ -23930,17 +26367,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param details [Boolean] If true, metric details are included in response
-    # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param details [Boolean] Specify "true" to include metric details in the
+    # response. It is "false" by default.
+    # @param filter [String] Return only metrics specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -23959,11 +26398,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param filter [String] Return only usages/metrics specified in the filter.
     # Filter conforms to odata syntax. Example: $filter=(startTime eq
@@ -23987,22 +26427,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
-    # Gets all the slots for a web apps
+    # Gets an app's deployment slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param properties_to_include [String] List of app properties to include in
-    # the response
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
     # @return [WebAppCollection] which provide lazy access to pages of the
     # response.
     #
-    def list_slots_as_lazy(resource_group_name, name, properties_to_include = nil, custom_headers = nil)
-      response = list_slots_async(resource_group_name, name, properties_to_include, custom_headers).value!
+    def list_slots_as_lazy(resource_group_name, name, custom_headers = nil)
+      response = list_slots_async(resource_group_name, name, custom_headers).value!
       unless response.nil?
         page = response.body
         page.next_method = Proc.new do |next_page_link|
@@ -24013,14 +26452,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # Lists all available backups for web app
+    # Gets existing backups of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get backups of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24039,14 +26479,17 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API returns deployments for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24065,14 +26508,42 @@ module Azure::ARM::Web
     end
 
     #
-    # Get web app hostname bindings
+    # Lists ownership identifiers for domain associated with web app.
     #
-    # Get web app hostname bindings
+    # Lists ownership identifiers for domain associated with web app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will delete the binding for the production slot.
+    # @param custom_headers [Hash{String => String}] A hash of custom headers that
+    # will be added to the HTTP request.
+    #
+    # @return [IdentifierCollection] which provide lazy access to pages of the
+    # response.
+    #
+    def list_domain_ownership_identifiers_slot_as_lazy(resource_group_name, name, slot, custom_headers = nil)
+      response = list_domain_ownership_identifiers_slot_async(resource_group_name, name, slot, custom_headers).value!
+      unless response.nil?
+        page = response.body
+        page.next_method = Proc.new do |next_page_link|
+          list_domain_ownership_identifiers_slot_next_async(next_page_link, custom_headers)
+        end
+        page
+      end
+    end
+
+    #
+    # Get hostname bindings for an app or a deployment slot.
+    #
+    # Get hostname bindings for an app or a deployment slot.
+    #
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets hostname bindings for the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24091,18 +26562,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # Gets all instance of a web app
+    # Gets all scale-out instances of an app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API gets the production slot instances.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [SiteInstanceCollection] which provide lazy access to pages of the
+    # @return [WebAppInstanceCollection] which provide lazy access to pages of the
     # response.
     #
     def list_instance_identifiers_slot_as_lazy(resource_group_name, name, slot, custom_headers = nil)
@@ -24117,15 +26589,20 @@ module Azure::ARM::Web
     end
 
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # List deployments
+    # List deployments for an app, or a deployment slot, or for an instance of a
+    # scaled-out app.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param instance_id [String] Id of web app instance
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API returns deployments for the production slot.
+    # @param instance_id [String] The ID of a specific scaled-out instance. This is
+    # the value of the name property in the JSON response from "GET
+    # api/sites/{siteName}/instances"
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24144,19 +26621,20 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # Gets metric definitions for web app
+    # Gets all metric definitions of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get metric definitions of the production slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [MetricDefinitionCollection] which provide lazy access to pages of
-    # the response.
+    # @return [ResourceMetricDefinitionCollection] which provide lazy access to
+    # pages of the response.
     #
     def list_metric_definitions_slot_as_lazy(resource_group_name, name, slot, custom_headers = nil)
       response = list_metric_definitions_slot_async(resource_group_name, name, slot, custom_headers).value!
@@ -24170,19 +26648,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # Gets metrics for web app
+    # Gets performance metrics of an app (or deployment slot, if specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param details [Boolean] If true, metric details are included in response
-    # @param filter [String] Return only usages/metrics specified in the filter.
-    # Filter conforms to odata syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get metrics of the production slot.
+    # @param details [Boolean] Specify "true" to include metric details in the
+    # response. It is "false" by default.
+    # @param filter [String] Return only metrics specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24201,11 +26681,12 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # Gets perfmon counters for web app
+    # Gets perfmon counters for web app.
     #
-    # @param resource_group_name [String] Name of resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Name of web app
     # @param slot [String] Name of web app slot. If not specified then will default
     # to production slot. **** CURRENTLY UNUSED *****
@@ -24231,15 +26712,17 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
-    # @param slot [String] Name of the source slot
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
+    # @param slot [String] Name of the source slot. If a slot is not specified, the
+    # production slot is used as the source slot.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24262,7 +26745,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param resource_group_name [String] Resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Website Name
     # @param slot [String] Website Slot
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -24283,18 +26767,21 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot [String] Name of web app slot. If not specified then will default
-    # to production slot.
-    # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot [String] Name of the deployment slot. If a slot is not specified,
+    # the API will get quota information of the production slot.
+    # @param filter [String] Return only information specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24313,14 +26800,15 @@ module Azure::ARM::Web
     end
 
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # Get the difference in configuration settings between two web app slots
+    # Get the difference in configuration settings between two web app slots.
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param slot_swap_entity [CsmSlotEntity] Request body that contains the target
-    # slot name
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param slot_swap_entity [CsmSlotEntity] JSON object that contains the target
+    # slot name. See example.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
@@ -24343,7 +26831,8 @@ module Azure::ARM::Web
     #
     # Returns all Snapshots to the user.
     #
-    # @param resource_group_name [String] Resource group
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
     # @param name [String] Website Name
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -24363,16 +26852,19 @@ module Azure::ARM::Web
     end
 
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # Gets the quota usage numbers for web app
+    # Gets the quota usage information of an app (or deployment slot, if
+    # specified).
     #
-    # @param resource_group_name [String] Name of resource group
-    # @param name [String] Name of web app
-    # @param filter [String] Return only usages specified in the filter. Filter is
-    # specified by using OData syntax. Example: $filter=(name.value eq 'Metric1' or
-    # name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-    # eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+    # @param resource_group_name [String] Name of the resource group to which the
+    # resource belongs.
+    # @param name [String] Name of the app.
+    # @param filter [String] Return only information specified in the filter (using
+    # OData syntax). For example: $filter=(name.value eq 'Metric1' or name.value eq
+    # 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime eq
+    # '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #

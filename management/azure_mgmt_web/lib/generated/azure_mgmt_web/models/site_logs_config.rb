@@ -6,22 +6,22 @@
 module Azure::ARM::Web
   module Models
     #
-    # Configuration of Azure web site
+    # Configuration of App Service site logs.
     #
     class SiteLogsConfig < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [ApplicationLogsConfig] Application logs configuration
+      # @return [ApplicationLogsConfig] Application logs configuration.
       attr_accessor :application_logs
 
-      # @return [HttpLogsConfig] Http logs configuration
+      # @return [HttpLogsConfig] HTTP logs configuration.
       attr_accessor :http_logs
 
-      # @return [EnabledConfig] Failed requests tracing configuration
+      # @return [EnabledConfig] Failed requests tracing configuration.
       attr_accessor :failed_requests_tracing
 
-      # @return [EnabledConfig] Detailed error messages configuration
+      # @return [EnabledConfig] Detailed error messages configuration.
       attr_accessor :detailed_error_messages
 
 
@@ -46,7 +46,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

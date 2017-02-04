@@ -6,13 +6,13 @@
 module Azure::ARM::Web
   module Models
     #
-    # Identifies an object
+    # Identifies an object.
     #
     class NameIdentifier
 
       include MsRestAzure
 
-      # @return [String] Name of the object
+      # @return [String] Name of the object.
       attr_accessor :name
 
 

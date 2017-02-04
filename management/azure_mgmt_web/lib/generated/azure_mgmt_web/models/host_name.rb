@@ -6,30 +6,30 @@
 module Azure::ARM::Web
   module Models
     #
-    # Details of a hostname derived from a domain
+    # Details of a hostname derived from a domain.
     #
     class HostName
 
       include MsRestAzure
 
-      # @return [String] Name of the hostname
+      # @return [String] Name of the hostname.
       attr_accessor :name
 
-      # @return [Array<String>] List of sites the hostname is assigned to. This
-      # list will have more than one site only if the hostname is pointing to a
-      # Traffic Manager
+      # @return [Array<String>] List of apps the hostname is assigned to. This
+      # list will have more than one app only if the hostname is pointing to a
+      # Traffic Manager.
       attr_accessor :site_names
 
       # @return [String] Name of the Azure resource the hostname is assigned
-      # to. If it is assigned to a traffic manager then it will be the traffic
-      # manager name otherwise it will be the website name
+      # to. If it is assigned to a Traffic Manager then it will be the Traffic
+      # Manager name otherwise it will be the app name.
       attr_accessor :azure_resource_name
 
       # @return [AzureResourceType] Type of the Azure resource the hostname is
       # assigned to. Possible values include: 'Website', 'TrafficManager'
       attr_accessor :azure_resource_type
 
-      # @return [CustomHostNameDnsRecordType] Type of the Dns record. Possible
+      # @return [CustomHostNameDnsRecordType] Type of the DNS record. Possible
       # values include: 'CName', 'A'
       attr_accessor :custom_host_name_dns_record_type
 

@@ -13,37 +13,38 @@ module Azure::ARM::Web
 
       include MsRestAzure
 
-      # @return [Boolean] Gets or sets a value indicating whether the
-      # Authentication / Authorization feature is enabled for the current app.
+      # @return [Boolean] <code>true</code> if the Authentication /
+      # Authorization feature is enabled for the current app; otherwise,
+      # <code>false</code>.
       attr_accessor :enabled
 
-      # @return [String] Gets or sets the relative path prefix used by platform
-      # HTTP APIs.
-      # Changing this value is not recommended except for compatibility
-      # reasons.
-      attr_accessor :http_api_prefix_path
+      # @return [String] The RuntimeVersion of the Authentication /
+      # Authorization feature in use for the current app.
+      # The setting in this value can control the behavior of certain features
+      # in the Authentication / Authorization module.
+      attr_accessor :runtime_version
 
-      # @return [UnauthenticatedClientAction] Gets or sets the action to take
-      # when an unauthenticated client attempts to access the app. Possible
-      # values include: 'RedirectToLoginPage', 'AllowAnonymous'
+      # @return [UnauthenticatedClientAction] The action to take when an
+      # unauthenticated client attempts to access the app. Possible values
+      # include: 'RedirectToLoginPage', 'AllowAnonymous'
       attr_accessor :unauthenticated_client_action
 
-      # @return [Boolean] Gets or sets a value indicating whether to durably
-      # store platform-specific security tokens
-      # obtained during login flows. This capability is disabled by default.
+      # @return [Boolean] <code>true</code> to durably store platform-specific
+      # security tokens that are obtained during login flows; otherwise,
+      # <code>false</code>.
+      # The default is <code>false</code>.
       attr_accessor :token_store_enabled
 
-      # @return [Array<String>] Gets or sets a collection of external URLs that
-      # can be redirected to as part of logging in
-      # or logging out of the web app. Note that the query string part of the
-      # URL is ignored.
+      # @return [Array<String>] External URLs that can be redirected to as part
+      # of logging in or logging out of the app. Note that the query string
+      # part of the URL is ignored.
       # This is an advanced setting typically only needed by Windows Store
       # application backends.
       # Note that URLs within the current domain are always implicitly allowed.
       attr_accessor :allowed_external_redirect_urls
 
-      # @return [BuiltInAuthenticationProvider] Gets or sets the default
-      # authentication provider to use when multiple providers are configured.
+      # @return [BuiltInAuthenticationProvider] The default authentication
+      # provider to use when multiple providers are configured.
       # This setting is only needed if multiple providers are configured and
       # the unauthenticated client
       # action is set to "RedirectToLoginPage". Possible values include:
@@ -51,13 +52,13 @@ module Azure::ARM::Web
       # 'Twitter'
       attr_accessor :default_provider
 
-      # @return [Float] Gets or sets the number of hours after session token
-      # expiration that a session token can be used to
+      # @return [Float] The number of hours after session token expiration that
+      # a session token can be used to
       # call the token refresh API. The default is 72 hours.
       attr_accessor :token_refresh_extension_hours
 
-      # @return [String] Gets or sets the Client ID of this relying party
-      # application, known as the client_id.
+      # @return [String] The Client ID of this relying party application, known
+      # as the client_id.
       # This setting is required for enabling OpenID Connection authentication
       # with Azure Active Directory or
       # other 3rd party OpenID Connect providers.
@@ -65,9 +66,8 @@ module Azure::ARM::Web
       # http://openid.net/specs/openid-connect-core-1_0.html
       attr_accessor :client_id
 
-      # @return [String] Gets or sets the Client Secret of this relying party
-      # application (in Azure Active Directory, this is also referred to as the
-      # Key).
+      # @return [String] The Client Secret of this relying party application
+      # (in Azure Active Directory, this is also referred to as the Key).
       # This setting is optional. If no client secret is configured, the OpenID
       # Connect implicit auth flow is used to authenticate end users.
       # Otherwise, the OpenID Connect Authorization Code Flow is used to
@@ -76,8 +76,8 @@ module Azure::ARM::Web
       # http://openid.net/specs/openid-connect-core-1_0.html
       attr_accessor :client_secret
 
-      # @return [String] Gets or sets the OpenID Connect Issuer URI that
-      # represents the entity which issues access tokens for this application.
+      # @return [String] The OpenID Connect Issuer URI that represents the
+      # entity which issues access tokens for this application.
       # When using Azure Active Directory, this value is the URI of the
       # directory tenant, e.g. https://sts.windows.net/{tenant-guid}/.
       # This URI is a case-sensitive identifier for the token issuer.
@@ -85,96 +85,88 @@ module Azure::ARM::Web
       # http://openid.net/specs/openid-connect-discovery-1_0.html
       attr_accessor :issuer
 
-      # @return [Array<String>] Gets or sets a list of allowed audience values
-      # to consider when validating JWTs issued by
-      # Azure Active Directory. Note that the
-      # {Microsoft.Web.Hosting.Administration.SiteAuthSettings.ClientId} value
-      # is always considered an
+      # @return [Array<String>] Allowed audience values to consider when
+      # validating JWTs issued by
+      # Azure Active Directory. Note that the <code>ClientID</code> value is
+      # always considered an
       # allowed audience, regardless of this setting.
       attr_accessor :allowed_audiences
 
-      # @return [Array<String>] Gets or sets a list of login parameters to send
-      # to the OpenID Connect authorization endpoint when
+      # @return [Array<String>] Login parameters to send to the OpenID Connect
+      # authorization endpoint when
       # a user logs in. Each parameter must be in the form "key=value".
       attr_accessor :additional_login_params
 
-      # @return [String]
-      attr_accessor :aad_client_id
-
-      # @return [String]
-      attr_accessor :open_id_issuer
-
-      # @return [String] Gets or sets the OpenID Connect Client ID for the
-      # Google web application.
+      # @return [String] The OpenID Connect Client ID for the Google web
+      # application.
       # This setting is required for enabling Google Sign-In.
       # Google Sign-In documentation:
       # https://developers.google.com/identity/sign-in/web/
       attr_accessor :google_client_id
 
-      # @return [String] Gets or sets the client secret associated with the
-      # Google web application.
+      # @return [String] The client secret associated with the Google web
+      # application.
       # This setting is required for enabling Google Sign-In.
       # Google Sign-In documentation:
       # https://developers.google.com/identity/sign-in/web/
       attr_accessor :google_client_secret
 
-      # @return [Array<String>] Gets or sets the OAuth 2.0 scopes that will be
-      # requested as part of Google Sign-In authentication.
+      # @return [Array<String>] The OAuth 2.0 scopes that will be requested as
+      # part of Google Sign-In authentication.
       # This setting is optional. If not specified, "openid", "profile", and
       # "email" are used as default scopes.
       # Google Sign-In documentation:
       # https://developers.google.com/identity/sign-in/web/
       attr_accessor :google_oauth_scopes
 
-      # @return [String] Gets or sets the App ID of the Facebook app used for
-      # login.
+      # @return [String] The App ID of the Facebook app used for login.
       # This setting is required for enabling Facebook Login.
       # Facebook Login documentation:
       # https://developers.facebook.com/docs/facebook-login
       attr_accessor :facebook_app_id
 
-      # @return [String] Gets or sets the App Secret of the Facebook app used
-      # for Facebook Login.
+      # @return [String] The App Secret of the Facebook app used for Facebook
+      # Login.
       # This setting is required for enabling Facebook Login.
       # Facebook Login documentation:
       # https://developers.facebook.com/docs/facebook-login
       attr_accessor :facebook_app_secret
 
-      # @return [Array<String>] Gets or sets the OAuth 2.0 scopes that will be
-      # requested as part of Facebook Login authentication.
+      # @return [Array<String>] The OAuth 2.0 scopes that will be requested as
+      # part of Facebook Login authentication.
       # This setting is optional.
       # Facebook Login documentation:
       # https://developers.facebook.com/docs/facebook-login
       attr_accessor :facebook_oauth_scopes
 
-      # @return [String] Gets or sets the OAuth 1.0a consumer key of the
-      # Twitter application used for sign-in.
+      # @return [String] The OAuth 1.0a consumer key of the Twitter application
+      # used for sign-in.
       # This setting is required for enabling Twitter Sign-In.
       # Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
       attr_accessor :twitter_consumer_key
 
-      # @return [String] Gets or sets the OAuth 1.0a consumer secret of the
-      # Twitter application used for sign-in.
+      # @return [String] The OAuth 1.0a consumer secret of the Twitter
+      # application used for sign-in.
       # This setting is required for enabling Twitter Sign-In.
       # Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
       attr_accessor :twitter_consumer_secret
 
-      # @return [String] Gets or sets the OAuth 2.0 client ID that was created
-      # for the app used for authentication.
+      # @return [String] The OAuth 2.0 client ID that was created for the app
+      # used for authentication.
       # This setting is required for enabling Microsoft Account authentication.
       # Microsoft Account OAuth documentation:
       # https://dev.onedrive.com/auth/msa_oauth.htm
       attr_accessor :microsoft_account_client_id
 
-      # @return [String] Gets or sets the OAuth 2.0 client secret that was
-      # created for the app used for authentication.
+      # @return [String] The OAuth 2.0 client secret that was created for the
+      # app used for authentication.
       # This setting is required for enabling Microsoft Account authentication.
       # Microsoft Account OAuth documentation:
       # https://dev.onedrive.com/auth/msa_oauth.htm
       attr_accessor :microsoft_account_client_secret
 
-      # @return [Array<String>] Gets or sets the OAuth 2.0 scopes that will be
-      # requested as part of Microsoft Account authentication.
+      # @return [Array<String>] The OAuth 2.0 scopes that will be requested as
+      # part of Microsoft Account authentication.
       # This setting is optional. If not specified, "wl.basic" is used as the
       # default scope.
       # Microsoft Account Scopes and permissions documentation:
@@ -201,9 +193,9 @@ module Azure::ARM::Web
                   name: 'Boolean'
                 }
               },
-              http_api_prefix_path: {
+              runtime_version: {
                 required: false,
-                serialized_name: 'httpApiPrefixPath',
+                serialized_name: 'runtimeVersion',
                 type: {
                   name: 'String'
                 }
@@ -299,20 +291,6 @@ module Azure::ARM::Web
                         name: 'String'
                       }
                   }
-                }
-              },
-              aad_client_id: {
-                required: false,
-                serialized_name: 'aadClientId',
-                type: {
-                  name: 'String'
-                }
-              },
-              open_id_issuer: {
-                required: false,
-                serialized_name: 'openIdIssuer',
-                type: {
-                  name: 'String'
                 }
               },
               google_client_id: {

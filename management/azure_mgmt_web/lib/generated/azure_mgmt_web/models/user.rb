@@ -6,25 +6,25 @@
 module Azure::ARM::Web
   module Models
     #
-    # Represents user crendentials used for publishing activity
+    # User crendentials used for publishing activity.
     #
     class User < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Username (internal)
+      # @return [String] Username
       attr_accessor :user_name
 
-      # @return [String] Username used for publishing
+      # @return [String] Username used for publishing.
       attr_accessor :publishing_user_name
 
-      # @return [String] Password used for publishing
+      # @return [String] Password used for publishing.
       attr_accessor :publishing_password
 
-      # @return [String] PasswordHash used for publishing
+      # @return [String] Password hash used for publishing.
       attr_accessor :publishing_password_hash
 
-      # @return [String] PasswordHashSalt used for publishing
+      # @return [String] Password hash salt used for publishing.
       attr_accessor :publishing_password_hash_salt
 
 
@@ -49,7 +49,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'

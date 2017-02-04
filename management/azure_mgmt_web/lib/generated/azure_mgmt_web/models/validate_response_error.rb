@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Error details for when validation fails
+    # Error details for when validation fails.
     #
     class ValidateResponseError
 
       include MsRestAzure
 
-      # @return [String] Validation error code
+      # @return [String] Validation error code.
       attr_accessor :code
 
-      # @return [String] Validation error message
+      # @return [String] Validation error message.
       attr_accessor :message
 
 

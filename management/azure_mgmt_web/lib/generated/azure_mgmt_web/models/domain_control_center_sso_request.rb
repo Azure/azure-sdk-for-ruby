@@ -6,16 +6,16 @@
 module Azure::ARM::Web
   module Models
     #
-    # Single sign on request information for domain management
+    # Single sign-on request information for domain management.
     #
     class DomainControlCenterSsoRequest
 
       include MsRestAzure
 
-      # @return [String] Url where the single sign on request is to be made
+      # @return [String] URL where the single sign-on request is to be made.
       attr_accessor :url
 
-      # @return [String] Post parameter key
+      # @return [String] Post parameter key.
       attr_accessor :post_parameter_key
 
       # @return [String] Post parameter value. Client should use
@@ -37,6 +37,7 @@ module Azure::ARM::Web
             model_properties: {
               url: {
                 required: false,
+                read_only: true,
                 serialized_name: 'url',
                 type: {
                   name: 'String'
@@ -44,6 +45,7 @@ module Azure::ARM::Web
               },
               post_parameter_key: {
                 required: false,
+                read_only: true,
                 serialized_name: 'postParameterKey',
                 type: {
                   name: 'String'
@@ -51,6 +53,7 @@ module Azure::ARM::Web
               },
               post_parameter_value: {
                 required: false,
+                read_only: true,
                 serialized_name: 'postParameterValue',
                 type: {
                   name: 'String'

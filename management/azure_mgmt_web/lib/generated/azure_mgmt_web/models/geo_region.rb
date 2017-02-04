@@ -6,19 +6,19 @@
 module Azure::ARM::Web
   module Models
     #
-    # Geographical region
+    # Geographical region.
     #
     class GeoRegion < MsRestAzure::Resource
 
       include MsRestAzure
 
-      # @return [String] Region name
+      # @return [String] Region name.
       attr_accessor :geo_region_name
 
-      # @return [String] Region description
+      # @return [String] Region description.
       attr_accessor :description
 
-      # @return [String] Display name for region
+      # @return [String] Display name for region.
       attr_accessor :display_name
 
 
@@ -43,7 +43,7 @@ module Azure::ARM::Web
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -86,6 +86,7 @@ module Azure::ARM::Web
               },
               geo_region_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.name',
                 type: {
                   name: 'String'
@@ -93,6 +94,7 @@ module Azure::ARM::Web
               },
               description: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.description',
                 type: {
                   name: 'String'
@@ -100,6 +102,7 @@ module Azure::ARM::Web
               },
               display_name: {
                 required: false,
+                read_only: true,
                 serialized_name: 'properties.displayName',
                 type: {
                   name: 'String'

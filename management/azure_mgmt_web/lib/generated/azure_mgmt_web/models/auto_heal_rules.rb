@@ -6,18 +6,18 @@
 module Azure::ARM::Web
   module Models
     #
-    # AutoHealRules - describes the rules which can be defined for auto-heal
+    # Rules that can be defined for auto-heal.
     #
     class AutoHealRules
 
       include MsRestAzure
 
-      # @return [AutoHealTriggers] Triggers - Conditions that describe when to
-      # execute the auto-heal actions
+      # @return [AutoHealTriggers] Conditions that describe when to execute the
+      # auto-heal actions.
       attr_accessor :triggers
 
-      # @return [AutoHealActions] Actions - Actions to be executed when a rule
-      # is triggered
+      # @return [AutoHealActions] Actions to be executed when a rule is
+      # triggered.
       attr_accessor :actions
 
 
