@@ -43,7 +43,7 @@ module Azure::ARM::SQL
 
       # @return [Array<Database>] The list of Azure SQL Databases in this pool.
       # Expanded property
-      attr_accessor :databases_property
+      attr_accessor :databases
 
       # @return [Array<RecommendedElasticPoolMetric>] The list of Azure SQL
       # Databases housed in the server. Expanded property
@@ -175,7 +175,7 @@ module Azure::ARM::SQL
                   name: 'Double'
                 }
               },
-              databases_property: {
+              databases: {
                 required: false,
                 read_only: true,
                 serialized_name: 'properties.databases',
