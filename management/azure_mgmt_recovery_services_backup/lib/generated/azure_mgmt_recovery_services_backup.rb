@@ -96,6 +96,7 @@ module Azure::ARM::RecoveryServicesBackup
     autoload :ProtectionContainer,                                'generated/azure_mgmt_recovery_services_backup/models/protection_container.rb'
     autoload :DpmJobExtendedInfo,                                 'generated/azure_mgmt_recovery_services_backup/models/dpm_job_extended_info.rb'
     autoload :OperationResultInfoBase,                            'generated/azure_mgmt_recovery_services_backup/models/operation_result_info_base.rb'
+    autoload :Resource,                                           'generated/azure_mgmt_recovery_services_backup/models/resource.rb'
     autoload :OperationStatusError,                               'generated/azure_mgmt_recovery_services_backup/models/operation_status_error.rb'
     autoload :ProtectedItemQueryObject,                           'generated/azure_mgmt_recovery_services_backup/models/protected_item_query_object.rb'
     autoload :JobResource,                                        'generated/azure_mgmt_recovery_services_backup/models/job_resource.rb'
