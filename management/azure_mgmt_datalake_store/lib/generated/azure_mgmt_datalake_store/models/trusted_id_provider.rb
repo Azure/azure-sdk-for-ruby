@@ -6,9 +6,9 @@
 module Azure::ARM::DataLakeStore
   module Models
     #
-    # Data Lake Store firewall rule information
+    # Data Lake Store Trusted Identity Provider information
     #
-    class TrustedIdProvider < MsRestAzure::SubResource
+    class TrustedIdProvider < SubResource
 
       include MsRestAzure
 

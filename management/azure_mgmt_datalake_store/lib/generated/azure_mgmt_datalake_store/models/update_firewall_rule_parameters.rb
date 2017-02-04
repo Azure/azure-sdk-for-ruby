@@ -6,9 +6,9 @@
 module Azure::ARM::DataLakeStore
   module Models
     #
-    # Data Lake Store firewall rule information
+    # Data Lake Analytics firewall rule update parameters
     #
-    class FirewallRule < SubResource
+    class UpdateFirewallRuleParameters
 
       include MsRestAzure
 
@@ -22,49 +22,26 @@ module Azure::ARM::DataLakeStore
 
 
       #
-      # Mapper for FirewallRule class as Ruby Hash.
+      # Mapper for UpdateFirewallRuleParameters class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'FirewallRule',
+          serialized_name: 'UpdateFirewallRuleParameters',
           type: {
             name: 'Composite',
-            class_name: 'FirewallRule',
+            class_name: 'UpdateFirewallRuleParameters',
             model_properties: {
-              id: {
-                required: false,
-                read_only: true,
-                serialized_name: 'id',
-                type: {
-                  name: 'String'
-                }
-              },
-              name: {
-                required: false,
-                serialized_name: 'name',
-                type: {
-                  name: 'String'
-                }
-              },
-              type: {
-                required: false,
-                read_only: true,
-                serialized_name: 'type',
-                type: {
-                  name: 'String'
-                }
-              },
               start_ip_address: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.startIpAddress',
                 type: {
                   name: 'String'
                 }
               },
               end_ip_address: {
-                required: true,
+                required: false,
                 serialized_name: 'properties.endIpAddress',
                 type: {
                   name: 'String'
