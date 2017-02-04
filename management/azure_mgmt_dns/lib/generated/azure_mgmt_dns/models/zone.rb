@@ -20,7 +20,7 @@ module Azure::ARM::Dns
       # this value will be ignored.
       attr_accessor :max_number_of_record_sets
 
-      # @return [Integer] The current number of record sets in this DNS zone. 
+      # @return [Integer] The current number of record sets in this DNS zone.
       # This is a read-only property and any attempt to set this value will be
       # ignored.
       attr_accessor :number_of_record_sets
