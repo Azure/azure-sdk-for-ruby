@@ -29,9 +29,9 @@ module Azure::ARM::Batch
   module Models
     autoload :AddApplicationParameters,                           'generated/azure_mgmt_batch/models/add_application_parameters.rb'
     autoload :AutoStorageBaseProperties,                          'generated/azure_mgmt_batch/models/auto_storage_base_properties.rb'
-    autoload :Application,                                        'generated/azure_mgmt_batch/models/application.rb'
-    autoload :AutoStorageProperties,                              'generated/azure_mgmt_batch/models/auto_storage_properties.rb'
     autoload :ApplicationPackage,                                 'generated/azure_mgmt_batch/models/application_package.rb'
+    autoload :AutoStorageProperties,                              'generated/azure_mgmt_batch/models/auto_storage_properties.rb'
+    autoload :Application,                                        'generated/azure_mgmt_batch/models/application.rb'
     autoload :BatchAccountUpdateParameters,                       'generated/azure_mgmt_batch/models/batch_account_update_parameters.rb'
     autoload :ListApplicationsResult,                             'generated/azure_mgmt_batch/models/list_applications_result.rb'
     autoload :BatchAccountRegenerateKeyParameters,                'generated/azure_mgmt_batch/models/batch_account_regenerate_key_parameters.rb'
