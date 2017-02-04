@@ -6,31 +6,32 @@
 module Azure::ARM::DataLakeAnalytics
   module Models
     #
-    # Azure Storage account information.
+    # Data Lake Analytics firewall rule information
     #
-    class StorageAccountInfo < SubResource
+    class FirewallRule < OptionalSubResource
 
       include MsRestAzure
 
-      # @return [String] the access key associated with this Azure Storage
-      # account that will be used to connect to it.
-      attr_accessor :access_key
+      # @return [String] the start IP address for the firewall rule. This can
+      # be either ipv4 or ipv6. Start and End should be in the same protocol.
+      attr_accessor :start_ip_address
 
-      # @return [String] the optional suffix for the storage account.
-      attr_accessor :suffix
+      # @return [String] the end IP address for the firewall rule. This can be
+      # either ipv4 or ipv6. Start and End should be in the same protocol.
+      attr_accessor :end_ip_address
 
 
       #
-      # Mapper for StorageAccountInfo class as Ruby Hash.
+      # Mapper for FirewallRule class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'StorageAccountInfo',
+          serialized_name: 'FirewallRule',
           type: {
             name: 'Composite',
-            class_name: 'StorageAccountInfo',
+            class_name: 'FirewallRule',
             model_properties: {
               id: {
                 required: false,
@@ -41,7 +42,7 @@ module Azure::ARM::DataLakeAnalytics
                 }
               },
               name: {
-                required: true,
+                required: false,
                 serialized_name: 'name',
                 type: {
                   name: 'String'
@@ -55,16 +56,16 @@ module Azure::ARM::DataLakeAnalytics
                   name: 'String'
                 }
               },
-              access_key: {
+              start_ip_address: {
                 required: true,
-                serialized_name: 'properties.accessKey',
+                serialized_name: 'properties.startIpAddress',
                 type: {
                   name: 'String'
                 }
               },
-              suffix: {
-                required: false,
-                serialized_name: 'properties.suffix',
+              end_ip_address: {
+                required: true,
+                serialized_name: 'properties.endIpAddress',
                 type: {
                   name: 'String'
                 }

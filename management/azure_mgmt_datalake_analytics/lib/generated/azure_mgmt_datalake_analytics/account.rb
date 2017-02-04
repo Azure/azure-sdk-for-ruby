@@ -431,7 +431,8 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Analytics account.the account will be associated with.
-    # @param name [String] The name of the Data Lake Analytics account to create.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # create.
     # @param parameters [DataLakeAnalyticsAccount] Parameters supplied to the
     # create Data Lake Analytics account operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -439,15 +440,16 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @return [DataLakeAnalyticsAccount] operation results.
     #
-    def create(resource_group_name, name, parameters, custom_headers = nil)
-      response = create_async(resource_group_name, name, parameters, custom_headers).value!
+    def create(resource_group_name, account_name, parameters, custom_headers = nil)
+      response = create_async(resource_group_name, account_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Analytics account.the account will be associated with.
-    # @param name [String] The name of the Data Lake Analytics account to create.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # create.
     # @param parameters [DataLakeAnalyticsAccount] Parameters supplied to the
     # create Data Lake Analytics account operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -456,9 +458,9 @@ module Azure::ARM::DataLakeAnalytics
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def create_async(resource_group_name, name, parameters, custom_headers = nil)
+    def create_async(resource_group_name, account_name, parameters, custom_headers = nil)
       # Send request
-      promise = begin_create_async(resource_group_name, name, parameters, custom_headers)
+      promise = begin_create_async(resource_group_name, account_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -480,7 +482,8 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Analytics account.
-    # @param name [String] The name of the Data Lake Analytics account to update.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # update.
     # @param parameters [DataLakeAnalyticsAccountUpdateParameters] Parameters
     # supplied to the update Data Lake Analytics account operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -488,15 +491,16 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @return [DataLakeAnalyticsAccount] operation results.
     #
-    def update(resource_group_name, name, parameters = nil, custom_headers = nil)
-      response = update_async(resource_group_name, name, parameters, custom_headers).value!
+    def update(resource_group_name, account_name, parameters = nil, custom_headers = nil)
+      response = update_async(resource_group_name, account_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Analytics account.
-    # @param name [String] The name of the Data Lake Analytics account to update.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # update.
     # @param parameters [DataLakeAnalyticsAccountUpdateParameters] Parameters
     # supplied to the update Data Lake Analytics account operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -505,9 +509,9 @@ module Azure::ARM::DataLakeAnalytics
     # @return [Concurrent::Promise] promise which provides async access to http
     # response.
     #
-    def update_async(resource_group_name, name, parameters = nil, custom_headers = nil)
+    def update_async(resource_group_name, account_name, parameters = nil, custom_headers = nil)
       # Send request
-      promise = begin_update_async(resource_group_name, name, parameters, custom_headers)
+      promise = begin_update_async(resource_group_name, account_name, parameters, custom_headers)
 
       promise = promise.then do |response|
         # Defining deserialization method.
@@ -618,7 +622,8 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Analytics account.the account will be associated with.
-    # @param name [String] The name of the Data Lake Analytics account to create.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # create.
     # @param parameters [DataLakeAnalyticsAccount] Parameters supplied to the
     # create Data Lake Analytics account operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -626,8 +631,8 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @return [DataLakeAnalyticsAccount] operation results.
     #
-    def begin_create(resource_group_name, name, parameters, custom_headers = nil)
-      response = begin_create_async(resource_group_name, name, parameters, custom_headers).value!
+    def begin_create(resource_group_name, account_name, parameters, custom_headers = nil)
+      response = begin_create_async(resource_group_name, account_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -637,7 +642,8 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Analytics account.the account will be associated with.
-    # @param name [String] The name of the Data Lake Analytics account to create.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # create.
     # @param parameters [DataLakeAnalyticsAccount] Parameters supplied to the
     # create Data Lake Analytics account operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -645,8 +651,8 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_create_with_http_info(resource_group_name, name, parameters, custom_headers = nil)
-      begin_create_async(resource_group_name, name, parameters, custom_headers).value!
+    def begin_create_with_http_info(resource_group_name, account_name, parameters, custom_headers = nil)
+      begin_create_async(resource_group_name, account_name, parameters, custom_headers).value!
     end
 
     #
@@ -655,7 +661,8 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Analytics account.the account will be associated with.
-    # @param name [String] The name of the Data Lake Analytics account to create.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # create.
     # @param parameters [DataLakeAnalyticsAccount] Parameters supplied to the
     # create Data Lake Analytics account operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -663,9 +670,9 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_create_async(resource_group_name, name, parameters, custom_headers = nil)
+    def begin_create_async(resource_group_name, account_name, parameters, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, 'parameters is nil' if parameters.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
@@ -684,13 +691,13 @@ module Azure::ARM::DataLakeAnalytics
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{name}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),
@@ -741,7 +748,8 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Analytics account.
-    # @param name [String] The name of the Data Lake Analytics account to update.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # update.
     # @param parameters [DataLakeAnalyticsAccountUpdateParameters] Parameters
     # supplied to the update Data Lake Analytics account operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -749,8 +757,8 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @return [DataLakeAnalyticsAccount] operation results.
     #
-    def begin_update(resource_group_name, name, parameters = nil, custom_headers = nil)
-      response = begin_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def begin_update(resource_group_name, account_name, parameters = nil, custom_headers = nil)
+      response = begin_update_async(resource_group_name, account_name, parameters, custom_headers).value!
       response.body unless response.nil?
     end
 
@@ -760,7 +768,8 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Analytics account.
-    # @param name [String] The name of the Data Lake Analytics account to update.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # update.
     # @param parameters [DataLakeAnalyticsAccountUpdateParameters] Parameters
     # supplied to the update Data Lake Analytics account operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -768,8 +777,8 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @return [MsRestAzure::AzureOperationResponse] HTTP response information.
     #
-    def begin_update_with_http_info(resource_group_name, name, parameters = nil, custom_headers = nil)
-      begin_update_async(resource_group_name, name, parameters, custom_headers).value!
+    def begin_update_with_http_info(resource_group_name, account_name, parameters = nil, custom_headers = nil)
+      begin_update_async(resource_group_name, account_name, parameters, custom_headers).value!
     end
 
     #
@@ -778,7 +787,8 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @param resource_group_name [String] The name of the Azure resource group that
     # contains the Data Lake Analytics account.
-    # @param name [String] The name of the Data Lake Analytics account to update.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # update.
     # @param parameters [DataLakeAnalyticsAccountUpdateParameters] Parameters
     # supplied to the update Data Lake Analytics account operation.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -786,9 +796,9 @@ module Azure::ARM::DataLakeAnalytics
     #
     # @return [Concurrent::Promise] Promise object which holds the HTTP response.
     #
-    def begin_update_async(resource_group_name, name, parameters = nil, custom_headers = nil)
+    def begin_update_async(resource_group_name, account_name, parameters = nil, custom_headers = nil)
       fail ArgumentError, 'resource_group_name is nil' if resource_group_name.nil?
-      fail ArgumentError, 'name is nil' if name.nil?
+      fail ArgumentError, 'account_name is nil' if account_name.nil?
       fail ArgumentError, '@client.api_version is nil' if @client.api_version.nil?
       fail ArgumentError, '@client.subscription_id is nil' if @client.subscription_id.nil?
 
@@ -806,13 +816,13 @@ module Azure::ARM::DataLakeAnalytics
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{name}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}'
 
       request_url = @base_url || @client.base_url
 
       options = {
           middlewares: [[MsRest::RetryPolicyMiddleware, times: 3, retry: 0.02], [:cookie_jar]],
-          path_params: {'resourceGroupName' => resource_group_name,'name' => name,'subscriptionId' => @client.subscription_id},
+          path_params: {'resourceGroupName' => resource_group_name,'accountName' => account_name,'subscriptionId' => @client.subscription_id},
           query_params: {'api-version' => @client.api_version},
           body: request_content,
           headers: request_headers.merge(custom_headers || {}),

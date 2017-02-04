@@ -4,5 +4,13 @@
 # regenerated.
 
 module Azure::ARM::DataLakeAnalytics
-    VERSION = '0.9.0'
+  module Models
+    #
+    # Defines values for FirewallState
+    #
+    module FirewallState
+      Enabled = "Enabled"
+      Disabled = "Disabled"
+    end
+  end
 end
