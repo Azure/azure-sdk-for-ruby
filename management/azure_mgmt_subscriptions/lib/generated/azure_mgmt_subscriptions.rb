@@ -25,13 +25,13 @@ module Azure::ARM::Subscriptions
   autoload :SubscriptionClient,                                 'generated/azure_mgmt_subscriptions/subscription_client.rb'
 
   module Models
-    autoload :SubscriptionPolicies,                               'generated/azure_mgmt_subscriptions/models/subscription_policies.rb'
+    autoload :Subscription,                                       'generated/azure_mgmt_subscriptions/models/subscription.rb'
     autoload :SubscriptionListResult,                             'generated/azure_mgmt_subscriptions/models/subscription_list_result.rb'
     autoload :LocationListResult,                                 'generated/azure_mgmt_subscriptions/models/location_list_result.rb'
     autoload :TenantIdDescription,                                'generated/azure_mgmt_subscriptions/models/tenant_id_description.rb'
     autoload :Location,                                           'generated/azure_mgmt_subscriptions/models/location.rb'
     autoload :TenantListResult,                                   'generated/azure_mgmt_subscriptions/models/tenant_list_result.rb'
-    autoload :Subscription,                                       'generated/azure_mgmt_subscriptions/models/subscription.rb'
+    autoload :SubscriptionPolicies,                               'generated/azure_mgmt_subscriptions/models/subscription_policies.rb'
     autoload :SubscriptionState,                                  'generated/azure_mgmt_subscriptions/models/subscription_state.rb'
     autoload :SpendingLimit,                                      'generated/azure_mgmt_subscriptions/models/spending_limit.rb'
   end
