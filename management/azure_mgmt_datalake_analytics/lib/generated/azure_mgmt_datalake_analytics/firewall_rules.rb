@@ -3,12 +3,12 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DataLakeStore
+module Azure::ARM::DataLakeAnalytics
   #
-  # Creates an Azure Data Lake Store account management client.
+  # Creates an Azure Data Lake Analytics account management client.
   #
   class FirewallRules
-    include Azure::ARM::DataLakeStore::Models
+    include Azure::ARM::DataLakeAnalytics::Models
     include MsRestAzure
 
     #
@@ -19,7 +19,7 @@ module Azure::ARM::DataLakeStore
       @client = client
     end
 
-    # @return [DataLakeStoreAccountManagementClient] reference to the DataLakeStoreAccountManagementClient
+    # @return [DataLakeAnalyticsAccountManagementClient] reference to the DataLakeAnalyticsAccountManagementClient
     attr_reader :client
 
     #
@@ -27,9 +27,9 @@ module Azure::ARM::DataLakeStore
     # rule with the specified name will be replaced with this new firewall rule.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to add
-    # or replace the firewall rule.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # add or replace the firewall rule.
     # @param firewall_rule_name [String] The name of the firewall rule to create or
     # update.
     # @param parameters [FirewallRule] Parameters supplied to create or update the
@@ -49,9 +49,9 @@ module Azure::ARM::DataLakeStore
     # rule with the specified name will be replaced with this new firewall rule.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to add
-    # or replace the firewall rule.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # add or replace the firewall rule.
     # @param firewall_rule_name [String] The name of the firewall rule to create or
     # update.
     # @param parameters [FirewallRule] Parameters supplied to create or update the
@@ -70,9 +70,9 @@ module Azure::ARM::DataLakeStore
     # rule with the specified name will be replaced with this new firewall rule.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to add
-    # or replace the firewall rule.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # add or replace the firewall rule.
     # @param firewall_rule_name [String] The name of the firewall rule to create or
     # update.
     # @param parameters [FirewallRule] Parameters supplied to create or update the
@@ -104,7 +104,7 @@ module Azure::ARM::DataLakeStore
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}'
 
       request_url = @base_url || @client.base_url
 
@@ -149,9 +149,9 @@ module Azure::ARM::DataLakeStore
     # Updates the specified firewall rule.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to which
-    # to update the firewall rule.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # which to update the firewall rule.
     # @param firewall_rule_name [String] The name of the firewall rule to update.
     # @param parameters [UpdateFirewallRuleParameters] Parameters supplied to
     # update the firewall rule.
@@ -169,9 +169,9 @@ module Azure::ARM::DataLakeStore
     # Updates the specified firewall rule.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to which
-    # to update the firewall rule.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # which to update the firewall rule.
     # @param firewall_rule_name [String] The name of the firewall rule to update.
     # @param parameters [UpdateFirewallRuleParameters] Parameters supplied to
     # update the firewall rule.
@@ -188,9 +188,9 @@ module Azure::ARM::DataLakeStore
     # Updates the specified firewall rule.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account to which
-    # to update the firewall rule.
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account to
+    # which to update the firewall rule.
     # @param firewall_rule_name [String] The name of the firewall rule to update.
     # @param parameters [UpdateFirewallRuleParameters] Parameters supplied to
     # update the firewall rule.
@@ -220,7 +220,7 @@ module Azure::ARM::DataLakeStore
       request_content = @client.serialize(request_mapper,  parameters, 'parameters')
       request_content = request_content != nil ? JSON.generate(request_content, quirks_mode: true) : nil
 
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}'
 
       request_url = @base_url || @client.base_url
 
@@ -262,12 +262,12 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Deletes the specified firewall rule from the specified Data Lake Store
+    # Deletes the specified firewall rule from the specified Data Lake Analytics
     # account
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
     # which to delete the firewall rule.
     # @param firewall_rule_name [String] The name of the firewall rule to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -280,12 +280,12 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Deletes the specified firewall rule from the specified Data Lake Store
+    # Deletes the specified firewall rule from the specified Data Lake Analytics
     # account
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
     # which to delete the firewall rule.
     # @param firewall_rule_name [String] The name of the firewall rule to delete.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -298,12 +298,12 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Deletes the specified firewall rule from the specified Data Lake Store
+    # Deletes the specified firewall rule from the specified Data Lake Analytics
     # account
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
     # which to delete the firewall rule.
     # @param firewall_rule_name [String] The name of the firewall rule to delete.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -324,7 +324,7 @@ module Azure::ARM::DataLakeStore
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}'
 
       request_url = @base_url || @client.base_url
 
@@ -355,11 +355,11 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Gets the specified Data Lake Store firewall rule.
+    # Gets the specified Data Lake Analytics firewall rule.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
     # which to get the firewall rule.
     # @param firewall_rule_name [String] The name of the firewall rule to retrieve.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -373,11 +373,11 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Gets the specified Data Lake Store firewall rule.
+    # Gets the specified Data Lake Analytics firewall rule.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
     # which to get the firewall rule.
     # @param firewall_rule_name [String] The name of the firewall rule to retrieve.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
@@ -390,11 +390,11 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Gets the specified Data Lake Store firewall rule.
+    # Gets the specified Data Lake Analytics firewall rule.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
     # which to get the firewall rule.
     # @param firewall_rule_name [String] The name of the firewall rule to retrieve.
     # @param [Hash{String => String}] A hash of custom headers that will be added
@@ -415,7 +415,7 @@ module Azure::ARM::DataLakeStore
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules/{firewallRuleName}'
 
       request_url = @base_url || @client.base_url
 
@@ -456,12 +456,12 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store firewall rules within the specified Data Lake Store
-    # account.
+    # Lists the Data Lake Analytics firewall rules within the specified Data Lake
+    # Analytics account.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
     # which to get the firewall rules.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -474,12 +474,12 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store firewall rules within the specified Data Lake Store
-    # account.
+    # Lists the Data Lake Analytics firewall rules within the specified Data Lake
+    # Analytics account.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
     # which to get the firewall rules.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
@@ -491,12 +491,12 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store firewall rules within the specified Data Lake Store
-    # account.
+    # Lists the Data Lake Analytics firewall rules within the specified Data Lake
+    # Analytics account.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
     # which to get the firewall rules.
     # @param [Hash{String => String}] A hash of custom headers that will be added
     # to the HTTP request.
@@ -515,7 +515,7 @@ module Azure::ARM::DataLakeStore
       # Set Headers
       request_headers['x-ms-client-request-id'] = SecureRandom.uuid
       request_headers['accept-language'] = @client.accept_language unless @client.accept_language.nil?
-      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules'
+      path_template = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules'
 
       request_url = @base_url || @client.base_url
 
@@ -542,7 +542,7 @@ module Azure::ARM::DataLakeStore
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DataLakeStoreFirewallRuleListResult.mapper()
+            result_mapper = DataLakeAnalyticsFirewallRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -556,15 +556,15 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store firewall rules within the specified Data Lake Store
-    # account.
+    # Lists the Data Lake Analytics firewall rules within the specified Data Lake
+    # Analytics account.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DataLakeStoreFirewallRuleListResult] operation results.
+    # @return [DataLakeAnalyticsFirewallRuleListResult] operation results.
     #
     def list_by_account_next(next_page_link, custom_headers = nil)
       response = list_by_account_next_async(next_page_link, custom_headers).value!
@@ -572,8 +572,8 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store firewall rules within the specified Data Lake Store
-    # account.
+    # Lists the Data Lake Analytics firewall rules within the specified Data Lake
+    # Analytics account.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -587,8 +587,8 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store firewall rules within the specified Data Lake Store
-    # account.
+    # Lists the Data Lake Analytics firewall rules within the specified Data Lake
+    # Analytics account.
     #
     # @param next_page_link [String] The NextLink from the previous successful call
     # to List operation.
@@ -632,7 +632,7 @@ module Azure::ARM::DataLakeStore
         if status_code == 200
           begin
             parsed_response = response_content.to_s.empty? ? nil : JSON.load(response_content)
-            result_mapper = DataLakeStoreFirewallRuleListResult.mapper()
+            result_mapper = DataLakeAnalyticsFirewallRuleListResult.mapper()
             result.body = @client.deserialize(result_mapper, parsed_response, 'result.body')
           rescue Exception => e
             fail MsRest::DeserializationError.new('Error occurred in deserializing the response', e.message, e.backtrace, result)
@@ -646,18 +646,18 @@ module Azure::ARM::DataLakeStore
     end
 
     #
-    # Lists the Data Lake Store firewall rules within the specified Data Lake Store
-    # account.
+    # Lists the Data Lake Analytics firewall rules within the specified Data Lake
+    # Analytics account.
     #
     # @param resource_group_name [String] The name of the Azure resource group that
-    # contains the Data Lake Store account.
-    # @param account_name [String] The name of the Data Lake Store account from
+    # contains the Data Lake Analytics account.
+    # @param account_name [String] The name of the Data Lake Analytics account from
     # which to get the firewall rules.
     # @param custom_headers [Hash{String => String}] A hash of custom headers that
     # will be added to the HTTP request.
     #
-    # @return [DataLakeStoreFirewallRuleListResult] which provide lazy access to
-    # pages of the response.
+    # @return [DataLakeAnalyticsFirewallRuleListResult] which provide lazy access
+    # to pages of the response.
     #
     def list_by_account_as_lazy(resource_group_name, account_name, custom_headers = nil)
       response = list_by_account_async(resource_group_name, account_name, custom_headers).value!

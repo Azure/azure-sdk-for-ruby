@@ -8,13 +8,9 @@ module Azure::ARM::DataLakeAnalytics
     #
     # Data Lake Store account information.
     #
-    class DataLakeStoreAccountInfo
+    class DataLakeStoreAccountInfo < SubResource
 
       include MsRestAzure
-
-      # @return [String] the account name of the Data Lake Store account to add
-      # to the Data Lake Analytics account being created.
-      attr_accessor :name
 
       # @return [String] the optional suffix for the Data Lake Store account.
       attr_accessor :suffix
@@ -32,9 +28,25 @@ module Azure::ARM::DataLakeAnalytics
             name: 'Composite',
             class_name: 'DataLakeStoreAccountInfo',
             model_properties: {
+              id: {
+                required: false,
+                read_only: true,
+                serialized_name: 'id',
+                type: {
+                  name: 'String'
+                }
+              },
               name: {
                 required: true,
                 serialized_name: 'name',
+                type: {
+                  name: 'String'
+                }
+              },
+              type: {
+                required: false,
+                read_only: true,
+                serialized_name: 'type',
                 type: {
                   name: 'String'
                 }

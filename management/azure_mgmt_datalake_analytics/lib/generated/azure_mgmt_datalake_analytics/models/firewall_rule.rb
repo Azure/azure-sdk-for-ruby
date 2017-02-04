@@ -3,30 +3,35 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 
-module Azure::ARM::DataLakeStore
+module Azure::ARM::DataLakeAnalytics
   module Models
     #
-    # Data Lake Store Trusted Identity Provider information
+    # Data Lake Analytics firewall rule information
     #
-    class TrustedIdProvider < SubResource
+    class FirewallRule < OptionalSubResource
 
       include MsRestAzure
 
-      # @return [String] The URL of this trusted identity provider
-      attr_accessor :id_provider
+      # @return [String] the start IP address for the firewall rule. This can
+      # be either ipv4 or ipv6. Start and End should be in the same protocol.
+      attr_accessor :start_ip_address
+
+      # @return [String] the end IP address for the firewall rule. This can be
+      # either ipv4 or ipv6. Start and End should be in the same protocol.
+      attr_accessor :end_ip_address
 
 
       #
-      # Mapper for TrustedIdProvider class as Ruby Hash.
+      # Mapper for FirewallRule class as Ruby Hash.
       # This will be used for serialization/deserialization.
       #
       def self.mapper()
         {
           required: false,
-          serialized_name: 'TrustedIdProvider',
+          serialized_name: 'FirewallRule',
           type: {
             name: 'Composite',
-            class_name: 'TrustedIdProvider',
+            class_name: 'FirewallRule',
             model_properties: {
               id: {
                 required: false,
@@ -51,9 +56,16 @@ module Azure::ARM::DataLakeStore
                   name: 'String'
                 }
               },
-              id_provider: {
+              start_ip_address: {
                 required: true,
-                serialized_name: 'properties.idProvider',
+                serialized_name: 'properties.startIpAddress',
+                type: {
+                  name: 'String'
+                }
+              },
+              end_ip_address: {
+                required: true,
+                serialized_name: 'properties.endIpAddress',
                 type: {
                   name: 'String'
                 }
