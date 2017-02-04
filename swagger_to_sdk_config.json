@@ -299,7 +299,7 @@
       ]
     },
     "azure_mgmt_policy": {
-      "swagger": "arm-resources/policy/2016-04-01/swagger/policy.json",
+      "swagger": "arm-resources/policy/2016-12-01/swagger/policy.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Policy",
         "PackageName": "azure_mgmt_policy",
@@ -433,7 +433,7 @@
       ]
     },
     "azure_mgmt_storage": {
-      "swagger": "arm-storage/2016-01-01/swagger/storage.json",
+      "swagger": "arm-storage/2016-12-01/swagger/storage.json",
       "autorest_options": {
         "Namespace": "Azure::ARM::Storage",
         "PackageName": "azure_mgmt_storage",

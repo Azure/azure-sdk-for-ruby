@@ -291,7 +291,7 @@ REGEN_METADATA = {
         tag: 'arm_noti'
     },
     azure_mgmt_policy: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/policy/2016-04-01/swagger/policy.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/policy/2016-12-01/swagger/policy.json',
         ns: 'Azure::ARM::Policy',
         version: version,
         tag: 'arm_policy'
@@ -359,7 +359,7 @@ REGEN_METADATA = {
         tag: 'arm_sql'
     },
     azure_mgmt_storage: {
-        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-storage/2016-01-01/swagger/storage.json',
+        spec_uri: 'https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-storage/2016-12-01/swagger/storage.json',
         ns: 'Azure::ARM::Storage',
         version: version,
         tag: 'arm_stor'
