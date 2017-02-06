@@ -73,9 +73,20 @@ module MsRestAzure
         fail polling_error if polling_error.is_a?(Exception)
       end
 
-      if (http_method === :put || http_method === :patch) && AsyncOperationStatus.is_successful_status(polling_state.status) && polling_state.resource.nil?
-        get_request = MsRest::HttpOperationRequest.new(request.base_uri, request.build_path.to_s, :get, {query_params: request.query_params, headers: request.headers})
-        update_state_from_get_resource_operation(get_request, polling_state, custom_deserialization_block)
+      if AsyncOperationStatus.is_successful_status(polling_state.status)
+        # Process long-running PUT/PATCH
+        if (http_method === :put || http_method === :patch) && polling_state.resource.nil?
+          get_request = MsRest::HttpOperationRequest.new(request.base_uri, request.build_path.to_s, :get, {query_params: request.query_params, headers: request.headers})
+          update_state_from_get_resource_operation(get_request, polling_state, custom_deserialization_block)
+        end
+
+        # Process long-running POST/DELETE operation with schema defined on success status codes
+        if (http_method === :post || http_method === :delete) && custom_deserialization_block && polling_state.response
+          unless polling_state.response.body.to_s.empty?
+            body = JSON.load(polling_state.response.body)
+            polling_state.resource = custom_deserialization_block.call(body)
+          end
+        end
       end
 
       if AsyncOperationStatus.is_failed_status(polling_state.status)
