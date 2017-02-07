@@ -1,3 +1,15 @@
+## 2017.02.07 - Azure ARM version 0.9.0
+
+All issues associated with this milestone can be found using this [filter](https://github.com/Azure/azure-sdk-for-ruby/issues?utf8=%E2%9C%93&q=milestone%3Av0.9.0-arm).
+
+* Regened all azure_mgmt_* sdks using [AutoRest.1.0.0-Nightly20170202](https://www.myget.org/feed/autorest/package/nuget/AutoRest/1.0.0-Nightly20170202) for release of ARM version 0.9.0
+* Updated gemspec of all azure_mgmt_* sdks to use [ms_rest_azure](https://rubygems.org/gems/ms_rest_azure) version [~>0.7.0](https://rubygems.org/gems/ms_rest_azure/versions/0.7.0)
+* Updated [azure_mgmt_policy](https://rubygems.org/gems/azure_mgmt_policy) to latest API version [2016-12-01](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-resources/policy/2016-12-01/swagger/policy.json)
+* Updated [azure_mgmt_storage](https://rubygems.org/gems/azure_mgmt_storage) to latest API version [2016-12-01](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-storage/2016-12-01/swagger/storage.json)
+* Updated [azure-sdk](https://rubygems.org/gems/azure_sdk) to use azure_mgmt_* sdks version 0.9.0
+* Updated [azure_sdk](https://rubygems.org/gems/azure_sdk) to latest [azure-storage](https://rubygems.org/gems/azure-storage) version [0.11.5.preview](https://rubygems.org/gems/azure-storage/versions/0.11.5.preview)
+* Bug fixes and updated swagger specs
+
 ## 2016.11.16 - Azure ARM version 0.8.0
 
 All issues associated with this milestone can be found using this [filter](https://github.com/Azure/azure-sdk-for-ruby/issues?utf8=%E2%9C%93&q=milestone%3Av0.8.0-arm).
